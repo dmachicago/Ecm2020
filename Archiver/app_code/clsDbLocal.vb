@@ -88,6 +88,8 @@ Public Class clsDbLocal : Implements IDisposable
             'aFolders(0) = FQN + "|" + IncludeSubDirs + "|" + DB_ID + "|" + VersionFiles + "|" + DisableFolder + "|" + OcrDirectory + "|" + RetentionCode
             'DB.GetContentArchiveFileFolders(gCurrLoginID, aFolders)
             DictOfDirs = DB.GetUserDirectories(gCurrLoginID)
+            Dim ExtCnt As Integer = 0
+            Dim LastIdx As Integer = 0
 
             For Each str As String In DictOfDirs.Keys
                 Try
@@ -97,7 +99,10 @@ Public Class clsDbLocal : Implements IDisposable
                         IncludeSubDirs = DictOfDirs(str)
                         Application.DoEvents()
 
-                        AllowedExts = getAllowedExtension(DirName)
+                        ExtCnt = 0
+                        LastIdx = 0
+
+                        AllowedExts = getAllowedExtension(DirName, 0)
 
                         addDir(DirName, bUseArchiveBit)
                         DirID = GetDirID(DirName)
@@ -172,7 +177,7 @@ Public Class clsDbLocal : Implements IDisposable
         End Try
     End Sub
 
-    Public Function getAllowedExtension(DirName As String) As List(Of String)
+    Public Function getAllowedExtension(DirName As String, Level As Integer) As List(Of String)
 
         Dim DB As New clsDatabaseARCH
         Dim L As New List(Of String)
@@ -188,6 +193,16 @@ Public Class clsDbLocal : Implements IDisposable
 
         LB = Nothing
         DB.Dispose()
+
+        If L.Count.Equals(0) Then
+            Level += 1
+            Dim I As Integer = DirName.LastIndexOf("\")
+            DirName = DirName.Substring(0, I)
+            If DirName.Length < 4 Then
+                Return L
+            End If
+            L = getAllowedExtension(DirName, Level)
+        End If
 
         Return L
 
@@ -264,28 +279,64 @@ Public Class clsDbLocal : Implements IDisposable
 
     Public Function getListenerfiles() As List(Of String)
 
+        Dim FRM As New frmNotify
+        FRM.Show()
+        FRM.Title = "Getting LISTENER Files"
+        FRM.Text = "Getting LISTENER Files"
+
         bConnSet = setListenerConn()
 
+
         Dim FilesToProcess As New List(Of String)
-        Dim sql As String = "select distinct FQN from FileNeedProcessing where FileApplied = 0 ;"
+        Dim sql As String = "select distinct FQN from FileNeedProcessing where FileApplied = 0 order by FQN ;"
         Dim FQN As String = ""
         Dim ext As String = ""
+        Dim DIR As String = ""
+        Dim AllowedExts As List(Of String) = Nothing
+        'C:\Users\wdale\Documents\Outlook Files
+        Dim ExtCnt As Integer = 0
+        Dim LastIdx As Integer = 0
+        Dim Len As Int64 = 0
+
         Using CMD As New SQLiteCommand(sql, ListernerConn)
             CMD.CommandText = sql
             Dim rdr As SQLiteDataReader = CMD.ExecuteReader()
+            Dim iCnt As Integer = 0
             Using rdr
                 While (rdr.Read())
+                    iCnt += 1
+
                     FQN = rdr.GetValue(0).ToString()
-                    ext = Path.GetExtension(FQN).ToLower.Trim
-                    If gAllowedExts.Contains(ext) Then
-                        If Not FilesToProcess.Contains(FQN) Then
-                            FilesToProcess.Add(FQN)
-                        End If
+                    FRM.lblFileSpec.Text = iCnt.ToString
+
+                    If Not FQN.Contains("\.git") Then
+                        Try
+                            Dim FI As New FileInfo(FQN)
+                            ext = FI.Extension
+                            DIR = FI.DirectoryName
+                            Len = FI.Length
+                            If ext.Length > 0 Then
+                                AllowedExts = getAllowedExtension(DIR, 0)
+                                If AllowedExts.Contains(ext) Then
+                                    If Not FilesToProcess.Contains(FQN) Then
+                                        FRM.lblPdgPages.Text = "Processing: " + FQN
+                                        FilesToProcess.Add(FQN)
+                                    End If
+                                End If
+                            End If
+                        Catch ex As Exception
+                            LOG.WriteToArchiveLog("ERROR getListenerFiles 02: " + ex.Message)
+                        End Try
                     End If
+                    FRM.Refresh()
+                    Application.DoEvents()
 
                 End While
             End Using
         End Using
+
+        FRM.Close()
+        FRM.Dispose()
 
         Return FilesToProcess
     End Function
@@ -3421,8 +3472,17 @@ Public Class clsDbLocal : Implements IDisposable
         fSize = FI.Length
         FI = Nothing
 
+        If FQN.Contains("'") Then
+            FQN = FQN.Replace("''", "'")
+            FQN = FQN.Replace("'", "''")
+        End If
+
+        If IsNothing(ParentGuid) Then
+            ParentGuid = ""
+        End If
+
         Dim S As String = ""
-        S = S + "insert or ignore into ZipFile (FQN, fSize, EmailAttachment,RowNbr) values (@FQN, @fSize, @EmailAttachment, @RowNbr) "
+        S = S + "insert or ignore into ZipFile (FQN, fSize, EmailAttachment, ParentGuid) values ('" + FQN + "', " + fSize.ToString + ", " + EmailAttachment.ToString + ", '" + ParentGuid + "' ) "
 
         Try
             SQLiteCONN.Open()
@@ -3440,12 +3500,6 @@ Public Class clsDbLocal : Implements IDisposable
 
         Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
-            CMD.Parameters.AddWithValue("@FQN", FQN)
-            CMD.Parameters.AddWithValue("@fSize", fSize)
-            CMD.Parameters.AddWithValue("@ParentGuid", ParentGuid)
-            CMD.Parameters.AddWithValue("@EmailAttachment", EmailAttachment)
-            CMD.Parameters.AddWithValue("@RowNbr", "null")
-
             CMD.ExecuteNonQuery()
         Catch ex As Exception
             If InStr(ex.Message, "duplicate value cannot") > 0 Then
