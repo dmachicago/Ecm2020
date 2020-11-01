@@ -8,13 +8,13 @@ Imports System.Data.SQLite
 
 Public Class clsDbLocal : Implements IDisposable
 
-    Public ListernerConn As New SqliteConnection()
+    Public ListernerConn As New SQLiteConnection()
 
     Dim ENC As New ECMEncrypt
     Dim LOG As New clsLogging
 
     Public bSQLiteCOnnected As Boolean = False
-    Public SQLiteCONN As New SqliteConnection()
+    Public SQLiteCONN As New SQLiteConnection()
 
 
     Private ContactCS As String = ""
@@ -39,6 +39,160 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Sub
 
+    Sub ReInventory()
+
+        Try
+            Dim FRM As New frmNotify
+            FRM.Show()
+            FRM.Title = "RE-INVENTORY"
+            Dim DictOfDirs As New Dictionary(Of String, String)
+
+            Dim Arr() As String = Nothing
+            Dim DB As New clsDatabaseARCH
+            Dim aFolders As String() = Nothing
+            Dim bUseArchiveBit = False
+            Dim FI As FileInfo = Nothing
+            Dim di As DirectoryInfo = Nothing
+            Dim hash As String = ""
+            Dim iCnt As Integer = 0
+            Dim iTot As Integer = 0
+
+            Dim DirName As String = ""
+            Dim IncludeSubDirs As String = ""
+            Dim DB_ID As String = ""
+            Dim VersionFiles As String = ""
+            Dim DisableFolder As String = ""
+            Dim OcrDirectory As String = ""
+            Dim RetentionCode As String = ""
+            Dim DirID As Integer = 0
+            Dim FileID As Integer = 0
+
+            Dim EXT As String = ""
+            Dim FQN As String = ""
+            Dim FSize As Int64 = 0
+            Dim LastWriteTime As DateTime = Nothing
+            Dim CreationTime As DateTime = Nothing
+            Dim B As Boolean = True
+            Dim CurrDir As String = ""
+
+            Dim AllowedExts As List(Of String) = DB.getUsersAllowedFileExt(gCurrUserGuidID)
+
+            truncateDirs()
+            truncateFiles()
+            truncateInventory()
+            'DBLocal.truncateOutlook()
+            'DBLocal.truncateExchange()
+            'DBLocal.truncateContacts()
+            truncateDirFiles()
+
+            'aFolders(0) = FQN + "|" + IncludeSubDirs + "|" + DB_ID + "|" + VersionFiles + "|" + DisableFolder + "|" + OcrDirectory + "|" + RetentionCode
+            'DB.GetContentArchiveFileFolders(gCurrLoginID, aFolders)
+            DictOfDirs = DB.GetUserDirectories(gCurrLoginID)
+
+            For Each str As String In DictOfDirs.Keys
+                Try
+                    DirName = str
+
+                    If Directory.Exists(DirName) Then
+                        IncludeSubDirs = DictOfDirs(str)
+                        Application.DoEvents()
+
+                        AllowedExts = getAllowedExtension(DirName)
+
+                        addDir(DirName, bUseArchiveBit)
+                        DirID = GetDirID(DirName)
+                        If IncludeSubDirs.ToUpper.Equals("Y") Then
+                            iCnt = 0
+                            di = New DirectoryInfo(DirName)
+                            For Each FI In di.GetFiles("*.*", SearchOption.AllDirectories)
+                                Try
+                                    iCnt += 1
+                                    FQN = FI.FullName
+                                    FSize = FI.Length
+                                    LastWriteTime = FI.LastWriteTime
+                                    CreationTime = FI.CreationTime
+                                    EXT = FI.Extension
+                                    CurrDir = FI.DirectoryName
+                                    FRM.Label1.Text = CurrDir
+                                    If AllowedExts.Contains(EXT.ToLower) Then
+                                        FRM.lblPdgPages.Text = FI.Name + " @ " + FI.Length.ToString()
+                                        FRM.lblFileSpec.Text = iCnt.ToString
+                                        hash = ENC.SHA512SqlServerHash(FI.FullName)
+                                        B = addFile(FI.Name, hash)
+                                        FileID = GetFileID(FI.Name, hash)
+                                        hash = ENC.SHA512SqlServerHash(FI.FullName)
+                                        B = addInventory(DirID, FileID, FI.Length, LastWriteTime, False, hash)
+                                    End If
+                                Catch ex As Exception
+                                    LOG.WriteToArchiveLog("ERROR 01 Reinventory: " + ex.Message)
+                                End Try
+
+                                Application.DoEvents()
+                            Next
+                        Else
+                            di = New DirectoryInfo(DirName)
+                            For Each FI In di.GetFiles("*.*", SearchOption.TopDirectoryOnly)
+                                Try
+                                    iCnt += 1
+                                    FQN = FI.FullName
+                                    FSize = FI.Length
+                                    LastWriteTime = FI.LastWriteTime
+                                    CreationTime = FI.CreationTime
+                                    EXT = FI.Extension
+                                    CurrDir = FI.DirectoryName
+                                    FRM.Label1.Text = CurrDir
+                                    If AllowedExts.Contains(EXT.ToLower) Then
+                                        FRM.lblPdgPages.Text = FI.Name + " @ " + FI.Length.ToString()
+                                        FRM.lblFileSpec.Text = iCnt.ToString
+                                        hash = ENC.SHA512SqlServerHash(FI.FullName)
+                                        B = addFile(FI.Name, hash)
+                                        FileID = GetFileID(FI.Name, hash)
+                                        hash = ENC.SHA512SqlServerHash(FI.FullName)
+                                        B = addInventory(DirID, FileID, FI.Length, LastWriteTime, False, hash)
+                                    End If
+                                Catch ex As Exception
+                                    LOG.WriteToArchiveLog("ERROR 02 Reinventory: " + ex.Message)
+                                End Try
+
+                            Next
+                            Application.DoEvents()
+                        End If
+                    Else
+                        LOG.WriteToArchiveLog("ERROR Missing Directory on this machine: " + DirName)
+                    End If
+                Catch ex As Exception
+                    LOG.WriteToArchiveLog("ERROR X03 Reinventory: " + ex.Message)
+                End Try
+            Next
+
+            FRM.Close()
+            FRM = Nothing
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR 00 Reinventory: " + ex.Message)
+        End Try
+    End Sub
+
+    Public Function getAllowedExtension(DirName As String) As List(Of String)
+
+        Dim DB As New clsDatabaseARCH
+        Dim L As New List(Of String)
+        Dim LB As New ListBox
+
+        DB.LoadIncludedFileTypes(LB, gCurrLoginID, DirName)
+
+        For Each strext As String In LB.Items
+            If Not L.Contains(strext) Then
+                L.Add(strext)
+            End If
+        Next
+
+        LB = Nothing
+        DB.Dispose()
+
+        Return L
+
+    End Function
+
     Public Function ckListenerfileProcessed(ListenerFileName As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -51,9 +205,9 @@ Public Class clsDbLocal : Implements IDisposable
 
         bConnSet = setListenerConn()
 
-        Using CMD As New SqliteCommand(S, ListernerConn)
+        Using CMD As New SQLiteCommand(S, ListernerConn)
             CMD.CommandText = S
-            Dim rdr As SqliteDataReader = CMD.ExecuteReader()
+            Dim rdr As SQLiteDataReader = CMD.ExecuteReader()
             Using rdr
                 While (rdr.Read())
                     iCnt = rdr.GetInt32(0)
@@ -85,9 +239,9 @@ Public Class clsDbLocal : Implements IDisposable
         Dim DirName As String = ""
         Dim i As Integer = 0
 
-        Using CMD As New SqliteCommand(sql, ListernerConn)
+        Using CMD As New SQLiteCommand(sql, ListernerConn)
             CMD.CommandText = sql
-            Dim rdr As SqliteDataReader = CMD.ExecuteReader()
+            Dim rdr As SQLiteDataReader = CMD.ExecuteReader()
             Using rdr
                 While (rdr.Read())
                     FQN = rdr.GetValue(0).ToString()
@@ -116,9 +270,9 @@ Public Class clsDbLocal : Implements IDisposable
         Dim sql As String = "select distinct FQN from FileNeedProcessing where FileApplied = 0 ;"
         Dim FQN As String = ""
         Dim ext As String = ""
-        Using CMD As New SqliteCommand(sql, ListernerConn)
+        Using CMD As New SQLiteCommand(sql, ListernerConn)
             CMD.CommandText = sql
-            Dim rdr As SqliteDataReader = CMD.ExecuteReader()
+            Dim rdr As SQLiteDataReader = CMD.ExecuteReader()
             Using rdr
                 While (rdr.Read())
                     FQN = rdr.GetValue(0).ToString()
@@ -144,7 +298,7 @@ Public Class clsDbLocal : Implements IDisposable
 
         'bConnSet = setListenerConn()
 
-        Dim LConn As New SqliteConnection()
+        Dim LConn As New SQLiteConnection()
         cs = "data source=" + SQLiteListenerDB
         LConn.ConnectionString = cs
         LConn.Open()
@@ -154,9 +308,9 @@ Public Class clsDbLocal : Implements IDisposable
         Dim id As Integer = -1
 
         Using LConn
-            Using CMD As New SqliteCommand(sql, LConn)
+            Using CMD As New SQLiteCommand(sql, LConn)
                 CMD.CommandText = sql
-                Dim rdr As SqliteDataReader = CMD.ExecuteReader()
+                Dim rdr As SQLiteDataReader = CMD.ExecuteReader()
                 Using rdr
                     While (rdr.Read())
                         id = rdr.GetValue(0)
@@ -187,7 +341,7 @@ Public Class clsDbLocal : Implements IDisposable
 
         bConnSet = setListenerConn()
 
-        Dim CMD As New SqliteCommand(S, ListernerConn)
+        Dim CMD As New SQLiteCommand(S, ListernerConn)
         Try
             CMD.ExecuteNonQuery()
             bConnSet = True
@@ -215,7 +369,7 @@ Public Class clsDbLocal : Implements IDisposable
 
         bConnSet = setListenerConn()
 
-        Dim CMD As New SqliteCommand(S, ListernerConn)
+        Dim CMD As New SQLiteCommand(S, ListernerConn)
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
@@ -254,7 +408,7 @@ Public Class clsDbLocal : Implements IDisposable
 
         bConnSet = setListenerConn()
 
-        Dim CMD As New SqliteCommand(S, ListernerConn)
+        Dim CMD As New SQLiteCommand(S, ListernerConn)
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
@@ -282,7 +436,7 @@ Public Class clsDbLocal : Implements IDisposable
         Dim bConnSet As Boolean = False
 
         bConnSet = setListenerConn()
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
@@ -348,9 +502,17 @@ Public Class clsDbLocal : Implements IDisposable
                 If SQLiteCONN.State = ConnectionState.Open Then
                     SQLiteCONN.Close()
                 End If
-                SQLiteCONN.Dispose()
+                Try
+                    SQLiteCONN.Dispose()
+                Catch ex As Exception
+                    Console.WriteLine("INFO: SQLiteConn Dispose" + ex.Message)
+                End Try
             Catch ex As Exception
-                LOG.WriteToArchiveLog("NOTICE: SQLiteConn closed" + ex.Message)
+                If Not ex.Message.Contains("Cannot access a disposed object") Then
+                    LOG.WriteToArchiveLog("NOTICE: SQLiteConn closed" + ex.Message)
+                Else
+                    Console.WriteLine("INFO: SQLiteConn Dispose" + ex.Message)
+                End If
             End Try
         End If
 
@@ -415,14 +577,14 @@ Public Class clsDbLocal : Implements IDisposable
         End If
 
 
-        Dim CMD As SqliteCommand = SQLiteCONN.CreateCommand()
+        Dim CMD As SQLiteCommand = SQLiteCONN.CreateCommand()
         Try
 
             CMD.CommandText = S
 
             '** if you don’t set the result set to scrollable HasRows does not work
             'Dim rs As SqlCeResultSet = CMD.ExecuteReader()
-            Dim rs As SqliteDataReader = CMD.ExecuteReader()
+            Dim rs As SQLiteDataReader = CMD.ExecuteReader()
 
             If rs.HasRows Then
                 rs.Read()
@@ -474,12 +636,12 @@ Public Class clsDbLocal : Implements IDisposable
             End If
 
 
-            Dim CMD As New SqliteCommand(S, SQLiteCONN)
+            Dim CMD As New SQLiteCommand(S, SQLiteCONN)
             CMD.CommandType = CommandType.Text
 
             '** if you don’t set the result set to scrollable HasRows does not work
 
-            Dim rs As SqliteDataReader = CMD.ExecuteReader()
+            Dim rs As SQLiteDataReader = CMD.ExecuteReader()
 
             If rs.HasRows Then
                 rs.Read()
@@ -544,7 +706,7 @@ Public Class clsDbLocal : Implements IDisposable
 
         Dim DirHash As String = ENC.SHA512String(FQN)
 
-        Dim CMD As SqliteCommand = SQLiteCONN.CreateCommand()
+        Dim CMD As SQLiteCommand = SQLiteCONN.CreateCommand()
         'CMD.CommandText = "insert or ignore into directory (DirName,UseArchiveBit,DirID) values (@DirName,@UseArchiveBit,@DirHash) "
         'CMD.CommandText = "insert or ignore into directory (DirName,UseArchiveBit,DirHash) values (?,?,?) "
         CMD.CommandText = "insert or ignore into directory (DirName,UseArchiveBit,DirHash) values ('" + FQN + "'," + UseArchiveBit.ToString + ", '" + DirHash + "') "
@@ -573,7 +735,7 @@ Public Class clsDbLocal : Implements IDisposable
         Dim B As Boolean = True
 
         Try
-            Dim SLConn As New SqliteConnection()
+            Dim SLConn As New SQLiteConnection()
             Dim S As String = "update Exts set Validated = 0"
             Dim slDatabase = System.Configuration.ConfigurationManager.AppSettings("SQLiteListenerDB")
 
@@ -588,7 +750,7 @@ Public Class clsDbLocal : Implements IDisposable
                 SLConn.ConnectionString = ConnStr
                 SLConn.Open()
 
-                Dim CMD As New SqliteCommand(S, SLConn)
+                Dim CMD As New SQLiteCommand(S, SLConn)
                 Using CMD
                     Try
                         CMD.CommandText = S
@@ -640,7 +802,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
         End If
 
-        Dim CMD As SqliteCommand = ListernerConn.CreateCommand()
+        Dim CMD As SQLiteCommand = ListernerConn.CreateCommand()
 
         Try
 
@@ -685,7 +847,7 @@ Public Class clsDbLocal : Implements IDisposable
         End If
 
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.Parameters.AddWithValue("@DirName", DirName)
             CMD.ExecuteNonQuery()
@@ -734,9 +896,9 @@ Public Class clsDbLocal : Implements IDisposable
 
         Dim S As String = "Select FileID from Files where FileName = '" + FileName + "' and FileHash = '" + FileHash + "' "
         Try
-            Using CMD As New SqliteCommand(S, SQLiteCONN)
+            Using CMD As New SQLiteCommand(S, SQLiteCONN)
                 CMD.CommandText = S
-                Dim rdr As SqliteDataReader = CMD.ExecuteReader()
+                Dim rdr As SQLiteDataReader = CMD.ExecuteReader()
                 Using rdr
                     While (rdr.Read())
                         FileID = rdr.GetInt32(0)
@@ -784,7 +946,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
         End If
 
-        Using CMD As New SqliteCommand(S, SQLiteCONN)
+        Using CMD As New SQLiteCommand(S, SQLiteCONN)
             Try
                 'CMD.Parameters.AddWithValue("FileName", FileName)
                 'CMD.Parameters.AddWithValue("FileHash", FileHash)
@@ -825,7 +987,7 @@ Public Class clsDbLocal : Implements IDisposable
 
         FullName = FullName.Replace("'", "''")
         Dim S As String = "insert or ignore into ContactsArchive (Email1Address, FullName) values ('" + Email1Address + "', '" + FullName + "') "
-        Using CMD As New SqliteCommand(S, SQLiteCONN)
+        Using CMD As New SQLiteCommand(S, SQLiteCONN)
             Try
                 'CMD.Parameters.AddWithValue("@Email1Address", Email1Address)
                 'CMD.Parameters.AddWithValue("@FullName", FullName)
@@ -860,9 +1022,9 @@ Public Class clsDbLocal : Implements IDisposable
         End If
 
         Dim iCnt As Integer = 0
-        Using CMD As New SqliteCommand(S, SQLiteCONN)
+        Using CMD As New SQLiteCommand(S, SQLiteCONN)
             CMD.CommandText = S
-            Dim rdr As SqliteDataReader = CMD.ExecuteReader()
+            Dim rdr As SQLiteDataReader = CMD.ExecuteReader()
             Using rdr
                 While (rdr.Read())
                     iCnt = rdr.GetInt32(0)
@@ -893,9 +1055,9 @@ Public Class clsDbLocal : Implements IDisposable
         End If
 
         Dim iCnt As Integer = 0
-        Using CMD As New SqliteCommand(S, SQLiteCONN)
+        Using CMD As New SQLiteCommand(S, SQLiteCONN)
             CMD.CommandText = S
-            Dim rdr As SqliteDataReader = CMD.ExecuteReader()
+            Dim rdr As SQLiteDataReader = CMD.ExecuteReader()
             Using rdr
                 While (rdr.Read())
                     iCnt = rdr.GetInt32(0)
@@ -932,7 +1094,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
         End If
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
@@ -1034,7 +1196,7 @@ Public Class clsDbLocal : Implements IDisposable
             Return 0
         End If
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.ExecuteNonQuery()
             B = True
@@ -1244,7 +1406,7 @@ Public Class clsDbLocal : Implements IDisposable
             Return
         End If
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
@@ -1294,7 +1456,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
         End If
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             'CMD.Parameters.AddWithValue("@DirID", DirID)
             'CMD.Parameters.AddWithValue("@FileID", FileID)
@@ -1347,7 +1509,7 @@ Public Class clsDbLocal : Implements IDisposable
         End If
 
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.Parameters.AddWithValue("@DirID", DirID)
             CMD.Parameters.AddWithValue("@FileID", FileID)
@@ -1388,11 +1550,11 @@ Public Class clsDbLocal : Implements IDisposable
 
         Dim iCnt As Integer = 0
         Try
-            Dim CMD As New SqliteCommand(S, SQLiteCONN)
+            Dim CMD As New SQLiteCommand(S, SQLiteCONN)
             CMD.CommandType = CommandType.Text
 
             '** if you don’t set the result set to scrollable HasRows does not work
-            Dim rs As SqliteDataReader = CMD.ExecuteReader()
+            Dim rs As SQLiteDataReader = CMD.ExecuteReader()
 
             If rs.HasRows Then
                 rs.Read()
@@ -1445,10 +1607,10 @@ Public Class clsDbLocal : Implements IDisposable
 
         Dim OldHash As String = ""
         Try
-            Dim CMD As New SqliteCommand(S, SQLiteCONN)
+            Dim CMD As New SQLiteCommand(S, SQLiteCONN)
             CMD.CommandType = CommandType.Text
 
-            Dim rs As SqliteDataReader = CMD.ExecuteReader()
+            Dim rs As SQLiteDataReader = CMD.ExecuteReader()
 
             If rs.HasRows Then
                 rs.Read()
@@ -1543,7 +1705,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
         End If
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.Parameters.AddWithValue("@DirID", DirID)
             CMD.Parameters.AddWithValue("@FileID", FileID)
@@ -1595,7 +1757,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
         End If
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.Parameters.AddWithValue("@DirID", DirID)
             CMD.Parameters.AddWithValue("@FileID", FileID)
@@ -1643,7 +1805,7 @@ Public Class clsDbLocal : Implements IDisposable
         setSLConn()
 
         Try
-            Dim CMD As New SqliteCommand(S, SQLiteCONN)
+            Dim CMD As New SQLiteCommand(S, SQLiteCONN)
             CMD.CommandType = CommandType.Text
             CMD.ExecuteNonQuery()
             CMD.Dispose()
@@ -1667,10 +1829,10 @@ Public Class clsDbLocal : Implements IDisposable
         setSLConn()
 
         Try
-            Dim CMD As New SqliteCommand(S, SQLiteCONN)
+            Dim CMD As New SQLiteCommand(S, SQLiteCONN)
             CMD.CommandType = CommandType.Text
 
-            Dim rs As SqliteDataReader = CMD.ExecuteReader()
+            Dim rs As SQLiteDataReader = CMD.ExecuteReader()
 
             If rs.HasRows Then
                 rs.Read()
@@ -1721,7 +1883,7 @@ Public Class clsDbLocal : Implements IDisposable
             setSLConn()
 
             Try
-                Dim CMD As New SqliteCommand(S, SQLiteCONN)
+                Dim CMD As New SQLiteCommand(S, SQLiteCONN)
                 CMD.CommandType = CommandType.Text
                 CMD.ExecuteNonQuery()
                 CMD.Dispose()
@@ -1764,10 +1926,10 @@ Public Class clsDbLocal : Implements IDisposable
             setSLConn()
 
             Try
-                Dim CMD As New SqliteCommand(S, SQLiteCONN)
+                Dim CMD As New SQLiteCommand(S, SQLiteCONN)
                 CMD.CommandType = CommandType.Text
 
-                Dim rs As SqliteDataReader = CMD.ExecuteReader()
+                Dim rs As SQLiteDataReader = CMD.ExecuteReader()
 
                 If rs.HasRows Then
                     rs.Read()
@@ -1915,11 +2077,11 @@ Public Class clsDbLocal : Implements IDisposable
         Dim prevNeedsArchive As Boolean = False
 
         Try
-            Dim CMD As New SqliteCommand(S, SQLiteCONN)
+            Dim CMD As New SQLiteCommand(S, SQLiteCONN)
             CMD.CommandType = CommandType.Text
 
             '** if you don’t set the result set to scrollable HasRows does not work
-            Dim rs As SqliteDataReader = CMD.ExecuteReader()
+            Dim rs As SQLiteDataReader = CMD.ExecuteReader()
 
             If rs.HasRows Then
                 rs.Read()
@@ -1967,7 +2129,7 @@ Public Class clsDbLocal : Implements IDisposable
         Dim S As String = "delete from Directory"
         setSLConn()
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
 
         Try
             CMD.ExecuteNonQuery()
@@ -1995,7 +2157,7 @@ Public Class clsDbLocal : Implements IDisposable
         Dim S As String = "delete from DirFilesID"
         setSLConn()
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
@@ -2015,7 +2177,7 @@ Public Class clsDbLocal : Implements IDisposable
         Dim S As String = "delete from ContactsArchive"
         setSLConn()
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
@@ -2035,7 +2197,7 @@ Public Class clsDbLocal : Implements IDisposable
         Dim S As String = "delete from Exchange"
         setSLConn()
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
@@ -2061,7 +2223,7 @@ Public Class clsDbLocal : Implements IDisposable
         Dim S As String = "delete from Outlook"
         setSLConn()
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
@@ -2088,7 +2250,7 @@ Public Class clsDbLocal : Implements IDisposable
 
         setSLConn()
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
@@ -2114,7 +2276,7 @@ Public Class clsDbLocal : Implements IDisposable
         Dim S As String = "delete from Inventory"
         setSLConn()
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
@@ -2151,11 +2313,11 @@ Public Class clsDbLocal : Implements IDisposable
 
         Try
 
-            Dim CMD As New SqliteCommand(S, SQLiteCONN)
+            Dim CMD As New SQLiteCommand(S, SQLiteCONN)
             CMD.CommandType = CommandType.Text
 
             '** if you don’t set the result set to scrollable HasRows does not work
-            Dim rs As SqliteDataReader = CMD.ExecuteReader()
+            Dim rs As SQLiteDataReader = CMD.ExecuteReader()
             If rs.HasRows Then
                 Do While rs.Read()
                     Dirname = rs.GetString(0)
@@ -2270,11 +2432,11 @@ Public Class clsDbLocal : Implements IDisposable
         Dim msg As String = ""
 
         Try
-            Dim CMD As New SqliteCommand(S, SQLiteCONN)
+            Dim CMD As New SQLiteCommand(S, SQLiteCONN)
             CMD.CommandType = CommandType.Text
 
             '** if you don’t set the result set to scrollable HasRows does not work
-            Dim rs As SqliteDataReader = CMD.ExecuteReader()
+            Dim rs As SQLiteDataReader = CMD.ExecuteReader()
 
             If rs.HasRows Then
                 Do While rs.Read()
@@ -2334,11 +2496,11 @@ Public Class clsDbLocal : Implements IDisposable
         Dim msg As String = ""
 
         Try
-            Dim CMD As New SqliteCommand(S, SQLiteCONN)
+            Dim CMD As New SQLiteCommand(S, SQLiteCONN)
             CMD.CommandType = CommandType.Text
 
             '** if you don’t set the result set to scrollable HasRows does not work
-            Dim rs As SqliteDataReader = CMD.ExecuteReader()
+            Dim rs As SQLiteDataReader = CMD.ExecuteReader()
 
             If rs.HasRows Then
                 Do While rs.Read()
@@ -2392,7 +2554,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
         End If
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.Parameters.AddWithValue("@sKey", sKey)
             CMD.Parameters.AddWithValue("@RowID", "null")
@@ -2427,7 +2589,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
         End If
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.Parameters.AddWithValue("@sKey", sKey)
             CMD.Parameters.AddWithValue("@RowID", "null")
@@ -2462,11 +2624,11 @@ Public Class clsDbLocal : Implements IDisposable
 
         Dim iCnt As Integer = 0
         Try
-            Dim CMD As New SqliteCommand(S, SQLiteCONN)
+            Dim CMD As New SQLiteCommand(S, SQLiteCONN)
             CMD.CommandType = CommandType.Text
 
             '** if you don’t set the result set to scrollable HasRows does not work
-            Dim rs As SqliteDataReader = CMD.ExecuteReader()
+            Dim rs As SQLiteDataReader = CMD.ExecuteReader()
 
             If rs.HasRows Then
                 rs.Read()
@@ -2524,11 +2686,11 @@ Public Class clsDbLocal : Implements IDisposable
         Dim iCnt As Integer = 0
         Try
 
-            Dim CMD As New SqliteCommand(S, SQLiteCONN)
+            Dim CMD As New SQLiteCommand(S, SQLiteCONN)
             CMD.CommandType = CommandType.Text
 
             '** if you don’t set the result set to scrollable HasRows does not work
-            Dim rs As SqliteDataReader = CMD.ExecuteReader()
+            Dim rs As SQLiteDataReader = CMD.ExecuteReader()
 
             If rs.HasRows Then
                 rs.Read()
@@ -2583,7 +2745,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
         End If
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.Parameters.AddWithValue("@B", True)
             CMD.Parameters.AddWithValue("@sKey", sKey)
@@ -2623,7 +2785,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
         End If
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.Parameters.AddWithValue("@B", True)
             CMD.Parameters.AddWithValue("@sKey", sKey)
@@ -2665,7 +2827,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
         End If
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.Parameters.AddWithValue("@sKey", sKey)
             CMD.ExecuteNonQuery()
@@ -2706,7 +2868,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
         End If
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.Parameters.AddWithValue("@sKey", sKey)
             CMD.ExecuteNonQuery()
@@ -2745,7 +2907,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
         End If
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
@@ -2784,7 +2946,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
         End If
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
@@ -2822,7 +2984,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
         End If
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
@@ -2859,7 +3021,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
         End If
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
@@ -2901,7 +3063,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
         End If
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             'CMD.Parameters.AddWithValue("@sKey", sKey)
             CMD.ExecuteNonQuery()
@@ -2934,7 +3096,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
         End If
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.Parameters.AddWithValue("@sKey", sKey)
             CMD.ExecuteNonQuery()
@@ -2966,7 +3128,7 @@ Public Class clsDbLocal : Implements IDisposable
         End If
 
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Dim sKey As String = ""
 
         Try
@@ -2974,7 +3136,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.CommandType = CommandType.Text
 
             '** if you don’t set the result set to scrollable HasRows does not work
-            Dim rs As SqliteDataReader = CMD.ExecuteReader()
+            Dim rs As SQLiteDataReader = CMD.ExecuteReader()
             Dim iKey As Integer = 0
             If rs.HasRows Then
                 Do While rs.Read()
@@ -3021,7 +3183,7 @@ Public Class clsDbLocal : Implements IDisposable
         End If
 
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.Parameters.AddWithValue("@FQN", FQN)
             CMD.ExecuteNonQuery()
@@ -3052,7 +3214,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
         End If
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             'CMD.Parameters.AddWithValue("@FQN", FQN)
             CMD.ExecuteNonQuery()
@@ -3084,7 +3246,7 @@ Public Class clsDbLocal : Implements IDisposable
         End If
 
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.Parameters.AddWithValue("@FQN", FQN)
             CMD.ExecuteNonQuery()
@@ -3115,7 +3277,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
         End If
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.Parameters.AddWithValue("@FQN", FQN)
             CMD.ExecuteNonQuery()
@@ -3151,9 +3313,9 @@ Public Class clsDbLocal : Implements IDisposable
 
         Try
 
-            Dim CMD As New SqliteCommand(S, SQLiteCONN)
+            Dim CMD As New SQLiteCommand(S, SQLiteCONN)
             '** if you don’t set the result set to scrollable HasRows does not work
-            Dim rs As SqliteDataReader = CMD.ExecuteReader()
+            Dim rs As SQLiteDataReader = CMD.ExecuteReader()
 
             If rs.HasRows Then
                 Do While rs.Read()
@@ -3201,9 +3363,9 @@ Public Class clsDbLocal : Implements IDisposable
 
         Dim iCnt As Integer = 0
         Try
-            Dim CMD As New SqliteCommand(S, SQLiteCONN)
+            Dim CMD As New SQLiteCommand(S, SQLiteCONN)
             '** if you don’t set the result set to scrollable HasRows does not work
-            Dim rs As SqliteDataReader = CMD.ExecuteReader()
+            Dim rs As SQLiteDataReader = CMD.ExecuteReader()
 
             If rs.HasRows Then
                 rs.Read()
@@ -3276,7 +3438,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
         End If
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.Parameters.AddWithValue("@FQN", FQN)
             CMD.Parameters.AddWithValue("@fSize", fSize)
@@ -3325,7 +3487,7 @@ Public Class clsDbLocal : Implements IDisposable
         End If
 
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.Parameters.AddWithValue("@FileName", FileName)
             CMD.ExecuteNonQuery()
@@ -3361,7 +3523,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
         End If
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.Parameters.AddWithValue("@FileName", FileName)
             CMD.ExecuteNonQuery()
@@ -3398,7 +3560,7 @@ Public Class clsDbLocal : Implements IDisposable
         End If
 
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.Parameters.AddWithValue("@FileName", FileName)
             CMD.ExecuteNonQuery()
@@ -3428,7 +3590,7 @@ Public Class clsDbLocal : Implements IDisposable
 
             Dim UseArchiveBit As Integer = 0
             Dim fSize As Double = 0
-            s = "delete from ZipFile where SuccessfullyProcessed = 1 "
+            S = "delete from ZipFile where SuccessfullyProcessed = 1 "
             Dim db = System.Configuration.ConfigurationManager.AppSettings("SQLiteLocalDB")
 
             If Not File.Exists(db) Then
@@ -3436,12 +3598,12 @@ Public Class clsDbLocal : Implements IDisposable
             End If
 
             Dim cs As String = "data source=" + db
-            Dim SQLiteCONN As New SqliteConnection
+            Dim SQLiteCONN As New SQLiteConnection
 
             Using SQLiteCONN
                 SQLiteCONN.ConnectionString = cs
                 SQLiteCONN.Open()
-                Dim CMD As New SqliteCommand(S, SQLiteCONN)
+                Dim CMD As New SQLiteCommand(S, SQLiteCONN)
                 Using CMD
                     Try
                         CMD.ExecuteNonQuery()
@@ -3484,7 +3646,7 @@ Public Class clsDbLocal : Implements IDisposable
         End If
 
 
-        Dim CMD As New SqliteCommand(S, SQLiteCONN)
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
@@ -3520,9 +3682,9 @@ Public Class clsDbLocal : Implements IDisposable
 
         Try
 
-            Dim CMD As New SqliteCommand(S, SQLiteCONN)
+            Dim CMD As New SQLiteCommand(S, SQLiteCONN)
             '** if you don’t set the result set to scrollable HasRows does not work
-            Dim rs As SqliteDataReader = CMD.ExecuteReader()
+            Dim rs As SQLiteDataReader = CMD.ExecuteReader()
 
             If rs.HasRows Then
                 Do While rs.Read()
@@ -3576,11 +3738,11 @@ Public Class clsDbLocal : Implements IDisposable
 
 
         Try
-            Dim CMD As New SqliteCommand(S, SQLiteCONN)
+            Dim CMD As New SQLiteCommand(S, SQLiteCONN)
             CMD.CommandType = CommandType.Text
 
             '** if you don’t set the result set to scrollable HasRows does not work
-            Dim rs As SqliteDataReader = CMD.ExecuteReader()
+            Dim rs As SQLiteDataReader = CMD.ExecuteReader()
 
             If rs.HasRows Then
                 Do While rs.Read()
@@ -3678,7 +3840,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Public Function getSLConn() As Object
 
-        Dim NewConn As New SqliteConnection()
+        Dim NewConn As New SQLiteConnection()
         Dim slDatabase = System.Configuration.ConfigurationManager.AppSettings("SQLiteLocalDB")
         Dim cs As String = "data source=" + slDatabase
 

@@ -13255,6 +13255,7 @@ SkipIT:
                 SB.Text = "CONTENT ARCHIVE LAUNCHED"
                 '****************** Execute PerformContentArchive() on a separate thread **********************************
                 If bQuickArchive Then
+                    SB.Text = "CONTENT ARCHIVE LAUNCHED - Full ReInventory"
                     ResetSqlite()
                 End If
                 '**********************************************************************************************************
@@ -13518,6 +13519,10 @@ SkipIT:
         'spAddAvailExtensions
         DBARCH.ExecSP("spAddAvailExtensions")
         MessageBox.Show("Filters updated...")
+    End Sub
+
+    Private Sub ReInventoryAllFilesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReInventoryAllFilesToolStripMenuItem.Click
+        DBLocal.ReInventory()
     End Sub
 End Class
 

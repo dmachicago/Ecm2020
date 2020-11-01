@@ -128,7 +128,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
     Public Function getUsersAllowedFileExt(UserID As String) As List(Of String)
 
         Dim L As New List(Of String)
-        Dim S As String = "Select distinct ExtCode from IncludedFiles where UserID = '" + UserID + "'"
+        Dim S As String = "Select distinct lower(ExtCode) from IncludedFiles where UserID = '" + UserID + "'"
         Dim ext As String = ""
 
         Dim CS As String = getRepoConnStr()
@@ -8941,6 +8941,68 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End Using
 
     End Sub
+
+    Public Function GetUserDirectories(ByVal UID As String) As Dictionary(Of String, String)
+
+        Dim LOF As New Dictionary(Of String, String)
+        IXV1 = 0
+        DMA.IXV1 = 0
+        Dim SQL As String = "SELECT Directory.FQN, 
+                Directory.IncludeSubDirs
+                FROM  Directory 
+                WHERE ((Directory.UserID = '" + UID + "') OR
+                (Directory.isSysDefault = 1)) and
+		        Directory.ckDisableDir = 'N'
+                order by Directory.fqn"
+
+        ReDim aFolders(0)
+        Dim I As Integer = 0
+
+        Dim ConnStr As String = getRepoConnStr()
+        Dim Conn As New SqlConnection(ConnStr)
+        Dim b As Boolean = False
+
+        Dim FQN As String = ""
+        Dim IncludeSubDirs As String = ""
+        Dim DB_ID As String = ""
+        Dim ckDisableDir As String = ""
+        Dim FirstEntryComplete As Boolean = False
+
+        Dim ListOfFiles As New List(Of String)
+
+        Dim DbConnStr As String = ""
+
+        Using Conn
+            If Conn.State = ConnectionState.Closed Then
+                Conn.Open()
+            End If
+
+            Dim command As New SqlCommand(SQL, Conn)
+            Dim RSData As SqlDataReader = Nothing
+            RSData = command.ExecuteReader()
+            I = 0
+            If RSData.HasRows Then
+                Do While RSData.Read()
+                    FQN = RSData.GetValue(0).ToString
+                    IncludeSubDirs = RSData.GetValue(1).ToString
+
+                    If Not LOF.Keys.Contains(FQN) Then
+                        LOF.Add(FQN, IncludeSubDirs)
+                    End If
+                    I = I + 1
+                Loop
+            End If
+            RSData.Close()
+            RSData = Nothing
+            command.Connection.Close()
+            command = Nothing
+            Conn.Close()
+            Conn = Nothing
+        End Using
+
+        Return LOF
+
+    End Function
 
     Public Sub GetContentArchiveFileFolders(ByVal UID As String, ByRef aFolders As String())
         IXV1 = 0

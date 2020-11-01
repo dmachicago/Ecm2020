@@ -62,7 +62,7 @@
     <WebPage>Publish.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>121</ApplicationRevision>
+    <ApplicationRevision>123</ApplicationRevision>
     <ApplicationVersion>4.6.2.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -723,6 +723,9 @@
     <Content Include="_SQL_Query\ResetFTI.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="DBUpdates\sp_ApplySourceTypeCode.sq">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="PS_BatchScripts\RemoveDeletedFiles.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1381,7 +1384,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="data\" />
-    <Folder Include="DBUpdates\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>

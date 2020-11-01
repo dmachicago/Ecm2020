@@ -19,6 +19,10 @@ Public Class clsDBUpdate
         Dim FLDR As String = System.AppDomain.CurrentDomain.BaseDirectory()
         Dim UPDTFOLDER As String = FLDR + "\DBUpdates"
 
+        If Not Directory.Exists(UPDTFOLDER) Then
+            Return True
+        End If
+
         Dim strFileSize As String = ""
         Dim di As New IO.DirectoryInfo(UPDTFOLDER)
         Dim aryFi As IO.FileInfo() = di.GetFiles("*.sql")

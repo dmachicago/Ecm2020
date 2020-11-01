@@ -218,6 +218,7 @@ Partial Class frmMain
         Me.ValidateFileHASHCodesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ValidateProcessAsFileExtsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FulltextLogAnalysisToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UpdateAvailableIFiltersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImpersonateLoginToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoginAsDifferenctUserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ManualEditAppConfigToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -347,7 +348,7 @@ Partial Class frmMain
         Me.lblNotice = New System.Windows.Forms.Label()
         Me.ThreadValidateSourceName = New System.ComponentModel.BackgroundWorker()
         Me.ThreadSetNameHash = New System.ComponentModel.BackgroundWorker()
-        Me.UpdateAvailableIFiltersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReInventoryAllFilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.gbEmail.SuspendLayout()
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbFiletypes.SuspendLayout()
@@ -2091,95 +2092,95 @@ Partial Class frmMain
         'ArchiveALLToolStripMenuItem
         '
         Me.ArchiveALLToolStripMenuItem.Name = "ArchiveALLToolStripMenuItem"
-        Me.ArchiveALLToolStripMenuItem.Size = New System.Drawing.Size(242, 26)
+        Me.ArchiveALLToolStripMenuItem.Size = New System.Drawing.Size(238, 26)
         Me.ArchiveALLToolStripMenuItem.Text = "Archive ALL"
         '
         'OutlookEmailsToolStripMenuItem
         '
         Me.OutlookEmailsToolStripMenuItem.Name = "OutlookEmailsToolStripMenuItem"
-        Me.OutlookEmailsToolStripMenuItem.Size = New System.Drawing.Size(242, 26)
+        Me.OutlookEmailsToolStripMenuItem.Size = New System.Drawing.Size(238, 26)
         Me.OutlookEmailsToolStripMenuItem.Text = "Outlook Emails"
         '
         'ExchangeEmailsToolStripMenuItem
         '
         Me.ExchangeEmailsToolStripMenuItem.Name = "ExchangeEmailsToolStripMenuItem"
-        Me.ExchangeEmailsToolStripMenuItem.Size = New System.Drawing.Size(242, 26)
+        Me.ExchangeEmailsToolStripMenuItem.Size = New System.Drawing.Size(238, 26)
         Me.ExchangeEmailsToolStripMenuItem.Text = "Exchange Emails"
         '
         'ContentToolStripMenuItem
         '
         Me.ContentToolStripMenuItem.Name = "ContentToolStripMenuItem"
-        Me.ContentToolStripMenuItem.Size = New System.Drawing.Size(242, 26)
-        Me.ContentToolStripMenuItem.Text = "Content - Quick"
+        Me.ContentToolStripMenuItem.Size = New System.Drawing.Size(238, 26)
+        Me.ContentToolStripMenuItem.Text = "Content (Quick)"
         Me.ContentToolStripMenuItem.ToolTipText = "Uses the localized SQLite inventory "
         '
         'ContentNoLIstenerToolStripMenuItem
         '
         Me.ContentNoLIstenerToolStripMenuItem.Name = "ContentNoLIstenerToolStripMenuItem"
-        Me.ContentNoLIstenerToolStripMenuItem.Size = New System.Drawing.Size(242, 26)
-        Me.ContentNoLIstenerToolStripMenuItem.Text = "Content ( Full Inventory)"
+        Me.ContentNoLIstenerToolStripMenuItem.Size = New System.Drawing.Size(238, 26)
+        Me.ContentNoLIstenerToolStripMenuItem.Text = "Content ( Re-Inventory)"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(242, 26)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(238, 26)
         Me.ToolStripMenuItem1.Text = "Outlook Contacts"
         '
         'ScheduleToolStripMenuItem
         '
         Me.ScheduleToolStripMenuItem.Name = "ScheduleToolStripMenuItem"
-        Me.ScheduleToolStripMenuItem.Size = New System.Drawing.Size(242, 26)
+        Me.ScheduleToolStripMenuItem.Size = New System.Drawing.Size(238, 26)
         Me.ScheduleToolStripMenuItem.Text = "Schedule"
         '
         'SetArchiveIntervalToolStripMenuItem
         '
         Me.SetArchiveIntervalToolStripMenuItem.Name = "SetArchiveIntervalToolStripMenuItem"
-        Me.SetArchiveIntervalToolStripMenuItem.Size = New System.Drawing.Size(242, 26)
+        Me.SetArchiveIntervalToolStripMenuItem.Size = New System.Drawing.Size(238, 26)
         Me.SetArchiveIntervalToolStripMenuItem.Text = "Set Archive Interval"
         '
         'ToolStripSeparator7
         '
         Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
-        Me.ToolStripSeparator7.Size = New System.Drawing.Size(239, 6)
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(235, 6)
         '
         'SelectedFilesToolStripMenuItem
         '
         Me.SelectedFilesToolStripMenuItem.Name = "SelectedFilesToolStripMenuItem"
-        Me.SelectedFilesToolStripMenuItem.Size = New System.Drawing.Size(242, 26)
+        Me.SelectedFilesToolStripMenuItem.Size = New System.Drawing.Size(238, 26)
         Me.SelectedFilesToolStripMenuItem.Text = "Selected Files"
         '
         'ToolStripSeparator6
         '
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(239, 6)
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(235, 6)
         '
         'ArchiveRSSPullsToolStripMenuItem
         '
         Me.ArchiveRSSPullsToolStripMenuItem.Name = "ArchiveRSSPullsToolStripMenuItem"
-        Me.ArchiveRSSPullsToolStripMenuItem.Size = New System.Drawing.Size(242, 26)
+        Me.ArchiveRSSPullsToolStripMenuItem.Size = New System.Drawing.Size(238, 26)
         Me.ArchiveRSSPullsToolStripMenuItem.Text = "Archive RSS Pulls"
         '
         'WebSitesToolStripMenuItem
         '
         Me.WebSitesToolStripMenuItem.Name = "WebSitesToolStripMenuItem"
-        Me.WebSitesToolStripMenuItem.Size = New System.Drawing.Size(242, 26)
+        Me.WebSitesToolStripMenuItem.Size = New System.Drawing.Size(238, 26)
         Me.WebSitesToolStripMenuItem.Text = "Archive Web Sites"
         '
         'WebPagesToolStripMenuItem
         '
         Me.WebPagesToolStripMenuItem.Name = "WebPagesToolStripMenuItem"
-        Me.WebPagesToolStripMenuItem.Size = New System.Drawing.Size(242, 26)
+        Me.WebPagesToolStripMenuItem.Size = New System.Drawing.Size(238, 26)
         Me.WebPagesToolStripMenuItem.Text = "Archive Web Pages"
         '
         'ToolStripSeparator5
         '
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(239, 6)
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(235, 6)
         '
         'ExitToolStripMenuItem1
         '
         Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
-        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(242, 26)
+        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(238, 26)
         Me.ExitToolStripMenuItem1.Text = "Exit"
         '
         'LoginToolStripMenuItem
@@ -2279,7 +2280,7 @@ Partial Class frmMain
         '
         'SQLiteUtiltiiesToolStripMenuItem
         '
-        Me.SQLiteUtiltiiesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ResetSQLiteArchivesToolStripMenuItem, Me.GetOutlookEMailIDsToolStripMenuItem1, Me.ResetZIPFilesToolStripMenuItem, Me.ResetEmailIdentifierCodesToolStripMenuItem, Me.RebuildSQLiteDBToolStripMenuItem1, Me.BackupSQLiteDBToolStripMenuItem1, Me.RestoreSQLiteDBToolStripMenuItem1, Me.SQToolStripMenuItem})
+        Me.SQLiteUtiltiiesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReInventoryAllFilesToolStripMenuItem, Me.ResetSQLiteArchivesToolStripMenuItem, Me.GetOutlookEMailIDsToolStripMenuItem1, Me.ResetZIPFilesToolStripMenuItem, Me.ResetEmailIdentifierCodesToolStripMenuItem, Me.RebuildSQLiteDBToolStripMenuItem1, Me.BackupSQLiteDBToolStripMenuItem1, Me.RestoreSQLiteDBToolStripMenuItem1, Me.SQToolStripMenuItem})
         Me.SQLiteUtiltiiesToolStripMenuItem.Name = "SQLiteUtiltiiesToolStripMenuItem"
         Me.SQLiteUtiltiiesToolStripMenuItem.Size = New System.Drawing.Size(246, 26)
         Me.SQLiteUtiltiiesToolStripMenuItem.Text = "SQLite Utiltiies"
@@ -2443,6 +2444,12 @@ Partial Class frmMain
         Me.FulltextLogAnalysisToolStripMenuItem.Name = "FulltextLogAnalysisToolStripMenuItem"
         Me.FulltextLogAnalysisToolStripMenuItem.Size = New System.Drawing.Size(246, 26)
         Me.FulltextLogAnalysisToolStripMenuItem.Text = "Fulltext Log Analysis"
+        '
+        'UpdateAvailableIFiltersToolStripMenuItem
+        '
+        Me.UpdateAvailableIFiltersToolStripMenuItem.Name = "UpdateAvailableIFiltersToolStripMenuItem"
+        Me.UpdateAvailableIFiltersToolStripMenuItem.Size = New System.Drawing.Size(246, 26)
+        Me.UpdateAvailableIFiltersToolStripMenuItem.Text = "Update Available iFilters"
         '
         'ImpersonateLoginToolStripMenuItem
         '
@@ -3610,11 +3617,11 @@ Partial Class frmMain
         'ThreadSetNameHash
         '
         '
-        'UpdateAvailableIFiltersToolStripMenuItem
+        'ReInventoryAllFilesToolStripMenuItem
         '
-        Me.UpdateAvailableIFiltersToolStripMenuItem.Name = "UpdateAvailableIFiltersToolStripMenuItem"
-        Me.UpdateAvailableIFiltersToolStripMenuItem.Size = New System.Drawing.Size(246, 26)
-        Me.UpdateAvailableIFiltersToolStripMenuItem.Text = "Update Available iFilters"
+        Me.ReInventoryAllFilesToolStripMenuItem.Name = "ReInventoryAllFilesToolStripMenuItem"
+        Me.ReInventoryAllFilesToolStripMenuItem.Size = New System.Drawing.Size(270, 26)
+        Me.ReInventoryAllFilesToolStripMenuItem.Text = "ReInventory All Files"
         '
         'frmMain
         '
@@ -4017,4 +4024,5 @@ Partial Class frmMain
     Friend WithEvents ValidateRetentionDatesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FulltextLogAnalysisToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents UpdateAvailableIFiltersToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ReInventoryAllFilesToolStripMenuItem As ToolStripMenuItem
 End Class
