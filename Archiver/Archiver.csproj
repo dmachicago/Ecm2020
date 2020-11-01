@@ -1,0 +1,1348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4A9DD107-F4BD-0908-37D9-4974477E75E1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>EcmArchiver.My.MyApplication</StartupObject>
+    <RootNamespace>EcmArchiver</RootNamespace>
+    <AssemblyName>EcmArchiver</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <OptionExplicit>Off</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <SignManifests>false</SignManifests>
+    <ManifestCertificateThumbprint>5908F237C6121E9B98D00FFC4EBF66076997D45E</ManifestCertificateThumbprint>
+    <ManifestKeyFile>CodeSigningCertificate.pfx</ManifestKeyFile>
+    <TargetZone>LocalIntranet</TargetZone>
+    <GenerateManifests>true</GenerateManifests>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <ApplicationIcon>rss_add.ico</ApplicationIcon>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>EcmClcArchiveSS_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>D:\PrePublishedWebSites\ECMSaaS\Archiver\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>60</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>true</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <UpdateUrl>http://www.EcmLibrary.com/EcmSaaS/Archiver/</UpdateUrl>
+    <SupportUrl>http://www.EcmLibrary.com/help</SupportUrl>
+    <ErrorReportUrl>http://www.EcmLibrary.com/help</ErrorReportUrl>
+    <ProductName>Archiver</ProductName>
+    <PublisherName>ECM</PublisherName>
+    <SuiteName>ECM Library</SuiteName>
+    <WebPage>Publish.htm</WebPage>
+    <AutorunEnabled>true</AutorunEnabled>
+    <TrustUrlParameters>true</TrustUrlParameters>
+    <ApplicationRevision>56</ApplicationRevision>
+    <ApplicationVersion>4.6.2.%2a</ApplicationVersion>
+    <UseApplicationTrust>true</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <ExcludeDeploymentUrl>true</ExcludeDeploymentUrl>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(ProjectDir)**\*.vb</DefaultItemExcludes>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\EcmArchiveClcSetup.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\EcmArchiveClcSetup.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="C1.C1Zip.4, Version=4.1.20103.71, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>RequiredDLL\C1.C1Zip.4.dll</HintPath>
+    </Reference>
+    <Reference Include="ChilkatDotNet2">
+      <HintPath>RequiredDLL\ChilkatDotNet2.dll</HintPath>
+    </Reference>
+    <Reference Include="ENC">
+      <HintPath>C:\dev\ECM2020\ENC\ENC\obj\Debug\ENC.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.Redemption, Version=4.8.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>obj\Release\Interop.Redemption.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>RequiredDLL\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>RequiredDLL\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Sqlite, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Data.Sqlite.Core.5.0.0-preview.4.20220.10\lib\netstandard2.0\Microsoft.Data.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Dmf, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.SqlEnum, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServerCe.Client, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.Vsa" />
+    <Reference Include="O2S.Components.PDF4NET">
+      <HintPath>RequiredDLL\O2S.Components.PDF4NET.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_v2, Version=2.0.2.669, Culture=neutral, PublicKeyToken=8226ea5df37bcae9, processorArchitecture=MSIL">
+      <HintPath>packages\SQLitePCLRaw.bundle_e_sqlite3.2.0.2\lib\net461\SQLitePCLRaw.batteries_v2.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.core, Version=2.0.2.669, Culture=neutral, PublicKeyToken=1488e028ca7ab535, processorArchitecture=MSIL">
+      <HintPath>packages\SQLitePCLRaw.core.2.0.2\lib\netstandard2.0\SQLitePCLRaw.core.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.nativelibrary, Version=2.0.2.669, Culture=neutral, PublicKeyToken=502ed628492ab262, processorArchitecture=MSIL">
+      <HintPath>packages\SQLitePCLRaw.bundle_e_sqlite3.2.0.2\lib\net461\SQLitePCLRaw.nativelibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.provider.dynamic_cdecl, Version=2.0.2.669, Culture=neutral, PublicKeyToken=b68184102cba0b3b, processorArchitecture=MSIL">
+      <HintPath>packages\SQLitePCLRaw.provider.dynamic_cdecl.2.0.2\lib\netstandard2.0\SQLitePCLRaw.provider.dynamic_cdecl.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Common, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Data.Common.4.3.0\lib\net451\System.Data.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SqlClient, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Data.SqlClient.4.8.1\lib\net451\System.Data.SqlClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, PublicKeyToken=89845dcd8080cc91">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Speech">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UltraID3Lib">
+      <HintPath>RequiredDLL\UltraID3Lib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="MODI" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="My Project\MyNamespace.Dynamic.Designer.cs" />
+    <Compile Include="My Project\MyNamespace.Static.1.Designer.cs" />
+    <Compile Include="My Project\MyNamespace.Static.2.Designer.cs" />
+    <Compile Include="My Project\MyNamespace.Static.3.Designer.cs" />
+    <Compile Include="AboutBox1.Designer.cs">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AboutBox1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApplicationEvents.cs" />
+    <Compile Include="app_code\clsACTIVESEARCHGUIDS.cs" />
+    <Compile Include="app_code\clsAppParms.cs" />
+    <Compile Include="app_code\clsARCHIVEHIST.cs" />
+    <Compile Include="app_code\clsARCHIVEHISTCONTENTTYPE.cs" />
+    <Compile Include="app_code\clsArchiver.cs" />
+    <Compile Include="app_code\clsARCHIVESTATS.cs" />
+    <Compile Include="app_code\clsATTACHMENTTYPE.cs" />
+    <Compile Include="app_code\clsATTRIBUTES.cs" />
+    <Compile Include="app_code\clsAutoLibRef.cs" />
+    <Compile Include="app_code\clsAVAILFILETYPES.cs" />
+    <Compile Include="app_code\clsAVAILFILETYPESUNDEFINED.cs" />
+    <Compile Include="app_code\clsCompression.cs" />
+    <Compile Include="app_code\clsCONTACTSARCHIVE.cs" />
+    <Compile Include="app_code\clsDbARCH.cs" />
+    <Compile Include="app_code\clsDbARCHS.cs" />
+    <Compile Include="app_code\clsDataGrid.cs" />
+    <Compile Include="app_code\clsDATASOURCE_V2.cs" />
+    <Compile Include="app_code\clsDb.cs" />
+    <Compile Include="app_code\clsDbLocal.cs" />
+    <Compile Include="app_code\clsDIRECTORY.cs" />
+    <Compile Include="app_code\clsDirListener.cs" />
+    <Compile Include="app_code\clsDma.cs" />
+    <Compile Include="app_code\clsEMAIL.cs" />
+    <Compile Include="app_code\clsEMAILARCHPARMS.cs" />
+    <Compile Include="app_code\clsEMAILFOLDER.cs" />
+    <Compile Include="app_code\clsEmailFunctions.cs" />
+    <Compile Include="app_code\clsEMAILTODELETE.cs" />
+    <Compile Include="app_code\clsEXCHANGEHOSTPOP.cs" />
+    <Compile Include="app_code\clsEXCHANGEHOSTSMTP.cs" />
+    <Compile Include="app_code\clsEXCLUDEDFILES.cs" />
+    <Compile Include="app_code\clsEXCLUDEFROM.cs" />
+    <Compile Include="app_code\clsExecParms.cs" />
+    <Compile Include="app_code\clsFile.cs" />
+    <Compile Include="app_code\clsFileInfo.cs" />
+    <Compile Include="app_code\clsFILESTODELETE.cs" />
+    <Compile Include="app_code\clsGenerator.cs" />
+    <Compile Include="app_code\clsGlobalEntity.cs" />
+    <Compile Include="app_code\clsHELPTEXT.cs" />
+    <Compile Include="app_code\clsID3V1Tag.cs" />
+    <Compile Include="app_code\clsINCLUDEDFILES.cs" />
+    <Compile Include="app_code\clsIsolatedStorage.cs" />
+    <Compile Include="app_code\clsKeyGen.cs" />
+    <Compile Include="app_code\clsLIBDIRECTORY.cs" />
+    <Compile Include="app_code\clsLIBEMAIL.cs" />
+    <Compile Include="app_code\clsLIBRARYITEMS.cs" />
+    <Compile Include="app_code\clsLICENSE.cs" />
+    <Compile Include="app_code\clsLicenseMgt.cs" />
+    <Compile Include="app_code\clsListener.cs" />
+    <Compile Include="app_code\clsLocalEncrypt.cs" />
+    <Compile Include="app_code\clsLogging.cs" />
+    <Compile Include="app_code\clsMP3.cs" />
+    <Compile Include="app_code\clsMsWord.cs" />
+    <Compile Include="app_code\clsProcess.cs" />
+    <Compile Include="app_code\clsPROCESSFILEAS.cs" />
+    <Compile Include="app_code\clsPst.cs" />
+    <Compile Include="app_code\clsQUICKDIRECTORY.cs" />
+    <Compile Include="app_code\clsRECIPIENTS.cs" />
+    <Compile Include="app_code\clsRecon.cs" />
+    <Compile Include="app_code\clsReconUSERS.cs" />
+    <Compile Include="app_code\clsRegistry.cs" />
+    <Compile Include="app_code\clsRemoteSupport.cs" />
+    <Compile Include="app_code\clsRSS.cs" />
+    <Compile Include="app_code\clsRUNPARMS.cs" />
+    <Compile Include="app_code\clsSAVEDITEMS.cs" />
+    <Compile Include="app_code\clsScheduler.cs" />
+    <Compile Include="app_code\clsSEARCHHISTORY.cs" />
+    <Compile Include="app_code\clsSmo.cs" />
+    <Compile Include="app_code\clsSOURCEATTRIBUTE.cs" />
+    <Compile Include="app_code\clsSOURCETYPE.cs" />
+    <Compile Include="app_code\clsSql.cs" />
+    <Compile Include="app_code\clsSUBDIR.cs" />
+    <Compile Include="app_code\clsTimeCalcs.cs" />
+    <Compile Include="app_code\clsUSERS.cs" />
+    <Compile Include="app_code\clsUtility.cs" />
+    <Compile Include="app_code\clsValidateCodes.cs" />
+    <Compile Include="app_code\clsWebPull.cs" />
+    <Compile Include="app_code\clsWMAID3Tag.cs" />
+    <Compile Include="app_code\clsZIPDATASOURCE.cs" />
+    <Compile Include="app_code\clsZipFiles.cs" />
+    <Compile Include="CodeFile1.cs" />
+    <Compile Include="frmNotifyBatchOCR.Designer.cs">
+      <DependentUpon>frmNotifyBatchOCR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNotifyBatchOCR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNotifyContact.Designer.cs">
+      <DependentUpon>frmNotifyContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNotifyContact.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgreement.Designer.cs">
+      <DependentUpon>frmAgreement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAgreement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAppConfigEdit.designer.cs">
+      <DependentUpon>frmAppConfigEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAppConfigEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAttachmentCode.Designer.cs">
+      <DependentUpon>frmAttachmentCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAttachmentCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEncryptString.Designer.cs">
+      <DependentUpon>frmEncryptString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEncryptString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExchangeMonitor.Designer.cs">
+      <DependentUpon>frmExchangeMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmExchangeMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExhangeMail.Designer.cs">
+      <DependentUpon>frmExhangeMail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmExhangeMail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHelp.Designer.cs">
+      <DependentUpon>frmHelp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHistory.designer.cs">
+      <DependentUpon>frmHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImpersonate.Designer.cs">
+      <DependentUpon>frmImpersonate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImpersonate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLibraryAssgnList.Designer.cs">
+      <DependentUpon>frmLibraryAssgnList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLibraryAssgnList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLibraryAssignment.designer.cs">
+      <DependentUpon>frmLibraryAssignment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLibraryAssignment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLicense.designer.cs">
+      <DependentUpon>frmLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMessageBar.Designer.cs">
+      <DependentUpon>frmMessageBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMessageBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMsg.Designer.cs">
+      <DependentUpon>frmMsg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNotify.Designer.cs">
+      <DependentUpon>frmNotify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNotify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNotify2.Designer.cs">
+      <DependentUpon>frmNotify2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNotify2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNotifyListener.Designer.cs">
+      <DependentUpon>frmNotifyListener.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNotifyListener.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNotifyMessage.Designer.cs">
+      <DependentUpon>frmNotifyMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNotifyMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOutlookNotice.Designer.cs">
+      <DependentUpon>frmOutlookNotice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOutlookNotice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOutOfSpace.Designer.cs">
+      <DependentUpon>frmOutOfSpace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOutOfSpace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPasswordChange.designer.cs">
+      <DependentUpon>frmPasswordChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPasswordChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPercent.Designer.cs">
+      <DependentUpon>frmPercent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPercent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPstLoader.Designer.cs">
+      <DependentUpon>frmPstLoader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPstLoader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRetentionCode.Designer.cs">
+      <DependentUpon>frmRetentionCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRetentionCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRetentionMgt.designer.cs">
+      <DependentUpon>frmRetentionMgt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRetentionMgt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSchedule.Designer.cs">
+      <DependentUpon>frmSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSenderMgt.Designer.cs">
+      <DependentUpon>frmSenderMgt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSenderMgt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSqlite.Designer.cs">
+      <DependentUpon>frmSqlite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSqlite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm1.designer.cs">
+      <DependentUpon>LoginForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modDLL.cs" />
+    <Compile Include="modGlobals.cs" />
+    <Compile Include="modResizeForm.cs" />
+    <Compile Include="My Project\AssemblyInfo.cs" />
+    <Compile Include="My Project\Application.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Service References\SVCSearch\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="SplashEcmSetup.Designer.cs">
+      <DependentUpon>SplashEcmSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SplashEcmSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_ECM_HiveDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ECM_HiveDataSet.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AboutBox1.resx">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNotifyBatchOCR.resx">
+      <DependentUpon>frmNotifyBatchOCR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNotifyContact.resx">
+      <DependentUpon>frmNotifyContact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAgreement.resx">
+      <DependentUpon>frmAgreement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAttachmentCode.resx">
+      <DependentUpon>frmAttachmentCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEncryptString.resx">
+      <DependentUpon>frmEncryptString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExchangeMonitor.resx">
+      <DependentUpon>frmExchangeMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExhangeMail.resx">
+      <DependentUpon>frmExhangeMail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHelp.resx">
+      <DependentUpon>frmHelp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHistory.resx">
+      <DependentUpon>frmHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImpersonate.resx">
+      <DependentUpon>frmImpersonate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLibraryAssgnList.resx">
+      <DependentUpon>frmLibraryAssgnList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLibraryAssignment.resx">
+      <DependentUpon>frmLibraryAssignment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLicense.resx">
+      <DependentUpon>frmLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMessageBar.resx">
+      <DependentUpon>frmMessageBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMsg.resx">
+      <DependentUpon>frmMsg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNotify.resx">
+      <DependentUpon>frmNotify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNotify2.af.resx">
+      <DependentUpon>frmNotify2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNotify2.resx">
+      <DependentUpon>frmNotify2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNotifyListener.resx">
+      <DependentUpon>frmNotifyListener.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNotifyMessage.resx">
+      <DependentUpon>frmNotifyMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOutlookNotice.resx">
+      <DependentUpon>frmOutlookNotice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOutOfSpace.resx">
+      <DependentUpon>frmOutOfSpace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPasswordChange.resx">
+      <DependentUpon>frmPasswordChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPercent.resx">
+      <DependentUpon>frmPercent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPstLoader.resx">
+      <DependentUpon>frmPstLoader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRetentionCode.resx">
+      <DependentUpon>frmRetentionCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRetentionMgt.resx">
+      <DependentUpon>frmRetentionMgt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSchedule.resx">
+      <DependentUpon>frmSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSenderMgt.resx">
+      <DependentUpon>frmSenderMgt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSqlite.resx">
+      <DependentUpon>frmSqlite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm1.resx">
+      <DependentUpon>LoginForm1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>PublicVbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>EcmArchiver.My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashEcmSetup.resx">
+      <DependentUpon>SplashEcmSetup.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\DMALogo0.jpg" />
+    <None Include="Resources\DMALogo2.jpg" />
+    <Content Include="WebConfigOriginalt.txt" />
+    <Content Include="_Documentation\CrossMapping.txt" />
+    <None Include="CodeSigningCertificate.pfx" />
+    <None Include="EcmClcArchiveSS_1_TemporaryKey.pfx" />
+    <None Include="EcmClcArchiveSS_2_TemporaryKey.pfx" />
+    <None Include="EcmClcArchiveSS_TemporaryKey.pfx" />
+    <None Include="RequiredDLL\DUTCH.wdc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="RequiredDLL\engUK.wdc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="RequiredDLL\french.wdc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ComputerSecurity2.jpg" />
+    <None Include="Resources\Web03.jpg.gif" />
+    <None Include="Resources\Web04.jpg.gif" />
+    <None Include="Resources\web06.jpg" />
+    <Content Include="Docs\Archive.Init.config.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Docs\EndPointsForArchiver.txt" />
+    <Content Include="RequiredDLL\C1.C1Zip.4.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RequiredDLL\ChilkatDotNet2.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RequiredDLL\Dlltwain.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RequiredDLL\Interop.Redemption.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RequiredDLL\Ionic.Zip.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RequiredDLL\itextsharp.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RequiredDLL\O2S.Components.PDF4NET.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RequiredDLL\O2S.Components.PDF4NET.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RequiredDLL\ocrdll.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RequiredDLL\SimpleOCX.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RequiredDLL\UltraID3Lib.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RequiredDLL\UltraID3Lib.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\ECM.Logo.png" />
+    <None Include="Service References\SVCSearch\EcmArchiver.SVCSearch.DS_clsUSERGRIDSTATE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\EcmArchiver.SVCSearch.DS_CONTENT.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\EcmArchiver.SVCSearch.DS_EMAIL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\EcmArchiver.SVCSearch.DS_License.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\EcmArchiver.SVCSearch.DS_ListOfStrings01.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\EcmArchiver.SVCSearch.DS_ListOfStrings02.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\EcmArchiver.SVCSearch.DS_ListOfStrings03.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\EcmArchiver.SVCSearch.DS_ListOfStrings04.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\EcmArchiver.SVCSearch.DS_USERSCREENSTATE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\EcmArchiver.SVCSearch.DS_USERSEARCHSTATE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\EcmArchiver.SVCSearch.DS_VUserGrid.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\SVCSearch.disco" />
+    <None Include="Service References\SVCSearch\configuration91.svcinfo" />
+    <None Include="Service References\SVCSearch\configuration.svcinfo" />
+    <None Include="Service References\SVCSearch\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\ECMLOGO.gif" />
+    <Content Include="TopOcrInstall\BACKGROUND1.BMP">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\hts9.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\id3lib.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\imgman32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\imhost32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\lame.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\mb1.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\mp3enc.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\ocr1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\PDC32.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\ssce5432.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\ter14.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\topocr.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\uninst.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\7-zip.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\7z.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\7z.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\7zFM.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\7zG.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\History.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\lang\af.txt" />
+    <Content Include="Z7\lang\ar.txt" />
+    <Content Include="Z7\lang\ast.txt" />
+    <Content Include="Z7\lang\az.txt" />
+    <Content Include="Z7\lang\ba.txt" />
+    <Content Include="Z7\lang\be.txt" />
+    <Content Include="Z7\lang\bg.txt" />
+    <Content Include="Z7\lang\bn.txt" />
+    <Content Include="Z7\lang\br.txt" />
+    <Content Include="Z7\lang\ca.txt" />
+    <Content Include="Z7\lang\cs.txt" />
+    <Content Include="Z7\lang\cy.txt" />
+    <Content Include="Z7\lang\da.txt" />
+    <Content Include="Z7\lang\de.txt" />
+    <Content Include="Z7\lang\el.txt" />
+    <Content Include="Z7\lang\eo.txt" />
+    <Content Include="Z7\lang\es.txt" />
+    <Content Include="Z7\lang\et.txt" />
+    <Content Include="Z7\lang\eu.txt" />
+    <Content Include="Z7\lang\ext.txt" />
+    <Content Include="Z7\lang\fa.txt" />
+    <Content Include="Z7\lang\fi.txt" />
+    <Content Include="Z7\lang\fr.txt" />
+    <Content Include="Z7\lang\fur.txt" />
+    <Content Include="Z7\lang\fy.txt" />
+    <Content Include="Z7\lang\gl.txt" />
+    <Content Include="Z7\lang\gu.txt" />
+    <Content Include="Z7\lang\he.txt" />
+    <Content Include="Z7\lang\hi.txt" />
+    <Content Include="Z7\lang\hr.txt" />
+    <Content Include="Z7\lang\hu.txt" />
+    <Content Include="Z7\lang\hy.txt" />
+    <Content Include="Z7\lang\id.txt" />
+    <Content Include="Z7\lang\io.txt" />
+    <Content Include="Z7\lang\is.txt" />
+    <Content Include="Z7\lang\it.txt" />
+    <Content Include="Z7\lang\ja.txt" />
+    <Content Include="Z7\lang\ka.txt" />
+    <Content Include="Z7\lang\kk.txt" />
+    <Content Include="Z7\lang\ko.txt" />
+    <Content Include="Z7\lang\ku-ckb.txt" />
+    <Content Include="Z7\lang\ku.txt" />
+    <Content Include="Z7\lang\lt.txt" />
+    <Content Include="Z7\lang\lv.txt" />
+    <Content Include="Z7\lang\mk.txt" />
+    <Content Include="Z7\lang\mn.txt" />
+    <Content Include="Z7\lang\mr.txt" />
+    <Content Include="Z7\lang\ms.txt" />
+    <Content Include="Z7\lang\nb.txt" />
+    <Content Include="Z7\lang\ne.txt" />
+    <Content Include="Z7\lang\nl.txt" />
+    <Content Include="Z7\lang\nn.txt" />
+    <Content Include="Z7\lang\pa-in.txt" />
+    <Content Include="Z7\lang\pl.txt" />
+    <Content Include="Z7\lang\ps.txt" />
+    <Content Include="Z7\lang\pt-br.txt" />
+    <Content Include="Z7\lang\pt.txt" />
+    <Content Include="Z7\lang\ro.txt" />
+    <Content Include="Z7\lang\ru.txt" />
+    <Content Include="Z7\lang\sa.txt" />
+    <Content Include="Z7\lang\si.txt" />
+    <Content Include="Z7\lang\sk.txt" />
+    <Content Include="Z7\lang\sl.txt" />
+    <Content Include="Z7\lang\sq.txt" />
+    <Content Include="Z7\lang\sr-spc.txt" />
+    <Content Include="Z7\lang\sr-spl.txt" />
+    <Content Include="Z7\lang\sv.txt" />
+    <Content Include="Z7\lang\ta.txt" />
+    <Content Include="Z7\lang\th.txt" />
+    <Content Include="Z7\lang\tr.txt" />
+    <Content Include="Z7\lang\tt.txt" />
+    <Content Include="Z7\lang\ug.txt" />
+    <Content Include="Z7\lang\uk.txt" />
+    <Content Include="Z7\lang\uz.txt" />
+    <Content Include="Z7\lang\va.txt" />
+    <Content Include="Z7\lang\vi.txt" />
+    <Content Include="Z7\lang\zh-cn.txt" />
+    <Content Include="Z7\lang\zh-tw.txt" />
+    <Content Include="Z7\License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\readme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\Uninstall.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="EcmArchiveSetup_1_TemporaryKey.pfx" />
+    <None Include="EcmArchiveSetup_TemporaryKey.pfx" />
+    <None Include="EcmCLCArchiveKeyFile.pfx" />
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>EcmArchiver.My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Z7\7-zip.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\7z.sfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\7zCon.sfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\descript.ion">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\IM31bmp.dil">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\IM31gif.dil">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\IM31jpg.dil">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\IM31tif.dil">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\IM31xbmp.del">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\IM31xccc.del">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\IM31xgif.del">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\IM31xjpg.del">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\ssceam2.clx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\ssceda2.clx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\sscedu2.clx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\sscefi2.clx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\sscefr2.clx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\sscege2.clx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\ssceit2.clx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\sscenb2.clx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\sscepo2.clx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\sscesp2.clx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\sscesw2.clx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\TopOCR.url">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Service References\SVCSearch\SVCSearch.wsdl" />
+    <None Include="Service References\SVCSearch\SVCSearch.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCSearch\SVCSearch1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCSearch\SVCSearch2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCSearch\SVCSearch3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SQLiteDB\EcmArchive.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Z7\lang\en.ttt" />
+    <None Include="_ECM_HiveDataSet.xsc">
+      <DependentUpon>_ECM_HiveDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="_ECM_HiveDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_ECM_HiveDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_ECM_HiveDataSet.xss">
+      <DependentUpon>_ECM_HiveDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Office.PIARedist.2007">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Office 2007 Primary Interop Assemblies</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.VSTORuntime.4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Visual Studio 2010 Tools for Office Runtime %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="InteropExtensionLib">
+      <Guid>{C3D19104-7A67-4EB0-B459-D5B2E734D430}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel1">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Outlook1">
+      <Guid>{00062FFF-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>9</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word1">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>6</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="MSHTML">
+      <Guid>{3050F1C5-98B5-11CF-BB82-00AA00BDCE0B}</Guid>
+      <VersionMajor>4</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Redemption">
+      <Guid>{2D5E2D34-BED5-4B9F-9793-A31E26E6806E}</Guid>
+      <VersionMajor>4</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="archive.ico" />
+    <Content Include="BackupItems\WebConfigOriginalt.txt" />
+    <Content Include="MSPGIMME.DLL">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Redemption\ProfMan.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Redemption\readme.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Redemption\RedeemInstall.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Redemption\Redemption.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Redemption\RedemptionReadme.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Image1.jpg" />
+    <None Include="Resources\library.ico" />
+    <None Include="Resources\EcmLibrary.ico" />
+    <Content Include="Resources\b2.jpg" />
+    <None Include="Resources\b21.jpg" />
+    <Content Include="Resources\b3.jpg" />
+    <None Include="Resources\b31.jpg" />
+    <Content Include="Resources\b5.jpg" />
+    <None Include="Resources\b51.jpg" />
+    <None Include="Resources\bg-nav.png" />
+    <Content Include="Resources\CubeAnalysis.jpg" />
+    <Content Include="Resources\Web01.jpg" />
+    <Content Include="rss_add.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="Microsoft.SqlServer.Diagnostics.STrace">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.SqlServer.Management.SmoMetadataProvider">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.SqlServer.Management.SqlParser">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.SqlServer.ServiceBrokerEnum">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.SqlServer.Smo">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.SqlServer.SqlClrProvider">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.Vbe.Interop">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="stdole">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SVCSearch\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="data\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>echo 'DONE'</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>    
+  -->
+  <Target Name="BeforePublish">
+  </Target>
+  <Import Project="packages\SQLitePCLRaw.lib.e_sqlite3.2.0.2\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets" Condition="Exists('packages\SQLitePCLRaw.lib.e_sqlite3.2.0.2\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\SQLitePCLRaw.lib.e_sqlite3.2.0.2\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\SQLitePCLRaw.lib.e_sqlite3.2.0.2\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets'))" />
+  </Target>
+</Project>

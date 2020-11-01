@@ -1,0 +1,1321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F8B9506C-38E5-46F9-B581-830A25E94141}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>EcmArchiveClcSetup.My.MyApplication</StartupObject>
+    <RootNamespace>EcmArchiveClcSetup</RootNamespace>
+    <AssemblyName>EcmArchiveClcSetup</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <SignManifests>false</SignManifests>
+    <ManifestCertificateThumbprint>C1C1FF08A8F381AE35EDAA277971BFE12521841F</ManifestCertificateThumbprint>
+    <ManifestKeyFile>EcmArchiveSetup_1_TemporaryKey.pfx</ManifestKeyFile>
+    <TargetZone>LocalIntranet</TargetZone>
+    <GenerateManifests>true</GenerateManifests>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <ApplicationIcon>rss_add.ico</ApplicationIcon>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>EcmCLCArchiveKeyFile.pfx</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>C:\PrePublishedWebSites\ECMSaaS\Archiver\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Background</UpdateMode>
+    <UpdateInterval>90</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>true</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://108.61.17.163/Archiver/</InstallUrl>
+    <UpdateUrl>http://www.EcmLibrary.com/Download/EcmArchiveSetup/</UpdateUrl>
+    <SupportUrl>http://www.EcmLibrary.com/help</SupportUrl>
+    <ErrorReportUrl>http://www.EcmLibrary.com/help</ErrorReportUrl>
+    <ProductName>ECM Library CLC Archiver</ProductName>
+    <PublisherName>ECM Library</PublisherName>
+    <SuiteName>ECM Library</SuiteName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>Publish.htm</WebPage>
+    <TrustUrlParameters>true</TrustUrlParameters>
+    <ApplicationRevision>148</ApplicationRevision>
+    <ApplicationVersion>2.8.16.%2a</ApplicationVersion>
+    <UseApplicationTrust>true</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <ExcludeDeploymentUrl>true</ExcludeDeploymentUrl>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\EcmArchiveClcSetup.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\EcmArchiveClcSetup.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="C1.C1Zip.2, Version=2.1.20103.71, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1FlexGrid.2, Version=2.6.20103.577, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="ChilkatDotNet2, Version=9.0.4.0, Culture=neutral, PublicKeyToken=eb5fc1fc52ef09bd, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RequiredDLLs\ChilkatDotNet2.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.0.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RequiredDLLs\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Outlook, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Dmf, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.SqlEnum, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Vsa" />
+    <Reference Include="O2S.Components.PDF4NET, Version=4.1.0.0, Culture=neutral, PublicKeyToken=80d03dd9e5b85317, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\O2 Solutions\PDF4NET 4.1.0\Bin\O2S.Components.PDF4NET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Speech">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UltraID3Lib, Version=0.9.6.6, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RequiredDLLs\UltraID3Lib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="MODI" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutBox1.Designer.vb">
+      <DependentUpon>AboutBox1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AboutBox1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="CE\OutlookContactsDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OutlookContactsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CE\ZipFilesDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZipFilesDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="clsACTIVESEARCHGUIDS.vb" />
+    <Compile Include="clsAppParms.vb" />
+    <Compile Include="clsARCHIVEHIST.vb" />
+    <Compile Include="clsARCHIVEHISTCONTENTTYPE.vb" />
+    <Compile Include="clsArchiver.vb" />
+    <Compile Include="clsARCHIVESTATS.vb" />
+    <Compile Include="clsATTACHMENTTYPE.vb" />
+    <Compile Include="clsATTRIBUTES.vb" />
+    <Compile Include="clsAutoLibRef.vb" />
+    <Compile Include="clsAVAILFILETYPES.vb" />
+    <Compile Include="clsAVAILFILETYPESUNDEFINED.vb" />
+    <Compile Include="clsCompression.vb" />
+    <Compile Include="clsCONTACTSARCHIVE.vb" />
+    <Compile Include="clsDatabase.vb" />
+    <Compile Include="clsDATABASES.vb" />
+    <Compile Include="clsDataGrid.vb" />
+    <Compile Include="clsDATASOURCE_V2.vb" />
+    <Compile Include="clsDb.vb" />
+    <Compile Include="clsDbLocal.vb" />
+    <Compile Include="clsDIRECTORY.vb" />
+    <Compile Include="clsDirListener.vb" />
+    <Compile Include="clsDma.vb" />
+    <Compile Include="clsEMAIL.vb" />
+    <Compile Include="clsEMAILARCHPARMS.vb" />
+    <Compile Include="clsEMAILFOLDER.vb" />
+    <Compile Include="clsEmailFunctions.vb" />
+    <Compile Include="clsEMAILTODELETE.vb" />
+    <Compile Include="clsEncrypt.vb" />
+    <Compile Include="clsEXCHANGEHOSTPOP.vb" />
+    <Compile Include="clsEXCHANGEHOSTSMTP.vb" />
+    <Compile Include="clsEXCLUDEDFILES.vb" />
+    <Compile Include="clsEXCLUDEFROM.vb" />
+    <Compile Include="clsExecParms.vb" />
+    <Compile Include="clsFile.vb" />
+    <Compile Include="clsFileInfo.vb" />
+    <Compile Include="clsFILESTODELETE.vb" />
+    <Compile Include="clsGenerator.vb" />
+    <Compile Include="clsGlobalEntity.vb" />
+    <Compile Include="clsHELPTEXT.vb" />
+    <Compile Include="clsID3V1Tag.vb" />
+    <Compile Include="clsINCLUDEDFILES.vb" />
+    <Compile Include="clsIsolatedStorage.vb" />
+    <Compile Include="clsKeyGen.vb" />
+    <Compile Include="clsLIBDIRECTORY.vb" />
+    <Compile Include="clsLIBEMAIL.vb" />
+    <Compile Include="clsLIBRARYITEMS.vb" />
+    <Compile Include="clsLICENSE.vb" />
+    <Compile Include="clsLicenseMgt.vb" />
+    <Compile Include="clsListener.vb" />
+    <Compile Include="clsLogging.vb" />
+    <Compile Include="clsModi.vb" />
+    <Compile Include="clsMP3.vb" />
+    <Compile Include="clsMsWord.vb" />
+    <Compile Include="clsPdfAnalyzer.vb" />
+    <Compile Include="clsProcess.vb" />
+    <Compile Include="clsPROCESSFILEAS.vb" />
+    <Compile Include="clsPst.vb" />
+    <Compile Include="clsQUICKDIRECTORY.vb" />
+    <Compile Include="clsRECIPIENTS.vb" />
+    <Compile Include="clsRecon.vb" />
+    <Compile Include="clsReconUSERS.vb" />
+    <Compile Include="clsRegistry.vb" />
+    <Compile Include="clsRemoteSupport.vb" />
+    <Compile Include="clsRSS.vb" />
+    <Compile Include="clsRUNPARMS.vb" />
+    <Compile Include="clsSAVEDITEMS.vb" />
+    <Compile Include="clsScheduler.vb" />
+    <Compile Include="clsSEARCHHISTORY.vb" />
+    <Compile Include="clsSmo.vb" />
+    <Compile Include="clsSOURCEATTRIBUTE.vb" />
+    <Compile Include="clsSOURCETYPE.vb" />
+    <Compile Include="clsSql.vb" />
+    <Compile Include="clsSUBDIR.vb" />
+    <Compile Include="clsTimeCalcs.vb" />
+    <Compile Include="clsUSERS.vb" />
+    <Compile Include="clsUtility.vb" />
+    <Compile Include="clsValidateCodes.vb" />
+    <Compile Include="clsWMAID3Tag.vb" />
+    <Compile Include="clsZIPDATASOURCE.vb" />
+    <Compile Include="clsZipFiles.vb" />
+    <Compile Include="CE\DirDBDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DirDBDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="CE\EcmFileStoreDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EcmFileStoreDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CE\ExchangeEmailDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExchangeEmailDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CE\FileDBDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FileDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CE\ListenersDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListenersDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CE\OutlookEmailDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OutlookEmailDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmNotifyBatchOCR.Designer.vb">
+      <DependentUpon>frmNotifyBatchOCR.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNotifyBatchOCR.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNotifyContact.Designer.vb">
+      <DependentUpon>frmNotifyContact.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNotifyContact.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgreement.Designer.vb">
+      <DependentUpon>frmAgreement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAgreement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAppConfigEdit.designer.vb">
+      <DependentUpon>frmAppConfigEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAppConfigEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAttachmentCode.Designer.vb">
+      <DependentUpon>frmAttachmentCode.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAttachmentCode.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEncryptString.Designer.vb">
+      <DependentUpon>frmEncryptString.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEncryptString.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExchangeMonitor.Designer.vb">
+      <DependentUpon>frmExchangeMonitor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmExchangeMonitor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExhangeMail.Designer.vb">
+      <DependentUpon>frmExhangeMail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmExhangeMail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHelp.Designer.vb">
+      <DependentUpon>frmHelp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmHelp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHistory.designer.vb">
+      <DependentUpon>frmHistory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmHistory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImpersonate.Designer.vb">
+      <DependentUpon>frmImpersonate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmImpersonate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLibraryAssgnList.Designer.vb">
+      <DependentUpon>frmLibraryAssgnList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLibraryAssgnList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLibraryAssignment.designer.vb">
+      <DependentUpon>frmLibraryAssignment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLibraryAssignment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLicense.designer.vb">
+      <DependentUpon>frmLicense.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLicense.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMessageBar.Designer.vb">
+      <DependentUpon>frmMessageBar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMessageBar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMsg.Designer.vb">
+      <DependentUpon>frmMsg.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMsg.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNotify.Designer.vb">
+      <DependentUpon>frmNotify.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNotify.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNotify2.Designer.vb">
+      <DependentUpon>frmNotify2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNotify2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNotifyListener.Designer.vb">
+      <DependentUpon>frmNotifyListener.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNotifyListener.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNotifyMessage.Designer.vb">
+      <DependentUpon>frmNotifyMessage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNotifyMessage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOutlookNotice.Designer.vb">
+      <DependentUpon>frmOutlookNotice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmOutlookNotice.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOutOfSpace.Designer.vb">
+      <DependentUpon>frmOutOfSpace.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmOutOfSpace.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPasswordChange.designer.vb">
+      <DependentUpon>frmPasswordChange.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPasswordChange.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPercent.Designer.vb">
+      <DependentUpon>frmPercent.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPercent.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPstLoader.Designer.vb">
+      <DependentUpon>frmPstLoader.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPstLoader.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReconMain.designer.vb">
+      <DependentUpon>frmReconMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmReconMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSchedule.Designer.vb">
+      <DependentUpon>frmSchedule.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSchedule.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSenderMgt.Designer.vb">
+      <DependentUpon>frmSenderMgt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSenderMgt.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm1.designer.vb">
+      <DependentUpon>LoginForm1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modDLL.vb" />
+    <Compile Include="modGlobals.vb" />
+    <Compile Include="modResizeForm.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Service References\SVCCLCArchive\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SVCFS\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SVCGateway\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="SplashEcmSetup.Designer.vb">
+      <DependentUpon>SplashEcmSetup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SplashEcmSetup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_ECM_HiveDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ECM_HiveDataSet.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AboutBox1.resx">
+      <DependentUpon>AboutBox1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNotifyBatchOCR.resx">
+      <DependentUpon>frmNotifyBatchOCR.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNotifyContact.resx">
+      <DependentUpon>frmNotifyContact.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAgreement.resx">
+      <DependentUpon>frmAgreement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAttachmentCode.resx">
+      <DependentUpon>frmAttachmentCode.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEncryptString.resx">
+      <DependentUpon>frmEncryptString.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExchangeMonitor.resx">
+      <DependentUpon>frmExchangeMonitor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExhangeMail.resx">
+      <DependentUpon>frmExhangeMail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHelp.resx">
+      <DependentUpon>frmHelp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHistory.resx">
+      <DependentUpon>frmHistory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImpersonate.resx">
+      <DependentUpon>frmImpersonate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLibraryAssgnList.resx">
+      <DependentUpon>frmLibraryAssgnList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLibraryAssignment.resx">
+      <DependentUpon>frmLibraryAssignment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLicense.resx">
+      <DependentUpon>frmLicense.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMessageBar.resx">
+      <DependentUpon>frmMessageBar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMsg.resx">
+      <DependentUpon>frmMsg.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNotify.resx">
+      <DependentUpon>frmNotify.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNotify2.af.resx">
+      <DependentUpon>frmNotify2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNotify2.resx">
+      <DependentUpon>frmNotify2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNotifyListener.resx">
+      <DependentUpon>frmNotifyListener.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNotifyMessage.resx">
+      <DependentUpon>frmNotifyMessage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOutlookNotice.resx">
+      <DependentUpon>frmOutlookNotice.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOutOfSpace.resx">
+      <DependentUpon>frmOutOfSpace.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPasswordChange.resx">
+      <DependentUpon>frmPasswordChange.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPercent.resx">
+      <DependentUpon>frmPercent.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPstLoader.resx">
+      <DependentUpon>frmPstLoader.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReconMain.resx">
+      <DependentUpon>frmReconMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSchedule.resx">
+      <DependentUpon>frmSchedule.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSenderMgt.resx">
+      <DependentUpon>frmSenderMgt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm1.resx">
+      <DependentUpon>LoginForm1.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>PublicVbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashEcmSetup.resx">
+      <DependentUpon>SplashEcmSetup.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SVCCLCArchive\EcmArchiveClcSetup.SVCCLCArchive.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCCLCArchive\configuration91.svcinfo" />
+    <None Include="Service References\SVCCLCArchive\configuration.svcinfo" />
+    <None Include="Service References\SVCCLCArchive\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\SVCCLCArchive\SVCCLCArchive.wsdl" />
+    <None Include="Service References\SVCCLCArchive\SVCCLCArchive.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCCLCArchive\SVCCLCArchive1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCCLCArchive\SVCCLCArchive2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCCLCArchive\SVCCLCArchive3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCGateway\EcmArchiveClcSetup.SVCGateway.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\EcmArchiveClcSetup.SVCGateway.DS_SecureAttach.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\SVCGateway.disco" />
+    <None Include="Service References\SVCGateway\configuration91.svcinfo" />
+    <None Include="Service References\SVCGateway\configuration.svcinfo" />
+    <None Include="Service References\SVCGateway\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\SVCCLCArchive\SVCCLCArchive.disco" />
+    <Content Include="TopOcrInstall\BACKGROUND1.BMP">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\hts9.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\id3lib.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\imgman32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\imhost32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\lame.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\mb1.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\mp3enc.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\ocr1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\PDC32.DLL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\ssce5432.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\ter14.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\topocr.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\uninst.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\7-zip.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\7z.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\7z.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\7zFM.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\7zG.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\History.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\lang\af.txt" />
+    <Content Include="Z7\lang\ar.txt" />
+    <Content Include="Z7\lang\ast.txt" />
+    <Content Include="Z7\lang\az.txt" />
+    <Content Include="Z7\lang\ba.txt" />
+    <Content Include="Z7\lang\be.txt" />
+    <Content Include="Z7\lang\bg.txt" />
+    <Content Include="Z7\lang\bn.txt" />
+    <Content Include="Z7\lang\br.txt" />
+    <Content Include="Z7\lang\ca.txt" />
+    <Content Include="Z7\lang\cs.txt" />
+    <Content Include="Z7\lang\cy.txt" />
+    <Content Include="Z7\lang\da.txt" />
+    <Content Include="Z7\lang\de.txt" />
+    <Content Include="Z7\lang\el.txt" />
+    <Content Include="Z7\lang\eo.txt" />
+    <Content Include="Z7\lang\es.txt" />
+    <Content Include="Z7\lang\et.txt" />
+    <Content Include="Z7\lang\eu.txt" />
+    <Content Include="Z7\lang\ext.txt" />
+    <Content Include="Z7\lang\fa.txt" />
+    <Content Include="Z7\lang\fi.txt" />
+    <Content Include="Z7\lang\fr.txt" />
+    <Content Include="Z7\lang\fur.txt" />
+    <Content Include="Z7\lang\fy.txt" />
+    <Content Include="Z7\lang\gl.txt" />
+    <Content Include="Z7\lang\gu.txt" />
+    <Content Include="Z7\lang\he.txt" />
+    <Content Include="Z7\lang\hi.txt" />
+    <Content Include="Z7\lang\hr.txt" />
+    <Content Include="Z7\lang\hu.txt" />
+    <Content Include="Z7\lang\hy.txt" />
+    <Content Include="Z7\lang\id.txt" />
+    <Content Include="Z7\lang\io.txt" />
+    <Content Include="Z7\lang\is.txt" />
+    <Content Include="Z7\lang\it.txt" />
+    <Content Include="Z7\lang\ja.txt" />
+    <Content Include="Z7\lang\ka.txt" />
+    <Content Include="Z7\lang\kk.txt" />
+    <Content Include="Z7\lang\ko.txt" />
+    <Content Include="Z7\lang\ku-ckb.txt" />
+    <Content Include="Z7\lang\ku.txt" />
+    <Content Include="Z7\lang\lt.txt" />
+    <Content Include="Z7\lang\lv.txt" />
+    <Content Include="Z7\lang\mk.txt" />
+    <Content Include="Z7\lang\mn.txt" />
+    <Content Include="Z7\lang\mr.txt" />
+    <Content Include="Z7\lang\ms.txt" />
+    <Content Include="Z7\lang\nb.txt" />
+    <Content Include="Z7\lang\ne.txt" />
+    <Content Include="Z7\lang\nl.txt" />
+    <Content Include="Z7\lang\nn.txt" />
+    <Content Include="Z7\lang\pa-in.txt" />
+    <Content Include="Z7\lang\pl.txt" />
+    <Content Include="Z7\lang\ps.txt" />
+    <Content Include="Z7\lang\pt-br.txt" />
+    <Content Include="Z7\lang\pt.txt" />
+    <Content Include="Z7\lang\ro.txt" />
+    <Content Include="Z7\lang\ru.txt" />
+    <Content Include="Z7\lang\sa.txt" />
+    <Content Include="Z7\lang\si.txt" />
+    <Content Include="Z7\lang\sk.txt" />
+    <Content Include="Z7\lang\sl.txt" />
+    <Content Include="Z7\lang\sq.txt" />
+    <Content Include="Z7\lang\sr-spc.txt" />
+    <Content Include="Z7\lang\sr-spl.txt" />
+    <Content Include="Z7\lang\sv.txt" />
+    <Content Include="Z7\lang\ta.txt" />
+    <Content Include="Z7\lang\th.txt" />
+    <Content Include="Z7\lang\tr.txt" />
+    <Content Include="Z7\lang\tt.txt" />
+    <Content Include="Z7\lang\ug.txt" />
+    <Content Include="Z7\lang\uk.txt" />
+    <Content Include="Z7\lang\uz.txt" />
+    <Content Include="Z7\lang\va.txt" />
+    <Content Include="Z7\lang\vi.txt" />
+    <Content Include="Z7\lang\zh-cn.txt" />
+    <Content Include="Z7\lang\zh-tw.txt" />
+    <Content Include="Z7\License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\readme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\Uninstall.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Service References\SVCFS\EcmArchiveClcSetup.SVCFS.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCFS\SVCFS.wsdl" />
+    <None Include="Service References\SVCFS\SVCFS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCFS\SVCFS1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCFS\SVCFS2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCFS\SVCFS3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCFS\SVCFS4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCFS\SVCFS5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCFS\SVCFS.disco" />
+    <None Include="Service References\SVCFS\configuration91.svcinfo" />
+    <None Include="Service References\SVCFS\configuration.svcinfo" />
+    <None Include="Service References\SVCFS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CE\DirDBDataSet.xsc">
+      <DependentUpon>DirDBDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="CE\DirDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DirDBDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="CE\DirDBDataSet.xss">
+      <DependentUpon>DirDBDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="CE\EcmFileStoreDataSet.xsc">
+      <DependentUpon>EcmFileStoreDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CE\EcmFileStoreDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EcmFileStoreDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CE\EcmFileStoreDataSet.xss">
+      <DependentUpon>EcmFileStoreDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CE\ExchangeEmailDataSet.xsc">
+      <DependentUpon>ExchangeEmailDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CE\ExchangeEmailDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ExchangeEmailDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CE\ExchangeEmailDataSet.xss">
+      <DependentUpon>ExchangeEmailDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CE\FileDBDataSet.xsc">
+      <DependentUpon>FileDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CE\FileDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FileDBDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CE\FileDBDataSet.xss">
+      <DependentUpon>FileDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CE\ListenersDataSet.xsc">
+      <DependentUpon>ListenersDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CE\ListenersDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ListenersDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CE\ListenersDataSet.xss">
+      <DependentUpon>ListenersDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CE\OutlookContactsDataSet.xsc">
+      <DependentUpon>OutlookContactsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CE\OutlookContactsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OutlookContactsDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CE\OutlookContactsDataSet.xss">
+      <DependentUpon>OutlookContactsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CE\OutlookEmailDataSet.xsc">
+      <DependentUpon>OutlookEmailDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CE\OutlookEmailDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OutlookEmailDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CE\OutlookEmailDataSet.xss">
+      <DependentUpon>OutlookEmailDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CE\ZipFilesDataSet.xsc">
+      <DependentUpon>ZipFilesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CE\ZipFilesDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ZipFilesDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CE\ZipFilesDataSet.xss">
+      <DependentUpon>ZipFilesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="EcmArchiveSetup_1_TemporaryKey.pfx" />
+    <None Include="EcmArchiveSetup_TemporaryKey.pfx" />
+    <None Include="EcmCLCArchiveKeyFile.pfx" />
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <Content Include="Z7\7-zip.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\7z.sfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\7zCon.sfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Z7\descript.ion">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\IM31bmp.dil">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\IM31gif.dil">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\IM31jpg.dil">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\IM31tif.dil">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\IM31xbmp.del">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\IM31xccc.del">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\IM31xgif.del">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\IM31xjpg.del">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\ssceam2.clx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\ssceda2.clx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\sscedu2.clx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\sscefi2.clx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\sscefr2.clx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\sscege2.clx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\ssceit2.clx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\sscenb2.clx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\sscepo2.clx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\sscesp2.clx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\sscesw2.clx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TopOcrInstall\TopOCR.url">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Service References\SVCGateway\SVCGateway.wsdl" />
+    <None Include="Service References\SVCGateway\SVCGateway.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCGateway\SVCGateway1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCGateway\SVCGateway2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Z7\lang\en.ttt" />
+    <None Include="_ECM_HiveDataSet.xsc">
+      <DependentUpon>_ECM_HiveDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="_ECM_HiveDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_ECM_HiveDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_ECM_HiveDataSet.xss">
+      <DependentUpon>_ECM_HiveDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Office.PIARedist.2007">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Office 2007 Primary Interop Assemblies</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SQL.Server.Compact.3.5">
+      <Visible>False</Visible>
+      <ProductName>SQL Server Compact 3.5 SP2</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.VSTORuntime.4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Visual Studio 2010 Tools for Office Runtime %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="MODI">
+      <Guid>{A5EDEDF4-2BBC-45F3-822B-E60C278A1A79}</Guid>
+      <VersionMajor>12</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="Redemption">
+      <Guid>{2D5E2D34-BED5-4B9F-9793-A31E26E6806E}</Guid>
+      <VersionMajor>4</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="archive.ico" />
+    <Content Include="BackupItems\WebConfigOriginalt.txt" />
+    <Content Include="CE\DirDB.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CE\EcmFileStore.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CE\ExchangeEmail.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CE\FileDB.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CE\Listeners.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CE\OutlookContacts.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CE\OutlookEmail.sdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CE\ZipFiles.sdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MSPGIMME.DLL">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Redemption\ProfMan.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Redemption\readme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Redemption\RedeemInstall.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Redemption\Redemption.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Redemption\RedemptionReadme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Image1.jpg" />
+    <None Include="Resources\library.ico" />
+    <None Include="Resources\EcmLibrary.ico" />
+    <Content Include="Resources\b2.jpg" />
+    <None Include="Resources\b21.jpg" />
+    <Content Include="Resources\b3.jpg" />
+    <None Include="Resources\b31.jpg" />
+    <Content Include="Resources\b5.jpg" />
+    <None Include="Resources\b51.jpg" />
+    <None Include="Resources\bg-nav.png" />
+    <Content Include="Resources\CubeAnalysis.jpg" />
+    <Content Include="Resources\Web01.jpg" />
+    <Content Include="rss_add.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="Microsoft.SqlServer.Diagnostics.STrace">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.SqlServer.Management.SmoMetadataProvider">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.SqlServer.Management.SqlParser">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.SqlServer.ServiceBrokerEnum">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.SqlServer.Smo">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.SqlServer.SqlClrProvider">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.Vbe.Interop">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="stdole">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SVCCLCArchive\" />
+    <WCFMetadataStorage Include="Service References\SVCFS\" />
+    <WCFMetadataStorage Include="Service References\SVCGateway\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="data\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

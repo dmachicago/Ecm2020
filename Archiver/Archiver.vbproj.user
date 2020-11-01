@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PublishUrlHistory>D:\PrePublishedWebSites\ECMSaaS\Archiver\|C:\PrePublishedWebSites\ECMSaaS\Archiver\|d:\PrePublishedWebSites\ECMSaaS\Archiver\|C:\PrePublishedWebSites\Ecm2012\Cloud\ArchiverCLC\|C:\PrePublishedWebSites\EcmLibraryWEB\Download\EcmClcArchive\</PublishUrlHistory>
+    <InstallUrlHistory>https://www.EcmLibrary.com/ECMSaas/Archiver/|http://www.ecmlibrary.com/Archiver/|http://www.EcmLibrary.com/EcmSaaS/Archiver/|http://195.62.77.43/Archiver/|file://temp/ArchiveTestInstall/</InstallUrlHistory>
+    <SupportUrlHistory>http://www.EcmLibrary.com/help</SupportUrlHistory>
+    <UpdateUrlHistory>http://www.EcmLibrary.com/EcmSaaS/Archiver/|http://www.EcmLibrary.com/Download/EcmArchiveSetup/|http://www.EcmLibrary.com/ECMSaaS/Archiver/</UpdateUrlHistory>
+    <BootstrapperUrlHistory>
+    </BootstrapperUrlHistory>
+    <ErrorReportUrlHistory>http://www.EcmLibrary.com/help</ErrorReportUrlHistory>
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+    <EnableSecurityDebugging>false</EnableSecurityDebugging>
+    <ProjectView>ShowAllFiles</ProjectView>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <StartArguments>
+    </StartArguments>
+    <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
+    <EnableSQLServerDebugging>true</EnableSQLServerDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
+    <EnableSQLServerDebugging>false</EnableSQLServerDebugging>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PublishUrlHistory>D:\PrepublishedWebSites\ECMSaaS\Search\|D:\PrepublishedWebSites\ECMSearchWPF\|D:\PrePublishedWebSites\ECMSearchWPF\|D:\dev\PrePublishedWebSites\ECMSearchWPF\|publish\</PublishUrlHistory>
+    <InstallUrlHistory>https://www.ecmlibrary.com/ecmsaas/search/|http://www.ecmlibrary.com/ecmsaas/search/|http://T310/ECMSaaS/Search/|\\t310\Software\ECMSearch\|http://www.ecmlibrary.com/ECMSaaS/Search/</InstallUrlHistory>
+    <SupportUrlHistory>http://www.EcmLibrary.com/help</SupportUrlHistory>
+    <UpdateUrlHistory>http://www.ecmlibrary.com/ecmsaas/search/</UpdateUrlHistory>
+    <BootstrapperUrlHistory />
+    <ErrorReportUrlHistory />
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartAction>Project</StartAction>
+    <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
+    <EnableSQLServerDebugging>true</EnableSQLServerDebugging>
+    <StartWorkingDirectory>
+    </StartWorkingDirectory>
+    <StartProgram>d:\dev\ECM2020\Search\ECMSearchWPF\bin\Debug\ECMSearchWPF.xbap</StartProgram>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnableSecurityDebugging>false</EnableSecurityDebugging>
+  </PropertyGroup>
+</Project>

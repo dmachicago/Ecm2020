@@ -1,0 +1,3 @@
+﻿ContactEmail|dm@dmachicago.com
+GatewayIP|http://T410A/Gina
+GatewayConnStr|<add key="HELP.DBARCH" value="bNk5A9GOZlZSKQ3LvNtPFhN4etcAN+GnAyg5jierPJ9M9GF13x+OKU9v+EeuBc4SXY3FwWzlOJ70abvO/1DEAaswUNjiZyQ6sTsqTrfphpHmYc3WNYqkv96jf777lbyD68HVURcLetn7uUVVkAPcQPvSoYKC6tkq" />

@@ -1,0 +1,17 @@
+SCC = This is a Source Code Control file
+
+[EcmCLCArchive.sln]
+SCC_Aux_Path = "\\DELLT100\SourceSafe"
+SCC_Project_Name = "$/ECMSaaS.root/Archiver.root/EcmCLCArchive/EcmCloud/EcmCLCArchive", ICFCAAAA
+
+[EcmClcArchive.vbproj]
+SCC_Aux_Path = "\\DELLT100\SourceSafe"
+SCC_Project_Name = "$/ECMSaaS.root/Archiver.root/EcmCLCArchive/EcmCloud/EcmCLCArchive", ICFCAAAA
+
+[EcmCLCArchiveSS.sln]
+SCC_Aux_Path = "\\dellt100\SourceSafe"
+SCC_Project_Name = "$/ECMSaaS.root/Archiver.root/EcmCLCArchive/EcmCloud/EcmCLCArchive", ICFCAAAA
+
+[EcmClcArchiveSS.vbproj]
+SCC_Aux_Path = "\\dellt100\SourceSafe"
+SCC_Project_Name = "$/ECMSaaS.root/Archiver.root/EcmCLCArchive/EcmCloud/EcmCLCArchive", ICFCAAAA

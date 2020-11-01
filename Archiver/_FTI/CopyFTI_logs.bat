@@ -1,0 +1,1 @@
+﻿robocopy "C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\Log" "c:\FTILogs" SQLFT*.* /xo

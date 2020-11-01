@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PublishUrlHistory>C:\PrePublishedWebSites\Ecm2012\Cloud\Archiver\|C:\PrePublishedWebSites\Ecm2012\Cloud\CLC\|C:\PrePublishedWebSites\EcmLibraryWEB\Download\EcmClcArchive\|C:\PrePublishedWebSites\EcmLibraryWEB\Download\EcmArchiveSetup\|C:\PrePublishedWebSites\EcmLibraryWEB\Download\EcmArchiveSetupCD\</PublishUrlHistory>
+    <InstallUrlHistory>http://www.EcmLibrary.com/Ecm2012/Cloud/Archiver/|http://www.EcmLibrary.com/Ecm2012/Cloud/CLC/|http://www.EcmLibrary.com/download/EcmClcArchive/|http://www.EcmLibrary.com/download/EcmArchiveSetup/|http://www.EcmLibrary.com/Download/EcmArchiveSetup/</InstallUrlHistory>
+    <SupportUrlHistory>http://www.EcmLibrary.com/help</SupportUrlHistory>
+    <UpdateUrlHistory>http://www.EcmLibrary.com/Download/EcmArchiveSetup/</UpdateUrlHistory>
+    <BootstrapperUrlHistory>
+    </BootstrapperUrlHistory>
+    <ErrorReportUrlHistory>
+    </ErrorReportUrlHistory>
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>true</VerifyUploadedFiles>
+    <EnableSecurityDebugging>false</EnableSecurityDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <StartArguments>
+    </StartArguments>
+  </PropertyGroup>
+</Project>

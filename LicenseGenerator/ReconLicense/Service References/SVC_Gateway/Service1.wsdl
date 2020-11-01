@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://64.94.173.71/SecureLogin/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://64.94.173.71/SecureLogin/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://64.94.173.71/SecureLogin/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EcmSecureAttachWCF2" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_ValidateUserLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateUserLogin" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ValidateUserLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateUserLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ValidateGatewayLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateGatewayLogin" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ValidateGatewayLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateGatewayLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getSecureKey_InputMessage">
+    <wsdl:part name="parameters" element="tns:getSecureKey" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getSecureKey_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getSecureKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PopulateCombo_InputMessage">
+    <wsdl:part name="parameters" element="tns:PopulateCombo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PopulateCombo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PopulateComboResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteExistingConnection_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteExistingConnection" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteExistingConnection_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteExistingConnectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PopulateGrid_InputMessage">
+    <wsdl:part name="parameters" element="tns:PopulateGrid" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PopulateGrid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PopulateGridResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_saveConnection_InputMessage">
+    <wsdl:part name="parameters" element="tns:saveConnection" />
+  </wsdl:message>
+  <wsdl:message name="IService1_saveConnection_OutputMessage">
+    <wsdl:part name="parameters" element="tns:saveConnectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AttachToSecureLoginDB_InputMessage">
+    <wsdl:part name="parameters" element="tns:AttachToSecureLoginDB" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AttachToSecureLoginDB_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AttachToSecureLoginDBResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDataUsingDataContract_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDataUsingDataContract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="ValidateUserLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ValidateUserLogin" message="tns:IService1_ValidateUserLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ValidateUserLoginResponse" message="tns:IService1_ValidateUserLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateGatewayLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ValidateGatewayLogin" message="tns:IService1_ValidateGatewayLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ValidateGatewayLoginResponse" message="tns:IService1_ValidateGatewayLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getSecureKey">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getSecureKey" message="tns:IService1_getSecureKey_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getSecureKeyResponse" message="tns:IService1_getSecureKey_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PopulateCombo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PopulateCombo" message="tns:IService1_PopulateCombo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PopulateComboResponse" message="tns:IService1_PopulateCombo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteExistingConnection">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteExistingConnection" message="tns:IService1_DeleteExistingConnection_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteExistingConnectionResponse" message="tns:IService1_DeleteExistingConnection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PopulateGrid">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PopulateGrid" message="tns:IService1_PopulateGrid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PopulateGridResponse" message="tns:IService1_PopulateGrid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="saveConnection">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/saveConnection" message="tns:IService1_saveConnection_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/saveConnectionResponse" message="tns:IService1_saveConnection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AttachToSecureLoginDB">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AttachToSecureLoginDB" message="tns:IService1_AttachToSecureLoginDB_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AttachToSecureLoginDBResponse" message="tns:IService1_AttachToSecureLoginDB_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataResponse" message="tns:IService1_GetData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataUsingDataContract">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContract" message="tns:IService1_GetDataUsingDataContract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContractResponse" message="tns:IService1_GetDataUsingDataContract_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ValidateUserLogin">
+      <soap:operation soapAction="http://tempuri.org/IService1/ValidateUserLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateGatewayLogin">
+      <soap:operation soapAction="http://tempuri.org/IService1/ValidateGatewayLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSecureKey">
+      <soap:operation soapAction="http://tempuri.org/IService1/getSecureKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PopulateCombo">
+      <soap:operation soapAction="http://tempuri.org/IService1/PopulateCombo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteExistingConnection">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteExistingConnection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PopulateGrid">
+      <soap:operation soapAction="http://tempuri.org/IService1/PopulateGrid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveConnection">
+      <soap:operation soapAction="http://tempuri.org/IService1/saveConnection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AttachToSecureLoginDB">
+      <soap:operation soapAction="http://tempuri.org/IService1/AttachToSecureLoginDB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataUsingDataContract">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetDataUsingDataContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://64.94.173.71/SecureLogin/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

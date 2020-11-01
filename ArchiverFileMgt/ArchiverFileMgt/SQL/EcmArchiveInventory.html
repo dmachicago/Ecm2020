@@ -1,0 +1,526 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>EcmArchive.db Database Schema</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <style type="text/css">
+                    body { background-color: #fff; color: #000; font-family: Consolas, monospace}
+                    a:link { color: #03d; }
+                    a:visited { color: #039; }
+                    a:hover { color: #09f; }
+                    table { border-collapse: collapse; width: 100%; }
+                    table caption { color: #666; text-align: right; font-size: 65%; margin-bottom: .5ex; }
+                    table td, table th { border: solid 1px #666; border-collapse: collapse; padding: .3ex .5ex; vertical-align: top; }
+                    table tbody tr:hover { background-color: #ffc; }
+                    table thead th { text-align: left; background-color: #ccc; }
+                    table tbody th { text-align: left; white-space: nowrap; }
+                    .table { page-break-inside: avoid; }
+                    .pk { float: right; cursor: arrow; color: #999; }
+                    .type { white-space: nowrap; }
+                    .null { text-align: center; }
+                    .flag { white-space: nowrap; font-size: 70%; display: inline-block; border: solid 1px #ccc; padding: .25ex .5ex; background-color: #ddd; margin-right: 1ex; }
+                    .tocref { float: right; text-decoration: none; font-weight: normal; }
+                    .footer { text-align: center; margin-top: 1em; font-size: 80%;}
+                    li.view:before { content: "VIEW"; font-size: 70%; display: inline-block; border: solid 1px #ccc; padding: .25ex .5ex; background-color: #ddd; margin-right: 1ex; }
+                    @media print {
+                    body { font-size: .8em; }
+                    #toc, .tocref { display: none; }
+                    a:link, a:visited { color: #000; text-decoration: none; }
+                    }
+                </style>
+  </head>
+  <body>
+    <h1>EcmArchive.db Database Schema</h1>
+    <div id="toc">
+      <ul>
+        <li class="table"><a href="#ContactsArchive">ContactsArchive</a></li>
+        <li class="table"><a href="#Directory">Directory</a></li>
+        <li class="table"><a href="#Exchange">Exchange</a></li>
+        <li class="table"><a href="#Files">Files</a></li>
+        <li class="table"><a href="#Inventory">Inventory</a></li>
+        <li class="table"><a href="#Listener">Listener</a></li>
+        <li class="table"><a href="#MultiLocationFiles">MultiLocationFiles</a></li>
+        <li class="table"><a href="#Outlook">Outlook</a></li>
+        <li class="table"><a href="#ZipFile">ZipFile</a></li>
+      </ul>
+    </div>
+    <div class="table">
+      <h2 id=""><a href="#toc" class="tocref">⇧</a>
+        Database Properties
+      </h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="type">Database</td>
+            <td class="type">C:\dev\ECM2020\ArchiverFileMgt\ArchiverFileMgt\SqlLiteDB\EcmArchive.db</td>
+          </tr>
+          <tr>
+            <td class="type">ServerVersion</td>
+            <td class="type">3.24.0</td>
+          </tr>
+          <tr>
+            <td class="type">DatabaseSize</td>
+            <td class="type">136 KB</td>
+          </tr>
+          <tr>
+            <td class="type">Created</td>
+            <td class="type">11/3/2019 7:08 PM</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table">
+      <h2 id="ContactsArchive"><a href="#toc" class="tocref">⇧</a>Table ContactsArchive</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30ex">Name</th>
+            <th style="width:20ex">Type</th>
+            <th style="width:4ex">NULL</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY sqlite_autoindex_ContactsArchive_1">◆</span>Email1Address</th>
+            <td class="type">nvarchar (100)</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY sqlite_autoindex_ContactsArchive_1">◆</span>FullName</th>
+            <td class="type">nvarchar (100)</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table">
+      <h2 id="Directory"><a href="#toc" class="tocref">⇧</a>Table Directory</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30ex">Name</th>
+            <th style="width:20ex">Type</th>
+            <th style="width:4ex">NULL</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY sqlite_autoindex_Directory_1">◆</span>DirName</th>
+            <td class="type">nvarchar (2000)</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>DirID</th>
+            <td class="type">int identity </td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>UseArchiveBit</th>
+            <td class="type">bit</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>DirHash</th>
+            <td class="type">nvarchar (50)</td>
+            <td class="null">☒</td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table">
+      <h2 id="Exchange"><a href="#toc" class="tocref">⇧</a>Table Exchange</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30ex">Name</th>
+            <th style="width:20ex">Type</th>
+            <th style="width:4ex">NULL</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY sqlite_autoindex_Exchange_1">◆</span>sKey</th>
+            <td class="type">nvarchar (200)</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>RowID</th>
+            <td class="type">int identity </td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>KeyExists</th>
+            <td class="type">bit</td>
+            <td class="null">☒</td>
+            <td><span class="flag">DEFAULT 1</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table">
+      <h2 id="Files"><a href="#toc" class="tocref">⇧</a>Table Files</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30ex">Name</th>
+            <th style="width:20ex">Type</th>
+            <th style="width:4ex">NULL</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY sqlite_autoindex_Files_1">◆</span>FileID</th>
+            <td class="type">int identity </td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>FileName</th>
+            <td class="type">nvarchar (254)</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>FileHash</th>
+            <td class="type">nvarchar (50)</td>
+            <td class="null">☒</td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table">
+      <h2 id="Inventory"><a href="#toc" class="tocref">⇧</a>Table Inventory</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30ex">Name</th>
+            <th style="width:20ex">Type</th>
+            <th style="width:4ex">NULL</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY sqlite_autoindex_Inventory_1">◆</span>InvID</th>
+            <td class="type">int identity </td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>DirID</th>
+            <td class="type">int</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>FileID</th>
+            <td class="type">int</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>FileExist</th>
+            <td class="type">bit</td>
+            <td class="null">☒</td>
+            <td><span class="flag">DEFAULT 1</span></td>
+          </tr>
+          <tr>
+            <th>FileSize</th>
+            <td class="type">bigint</td>
+            <td class="null">☒</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>CreateDate</th>
+            <td class="type">datetime</td>
+            <td class="null">☒</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>LastUpdate</th>
+            <td class="type">datetime</td>
+            <td class="null">☒</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>LastArchiveUpdate</th>
+            <td class="type">datetime</td>
+            <td class="null">☒</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>ArchiveBit</th>
+            <td class="type">bit</td>
+            <td class="null">☒</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>NeedsArchive</th>
+            <td class="type">bit</td>
+            <td class="null">☒</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>FileHash</th>
+            <td class="type">nvarchar (50)</td>
+            <td class="null">☒</td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table">
+      <h2 id="Listener"><a href="#toc" class="tocref">⇧</a>Table Listener</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30ex">Name</th>
+            <th style="width:20ex">Type</th>
+            <th style="width:4ex">NULL</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY sqlite_autoindex_Listener_1">◆</span>FQN</th>
+            <td class="type">nvarchar (2000)</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>Uploaded</th>
+            <td class="type">int</td>
+            <td class="null">☐</td>
+            <td><span class="flag">DEFAULT 0</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table">
+      <h2 id="MultiLocationFiles"><a href="#toc" class="tocref">⇧</a>Table MultiLocationFiles</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30ex">Name</th>
+            <th style="width:20ex">Type</th>
+            <th style="width:4ex">NULL</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY sqlite_autoindex_MultiLocationFiles_1">◆</span>LocID</th>
+            <td class="type">int identity </td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>DirID</th>
+            <td class="type">int</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>FileID</th>
+            <td class="type">int</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>FileHash</th>
+            <td class="type">nvarchar (50)</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table">
+      <h2 id="Outlook"><a href="#toc" class="tocref">⇧</a>Table Outlook</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30ex">Name</th>
+            <th style="width:20ex">Type</th>
+            <th style="width:4ex">NULL</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>RowID</th>
+            <td class="type">int identity </td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY sqlite_autoindex_Outlook_1">◆</span>sKey</th>
+            <td class="type">nvarchar (500)</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>KeyExists</th>
+            <td class="type">bit</td>
+            <td class="null">☒</td>
+            <td><span class="flag">DEFAULT 1</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table">
+      <h2 id="ZipFile"><a href="#toc" class="tocref">⇧</a>Table ZipFile</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30ex">Name</th>
+            <th style="width:20ex">Type</th>
+            <th style="width:4ex">NULL</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><span class="pk" title="PRIMARY KEY sqlite_autoindex_ZipFile_1">◆</span>RowNbr</th>
+            <td class="type">int identity </td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>DirID</th>
+            <td class="type">int</td>
+            <td class="null">☒</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>FileID</th>
+            <td class="type">int</td>
+            <td class="null">☒</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>FQN</th>
+            <td class="type">nvarchar (1000)</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>EmailAttachment</th>
+            <td class="type">bit</td>
+            <td class="null">☒</td>
+            <td><span class="flag">DEFAULT 0</span></td>
+          </tr>
+          <tr>
+            <th>SuccessfullyProcessed</th>
+            <td class="type">bit</td>
+            <td class="null">☒</td>
+            <td><span class="flag">DEFAULT 0</span></td>
+          </tr>
+          <tr>
+            <th>fSize</th>
+            <td class="type">bigint</td>
+            <td class="null">☒</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>CreateDate</th>
+            <td class="type">datetime</td>
+            <td class="null">☐</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>LastAccessDate</th>
+            <td class="type">datetime</td>
+            <td class="null">☒</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>NumberOfZipFiles</th>
+            <td class="type">int</td>
+            <td class="null">☒</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>ParentGuid</th>
+            <td class="type">nvarchar (50)</td>
+            <td class="null">☒</td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th>InWork</th>
+            <td class="type">bit</td>
+            <td class="null">☒</td>
+            <td><span class="flag">DEFAULT 0</span></td>
+          </tr>
+          <tr>
+            <th>FileHash</th>
+            <td class="type">nvarchar (50)</td>
+            <td class="null">☒</td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="footer">
+                    Generated by <a href="http://SqlDbDoc.codeplex.com/">DB&gt;doc</a> and <a href="https://github.com/ErikEJ/SqlCeToolbox">SQL Server Compact/SQLite Toolbox</a> on
+                    November 04, 2019, 14:37:35</div>
+  </body>
+</html>

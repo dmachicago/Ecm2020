@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="VB" Debug="true" Service="EcmSecureAttachWCF2.SVCGateway" CodeBehind="SVCGateway.svc.vb" %>

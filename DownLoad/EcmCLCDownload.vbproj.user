@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PublishUrlHistory>D:\PrePublishedWebSites\ECMSaaS\clcDownloader\|D:\PrePublishedWebSites\ECMSaaS\ClcDownloader\|C:\PrePublishedWebSites\ECMSaaS\ClcDownloader\|C:\PrePublishedWebSites\Ecm2012\Cloud\ClcDownloader\|C:\PrePublishedWebSites\Ecm2012\Cloud\CLC\</PublishUrlHistory>
+    <InstallUrlHistory>http://ecmlibrary/ECMSaaS/ClcDownloader/|http://www.ecmlibrary.com/ECMSaas/ClcDownloader/|http://www.EcmLibrary.com/ECMSaas/ClcDownloader/|http://108.61.17.163/ClcDownloader/|http://108.61.17.163/ClcDownloader\</InstallUrlHistory>
+    <SupportUrlHistory>http://www.EcmLibrary.com/Help</SupportUrlHistory>
+    <UpdateUrlHistory>http://www.EcmLibrary.com/ECMSAAS/clcDownLoader/|http://www.EcmLibrary.com/Download/clc/</UpdateUrlHistory>
+    <BootstrapperUrlHistory />
+    <ErrorReportUrlHistory />
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <StartAction>Project</StartAction>
+    <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
+    <StartArguments>23</StartArguments>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnableSecurityDebugging>false</EnableSecurityDebugging>
+  </PropertyGroup>
+</Project>

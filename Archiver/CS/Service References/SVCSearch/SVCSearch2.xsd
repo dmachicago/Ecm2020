@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfDS_EMAIL">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_EMAIL" nillable="true" type="tns:DS_EMAIL" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_EMAIL" nillable="true" type="tns:ArrayOfDS_EMAIL" />
+  <xs:complexType name="DS_EMAIL">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AllRecipients" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Bcc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Body" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CC" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreationTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EmailGuid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FoundInAttach" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MsgSize" type="xs:int" />
+      <xs:element minOccurs="0" name="NbrAttachments" type="xs:int" />
+      <xs:element minOccurs="0" name="OriginalFolder" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RANK" type="xs:int" />
+      <xs:element minOccurs="0" name="RID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ROWID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReceivedByName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReceivedTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RepoSvrName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RetentionExpirationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SUBJECT" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SenderEmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SenderName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SentOn" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SentTO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShortSubj" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SourceTypeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="isPublic" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_EMAIL" nillable="true" type="tns:DS_EMAIL" />
+  <xs:complexType name="ArrayOfDS_License">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_License" nillable="true" type="tns:DS_License" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_License" nillable="true" type="tns:ArrayOfDS_License" />
+  <xs:complexType name="DS_License">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Applied" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EncryptedLicense" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LicenseID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LicenseNbr" type="xs:int" />
+      <xs:element minOccurs="0" name="LicenseText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LicenseTypeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MachineID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PurchasedMachines" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PurchasedUsers" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServerNAME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SqlInstanceName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupportActive" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupportActiveDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupportInactiveDate" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_License" nillable="true" type="tns:DS_License" />
+  <xs:complexType name="ArrayOfDS_CONTENT">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_CONTENT" nillable="true" type="tns:DS_CONTENT" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_CONTENT" nillable="true" type="tns:ArrayOfDS_CONTENT" />
+  <xs:complexType name="DS_CONTENT">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataSourceOwnerUserID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FQN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileDirectory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileLength" type="xs:int" />
+      <xs:element minOccurs="0" name="LastAccessDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastWriteTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OriginalFileType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RANK" type="xs:int" />
+      <xs:element minOccurs="0" name="ROWID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RepoSvrName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RetentionExpirationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SourceGuid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SourceName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StructuredData" type="xs:boolean" />
+      <xs:element minOccurs="0" name="VersionNbr" type="xs:int" />
+      <xs:element minOccurs="0" name="isMaster" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="isPublic" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_CONTENT" nillable="true" type="tns:DS_CONTENT" />
+  <xs:complexType name="ArrayOfDS_Attachments">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_Attachments" nillable="true" type="tns:DS_Attachments" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_Attachments" nillable="true" type="tns:ArrayOfDS_Attachments" />
+  <xs:complexType name="DS_Attachments">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AttachmentName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailGuid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RowID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_Attachments" nillable="true" type="tns:DS_Attachments" />
+  <xs:complexType name="ArrayOfDS_SearchTerms">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_SearchTerms" nillable="true" type="tns:DS_SearchTerms" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_SearchTerms" nillable="true" type="tns:ArrayOfDS_SearchTerms" />
+  <xs:complexType name="DS_SearchTerms">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SearchTypeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Term" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TermDatatype" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TermVal" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_SearchTerms" nillable="true" type="tns:DS_SearchTerms" />
+  <xs:complexType name="ArrayOfDS_USERSEARCHSTATE">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_USERSEARCHSTATE" nillable="true" type="tns:DS_USERSEARCHSTATE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_USERSEARCHSTATE" nillable="true" type="tns:ArrayOfDS_USERSEARCHSTATE" />
+  <xs:complexType name="DS_USERSEARCHSTATE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HiveActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="HiveConnectionName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParmDataType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParmName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParmVal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RepoSvrName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RowCreationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RowLastModDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RowNbr" type="xs:int" />
+      <xs:element minOccurs="0" name="ScreenName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SearchID" type="xs:int" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_USERSEARCHSTATE" nillable="true" type="tns:DS_USERSEARCHSTATE" />
+  <xs:complexType name="ArrayOfDS_USERSCREENSTATE">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_USERSCREENSTATE" nillable="true" type="tns:DS_USERSCREENSTATE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_USERSCREENSTATE" nillable="true" type="tns:ArrayOfDS_USERSCREENSTATE" />
+  <xs:complexType name="DS_USERSCREENSTATE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HiveActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="HiveConnectionName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParmDataType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParmName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParmVal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RepoSvrName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RowCreationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RowLastModDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RowNbr" type="xs:int" />
+      <xs:element minOccurs="0" name="ScreenName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_USERSCREENSTATE" nillable="true" type="tns:DS_USERSCREENSTATE" />
+  <xs:complexType name="ArrayOfDS_clsUSERGRIDSTATE">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_clsUSERGRIDSTATE" nillable="true" type="tns:DS_clsUSERGRIDSTATE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_clsUSERGRIDSTATE" nillable="true" type="tns:ArrayOfDS_clsUSERGRIDSTATE" />
+  <xs:complexType name="DS_clsUSERGRIDSTATE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ColName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ColOrder" type="xs:int" />
+      <xs:element minOccurs="0" name="ColReadOnly" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ColSortAsc" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ColSortOrder" type="xs:int" />
+      <xs:element minOccurs="0" name="ColVisible" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ColWidth" type="xs:int" />
+      <xs:element minOccurs="0" name="GridName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HiveActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="HiveConnectionName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RepoSvrName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RowCreationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RowLastModDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RowNbr" type="xs:int" />
+      <xs:element minOccurs="0" name="ScreenName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_clsUSERGRIDSTATE" nillable="true" type="tns:DS_clsUSERGRIDSTATE" />
+  <xs:complexType name="ArrayOfDS_CoOwner">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_CoOwner" nillable="true" type="tns:DS_CoOwner" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_CoOwner" nillable="true" type="tns:ArrayOfDS_CoOwner" />
+  <xs:complexType name="DS_CoOwner">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CoOwnerID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CoOwnerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RowID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_CoOwner" nillable="true" type="tns:DS_CoOwner" />
+  <xs:complexType name="ArrayOfDS_VUserGrid">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_VUserGrid" nillable="true" type="tns:DS_VUserGrid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_VUserGrid" nillable="true" type="tns:ArrayOfDS_VUserGrid" />
+  <xs:complexType name="DS_VUserGrid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Admin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClientOnly" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HiveActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="HiveConnectionName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RepoSvrName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RowCreationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RowLastModDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserLoginID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="isActive" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_VUserGrid" nillable="true" type="tns:DS_VUserGrid" />
+  <xs:complexType name="ArrayOfDS_DgGroupUsers">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_DgGroupUsers" nillable="true" type="tns:DS_DgGroupUsers" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_DgGroupUsers" nillable="true" type="tns:ArrayOfDS_DgGroupUsers" />
+  <xs:complexType name="DS_DgGroupUsers">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DeleteAccess" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FullAccess" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ReadOnlyAccess" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Searchable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_DgGroupUsers" nillable="true" type="tns:DS_DgGroupUsers" />
+  <xs:complexType name="ArrayOfDS_dgGrpUsers">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_dgGrpUsers" nillable="true" type="tns:DS_dgGrpUsers" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_dgGrpUsers" nillable="true" type="tns:ArrayOfDS_dgGrpUsers" />
+  <xs:complexType name="DS_dgGrpUsers">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_dgGrpUsers" nillable="true" type="tns:DS_dgGrpUsers" />
+  <xs:complexType name="ArrayOfDS_LibItems">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_LibItems" nillable="true" type="tns:DS_LibItems" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_LibItems" nillable="true" type="tns:ArrayOfDS_LibItems" />
+  <xs:complexType name="DS_LibItems">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedByUserGuidId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataSourceOwnerUserID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LibraryItemGuid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LibraryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LibraryOwnerUserID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SourceGuid" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_LibItems" nillable="true" type="tns:DS_LibItems" />
+  <xs:complexType name="ArrayOfDS_DgAssigned">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_DgAssigned" nillable="true" type="tns:DS_DgAssigned" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_DgAssigned" nillable="true" type="tns:ArrayOfDS_DgAssigned" />
+  <xs:complexType name="DS_DgAssigned">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GroupName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GroupOwnerUserID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_DgAssigned" nillable="true" type="tns:DS_DgAssigned" />
+  <xs:complexType name="ArrayOfDS_VLibraryStats">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_VLibraryStats" nillable="true" type="tns:DS_VLibraryStats" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_VLibraryStats" nillable="true" type="tns:ArrayOfDS_VLibraryStats" />
+  <xs:complexType name="DS_VLibraryStats">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Items" type="xs:int" />
+      <xs:element minOccurs="0" name="LibraryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Members" type="xs:int" />
+      <xs:element minOccurs="0" name="isPublic" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_VLibraryStats" nillable="true" type="tns:DS_VLibraryStats" />
+  <xs:complexType name="ArrayOfDS_ZipFiles">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_ZipFiles" nillable="true" type="tns:DS_ZipFiles" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_ZipFiles" nillable="true" type="tns:ArrayOfDS_ZipFiles" />
+  <xs:complexType name="DS_ZipFiles">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SourceGuid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SourceName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="isParent" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_ZipFiles" nillable="true" type="tns:DS_ZipFiles" />
+  <xs:complexType name="ArrayOfDS_Metadata">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_Metadata" nillable="true" type="tns:DS_Metadata" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_Metadata" nillable="true" type="tns:ArrayOfDS_Metadata" />
+  <xs:complexType name="DS_Metadata">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AttributeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_Metadata" nillable="true" type="tns:DS_Metadata" />
+  <xs:complexType name="ArrayOfDS_ListOfStrings01">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_ListOfStrings01" nillable="true" type="tns:DS_ListOfStrings01" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_ListOfStrings01" nillable="true" type="tns:ArrayOfDS_ListOfStrings01" />
+  <xs:complexType name="DS_ListOfStrings01">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="strItem" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_ListOfStrings01" nillable="true" type="tns:DS_ListOfStrings01" />
+  <xs:complexType name="ArrayOfDS_ListOfStrings02">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_ListOfStrings02" nillable="true" type="tns:DS_ListOfStrings02" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_ListOfStrings02" nillable="true" type="tns:ArrayOfDS_ListOfStrings02" />
+  <xs:complexType name="DS_ListOfStrings02">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="strItem" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_ListOfStrings02" nillable="true" type="tns:DS_ListOfStrings02" />
+  <xs:complexType name="ArrayOfDS_ListOfStrings03">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_ListOfStrings03" nillable="true" type="tns:DS_ListOfStrings03" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_ListOfStrings03" nillable="true" type="tns:ArrayOfDS_ListOfStrings03" />
+  <xs:complexType name="DS_ListOfStrings03">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="strItem" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_ListOfStrings03" nillable="true" type="tns:DS_ListOfStrings03" />
+  <xs:complexType name="ArrayOfDS_ListOfStrings04">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_ListOfStrings04" nillable="true" type="tns:DS_ListOfStrings04" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_ListOfStrings04" nillable="true" type="tns:ArrayOfDS_ListOfStrings04" />
+  <xs:complexType name="DS_ListOfStrings04">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="strItem" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_ListOfStrings04" nillable="true" type="tns:DS_ListOfStrings04" />
+  <xs:complexType name="ArrayOfDS_VLibraryUsers">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_VLibraryUsers" nillable="true" type="tns:DS_VLibraryUsers" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_VLibraryUsers" nillable="true" type="tns:ArrayOfDS_VLibraryUsers" />
+  <xs:complexType name="DS_VLibraryUsers">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LibraryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LibraryOwnerUserID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_VLibraryUsers" nillable="true" type="tns:DS_VLibraryUsers" />
+</xs:schema>

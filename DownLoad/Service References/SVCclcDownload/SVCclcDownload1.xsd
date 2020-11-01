@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:45467/SVCclcDownload.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:45467/SVCclcDownload.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RestoreWCF" />
+  <xs:element name="ckTest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EncCS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ckTestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ckTestResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getServiceVersion">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getServiceVersionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getServiceVersionResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cleanRestoreQue">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="SourceGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SessionID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cleanRestoreQueResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cleanRestoreQueResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteSqlNewConn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LocationID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MySql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SessionID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteSqlNewConnResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ExecuteSqlNewConnResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getFileParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EncCS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TgtGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fExt" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TgtTable" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getFileParametersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fExt" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getRestoreFileSourceGuid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EncCS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RetGuids" nillable="true" type="q1:ArrayOfKeyValueOfstringstring" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SessionID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getRestoreFileSourceGuidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RetGuids" nillable="true" type="q2:ArrayOfKeyValueOfstringstring" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getPreviewFileSourceGuid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EncCS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RetGuids" nillable="true" type="q3:ArrayOfKeyValueOfstringstring" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SessionID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getPreviewFileSourceGuidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RetGuids" nillable="true" type="q4:ArrayOfKeyValueOfstringstring" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ckRestoreFilesToProcess">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EncCS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ckRestoreFilesToProcessResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ckRestoreFilesToProcessResult" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ckPreviewFileToProcess">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EncCS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ckPreviewFileToProcessResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ckPreviewFileToProcessResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="writeImageSourceDataFromDbWriteToFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EncCS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SourceGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FQN" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompressedDataBuffer" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="writeImageSourceDataFromDbWriteToFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="FQN" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompressedDataBuffer" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="writeAttachmentFromDbWriteToFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EncCS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RowID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FQN" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompressedDataBuffer" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="writeAttachmentFromDbWriteToFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="FQN" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompressedDataBuffer" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="writeEmailFromDbToFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EncCS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EmailGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SourceTypeCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompressedDataBuffer" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="writeEmailFromDbToFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SourceTypeCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompressedDataBuffer" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="value" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDataResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataUsingDataContract">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/RestoreWCF" minOccurs="0" name="composite" nillable="true" type="q5:CompositeType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataUsingDataContractResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/RestoreWCF" minOccurs="0" name="GetDataUsingDataContractResult" nillable="true" type="q6:CompositeType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

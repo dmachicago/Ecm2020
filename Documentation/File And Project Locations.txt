@@ -1,0 +1,52 @@
+DUNS 883495616
+CAGE 31YB3
+
+tahoe 	1GNEK13ZX4J249946
+
+C:\Program Files (x86)\VMware\VMware Workstation\windows.iso
+
+D:\dev\SqlLite\sqlite-tools-win32-x86-3290000\sqlite3.exe
+
+
+Name:		EcmAdminSetup
+Project:	EcmAdminSetup.vbproj
+Location:	D:\dev\EcmMasterSingleSource\ECM\EcmCloud\EcmAdminSetup\
+Published:	D:\PrePublishedWebSites\ECMSAAS\AdminSetup\
+Install:	https://EcmLibrary.com/EcmSaas/Admin
+
+Name:		File Downloader
+Project:	EcmCLCDownload.vbproj
+Location:	D:\dev\EcmMasterSingleSource\ECM\EcmCloudWcf\EcmDownloader\EcmDownloader\
+Published:	D:\PrePublishedWebSites\ECMSaaS\clcDownloader\
+Install:	http://ecmlibrary/ECMSaaS/ClcDownloader/
+
+Name:		EcmDownload.WCF
+Project:	EcmDownload.WCF.vbproj
+Location:	D:\dev\EcmMasterSingleSource\ECM\EcmCloudWcf\Backup\EcmDownloader\RestoreWCF\
+Published:	D:\PrepublishedWebSites\ECMSaaS\SVCclcDownload
+Install:	http://ecmlibrary/ECMSaaS/SVCclcDownload/
+
+Name:		ECMSearchWPF
+Project:	ECMSearchWPF.vbproj
+Location:	D:\dev\EcmMasterSingleSource\ECM\ECMSearchWPF\ECMSearchWPF\
+Published:	D:\PrepublishedWebSites\ECMSearchWPF\
+Install:	http://EcmLibrary.com/EcmSaaS/EcmSearch
+
+Name:		EcmSecureAttachService
+Project:	EcmSecureAttachWCF2.vbproj
+Location:	D:\dev\EcmMasterSingleSource\ECM\ECMSecureAttach\EcmSecureAttachWCF2\
+Published:	D:\PrePublishedWebSites\ECMSaaS\SecureAttachAdminSvc
+Install:	http://EcmLibrary.com/EcmSaaS/EcmAttach
+
+Name:		SearchSVC
+Project:	SearchSVC.vbproj
+Location:	D:\dev\EcmMasterSingleSource\ECM\EcmCloudWcf\EcmCloudWcf.Web\
+Published:	D:\PrePublishedWebSites\ECMSaaS\SearchSVC
+Install:	http://EcmLibrary.com/EcmSaaS/SearchSVC
+
+Name:		
+Project:	
+Location:	
+Published:	
+Install:	
+

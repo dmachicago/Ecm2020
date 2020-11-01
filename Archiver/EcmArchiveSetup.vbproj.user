@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PublishUrlHistory>C:\PrePublishedWebSites\EcmLibraryWEB\Download\EcmArchiveSetup\|C:\PrePublishedWebSites\EcmLibraryWEB\Download\EcmArchiveSetupCD\|C:\PrePublishedWebSites\EcmArchiverDMA\|C:\PrePublishedWebSites\EcmArchiveSetup\|publish\</PublishUrlHistory>
+    <InstallUrlHistory>http://www.EcmLibrary.com/download/EcmArchiveSetup/|http://www.EcmLibrary.com/Download/EcmArchiveSetup/|http://www.DmaChicago.com/ECM/EcmArchiverDMA/|http://www.DmaChicago.com/ECM/EcmArchiveSetup/|http://www.EcmLibrary.com/Download/EcmArchiveSetup/publish.htm/</InstallUrlHistory>
+    <SupportUrlHistory>http://www.EcmLibrary.com/help</SupportUrlHistory>
+    <UpdateUrlHistory>http://www.EcmLibrary.com/Download/EcmArchiveSetup/</UpdateUrlHistory>
+    <BootstrapperUrlHistory>
+    </BootstrapperUrlHistory>
+    <ErrorReportUrlHistory>
+    </ErrorReportUrlHistory>
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>true</VerifyUploadedFiles>
+    <EnableSecurityDebugging>false</EnableSecurityDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <StartArguments>
+    </StartArguments>
+  </PropertyGroup>
+</Project>

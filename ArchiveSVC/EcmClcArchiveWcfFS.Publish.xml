@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="C:\PrePublishedWebSites\ECMSaaS\ArchiveFS" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="bin/C1.C1Zip.4.dll" publishTime="09/17/2010 21:21:52" />
+    <file relUrl="SVCFS.svc" publishTime="09/21/2011 17:45:49" />
+    <file relUrl="Web.config" publishTime="10/11/2012 16:41:32" />
+    <file relUrl="bin/EcmClcArchiveWcfFS.xml" publishTime="10/11/2012 16:38:59" />
+    <file relUrl="bin/EcmClcArchiveWcfFS.dll" publishTime="10/11/2012 16:38:59" />
+    <file relUrl="bin/EcmClcArchiveWcfFS.pdb" publishTime="10/11/2012 16:38:59" />
+  </publishProfile>
+</publishData>

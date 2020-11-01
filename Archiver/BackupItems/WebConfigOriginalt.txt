@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<configuration>
+
+  <system.web>
+	<compilation debug="true" strict="false" explicit="true" targetFramework="4.0" />
+	<!--WDM XX-->
+	<httpRuntime maxRequestLength="2147483647"/>
+  </system.web>
+  <system.serviceModel>
+	<bindings>
+	  <wsHttpBinding>
+		<!--WDM XX-->
+		<binding name="wsHttp" maxReceivedMessageSize ="50000000"
+			  messageEncoding="Mtom" maxBufferPoolSize="50000000" >
+			  <readerQuotas maxDepth="500000000"
+				  maxArrayLength="500000000" maxBytesPerRead="8192"
+				  maxNameTableCharCount="500000000" maxStringContentLength="500000000"/>
+			  <security mode="None" />
+		</binding>
+	  </wsHttpBinding>
+	  <customBinding>
+		<!--WDM XX-->
+		<binding name="BlobBinding"
+				 receiveTimeout="01:00:00"
+				 openTimeout="01:00:00"
+				 closeTimeout="01:00:00"
+				 sendTimeout="01:00:00">
+		  <binaryMessageEncoding
+			maxReadPoolSize="2147483647"
+			maxSessionSize="2147483647"
+			maxWritePoolSize="2147483647">
+			<readerQuotas
+			  maxArrayLength="2147483647"
+			  maxDepth="2147483647"
+			  maxBytesPerRead="8192"
+			  maxNameTableCharCount="2147483647"
+			  maxStringContentLength="2147483647" />
+		  </binaryMessageEncoding>
+		  <httpTransport
+			maxBufferSize="2147483647"
+			maxReceivedMessageSize="2147483647"
+			maxBufferPoolSize="2147483647"/>
+		</binding>
+	   </customBinding>
+	  <basicHttpBinding>
+		<!--WDM XX-->
+		<!--Ask Microsoft support about using Mtom-->
+		<!--Ask Microsoft support about Streaming-->
+		<!--Ask Microsoft support about using Zip Compression-->
+		<!--Ask Microsoft support about using Encryption-->
+		<!--Get Microsoft to fully explain END POINTS-->
+		<!--messageEncoding="Mtom"-->
+		<!--textEncoding="utf-8"-->
+		<!--textEncoding="unicode"-->
+		<binding name="BasicHttpBinding_IService1"
+				 closeTimeout="00:11:00"
+				 openTimeout="00:11:00"
+				 receiveTimeout="00:11:00"
+				 sendTimeout="00:11:00"
+				 allowCookies="false"
+				 bypassProxyOnLocal="false"
+				 hostNameComparisonMode="StrongWildcard"
+				 maxBufferSize="2147483647"
+				 messageEncoding ="Text"
+				 transferMode="Buffered"                 
+				 maxReceivedMessageSize="2147483647" 
+				 maxBufferPoolSize="2147483647">
+		  <readerQuotas 
+				 maxArrayLength="2147483647"
+				 maxDepth="32" 
+				 maxNameTableCharCount="2147483647" 
+				 maxStringContentLength="2147483647"
+				 maxBytesPerRead="8192" />
+		</binding>        
+	  </basicHttpBinding>      
+	</bindings>
+	<behaviors>
+	  <endpointBehaviors>
+		<!--WDM XX-->
+		<behavior name="LargeData">
+		  <dataContractSerializer maxItemsInObjectGraph="2147483647" />
+		</behavior>
+	  </endpointBehaviors>      
+	  <serviceBehaviors>      
+		<behavior>
+		  <!-- To avoid disclosing metadata information, set the value below to false and remove the metadata endpoint above before deployment -->
+		  <serviceMetadata httpGetEnabled="true"/>
+		  <!-- To receive exception details in faults for debugging purposes, set the value below to true.  Set to false before deployment to avoid disclosing exception information -->
+		  <serviceDebug includeExceptionDetailInFaults="false"/>
+		  <!--WDM XX-->
+		  <dataContractSerializer maxItemsInObjectGraph="2147483647" />
+		</behavior>
+	  </serviceBehaviors>
+	</behaviors>\
+	<!--<services>
+	  <service name="BlobService" behaviorConfiguration="BlobBehavior">
+		<endpoint address="" contract="sl1.Web.YourServiceContact" binding="basicHttpBinding" />
+	  </service>
+	</services>-->
+	
+  </system.serviceModel>
+  <system.webServer>
+	<modules runAllManagedModulesForAllRequests="true"/>
+  </system.webServer>
+  <appSettings>
+	<!--Set UseEncrypted's value to 1 if the encrypted connection string is to be used.-->
+	<add key="xENC.ECMREPO" value="bNk5A9GOZlbl5/ClNPM8tn6cdtsuGbYb2hs11HQqHOoBbZkzVkJ+lTF7R7uXkyjvbFpVVlgFpoDB14HKuZWyRV23CpqKLZcVGsyVGNfGZoRQrbPzavd2HywnRNyw4gcPxkvSk2a4JmhEb7lZXK0dAxG6paLJ4MHM"/>
+	<add key="ENC.ECMREPO" value="bNk5A9GOZlbl5/ClNPM8tn6cdtsuGbYb2hs11HQqHOoBbZkzVkJ+lTF7R7uXkyjvJH85M9U/i/4aGFjKsjgGp4Yi6KcKonej8qffXYA6dTPjE94y4oskTB4PbP8vC52psZ9gsAjZx63m/lk/irJrV1GyZVo3+IKXh/hpfzWvPk0Gb9lBG+EEUyxF6ke/3xbuRlJWX46y24A="/>
+	<add key="zzECMREPO" value="Data Source=ALIEN15;Initial Catalog=PTMS;Persist Security Info=True;User ID=SA;Password=XX01; Connect Timeout = 30"/>
+	<add key="@ECMREPO" value="Data Source=ALIEN15; Initial Catalog=ECM.Library; Integrated Security=True;  Connect Timeout = 30;" />
+	<add key="ECMREPO" value="Data Source=108.61.17.163;Initial Catalog=ECM.Library;Persist Security Info=True;User ID=ecmlibrary;Password=pclXXXXXXX1; Connect Timeout = 30;" />
+	<add key="xxECMREPO" value="Data Source=dmaptms.db.3591434.hostedresource.com; Initial catalog=dmaptms; User ID=dmaptms;Password='WdmXXXXX'; Connect Timeout = 45;"/>
+	<add key="yyECMREPO" value="Data Source=HP8GB\EcmLibrary;Initial Catalog=PTMS;Persist Security Info=True;User ID=ecmlibrary;Password=Junebug1; Connect Timeout = 30"/>
+	<add key="ClientSettingsProvider.ServiceUri" value=""/>
+	<!--Set the below value to 1 if the encrypted connection string is to be used.-->
+	<add key="UseEncrypted" value="1"/>
+  </appSettings>
+  <system.net>
+	<mailSettings>
+	  <smtp>
+		<network
+		  host = "smtpout.secureserver.net"
+		  port="3535"
+		  userName ="support@ecmlibrary.com"
+		  password ="Xaiver01"/>
+	  </smtp>
+	</mailSettings>
+  </system.net>
+</configuration>

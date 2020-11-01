@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a28ef6c4-e989-4b59-be0a-f3e88ca4c53e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:45467/SVCclcDownload.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SVCclcDownload.xsd" MetadataType="Schema" ID="318f8501-27d5-4362-b5b1-cdf6fa891c71" SourceId="1" SourceUrl="http://localhost:45467/SVCclcDownload.svc?xsd=xsd1" />
+    <MetadataFile FileName="SVCclcDownload1.xsd" MetadataType="Schema" ID="5e73db9d-a528-4a1d-b044-a536dc09281b" SourceId="1" SourceUrl="http://localhost:45467/SVCclcDownload.svc?xsd=xsd0" />
+    <MetadataFile FileName="SVCclcDownload2.xsd" MetadataType="Schema" ID="c8fa7be6-1a84-47b4-aca9-784f4cea89a2" SourceId="1" SourceUrl="http://localhost:45467/SVCclcDownload.svc?xsd=xsd3" />
+    <MetadataFile FileName="SVCclcDownload3.xsd" MetadataType="Schema" ID="0d2d5691-b850-4411-9f9b-aa5a873cdca4" SourceId="1" SourceUrl="http://localhost:45467/SVCclcDownload.svc?xsd=xsd2" />
+    <MetadataFile FileName="SVCclcDownload.wsdl" MetadataType="Wsdl" ID="00f373f4-a782-4919-ab1e-36ea2d2d0517" SourceId="1" SourceUrl="http://localhost:45467/SVCclcDownload.svc?wsdl" />
+    <MetadataFile FileName="SVCclcDownload.disco" MetadataType="Disco" ID="ab138e36-d567-47ba-a1f8-f58b348f51c6" SourceId="1" SourceUrl="http://localhost:45467/SVCclcDownload.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

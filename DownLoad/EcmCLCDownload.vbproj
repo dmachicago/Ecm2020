@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{70F0D4D8-72EE-4498-AAA2-0F650A84817F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>WindowsApplication1.My.MyApplication</StartupObject>
+    <RootNamespace>WindowsApplication1</RootNamespace>
+    <AssemblyName>EcmDownloader</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>D:\PrePublishedWebSites\ECMSaaS\clcDownloader\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Background</UpdateMode>
+    <UpdateInterval>30</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>true</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://ecmlibrary/ECMSaaS/ClcDownloader/</InstallUrl>
+    <UpdateUrl>http://www.EcmLibrary.com/ECMSAAS/clcDownLoader/</UpdateUrl>
+    <SupportUrl>http://www.EcmLibrary.com/Help</SupportUrl>
+    <ProductName>ECM CLC Downloader</ProductName>
+    <PublisherName>ECM Library</PublisherName>
+    <SuiteName>ECM Library</SuiteName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <TrustUrlParameters>true</TrustUrlParameters>
+    <ApplicationRevision>25</ApplicationRevision>
+    <ApplicationVersion>3.3.3.%2a</ApplicationVersion>
+    <UseApplicationTrust>true</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <ExcludeDeploymentUrl>true</ExcludeDeploymentUrl>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>EcmDownloader.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>EcmDownloader.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Text</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>5908F237C6121E9B98D00FFC4EBF66076997D45E</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Image\Button Reload.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="clsDatabaseDL.vb" />
+    <Compile Include="clsDownload.vb" />
+    <Compile Include="clsEncrypt.vb" />
+    <Compile Include="clsEncrypt2.vb" />
+    <Compile Include="clsLogging.vb" />
+    <Compile Include="clsTopMostMessageBox.vb" />
+    <Compile Include="clsWebRetrieve.vb" />
+    <Compile Include="frmEcmDownload.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEcmDownload.Designer.vb">
+      <DependentUpon>frmEcmDownload.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModGlobals.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Service References\SVCclcDownload\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SVC_Gateway\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmEcmDownload.resx">
+      <DependentUpon>frmEcmDownload.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CodeSigningCertificate.pfx" />
+    <None Include="EcmDownloader_TemporaryKey.pfx" />
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\SVCclcDownload\SVCclcDownload.wsdl" />
+    <None Include="Service References\SVCclcDownload\SVCclcDownload.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCclcDownload\SVCclcDownload1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCclcDownload\SVCclcDownload2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCclcDownload\SVCclcDownload3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCclcDownload\WindowsApplication1.SVCclcDownload.ckRestoreFilesToProcessResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCclcDownload\WindowsApplication1.SVCclcDownload.cleanRestoreQueResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCclcDownload\WindowsApplication1.SVCclcDownload.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCclcDownload\WindowsApplication1.SVCclcDownload.ExecuteSqlNewConnResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCclcDownload\WindowsApplication1.SVCclcDownload.getFileParametersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCclcDownload\WindowsApplication1.SVCclcDownload.getPreviewFileSourceGuidResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCclcDownload\WindowsApplication1.SVCclcDownload.getRestoreFileSourceGuidResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCclcDownload\WindowsApplication1.SVCclcDownload.writeAttachmentFromDbWriteToFileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCclcDownload\WindowsApplication1.SVCclcDownload.writeEmailFromDbToFileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCclcDownload\WindowsApplication1.SVCclcDownload.writeImageSourceDataFromDbWriteToFileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVC_Gateway\SVCGateway.wsdl" />
+    <None Include="Service References\SVC_Gateway\SVCGateway.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVC_Gateway\SVCGateway1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVC_Gateway\SVCGateway2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVC_Gateway\SVCGateway3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVC_Gateway\WindowsApplication1.SVC_Gateway.AttachToSecureLoginDBResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVC_Gateway\WindowsApplication1.SVC_Gateway.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVC_Gateway\WindowsApplication1.SVC_Gateway.DeleteExistingConnectionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVC_Gateway\WindowsApplication1.SVC_Gateway.DS_SecureAttach.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVC_Gateway\WindowsApplication1.SVC_Gateway.getConnectionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVC_Gateway\WindowsApplication1.SVC_Gateway.getSecureKeyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVC_Gateway\WindowsApplication1.SVC_Gateway.PopulateComboResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVC_Gateway\WindowsApplication1.SVC_Gateway.PopulateCompanyComboSecureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVC_Gateway\WindowsApplication1.SVC_Gateway.PopulateGridResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVC_Gateway\WindowsApplication1.SVC_Gateway.PopulateRepoComboResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVC_Gateway\WindowsApplication1.SVC_Gateway.PopulateRepoSecureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVC_Gateway\WindowsApplication1.SVC_Gateway.saveConnectionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVC_Gateway\WindowsApplication1.SVC_Gateway.ValidateGatewayLoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SVCclcDownload\" />
+    <WCFMetadataStorage Include="Service References\SVC_Gateway\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="blog_post_accept.ico" />
+    <Content Include="Docs\EndPoints.txt" />
+    <Content Include="Docs\TestWCF.sql" />
+    <Content Include="Image\aboutecmlogo.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Button Add.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Button Refresh.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Button Reload.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\ButtonBlueNext.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Documents bleu.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Documents vert.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Documents vide bleu.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\search04.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="page_process.ico" />
+    <None Include="Service References\SVC_Gateway\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\SVC_Gateway\configuration.svcinfo" />
+    <None Include="Service References\SVC_Gateway\configuration91.svcinfo" />
+    <None Include="Service References\SVC_Gateway\SVCGateway.disco" />
+    <None Include="Service References\SVCclcDownload\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\SVCclcDownload\configuration.svcinfo" />
+    <None Include="Service References\SVCclcDownload\configuration91.svcinfo" />
+    <None Include="Service References\SVCclcDownload\SVCclcDownload.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Documentation\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <Target Name="BeforePublish">
+  </Target>
+</Project>

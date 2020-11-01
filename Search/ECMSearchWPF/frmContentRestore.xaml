@@ -1,0 +1,20 @@
+﻿<Window x:Class="frmContentRestore"
+     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Content Restore  (frmContentRestore)" Height="300" Width="300">
+    <Grid x:Name="LayoutRoot" Margin="2">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Button x:Name="CancelButton" Content="Cancel" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,12,0,0" Grid.Row="1" />
+        <Button x:Name="OKButton" Content="OK" Width="75" Height="23" HorizontalAlignment="Right"  Margin="0,12,79,0" Grid.Row="1" />
+        <RadioButton Content="Original Directory" Height="18" HorizontalAlignment="Left" Margin="12,78,0,0" Name="rbToOriginalDir" VerticalAlignment="Top" Width="134" />
+        <RadioButton Content="My Documents" Height="18" HorizontalAlignment="Left" Margin="12,49,0,0" Name="rbToSelDir" VerticalAlignment="Top" Width="119" IsChecked="True" />
+        <CheckBox Content="Overwrite if Exists" Height="25" HorizontalAlignment="Left" Margin="12,108,0,0" Name="ckOverWrite" VerticalAlignment="Top" Width="132" />
+        <Label Height="32" HorizontalAlignment="Left" Margin="12,12,0,0" Name="Label1" VerticalAlignment="Top" Width="138" Content="Restore To:" />
+        <CheckBox Content="Create If Missing" Height="24" HorizontalAlignment="Left" Margin="26,78,0,0" Name="ckCreateMissing" VerticalAlignment="Top" Width="116" Visibility="Collapsed" />
+        <Label Height="18" Margin="10,132,12,0" Name="SB" VerticalAlignment="Top" />
+    </Grid>
+</Window>

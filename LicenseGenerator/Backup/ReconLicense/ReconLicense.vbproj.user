@@ -1,0 +1,16 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PublishUrlHistory>C:\PrePublishedWebSites\XX\|ftp://www.ecmlibrary.com/gx/|publish\</PublishUrlHistory>
+    <InstallUrlHistory>http://www.ecmlibrary.com/gx/</InstallUrlHistory>
+    <SupportUrlHistory>
+    </SupportUrlHistory>
+    <UpdateUrlHistory>
+    </UpdateUrlHistory>
+    <BootstrapperUrlHistory>
+    </BootstrapperUrlHistory>
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+    <ErrorReportUrlHistory>
+    </ErrorReportUrlHistory>
+  </PropertyGroup>
+</Project>

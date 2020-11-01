@@ -1,0 +1,9 @@
+SCC = This is a Source Code Control file
+
+[EcmSecureAttachWCF2.vbproj]
+SCC_Aux_Path = "\\dellt100\SourceSafe"
+SCC_Project_Name = "$/ECMSecureAttach.root/ECMSecureAttach/EcmSecureAttachWCF2", TBBFAAAA
+
+[clsSecureLogin.vbproj]
+SCC_Aux_Path = "\\dellt100\SourceSafe"
+SCC_Project_Name = "$/ECMSaaS.root/Archiver.root/EcmCLCArchive/ECMSecureAttach/EcmSecureAttachWCF2", CWFCAAAA

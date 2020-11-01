@@ -1,0 +1,17 @@
+﻿DataSource,ftCatalog,PK_DataSource,SourceName,NULL
+DataSource,ftCatalog,PK_DataSource,SourceImage,SourceTypeCode
+DataSource,ftCatalog,PK_DataSource,FQN,NULL
+DataSource,ftCatalog,PK_DataSource,Description,NULL
+DataSource,ftCatalog,PK_DataSource,KeyWords,NULL
+DataSource,ftCatalog,PK_DataSource,Notes,NULL
+DataSource,ftCatalog,PK_DataSource,OcrText,NULL
+Email,ftEmailCatalog,PK__Email__24383F235DE40451,SUBJECT,NULL
+Email,ftEmailCatalog,PK__Email__24383F235DE40451,Body,NULL
+Email,ftEmailCatalog,PK__Email__24383F235DE40451,EmailImage,SourceTypeCode
+Email,ftEmailCatalog,PK__Email__24383F235DE40451,ShortSubj,NULL
+Email,ftEmailCatalog,PK__Email__24383F235DE40451,Description,NULL
+Email,ftEmailCatalog,PK__Email__24383F235DE40451,KeyWords,NULL
+Email,ftEmailCatalog,PK__Email__24383F235DE40451,notes,NULL
+EmailAttachment,ftEmailCatalog,PK__EmailAtt__B975DD8289908A26,Attachment,AttachmentCode
+EmailAttachment,ftEmailCatalog,PK__EmailAtt__B975DD8289908A26,AttachmentName,NULL
+EmailAttachment,ftEmailCatalog,PK__EmailAtt__B975DD8289908A26,OcrText,NULL

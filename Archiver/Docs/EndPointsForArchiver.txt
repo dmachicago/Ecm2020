@@ -1,0 +1,46 @@
+﻿	<!--PICA010A0ESX1N3-->
+    <!--http://PICA010A0ESX1N3/Archive/SVCCLCArchive.svc-->
+    <!--http://PICA010A0ESX1N3/Archivefs/SVCFS.svc-->
+    <!--http://PICA010A0ESX1N3/SecureAttachAdminSvc/SVCGateway.svc-->
+    
+    <!--http://T410A/Gina/Archivefs/SVCFS.svc-->    
+    <!--http://T410A/Gina/archive/SVCCLCArchive.svc-->
+    <!--http://T410A/Gina/SecureAttachAdminSvc/SVCGateway.svc-->
+    <!--http://T410A/Gina/Search/SVCSearch.svc-->
+    
+    <!--http://localhost:20968/SVCFS.svc-->
+    <!--http://localhost:21306/SVCCLCArchive.svc-->
+    <!--http://localhost:5360/SVCGateway.svc-->
+    <!--http://localhost:59757/SVCSearch.svc-->
+
+<client>
+      <endpoint address="http://localhost:20968/SVCFS.svc"
+        binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IService1"
+        contract="SVCFS.IService1" name="BasicHttpBinding_IService1" />
+      <endpoint address="http://localhost:59757/Search/SVCSearch.svc"
+        binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IService17"
+        contract="SVCSearch.IService1" name="BasicHttpBinding_IService13" />
+      <endpoint address="http://localhost:5360/SVCGateway.svc" binding="basicHttpBinding"
+        bindingConfiguration="BasicHttpBinding_IService12" contract="SVCGateway.IService1"
+        name="BasicHttpBinding_IService11" />
+      <endpoint address="http://localhost:21306/SVCCLCArchive.svc"
+        binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IService15"
+        contract="SVCCLCArchive.IService1" name="BasicHttpBinding_IService12" />
+    </client>
+
+    
+
+<client>
+      <endpoint address="http://T410A/Gina/Archivefs/SVCFS.svc"
+        binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IService1"
+        contract="SVCFS.IService1" name="BasicHttpBinding_IService1" />
+      <endpoint address="http://T410A/Gina/Search/SVCSearch.svc"
+        binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IService17"
+        contract="SVCSearch.IService1" name="BasicHttpBinding_IService13" />
+      <endpoint address="http://T410A/Gina/SecureAttachAdminSvc/SVCGateway.svc" binding="basicHttpBinding"
+        bindingConfiguration="BasicHttpBinding_IService12" contract="SVCGateway.IService1"
+        name="BasicHttpBinding_IService11" />
+      <endpoint address="http://T410A/Gina/archive/SVCCLCArchive.svc"
+        binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IService15"
+        contract="SVCCLCArchive.IService1" name="BasicHttpBinding_IService12" />
+    </client>

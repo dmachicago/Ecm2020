@@ -1,0 +1,5 @@
+go
+update [dbo].[License] 
+                set [license] = '/yLziP/LNcGmbltONTdqyawdtRkhvXh8zLfTU2lx9fcDU50rNfoRmIUFY+5r41/6ObbdOPu1FT1IK8WYagZWwQuEqD1QW8txqabwxJiRQombbKAhiFxbvcMpugNXhRjwifKqpGIRRDv+7OqCovFSJBl92h1S+zkkq2s6HRlxMgG+uM+lFmKh2m7SWlAjlpkybHE5Vq+UFUt1vhoSntur6JkP/ZaBkAjgQkj1kQcXeOjaD/rC7EFPzGSL4RyCfE2RcNJUeJYUsuwKYPlchmc6/8srEp0QJEEW/b8Rb/h2Y8H2b6CSX7WDhLqS5E/CglmzQTsVTvx+Jby/I2s8syCBwLZkesst1z32tBFbtrfsHEz5tgfkWvzMi8FFh4lzOTy3W4CMrbuA1xPmoheIfPn9hO4yWVcZewtc5IKvmTnSJxA+ld9cFDLyvA5BdHkCarAKh3OqEa4W7GINwPu40lMBAdonkeJ59s9ufFfQ67MkcpgDaTs021ydogOUcqJwYI0vj9EN29Ngvk7+6KzOv/m6SYM4cd8rnqaNJ9G7tiHCjf5qUpzdyKFsuIMWCh0sH3EvIkFAJVdLQ+fHURkkbsm60fv3OE8ct4E0YEBf8alq2D20ITWDEMZA/5XUfRYSMYEeZ630+MG9g0cyfisMivdcJwcImxcj08VC0z1xzuX/5FuHxlE5I4RnLgRkrFKEUJLCisTz2vWJ+CBrCcrdQOHqRFirpn0cVWggI4mVbPyB0ePTPXHO5f/kW1pzr44dakZFIEa/OOQDd3gOewiT/bLjya+ODNcsFm1ri+176q9X7XPrD9OCmhV3GI9pDghrW3VDo8f3W8sEpcCoGJduDZpQuAVaXFfpuicmG3ONja4LFfwVwHmVDfaocdl3PVur57rrYJk37JXf0TS+H1/dDv4W+Q==' 
+                where [CustomerName] = 'Picatinny Arsenal' and CustomerID = 'PA-001' 
+go

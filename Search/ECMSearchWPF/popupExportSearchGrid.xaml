@@ -1,0 +1,33 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="popupExportSearchGrid"
+    Width="690" Height="462"
+    Title="Export Search         (popupExportSearchGrid)">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+            <GradientStop Color="#FF0D0D7C" Offset="0" />
+            <GradientStop Color="White" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid x:Name="LayoutRoot" Margin="2">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Button x:Name="CancelButton" Content="Cancel" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,12,0,0" Grid.Row="1" />
+        <Button x:Name="OKButton" Content="OK" Width="75" Height="23" HorizontalAlignment="Right"  Margin="0,12,79,0" Grid.Row="1" />
+        <DataGrid Height="321" HorizontalAlignment="Left" Margin="12,27,0,0" x:Name="dgGrid" VerticalAlignment="Top" Width="633" />
+        <Label Height="25" HorizontalAlignment="Left" Margin="12,4,0,0" x:Name="Label1" VerticalAlignment="Top" Width="187" Content="(popupExportSearchGrid)" Foreground="#FFEFECEC" />
+        <StackPanel Height="25" Margin="239,0,8,5" Orientation="Horizontal" VerticalAlignment="Bottom" >
+            <Button Content="PDF" x:Name="btnPdf" Width="80" />
+            <Button Content="Graphic" HorizontalAlignment="Left" x:Name="btnGraphic" Width="80" />
+            <Button Content="Excel" HorizontalAlignment="Left" x:Name="btnExcel" Width="80" />
+            <Button Content="HTML" HorizontalAlignment="Left" x:Name="btnHtml" Width="80" />
+            <Button Content="Text" HorizontalAlignment="Left" x:Name="btnText" Width="80" />
+        </StackPanel>
+        <Button Content="Close PDF" Height="25" HorizontalAlignment="Left" Margin="12,361,0,0" Name="btnOpenFile" VerticalAlignment="Top" Width="81" />
+        <!--<PdfViewer Height="301" HorizontalAlignment="Left" Margin="32,35,0,0" Name="PdfViewer" VerticalAlignment="Top" Width="597" Visibility="Collapsed" />-->
+    </Grid>
+</Window>

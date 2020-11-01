@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="EcmArchiveSetup">
+</Property><Property Name="Solution File" Value="C:\dev\ECM\EcmLibraryClient\EcmArchiveSetup\EcmArchiveSetup.sln">
+</Property><Property Name="Date" Value="Tuesday, February 15, 2011">
+</Property><Property Name="Time" Value="15:04">
+</Property></Properties><Event ErrorLevel="0" Project="EcmArchiveSetup" Source="EcmArchiveSetup.vbproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="EcmArchiveSetup" Source="EcmArchiveSetup.vbproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="EcmOCR" Source="..\EcmOCR\EcmOCR.vbproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="EcmOCR" Source="..\EcmOCR\EcmOCR.vbproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="EcmArchDLL" Source="..\EcmArchDLL\EcmArchDLL.vbproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="EcmArchDLL" Source="..\EcmArchDLL\EcmArchDLL.vbproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="EcmArchiveSetup.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="EcmArchiveSetup.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="EcmArchiveSetup" Source="EcmArchiveSetup.vbproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="EcmOCR" Source="..\EcmOCR\EcmOCR.vbproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="EcmArchDLL" Source="..\EcmArchDLL\EcmArchDLL.vbproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

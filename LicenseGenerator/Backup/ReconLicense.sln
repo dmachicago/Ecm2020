@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ReconLicense", "ReconLicense\ReconLicense.vbproj", "{116CF164-F962-444C-B912-EFAD20AB739C}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "LicenseSetup", "LicenseSetup\LicenseSetup.vdproj", "{747F3DBA-7ED6-4C02-8E61-FEDB1B3CC3A1}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ReconLicense\\ReconLicense.vbproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = ReconLicense\\
+		SccProjectUniqueName2 = LicenseSetup\\LicenseSetup.vdproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = LicenseSetup\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{116CF164-F962-444C-B912-EFAD20AB739C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{116CF164-F962-444C-B912-EFAD20AB739C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{116CF164-F962-444C-B912-EFAD20AB739C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{116CF164-F962-444C-B912-EFAD20AB739C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{747F3DBA-7ED6-4C02-8E61-FEDB1B3CC3A1}.Debug|Any CPU.ActiveCfg = Debug
+		{747F3DBA-7ED6-4C02-8E61-FEDB1B3CC3A1}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

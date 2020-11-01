@@ -1,0 +1,27 @@
+
+09/15/2019  01:03 PM               159 Application.xaml.vb
+09/15/2019  01:03 PM            13,321 frmContentRestore.xaml.vb
+10/02/2019  08:20 AM            38,902 frmInit.xaml.vb
+09/23/2019  10:08 AM            49,310 frmSearchAsst.xaml.vb
+10/06/2019  08:52 AM           236,505 MainPage.xaml.vb
+10/02/2019  06:34 PM            17,163 PageGrantContentToUsers.xaml.vb
+10/02/2019  06:34 PM            31,466 PageGroup.xaml.vb
+10/02/2019  06:34 PM            21,144 PageLibrary.xaml.vb
+10/02/2019  06:34 PM            15,359 PageLibraryAssignment.xaml.vb
+10/05/2019  09:22 AM            45,692 PageLibraryMgt.xaml.vb
+10/02/2019  06:34 PM            37,334 PageUsers.xaml.vb
+09/15/2019  01:03 PM               976 popSqlStmt.xaml.vb
+10/02/2019  06:34 PM            10,647 popupAlerts.xaml.vb
+09/23/2019  10:05 AM            29,461 popupContentSearchParms.xaml.vb
+09/23/2019  10:05 AM            37,157 popupEmailSearchParms.xaml.vb
+09/15/2019  01:03 PM            12,656 popupExportSearchGrid.xaml.vb
+10/02/2019  06:34 PM            14,475 popupGroupLibraries.xaml.vb
+09/15/2019  01:03 PM             1,466 popupReviewSearchParms.xaml.vb
+10/02/2019  06:34 PM             5,634 popupSaveSearch.xaml.vb
+09/15/2019  01:03 PM               443 popupScheduelSearch.xaml.vb
+09/15/2019  01:03 PM                46 popUserPassword.xaml.vb
+09/15/2019  01:03 PM                35 test.xaml.vb
+09/15/2019  01:03 PM               127 TestControl.xaml.vb
+09/15/2019  01:03 PM               141 testPage.xaml.vb
+09/15/2019  01:03 PM                43 TestWindow.xaml.vb
+              25 File(s)        619,662 bytes

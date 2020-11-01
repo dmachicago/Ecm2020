@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/EcmClcArchiveWCF" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EcmClcArchiveWCF" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="CompositeType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BoolValue" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StringValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompositeType" nillable="true" type="tns:CompositeType" />
+  <xs:complexType name="ArrayOfDS_WebSite">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_WebSite" nillable="true" type="tns:DS_WebSite" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_WebSite" nillable="true" type="tns:ArrayOfDS_WebSite" />
+  <xs:complexType name="DS_WebSite">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WebSite" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WebUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="depth" type="xs:int" />
+      <xs:element minOccurs="0" name="width" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_WebSite" nillable="true" type="tns:DS_WebSite" />
+  <xs:complexType name="ArrayOfDS_WebScreen">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_WebScreen" nillable="true" type="tns:DS_WebScreen" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_WebScreen" nillable="true" type="tns:ArrayOfDS_WebScreen" />
+  <xs:complexType name="DS_WebScreen">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WebScreen" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WebUrl" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_WebScreen" nillable="true" type="tns:DS_WebScreen" />
+  <xs:complexType name="ArrayOfDS_RssPull">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_RssPull" nillable="true" type="tns:DS_RssPull" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_RssPull" nillable="true" type="tns:ArrayOfDS_RssPull" />
+  <xs:complexType name="DS_RssPull">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RssName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RssUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_RssPull" nillable="true" type="tns:DS_RssPull" />
+</xs:schema>

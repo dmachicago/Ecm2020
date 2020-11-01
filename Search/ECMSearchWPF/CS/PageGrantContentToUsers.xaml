@@ -1,0 +1,25 @@
+<Window x:Class="PageGrantContentToUsers" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Width="640" Height="480" Title="PageGrantContentToUsers Page">
+  <Grid x:Name="LayoutRoot">
+    <Grid.Background>
+      <RadialGradientBrush>
+        <GradientStop Color="#FF000736" Offset="1" />
+        <GradientStop Color="#FFBCC3EE" />
+      </RadialGradientBrush>
+    </Grid.Background>
+    <ComboBox Height="25" Margin="38,49,0,0" Name="cbLibrary" VerticalAlignment="Top" HorizontalAlignment="Left" Width="292" SelectionChanged="cbLibrary_SelectionChanged" />
+    <Button Content="Remove" Height="39" HorizontalAlignment="Left" Margin="336,0,0,77" Name="btnRemove" VerticalAlignment="Bottom" Width="176" Click="btnRemove_Click" />
+    <Button Content="Assign" Height="39" HorizontalAlignment="Left" Margin="38,0,0,77" Name="btnGrant" VerticalAlignment="Bottom" Width="176" ClickMode="Release" Click="btnGrant_Click" />
+    <ProgressBar Height="20" Margin="38,0,199,8" Name="PB" VerticalAlignment="Bottom" />
+    <TextBox Height="25" Margin="38,0,26,33" Name="Sb" VerticalAlignment="Bottom" Background="#FF070707" Foreground="Black" />
+    <Button Content="Home" Height="25" HorizontalAlignment="Left" Margin="43,15,0,0" Name="hlHome" VerticalAlignment="Top" Width="48" Foreground="Black" Click="hlHome_Click" />
+    <Button Content="Library Management" Height="25" HorizontalAlignment="Left" Margin="269,13,0,0" Name="hlLibraryMgt" VerticalAlignment="Top" Width="130" Foreground="Black" Click="hlLibraryMgt_Click" />
+    <Button Content="Library Main" Height="25" HorizontalAlignment="Left" Margin="134,15,0,0" Name="hyperlinkButton1" VerticalAlignment="Top" Width="81" Foreground="Black" Click="hyperlinkButton1_Click" />
+    <Button Content="Refresh Library Combo" Foreground="Black" Height="25" HorizontalAlignment="Left" Margin="478,49,0,0" Name="hlRefresh" VerticalAlignment="Top" Width="136" Click="hlRefresh_Click" />
+    <CheckBox Content="My Libraries Only" Foreground="#FFFCFCFC" Height="25" HorizontalAlignment="Left" Margin="336,54,0,0" Name="ckMyLibsOnly" VerticalAlignment="Top" Width="126" Checked="ckMyLibsOnly_Checked" Unchecked="ckMyLibsOnly_Unchecked" />
+    <ListBox HorizontalAlignment="Left" Margin="40,110,0,140" Name="lbUsers" Width="290" SelectionMode="Extended" />
+    <ListBox Margin="336,110,0,140" Name="lbLibUsers" HorizontalAlignment="Left" Width="278" SelectionMode="Extended" />
+    <Label Height="25" HorizontalAlignment="Left" Margin="42,88,0,0" Name="Label1" VerticalAlignment="Top" Width="165" Foreground="#FFEBE8E8" Content="Available Users" />
+    <Label Content="Assigned Users" Foreground="#FFEBE8E8" Height="25" HorizontalAlignment="Left" Margin="336,88,0,0" Name="Label2" VerticalAlignment="Top" Width="165" />
+    <Label Height="24" HorizontalAlignment="Left" Margin="464,0,0,8" Name="Label3" VerticalAlignment="Bottom" Width="150" Content="PageGrantContentToUsers" Foreground="#FFAAE9FB" />
+  </Grid>
+</Window>

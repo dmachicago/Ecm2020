@@ -1,0 +1,21 @@
+﻿If the development and customer machines may have different processor architectures, 
+more than one binary package may be required. For this situation, using the native 
+library pre-loading feature is highly recommended. It is available as of version 1.0.80.0 
+and enabled by default. In order to take advantage of this feature, the separate managed 
+and interop assemblies must be used with XCOPY deployment (i.e. this feature is not supported 
+by the mixed-mode assembly, nor when the assembly is deployed to the global assembly cache), 
+resulting in an application deployment that looks something like this:
+ 	
+<bin>\App.exe (optional, managed-only application executable assembly)
+<bin>\App.dll (optional, managed-only application library assembly)
+<bin>\System.Data.SQLite.dll (required, managed-only core assembly)
+<bin>\System.Data.SQLite.Linq.dll (optional, managed-only LINQ assembly)
+<bin>\System.Data.SQLite.EF6.dll (optional, managed-only EF6 assembly)
+<bin>\x86\SQLite.Interop.dll (required, x86 native interop assembly)
+<bin>\x64\SQLite.Interop.dll (required, x64 native interop assembly)
+ 
+The string "<bin>" above represents the directory where the application binaries are to be 
+deployed on the target machine. With the native library pre-loading feature enabled and the 
+application deployment shown above, the System.Data.SQLite managed-only assembly will attempt 
+to automatically detect the processor architecture of the current process and pre-load the 
+appropriate native library.

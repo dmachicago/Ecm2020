@@ -1,0 +1,5 @@
+SCC = This is a Source Code Control file
+
+[EncryptString.vbproj]
+SCC_Aux_Path = "\\dellt100\SourceSafe"
+SCC_Project_Name = "$/ECM.EncryptString.root/EncryptString/EncryptString", ODJCAAAA

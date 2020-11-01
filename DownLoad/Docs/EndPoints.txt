@@ -1,0 +1,36 @@
+﻿<!--http://PICA010A0ESX1N3/SecureAttachAdminSvc/SVCGateway.svc-->
+        <!--http://PICA010A0ESX1N3/CLC/SVCclcDownload.svc-->
+        <!--http://localhost:17780/SVCGateway.svc-->
+        <!--http://localhost:17785/SVCclcDownload.svc-->
+
+        <!--http://www.EcmLibrary.com/ECMSaaS/SecureAttachAdminSvc/SVCGateway.svc-->
+        <!--http://www.EcmLibrary.com/EcmSaas/ClcDownloader/SVCclcDownload.svc-->
+
+        <!--http://192.168.0.13/SecureAttachAdminSvc/SVCGateway.svc-->
+        <!--http://192.168.0.13/SVCclcDownload/SVCclcDownload.svc-->
+
+        http://97.76.174.190/search/SVCSearch.svc
+
+
+        <client>
+            <endpoint address="http://192.168.0.13/SecureAttachAdminSvc/SVCGateway.svc"
+              binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IService11"
+              contract="SVC_Gateway.IService1" name="BasicHttpBinding_IService11" />
+            <endpoint address="http://192.168.0.13/SVCclcDownload/SVCclcDownload.svc"
+              binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IService1"
+              contract="SVCclcDownload.IService1" name="BasicHttpBinding_IService1" />
+        </client>
+
+
+http://97.76.174.190/SecureAttachAdminSvc/SVCGateway.svc
+http://97.76.174.190/SVCclcDownload/SVCclcDownload.svc
+
+http://localhost:16720/SVCGateway.svc
+http://localhost:45467/SVCclcDownload.svc
+http://localhost:59757/SVCSearch.svc
+
+
+ProxyGateway.Endpoint.Address = New System.ServiceModel.EndpointAddress(New Uri(SecureEndPoint))
+ProxyDownload.Endpoint.Address = New System.ServiceModel.EndpointAddress(New Uri(DownloadEndPoint))
+
+System.MissingMemberException = {"Public member 'ckPreviewFileToProcess' on type 'Service1Client' not found."}

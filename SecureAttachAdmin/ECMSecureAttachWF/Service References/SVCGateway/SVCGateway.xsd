@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/EcmSecureAttachWCF2" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EcmSecureAttachWCF2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfDS_SecureAttach">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DS_SecureAttach" nillable="true" type="tns:DS_SecureAttach" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDS_SecureAttach" nillable="true" type="tns:ArrayOfDS_SecureAttach" />
+  <xs:complexType name="DS_SecureAttach">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CSDMALicense" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CSGateWay" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CSHive" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CSKBase" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CSRepo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CSTDR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CSThesaurus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Disabled" type="xs:int" />
+      <xs:element minOccurs="0" name="EncPW" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastModDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RepoID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RowID" type="xs:int" />
+      <xs:element minOccurs="0" name="SVCCLCArchive_Endpoint" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SVCDownload_CS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SVCDownload_Endpoint" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SVCFS_CS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SVCFS_Endpoint" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SVCGateway_CS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SVCGateway_Endpoint" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SVCSearch_CS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SVCSearch_Endpoint" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SVCThesaurus_CS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="isThesaurus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DS_SecureAttach" nillable="true" type="tns:DS_SecureAttach" />
+  <xs:complexType name="CompositeType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BoolValue" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StringValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompositeType" nillable="true" type="tns:CompositeType" />
+</xs:schema>

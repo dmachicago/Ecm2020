@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SVCclcDownload" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:45467/SVCclcDownload.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:45467/SVCclcDownload.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:45467/SVCclcDownload.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:45467/SVCclcDownload.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RestoreWCF" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_ckTest_InputMessage">
+    <wsdl:part name="parameters" element="tns:ckTest" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ckTest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ckTestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getServiceVersion_InputMessage">
+    <wsdl:part name="parameters" element="tns:getServiceVersion" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getServiceVersion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getServiceVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_cleanRestoreQue_InputMessage">
+    <wsdl:part name="parameters" element="tns:cleanRestoreQue" />
+  </wsdl:message>
+  <wsdl:message name="IService1_cleanRestoreQue_OutputMessage">
+    <wsdl:part name="parameters" element="tns:cleanRestoreQueResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ExecuteSqlNewConn_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteSqlNewConn" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ExecuteSqlNewConn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteSqlNewConnResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getFileParameters_InputMessage">
+    <wsdl:part name="parameters" element="tns:getFileParameters" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getFileParameters_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getFileParametersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getRestoreFileSourceGuid_InputMessage">
+    <wsdl:part name="parameters" element="tns:getRestoreFileSourceGuid" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getRestoreFileSourceGuid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getRestoreFileSourceGuidResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getPreviewFileSourceGuid_InputMessage">
+    <wsdl:part name="parameters" element="tns:getPreviewFileSourceGuid" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getPreviewFileSourceGuid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getPreviewFileSourceGuidResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ckRestoreFilesToProcess_InputMessage">
+    <wsdl:part name="parameters" element="tns:ckRestoreFilesToProcess" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ckRestoreFilesToProcess_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ckRestoreFilesToProcessResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ckPreviewFileToProcess_InputMessage">
+    <wsdl:part name="parameters" element="tns:ckPreviewFileToProcess" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ckPreviewFileToProcess_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ckPreviewFileToProcessResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_writeImageSourceDataFromDbWriteToFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:writeImageSourceDataFromDbWriteToFile" />
+  </wsdl:message>
+  <wsdl:message name="IService1_writeImageSourceDataFromDbWriteToFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:writeImageSourceDataFromDbWriteToFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_writeAttachmentFromDbWriteToFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:writeAttachmentFromDbWriteToFile" />
+  </wsdl:message>
+  <wsdl:message name="IService1_writeAttachmentFromDbWriteToFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:writeAttachmentFromDbWriteToFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_writeEmailFromDbToFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:writeEmailFromDbToFile" />
+  </wsdl:message>
+  <wsdl:message name="IService1_writeEmailFromDbToFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:writeEmailFromDbToFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDataUsingDataContract_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDataUsingDataContract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="ckTest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ckTest" message="tns:IService1_ckTest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ckTestResponse" message="tns:IService1_ckTest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getServiceVersion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getServiceVersion" message="tns:IService1_getServiceVersion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getServiceVersionResponse" message="tns:IService1_getServiceVersion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="cleanRestoreQue">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/cleanRestoreQue" message="tns:IService1_cleanRestoreQue_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/cleanRestoreQueResponse" message="tns:IService1_cleanRestoreQue_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteSqlNewConn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ExecuteSqlNewConn" message="tns:IService1_ExecuteSqlNewConn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ExecuteSqlNewConnResponse" message="tns:IService1_ExecuteSqlNewConn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getFileParameters">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getFileParameters" message="tns:IService1_getFileParameters_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getFileParametersResponse" message="tns:IService1_getFileParameters_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getRestoreFileSourceGuid">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getRestoreFileSourceGuid" message="tns:IService1_getRestoreFileSourceGuid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getRestoreFileSourceGuidResponse" message="tns:IService1_getRestoreFileSourceGuid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getPreviewFileSourceGuid">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getPreviewFileSourceGuid" message="tns:IService1_getPreviewFileSourceGuid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getPreviewFileSourceGuidResponse" message="tns:IService1_getPreviewFileSourceGuid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ckRestoreFilesToProcess">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ckRestoreFilesToProcess" message="tns:IService1_ckRestoreFilesToProcess_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ckRestoreFilesToProcessResponse" message="tns:IService1_ckRestoreFilesToProcess_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ckPreviewFileToProcess">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ckPreviewFileToProcess" message="tns:IService1_ckPreviewFileToProcess_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ckPreviewFileToProcessResponse" message="tns:IService1_ckPreviewFileToProcess_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="writeImageSourceDataFromDbWriteToFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/writeImageSourceDataFromDbWriteToFile" message="tns:IService1_writeImageSourceDataFromDbWriteToFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/writeImageSourceDataFromDbWriteToFileResponse" message="tns:IService1_writeImageSourceDataFromDbWriteToFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="writeAttachmentFromDbWriteToFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/writeAttachmentFromDbWriteToFile" message="tns:IService1_writeAttachmentFromDbWriteToFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/writeAttachmentFromDbWriteToFileResponse" message="tns:IService1_writeAttachmentFromDbWriteToFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="writeEmailFromDbToFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/writeEmailFromDbToFile" message="tns:IService1_writeEmailFromDbToFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/writeEmailFromDbToFileResponse" message="tns:IService1_writeEmailFromDbToFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataResponse" message="tns:IService1_GetData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataUsingDataContract">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContract" message="tns:IService1_GetDataUsingDataContract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContractResponse" message="tns:IService1_GetDataUsingDataContract_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ckTest">
+      <soap:operation soapAction="http://tempuri.org/IService1/ckTest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getServiceVersion">
+      <soap:operation soapAction="http://tempuri.org/IService1/getServiceVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cleanRestoreQue">
+      <soap:operation soapAction="http://tempuri.org/IService1/cleanRestoreQue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteSqlNewConn">
+      <soap:operation soapAction="http://tempuri.org/IService1/ExecuteSqlNewConn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFileParameters">
+      <soap:operation soapAction="http://tempuri.org/IService1/getFileParameters" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRestoreFileSourceGuid">
+      <soap:operation soapAction="http://tempuri.org/IService1/getRestoreFileSourceGuid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPreviewFileSourceGuid">
+      <soap:operation soapAction="http://tempuri.org/IService1/getPreviewFileSourceGuid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ckRestoreFilesToProcess">
+      <soap:operation soapAction="http://tempuri.org/IService1/ckRestoreFilesToProcess" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ckPreviewFileToProcess">
+      <soap:operation soapAction="http://tempuri.org/IService1/ckPreviewFileToProcess" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="writeImageSourceDataFromDbWriteToFile">
+      <soap:operation soapAction="http://tempuri.org/IService1/writeImageSourceDataFromDbWriteToFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="writeAttachmentFromDbWriteToFile">
+      <soap:operation soapAction="http://tempuri.org/IService1/writeAttachmentFromDbWriteToFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="writeEmailFromDbToFile">
+      <soap:operation soapAction="http://tempuri.org/IService1/writeEmailFromDbToFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataUsingDataContract">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetDataUsingDataContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SVCclcDownload">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://localhost:45467/SVCclcDownload.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

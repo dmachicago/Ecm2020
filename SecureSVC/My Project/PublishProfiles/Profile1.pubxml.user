@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <LastUsedBuildConfiguration>Release</LastUsedBuildConfiguration>
+    <LastUsedPlatform>Any CPU</LastUsedPlatform>
+    <TimeStampOfAssociatedLegacyPublishXmlFile>
+    </TimeStampOfAssociatedLegacyPublishXmlFile>
+    <_PublishTargetUrl>D:\PrePublishedWebSites\ECMSaaS\SecureSVC</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/BouncyCastle.Crypto.dll">
+      <publishTime>09/15/2019 13:03:19</publishTime>
+    </File>
+    <File Include="bin/clientaccesspolicy.xml">
+      <publishTime>04/10/2014 08:38:01</publishTime>
+    </File>
+    <File Include="bin/Common.Logging.Core.dll">
+      <publishTime>09/15/2019 13:03:16</publishTime>
+    </File>
+    <File Include="bin/Common.Logging.dll">
+      <publishTime>09/15/2019 13:03:16</publishTime>
+    </File>
+    <File Include="bin/crossdomain.xml">
+      <publishTime>04/10/2014 08:38:01</publishTime>
+    </File>
+    <File Include="bin/EcmSecureAttachWCF2.dll">
+      <publishTime>09/19/2019 11:21:42</publishTime>
+    </File>
+    <File Include="bin/EcmSecureAttachWCF2.pdb">
+      <publishTime>09/04/2019 07:57:05</publishTime>
+    </File>
+    <File Include="bin/EcmSecureAttachWCF2.xml">
+      <publishTime>09/04/2019 07:57:05</publishTime>
+    </File>
+    <File Include="bin/ENC.dll">
+      <publishTime>09/18/2019 17:38:43</publishTime>
+    </File>
+    <File Include="bin/itext.barcodes.dll">
+      <publishTime>09/15/2019 13:03:28</publishTime>
+    </File>
+    <File Include="bin/itext.forms.dll">
+      <publishTime>09/15/2019 13:03:28</publishTime>
+    </File>
+    <File Include="bin/itext.io.dll">
+      <publishTime>09/15/2019 13:03:29</publishTime>
+    </File>
+    <File Include="bin/itext.kernel.dll">
+      <publishTime>09/15/2019 13:03:29</publishTime>
+    </File>
+    <File Include="bin/itext.layout.dll">
+      <publishTime>09/15/2019 13:03:29</publishTime>
+    </File>
+    <File Include="bin/itext.pdfa.dll">
+      <publishTime>09/15/2019 13:03:29</publishTime>
+    </File>
+    <File Include="bin/itext.sign.dll">
+      <publishTime>09/15/2019 13:03:29</publishTime>
+    </File>
+    <File Include="bin/itext.styledxmlparser.dll">
+      <publishTime>09/15/2019 13:03:29</publishTime>
+    </File>
+    <File Include="bin/itext.svg.dll">
+      <publishTime>09/15/2019 13:03:29</publishTime>
+    </File>
+    <File Include="bin/itextsharp.dll">
+      <publishTime>09/15/2019 13:03:28</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>09/15/2019 13:03:18</publishTime>
+    </File>
+    <File Include="clientaccesspolicy.xml">
+      <publishTime>04/10/2014 08:38:01</publishTime>
+    </File>
+    <File Include="crossdomain.xml">
+      <publishTime>04/10/2014 08:38:01</publishTime>
+    </File>
+    <File Include="DMA.Developers.Cert.pfx">
+      <publishTime>09/15/2019 13:03:38</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>09/15/2019 13:03:38</publishTime>
+    </File>
+    <File Include="SecureSvcStartup.html">
+      <publishTime>09/15/2019 13:03:38</publishTime>
+    </File>
+    <File Include="SVCGateway.svc">
+      <publishTime>09/15/2019 13:03:38</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>09/19/2019 11:21:42</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,895 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SVCCLCArchive" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:21306/SVCCLCArchive.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:21306/SVCCLCArchive.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:21306/SVCCLCArchive.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EcmClcArchiveWCF" />
+      <xsd:import schemaLocation="http://localhost:21306/SVCCLCArchive.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_getProcessFileAsExt_InputMessage">
+    <wsdl:part name="parameters" element="tns:getProcessFileAsExt" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getProcessFileAsExt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getProcessFileAsExtResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateSourceImageCompressed_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSourceImageCompressed" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateSourceImageCompressed_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSourceImageCompressedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateSourceImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSourceImage" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateSourceImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSourceImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertSourcefile_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertSourcefile" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertSourcefile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertSourcefileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateEmailBinary_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEmailBinary" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateEmailBinary_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEmailBinaryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertEmailBinary_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertEmailBinary" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertEmailBinary_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertEmailBinaryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ArchiveEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:ArchiveEmail" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ArchiveEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ArchiveEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateAttachmentByFQN_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAttachmentByFQN" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateAttachmentByFQN_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAttachmentByFQNResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateAttachment_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAttachment" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateAttachment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAttachmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateEmailMsg_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEmailMsg" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateEmailMsg_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEmailMsgResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertEmailMsg_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertEmailMsg" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertEmailMsg_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertEmailMsgResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getEmailFileRestoreName_InputMessage">
+    <wsdl:part name="parameters" element="tns:getEmailFileRestoreName" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getEmailFileRestoreName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getEmailFileRestoreNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getEmailRestoreFqnParms_InputMessage">
+    <wsdl:part name="parameters" element="tns:getEmailRestoreFqnParms" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getEmailRestoreFqnParms_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getEmailRestoreFqnParmsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RetrieveDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:RetrieveDocument" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RetrieveDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RetrieveDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_updateSourcefile_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateSourcefile" />
+  </wsdl:message>
+  <wsdl:message name="IService1_updateSourcefile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateSourcefileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ExecuteSqlNewConn_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteSqlNewConn" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ExecuteSqlNewConn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteSqlNewConnResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDataUsingDataContract_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDataUsingDataContract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GET_WebSite_InputMessage">
+    <wsdl:part name="parameters" element="tns:GET_WebSite" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GET_WebSite_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GET_WebSiteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Save_WebSiteURL_InputMessage">
+    <wsdl:part name="parameters" element="tns:Save_WebSiteURL" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Save_WebSiteURL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Save_WebSiteURLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GET_WebScreen_InputMessage">
+    <wsdl:part name="parameters" element="tns:GET_WebScreen" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GET_WebScreen_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GET_WebScreenResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Save_WebScreenURL_InputMessage">
+    <wsdl:part name="parameters" element="tns:Save_WebScreenURL" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Save_WebScreenURL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Save_WebScreenURLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GET_RssPull_InputMessage">
+    <wsdl:part name="parameters" element="tns:GET_RssPull" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GET_RssPull_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GET_RssPullResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Save_RssPull_InputMessage">
+    <wsdl:part name="parameters" element="tns:Save_RssPull" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Save_RssPull_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Save_RssPullResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_genRandomKey_InputMessage">
+    <wsdl:part name="parameters" element="tns:genRandomKey" />
+  </wsdl:message>
+  <wsdl:message name="IService1_genRandomKey_OutputMessage">
+    <wsdl:part name="parameters" element="tns:genRandomKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_consoleOcrSingleAllPendingFiles_InputMessage">
+    <wsdl:part name="parameters" element="tns:consoleOcrSingleAllPendingFiles" />
+  </wsdl:message>
+  <wsdl:message name="IService1_consoleOcrSingleAllPendingFiles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:consoleOcrSingleAllPendingFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_consoleOcrSingleFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:consoleOcrSingleFile" />
+  </wsdl:message>
+  <wsdl:message name="IService1_consoleOcrSingleFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:consoleOcrSingleFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReturnString_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReturnString" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReturnString_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReturnStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_VerifyRetentionDates_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyRetentionDates" />
+  </wsdl:message>
+  <wsdl:message name="IService1_VerifyRetentionDates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyRetentionDatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_iCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:iCount" />
+  </wsdl:message>
+  <wsdl:message name="IService1_iCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:iCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getGuidsOfAllEmailGraphicFiles_InputMessage">
+    <wsdl:part name="parameters" element="tns:getGuidsOfAllEmailGraphicFiles" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getGuidsOfAllEmailGraphicFiles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getGuidsOfAllEmailGraphicFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ProcessEmailAttachmentOCR_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessEmailAttachmentOCR" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ProcessEmailAttachmentOCR_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessEmailAttachmentOCRResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getGuidsOfPendingGraphicFiles_InputMessage">
+    <wsdl:part name="parameters" element="tns:getGuidsOfPendingGraphicFiles" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getGuidsOfPendingGraphicFiles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getGuidsOfPendingGraphicFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getGuidsOfAllGraphicFiles_InputMessage">
+    <wsdl:part name="parameters" element="tns:getGuidsOfAllGraphicFiles" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getGuidsOfAllGraphicFiles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getGuidsOfAllGraphicFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ProcessSourceOCR_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessSourceOCR" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ProcessSourceOCR_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessSourceOCRResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_OcrDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:OcrDocument" />
+  </wsdl:message>
+  <wsdl:message name="IService1_OcrDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OcrDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_OcrGraphic_InputMessage">
+    <wsdl:part name="parameters" element="tns:OcrGraphic" />
+  </wsdl:message>
+  <wsdl:message name="IService1_OcrGraphic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OcrGraphicResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PDFExtract_InputMessage">
+    <wsdl:part name="parameters" element="tns:PDFExtract" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PDFExtract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PDFExtractResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SaveUploadStats_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveUploadStats" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SaveUploadStats_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveUploadStatsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertEmailAttachmentRecord_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertEmailAttachmentRecord" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertEmailAttachmentRecord_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertEmailAttachmentRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UploadBufferedCreate_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadBufferedCreate" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UploadBufferedCreate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadBufferedCreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UploadBufferedAppend_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadBufferedAppend" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UploadBufferedAppend_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadBufferedAppendResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ckDbConnection_InputMessage">
+    <wsdl:part name="parameters" element="tns:ckDbConnection" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ckDbConnection_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ckDbConnectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getAttachmentRowID_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAttachmentRowID" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getAttachmentRowID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAttachmentRowIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertAttachmentFqn_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAttachmentFqn" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertAttachmentFqn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAttachmentFqnResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateUrlBinaryHtml_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUrlBinaryHtml" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateUrlBinaryHtml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUrlBinaryHtmlResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="getProcessFileAsExt">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getProcessFileAsExt" message="tns:IService1_getProcessFileAsExt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getProcessFileAsExtResponse" message="tns:IService1_getProcessFileAsExt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSourceImageCompressed">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateSourceImageCompressed" message="tns:IService1_UpdateSourceImageCompressed_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateSourceImageCompressedResponse" message="tns:IService1_UpdateSourceImageCompressed_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSourceImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateSourceImage" message="tns:IService1_UpdateSourceImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateSourceImageResponse" message="tns:IService1_UpdateSourceImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertSourcefile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/InsertSourcefile" message="tns:IService1_InsertSourcefile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/InsertSourcefileResponse" message="tns:IService1_InsertSourcefile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmailBinary">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateEmailBinary" message="tns:IService1_UpdateEmailBinary_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateEmailBinaryResponse" message="tns:IService1_UpdateEmailBinary_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmailBinary">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/InsertEmailBinary" message="tns:IService1_InsertEmailBinary_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/InsertEmailBinaryResponse" message="tns:IService1_InsertEmailBinary_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ArchiveEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ArchiveEmail" message="tns:IService1_ArchiveEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ArchiveEmailResponse" message="tns:IService1_ArchiveEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAttachmentByFQN">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateAttachmentByFQN" message="tns:IService1_UpdateAttachmentByFQN_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateAttachmentByFQNResponse" message="tns:IService1_UpdateAttachmentByFQN_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAttachment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateAttachment" message="tns:IService1_UpdateAttachment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateAttachmentResponse" message="tns:IService1_UpdateAttachment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmailMsg">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateEmailMsg" message="tns:IService1_UpdateEmailMsg_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateEmailMsgResponse" message="tns:IService1_UpdateEmailMsg_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmailMsg">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/InsertEmailMsg" message="tns:IService1_InsertEmailMsg_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/InsertEmailMsgResponse" message="tns:IService1_InsertEmailMsg_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmailFileRestoreName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getEmailFileRestoreName" message="tns:IService1_getEmailFileRestoreName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getEmailFileRestoreNameResponse" message="tns:IService1_getEmailFileRestoreName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmailRestoreFqnParms">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getEmailRestoreFqnParms" message="tns:IService1_getEmailRestoreFqnParms_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getEmailRestoreFqnParmsResponse" message="tns:IService1_getEmailRestoreFqnParms_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveDocument">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RetrieveDocument" message="tns:IService1_RetrieveDocument_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RetrieveDocumentResponse" message="tns:IService1_RetrieveDocument_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateSourcefile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/updateSourcefile" message="tns:IService1_updateSourcefile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/updateSourcefileResponse" message="tns:IService1_updateSourcefile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteSqlNewConn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ExecuteSqlNewConn" message="tns:IService1_ExecuteSqlNewConn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ExecuteSqlNewConnResponse" message="tns:IService1_ExecuteSqlNewConn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataResponse" message="tns:IService1_GetData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataUsingDataContract">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContract" message="tns:IService1_GetDataUsingDataContract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContractResponse" message="tns:IService1_GetDataUsingDataContract_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_WebSite">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GET_WebSite" message="tns:IService1_GET_WebSite_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GET_WebSiteResponse" message="tns:IService1_GET_WebSite_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Save_WebSiteURL">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Save_WebSiteURL" message="tns:IService1_Save_WebSiteURL_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Save_WebSiteURLResponse" message="tns:IService1_Save_WebSiteURL_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_WebScreen">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GET_WebScreen" message="tns:IService1_GET_WebScreen_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GET_WebScreenResponse" message="tns:IService1_GET_WebScreen_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Save_WebScreenURL">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Save_WebScreenURL" message="tns:IService1_Save_WebScreenURL_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Save_WebScreenURLResponse" message="tns:IService1_Save_WebScreenURL_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_RssPull">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GET_RssPull" message="tns:IService1_GET_RssPull_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GET_RssPullResponse" message="tns:IService1_GET_RssPull_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Save_RssPull">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Save_RssPull" message="tns:IService1_Save_RssPull_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Save_RssPullResponse" message="tns:IService1_Save_RssPull_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="genRandomKey">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/genRandomKey" message="tns:IService1_genRandomKey_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/genRandomKeyResponse" message="tns:IService1_genRandomKey_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="consoleOcrSingleAllPendingFiles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/consoleOcrSingleAllPendingFiles" message="tns:IService1_consoleOcrSingleAllPendingFiles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/consoleOcrSingleAllPendingFilesResponse" message="tns:IService1_consoleOcrSingleAllPendingFiles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="consoleOcrSingleFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/consoleOcrSingleFile" message="tns:IService1_consoleOcrSingleFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/consoleOcrSingleFileResponse" message="tns:IService1_consoleOcrSingleFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnString">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReturnString" message="tns:IService1_ReturnString_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReturnStringResponse" message="tns:IService1_ReturnString_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyRetentionDates">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/VerifyRetentionDates" message="tns:IService1_VerifyRetentionDates_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/VerifyRetentionDatesResponse" message="tns:IService1_VerifyRetentionDates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="iCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/iCount" message="tns:IService1_iCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/iCountResponse" message="tns:IService1_iCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getGuidsOfAllEmailGraphicFiles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getGuidsOfAllEmailGraphicFiles" message="tns:IService1_getGuidsOfAllEmailGraphicFiles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getGuidsOfAllEmailGraphicFilesResponse" message="tns:IService1_getGuidsOfAllEmailGraphicFiles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessEmailAttachmentOCR">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ProcessEmailAttachmentOCR" message="tns:IService1_ProcessEmailAttachmentOCR_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ProcessEmailAttachmentOCRResponse" message="tns:IService1_ProcessEmailAttachmentOCR_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getGuidsOfPendingGraphicFiles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getGuidsOfPendingGraphicFiles" message="tns:IService1_getGuidsOfPendingGraphicFiles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getGuidsOfPendingGraphicFilesResponse" message="tns:IService1_getGuidsOfPendingGraphicFiles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getGuidsOfAllGraphicFiles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getGuidsOfAllGraphicFiles" message="tns:IService1_getGuidsOfAllGraphicFiles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getGuidsOfAllGraphicFilesResponse" message="tns:IService1_getGuidsOfAllGraphicFiles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessSourceOCR">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ProcessSourceOCR" message="tns:IService1_ProcessSourceOCR_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ProcessSourceOCRResponse" message="tns:IService1_ProcessSourceOCR_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OcrDocument">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/OcrDocument" message="tns:IService1_OcrDocument_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/OcrDocumentResponse" message="tns:IService1_OcrDocument_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OcrGraphic">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/OcrGraphic" message="tns:IService1_OcrGraphic_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/OcrGraphicResponse" message="tns:IService1_OcrGraphic_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PDFExtract">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PDFExtract" message="tns:IService1_PDFExtract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PDFExtractResponse" message="tns:IService1_PDFExtract_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveUploadStats">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SaveUploadStats" message="tns:IService1_SaveUploadStats_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SaveUploadStatsResponse" message="tns:IService1_SaveUploadStats_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmailAttachmentRecord">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/InsertEmailAttachmentRecord" message="tns:IService1_InsertEmailAttachmentRecord_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/InsertEmailAttachmentRecordResponse" message="tns:IService1_InsertEmailAttachmentRecord_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadBufferedCreate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UploadBufferedCreate" message="tns:IService1_UploadBufferedCreate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UploadBufferedCreateResponse" message="tns:IService1_UploadBufferedCreate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadBufferedAppend">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UploadBufferedAppend" message="tns:IService1_UploadBufferedAppend_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UploadBufferedAppendResponse" message="tns:IService1_UploadBufferedAppend_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ckDbConnection">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ckDbConnection" message="tns:IService1_ckDbConnection_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ckDbConnectionResponse" message="tns:IService1_ckDbConnection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAttachmentRowID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getAttachmentRowID" message="tns:IService1_getAttachmentRowID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getAttachmentRowIDResponse" message="tns:IService1_getAttachmentRowID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertAttachmentFqn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/InsertAttachmentFqn" message="tns:IService1_InsertAttachmentFqn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/InsertAttachmentFqnResponse" message="tns:IService1_InsertAttachmentFqn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUrlBinaryHtml">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateUrlBinaryHtml" message="tns:IService1_UpdateUrlBinaryHtml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateUrlBinaryHtmlResponse" message="tns:IService1_UpdateUrlBinaryHtml_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getProcessFileAsExt">
+      <soap:operation soapAction="http://tempuri.org/IService1/getProcessFileAsExt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSourceImageCompressed">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateSourceImageCompressed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSourceImage">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateSourceImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSourcefile">
+      <soap:operation soapAction="http://tempuri.org/IService1/InsertSourcefile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmailBinary">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateEmailBinary" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmailBinary">
+      <soap:operation soapAction="http://tempuri.org/IService1/InsertEmailBinary" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ArchiveEmail">
+      <soap:operation soapAction="http://tempuri.org/IService1/ArchiveEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAttachmentByFQN">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateAttachmentByFQN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAttachment">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateAttachment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmailMsg">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateEmailMsg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmailMsg">
+      <soap:operation soapAction="http://tempuri.org/IService1/InsertEmailMsg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmailFileRestoreName">
+      <soap:operation soapAction="http://tempuri.org/IService1/getEmailFileRestoreName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmailRestoreFqnParms">
+      <soap:operation soapAction="http://tempuri.org/IService1/getEmailRestoreFqnParms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveDocument">
+      <soap:operation soapAction="http://tempuri.org/IService1/RetrieveDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateSourcefile">
+      <soap:operation soapAction="http://tempuri.org/IService1/updateSourcefile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteSqlNewConn">
+      <soap:operation soapAction="http://tempuri.org/IService1/ExecuteSqlNewConn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataUsingDataContract">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetDataUsingDataContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_WebSite">
+      <soap:operation soapAction="http://tempuri.org/IService1/GET_WebSite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Save_WebSiteURL">
+      <soap:operation soapAction="http://tempuri.org/IService1/Save_WebSiteURL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_WebScreen">
+      <soap:operation soapAction="http://tempuri.org/IService1/GET_WebScreen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Save_WebScreenURL">
+      <soap:operation soapAction="http://tempuri.org/IService1/Save_WebScreenURL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_RssPull">
+      <soap:operation soapAction="http://tempuri.org/IService1/GET_RssPull" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Save_RssPull">
+      <soap:operation soapAction="http://tempuri.org/IService1/Save_RssPull" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="genRandomKey">
+      <soap:operation soapAction="http://tempuri.org/IService1/genRandomKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consoleOcrSingleAllPendingFiles">
+      <soap:operation soapAction="http://tempuri.org/IService1/consoleOcrSingleAllPendingFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consoleOcrSingleFile">
+      <soap:operation soapAction="http://tempuri.org/IService1/consoleOcrSingleFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnString">
+      <soap:operation soapAction="http://tempuri.org/IService1/ReturnString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyRetentionDates">
+      <soap:operation soapAction="http://tempuri.org/IService1/VerifyRetentionDates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="iCount">
+      <soap:operation soapAction="http://tempuri.org/IService1/iCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGuidsOfAllEmailGraphicFiles">
+      <soap:operation soapAction="http://tempuri.org/IService1/getGuidsOfAllEmailGraphicFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessEmailAttachmentOCR">
+      <soap:operation soapAction="http://tempuri.org/IService1/ProcessEmailAttachmentOCR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGuidsOfPendingGraphicFiles">
+      <soap:operation soapAction="http://tempuri.org/IService1/getGuidsOfPendingGraphicFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGuidsOfAllGraphicFiles">
+      <soap:operation soapAction="http://tempuri.org/IService1/getGuidsOfAllGraphicFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessSourceOCR">
+      <soap:operation soapAction="http://tempuri.org/IService1/ProcessSourceOCR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OcrDocument">
+      <soap:operation soapAction="http://tempuri.org/IService1/OcrDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OcrGraphic">
+      <soap:operation soapAction="http://tempuri.org/IService1/OcrGraphic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PDFExtract">
+      <soap:operation soapAction="http://tempuri.org/IService1/PDFExtract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUploadStats">
+      <soap:operation soapAction="http://tempuri.org/IService1/SaveUploadStats" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmailAttachmentRecord">
+      <soap:operation soapAction="http://tempuri.org/IService1/InsertEmailAttachmentRecord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadBufferedCreate">
+      <soap:operation soapAction="http://tempuri.org/IService1/UploadBufferedCreate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadBufferedAppend">
+      <soap:operation soapAction="http://tempuri.org/IService1/UploadBufferedAppend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ckDbConnection">
+      <soap:operation soapAction="http://tempuri.org/IService1/ckDbConnection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAttachmentRowID">
+      <soap:operation soapAction="http://tempuri.org/IService1/getAttachmentRowID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertAttachmentFqn">
+      <soap:operation soapAction="http://tempuri.org/IService1/InsertAttachmentFqn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUrlBinaryHtml">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateUrlBinaryHtml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SVCCLCArchive">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://localhost:21306/SVCCLCArchive.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

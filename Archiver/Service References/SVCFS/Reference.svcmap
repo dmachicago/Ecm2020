@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="74eb6449-4b3f-4a41-8a41-d17f794bd5b4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:54154/SVCFS.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SVCFS6.xsd" MetadataType="Schema" ID="0bf6d54f-7b62-4bdf-9e6e-b2c63e98eecd" SourceId="1" SourceUrl="http://localhost:54154/SVCFS.svc?xsd=xsd4" />
+    <MetadataFile FileName="SVCFS1.wsdl" MetadataType="Wsdl" ID="51c927c9-5fa7-4ad8-a9e8-caa850b1bef8" SourceId="1" SourceUrl="http://localhost:54154/SVCFS.svc?wsdl" />
+    <MetadataFile FileName="SVCFS61.xsd" MetadataType="Schema" ID="11ccfa55-8efe-463e-b757-3cc937630d7c" SourceId="1" SourceUrl="http://localhost:54154/SVCFS.svc?xsd=xsd3" />
+    <MetadataFile FileName="SVCFS62.xsd" MetadataType="Schema" ID="6d5276ca-8850-4b7b-92bd-00810d50824e" SourceId="1" SourceUrl="http://localhost:54154/SVCFS.svc?xsd=xsd2" />
+    <MetadataFile FileName="SVCFS1.disco" MetadataType="Disco" ID="851dece2-af00-44bf-ad78-d45f24788485" SourceId="1" SourceUrl="http://localhost:54154/SVCFS.svc?disco" />
+    <MetadataFile FileName="SVCFS63.xsd" MetadataType="Schema" ID="6e144378-f3a0-4e9b-b00e-28a3a97869e0" SourceId="1" SourceUrl="http://localhost:54154/SVCFS.svc?xsd=xsd0" />
+    <MetadataFile FileName="SVCFS64.xsd" MetadataType="Schema" ID="a85d47c2-5549-417d-bea3-af273003a059" SourceId="1" SourceUrl="http://localhost:54154/SVCFS.svc?xsd=xsd1" />
+    <MetadataFile FileName="SVCFS65.xsd" MetadataType="Schema" ID="340630ae-3109-4473-943b-4009c3b5ab0a" SourceId="1" SourceUrl="http://localhost:54154/SVCFS.svc?xsd=xsd5" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

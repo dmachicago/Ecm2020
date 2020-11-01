@@ -1,0 +1,34 @@
+C:\PrePublishedWebSites\ECMSaaS\Archiver\ -> http://108.61.17.163/Archiver/
+
+C:\PrePublishedWebSites\ECMSAAS\AdminSetup\ -> http://108.61.17.163/AdminSetup/
+C:\PrePublishedWebSites\ECMSAAS\AdminSetup\ -> http://www.EcmLibrary.com/ECMSAAS/EcmUploadZip/AdminSetup/
+
+C:\PrePublishedWebSites\ECMSaaS\ClcDownloader\ -> http://108.61.17.163/ClcDownloader/
+C:\PrePublishedWebSites\ECMSaaS\ClcDownloader\ -> http://www.EcmLibrary.com/ECMSAAS/EcmUploadZip/ClcDownloader/
+
+C:\PrePublishedWebSites\ECMSaaS\Search -> http://108.61.17.163/Search/
+C:\PrePublishedWebSites\ECMSaaS\Search -> http://www.EcmLibrary.com/ECMSAAS/EcmUploadZip/Search 
+
+C:\PrePublishedWebSites\ECMSaaS\SecureAttachAdmin\ -> http://108.61.17.163/SecureAttachAdmin/
+C:\PrePublishedWebSites\ECMSaaS\SecureAttachAdmin\ -> http://www.EcmLibrary.com/ECMSAAS/EcmUploadZip\SecureAttachAdmin 
+
+C:\PrePublishedWebSites\ECMSaaS\SecureAttachAdminSvc -> http://www.EcmLibrary.com/ECMSAAS/EcmUploadZip\SecureAttachAdminSvc
+
+C:\PrePublishedWebSites\ECMSaaS\SecureAttachAdmin\ -> http://www.EcmLibrary.com/ECMSAAS/EcmUploadZip/SecureAttachAdmin/
+
+C:\PrePublishedWebSites\EncryptString\ ->  http://www.EcmLibrary.com/ECMSAAS/EcmUploadZip/EncryptString/
+
+C:\PrePublishedWebSites\ECMSAAS\Encryption\ -> NOT SUPPLIED
+
+C:\PrePublishedWebSites\ECMSAAS\SVCGatewayAdmin\ -> http://www.EcmLibrary.com/ECMSAAS/EcmUploadZip/SVCGatewayAdmin/
+
+C:\PrePublishedWebSites\ECMSAAS\GateWayAdmin\ -> http://www.EcmLibrary.com/ECMSAAS/EcmUploadZip/GateWayAdmin/
+
+C:\PrePublishedWebSites\ECMSAAS\AdminSetup\ -> http://www.EcmLibrary.com/ECMSAAS/EcmUploadZip/AdminSetup/
+
+*Use this one for a stand-alone setup
+ServerSideOCR Updates @ http://108.61.17.163/ECMSAAS/ServerSideOCR/
+C:\dev\EcmMasterSingleSource\ECM\ECMSaaS\ServerSideOCR\OcrInstall\OcrInstall\Express\DVD-5\DiskImages\DISK1
+
+*Use this one for a WEB site install using click once
+C:\PrePublishedWebSites\ECMSAAS\ServerSideOCR

@@ -1,0 +1,3176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:59757/SVCSearch.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:59757/SVCSearch.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" />
+  <xs:import schemaLocation="http://localhost:59757/SVCSearch.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:element name="setLoginGuid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="MyLoginGuid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="setLoginGuidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getLoginGuid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getLoginGuidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getLoginGuidResult" nillable="true" type="xs:anyType" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getHttpSessionID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getHttpSessionIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getHttpSessionIDResult" nillable="true" type="xs:anyType" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="setSessionID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="MySessionID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="setSessionIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExpandInflectionTerms">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="S" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExpandInflectionTermsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ExpandInflectionTermsResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getServerDatabaseName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getServerDatabaseNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getServerDatabaseNameResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CleanLog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CleanLogResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateComboBox">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="CB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TblColName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="S" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateComboBoxResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="CB" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEmailAttachments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="CurrEmailGuid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEmailAttachmentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetEmailAttachmentsResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DbWriteToFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SourceGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DbWriteToFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DbWriteToFileResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetSessionVariable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="KeyValue" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetSessionVariableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSessionVariable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSessionVariableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSessionVariableResult" nillable="true" type="xs:anyType" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateSourceImageCompressed">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UploadFQN" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SourceGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LastAccessDate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LastWriteTime" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="VersionNbr" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedDataBuffer" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateSourceImageCompressedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateSourceImageCompressedResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="writeEmailFromDbToFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="EmailGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SourceTypeCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompressedDataBuffer" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="writeEmailFromDbToFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="SourceTypeCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompressedDataBuffer" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="writeAttachmentFromDbWriteToFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RowID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FQN" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompressedDataBuffer" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="writeAttachmentFromDbWriteToFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="FQN" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompressedDataBuffer" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="writeImageSourceDataFromDbWriteToFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="SourceGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FQN" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompressedDataBuffer" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="writeImageSourceDataFromDbWriteToFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="FQN" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompressedDataBuffer" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddLibraryItems">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="SourceGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ItemTitle" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ItemType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LibraryItemGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DataSourceOwnerUserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LibraryOwnerUserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LibraryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AddedByUserGuidId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddLibraryItemsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateGroupUserLibCombo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="cb" nillable="true" type="q1:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateGroupUserLibComboResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="cb" nillable="true" type="q2:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLibOwnerByName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="LibraryName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLibOwnerByNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetLibOwnerByNameResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteSearch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="currSearchCnt" type="xs:int" />
+        <xs:element minOccurs="0" name="bGenSql" type="xs:boolean" />
+        <xs:element minOccurs="0" name="EmailGenSql" nillable="true" type="xs:string" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="SearchParms" nillable="true" type="q3:ArrayOfDS_SearchTerms" />
+        <xs:element minOccurs="0" name="ContentGenSql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ListOEmailRows" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ListOfContentRows" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="bFirstEmailSearchSubmit" type="xs:boolean" />
+        <xs:element minOccurs="0" name="bFirstContentSearchSubmit" type="xs:boolean" />
+        <xs:element minOccurs="0" name="EmailRowCnt" type="xs:int" />
+        <xs:element minOccurs="0" name="ContentRowCnt" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteSearchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="currSearchCnt" type="xs:int" />
+        <xs:element minOccurs="0" name="EmailGenSql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ContentGenSql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ListOEmailRows" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ListOfContentRows" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="bFirstEmailSearchSubmit" type="xs:boolean" />
+        <xs:element minOccurs="0" name="bFirstContentSearchSubmit" type="xs:boolean" />
+        <xs:element minOccurs="0" name="EmailRowCnt" type="xs:int" />
+        <xs:element minOccurs="0" name="ContentRowCnt" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSearchState">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="SearchID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScreenName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DICT" nillable="true" type="q4:ArrayOfKeyValueOfstringstring" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="HiveConnectionName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="HiveActive" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RepoSvrName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSearchStateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="getSearchStateResult" nillable="true" type="q5:ArrayOfDS_USERSEARCHSTATE" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DICT" nillable="true" type="q6:ArrayOfKeyValueOfstringstring" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="saveSearchState">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="SearchID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScreenName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DICT" nillable="true" type="q7:ArrayOfKeyValueOfstringstring" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="HiveConnectionName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="HiveActive" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RepoSvrName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="saveSearchStateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getScreenState">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScreenName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DICT" nillable="true" type="q8:ArrayOfKeyValueOfstringstring" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="HiveConnectionName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="HiveActive" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RepoSvrName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getScreenStateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="getScreenStateResult" nillable="true" type="q9:ArrayOfDS_USERSCREENSTATE" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DICT" nillable="true" type="q10:ArrayOfKeyValueOfstringstring" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getGridLayout">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScreenName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="GridName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DICT" nillable="true" type="q11:ArrayOfKeyValueOfstringstring" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="HiveConnectionName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="HiveActive" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RepoSvrName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getGridLayoutResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="getGridLayoutResult" nillable="true" type="q12:ArrayOfDS_clsUSERGRIDSTATE" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="saveGridLayout">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScreenName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="GridName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ColName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ColOrder" type="xs:int" />
+        <xs:element minOccurs="0" name="ColWidth" type="xs:int" />
+        <xs:element minOccurs="0" name="ColVisible" type="xs:boolean" />
+        <xs:element minOccurs="0" name="ColReadOnly" type="xs:boolean" />
+        <xs:element minOccurs="0" name="ColSortOrder" type="xs:int" />
+        <xs:element minOccurs="0" name="ColSortAsc" type="xs:boolean" />
+        <xs:element minOccurs="0" name="HiveConnectionName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="HiveActive" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RepoSvrName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RowCreationDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="RowLastModDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="RowNbr" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="saveGridLayoutResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScreenName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="GridName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ColName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ColOrder" type="xs:int" />
+        <xs:element minOccurs="0" name="ColWidth" type="xs:int" />
+        <xs:element minOccurs="0" name="ColVisible" type="xs:boolean" />
+        <xs:element minOccurs="0" name="ColReadOnly" type="xs:boolean" />
+        <xs:element minOccurs="0" name="ColSortOrder" type="xs:int" />
+        <xs:element minOccurs="0" name="ColSortAsc" type="xs:boolean" />
+        <xs:element minOccurs="0" name="HiveConnectionName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="HiveActive" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RepoSvrName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RowCreationDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="RowLastModDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="RowNbr" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="saveScreenState">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScreenName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DICT" nillable="true" type="q13:ArrayOfKeyValueOfstringstring" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="HiveConnectionName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="HiveActive" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RepoSvrName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="saveScreenStateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getUserParms">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UserParms" nillable="true" type="q14:ArrayOfKeyValueOfstringstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getUserParmsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UserParms" nillable="true" type="q15:ArrayOfKeyValueOfstringstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ParseLicDictionary">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="S" nillable="true" type="xs:string" />
+        <xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="D" nillable="true" type="q16:ArrayOfKeyValueOfstringstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ParseLicDictionaryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="D" nillable="true" type="q17:ArrayOfKeyValueOfstringstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LicenseType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LicenseTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LicenseTypeResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNbrUsers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNbrUsersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetNbrUsersResult" type="xs:int" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="isLease">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="isLeaseResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="isLeaseResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getMaxClients">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getMaxClientsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getMaxClientsResult" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserHostName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserHostNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUserHostNameResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserHostAddress">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserHostAddressResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUserHostAddressResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getUserGuidID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserLoginId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getUserGuidIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getUserGuidIDResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProcessDates">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProcessDatesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ProcessDatesResult" nillable="true" type="q18:ArrayOfKeyValueOfstringdateTime" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNbrMachineAll">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNbrMachineAllResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetNbrMachineAllResult" type="xs:int" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNbrMachine">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="MachineName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNbrMachineResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetNbrMachineResult" type="xs:int" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="isLicenseLocatedOnAssignedMachine">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ServerValText" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="InstanceValText" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="isLicenseLocatedOnAssignedMachineResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="isLicenseLocatedOnAssignedMachineResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ServerValText" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="InstanceValText" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetXrt">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetXrtResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetXrtResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSqlServerVersion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSqlServerVersionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getSqlServerVersionResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecordGrowth">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecordGrowthResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ParseLic">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="LT" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tgtKey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ParseLicResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ParseLicResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLoggedinUserName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLoggedinUserNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetLoggedinUserNameResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getDBSIZEMB">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getDBSIZEMBResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getDBSIZEMBResult" type="xs:double" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="resetMissingEmailIds">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="CurrUserGuidID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="resetMissingEmailIdsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserParmInsertUpdate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ParmName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ParmVal" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserParmInsertUpdateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="validateLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserLogin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PW" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserGuidID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="validateLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="validateLoginResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserGuidID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getLoggedInUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getLoggedInUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getLoggedInUserResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getAttachedMachineName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getAttachedMachineNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getAttachedMachineNameResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getServerInstanceName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getServerInstanceNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getServerInstanceNameResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getServerMachineName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getServerMachineNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getServerMachineNameResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSystemParm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SystemParms" nillable="true" type="q19:ArrayOfKeyValueOfstringstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSystemParmResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element xmlns:q20="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SystemParms" nillable="true" type="q20:ArrayOfKeyValueOfstringstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSynonyms">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ThesaurusID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Token" nillable="true" type="xs:string" />
+        <xs:element xmlns:q21="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="lbSynonyms" nillable="true" type="q21:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSynonymsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getSynonymsResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="lbSynonyms" nillable="true" type="q22:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getThesaurusID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ThesaurusName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getThesaurusIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getThesaurusIDResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="iCountContent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="S" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="iCountContentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="iCountContentResult" type="xs:int" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getDatasourceParm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="AttributeName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SourceGuid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getDatasourceParmResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getDatasourceParmResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveRunParm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ParmID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ParmVal" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveRunParmResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SaveRunParmResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ParmID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ParmVal" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="iGetRowCount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="TBL" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="WhereClause" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="iGetRowCountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="iGetRowCountResult" type="xs:int" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZeroizeGlobalSearch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZeroizeGlobalSearchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ZeroizeGlobalSearchResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updateIp">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="HostName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="IP" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="checkCode" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updateIpResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateSourceGridWithWeights">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="StartingRow" type="xs:int" />
+        <xs:element minOccurs="0" name="EndingRow" type="xs:int" />
+        <xs:element minOccurs="0" name="CallerName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MySql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="bNewRows" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SourceRowCnt" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateSourceGridWithWeightsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="PopulateSourceGridWithWeightsResult" nillable="true" type="q23:ArrayOfDS_CONTENT" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="bNewRows" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SourceRowCnt" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateSourceGridNoWeights">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="StartingRow" type="xs:int" />
+        <xs:element minOccurs="0" name="EndingRow" type="xs:int" />
+        <xs:element minOccurs="0" name="CallerName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MySql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="bNewRows" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SourceRowCnt" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateSourceGridNoWeightsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="PopulateSourceGridNoWeightsResult" nillable="true" type="q24:ArrayOfDS_CONTENT" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="bNewRows" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SourceRowCnt" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateEmailGridWithNoWeights">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CallerName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MySql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nbrWeightMin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="StartingRow" type="xs:int" />
+        <xs:element minOccurs="0" name="EndingRow" type="xs:int" />
+        <xs:element minOccurs="0" name="bNewRows" type="xs:boolean" />
+        <xs:element minOccurs="0" name="EmailRowCnt" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateEmailGridWithNoWeightsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="PopulateEmailGridWithNoWeightsResult" nillable="true" type="q25:ArrayOfDS_EMAIL" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="bNewRows" type="xs:boolean" />
+        <xs:element minOccurs="0" name="EmailRowCnt" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateEmailGridWithWeights">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="Userid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CallerName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MySql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nbrWeightMin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="StartingRow" type="xs:int" />
+        <xs:element minOccurs="0" name="EndingRow" type="xs:int" />
+        <xs:element minOccurs="0" name="bNewRows" type="xs:boolean" />
+        <xs:element minOccurs="0" name="EmailRowCnt" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateEmailGridWithWeightsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="PopulateEmailGridWithWeightsResult" nillable="true" type="q26:ArrayOfDS_EMAIL" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="bNewRows" type="xs:boolean" />
+        <xs:element minOccurs="0" name="EmailRowCnt" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoadUserSearchHistory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="MaxNbrSearches" type="xs:int" />
+        <xs:element minOccurs="0" name="Uid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Screen" nillable="true" type="xs:string" />
+        <xs:element xmlns:q27="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SearchHistoryArrayList" nillable="true" type="q27:ArrayOfstring" />
+        <xs:element minOccurs="0" name="NbrReturned" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoadUserSearchHistoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element xmlns:q28="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SearchHistoryArrayList" nillable="true" type="q28:ArrayOfstring" />
+        <xs:element minOccurs="0" name="NbrReturned" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getAttachmentWeights">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element xmlns:q29="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SL" nillable="true" type="q29:ArrayOfKeyValueOfstringint" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getAttachmentWeightsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element xmlns:q30="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SL" nillable="true" type="q30:ArrayOfKeyValueOfstringint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteSqlNewConn1">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="EncryptedMySql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ContractID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteSqlNewConn1Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ExecuteSqlNewConn1Result" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="EncryptedMySql" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteSqlNewConn2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="EncryptedMySql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ContractID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteSqlNewConn2Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ExecuteSqlNewConn2Result" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="EncryptedMySql" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteSqlNewConn3">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="EncryptedMySql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ContractID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteSqlNewConn3Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ExecuteSqlNewConn3Result" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="EncryptedMySql" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteSqlNewConn4">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="EncryptedMySql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ContractID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteSqlNewConn4Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ExecuteSqlNewConn4Result" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="EncryptedMySql" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteSqlNewConn5">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="EncryptedMySql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ContractID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteSqlNewConn5Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ExecuteSqlNewConn5Result" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="EncryptedMySql" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteSqlNewConnSecure">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="MySql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ContractID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteSqlNewConnSecureResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ExecuteSqlNewConnSecureResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="MySql" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetParmValue">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element xmlns:q31="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Parms" nillable="true" type="q31:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetParmValueResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element xmlns:q32="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Parms" nillable="true" type="q32:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DBisGlobalSearcher">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="Userid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DBisGlobalSearcherResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DBisGlobalSearcherResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DBisAdmin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="Userid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DBisAdminResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DBisAdminResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getUserParm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="sVariable" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserParm" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getUserParmResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="sVariable" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveUnwantedCharacters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="tgtString" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveUnwantedCharactersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="tgtString" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMachineIP">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMachineIPResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetMachineIPResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getClientLicenses">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="CompanyID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getClientLicensesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="getClientLicensesResult" nillable="true" type="q33:ArrayOfDS_License" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFilesInZipDetail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ParentGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFilesInZipDetailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetFilesInZipDetailResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="xGetXrtID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CustomerID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ServerName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DBName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="InstanceName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="xGetXrtIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="xGetXrtIDResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSecEndPoint">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSecEndPointResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getSecEndPointResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getContractID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getContractIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getContractIDResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddGroupLibraryAccess">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LibraryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="GroupName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="GroupOwnerUserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="CurrUserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SessionID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ControlSection" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddGroupLibraryAccessResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddGroupUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="SessionID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CurrUserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FullAccess" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ReadOnlyAccess" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DeleteAccess" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Searchable" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="GroupOwnerUserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="GroupName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ControlSection" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddGroupUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddGroupUserResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DBExecuteEncryptedSql">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="MySql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EKEY" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DBExecuteEncryptedSqlResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DBExecuteEncryptedSqlResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="MySql" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="validateAttachSecureLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="CompanyID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RepoID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserLogin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PW" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="GateWayEndPoint" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DownloadEndpoint" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ENCCS" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="validateAttachSecureLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="validateAttachSecureLoginResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="GateWayEndPoint" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DownloadEndpoint" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ENCCS" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetXrtTest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="dt" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetXrtTestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetXrtTestResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ckContentFlags">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="SourceGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SD" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SP" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SAP" type="xs:boolean" />
+        <xs:element minOccurs="0" name="bMaster" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RSS" type="xs:boolean" />
+        <xs:element minOccurs="0" name="WEB" type="xs:boolean" />
+        <xs:element minOccurs="0" name="bPublic" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ckContentFlagsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SD" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SP" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SAP" type="xs:boolean" />
+        <xs:element minOccurs="0" name="bMaster" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RSS" type="xs:boolean" />
+        <xs:element minOccurs="0" name="WEB" type="xs:boolean" />
+        <xs:element minOccurs="0" name="bPublic" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getCustomerLogoTitle">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getCustomerLogoTitleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getCustomerLogoTitleResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getExplodeEmailZip">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getExplodeEmailZipResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getExplodeEmailZipResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getFacilityName">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getFacilityNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getFacilityNameResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getAffinitydelay">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getAffinitydelayResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getAffinitydelayResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getClcURL">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getClcURLResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getClcURLResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getArchiverURL">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getArchiverURLResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getArchiverURLResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteSqlStack">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element xmlns:q34="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SqlStack" nillable="true" type="q34:ArrayOfKeyValueOfintstring" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SessionID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ControlSection" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteSqlStackResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ExecuteSqlStackResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element xmlns:q35="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SqlStack" nillable="true" type="q35:ArrayOfKeyValueOfintstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getDefaultScreen">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getDefaultScreenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getDefaultScreenResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecallUserSearch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="SearchName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strSearches" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecallUserSearchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RecallUserSearchResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="strSearches" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveUserSearch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="SearchName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strSearches" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveUserSearchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SaveUserSearchResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="scheduleFileDownLoad">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ContentGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ContentType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Preview" type="xs:int" />
+        <xs:element minOccurs="0" name="Restore" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="scheduleFileDownLoadResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="scheduleFileDownLoadResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetContentMetaData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="SourceGuid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetContentMetaDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetContentMetaDataResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="removeRestoreFileByGuid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RowGuid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="removeRestoreFileByGuidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="removeRestoreFileByGuidResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="removeRestoreFiles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MachineID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="removeRestoreFilesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="removeRestoreFilesResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MachineID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getRestoreFileCount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MachineID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Preview" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getRestoreFileCountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getRestoreFileCountResult" type="xs:int" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MachineID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Preview" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="saveRestoreFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="tgtTable" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ContentGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Preview" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Restore" type="xs:boolean" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MachineID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="saveRestoreFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="saveRestoreFileResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="ContentGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MachineID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenEmailAttachmentsSQL">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="SearchParms" nillable="true" type="q36:ArrayOfDS_SearchTerms" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="InputSearchString" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="useFreetext" type="xs:boolean" />
+        <xs:element minOccurs="0" name="ckWeighted" type="xs:boolean" />
+        <xs:element minOccurs="0" name="isEmail" type="xs:boolean" />
+        <xs:element minOccurs="0" name="LimitToCurrRecs" type="xs:boolean" />
+        <xs:element xmlns:q37="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ThesaurusList" nillable="true" type="q37:ArrayOfanyType" />
+        <xs:element minOccurs="0" name="txtThesaurus" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cbThesaurusText" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="calledBy" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenEmailAttachmentsSQLResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GenEmailAttachmentsSQLResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenEmailGeneratedSQL">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="SearchParms" nillable="true" type="q38:ArrayOfDS_SearchTerms" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenEmailGeneratedSQLResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GenEmailGeneratedSQLResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenContentSearchSQL">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="SearchParms" nillable="true" type="q39:ArrayOfDS_SearchTerms" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SearchString" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ckLimitToExisting" type="xs:boolean" />
+        <xs:element minOccurs="0" name="txtThesaurus" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cbThesaurusText" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ckLimitToLib" type="xs:boolean" />
+        <xs:element minOccurs="0" name="LibraryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ckWeighted" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenContentSearchSQLResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GenContentSearchSQLResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangeUserContentPublic">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ServiceID" type="xs:int" />
+        <xs:element minOccurs="0" name="CurrSelectedUserGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isPublic" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangeUserContentPublicResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Refactor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="NewOwnerID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="OldOwnerID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RefactorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSAASState">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DirName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FullPath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSAASStateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getSAASStateResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetSAASState">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DirName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FullPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetSAASStateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SetSAASStateResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getListOfStrings01">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="MySql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SessionID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getListOfStrings01Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="getListOfStrings01Result" nillable="true" type="q40:ArrayOfDS_ListOfStrings01" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getListOfStrings02">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="MySql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SessionID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getListOfStrings02Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="getListOfStrings02Result" nillable="true" type="q41:ArrayOfDS_ListOfStrings02" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getListOfStrings03">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="MySql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SessionID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getListOfStrings03Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="getListOfStrings03Result" nillable="true" type="q42:ArrayOfDS_ListOfStrings03" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getListOfStrings04">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="MySql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SessionID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getListOfStrings04Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="getListOfStrings04Result" nillable="true" type="q43:ArrayOfDS_ListOfStrings04" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateLibraryUsersGrid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="LibraryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ckLibUsersOnly" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateLibraryUsersGridResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PopulateLibraryUsersGridResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getUserAuth">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="Userid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getUserAuthResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getUserAuthResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="SelectedUserGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteUserResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveUSer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserPassword" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Admin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isActive" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserLoginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ClientOnly" type="xs:boolean" />
+        <xs:element minOccurs="0" name="HiveConnectionName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="HiveActive" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RepoSvrName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RowCreationDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="RowLastModDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="ActiveGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RepoName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveUSerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SaveUSerResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserPassword" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Admin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isActive" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserLoginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ClientOnly" type="xs:boolean" />
+        <xs:element minOccurs="0" name="HiveConnectionName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="HiveActive" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RepoSvrName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RowCreationDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="RowLastModDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="ActiveGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RepoName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="saveSearchSchedule">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="SearchName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="NotificationSMS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SearchDesc" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="OwnerID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SearchQuery" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SendToEmail" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScheduleUnit" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScheduleHour" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScheduleDaysOfWeek" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScheduleDaysOfMonth" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScheduleMonthOfQtr" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="StartToRunDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="EndRunDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="SearchParameters" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LastRunDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="NumberOfExecutions" type="xs:int" />
+        <xs:element minOccurs="0" name="CreateDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="LastModDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="ScheduleHourInterval" type="xs:int" />
+        <xs:element minOccurs="0" name="RepoName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="saveSearchScheduleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="saveSearchScheduleResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SearchName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="NotificationSMS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SearchDesc" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="OwnerID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SearchQuery" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SendToEmail" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScheduleUnit" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScheduleHour" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScheduleDaysOfWeek" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScheduleDaysOfMonth" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScheduleMonthOfQtr" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="StartToRunDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="EndRunDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="SearchParameters" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LastRunDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="NumberOfExecutions" type="xs:int" />
+        <xs:element minOccurs="0" name="CreateDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="LastModDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="ScheduleHourInterval" type="xs:int" />
+        <xs:element minOccurs="0" name="RepoName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSearchSchedule">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="SearchName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="NotificationSMS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SearchDesc" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="OwnerID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SearchQuery" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SendToEmail" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScheduleUnit" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScheduleHour" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScheduleDaysOfWeek" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScheduleDaysOfMonth" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScheduleMonthOfQtr" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="StartToRunDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="EndRunDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="SearchParameters" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LastRunDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="NumberOfExecutions" type="xs:int" />
+        <xs:element minOccurs="0" name="CreateDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="LastModDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="ScheduleHourInterval" type="xs:int" />
+        <xs:element minOccurs="0" name="RepoName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSearchScheduleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getSearchScheduleResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SearchName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="NotificationSMS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SearchDesc" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="OwnerID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SearchQuery" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SendToEmail" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScheduleUnit" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScheduleHour" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScheduleDaysOfWeek" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScheduleDaysOfMonth" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScheduleMonthOfQtr" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="StartToRunDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="EndRunDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="SearchParameters" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LastRunDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="NumberOfExecutions" type="xs:int" />
+        <xs:element minOccurs="0" name="CreateDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="LastModDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="ScheduleHourInterval" type="xs:int" />
+        <xs:element minOccurs="0" name="RepoName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertCoOwner">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="CurrentOwner" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CoOwner" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertCoOwnerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertCoOwnerResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateCoOwnerGrid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateCoOwnerGridResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PopulateCoOwnerGridResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateUserGrid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DBisAdmin" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateUserGridResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="PopulateUserGridResult" nillable="true" type="q44:ArrayOfDS_VUserGrid" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getGroupUsers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="GroupName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q45="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GroupList" nillable="true" type="q45:ArrayOfanyType" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getGroupUsersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element xmlns:q46="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GroupList" nillable="true" type="q46:ArrayOfanyType" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateDgGroupUsers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="OwnerUserGuidID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="GroupName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateDgGroupUsersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PopulateDgGroupUsersResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteGroupUsers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="CurrSelectedGroupName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="GroupOwnerGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="iDeleted" type="xs:int" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteGroupUsersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteGroupUsersResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="iDeleted" type="xs:int" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getGroupOwnerGuidByGroupName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="GroupName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getGroupOwnerGuidByGroupNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getGroupOwnerGuidByGroupNameResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddLibraryGroupUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="GroupName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="CurrUserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SessionID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ControlSection" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddLibraryGroupUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateGroupUserGrid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="GroupName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateGroupUserGridResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PopulateGroupUserGridResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateLibItemsGrid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="LibraryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateLibItemsGridResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PopulateLibItemsGridResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateDgAssigned">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="LibraryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateDgAssignedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PopulateDgAssignedResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetLibraryUsersCount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetLibraryUsersCountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteLibraryGroupUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="GroupName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LibraryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteLibraryGroupUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangeUserPassword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserLogin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="OldPW" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="NewPw1" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="NewPw2" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangeUserPasswordResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ChangeUserPasswordResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveClickStats">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="IID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveClickStatsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cleanUpLibraryItems">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cleanUpLibraryItemsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveLibraryDirectories">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DirectoryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LibraryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveLibraryDirectoriesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveLibraryEmails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="FolderName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LibraryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveLibraryEmailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddSysMsg">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddSysMsgResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddLibraryDirectory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="FolderName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LibraryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RecordsAdded" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddLibraryDirectoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RecordsAdded" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddLibraryEmail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="EmailFolder" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LibraryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RecordsAdded" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddLibraryEmailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RecordsAdded" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateLibraryGrid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateLibraryGridResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PopulateLibraryGridResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getListOfStrings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="strListOfItems" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MySql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SessionID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getListOfStringsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getListOfStringsResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="strListOfItems" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getListOfStrings1">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="strListOfItems" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MySql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SessionID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getListOfStrings1Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getListOfStrings1Result" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="strListOfItems" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getListOfStrings2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="strListOfItems" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MySql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SessionID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getListOfStrings2Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getListOfStrings2Result" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="strListOfItems" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getListOfStrings3">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="strListOfItems" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MySql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SessionID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getListOfStrings3Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getListOfStrings3Result" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="strListOfItems" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getListOfStrings4">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="strListOfItems" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MySql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SessionID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getListOfStrings4Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getListOfStrings4Result" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="iCount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="S" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="iCountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="iCountResult" type="xs:int" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLogPath">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLogPathResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActiveSessionGetVal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element xmlns:q47="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="SessionGuid" type="q47:guid" />
+        <xs:element minOccurs="0" name="ParmName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActiveSessionGetValResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ActiveSessionGetValResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element xmlns:q48="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="SessionGuid" type="q48:guid" />
+        <xs:element minOccurs="0" name="ParmName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActiveSession">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element xmlns:q49="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="SessionGuid" type="q49:guid" />
+        <xs:element minOccurs="0" name="ParmName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ParmValue" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActiveSessionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ActiveSessionResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="setSecureLoginParms">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="sCompanyID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sRepoID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="setSecureLoginParmsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateSecureLoginCB_V2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="AllRepos" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompanyID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateSecureLoginCB_V2Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="AllRepos" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateSecureLoginCB">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="CB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompanyID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateSecureLoginCBResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="CB" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getLoginPW">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getLoginPWResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getLoginPWResult" nillable="true" type="xs:anyType" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="setLoginPW">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RepoID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="setLoginPWResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSessionEncCs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSessionEncCsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getSessionEncCsResult" nillable="true" type="xs:anyType" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="setSessionEncCs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="MySessionID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="setSessionEncCsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="setSessionRepoID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RepoID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="setSessionRepoIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSessionRepoID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSessionRepoIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getSessionRepoIDResult" nillable="true" type="xs:anyType" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="setSessionCompanyID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="CompanyID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="setSessionCompanyIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSessionCompanyID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSessionCompanyIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getSessionCompanyIDResult" nillable="true" type="xs:anyType" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

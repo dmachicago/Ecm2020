@@ -1,0 +1,729 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <RootNamespace>ECMSearchWPF</RootNamespace>
+    <AssemblyName>ECMSearchWPF</AssemblyName>
+    <OutputType>winexe</OutputType>
+    <EnableSecurityDebugging>true</EnableSecurityDebugging>
+    <StartAction>URL</StartAction>
+    <HostInBrowser>true</HostInBrowser>
+    <TargetZone>Internet</TargetZone>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>false</SignManifests>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <MyType>Custom</MyType>
+    <ProjectGuid>{745BB976-66E9-4526-BC80-1E376D84C30A}</ProjectGuid>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+    <PublishUrl>D:\PrepublishedWebSites\ECMSearchWPF\</PublishUrl>
+    <Install>false</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://www.EcmLibrary.com/ECMLibraryWPF/</InstallUrl>
+    <SupportUrl>http://www.EcmLibrary.com/help</SupportUrl>
+    <ProductName>ECM Library Search</ProductName>
+    <PublisherName>D. Miller &amp; Associates, Ltd.</PublisherName>
+    <SuiteName>ECM Library</SuiteName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>default.htm</WebPage>
+    <ApplicationRevision>12</ApplicationRevision>
+    <ApplicationVersion>4.2.1.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>false</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <IncrementalBuild>true</IncrementalBuild>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>ECMSearchWPF.xml</DocumentationFile>
+    <NOWARN>1591,660,661</NOWARN>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <IncrementalBuild>false</IncrementalBuild>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>ECMSearchWPF.xml</DocumentationFile>
+    <NOWARN>1591,660,661</NOWARN>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\..\..\..\itextsharp-all-5.5.7\itextsharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="Application.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Compile Include="My.cs" />
+    <Compile Include="app_code\Class1.cs" />
+    <Compile Include="app_code\grid.cs" />
+    <Compile Include="clsDatabase.cs" />
+    <Compile Include="clsEncrypt.cs" />
+    <Compile Include="frmContentRestore.xaml.cs">
+      <DependentUpon>frmContentRestore.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchAsst.xaml.cs">
+      <DependentUpon>frmSearchAsst.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="clsParms.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GLOBALS.cs" />
+    <Compile Include="NumericUpDown.cs" />
+    <Compile Include="PageGrantContentToUsers.xaml.cs">
+      <DependentUpon>PageGrantContentToUsers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageGroup.xaml.cs">
+      <DependentUpon>PageGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageLibrary.xaml.cs">
+      <DependentUpon>PageLibrary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageLibraryAssignment.xaml.cs">
+      <DependentUpon>PageLibraryAssignment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageLibraryMgt.xaml.cs">
+      <DependentUpon>PageLibraryMgt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageUsers.xaml.cs">
+      <DependentUpon>PageUsers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="popSqlStmt.xaml.cs">
+      <DependentUpon>popSqlStmt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="popupAlerts.xaml.cs">
+      <DependentUpon>popupAlerts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="popupContentSearchParms.xaml.cs">
+      <DependentUpon>popupContentSearchParms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="popupEmailSearchParms.xaml.cs">
+      <DependentUpon>popupEmailSearchParms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="popupExportSearchGrid.xaml.cs">
+      <DependentUpon>popupExportSearchGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="popupGroupLibraries.xaml.cs">
+      <DependentUpon>popupGroupLibraries.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="popupReviewSearchParms.xaml.cs">
+      <DependentUpon>popupReviewSearchParms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="popupSaveSearch.xaml.cs">
+      <DependentUpon>popupSaveSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="popupScheduelSearch.xaml.cs">
+      <DependentUpon>popupScheduelSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="popUserPassword.xaml.cs">
+      <DependentUpon>popUserPassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SVCGateway\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SVCSearch\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="test.xaml.cs">
+      <DependentUpon>test.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestControl.xaml.cs">
+      <DependentUpon>TestControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="testPage.xaml.cs">
+      <DependentUpon>testPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestWindow.xaml.cs">
+      <DependentUpon>TestWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="frmContentRestore.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmInit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Application.xaml.cs">
+      <DependentUpon>Application.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app_code\clsCommonFunctions.cs" />
+    <Compile Include="app_code\clsCompressor.cs" />
+    <Compile Include="app_code\clsDATASOURCERESTOREHISTORY.cs" />
+    <Compile Include="app_code\clsDir.cs" />
+    <Compile Include="app_code\clsDma.cs" />
+    <Compile Include="app_code\clsEncryptV2.cs" />
+    <Compile Include="app_code\clsExport.cs" />
+    <Compile Include="app_code\clsFlexGrid.cs" />
+    <Compile Include="app_code\clsGenerator.cs" />
+    <Compile Include="app_code\clsGlobal.cs" />
+    <Compile Include="app_code\clsGlobals.cs" />
+    <Compile Include="app_code\clsGLOBALSEACHRESULTS.cs" />
+    <Compile Include="app_code\clsGridMgt.cs" />
+    <Compile Include="app_code\clsHive.cs" />
+    <Compile Include="app_code\clsIsolatedStorage.cs" />
+    <Compile Include="app_code\clsIsolation.cs" />
+    <Compile Include="app_code\clsLIBDIRECTORY.cs" />
+    <Compile Include="app_code\clsLIBEMAIL.cs" />
+    <Compile Include="app_code\clsLIBRARYUSERS.cs" />
+    <Compile Include="app_code\clsLogging.cs" />
+    <Compile Include="app_code\clsLookupData.cs" />
+    <Compile Include="app_code\clsPreviewContent.cs" />
+    <Compile Include="app_code\clsRestoreClient.cs" />
+    <Compile Include="app_code\clsRUNPARMS.cs" />
+    <Compile Include="app_code\clsSAVEDITEMS.cs" />
+    <Compile Include="app_code\clsSEARCHHISTORY.cs" />
+    <Compile Include="app_code\clsServices.cs" />
+    <Compile Include="app_code\clsSetGlobalVars.cs" />
+    <Compile Include="app_code\clsSMS.cs" />
+    <Compile Include="app_code\clsSql.cs" />
+    <Compile Include="app_code\clsSystemParms.cs" />
+    <Compile Include="app_code\clsUserParms.cs" />
+    <Compile Include="app_code\clsUtility.cs" />
+    <Compile Include="app_code\modDbFunctions.cs" />
+    <Compile Include="app_code\modGlobals.cs" />
+    <Compile Include="frmInit.xaml.cs">
+      <DependentUpon>frmInit.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="frmSearchAsst.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageGrantContentToUsers.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PageGroup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PageLibrary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PageLibraryAssignment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PageLibraryMgt.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PageUsers.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="popSqlStmt.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="popupAlerts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="popupContentSearchParms.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="popupEmailSearchParms.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="popupExportSearchGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="popupGroupLibraries.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="popupReviewSearchParms.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="popupSaveSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="popupScheduelSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="popUserPassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="test.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="testPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\MyExtensions\MyWpfExtension.cs">
+      <VBMyExtensionTemplateID>Microsoft.VisualBasic.WPF.MyExtension</VBMyExtensionTemplateID>
+      <VBMyExtensionTemplateVersion>1.0.0.0</VBMyExtensionTemplateVersion>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CodeSigningCertificate.pfx" />
+    <None Include="ECMSearchWPF_TemporaryKey.pfx" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Service References\SVCGateway\ECMSearchWPF.SVCGateway.AttachToSecureLoginDBResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSearchWPF.SVCGateway.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSearchWPF.SVCGateway.DeleteExistingConnectionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSearchWPF.SVCGateway.DS_SecureAttach.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSearchWPF.SVCGateway.getConnectionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSearchWPF.SVCGateway.getSecureKeyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSearchWPF.SVCGateway.PopulateComboResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSearchWPF.SVCGateway.PopulateCompanyComboSecureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSearchWPF.SVCGateway.PopulateGridResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSearchWPF.SVCGateway.PopulateRepoComboResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSearchWPF.SVCGateway.PopulateRepoSecureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSearchWPF.SVCGateway.saveConnectionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSearchWPF.SVCGateway.ValidateGatewayLoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\SVCGateway.wsdl" />
+    <None Include="Service References\SVCGateway\SVCGateway.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCGateway\SVCGateway1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCGateway\SVCGateway2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCGateway\SVCGateway3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_Attachments.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_clsUSERGRIDSTATE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_CONTENT.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_CoOwner.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_DgAssigned.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_DgGroupUsers.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_dgGrpUsers.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_EMAIL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_LibItems.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_License.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_ListOfStrings01.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_ListOfStrings02.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_ListOfStrings03.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_ListOfStrings04.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_Metadata.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_USERSCREENSTATE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_USERSEARCHSTATE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_VLibraryStats.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_VLibraryUsers.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_VUserGrid.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_ZipFiles.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\SVCSearch.wsdl" />
+    <None Include="Service References\SVCSearch\SVCSearch.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCSearch\SVCSearch1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCSearch\SVCSearch2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCSearch\SVCSearch3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="C1.WPF.Toolbar.4">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="C1.WPF.Zip.4">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="cs\C1.WPF.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="cs\C1.WPF.Extended.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="cs\C1.WPF.PdfViewer.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="cs\C1.WPF.RichTextBox.Toolbar.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="cs\C1.WPF.SpellChecker.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="da\C1.WPF.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="da\C1.WPF.Extended.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="da\C1.WPF.PdfViewer.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="da\C1.WPF.RichTextBox.Toolbar.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="da\C1.WPF.SpellChecker.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="de\C1.WPF.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="de\C1.WPF.Extended.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="de\C1.WPF.PdfViewer.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="de\C1.WPF.RichTextBox.Toolbar.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="de\C1.WPF.SpellChecker.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SVCGateway\" />
+    <WCFMetadataStorage Include="Service References\SVCSearch\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SVCSearch\SVCSearch.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SVCSearch\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SVCSearch\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SVCSearch\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SVCGateway\SVCGateway.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SVCGateway\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SVCGateway\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SVCGateway\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <StartArguments />
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>CodeSigningCertificate.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>5908F237C6121E9B98D00FFC4EBF66076997D45E</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)/Microsoft.CSharp.targets" />
+</Project>

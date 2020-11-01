@@ -1,0 +1,15 @@
+C:\dev\EcmMasterSingleSource\ECM\EcmCloudWcf\EcmCloudWcf
+
+C:\dev\EcmMasterSingleSource\ECM\EcmCloud\EcmAdminSetup
+
+C:\dev\EcmMasterSingleSource\ECM\EcmCloudWcf\EcmCloudWcf
+
+C:\dev\EcmMasterSingleSource\ECM\ECMSecureAttach
+
+D:\dev\EcmMasterSingleSource\ECM\EcmCloudWcf\EcmDownloader
+
+C:\dev\EcmMasterSingleSource\ECM\EcmCloud\EcmCLCArchive
+
+C:\dev\EcmMasterSingleSource\ECM\EcmEncryption
+
+http://localhost:53407/SVCCLCArchive.svc

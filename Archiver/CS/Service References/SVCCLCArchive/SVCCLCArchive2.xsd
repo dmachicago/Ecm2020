@@ -1,0 +1,1071 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:21306/SVCCLCArchive.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EcmClcArchiveWCF" />
+  <xs:import schemaLocation="http://localhost:21306/SVCCLCArchive.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="getProcessFileAsExt">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="FileExt" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getProcessFileAsExtResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getProcessFileAsExtResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateSourceImageCompressed">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UploadFQN" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SourceGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LastAccessDate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LastWriteTime" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="VersionNbr" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedImageBinary" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="MachineID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RetStr" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateSourceImageCompressedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateSourceImageCompressedResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateSourceImage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="bCompressed" type="xs:boolean" />
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SourceGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LastAccessDate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LastWriteTime" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="VersionNbr" type="xs:int" />
+        <xs:element minOccurs="0" name="UploadFQN" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MachineID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompressedImageBinary" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateSourceImageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateSourceImageResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertSourcefile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MachineID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SourceGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UploadFQN" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SourceName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SourceTypeCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sLastAccessDate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sCreateDate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sLastWriteTime" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DataSourceOwnerUserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="VersionNbr" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedImageBinary" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="RetentionCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isPublic" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertSourcefileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertSourcefileResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateEmailBinary">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FQN" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EmailGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompressedImageBinary" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateEmailBinaryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateEmailBinaryResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertEmailBinary">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FQN" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EmailGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompressedImageBinary" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="RetentionCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isPublic" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertEmailBinaryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertEmailBinaryResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ArchiveEmail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FqnEmailImage" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EmailGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SUBJECT" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SentTO" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Body" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Bcc" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="BillingInformation" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CC" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Companies" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CreationTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="ReadReceiptRequested" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ReceivedByName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ReceivedTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="AllRecipients" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SenderEmailAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SenderName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Sensitivity" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SentOn" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="MsgSize" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DeferredDeliveryTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="EntryID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ExpiryTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="LastModificationTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="ShortSubj" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SourceTypeCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="OriginalFolder" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompressedImageBinary" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ArchiveEmailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ArchiveEmailResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAttachmentByFQN">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FQN" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EmailGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AttachmentName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AttachmentCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompressedImageBinary" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAttachmentByFQNResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateAttachmentByFQNResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAttachment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EmailGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompressedImageBinary" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="AttachmentName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AttachmentCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAttachmentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateAttachmentResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateEmailMsg">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FQN" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EmailGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompressedImageBinary" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateEmailMsgResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateEmailMsgResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertEmailMsg">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FQN" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EmailGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ReceivedByName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ReceivedTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="SenderEmailAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SenderName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SentOn" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="CompressedImageBinary" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="RetentionCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isPublic" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertEmailMsgResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertEmailMsgResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getEmailFileRestoreName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="EmailGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="WorkingDirectory" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Suffix" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getEmailFileRestoreNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getEmailFileRestoreNameResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getEmailRestoreFqnParms">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="EmailGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Subject" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CreationTime" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SentOn" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MsgSize" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getEmailRestoreFqnParmsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Subject" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CreationTime" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SentOn" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MsgSize" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveDocument">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DocID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveDocumentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RetrieveDocumentResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updateSourcefile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SourceGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UploadFQN" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="StoredExternally" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SourceName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SourceTypeCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LastAccessDate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LastWriteTime" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AttachmentBinary" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updateSourcefileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="updateSourcefileResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteSqlNewConn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserGuidID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RetVal" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteSqlNewConnResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ExecuteSqlNewConnResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetVal" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="value" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDataResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataUsingDataContract">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EcmClcArchiveWCF" minOccurs="0" name="composite" nillable="true" type="q1:CompositeType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataUsingDataContractResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/EcmClcArchiveWCF" minOccurs="0" name="GetDataUsingDataContractResult" nillable="true" type="q2:CompositeType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GET_WebSite">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="WhereClause" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GET_WebSiteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EcmClcArchiveWCF" minOccurs="0" name="GET_WebSiteResult" nillable="true" type="q3:ArrayOfDS_WebSite" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Save_WebSiteURL">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="WebSite" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="WebUrl" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="depth" type="xs:int" />
+        <xs:element minOccurs="0" name="width" type="xs:int" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Save_WebSiteURLResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Save_WebSiteURLResult" nillable="true" type="xs:anyType" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GET_WebScreen">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="WhereClause" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GET_WebScreenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/EcmClcArchiveWCF" minOccurs="0" name="GET_WebScreenResult" nillable="true" type="q4:ArrayOfDS_WebScreen" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Save_WebScreenURL">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="WebScreen" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="WebUrl" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Save_WebScreenURLResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Save_WebScreenURLResult" nillable="true" type="xs:anyType" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GET_RssPull">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="WhereClause" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GET_RssPullResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/EcmClcArchiveWCF" minOccurs="0" name="GET_RssPullResult" nillable="true" type="q5:ArrayOfDS_RssPull" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Save_RssPull">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RssName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RssUrl" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Save_RssPullResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Save_RssPullResult" nillable="true" type="xs:anyType" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="genRandomKey">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="KID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="genRandomKeyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="genRandomKeyResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="KID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="consoleOcrSingleAllPendingFiles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="consoleOcrSingleAllPendingFilesResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="consoleOcrSingleFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ContentGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TypeCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="consoleOcrSingleFileResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReturnString">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReturnStringResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ReturnStringResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyRetentionDates">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyRetentionDatesResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="iCount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="S" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="iCountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="iCountResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getGuidsOfAllEmailGraphicFiles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element minOccurs="0" name="bGetAllRecords" type="xs:boolean" />
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ListOfGuids" nillable="true" type="q6:ArrayOfKeyValueOfstringint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getGuidsOfAllEmailGraphicFilesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ListOfGuids" nillable="true" type="q7:ArrayOfKeyValueOfstringint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProcessEmailAttachmentOCR">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element minOccurs="0" name="tgtSourceGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="ReturnMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProcessEmailAttachmentOCRResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="ReturnMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getGuidsOfPendingGraphicFiles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ListOfGuids" nillable="true" type="q8:ArrayOfKeyValueOfstringint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getGuidsOfPendingGraphicFilesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ListOfGuids" nillable="true" type="q9:ArrayOfKeyValueOfstringint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getGuidsOfAllGraphicFiles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ListOfGuids" nillable="true" type="q10:ArrayOfKeyValueOfstringint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getGuidsOfAllGraphicFilesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ListOfGuids" nillable="true" type="q11:ArrayOfKeyValueOfstringint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProcessSourceOCR">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element minOccurs="0" name="tgtSourceGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProcessSourceOCRResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OcrDocument">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="TypeSource" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SourceBinary" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="FileDir" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FileNameOnly" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SourceGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MachineName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OcrDocumentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="OcrDocumentResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OcrGraphic">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="SourceBinary" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="FileNameOnly" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MachineName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OcrGraphicResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="OcrGraphicResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PDFExtract">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="bEmailAttachment" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SourceGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FileNameOnly" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SourceType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SourceBinary" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MachineName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PDFExtractResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveUploadStats">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="RepositoryTable" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SourceGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="TxStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="TxEndTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="TxTotalTime" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BPS" type="xs:decimal" />
+        <xs:element minOccurs="0" name="AttachmentName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveUploadStatsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SaveUploadStatsResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertEmailAttachmentRecord">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="EmailGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AttachmentName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AttachmentCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AttachmentType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CRC" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertEmailAttachmentRecordResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertEmailAttachmentRecordResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadBufferedCreate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tgtGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="iRead" type="xs:int" />
+        <xs:element minOccurs="0" name="FileCrc" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FileLength" type="xs:long" />
+        <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RepositoryTable" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LastSegment" type="xs:boolean" />
+        <xs:element minOccurs="0" name="OriginalFileName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Buffer" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadBufferedCreateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UploadBufferedCreateResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadBufferedAppend">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tgtGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="iRead" type="xs:int" />
+        <xs:element minOccurs="0" name="FileCrc" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FileLength" type="xs:long" />
+        <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RepositoryTable" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LastSegment" type="xs:boolean" />
+        <xs:element minOccurs="0" name="OriginalFileName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Buffer" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadBufferedAppendResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UploadBufferedAppendResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ckDbConnection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="From" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MachineID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ckDbConnectionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ckDbConnectionResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getAttachmentRowID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="EmailGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AttachmentName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getAttachmentRowIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getAttachmentRowIDResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertAttachmentFqn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FQN" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EmailGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AttachmentName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AttachmentCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompressedImageBinary" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="bImageCompressed" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Sha1Hash" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertAttachmentFqnResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertAttachmentFqnResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUrlBinaryHtml">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SourceGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LastAccessDate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LastWriteTime" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="VersionNbr" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedImageBinary" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUrlBinaryHtmlResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateUrlBinaryHtmlResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="OriginalSize" type="xs:int" />
+        <xs:element minOccurs="0" name="CompressedSize" type="xs:int" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransmissionStartTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="txEndTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c654e1a1-bec8-4143-89f7-7cb4d4574243" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:59757/SVCSearch.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SVCSearch.wsdl" MetadataType="Wsdl" ID="4015b7cf-ec68-416a-abbe-9115c9b44d7d" SourceId="1" SourceUrl="http://localhost:59757/SVCSearch.svc?wsdl" />
+    <MetadataFile FileName="SVCSearch.disco" MetadataType="Disco" ID="40a45bd0-2665-4de4-b87e-fb7b2d9af47e" SourceId="1" SourceUrl="http://localhost:59757/SVCSearch.svc?disco" />
+    <MetadataFile FileName="SVCSearch.xsd" MetadataType="Schema" ID="6dbadf46-dda9-4db8-92f5-0780cb227542" SourceId="1" SourceUrl="http://localhost:59757/SVCSearch.svc?xsd=xsd0" />
+    <MetadataFile FileName="SVCSearch1.xsd" MetadataType="Schema" ID="5830f4f2-49a8-46e7-88ec-50d7d43d6a43" SourceId="1" SourceUrl="http://localhost:59757/SVCSearch.svc?xsd=xsd1" />
+    <MetadataFile FileName="SVCSearch2.xsd" MetadataType="Schema" ID="2ea6bac3-c812-413d-b844-4f937023f457" SourceId="1" SourceUrl="http://localhost:59757/SVCSearch.svc?xsd=xsd2" />
+    <MetadataFile FileName="SVCSearch3.xsd" MetadataType="Schema" ID="63054dc3-c86e-4937-a62d-a04b06e35186" SourceId="1" SourceUrl="http://localhost:59757/SVCSearch.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

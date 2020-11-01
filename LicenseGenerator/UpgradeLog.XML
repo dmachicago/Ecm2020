@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="ReconLicense">
+</Property><Property Name="Solution File" Value="C:\dev\ECM\EcmLicenseGenerator\ReconLicense.sln">
+</Property><Property Name="User Options File" Value="C:\dev\ECM\EcmLicenseGenerator\ReconLicense.suo">
+</Property><Property Name="Date" Value="Tuesday, February 22, 2011">
+</Property><Property Name="Time" Value="11:30">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="ReconLicense.sln" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense.sln">
+</Event><Event ErrorLevel="0" Project="" Source="ReconLicense.suo" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense.suo">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\ReconLicense.vbproj" Description="Project file successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\ReconLicense.vbproj">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\ReconLicense.vbproj.user" Description="Project user file successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\ReconLicense.vbproj.user">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\clsACTIVELICENSE.vb" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\clsACTIVELICENSE.vb">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\clsDatabase.vb" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\clsDatabase.vb">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\clsDma.vb" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\clsDma.vb">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\clsEncrypt.vb" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\clsEncrypt.vb">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\clsFile.vb" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\clsFile.vb">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\clsLICENSE.vb" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\clsLICENSE.vb">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\clsRemoteLICENSE.vb" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\clsRemoteLICENSE.vb">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\FrmMainLicense.vb" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\FrmMainLicense.vb">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\FrmMainLicense.Designer.vb" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\FrmMainLicense.Designer.vb">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\My Project\AssemblyInfo.vb" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\My Project\AssemblyInfo.vb">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\My Project\Application.Designer.vb" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\My Project\Application.Designer.vb">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\My Project\Resources.Designer.vb" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\My Project\Resources.Designer.vb">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\My Project\Settings.Designer.vb" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\My Project\Settings.Designer.vb">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\_DMA_UD_LicenseDataSet.Designer.vb" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\_DMA_UD_LicenseDataSet.Designer.vb">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\app.config" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\app.config">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\My Project\app.manifest" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\My Project\app.manifest">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\My Project\Application.myapp" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\My Project\Application.myapp">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\My Project\Settings.settings" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\My Project\Settings.settings">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\ReconLicense_TemporaryKey.pfx" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\ReconLicense_TemporaryKey.pfx">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\_DMA_UD_LicenseDataSet.xsc" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\_DMA_UD_LicenseDataSet.xsc">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\_DMA_UD_LicenseDataSet.xsd" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\_DMA_UD_LicenseDataSet.xsd">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\_DMA_UD_LicenseDataSet.xss" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\_DMA_UD_LicenseDataSet.xss">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\KEY04D.ICO" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\KEY04D.ICO">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\FrmMainLicense.resx" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\FrmMainLicense.resx">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\My Project\Resources.resx" Description="File successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\ReconLicense\My Project\Resources.resx">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\ReconLicense.vbproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="ReconLicense" Source="ReconLicense\ReconLicense.vbproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="LicenseSetup.vdproj" Source="LicenseSetup\LicenseSetup.vdproj" Description="Project file successfully backed up as C:\dev\ECM\EcmLicenseGenerator\Backup\LicenseSetup\LicenseSetup.vdproj">
+</Event><Event ErrorLevel="0" Project="" Source="ReconLicense.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="ReconLicense.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="ReconLicense" Source="ReconLicense\ReconLicense.vbproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

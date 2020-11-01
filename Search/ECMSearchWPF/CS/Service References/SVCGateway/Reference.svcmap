@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d193738e-5f4a-49c7-b220-cb08efad3ddc" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:1550/SVCGateway.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SVCGateway.xsd" MetadataType="Schema" ID="df5a47c2-cb75-44e1-8336-802d4bba3673" SourceId="1" SourceUrl="http://localhost:1550/SVCGateway.svc?xsd=xsd1" />
+    <MetadataFile FileName="SVCGateway1.xsd" MetadataType="Schema" ID="906d2573-e6f2-42de-81d7-56a09989e5c2" SourceId="1" SourceUrl="http://localhost:1550/SVCGateway.svc?xsd=xsd2" />
+    <MetadataFile FileName="SVCGateway2.xsd" MetadataType="Schema" ID="fffe5745-db4a-46b5-8827-e4e3674617c1" SourceId="1" SourceUrl="http://localhost:1550/SVCGateway.svc?xsd=xsd3" />
+    <MetadataFile FileName="SVCGateway.wsdl" MetadataType="Wsdl" ID="aa44c01b-2f17-441d-a682-d0f2f8db75cb" SourceId="1" SourceUrl="http://localhost:1550/SVCGateway.svc?wsdl" />
+    <MetadataFile FileName="SVCGateway.disco" MetadataType="Disco" ID="aada04f6-e43b-454e-a660-3ebf9f3f987a" SourceId="1" SourceUrl="http://localhost:1550/SVCGateway.svc?disco" />
+    <MetadataFile FileName="SVCGateway3.xsd" MetadataType="Schema" ID="70a168ac-2352-4d33-8524-9232363f7835" SourceId="1" SourceUrl="http://localhost:1550/SVCGateway.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

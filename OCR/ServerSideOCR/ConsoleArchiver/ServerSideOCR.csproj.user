@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <StartArguments>-i  1</StartArguments>
+    <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
+    <EnableSQLServerDebugging>false</EnableSQLServerDebugging>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PublishUrlHistory>D:\PrePublishedWebSites\ECMSAAS\ServerSideOCR\|C:\PrePublishedWebSites\ECMSAAS\ServerSideOCR\|C:\PrePublishedWebSites\ECMSAAS\ConsoleArchiver\</PublishUrlHistory>
+    <InstallUrlHistory>http://www.EcmLibrary.com/ECMSAAS/ServerSideOCR/|http://www.EcmLibrary.com/ECMSAAS/ConsoleArchiver/</InstallUrlHistory>
+    <SupportUrlHistory />
+    <UpdateUrlHistory>http://www.EcmLibrary.com/ECMSAAS/ServerSideOCR/</UpdateUrlHistory>
+    <BootstrapperUrlHistory />
+    <ErrorReportUrlHistory />
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnableSecurityDebugging>false</EnableSecurityDebugging>
+  </PropertyGroup>
+</Project>

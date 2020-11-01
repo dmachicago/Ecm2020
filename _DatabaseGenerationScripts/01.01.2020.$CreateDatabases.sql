@@ -1,0 +1,51 @@
+USE master;
+GO
+
+IF DB_ID (N'TDR') IS NULL
+CREATE DATABASE [TDR];
+GO
+
+IF DB_ID (N'EcmGateway') IS NULL
+CREATE DATABASE [EcmGateway];
+GO
+
+IF DB_ID (N'ECM.Init') IS NULL
+CREATE DATABASE [ECM.Init];
+GO
+
+IF DB_ID (N'DMA.UD.License') IS NULL
+CREATE DATABASE [DMA.UD.License];
+GO
+
+IF DB_ID (N'ECM.Library.FS') IS NULL
+CREATE DATABASE [ECM.Library.FS];
+GO
+
+IF DB_ID (N'ECM.SecureLogin') IS NULL
+CREATE DATABASE [ECM.SecureLogin];
+GO
+
+IF DB_ID (N'ECM.Thesaurus') IS NULL
+CREATE DATABASE [ECM.Thesaurus]
+GO
+
+IF DB_ID (N'ECM.Admin') IS NULL
+CREATE DATABASE [ECM.Admin]
+GO
+
+IF DB_ID (N'ECM.Hive') IS NULL
+CREATE DATABASE [ECM.Hive]
+GO
+
+IF DB_ID (N'ECM.Language') IS NULL
+CREATE DATABASE [ECM.Language];
+GO
+
+IF DB_ID (N'ECM.Admin') IS NULL
+CREATE DATABASE [ECM.Admin];
+GO
+
+print 'DAtabases Created ... ' ;
+go
+
+

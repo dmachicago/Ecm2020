@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:55448/SVCGateway.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EcmSecureAttachWCF2" />
+  <xs:element name="GetCS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCSResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCSResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getConnection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CompanyID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RepoID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getConnectionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getConnectionResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidateUserLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EncPW" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidateUserLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ValidateUserLoginResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidateGatewayLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CompanyID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RepoID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EncPW" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RtnMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidateGatewayLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ValidateGatewayLoginResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RtnMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSecureKey">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CompanyID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RepoID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LoginPassword" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSecureKeyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getSecureKeyResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateCombo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompanyID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetTxt" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateComboResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PopulateComboResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetTxt" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateCompanyComboSecure">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompanyID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EncryptedPW" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetTxt" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateCompanyComboSecureResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PopulateCompanyComboSecureResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetTxt" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateRepoCombo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompanyID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetTxt" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateRepoComboResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PopulateRepoComboResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetTxt" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateRepoSecure">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompanyID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EncryptedPW" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetTxt" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateRepoSecureResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PopulateRepoSecureResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetTxt" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteExistingConnection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ConnStr" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompanyID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EncPW" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RepoID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Disabled" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RtnMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteExistingConnectionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteExistingConnectionResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RtnMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateGrid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompanyID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EncPW" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetTxt" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateGridResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EcmSecureAttachWCF2" minOccurs="0" name="PopulateGridResult" nillable="true" type="q1:ArrayOfDS_SecureAttach" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RetTxt" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="saveConnection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ConnStr" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CompanyID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EncPW" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RepoID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CS" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Disabled" type="xs:boolean" />
+        <xs:element minOccurs="0" name="isThesaurus" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RtnMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="saveConnectionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="saveConnectionResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RtnMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AttachToSecureLoginDB">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ConnStr" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RtnMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AttachToSecureLoginDBResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AttachToSecureLoginDBResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RC" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RtnMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="value" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDataResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataUsingDataContract">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/EcmSecureAttachWCF2" minOccurs="0" name="composite" nillable="true" type="q2:CompositeType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataUsingDataContractResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EcmSecureAttachWCF2" minOccurs="0" name="GetDataUsingDataContractResult" nillable="true" type="q3:CompositeType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

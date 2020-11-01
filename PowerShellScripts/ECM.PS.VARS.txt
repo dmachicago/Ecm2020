@@ -1,0 +1,143 @@
+*** BEFORE WE START PLEASE ENSURE THE FOLLOWING
+* 1 - YOU CAN ACCESS THE SERVER(S) WITH REMOTE DESKTOP	
+* 2 - You have all the necessary login IDs anb passwords for the server as well as all SQL Server installations that will be involved.
+* 3 - SQL Management Studio is installed
+* 4 - 7-Zip is installed and in the path environment variable (http://www.7-zip.org/download.html)
+* 5 - .Net 4.5 is installed
+* 6 - PowerShell 3.x is installed
+
+
+******************************************************************************************
+*AN INSTALLATION DIRECTORY IS REQUIRED
+INSTALLDIR|D:\TEMP\EcmSetupFiles
+
+******************************************************************************************
+*A password is required to unzip the downloaded files during intial setup and install.
+*The password is changed regularly, so you will have to get it from the ECM Library Admin.
+PASSWORD|Ecm2013
+
+**************************************************************************************
+**** NO SPACES ARE ALLOWED BETWEEN THE PARAMETER, THE VERTICAL BAR "|", AND THE VALUE
+**************************************************************************************
+
+********************************************************************************
+* There are times when an installer will want to see each step as it runs, 
+* set this to 1 for this level of detail, leave as 0 to skip notification steps.
+********************************************************************************
+NOTIFY|1
+
+********************************************************************************
+* An admin user name and password are required to perform the installs,
+* please enter them here and once complete, change the ID and Password to 
+* unusable characters such as stars.
+********************************************************************************
+ADMINUSER|ecmuser
+ADMINPASSWORD|Junebug1
+
+
+********************************************************************************
+* The execution path to 7-ZIP must be specified as it could be in different 
+* places on different machine. We us the default path here.
+7ZIPPATH|C:\Program Files\7-Zip\7z.exe
+
+*************************************************************
+*This MUST be the first parameter in this file.
+*The temporary working directory all the work will take palce
+TDIR|c:\_ECMTEMP
+
+***************************************************************************************************
+*To ensure a SERVER has the required software and versions, it maybe necessary totake AN INVENTORY
+*SET TO 1 TO INVENTORY, 0 TO SKIP INVENTORY
+invsvr|1
+
+************************************************************************************************************
+*SQL Server creates Databases in a default directory ON THE C-Drive, this parm allows a differnet directory to be specified.
+SQLSVRDATADIR|SQLSVRDATA
+
+*******************************************************
+*The SQL Server Instance Name for the Repository Server
+RSvr|T410A\GINA
+RepoDBNAME|ECM.Library.FS
+HIVESVR|T410A\GINA
+
+*******************************************************
+*The OCR SERVER will be:
+OCRSVR|T410A
+
+*The SQL Server Instance Name for the Services Server
+SSvr|T410A\GINA
+cDBNAME|ECM.Library.FS
+
+*The ECM Thesaurus Database name
+ThesaurusSvr|T410A\GINA
+ThesaurusDBNAME|ECM.Thesaurus
+
+*The ECM GateWay Database name
+GateWaySVR|T410A\GINA
+GateWayDBNAME|EcmGateway
+
+*The ECM SecureLogin Database name
+SecureLoginSVR|T410A\GINA
+SecureLoginDBNAME|ECM.SecureLogin
+
+*The ECM Language Database name
+LanguageSVR|T410A\GINA
+LanguageDBNAME|ECM.Language
+
+*The ECM HIVE Database name
+HiveSVR|T410A\GINA
+HiveDBNAME|ECM.Hive
+
+*The TDR Database name
+TDRSVR|T410A\GINA
+TDRDBNAME|TDR
+
+*The SQL Server ADMIN/USername 
+uname|sa
+
+*The SQL Server password
+pwd|Junebug1
+
+*The NAME od the SQL Server File Stream's file group
+FSFG|c:\FG_ECM_FileStream
+
+*The directory where the SQL Server File Stream's file group will reside
+FSDIR|c:\ECM.FileStream.01
+
+
+********************************************************************************
+*The url where the DOWNLOADER will be retrieved
+DOWNLOADERURL|http://108.61.17.163/ClcDownloader/publish.htm
+
+*The url where the ARCHIVER will be retrieved
+ARCHIVERURL|http://108.61.17.163/Archivefs/SVCFS.svc
+
+*The url where the ARCHIVE service is stored in ZIP file format
+ArchiveSVCDIR|http://www.ecmlibrary.com/ECMSAAS/ArchiveZIP/Archive.zip
+NewArchiveSVCDIR|http://www.ecmlibrary.com/ECMSAAS/ArchiveZIP/Archive.zip
+
+*The url where the SEARCH service is stored in ZIP file format
+SearchSVCURL|http://www.ecmlibrary.com/ECMSAAS/Search/Search.zip
+NewSearchSVCURL|http://www.ecmlibrary.com/ECMSAAS/Search/Search.zip
+
+*The url where the GateWay service is stored in ZIP file format
+GateWaySVCURL|http://www.ecmlibrary.com/ECMSAAS/GateWay/GateWay.zip
+NewGateWaySVCURL|http://www.ecmlibrary.com/ECMSAAS/GateWay/GateWay.zip
+**********************************************************************************************
+
+*Modify the END POINT definition for the ArchiveFS - KEEP THE DOUBLE QUOTES AROUND THE ADDRESS
+*<endpoint address="http://108.61.17.163/Archivefs/SVCFS.svc"
+EndPointArchiver|"http://108.61.17.163/Archivefs/SVCFS.svc"
+NewEndPointArchiver|"http://T410A/Archivefs/SVCFS.svc"
+
+#<endpoint address="http://108.61.17.163/archive/SVCCLCArchive.svc"
+EndPointArchive|"http://108.61.17.163/archive/SVCCLCArchive.svc"
+NewEndPointArchive|"http://T410A/archive/SVCCLCArchive.svc"
+
+#<endpoint address="http://108.61.17.163/SecureAttachAdminSvc/SVCGateway.svc"
+EndPointGateway|"http://108.61.17.163/SecureAttachAdminSvc/SVCGateway.svc"
+NewEndPointGateway|"http://T410A/SecureAttachAdminSvc/SVCGateway.svc"
+
+#<endpoint address="http://108.61.17.163/Search/SVCSearch.svc"
+EndPointSearch|"http://108.61.17.163/Search/SVCSearch.svc"
+NewEndPointSearch|"http://T410A/Search/SVCSearch.svc"

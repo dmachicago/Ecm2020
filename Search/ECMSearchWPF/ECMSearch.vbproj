@@ -1,0 +1,1362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <RootNamespace>ECMSearchWPF</RootNamespace>
+    <AssemblyName>ECMSearchWPF</AssemblyName>
+    <OutputType>winexe</OutputType>
+    <EnableSecurityDebugging>true</EnableSecurityDebugging>
+    <StartAction>URL</StartAction>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>false</SignManifests>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <MyType>Custom</MyType>
+    <ProjectGuid>{745BB976-66E9-4526-BC80-1E376D84C30A}</ProjectGuid>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>D:\PrepublishedWebSites\ECMSaaS\Search\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Background</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>true</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <UpdateUrl>http://www.ecmlibrary.com/ecmsaas/search/</UpdateUrl>
+    <SupportUrl>http://www.EcmLibrary.com/help</SupportUrl>
+    <ProductName>ECM Library Search</ProductName>
+    <PublisherName>D. Miller &amp; Associates, Ltd.</PublisherName>
+    <SuiteName>ECM Library</SuiteName>
+    <WebPage>default.htm</WebPage>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>52</ApplicationRevision>
+    <ApplicationVersion>4.3.2.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <IncrementalBuild>true</IncrementalBuild>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <IncrementalBuild>false</IncrementalBuild>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ENC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ENC\ENC\bin\Debug\ENC.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.1, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.1\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.113.1\lib\net451\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="Application.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Compile Include="app_code\Class1.vb" />
+    <Compile Include="app_code\grid.vb" />
+    <Compile Include="clsDatabase.vb" />
+    <Compile Include="clsDatasetMgt.vb" />
+    <Compile Include="clsDbDownload.vb" />
+    <Compile Include="clsDLMaster.vb" />
+    <Compile Include="clsLogMain.vb" />
+    <Compile Include="clsLoggingExtended.vb" />
+    <Compile Include="clsPullDatasource.vb" />
+    <Compile Include="dataStructures.vb" />
+    <Compile Include="frmContentRestore.xaml.vb">
+      <DependentUpon>frmContentRestore.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchAsst.xaml.vb">
+      <DependentUpon>frmSearchAsst.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="clsParms.vb" />
+    <Compile Include="globalGridMgt.vb" />
+    <Compile Include="GlobalMod.vb" />
+    <Compile Include="globalSearchTerms.vb" />
+    <Compile Include="gv_ActiveSearchGuids.vb" />
+    <Compile Include="gv_ArchiveFrom.vb" />
+    <Compile Include="gv_ArchiveHist.vb" />
+    <Compile Include="gv_ArchiveHistContentType.vb" />
+    <Compile Include="gv_ArchiveStats.vb" />
+    <Compile Include="gv_Archive_07202017134452007.vb" />
+    <Compile Include="gv_AssignableUserParameters.vb" />
+    <Compile Include="gv_AttachmentType.vb" />
+    <Compile Include="gv_AttributeDatatype.vb" />
+    <Compile Include="gv_Attributes.vb" />
+    <Compile Include="gv_AvailFileTypes.vb" />
+    <Compile Include="gv_AvailFileTypesUndefined.vb" />
+    <Compile Include="gv_BusinessFunctionJargon.vb" />
+    <Compile Include="gv_BusinessJargonCode.vb" />
+    <Compile Include="gv_CaptureItems.vb" />
+    <Compile Include="gv_ContactFrom.vb" />
+    <Compile Include="gv_ContactsArchive.vb" />
+    <Compile Include="gv_Contact_07202017134458008.vb" />
+    <Compile Include="gv_ContainerStorage.vb" />
+    <Compile Include="gv_ConvertedDocs.vb" />
+    <Compile Include="gv_CoOwner.vb" />
+    <Compile Include="gv_CorpContainer.vb" />
+    <Compile Include="gv_CorpFunction.vb" />
+    <Compile Include="gv_Corporation.vb" />
+    <Compile Include="gv_Databases.vb" />
+    <Compile Include="gv_DataOwners.vb" />
+    <Compile Include="gv_DataSourceCheckOut.vb" />
+    <Compile Include="gv_DataSourceRestoreHistory.vb" />
+    <Compile Include="gv_DB_UpdateHist.vb" />
+    <Compile Include="gv_DeleteFrom.vb" />
+    <Compile Include="gv_DeleteF_07202017134505007.vb" />
+    <Compile Include="gv_Directory.vb" />
+    <Compile Include="gv_EcmUser.vb" />
+    <Compile Include="gv_EmailArchParms.vb" />
+    <Compile Include="gv_EmailAttachmentSearchList.vb" />
+    <Compile Include="gv_EmailFolder.vb" />
+    <Compile Include="gv_EmailToDelete.vb" />
+    <Compile Include="gv_ExcludedFiles.vb" />
+    <Compile Include="gv_ExcludeFrom.vb" />
+    <Compile Include="gv_FUncSkipWords.vb" />
+    <Compile Include="gv_FunctionProdJargon.vb" />
+    <Compile Include="gv_GlobalSeachResults.vb" />
+    <Compile Include="gv_GroupLibraryAccess.vb" />
+    <Compile Include="gv_GroupUsers.vb" />
+    <Compile Include="gv_HelpText.vb" />
+    <Compile Include="gv_HelpTextUser.vb" />
+    <Compile Include="gv_IncludedFiles.vb" />
+    <Compile Include="gv_IncludeImmediate.vb" />
+    <Compile Include="gv_InformationProduct.vb" />
+    <Compile Include="gv_InformationType.vb" />
+    <Compile Include="gv_JargonWords.vb" />
+    <Compile Include="gv_LibDirectory.vb" />
+    <Compile Include="gv_LibEmail.vb" />
+    <Compile Include="gv_Library.vb" />
+    <Compile Include="gv_LibraryItems.vb" />
+    <Compile Include="gv_LibraryUsers.vb" />
+    <Compile Include="gv_License.vb" />
+    <Compile Include="gv_LoadProfile.vb" />
+    <Compile Include="gv_LoadProfileItem.vb" />
+    <Compile Include="gv_Machine.vb" />
+    <Compile Include="gv_MyTempTable.vb" />
+    <Compile Include="gv_OutlookFrom.vb" />
+    <Compile Include="gv_OwnerHistory.vb" />
+    <Compile Include="gv_PgmTrace.vb" />
+    <Compile Include="gv_ProcessFileAs.vb" />
+    <Compile Include="gv_ProdCaptureItems.vb" />
+    <Compile Include="gv_QtyDocs.vb" />
+    <Compile Include="gv_QuickDirectory.vb" />
+    <Compile Include="gv_QuickRef.vb" />
+    <Compile Include="gv_QuickRefItems.vb" />
+    <Compile Include="gv_Recipients.vb" />
+    <Compile Include="gv_RepeatData.vb" />
+    <Compile Include="gv_RestorationHistory.vb" />
+    <Compile Include="gv_Retention.vb" />
+    <Compile Include="gv_RetentionTemp.vb" />
+    <Compile Include="gv_RunParms.vb" />
+    <Compile Include="gv_RuntimeErrors.vb" />
+    <Compile Include="gv_SavedItems.vb" />
+    <Compile Include="gv_SearchHistory.vb" />
+    <Compile Include="gv_SearhParmsHistory.vb" />
+    <Compile Include="gv_SkipWords.vb" />
+    <Compile Include="gv_SourceAttribute.vb" />
+    <Compile Include="gv_SourceContainer.vb" />
+    <Compile Include="gv_SourceType.vb" />
+    <Compile Include="gv_Storage.vb" />
+    <Compile Include="gv_SubDir.vb" />
+    <Compile Include="gv_SubLibrary.vb" />
+    <Compile Include="gv_UD_Qty.vb" />
+    <Compile Include="gv_upgrade_status.vb" />
+    <Compile Include="gv_UserCurrParm.vb" />
+    <Compile Include="gv_UserGroup.vb" />
+    <Compile Include="gv_UserReassignHist.vb" />
+    <Compile Include="gv_Users.vb" />
+    <Compile Include="gv_Volitility.vb" />
+    <Compile Include="gv_WebSource.vb" />
+    <Compile Include="gv_ZippedFiles.vb" />
+    <Compile Include="MainPage.xaml.vb">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GLOBALS.vb" />
+    <Compile Include="NumericUpDown.vb" />
+    <Compile Include="PageGrantContentToUsers.xaml.vb">
+      <DependentUpon>PageGrantContentToUsers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageGroup.xaml.vb">
+      <DependentUpon>PageGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageLibrary.xaml.vb">
+      <DependentUpon>PageLibrary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageLibraryAssignment.xaml.vb">
+      <DependentUpon>PageLibraryAssignment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageLibraryMgt.xaml.vb">
+      <DependentUpon>PageLibraryMgt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageUsers.xaml.vb">
+      <DependentUpon>PageUsers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="popSqlStmt.xaml.vb">
+      <DependentUpon>popSqlStmt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="popupAlerts.xaml.vb">
+      <DependentUpon>popupAlerts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="popupContentSearchParms.xaml.vb">
+      <DependentUpon>popupContentSearchParms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="popupEmailSearchParms.xaml.vb">
+      <DependentUpon>popupEmailSearchParms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="popupExportSearchGrid.xaml.vb">
+      <DependentUpon>popupExportSearchGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="popupGroupLibraries.xaml.vb">
+      <DependentUpon>popupGroupLibraries.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="popupReviewSearchParms.xaml.vb">
+      <DependentUpon>popupReviewSearchParms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="popupSaveSearch.xaml.vb">
+      <DependentUpon>popupSaveSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="popupScheduleSearch.xaml.vb">
+      <DependentUpon>popupScheduleSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="popUserPassword.xaml.vb">
+      <DependentUpon>popUserPassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SVCSearch\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="test.xaml.vb">
+      <DependentUpon>test.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestControl.xaml.vb">
+      <DependentUpon>TestControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="testPage.xaml.vb">
+      <DependentUpon>testPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestWindow.xaml.vb">
+      <DependentUpon>TestWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vExchangeHostPop.vb" />
+    <Compile Include="vFileDirectory.vb" />
+    <Compile Include="vLibraryStat.vb" />
+    <Compile Include="vLibraryUser.vb" />
+    <Compile Include="vMigrateUser.vb" />
+    <Compile Include="vReassignedTable.vb" />
+    <Compile Include="vUserGrid.vb" />
+    <Page Include="frmContentRestore.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmInit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Application.xaml.vb">
+      <DependentUpon>Application.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app_code\clsCommonFunctions.vb" />
+    <Compile Include="app_code\clsCompressor.vb" />
+    <Compile Include="app_code\clsDATASOURCERESTOREHISTORY.vb" />
+    <Compile Include="app_code\clsDir.vb" />
+    <Compile Include="app_code\clsDma.vb" />
+    <Compile Include="app_code\clsEncryptV2.vb" />
+    <Compile Include="app_code\clsExport.vb" />
+    <Compile Include="app_code\clsFlexGrid.vb" />
+    <Compile Include="app_code\clsGenerator.vb" />
+    <Compile Include="app_code\clsGlobal.vb" />
+    <Compile Include="app_code\clsGlobals.vb" />
+    <Compile Include="app_code\clsGLOBALSEACHRESULTS.vb" />
+    <Compile Include="app_code\clsGridMgt.vb" />
+    <Compile Include="app_code\clsHive.vb" />
+    <Compile Include="app_code\clsIsolatedStorage.vb" />
+    <Compile Include="app_code\clsIsolation.vb" />
+    <Compile Include="app_code\clsLIBDIRECTORY.vb" />
+    <Compile Include="app_code\clsLIBEMAIL.vb" />
+    <Compile Include="app_code\clsLIBRARYUSERS.vb" />
+    <Compile Include="app_code\clsLogging.vb" />
+    <Compile Include="app_code\clsLookupData.vb" />
+    <Compile Include="app_code\clsPreviewContent.vb" />
+    <Compile Include="app_code\clsRestoreClient.vb" />
+    <Compile Include="app_code\clsRUNPARMS.vb" />
+    <Compile Include="app_code\clsSAVEDITEMS.vb" />
+    <Compile Include="app_code\clsSEARCHHISTORY.vb" />
+    <Compile Include="app_code\clsServices.vb" />
+    <Compile Include="app_code\clsSetGlobalVars.vb" />
+    <Compile Include="app_code\clsSMS.vb" />
+    <Compile Include="app_code\clsSql.vb" />
+    <Compile Include="app_code\clsSystemParms.vb" />
+    <Compile Include="app_code\clsUserParms.vb" />
+    <Compile Include="app_code\clsUtility.vb" />
+    <Compile Include="app_code\modDbFunctions.vb" />
+    <Compile Include="app_code\modGlobals.vb" />
+    <Compile Include="frmInit.xaml.vb">
+      <DependentUpon>frmInit.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="frmSearchAsst.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageGrantContentToUsers.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PageGroup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PageLibrary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PageLibraryAssignment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PageLibraryMgt.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PageUsers.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="popSqlStmt.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="popupAlerts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="popupContentSearchParms.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="popupEmailSearchParms.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="popupExportSearchGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="popupGroupLibraries.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="popupReviewSearchParms.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="popupSaveSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="popupScheduleSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="popUserPassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="test.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="testPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="System.Threading.Tasks" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows" />
+    <Import Include="System.Windows.Controls" />
+    <Import Include="System.Windows.Data" />
+    <Import Include="System.Windows.Documents" />
+    <Import Include="System.Windows.Input" />
+    <Import Include="System.Windows.Shapes" />
+    <Import Include="System.Windows.Media" />
+    <Import Include="System.Windows.Media.Imaging" />
+    <Import Include="System.Windows.Navigation" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="My Project\AssemblyInfo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="My Project\MyExtensions\MyWpfExtension.vb">
+      <VBMyExtensionTemplateID>Microsoft.VisualBasic.WPF.MyExtension</VBMyExtensionTemplateID>
+      <VBMyExtensionTemplateVersion>1.0.0.0</VBMyExtensionTemplateVersion>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="CodeSigningCertificate.pfx" />
+    <None Include="ECMSearchWPF_TemporaryKey.pfx" />
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\DataSources\System.Data.DataSet.datasource" />
+    <None Include="My Project\DataSources\System.Data.DataTable.datasource" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <AppDesigner Include="My Project\" />
+    <None Include="packages.config" />
+    <None Include="SDB\EcmSL.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SearchClsDiag.cd" />
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.ActiveSessionGetValResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.ActiveSessionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.AddGroupLibraryAccessResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.AddLibraryDirectoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.AddLibraryEmailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.AddLibraryGroupUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.AddLibraryItemsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.AddSysMsgResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.ChangeUserContentPublicResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.ChangeUserPasswordResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.ckContentFlagsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.CleanLogResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.cleanUpLibraryItemsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DBExecuteEncryptedSqlResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DBisAdminResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DBisGlobalSearcherResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DbWriteToFileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DeleteGroupUsersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DeleteLibraryGroupUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DeleteUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DownLoadDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_clsUSERGRIDSTATE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_CONTENT.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_EMAIL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_License.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_ListOfStrings02.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_ListOfStrings03.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_ListOfStrings04.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_USERSCREENSTATE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_USERSEARCHSTATE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.DS_VUserGrid.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.ExecuteSearchContentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.ExecuteSearchDTResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.ExecuteSearchEmailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.ExecuteSearchJsonResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.ExecuteSqlNewConn1Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.ExecuteSqlNewConn2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.ExecuteSqlNewConn3Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.ExecuteSqlNewConn4Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.ExecuteSqlNewConn5Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.ExecuteSqlNewConnSecureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.ExecuteSqlStackResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.ExpandInflectionTermsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.GenContentSearchSQLResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.GenEmailAttachmentsSQLResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.GenEmailGeneratedSQLResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.GenerateSQLResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getAttachedMachineNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.GetAttachmentFromDBResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getAttachmentWeightsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getClientLicensesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getDatasourceParmResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getDBSIZEMBResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.GetEmailAttachmentsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.GetFilesInZipDetailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getGridLayoutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getGroupOwnerGuidByGroupNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getGroupUsersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getHttpSessionIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.GetLibOwnerByNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getListOfStrings01Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getListOfStrings02Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getListOfStrings03Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getListOfStrings04Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getListOfStrings1Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getListOfStrings2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getListOfStrings3Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getListOfStrings4Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getListOfStringsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.GetLoggedinUserNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getLoggedInUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getLoginGuidResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getLoginPWResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.GetLogPathResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.GetMachineIPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getMaxClientsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.GetNbrMachineAllResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.GetNbrMachineResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.GetNbrUsersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.GetParmValueResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getRestoreFileCountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getSAASStateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getScreenStateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getSearchScheduleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getSearchStateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getServerDatabaseNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getServerInstanceNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getServerMachineNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getSessionCompanyIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getSessionEncCsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getSessionRepoIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.GetSessionVariableResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getSqlServerVersionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getSynonymsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getSystemParmResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getThesaurusIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getUserAuthResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getUserGuidIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.GetUserHostAddressResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.GetUserHostNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getUserParmResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getUserParmsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.GetXrtResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.iCountContentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.iCountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.iGetRowCountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.isLeaseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.isLicenseLocatedOnAssignedMachineResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.LicenseTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.LoadUserSearchHistoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.ParseLicDictionaryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.ParseLicResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.PopulateComboBoxResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.PopulateDgAssignedResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.PopulateDgGroupUsersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.PopulateEmailGridWithNoWeightsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.PopulateEmailGridWithWeightsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.PopulateGroupUserGridResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.PopulateGroupUserLibComboResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.PopulateLibItemsGridResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.PopulateLibraryGridResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.PopulateLibraryUsersGridResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.PopulateSecureLoginCBResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.PopulateSecureLoginCB_V2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.PopulateSourceGridNoWeightsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.PopulateSourceGridWithWeightsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.PopulateUserGridResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.ProcessDatesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.RecallUserSearchResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.RecordGrowthResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.RefactorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.RemoveLibraryDirectoriesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.RemoveLibraryEmailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.removeRestoreFilesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.RemoveUnwantedCharactersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.ResetLibraryUsersCountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.resetMissingEmailIdsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.SaveClickStatsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.saveGridLayoutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.saveRestoreFileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.SaveRunParmResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.saveScreenStateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.saveSearchScheduleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.saveSearchStateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.SaveUSerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.SetDocumentPublicFlagResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.SetDocumentToMasterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.SetEmailPublicFlagResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.setLoginGuidResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.setLoginPWResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.setSecureLoginParmsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.setSessionCompanyIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.setSessionEncCsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.setSessionIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.setSessionRepoIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.SetSessionVariableResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.updateIpResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.UpdateSourceImageCompressedResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.UserParmInsertUpdateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.validateAttachSecureLoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.validateLoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.writeAttachmentFromDbWriteToFileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.writeEmailFromDbToFileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.writeImageSourceDataFromDbWriteToFileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.ZeroizeGlobalSearchResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\SVCSearch.wsdl" />
+    <None Include="Service References\SVCSearch\SVCSearch.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCSearch\SVCSearch1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCSearch\SVCSearch2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCSearch\SVCSearch3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCSearch\SVCSearch4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCSearch\SVCSearch5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="C1.WPF.Toolbar.4">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="C1.WPF.Zip.4">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="cs\C1.WPF.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="cs\C1.WPF.Extended.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="cs\C1.WPF.PdfViewer.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="cs\C1.WPF.RichTextBox.Toolbar.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="cs\C1.WPF.SpellChecker.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="da\C1.WPF.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="da\C1.WPF.Extended.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="da\C1.WPF.PdfViewer.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="da\C1.WPF.RichTextBox.Toolbar.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="da\C1.WPF.SpellChecker.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="de\C1.WPF.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="de\C1.WPF.Extended.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="de\C1.WPF.PdfViewer.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="de\C1.WPF.RichTextBox.Toolbar.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="de\C1.WPF.SpellChecker.4.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="ReqDLL\SQLite.Designer.dll">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="ReqDLL\SQLitePCLRaw.core.dll">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Outlook">
+      <Guid>{00062FFF-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>9</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SVCSearch\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sphere.1.tif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\ComputerSecurity.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\ComputerSecurity2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="ReqDLL\SQLite.Designer.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReqDLL\SQLitePCLRaw.core.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Service References\SVCSearch\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\SVCSearch\configuration.svcinfo" />
+    <None Include="Service References\SVCSearch\configuration91.svcinfo" />
+    <None Include="Service References\SVCSearch\SVCSearch.disco" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <StartArguments />
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Text</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>CodeSigningCertificate.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>5908F237C6121E9B98D00FFC4EBF66076997D45E</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.113.1\build\net451\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.113.1\build\net451\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.113.1\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.113.1\build\net451\System.Data.SQLite.Core.targets')" />
+</Project>

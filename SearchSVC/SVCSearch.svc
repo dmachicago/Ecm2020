@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="VB" Debug="true" Service="EcmCloudWcf.Web.SVCSearch" CodeBehind="SVCSearch.svc.vb" %>

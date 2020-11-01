@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="VB" Debug="true" Service="RestoreWCF.SVCclcDownload" CodeBehind="SVCclcDownload.svc.vb" %>

@@ -1,0 +1,5 @@
+SCC = This is a Source Code Control file
+
+[SetupInstall.vdproj]
+SCC_Aux_Path = "\\dellt100\SourceSafe"
+SCC_Project_Name = "$/ECMSaaS.root/ConsoleArchiver.root/ConsoleArchiver/SetupInstall", WNICAAAA

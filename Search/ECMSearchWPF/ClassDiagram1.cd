@@ -1,0 +1,3685 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ECMSearchWPF.Class1" Collapsed="true">
+    <Position X="3" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>app_code\Class1.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsCommonFunctions" Collapsed="true">
+    <Position X="11.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgBAAAgABQAAAAAAAAAABAAAAAAAAAQAAAAQAIA=</HashCode>
+      <FileName>app_code\clsCommonFunctions.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsCompressor" Collapsed="true">
+    <Position X="13.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>app_code\clsCompressor.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsDATASOURCERESTOREHISTORY" Collapsed="true">
+    <Position X="17" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ApUQEViAAolExgAIAAoMSAACAAEIgAAoHAAHSoCQAmE=</HashCode>
+      <FileName>app_code\clsDATASOURCERESTOREHISTORY.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsDir" Collapsed="true">
+    <Position X="20.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>app_code\clsDir.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsDma" Collapsed="true">
+    <Position X="24" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ggIQATjBagiy1zgIsgBkAFoEAiwicCBgRIlECgQACAQ=</HashCode>
+      <FileName>app_code\clsDma.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsEncryptV2" Collapsed="true">
+    <Position X="25.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAQAAAAAAAAAAACAAAgAAA=</HashCode>
+      <FileName>app_code\clsEncryptV2.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsExport" Collapsed="true">
+    <Position X="27.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>app_code\clsExport.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsFlexGrid" Collapsed="true">
+    <Position X="29.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>app_code\clsFlexGrid.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsGenerator" Collapsed="true">
+    <Position X="31" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JAIAhKsQgIwAiogWgAAEAAJGyAhAABgAAJIAJYCIKBA=</HashCode>
+      <FileName>app_code\clsGenerator.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsGlobal" Collapsed="true">
+    <Position X="34.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>app_code\clsGlobal.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsGlobals" Collapsed="true">
+    <Position X="36.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DEgAAAAjgBAADSEEAIAABAggI4QSYiAAAAABwAQCEIA=</HashCode>
+      <FileName>app_code\clsGlobals.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsGLOBALSEACHRESULTS" Collapsed="true">
+    <Position X="38" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAchEFCAQBiZBJpEJApASIiigCMAAAAiJABRAABFEAA=</HashCode>
+      <FileName>app_code\clsGLOBALSEACHRESULTS.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsGridMgt" Collapsed="true">
+    <Position X="39.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAACAAAABAAQ=</HashCode>
+      <FileName>app_code\clsGridMgt.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsHive" Collapsed="true">
+    <Position X="41.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAIAAAAAACAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>app_code\clsHive.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsIsolatedStorage" Collapsed="true">
+    <Position X="3" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kGjIAcEAQoQmRm3QCgAVobyAExALA0FCICAIAgGICAE=</HashCode>
+      <FileName>app_code\clsIsolatedStorage.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsIsolation" Collapsed="true">
+    <Position X="4.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAQAAEAAAAAQCAAAAQAAAAAAAQAAAAEAAEAAAgAAAA=</HashCode>
+      <FileName>app_code\clsIsolation.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsLIBDIRECTORY" Collapsed="true">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgEFACAAgABAAEAAAAQAgiCAsAAAEAAAAAAAAAEAA=</HashCode>
+      <FileName>app_code\clsLIBDIRECTORY.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsLIBEMAIL" Collapsed="true">
+    <Position X="8.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgEEACBAgABAAECIAAQAwiSAMAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>app_code\clsLIBEMAIL.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsLIBRARYUSERS" Collapsed="true">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABVwUEACABgABIAEAAAAQAgiSAMABARUAAgBABAAAAA=</HashCode>
+      <FileName>app_code\clsLIBRARYUSERS.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsLog" Collapsed="true">
+    <Position X="11.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CkEBAAgKAAACBQgkgAACEAAHhQIAAwgAAAQIhwCgAlE=</HashCode>
+      <FileName>app_code\clsLogging.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsLookupData" Collapsed="true">
+    <Position X="17" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>app_code\clsLookupData.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsPreviewContent" Collapsed="true">
+    <Position X="20.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>app_code\clsPreviewContent.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsRestoreClient" Collapsed="true">
+    <Position X="24" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>app_code\clsRestoreClient.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsRUNPARMS" Collapsed="true">
+    <Position X="25.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAEEiAAAgAFAAAAAIAUAggAQsAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>app_code\clsRUNPARMS.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsSAVEDITEMS" Collapsed="true">
+    <Position X="27.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBMECIAAgYDAAAAAICQAAgAIMAABGAAAAAAAACAAA=</HashCode>
+      <FileName>app_code\clsSAVEDITEMS.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsSEARCHHISTORY" Collapsed="true">
+    <Position X="29.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASCEMCAMAgBRAAEkEIARAiiIAMqAAAAAQAAAAAACgg=</HashCode>
+      <FileName>app_code\clsSEARCHHISTORY.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsgetUserParm" Collapsed="true">
+    <Position X="32.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAABAAEBAAAEAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>app_code\clsServices.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsSetGlobalVars" Collapsed="true">
+    <Position X="31" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAABAAEAAACAAACAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>app_code\clsSetGlobalVars.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsSMS" Collapsed="true">
+    <Position X="32.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>app_code\clsSMS.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsSql" Collapsed="true">
+    <Position X="34.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YgMEB0qAkCgMjgwWgAI3uEBGMImCIQgAEBApYJ0IoEA=</HashCode>
+      <FileName>app_code\clsSql.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsSystemParms" Collapsed="true">
+    <Position X="36.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEgAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>app_code\clsSystemParms.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsUserParms" Collapsed="true">
+    <Position X="38" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEgAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>app_code\clsUserParms.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsUtility" Collapsed="true">
+    <Position X="39.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iQAUAF6KAAuABxgEAIIJBEAAAgLiAmIAwABAAQcIAgA=</HashCode>
+      <FileName>app_code\clsUtility.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.grid" Collapsed="true">
+    <Position X="11.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>RAICAAAgAAIAEQBIQsBAAiAAAECEIEoEAAIEAIAIAIQ=</HashCode>
+      <FileName>app_code\grid.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.tempdata" Collapsed="true">
+    <Position X="41.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABBAAQAAiAAAAgAAAAAAEAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>app_code\grid.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.Application" Collapsed="true">
+    <Position X="31" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Application.xaml.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsDatabase" Collapsed="true">
+    <Position X="15.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAACACAAAAAgAAAAAAAAAAgAAQAAAA=</HashCode>
+      <FileName>clsDatabase.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsDbDownload" Collapsed="true">
+    <Position X="18.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAUAAAAAJEigBBgAADAACAAgAAAWAAAAACAlIAIGhA=</HashCode>
+      <FileName>clsDbDownload.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsDLMaster" Collapsed="true">
+    <Position X="22.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAIAAABAAAAAAAAIAAAAAAUAAIA=</HashCode>
+      <FileName>clsDLMaster.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsLoggingExtended" Collapsed="true">
+    <Position X="13.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAQAAAAAAgCAAAQAEAAAAADwAQAAQQBEIACBgIAJEE=</HashCode>
+      <FileName>clsLoggingExtended.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsLogMain" Collapsed="true">
+    <Position X="15.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CkEBAAgKAAACBQgkgAACEAAHhQIAAwgAAAQIhwCgAlE=</HashCode>
+      <FileName>clsLogMain.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsParms" Collapsed="true">
+    <Position X="18.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>clsParms.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.clsPullDataItem" Collapsed="true">
+    <Position X="22.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAEAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>clsPullDatasource.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_EmailAttachments" Collapsed="true">
+    <Position X="3" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAEAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_ZipFiles" Collapsed="true">
+    <Position X="11.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAIAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.struct_LibUsers" Collapsed="true">
+    <Position X="39.75" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQCoAAAAAAAQAQAIAAAAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.struct_ActiveSearchGuids" Collapsed="true">
+    <Position X="34.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAogAAAAAAAAQAIBAAAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.struct_ArchiveFolderId" Collapsed="true">
+    <Position X="36.25" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAQAABAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.struct_Dg" Collapsed="true">
+    <Position X="38" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAACAAAAAAAAAAAAAIFAAAAAAEAAAAAAACAAAAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_EmailNoWeight" Collapsed="true">
+    <Position X="4.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EgAAA0AgACAEAAEQAAABgAgAAgAAAQAgAAAAgAQgAIg=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_EMAIL" Collapsed="true">
+    <Position X="39.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EgAAA0AgACAEAAEQIAABgAgAAgAAAQAgAAAAgAQgAIg=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_CONTENT" Collapsed="true">
+    <Position X="31" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAQAICAkAgAAAAAJgAgAAACAEQCgAAABAiAAAAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_License" Collapsed="true">
+    <Position X="11.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAKAAAgAIAAAAAAgAAAQEAAAAAAQAAAADIBCAAAAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_ErrorLogs" Collapsed="true">
+    <Position X="6.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAoCAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_USERSCREENSTATE" Collapsed="true">
+    <Position X="39.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAEAAAAAAACAAABAgAwAAAAAQAAAgCIAAAAAAAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_USERSEARCHSTATE" Collapsed="true">
+    <Position X="41.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAEAAAAAAACAAABAgAwAAAAAQAAAgCIAAAAAAQA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_clsUSERGRIDSTATE" Collapsed="true">
+    <Position X="25.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQBAAABIAAAHAAAAAgAwAAIAAAgAAgCYAAAAAAAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_SearchTerms" Collapsed="true">
+    <Position X="32.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAEAAAgAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_SYSTEMPARMS" Collapsed="true">
+    <Position X="36.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAABAAAAAAAAAEAAAAgAQAAAAAAAAQgCIAAAQAgAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_VLibraryStats" Collapsed="true">
+    <Position X="4.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAACAAAAAAgAAAEAAAAAAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_dgGrpUsers" Collapsed="true">
+    <Position X="38" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_DgAssigned" Collapsed="true">
+    <Position X="34.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_LibItems" Collapsed="true">
+    <Position X="8.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAEAAAAAAAIAARACAAAAAAAAAAAABAAAgA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_DgGroupUsers" Collapsed="true">
+    <Position X="36.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAIAAAAAAAAAAgAAAAAAAAAASAAACAAAAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_VUserGrid" Collapsed="true">
+    <Position X="10" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAgRwAAIAAAAAAgSIAAgAAAAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_CoOwner" Collapsed="true">
+    <Position X="32.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_VLibraryUsers" Collapsed="true">
+    <Position X="6.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgACAAAAAAAAQAAABAAAAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_SEARCHSCHEDULE" Collapsed="true">
+    <Position X="31" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEiAAJBAAAQACEACEgAAACAAAAADAAAAABABBAAAACA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_ListOfStrings01" Collapsed="true">
+    <Position X="13.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_ListOfStrings02" Collapsed="true">
+    <Position X="17" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_ListOfStrings03" Collapsed="true">
+    <Position X="20.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_ListOfStrings04" Collapsed="true">
+    <Position X="25.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_RESTOREQUEUE" Collapsed="true">
+    <Position X="29.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gIAgAIAAAAAAAABEAAAGAAiAAAAABAAAABQQAgAAAAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.DS_Metadata" Collapsed="true">
+    <Position X="27.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>dataStructures.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.frmContentRestore" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ghACAQIAAAEAAAAAAEAEFAgIEAACCECAEAAJAAAADQA=</HashCode>
+      <FileName>frmContentRestore.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.EcmInitPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KBAJDGkIUQqBiTADRwJAGHgR4EkDCGEQsgACABACARY=</HashCode>
+      <FileName>frmInit.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.frmSearchAsst" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EBgCJwAJwAIADgQOAAAaJsgIEGsCIEBEcDBIACAg4ow=</HashCode>
+      <FileName>frmSearchAsst.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.gv_ActiveSearchGuids" Collapsed="true">
+    <Position X="15.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAACAAAoAwAAAAAAAAAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_ActiveSearchGuids.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_Archive_07202017134452007" Collapsed="true">
+    <Position X="17" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgAwAgAAAAAAAgDIAAAAgAAA=</HashCode>
+      <FileName>gv_Archive_07202017134452007.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_ArchiveFrom" Collapsed="true">
+    <Position X="18.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgAwAgAAAAAAAgDIAAAAgAAA=</HashCode>
+      <FileName>gv_ArchiveFrom.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_ArchiveHist" Collapsed="true">
+    <Position X="20.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAQAAAAAAAAgAYQAAEAAAAAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_ArchiveHist.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_ArchiveHistContentType" Collapsed="true">
+    <Position X="22.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAhAAAAAQAAAAAAAAgAYAAAAAAAAAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_ArchiveHistContentType.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_ArchiveStats" Collapsed="true">
+    <Position X="24" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAEAABAAAAAAAAAiAwAAAIgAAAQgDIAAAIBAAA=</HashCode>
+      <FileName>gv_ArchiveStats.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_AssignableUserParameters" Collapsed="true">
+    <Position X="25.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAIAEAAAAAAAAAAAAAgAQAAAAAAAAAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_AssignableUserParameters.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_AttachmentType" Collapsed="true">
+    <Position X="27.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAgAAAAAAAAgAQAAAAAIAAAgDIgAAAAAAA=</HashCode>
+      <FileName>gv_AttachmentType.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_AttributeDatatype" Collapsed="true">
+    <Position X="29.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgAQAAEAAAAAAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_AttributeDatatype.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_Attributes" Collapsed="true">
+    <Position X="31" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAIAAAAAAgAQAAEAAAAAAgDICAEIAAAA=</HashCode>
+      <FileName>gv_Attributes.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_AvailFileTypes" Collapsed="true">
+    <Position X="32.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgAUAAAAAAAAAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_AvailFileTypes.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_AvailFileTypesUndefined" Collapsed="true">
+    <Position X="34.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAgAAAAAAAAAAAAAAgQQAAAAAAAAAkDIAAAAAAAA=</HashCode>
+      <FileName>gv_AvailFileTypesUndefined.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_BusinessFunctionJargon" Collapsed="true">
+    <Position X="36.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAQAACAAAAAAAAAAgAUAAAAAAAAAoDIAAAACAAA=</HashCode>
+      <FileName>gv_BusinessFunctionJargon.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_BusinessJargonCode" Collapsed="true">
+    <Position X="38" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIgAAAQAAAAAAAAAAAAAgAQAAAAAAAAAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_BusinessJargonCode.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_CaptureItems" Collapsed="true">
+    <Position X="39.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAEAAAAAAgAQAAAAAAAAAoDIBAAAAAAA=</HashCode>
+      <FileName>gv_CaptureItems.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_Contact_07202017134458008" Collapsed="true">
+    <Position X="41.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgAwAgAAAAAAAgDIAAAAiAAA=</HashCode>
+      <FileName>gv_Contact_07202017134458008.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_ContactFrom" Collapsed="true">
+    <Position X="3" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgAwAgAAAAAAAgDIAAAAiAAA=</HashCode>
+      <FileName>gv_ContactFrom.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_ContactsArchive" Collapsed="true">
+    <Position X="4.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DKIA6EAgCBAUAcDgJpCfwd0IVAUqWRUCoDIAiCoIAEg=</HashCode>
+      <FileName>gv_ContactsArchive.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_ContainerStorage" Collapsed="true">
+    <Position X="6.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgAQAAAAgAAAAgDIAAAEAAAA=</HashCode>
+      <FileName>gv_ContainerStorage.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_ConvertedDocs" Collapsed="true">
+    <Position X="8.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAQAAAAAAAAgAUAACAEAAAAgDIAAgBAAAA=</HashCode>
+      <FileName>gv_ConvertedDocs.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_CoOwner" Collapsed="true">
+    <Position X="10" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QIAAAAAAAAAAAAAAAAAAgAQAAAAAAAAAgDIBAAQAABA=</HashCode>
+      <FileName>gv_CoOwner.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_CorpContainer" Collapsed="true">
+    <Position X="11.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIgAAAAAACAAAAAAAAAAgAUAAAAAAAAAgDIAAAEAAAA=</HashCode>
+      <FileName>gv_CorpContainer.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_CorpFunction" Collapsed="true">
+    <Position X="13.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIIAAAAAACAAAAAAAAAAgAUAAAAAAAAAgDIBAAAAAAA=</HashCode>
+      <FileName>gv_CorpFunction.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_Corporation" Collapsed="true">
+    <Position X="15.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgAUAAAAAAAAAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_Corporation.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_Databases" Collapsed="true">
+    <Position X="17" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIIAAAAAAAAAAAAAAAACgAQAAAAAAAAAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_Databases.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_DataOwners" Collapsed="true">
+    <Position X="18.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AJABAAAAAAAMAAAIAAAIggwAAAAACAAAgDIAACAAAAE=</HashCode>
+      <FileName>gv_DataOwners.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_DataSourceCheckOut" Collapsed="true">
+    <Position X="20.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AYAAAAAAAAAEAAAAAAAIgAQAAgIAAAAQgDIAAAAAAAA=</HashCode>
+      <FileName>gv_DataSourceCheckOut.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_DataSourceRestoreHistory" Collapsed="true">
+    <Position X="22.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAQAAAIAEAAAAAAAIiAQAAAAAAAAIkDIFAgCQAmA=</HashCode>
+      <FileName>gv_DataSourceRestoreHistory.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_DB_UpdateHist" Collapsed="true">
+    <Position X="24" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAEAAYAAAAAAAAAgARAAAAAAAAAgHIBAAAAAAA=</HashCode>
+      <FileName>gv_DB_UpdateHist.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_DeleteF_07202017134505007" Collapsed="true">
+    <Position X="25.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgAwAgAAAAAAAgDIAAAAgAAA=</HashCode>
+      <FileName>gv_DeleteF_07202017134505007.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_DeleteFrom" Collapsed="true">
+    <Position X="27.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgAwAgAAAAAAAgDIAAAAgAAA=</HashCode>
+      <FileName>gv_DeleteFrom.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_Directory" Collapsed="true">
+    <Position X="29.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIIAgGIABAAAQJUwAAUAgAwAiIAAFEAIgDIAAgAAAAA=</HashCode>
+      <FileName>gv_Directory.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_EcmUser" Collapsed="true">
+    <Position X="31" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAgAAAAIAAAAAAAAAwAQQADAAIAAAgDIBAQAAAAA=</HashCode>
+      <FileName>gv_EcmUser.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_EmailArchParms" Collapsed="true">
+    <Position X="32.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DIIAAAAABARAAAEACAAAgAwIABAAAQQAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_EmailArchParms.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_EmailAttachmentSearchList" Collapsed="true">
+    <Position X="34.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAACAAAAAAEAAAgAwAACAAAAAAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_EmailAttachmentSearchList.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_EmailFolder" Collapsed="true">
+    <Position X="36.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAASABAQAAAEgAAAAgAwAABAgAAQAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_EmailFolder.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_EmailToDelete" Collapsed="true">
+    <Position X="38" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAACAAAAAAAAAAgAwAABAAAAAEgDIAAAAAAAA=</HashCode>
+      <FileName>gv_EmailToDelete.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_ExcludedFiles" Collapsed="true">
+    <Position X="39.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgA0AAAAAAAAAgDIAAgAAAAA=</HashCode>
+      <FileName>gv_ExcludedFiles.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_ExcludeFrom" Collapsed="true">
+    <Position X="41.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgAwAgAAAAAAAgDIAAAAgAAA=</HashCode>
+      <FileName>gv_ExcludeFrom.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_FUncSkipWords" Collapsed="true">
+    <Position X="3" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CIAAAAAAACAAAAAAAAAAgAUAAAAAAAAAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_FUncSkipWords.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_FunctionProdJargon" Collapsed="true">
+    <Position X="4.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAQAACAAAAAAAAAAgAUAIgAAAAAAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_FunctionProdJargon.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_GlobalSeachResults" Collapsed="true">
+    <Position X="6.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAgABAAAAAQAABAIAAAgAyAACAAAAACgDIRAABAAAA=</HashCode>
+      <FileName>gv_GlobalSeachResults.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_GroupLibraryAccess" Collapsed="true">
+    <Position X="8.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAggwACAAAAAAAgDIAAAAAAAE=</HashCode>
+      <FileName>gv_GroupLibraryAccess.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_GroupUsers" Collapsed="true">
+    <Position X="10" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AJAAAAAAAAAIAAAAAAAAggwAAAAAAAAAgDIAACAAAAE=</HashCode>
+      <FileName>gv_GroupUsers.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_HelpText" Collapsed="true">
+    <Position X="11.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIACUAAAAAgCAAAAAAAAgAQQAAAAAAAEgDIBAAAAAAA=</HashCode>
+      <FileName>gv_HelpText.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_HelpTextUser" Collapsed="true">
+    <Position X="13.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIACQAAAAAoCAAAAAAAAgAwQAAAAAAAEgDIBAAAAAAA=</HashCode>
+      <FileName>gv_HelpTextUser.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_Include_07202017134438007" Collapsed="true">
+    <Position X="15.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgAwAgAAAAAAAgDIAAAAgAAA=</HashCode>
+      <FileName>gv_Include_07202017134438007.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_IncludedFiles" Collapsed="true">
+    <Position X="17" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgA0AAAAAAAAAgDIAAgAAAAA=</HashCode>
+      <FileName>gv_IncludedFiles.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_IncludeImmediate" Collapsed="true">
+    <Position X="18.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgAwAgAAAAAAAgDIAAAAgAAA=</HashCode>
+      <FileName>gv_IncludeImmediate.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_InformationProduct" Collapsed="true">
+    <Position X="20.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAEAACAAAAAgAAAggAUAAAAAAAAAgDIBAAEABAA=</HashCode>
+      <FileName>gv_InformationProduct.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_InformationType" Collapsed="true">
+    <Position X="22.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAgAAAAAAAAgAQAAAAAAAAAgDIBAAAABAA=</HashCode>
+      <FileName>gv_InformationType.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_JargonWords" Collapsed="true">
+    <Position X="24" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CIAAAAQAAAAAAAAAAAAAhAQAAAAAAAAAgDIBAAAAAAA=</HashCode>
+      <FileName>gv_JargonWords.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_LibDirectory" Collapsed="true">
+    <Position X="25.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgAwAiAAAAAAAgDIAAAAAEAA=</HashCode>
+      <FileName>gv_LibDirectory.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_LibEmail" Collapsed="true">
+    <Position X="27.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAABAAAAAAAAAAAgAwACAAAAAAAgDIAAAAAgAA=</HashCode>
+      <FileName>gv_LibEmail.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_Library" Collapsed="true">
+    <Position X="29.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgAwACAAAAAAggDIAAAAAAAA=</HashCode>
+      <FileName>gv_Library.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_LibraryItems" Collapsed="true">
+    <Position X="31" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAQAAAEAAAAAAAIgARACAAAAAAAgDIAABAAAgA=</HashCode>
+      <FileName>gv_LibraryItems.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_LibraryUsers" Collapsed="true">
+    <Position X="32.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AJAhQAAAAAAAAAAAAAAQgAwACAEABAAAgHIAABAAAAA=</HashCode>
+      <FileName>gv_LibraryUsers.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_License" Collapsed="true">
+    <Position X="34.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gIACACAAAAACAAiAEAACgAUAUAAAAQCAgDoAAAAAAAA=</HashCode>
+      <FileName>gv_License.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_LoadProfile" Collapsed="true">
+    <Position X="36.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EIAAAAAAAAAEAAAAAAAAgAQAAAAAAAAAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_LoadProfile.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_LoadProfileItem" Collapsed="true">
+    <Position X="38" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EIAAAAAAAAAAAAAAAAAAgAQAAAAAAAAAgDIAAAAAAIA=</HashCode>
+      <FileName>gv_LoadProfileItem.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_Machine" Collapsed="true">
+    <Position X="39.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAQAAAAAAAAIgAwQAAAAAAAAgDIRAgAAAAA=</HashCode>
+      <FileName>gv_Machine.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_MyTempTable" Collapsed="true">
+    <Position X="41.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAEAAAAAAAAAAAAAAAEgAQAAAAAAAAAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_MyTempTable.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_Outlook_07202017134444008" Collapsed="true">
+    <Position X="3" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgAwAgAAAAAAAgDIAAAAiAAA=</HashCode>
+      <FileName>gv_Outlook_07202017134444008.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_OutlookFrom" Collapsed="true">
+    <Position X="4.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgAwAgAAAAAAAgDIAAAAiAAA=</HashCode>
+      <FileName>gv_OutlookFrom.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_OwnerHistory" Collapsed="true">
+    <Position X="6.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QIAAAAAAAAAAAAAAAAAAgAQAAAAAAAAAgDIBAAQAABA=</HashCode>
+      <FileName>gv_OwnerHistory.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_PgmTrace" Collapsed="true">
+    <Position X="8.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAACAAAAAAAAEAAAgAwACABAAAAAgDIBAAAAAAA=</HashCode>
+      <FileName>gv_PgmTrace.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_ProcessFileAs" Collapsed="true">
+    <Position X="10" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgQUEAAAAAAAAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_ProcessFileAs.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_ProdCaptureItems" Collapsed="true">
+    <Position X="11.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAACAABEAAAAAAgAUAAAAAAAAAgDIAAAEAAAA=</HashCode>
+      <FileName>gv_ProdCaptureItems.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_QtyDocs" Collapsed="true">
+    <Position X="13.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIgAAAAAAAAgAAAAAAAAgAQAAAAAAAAAgDIBAAAAAAA=</HashCode>
+      <FileName>gv_QtyDocs.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_QuickDirectory" Collapsed="true">
+    <Position X="15.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIIAACAAAAAAQBAgAAAAgAwAiIAAAAAAgDIAAgAAAAA=</HashCode>
+      <FileName>gv_QuickDirectory.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_QuickRef" Collapsed="true">
+    <Position X="17" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAIAAAAAAAAAAAAAAAgAwAAAAAAAAAiDIAAAAAAAA=</HashCode>
+      <FileName>gv_QuickRef.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_QuickRefItems" Collapsed="true">
+    <Position X="18.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIgAAAAAAABkAAAgiQAIgAQAAAQAAAAAiDIAAgBAgAQ=</HashCode>
+      <FileName>gv_QuickRefItems.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_Recipients" Collapsed="true">
+    <Position X="20.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAACAAgAAAAAAIgAQAAAAAAAAAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_Recipients.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_RepeatData" Collapsed="true">
+    <Position X="22.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgAQAAgAAAAACgDIAAAAAAAA=</HashCode>
+      <FileName>gv_RepeatData.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_RestorationHistory" Collapsed="true">
+    <Position X="24" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIBAAAAAAAAAAAAAAAAIgAQgAgAAAAAAgDIACBBAAAA=</HashCode>
+      <FileName>gv_RestorationHistory.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_Retention" Collapsed="true">
+    <Position X="25.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAEgQACIwAQAAAAAAAAAgDIBAgAQAAA=</HashCode>
+      <FileName>gv_Retention.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_RetentionTemp" Collapsed="true">
+    <Position X="27.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAgAAAAAAAAAAAAAAAAgAwAAgAAAAAAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_RetentionTemp.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_RunParms" Collapsed="true">
+    <Position X="29.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIIAAAAAAAAAEAAAQAAAgAwAAAAAAAAAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_RunParms.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_RuntimeErrors" Collapsed="true">
+    <Position X="31" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAACAABAAgAAAAAAgAyAAAAAAAAAgDIAAEAACAA=</HashCode>
+      <FileName>gv_RuntimeErrors.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_SavedItems" Collapsed="true">
+    <Position X="32.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIABIAAAAAAAAAAAAAACgAQAAIAAAAAAgDIAAAACAAA=</HashCode>
+      <FileName>gv_SavedItems.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_SearchHistory" Collapsed="true">
+    <Position X="34.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIACAAAAAAAAQAAAEAAAgAwAJAAgAAAAgTIAAAAACgA=</HashCode>
+      <FileName>gv_SearchHistory.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_SearhParmsHistory" Collapsed="true">
+    <Position X="36.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIABAAQAAAAAAAAABAAAgAwAAAAAAAAAgDIAAAAAAgA=</HashCode>
+      <FileName>gv_SearhParmsHistory.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_SkipWords" Collapsed="true">
+    <Position X="38" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CIAAAAAAAAAAAAAAAAAAgAQAAAAAAAAAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_SkipWords.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_SourceAttribute" Collapsed="true">
+    <Position X="39.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAEAIAAAAAIgAQAAAEAAAAAgDIAAAAAAIA=</HashCode>
+      <FileName>gv_SourceAttribute.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_SourceContainer" Collapsed="true">
+    <Position X="41.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgAQAAAAAAAAAgHIBAAEAAAA=</HashCode>
+      <FileName>gv_SourceContainer.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_SourceType" Collapsed="true">
+    <Position X="3" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgAQAAAEAAAAGgDIAAAAAAIA=</HashCode>
+      <FileName>gv_SourceType.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_Storage" Collapsed="true">
+    <Position X="4.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAgAQAAAAgAAAAkDIBAAAAAAA=</HashCode>
+      <FileName>gv_Storage.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_SubDir" Collapsed="true">
+    <Position X="6.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAGAAAAAAABEgAAAAgAwIAIAAAAAAgDIAAgAAAAA=</HashCode>
+      <FileName>gv_SubDir.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_SubLibrary" Collapsed="true">
+    <Position X="8.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAACAAAgCwACAAAAAAAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_SubLibrary.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_UD_Qty" Collapsed="true">
+    <Position X="10" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAgAAAAAAAggAQAAAAAAAAAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_UD_Qty.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_upgrade_status" Collapsed="true">
+    <Position X="11.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAAAAAAAAAAAAAAAAgAQAAAAEAAAAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_upgrade_status.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_UserCurrParm" Collapsed="true">
+    <Position X="13.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAEAAAAAAAAAAAAAgAwAAAAAQAAAgDIAAAAAAAA=</HashCode>
+      <FileName>gv_UserCurrParm.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_UserGroup" Collapsed="true">
+    <Position X="15.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAggQAAAAAAAAAgDIAAAAAAAE=</HashCode>
+      <FileName>gv_UserGroup.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_UserReassignHist" Collapsed="true">
+    <Position X="17" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAHAAAAAACEAEBgAQEAAACAAAAgDKAIQRAAAA=</HashCode>
+      <FileName>gv_UserReassignHist.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_Users" Collapsed="true">
+    <Position X="18.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAQAAAAAAAAAAAAAgRwAAIAAAAAAgTIAAgIAAAA=</HashCode>
+      <FileName>gv_Users.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_Volitility" Collapsed="true">
+    <Position X="20.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAEAAAAAAAAAAAAAgAQAEAAAAAAAgDIBAAAAAAA=</HashCode>
+      <FileName>gv_Volitility.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_WebSource" Collapsed="true">
+    <Position X="22.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QICgAAAAIAAgAgAAAAAIgAwAAAAAAQAAgDIDAAAAAIA=</HashCode>
+      <FileName>gv_WebSource.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.gv_ZippedFiles" Collapsed="true">
+    <Position X="24" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAEAAAAAAgIgAQAAAAAAAAAgDICAAAAAIA=</HashCode>
+      <FileName>gv_ZippedFiles.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.MainPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>697PStef1f/377nv77f/e+er/6eb33s2/9Ltt/tzsf8=</HashCode>
+      <FileName>MainPage.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.GridCols" Collapsed="true">
+    <Position X="13.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAEAAAAAAAgCIAAAAAAAAACA=</HashCode>
+      <FileName>MainPage.xaml.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.MySettings" Collapsed="true">
+    <Position X="11.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.NumericUpDown" Collapsed="true">
+    <Position X="13.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NumericUpDown.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.PageGrantContentToUsers" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAJAAsAAAAgAIIAoEgCgIAAAYACECAAACyEEAA=</HashCode>
+      <FileName>PageGrantContentToUsers.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.PageGroup" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACgAADCAAO6ACBAJBpIEEAgCAEFAAUAgWBABQgAkAQA=</HashCode>
+      <FileName>PageGroup.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.PageLibrary" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CIIAECCAAQgADARAAAAAQEwCCAKUASAgkBAACwkAgQA=</HashCode>
+      <FileName>PageLibrary.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.PageLibraryAssignment" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="20.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAQACABooASgAQAIBAAwgqBgAlASAAECAAAQgMFgA=</HashCode>
+      <FileName>PageLibraryAssignment.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.PageLibraryMgt" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gCISEACJQArACAAABBJAdAkCrBAQASkAnKBFCB0CAAU=</HashCode>
+      <FileName>PageLibraryMgt.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.PageUsers" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AoIgIAYAbAyABARBQIwCARgCFBQBDQAsEAAAYJsEgSI=</HashCode>
+      <FileName>PageUsers.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.popSqlStmt" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="32.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AJAAIAAAAAAAAAAAAAAAAAAAAAAACAAAEAAAAAAAAAA=</HashCode>
+      <FileName>popSqlStmt.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.popupAlerts" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CBACAECiAAgAAAgAAAAAQAACCAAAYBAAESAgAgAUAQA=</HashCode>
+      <FileName>popupAlerts.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.popupContentSearchParms" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MTkCJQiAABQCnAsAAEhAAkAAGTAQRJCBUMCwCAEHCGQ=</HashCode>
+      <FileName>popupContentSearchParms.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.popupEmailSearchParms" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GFECMyqIKgQQxgIAAYSAAAggCEAAUB4QUIEQCAALgAQ=</HashCode>
+      <FileName>popupEmailSearchParms.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.popupExportSearchGrid" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CBACACAEECgAAAIAAAQABAAgAiAAAAAAAAAAAAgEEAQ=</HashCode>
+      <FileName>popupExportSearchGrid.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.popupGroupLibraries" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QDACIASIEAgGCAAIABAAEgAKgAACACAAFBAAAAiABBE=</HashCode>
+      <FileName>popupGroupLibraries.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.popupReviewSearchParms" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAACAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>popupReviewSearchParms.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.popupSaveSearch" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAABQAAAAAAAgBAACBAEAABAAFAAAAABgAQA=</HashCode>
+      <FileName>popupSaveSearch.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.popupScheduelSearch" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>popupScheduelSearch.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.popUserPassword" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="20.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>popUserPassword.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.test" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>test.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.TestControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TestControl.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.testPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>testPage.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.TestWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TestWindow.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.vExchangeHostPop" Collapsed="true">
+    <Position X="27.5" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAIQAAAABAAAAAAkAAAAAgAICIAAAAAiEgAAAAAAAAA=</HashCode>
+      <FileName>vExchangeHostPop.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.vFileDirectory" Collapsed="true">
+    <Position X="29.25" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>vFileDirectory.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.vLibraryStat" Collapsed="true">
+    <Position X="31" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAgACAAAAAAgAAAEAAAAAAA=</HashCode>
+      <FileName>vLibraryStat.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.vLibraryUser" Collapsed="true">
+    <Position X="32.75" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgACAAAAAAAAQAAABAAAAA=</HashCode>
+      <FileName>vLibraryUser.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.vMigrateUser" Collapsed="true">
+    <Position X="34.5" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAEAAAAAAAAAAAAAAAIBBAAAAAAIAAAAAAQAAAEAA=</HashCode>
+      <FileName>vMigrateUser.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.vReassignedTable" Collapsed="true">
+    <Position X="36.25" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAHAAAAAACEAEBAAAEAAACAAAAAACAIQRAAAA=</HashCode>
+      <FileName>vReassignedTable.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.vUserGrid" Collapsed="true">
+    <Position X="38" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAgRwAAIAAAAAAgSIAAgAAAAA=</HashCode>
+      <FileName>vUserGrid.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DS_SearchTerms" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="34.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAhAACAAAEAAAgAAAAAAAAgAAAIAAEEAAgAAIAAAI=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DS_USERSEARCHSTATE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAwQBUGAAAAAgCAAABAgAwEgAAAQAAFoCIAAQYAAQg=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DS_USERSCREENSTATE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="38" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAwQBUCAAAAAgCAAABAgAwEgAAAQAAFoCIAAQYAAAg=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DS_clsUSERGRIDSTATE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="27.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAYYBQCABIAAAHAgCAAgAwAgYAAAgAloDYAAQZAAAg=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DS_CONTENT" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="29.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EoAABAQCMCAkCgABQAgZgBgAoADA0YSlIAABAiIAQAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DS_EMAIL" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="41.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FhBkA0AiACAEAAEYMAABwBgBhgEACYQ0IEAAgA4gQIg=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DS_License" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAKAYCgAKAAAAEAgARAQEAgAAAAQCUAALKBCICABA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DS_ListOfStrings01" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAACAAAAAAAAAQAgAAAAAAEAAAAAAIAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DS_ListOfStrings02" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAACAAAAAAAAAQAgAAAAAAEAAAAAAIAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DS_ListOfStrings03" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAACAAAAAAAAAQAgAAAAAAEAAAAAAIAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DS_ListOfStrings04" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAACAAAAAAAAAQAgAAAAAAEAAAAAAIAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DS_VUserGrid" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABQCAAAAAAAABAAAgRwBgIAAAAAFoSIABwZAAAg=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.setLoginGuidRequest" Collapsed="true">
+    <Position X="6.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.setLoginGuidResponse" Collapsed="true">
+    <Position X="8.25" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getLoginGuidRequest" Collapsed="true">
+    <Position X="20.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getLoginGuidResponse" Collapsed="true">
+    <Position X="22.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getHttpSessionIDRequest" Collapsed="true">
+    <Position X="15.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getHttpSessionIDResponse" Collapsed="true">
+    <Position X="17" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.setSessionIDRequest" Collapsed="true">
+    <Position X="24" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.setSessionIDResponse" Collapsed="true">
+    <Position X="25.75" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ExpandInflectionTermsRequest" Collapsed="true">
+    <Position X="3" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ExpandInflectionTermsResponse" Collapsed="true">
+    <Position X="4.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getServerDatabaseNameRequest" Collapsed="true">
+    <Position X="29.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getServerDatabaseNameResponse" Collapsed="true">
+    <Position X="31" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.CleanLogRequest" Collapsed="true">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.CleanLogResponse" Collapsed="true">
+    <Position X="6.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateComboBoxRequest" Collapsed="true">
+    <Position X="34.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAACAgAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateComboBoxResponse" Collapsed="true">
+    <Position X="36.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetEmailAttachmentsRequest" Collapsed="true">
+    <Position X="38" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetEmailAttachmentsResponse" Collapsed="true">
+    <Position X="39.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DbWriteToFileRequest" Collapsed="true">
+    <Position X="11.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAIAAAAAAAAAAAAAAAAAABAEAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DbWriteToFileResponse" Collapsed="true">
+    <Position X="13.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAABAAABAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.SetSessionVariableRequest" Collapsed="true">
+    <Position X="31" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAECAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.SetSessionVariableResponse" Collapsed="true">
+    <Position X="32.75" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetSessionVariableRequest" Collapsed="true">
+    <Position X="10" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetSessionVariableResponse" Collapsed="true">
+    <Position X="11.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.UpdateSourceImageCompressedRequest" Collapsed="true">
+    <Position X="13.5" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgQAIAEAAAAAAAAIAAAAAAAAAACAAAABAAAABAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.UpdateSourceImageCompressedResponse" Collapsed="true">
+    <Position X="15.25" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.writeEmailFromDbToFileRequest" Collapsed="true">
+    <Position X="3" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAQACEACAAAAAAAAAAAAAAAAAAAACAAAAAAAIA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.writeEmailFromDbToFileResponse" Collapsed="true">
+    <Position X="4.75" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAQAAEACAAAAAAAAAAAAAAAAAAAACAAAAAAAIA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.writeAttachmentFromDbWriteToFileRequest" Collapsed="true">
+    <Position X="39.75" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAQAAEACAAAEAAAAAAAAAAAAAAAACAAAgAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.writeAttachmentFromDbWriteToFileResponse" Collapsed="true">
+    <Position X="41.5" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAQAAEACAAAAAAAAAAAAAAAAAAAACAAAgAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.writeImageSourceDataFromDbWriteToFileRequest" Collapsed="true">
+    <Position X="6.5" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAQAAEACAAAAAAIAAAAAAAAAAAAACAAAgAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.writeImageSourceDataFromDbWriteToFileResponse" Collapsed="true">
+    <Position X="8.25" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAQAAEACAAAAAAAAAAAAAAAAAAAACAAAgAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.AddLibraryItemsRequest" Collapsed="true">
+    <Position X="24" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAEECAABAAAIAARACAAAAAAAAAAAABAAAgA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.AddLibraryItemsResponse" Collapsed="true">
+    <Position X="25.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateGroupUserLibComboRequest" Collapsed="true">
+    <Position X="15.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAgAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateGroupUserLibComboResponse" Collapsed="true">
+    <Position X="17" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetLibOwnerByNameRequest" Collapsed="true">
+    <Position X="18.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetLibOwnerByNameResponse" Collapsed="true">
+    <Position X="20.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ExecuteSearchRequest" Collapsed="true">
+    <Position X="15.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAiABAAAAAkAAAAAAAgAYAAABAAAAAAAAAACAAAAAAw=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ExecuteSearchResponse" Collapsed="true">
+    <Position X="17" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAiAAAAAAAkAAAAAAAgAYAAAAAAAAAAAAAACAAAAAAw=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getSearchStateRequest" Collapsed="true">
+    <Position X="25.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAEACAABAAAAgACAAAAAAAAAgCAAAAAAEQA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getSearchStateResponse" Collapsed="true">
+    <Position X="27.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAABAAAAAACAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.saveSearchStateRequest" Collapsed="true">
+    <Position X="38" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAEACAABAAAAgACAAAAAAAAAgCAAAAAAEQA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.saveSearchStateResponse" Collapsed="true">
+    <Position X="39.75" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getScreenStateRequest" Collapsed="true">
+    <Position X="18.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAEACAABAAAAgACAAAAAAAAAgCAAAAAAEAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getScreenStateResponse" Collapsed="true">
+    <Position X="20.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAEACAABAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getGridLayoutRequest" Collapsed="true">
+    <Position X="4.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAEACAABAAAAgACAAAAAAgAAgCAAAAAAEAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getGridLayoutResponse" Collapsed="true">
+    <Position X="6.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAABAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.saveGridLayoutRequest" Collapsed="true">
+    <Position X="20.5" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQBAAABMACAHBAAAAgAwAAIAAAgAAgCYAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.saveGridLayoutResponse" Collapsed="true">
+    <Position X="22.25" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQBAAABMACAHBAAAAgAwAAIAAAgAAgCYAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.saveScreenStateRequest" Collapsed="true">
+    <Position X="31" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAEACAABAAAAgACAAAAAAAAAgCAAAAAAEAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.saveScreenStateResponse" Collapsed="true">
+    <Position X="32.75" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getUserParmsRequest" Collapsed="true">
+    <Position X="4.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAgAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getUserParmsResponse" Collapsed="true">
+    <Position X="6.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ParseLicDictionaryRequest" Collapsed="true">
+    <Position X="25.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAABACAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ParseLicDictionaryResponse" Collapsed="true">
+    <Position X="27.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.LicenseTypeRequest" Collapsed="true">
+    <Position X="3" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAMACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.LicenseTypeResponse" Collapsed="true">
+    <Position X="4.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIACAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetNbrUsersRequest" Collapsed="true">
+    <Position X="4.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetNbrUsersResponse" Collapsed="true">
+    <Position X="6.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.isLeaseRequest" Collapsed="true">
+    <Position X="36.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAMACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.isLeaseResponse" Collapsed="true">
+    <Position X="38" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIACAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getMaxClientsRequest" Collapsed="true">
+    <Position X="34.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAMACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getMaxClientsResponse" Collapsed="true">
+    <Position X="36.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIACAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetUserHostNameRequest" Collapsed="true">
+    <Position X="38" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetUserHostNameResponse" Collapsed="true">
+    <Position X="39.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetUserHostAddressRequest" Collapsed="true">
+    <Position X="34.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetUserHostAddressResponse" Collapsed="true">
+    <Position X="36.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getUserGuidIDRequest" Collapsed="true">
+    <Position X="31" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getUserGuidIDResponse" Collapsed="true">
+    <Position X="32.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ProcessDatesRequest" Collapsed="true">
+    <Position X="22.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ProcessDatesResponse" Collapsed="true">
+    <Position X="24" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetNbrMachineAllRequest" Collapsed="true">
+    <Position X="38" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetNbrMachineAllResponse" Collapsed="true">
+    <Position X="39.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetNbrMachineRequest" Collapsed="true">
+    <Position X="41.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetNbrMachineResponse" Collapsed="true">
+    <Position X="3" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.isLicenseLocatedOnAssignedMachineRequest" Collapsed="true">
+    <Position X="39.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAMACAAAAAAAAAAAAAAgAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.isLicenseLocatedOnAssignedMachineResponse" Collapsed="true">
+    <Position X="41.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAMACAAAAAAAAAAAAAAgAAAABAAABAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetXrtRequest" Collapsed="true">
+    <Position X="8.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAMACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetXrtResponse" Collapsed="true">
+    <Position X="10" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getSqlServerVersionRequest" Collapsed="true">
+    <Position X="13.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getSqlServerVersionResponse" Collapsed="true">
+    <Position X="15.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.RecordGrowthRequest" Collapsed="true">
+    <Position X="29.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.RecordGrowthResponse" Collapsed="true">
+    <Position X="31" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ParseLicRequest" Collapsed="true">
+    <Position X="29.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAEAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ParseLicResponse" Collapsed="true">
+    <Position X="31" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetLoggedinUserNameRequest" Collapsed="true">
+    <Position X="13.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetLoggedinUserNameResponse" Collapsed="true">
+    <Position X="15.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getDBSIZEMBRequest" Collapsed="true">
+    <Position X="34.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getDBSIZEMBResponse" Collapsed="true">
+    <Position X="36.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.resetMissingEmailIdsRequest" Collapsed="true">
+    <Position X="13.5" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.resetMissingEmailIdsResponse" Collapsed="true">
+    <Position X="15.25" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.UserParmInsertUpdateRequest" Collapsed="true">
+    <Position X="17" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAEACAAAAAAAAAgAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.UserParmInsertUpdateResponse" Collapsed="true">
+    <Position X="18.75" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.validateLoginRequest" Collapsed="true">
+    <Position X="24" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAQAAAAEAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.validateLoginResponse" Collapsed="true">
+    <Position X="25.75" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAEAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getLoggedInUserRequest" Collapsed="true">
+    <Position X="17" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getLoggedInUserResponse" Collapsed="true">
+    <Position X="18.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getAttachedMachineNameRequest" Collapsed="true">
+    <Position X="20.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getAttachedMachineNameResponse" Collapsed="true">
+    <Position X="22.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getServerInstanceNameRequest" Collapsed="true">
+    <Position X="32.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getServerInstanceNameResponse" Collapsed="true">
+    <Position X="34.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getServerMachineNameRequest" Collapsed="true">
+    <Position X="36.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getServerMachineNameResponse" Collapsed="true">
+    <Position X="38" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getSystemParmRequest" Collapsed="true">
+    <Position X="20.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getSystemParmResponse" Collapsed="true">
+    <Position X="22.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getSynonymsRequest" Collapsed="true">
+    <Position X="17" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAACAAAEAAAAAAAAABAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getSynonymsResponse" Collapsed="true">
+    <Position X="18.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAEAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getThesaurusIDRequest" Collapsed="true">
+    <Position X="24" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getThesaurusIDResponse" Collapsed="true">
+    <Position X="25.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.iCountContentRequest" Collapsed="true">
+    <Position X="25.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.iCountContentResponse" Collapsed="true">
+    <Position X="27.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getDatasourceParmRequest" Collapsed="true">
+    <Position X="31" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAIAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getDatasourceParmResponse" Collapsed="true">
+    <Position X="32.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.SaveRunParmRequest" Collapsed="true">
+    <Position X="27.5" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAEAAAAAAAAAAAgAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.SaveRunParmResponse" Collapsed="true">
+    <Position X="29.25" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAEAAAAABAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.iGetRowCountRequest" Collapsed="true">
+    <Position X="32.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAg=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.iGetRowCountResponse" Collapsed="true">
+    <Position X="34.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ZeroizeGlobalSearchRequest" Collapsed="true">
+    <Position X="10" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ZeroizeGlobalSearchResponse" Collapsed="true">
+    <Position X="11.75" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.updateIpRequest" Collapsed="true">
+    <Position X="10" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAEACAAAAAAAAAAAIAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.updateIpResponse" Collapsed="true">
+    <Position X="11.75" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateSourceGridWithWeightsRequest" Collapsed="true">
+    <Position X="39.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAECAAAAACAAAAgCAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateSourceGridWithWeightsResponse" Collapsed="true">
+    <Position X="41.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAEAAAAAAAAQAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateSourceGridNoWeightsRequest" Collapsed="true">
+    <Position X="36.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAECAAAAACAAAAgCAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateSourceGridNoWeightsResponse" Collapsed="true">
+    <Position X="38" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAEAAAAAAAAIAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateEmailGridWithNoWeightsRequest" Collapsed="true">
+    <Position X="4.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAECAAAAACgAAAACAAAgQAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateEmailGridWithNoWeightsResponse" Collapsed="true">
+    <Position X="6.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAIAAAAEAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateEmailGridWithWeightsRequest" Collapsed="true">
+    <Position X="8.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIIAAAAECAAAAACgAAAACAAAgQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateEmailGridWithWeightsResponse" Collapsed="true">
+    <Position X="10" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAEAAAAAAAgAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.LoadUserSearchHistoryRequest" Collapsed="true">
+    <Position X="6.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAEAAAAABBAAAAAgAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.LoadUserSearchHistoryResponse" Collapsed="true">
+    <Position X="8.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAEAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getAttachmentWeightsRequest" Collapsed="true">
+    <Position X="24" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAEAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getAttachmentWeightsResponse" Collapsed="true">
+    <Position X="25.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ExecuteSqlNewConn1Request" Collapsed="true">
+    <Position X="18.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAgAAgAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ExecuteSqlNewConn1Response" Collapsed="true">
+    <Position X="20.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAEAAAAAACAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ExecuteSqlNewConn2Request" Collapsed="true">
+    <Position X="22.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAgAAgAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ExecuteSqlNewConn2Response" Collapsed="true">
+    <Position X="24" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAEAAAAAACAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ExecuteSqlNewConn3Request" Collapsed="true">
+    <Position X="25.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAgAAgAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ExecuteSqlNewConn3Response" Collapsed="true">
+    <Position X="27.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAEAAAAAACAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ExecuteSqlNewConn4Request" Collapsed="true">
+    <Position X="29.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAgAAgAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ExecuteSqlNewConn4Response" Collapsed="true">
+    <Position X="31" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAEAAAAAACAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ExecuteSqlNewConn5Request" Collapsed="true">
+    <Position X="32.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAgAAgAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ExecuteSqlNewConn5Response" Collapsed="true">
+    <Position X="34.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAEAAAAAACAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ExecuteSqlNewConnSecureRequest" Collapsed="true">
+    <Position X="36.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAgCAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ExecuteSqlNewConnSecureResponse" Collapsed="true">
+    <Position X="38" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAACAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetParmValueRequest" Collapsed="true">
+    <Position X="8.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAACAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetParmValueResponse" Collapsed="true">
+    <Position X="10" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DBisGlobalSearcherRequest" Collapsed="true">
+    <Position X="8.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DBisGlobalSearcherResponse" Collapsed="true">
+    <Position X="10" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DBisAdminRequest" Collapsed="true">
+    <Position X="4.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DBisAdminResponse" Collapsed="true">
+    <Position X="6.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getUserParmRequest" Collapsed="true">
+    <Position X="41.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAEAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getUserParmResponse" Collapsed="true">
+    <Position X="3" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.RemoveUnwantedCharactersRequest" Collapsed="true">
+    <Position X="6.5" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.RemoveUnwantedCharactersResponse" Collapsed="true">
+    <Position X="8.25" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetMachineIPRequest" Collapsed="true">
+    <Position X="31" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetMachineIPResponse" Collapsed="true">
+    <Position X="32.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getClientLicensesRequest" Collapsed="true">
+    <Position X="27.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAMACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getClientLicensesResponse" Collapsed="true">
+    <Position X="29.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAAAAAAAEACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetFilesInZipDetailRequest" Collapsed="true">
+    <Position X="41.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAEACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetFilesInZipDetailResponse" Collapsed="true">
+    <Position X="3" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.AddGroupLibraryAccessRequest" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAAAAAEAAggICAIAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.AddGroupLibraryAccessResponse" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DBExecuteEncryptedSqlRequest" Collapsed="true">
+    <Position X="41.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAACAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DBExecuteEncryptedSqlResponse" Collapsed="true">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAEAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.validateAttachSecureLoginRequest" Collapsed="true">
+    <Position X="20.5" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAAAAAAAAAMACAAAQAAAAAAAAgAAAAAAIAAAACAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.validateAttachSecureLoginResponse" Collapsed="true">
+    <Position X="22.25" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAACMACAAAQAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ckContentFlagsRequest" Collapsed="true">
+    <Position X="39.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IABAAAAAAAEoQAQAAAAIAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ckContentFlagsResponse" Collapsed="true">
+    <Position X="41.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IABAAAAAAAAoQAQAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ExecuteSqlStackRequest" Collapsed="true">
+    <Position X="39.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAIAgIAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ExecuteSqlStackResponse" Collapsed="true">
+    <Position X="41.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAIAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.RecallUserSearchRequest" Collapsed="true">
+    <Position X="25.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAEAAAAAAAAAAAAAAAAAAAAAQAAAAAAAEAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.RecallUserSearchResponse" Collapsed="true">
+    <Position X="27.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAABA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.removeRestoreFilesRequest" Collapsed="true">
+    <Position X="3" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAEAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.removeRestoreFilesResponse" Collapsed="true">
+    <Position X="4.75" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getRestoreFileCountRequest" Collapsed="true">
+    <Position X="11.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAEAAAAAAAAAAAgAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getRestoreFileCountResponse" Collapsed="true">
+    <Position X="13.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAgAAAEAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.saveRestoreFileRequest" Collapsed="true">
+    <Position X="24" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAgAAAAAAMACAAAAAACAAgAAACAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.saveRestoreFileResponse" Collapsed="true">
+    <Position X="25.75" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAgAAAAAAAACAAAAAAAAAgAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GenEmailAttachmentsSQLRequest" Collapsed="true">
+    <Position X="13.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAACAAASUAAkABAEBACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GenEmailAttachmentsSQLResponse" Collapsed="true">
+    <Position X="15.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GenEmailGeneratedSQLRequest" Collapsed="true">
+    <Position X="17" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAgABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GenEmailGeneratedSQLResponse" Collapsed="true">
+    <Position X="18.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GenContentSearchSQLRequest" Collapsed="true">
+    <Position X="10" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAgAAACEAAgADgAAACAAAAAAACAAEAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GenContentSearchSQLResponse" Collapsed="true">
+    <Position X="11.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ChangeUserContentPublicRequest" Collapsed="true">
+    <Position X="32.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACIAAAIACAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ChangeUserContentPublicResponse" Collapsed="true">
+    <Position X="34.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.RefactorRequest" Collapsed="true">
+    <Position X="32.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAMACAAAAAAAAAEAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.RefactorResponse" Collapsed="true">
+    <Position X="34.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getSAASStateRequest" Collapsed="true">
+    <Position X="15.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAgAAAAAAAMACAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getSAASStateResponse" Collapsed="true">
+    <Position X="17" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAIACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getListOfStrings01Request" Collapsed="true">
+    <Position X="22.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAMACAAAAAAAAAgKAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getListOfStrings01Response" Collapsed="true">
+    <Position X="24" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAMACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getListOfStrings02Request" Collapsed="true">
+    <Position X="25.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAMACAAAAAAAAAgKAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getListOfStrings02Response" Collapsed="true">
+    <Position X="27.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAMACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getListOfStrings03Request" Collapsed="true">
+    <Position X="29.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAMACAAAAAAAAAgKAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getListOfStrings03Response" Collapsed="true">
+    <Position X="31" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAMACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getListOfStrings04Request" Collapsed="true">
+    <Position X="32.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAMACAAAAAAAAAgKAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getListOfStrings04Response" Collapsed="true">
+    <Position X="34.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAMACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateLibraryUsersGridRequest" Collapsed="true">
+    <Position X="25.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEEAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateLibraryUsersGridResponse" Collapsed="true">
+    <Position X="27.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getUserAuthRequest" Collapsed="true">
+    <Position X="27.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getUserAuthResponse" Collapsed="true">
+    <Position X="29.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DeleteUserRequest" Collapsed="true">
+    <Position X="22.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DeleteUserResponse" Collapsed="true">
+    <Position X="24" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.SaveUSerRequest" Collapsed="true">
+    <Position X="41.5" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAMACAAAAAAAgRwAAIAAAAAAgTIAAgIAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.SaveUSerResponse" Collapsed="true">
+    <Position X="3" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAIACAAAAAAIgRwAAIAAAAAAgTIAAgIAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.saveSearchScheduleRequest" Collapsed="true">
+    <Position X="34.5" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEiAAJBAAAcACEACEgAAACAAAAADAAAAABABBAAAACA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.saveSearchScheduleResponse" Collapsed="true">
+    <Position X="36.25" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEiAAJBAAAYACEQCEgAAACAAAAADAAAAABABBAAAACA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getSearchScheduleRequest" Collapsed="true">
+    <Position X="22.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEiAAJBAAAcACEACEgAAACAAAAADAAAAABABBAAAACA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getSearchScheduleResponse" Collapsed="true">
+    <Position X="24" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEiAAJBAAAYACEACEgAAgCAAAAADAAAAABABBAAAACA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateUserGridRequest" Collapsed="true">
+    <Position X="3" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAQAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateUserGridResponse" Collapsed="true">
+    <Position X="4.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getGroupUsersRequest" Collapsed="true">
+    <Position X="11.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAMACAAAAAAAAAAAAAAAAAAAAAAAAAAAAEE=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getGroupUsersResponse" Collapsed="true">
+    <Position X="13.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAMACAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateDgGroupUsersRequest" Collapsed="true">
+    <Position X="41.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateDgGroupUsersResponse" Collapsed="true">
+    <Position X="3" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DeleteGroupUsersRequest" Collapsed="true">
+    <Position X="15.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAMAAAAAAAAAAAgAAAAgAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DeleteGroupUsersResponse" Collapsed="true">
+    <Position X="17" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAIAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getGroupOwnerGuidByGroupNameRequest" Collapsed="true">
+    <Position X="8.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getGroupOwnerGuidByGroupNameResponse" Collapsed="true">
+    <Position X="10" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.AddLibraryGroupUserRequest" Collapsed="true">
+    <Position X="20.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAAAAAEAAAAIAAIAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.AddLibraryGroupUserResponse" Collapsed="true">
+    <Position X="22.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateGroupUserGridRequest" Collapsed="true">
+    <Position X="11.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateGroupUserGridResponse" Collapsed="true">
+    <Position X="13.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateLibItemsGridRequest" Collapsed="true">
+    <Position X="18.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAgACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateLibItemsGridResponse" Collapsed="true">
+    <Position X="20.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateDgAssignedRequest" Collapsed="true">
+    <Position X="38" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAgACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateDgAssignedResponse" Collapsed="true">
+    <Position X="39.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ResetLibraryUsersCountRequest" Collapsed="true">
+    <Position X="10" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ResetLibraryUsersCountResponse" Collapsed="true">
+    <Position X="11.75" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DeleteLibraryGroupUserRequest" Collapsed="true">
+    <Position X="18.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAAAAAAAAAAACAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.DeleteLibraryGroupUserResponse" Collapsed="true">
+    <Position X="20.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ChangeUserPasswordRequest" Collapsed="true">
+    <Position X="36.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAEAAAAAAAAAAAAAAQAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ChangeUserPasswordResponse" Collapsed="true">
+    <Position X="38" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.SaveClickStatsRequest" Collapsed="true">
+    <Position X="17" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAAAAAAAAAgAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.SaveClickStatsResponse" Collapsed="true">
+    <Position X="18.75" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.cleanUpLibraryItemsRequest" Collapsed="true">
+    <Position X="8.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.cleanUpLibraryItemsResponse" Collapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.RemoveLibraryDirectoriesRequest" Collapsed="true">
+    <Position X="36.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAMACAAAAAAAAAgACAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.RemoveLibraryDirectoriesResponse" Collapsed="true">
+    <Position X="38" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAMACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.RemoveLibraryEmailsRequest" Collapsed="true">
+    <Position X="39.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAMACAAAAAAAAAgACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.RemoveLibraryEmailsResponse" Collapsed="true">
+    <Position X="41.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAMACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.AddSysMsgRequest" Collapsed="true">
+    <Position X="27.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAEACAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.AddSysMsgResponse" Collapsed="true">
+    <Position X="29.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.AddLibraryDirectoryRequest" Collapsed="true">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgABAMACAAAAAAAAAgACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.AddLibraryDirectoryResponse" Collapsed="true">
+    <Position X="15.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAMACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.AddLibraryEmailRequest" Collapsed="true">
+    <Position X="17" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAMACAAAAAAAAAgACAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.AddLibraryEmailResponse" Collapsed="true">
+    <Position X="18.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateLibraryGridRequest" Collapsed="true">
+    <Position X="22.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateLibraryGridResponse" Collapsed="true">
+    <Position X="24" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getListOfStringsRequest" Collapsed="true">
+    <Position X="10" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAANACAAAAAAAAAgKAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getListOfStringsResponse" Collapsed="true">
+    <Position X="11.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAANACAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getListOfStrings1Request" Collapsed="true">
+    <Position X="36.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAANACAAAAAAAAAgKAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getListOfStrings1Response" Collapsed="true">
+    <Position X="38" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAANACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getListOfStrings2Request" Collapsed="true">
+    <Position X="39.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAANACAAAAAAAAAgKAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getListOfStrings2Response" Collapsed="true">
+    <Position X="41.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAANACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getListOfStrings3Request" Collapsed="true">
+    <Position X="3" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAANACAAAAAAAAAgKAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getListOfStrings3Response" Collapsed="true">
+    <Position X="4.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAANACAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getListOfStrings4Request" Collapsed="true">
+    <Position X="6.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAANACAAAAAAAAAgKAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getListOfStrings4Response" Collapsed="true">
+    <Position X="8.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAMACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.iCountRequest" Collapsed="true">
+    <Position X="29.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.iCountResponse" Collapsed="true">
+    <Position X="31" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetLogPathRequest" Collapsed="true">
+    <Position X="27.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.GetLogPathResponse" Collapsed="true">
+    <Position X="29.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ActiveSessionGetValRequest" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAEAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ActiveSessionGetValResponse" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAEAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ActiveSessionRequest" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAEAAAEAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.ActiveSessionResponse" Collapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.setSecureLoginParmsRequest" Collapsed="true">
+    <Position X="13.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAAAAAAAAEAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.setSecureLoginParmsResponse" Collapsed="true">
+    <Position X="15.25" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateSecureLoginCB_V2Request" Collapsed="true">
+    <Position X="29.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAMACAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateSecureLoginCB_V2Response" Collapsed="true">
+    <Position X="31" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAMACAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateSecureLoginCBRequest" Collapsed="true">
+    <Position X="32.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAMACAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.PopulateSecureLoginCBResponse" Collapsed="true">
+    <Position X="34.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAMACAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getLoginPWRequest" Collapsed="true">
+    <Position X="24" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getLoginPWResponse" Collapsed="true">
+    <Position X="25.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.setLoginPWRequest" Collapsed="true">
+    <Position X="10" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.setLoginPWResponse" Collapsed="true">
+    <Position X="11.75" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getSessionEncCsRequest" Collapsed="true">
+    <Position X="3" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getSessionEncCsResponse" Collapsed="true">
+    <Position X="4.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.setSessionEncCsRequest" Collapsed="true">
+    <Position X="20.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.setSessionEncCsResponse" Collapsed="true">
+    <Position X="22.25" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.setSessionRepoIDRequest" Collapsed="true">
+    <Position X="27.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.setSessionRepoIDResponse" Collapsed="true">
+    <Position X="29.25" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getSessionRepoIDRequest" Collapsed="true">
+    <Position X="6.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getSessionRepoIDResponse" Collapsed="true">
+    <Position X="8.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.setSessionCompanyIDRequest" Collapsed="true">
+    <Position X="17" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAMACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.setSessionCompanyIDResponse" Collapsed="true">
+    <Position X="18.75" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getSessionCompanyIDRequest" Collapsed="true">
+    <Position X="39.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.getSessionCompanyIDResponse" Collapsed="true">
+    <Position X="41.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECMSearchWPF.SVCSearch.Service1Client" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>fz7///i//3/3G6/3P+/67737zb7/2vv+/2/ru772/fc=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="ECMSearchWPF.SVCSearch.IService1" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>Lz7/zsA9/3/2G631N+/67rWrTbTv2vv+62fru772/YM=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ECMSearchWPF.SVCSearch.IService1Channel" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SVCSearch\Reference.vb</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Module Name="ECMSearchWPF.modDbFunctions" Collapsed="true">
+    <Position X="6.5" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>app_code\modDbFunctions.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="ECMSearchWPF.modGlobals" Collapsed="true">
+    <Position X="8.25" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>8D1zOcBcFwXUEHgUSP8wicFOBmGLEnyI2rAWDIQlEqs=</HashCode>
+      <FileName>app_code\modGlobals.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="ECMSearchWPF.GlobalMod" Collapsed="true">
+    <Position X="3" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAgAAAACAAAAAAAgAAAAA=</HashCode>
+      <FileName>GlobalMod.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="ECMSearchWPF.GLOBALS" Collapsed="true">
+    <Position X="4.75" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>oEYEgIBGEYeAtAWBAAIRAAswHARAg8iA5AoCAiIAEVA=</HashCode>
+      <FileName>GLOBALS.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="ECMSearchWPF.My.MyWpfExtension" Collapsed="true">
+    <Position X="11.75" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AiABAAAAABAAAEAAAAAAAAAAAAgBABAAABAAAAAAAAA=</HashCode>
+      <FileName>My Project\MyExtensions\MyWpfExtension.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="ECMSearchWPF.My.MySettingsProperty" Collapsed="true">
+    <Position X="10" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="ECMSearchWPF.My.Resources.Resources" Collapsed="true">
+    <Position X="13.5" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Module>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

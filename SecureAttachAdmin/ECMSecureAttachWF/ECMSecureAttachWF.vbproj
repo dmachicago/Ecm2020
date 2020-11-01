@@ -1,0 +1,837 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3B448003-D6A6-4354-9823-4AB864942D0E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>ECMSecureAttachWF.My.MyApplication</StartupObject>
+    <RootNamespace>ECMSecureAttachWF</RootNamespace>
+    <AssemblyName>ECMSecureAttachWF</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>D:\PrePublishedWebSites\ECMSaaS\SecureAttachAdmin\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>17</ApplicationRevision>
+    <ApplicationVersion>3.2.1.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>ECMSecureAttachWF.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>ECMSecureAttachWF.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>875D1F1EDD48F89A477113BB9B6BAFA0AAB75DAE</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>ECMSecureAttachWF_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ENC">
+      <HintPath>..\..\ENC\ENC\bin\Debug\ENC.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="clsUserMgt.vb" />
+    <Compile Include="frmDetail.Designer.vb">
+      <DependentUpon>frmDetail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.vb">
+      <DependentUpon>frmMain.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUser.Designer.vb">
+      <DependentUpon>frmUser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gFunc.vb" />
+    <Compile Include="GlobalsMod.vb" />
+    <Compile Include="grid.vb" />
+    <Compile Include="gvar.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Service References\SVCGateway\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SVCSearch\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmDetail.resx">
+      <DependentUpon>frmDetail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUser.resx">
+      <DependentUpon>frmUser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ECMSecureAttachWF_TemporaryKey.pfx" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSecureAttachWF.SVCGateway.AttachToSecureLoginDBResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSecureAttachWF.SVCGateway.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSecureAttachWF.SVCGateway.DeleteExistingConnectionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSecureAttachWF.SVCGateway.DS_SecureAttach.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSecureAttachWF.SVCGateway.getConnectionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSecureAttachWF.SVCGateway.getSecureKeyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSecureAttachWF.SVCGateway.PopulateComboResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSecureAttachWF.SVCGateway.PopulateCompanyComboSecureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSecureAttachWF.SVCGateway.PopulateGridResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSecureAttachWF.SVCGateway.PopulateRepoComboResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSecureAttachWF.SVCGateway.PopulateRepoSecureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSecureAttachWF.SVCGateway.saveConnectionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\ECMSecureAttachWF.SVCGateway.ValidateGatewayLoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCGateway\SVCGateway.wsdl" />
+    <None Include="Service References\SVCGateway\SVCGateway.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCGateway\SVCGateway1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCGateway\SVCGateway2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCGateway\SVCGateway3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.ActiveSessionGetValResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.ActiveSessionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.AddGroupLibraryAccessResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.AddLibraryDirectoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.AddLibraryEmailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.AddLibraryGroupUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.AddLibraryItemsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.AddSysMsgResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.ChangeUserContentPublicResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.ChangeUserPasswordResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.ckContentFlagsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.CleanLogResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.cleanUpLibraryItemsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DBExecuteEncryptedSqlResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DBisAdminResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DBisGlobalSearcherResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DbWriteToFileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DeleteGroupUsersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DeleteLibraryGroupUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DeleteUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DS_Attachments.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DS_clsUSERGRIDSTATE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DS_CONTENT.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DS_CoOwner.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DS_DgAssigned.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DS_DgGroupUsers.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DS_dgGrpUsers.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DS_EMAIL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DS_LibItems.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DS_License.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DS_ListOfStrings01.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DS_ListOfStrings02.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DS_ListOfStrings03.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DS_ListOfStrings04.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DS_Metadata.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DS_USERSCREENSTATE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DS_USERSEARCHSTATE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DS_VLibraryStats.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DS_VLibraryUsers.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DS_VUserGrid.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.DS_ZipFiles.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.ExecuteSearchResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.ExecuteSqlNewConn1Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.ExecuteSqlNewConn2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.ExecuteSqlNewConn3Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.ExecuteSqlNewConn4Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.ExecuteSqlNewConn5Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.ExecuteSqlNewConnSecureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.ExecuteSqlStackResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.ExpandInflectionTermsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.GenContentSearchSQLResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.GenEmailAttachmentsGeneratedSQLResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.GenEmailGeneratedSQLResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getAttachedMachineNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getAttachmentWeightsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getClientLicensesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getDatasourceParmResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getDBSIZEMBResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.GetEmailAttachmentsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.GetFilesInZipResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getGridLayoutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getGroupOwnerGuidByGroupNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getGroupUsersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getHttpSessionIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.GetLibOwnerByNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getListOfStrings01Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getListOfStrings02Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getListOfStrings03Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getListOfStrings04Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getListOfStrings1Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getListOfStrings2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getListOfStrings3Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getListOfStrings4Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getListOfStringsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.GetLoggedinUserNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getLoggedInUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getLoginGuidResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getLoginPWResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.GetLogPathResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.GetMachineIPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getMaxClientsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.GetNbrMachineAllResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.GetNbrMachineResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.GetNbrUsersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.GetParmValueResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getRestoreFileCountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getSAASStateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getScreenStateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getSearchScheduleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getSearchStateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getServerDatabaseNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getServerInstanceNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getServerMachineNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getSessionCompanyIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getSessionEncCsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getSessionRepoIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.GetSessionVariableResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getSqlServerVersionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getSynonymsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getSystemParmResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getThesaurusIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getUserAuthResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getUserGuidIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.GetUserHostAddressResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.GetUserHostNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getUserParmResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.getUserParmsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.GetXrtResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.iCountContentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.iCountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.iGetRowCountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.isLeaseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.isLicenseLocatedOnAssignedMachineResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.LicenseTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.LoadUserSearchHistoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.ParseLicDictionaryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.ParseLicResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.PopulateComboBoxResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.PopulateDgAssignedResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.PopulateDgGroupUsersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.PopulateEmailGridWithNoWeightsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.PopulateEmailGridWithWeightsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.PopulateGroupUserGridResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.PopulateGroupUserLibComboResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.PopulateLibItemsGridResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.PopulateLibraryGridResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.PopulateLibraryUsersGridResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.PopulateSecureLoginCBResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.PopulateSecureLoginCB_V2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.PopulateSourceGridNoWeightsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.PopulateSourceGridWithWeightsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.PopulateUserGridResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.ProcessDatesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.RecallUserSearchResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.RecordGrowthResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.RefactorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.RemoveLibraryDirectoriesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.RemoveLibraryEmailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.removeRestoreFilesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.RemoveUnwantedCharactersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.ResetLibraryUsersCountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.resetMissingEmailIdsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.SaveClickStatsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.saveGridLayoutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.saveRestoreFileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.SaveRunParmResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.saveScreenStateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.saveSearchScheduleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.saveSearchStateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.SaveUSerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.setLoginGuidResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.setLoginPWResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.setSecureLoginParmsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.setSessionCompanyIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.setSessionEncCsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.setSessionIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.setSessionRepoIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.SetSessionVariableResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.updateIpResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.UpdateSourceImageCompressedResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.UserParmInsertUpdateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.validateAttachSecureLoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.validateLoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.writeAttachmentFromDbWriteToFileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.writeEmailFromDbToFileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.writeImageSourceDataFromDbWriteToFileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\ECMSecureAttachWF.SVCSearch.ZeroizeGlobalSearchResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SVCSearch\SVCSearch.wsdl" />
+    <None Include="Service References\SVCSearch\SVCSearch.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCSearch\SVCSearch1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCSearch\SVCSearch2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SVCSearch\SVCSearch3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PurpleHuge.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Eye.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Arcs.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\City.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Arcs1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Compass.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Parabola.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Steel.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SVCGateway\" />
+    <WCFMetadataStorage Include="Service References\SVCSearch\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SVCGateway\SVCGateway.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SVCGateway\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SVCGateway\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SVCGateway\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SVCSearch\SVCSearch.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SVCSearch\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SVCSearch\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SVCSearch\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
