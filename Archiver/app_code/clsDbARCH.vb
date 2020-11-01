@@ -8090,6 +8090,96 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End Using
     End Sub
 
+    Public Function getIncludedFileTypeWhereIn(ByVal UserID As String, ByVal DirName As String) As String
+
+        Dim ConnStr As String = getRepoConnStr()
+        Dim Conn As New SqlConnection(ConnStr)
+        Dim b As Boolean = False
+        Dim s As String = ""
+        Dim WC As String = ""
+        Dim bFound As Boolean = False
+
+        DirName = UTIL.RemoveSingleQuotes(DirName)
+
+
+        s = " SELECT [UserID]"
+            s = s + " ,[ExtCode]"
+            s = s + " ,[FQN]"
+            s = s + " FROM IncludedFiles "
+        s = s + " where Userid = '" + UserID + "' "
+        s = s + " and FQN = '" + DirName + "'"
+
+
+        Using Conn
+            If Conn.State = ConnectionState.Closed Then
+                Conn.Open()
+            End If
+
+            Dim command As New SqlCommand(s, Conn)
+            Dim RSData As SqlDataReader = Nothing
+            RSData = command.ExecuteReader()
+            If RSData.HasRows Then
+                Do While RSData.Read()
+                    bFound = True
+                    Dim SS As String = RSData.GetValue(1).ToString.ToLower
+                    WC += SS + ","
+                Loop
+                If bFound Then
+                    WC = WC.Trim.Substring(0, WC.Length - 1)
+                End If
+            End If
+            RSData.Close()
+            RSData = Nothing
+            command.Connection.Close()
+            command = Nothing
+            Conn.Close()
+            Conn = Nothing
+        End Using
+        Return WC
+    End Function
+
+    Public Function getIncludedFileTypeWhereIn(ByVal UserID As String) As String
+
+        Dim ConnStr As String = getRepoConnStr()
+        Dim Conn As New SqlConnection(ConnStr)
+        Dim b As Boolean = False
+        Dim s As String = ""
+        Dim WC As String = ""
+        Dim bFound As Boolean = False
+
+        s = " SELECT distinct ExtCode
+                FROM IncludedFiles 
+                where Userid = '" + UserID + "'"
+
+        Using Conn
+            If Conn.State = ConnectionState.Closed Then
+                Conn.Open()
+            End If
+
+            Dim command As New SqlCommand(s, Conn)
+            Dim RSData As SqlDataReader = Nothing
+            RSData = command.ExecuteReader()
+            If RSData.HasRows Then
+                Do While RSData.Read()
+                    bFound = True
+                    Dim sItem As String = RSData.GetValue(0).ToString.ToLower
+                    WC += WC + ","
+                Loop
+                If bFound Then
+                    WC = WC.Trim.Substring(0, WC.Length - 1)
+                End If
+            End If
+            RSData.Close()
+            RSData = Nothing
+            command.Connection.Close()
+            command = Nothing
+            Conn.Close()
+            Conn = Nothing
+        End Using
+        Return WC
+    End Function
+
+
     Public Sub LoadIncludedFileTypes(ByRef LB As ListBox, ByVal UserID As String, ByVal DirName As String)
         LB.Items.Clear()
         Dim A(9) As String

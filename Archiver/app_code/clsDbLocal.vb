@@ -75,7 +75,8 @@ Public Class clsDbLocal : Implements IDisposable
             Dim B As Boolean = True
             Dim CurrDir As String = ""
 
-            Dim AllowedExts As List(Of String) = DB.getUsersAllowedFileExt(gCurrUserGuidID)
+            'WDM COMMENTED OUT Nov-01-2020
+            'Dim AllowedExts As List(Of String) = DB.getUsersAllowedFileExt(gCurrUserGuidID)
 
             truncateDirs()
             truncateFiles()
@@ -90,11 +91,28 @@ Public Class clsDbLocal : Implements IDisposable
             DictOfDirs = DB.GetUserDirectories(gCurrLoginID)
             Dim ExtCnt As Integer = 0
             Dim LastIdx As Integer = 0
+            Dim DirWhereInClause As New Dictionary(Of String, String)
+            Dim DictDirID As New Dictionary(Of String, Integer)
+            Dim WC As String = ""
+
+            For Each DKey As String In DictOfDirs.Keys
+                addDir(DKey, bUseArchiveBit)
+                DirID = GetDirID(DKey)
+                DictDirID.Add(DKey, DirID)
+                WC = DB.getIncludedFileTypeWhereIn(gCurrLoginID, DKey)
+                If WC.Length > 0 Then
+                    If Not DirWhereInClause.Keys.Contains(DKey) Then
+                        DirWhereInClause.Add(DKey, WC)
+                    End If
+                End If
+            Next
 
             For Each str As String In DictOfDirs.Keys
                 Try
                     DirName = str
-
+                    '********************************
+                    WC = DirWhereInClause(str)
+                    '********************************
                     If Directory.Exists(DirName) Then
                         IncludeSubDirs = DictOfDirs(str)
                         Application.DoEvents()
@@ -102,10 +120,12 @@ Public Class clsDbLocal : Implements IDisposable
                         ExtCnt = 0
                         LastIdx = 0
 
-                        AllowedExts = getAllowedExtension(DirName, 0)
+                        '** WDM Commented out Nov-01-2020
+                        'addDir(DirName, bUseArchiveBit)
+                        'DirID = GetDirID(DirName)
 
-                        addDir(DirName, bUseArchiveBit)
-                        DirID = GetDirID(DirName)
+                        DirID = DictDirID(str)
+
                         If IncludeSubDirs.ToUpper.Equals("Y") Then
                             iCnt = 0
                             di = New DirectoryInfo(DirName)
@@ -116,10 +136,10 @@ Public Class clsDbLocal : Implements IDisposable
                                     FSize = FI.Length
                                     LastWriteTime = FI.LastWriteTime
                                     CreationTime = FI.CreationTime
-                                    EXT = FI.Extension
+                                    EXT = FI.Extension.ToLower
                                     CurrDir = FI.DirectoryName
                                     FRM.Label1.Text = CurrDir
-                                    If AllowedExts.Contains(EXT.ToLower) Then
+                                    If WC.Contains(EXT) Then
                                         FRM.lblPdgPages.Text = FI.Name + " @ " + FI.Length.ToString()
                                         FRM.lblFileSpec.Text = iCnt.ToString
                                         hash = ENC.SHA512SqlServerHash(FI.FullName)
@@ -146,7 +166,7 @@ Public Class clsDbLocal : Implements IDisposable
                                     EXT = FI.Extension
                                     CurrDir = FI.DirectoryName
                                     FRM.Label1.Text = CurrDir
-                                    If AllowedExts.Contains(EXT.ToLower) Then
+                                    If WC.Contains(EXT.ToLower) Then
                                         FRM.lblPdgPages.Text = FI.Name + " @ " + FI.Length.ToString()
                                         FRM.lblFileSpec.Text = iCnt.ToString
                                         hash = ENC.SHA512SqlServerHash(FI.FullName)
@@ -279,13 +299,13 @@ Public Class clsDbLocal : Implements IDisposable
 
     Public Function getListenerfiles() As List(Of String)
 
+        Dim DB As New clsDatabaseARCH
         Dim FRM As New frmNotify
         FRM.Show()
         FRM.Title = "Getting LISTENER Files"
         FRM.Text = "Getting LISTENER Files"
 
         bConnSet = setListenerConn()
-
 
         Dim FilesToProcess As New List(Of String)
         Dim sql As String = "select distinct FQN from FileNeedProcessing where FileApplied = 0 order by FQN ;"
@@ -297,6 +317,14 @@ Public Class clsDbLocal : Implements IDisposable
         Dim ExtCnt As Integer = 0
         Dim LastIdx As Integer = 0
         Dim Len As Int64 = 0
+
+
+        'Dim DirWhereInClause As New Dictionary(Of String, String)
+        'Dim DictDirID As New Dictionary(Of String, Integer)
+        'Dim WC As String = ""
+        'For Each DKey As String In DictOfDirs.Keys
+        '    WC = DB.getIncludedFileTypeWhereIn(gCurrLoginID)
+        'Next
 
         Using CMD As New SQLiteCommand(sql, ListernerConn)
             CMD.CommandText = sql
@@ -341,22 +369,16 @@ Public Class clsDbLocal : Implements IDisposable
         Return FilesToProcess
     End Function
 
-    Public Function getListenerfilesID() As List(Of Integer)
-
-        'If LConn.State.Open Then
-        '    LConn.Close()
-        'End If
-
-        'bConnSet = setListenerConn()
+    Public Function getListenerfilesID() As List(Of String)
 
         Dim LConn As New SQLiteConnection()
         cs = "data source=" + SQLiteListenerDB
         LConn.ConnectionString = cs
         LConn.Open()
 
-        Dim FilesToProcess As New List(Of Integer)
+        Dim FilesToProcess As New List(Of String)
         Dim sql As String = "select RowID from FileNeedProcessing where FileApplied = 0 ;"
-        Dim id As Integer = -1
+        Dim id As String = ""
 
         Using LConn
             Using CMD As New SQLiteCommand(sql, LConn)
@@ -364,7 +386,7 @@ Public Class clsDbLocal : Implements IDisposable
                 Dim rdr As SQLiteDataReader = CMD.ExecuteReader()
                 Using rdr
                     While (rdr.Read())
-                        id = rdr.GetValue(0)
+                        id = rdr.GetValue(0).ToString
                         If Not FilesToProcess.Contains(id) Then
                             FilesToProcess.Add(id)
                         End If
@@ -434,7 +456,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
-    Public Function removeListenerfileProcessed(RowIDs As List(Of Integer)) As Boolean
+    Public Function removeListenerfileProcessed(RowIDs As List(Of String)) As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -447,13 +469,15 @@ Public Class clsDbLocal : Implements IDisposable
         Dim b As Boolean = True
         Dim WC As String = "("
 
-        For Each ii As Integer In RowIDs
-            WC += ii.ToString + ","
+        For Each ii As String In RowIDs
+            WC += ii + ","
         Next
         WC = WC.Substring(0, WC.Length - 1) + ")"
+        WC += " OR FileApplied= 1"
 
         Dim bProcessed As Boolean = False
         Dim S As String = "delete from FileNeedProcessing where RowID in " + WC
+        'Dim S As String = "delete from FileNeedProcessing where FileApplied= 1"
         Dim iCnt As Integer = 0
         Dim bConnSet As Boolean = False
 

@@ -192,6 +192,7 @@ Partial Class frmMain
         Me.LIstWindowsLogsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CheckLogsForListenerInfoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SQLiteUtiltiiesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReInventoryAllFilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ResetSQLiteArchivesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GetOutlookEMailIDsToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ResetZIPFilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -348,7 +349,7 @@ Partial Class frmMain
         Me.lblNotice = New System.Windows.Forms.Label()
         Me.ThreadValidateSourceName = New System.ComponentModel.BackgroundWorker()
         Me.ThreadSetNameHash = New System.ComponentModel.BackgroundWorker()
-        Me.ReInventoryAllFilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GetDirFilesByFilterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.gbEmail.SuspendLayout()
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbFiletypes.SuspendLayout()
@@ -2285,6 +2286,12 @@ Partial Class frmMain
         Me.SQLiteUtiltiiesToolStripMenuItem.Size = New System.Drawing.Size(246, 26)
         Me.SQLiteUtiltiiesToolStripMenuItem.Text = "SQLite Utiltiies"
         '
+        'ReInventoryAllFilesToolStripMenuItem
+        '
+        Me.ReInventoryAllFilesToolStripMenuItem.Name = "ReInventoryAllFilesToolStripMenuItem"
+        Me.ReInventoryAllFilesToolStripMenuItem.Size = New System.Drawing.Size(270, 26)
+        Me.ReInventoryAllFilesToolStripMenuItem.Text = "ReInventory All Files"
+        '
         'ResetSQLiteArchivesToolStripMenuItem
         '
         Me.ResetSQLiteArchivesToolStripMenuItem.Name = "ResetSQLiteArchivesToolStripMenuItem"
@@ -2549,7 +2556,7 @@ Partial Class frmMain
         '
         'TestToolStripMenuItem
         '
-        Me.TestToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DirectoryInventoryToolStripMenuItem, Me.ListFilesInDirectoryToolStripMenuItem, Me.GetAllSubdirFilesToolStripMenuItem, Me.OCRToolStripMenuItem, Me.FileHashToolStripMenuItem, Me.FileUploadToolStripMenuItem, Me.FileUploadBufferedToolStripMenuItem, Me.FileChunkUploadToolStripMenuItem, Me.RSSPullToolStripMenuItem, Me.ShowEndpointsToolStripMenuItem, Me.UnhandledExceptionsToolStripMenuItem, Me.ListenerFunctionsToolStripMenuItem, Me.CreateSQLiteDBToolStripMenuItem, Me.LongFilenameHASHToolStripMenuItem, Me.ValidateLongDirectroryNamesToolStripMenuItem, Me.TextStringHashToolStripMenuItem})
+        Me.TestToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DirectoryInventoryToolStripMenuItem, Me.ListFilesInDirectoryToolStripMenuItem, Me.GetAllSubdirFilesToolStripMenuItem, Me.OCRToolStripMenuItem, Me.FileHashToolStripMenuItem, Me.FileUploadToolStripMenuItem, Me.FileUploadBufferedToolStripMenuItem, Me.FileChunkUploadToolStripMenuItem, Me.RSSPullToolStripMenuItem, Me.ShowEndpointsToolStripMenuItem, Me.UnhandledExceptionsToolStripMenuItem, Me.ListenerFunctionsToolStripMenuItem, Me.CreateSQLiteDBToolStripMenuItem, Me.LongFilenameHASHToolStripMenuItem, Me.ValidateLongDirectroryNamesToolStripMenuItem, Me.TextStringHashToolStripMenuItem, Me.GetDirFilesByFilterToolStripMenuItem})
         Me.TestToolStripMenuItem.Name = "TestToolStripMenuItem"
         Me.TestToolStripMenuItem.Size = New System.Drawing.Size(47, 24)
         Me.TestToolStripMenuItem.Text = "Test"
@@ -3617,11 +3624,11 @@ Partial Class frmMain
         'ThreadSetNameHash
         '
         '
-        'ReInventoryAllFilesToolStripMenuItem
+        'GetDirFilesByFilterToolStripMenuItem
         '
-        Me.ReInventoryAllFilesToolStripMenuItem.Name = "ReInventoryAllFilesToolStripMenuItem"
-        Me.ReInventoryAllFilesToolStripMenuItem.Size = New System.Drawing.Size(270, 26)
-        Me.ReInventoryAllFilesToolStripMenuItem.Text = "ReInventory All Files"
+        Me.GetDirFilesByFilterToolStripMenuItem.Name = "GetDirFilesByFilterToolStripMenuItem"
+        Me.GetDirFilesByFilterToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.GetDirFilesByFilterToolStripMenuItem.Text = "Get Dir Files by Filter"
         '
         'frmMain
         '
@@ -4025,4 +4032,5 @@ Partial Class frmMain
     Friend WithEvents FulltextLogAnalysisToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents UpdateAvailableIFiltersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ReInventoryAllFilesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents GetDirFilesByFilterToolStripMenuItem As ToolStripMenuItem
 End Class

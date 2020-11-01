@@ -4017,7 +4017,7 @@ SKIPFOLDER:
         Dim OcrPdf As String = "" : LL = 451
         Dim ListOfDisabledDirs As New List(Of String) : LL = 456
         Dim FilesToArchive As New List(Of String) : LL = 461
-        Dim FilesToArchiveID As New List(Of Integer) : LL = 461
+        Dim FilesToArchiveID As New List(Of String) : LL = 461
         Dim LibraryList As New List(Of String) : LL = 466
         Dim DirLibraryList As New List(Of String) : LL = 471
         LL = 476
@@ -4527,13 +4527,16 @@ Process01:
                             If Not File.Exists(InventoryFQN) Then
                                 If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
                                     Dim bUpdt = DBLocal.setListenerfileProcessed(InventoryFQN)
-                                    If bUpdt Then
-                                        LOG.WriteToArchiveLog("NOTICE ArchiveContent BX01 skipped file : " + InventoryFQN)
-                                    Else
-                                        LOG.WriteToArchiveLog("ERROR ArchiveContent BX02 failed to set Processed flag: " + InventoryFQN)
-                                    End If
                                 End If
                                 GoTo NextFile
+                            End If
+                            If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
+                                Dim bUpdt = DBLocal.setListenerfileProcessed(InventoryFQN)
+                                If bUpdt Then
+                                    LOG.WriteToArchiveLog("NOTICE ArchiveContent BX01 skipped file : " + InventoryFQN)
+                                Else
+                                    LOG.WriteToArchiveLog("ERROR ArchiveContent BX02 failed to set Processed flag: " + InventoryFQN)
+                                End If
                             End If
                             LL = 2441
                             Dim UpdateTimerMain As Date = Now : LL = 2446
@@ -13300,7 +13303,7 @@ SkipIT:
     Private Sub CreateSQLiteDBToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CreateSQLiteDBToolStripMenuItem.Click
 
         Dim NewDB As String = "c:\temp\TestSQLite.db"
-        Dim sqlite_conn As SqliteConnection
+        Dim sqlite_conn As SQLiteConnection
 
         If Not Directory.Exists("c:\temp") Then
             Directory.CreateDirectory("C:\temp")
@@ -13310,7 +13313,7 @@ SkipIT:
             File.Delete(NewDB)
         End If
 
-        sqlite_conn = New SqliteConnection("Data Source=" + NewDB)
+        sqlite_conn = New SQLiteConnection("Data Source=" + NewDB)
         sqlite_conn.Open()
 
         If File.Exists(NewDB) Then
@@ -13523,6 +13526,24 @@ SkipIT:
 
     Private Sub ReInventoryAllFilesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReInventoryAllFilesToolStripMenuItem.Click
         DBLocal.ReInventory()
+    End Sub
+
+    Private Sub GetDirFilesByFilterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GetDirFilesByFilterToolStripMenuItem.Click
+        'Dim sFiles() As String = Directory.GetFiles("c:\dev\Ecm2020", "*.pdf|*.xlsx|*.xls|*.docx|*.doc|*.txt", SearchOption.AllDirectories)
+
+        Dim FileFilter As String = (".txt,.doc,.docx,*.pdf")
+        Dim DirName As String = "c:\dev\Ecm2020"
+        Dim I As Integer = 0
+        DI = New DirectoryInfo(DirName)
+
+        For Each FI As FileInfo In DI.GetFiles("*.docx", SearchOption.AllDirectories)
+            If FileFilter.Contains(FI.Extension) Then
+                I += 1
+            End If
+        Next
+
+        Console.WriteLine("Number Of Files: " + I.ToString())
+        MessageBox.Show("Number Of Files: " + I.ToString())
     End Sub
 End Class
 
