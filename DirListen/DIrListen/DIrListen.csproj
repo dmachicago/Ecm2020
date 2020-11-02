@@ -123,6 +123,12 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="BatchFiles\RestartSvc.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="BatchFiles\SetSvcRestart.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="DIrListen_TemporaryKey.pfx" />
     <None Include="Documentation\Creating Windows Service In .NET with Topshelf.pdf" />
     <None Include="Documentation\Start ECMListener Service.docx">

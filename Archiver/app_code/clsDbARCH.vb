@@ -8138,45 +8138,78 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return WC
     End Function
 
-    Public Function getIncludedFileTypeWhereIn(ByVal UserID As String) As String
+    Public Function getIncludedFileTypeWhereIn(ByVal UserID As String) As Dictionary(Of String, String)
 
+        Dim TDict As New Dictionary(Of String, String)
         Dim ConnStr As String = getRepoConnStr()
         Dim Conn As New SqlConnection(ConnStr)
         Dim b As Boolean = False
         Dim s As String = ""
         Dim WC As String = ""
         Dim bFound As Boolean = False
+        Dim CurrDir As String = ""
+        Dim ExtCode As String = ""
+        Dim PrevDir As String = ""
+        Dim iCnt As Integer = 0
+        Dim idx As Integer = 0
 
         s = " SELECT distinct ExtCode
                 FROM IncludedFiles 
                 where Userid = '" + UserID + "'"
 
-        Using Conn
-            If Conn.State = ConnectionState.Closed Then
-                Conn.Open()
-            End If
-
-            Dim command As New SqlCommand(s, Conn)
-            Dim RSData As SqlDataReader = Nothing
-            RSData = command.ExecuteReader()
-            If RSData.HasRows Then
-                Do While RSData.Read()
-                    bFound = True
-                    Dim sItem As String = RSData.GetValue(0).ToString.ToLower
-                    WC += WC + ","
-                Loop
-                If bFound Then
-                    WC = WC.Trim.Substring(0, WC.Length - 1)
+        s = "select distinct FQN, EXtcode from IncludedFiles where UserID = '" + UserID + "' order by fqn"
+        Try
+            Using Conn
+                If Conn.State = ConnectionState.Closed Then
+                    Conn.Open()
                 End If
-            End If
-            RSData.Close()
-            RSData = Nothing
-            command.Connection.Close()
-            command = Nothing
-            Conn.Close()
-            Conn = Nothing
-        End Using
-        Return WC
+
+                Dim command As New SqlCommand(s, Conn)
+                Dim RSData As SqlDataReader = Nothing
+
+                RSData = command.ExecuteReader()
+                If RSData.HasRows Then
+                    Do While RSData.Read()
+                        bFound = True
+                        CurrDir = RSData.GetValue(0).ToString.ToLower
+                        ExtCode = RSData.GetValue(1).ToString.ToLower
+                        If PrevDir <> CurrDir And iCnt > 0 Then
+                            'WDM Do not remove the last commas as it is used in the contains stmt later in the code
+                            'If WC.Contains(",") Then
+                            '    WC = WC.Trim.Substring(0, WC.Length - 1)
+                            'End If
+                            TDict.Add(PrevDir, WC)
+                            WC = ""
+                            WC += ExtCode.ToLower + ","
+                        Else
+                            WC += ExtCode.ToLower + ","
+                        End If
+                        iCnt += 1
+                        PrevDir = CurrDir
+                    Loop
+                End If
+
+                If Not TDict.Keys.Contains(CurrDir) Then
+                    WC += ExtCode.ToLower + ","
+                    'WC = WC.Trim.Substring(0, WC.Length - 1)
+                    TDict.Add(PrevDir, WC)
+                    WC = ""
+                    WC += ExtCode.ToLower + ","
+                End If
+
+                RSData.Close()
+                RSData = Nothing
+                command.Connection.Close()
+                command = Nothing
+                Conn.Close()
+                Conn = Nothing
+            End Using
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR getIncluded Exts 00 : " + ex.Message)
+            Console.WriteLine("ERROR getIncluded Exts 00 : " + ex.Message)
+        End Try
+
+        Return TDict
     End Function
 
 

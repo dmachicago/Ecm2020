@@ -253,6 +253,7 @@ Partial Class frmMain
         Me.LongFilenameHASHToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ValidateLongDirectroryNamesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TextStringHashToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GetDirFilesByFilterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -349,7 +350,7 @@ Partial Class frmMain
         Me.lblNotice = New System.Windows.Forms.Label()
         Me.ThreadValidateSourceName = New System.ComponentModel.BackgroundWorker()
         Me.ThreadSetNameHash = New System.ComponentModel.BackgroundWorker()
-        Me.GetDirFilesByFilterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GenWhereINDictToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.gbEmail.SuspendLayout()
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbFiletypes.SuspendLayout()
@@ -2556,7 +2557,7 @@ Partial Class frmMain
         '
         'TestToolStripMenuItem
         '
-        Me.TestToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DirectoryInventoryToolStripMenuItem, Me.ListFilesInDirectoryToolStripMenuItem, Me.GetAllSubdirFilesToolStripMenuItem, Me.OCRToolStripMenuItem, Me.FileHashToolStripMenuItem, Me.FileUploadToolStripMenuItem, Me.FileUploadBufferedToolStripMenuItem, Me.FileChunkUploadToolStripMenuItem, Me.RSSPullToolStripMenuItem, Me.ShowEndpointsToolStripMenuItem, Me.UnhandledExceptionsToolStripMenuItem, Me.ListenerFunctionsToolStripMenuItem, Me.CreateSQLiteDBToolStripMenuItem, Me.LongFilenameHASHToolStripMenuItem, Me.ValidateLongDirectroryNamesToolStripMenuItem, Me.TextStringHashToolStripMenuItem, Me.GetDirFilesByFilterToolStripMenuItem})
+        Me.TestToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DirectoryInventoryToolStripMenuItem, Me.ListFilesInDirectoryToolStripMenuItem, Me.GetAllSubdirFilesToolStripMenuItem, Me.OCRToolStripMenuItem, Me.FileHashToolStripMenuItem, Me.FileUploadToolStripMenuItem, Me.FileUploadBufferedToolStripMenuItem, Me.FileChunkUploadToolStripMenuItem, Me.RSSPullToolStripMenuItem, Me.ShowEndpointsToolStripMenuItem, Me.UnhandledExceptionsToolStripMenuItem, Me.ListenerFunctionsToolStripMenuItem, Me.CreateSQLiteDBToolStripMenuItem, Me.LongFilenameHASHToolStripMenuItem, Me.ValidateLongDirectroryNamesToolStripMenuItem, Me.TextStringHashToolStripMenuItem, Me.GetDirFilesByFilterToolStripMenuItem, Me.GenWhereINDictToolStripMenuItem})
         Me.TestToolStripMenuItem.Name = "TestToolStripMenuItem"
         Me.TestToolStripMenuItem.Size = New System.Drawing.Size(47, 24)
         Me.TestToolStripMenuItem.Text = "Test"
@@ -2664,6 +2665,12 @@ Partial Class frmMain
         Me.TextStringHashToolStripMenuItem.Name = "TextStringHashToolStripMenuItem"
         Me.TextStringHashToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
         Me.TextStringHashToolStripMenuItem.Text = "Text String Hash"
+        '
+        'GetDirFilesByFilterToolStripMenuItem
+        '
+        Me.GetDirFilesByFilterToolStripMenuItem.Name = "GetDirFilesByFilterToolStripMenuItem"
+        Me.GetDirFilesByFilterToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.GetDirFilesByFilterToolStripMenuItem.Text = "Get Dir Files by Filter"
         '
         'ExitToolStripMenuItem
         '
@@ -3624,11 +3631,11 @@ Partial Class frmMain
         'ThreadSetNameHash
         '
         '
-        'GetDirFilesByFilterToolStripMenuItem
+        'GenWhereINDictToolStripMenuItem
         '
-        Me.GetDirFilesByFilterToolStripMenuItem.Name = "GetDirFilesByFilterToolStripMenuItem"
-        Me.GetDirFilesByFilterToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
-        Me.GetDirFilesByFilterToolStripMenuItem.Text = "Get Dir Files by Filter"
+        Me.GenWhereINDictToolStripMenuItem.Name = "GenWhereINDictToolStripMenuItem"
+        Me.GenWhereINDictToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.GenWhereINDictToolStripMenuItem.Text = "Gen WhereIN Dict"
         '
         'frmMain
         '
@@ -4033,4 +4040,5 @@ Partial Class frmMain
     Friend WithEvents UpdateAvailableIFiltersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ReInventoryAllFilesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents GetDirFilesByFilterToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents GenWhereINDictToolStripMenuItem As ToolStripMenuItem
 End Class

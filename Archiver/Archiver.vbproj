@@ -62,7 +62,7 @@
     <WebPage>Publish.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>124</ApplicationRevision>
+    <ApplicationRevision>126</ApplicationRevision>
     <ApplicationVersion>4.6.2.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -720,7 +720,16 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="x64\SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="_SQL_Query\ResetFTI.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="_SQL_Query\ShrinkAllDBLogs.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="DBUpdates\sp_ApplySourceTypeCode.sq">

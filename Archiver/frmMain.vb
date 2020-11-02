@@ -4530,14 +4530,15 @@ Process01:
                                 End If
                                 GoTo NextFile
                             End If
-                            If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
-                                Dim bUpdt = DBLocal.setListenerfileProcessed(InventoryFQN)
-                                If bUpdt Then
-                                    LOG.WriteToArchiveLog("NOTICE ArchiveContent BX01 skipped file : " + InventoryFQN)
-                                Else
-                                    LOG.WriteToArchiveLog("ERROR ArchiveContent BX02 failed to set Processed flag: " + InventoryFQN)
-                                End If
-                            End If
+                            'WDM Nov-02-2020 Commented out as it is not needed the bay before we rid ourselves of trump
+                            'If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
+                            '    Dim bUpdt = DBLocal.setListenerfileProcessed(InventoryFQN)
+                            '    If bUpdt Then
+                            '        LOG.WriteToArchiveLog("NOTICE ArchiveContent BX01 skipped file : " + InventoryFQN)
+                            '    Else
+                            '        LOG.WriteToArchiveLog("ERROR ArchiveContent BX02 failed to set Processed flag: " + InventoryFQN)
+                            '    End If
+                            'End If
                             LL = 2441
                             Dim UpdateTimerMain As Date = Now : LL = 2446
                             LL = 2451
@@ -13530,20 +13531,48 @@ SkipIT:
 
     Private Sub GetDirFilesByFilterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GetDirFilesByFilterToolStripMenuItem.Click
         'Dim sFiles() As String = Directory.GetFiles("c:\dev\Ecm2020", "*.pdf|*.xlsx|*.xls|*.docx|*.doc|*.txt", SearchOption.AllDirectories)
-
-        Dim FileFilter As String = (".txt,.doc,.docx,*.pdf")
-        Dim DirName As String = "c:\dev\Ecm2020"
         Dim I As Integer = 0
-        DI = New DirectoryInfo(DirName)
+        Try
 
-        For Each FI As FileInfo In DI.GetFiles("*.docx", SearchOption.AllDirectories)
-            If FileFilter.Contains(FI.Extension) Then
-                I += 1
+            Console.WriteLine("START: ")
+            Console.WriteLine(Now)
+
+            Dim FileFilter As String = (".txt,.doc,.docx,*.pdf,")
+            Dim DirName As String = "c:\temp"
+
+            If Not Directory.Exists("c:\temp") Then
+                MessageBox.Show("Directory C:\temp does not exist and this test is designed to run against that one only... returning.")
+                Return
             End If
+
+            DI = New DirectoryInfo(DirName)
+
+            For Each FI As FileInfo In DI.GetFiles("*.*", SearchOption.AllDirectories)
+                If FileFilter.Contains(FI.Extension) Then
+                    I += 1
+                End If
+            Next
+            Dim msg As String = ""
+            msg = ("Number Of Files Found: " + I.ToString()) + Environment.NewLine
+
+            Console.WriteLine("Number Of Files: " + I.ToString())
+            Console.WriteLine("END: ")
+            Console.WriteLine(Now)
+
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+        End Try
+
+        MessageBox.Show("Number Of Files: " + I.ToString())
+    End Sub
+
+    Private Sub GenWhereINDictToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenWhereINDictToolStripMenuItem.Click
+        Dim tDict As New Dictionary(Of String, String)
+        tDict = DBARCH.getIncludedFileTypeWhereIn(gCurrLoginID)
+        For Each str As String In tDict.Keys()
+            Console.WriteLine("DIR:" + str + "  WhereIN: " + tDict(str))
         Next
 
-        Console.WriteLine("Number Of Files: " + I.ToString())
-        MessageBox.Show("Number Of Files: " + I.ToString())
     End Sub
 End Class
 

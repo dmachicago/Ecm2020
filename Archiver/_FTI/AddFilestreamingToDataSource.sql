@@ -28,7 +28,7 @@ go
 UPDATE DataSource SET SourceImage = SourceImageBAK
 GO
 
-ALTER FULLTEXT INDEX ON DataSOurce DROP (SourceImageBAK)
+ALTER FULLTEXT INDEX ON DataSource DROP (SourceImageBAK)
 go
 -- ALTER COLUMN OR MORE STATEMENT --
 ALTER FULLTEXT INDEX ON DataSource add (SourceImage TYPE COLUMN SourceTypeCode)

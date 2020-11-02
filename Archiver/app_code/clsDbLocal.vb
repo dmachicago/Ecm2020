@@ -99,19 +99,25 @@ Public Class clsDbLocal : Implements IDisposable
                 addDir(DKey, bUseArchiveBit)
                 DirID = GetDirID(DKey)
                 DictDirID.Add(DKey, DirID)
-                WC = DB.getIncludedFileTypeWhereIn(gCurrLoginID, DKey)
-                If WC.Length > 0 Then
-                    If Not DirWhereInClause.Keys.Contains(DKey) Then
-                        DirWhereInClause.Add(DKey, WC)
-                    End If
-                End If
+                'WDM Commented out the below 11-02-2020 The day before we DUMP TRUMP
+                'WC = DB.getIncludedFileTypeWhereIn(gCurrLoginID, DKey)
+                'If WC.Length > 0 Then
+                '    If Not DirWhereInClause.Keys.Contains(DKey) Then
+                '        DirWhereInClause.Add(DKey, WC)
+                '    End If
+                'End If
             Next
+
+            Dim DictOfWC As New Dictionary(Of String, String)
+            DictOfWC = DB.getIncludedFileTypeWhereIn(gCurrLoginID)
 
             For Each str As String In DictOfDirs.Keys
                 Try
                     DirName = str
                     '********************************
-                    WC = DirWhereInClause(str)
+                    'WDM Commented out 11-02-2020 Reight before we cast trump into a lake of fire and brimstone
+                    'WC = DirWhereInClause(str)
+                    WC = getAllowedExtension(str, 0, DictOfWC)
                     '********************************
                     If Directory.Exists(DirName) Then
                         IncludeSubDirs = DictOfDirs(str)
@@ -139,14 +145,19 @@ Public Class clsDbLocal : Implements IDisposable
                                     EXT = FI.Extension.ToLower
                                     CurrDir = FI.DirectoryName
                                     FRM.Label1.Text = CurrDir
-                                    If WC.Contains(EXT) Then
-                                        FRM.lblPdgPages.Text = FI.Name + " @ " + FI.Length.ToString()
-                                        FRM.lblFileSpec.Text = iCnt.ToString
-                                        hash = ENC.SHA512SqlServerHash(FI.FullName)
-                                        B = addFile(FI.Name, hash)
-                                        FileID = GetFileID(FI.Name, hash)
-                                        hash = ENC.SHA512SqlServerHash(FI.FullName)
-                                        B = addInventory(DirID, FileID, FI.Length, LastWriteTime, False, hash)
+
+                                    If Not FQN.Contains("\.git") Then
+                                        If WC.Contains(EXT + ",") Then
+                                            FRM.lblPdgPages.Text = FI.Name + " @ " + FI.Length.ToString()
+                                            FRM.lblFileSpec.Text = iCnt.ToString
+                                            hash = ENC.SHA512SqlServerHash(FI.FullName)
+                                            B = addFile(FI.Name, hash)
+                                            FileID = GetFileID(FI.Name, hash)
+                                            'hash = ENC.SHA512SqlServerHash(FI.FullName)
+                                            B = addInventory(DirID, FileID, FI.Length, LastWriteTime, False, hash)
+                                        End If
+                                    Else
+                                        Console.WriteLine("*")
                                     End If
                                 Catch ex As Exception
                                     LOG.WriteToArchiveLog("ERROR 01 Reinventory: " + ex.Message)
@@ -164,16 +175,20 @@ Public Class clsDbLocal : Implements IDisposable
                                     LastWriteTime = FI.LastWriteTime
                                     CreationTime = FI.CreationTime
                                     EXT = FI.Extension
-                                    CurrDir = FI.DirectoryName
-                                    FRM.Label1.Text = CurrDir
-                                    If WC.Contains(EXT.ToLower) Then
-                                        FRM.lblPdgPages.Text = FI.Name + " @ " + FI.Length.ToString()
-                                        FRM.lblFileSpec.Text = iCnt.ToString
-                                        hash = ENC.SHA512SqlServerHash(FI.FullName)
-                                        B = addFile(FI.Name, hash)
-                                        FileID = GetFileID(FI.Name, hash)
-                                        hash = ENC.SHA512SqlServerHash(FI.FullName)
-                                        B = addInventory(DirID, FileID, FI.Length, LastWriteTime, False, hash)
+                                    If Not FQN.Contains("\.git") Then
+                                        CurrDir = FI.DirectoryName
+                                        FRM.Label1.Text = CurrDir
+                                        If WC.Contains(EXT + ",") Then
+                                            FRM.lblPdgPages.Text = FI.Name + " @ " + FI.Length.ToString()
+                                            FRM.lblFileSpec.Text = iCnt.ToString
+                                            hash = ENC.SHA512SqlServerHash(FI.FullName)
+                                            B = addFile(FI.Name, hash)
+                                            FileID = GetFileID(FI.Name, hash)
+                                            'hash = ENC.SHA512SqlServerHash(FI.FullName)
+                                            B = addInventory(DirID, FileID, FI.Length, LastWriteTime, False, hash)
+                                        End If
+                                    Else
+                                        Console.WriteLine("-")
                                     End If
                                 Catch ex As Exception
                                     LOG.WriteToArchiveLog("ERROR 02 Reinventory: " + ex.Message)
@@ -196,6 +211,30 @@ Public Class clsDbLocal : Implements IDisposable
             LOG.WriteToArchiveLog("ERROR 00 Reinventory: " + ex.Message)
         End Try
     End Sub
+
+    Public Function getAllowedExtension(DirName As String, Level As Integer, tDict As Dictionary(Of String, String)) As String
+
+        DirName = DirName.ToLower
+
+        Dim TempDir As String = DirName
+        Dim FoundIt As Boolean = False
+        Dim WC As String = ""
+        Dim iLoc As Integer = 0
+
+        Do While Not FoundIt And TempDir.Length >= 3
+            If tDict.Keys.Contains(TempDir) Then
+                FoundIt = True
+                WC = tDict(TempDir)
+                Exit Do
+            Else
+                iLoc = TempDir.LastIndexOf("\")
+                TempDir = TempDir.Substring(0, iLoc)
+            End If
+        Loop
+
+        Return WC
+
+    End Function
 
     Public Function getAllowedExtension(DirName As String, Level As Integer) As List(Of String)
 
@@ -326,6 +365,11 @@ Public Class clsDbLocal : Implements IDisposable
         '    WC = DB.getIncludedFileTypeWhereIn(gCurrLoginID)
         'Next
 
+        Dim DictOfDirs As New Dictionary(Of String, String)
+        DictOfDirs = DB.getIncludedFileTypeWhereIn(gCurrLoginID)
+
+        Dim DirExts As String = ""
+
         Using CMD As New SQLiteCommand(sql, ListernerConn)
             CMD.CommandText = sql
             Dim rdr As SQLiteDataReader = CMD.ExecuteReader()
@@ -344,8 +388,11 @@ Public Class clsDbLocal : Implements IDisposable
                             DIR = FI.DirectoryName
                             Len = FI.Length
                             If ext.Length > 0 Then
-                                AllowedExts = getAllowedExtension(DIR, 0)
-                                If AllowedExts.Contains(ext) Then
+                                'WDM Commented Out the below Nov-02-2020 (day before we get rid of trump)
+                                'AllowedExts = getAllowedExtension(DIR, 0)
+                                DirExts = getAllowedExtension(DIR, 0, DictOfDirs)
+                                'If AllowedExts.Contains(ext) Then
+                                If DirExts.Contains(ext + ",") Then
                                     If Not FilesToProcess.Contains(FQN) Then
                                         FRM.lblPdgPages.Text = "Processing: " + FQN
                                         FilesToProcess.Add(FQN)
