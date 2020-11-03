@@ -482,6 +482,7 @@ Public Class clsDbLocal : Implements IDisposable
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
+        Dim B As Boolean = True
         Dim bProcessed As Boolean = False
         Dim S As String = "delete from FileNeedProcessing where FileApplied = 1 ; "
         Dim iCnt As Integer = 0
@@ -4214,10 +4215,12 @@ Public Class clsDbLocal : Implements IDisposable
 
     Sub InitUseLastArchiveDateActive(InitDate As String)
 
+        Dim today As DateTime = DateTime.Now
+        Dim Day_7 As DateTime = today.AddDays(-5)
         Dim I As Integer = getCountUseLastArchiveDateActive()
         Dim S As String = ""
         If I.Equals(0) And InitDate.Length.Equals(0) Then
-            S = "insert into LastArchive (LastArchiveDate) values ('01/01/1960')"
+            S = "insert into LastArchive (LastArchiveDate,LastArchiveDateActive) values ('" + Day_7.ToString + "', '1')"
         ElseIf I.Equals(1) Then
             S = "update LastArchive set LastArchiveDate = '" + InitDate + "' "
         ElseIf I > 1 Then

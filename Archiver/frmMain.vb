@@ -229,7 +229,10 @@ Public Class frmMain : Implements IDisposable
         updateMessageBar("6 of 6")
 
         populateZipExtensions()
+        updateMessageBar("6 of 6.1")
+
         populateGraphicExtensions()
+        updateMessageBar("6 of 6.2")
 
         'Me.Show()
         Application.DoEvents()
@@ -865,9 +868,11 @@ Public Class frmMain : Implements IDisposable
             LL = 298
             ARCH.HistoryFolderExists()
             LL = 299
+
             '** UPDATE THE CURRENT FOLDERS TO CONTAIN THE FOLDERID'S : LL = 331
             If TRACEFLOW = 1 Then DBARCH.RemoteTrace(9901, "Main", "140")
             updateMessageBar("9 of 18")
+
             Dim SS As String : LL = 332
             For Each SS In CF.Keys : LL = 333
                 Dim CurrName As String = SS.ToString : LL = 334
@@ -906,6 +911,7 @@ Public Class frmMain : Implements IDisposable
             LL = 363
             setMsgHeader("Initializing archive parameters, this could take a few seconds.") : LL = 364
             ckInitialData() : LL = 365
+
             If TRACEFLOW = 1 Then DBARCH.RemoteTrace(9901, "Main", "150")
             DBARCH.LoadAvailFileTypes(cbFileTypes) : LL = 367
             DBARCH.LoadAvailFileTypes(cbPocessType) : LL = 368
@@ -919,6 +925,7 @@ Public Class frmMain : Implements IDisposable
             DBARCH.LoadRetentionCodes(cbWebPageRetention)
             DBARCH.LoadRetentionCodes(cbWebSiteRetention)
             DBARCH.LoadRetentionCodes(cbEmailRetention) : LL = 375
+
             If TRACEFLOW = 1 Then DBARCH.RemoteTrace(9901, "Main", "170")
             Dim IMax As Integer = 0 : LL = 377
             ARCH.getOutlookParentFolderNames(Me.cbParentFolders) : LL = 378
@@ -5380,7 +5387,7 @@ NextFolder:
         If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
             bUpdated = DBLocal.removeListenerfileProcessed(FilesToArchiveID)
             If Not bUpdated Then
-                LOG.WriteToArchiveLog("ERROR failed removeListenerfileProcessed...")
+                LOG.WriteToArchiveLog("ERROR 01 failed removeListenerfileProcessed...")
             End If
         End If
 
@@ -7883,7 +7890,8 @@ SKIPTHISREC:
     End Sub
 
     Private Sub ContentToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ContentToolStripMenuItem.Click
-        BeginContentArchive(False)
+        Dim PerformQUickArchive As Boolean = True
+        BeginContentArchive(PerformQUickArchive)
     End Sub
 
     Private Sub ArchiveALLToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ArchiveALLToolStripMenuItem.Click
@@ -10136,7 +10144,7 @@ GoodLogin:
         If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
             bUpdated = DBLocal.removeListenerfileProcessed()
             If Not bUpdated Then
-                LOG.WriteToArchiveLog("ERROR failed removeListenerfileProcessed...")
+                LOG.WriteToArchiveLog("ERROR 02 failed removeListenerfileProcessed...")
             End If
         End If
 
@@ -10408,7 +10416,6 @@ GoodLogin:
             LOG.WriteToArchiveLog("Thread 90 - caught ThreadAbortException - resetting.")
             Thread.ResetAbort()
         Catch ex As Exception
-            LOG.WriteToParmLog("Step 35")
             LOG.WriteToArchiveLog("ERROR GetQueryStringParameters 100 - " + ex.Message)
             LOG.WriteToParmLog("ERROR GetQueryStringParameters 100 - " + ex.Message)
             Dim st As New StackTrace(True)
@@ -12454,7 +12461,7 @@ NEXTONE:
             If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
                 bUpdated = DBLocal.removeListenerfileProcessed()
                 If Not bUpdated Then
-                    LOG.WriteToArchiveLog("ERROR failed removeListenerfileProcessed...")
+                    LOG.WriteToArchiveLog("ERROR 00 failed removeListenerfileProcessed...")
                 End If
             End If
 
@@ -13245,7 +13252,7 @@ SkipIT:
         MessageBox.Show(Msg)
     End Sub
 
-    Sub BeginContentArchive(bQuickArchive As Boolean)
+    Sub BeginContentArchive(PerformQuickArchive As Boolean)
 
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13274,10 +13281,10 @@ SkipIT:
             End If
 
             Try
-                SB.Text = "CONTENT ARCHIVE LAUNCHED"
+                SB.Text = "Quick CONTENT ARCHIVE LAUNCHED"
                 '****************** Execute PerformContentArchive() on a separate thread **********************************
-                If bQuickArchive Then
-                    SB.Text = "CONTENT ARCHIVE LAUNCHED - Full ReInventory"
+                If Not PerformQuickArchive Then
+                    SB.Text = "Full Inventory ARCHIVE LAUNCHED"
                     ResetSqlite()
                 End If
                 '**********************************************************************************************************
@@ -13522,7 +13529,8 @@ SkipIT:
 
     Private Sub ContentNoLIstenerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContentNoLIstenerToolStripMenuItem.Click
         TempDisableDirListener = True
-        BeginContentArchive(True)
+        Dim PerformQUickArchive As Boolean = False
+        BeginContentArchive(PerformQUickArchive)
         TempDisableDirListener = False
 
     End Sub
@@ -13684,6 +13692,38 @@ SkipIT:
 
         DBLocal.getUseLastArchiveDateActive()
         setLastArchiveLabel()
+
+    End Sub
+
+    Private Sub ValidateRepoContentsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ValidateRepoContentsToolStripMenuItem.Click
+
+        Dim msg As String = "This process can be very time consuming as few minutes or a few dyas, are you sure?"
+        Dim dlgRes As DialogResult = MessageBox.Show(msg, "Verify ALL Files in Repo", MessageBoxButtons.YesNo)
+        If dlgRes = Windows.Forms.DialogResult.No Then
+            Return
+        End If
+
+        SB.Text = "CONTENT ARCHIVE LAUNCHED - Full ReInventory"
+        TempDisableDirListener = True
+        '------------------------------------------------
+        Dim CurrUseDirectoryListener As Int32 = UseDirectoryListener
+        UseDirectoryListener = 0
+        DBLocal.getUseLastArchiveDateActive()
+        Dim CurrUseLastArchiveDate As String = gUseLastArchiveDate
+        gUseLastArchiveDate = "N"
+        ResetSqlite()
+        '***************************************************************
+        BeginContentArchive(True)
+        TempDisableDirListener = False
+        '***************************************************************
+        gUseLastArchiveDate = CurrUseLastArchiveDate
+        UseDirectoryListener = CurrUseDirectoryListener
+        '------------------------------------------------
+        TempDisableDirListener = False
+        SB.Text = "CONTENT ARCHIVE COMPLETED"
+    End Sub
+
+    Private Sub ArchiveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ArchiveToolStripMenuItem.Click
 
     End Sub
 End Class
