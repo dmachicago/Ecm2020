@@ -1,0 +1,7 @@
+﻿alter table DataSource alter column FileDirectory nvarchar(1000) null;	--300
+go
+alter table DataSource alter column FileDirectoryName nvarchar(1000) null;	--300
+go
+alter table DataSource alter column SourceName nvarchar(1000) null;	--254
+go
+alter table DataSource alter column FQN varchar(2000) null; --712

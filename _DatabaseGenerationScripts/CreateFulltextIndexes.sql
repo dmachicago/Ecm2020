@@ -3,6 +3,14 @@ use [ECM.Library.FS]
 /**************************************************
 1
 **************************************************/
+
+if not exists (select 1 from sys.indexes where name = 'PK_DataSource_1')
+ALTER TABLE [dbo].[DataSource] ADD  CONSTRAINT [PK_DataSource_1] PRIMARY KEY NONCLUSTERED 
+(
+	[RowGuid] ASC
+)
+GO
+
 if exists (SELECT 1 as TableName FROM sys.fulltext_indexes 
 where OBJECT_NAME(object_id) = 'DataSource')
 begin
@@ -25,13 +33,15 @@ CREATE FULLTEXT INDEX ON [dbo].[DataSource] (
 	,Notes Language 1033 
 	,OcrText Language 1033 
 ) 
-KEY INDEX PK_DataSource
+KEY INDEX PK_DataSource_1
 	ON ftDataSource
 	WITH CHANGE_TRACKING AUTO
 GO
 /**************************************************
 2
 **************************************************/
+
+go
 if exists (SELECT 1 as TableName FROM sys.fulltext_indexes 
 where OBJECT_NAME(object_id) = 'Email')
 begin
@@ -39,9 +49,20 @@ begin
 end
 GO
 
+
+ALTER TABLE [dbo].[Email] DROP CONSTRAINT [PKI_Email_FTI] WITH ( ONLINE = OFF )
+GO
+
+ALTER TABLE [dbo].[Email] ADD  CONSTRAINT [PKI_Email_FTI] PRIMARY KEY CLUSTERED 
+(
+	[EmailGuid] ASC
+)
+GO
+
+
 IF EXISTS (SELECT 1 FROM sys.fulltext_catalogs WHERE [name] = 'ftEmail')
 	DROP FULLTEXT CATALOG ftEmail;
-
+go
 
 CREATE FULLTEXT CATALOG ftEmail
 WITH ACCENT_SENSITIVITY = OFF
@@ -56,7 +77,7 @@ CREATE FULLTEXT INDEX ON [dbo].[Email] (
 	,KeyWords Language 1033 
 	,notes Language 1033 
 ) 
-KEY INDEX PK__Email__24383F235DE40451
+KEY INDEX PKI_Email_FTI
 	ON ftEmail
 	WITH CHANGE_TRACKING AUTO
 GO
@@ -80,19 +101,13 @@ WITH ACCENT_SENSITIVITY = OFF
 GO
 
 CREATE FULLTEXT INDEX ON [dbo].[EmailAttachment] (
-	Attachment TYPE COLUMN [AttachmentType] Language 1033 
+	Attachment TYPE COLUMN [Attachmentcode] Language 1033 
 	,AttachmentName Language 1033 
 	,OcrText Language 1033 
 ) 
 KEY INDEX PK__EmailAtt__B975DD8289908A26
 	ON ftEmailAttachment
 	WITH CHANGE_TRACKING AUTO
-GO
-
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 
 if not exists (select 1 from sys.tables where name = 'DataSourceImage')
@@ -119,13 +134,12 @@ begin
 	)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 	) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
-	ALTER TABLE [dbo].[DataSourceImage] ADD  DEFAULT (newid()) FOR [RowGuid]
-	ALTER TABLE [dbo].[DataSourceImage] ADD  DEFAULT (getdate()) FOR [LastUpdate]
+	ALTER TABLE [dbo].[DataSourceImage] ADD  DEFAULT (newid()) FOR [RowGuid];
+	ALTER TABLE [dbo].[DataSourceImage] ADD  DEFAULT (getdate()) FOR [LastUpdate];
 
 end
 
 GO
-
 
 -- DROP INDEX [PI_DataSourceHash] ON [dbo].[DataSourceImage]
 if not exists (select 1 from sys.indexes where name = 'PI_DataSourceHash')

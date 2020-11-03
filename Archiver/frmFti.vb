@@ -12,6 +12,7 @@ Public Class frmFti
     End Sub
 
     Sub getFtiLogs()
+
         Dim files() As String = IO.Directory.GetFiles(FTILogs)
         Dim FName As String = ""
 
@@ -42,6 +43,8 @@ Public Class frmFti
         Dim I As Integer = 0
         Dim IFound As Integer = 0
 
+        Dim MaxCnt As Integer = Convert.ToInt32(txtMaxNbr.Text)
+
         For Each S As String In lbFtiLogs.SelectedItems
             FQN = FTILogs + "\" + S
             Dim reader As StreamReader = My.Computer.FileSystem.OpenTextFileReader(FQN)
@@ -51,6 +54,9 @@ Public Class frmFti
             Do
                 Application.DoEvents()
                 I += 1
+                If I >= MaxCnt Then
+                    Exit Do
+                End If
                 If I Mod 100 = 0 Then
                     SB.Text = I.ToString
                     SB.Refresh()
@@ -70,7 +76,6 @@ Public Class frmFti
             SB.Text = ""
             SBFqn.Text = ""
         Next
-
 
     End Sub
 

@@ -683,7 +683,8 @@ Public Class frmMain : Implements IDisposable
             Try : LL = 171
                 If My.Settings("UpgradeSettings") = True Then : LL = 172
                     Try : LL = 173
-                        LOG.WriteToInstallLog("NOTICE frmMain: New INSTALL detected 100") : LL = 174
+                        LOG.WriteToArchiveLog("**********************************************") : LL = 174
+                        LOG.WriteToArchiveLog("NOTICE frmMain: New INSTALL detected 100") : LL = 174
                         My.Settings.Upgrade() : LL = 175
                         My.Settings.Reload() : LL = 176
                         My.Settings("UpgradeSettings") = False : LL = 177
@@ -756,13 +757,7 @@ Public Class frmMain : Implements IDisposable
             ListenersDefined = DBARCH.isListeningOn : LL = 227
             LL = 228
             Dim sDebug As String = DBARCH.getUserParm("debug_SetupScreen") : LL = 229
-            LL = 230
-            If sDebug.Equals("0") Then : LL = 231
-                ddebug = False : LL = 232
-            Else : LL = 233
-                ddebug = True : LL = 234
-                LOG.WriteToArchiveLog("Starting: frmMain, Debug configuration is ON") : LL = 235
-            End If : LL = 236
+
             LL = 237
             Dim ImpersonateID As String = ""
             Dim bImpersonateID As Boolean = UTIL.isImpersonationSet(ImpersonateID)

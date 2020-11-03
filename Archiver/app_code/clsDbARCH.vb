@@ -85,13 +85,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
         AddHandler currDomain.UnhandledException, AddressOf MYExnHandler
         AddHandler Application.ThreadException, AddressOf MYThreadHandler
 
-        Dim sDebug As String = "0"
 
-        If sDebug.Equals("1") Then
-            ddebug = True
-        Else
-            ddebug = False
-        End If
 
     End Sub
 
@@ -27596,125 +27590,136 @@ NextOne:
             Return False
         End If
 
+        Dim B As Boolean = True
         Dim LL As Integer = 0
 
-        RepositoryTable = RepositoryTable.ToUpper
-        LL = 10
-
-        Select Case (RepositoryTable.ToUpper)
-            Case "EMAIL"
-                S = "Update EMAIL set FileAttached = 0, CRC = '" + FileHash + "' where EmailGuid = '" + TgtGuid + "'"
-            Case "EMAILATTACHMENT"
-                S = "Update EmailAttachment set FileAttached = 0, CRC = '" + FileHash + "'  where RowGuid = '" + TgtGuid + "'"
-            Case "DATASOURCE"
-                S = "Update DataSource set FileAttached = 0, CRC = '" + FileHash + "' where SourceGuid = '" + TgtGuid + "'"
-            Case Else
-                S = "ERROR: 10029 - RepositoryTable not correctly set."
-        End Select
-
-        LL = 20
-        Dim CS As String = setConnStr()
-        LL = 30
-        B = ExecuteSql(S, CS, False) : LL = 4
-        LL = 40
-
-        Dim FileBinaryData As Byte() = File.ReadAllBytes(FQN)
-        Dim FileLength As Integer = FileBinaryData.Length
-        Dim SuccessfulUpload As Boolean = True
-        Dim ConnStr As String = setConnStr()
-        Dim CONN As New SqlConnection(ConnStr)
-
-        If CONN.State = ConnectionState.Closed Then
-            CONN.Open()
-        End If
-        LL = 50
-
-        Dim CMD As New SqlCommand()
         Try
-            If RepositoryTable.Equals("DATASOURCE") Then
-                LL = 55
-                Dim FI As New FileInfo(FQN)
-                Dim LastAccessDate As Date = FI.LastAccessTime
-                Dim LastWriteTime As Date = FI.LastWriteTime
-                FI = Nothing
-                CMD.Connection = CONN
-                CMD.CommandText = "[UpdateDataSourceImage]"
-                CMD.CommandType = CommandType.StoredProcedure
-                Using CONN
-                    Using CMD
-                        CMD.Parameters.Add(New SqlParameter("@SourceGuid", TgtGuid))
-                        CMD.Parameters.Add(New SqlParameter("@SourceImage", FileBinaryData))
-                        CMD.Parameters.Add(New SqlParameter("@LastAccessDate", LastAccessDate))
-                        CMD.Parameters.Add(New SqlParameter("@LastWriteTime", LastWriteTime))
-                        CMD.Parameters.Add(New SqlParameter("@VersionNbr", 1))
-                        CMD.ExecuteNonQuery()
-                    End Using
-                End Using
+            RepositoryTable = RepositoryTable.ToUpper
+            LL = 10
+
+            Select Case (RepositoryTable.ToUpper)
+                Case "EMAIL"
+                    S = "Update EMAIL set FileAttached = 0, CRC = '" + FileHash + "' where EmailGuid = '" + TgtGuid + "'"
+                Case "EMAILATTACHMENT"
+                    S = "Update EmailAttachment set FileAttached = 0, CRC = '" + FileHash + "'  where RowGuid = '" + TgtGuid + "'"
+                Case "DATASOURCE"
+                    S = "Update DataSource set FileAttached = 0, CRC = '" + FileHash + "' where SourceGuid = '" + TgtGuid + "'"
+                Case Else
+                    S = "ERROR: 10029 - RepositoryTable not correctly set."
+            End Select
+
+            LL = 20
+            Dim CS As String = setConnStr()
+            LL = 30
+            B = ExecuteSql(S, CS, False) : LL = 4
+            LL = 40
+
+            Dim FileBinaryData As Byte() = File.ReadAllBytes(FQN)
+            Dim FileLength As Integer = FileBinaryData.Length
+            Dim SuccessfulUpload As Boolean = True
+            Dim ConnStr As String = setConnStr()
+            Dim CONN As New SqlConnection(ConnStr)
+
+            If CONN.State = ConnectionState.Closed Then
+                CONN.Open()
             End If
-            LL = 60
-            If RepositoryTable.Equals("EMAIL") Then
-                LL = 70
-                CMD.Connection = CONN
-                CMD.CommandText = "UpdateEmailFilestream"
-                CMD.CommandType = CommandType.StoredProcedure
-                Using CONN
-                    Using CMD
-                        CMD.Parameters.Add(New SqlParameter("@EmailGuid", TgtGuid))
-                        CMD.Parameters.Add(New SqlParameter("@EmailImage", FileBinaryData))
-                        CMD.ExecuteNonQuery()
+            LL = 50
+
+            Dim CMD As New SqlCommand()
+            Try
+                If RepositoryTable.Equals("DATASOURCE") Then
+                    LL = 55
+                    Dim FI As New FileInfo(FQN)
+                    Dim LastAccessDate As Date = FI.LastAccessTime
+                    Dim LastWriteTime As Date = FI.LastWriteTime
+                    FI = Nothing
+                    CMD.Connection = CONN
+                    CMD.CommandText = "[UpdateDataSourceImage]"
+                    CMD.CommandType = CommandType.StoredProcedure
+                    Using CONN
+                        Using CMD
+                            CMD.Parameters.Add(New SqlParameter("@SourceGuid", TgtGuid))
+                            CMD.Parameters.Add(New SqlParameter("@SourceImage", FileBinaryData))
+                            CMD.Parameters.Add(New SqlParameter("@LastAccessDate", LastAccessDate))
+                            CMD.Parameters.Add(New SqlParameter("@LastWriteTime", LastWriteTime))
+                            CMD.Parameters.Add(New SqlParameter("@VersionNbr", 1))
+                            CMD.ExecuteNonQuery()
+                        End Using
                     End Using
-                End Using
-            End If
-            LL = 80
-            If RepositoryTable.Equals("EMAILATTACHMENT") Then
-                LL = 90
-                'Dim TSql As String = "Update [EmailAttachment] set Attachment = @Attachment Where RowGuid = @RowGuid"
-                CMD.Connection = CONN
-                CMD.CommandText = "UpdateEmailAttachmentFilestreamV2"
-                'CMD.CommandText = TSql
-                CMD.CommandType = CommandType.StoredProcedure
-                Using CONN
-                    Using CMD
-                        CMD.Parameters.Add(New SqlParameter("@RowGuid", TgtGuid))
-                        CMD.Parameters.Add(New SqlParameter("@Attachment", FileBinaryData))
-                        CMD.Parameters.Add(New SqlParameter("@LastAccessDate", Now))
-                        'CMD.Parameters.Add(New SqlParameter("@AttachmentName", OriginalFileName))
-                        CMD.ExecuteNonQuery()
+                End If
+                LL = 60
+                If RepositoryTable.Equals("EMAIL") Then
+                    LL = 70
+                    CMD.Connection = CONN
+                    CMD.CommandText = "UpdateEmailFilestream"
+                    CMD.CommandType = CommandType.StoredProcedure
+                    Using CONN
+                        Using CMD
+                            CMD.Parameters.Add(New SqlParameter("@EmailGuid", TgtGuid))
+                            CMD.Parameters.Add(New SqlParameter("@EmailImage", FileBinaryData))
+                            CMD.ExecuteNonQuery()
+                        End Using
                     End Using
-                End Using
-            End If
-            LL = 100
+                End If
+                LL = 80
+                If RepositoryTable.Equals("EMAILATTACHMENT") Then
+                    LL = 90
+                    'Dim TSql As String = "Update [EmailAttachment] set Attachment = @Attachment Where RowGuid = @RowGuid"
+                    CMD.Connection = CONN
+                    CMD.CommandText = "UpdateEmailAttachmentFilestreamV2"
+                    'CMD.CommandText = TSql
+                    CMD.CommandType = CommandType.StoredProcedure
+                    Using CONN
+                        Using CMD
+                            CMD.Parameters.Add(New SqlParameter("@RowGuid", TgtGuid))
+                            CMD.Parameters.Add(New SqlParameter("@Attachment", FileBinaryData))
+                            CMD.Parameters.Add(New SqlParameter("@LastAccessDate", Now))
+                            'CMD.Parameters.Add(New SqlParameter("@AttachmentName", OriginalFileName))
+                            CMD.ExecuteNonQuery()
+                        End Using
+                    End Using
+                End If
+                LL = 100
+            Catch ex As Exception
+                SuccessfulUpload = False
+                LOG.WriteToArchiveLog("ERROR: X01 InsertBinaryData: " + ex.Message)
+                LOG.WriteToArchiveLog("ERROR: LL=" + LL.ToString)
+                LOG.WriteToArchiveLog("ERROR: Binary Data Length: " + FileBinaryData.LongLength.ToString)
+                LOG.WriteToArchiveLog("ERROR: TgtGuid Length: " + TgtGuid.ToString)
+            Finally
+                oFile = Nothing
+                FileBinaryData = Nothing
+                CMD.Dispose()
+                If CONN.State = ConnectionState.Open Then
+                    CONN.Close()
+                End If
+                CONN.Dispose()
+
+                If RepositoryTable.Equals("EMAIL") Then
+                    S = "Update EMAIL set FileAttached = 1 where EmailGuid = '" + TgtGuid + "'"
+                ElseIf RepositoryTable.Equals("EMAILATTACHMENT") Then
+                    S = "Update EmailAttachment set FileAttached = 1 where EmailGuid = '" + TgtGuid + "'"
+                ElseIf RepositoryTable.Equals("DATASOURCE") Then
+                    S = "Update DataSource set FileAttached = 1 where SourceGuid = '" + TgtGuid + "'"
+                End If
+
+                LL = 120
+                Try
+                    B = ExecuteSql(S, CS, False)
+
+                    LL = 130
+                    B = UpdateDataSourceFileInfo(FQN, TgtGuid, FileLength, FileHash)
+                Catch ex As Exception
+                    LOG.WriteToArchiveLog("ERROR 22 InsertBinaryData: LL=" + LL.ToString + vbCrLf + ex.Message)
+                End Try
+
+
+            End Try
         Catch ex As Exception
-            SuccessfulUpload = False
-            LOG.WriteToArchiveLog("ERROR: X01 InsertBinaryData: " + ex.Message)
-            LOG.WriteToArchiveLog("ERROR: LL=" + LL.ToString)
-            LOG.WriteToArchiveLog("ERROR: Binary Data Length: " + FileBinaryData.LongLength.ToString)
-            LOG.WriteToArchiveLog("ERROR: TgtGuid Length: " + TgtGuid.ToString)
-        Finally
-            LL = 110
-            oFile = Nothing
-            FileBinaryData = Nothing
-            CMD.Dispose()
-            If CONN.State = ConnectionState.Open Then
-                CONN.Close()
-            End If
-            CONN.Dispose()
-
-            If RepositoryTable.Equals("EMAIL") Then
-                S = "Update EMAIL set FileAttached = 1 where EmailGuid = '" + TgtGuid + "'"
-            ElseIf RepositoryTable.Equals("EMAILATTACHMENT") Then
-                S = "Update EmailAttachment set FileAttached = 1 where EmailGuid = '" + TgtGuid + "'"
-            ElseIf RepositoryTable.Equals("DATASOURCE") Then
-                S = "Update DataSource set FileAttached = 1 where SourceGuid = '" + TgtGuid + "'"
-            End If
-
-            LL = 120
-            B = ExecuteSql(S, CS, False)
-
-            LL = 130
-            B = UpdateDataSourceFileInfo(FQN, TgtGuid, FileLength, FileHash)
-
+            B = False
+            LOG.WriteToArchiveLog("ERROR 00 InsertBinaryData: LL=" + LL.ToString + vbCrLf + ex.Message)
         End Try
+
 
         Return B
 

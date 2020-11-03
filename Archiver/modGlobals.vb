@@ -22,7 +22,7 @@ Module modGlobals
     Public gTraceFunctionCalls As Int32 = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings("TraceFunctionCALLS"))
     Public TrackUploads As Int32 = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings("TrackUploads"))
     Public UseDebugSQLite As Int32 = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings("UseDebugSQLite"))
-    Public MaxFileToLoadMB As Int32 = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings("MaxFileToLoadMB"))
+    Public MaxFileToLoadMB As Int64 = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings("MaxFileToLoadMB"))
     Public TempDisableDirListener As Boolean = False
     Public UseDirectoryListener As Int32 = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings("UseDirectoryListener"))
     Public SQLiteListenerDB As String = System.Configuration.ConfigurationManager.AppSettings("SQLiteListenerDB")

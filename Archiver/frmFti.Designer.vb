@@ -38,6 +38,8 @@ Partial Class frmFti
         Me.txtKeyGuid = New System.Windows.Forms.TextBox()
         Me.txtDb = New System.Windows.Forms.TextBox()
         Me.btnFindItem = New System.Windows.Forms.Button()
+        Me.txtMaxNbr = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'lbFtiLogs
@@ -114,7 +116,7 @@ Partial Class frmFti
         '
         'btnSave
         '
-        Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnSave.Location = New System.Drawing.Point(789, 6)
         Me.btnSave.Name = "btnSave"
@@ -125,7 +127,7 @@ Partial Class frmFti
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(237, 436)
+        Me.Button1.Location = New System.Drawing.Point(237, 359)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 8
@@ -201,11 +203,32 @@ Partial Class frmFti
         Me.btnFindItem.Text = "Get Name"
         Me.btnFindItem.UseVisualStyleBackColor = True
         '
+        'txtMaxNbr
+        '
+        Me.txtMaxNbr.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.txtMaxNbr.Location = New System.Drawing.Point(223, 469)
+        Me.txtMaxNbr.Name = "txtMaxNbr"
+        Me.txtMaxNbr.Size = New System.Drawing.Size(72, 22)
+        Me.txtMaxNbr.TabIndex = 16
+        Me.txtMaxNbr.Text = "100"
+        '
+        'Label2
+        '
+        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(222, 449)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(49, 17)
+        Me.Label2.TabIndex = 17
+        Me.Label2.Text = "Max #:"
+        '
         'frmFti
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1019, 552)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.txtMaxNbr)
         Me.Controls.Add(Me.btnFindItem)
         Me.Controls.Add(Me.txtDb)
         Me.Controls.Add(Me.txtKeyGuid)
@@ -245,4 +268,6 @@ Partial Class frmFti
     Friend WithEvents txtKeyGuid As TextBox
     Friend WithEvents txtDb As TextBox
     Friend WithEvents btnFindItem As Button
+    Friend WithEvents txtMaxNbr As TextBox
+    Friend WithEvents Label2 As Label
 End Class

@@ -1903,7 +1903,7 @@ Public Class clsUtility
         Dim MSG As String = ""
         Dim ArchiveAttr As Boolean = False
         Dim fi As IO.FileInfo
-        Dim FileLength As Integer = 0
+        Dim FileLength As Int64 = 0
         Dim LastAccessDate As DateTime = Nothing
         Dim Files As List(Of FileInfo) = Nothing
         Dim File_Name As String = ""
@@ -1934,12 +1934,15 @@ Public Class clsUtility
                 iCnt += 1
                 LL = 10
                 FOLDER_FQN = fi.DirectoryName
+                LL = 11
                 File_Name = fi.Name
+                LL = 12
                 FQN = fi.FullName
+                LL = 13
                 FileLength = fi.Length
                 LL = 20
                 If FileLength >= MaxFileToLoadMB * 1000000 Then
-                    LOG.WriteToArchiveLog("ERROR GetFileToArchive 00: file : " + FQN + " EXCEEDS MAXIMUM ALLOWED FILE SIZE, SKIPPING: Size = " + FileLength.ToString + " max allowed: " + MaxFileToLoadMB.ToString + "MB.")
+                    LOG.WriteToArchiveLog("NOTICE GetFileToArchive 00: file : <" + FQN + "> EXCEEDS MAX ALLOWED FILE SIZE, SKIPPING: Size = " + FileLength.ToString + " max allowed: " + MaxFileToLoadMB.ToString + "MB.")
                     GoTo SkipIT
                 End If
                 LL = 30
@@ -1980,7 +1983,7 @@ Public Class clsUtility
                 LL = 90
                 EXT = fi.Extension.Trim
                 If EXT.Length < 2 Then
-                    LOG.WriteToArchiveLog("WARNING: " + fi.FullName + " bad extension, skipped.")
+                    LOG.WriteToArchiveLog("WARNING: <" + fi.FullName + "> bad or no extension found, skipped.")
                     GoTo SkipIT
                 End If
                 LL = 100
