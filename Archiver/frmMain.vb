@@ -273,6 +273,18 @@ Public Class frmMain : Implements IDisposable
 
     End Function
 
+    Sub setLastArchiveLabel()
+        If gUseLastArchiveDate.Equals("1") Then
+            lblUseLastArchiveDate.Text = "Last Arch ON: " + gLastArchiveDate.ToString
+            lblUseLastArchiveDate.BackColor = Color.Green
+            lblUseLastArchiveDate.ForeColor = Color.White
+        Else
+            lblUseLastArchiveDate.Text = "Last Arch OFF"
+            lblUseLastArchiveDate.BackColor = Color.Red
+            lblUseLastArchiveDate.ForeColor = Color.Yellow
+        End If
+    End Sub
+
     Private Sub frmReconMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -284,7 +296,10 @@ Public Class frmMain : Implements IDisposable
         updateMessageBar("Applying any needed updates, standby...")
         ApplyDDUpdates()
 
-        'CreateSQLiteDBIfMissing()
+        DBLocal.setFirstUseLastArchiveDateActive()
+
+        DBLocal.getUseLastArchiveDateActive()
+        setLastArchiveLabel()
 
         'INSERT ALL THE REPO ALLOWED EXTENSIONS INTO THE SQLITE DB
         Dim AllowedExts As List(Of String) = DBARCH.getUsedExtension()
@@ -4928,11 +4943,14 @@ Process01:
                                     UpdateTimer = Now : LL = 4081
                                     Dim OriginalFileName As String = DMA.getFileName(file_FullName) : LL = 4091
                                     LL = 4096
-                                    '******************************************************************************************************************************************************************************************************************************	:	LL = 	4101
                                     '**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**	:	LL = 	4111
                                     '**WDM - this is where the upload magic occurs. Upload content to repository	:	LL = 	4116
                                     LOG.WriteToTimerLog("**** ArchiveContent-01", "UpdateSourceImageInRepo", "START")
+                                    '******************************************************************************************************************************************************************************************************************************	:	LL = 	4101                                   
+                                    SB.Text = "UPLOADING NOW"
                                     bSuccessExecution = DBARCH.UpdateSourceImageInRepo(OriginalFileName, UIDcurr, MachineIDcurr, SourceGuid, file_LastAccessTime, file_CreationTime, file_LastWriteTime, LastVerNbr, file_FullName, RetentionCode, isPublic, FileHash) : LL = 4121
+                                    SB.Text = ""
+                                    '******************************************************************************************************************************************************************************************************************************	:	LL = 	4101
                                     If bSuccessExecution Then
                                         DBLocal.updateFileArchiveInfoLastArchiveDate(file_FullName)
                                         Dim bUpdt = DBLocal.setListenerfileProcessed(file_FullName)
@@ -13233,6 +13251,11 @@ SkipIT:
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
+
+        DBLocal.getUseLastArchiveDateActive()
+        DBLocal.setUseLastArchiveDateActive()
+        setLastArchiveLabel()
+
         Try
             If ckDisable.Checked Then
                 LOG.WriteToArchiveLog("DISABLE ALL is checked - no archive allowed.")
@@ -13501,6 +13524,7 @@ SkipIT:
         TempDisableDirListener = True
         BeginContentArchive(True)
         TempDisableDirListener = False
+
     End Sub
 
     Private Sub ValidateRetentionDatesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ValidateRetentionDatesToolStripMenuItem.Click
@@ -13567,6 +13591,99 @@ SkipIT:
         For Each str As String In tDict.Keys()
             Console.WriteLine("DIR:" + str + "  WhereIN: " + tDict(str))
         Next
+
+    End Sub
+
+    Private Sub Label13_Click(sender As Object, e As EventArgs) Handles Label13.Click
+
+
+    End Sub
+
+    Private Sub btnSetLastArchiveON_Click(sender As Object, e As EventArgs) Handles btnSetLastArchiveON.Click
+        DBLocal.TurnOnUseLastArchiveDateActive()
+        If gUseLastArchiveDate.Equals("1") Then
+            lblUseLastArchiveDate.Text = "Last Arch ON"
+        Else
+            lblUseLastArchiveDate.Text = "Last Arch OFF"
+        End If
+        DBLocal.getUseLastArchiveDateActive()
+        setLastArchiveLabel()
+    End Sub
+
+    Private Sub btnSetLastArchiveOFF_Click(sender As Object, e As EventArgs) Handles btnSetLastArchiveOFF.Click
+        DBLocal.TurnOffUseLastArchiveDateActive()
+        If gUseLastArchiveDate.Equals("1") Then
+            lblUseLastArchiveDate.Text = "Last Arch ON"
+        Else
+            lblUseLastArchiveDate.Text = "Last Arch OFF"
+        End If
+        DBLocal.getUseLastArchiveDateActive()
+        setLastArchiveLabel()
+    End Sub
+
+    Private Sub TurnONToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TurnONToolStripMenuItem.Click
+        DBLocal.TurnOnUseLastArchiveDateActive()
+        If gUseLastArchiveDate.Equals("1") Then
+            lblUseLastArchiveDate.Text = "Last Arch ON"
+        Else
+            lblUseLastArchiveDate.Text = "Last Arch OFF"
+        End If
+        DBLocal.getUseLastArchiveDateActive()
+        setLastArchiveLabel()
+    End Sub
+
+    Private Sub TurnOFFToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TurnOFFToolStripMenuItem.Click
+        DBLocal.TurnOffUseLastArchiveDateActive()
+        If gUseLastArchiveDate.Equals("1") Then
+            lblUseLastArchiveDate.Text = "Last Arch ON"
+        Else
+            lblUseLastArchiveDate.Text = "Last Arch OFF"
+        End If
+        DBLocal.getUseLastArchiveDateActive()
+        setLastArchiveLabel()
+    End Sub
+
+    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
+
+    End Sub
+
+    Private Sub TurnListenerONToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TurnListenerONToolStripMenuItem.Click
+        ProcessListener(True)
+        MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ")
+    End Sub
+
+    Private Sub TurnListenerOFFToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TurnListenerOFFToolStripMenuItem.Click
+        ProcessListener(False)
+        MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ")
+    End Sub
+
+    Private Sub InitializeToGivenDateToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InitializeToGivenDateToolStripMenuItem.Click
+        Dim Message, Title, xDefault, MyValue
+        Message = "Enter a Date in the form of MM/DD/YYYY"    ' Set prompt.
+        Title = "Initialze Last Archive Date"    ' Set title.
+        Dim MO As String = Now.Month.ToString
+        Dim DA As String = Now.Day.ToString
+        Dim YR As String = Now.Year.ToString
+
+        If MO.Length.Equals(1) Then
+            MO = "0" + MO
+        End If
+        If DA.Length.Equals(1) Then
+            DA = "0" + DA
+        End If
+
+        xDefault = MO + "/" + DA + "/" + YR
+        MyValue = InputBox(Message, Title, xDefault)
+
+        If IsDate(MyValue) Then
+            DBLocal.InitUseLastArchiveDateActive(MyValue)
+            MessageBox.Show(MyValue + " Last Archive date set to: " + MyValue)
+        Else
+            MessageBox.Show(MyValue + " does not appear to be a valid date, returning.")
+        End If
+
+        DBLocal.getUseLastArchiveDateActive()
+        setLastArchiveLabel()
 
     End Sub
 End Class

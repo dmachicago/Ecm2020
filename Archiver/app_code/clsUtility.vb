@@ -1923,6 +1923,7 @@ Public Class clsUtility
 
         Dim LL As Integer = 0
 
+        Dim LastWriteTime As DateTime = Nothing
         Dim GoodFileCNT As Integer = 0
         Dim FOLDER_FQN As String = ""
         Dim iCnt As Integer = 0
@@ -1941,6 +1942,15 @@ Public Class clsUtility
                 LL = 13
                 FileLength = fi.Length
                 LL = 20
+                LastWriteTime = fi.LastWriteTime
+                If gUseLastArchiveDate.Equals("1") Then
+                    If LastWriteTime < gLastArchiveDate Then
+                        frmNotify.lblFileSpec.Text = "#Files: " + iCnt.ToString
+                        frmNotify.Refresh()
+                        GoTo SkipIT
+                    End If
+                End If
+
                 If FileLength >= MaxFileToLoadMB * 1000000 Then
                     LOG.WriteToArchiveLog("NOTICE GetFileToArchive 00: file : <" + FQN + "> EXCEEDS MAX ALLOWED FILE SIZE, SKIPPING: Size = " + FileLength.ToString + " max allowed: " + MaxFileToLoadMB.ToString + "MB.")
                     GoTo SkipIT

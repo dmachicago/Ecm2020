@@ -87,6 +87,9 @@ Partial Class frmMain
         Me.gbContentMgt = New System.Windows.Forms.GroupBox()
         Me.btnCountFiles = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.lblUseLastArchiveDate = New System.Windows.Forms.Label()
+        Me.btnSetLastArchiveOFF = New System.Windows.Forms.Button()
+        Me.btnSetLastArchiveON = New System.Windows.Forms.Button()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.btnArchive1Doc = New System.Windows.Forms.Button()
         Me.ckDeleteAfterArchive = New System.Windows.Forms.CheckBox()
@@ -188,7 +191,13 @@ Partial Class frmMain
         Me.ValidateDirectoryFilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReapplyALLDBUpdatesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ValidateRetentionDatesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LastArchiveDateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TurnONToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TurnOFFToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InitializeToGivenDateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListenerUtilitiesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TurnListenerONToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TurnListenerOFFToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LIstWindowsLogsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CheckLogsForListenerInfoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SQLiteUtiltiiesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -254,6 +263,7 @@ Partial Class frmMain
         Me.ValidateLongDirectroryNamesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TextStringHashToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GetDirFilesByFilterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GenWhereINDictToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -350,7 +360,6 @@ Partial Class frmMain
         Me.lblNotice = New System.Windows.Forms.Label()
         Me.ThreadValidateSourceName = New System.ComponentModel.BackgroundWorker()
         Me.ThreadSetNameHash = New System.ComponentModel.BackgroundWorker()
-        Me.GenWhereINDictToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.gbEmail.SuspendLayout()
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbFiletypes.SuspendLayout()
@@ -1200,6 +1209,9 @@ Partial Class frmMain
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel2.BackColor = System.Drawing.Color.Silver
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel2.Controls.Add(Me.lblUseLastArchiveDate)
+        Me.Panel2.Controls.Add(Me.btnSetLastArchiveOFF)
+        Me.Panel2.Controls.Add(Me.btnSetLastArchiveON)
         Me.Panel2.Controls.Add(Me.CheckBox2)
         Me.Panel2.Controls.Add(Me.btnArchive1Doc)
         Me.Panel2.Controls.Add(Me.ckDeleteAfterArchive)
@@ -1227,6 +1239,47 @@ Partial Class frmMain
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(741, 248)
         Me.Panel2.TabIndex = 79
+        '
+        'lblUseLastArchiveDate
+        '
+        Me.lblUseLastArchiveDate.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.lblUseLastArchiveDate.AutoSize = True
+        Me.lblUseLastArchiveDate.BackColor = System.Drawing.Color.Red
+        Me.lblUseLastArchiveDate.ForeColor = System.Drawing.Color.Black
+        Me.lblUseLastArchiveDate.Location = New System.Drawing.Point(228, 222)
+        Me.lblUseLastArchiveDate.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblUseLastArchiveDate.Name = "lblUseLastArchiveDate"
+        Me.lblUseLastArchiveDate.Size = New System.Drawing.Size(151, 17)
+        Me.lblUseLastArchiveDate.TabIndex = 83
+        Me.lblUseLastArchiveDate.Text = "Last Archive Date OFF"
+        '
+        'btnSetLastArchiveOFF
+        '
+        Me.btnSetLastArchiveOFF.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSetLastArchiveOFF.ForeColor = System.Drawing.Color.Black
+        Me.btnSetLastArchiveOFF.Location = New System.Drawing.Point(475, 179)
+        Me.btnSetLastArchiveOFF.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnSetLastArchiveOFF.Name = "btnSetLastArchiveOFF"
+        Me.btnSetLastArchiveOFF.Size = New System.Drawing.Size(117, 28)
+        Me.btnSetLastArchiveOFF.TabIndex = 82
+        Me.btnSetLastArchiveOFF.Text = "Last Arch OFF"
+        Me.TT.SetToolTip(Me.btnSetLastArchiveOFF, "This will stop using the Last Archive Date to select files.")
+        Me.btnSetLastArchiveOFF.UseVisualStyleBackColor = True
+        Me.btnSetLastArchiveOFF.Visible = False
+        '
+        'btnSetLastArchiveON
+        '
+        Me.btnSetLastArchiveON.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSetLastArchiveON.ForeColor = System.Drawing.Color.Black
+        Me.btnSetLastArchiveON.Location = New System.Drawing.Point(475, 146)
+        Me.btnSetLastArchiveON.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnSetLastArchiveON.Name = "btnSetLastArchiveON"
+        Me.btnSetLastArchiveON.Size = New System.Drawing.Size(117, 28)
+        Me.btnSetLastArchiveON.TabIndex = 81
+        Me.btnSetLastArchiveON.Text = "Last Arch ON"
+        Me.TT.SetToolTip(Me.btnSetLastArchiveON, "This willuse the Last Archive Date to select files.")
+        Me.btnSetLastArchiveON.UseVisualStyleBackColor = True
+        Me.btnSetLastArchiveON.Visible = False
         '
         'CheckBox2
         '
@@ -2094,95 +2147,95 @@ Partial Class frmMain
         'ArchiveALLToolStripMenuItem
         '
         Me.ArchiveALLToolStripMenuItem.Name = "ArchiveALLToolStripMenuItem"
-        Me.ArchiveALLToolStripMenuItem.Size = New System.Drawing.Size(238, 26)
+        Me.ArchiveALLToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.ArchiveALLToolStripMenuItem.Text = "Archive ALL"
         '
         'OutlookEmailsToolStripMenuItem
         '
         Me.OutlookEmailsToolStripMenuItem.Name = "OutlookEmailsToolStripMenuItem"
-        Me.OutlookEmailsToolStripMenuItem.Size = New System.Drawing.Size(238, 26)
+        Me.OutlookEmailsToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.OutlookEmailsToolStripMenuItem.Text = "Outlook Emails"
         '
         'ExchangeEmailsToolStripMenuItem
         '
         Me.ExchangeEmailsToolStripMenuItem.Name = "ExchangeEmailsToolStripMenuItem"
-        Me.ExchangeEmailsToolStripMenuItem.Size = New System.Drawing.Size(238, 26)
+        Me.ExchangeEmailsToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.ExchangeEmailsToolStripMenuItem.Text = "Exchange Emails"
         '
         'ContentToolStripMenuItem
         '
         Me.ContentToolStripMenuItem.Name = "ContentToolStripMenuItem"
-        Me.ContentToolStripMenuItem.Size = New System.Drawing.Size(238, 26)
+        Me.ContentToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.ContentToolStripMenuItem.Text = "Content (Quick)"
         Me.ContentToolStripMenuItem.ToolTipText = "Uses the localized SQLite inventory "
         '
         'ContentNoLIstenerToolStripMenuItem
         '
         Me.ContentNoLIstenerToolStripMenuItem.Name = "ContentNoLIstenerToolStripMenuItem"
-        Me.ContentNoLIstenerToolStripMenuItem.Size = New System.Drawing.Size(238, 26)
-        Me.ContentNoLIstenerToolStripMenuItem.Text = "Content ( Re-Inventory)"
+        Me.ContentNoLIstenerToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
+        Me.ContentNoLIstenerToolStripMenuItem.Text = "Content ( Scan)"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(238, 26)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(211, 26)
         Me.ToolStripMenuItem1.Text = "Outlook Contacts"
         '
         'ScheduleToolStripMenuItem
         '
         Me.ScheduleToolStripMenuItem.Name = "ScheduleToolStripMenuItem"
-        Me.ScheduleToolStripMenuItem.Size = New System.Drawing.Size(238, 26)
+        Me.ScheduleToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.ScheduleToolStripMenuItem.Text = "Schedule"
         '
         'SetArchiveIntervalToolStripMenuItem
         '
         Me.SetArchiveIntervalToolStripMenuItem.Name = "SetArchiveIntervalToolStripMenuItem"
-        Me.SetArchiveIntervalToolStripMenuItem.Size = New System.Drawing.Size(238, 26)
+        Me.SetArchiveIntervalToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.SetArchiveIntervalToolStripMenuItem.Text = "Set Archive Interval"
         '
         'ToolStripSeparator7
         '
         Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
-        Me.ToolStripSeparator7.Size = New System.Drawing.Size(235, 6)
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(208, 6)
         '
         'SelectedFilesToolStripMenuItem
         '
         Me.SelectedFilesToolStripMenuItem.Name = "SelectedFilesToolStripMenuItem"
-        Me.SelectedFilesToolStripMenuItem.Size = New System.Drawing.Size(238, 26)
+        Me.SelectedFilesToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.SelectedFilesToolStripMenuItem.Text = "Selected Files"
         '
         'ToolStripSeparator6
         '
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(235, 6)
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(208, 6)
         '
         'ArchiveRSSPullsToolStripMenuItem
         '
         Me.ArchiveRSSPullsToolStripMenuItem.Name = "ArchiveRSSPullsToolStripMenuItem"
-        Me.ArchiveRSSPullsToolStripMenuItem.Size = New System.Drawing.Size(238, 26)
+        Me.ArchiveRSSPullsToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.ArchiveRSSPullsToolStripMenuItem.Text = "Archive RSS Pulls"
         '
         'WebSitesToolStripMenuItem
         '
         Me.WebSitesToolStripMenuItem.Name = "WebSitesToolStripMenuItem"
-        Me.WebSitesToolStripMenuItem.Size = New System.Drawing.Size(238, 26)
+        Me.WebSitesToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.WebSitesToolStripMenuItem.Text = "Archive Web Sites"
         '
         'WebPagesToolStripMenuItem
         '
         Me.WebPagesToolStripMenuItem.Name = "WebPagesToolStripMenuItem"
-        Me.WebPagesToolStripMenuItem.Size = New System.Drawing.Size(238, 26)
+        Me.WebPagesToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.WebPagesToolStripMenuItem.Text = "Archive Web Pages"
         '
         'ToolStripSeparator5
         '
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(235, 6)
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(208, 6)
         '
         'ExitToolStripMenuItem1
         '
         Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
-        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(238, 26)
+        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(211, 26)
         Me.ExitToolStripMenuItem1.Text = "Exit"
         '
         'LoginToolStripMenuItem
@@ -2213,7 +2266,7 @@ Partial Class frmMain
         '
         'UtilityToolStripMenuItem
         '
-        Me.UtilityToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RepositoryUtilitiesToolStripMenuItem, Me.ListenerUtilitiesToolStripMenuItem, Me.SQLiteUtiltiiesToolStripMenuItem, Me.ReOCRToolStripMenuItem, Me.RetentionManagementToolStripMenuItem, Me.EncryptStringToolStripMenuItem, Me.OpenLicenseFormToolStripMenuItem, Me.FileNamesToolStripMenuItem, Me.FulltextLogAnalysisToolStripMenuItem, Me.UpdateAvailableIFiltersToolStripMenuItem})
+        Me.UtilityToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RepositoryUtilitiesToolStripMenuItem, Me.LastArchiveDateToolStripMenuItem, Me.ListenerUtilitiesToolStripMenuItem, Me.SQLiteUtiltiiesToolStripMenuItem, Me.ReOCRToolStripMenuItem, Me.RetentionManagementToolStripMenuItem, Me.EncryptStringToolStripMenuItem, Me.OpenLicenseFormToolStripMenuItem, Me.FileNamesToolStripMenuItem, Me.FulltextLogAnalysisToolStripMenuItem, Me.UpdateAvailableIFiltersToolStripMenuItem})
         Me.UtilityToolStripMenuItem.Name = "UtilityToolStripMenuItem"
         Me.UtilityToolStripMenuItem.Size = New System.Drawing.Size(276, 26)
         Me.UtilityToolStripMenuItem.Text = "Utility"
@@ -2261,12 +2314,49 @@ Partial Class frmMain
         Me.ValidateRetentionDatesToolStripMenuItem.Size = New System.Drawing.Size(264, 26)
         Me.ValidateRetentionDatesToolStripMenuItem.Text = "Validate Retention Dates"
         '
+        'LastArchiveDateToolStripMenuItem
+        '
+        Me.LastArchiveDateToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TurnONToolStripMenuItem, Me.TurnOFFToolStripMenuItem, Me.InitializeToGivenDateToolStripMenuItem})
+        Me.LastArchiveDateToolStripMenuItem.Name = "LastArchiveDateToolStripMenuItem"
+        Me.LastArchiveDateToolStripMenuItem.Size = New System.Drawing.Size(246, 26)
+        Me.LastArchiveDateToolStripMenuItem.Text = "Last Archive Date"
+        '
+        'TurnONToolStripMenuItem
+        '
+        Me.TurnONToolStripMenuItem.Name = "TurnONToolStripMenuItem"
+        Me.TurnONToolStripMenuItem.Size = New System.Drawing.Size(235, 26)
+        Me.TurnONToolStripMenuItem.Text = "Turn ON"
+        '
+        'TurnOFFToolStripMenuItem
+        '
+        Me.TurnOFFToolStripMenuItem.Name = "TurnOFFToolStripMenuItem"
+        Me.TurnOFFToolStripMenuItem.Size = New System.Drawing.Size(235, 26)
+        Me.TurnOFFToolStripMenuItem.Text = "Turn OFF"
+        '
+        'InitializeToGivenDateToolStripMenuItem
+        '
+        Me.InitializeToGivenDateToolStripMenuItem.Name = "InitializeToGivenDateToolStripMenuItem"
+        Me.InitializeToGivenDateToolStripMenuItem.Size = New System.Drawing.Size(235, 26)
+        Me.InitializeToGivenDateToolStripMenuItem.Text = "Initialize to Given Date"
+        '
         'ListenerUtilitiesToolStripMenuItem
         '
-        Me.ListenerUtilitiesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LIstWindowsLogsToolStripMenuItem, Me.CheckLogsForListenerInfoToolStripMenuItem})
+        Me.ListenerUtilitiesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TurnListenerONToolStripMenuItem, Me.TurnListenerOFFToolStripMenuItem, Me.LIstWindowsLogsToolStripMenuItem, Me.CheckLogsForListenerInfoToolStripMenuItem})
         Me.ListenerUtilitiesToolStripMenuItem.Name = "ListenerUtilitiesToolStripMenuItem"
         Me.ListenerUtilitiesToolStripMenuItem.Size = New System.Drawing.Size(246, 26)
         Me.ListenerUtilitiesToolStripMenuItem.Text = "Listener Utilities"
+        '
+        'TurnListenerONToolStripMenuItem
+        '
+        Me.TurnListenerONToolStripMenuItem.Name = "TurnListenerONToolStripMenuItem"
+        Me.TurnListenerONToolStripMenuItem.Size = New System.Drawing.Size(266, 26)
+        Me.TurnListenerONToolStripMenuItem.Text = "Turn Listener ON"
+        '
+        'TurnListenerOFFToolStripMenuItem
+        '
+        Me.TurnListenerOFFToolStripMenuItem.Name = "TurnListenerOFFToolStripMenuItem"
+        Me.TurnListenerOFFToolStripMenuItem.Size = New System.Drawing.Size(266, 26)
+        Me.TurnListenerOFFToolStripMenuItem.Text = "Turn Listener OFF"
         '
         'LIstWindowsLogsToolStripMenuItem
         '
@@ -2671,6 +2761,12 @@ Partial Class frmMain
         Me.GetDirFilesByFilterToolStripMenuItem.Name = "GetDirFilesByFilterToolStripMenuItem"
         Me.GetDirFilesByFilterToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
         Me.GetDirFilesByFilterToolStripMenuItem.Text = "Get Dir Files by Filter"
+        '
+        'GenWhereINDictToolStripMenuItem
+        '
+        Me.GenWhereINDictToolStripMenuItem.Name = "GenWhereINDictToolStripMenuItem"
+        Me.GenWhereINDictToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.GenWhereINDictToolStripMenuItem.Text = "Gen WhereIN Dict"
         '
         'ExitToolStripMenuItem
         '
@@ -3631,12 +3727,6 @@ Partial Class frmMain
         'ThreadSetNameHash
         '
         '
-        'GenWhereINDictToolStripMenuItem
-        '
-        Me.GenWhereINDictToolStripMenuItem.Name = "GenWhereINDictToolStripMenuItem"
-        Me.GenWhereINDictToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
-        Me.GenWhereINDictToolStripMenuItem.Text = "Gen WhereIN Dict"
-        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -4041,4 +4131,13 @@ Partial Class frmMain
     Friend WithEvents ReInventoryAllFilesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents GetDirFilesByFilterToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents GenWhereINDictToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents btnSetLastArchiveOFF As Button
+    Friend WithEvents btnSetLastArchiveON As Button
+    Friend WithEvents lblUseLastArchiveDate As Label
+    Friend WithEvents LastArchiveDateToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TurnONToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TurnOFFToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents InitializeToGivenDateToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TurnListenerONToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TurnListenerOFFToolStripMenuItem As ToolStripMenuItem
 End Class

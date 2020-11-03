@@ -2036,6 +2036,7 @@ Public Class clsDbLocal : Implements IDisposable
 
         Try
 
+            Dim val As Object = ""
             Dim FileSize As Int64 = 0
             Dim LastUpdate As DateTime = Nothing
             Dim LastArchiveDate As DateTime = Nothing
@@ -2044,7 +2045,7 @@ Public Class clsDbLocal : Implements IDisposable
 
             FQN = fixSingleQuotes(FQN)
             S = "Select LastArchiveDate, FileLength, LastModDate From DirFilesID D  Where FQN = '" + FQN + "' "
-
+            S = "Select cast(LastArchiveDate as text) as LAD, FileLength, cast(LastModDate as text) as LMD From DirFilesID   Where FQN = '" + FQN + "' "
             setSLConn()
 
             Try
@@ -2057,7 +2058,7 @@ Public Class clsDbLocal : Implements IDisposable
                     rs.Read()
                     Try
                         Dim LAD As String = ""
-                        LAD = rs.GetDateTime(0).ToString
+                        LAD = rs.GetString(0)
                         LastArchiveDate = Convert.ToDateTime(LAD)
                     Catch ex As Exception
                         LastArchiveDate = Convert.ToDateTime("01-01-1970")
@@ -2067,7 +2068,7 @@ Public Class clsDbLocal : Implements IDisposable
 
                     Try
                         Dim LAD As String = ""
-                        LAD = rs.GetValue(2).ToString
+                        LAD = rs.GetString(2)
                         LastUpdate = Convert.ToDateTime(LAD)
                     Catch ex As Exception
                         LastUpdate = Convert.ToDateTime("01-01-1970")
@@ -4019,6 +4020,257 @@ Public Class clsDbLocal : Implements IDisposable
         End If
         disposedValue = True
     End Sub
+
+    Sub getUseLastArchiveDateActive()
+
+        Dim S As String = "select cast(LastArchiveDate as text), LastArchiveDateActive from LastArchive"
+
+        setSLConn()
+
+        If bSQLiteCOnnected.Equals(False) Then
+            If Not setSLConn() Then
+                MessageBox.Show("NOTICE 52 isUseLastArchiveDateActive: The Local DB failed to open.: " + gLocalDBCS)
+                Return
+            End If
+        End If
+
+        Dim sDate As String = ""
+        Dim LWD As DateTime = Nothing
+        Dim ArchiveFlg As String = ""
+
+        Try
+            Dim CMD As New SQLiteCommand(S, SQLiteCONN)
+            CMD.CommandType = CommandType.Text
+
+            '** if you don’t set the result set to scrollable HasRows does not work
+            Dim rs As SQLiteDataReader = CMD.ExecuteReader()
+
+            If rs.HasRows Then
+                rs.Read()
+                sDate = rs.GetString(0)
+                LWD = Convert.ToDateTime(sDate)
+                ArchiveFlg = rs.GetString(1)
+                Try
+                    If ArchiveFlg.Equals("1") Then
+                        gUseLastArchiveDate = "1"
+                        gLastArchiveDate = LWD
+                    Else
+                        gUseLastArchiveDate = "0"
+                    End If
+                Catch ex As Exception
+                    Console.WriteLine(ex.Message)
+                End Try
+
+            End If
+
+            If Not rs.IsClosed Then
+                rs.Close()
+            End If
+            rs.Dispose()
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/getUseLastArchiveDateActive - " + ex.Message + vbCrLf + S)
+        Finally
+            If SQLiteCONN IsNot Nothing Then
+                If SQLiteCONN.State = ConnectionState.Open Then
+                    SQLiteCONN.Close()
+                End If
+            End If
+        End Try
+
+    End Sub
+
+    Sub setUseLastArchiveDateActive()
+
+        Dim S As String = "update LastArchive set LastArchiveDate = '" + Now + "';"
+
+        setSLConn()
+
+        Dim LWD As DateTime = Nothing
+        Dim ArchiveFlg As String = ""
+
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
+        Try
+            CMD.ExecuteNonQuery()
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/zeroizeZipFiles - " + ex.Message + vbCrLf + S)
+            B = False
+        Finally
+            CMD.Dispose()
+            GC.Collect()
+            GC.WaitForPendingFinalizers()
+        End Try
+
+    End Sub
+
+    Sub TurnOffUseLastArchiveDateActive()
+
+        Dim S As String = "update LastArchive set LastArchiveDateActive = '0' "
+
+        setSLConn()
+
+        Dim LWD As DateTime = Nothing
+        Dim ArchiveFlg As String = ""
+
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
+        Try
+            CMD.ExecuteNonQuery()
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/zeroizeZipFiles - " + ex.Message + vbCrLf + S)
+            B = False
+        Finally
+            CMD.Dispose()
+            GC.Collect()
+            GC.WaitForPendingFinalizers()
+        End Try
+
+        getUseLastArchiveDateActive()
+
+    End Sub
+
+    Function getCountUseLastArchiveDateActive() As Integer
+
+        Dim I As Integer
+        Dim S As String = "select count(*) from LastArchive "
+
+        setSLConn()
+
+        Dim CNT As DateTime = Nothing
+        Try
+            Dim CMD As New SQLiteCommand(S, SQLiteCONN)
+            CMD.CommandType = CommandType.Text
+
+            '** if you don’t set the result set to scrollable HasRows does not work
+            Dim rs As SQLiteDataReader = CMD.ExecuteReader()
+
+            If rs.HasRows Then
+                Do While rs.Read()
+                    I = rs.GetInt32(0)
+                Loop
+            End If
+
+            If Not rs.IsClosed Then
+                rs.Close()
+            End If
+            rs.Dispose()
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/BackupOutlookTbl - " + ex.Message + vbCrLf + S)
+        Finally
+            If SQLiteCONN IsNot Nothing Then
+                If SQLiteCONN.State = ConnectionState.Open Then
+                    SQLiteCONN.Close()
+                End If
+            End If
+        End Try
+
+        Return I
+    End Function
+
+    Sub setFirstUseLastArchiveDateActive()
+
+        Dim I As Integer = getCountUseLastArchiveDateActive()
+        Dim S As String = ""
+        If I.Equals(0) Then
+            S = "insert into LastArchive (LastArchiveDate,LastArchiveDateActive) values ('01/01/1960', '0')"
+        Else
+            Return
+        End If
+
+        setSLConn()
+
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
+        Try
+            CMD.ExecuteNonQuery()
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/InitUseLastArchiveDateActive - " + ex.Message + vbCrLf + S)
+            B = False
+        Finally
+            CMD.Dispose()
+            GC.Collect()
+            GC.WaitForPendingFinalizers()
+        End Try
+
+        getUseLastArchiveDateActive()
+
+    End Sub
+
+    Sub ZeroizeLastArchiveDate()
+        Dim S As String = "Delete from LastArchive "
+
+        setSLConn()
+
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
+        Try
+            CMD.ExecuteNonQuery()
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/ZeroizeLastArchiveDate - " + ex.Message + vbCrLf + S)
+            B = False
+        Finally
+            CMD.Dispose()
+            GC.Collect()
+            GC.WaitForPendingFinalizers()
+        End Try
+
+    End Sub
+
+    Sub InitUseLastArchiveDateActive(InitDate As String)
+
+        Dim I As Integer = getCountUseLastArchiveDateActive()
+        Dim S As String = ""
+        If I.Equals(0) And InitDate.Length.Equals(0) Then
+            S = "insert into LastArchive (LastArchiveDate) values ('01/01/1960')"
+        ElseIf I.Equals(1) Then
+            S = "update LastArchive set LastArchiveDate = '" + InitDate + "' "
+        ElseIf I > 1 Then
+            ZeroizeLastArchiveDate()
+            S = "insert into LastArchive (LastArchiveDate,LastArchiveDateActive) values ('" + InitDate + "', '1')"
+        ElseIf I.Equals(0) Then
+            S = "insert into LastArchive (LastArchiveDate,LastArchiveDateActive) values ('" + InitDate + "', '1')"
+        End If
+
+        setSLConn()
+
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
+        Try
+            CMD.ExecuteNonQuery()
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/InitUseLastArchiveDateActive - " + ex.Message + vbCrLf + S)
+            B = False
+        Finally
+            CMD.Dispose()
+            GC.Collect()
+            GC.WaitForPendingFinalizers()
+        End Try
+
+        getUseLastArchiveDateActive()
+
+    End Sub
+
+    Sub TurnOnUseLastArchiveDateActive()
+
+        Dim S As String = "update LastArchive set LastArchiveDateActive = '1' "
+
+        setSLConn()
+
+        Dim LWD As DateTime = Nothing
+        Dim ArchiveFlg As String = ""
+
+        Dim CMD As New SQLiteCommand(S, SQLiteCONN)
+        Try
+            CMD.ExecuteNonQuery()
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/zeroizeZipFiles - " + ex.Message + vbCrLf + S)
+            B = False
+        Finally
+            CMD.Dispose()
+            GC.Collect()
+            GC.WaitForPendingFinalizers()
+        End Try
+
+        getUseLastArchiveDateActive()
+
+    End Sub
+
+
 
     ' TODO: override Finalize() only if Dispose(disposing As Boolean) above has code to free unmanaged resources.
     'Protected Overrides Sub Finalize()

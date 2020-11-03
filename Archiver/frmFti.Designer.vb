@@ -129,9 +129,9 @@ Partial Class frmFti
         '
         Me.Button1.Location = New System.Drawing.Point(237, 359)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.Size = New System.Drawing.Size(75, 29)
         Me.Button1.TabIndex = 8
-        Me.Button1.Text = "Button1"
+        Me.Button1.Text = "Edit"
         Me.Button1.UseVisualStyleBackColor = True
         Me.Button1.Visible = False
         '

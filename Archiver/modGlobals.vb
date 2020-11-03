@@ -27,6 +27,8 @@ Module modGlobals
     Public UseDirectoryListener As Int32 = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings("UseDirectoryListener"))
     Public SQLiteListenerDB As String = System.Configuration.ConfigurationManager.AppSettings("SQLiteListenerDB")
 
+    Public gUseLastArchiveDate As String = "0"
+    Public gLastArchiveDate As DateTime = Convert.ToDateTime("1/1/1900")
     Public gAllowedExts As New List(Of String)
     Public FilesBackedUp As Integer = 0
     Public FilesSkipped As Integer = 0
