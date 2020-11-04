@@ -23,6 +23,29 @@ namespace EcmArchiver
         private ECMEncrypt ENC = new ECMEncrypt();
         private clsDbLocal dblocal = new clsDbLocal();
 
+        public bool isLongFileNamesAvail()
+        {
+            string OsVersion = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion", "ProductName", null).ToString();
+            if (OsVersion.ToUpper().Contains("WINDOWS 10"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public string getOsVersion()
+        {
+            object ver = Environment.OSVersion;
+            object VerObj = Environment.OSVersion.Version;
+            object MyVer = My.MyProject.Computer.Info.OSVersion;
+            object MyVerStr = My.MyProject.Computer.Info.OSVersion.ToString();
+            string OsVersion = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion", "ProductName", null).ToString();
+            return OsVersion;
+        }
+
         public enum OnOff
         {
             TurnON = 1,
@@ -2354,7 +2377,7 @@ namespace EcmArchiver
             string MSG = "";
             bool ArchiveAttr = false;
             FileInfo fi;
-            int FileLength = 0;
+            long FileLength = 0L;
             DateTime LastAccessDate = default;
             List<FileInfo> Files = null;
             string File_Name = "";
@@ -2374,6 +2397,8 @@ namespace EcmArchiver
                 Files = GetFiles(DirToInventory, FilterList);
             }
 
+            int LL = 0;
+            DateTime LastWriteTime = default;
             int GoodFileCNT = 0;
             string FOLDER_FQN = "";
             int iCnt = 0;
@@ -2386,16 +2411,33 @@ namespace EcmArchiver
                 try
                 {
                     iCnt += 1;
+                    LL = 10;
                     FOLDER_FQN = fi.DirectoryName;
+                    LL = 11;
                     File_Name = fi.Name;
+                    LL = 12;
                     FQN = fi.FullName;
-                    FileLength = (int)fi.Length;
-                    if (FileLength >= modGlobals.MaxFileToLoadMB * 1000000)
+                    LL = 13;
+                    FileLength = fi.Length;
+                    LL = 20;
+                    LastWriteTime = fi.LastWriteTime;
+                    if (modGlobals.gUseLastArchiveDate.Equals("1"))
                     {
-                        LOG.WriteToArchiveLog("ERROR GetFileToArchive: file : " + FQN + " EXCEEDS MAXIMUM ALLOWED FILE SIZE, SKIPPING.");
+                        if (LastWriteTime < modGlobals.gLastArchiveDate)
+                        {
+                            My.MyProject.Forms.frmNotify.lblFileSpec.Text = "#Files: " + iCnt.ToString();
+                            My.MyProject.Forms.frmNotify.Refresh();
+                            goto SkipIT;
+                        }
+                    }
+
+                    if (FileLength >= modGlobals.MaxFileToLoadMB * 1000000L)
+                    {
+                        LOG.WriteToArchiveLog("NOTICE GetFileToArchive 00: file : <" + FQN + "> EXCEEDS MAX ALLOWED FILE SIZE, SKIPPING: Size = " + FileLength.ToString() + " max allowed: " + modGlobals.MaxFileToLoadMB.ToString() + "MB.");
                         goto SkipIT;
                     }
 
+                    LL = 30;
                     if (FOLDER_FQN.Trim().Length > 248)
                     {
                         LOG.WriteToArchiveLog("ERROR GetFileToArchive: folder name too long: " + FOLDER_FQN);
@@ -2408,17 +2450,21 @@ namespace EcmArchiver
                         }
                     }
 
+                    LL = 40;
                     if (File_Name.Trim().Length > 260)
                     {
                         LOG.WriteToArchiveLog("ERROR GetFileToArchive: file name too long: " + File_Name + " - SKIPPING FILE.");
                         goto SkipIT;
                     }
 
+                    LL = 50;
                     FQN = FOLDER_FQN + @"\" + File_Name;
                     try
                     {
+                        LL = 60;
                         if (File.Exists(FQN))
                         {
+                            LL = 70;
                             GoodFileCNT += 1;
                         }
                     }
@@ -2429,6 +2475,7 @@ namespace EcmArchiver
                         goto SkipIT;
                     }
 
+                    LL = 80;
                     if (iInventoryCnt % 2 == 0)
                     {
                         My.MyProject.Forms.frmNotify.Label1.Text = Path.GetDirectoryName(FOLDER_FQN);
@@ -2436,10 +2483,22 @@ namespace EcmArchiver
                         My.MyProject.Forms.frmNotify.Refresh();
                     }
 
+                    LL = 90;
+                    EXT = fi.Extension.Trim();
+                    if (EXT.Length < 2)
+                    {
+                        LOG.WriteToArchiveLog("WARNING: <" + fi.FullName + "> bad or no extension found, skipped.");
+                        goto SkipIT;
+                    }
+
+                    LL = 100;
                     EXT = fi.Extension.ToUpper();
+                    LL = 110;
                     EXT = EXT.Substring(1);
+                    LL = 120;
                     iInventoryCnt += 1;
                     Application.DoEvents();
+                    LL = 130;
                     NeedsUpdate = false;
                     FINFO = dblocal.getFileArchiveInfo(FQN);
                     if (FINFO.Count.Equals(0) | FINFO.Count.Equals(1))
@@ -2455,11 +2514,13 @@ namespace EcmArchiver
                         NeedsUpdate = true;
                     }
 
+                    LL = 140;
                     if (FINFO["AddNewRec"].Equals("Y"))
                     {
                         dblocal.AddFileArchiveInfo(FQN);
                     }
 
+                    LL = 150;
                     if (IncludedTypes.Count > 0)
                     {
                         if (!IncludedTypes.Contains(EXT))
@@ -2468,6 +2529,7 @@ namespace EcmArchiver
                         }
                     }
 
+                    LL = 160;
                     if (ExcludedTypes.Count > 0)
                     {
                         if (ExcludedTypes.Contains(EXT))
@@ -2476,43 +2538,58 @@ namespace EcmArchiver
                         }
                     }
 
+                    LL = 170;
                     if (NeedsUpdate)
                     {
+                        LL = 180;
                         modGlobals.FilesBackedUp += 1;
                         MSG = ArchiveAttr + "|" + File_Name + "|" + fi.Extension + "|" + FOLDER_FQN + "|" + fi.Length + "|" + fi.CreationTime + "|" + fi.LastWriteTime + "|" + fi.LastAccessTime;
+                        LL = 190;
                         FilesToArchive.Add(MSG);
+                        LL = 200;
                     }
                     else
                     {
+                        LL = 210;
                         modGlobals.FilesSkipped += 1;
                     }
 
+                    LL = 220;
                     if (modGlobals.ContentBatchSize > 0)
                     {
+                        LL = 230;
                         if (iCnt >= modGlobals.ContentBatchSize)
                         {
+                            LL = 240;
                             LOG.WriteToArchiveLog("NOTICE: Maximumn file limit reached for this directory: " + fi.DirectoryName + ", more to be processed next run.");
                             modGlobals.MoreFileToProcess = 1;
                             break;
                         }
                     }
+
+                    LL = 240;
                 }
                 catch (Exception ex)
                 {
-                    LOG.WriteToArchiveLog("ERROR: GetFilesToArchive: " + ex.Message + Constants.vbCrLf + "DIRECTORY:" + FOLDER_FQN + Constants.vbCrLf + "File: " + File_Name);
+                    LOG.WriteToArchiveLog("ERROR: GetFilesToArchive: LL=" + LL.ToString() + Constants.vbCrLf + ex.Message + Constants.vbCrLf + "DIRECTORY:" + FOLDER_FQN + Constants.vbCrLf + "File: " + File_Name);
+                    LL = 250;
                 }
 
+                LL = 260;
                 SkipIT:
                 ;
             }
 
+            LL = 270;
             LOG.WriteToArchiveLog("GetFilesToArchive: Total Files In Dir: " + FOLDER_FQN + " = " + TotalFilesInDir.ToString());
             LOG.WriteToArchiveLog("GetFilesToArchive: Good Files In Dir: " + FOLDER_FQN + " = " + GoodFileCNT.ToString());
+            LL = 280;
             if (TotalFilesInDir - GoodFileCNT != 0)
             {
                 LOG.WriteToArchiveLog("GetFilesToArchive: REJECTED Files In Dir: " + FOLDER_FQN + " = " + (TotalFilesInDir - GoodFileCNT).ToString());
             }
 
+            LL = 290;
             fi = null;
             GC.Collect();
             GC.WaitForFullGCApproach();
@@ -2824,7 +2901,14 @@ namespace EcmArchiver
                     {
                         if (File.Exists(fqn))
                         {
-                            File.Delete(fqn);
+                            try
+                            {
+                                File.Delete(fqn);
+                            }
+                            catch (Exception ex)
+                            {
+                                LOG.WriteToArchiveLog("DELETE FAILURE 02|" + fqn);
+                            }
                         }
                     }
                 }

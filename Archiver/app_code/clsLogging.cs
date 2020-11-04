@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using global::System.Drawing.Imaging;
 using global::System.IO;
+using global::System.Security.Principal;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
@@ -70,7 +71,7 @@ namespace EcmArchiver
 
         public string getEnvVarNetworkID()
         {
-            return System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            return WindowsIdentity.GetCurrent().Name;
             // Return Environment.UserDomainName
         }
 
@@ -1198,41 +1199,25 @@ namespace EcmArchiver
         {
             try
             {
-                var st = new StackTrace(true);
-                st = new StackTrace(ex1, true);
+
+                // Dim st As New StackTrace(True)
+                // st = New StackTrace(ex1, True)
+
                 string errmsg = "eRRmSG: " + ex1.Message;
-                string linemsg = "Line: " + st.GetFrame(0).GetFileLineNumber().ToString();
-                st = null;
-                string cPath = getTempEnvironDir();
-                if (Directory.Exists(LoggingPath))
+                // Dim linemsg As String = "Line: " & st.GetFrame(0).GetFileLineNumber().ToString
+
+                if (errmsg.Contains("Access to the path"))
                 {
-                    cPath = LoggingPath;
-                }
-                else
-                {
-                    try
-                    {
-                        cPath = LoggingPath;
-                        Directory.CreateDirectory(cPath);
-                    }
-                    catch (Exception ex)
-                    {
-                        cPath = getTempEnvironDir();
-                    }
+                    var wi = WindowsIdentity.GetCurrent();
+                    string userIdentity = wi.Name;
+                    string AuthenticationType = wi.AuthenticationType;
+                    errmsg = errmsg + Constants.vbCrLf + "userIdentity: " + userIdentity;
+                    errmsg = errmsg + Constants.vbCrLf + "AuthenticationType: " + AuthenticationType;
+                    errmsg = errmsg + Constants.vbCrLf + "IsAuthenticated: " + wi.IsAuthenticated.ToString();
+                    wi.Dispose();
                 }
 
-                string M = DateAndTime.Now.Month.ToString().Trim();
-                string D = DateAndTime.Now.Day.ToString().Trim();
-                string Y = DateAndTime.Now.Year.ToString().Trim();
-                string SerialNo = M + "." + D + "." + Y + ".";
-                string tFQN = cPath + @"\ECMLibrary.Archive.Log." + SerialNo + "txt";
-                // Create an instance of StreamWriter to write text to a file.
-                using (var sw = new StreamWriter(tFQN, true))
-                {
-                    // Add some text to the file.                                    
-                    sw.WriteLine(DateAndTime.Now.ToString() + ": " + Msg + Constants.vbCrLf + "     ->" + errmsg + Constants.vbCrLf + "     ->" + linemsg);
-                    sw.Close();
-                }
+                WriteToArchiveLog(errmsg);
             }
             catch (Exception ex)
             {
@@ -1240,12 +1225,6 @@ namespace EcmArchiver
                     Console.WriteLine("clsDma : WriteToArchiveLog : 688 : " + ex.Message);
                 var st = new StackTrace(true);
                 st = new StackTrace(ex, true);
-
-                // Log.WriteToArchiveLog("MYExnHandler Line: " & st.GetFrame(0).GetFileLineNumber().ToString)
-                // Log.WriteToArchiveLog("EX.Message MYExnHandler: " + ex.Message)
-                // LOG.WriteToArchiveLog("EX.StackTrace MYExnHandler: " + ex.StackTrace)
-                // LOG.WriteToArchiveLog("EX.TargetSite MYExnHandler: " & ex.TargetSite.ToString)
-
             }
         }
 
@@ -1279,9 +1258,87 @@ namespace EcmArchiver
                 // Create an instance of StreamWriter to write text to a file.
                 using (var sw = new StreamWriter(tFQN, true))
                 {
-                    // Add some text to the file.                                    
                     sw.WriteLine(DateAndTime.Now.ToString() + ": " + Msg + Constants.vbCrLf);
-                    sw.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ddebug)
+                    Console.WriteLine("clsDma : WriteToArchiveLog : 688 : " + ex.Message);
+            }
+        }
+
+        public void WriteToDBUpdatesLog(string Msg)
+        {
+            try
+            {
+                string cPath = getTempEnvironDir();
+                if (Directory.Exists(LoggingPath))
+                {
+                    cPath = LoggingPath;
+                }
+                else
+                {
+                    try
+                    {
+                        cPath = LoggingPath;
+                        Directory.CreateDirectory(cPath);
+                    }
+                    catch (Exception ex)
+                    {
+                        cPath = getTempEnvironDir();
+                    }
+                }
+
+                string M = DateAndTime.Now.Month.ToString().Trim();
+                string D = DateAndTime.Now.Day.ToString().Trim();
+                string Y = DateAndTime.Now.Year.ToString().Trim();
+                string SerialNo = M + "." + D + "." + Y + ".";
+                string tFQN = cPath + @"\ECMLibrary.DBUpdates.Log." + SerialNo + "txt";
+                // Create an instance of StreamWriter to write text to a file.
+                using (var sw = new StreamWriter(tFQN, true))
+                {
+                    sw.WriteLine("-- " + DateAndTime.Now.ToString());
+                    sw.WriteLine(Msg + Constants.vbCrLf);
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ddebug)
+                    Console.WriteLine("clsDma : WriteToArchiveLog : 688 : " + ex.Message);
+            }
+        }
+
+        public void WriteToDeleteLog(string Msg)
+        {
+            try
+            {
+                string cPath = getTempEnvironDir();
+                if (Directory.Exists(LoggingPath))
+                {
+                    cPath = LoggingPath;
+                }
+                else
+                {
+                    try
+                    {
+                        cPath = LoggingPath;
+                        Directory.CreateDirectory(cPath);
+                    }
+                    catch (Exception ex)
+                    {
+                        cPath = getTempEnvironDir();
+                    }
+                }
+
+                string M = DateAndTime.Now.Month.ToString().Trim();
+                string D = DateAndTime.Now.Day.ToString().Trim();
+                string Y = DateAndTime.Now.Year.ToString().Trim();
+                string SerialNo = M + "." + D + "." + Y + ".";
+                string tFQN = cPath + @"\ECMLibrary.Delete.Log." + SerialNo + "txt";
+                using (var sw = new StreamWriter(tFQN, true))
+                {
+                    sw.WriteLine(DateAndTime.Now.ToString() + "|" + Msg);
                 }
             }
             catch (Exception ex)

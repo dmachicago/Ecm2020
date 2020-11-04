@@ -46,7 +46,8 @@ namespace EcmArchiver
             _Button4 = new Button();
             _Button4.Click += new EventHandler(Button4_Click);
             Label34 = new Label();
-            LinkLabel2 = new LinkLabel();
+            _LinkLabel2 = new LinkLabel();
+            _LinkLabel2.LinkClicked += new LinkLabelLinkClickedEventHandler(LinkLabel2_LinkClicked);
             _LinkLabel1 = new LinkLabel();
             _LinkLabel1.LinkClicked += new LinkLabelLinkClickedEventHandler(LinkLabel1_LinkClicked);
             _hlExchange = new LinkLabel();
@@ -129,7 +130,15 @@ namespace EcmArchiver
             _gbContentMgt.Enter += new EventHandler(GroupBox2_Enter);
             _btnCountFiles = new Button();
             _btnCountFiles.Click += new EventHandler(btnCountFiles_Click);
-            Panel2 = new Panel();
+            _Panel2 = new Panel();
+            _Panel2.Paint += new PaintEventHandler(Panel2_Paint);
+            lblUseLastArchiveDate = new Label();
+            _btnSetLastArchiveOFF = new Button();
+            _btnSetLastArchiveOFF.Click += new EventHandler(btnSetLastArchiveOFF_Click);
+            _btnSetLastArchiveON = new Button();
+            _btnSetLastArchiveON.Click += new EventHandler(btnSetLastArchiveON_Click);
+            _CheckBox2 = new CheckBox();
+            _CheckBox2.CheckedChanged += new EventHandler(CheckBox2_CheckedChanged);
             _btnArchive1Doc = new Button();
             _btnArchive1Doc.Click += new EventHandler(btnArchive1Doc_Click);
             _ckDeleteAfterArchive = new CheckBox();
@@ -144,7 +153,8 @@ namespace EcmArchiver
             _CkMonitor.CheckedChanged += new EventHandler(CkMonitor_CheckedChanged);
             _ckArchiveBit = new CheckBox();
             _ckArchiveBit.CheckedChanged += new EventHandler(ckArchiveBit_CheckedChanged);
-            Label13 = new Label();
+            _Label13 = new Label();
+            _Label13.Click += new EventHandler(Label13_Click);
             cbRetention = new ComboBox();
             _ckOcr = new CheckBox();
             _ckOcr.CheckedChanged += new EventHandler(ckOcr_CheckedChanged);
@@ -250,7 +260,8 @@ namespace EcmArchiver
             _TimerEndRun = new Timer(components);
             _TimerEndRun.Tick += new EventHandler(TimerEndRun_Tick);
             MenuStrip1 = new MenuStrip();
-            ArchiveToolStripMenuItem = new ToolStripMenuItem();
+            _ArchiveToolStripMenuItem = new ToolStripMenuItem();
+            _ArchiveToolStripMenuItem.Click += new EventHandler(ArchiveToolStripMenuItem_Click);
             _ArchiveALLToolStripMenuItem = new ToolStripMenuItem();
             _ArchiveALLToolStripMenuItem.Click += new EventHandler(ArchiveALLToolStripMenuItem_Click);
             _OutlookEmailsToolStripMenuItem = new ToolStripMenuItem();
@@ -259,8 +270,8 @@ namespace EcmArchiver
             _ExchangeEmailsToolStripMenuItem.Click += new EventHandler(ExchangeEmailsToolStripMenuItem_Click);
             _ContentToolStripMenuItem = new ToolStripMenuItem();
             _ContentToolStripMenuItem.Click += new EventHandler(ContentToolStripMenuItem_Click);
-            _ContentReInventoryToolStripMenuItem = new ToolStripMenuItem();
-            _ContentReInventoryToolStripMenuItem.Click += new EventHandler(ContentReInventoryToolStripMenuItem_Click);
+            _ContentNoLIstenerToolStripMenuItem = new ToolStripMenuItem();
+            _ContentNoLIstenerToolStripMenuItem.Click += new EventHandler(ContentNoLIstenerToolStripMenuItem_Click);
             _ToolStripMenuItem1 = new ToolStripMenuItem();
             _ToolStripMenuItem1.Click += new EventHandler(ToolStripMenuItem1_Click);
             _ScheduleToolStripMenuItem = new ToolStripMenuItem();
@@ -285,21 +296,8 @@ namespace EcmArchiver
             _ChangeUserPasswordToolStripMenuItem = new ToolStripMenuItem();
             _ChangeUserPasswordToolStripMenuItem.Click += new EventHandler(ChangeUserPasswordToolStripMenuItem_Click);
             TasksToolStripMenuItem = new ToolStripMenuItem();
-            _ImpersonateLoginToolStripMenuItem = new ToolStripMenuItem();
-            _ImpersonateLoginToolStripMenuItem.Click += new EventHandler(ImpersonateLoginToolStripMenuItem_Click);
-            _LoginAsDifferenctUserToolStripMenuItem = new ToolStripMenuItem();
-            _LoginAsDifferenctUserToolStripMenuItem.Click += new EventHandler(LoginAsDifferenctUserToolStripMenuItem_Click);
-            _ManualEditAppConfigToolStripMenuItem = new ToolStripMenuItem();
-            _ManualEditAppConfigToolStripMenuItem.Click += new EventHandler(ManualEditAppConfigToolStripMenuItem_Click);
-            _ViewLogsToolStripMenuItem = new ToolStripMenuItem();
-            _ViewLogsToolStripMenuItem.Click += new EventHandler(ViewLogsToolStripMenuItem_Click);
-            _ViewOCRErrorFilesToolStripMenuItem = new ToolStripMenuItem();
-            _ViewOCRErrorFilesToolStripMenuItem.Click += new EventHandler(ViewOCRErrorFilesToolStripMenuItem_Click);
-            _AddDesktopIconToolStripMenuItem = new ToolStripMenuItem();
-            _AddDesktopIconToolStripMenuItem.Click += new EventHandler(AddDesktopIconToolStripMenuItem_Click);
             UtilityToolStripMenuItem = new ToolStripMenuItem();
             RepositoryUtilitiesToolStripMenuItem = new ToolStripMenuItem();
-            CleanupSourceNameToolStripMenuItem = new ToolStripMenuItem();
             _ClearRestoreQueueToolStripMenuItem1 = new ToolStripMenuItem();
             _ClearRestoreQueueToolStripMenuItem1.Click += new EventHandler(ClearRestoreQueueToolStripMenuItem1_Click);
             _CompareDirToRepositoryToolStripMenuItem1 = new ToolStripMenuItem();
@@ -308,12 +306,29 @@ namespace EcmArchiver
             _InventoryDirectoryToolStripMenuItem1.Click += new EventHandler(InventoryDirectoryToolStripMenuItem1_Click);
             _ValidateDirectoryFilesToolStripMenuItem = new ToolStripMenuItem();
             _ValidateDirectoryFilesToolStripMenuItem.Click += new EventHandler(ValidateDirectoryFilesToolStripMenuItem_Click);
+            _ReapplyALLDBUpdatesToolStripMenuItem = new ToolStripMenuItem();
+            _ReapplyALLDBUpdatesToolStripMenuItem.Click += new EventHandler(ReapplyALLDBUpdatesToolStripMenuItem_Click);
+            _ValidateRetentionDatesToolStripMenuItem = new ToolStripMenuItem();
+            _ValidateRetentionDatesToolStripMenuItem.Click += new EventHandler(ValidateRetentionDatesToolStripMenuItem_Click);
+            LastArchiveDateToolStripMenuItem = new ToolStripMenuItem();
+            _TurnONToolStripMenuItem = new ToolStripMenuItem();
+            _TurnONToolStripMenuItem.Click += new EventHandler(TurnONToolStripMenuItem_Click);
+            _TurnOFFToolStripMenuItem = new ToolStripMenuItem();
+            _TurnOFFToolStripMenuItem.Click += new EventHandler(TurnOFFToolStripMenuItem_Click);
+            _InitializeToGivenDateToolStripMenuItem = new ToolStripMenuItem();
+            _InitializeToGivenDateToolStripMenuItem.Click += new EventHandler(InitializeToGivenDateToolStripMenuItem_Click);
             ListenerUtilitiesToolStripMenuItem = new ToolStripMenuItem();
+            _TurnListenerONToolStripMenuItem = new ToolStripMenuItem();
+            _TurnListenerONToolStripMenuItem.Click += new EventHandler(TurnListenerONToolStripMenuItem_Click);
+            _TurnListenerOFFToolStripMenuItem = new ToolStripMenuItem();
+            _TurnListenerOFFToolStripMenuItem.Click += new EventHandler(TurnListenerOFFToolStripMenuItem_Click);
             _LIstWindowsLogsToolStripMenuItem = new ToolStripMenuItem();
             _LIstWindowsLogsToolStripMenuItem.Click += new EventHandler(LIstWindowsLogsToolStripMenuItem_Click);
             _CheckLogsForListenerInfoToolStripMenuItem = new ToolStripMenuItem();
             _CheckLogsForListenerInfoToolStripMenuItem.Click += new EventHandler(CheckLogsForListenerInfoToolStripMenuItem_Click);
             SQLiteUtiltiiesToolStripMenuItem = new ToolStripMenuItem();
+            _ReInventoryAllFilesToolStripMenuItem = new ToolStripMenuItem();
+            _ReInventoryAllFilesToolStripMenuItem.Click += new EventHandler(ReInventoryAllFilesToolStripMenuItem_Click);
             _ResetSQLiteArchivesToolStripMenuItem = new ToolStripMenuItem();
             _ResetSQLiteArchivesToolStripMenuItem.Click += new EventHandler(ResetSQLiteArchivesToolStripMenuItem_Click);
             _GetOutlookEMailIDsToolStripMenuItem1 = new ToolStripMenuItem();
@@ -347,6 +362,40 @@ namespace EcmArchiver
             _EncryptStringToolStripMenuItem.Click += new EventHandler(EncryptStringToolStripMenuItem_Click);
             _OpenLicenseFormToolStripMenuItem = new ToolStripMenuItem();
             _OpenLicenseFormToolStripMenuItem.Click += new EventHandler(OpenLicenseFormToolStripMenuItem_Click);
+            _FileNamesToolStripMenuItem = new ToolStripMenuItem();
+            _FileNamesToolStripMenuItem.Click += new EventHandler(FileNamesToolStripMenuItem_Click);
+            _CanLongFilenamesBeTurnedOnToolStripMenuItem = new ToolStripMenuItem();
+            _CanLongFilenamesBeTurnedOnToolStripMenuItem.Click += new EventHandler(CanLongFilenamesBeTurnedOnToolStripMenuItem_Click);
+            _HowToTurnOnLongFilenamesToolStripMenuItem = new ToolStripMenuItem();
+            _HowToTurnOnLongFilenamesToolStripMenuItem.Click += new EventHandler(HowToTurnOnLongFilenamesToolStripMenuItem_Click);
+            _TurnONLongFilenamesAdminNeededToolStripMenuItem = new ToolStripMenuItem();
+            _TurnONLongFilenamesAdminNeededToolStripMenuItem.Click += new EventHandler(TurnONLongFilenamesAdminNeededToolStripMenuItem_Click);
+            _CheckForViolationsToolStripMenuItem = new ToolStripMenuItem();
+            _CheckForViolationsToolStripMenuItem.Click += new EventHandler(CheckForViolationsToolStripMenuItem_Click);
+            _ValidateFileHASHCodesToolStripMenuItem = new ToolStripMenuItem();
+            _ValidateFileHASHCodesToolStripMenuItem.Click += new EventHandler(ValidateFileHASHCodesToolStripMenuItem_Click);
+            _ValidateProcessAsFileExtsToolStripMenuItem = new ToolStripMenuItem();
+            _ValidateProcessAsFileExtsToolStripMenuItem.Click += new EventHandler(ValidateProcessAsFileExtsToolStripMenuItem_Click);
+            _FulltextLogAnalysisToolStripMenuItem = new ToolStripMenuItem();
+            _FulltextLogAnalysisToolStripMenuItem.Click += new EventHandler(FulltextLogAnalysisToolStripMenuItem_Click);
+            _UpdateAvailableIFiltersToolStripMenuItem = new ToolStripMenuItem();
+            _UpdateAvailableIFiltersToolStripMenuItem.Click += new EventHandler(UpdateAvailableIFiltersToolStripMenuItem_Click);
+            _ValidateRepoContentsToolStripMenuItem = new ToolStripMenuItem();
+            _ValidateRepoContentsToolStripMenuItem.Click += new EventHandler(ValidateRepoContentsToolStripMenuItem_Click);
+            _ImpersonateLoginToolStripMenuItem = new ToolStripMenuItem();
+            _ImpersonateLoginToolStripMenuItem.Click += new EventHandler(ImpersonateLoginToolStripMenuItem_Click);
+            _LoginAsDifferenctUserToolStripMenuItem = new ToolStripMenuItem();
+            _LoginAsDifferenctUserToolStripMenuItem.Click += new EventHandler(LoginAsDifferenctUserToolStripMenuItem_Click);
+            _ManualEditAppConfigToolStripMenuItem = new ToolStripMenuItem();
+            _ManualEditAppConfigToolStripMenuItem.Click += new EventHandler(ManualEditAppConfigToolStripMenuItem_Click);
+            _ManualEditListenerConfigToolStripMenuItem = new ToolStripMenuItem();
+            _ManualEditListenerConfigToolStripMenuItem.Click += new EventHandler(ManualEditListenerConfigToolStripMenuItem_Click);
+            _ViewLogsToolStripMenuItem = new ToolStripMenuItem();
+            _ViewLogsToolStripMenuItem.Click += new EventHandler(ViewLogsToolStripMenuItem_Click);
+            _ViewOCRErrorFilesToolStripMenuItem = new ToolStripMenuItem();
+            _ViewOCRErrorFilesToolStripMenuItem.Click += new EventHandler(ViewOCRErrorFilesToolStripMenuItem_Click);
+            _AddDesktopIconToolStripMenuItem = new ToolStripMenuItem();
+            _AddDesktopIconToolStripMenuItem.Click += new EventHandler(AddDesktopIconToolStripMenuItem_Click);
             _CheckForUpdatesToolStripMenuItem = new ToolStripMenuItem();
             _CheckForUpdatesToolStripMenuItem.Click += new EventHandler(CheckForUpdatesToolStripMenuItem_Click);
             _ShowSystemVersionToolStripMenuItem = new ToolStripMenuItem();
@@ -386,6 +435,18 @@ namespace EcmArchiver
             ListenerFunctionsToolStripMenuItem = new ToolStripMenuItem();
             _GetListenerFilesToolStripMenuItem = new ToolStripMenuItem();
             _GetListenerFilesToolStripMenuItem.Click += new EventHandler(GetListenerFilesToolStripMenuItem_Click);
+            _CreateSQLiteDBToolStripMenuItem = new ToolStripMenuItem();
+            _CreateSQLiteDBToolStripMenuItem.Click += new EventHandler(CreateSQLiteDBToolStripMenuItem_Click);
+            _LongFilenameHASHToolStripMenuItem = new ToolStripMenuItem();
+            _LongFilenameHASHToolStripMenuItem.Click += new EventHandler(LongFilenameHASHToolStripMenuItem_Click);
+            _ValidateLongDirectroryNamesToolStripMenuItem = new ToolStripMenuItem();
+            _ValidateLongDirectroryNamesToolStripMenuItem.Click += new EventHandler(ValidateLongDirectroryNamesToolStripMenuItem_Click);
+            _TextStringHashToolStripMenuItem = new ToolStripMenuItem();
+            _TextStringHashToolStripMenuItem.Click += new EventHandler(TextStringHashToolStripMenuItem_Click);
+            _GetDirFilesByFilterToolStripMenuItem = new ToolStripMenuItem();
+            _GetDirFilesByFilterToolStripMenuItem.Click += new EventHandler(GetDirFilesByFilterToolStripMenuItem_Click);
+            _GenWhereINDictToolStripMenuItem = new ToolStripMenuItem();
+            _GenWhereINDictToolStripMenuItem.Click += new EventHandler(GenWhereINDictToolStripMenuItem_Click);
             _ExitToolStripMenuItem = new ToolStripMenuItem();
             _ExitToolStripMenuItem.Click += new EventHandler(ExitToolStripMenuItem_Click);
             HelpToolStripMenuItem = new ToolStripMenuItem();
@@ -513,6 +574,8 @@ namespace EcmArchiver
             lblNotice = new Label();
             _ThreadValidateSourceName = new System.ComponentModel.BackgroundWorker();
             _ThreadValidateSourceName.DoWork += new System.ComponentModel.DoWorkEventHandler(ThreadValidateSourceName_DoWork_1);
+            _ThreadSetNameHash = new System.ComponentModel.BackgroundWorker();
+            _ThreadSetNameHash.DoWork += new System.ComponentModel.DoWorkEventHandler(ThreadSetNameHash_DoWork);
             gbEmail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NumericUpDown3).BeginInit();
             gbFiletypes.SuspendLayout();
@@ -520,7 +583,7 @@ namespace EcmArchiver
             ((System.ComponentModel.ISupportInitialize)_nbrArchiveHours).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PictureBox2).BeginInit();
             _gbContentMgt.SuspendLayout();
-            Panel2.SuspendLayout();
+            _Panel2.SuspendLayout();
             Panel1.SuspendLayout();
             Panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PictureBox1).BeginInit();
@@ -549,7 +612,7 @@ namespace EcmArchiver
             gbEmail.BackColor = Color.LightGray;
             gbEmail.Controls.Add(_Button4);
             gbEmail.Controls.Add(Label34);
-            gbEmail.Controls.Add(LinkLabel2);
+            gbEmail.Controls.Add(_LinkLabel2);
             gbEmail.Controls.Add(_LinkLabel1);
             gbEmail.Controls.Add(_hlExchange);
             gbEmail.Controls.Add(Label16);
@@ -611,15 +674,15 @@ namespace EcmArchiver
             // 
             // LinkLabel2
             // 
-            LinkLabel2.AutoSize = true;
-            LinkLabel2.Location = new Point(547, 31);
-            LinkLabel2.Margin = new Padding(4, 0, 4, 0);
-            LinkLabel2.Name = "LinkLabel2";
-            LinkLabel2.Size = new Size(59, 17);
-            LinkLabel2.TabIndex = 72;
-            LinkLabel2.TabStop = true;
-            LinkLabel2.Text = "Validate";
-            TT.SetToolTip(LinkLabel2, "If executing from a machine different than your usual, press this button to valid" + "ate your \"access\" level.");
+            _LinkLabel2.AutoSize = true;
+            _LinkLabel2.Location = new Point(547, 31);
+            _LinkLabel2.Margin = new Padding(4, 0, 4, 0);
+            _LinkLabel2.Name = "_LinkLabel2";
+            _LinkLabel2.Size = new Size(59, 17);
+            _LinkLabel2.TabIndex = 72;
+            _LinkLabel2.TabStop = true;
+            _LinkLabel2.Text = "Validate";
+            TT.SetToolTip(_LinkLabel2, "If executing from a machine different than your usual, press this button to valid" + "ate your \"access\" level.");
             // 
             // LinkLabel1
             // 
@@ -1316,7 +1379,7 @@ namespace EcmArchiver
             _gbContentMgt.BackColor = Color.Silver;
             _gbContentMgt.BackgroundImageLayout = ImageLayout.Stretch;
             _gbContentMgt.Controls.Add(_btnCountFiles);
-            _gbContentMgt.Controls.Add(Panel2);
+            _gbContentMgt.Controls.Add(_Panel2);
             _gbContentMgt.Controls.Add(_lbArchiveDirs);
             _gbContentMgt.Controls.Add(Panel1);
             _gbContentMgt.Controls.Add(Panel3);
@@ -1343,45 +1406,105 @@ namespace EcmArchiver
             // 
             // Panel2
             // 
-            Panel2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Panel2.BackColor = Color.Silver;
-            Panel2.BorderStyle = BorderStyle.Fixed3D;
-            Panel2.Controls.Add(_btnArchive1Doc);
-            Panel2.Controls.Add(_ckDeleteAfterArchive);
-            Panel2.Controls.Add(_ckOcrPdf);
-            Panel2.Controls.Add(_ckShowLibs);
-            Panel2.Controls.Add(_btnRefreshRetent);
-            Panel2.Controls.Add(_CkMonitor);
-            Panel2.Controls.Add(_ckArchiveBit);
-            Panel2.Controls.Add(Label13);
-            Panel2.Controls.Add(cbRetention);
-            Panel2.Controls.Add(_ckOcr);
-            Panel2.Controls.Add(_clAdminDir);
-            Panel2.Controls.Add(_ckDisableDir);
-            Panel2.Controls.Add(_ckPublic);
-            Panel2.Controls.Add(_ckMetaData);
-            Panel2.Controls.Add(_ckVersionFiles);
-            Panel2.Controls.Add(_ckSubDirs);
-            Panel2.Controls.Add(_txtDir);
-            Panel2.Controls.Add(_btnRefresh);
-            Panel2.Controls.Add(_btnSaveChanges);
-            Panel2.Controls.Add(_btnRemoveDir);
-            Panel2.Controls.Add(_btnSelDir);
-            Panel2.Location = new Point(11, 327);
-            Panel2.Margin = new Padding(4);
-            Panel2.Name = "Panel2";
-            Panel2.Size = new Size(741, 248);
-            Panel2.TabIndex = 79;
+            _Panel2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            _Panel2.BackColor = Color.Silver;
+            _Panel2.BorderStyle = BorderStyle.Fixed3D;
+            _Panel2.Controls.Add(lblUseLastArchiveDate);
+            _Panel2.Controls.Add(_btnSetLastArchiveOFF);
+            _Panel2.Controls.Add(_btnSetLastArchiveON);
+            _Panel2.Controls.Add(_CheckBox2);
+            _Panel2.Controls.Add(_btnArchive1Doc);
+            _Panel2.Controls.Add(_ckDeleteAfterArchive);
+            _Panel2.Controls.Add(_ckOcrPdf);
+            _Panel2.Controls.Add(_ckShowLibs);
+            _Panel2.Controls.Add(_btnRefreshRetent);
+            _Panel2.Controls.Add(_CkMonitor);
+            _Panel2.Controls.Add(_ckArchiveBit);
+            _Panel2.Controls.Add(_Label13);
+            _Panel2.Controls.Add(cbRetention);
+            _Panel2.Controls.Add(_ckOcr);
+            _Panel2.Controls.Add(_clAdminDir);
+            _Panel2.Controls.Add(_ckDisableDir);
+            _Panel2.Controls.Add(_ckPublic);
+            _Panel2.Controls.Add(_ckMetaData);
+            _Panel2.Controls.Add(_ckVersionFiles);
+            _Panel2.Controls.Add(_ckSubDirs);
+            _Panel2.Controls.Add(_txtDir);
+            _Panel2.Controls.Add(_btnRefresh);
+            _Panel2.Controls.Add(_btnSaveChanges);
+            _Panel2.Controls.Add(_btnRemoveDir);
+            _Panel2.Controls.Add(_btnSelDir);
+            _Panel2.Location = new Point(11, 327);
+            _Panel2.Margin = new Padding(4);
+            _Panel2.Name = "_Panel2";
+            _Panel2.Size = new Size(741, 248);
+            _Panel2.TabIndex = 79;
+            // 
+            // lblUseLastArchiveDate
+            // 
+            lblUseLastArchiveDate.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            lblUseLastArchiveDate.AutoSize = true;
+            lblUseLastArchiveDate.BackColor = Color.Red;
+            lblUseLastArchiveDate.ForeColor = Color.Black;
+            lblUseLastArchiveDate.Location = new Point(228, 222);
+            lblUseLastArchiveDate.Margin = new Padding(4, 0, 4, 0);
+            lblUseLastArchiveDate.Name = "lblUseLastArchiveDate";
+            lblUseLastArchiveDate.Size = new Size(151, 17);
+            lblUseLastArchiveDate.TabIndex = 83;
+            lblUseLastArchiveDate.Text = "Last Archive Date OFF";
+            // 
+            // btnSetLastArchiveOFF
+            // 
+            _btnSetLastArchiveOFF.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            _btnSetLastArchiveOFF.ForeColor = Color.Black;
+            _btnSetLastArchiveOFF.Location = new Point(475, 179);
+            _btnSetLastArchiveOFF.Margin = new Padding(4);
+            _btnSetLastArchiveOFF.Name = "_btnSetLastArchiveOFF";
+            _btnSetLastArchiveOFF.Size = new Size(117, 28);
+            _btnSetLastArchiveOFF.TabIndex = 82;
+            _btnSetLastArchiveOFF.Text = "Last Arch OFF";
+            TT.SetToolTip(_btnSetLastArchiveOFF, "This will stop using the Last Archive Date to select files.");
+            _btnSetLastArchiveOFF.UseVisualStyleBackColor = true;
+            _btnSetLastArchiveOFF.Visible = false;
+            // 
+            // btnSetLastArchiveON
+            // 
+            _btnSetLastArchiveON.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            _btnSetLastArchiveON.ForeColor = Color.Black;
+            _btnSetLastArchiveON.Location = new Point(475, 146);
+            _btnSetLastArchiveON.Margin = new Padding(4);
+            _btnSetLastArchiveON.Name = "_btnSetLastArchiveON";
+            _btnSetLastArchiveON.Size = new Size(117, 28);
+            _btnSetLastArchiveON.TabIndex = 81;
+            _btnSetLastArchiveON.Text = "Last Arch ON";
+            TT.SetToolTip(_btnSetLastArchiveON, "This willuse the Last Archive Date to select files.");
+            _btnSetLastArchiveON.UseVisualStyleBackColor = true;
+            _btnSetLastArchiveON.Visible = false;
+            // 
+            // CheckBox2
+            // 
+            _CheckBox2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            _CheckBox2.AutoSize = true;
+            _CheckBox2.Font = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, Conversions.ToByte(0));
+            _CheckBox2.ForeColor = Color.Black;
+            _CheckBox2.Location = new Point(437, 118);
+            _CheckBox2.Margin = new Padding(4);
+            _CheckBox2.Name = "_CheckBox2";
+            _CheckBox2.Size = new Size(155, 21);
+            _CheckBox2.TabIndex = 80;
+            _CheckBox2.Text = "13. Stop Listener";
+            TT.SetToolTip(_CheckBox2, "Track changes to this directory instantly.");
+            _CheckBox2.UseVisualStyleBackColor = true;
             // 
             // btnArchive1Doc
             // 
             _btnArchive1Doc.BackColor = Color.Maroon;
             _btnArchive1Doc.FlatStyle = FlatStyle.Popup;
             _btnArchive1Doc.ForeColor = SystemColors.Control;
-            _btnArchive1Doc.Location = new Point(484, 119);
+            _btnArchive1Doc.Location = new Point(617, 187);
             _btnArchive1Doc.Margin = new Padding(3, 2, 3, 2);
             _btnArchive1Doc.Name = "_btnArchive1Doc";
-            _btnArchive1Doc.Size = new Size(117, 54);
+            _btnArchive1Doc.Size = new Size(117, 39);
             _btnArchive1Doc.TabIndex = 79;
             _btnArchive1Doc.Text = "Quick Archive";
             _btnArchive1Doc.UseVisualStyleBackColor = false;
@@ -1392,12 +1515,12 @@ namespace EcmArchiver
             _ckDeleteAfterArchive.AutoSize = true;
             _ckDeleteAfterArchive.Font = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, Conversions.ToByte(0));
             _ckDeleteAfterArchive.ForeColor = Color.Black;
-            _ckDeleteAfterArchive.Location = new Point(227, 218);
+            _ckDeleteAfterArchive.Location = new Point(227, 192);
             _ckDeleteAfterArchive.Margin = new Padding(4);
             _ckDeleteAfterArchive.Name = "_ckDeleteAfterArchive";
             _ckDeleteAfterArchive.Size = new Size(215, 21);
             _ckDeleteAfterArchive.TabIndex = 78;
-            _ckDeleteAfterArchive.Text = "12. Remove After Archive";
+            _ckDeleteAfterArchive.Text = "11. Remove After Archive";
             TT.SetToolTip(_ckDeleteAfterArchive, "Delete the FILE after successful Archive.");
             _ckDeleteAfterArchive.UseVisualStyleBackColor = true;
             // 
@@ -1449,12 +1572,12 @@ namespace EcmArchiver
             _CkMonitor.AutoSize = true;
             _CkMonitor.Font = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, Conversions.ToByte(0));
             _CkMonitor.ForeColor = Color.Black;
-            _CkMonitor.Location = new Point(227, 193);
+            _CkMonitor.Location = new Point(437, 95);
             _CkMonitor.Margin = new Padding(4);
             _CkMonitor.Name = "_CkMonitor";
-            _CkMonitor.Size = new Size(102, 21);
+            _CkMonitor.Size = new Size(157, 21);
             _CkMonitor.TabIndex = 74;
-            _CkMonitor.Text = "11. Listen";
+            _CkMonitor.Text = "12. Start Listener";
             TT.SetToolTip(_CkMonitor, "Track changes to this directory instantly.");
             _CkMonitor.UseVisualStyleBackColor = true;
             // 
@@ -1474,15 +1597,15 @@ namespace EcmArchiver
             // 
             // Label13
             // 
-            Label13.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            Label13.AutoSize = true;
-            Label13.ForeColor = Color.Black;
-            Label13.Location = new Point(35, 60);
-            Label13.Margin = new Padding(4, 0, 4, 0);
-            Label13.Name = "Label13";
-            Label13.Size = new Size(106, 17);
-            Label13.TabIndex = 63;
-            Label13.Text = "Retention Rule:";
+            _Label13.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            _Label13.AutoSize = true;
+            _Label13.ForeColor = Color.Black;
+            _Label13.Location = new Point(35, 60);
+            _Label13.Margin = new Padding(4, 0, 4, 0);
+            _Label13.Name = "_Label13";
+            _Label13.Size = new Size(106, 17);
+            _Label13.TabIndex = 63;
+            _Label13.Text = "Retention Rule:";
             // 
             // cbRetention
             // 
@@ -1620,12 +1743,12 @@ namespace EcmArchiver
             // 
             _btnSaveChanges.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             _btnSaveChanges.BackColor = Color.Turquoise;
-            _btnSaveChanges.Location = new Point(617, 183);
+            _btnSaveChanges.Location = new Point(617, 143);
             _btnSaveChanges.Margin = new Padding(4);
             _btnSaveChanges.Name = "_btnSaveChanges";
-            _btnSaveChanges.Size = new Size(117, 54);
+            _btnSaveChanges.Size = new Size(117, 39);
             _btnSaveChanges.TabIndex = 23;
-            _btnSaveChanges.Text = "Save Changes to Archive";
+            _btnSaveChanges.Text = "Save Changes";
             _btnSaveChanges.UseVisualStyleBackColor = false;
             // 
             // btnRemoveDir
@@ -1633,12 +1756,12 @@ namespace EcmArchiver
             _btnRemoveDir.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             _btnRemoveDir.BackColor = Color.Transparent;
             _btnRemoveDir.ForeColor = Color.Black;
-            _btnRemoveDir.Location = new Point(617, 119);
+            _btnRemoveDir.Location = new Point(617, 99);
             _btnRemoveDir.Margin = new Padding(4);
             _btnRemoveDir.Name = "_btnRemoveDir";
-            _btnRemoveDir.Size = new Size(117, 54);
+            _btnRemoveDir.Size = new Size(117, 39);
             _btnRemoveDir.TabIndex = 11;
-            _btnRemoveDir.Text = "Remove Dir from Archive";
+            _btnRemoveDir.Text = "Remove Dir";
             _btnRemoveDir.UseVisualStyleBackColor = false;
             // 
             // btnSelDir
@@ -1648,9 +1771,9 @@ namespace EcmArchiver
             _btnSelDir.Location = new Point(617, 55);
             _btnSelDir.Margin = new Padding(4);
             _btnSelDir.Name = "_btnSelDir";
-            _btnSelDir.Size = new Size(117, 54);
+            _btnSelDir.Size = new Size(117, 39);
             _btnSelDir.TabIndex = 9;
-            _btnSelDir.Text = "Select Dir for Archive";
+            _btnSelDir.Text = "Select Dir";
             _btnSelDir.UseVisualStyleBackColor = true;
             // 
             // lbArchiveDirs
@@ -2189,7 +2312,7 @@ namespace EcmArchiver
             // 
             MenuStrip1.BackColor = Color.Silver;
             MenuStrip1.ImageScalingSize = new Size(20, 20);
-            MenuStrip1.Items.AddRange(new ToolStripItem[] { ArchiveToolStripMenuItem, LoginToolStripMenuItem, TasksToolStripMenuItem, SelectionToolStripMenuItem, TestToolStripMenuItem, _ExitToolStripMenuItem, HelpToolStripMenuItem });
+            MenuStrip1.Items.AddRange(new ToolStripItem[] { _ArchiveToolStripMenuItem, LoginToolStripMenuItem, TasksToolStripMenuItem, SelectionToolStripMenuItem, TestToolStripMenuItem, _ExitToolStripMenuItem, HelpToolStripMenuItem });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
             MenuStrip1.Padding = new Padding(8, 2, 0, 2);
@@ -2199,104 +2322,103 @@ namespace EcmArchiver
             // 
             // ArchiveToolStripMenuItem
             // 
-            ArchiveToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { _ArchiveALLToolStripMenuItem, _OutlookEmailsToolStripMenuItem, _ExchangeEmailsToolStripMenuItem, _ContentToolStripMenuItem, _ContentReInventoryToolStripMenuItem, _ToolStripMenuItem1, _ScheduleToolStripMenuItem, SetArchiveIntervalToolStripMenuItem, ToolStripSeparator7, _SelectedFilesToolStripMenuItem, ToolStripSeparator6, _ArchiveRSSPullsToolStripMenuItem, _WebSitesToolStripMenuItem, _WebPagesToolStripMenuItem, ToolStripSeparator5, _ExitToolStripMenuItem1 });
-            ArchiveToolStripMenuItem.Name = "ArchiveToolStripMenuItem";
-            ArchiveToolStripMenuItem.Size = new Size(70, 24);
-            ArchiveToolStripMenuItem.Text = "Archive";
+            _ArchiveToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { _ArchiveALLToolStripMenuItem, _OutlookEmailsToolStripMenuItem, _ExchangeEmailsToolStripMenuItem, _ContentToolStripMenuItem, _ContentNoLIstenerToolStripMenuItem, _ToolStripMenuItem1, _ScheduleToolStripMenuItem, SetArchiveIntervalToolStripMenuItem, ToolStripSeparator7, _SelectedFilesToolStripMenuItem, ToolStripSeparator6, _ArchiveRSSPullsToolStripMenuItem, _WebSitesToolStripMenuItem, _WebPagesToolStripMenuItem, ToolStripSeparator5, _ExitToolStripMenuItem1 });
+            _ArchiveToolStripMenuItem.Name = "_ArchiveToolStripMenuItem";
+            _ArchiveToolStripMenuItem.Size = new Size(70, 24);
+            _ArchiveToolStripMenuItem.Text = "Archive";
             // 
             // ArchiveALLToolStripMenuItem
             // 
             _ArchiveALLToolStripMenuItem.Name = "_ArchiveALLToolStripMenuItem";
-            _ArchiveALLToolStripMenuItem.Size = new Size(234, 26);
+            _ArchiveALLToolStripMenuItem.Size = new Size(216, 26);
             _ArchiveALLToolStripMenuItem.Text = "Archive ALL";
             // 
             // OutlookEmailsToolStripMenuItem
             // 
             _OutlookEmailsToolStripMenuItem.Name = "_OutlookEmailsToolStripMenuItem";
-            _OutlookEmailsToolStripMenuItem.Size = new Size(234, 26);
+            _OutlookEmailsToolStripMenuItem.Size = new Size(216, 26);
             _OutlookEmailsToolStripMenuItem.Text = "Outlook Emails";
             // 
             // ExchangeEmailsToolStripMenuItem
             // 
             _ExchangeEmailsToolStripMenuItem.Name = "_ExchangeEmailsToolStripMenuItem";
-            _ExchangeEmailsToolStripMenuItem.Size = new Size(234, 26);
+            _ExchangeEmailsToolStripMenuItem.Size = new Size(216, 26);
             _ExchangeEmailsToolStripMenuItem.Text = "Exchange Emails";
             // 
             // ContentToolStripMenuItem
             // 
             _ContentToolStripMenuItem.Name = "_ContentToolStripMenuItem";
-            _ContentToolStripMenuItem.Size = new Size(234, 26);
-            _ContentToolStripMenuItem.Text = "Content - Quick";
+            _ContentToolStripMenuItem.Size = new Size(216, 26);
+            _ContentToolStripMenuItem.Text = "Content (Quick)";
             _ContentToolStripMenuItem.ToolTipText = "Uses the localized SQLite inventory ";
             // 
-            // ContentReInventoryToolStripMenuItem
+            // ContentNoLIstenerToolStripMenuItem
             // 
-            _ContentReInventoryToolStripMenuItem.Name = "_ContentReInventoryToolStripMenuItem";
-            _ContentReInventoryToolStripMenuItem.Size = new Size(234, 26);
-            _ContentReInventoryToolStripMenuItem.Text = "Content - Re-Inventory";
-            _ContentReInventoryToolStripMenuItem.ToolTipText = "DOES NOT Use the localized SQLite inventory , performs a full inventory of all ta" + "rgeted directories.";
+            _ContentNoLIstenerToolStripMenuItem.Name = "_ContentNoLIstenerToolStripMenuItem";
+            _ContentNoLIstenerToolStripMenuItem.Size = new Size(216, 26);
+            _ContentNoLIstenerToolStripMenuItem.Text = "Content ( Scan)";
             // 
             // ToolStripMenuItem1
             // 
             _ToolStripMenuItem1.Name = "_ToolStripMenuItem1";
-            _ToolStripMenuItem1.Size = new Size(234, 26);
+            _ToolStripMenuItem1.Size = new Size(216, 26);
             _ToolStripMenuItem1.Text = "Outlook Contacts";
             // 
             // ScheduleToolStripMenuItem
             // 
             _ScheduleToolStripMenuItem.Name = "_ScheduleToolStripMenuItem";
-            _ScheduleToolStripMenuItem.Size = new Size(234, 26);
+            _ScheduleToolStripMenuItem.Size = new Size(216, 26);
             _ScheduleToolStripMenuItem.Text = "Schedule";
             // 
             // SetArchiveIntervalToolStripMenuItem
             // 
             SetArchiveIntervalToolStripMenuItem.Name = "SetArchiveIntervalToolStripMenuItem";
-            SetArchiveIntervalToolStripMenuItem.Size = new Size(234, 26);
+            SetArchiveIntervalToolStripMenuItem.Size = new Size(216, 26);
             SetArchiveIntervalToolStripMenuItem.Text = "Set Archive Interval";
             // 
             // ToolStripSeparator7
             // 
             ToolStripSeparator7.Name = "ToolStripSeparator7";
-            ToolStripSeparator7.Size = new Size(231, 6);
+            ToolStripSeparator7.Size = new Size(213, 6);
             // 
             // SelectedFilesToolStripMenuItem
             // 
             _SelectedFilesToolStripMenuItem.Name = "_SelectedFilesToolStripMenuItem";
-            _SelectedFilesToolStripMenuItem.Size = new Size(234, 26);
+            _SelectedFilesToolStripMenuItem.Size = new Size(216, 26);
             _SelectedFilesToolStripMenuItem.Text = "Selected Files";
             // 
             // ToolStripSeparator6
             // 
             ToolStripSeparator6.Name = "ToolStripSeparator6";
-            ToolStripSeparator6.Size = new Size(231, 6);
+            ToolStripSeparator6.Size = new Size(213, 6);
             // 
             // ArchiveRSSPullsToolStripMenuItem
             // 
             _ArchiveRSSPullsToolStripMenuItem.Name = "_ArchiveRSSPullsToolStripMenuItem";
-            _ArchiveRSSPullsToolStripMenuItem.Size = new Size(234, 26);
+            _ArchiveRSSPullsToolStripMenuItem.Size = new Size(216, 26);
             _ArchiveRSSPullsToolStripMenuItem.Text = "Archive RSS Pulls";
             // 
             // WebSitesToolStripMenuItem
             // 
             _WebSitesToolStripMenuItem.Name = "_WebSitesToolStripMenuItem";
-            _WebSitesToolStripMenuItem.Size = new Size(234, 26);
+            _WebSitesToolStripMenuItem.Size = new Size(216, 26);
             _WebSitesToolStripMenuItem.Text = "Archive Web Sites";
             // 
             // WebPagesToolStripMenuItem
             // 
             _WebPagesToolStripMenuItem.Name = "_WebPagesToolStripMenuItem";
-            _WebPagesToolStripMenuItem.Size = new Size(234, 26);
+            _WebPagesToolStripMenuItem.Size = new Size(216, 26);
             _WebPagesToolStripMenuItem.Text = "Archive Web Pages";
             // 
             // ToolStripSeparator5
             // 
             ToolStripSeparator5.Name = "ToolStripSeparator5";
-            ToolStripSeparator5.Size = new Size(231, 6);
+            ToolStripSeparator5.Size = new Size(213, 6);
             // 
             // ExitToolStripMenuItem1
             // 
             _ExitToolStripMenuItem1.Name = "_ExitToolStripMenuItem1";
-            _ExitToolStripMenuItem1.Size = new Size(234, 26);
+            _ExitToolStripMenuItem1.Size = new Size(216, 26);
             _ExitToolStripMenuItem1.Text = "Exit";
             // 
             // LoginToolStripMenuItem
@@ -2320,71 +2442,24 @@ namespace EcmArchiver
             // 
             // TasksToolStripMenuItem
             // 
-            TasksToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { _ImpersonateLoginToolStripMenuItem, _LoginAsDifferenctUserToolStripMenuItem, _ManualEditAppConfigToolStripMenuItem, _ViewLogsToolStripMenuItem, _ViewOCRErrorFilesToolStripMenuItem, _AddDesktopIconToolStripMenuItem, UtilityToolStripMenuItem, _CheckForUpdatesToolStripMenuItem, _ShowSystemVersionToolStripMenuItem });
+            TasksToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { UtilityToolStripMenuItem, _ImpersonateLoginToolStripMenuItem, _LoginAsDifferenctUserToolStripMenuItem, _ManualEditAppConfigToolStripMenuItem, _ManualEditListenerConfigToolStripMenuItem, _ViewLogsToolStripMenuItem, _ViewOCRErrorFilesToolStripMenuItem, _AddDesktopIconToolStripMenuItem, _CheckForUpdatesToolStripMenuItem, _ShowSystemVersionToolStripMenuItem });
             TasksToolStripMenuItem.Name = "TasksToolStripMenuItem";
             TasksToolStripMenuItem.Size = new Size(54, 24);
             TasksToolStripMenuItem.Text = "Tasks";
             // 
-            // ImpersonateLoginToolStripMenuItem
-            // 
-            _ImpersonateLoginToolStripMenuItem.Name = "_ImpersonateLoginToolStripMenuItem";
-            _ImpersonateLoginToolStripMenuItem.Size = new Size(253, 26);
-            _ImpersonateLoginToolStripMenuItem.Text = "Archiver Login";
-            _ImpersonateLoginToolStripMenuItem.ToolTipText = "Set the login here that will be automatically used for archives on this machine.";
-            _ImpersonateLoginToolStripMenuItem.Visible = false;
-            // 
-            // LoginAsDifferenctUserToolStripMenuItem
-            // 
-            _LoginAsDifferenctUserToolStripMenuItem.Name = "_LoginAsDifferenctUserToolStripMenuItem";
-            _LoginAsDifferenctUserToolStripMenuItem.Size = new Size(253, 26);
-            _LoginAsDifferenctUserToolStripMenuItem.Text = "Login as different User";
-            _LoginAsDifferenctUserToolStripMenuItem.ToolTipText = "Press to login under a different user ID.";
-            // 
-            // ManualEditAppConfigToolStripMenuItem
-            // 
-            _ManualEditAppConfigToolStripMenuItem.Name = "_ManualEditAppConfigToolStripMenuItem";
-            _ManualEditAppConfigToolStripMenuItem.Size = new Size(253, 26);
-            _ManualEditAppConfigToolStripMenuItem.Text = "(Manual Edit) App Config";
-            _ManualEditAppConfigToolStripMenuItem.ToolTipText = "Use with great care.";
-            // 
-            // ViewLogsToolStripMenuItem
-            // 
-            _ViewLogsToolStripMenuItem.Name = "_ViewLogsToolStripMenuItem";
-            _ViewLogsToolStripMenuItem.Size = new Size(253, 26);
-            _ViewLogsToolStripMenuItem.Text = "View Logs";
-            // 
-            // ViewOCRErrorFilesToolStripMenuItem
-            // 
-            _ViewOCRErrorFilesToolStripMenuItem.Name = "_ViewOCRErrorFilesToolStripMenuItem";
-            _ViewOCRErrorFilesToolStripMenuItem.Size = new Size(253, 26);
-            _ViewOCRErrorFilesToolStripMenuItem.Text = "View OCR Error Files";
-            _ViewOCRErrorFilesToolStripMenuItem.Visible = false;
-            // 
-            // AddDesktopIconToolStripMenuItem
-            // 
-            _AddDesktopIconToolStripMenuItem.Name = "_AddDesktopIconToolStripMenuItem";
-            _AddDesktopIconToolStripMenuItem.Size = new Size(253, 26);
-            _AddDesktopIconToolStripMenuItem.Text = "Add Desktop Icon";
-            // 
             // UtilityToolStripMenuItem
             // 
-            UtilityToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { RepositoryUtilitiesToolStripMenuItem, ListenerUtilitiesToolStripMenuItem, SQLiteUtiltiiesToolStripMenuItem, ReOCRToolStripMenuItem, RetentionManagementToolStripMenuItem, _EncryptStringToolStripMenuItem, _OpenLicenseFormToolStripMenuItem });
+            UtilityToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { RepositoryUtilitiesToolStripMenuItem, LastArchiveDateToolStripMenuItem, ListenerUtilitiesToolStripMenuItem, SQLiteUtiltiiesToolStripMenuItem, ReOCRToolStripMenuItem, RetentionManagementToolStripMenuItem, _EncryptStringToolStripMenuItem, _OpenLicenseFormToolStripMenuItem, _FileNamesToolStripMenuItem, _FulltextLogAnalysisToolStripMenuItem, _UpdateAvailableIFiltersToolStripMenuItem, _ValidateRepoContentsToolStripMenuItem });
             UtilityToolStripMenuItem.Name = "UtilityToolStripMenuItem";
-            UtilityToolStripMenuItem.Size = new Size(253, 26);
+            UtilityToolStripMenuItem.Size = new Size(276, 26);
             UtilityToolStripMenuItem.Text = "Utility";
             // 
             // RepositoryUtilitiesToolStripMenuItem
             // 
-            RepositoryUtilitiesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { CleanupSourceNameToolStripMenuItem, _ClearRestoreQueueToolStripMenuItem1, _CompareDirToRepositoryToolStripMenuItem1, _InventoryDirectoryToolStripMenuItem1, _ValidateDirectoryFilesToolStripMenuItem });
+            RepositoryUtilitiesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { _ClearRestoreQueueToolStripMenuItem1, _CompareDirToRepositoryToolStripMenuItem1, _InventoryDirectoryToolStripMenuItem1, _ValidateDirectoryFilesToolStripMenuItem, _ReapplyALLDBUpdatesToolStripMenuItem, _ValidateRetentionDatesToolStripMenuItem });
             RepositoryUtilitiesToolStripMenuItem.Name = "RepositoryUtilitiesToolStripMenuItem";
-            RepositoryUtilitiesToolStripMenuItem.Size = new Size(240, 26);
+            RepositoryUtilitiesToolStripMenuItem.Size = new Size(254, 26);
             RepositoryUtilitiesToolStripMenuItem.Text = "Repository Utilities";
-            // 
-            // CleanupSourceNameToolStripMenuItem
-            // 
-            CleanupSourceNameToolStripMenuItem.Name = "CleanupSourceNameToolStripMenuItem";
-            CleanupSourceNameToolStripMenuItem.Size = new Size(264, 26);
-            CleanupSourceNameToolStripMenuItem.Text = "Cleanup SourceName";
             // 
             // ClearRestoreQueueToolStripMenuItem1
             // 
@@ -2410,12 +2485,61 @@ namespace EcmArchiver
             _ValidateDirectoryFilesToolStripMenuItem.Size = new Size(264, 26);
             _ValidateDirectoryFilesToolStripMenuItem.Text = "Validate Directory Files";
             // 
+            // ReapplyALLDBUpdatesToolStripMenuItem
+            // 
+            _ReapplyALLDBUpdatesToolStripMenuItem.Name = "_ReapplyALLDBUpdatesToolStripMenuItem";
+            _ReapplyALLDBUpdatesToolStripMenuItem.Size = new Size(264, 26);
+            _ReapplyALLDBUpdatesToolStripMenuItem.Text = "Reapply ALL DB Updates";
+            // 
+            // ValidateRetentionDatesToolStripMenuItem
+            // 
+            _ValidateRetentionDatesToolStripMenuItem.Name = "_ValidateRetentionDatesToolStripMenuItem";
+            _ValidateRetentionDatesToolStripMenuItem.Size = new Size(264, 26);
+            _ValidateRetentionDatesToolStripMenuItem.Text = "Validate Retention Dates";
+            // 
+            // LastArchiveDateToolStripMenuItem
+            // 
+            LastArchiveDateToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { _TurnONToolStripMenuItem, _TurnOFFToolStripMenuItem, _InitializeToGivenDateToolStripMenuItem });
+            LastArchiveDateToolStripMenuItem.Name = "LastArchiveDateToolStripMenuItem";
+            LastArchiveDateToolStripMenuItem.Size = new Size(254, 26);
+            LastArchiveDateToolStripMenuItem.Text = "Last Archive Date";
+            // 
+            // TurnONToolStripMenuItem
+            // 
+            _TurnONToolStripMenuItem.Name = "_TurnONToolStripMenuItem";
+            _TurnONToolStripMenuItem.Size = new Size(235, 26);
+            _TurnONToolStripMenuItem.Text = "Turn ON";
+            // 
+            // TurnOFFToolStripMenuItem
+            // 
+            _TurnOFFToolStripMenuItem.Name = "_TurnOFFToolStripMenuItem";
+            _TurnOFFToolStripMenuItem.Size = new Size(235, 26);
+            _TurnOFFToolStripMenuItem.Text = "Turn OFF";
+            // 
+            // InitializeToGivenDateToolStripMenuItem
+            // 
+            _InitializeToGivenDateToolStripMenuItem.Name = "_InitializeToGivenDateToolStripMenuItem";
+            _InitializeToGivenDateToolStripMenuItem.Size = new Size(235, 26);
+            _InitializeToGivenDateToolStripMenuItem.Text = "Initialize to Given Date";
+            // 
             // ListenerUtilitiesToolStripMenuItem
             // 
-            ListenerUtilitiesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { _LIstWindowsLogsToolStripMenuItem, _CheckLogsForListenerInfoToolStripMenuItem });
+            ListenerUtilitiesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { _TurnListenerONToolStripMenuItem, _TurnListenerOFFToolStripMenuItem, _LIstWindowsLogsToolStripMenuItem, _CheckLogsForListenerInfoToolStripMenuItem });
             ListenerUtilitiesToolStripMenuItem.Name = "ListenerUtilitiesToolStripMenuItem";
-            ListenerUtilitiesToolStripMenuItem.Size = new Size(240, 26);
+            ListenerUtilitiesToolStripMenuItem.Size = new Size(254, 26);
             ListenerUtilitiesToolStripMenuItem.Text = "Listener Utilities";
+            // 
+            // TurnListenerONToolStripMenuItem
+            // 
+            _TurnListenerONToolStripMenuItem.Name = "_TurnListenerONToolStripMenuItem";
+            _TurnListenerONToolStripMenuItem.Size = new Size(266, 26);
+            _TurnListenerONToolStripMenuItem.Text = "Turn Listener ON";
+            // 
+            // TurnListenerOFFToolStripMenuItem
+            // 
+            _TurnListenerOFFToolStripMenuItem.Name = "_TurnListenerOFFToolStripMenuItem";
+            _TurnListenerOFFToolStripMenuItem.Size = new Size(266, 26);
+            _TurnListenerOFFToolStripMenuItem.Text = "Turn Listener OFF";
             // 
             // LIstWindowsLogsToolStripMenuItem
             // 
@@ -2431,10 +2555,16 @@ namespace EcmArchiver
             // 
             // SQLiteUtiltiiesToolStripMenuItem
             // 
-            SQLiteUtiltiiesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { _ResetSQLiteArchivesToolStripMenuItem, _GetOutlookEMailIDsToolStripMenuItem1, _ResetZIPFilesToolStripMenuItem, _ResetEmailIdentifierCodesToolStripMenuItem, _RebuildSQLiteDBToolStripMenuItem1, _BackupSQLiteDBToolStripMenuItem1, _RestoreSQLiteDBToolStripMenuItem1, _SQToolStripMenuItem });
+            SQLiteUtiltiiesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { _ReInventoryAllFilesToolStripMenuItem, _ResetSQLiteArchivesToolStripMenuItem, _GetOutlookEMailIDsToolStripMenuItem1, _ResetZIPFilesToolStripMenuItem, _ResetEmailIdentifierCodesToolStripMenuItem, _RebuildSQLiteDBToolStripMenuItem1, _BackupSQLiteDBToolStripMenuItem1, _RestoreSQLiteDBToolStripMenuItem1, _SQToolStripMenuItem });
             SQLiteUtiltiiesToolStripMenuItem.Name = "SQLiteUtiltiiesToolStripMenuItem";
-            SQLiteUtiltiiesToolStripMenuItem.Size = new Size(240, 26);
+            SQLiteUtiltiiesToolStripMenuItem.Size = new Size(254, 26);
             SQLiteUtiltiiesToolStripMenuItem.Text = "SQLite Utiltiies";
+            // 
+            // ReInventoryAllFilesToolStripMenuItem
+            // 
+            _ReInventoryAllFilesToolStripMenuItem.Name = "_ReInventoryAllFilesToolStripMenuItem";
+            _ReInventoryAllFilesToolStripMenuItem.Size = new Size(270, 26);
+            _ReInventoryAllFilesToolStripMenuItem.Text = "ReInventory All Files";
             // 
             // ResetSQLiteArchivesToolStripMenuItem
             // 
@@ -2488,7 +2618,7 @@ namespace EcmArchiver
             // 
             ReOCRToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { _EstimateNumberOfFilesToolStripMenuItem, ToolStripSeparator3, _ReOcrIncompleteGraphicFilesToolStripMenuItem, _ReOcrALLGraphicFilesToolStripMenuItem1 });
             ReOCRToolStripMenuItem.Name = "ReOCRToolStripMenuItem";
-            ReOCRToolStripMenuItem.Size = new Size(240, 26);
+            ReOCRToolStripMenuItem.Size = new Size(254, 26);
             ReOCRToolStripMenuItem.Text = "OCR Utilities";
             ReOCRToolStripMenuItem.Visible = false;
             // 
@@ -2519,7 +2649,7 @@ namespace EcmArchiver
             // 
             RetentionManagementToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { _RetentionRulesToolStripMenuItem, _RulesExecutionToolStripMenuItem });
             RetentionManagementToolStripMenuItem.Name = "RetentionManagementToolStripMenuItem";
-            RetentionManagementToolStripMenuItem.Size = new Size(240, 26);
+            RetentionManagementToolStripMenuItem.Size = new Size(254, 26);
             RetentionManagementToolStripMenuItem.Text = "Retention Management";
             // 
             // RetentionRulesToolStripMenuItem
@@ -2537,26 +2667,136 @@ namespace EcmArchiver
             // EncryptStringToolStripMenuItem
             // 
             _EncryptStringToolStripMenuItem.Name = "_EncryptStringToolStripMenuItem";
-            _EncryptStringToolStripMenuItem.Size = new Size(240, 26);
+            _EncryptStringToolStripMenuItem.Size = new Size(254, 26);
             _EncryptStringToolStripMenuItem.Text = "Encrypt String";
             _EncryptStringToolStripMenuItem.ToolTipText = "Use this function to encrypt a string for use in ECM Library.";
             // 
             // OpenLicenseFormToolStripMenuItem
             // 
             _OpenLicenseFormToolStripMenuItem.Name = "_OpenLicenseFormToolStripMenuItem";
-            _OpenLicenseFormToolStripMenuItem.Size = new Size(240, 26);
+            _OpenLicenseFormToolStripMenuItem.Size = new Size(254, 26);
             _OpenLicenseFormToolStripMenuItem.Text = "Open License Form";
+            // 
+            // FileNamesToolStripMenuItem
+            // 
+            _FileNamesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { _CanLongFilenamesBeTurnedOnToolStripMenuItem, _HowToTurnOnLongFilenamesToolStripMenuItem, _TurnONLongFilenamesAdminNeededToolStripMenuItem, _CheckForViolationsToolStripMenuItem, _ValidateFileHASHCodesToolStripMenuItem, _ValidateProcessAsFileExtsToolStripMenuItem });
+            _FileNamesToolStripMenuItem.Name = "_FileNamesToolStripMenuItem";
+            _FileNamesToolStripMenuItem.Size = new Size(254, 26);
+            _FileNamesToolStripMenuItem.Text = "File Names";
+            // 
+            // CanLongFilenamesBeTurnedOnToolStripMenuItem
+            // 
+            _CanLongFilenamesBeTurnedOnToolStripMenuItem.Name = "_CanLongFilenamesBeTurnedOnToolStripMenuItem";
+            _CanLongFilenamesBeTurnedOnToolStripMenuItem.Size = new Size(308, 26);
+            _CanLongFilenamesBeTurnedOnToolStripMenuItem.Text = "Check Long filenames Avail";
+            // 
+            // HowToTurnOnLongFilenamesToolStripMenuItem
+            // 
+            _HowToTurnOnLongFilenamesToolStripMenuItem.Name = "_HowToTurnOnLongFilenamesToolStripMenuItem";
+            _HowToTurnOnLongFilenamesToolStripMenuItem.Size = new Size(308, 26);
+            _HowToTurnOnLongFilenamesToolStripMenuItem.Text = "Long Files Names - Explaination";
+            // 
+            // TurnONLongFilenamesAdminNeededToolStripMenuItem
+            // 
+            _TurnONLongFilenamesAdminNeededToolStripMenuItem.Name = "_TurnONLongFilenamesAdminNeededToolStripMenuItem";
+            _TurnONLongFilenamesAdminNeededToolStripMenuItem.Size = new Size(308, 26);
+            _TurnONLongFilenamesAdminNeededToolStripMenuItem.Text = "HOW TO Turn ON Long Filenames";
+            // 
+            // CheckForViolationsToolStripMenuItem
+            // 
+            _CheckForViolationsToolStripMenuItem.Name = "_CheckForViolationsToolStripMenuItem";
+            _CheckForViolationsToolStripMenuItem.Size = new Size(308, 26);
+            _CheckForViolationsToolStripMenuItem.Text = "Set Missing FileHash";
+            // 
+            // ValidateFileHASHCodesToolStripMenuItem
+            // 
+            _ValidateFileHASHCodesToolStripMenuItem.Name = "_ValidateFileHASHCodesToolStripMenuItem";
+            _ValidateFileHASHCodesToolStripMenuItem.Size = new Size(308, 26);
+            _ValidateFileHASHCodesToolStripMenuItem.Text = "Reset File HASH Codes";
+            // 
+            // ValidateProcessAsFileExtsToolStripMenuItem
+            // 
+            _ValidateProcessAsFileExtsToolStripMenuItem.Name = "_ValidateProcessAsFileExtsToolStripMenuItem";
+            _ValidateProcessAsFileExtsToolStripMenuItem.Size = new Size(308, 26);
+            _ValidateProcessAsFileExtsToolStripMenuItem.Text = "Validate iFilter Extensions";
+            // 
+            // FulltextLogAnalysisToolStripMenuItem
+            // 
+            _FulltextLogAnalysisToolStripMenuItem.Name = "_FulltextLogAnalysisToolStripMenuItem";
+            _FulltextLogAnalysisToolStripMenuItem.Size = new Size(254, 26);
+            _FulltextLogAnalysisToolStripMenuItem.Text = "Fulltext Log Analysis";
+            // 
+            // UpdateAvailableIFiltersToolStripMenuItem
+            // 
+            _UpdateAvailableIFiltersToolStripMenuItem.Name = "_UpdateAvailableIFiltersToolStripMenuItem";
+            _UpdateAvailableIFiltersToolStripMenuItem.Size = new Size(254, 26);
+            _UpdateAvailableIFiltersToolStripMenuItem.Text = "Update Available iFilters";
+            // 
+            // ValidateRepoContentsToolStripMenuItem
+            // 
+            _ValidateRepoContentsToolStripMenuItem.BackColor = Color.Crimson;
+            _ValidateRepoContentsToolStripMenuItem.ForeColor = SystemColors.ButtonHighlight;
+            _ValidateRepoContentsToolStripMenuItem.Name = "_ValidateRepoContentsToolStripMenuItem";
+            _ValidateRepoContentsToolStripMenuItem.Size = new Size(254, 26);
+            _ValidateRepoContentsToolStripMenuItem.Text = "Validate ALL Files in Repo";
+            // 
+            // ImpersonateLoginToolStripMenuItem
+            // 
+            _ImpersonateLoginToolStripMenuItem.Name = "_ImpersonateLoginToolStripMenuItem";
+            _ImpersonateLoginToolStripMenuItem.Size = new Size(276, 26);
+            _ImpersonateLoginToolStripMenuItem.Text = "Archiver Login";
+            _ImpersonateLoginToolStripMenuItem.ToolTipText = "Set the login here that will be automatically used for archives on this machine.";
+            _ImpersonateLoginToolStripMenuItem.Visible = false;
+            // 
+            // LoginAsDifferenctUserToolStripMenuItem
+            // 
+            _LoginAsDifferenctUserToolStripMenuItem.Name = "_LoginAsDifferenctUserToolStripMenuItem";
+            _LoginAsDifferenctUserToolStripMenuItem.Size = new Size(276, 26);
+            _LoginAsDifferenctUserToolStripMenuItem.Text = "Login as different User";
+            _LoginAsDifferenctUserToolStripMenuItem.ToolTipText = "Press to login under a different user ID.";
+            // 
+            // ManualEditAppConfigToolStripMenuItem
+            // 
+            _ManualEditAppConfigToolStripMenuItem.Name = "_ManualEditAppConfigToolStripMenuItem";
+            _ManualEditAppConfigToolStripMenuItem.Size = new Size(276, 26);
+            _ManualEditAppConfigToolStripMenuItem.Text = "(Manual Edit) App Config";
+            _ManualEditAppConfigToolStripMenuItem.ToolTipText = "Use with great care.";
+            // 
+            // ManualEditListenerConfigToolStripMenuItem
+            // 
+            _ManualEditListenerConfigToolStripMenuItem.Name = "_ManualEditListenerConfigToolStripMenuItem";
+            _ManualEditListenerConfigToolStripMenuItem.Size = new Size(276, 26);
+            _ManualEditListenerConfigToolStripMenuItem.Text = "(Manual Edit) Listener Config";
+            // 
+            // ViewLogsToolStripMenuItem
+            // 
+            _ViewLogsToolStripMenuItem.Name = "_ViewLogsToolStripMenuItem";
+            _ViewLogsToolStripMenuItem.Size = new Size(276, 26);
+            _ViewLogsToolStripMenuItem.Text = "View Logs";
+            // 
+            // ViewOCRErrorFilesToolStripMenuItem
+            // 
+            _ViewOCRErrorFilesToolStripMenuItem.Name = "_ViewOCRErrorFilesToolStripMenuItem";
+            _ViewOCRErrorFilesToolStripMenuItem.Size = new Size(276, 26);
+            _ViewOCRErrorFilesToolStripMenuItem.Text = "View OCR Error Files";
+            _ViewOCRErrorFilesToolStripMenuItem.Visible = false;
+            // 
+            // AddDesktopIconToolStripMenuItem
+            // 
+            _AddDesktopIconToolStripMenuItem.Name = "_AddDesktopIconToolStripMenuItem";
+            _AddDesktopIconToolStripMenuItem.Size = new Size(276, 26);
+            _AddDesktopIconToolStripMenuItem.Text = "Add Desktop Icon";
             // 
             // CheckForUpdatesToolStripMenuItem
             // 
             _CheckForUpdatesToolStripMenuItem.Name = "_CheckForUpdatesToolStripMenuItem";
-            _CheckForUpdatesToolStripMenuItem.Size = new Size(253, 26);
+            _CheckForUpdatesToolStripMenuItem.Size = new Size(276, 26);
             _CheckForUpdatesToolStripMenuItem.Text = "Check for Updates";
             // 
             // ShowSystemVersionToolStripMenuItem
             // 
             _ShowSystemVersionToolStripMenuItem.Name = "_ShowSystemVersionToolStripMenuItem";
-            _ShowSystemVersionToolStripMenuItem.Size = new Size(253, 26);
+            _ShowSystemVersionToolStripMenuItem.Size = new Size(276, 26);
             _ShowSystemVersionToolStripMenuItem.Text = "Show System Version";
             // 
             // SelectionToolStripMenuItem
@@ -2598,7 +2838,7 @@ namespace EcmArchiver
             // 
             // TestToolStripMenuItem
             // 
-            TestToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { _DirectoryInventoryToolStripMenuItem, _ListFilesInDirectoryToolStripMenuItem, _GetAllSubdirFilesToolStripMenuItem, OCRToolStripMenuItem, _FileHashToolStripMenuItem, _FileUploadToolStripMenuItem, _FileUploadBufferedToolStripMenuItem, _FileChunkUploadToolStripMenuItem, _RSSPullToolStripMenuItem, ShowEndpointsToolStripMenuItem, _UnhandledExceptionsToolStripMenuItem, ListenerFunctionsToolStripMenuItem });
+            TestToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { _DirectoryInventoryToolStripMenuItem, _ListFilesInDirectoryToolStripMenuItem, _GetAllSubdirFilesToolStripMenuItem, OCRToolStripMenuItem, _FileHashToolStripMenuItem, _FileUploadToolStripMenuItem, _FileUploadBufferedToolStripMenuItem, _FileChunkUploadToolStripMenuItem, _RSSPullToolStripMenuItem, ShowEndpointsToolStripMenuItem, _UnhandledExceptionsToolStripMenuItem, ListenerFunctionsToolStripMenuItem, _CreateSQLiteDBToolStripMenuItem, _LongFilenameHASHToolStripMenuItem, _ValidateLongDirectroryNamesToolStripMenuItem, _TextStringHashToolStripMenuItem, _GetDirFilesByFilterToolStripMenuItem, _GenWhereINDictToolStripMenuItem });
             TestToolStripMenuItem.Name = "TestToolStripMenuItem";
             TestToolStripMenuItem.Size = new Size(47, 24);
             TestToolStripMenuItem.Text = "Test";
@@ -2606,74 +2846,74 @@ namespace EcmArchiver
             // DirectoryInventoryToolStripMenuItem
             // 
             _DirectoryInventoryToolStripMenuItem.Name = "_DirectoryInventoryToolStripMenuItem";
-            _DirectoryInventoryToolStripMenuItem.Size = new Size(241, 26);
+            _DirectoryInventoryToolStripMenuItem.Size = new Size(295, 26);
             _DirectoryInventoryToolStripMenuItem.Text = "Directory Inventory";
             // 
             // ListFilesInDirectoryToolStripMenuItem
             // 
             _ListFilesInDirectoryToolStripMenuItem.Name = "_ListFilesInDirectoryToolStripMenuItem";
-            _ListFilesInDirectoryToolStripMenuItem.Size = new Size(241, 26);
+            _ListFilesInDirectoryToolStripMenuItem.Size = new Size(295, 26);
             _ListFilesInDirectoryToolStripMenuItem.Text = "List Files in Directory";
             // 
             // GetAllSubdirFilesToolStripMenuItem
             // 
             _GetAllSubdirFilesToolStripMenuItem.Name = "_GetAllSubdirFilesToolStripMenuItem";
-            _GetAllSubdirFilesToolStripMenuItem.Size = new Size(241, 26);
+            _GetAllSubdirFilesToolStripMenuItem.Size = new Size(295, 26);
             _GetAllSubdirFilesToolStripMenuItem.Text = "Get All Subdir Files";
             // 
             // OCRToolStripMenuItem
             // 
             OCRToolStripMenuItem.Name = "OCRToolStripMenuItem";
-            OCRToolStripMenuItem.Size = new Size(241, 26);
+            OCRToolStripMenuItem.Size = new Size(295, 26);
             OCRToolStripMenuItem.Text = "OCR";
             // 
             // FileHashToolStripMenuItem
             // 
             _FileHashToolStripMenuItem.Name = "_FileHashToolStripMenuItem";
-            _FileHashToolStripMenuItem.Size = new Size(241, 26);
+            _FileHashToolStripMenuItem.Size = new Size(295, 26);
             _FileHashToolStripMenuItem.Text = "File Hash";
             // 
             // FileUploadToolStripMenuItem
             // 
             _FileUploadToolStripMenuItem.Name = "_FileUploadToolStripMenuItem";
-            _FileUploadToolStripMenuItem.Size = new Size(241, 26);
-            _FileUploadToolStripMenuItem.Text = "File Upload File";
+            _FileUploadToolStripMenuItem.Size = new Size(295, 26);
+            _FileUploadToolStripMenuItem.Text = "File Upload (Stream)";
             // 
             // FileUploadBufferedToolStripMenuItem
             // 
             _FileUploadBufferedToolStripMenuItem.Name = "_FileUploadBufferedToolStripMenuItem";
-            _FileUploadBufferedToolStripMenuItem.Size = new Size(241, 26);
-            _FileUploadBufferedToolStripMenuItem.Text = "File Upload Buffered";
+            _FileUploadBufferedToolStripMenuItem.Size = new Size(295, 26);
+            _FileUploadBufferedToolStripMenuItem.Text = "File Upload (Buffered)";
             // 
             // FileChunkUploadToolStripMenuItem
             // 
             _FileChunkUploadToolStripMenuItem.Name = "_FileChunkUploadToolStripMenuItem";
-            _FileChunkUploadToolStripMenuItem.Size = new Size(241, 26);
+            _FileChunkUploadToolStripMenuItem.Size = new Size(295, 26);
             _FileChunkUploadToolStripMenuItem.Text = "File Chunk Upload";
             // 
             // RSSPullToolStripMenuItem
             // 
             _RSSPullToolStripMenuItem.Name = "_RSSPullToolStripMenuItem";
-            _RSSPullToolStripMenuItem.Size = new Size(241, 26);
+            _RSSPullToolStripMenuItem.Size = new Size(295, 26);
             _RSSPullToolStripMenuItem.Text = "RSS Pull";
             // 
             // ShowEndpointsToolStripMenuItem
             // 
             ShowEndpointsToolStripMenuItem.Name = "ShowEndpointsToolStripMenuItem";
-            ShowEndpointsToolStripMenuItem.Size = new Size(241, 26);
+            ShowEndpointsToolStripMenuItem.Size = new Size(295, 26);
             ShowEndpointsToolStripMenuItem.Text = "Show Endpoints";
             // 
             // UnhandledExceptionsToolStripMenuItem
             // 
             _UnhandledExceptionsToolStripMenuItem.Name = "_UnhandledExceptionsToolStripMenuItem";
-            _UnhandledExceptionsToolStripMenuItem.Size = new Size(241, 26);
+            _UnhandledExceptionsToolStripMenuItem.Size = new Size(295, 26);
             _UnhandledExceptionsToolStripMenuItem.Text = "Unhandled Exception(s)";
             // 
             // ListenerFunctionsToolStripMenuItem
             // 
             ListenerFunctionsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { _GetListenerFilesToolStripMenuItem });
             ListenerFunctionsToolStripMenuItem.Name = "ListenerFunctionsToolStripMenuItem";
-            ListenerFunctionsToolStripMenuItem.Size = new Size(241, 26);
+            ListenerFunctionsToolStripMenuItem.Size = new Size(295, 26);
             ListenerFunctionsToolStripMenuItem.Text = "Listener Functions";
             // 
             // GetListenerFilesToolStripMenuItem
@@ -2681,6 +2921,43 @@ namespace EcmArchiver
             _GetListenerFilesToolStripMenuItem.Name = "_GetListenerFilesToolStripMenuItem";
             _GetListenerFilesToolStripMenuItem.Size = new Size(195, 26);
             _GetListenerFilesToolStripMenuItem.Text = "Get Listener Files";
+            // 
+            // CreateSQLiteDBToolStripMenuItem
+            // 
+            _CreateSQLiteDBToolStripMenuItem.Name = "_CreateSQLiteDBToolStripMenuItem";
+            _CreateSQLiteDBToolStripMenuItem.Size = new Size(295, 26);
+            _CreateSQLiteDBToolStripMenuItem.Text = "Create SQLite DB";
+            // 
+            // LongFilenameHASHToolStripMenuItem
+            // 
+            _LongFilenameHASHToolStripMenuItem.Name = "_LongFilenameHASHToolStripMenuItem";
+            _LongFilenameHASHToolStripMenuItem.Size = new Size(295, 26);
+            _LongFilenameHASHToolStripMenuItem.Text = "Long Filename HASH";
+            // 
+            // ValidateLongDirectroryNamesToolStripMenuItem
+            // 
+            _ValidateLongDirectroryNamesToolStripMenuItem.Name = "_ValidateLongDirectroryNamesToolStripMenuItem";
+            _ValidateLongDirectroryNamesToolStripMenuItem.Size = new Size(295, 26);
+            _ValidateLongDirectroryNamesToolStripMenuItem.Text = "Validate Long Directrory Names";
+            _ValidateLongDirectroryNamesToolStripMenuItem.Visible = false;
+            // 
+            // TextStringHashToolStripMenuItem
+            // 
+            _TextStringHashToolStripMenuItem.Name = "_TextStringHashToolStripMenuItem";
+            _TextStringHashToolStripMenuItem.Size = new Size(295, 26);
+            _TextStringHashToolStripMenuItem.Text = "Text String Hash";
+            // 
+            // GetDirFilesByFilterToolStripMenuItem
+            // 
+            _GetDirFilesByFilterToolStripMenuItem.Name = "_GetDirFilesByFilterToolStripMenuItem";
+            _GetDirFilesByFilterToolStripMenuItem.Size = new Size(295, 26);
+            _GetDirFilesByFilterToolStripMenuItem.Text = "Get Dir Files by Filter";
+            // 
+            // GenWhereINDictToolStripMenuItem
+            // 
+            _GenWhereINDictToolStripMenuItem.Name = "_GenWhereINDictToolStripMenuItem";
+            _GenWhereINDictToolStripMenuItem.Size = new Size(295, 26);
+            _GenWhereINDictToolStripMenuItem.Text = "Gen WhereIN Dict";
             // 
             // ExitToolStripMenuItem
             // 
@@ -3630,6 +3907,9 @@ namespace EcmArchiver
             // ThreadValidateSourceName
             // 
             // 
+            // ThreadSetNameHash
+            // 
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(8.0f, 16.0f);
@@ -3677,8 +3957,8 @@ namespace EcmArchiver
             ((System.ComponentModel.ISupportInitialize)_nbrArchiveHours).EndInit();
             ((System.ComponentModel.ISupportInitialize)PictureBox2).EndInit();
             _gbContentMgt.ResumeLayout(false);
-            Panel2.ResumeLayout(false);
-            Panel2.PerformLayout();
+            _Panel2.ResumeLayout(false);
+            _Panel2.PerformLayout();
             Panel1.ResumeLayout(false);
             Panel1.PerformLayout();
             Panel3.ResumeLayout(false);
@@ -4993,7 +5273,32 @@ namespace EcmArchiver
             }
         }
 
-        internal Label Label13;
+        private Label _Label13;
+
+        internal Label Label13
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _Label13;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_Label13 != null)
+                {
+                    _Label13.Click -= Label13_Click;
+                }
+
+                _Label13 = value;
+                if (_Label13 != null)
+                {
+                    _Label13.Click += Label13_Click;
+                }
+            }
+        }
+
         internal Label Label11;
         private CheckBox _ckTerminate;
 
@@ -5391,7 +5696,32 @@ namespace EcmArchiver
         }
 
         internal MenuStrip MenuStrip1;
-        internal ToolStripMenuItem ArchiveToolStripMenuItem;
+        private ToolStripMenuItem _ArchiveToolStripMenuItem;
+
+        internal ToolStripMenuItem ArchiveToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _ArchiveToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_ArchiveToolStripMenuItem != null)
+                {
+                    _ArchiveToolStripMenuItem.Click -= ArchiveToolStripMenuItem_Click;
+                }
+
+                _ArchiveToolStripMenuItem = value;
+                if (_ArchiveToolStripMenuItem != null)
+                {
+                    _ArchiveToolStripMenuItem.Click += ArchiveToolStripMenuItem_Click;
+                }
+            }
+        }
+
         private ToolStripMenuItem _OutlookEmailsToolStripMenuItem;
 
         internal ToolStripMenuItem OutlookEmailsToolStripMenuItem
@@ -5848,7 +6178,32 @@ namespace EcmArchiver
         }
 
         internal ToolStripStatusLabel SB5;
-        internal Panel Panel2;
+        private Panel _Panel2;
+
+        internal Panel Panel2
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _Panel2;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_Panel2 != null)
+                {
+                    _Panel2.Paint -= Panel2_Paint;
+                }
+
+                _Panel2 = value;
+                if (_Panel2 != null)
+                {
+                    _Panel2.Paint += Panel2_Paint;
+                }
+            }
+        }
+
         internal Panel Panel1;
         internal Panel Panel3;
         internal ToolStripStatusLabel ToolStripStatusLabel1;
@@ -7098,7 +7453,32 @@ namespace EcmArchiver
             }
         }
 
-        internal LinkLabel LinkLabel2;
+        private LinkLabel _LinkLabel2;
+
+        internal LinkLabel LinkLabel2
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _LinkLabel2;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_LinkLabel2 != null)
+                {
+                    _LinkLabel2.LinkClicked -= LinkLabel2_LinkClicked;
+                }
+
+                _LinkLabel2 = value;
+                if (_LinkLabel2 != null)
+                {
+                    _LinkLabel2.LinkClicked += LinkLabel2_LinkClicked;
+                }
+            }
+        }
+
         internal NumericUpDown nbrOutboundLinks;
         internal NumericUpDown nbrDepth;
         internal Label Label30;
@@ -7755,7 +8135,6 @@ namespace EcmArchiver
         }
 
         internal ToolStripMenuItem RepositoryUtilitiesToolStripMenuItem;
-        internal ToolStripMenuItem CleanupSourceNameToolStripMenuItem;
         internal ToolStripMenuItem ListenerUtilitiesToolStripMenuItem;
         private ToolStripMenuItem _LIstWindowsLogsToolStripMenuItem;
 
@@ -8122,28 +8501,784 @@ namespace EcmArchiver
             }
         }
 
-        private ToolStripMenuItem _ContentReInventoryToolStripMenuItem;
+        private ToolStripMenuItem _ReapplyALLDBUpdatesToolStripMenuItem;
 
-        internal ToolStripMenuItem ContentReInventoryToolStripMenuItem
+        internal ToolStripMenuItem ReapplyALLDBUpdatesToolStripMenuItem
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _ContentReInventoryToolStripMenuItem;
+                return _ReapplyALLDBUpdatesToolStripMenuItem;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_ContentReInventoryToolStripMenuItem != null)
+                if (_ReapplyALLDBUpdatesToolStripMenuItem != null)
                 {
-                    _ContentReInventoryToolStripMenuItem.Click -= ContentReInventoryToolStripMenuItem_Click;
+                    _ReapplyALLDBUpdatesToolStripMenuItem.Click -= ReapplyALLDBUpdatesToolStripMenuItem_Click;
                 }
 
-                _ContentReInventoryToolStripMenuItem = value;
-                if (_ContentReInventoryToolStripMenuItem != null)
+                _ReapplyALLDBUpdatesToolStripMenuItem = value;
+                if (_ReapplyALLDBUpdatesToolStripMenuItem != null)
                 {
-                    _ContentReInventoryToolStripMenuItem.Click += ContentReInventoryToolStripMenuItem_Click;
+                    _ReapplyALLDBUpdatesToolStripMenuItem.Click += ReapplyALLDBUpdatesToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _CreateSQLiteDBToolStripMenuItem;
+
+        internal ToolStripMenuItem CreateSQLiteDBToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _CreateSQLiteDBToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_CreateSQLiteDBToolStripMenuItem != null)
+                {
+                    _CreateSQLiteDBToolStripMenuItem.Click -= CreateSQLiteDBToolStripMenuItem_Click;
+                }
+
+                _CreateSQLiteDBToolStripMenuItem = value;
+                if (_CreateSQLiteDBToolStripMenuItem != null)
+                {
+                    _CreateSQLiteDBToolStripMenuItem.Click += CreateSQLiteDBToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _FileNamesToolStripMenuItem;
+
+        internal ToolStripMenuItem FileNamesToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _FileNamesToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_FileNamesToolStripMenuItem != null)
+                {
+                    _FileNamesToolStripMenuItem.Click -= FileNamesToolStripMenuItem_Click;
+                }
+
+                _FileNamesToolStripMenuItem = value;
+                if (_FileNamesToolStripMenuItem != null)
+                {
+                    _FileNamesToolStripMenuItem.Click += FileNamesToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _CanLongFilenamesBeTurnedOnToolStripMenuItem;
+
+        internal ToolStripMenuItem CanLongFilenamesBeTurnedOnToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _CanLongFilenamesBeTurnedOnToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_CanLongFilenamesBeTurnedOnToolStripMenuItem != null)
+                {
+                    _CanLongFilenamesBeTurnedOnToolStripMenuItem.Click -= CanLongFilenamesBeTurnedOnToolStripMenuItem_Click;
+                }
+
+                _CanLongFilenamesBeTurnedOnToolStripMenuItem = value;
+                if (_CanLongFilenamesBeTurnedOnToolStripMenuItem != null)
+                {
+                    _CanLongFilenamesBeTurnedOnToolStripMenuItem.Click += CanLongFilenamesBeTurnedOnToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _CheckForViolationsToolStripMenuItem;
+
+        internal ToolStripMenuItem CheckForViolationsToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _CheckForViolationsToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_CheckForViolationsToolStripMenuItem != null)
+                {
+                    _CheckForViolationsToolStripMenuItem.Click -= CheckForViolationsToolStripMenuItem_Click;
+                }
+
+                _CheckForViolationsToolStripMenuItem = value;
+                if (_CheckForViolationsToolStripMenuItem != null)
+                {
+                    _CheckForViolationsToolStripMenuItem.Click += CheckForViolationsToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _TurnONLongFilenamesAdminNeededToolStripMenuItem;
+
+        internal ToolStripMenuItem TurnONLongFilenamesAdminNeededToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _TurnONLongFilenamesAdminNeededToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_TurnONLongFilenamesAdminNeededToolStripMenuItem != null)
+                {
+                    _TurnONLongFilenamesAdminNeededToolStripMenuItem.Click -= TurnONLongFilenamesAdminNeededToolStripMenuItem_Click;
+                }
+
+                _TurnONLongFilenamesAdminNeededToolStripMenuItem = value;
+                if (_TurnONLongFilenamesAdminNeededToolStripMenuItem != null)
+                {
+                    _TurnONLongFilenamesAdminNeededToolStripMenuItem.Click += TurnONLongFilenamesAdminNeededToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _HowToTurnOnLongFilenamesToolStripMenuItem;
+
+        internal ToolStripMenuItem HowToTurnOnLongFilenamesToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _HowToTurnOnLongFilenamesToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_HowToTurnOnLongFilenamesToolStripMenuItem != null)
+                {
+                    _HowToTurnOnLongFilenamesToolStripMenuItem.Click -= HowToTurnOnLongFilenamesToolStripMenuItem_Click;
+                }
+
+                _HowToTurnOnLongFilenamesToolStripMenuItem = value;
+                if (_HowToTurnOnLongFilenamesToolStripMenuItem != null)
+                {
+                    _HowToTurnOnLongFilenamesToolStripMenuItem.Click += HowToTurnOnLongFilenamesToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _LongFilenameHASHToolStripMenuItem;
+
+        internal ToolStripMenuItem LongFilenameHASHToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _LongFilenameHASHToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_LongFilenameHASHToolStripMenuItem != null)
+                {
+                    _LongFilenameHASHToolStripMenuItem.Click -= LongFilenameHASHToolStripMenuItem_Click;
+                }
+
+                _LongFilenameHASHToolStripMenuItem = value;
+                if (_LongFilenameHASHToolStripMenuItem != null)
+                {
+                    _LongFilenameHASHToolStripMenuItem.Click += LongFilenameHASHToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _ValidateLongDirectroryNamesToolStripMenuItem;
+
+        internal ToolStripMenuItem ValidateLongDirectroryNamesToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _ValidateLongDirectroryNamesToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_ValidateLongDirectroryNamesToolStripMenuItem != null)
+                {
+                    _ValidateLongDirectroryNamesToolStripMenuItem.Click -= ValidateLongDirectroryNamesToolStripMenuItem_Click;
+                }
+
+                _ValidateLongDirectroryNamesToolStripMenuItem = value;
+                if (_ValidateLongDirectroryNamesToolStripMenuItem != null)
+                {
+                    _ValidateLongDirectroryNamesToolStripMenuItem.Click += ValidateLongDirectroryNamesToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _TextStringHashToolStripMenuItem;
+
+        internal ToolStripMenuItem TextStringHashToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _TextStringHashToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_TextStringHashToolStripMenuItem != null)
+                {
+                    _TextStringHashToolStripMenuItem.Click -= TextStringHashToolStripMenuItem_Click;
+                }
+
+                _TextStringHashToolStripMenuItem = value;
+                if (_TextStringHashToolStripMenuItem != null)
+                {
+                    _TextStringHashToolStripMenuItem.Click += TextStringHashToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private System.ComponentModel.BackgroundWorker _ThreadSetNameHash;
+
+        internal System.ComponentModel.BackgroundWorker ThreadSetNameHash
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _ThreadSetNameHash;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_ThreadSetNameHash != null)
+                {
+                    _ThreadSetNameHash.DoWork -= ThreadSetNameHash_DoWork;
+                }
+
+                _ThreadSetNameHash = value;
+                if (_ThreadSetNameHash != null)
+                {
+                    _ThreadSetNameHash.DoWork += ThreadSetNameHash_DoWork;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _ValidateFileHASHCodesToolStripMenuItem;
+
+        internal ToolStripMenuItem ValidateFileHASHCodesToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _ValidateFileHASHCodesToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_ValidateFileHASHCodesToolStripMenuItem != null)
+                {
+                    _ValidateFileHASHCodesToolStripMenuItem.Click -= ValidateFileHASHCodesToolStripMenuItem_Click;
+                }
+
+                _ValidateFileHASHCodesToolStripMenuItem = value;
+                if (_ValidateFileHASHCodesToolStripMenuItem != null)
+                {
+                    _ValidateFileHASHCodesToolStripMenuItem.Click += ValidateFileHASHCodesToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private CheckBox _CheckBox2;
+
+        internal CheckBox CheckBox2
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _CheckBox2;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_CheckBox2 != null)
+                {
+                    _CheckBox2.CheckedChanged -= CheckBox2_CheckedChanged;
+                }
+
+                _CheckBox2 = value;
+                if (_CheckBox2 != null)
+                {
+                    _CheckBox2.CheckedChanged += CheckBox2_CheckedChanged;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _ValidateProcessAsFileExtsToolStripMenuItem;
+
+        internal ToolStripMenuItem ValidateProcessAsFileExtsToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _ValidateProcessAsFileExtsToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_ValidateProcessAsFileExtsToolStripMenuItem != null)
+                {
+                    _ValidateProcessAsFileExtsToolStripMenuItem.Click -= ValidateProcessAsFileExtsToolStripMenuItem_Click;
+                }
+
+                _ValidateProcessAsFileExtsToolStripMenuItem = value;
+                if (_ValidateProcessAsFileExtsToolStripMenuItem != null)
+                {
+                    _ValidateProcessAsFileExtsToolStripMenuItem.Click += ValidateProcessAsFileExtsToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _ManualEditListenerConfigToolStripMenuItem;
+
+        internal ToolStripMenuItem ManualEditListenerConfigToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _ManualEditListenerConfigToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_ManualEditListenerConfigToolStripMenuItem != null)
+                {
+                    _ManualEditListenerConfigToolStripMenuItem.Click -= ManualEditListenerConfigToolStripMenuItem_Click;
+                }
+
+                _ManualEditListenerConfigToolStripMenuItem = value;
+                if (_ManualEditListenerConfigToolStripMenuItem != null)
+                {
+                    _ManualEditListenerConfigToolStripMenuItem.Click += ManualEditListenerConfigToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _ContentNoLIstenerToolStripMenuItem;
+
+        internal ToolStripMenuItem ContentNoLIstenerToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _ContentNoLIstenerToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_ContentNoLIstenerToolStripMenuItem != null)
+                {
+                    _ContentNoLIstenerToolStripMenuItem.Click -= ContentNoLIstenerToolStripMenuItem_Click;
+                }
+
+                _ContentNoLIstenerToolStripMenuItem = value;
+                if (_ContentNoLIstenerToolStripMenuItem != null)
+                {
+                    _ContentNoLIstenerToolStripMenuItem.Click += ContentNoLIstenerToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _ValidateRetentionDatesToolStripMenuItem;
+
+        internal ToolStripMenuItem ValidateRetentionDatesToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _ValidateRetentionDatesToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_ValidateRetentionDatesToolStripMenuItem != null)
+                {
+                    _ValidateRetentionDatesToolStripMenuItem.Click -= ValidateRetentionDatesToolStripMenuItem_Click;
+                }
+
+                _ValidateRetentionDatesToolStripMenuItem = value;
+                if (_ValidateRetentionDatesToolStripMenuItem != null)
+                {
+                    _ValidateRetentionDatesToolStripMenuItem.Click += ValidateRetentionDatesToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _FulltextLogAnalysisToolStripMenuItem;
+
+        internal ToolStripMenuItem FulltextLogAnalysisToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _FulltextLogAnalysisToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_FulltextLogAnalysisToolStripMenuItem != null)
+                {
+                    _FulltextLogAnalysisToolStripMenuItem.Click -= FulltextLogAnalysisToolStripMenuItem_Click;
+                }
+
+                _FulltextLogAnalysisToolStripMenuItem = value;
+                if (_FulltextLogAnalysisToolStripMenuItem != null)
+                {
+                    _FulltextLogAnalysisToolStripMenuItem.Click += FulltextLogAnalysisToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _UpdateAvailableIFiltersToolStripMenuItem;
+
+        internal ToolStripMenuItem UpdateAvailableIFiltersToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _UpdateAvailableIFiltersToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_UpdateAvailableIFiltersToolStripMenuItem != null)
+                {
+                    _UpdateAvailableIFiltersToolStripMenuItem.Click -= UpdateAvailableIFiltersToolStripMenuItem_Click;
+                }
+
+                _UpdateAvailableIFiltersToolStripMenuItem = value;
+                if (_UpdateAvailableIFiltersToolStripMenuItem != null)
+                {
+                    _UpdateAvailableIFiltersToolStripMenuItem.Click += UpdateAvailableIFiltersToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _ReInventoryAllFilesToolStripMenuItem;
+
+        internal ToolStripMenuItem ReInventoryAllFilesToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _ReInventoryAllFilesToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_ReInventoryAllFilesToolStripMenuItem != null)
+                {
+                    _ReInventoryAllFilesToolStripMenuItem.Click -= ReInventoryAllFilesToolStripMenuItem_Click;
+                }
+
+                _ReInventoryAllFilesToolStripMenuItem = value;
+                if (_ReInventoryAllFilesToolStripMenuItem != null)
+                {
+                    _ReInventoryAllFilesToolStripMenuItem.Click += ReInventoryAllFilesToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _GetDirFilesByFilterToolStripMenuItem;
+
+        internal ToolStripMenuItem GetDirFilesByFilterToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _GetDirFilesByFilterToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_GetDirFilesByFilterToolStripMenuItem != null)
+                {
+                    _GetDirFilesByFilterToolStripMenuItem.Click -= GetDirFilesByFilterToolStripMenuItem_Click;
+                }
+
+                _GetDirFilesByFilterToolStripMenuItem = value;
+                if (_GetDirFilesByFilterToolStripMenuItem != null)
+                {
+                    _GetDirFilesByFilterToolStripMenuItem.Click += GetDirFilesByFilterToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _GenWhereINDictToolStripMenuItem;
+
+        internal ToolStripMenuItem GenWhereINDictToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _GenWhereINDictToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_GenWhereINDictToolStripMenuItem != null)
+                {
+                    _GenWhereINDictToolStripMenuItem.Click -= GenWhereINDictToolStripMenuItem_Click;
+                }
+
+                _GenWhereINDictToolStripMenuItem = value;
+                if (_GenWhereINDictToolStripMenuItem != null)
+                {
+                    _GenWhereINDictToolStripMenuItem.Click += GenWhereINDictToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private Button _btnSetLastArchiveOFF;
+
+        internal Button btnSetLastArchiveOFF
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _btnSetLastArchiveOFF;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_btnSetLastArchiveOFF != null)
+                {
+                    _btnSetLastArchiveOFF.Click -= btnSetLastArchiveOFF_Click;
+                }
+
+                _btnSetLastArchiveOFF = value;
+                if (_btnSetLastArchiveOFF != null)
+                {
+                    _btnSetLastArchiveOFF.Click += btnSetLastArchiveOFF_Click;
+                }
+            }
+        }
+
+        private Button _btnSetLastArchiveON;
+
+        internal Button btnSetLastArchiveON
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _btnSetLastArchiveON;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_btnSetLastArchiveON != null)
+                {
+                    _btnSetLastArchiveON.Click -= btnSetLastArchiveON_Click;
+                }
+
+                _btnSetLastArchiveON = value;
+                if (_btnSetLastArchiveON != null)
+                {
+                    _btnSetLastArchiveON.Click += btnSetLastArchiveON_Click;
+                }
+            }
+        }
+
+        internal Label lblUseLastArchiveDate;
+        internal ToolStripMenuItem LastArchiveDateToolStripMenuItem;
+        private ToolStripMenuItem _TurnONToolStripMenuItem;
+
+        internal ToolStripMenuItem TurnONToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _TurnONToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_TurnONToolStripMenuItem != null)
+                {
+                    _TurnONToolStripMenuItem.Click -= TurnONToolStripMenuItem_Click;
+                }
+
+                _TurnONToolStripMenuItem = value;
+                if (_TurnONToolStripMenuItem != null)
+                {
+                    _TurnONToolStripMenuItem.Click += TurnONToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _TurnOFFToolStripMenuItem;
+
+        internal ToolStripMenuItem TurnOFFToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _TurnOFFToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_TurnOFFToolStripMenuItem != null)
+                {
+                    _TurnOFFToolStripMenuItem.Click -= TurnOFFToolStripMenuItem_Click;
+                }
+
+                _TurnOFFToolStripMenuItem = value;
+                if (_TurnOFFToolStripMenuItem != null)
+                {
+                    _TurnOFFToolStripMenuItem.Click += TurnOFFToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _InitializeToGivenDateToolStripMenuItem;
+
+        internal ToolStripMenuItem InitializeToGivenDateToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _InitializeToGivenDateToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_InitializeToGivenDateToolStripMenuItem != null)
+                {
+                    _InitializeToGivenDateToolStripMenuItem.Click -= InitializeToGivenDateToolStripMenuItem_Click;
+                }
+
+                _InitializeToGivenDateToolStripMenuItem = value;
+                if (_InitializeToGivenDateToolStripMenuItem != null)
+                {
+                    _InitializeToGivenDateToolStripMenuItem.Click += InitializeToGivenDateToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _TurnListenerONToolStripMenuItem;
+
+        internal ToolStripMenuItem TurnListenerONToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _TurnListenerONToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_TurnListenerONToolStripMenuItem != null)
+                {
+                    _TurnListenerONToolStripMenuItem.Click -= TurnListenerONToolStripMenuItem_Click;
+                }
+
+                _TurnListenerONToolStripMenuItem = value;
+                if (_TurnListenerONToolStripMenuItem != null)
+                {
+                    _TurnListenerONToolStripMenuItem.Click += TurnListenerONToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _TurnListenerOFFToolStripMenuItem;
+
+        internal ToolStripMenuItem TurnListenerOFFToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _TurnListenerOFFToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_TurnListenerOFFToolStripMenuItem != null)
+                {
+                    _TurnListenerOFFToolStripMenuItem.Click -= TurnListenerOFFToolStripMenuItem_Click;
+                }
+
+                _TurnListenerOFFToolStripMenuItem = value;
+                if (_TurnListenerOFFToolStripMenuItem != null)
+                {
+                    _TurnListenerOFFToolStripMenuItem.Click += TurnListenerOFFToolStripMenuItem_Click;
+                }
+            }
+        }
+
+        private ToolStripMenuItem _ValidateRepoContentsToolStripMenuItem;
+
+        internal ToolStripMenuItem ValidateRepoContentsToolStripMenuItem
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _ValidateRepoContentsToolStripMenuItem;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_ValidateRepoContentsToolStripMenuItem != null)
+                {
+                    _ValidateRepoContentsToolStripMenuItem.Click -= ValidateRepoContentsToolStripMenuItem_Click;
+                }
+
+                _ValidateRepoContentsToolStripMenuItem = value;
+                if (_ValidateRepoContentsToolStripMenuItem != null)
+                {
+                    _ValidateRepoContentsToolStripMenuItem.Click += ValidateRepoContentsToolStripMenuItem_Click;
                 }
             }
         }

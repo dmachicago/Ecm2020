@@ -3,23 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using global::System.Configuration;
 using System.Data;
+// Imports Microsoft.Data.Sqlite
+using global::System.Data.SQLite;
 using global::System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using global::ECMEncryption;
-using global::Microsoft.Data.Sqlite;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
 using MODI;
 
 namespace EcmArchiver
 {
-    // Imports System.Data.SQLite
-
     public class clsDbLocal : IDisposable
     {
-        public SqliteConnection ListernerConn = new SqliteConnection();
+        public SQLiteConnection ListernerConn = new SQLiteConnection();
         private ECMEncrypt ENC = new ECMEncrypt();
         private clsLogging LOG = new clsLogging();
+        public bool bSQLiteCOnnected = false;
+        public SQLiteConnection SQLiteCONN = new SQLiteConnection();
         private string ContactCS = "";
         private string ZipCS = "";
         private string FileCS = "";
@@ -36,7 +38,261 @@ namespace EcmArchiver
         {
             currDomain.UnhandledException += modGlobals.MYExnHandler;
             Application.ThreadException += modGlobals.MYThreadHandler;
-            modGlobals.setSLConn();
+            setSLConn();
+        }
+
+        public void ReInventory()
+        {
+            try
+            {
+                var FRM = new frmNotify();
+                FRM.Show();
+                FRM.Title = "RE-INVENTORY";
+                var DictOfDirs = new Dictionary<string, string>();
+                string[] Arr = null;
+                var DB = new clsDatabaseARCH();
+                string[] aFolders = null;
+                bool bUseArchiveBit = false;
+                FileInfo FI = null;
+                DirectoryInfo di = null;
+                string hash = "";
+                int iCnt = 0;
+                int iTot = 0;
+                string DirName = "";
+                string IncludeSubDirs = "";
+                string DB_ID = "";
+                string VersionFiles = "";
+                string DisableFolder = "";
+                string OcrDirectory = "";
+                string RetentionCode = "";
+                int DirID = 0;
+                int FileID = 0;
+                string EXT = "";
+                string FQN = "";
+                long FSize = 0L;
+                DateTime LastWriteTime = default;
+                DateTime CreationTime = default;
+                bool B = true;
+                string CurrDir = "";
+
+                // WDM COMMENTED OUT Nov-01-2020
+                // Dim AllowedExts As List(Of String) = DB.getUsersAllowedFileExt(gCurrUserGuidID)
+
+                truncateDirs();
+                truncateFiles();
+                truncateInventory();
+                // DBLocal.truncateOutlook()
+                // DBLocal.truncateExchange()
+                // DBLocal.truncateContacts()
+                truncateDirFiles();
+
+                // aFolders(0) = FQN + "|" + IncludeSubDirs + "|" + DB_ID + "|" + VersionFiles + "|" + DisableFolder + "|" + OcrDirectory + "|" + RetentionCode
+                // DB.GetContentArchiveFileFolders(gCurrLoginID, aFolders)
+                DictOfDirs = DB.GetUserDirectories(modGlobals.gCurrLoginID);
+                int ExtCnt = 0;
+                int LastIdx = 0;
+                var DirWhereInClause = new Dictionary<string, string>();
+                var DictDirID = new Dictionary<string, int>();
+                string WC = "";
+                foreach (string DKey in DictOfDirs.Keys)
+                {
+                    addDir(DKey, bUseArchiveBit);
+                    DirID = GetDirID(DKey);
+                    DictDirID.Add(DKey, DirID);
+                    // WDM Commented out the below 11-02-2020 The day before we DUMP TRUMP
+                    // WC = DB.getIncludedFileTypeWhereIn(gCurrLoginID, DKey)
+                    // If WC.Length > 0 Then
+                    // If Not DirWhereInClause.Keys.Contains(DKey) Then
+                    // DirWhereInClause.Add(DKey, WC)
+                    // End If
+                    // End If
+                }
+
+                var DictOfWC = new Dictionary<string, string>();
+                DictOfWC = DB.getIncludedFileTypeWhereIn(modGlobals.gCurrLoginID);
+                foreach (string str in DictOfDirs.Keys)
+                {
+                    try
+                    {
+                        DirName = str;
+                        // ********************************
+                        // WDM Commented out 11-02-2020 Reight before we cast trump into a lake of fire and brimstone
+                        // WC = DirWhereInClause(str)
+                        WC = getAllowedExtension(str, 0, DictOfWC);
+                        // ********************************
+                        if (Directory.Exists(DirName))
+                        {
+                            IncludeSubDirs = DictOfDirs[str];
+                            Application.DoEvents();
+                            ExtCnt = 0;
+                            LastIdx = 0;
+
+                            // ** WDM Commented out Nov-01-2020
+                            // addDir(DirName, bUseArchiveBit)
+                            // DirID = GetDirID(DirName)
+
+                            DirID = DictDirID[str];
+                            if (IncludeSubDirs.ToUpper().Equals("Y"))
+                            {
+                                iCnt = 0;
+                                di = new DirectoryInfo(DirName);
+                                foreach (var currentFI in di.GetFiles("*.*", SearchOption.AllDirectories))
+                                {
+                                    FI = currentFI;
+                                    try
+                                    {
+                                        iCnt += 1;
+                                        FQN = FI.FullName;
+                                        FSize = FI.Length;
+                                        LastWriteTime = FI.LastWriteTime;
+                                        CreationTime = FI.CreationTime;
+                                        EXT = FI.Extension.ToLower();
+                                        CurrDir = FI.DirectoryName;
+                                        FRM.Label1.Text = CurrDir;
+                                        if (!FQN.Contains(@"\.git"))
+                                        {
+                                            if (WC.Contains(EXT + ","))
+                                            {
+                                                FRM.lblPdgPages.Text = FI.Name + " @ " + FI.Length.ToString();
+                                                FRM.lblFileSpec.Text = iCnt.ToString();
+                                                hash = ENC.SHA512SqlServerHash(FI.FullName);
+                                                B = addFile(FI.Name, hash);
+                                                FileID = GetFileID(FI.Name, hash);
+                                                // hash = ENC.SHA512SqlServerHash(FI.FullName)
+                                                B = addInventory(DirID, FileID, FI.Length, LastWriteTime, false, hash);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("*");
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        LOG.WriteToArchiveLog("ERROR 01 Reinventory: " + ex.Message);
+                                    }
+
+                                    Application.DoEvents();
+                                }
+                            }
+                            else
+                            {
+                                di = new DirectoryInfo(DirName);
+                                foreach (var currentFI1 in di.GetFiles("*.*", SearchOption.TopDirectoryOnly))
+                                {
+                                    FI = currentFI1;
+                                    try
+                                    {
+                                        iCnt += 1;
+                                        FQN = FI.FullName;
+                                        FSize = FI.Length;
+                                        LastWriteTime = FI.LastWriteTime;
+                                        CreationTime = FI.CreationTime;
+                                        EXT = FI.Extension;
+                                        if (!FQN.Contains(@"\.git"))
+                                        {
+                                            CurrDir = FI.DirectoryName;
+                                            FRM.Label1.Text = CurrDir;
+                                            if (WC.Contains(EXT + ","))
+                                            {
+                                                FRM.lblPdgPages.Text = FI.Name + " @ " + FI.Length.ToString();
+                                                FRM.lblFileSpec.Text = iCnt.ToString();
+                                                hash = ENC.SHA512SqlServerHash(FI.FullName);
+                                                B = addFile(FI.Name, hash);
+                                                FileID = GetFileID(FI.Name, hash);
+                                                // hash = ENC.SHA512SqlServerHash(FI.FullName)
+                                                B = addInventory(DirID, FileID, FI.Length, LastWriteTime, false, hash);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("-");
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        LOG.WriteToArchiveLog("ERROR 02 Reinventory: " + ex.Message);
+                                    }
+                                }
+
+                                Application.DoEvents();
+                            }
+                        }
+                        else
+                        {
+                            LOG.WriteToArchiveLog("ERROR Missing Directory on this machine: " + DirName);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        LOG.WriteToArchiveLog("ERROR X03 Reinventory: " + ex.Message);
+                    }
+                }
+
+                FRM.Close();
+                FRM = null;
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("ERROR 00 Reinventory: " + ex.Message);
+            }
+        }
+
+        public string getAllowedExtension(string DirName, int Level, Dictionary<string, string> tDict)
+        {
+            DirName = DirName.ToLower();
+            string TempDir = DirName;
+            bool FoundIt = false;
+            string WC = "";
+            int iLoc = 0;
+            while (!FoundIt & TempDir.Length >= 3)
+            {
+                if (tDict.Keys.Contains(TempDir))
+                {
+                    FoundIt = true;
+                    WC = tDict[TempDir];
+                    break;
+                }
+                else
+                {
+                    iLoc = TempDir.LastIndexOf(@"\");
+                    TempDir = TempDir.Substring(0, iLoc);
+                }
+            }
+
+            return WC;
+        }
+
+        public List<string> getAllowedExtension(string DirName, int Level)
+        {
+            var DB = new clsDatabaseARCH();
+            var L = new List<string>();
+            var LB = new ListBox();
+            DB.LoadIncludedFileTypes(ref LB, modGlobals.gCurrLoginID, DirName);
+            foreach (string strext in LB.Items)
+            {
+                if (!L.Contains(strext))
+                {
+                    L.Add(strext);
+                }
+            }
+
+            LB = null;
+            DB.Dispose();
+            if (L.Count.Equals(0))
+            {
+                Level += 1;
+                int I = DirName.LastIndexOf(@"\");
+                DirName = DirName.Substring(0, I);
+                if (DirName.Length < 4)
+                {
+                    return L;
+                }
+
+                L = getAllowedExtension(DirName, Level);
+            }
+
+            return L;
         }
 
         public bool ckListenerfileProcessed(string ListenerFileName)
@@ -51,7 +307,7 @@ namespace EcmArchiver
             int iCnt = 0;
             bool bConnSet = false;
             bConnSet = setListenerConn();
-            using (var CMD = new SqliteCommand(S, ListernerConn))
+            using (var CMD = new SQLiteCommand(S, ListernerConn))
             {
                 CMD.CommandText = S;
                 var rdr = CMD.ExecuteReader();
@@ -82,7 +338,7 @@ namespace EcmArchiver
             string FQN = "";
             string DirName = "";
             int i = 0;
-            using (var CMD = new SqliteCommand(sql, ListernerConn))
+            using (var CMD = new SQLiteCommand(sql, ListernerConn))
             {
                 CMD.CommandText = sql;
                 var rdr = CMD.ExecuteReader();
@@ -109,58 +365,103 @@ namespace EcmArchiver
 
         public List<string> getListenerfiles()
         {
+            var DB = new clsDatabaseARCH();
+            var FRM = new frmNotify();
+            FRM.Show();
+            FRM.Title = "Getting LISTENER Files";
+            FRM.Text = "Getting LISTENER Files";
             bConnSet = setListenerConn();
             var FilesToProcess = new List<string>();
-            string sql = "select distinct FQN from FileNeedProcessing where FileApplied = 0 ;";
+            string sql = "select distinct FQN from FileNeedProcessing where FileApplied = 0 order by FQN ;";
             string FQN = "";
             string ext = "";
-            using (var CMD = new SqliteCommand(sql, ListernerConn))
+            string DIR = "";
+            List<string> AllowedExts = null;
+            // C:\Users\wdale\Documents\Outlook Files
+            int ExtCnt = 0;
+            int LastIdx = 0;
+            long Len = 0L;
+
+
+            // Dim DirWhereInClause As New Dictionary(Of String, String)
+            // Dim DictDirID As New Dictionary(Of String, Integer)
+            // Dim WC As String = ""
+            // For Each DKey As String In DictOfDirs.Keys
+            // WC = DB.getIncludedFileTypeWhereIn(gCurrLoginID)
+            // Next
+
+            var DictOfDirs = new Dictionary<string, string>();
+            DictOfDirs = DB.getIncludedFileTypeWhereIn(modGlobals.gCurrLoginID);
+            string DirExts = "";
+            using (var CMD = new SQLiteCommand(sql, ListernerConn))
             {
                 CMD.CommandText = sql;
                 var rdr = CMD.ExecuteReader();
+                int iCnt = 0;
                 using (rdr)
                     while (rdr.Read())
                     {
+                        iCnt += 1;
                         FQN = rdr.GetValue(0).ToString();
-                        ext = Path.GetExtension(FQN).ToLower().Trim();
-                        if (modGlobals.gAllowedExts.Contains(ext))
+                        FRM.lblFileSpec.Text = iCnt.ToString();
+                        if (!FQN.Contains(@"\.git"))
                         {
-                            if (!FilesToProcess.Contains(FQN))
+                            try
                             {
-                                FilesToProcess.Add(FQN);
+                                var FI = new FileInfo(FQN);
+                                ext = FI.Extension;
+                                DIR = FI.DirectoryName;
+                                Len = FI.Length;
+                                if (ext.Length > 0)
+                                {
+                                    // WDM Commented Out the below Nov-02-2020 (day before we get rid of trump)
+                                    // AllowedExts = getAllowedExtension(DIR, 0)
+                                    DirExts = getAllowedExtension(DIR, 0, DictOfDirs);
+                                    // If AllowedExts.Contains(ext) Then
+                                    if (DirExts.Contains(ext + ","))
+                                    {
+                                        if (!FilesToProcess.Contains(FQN))
+                                        {
+                                            FRM.lblPdgPages.Text = "Processing: " + FQN;
+                                            FilesToProcess.Add(FQN);
+                                        }
+                                    }
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                LOG.WriteToArchiveLog("ERROR getListenerFiles 02: " + ex.Message);
                             }
                         }
+
+                        FRM.Refresh();
+                        Application.DoEvents();
                     }
             }
 
+            FRM.Close();
+            FRM.Dispose();
             return FilesToProcess;
         }
 
-        public List<int> getListenerfilesID()
+        public List<string> getListenerfilesID()
         {
-
-            // If LConn.State.Open Then
-            // LConn.Close()
-            // End If
-
-            // bConnSet = setListenerConn()
-
-            var LConn = new SqliteConnection();
+            var LConn = new SQLiteConnection();
             cs = "data source=" + SQLiteListenerDB;
             LConn.ConnectionString = Conversions.ToString(cs);
             LConn.Open();
-            var FilesToProcess = new List<int>();
+            var FilesToProcess = new List<string>();
             string sql = "select RowID from FileNeedProcessing where FileApplied = 0 ;";
-            int id = -1;
+            string id = "";
             using (LConn)
-            using (var CMD = new SqliteCommand(sql, LConn))
+            using (var CMD = new SQLiteCommand(sql, LConn))
             {
                 CMD.CommandText = sql;
                 var rdr = CMD.ExecuteReader();
                 using (rdr)
                     while (rdr.Read())
                     {
-                        id = Conversions.ToInteger(rdr.GetValue(0));
+                        id = rdr.GetValue(0).ToString();
                         if (!FilesToProcess.Contains(id))
                         {
                             FilesToProcess.Add(id);
@@ -185,7 +486,7 @@ namespace EcmArchiver
             int iCnt = 0;
             bool bConnSet = false;
             bConnSet = setListenerConn();
-            var CMD = new SqliteCommand(S, ListernerConn);
+            var CMD = new SQLiteCommand(S, ListernerConn);
             try
             {
                 CMD.ExecuteNonQuery();
@@ -213,12 +514,13 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
+            bool B = true;
             bool bProcessed = false;
             string S = "delete from FileNeedProcessing where FileApplied = 1 ; ";
             int iCnt = 0;
             bool bConnSet = false;
             bConnSet = setListenerConn();
-            var CMD = new SqliteCommand(S, ListernerConn);
+            var CMD = new SQLiteCommand(S, ListernerConn);
             try
             {
                 CMD.ExecuteNonQuery();
@@ -238,7 +540,7 @@ namespace EcmArchiver
             return default;
         }
 
-        public bool removeListenerfileProcessed(List<int> RowIDs)
+        public bool removeListenerfileProcessed(List<string> RowIDs)
         {
             if (modGlobals.gTraceFunctionCalls.Equals(1))
             {
@@ -252,22 +554,24 @@ namespace EcmArchiver
 
             bool b = true;
             string WC = "(";
-            foreach (int ii in RowIDs)
-                WC += ii.ToString() + ",";
+            foreach (string ii in RowIDs)
+                WC += ii + ",";
             WC = WC.Substring(0, WC.Length - 1) + ")";
+            WC += " OR FileApplied= 1";
             bool bProcessed = false;
             string S = "delete from FileNeedProcessing where RowID in " + WC;
+            // Dim S As String = "delete from FileNeedProcessing where FileApplied= 1"
             int iCnt = 0;
             bool bConnSet = false;
             bConnSet = setListenerConn();
-            var CMD = new SqliteCommand(S, ListernerConn);
+            var CMD = new SQLiteCommand(S, ListernerConn);
             try
             {
                 CMD.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-                LOG.WriteToArchiveLog("ERROR: clsDbLocal/removeListenerfileProcessed 88== - " + ex.Message + Constants.vbCrLf + S);
+                LOG.WriteToArchiveLog("ERROR: clsDbLocal/removeListenerfileProcessed 8 - " + ex.Message + Constants.vbCrLf + S);
                 b = false;
             }
             finally
@@ -292,7 +596,7 @@ namespace EcmArchiver
             int iCnt = 0;
             bool bConnSet = false;
             bConnSet = setListenerConn();
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.ExecuteNonQuery();
@@ -375,12 +679,36 @@ namespace EcmArchiver
             // LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
             // End If
 
-            if (modGlobals.SLConn.State == ConnectionState.Open)
+            if (!Information.IsNothing(SQLiteCONN))
             {
-                modGlobals.SLConn.Close();
-            }
+                try
+                {
+                    if (SQLiteCONN.State == ConnectionState.Open)
+                    {
+                        SQLiteCONN.Close();
+                    }
 
-            modGlobals.SLConn.Dispose();
+                    try
+                    {
+                        SQLiteCONN.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("INFO: SQLiteConn Dispose" + ex.Message);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (!ex.Message.Contains("Cannot access a disposed object"))
+                    {
+                        LOG.WriteToArchiveLog("NOTICE: SQLiteConn closed" + ex.Message);
+                    }
+                    else
+                    {
+                        Console.WriteLine("INFO: SQLiteConn Dispose" + ex.Message);
+                    }
+                }
+            }
         } // Finalize
 
         public void InventoryDir(string DirName, bool bUseArchiveBit)
@@ -433,22 +761,26 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
-            DirName = DirName.Replace("'", "''");
+            if (DirName.Contains("'"))
+            {
+                DirName = DirName.Replace("'", "''");
+            }
+
             int DirID = -1;
             string S = "Select DirID from Directory where DirName = '" + DirName + "' ";
             // Dim cn As New SqlCeConnection(DirCS)
 
-            modGlobals.setSLConn();
-            if (modGlobals.bSLConn.Equals(false))
+            setSLConn();
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 01: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return 0;
                 }
             }
 
-            var CMD = modGlobals.SLConn.CreateCommand();
+            var CMD = SQLiteCONN.CreateCommand();
             try
             {
                 CMD.CommandText = S;
@@ -508,16 +840,16 @@ namespace EcmArchiver
 
             try
             {
-                if (modGlobals.bSLConn.Equals(false))
+                if (bSQLiteCOnnected.Equals(false))
                 {
-                    if (!modGlobals.setSLConn())
+                    if (!setSLConn())
                     {
-                        MessageBox.Show("NOTICE: The Local DB failed to open...");
+                        MessageBox.Show("NOTICE 02: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                         return 0;
                     }
                 }
 
-                var CMD = new SqliteCommand(S, modGlobals.SLConn);
+                var CMD = new SQLiteCommand(S, SQLiteCONN);
                 CMD.CommandType = CommandType.Text;
 
                 // ** if you don’t set the result set to scrollable HasRows does not work
@@ -570,7 +902,7 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
-            modGlobals.setSLConn();
+            setSLConn();
             bool B = true;
             int UseArchiveBit = 0;
             if (bUseArchiveBit)
@@ -578,23 +910,27 @@ namespace EcmArchiver
                 UseArchiveBit = 1;
             }
 
-            FQN = FQN.Replace("'", "''");
+            if (FQN.Contains("'"))
+            {
+                FQN = FQN.Replace("'", "''");
+            }
+
             string S = "insert or ignore into Directory (DirName,UseArchiveBit) values ('" + FQN + "', " + UseArchiveBit.ToString() + ") ";
             // Dim S As String = "insert or ignore into Directory (DirName,UseArchiveBit) values (@DirName, @UseArchiveBit) "
 
             // Dim cn As New SqlCeConnection(DirCS)
 
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 03: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            string DirHash = ENC.getSha1HashKey(FQN);
-            var CMD = modGlobals.SLConn.CreateCommand();
+            string DirHash = ENC.SHA512String(FQN);
+            var CMD = SQLiteCONN.CreateCommand();
             // CMD.CommandText = "insert or ignore into directory (DirName,UseArchiveBit,DirID) values (@DirName,@UseArchiveBit,@DirHash) "
             // CMD.CommandText = "insert or ignore into directory (DirName,UseArchiveBit,DirHash) values (?,?,?) "
             CMD.CommandText = "insert or ignore into directory (DirName,UseArchiveBit,DirHash) values ('" + FQN + "'," + UseArchiveBit.ToString() + ", '" + DirHash + "') ";
@@ -620,6 +956,104 @@ namespace EcmArchiver
             return B;
         }
 
+        public bool resetExtension()
+        {
+            bool B = true;
+            try
+            {
+                var SLConn = new SQLiteConnection();
+                string S = "update Exts set Validated = 0";
+                string slDatabase = ConfigurationManager.AppSettings["SQLiteListenerDB"];
+                if (!File.Exists(slDatabase))
+                {
+                    MessageBox.Show("FATAL ERR SQLite DB MISSING: " + slDatabase);
+                }
+
+                string ConnStr = "data source=" + slDatabase;
+                using (SLConn)
+                {
+                    SLConn.ConnectionString = ConnStr;
+                    SLConn.Open();
+                    var CMD = new SQLiteCommand(S, SLConn);
+                    using (CMD)
+                        try
+                        {
+                            CMD.CommandText = S;
+                            CMD.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            LOG.WriteToArchiveLog("ERROR 01: clsDbLocal/resetExtension 01 - " + ex.Message + Constants.vbCrLf + S);
+                            B = false;
+                        }
+                }
+
+                B = true;
+            }
+            catch (Exception ex)
+            {
+                B = false;
+                LOG.WriteToArchiveLog("ERROR 01: clsDbLocal/resetExtension 02 - " + ex.Message);
+            }
+
+            return B;
+        }
+
+        public bool addExtension(List<string> AllowedExts)
+        {
+            if (modGlobals.gTraceFunctionCalls.Equals(1))
+            {
+                LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
+            }
+
+            string WC = "(";
+            string WhereNotIN = "where Extension not in ";
+            string WhereIN = "where Extension in ";
+            bool B = true;
+            string S = "";
+            string ext = "";
+            foreach (string xt in AllowedExts)
+                WC += "'" + xt + "',";
+            WC = WC.Substring(0, WC.Length - 1);
+            WC = WC.Trim() + ")";
+            WhereNotIN += WC;
+            WhereIN += WC;
+            bConnSet = setListenerConn();
+            if (bConnSet.Equals(false))
+            {
+                if (!setSLConn())
+                {
+                    MessageBox.Show("NOTICE 04: The Listener DB failed to open.: " + ListenerCS);
+                    return Conversions.ToBoolean(0);
+                }
+            }
+
+            var CMD = ListernerConn.CreateCommand();
+            try
+            {
+                CMD.CommandText = "delete from Exts " + WhereNotIN;
+                CMD.ExecuteNonQuery();
+                foreach (string xt in AllowedExts)
+                {
+                    CMD.CommandText = "insert or ignore into Exts (Extension,Validated) values ('" + ext + "',1)";
+                    CMD.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("ERROR: clsDbLocal/addExtension - " + ex.Message + Constants.vbCrLf + S);
+                B = false;
+            }
+            finally
+            {
+                CMD.Dispose();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
+
+            return B;
+        }
+
         public bool delDir(string DirName)
         {
             if (modGlobals.gTraceFunctionCalls.Equals(1))
@@ -627,21 +1061,21 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
-            modGlobals.setSLConn();
+            setSLConn();
             bool B = true;
             string S = "Delete from Directory where DirName = @DirName ";
 
             // Dim cn As New SqlCeConnection(DirCS)
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 05: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.Parameters.AddWithValue("@DirName", DirName);
@@ -675,26 +1109,43 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
-            modGlobals.setSLConn();
-            if (modGlobals.bSLConn.Equals(false))
+            setSLConn();
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 06: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return 0;
                 }
             }
 
-            FileName = FileName.Replace("'", "''");
+            if (FileName.Contains("''"))
+            {
+                FileName = FileName.Replace("''", "'");
+            }
+
+            if (FileName.Contains("'"))
+            {
+                FileName = FileName.Replace("''", "'");
+                FileName = FileName.Replace("'", "''");
+            }
+
             int FileID = -1;
             string S = "Select FileID from Files where FileName = '" + FileName + "' and FileHash = '" + FileHash + "' ";
-            using (var CMD = new SqliteCommand(S, modGlobals.SLConn))
+            try
             {
-                CMD.CommandText = S;
-                var rdr = CMD.ExecuteReader();
-                using (rdr)
-                    while (rdr.Read())
-                        FileID = rdr.GetInt32(0);
+                using (var CMD = new SQLiteCommand(S, SQLiteCONN))
+                {
+                    CMD.CommandText = S;
+                    var rdr = CMD.ExecuteReader();
+                    using (rdr)
+                        while (rdr.Read())
+                            FileID = rdr.GetInt32(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("ERROR cbLocalDB/GetFileID: " + ex.Message + Constants.vbCrLf + S);
             }
 
             return FileID;
@@ -707,22 +1158,45 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
-            FileName = FileName.Replace("'", "''");
+            if (FileName.Contains("'"))
+            {
+                FileName = FileName.Replace("''", "'");
+                FileName = FileName.Replace("'", "''");
+            }
+
             bool B = true;
             int UseArchiveBit = 0;
             string S = "insert or ignore into Files (FileName, FileHash) values ('" + FileName + "', '" + FileHash + "') ";
             // Dim S As String = "insert or ignore into Files (FileName, FileHash) values (?,?) "
-            modGlobals.setSLConn();
-            if (modGlobals.bSLConn.Equals(false))
+            B = setSLConn();
+            try
             {
-                if (!modGlobals.setSLConn())
+                if (SQLiteCONN.State == ConnectionState.Closed)
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    SQLiteCONN.Open();
+                    B = true;
+                }
+
+                if (!B)
+                {
+                    SQLiteCONN.Open();
+                }
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("NOTICE addfile 100: " + ex.Message);
+            }
+
+            if (B.Equals(false))
+            {
+                if (!setSLConn())
+                {
+                    MessageBox.Show("NOTICE 07: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            using (var CMD = new SqliteCommand(S, modGlobals.SLConn))
+            using (var CMD = new SQLiteCommand(S, SQLiteCONN))
             {
                 try
                 {
@@ -732,7 +1206,7 @@ namespace EcmArchiver
                 }
                 catch (Exception ex)
                 {
-                    LOG.WriteToArchiveLog("ERROR: clsDbLocal/addFile - " + ex.Message + Constants.vbCrLf + S);
+                    LOG.WriteToArchiveLog("ERROR 20x: clsDbLocal/addFile - " + ex.Message + Constants.vbCrLf + S);
                     B = false;
                 }
                 finally
@@ -753,12 +1227,12 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
-            modGlobals.setSLConn();
-            if (modGlobals.bSLConn.Equals(false))
+            setSLConn();
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 08: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
@@ -772,7 +1246,7 @@ namespace EcmArchiver
             int UseArchiveBit = 0;
             FullName = FullName.Replace("'", "''");
             string S = "insert or ignore into ContactsArchive (Email1Address, FullName) values ('" + Email1Address + "', '" + FullName + "') ";
-            using (var CMD = new SqliteCommand(S, modGlobals.SLConn))
+            using (var CMD = new SQLiteCommand(S, SQLiteCONN))
             {
                 try
                 {
@@ -805,18 +1279,18 @@ namespace EcmArchiver
 
             bool B = false;
             string S = "Select count(*) from Files where FileName = '" + FileName + "' ";
-            modGlobals.setSLConn();
-            if (modGlobals.bSLConn.Equals(false))
+            setSLConn();
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 09: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
             int iCnt = 0;
-            using (var CMD = new SqliteCommand(S, modGlobals.SLConn))
+            using (var CMD = new SQLiteCommand(S, SQLiteCONN))
             {
                 CMD.CommandText = S;
                 var rdr = CMD.ExecuteReader();
@@ -839,18 +1313,18 @@ namespace EcmArchiver
 
             bool B = false;
             string S = "Select count(*) from ContactsArchive where Email1Address = '" + Email1Address + "' and FullName = '" + FullName + "' ";
-            modGlobals.setSLConn();
-            if (modGlobals.bSLConn.Equals(false))
+            setSLConn();
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 10: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
             int iCnt = 0;
-            using (var CMD = new SqliteCommand(S, modGlobals.SLConn))
+            using (var CMD = new SQLiteCommand(S, SQLiteCONN))
             {
                 CMD.CommandText = S;
                 var rdr = CMD.ExecuteReader();
@@ -880,19 +1354,19 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
-            modGlobals.setSLConn();
+            setSLConn();
             bool B = true;
             string S = "Delete from Files where FileName = '" + FileName + "' ";
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 11: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.ExecuteNonQuery();
@@ -925,7 +1399,12 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
-            modGlobals.setSLConn();
+            if (FQN.Contains("''"))
+            {
+                FQN = FQN.Replace("''", "'");
+            }
+
+            setSLConn();
             int iArchiveFlag = 0;
             int FileExist = 1;
             int NeedsArchive = 1;
@@ -949,10 +1428,7 @@ namespace EcmArchiver
                 ArchiveBit = 0;
             }
 
-            FQN = FQN.Replace("''", "'");
-            FileHash = ENC.hashSha1File(FQN);
-            sFileName = sFileName.Replace("''", "'");
-            sDirName = sDirName.Replace("''", "'");
+            FileHash = ENC.GenerateSHA512HashFromFile(FQN);
             try
             {
                 sDirName = FI.DirectoryName;
@@ -967,8 +1443,6 @@ namespace EcmArchiver
                 return B;
             }
 
-            sFileName = sFileName.Replace("''", "'");
-            sDirName = sDirName.Replace("''", "'");
             DirID = GetDirID(sDirName);
             FileID = GetFileID(sFileName, FileHash);
             if (DirID < 0)
@@ -1003,16 +1477,17 @@ namespace EcmArchiver
             // LOG.WriteToArchiveLog("Remove after debug  SQL: " + vbCrLf + S)
 
             // Dim cn As New SqlCeConnection(InvCS)
-            if (!modGlobals.setSLConn())
+            if (!setSLConn())
             {
-                MessageBox.Show("NOTICE: The Local DB failed to open...");
+                MessageBox.Show("NOTICE 12: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                 return Conversions.ToBoolean(0);
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.ExecuteNonQuery();
+                B = true;
             }
             catch (Exception ex)
             {
@@ -1042,8 +1517,8 @@ namespace EcmArchiver
             ApplySQL(S);
             S = @"CREATE table [ContactsArchive] ( 
             [RowID] Integer primary key autoincrement  
-	        , [Email1Address] nvarchar(100) Not NULL COLLATE NOCASE 
-	        , [FullName] nvarchar(100) Not NULL COLLATE NOCASE 
+            , [Email1Address] nvarchar(100) Not NULL COLLATE NOCASE 
+            , [FullName] nvarchar(100) Not NULL COLLATE NOCASE 
         )";
             ApplySQL(S);
             S = "create index PI_CA on ContactsArchive (Email1Address, FullName);";
@@ -1179,17 +1654,17 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
-            modGlobals.setSLConn();
+            setSLConn();
             LOG.WriteToArchiveLog("NOTICE: Executing SQL: " + Constants.vbCrLf + S);
 
             // Dim cn As New SqlCeConnection(InvCS)
-            if (!modGlobals.setSLConn())
+            if (!setSLConn())
             {
-                MessageBox.Show("NOTICE: The Local DB failed to open...");
+                MessageBox.Show("NOTICE 13: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                 return;
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.ExecuteNonQuery();
@@ -1220,7 +1695,7 @@ namespace EcmArchiver
             bool NeedsArchive = true;
             bool B = true;
             int UseArchiveBit = 0;
-            modGlobals.setSLConn();
+            setSLConn();
             // Dim S As String = "insert or ignore into Directory (DirName,UseArchiveBit) values ('" + FQN + "', " + UseArchiveBit.ToString + ") "
             string S = "insert or ignore into Inventory (DirID,FileID,FileExist,FileSize,LastUpdate,ArchiveBit,NeedsArchive,FileHash) values ";
             S += "(" + DirID.ToString() + ", ";
@@ -1233,16 +1708,16 @@ namespace EcmArchiver
             S += "'" + FileHash + "') ";
 
             // Dim cn As New SqlCeConnection(InvCS)
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 14: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 // CMD.Parameters.AddWithValue("@DirID", DirID)
@@ -1283,7 +1758,7 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
-            modGlobals.setSLConn();
+            setSLConn();
             int FileExist = 1;
             int NeedsArchive = 1;
             bool B = true;
@@ -1291,16 +1766,16 @@ namespace EcmArchiver
             string S = "delete from Inventory where DirID = " + DirID.ToString() + " and FileID = " + FileID.ToString();
 
             // Dim cn As New SqlCeConnection(InvCS)
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 15: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.Parameters.AddWithValue("@DirID", DirID);
@@ -1338,11 +1813,11 @@ namespace EcmArchiver
             bool B = false;
             string S = "Select FileHash from Inventory where DirID = " + DirID.ToString() + " and FileID = " + FileID.ToString();
             // Dim cn As New SqlCeConnection(InvCS)
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 16: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
@@ -1350,7 +1825,7 @@ namespace EcmArchiver
             int iCnt = 0;
             try
             {
-                var CMD = new SqliteCommand(S, modGlobals.SLConn);
+                var CMD = new SQLiteCommand(S, SQLiteCONN);
                 CMD.CommandType = CommandType.Text;
 
                 // ** if you don’t set the result set to scrollable HasRows does not work
@@ -1404,11 +1879,11 @@ namespace EcmArchiver
             bool B = false;
             string S = "Select FileHash from Inventory where DirID = X and FileID = X ";
             // Dim cn As New SqlCeConnection(InvCS)
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 17: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
@@ -1416,7 +1891,7 @@ namespace EcmArchiver
             string OldHash = "";
             try
             {
-                var CMD = new SqliteCommand(S, modGlobals.SLConn);
+                var CMD = new SQLiteCommand(S, SQLiteCONN);
                 CMD.CommandType = CommandType.Text;
                 var rs = CMD.ExecuteReader();
                 if (rs.HasRows)
@@ -1520,18 +1995,18 @@ namespace EcmArchiver
 
             string S = "Update Inventory set NeedsArchive = " + iArchiveFlag.ToString();
             S += " where DirID = " + DirID.ToString() + " and FileId = " + FileID.ToString();
-            modGlobals.setSLConn();
+            setSLConn();
             // Dim cn As New SqlCeConnection(InvCS)
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 18: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.Parameters.AddWithValue("@DirID", DirID);
@@ -1582,16 +2057,16 @@ namespace EcmArchiver
 
             string S = "Update Inventory set NeedsArchive = " + iArchiveFlag.ToString();
             S += " where DirID = " + DirID.ToString() + " and FileId = " + FileID.ToString();
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 19: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.Parameters.AddWithValue("@DirID", DirID);
@@ -1635,10 +2110,10 @@ namespace EcmArchiver
             bool B = false;
             string S = "update DirFilesID set LastArchiveDate = datetime(), FileLength = " + FI.Length.ToString() + ", LastModDate = '" + FI.LastWriteTime.ToString() + "'  where FQN = '" + FQN + "' ;";
             FI = null;
-            modGlobals.setSLConn();
+            setSLConn();
             try
             {
-                var CMD = new SqliteCommand(S, modGlobals.SLConn);
+                var CMD = new SQLiteCommand(S, SQLiteCONN);
                 CMD.CommandType = CommandType.Text;
                 CMD.ExecuteNonQuery();
                 CMD.Dispose();
@@ -1659,10 +2134,10 @@ namespace EcmArchiver
             string S = "";
             fqn = fixSingleQuotes(fqn);
             S = "Select count(*) From DirFilesID D  Where FQN = '" + fqn + "' ";
-            modGlobals.setSLConn();
+            setSLConn();
             try
             {
-                var CMD = new SqliteCommand(S, modGlobals.SLConn);
+                var CMD = new SQLiteCommand(S, SQLiteCONN);
                 CMD.CommandType = CommandType.Text;
                 var rs = CMD.ExecuteReader();
                 if (rs.HasRows)
@@ -1713,10 +2188,10 @@ namespace EcmArchiver
                 FQN = FQN.Replace("'", "''");
                 string S = "Insert into DirFilesID (FQN, LastArchiveDate, FileLength, LastModDate) values ('" + FQN + "', '01/01/1970', " + L + ", '" + LastWriteTime + "' );";
                 FI = null;
-                modGlobals.setSLConn();
+                setSLConn();
                 try
                 {
-                    var CMD = new SqliteCommand(S, modGlobals.SLConn);
+                    var CMD = new SQLiteCommand(S, SQLiteCONN);
                     CMD.CommandType = CommandType.Text;
                     CMD.ExecuteNonQuery();
                     CMD.Dispose();
@@ -1751,24 +2226,51 @@ namespace EcmArchiver
             var INFO = new Dictionary<string, string>();
             try
             {
+                object val = "";
                 long FileSize = 0L;
                 DateTime LastUpdate = default;
                 DateTime LastArchiveDate = default;
                 string S = "";
                 FQN = fixSingleQuotes(FQN);
                 S = "Select LastArchiveDate, FileLength, LastModDate From DirFilesID D  Where FQN = '" + FQN + "' ";
-                modGlobals.setSLConn();
+                S = "Select cast(LastArchiveDate as text) as LAD, FileLength, cast(LastModDate as text) as LMD From DirFilesID   Where FQN = '" + FQN + "' ";
+                setSLConn();
                 try
                 {
-                    var CMD = new SqliteCommand(S, modGlobals.SLConn);
+                    var CMD = new SQLiteCommand(S, SQLiteCONN);
                     CMD.CommandType = CommandType.Text;
                     var rs = CMD.ExecuteReader();
                     if (rs.HasRows)
                     {
                         rs.Read();
-                        LastArchiveDate = rs.GetDateTime(0);
+                        try
+                        {
+                            string LAD = "";
+                            LAD = rs.GetString(0);
+                            LastArchiveDate = Convert.ToDateTime(LAD);
+                        }
+                        catch (Exception ex)
+                        {
+                            LastArchiveDate = Convert.ToDateTime("01-01-1970");
+                        }
+
                         FileSize = rs.GetInt64(1);
-                        LastUpdate = rs.GetDateTime(2);
+                        try
+                        {
+                            string LAD = "";
+                            LAD = rs.GetString(2);
+                            LastUpdate = Convert.ToDateTime(LAD);
+                        }
+                        catch (Exception ex)
+                        {
+                            LastUpdate = Convert.ToDateTime("01-01-1970");
+                        }
+
+                        if (LastUpdate < Convert.ToDateTime("01-01-1970"))
+                        {
+                            LastUpdate = Convert.ToDateTime("01-01-1970");
+                        }
+
                         INFO.Add("FileSize", FileSize.ToString());
                         INFO.Add("LastUpdate", LastUpdate.ToString());
                         INFO.Add("LastArchiveDate", LastArchiveDate.ToString());
@@ -1883,13 +2385,13 @@ namespace EcmArchiver
                 return NeedsToBeArchived;
             }
 
-            modGlobals.setSLConn();
+            setSLConn();
             string S = "Select FileSize, LastUpdate, NeedsArchive from Inventory where DirID = " + DirID.ToString() + " and FileID = " + FileID.ToString();
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 20: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
@@ -1900,7 +2402,7 @@ namespace EcmArchiver
             bool prevNeedsArchive = false;
             try
             {
-                var CMD = new SqliteCommand(S, modGlobals.SLConn);
+                var CMD = new SQLiteCommand(S, SQLiteCONN);
                 CMD.CommandType = CommandType.Text;
 
                 // ** if you don’t set the result set to scrollable HasRows does not work
@@ -1960,8 +2462,8 @@ namespace EcmArchiver
             }
 
             string S = "delete from Directory";
-            modGlobals.setSLConn();
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            setSLConn();
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.ExecuteNonQuery();
@@ -1992,8 +2494,8 @@ namespace EcmArchiver
             }
 
             string S = "delete from DirFilesID";
-            modGlobals.setSLConn();
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            setSLConn();
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.ExecuteNonQuery();
@@ -2018,8 +2520,8 @@ namespace EcmArchiver
             }
 
             string S = "delete from ContactsArchive";
-            modGlobals.setSLConn();
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            setSLConn();
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.ExecuteNonQuery();
@@ -2044,8 +2546,8 @@ namespace EcmArchiver
             }
 
             string S = "delete from Exchange";
-            modGlobals.setSLConn();
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            setSLConn();
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.ExecuteNonQuery();
@@ -2076,8 +2578,8 @@ namespace EcmArchiver
             }
 
             string S = "delete from Outlook";
-            modGlobals.setSLConn();
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            setSLConn();
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.ExecuteNonQuery();
@@ -2108,8 +2610,8 @@ namespace EcmArchiver
             }
 
             string S = "delete from Files";
-            modGlobals.setSLConn();
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            setSLConn();
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.ExecuteNonQuery();
@@ -2140,8 +2642,8 @@ namespace EcmArchiver
             }
 
             string S = "delete from Inventory";
-            modGlobals.setSLConn();
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            setSLConn();
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.ExecuteNonQuery();
@@ -2165,7 +2667,7 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
-            modGlobals.setSLConn();
+            setSLConn();
             string Dirname = null;
             int DirID = default;
             bool UseArchiveBit = default;
@@ -2182,7 +2684,7 @@ namespace EcmArchiver
             string msg = "";
             try
             {
-                var CMD = new SqliteCommand(S, modGlobals.SLConn);
+                var CMD = new SQLiteCommand(S, SQLiteCONN);
                 CMD.CommandType = CommandType.Text;
 
                 // ** if you don’t set the result set to scrollable HasRows does not work
@@ -2213,14 +2715,14 @@ namespace EcmArchiver
             {
                 fOut.Close();
                 fOut.Dispose();
-                if (modGlobals.SLConn is object)
+                if (SQLiteCONN is object)
                 {
-                    if (modGlobals.SLConn.State == ConnectionState.Open)
+                    if (SQLiteCONN.State == ConnectionState.Open)
                     {
-                        modGlobals.SLConn.Close();
+                        SQLiteCONN.Close();
                     }
 
-                    modGlobals.SLConn.Dispose();
+                    SQLiteCONN.Dispose();
                 }
             }
 
@@ -2242,30 +2744,7 @@ namespace EcmArchiver
             }
 
             string strPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase);
-            if (modGlobals.UseDebugSQLite.Equals(1))
-            {
-                slDatabase = ConfigurationManager.AppSettings["SQLiteDir"];
-                tchar = slDatabase.Substring(Operators.SubtractObject(slDatabase.Length, 1));
-                if (!tchar.Equals(@"\"))
-                {
-                    strPath += @"\";
-                }
-
-                if (!Directory.Exists(Conversions.ToString(slDatabase)))
-                {
-                    Directory.CreateDirectory(Conversions.ToString(slDatabase));
-                }
-
-                slDatabase += "EcmArchive.db";
-            }
-            else
-            {
-                tchar = strPath.Substring(strPath.Length - 1);
-                if (!tchar.Equals(@"\"))
-                    strPath += @"\";
-                slDatabase = strPath + @"SQLiteDB\EcmArchive.db";
-            }
-
+            slDatabase = ConfigurationManager.AppSettings["SQLiteLocalDB"];
             sSource = Operators.AddObject(slDatabase, ".bak");
             if (!File.Exists(Conversions.ToString(sSource)))
             {
@@ -2290,30 +2769,7 @@ namespace EcmArchiver
             }
 
             string strPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase);
-            if (modGlobals.UseDebugSQLite.Equals(1))
-            {
-                slDatabase = ConfigurationManager.AppSettings["SQLiteDir"];
-                tchar = slDatabase.Substring(Operators.SubtractObject(slDatabase.Length, 1));
-                if (!tchar.Equals(@"\"))
-                {
-                    strPath += @"\";
-                }
-
-                if (!Directory.Exists(Conversions.ToString(slDatabase)))
-                {
-                    Directory.CreateDirectory(Conversions.ToString(slDatabase));
-                }
-
-                slDatabase += "EcmArchive.db";
-            }
-            else
-            {
-                tchar = strPath.Substring(strPath.Length - 1);
-                if (!tchar.Equals(@"\"))
-                    strPath += @"\";
-                slDatabase = strPath + @"SQLiteDB\EcmArchive.db";
-            }
-
+            slDatabase = ConfigurationManager.AppSettings["SQLiteLocalDB"];
             sSource = slDatabase;
             sTarget = Operators.AddObject(slDatabase, ".bak");
             if (File.Exists(Conversions.ToString(sSource)))
@@ -2330,30 +2786,7 @@ namespace EcmArchiver
             }
 
             string strPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase);
-            if (modGlobals.UseDebugSQLite.Equals(1))
-            {
-                slDatabase = ConfigurationManager.AppSettings["SQLiteDir"];
-                tchar = slDatabase.Substring(Operators.SubtractObject(slDatabase.Length, 1));
-                if (!tchar.Equals(@"\"))
-                {
-                    strPath += @"\";
-                }
-
-                if (!Directory.Exists(Conversions.ToString(slDatabase)))
-                {
-                    Directory.CreateDirectory(Conversions.ToString(slDatabase));
-                }
-
-                slDatabase += "EcmArchive.db";
-            }
-            else
-            {
-                tchar = strPath.Substring(strPath.Length - 1);
-                if (!tchar.Equals(@"\"))
-                    strPath += @"\";
-                slDatabase = strPath + @"SQLiteDB\EcmArchive.db";
-            }
-
+            slDatabase = ConfigurationManager.AppSettings["SQLiteLocalDB"];
             sSource = Operators.AddObject(slDatabase, ".bak");
             sTarget = slDatabase;
             if (File.Exists(Conversions.ToString(sSource)))
@@ -2369,7 +2802,7 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
-            modGlobals.setSLConn();
+            setSLConn();
             string sKey = null;
             int RowID = default;
             string S = "Select sKey,RowID from Outlook";
@@ -2385,7 +2818,7 @@ namespace EcmArchiver
             string msg = "";
             try
             {
-                var CMD = new SqliteCommand(S, modGlobals.SLConn);
+                var CMD = new SQLiteCommand(S, SQLiteCONN);
                 CMD.CommandType = CommandType.Text;
 
                 // ** if you don’t set the result set to scrollable HasRows does not work
@@ -2415,14 +2848,14 @@ namespace EcmArchiver
             {
                 fOut.Close();
                 fOut.Dispose();
-                if (modGlobals.SLConn is object)
+                if (SQLiteCONN is object)
                 {
-                    if (modGlobals.SLConn.State == ConnectionState.Open)
+                    if (SQLiteCONN.State == ConnectionState.Open)
                     {
-                        modGlobals.SLConn.Close();
+                        SQLiteCONN.Close();
                     }
 
-                    modGlobals.SLConn.Dispose();
+                    SQLiteCONN.Dispose();
                 }
             }
 
@@ -2437,16 +2870,16 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
-            modGlobals.setSLConn();
+            setSLConn();
             string sKey = null;
             int RowID = default;
             string S = "Select sKey,RowID from Exchange";
-            modGlobals.setSLConn();
-            if (modGlobals.bSLConn.Equals(false))
+            setSLConn();
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 21: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return;
                 }
             }
@@ -2463,7 +2896,7 @@ namespace EcmArchiver
             string msg = "";
             try
             {
-                var CMD = new SqliteCommand(S, modGlobals.SLConn);
+                var CMD = new SQLiteCommand(S, SQLiteCONN);
                 CMD.CommandType = CommandType.Text;
 
                 // ** if you don’t set the result set to scrollable HasRows does not work
@@ -2493,14 +2926,14 @@ namespace EcmArchiver
             {
                 fOut.Close();
                 fOut.Dispose();
-                if (modGlobals.SLConn is object)
+                if (SQLiteCONN is object)
                 {
-                    if (modGlobals.SLConn.State == ConnectionState.Open)
+                    if (SQLiteCONN.State == ConnectionState.Open)
                     {
-                        modGlobals.SLConn.Close();
+                        SQLiteCONN.Close();
                     }
 
-                    modGlobals.SLConn.Dispose();
+                    SQLiteCONN.Dispose();
                 }
             }
 
@@ -2515,7 +2948,7 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
-            modGlobals.setSLConn();
+            setSLConn();
             bool B = false;
             int UseArchiveBit = 0;
             B = OutlookExists(sKey);
@@ -2525,16 +2958,16 @@ namespace EcmArchiver
             }
 
             string S = "insert or ignore into Outlook (sKey, RowID) values (@sKey,@RowID) ";
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 22: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.Parameters.AddWithValue("@sKey", sKey);
@@ -2563,20 +2996,20 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
-            modGlobals.setSLConn();
+            setSLConn();
             bool B = true;
             int UseArchiveBit = 0;
             string S = "insert or ignore into Exchange (sKey,RowID) values (@sKey,@RowID) ";
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 23: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.Parameters.AddWithValue("@sKey", sKey);
@@ -2609,11 +3042,11 @@ namespace EcmArchiver
             string S = "Select count(*) from Outlook where sKey = '" + sKey + "'";
             // Dim cn As New SqlCeConnection(InvCS)
 
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 24: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
@@ -2621,7 +3054,7 @@ namespace EcmArchiver
             int iCnt = 0;
             try
             {
-                var CMD = new SqliteCommand(S, modGlobals.SLConn);
+                var CMD = new SQLiteCommand(S, SQLiteCONN);
                 CMD.CommandType = CommandType.Text;
 
                 // ** if you don’t set the result set to scrollable HasRows does not work
@@ -2678,16 +3111,16 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
-            modGlobals.setSLConn();
+            setSLConn();
             bool B = false;
             string S = "Select count(*) from Exchange where sKey = '" + sKey + "'";
             // Dim cn As New SqlCeConnection(InvCS)
 
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 25: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
@@ -2695,7 +3128,7 @@ namespace EcmArchiver
             int iCnt = 0;
             try
             {
-                var CMD = new SqliteCommand(S, modGlobals.SLConn);
+                var CMD = new SQLiteCommand(S, SQLiteCONN);
                 CMD.CommandType = CommandType.Text;
 
                 // ** if you don’t set the result set to scrollable HasRows does not work
@@ -2752,19 +3185,19 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
-            modGlobals.setSLConn();
+            setSLConn();
             bool B = true;
             string S = "Update exchange set KeyExists = @B where sKey = @sKey ";
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 26: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.Parameters.AddWithValue("@B", true);
@@ -2801,17 +3234,17 @@ namespace EcmArchiver
 
             bool B = true;
             string S = "Update Outlook set KeyExists = @B where sKey = @sKey ";
-            modGlobals.setSLConn();
-            if (modGlobals.bSLConn.Equals(false))
+            setSLConn();
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 27: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.Parameters.AddWithValue("@B", true);
@@ -2846,22 +3279,22 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
-            modGlobals.setSLConn();
+            setSLConn();
             bool B = true;
             string S = "Delete from Outlook where sKey = @sKey ";
 
             // Dim cn As New SqlCeConnection(FileCS)
 
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 28: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.Parameters.AddWithValue("@sKey", sKey);
@@ -2895,22 +3328,22 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
-            modGlobals.setSLConn();
+            setSLConn();
             bool B = true;
             string S = "Delete from Exchange where sKey = @sKey ";
 
             // Dim cn As New SqlCeConnection(FileCS)
 
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 29: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.Parameters.AddWithValue("@sKey", sKey);
@@ -2946,17 +3379,17 @@ namespace EcmArchiver
 
             bool B = true;
             string S = "Delete from Outlook where not keyExists  ";
-            modGlobals.setSLConn();
-            if (modGlobals.bSLConn.Equals(false))
+            setSLConn();
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 30: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.ExecuteNonQuery();
@@ -2989,19 +3422,19 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
-            modGlobals.setSLConn();
+            setSLConn();
             bool B = true;
             string S = "Delete from Exchange where not keyExists  ";
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 31: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.ExecuteNonQuery();
@@ -3036,17 +3469,17 @@ namespace EcmArchiver
 
             bool B = true;
             string S = "Update Outlook set keyExists = 0 ";
-            modGlobals.setSLConn();
-            if (modGlobals.bSLConn.Equals(false))
+            setSLConn();
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 32: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.ExecuteNonQuery();
@@ -3081,17 +3514,17 @@ namespace EcmArchiver
 
             bool B = true;
             string S = "Update Exchange set KeyExists = false ";
-            modGlobals.setSLConn();
-            if (modGlobals.bSLConn.Equals(false))
+            setSLConn();
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 33: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.ExecuteNonQuery();
@@ -3131,17 +3564,17 @@ namespace EcmArchiver
 
             bool B = true;
             string S = "Udpate Outlook set keyExists = true where sKey = '" + sKey + "'  ";
-            modGlobals.setSLConn();
-            if (modGlobals.bSLConn.Equals(false))
+            setSLConn();
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 34: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 // CMD.Parameters.AddWithValue("@sKey", sKey)
@@ -3171,17 +3604,17 @@ namespace EcmArchiver
 
             bool B = true;
             string S = "Udpate Exchange set keyExists = true where sKey = @sKey  ";
-            modGlobals.setSLConn();
-            if (modGlobals.bSLConn.Equals(false))
+            setSLConn();
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 35: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.Parameters.AddWithValue("@sKey", sKey);
@@ -3210,16 +3643,16 @@ namespace EcmArchiver
             }
 
             string S = "Select sKey from Exchange";
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 36: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return;
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             string sKey = "";
             try
             {
@@ -3275,19 +3708,19 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
-            modGlobals.setSLConn();
+            setSLConn();
             bool B = true;
             string S = "insert or ignore into Listener (FQN) values (@FQN) ";
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 37: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.Parameters.AddWithValue("@FQN", FQN);
@@ -3317,17 +3750,17 @@ namespace EcmArchiver
 
             bool B = true;
             string S = "delete from Listener where Uploaded = 1";
-            modGlobals.setSLConn();
-            if (modGlobals.bSLConn.Equals(false))
+            setSLConn();
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 38: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 // CMD.Parameters.AddWithValue("@FQN", FQN)
@@ -3357,17 +3790,17 @@ namespace EcmArchiver
 
             bool B = true;
             string S = "Update Listener set Uploaded = 1 where FQN = @FQN";
-            modGlobals.setSLConn();
-            if (modGlobals.bSLConn.Equals(false))
+            setSLConn();
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 39: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.Parameters.AddWithValue("@FQN", FQN);
@@ -3397,17 +3830,17 @@ namespace EcmArchiver
 
             bool B = true;
             string S = "Delete from Listener where FQN = @FQN";
-            modGlobals.setSLConn();
-            if (modGlobals.bSLConn.Equals(false))
+            setSLConn();
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 40: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.Parameters.AddWithValue("@FQN", FQN);
@@ -3435,13 +3868,13 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
-            modGlobals.setSLConn();
+            setSLConn();
             string FQN = null;
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 41: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return;
                 }
             }
@@ -3449,7 +3882,7 @@ namespace EcmArchiver
             string S = "Select FQN from Listener";
             try
             {
-                var CMD = new SqliteCommand(S, modGlobals.SLConn);
+                var CMD = new SQLiteCommand(S, SQLiteCONN);
                 // ** if you don’t set the result set to scrollable HasRows does not work
                 var rs = CMD.ExecuteReader();
                 if (rs.HasRows)
@@ -3480,11 +3913,11 @@ namespace EcmArchiver
             }
             finally
             {
-                // If SLConn IsNot Nothing Then
-                // If SLConn.State = ConnectionState.Open Then
-                // SLConn.Close()
+                // If SQLiteCONN IsNot Nothing Then
+                // If SQLiteCONN.State = ConnectionState.Open Then
+                // SQLiteCONN.Close()
                 // End If
-                // SLConn.Dispose()
+                // SQLiteCONN.Dispose()
                 // End If
             }
 
@@ -3503,11 +3936,11 @@ namespace EcmArchiver
             string S = "Select count(*) from Listener ";
             // Dim cn As New SqlCeConnection(InvCS)
 
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 42: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
@@ -3515,7 +3948,7 @@ namespace EcmArchiver
             int iCnt = 0;
             try
             {
-                var CMD = new SqliteCommand(S, modGlobals.SLConn);
+                var CMD = new SQLiteCommand(S, SQLiteCONN);
                 // ** if you don’t set the result set to scrollable HasRows does not work
                 var rs = CMD.ExecuteReader();
                 if (rs.HasRows)
@@ -3563,7 +3996,7 @@ namespace EcmArchiver
             return B;
         }
 
-        public bool addZipFile(string FileName, string ParentGuid, bool bThisIsAnEmail)
+        public bool addZipFile(string FQN, string ParentGuid, bool bThisIsAnEmail)
         {
             if (modGlobals.gTraceFunctionCalls.Equals(1))
             {
@@ -3573,34 +4006,49 @@ namespace EcmArchiver
             int EmailAttachment = 0;
             bool B = true;
             int UseArchiveBit = 0;
-            double fSize = 0d;
+            long fSize = 0L;
             if (bThisIsAnEmail)
             {
                 EmailAttachment = 1;
             }
 
-            var FI = new FileInfo(FileName);
+            var FI = new FileInfo(FQN);
             fSize = FI.Length;
             FI = null;
-            string S = "";
-            S = S + "insert or ignore into ZipFile (FQN, fSize, EmailAttachment,RowNbr) values (@FileName, @fSize, @EmailAttachment, @RowNbr) ";
-            if (modGlobals.bSLConn.Equals(false))
+            if (FQN.Contains("'"))
             {
-                if (!modGlobals.setSLConn())
+                FQN = FQN.Replace("''", "'");
+                FQN = FQN.Replace("'", "''");
+            }
+
+            if (Information.IsNothing(ParentGuid))
+            {
+                ParentGuid = "";
+            }
+
+            string S = "";
+            S = S + "insert or ignore into ZipFile (FQN, fSize, EmailAttachment, ParentGuid) values ('" + FQN + "', " + fSize.ToString() + ", " + EmailAttachment.ToString() + ", '" + ParentGuid + "' ) ";
+            try
+            {
+                SQLiteCONN.Open();
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("NOTICE addZipfile 100: " + ex.Message);
+            }
+
+            if (bSQLiteCOnnected.Equals(false))
+            {
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 44: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
-                CMD.Parameters.AddWithValue("@FileName", FileName);
-                CMD.Parameters.AddWithValue("@fSize", fSize);
-                CMD.Parameters.AddWithValue("@ParentGuid", ParentGuid);
-                CMD.Parameters.AddWithValue("@EmailAttachment", EmailAttachment);
-                CMD.Parameters.AddWithValue("@RowNbr", "null");
                 CMD.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -3610,7 +4058,7 @@ namespace EcmArchiver
                 }
                 else
                 {
-                    LOG.WriteToArchiveLog("ERROR: clsDbLocal/addFile - " + ex.Message + Constants.vbCrLf + S);
+                    LOG.WriteToArchiveLog("ERROR 100H: clsDbLocal/addZipFile - " + ex.Message + Constants.vbCrLf + S);
                 }
 
                 B = false;
@@ -3639,17 +4087,17 @@ namespace EcmArchiver
             fSize = FI.Length;
             FI = null;
             string S = "Update ZipFile set SuccessfullyProcessed = 1 where FQN = @FileName) ";
-            modGlobals.setSLConn();
-            if (modGlobals.bSLConn.Equals(false))
+            setSLConn();
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 46: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.Parameters.AddWithValue("@FileName", FileName);
@@ -3681,17 +4129,17 @@ namespace EcmArchiver
             int UseArchiveBit = 0;
             double fSize = 0d;
             string S = "Update ZipFile set NumberOfZipFiles = " + NumberOfZipFiles.ToString() + " where FQN = @FileName) ";
-            modGlobals.setSLConn();
-            if (modGlobals.bSLConn.Equals(false))
+            setSLConn();
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 47: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.Parameters.AddWithValue("@FileName", FileName);
@@ -3723,17 +4171,17 @@ namespace EcmArchiver
             int UseArchiveBit = 0;
             double fSize = 0d;
             string S = "Update ZipFile set InWork = 1 where FQN = @FileName) ";
-            modGlobals.setSLConn();
-            if (modGlobals.bSLConn.Equals(false))
+            setSLConn();
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 48: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.Parameters.AddWithValue("@FileName", FileName);
@@ -3756,40 +4204,54 @@ namespace EcmArchiver
 
         public bool cleanZipFiles()
         {
-            if (modGlobals.gTraceFunctionCalls.Equals(1))
-            {
-                LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
-            }
-
-            modGlobals.setSLConn();
             bool B = true;
-            int UseArchiveBit = 0;
-            double fSize = 0d;
-            string S = "delete from ZipFile where SuccessfullyProcessed = 1 ";
-            if (modGlobals.bSLConn.Equals(false))
-            {
-                if (!modGlobals.setSLConn())
-                {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
-                    return Conversions.ToBoolean(0);
-                }
-            }
-
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            string S = "";
             try
             {
-                CMD.ExecuteNonQuery();
+                if (modGlobals.gTraceFunctionCalls.Equals(1))
+                {
+                    LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
+                }
+
+                int UseArchiveBit = 0;
+                double fSize = 0d;
+                S = "delete from ZipFile where SuccessfullyProcessed = 1 ";
+                string db = ConfigurationManager.AppSettings["SQLiteLocalDB"];
+                if (!File.Exists(db))
+                {
+                    MessageBox.Show("FATAL ERR 44 SQLite DB MISSING: " + db);
+                }
+
+                string cs = "data source=" + db;
+                var SQLiteCONN = new SQLiteConnection();
+                using (SQLiteCONN)
+                {
+                    SQLiteCONN.ConnectionString = cs;
+                    SQLiteCONN.Open();
+                    var CMD = new SQLiteCommand(S, SQLiteCONN);
+                    using (CMD)
+                        try
+                        {
+                            CMD.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            LOG.WriteToArchiveLog("ERROR 00: clsDbLocal/cleanZipFiles - " + ex.Message + Constants.vbCrLf + S);
+                            B = false;
+                        }
+                        finally
+                        {
+                            GC.Collect();
+                            GC.WaitForPendingFinalizers();
+                        }
+                }
+
+                B = true;
             }
             catch (Exception ex)
             {
-                LOG.WriteToArchiveLog("ERROR: clsDbLocal/setZipNbrOfFiles - " + ex.Message + Constants.vbCrLf + S);
+                LOG.WriteToArchiveLog("ERROR 01: clsDbLocal/cleanZipFiles - " + ex.Message + Constants.vbCrLf + S);
                 B = false;
-            }
-            finally
-            {
-                CMD.Dispose();
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
             }
 
             return B;
@@ -3806,17 +4268,17 @@ namespace EcmArchiver
             int UseArchiveBit = 0;
             double fSize = 0d;
             string S = "delete from ZipFile ";
-            modGlobals.setSLConn();
-            if (modGlobals.bSLConn.Equals(false))
+            setSLConn();
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 50: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return Conversions.ToBoolean(0);
                 }
             }
 
-            var CMD = new SqliteCommand(S, modGlobals.SLConn);
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
             try
             {
                 CMD.ExecuteNonQuery();
@@ -3843,13 +4305,13 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodBase.GetCurrentMethod().ToString());
             }
 
-            modGlobals.setSLConn();
+            setSLConn();
             string FQN = null;
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 51: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return;
                 }
             }
@@ -3857,7 +4319,7 @@ namespace EcmArchiver
             string S = "Select FQN from ZipFile where InWork = 0";
             try
             {
-                var CMD = new SqliteCommand(S, modGlobals.SLConn);
+                var CMD = new SQLiteCommand(S, SQLiteCONN);
                 // ** if you don’t set the result set to scrollable HasRows does not work
                 var rs = CMD.ExecuteReader();
                 if (rs.HasRows)
@@ -3888,11 +4350,11 @@ namespace EcmArchiver
             }
             finally
             {
-                // If SLConn IsNot Nothing Then
-                // If SLConn.State = ConnectionState.Open Then
-                // SLConn.Close()
+                // If SQLiteCONN IsNot Nothing Then
+                // If SQLiteCONN.State = ConnectionState.Open Then
+                // SQLiteCONN.Close()
                 // End If
-                // SLConn.Dispose()
+                // SQLiteCONN.Dispose()
                 // End If
             }
 
@@ -3910,23 +4372,23 @@ namespace EcmArchiver
             string sKey = null;
             int RowID = default;
             string S = "Select sKey,RowID from Outlook";
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                modGlobals.setSLConn();
+                setSLConn();
             }
 
-            if (modGlobals.bSLConn.Equals(false))
+            if (bSQLiteCOnnected.Equals(false))
             {
-                if (!modGlobals.setSLConn())
+                if (!setSLConn())
                 {
-                    MessageBox.Show("NOTICE: The Local DB failed to open...");
+                    MessageBox.Show("NOTICE 52: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
                     return;
                 }
             }
 
             try
             {
-                var CMD = new SqliteCommand(S, modGlobals.SLConn);
+                var CMD = new SQLiteCommand(S, SQLiteCONN);
                 CMD.CommandType = CommandType.Text;
 
                 // ** if you don’t set the result set to scrollable HasRows does not work
@@ -3964,11 +4426,11 @@ namespace EcmArchiver
             }
             finally
             {
-                if (modGlobals.SLConn is object)
+                if (SQLiteCONN is object)
                 {
-                    if (modGlobals.SLConn.State == ConnectionState.Open)
+                    if (SQLiteCONN.State == ConnectionState.Open)
                     {
-                        modGlobals.SLConn.Close();
+                        SQLiteCONN.Close();
                     }
                 }
             }
@@ -3996,61 +4458,100 @@ namespace EcmArchiver
                     ListernerConn.Open();
                     bb = true;
                 }
-                // bSLConn = True
+                // bSQLiteCOnnected = True
                 catch (Exception ex)
                 {
                     bb = false;
-                    // bSLConn = False
+                    // bSQLiteCOnnected = False
                 }
             }
 
             return bb;
         }
 
-        public static bool CreateSQLiteDB(string dbfqn)
+        /// <summary>
+    /// Sets the sl connection.
+    /// </summary>
+    /// <returns></returns>
+        public bool setSLConn()
         {
-            if (File.Exists(dbfqn))
+            bool bb = true;
+            string cs = "";
+            if (!SQLiteCONN.State.Equals(ConnectionState.Open))
             {
-                return true;
+                try
+                {
+                    string slDatabase = ConfigurationManager.AppSettings["SQLiteLocalDB"];
+                    if (!File.Exists(slDatabase))
+                    {
+                        MessageBox.Show("FATAL ERR SQLite DB MISSING: " + slDatabase);
+                    }
+
+                    cs = "data source=" + slDatabase;
+                    modGlobals.gLocalDBCS = cs;
+                    SQLiteCONN.ConnectionString = cs;
+                    SQLiteCONN.Open();
+                    bb = true;
+                    bSQLiteCOnnected = true;
+                }
+                catch (Exception ex)
+                {
+                    var LG = new clsLogging();
+                    LG.WriteToArchiveLog("ERROR LOCALDB setSLConn: " + ex.Message + Constants.vbCrLf + cs);
+                    LG = null;
+                    bb = false;
+                    bSQLiteCOnnected = false;
+                }
             }
 
+            return bb;
+        }
+
+        public object getSLConn()
+        {
+            var NewConn = new SQLiteConnection();
+            string slDatabase = ConfigurationManager.AppSettings["SQLiteLocalDB"];
+            string cs = "data source=" + slDatabase;
             try
             {
-                int i = 0;
-                string AppPath = AppDomain.CurrentDomain.BaseDirectory;
-                var files = Directory.GetFiles(AppPath, "EcmArchive.db", SearchOption.AllDirectories);
-                string DBName = "";
-                string TgtDir = "";
-                slDatabase = ConfigurationManager.AppSettings["SQLiteDir"];
-                if (!Directory.Exists(dbfqn))
-                {
-                    Directory.CreateDirectory(dbfqn);
-                }
-
-                if (files.Length > 0)
-                {
-                    var loopTo = files.Length - 1;
-                    for (i = 0; i <= loopTo; i++)
-                    {
-                        DBName = files[i];
-                        if (DBName.ToUpper().Contains("EcmArchive.db"))
-                        {
-                            string fileToCopy = files[i];
-                            string destinationDirectory = dbfqn;
-                            File.Copy(fileToCopy, destinationDirectory);
-                            break;
-                        }
-                    }
-                }
-
-                return true;
+                NewConn.ConnectionString = cs;
+                NewConn.Open();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR addSQLiteDB: " + ex.Message);
-                return false;
+                var LG = new clsLogging();
+                LG.WriteToArchiveLog("ERROR LOCALDB getSLConn: " + ex.Message + Constants.vbCrLf + cs);
+                LG = null;
+                NewConn = null;
             }
+
+            return NewConn;
         }
+
+        public bool closeSLConn()
+        {
+            bool bb = false;
+            if (SQLiteCONN.State.Equals(ConnectionState.Open))
+            {
+                try
+                {
+                    SQLiteCONN.Close();
+                    bb = true;
+                }
+                catch (Exception ex)
+                {
+                    bb = false;
+                }
+                finally
+                {
+                    SQLiteCONN.Dispose();
+                }
+            }
+
+            return bb;
+        }
+
+
 
         /* TODO ERROR: Skipped RegionDirectiveTrivia */
         private bool disposedValue; // To detect redundant calls
@@ -4073,6 +4574,299 @@ namespace EcmArchiver
 
             disposedValue = true;
         }
+
+        public void getUseLastArchiveDateActive()
+        {
+            string S = "select cast(LastArchiveDate as text), LastArchiveDateActive from LastArchive";
+            setSLConn();
+            if (bSQLiteCOnnected.Equals(false))
+            {
+                if (!setSLConn())
+                {
+                    MessageBox.Show("NOTICE 52 isUseLastArchiveDateActive: The Local DB failed to open.: " + modGlobals.gLocalDBCS);
+                    return;
+                }
+            }
+
+            string sDate = "";
+            DateTime LWD = default;
+            string ArchiveFlg = "";
+            try
+            {
+                var CMD = new SQLiteCommand(S, SQLiteCONN);
+                CMD.CommandType = CommandType.Text;
+
+                // ** if you don’t set the result set to scrollable HasRows does not work
+                var rs = CMD.ExecuteReader();
+                if (rs.HasRows)
+                {
+                    rs.Read();
+                    sDate = rs.GetString(0);
+                    LWD = Convert.ToDateTime(sDate);
+                    ArchiveFlg = rs.GetString(1);
+                    try
+                    {
+                        if (ArchiveFlg.Equals("1"))
+                        {
+                            modGlobals.gUseLastArchiveDate = "1";
+                            modGlobals.gLastArchiveDate = LWD;
+                        }
+                        else
+                        {
+                            modGlobals.gUseLastArchiveDate = "0";
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+
+                if (!rs.IsClosed)
+                {
+                    rs.Close();
+                }
+
+                rs.Dispose();
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("ERROR: clsDbLocal/getUseLastArchiveDateActive - " + ex.Message + Constants.vbCrLf + S);
+            }
+            finally
+            {
+                if (SQLiteCONN is object)
+                {
+                    if (SQLiteCONN.State == ConnectionState.Open)
+                    {
+                        SQLiteCONN.Close();
+                    }
+                }
+            }
+        }
+
+        public void setUseLastArchiveDateActive()
+        {
+            string S = "update LastArchive set LastArchiveDate = '" + Conversions.ToString(DateAndTime.Now) + "';";
+            setSLConn();
+            DateTime LWD = default;
+            string ArchiveFlg = "";
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
+            try
+            {
+                CMD.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("ERROR: clsDbLocal/zeroizeZipFiles - " + ex.Message + Constants.vbCrLf + S);
+                B = false;
+            }
+            finally
+            {
+                CMD.Dispose();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
+        }
+
+        public void TurnOffUseLastArchiveDateActive()
+        {
+            string S = "update LastArchive set LastArchiveDateActive = '0' ";
+            setSLConn();
+            DateTime LWD = default;
+            string ArchiveFlg = "";
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
+            try
+            {
+                CMD.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("ERROR: clsDbLocal/zeroizeZipFiles - " + ex.Message + Constants.vbCrLf + S);
+                B = false;
+            }
+            finally
+            {
+                CMD.Dispose();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
+
+            getUseLastArchiveDateActive();
+        }
+
+        public int getCountUseLastArchiveDateActive()
+        {
+            var I = default(int);
+            string S = "select count(*) from LastArchive ";
+            setSLConn();
+            DateTime CNT = default;
+            try
+            {
+                var CMD = new SQLiteCommand(S, SQLiteCONN);
+                CMD.CommandType = CommandType.Text;
+
+                // ** if you don’t set the result set to scrollable HasRows does not work
+                var rs = CMD.ExecuteReader();
+                if (rs.HasRows)
+                {
+                    while (rs.Read())
+                        I = rs.GetInt32(0);
+                }
+
+                if (!rs.IsClosed)
+                {
+                    rs.Close();
+                }
+
+                rs.Dispose();
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("ERROR: clsDbLocal/BackupOutlookTbl - " + ex.Message + Constants.vbCrLf + S);
+            }
+            finally
+            {
+                if (SQLiteCONN is object)
+                {
+                    if (SQLiteCONN.State == ConnectionState.Open)
+                    {
+                        SQLiteCONN.Close();
+                    }
+                }
+            }
+
+            return I;
+        }
+
+        public void setFirstUseLastArchiveDateActive()
+        {
+            int I = getCountUseLastArchiveDateActive();
+            string S = "";
+            if (I.Equals(0))
+            {
+                S = "insert into LastArchive (LastArchiveDate,LastArchiveDateActive) values ('01/01/1960', '0')";
+            }
+            else
+            {
+                return;
+            }
+
+            setSLConn();
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
+            try
+            {
+                CMD.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("ERROR: clsDbLocal/InitUseLastArchiveDateActive - " + ex.Message + Constants.vbCrLf + S);
+                B = false;
+            }
+            finally
+            {
+                CMD.Dispose();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
+
+            getUseLastArchiveDateActive();
+        }
+
+        public void ZeroizeLastArchiveDate()
+        {
+            string S = "Delete from LastArchive ";
+            setSLConn();
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
+            try
+            {
+                CMD.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("ERROR: clsDbLocal/ZeroizeLastArchiveDate - " + ex.Message + Constants.vbCrLf + S);
+                B = false;
+            }
+            finally
+            {
+                CMD.Dispose();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
+        }
+
+        public void InitUseLastArchiveDateActive(string InitDate)
+        {
+            var today = DateTime.Now;
+            var Day_7 = today.AddDays(-5);
+            int I = getCountUseLastArchiveDateActive();
+            string S = "";
+            if (I.Equals(0) & InitDate.Length.Equals(0))
+            {
+                S = "insert into LastArchive (LastArchiveDate,LastArchiveDateActive) values ('" + Day_7.ToString() + "', '1')";
+            }
+            else if (I.Equals(1))
+            {
+                S = "update LastArchive set LastArchiveDate = '" + InitDate + "' ";
+            }
+            else if (I > 1)
+            {
+                ZeroizeLastArchiveDate();
+                S = "insert into LastArchive (LastArchiveDate,LastArchiveDateActive) values ('" + InitDate + "', '1')";
+            }
+            else if (I.Equals(0))
+            {
+                S = "insert into LastArchive (LastArchiveDate,LastArchiveDateActive) values ('" + InitDate + "', '1')";
+            }
+
+            setSLConn();
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
+            try
+            {
+                CMD.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("ERROR: clsDbLocal/InitUseLastArchiveDateActive - " + ex.Message + Constants.vbCrLf + S);
+                B = false;
+            }
+            finally
+            {
+                CMD.Dispose();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
+
+            getUseLastArchiveDateActive();
+        }
+
+        public void TurnOnUseLastArchiveDateActive()
+        {
+            string S = "update LastArchive set LastArchiveDateActive = '1' ";
+            setSLConn();
+            DateTime LWD = default;
+            string ArchiveFlg = "";
+            var CMD = new SQLiteCommand(S, SQLiteCONN);
+            try
+            {
+                CMD.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("ERROR: clsDbLocal/zeroizeZipFiles - " + ex.Message + Constants.vbCrLf + S);
+                B = false;
+            }
+            finally
+            {
+                CMD.Dispose();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
+
+            getUseLastArchiveDateActive();
+        }
+
+
 
         // TODO: override Finalize() only if Dispose(disposing As Boolean) above has code to free unmanaged resources.
         // Protected Overrides Sub Finalize()

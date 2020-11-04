@@ -572,7 +572,7 @@ namespace EcmArchiver
                     // Dim BB As Boolean = False
 
                     // Dim OriginalFileName As String = DMA.getFileName(file_FullName)
-                    // BB = DBARCH.UpdateSourceFileImage(OriginalFileName, UID, MachineID, NewSourceGuid$, file_LastAccessDate$, file_CreateDate$, file_LastWriteTime$, LastVerNbr, file_FullName, RetentionCode, isPublic, CrcHash)
+                    // BB = DBARCH.UpdateSourceImageInRepo(OriginalFileName, UID, MachineID, NewSourceGuid$, file_LastAccessDate$, file_CreateDate$, file_LastWriteTime$, LastVerNbr, file_FullName, RetentionCode, isPublic, CrcHash)
                     // If Not BB Then
                     // Dim MySql$ = "Delete from DataSource where SourceGuid = '" + NewSourceGuid$ + "'"
                     // DBARCH.ExecuteSqlNewConn(MySql)

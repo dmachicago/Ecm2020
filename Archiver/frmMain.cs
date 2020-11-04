@@ -3,10 +3,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using global::System.Collections.Specialized;
+// Imports Microsoft.Data.Sqlite
+using global::System.Data.SQLite;
 using global::System.Deployment.Application;
 using System.Diagnostics;
 using System.Drawing;
-using global::System.Globalization;
 
 /* TODO ERROR: Skipped DefineDirectiveTrivia */
 using global::System.IO;
@@ -54,8 +55,9 @@ namespace EcmArchiver
                     My.MySettingsProperty.Settings.Save();
                     LOG.WriteToArchiveLog(Conversions.ToString(Operators.AddObject("NOTICE: New INSTALL detected 200: ", My.MySettingsProperty.Settings["UserDefaultConnString"])));
                     LOG.WriteToArchiveLog(Conversions.ToString(Operators.AddObject("NOTICE: New INSTALL detected 300: ", My.MySettingsProperty.Settings["UserThesaurusConnString"])));
-                    DBLocal.RestoreSQLite();
                 }
+                // WDM 10-30-2020 Commewnted out next stmtm
+                // DBLocal.RestoreSQLite()
                 catch (ThreadAbortException ex)
                 {
                     LOG.WriteToArchiveLog("Thread 01 - caught ThreadAbortException - resetting.");
@@ -104,7 +106,9 @@ namespace EcmArchiver
             UTIL.cleanTempWorkingDir();
             updateMessageBar("6 of 6");
             populateZipExtensions();
+            updateMessageBar("6 of 6.1");
             populateGraphicExtensions();
+            updateMessageBar("6 of 6.2");
 
             // Me.Show()
             Application.DoEvents();
@@ -124,6 +128,7 @@ namespace EcmArchiver
             modGlobals.gAllowedExts = DBARCH.getUsersAllowedFileExt(modGlobals.gCurrUserGuidID);
             TabControl1.SelectedIndex = 1;
             _Button4.Name = "Button4";
+            _LinkLabel2.Name = "LinkLabel2";
             _LinkLabel1.Name = "LinkLabel1";
             _hlExchange.Name = "hlExchange";
             _ckExpand.Name = "ckExpand";
@@ -151,6 +156,10 @@ namespace EcmArchiver
             _ckDisable.Name = "ckDisable";
             _gbContentMgt.Name = "gbContentMgt";
             _btnCountFiles.Name = "btnCountFiles";
+            _Panel2.Name = "Panel2";
+            _btnSetLastArchiveOFF.Name = "btnSetLastArchiveOFF";
+            _btnSetLastArchiveON.Name = "btnSetLastArchiveON";
+            _CheckBox2.Name = "CheckBox2";
             _btnArchive1Doc.Name = "btnArchive1Doc";
             _ckDeleteAfterArchive.Name = "ckDeleteAfterArchive";
             _ckOcrPdf.Name = "ckOcrPdf";
@@ -158,6 +167,7 @@ namespace EcmArchiver
             _btnRefreshRetent.Name = "btnRefreshRetent";
             _CkMonitor.Name = "CkMonitor";
             _ckArchiveBit.Name = "ckArchiveBit";
+            _Label13.Name = "Label13";
             _ckOcr.Name = "ckOcr";
             _clAdminDir.Name = "clAdminDir";
             _ckDisableDir.Name = "ckDisableDir";
@@ -195,11 +205,12 @@ namespace EcmArchiver
             _ContextMenuStrip1.Name = "ContextMenuStrip1";
             _ResetSelectedMailBoxesToolStripMenuItem.Name = "ResetSelectedMailBoxesToolStripMenuItem";
             _EmailLibraryReassignmentToolStripMenuItem.Name = "EmailLibraryReassignmentToolStripMenuItem";
+            _ArchiveToolStripMenuItem.Name = "ArchiveToolStripMenuItem";
             _ArchiveALLToolStripMenuItem.Name = "ArchiveALLToolStripMenuItem";
             _OutlookEmailsToolStripMenuItem.Name = "OutlookEmailsToolStripMenuItem";
             _ExchangeEmailsToolStripMenuItem.Name = "ExchangeEmailsToolStripMenuItem";
             _ContentToolStripMenuItem.Name = "ContentToolStripMenuItem";
-            _ContentReInventoryToolStripMenuItem.Name = "ContentReInventoryToolStripMenuItem";
+            _ContentNoLIstenerToolStripMenuItem.Name = "ContentNoLIstenerToolStripMenuItem";
             _ToolStripMenuItem1.Name = "ToolStripMenuItem1";
             _ScheduleToolStripMenuItem.Name = "ScheduleToolStripMenuItem";
             _SelectedFilesToolStripMenuItem.Name = "SelectedFilesToolStripMenuItem";
@@ -209,18 +220,20 @@ namespace EcmArchiver
             _ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1";
             _LoginToSystemToolStripMenuItem.Name = "LoginToSystemToolStripMenuItem";
             _ChangeUserPasswordToolStripMenuItem.Name = "ChangeUserPasswordToolStripMenuItem";
-            _ImpersonateLoginToolStripMenuItem.Name = "ImpersonateLoginToolStripMenuItem";
-            _LoginAsDifferenctUserToolStripMenuItem.Name = "LoginAsDifferenctUserToolStripMenuItem";
-            _ManualEditAppConfigToolStripMenuItem.Name = "ManualEditAppConfigToolStripMenuItem";
-            _ViewLogsToolStripMenuItem.Name = "ViewLogsToolStripMenuItem";
-            _ViewOCRErrorFilesToolStripMenuItem.Name = "ViewOCRErrorFilesToolStripMenuItem";
-            _AddDesktopIconToolStripMenuItem.Name = "AddDesktopIconToolStripMenuItem";
             _ClearRestoreQueueToolStripMenuItem1.Name = "ClearRestoreQueueToolStripMenuItem1";
             _CompareDirToRepositoryToolStripMenuItem1.Name = "CompareDirToRepositoryToolStripMenuItem1";
             _InventoryDirectoryToolStripMenuItem1.Name = "InventoryDirectoryToolStripMenuItem1";
             _ValidateDirectoryFilesToolStripMenuItem.Name = "ValidateDirectoryFilesToolStripMenuItem";
+            _ReapplyALLDBUpdatesToolStripMenuItem.Name = "ReapplyALLDBUpdatesToolStripMenuItem";
+            _ValidateRetentionDatesToolStripMenuItem.Name = "ValidateRetentionDatesToolStripMenuItem";
+            _TurnONToolStripMenuItem.Name = "TurnONToolStripMenuItem";
+            _TurnOFFToolStripMenuItem.Name = "TurnOFFToolStripMenuItem";
+            _InitializeToGivenDateToolStripMenuItem.Name = "InitializeToGivenDateToolStripMenuItem";
+            _TurnListenerONToolStripMenuItem.Name = "TurnListenerONToolStripMenuItem";
+            _TurnListenerOFFToolStripMenuItem.Name = "TurnListenerOFFToolStripMenuItem";
             _LIstWindowsLogsToolStripMenuItem.Name = "LIstWindowsLogsToolStripMenuItem";
             _CheckLogsForListenerInfoToolStripMenuItem.Name = "CheckLogsForListenerInfoToolStripMenuItem";
+            _ReInventoryAllFilesToolStripMenuItem.Name = "ReInventoryAllFilesToolStripMenuItem";
             _ResetSQLiteArchivesToolStripMenuItem.Name = "ResetSQLiteArchivesToolStripMenuItem";
             _GetOutlookEMailIDsToolStripMenuItem1.Name = "GetOutlookEMailIDsToolStripMenuItem1";
             _ResetZIPFilesToolStripMenuItem.Name = "ResetZIPFilesToolStripMenuItem";
@@ -236,6 +249,23 @@ namespace EcmArchiver
             _RulesExecutionToolStripMenuItem.Name = "RulesExecutionToolStripMenuItem";
             _EncryptStringToolStripMenuItem.Name = "EncryptStringToolStripMenuItem";
             _OpenLicenseFormToolStripMenuItem.Name = "OpenLicenseFormToolStripMenuItem";
+            _FileNamesToolStripMenuItem.Name = "FileNamesToolStripMenuItem";
+            _CanLongFilenamesBeTurnedOnToolStripMenuItem.Name = "CanLongFilenamesBeTurnedOnToolStripMenuItem";
+            _HowToTurnOnLongFilenamesToolStripMenuItem.Name = "HowToTurnOnLongFilenamesToolStripMenuItem";
+            _TurnONLongFilenamesAdminNeededToolStripMenuItem.Name = "TurnONLongFilenamesAdminNeededToolStripMenuItem";
+            _CheckForViolationsToolStripMenuItem.Name = "CheckForViolationsToolStripMenuItem";
+            _ValidateFileHASHCodesToolStripMenuItem.Name = "ValidateFileHASHCodesToolStripMenuItem";
+            _ValidateProcessAsFileExtsToolStripMenuItem.Name = "ValidateProcessAsFileExtsToolStripMenuItem";
+            _FulltextLogAnalysisToolStripMenuItem.Name = "FulltextLogAnalysisToolStripMenuItem";
+            _UpdateAvailableIFiltersToolStripMenuItem.Name = "UpdateAvailableIFiltersToolStripMenuItem";
+            _ValidateRepoContentsToolStripMenuItem.Name = "ValidateRepoContentsToolStripMenuItem";
+            _ImpersonateLoginToolStripMenuItem.Name = "ImpersonateLoginToolStripMenuItem";
+            _LoginAsDifferenctUserToolStripMenuItem.Name = "LoginAsDifferenctUserToolStripMenuItem";
+            _ManualEditAppConfigToolStripMenuItem.Name = "ManualEditAppConfigToolStripMenuItem";
+            _ManualEditListenerConfigToolStripMenuItem.Name = "ManualEditListenerConfigToolStripMenuItem";
+            _ViewLogsToolStripMenuItem.Name = "ViewLogsToolStripMenuItem";
+            _ViewOCRErrorFilesToolStripMenuItem.Name = "ViewOCRErrorFilesToolStripMenuItem";
+            _AddDesktopIconToolStripMenuItem.Name = "AddDesktopIconToolStripMenuItem";
             _CheckForUpdatesToolStripMenuItem.Name = "CheckForUpdatesToolStripMenuItem";
             _ShowSystemVersionToolStripMenuItem.Name = "ShowSystemVersionToolStripMenuItem";
             _AllToolStripMenuItem.Name = "AllToolStripMenuItem";
@@ -253,6 +283,12 @@ namespace EcmArchiver
             _RSSPullToolStripMenuItem.Name = "RSSPullToolStripMenuItem";
             _UnhandledExceptionsToolStripMenuItem.Name = "UnhandledExceptionsToolStripMenuItem";
             _GetListenerFilesToolStripMenuItem.Name = "GetListenerFilesToolStripMenuItem";
+            _CreateSQLiteDBToolStripMenuItem.Name = "CreateSQLiteDBToolStripMenuItem";
+            _LongFilenameHASHToolStripMenuItem.Name = "LongFilenameHASHToolStripMenuItem";
+            _ValidateLongDirectroryNamesToolStripMenuItem.Name = "ValidateLongDirectroryNamesToolStripMenuItem";
+            _TextStringHashToolStripMenuItem.Name = "TextStringHashToolStripMenuItem";
+            _GetDirFilesByFilterToolStripMenuItem.Name = "GetDirFilesByFilterToolStripMenuItem";
+            _GenWhereINDictToolStripMenuItem.Name = "GenWhereINDictToolStripMenuItem";
             _ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
             _AboutToolStripMenuItem.Name = "AboutToolStripMenuItem";
             _OnlineHelpToolStripMenuItem.Name = "OnlineHelpToolStripMenuItem";
@@ -366,8 +402,9 @@ namespace EcmArchiver
         private bool bUseAttachData = false;
         private string CompanyID = "";
         private string RepoID = "";
-        private clsDATASOURCE_V2 DOCS = new clsDATASOURCE_V2();
+        private clsDataSource_V2 DOCS = new clsDataSource_V2();
         private clsAVAILFILETYPES AVL = new clsAVAILFILETYPES();
+
         // Dim DBASES As New clsDbARCHS
         private clsEMAILARCHPARMS EMPARMS = new clsEMAILARCHPARMS();
         private clsEMAILFOLDER EMF = new clsEMAILFOLDER();
@@ -396,9 +433,12 @@ namespace EcmArchiver
 
         public void ApplyDDUpdates()
         {
+            My.MyProject.Forms.frmDBUpdates.Show();
+            My.MyProject.Forms.frmDBUpdates.Hide();
             var DBU = new clsDBUpdate();
             DBU.CheckForDBUpdates();
             DBU = null;
+            My.MyProject.Forms.frmDBUpdates.Close();
         }
 
         public bool ckFormOpen(string fname)
@@ -418,6 +458,22 @@ namespace EcmArchiver
             return xb;
         }
 
+        public void setLastArchiveLabel()
+        {
+            if (modGlobals.gUseLastArchiveDate.Equals("1"))
+            {
+                lblUseLastArchiveDate.Text = "Last Arch ON: " + modGlobals.gLastArchiveDate.ToString();
+                lblUseLastArchiveDate.BackColor = Color.Green;
+                lblUseLastArchiveDate.ForeColor = Color.White;
+            }
+            else
+            {
+                lblUseLastArchiveDate.Text = "Last Arch OFF";
+                lblUseLastArchiveDate.BackColor = Color.Red;
+                lblUseLastArchiveDate.ForeColor = Color.Yellow;
+            }
+        }
+
         private void frmReconMain_Load(object sender, EventArgs e)
         {
             if (modGlobals.gTraceFunctionCalls.Equals(1))
@@ -425,8 +481,18 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + MethodBase.GetCurrentMethod().ToString());
             }
 
+            string OSVer = UTIL.getOsVersion();
+            bool isLongFileNamesAvail = UTIL.isLongFileNamesAvail();
             updateMessageBar("Applying any needed updates, standby...");
             ApplyDDUpdates();
+            DBLocal.setFirstUseLastArchiveDateActive();
+            DBLocal.getUseLastArchiveDateActive();
+            setLastArchiveLabel();
+
+            // INSERT ALL THE REPO ALLOWED EXTENSIONS INTO THE SQLITE DB
+            var AllowedExts = DBARCH.getUsedExtension();
+            DBLocal.resetExtension();
+            DBLocal.addExtension(AllowedExts);
             bool ContentOnly = false;
             bool OutlookOnly = false;
             bool ExchangeOnly = false;
@@ -441,6 +507,15 @@ namespace EcmArchiver
             modGlobals.ShowMsgHeader("Standby please, fetching setup parameters.");
             LL = 225d;
             UseLocalSettingsOnly = System.Configuration.ConfigurationManager.AppSettings["UseLocalOnly"];
+            if (modGlobals.UseDirectoryListener.Equals(1))
+            {
+                ContentToolStripMenuItem.Text = "Content (Listener ON)";
+            }
+            else
+            {
+                ContentToolStripMenuItem.Text = "Content (Quick)";
+            }
+
             string CurrentLoginID = "";
             // CurrentLoginID = System.Environment.UserName
 
@@ -905,7 +980,7 @@ namespace EcmArchiver
                 int iRunningInstances = 0;
                 LL = 213.6d;
                 iRunningInstances = UTIL.countApplicationInstances("ECMARCHIVESETUP");
-                LL = Conversions.ToDouble(LL == 213.7d);
+                LL = 213.7d;
                 if (iRunningInstances > 2)
                 {
                     LL = 213.8d;
@@ -1067,7 +1142,9 @@ namespace EcmArchiver
                         try
                         {
                             LL = 173d;
-                            LOG.WriteToInstallLog("NOTICE frmMain: New INSTALL detected 100");
+                            LOG.WriteToArchiveLog("**********************************************");
+                            LL = 174d;
+                            LOG.WriteToArchiveLog("NOTICE frmMain: New INSTALL detected 100");
                             LL = 174d;
                             My.MySettingsProperty.Settings.Upgrade();
                             LL = 175d;
@@ -1200,23 +1277,6 @@ namespace EcmArchiver
                 LL = 228d;
                 string sDebug = DBARCH.getUserParm("debug_SetupScreen");
                 LL = 229d;
-                LL = 230d;
-                if (sDebug.Equals("0"))
-                {
-                    LL = 231d;
-                    ddebug = false;
-                    LL = 232d;
-                }
-                else
-                {
-                    LL = 233d;
-                    ddebug = true;
-                    LL = 234d;
-                    LOG.WriteToArchiveLog("Starting: frmMain, Debug configuration is ON");
-                    LL = 235d;
-                }
-
-                LL = 236d;
                 LL = 237d;
                 string ImpersonateID = "";
                 bool bImpersonateID = UTIL.isImpersonationSet(ref ImpersonateID);
@@ -1369,6 +1429,7 @@ namespace EcmArchiver
                 LL = 298d;
                 ARCH.HistoryFolderExists();
                 LL = 299d;
+
                 // ** UPDATE THE CURRENT FOLDERS TO CONTAIN THE FOLDERID'S : LL = 331
                 if (Conversions.ToDouble(TRACEFLOW) == 1d)
                     DBARCH.RemoteTrace(9901, "Main", "140");
@@ -5141,9 +5202,9 @@ namespace EcmArchiver
                     return;
                 }
 
-                if (CkMonitor.Checked)
+                if (!lbArchiveDirs.SelectedItems.Count.Equals(1))
                 {
-                    MessageBox.Show("Cannot remove a directory assigned to a listener, returning.");
+                    MessageBox.Show("One and only one directory must be selected to remove, returning...");
                     return;
                 }
 
@@ -5164,11 +5225,14 @@ namespace EcmArchiver
 
                 Cursor = Cursors.WaitCursor;
                 string FQN = txtDir.Text.Trim();
+                FQN = lbArchiveDirs.SelectedItems[0].ToString().Trim();
                 string S = "";
-                S += "select DirGuid from Directory ";
-                S += " where ";
-                S += @" FQN like 'C:\dir%'";
-                S += " and UserID = '4841903f-46ff-4cd1-bcf3-6b6d770ff752'";
+                if (FQN.Contains("'"))
+                {
+                    FQN.Replace("''", "'");
+                    FQN.Replace("'", "''");
+                }
+
                 bool B = false;
                 if (ckSubDirs.Checked)
                 {
@@ -5180,6 +5244,7 @@ namespace EcmArchiver
                     B = DBARCH.ExecuteSqlNewConn(90308, S);
                     S = " delete from Directory where DirGuid in (select DirGuid from Directory where FQN like '" + FQN + "%' and UserID = '" + modGlobals.gCurrUserGuidID + "')";
                     B = DBARCH.ExecuteSqlNewConn(90309, S);
+                    ProcessListener(false);
                 }
                 else
                 {
@@ -5191,6 +5256,7 @@ namespace EcmArchiver
                     B = DBARCH.ExecuteSqlNewConn(90312, S);
                     S = " delete from Directory where DirGuid in (select DirGuid from Directory where FQN like '" + FQN + "' and UserID = '" + modGlobals.gCurrUserGuidID + "')";
                     B = DBARCH.ExecuteSqlNewConn(90313, S);
+                    ProcessListener(false);
                 }
 
                 var argLB = lbArchiveDirs;
@@ -5387,9 +5453,14 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + MethodBase.GetCurrentMethod().ToString());
             }
 
+            int LL = 0;
+            string cFolder = "";
+            string pFolder = "XXX";
+            string ArchiveMsg = "";
+            string RetentionCode = "";
+            int PauseThreadMS = 0;
             string FOLDER_FQN = "XXX";
             string ParentDir = "XXX";
-            int LL = 0;
             LL = 1;
             bool bExplodeZipFile = false;
             LL = 6;
@@ -5561,7 +5632,7 @@ namespace EcmArchiver
             }
 
             LL = 421;
-            // Dim ActiveFolders(0)	:	LL = 	426		
+            // Dim ActiveFolders(0)	:	LL = 	426
             var ActiveFolders = new List<string>();
             LL = 431;
             string FolderName = "";
@@ -5576,7 +5647,7 @@ namespace EcmArchiver
             LL = 456;
             var FilesToArchive = new List<string>();
             LL = 461;
-            var FilesToArchiveID = new List<int>();
+            var FilesToArchiveID = new List<string>();
             LL = 461;
             var LibraryList = new List<string>();
             LL = 466;
@@ -5588,7 +5659,8 @@ namespace EcmArchiver
             bool ThisFileNeedsToBeDeleted = false;
             LL = 486;
             LL = 491;
-            // ********************************************************************	:	LL = 	496		
+
+            // ********************************************************************	:	LL = 	496
             My.MyProject.Forms.frmNotify.lblPdgPages.Text = "LOCATING FILES";
             if (modGlobals.UseDirectoryListener.Equals(1) & !modGlobals.TempDisableDirListener)
             {
@@ -5603,20 +5675,9 @@ namespace EcmArchiver
                 DBARCH.getDisabledDirectories(ref ListOfDisabledDirs);
                 LL = 506;
             }
+            // ********************************************************************	:	LL = 	511
 
-            // ********************************************************************	:	LL = 	511		
             LL = 516;
-            string cFolder = "";
-            LL = 521;
-            string pFolder = "XXX";
-            LL = 526;
-            string ArchiveMsg = "";
-            LL = 531;
-            string RetentionCode = "";
-            LL = 536;
-            LL = 541;
-            int PauseThreadMS = 0;
-            LL = 546;
             try
             {
                 LL = 551;
@@ -5908,9 +5969,9 @@ namespace EcmArchiver
                         ParmMsg += "isPublic set to " + isPublic + " for " + FOLDER_FQN + Constants.vbCrLf;
                         LL = 1161;
                         LL = 1166;
-                        // ***************************	:	LL = 	1171		
-                        // MessageBox.Show(ParmMsg)	:	LL = 	1176		
-                        // ***************************	:	LL = 	1181		
+                        // ***************************	:	LL = 	1171
+                        // MessageBox.Show(ParmMsg)	:	LL = 	1176
+                        // ***************************	:	LL = 	1181
                         LL = 1186;
                         bool ckArchiveBit = false;
                         LL = 1191;
@@ -6004,7 +6065,7 @@ namespace EcmArchiver
 
                         LL = 1331;
                         LL = 1336;
-                        // ******************************************************************************	:	LL = 	1341		
+                        // ******************************************************************************	:	LL = 	1341
                         Process01:
                         ;
                         if ((PrevParentDir ?? "") != (ParentDir ?? ""))
@@ -6037,7 +6098,7 @@ namespace EcmArchiver
                         }
 
                         LL = 1401;
-                        // ******************************************************************************	:	LL = 	1406		
+                        // ******************************************************************************	:	LL = 	1406
                         PrevParentDir = ParentDir;
                         LL = 1411;
                         if (ddebug)
@@ -6062,7 +6123,7 @@ namespace EcmArchiver
 
                             LL = 1451;
                             LL = 1456;
-                            // ********************************************************************************************************************	:	LL = 	1461		
+                            // ********************************************************************************************************************	:	LL = 	1461
                             string tFOLDER_FQN = UTIL.RemoveSingleQuotes(FOLDER_FQN);
                             LL = 1466;
                             int iCntFolderIsdefinedForArchive = 0;
@@ -6082,7 +6143,7 @@ namespace EcmArchiver
                             // IncludedTypes = DBARCH.AddIncludedFiletypes(ParentDir, FOLDER_IncludeSubDirs) : LL = 1526
                             // ExcludedTypes = DBARCH.AddExcludedFiletypes(ParentDir, FOLDER_IncludeSubDirs) : LL = 1531
                             // End If : LL = 1536
-                            // ********************************************************************************************************************	:	LL = 	1541		
+                            // ********************************************************************************************************************	:	LL = 	1541
                             LL = 1546;
                             /* TODO ERROR: Skipped IfDirectiveTrivia *//* TODO ERROR: Skipped DisabledTextTrivia *//* TODO ERROR: Skipped EndIfDirectiveTrivia */
                             LL = 1566;
@@ -6138,7 +6199,7 @@ namespace EcmArchiver
                             LL = 1636;
                             Application.DoEvents();
                             LL = 1641;
-                            // ** Verify that the DIR still exists	:	LL = 	1646		
+                            // ** Verify that the DIR still exists	:	LL = 	1646
                             if (Directory.Exists(FolderName))
                             {
                                 LL = 1651;
@@ -6203,17 +6264,17 @@ namespace EcmArchiver
                             LL = 1761;
                             isPublic = a[6];
                             LL = 1766;
-                            // a(0) = IncludeSubDirs	:	LL = 	1771		
-                            // a(1) = VersionFiles	:	LL = 	1776		
-                            // a(2) = ckMetaData	:	LL = 	1781		
-                            // a(3) = OcrDirectory	:	LL = 	1786		
-                            // a(4) = RetentionCode	:	LL = 	1791		
-                            // a(5) = OcrPdf	:	LL = 	1796		
-                            // a(6) = ckPublic	:	LL = 	1801		
+                            // a(0) = IncludeSubDirs	:	LL = 	1771
+                            // a(1) = VersionFiles	:	LL = 	1776
+                            // a(2) = ckMetaData	:	LL = 	1781
+                            // a(3) = OcrDirectory	:	LL = 	1786
+                            // a(4) = RetentionCode	:	LL = 	1791
+                            // a(5) = OcrPdf	:	LL = 	1796
+                            // a(6) = ckPublic	:	LL = 	1801
                             LL = 1806;
-                            // *****************************************************************************	:	LL = 	1811		
-                            // ** Get all of the files in this folder	:	LL = 	1816		
-                            // *****************************************************************************	:	LL = 	1821		
+                            // *****************************************************************************	:	LL = 	1811
+                            // ** Get all of the files in this folder	:	LL = 	1816
+                            // *****************************************************************************	:	LL = 	1821
                             var StepTimer = DateAndTime.Now;
                             LL = 1826;
                             bool bSubDirFlg = false;
@@ -6236,7 +6297,7 @@ namespace EcmArchiver
                                 }
 
                                 LL = 1856;
-                                // **************************************************************************	:	LL = 	1861		
+                                // **************************************************************************	:	LL = 	1861
                                 if (UseThreads == false)
                                 {
                                     SB5.Text = FOLDER_FQN;
@@ -6247,7 +6308,7 @@ namespace EcmArchiver
                                 LL = 1871;
                                 LOG.WriteToTimerLog("ArchiveContent-01", "getFilesInDir", "START");
                                 LL = 1876;
-                                // NbrFilesInDir = DMA.getFilesInDir(FOLDER_FQN , FilesToArchive, IncludedTypes, ExcludedTypes, ckArchiveBit)	:	LL = 	1881		
+                                // NbrFilesInDir = DMA.getFilesInDir(FOLDER_FQN , FilesToArchive, IncludedTypes, ExcludedTypes, ckArchiveBit)	:	LL = 	1881
                                 LL = 1886;
                                 string MSG = "";
                                 LL = 1891;
@@ -6255,7 +6316,7 @@ namespace EcmArchiver
                                 LL = 1896;
                                 var FilterList = new List<string>();
                                 LL = 1901;
-                                // Dim ArchiveAttr As Boolean = False	:	LL = 	1906		
+                                // Dim ArchiveAttr As Boolean = False	:	LL = 	1906
                                 string sTemp = "";
                                 LL = 1911;
                                 LL = 1916;
@@ -6333,7 +6394,7 @@ namespace EcmArchiver
                                 LL = 2031;
                                 LOG.WriteToTimerLog("ArchiveContent-01", "getFilesInDir", "STOP", StepTimer);
                                 LL = 2036;
-                                // **************************************************************************	:	LL = 	2041		
+                                // **************************************************************************	:	LL = 	2041
                                 if (ddebug)
                                 {
                                     LOG.WriteToArchiveLog("Starting File capture: Loaded files");
@@ -6345,7 +6406,7 @@ namespace EcmArchiver
                                     LL = 2051;
                                     LOG.WriteToArchiveLog("Archive Folder HAD NO FILES: " + FOLDER_FQN);
                                     LL = 2056;
-                                    // GoTo NextFolder	:	LL = 	2061		
+                                    // GoTo NextFolder	:	LL = 	2061
                                 }
 
                                 LL = 2066;
@@ -6355,16 +6416,6 @@ namespace EcmArchiver
                                     LL = 2071;
                                 }
                             }
-                            // *******************************	:	LL = 	2076
-                            // 'WDM COmmented out the below as it is not needed at present
-                            // StepTimer = Now : LL = 2081
-                            // LOG.WriteToTimerLog("ArchiveContent-01", "ckFilesNeedUpdate", "START") : LL = 2086
-                            // If Not DeleteOnArchive.Equals("Y") Then : LL = 2091
-                            // DBARCH.ckFilesNeedUpdate(FilesToArchive, ckArchiveBit) : LL = 2096
-                            // End If : LL = 2101
-                            // LL = 2106
-                            // LOG.WriteToTimerLog("ArchiveContent-01", "ckFilesNeedUpdate", "STOP", StepTimer) : LL = 2111
-                            // *******************************	:	LL = 	2116		
                             catch (IOException ex)
                             {
                                 LOG.WriteToArchiveLog("Thread 88 IO exception: " + ex.Message);
@@ -6393,7 +6444,7 @@ namespace EcmArchiver
                             LL = 2156;
                             string ArchIndicator = "";
                             LL = 2161;
-                            // ** Process all of the files	:	LL = 	2166		
+                            // ** Process all of the files	:	LL = 	2166
                             int iTotal = FilesToArchive.Count;
                             LL = 2171;
                             iContent += 1;
@@ -6404,6 +6455,12 @@ namespace EcmArchiver
                             int ArchCnt = FilesToArchive.Count;
                             My.MyProject.Forms.frmNotify.Text = "CONTENT: Uploading Files";
                             FilesToArchive.Sort();
+                            int CurrFileSize = 0;
+                            string CurrFileName = "";
+                            string CurrFQN = "";
+                            string CurrExt = "";
+                            var CurrCreateDate = DateAndTime.Now;
+                            var CurrLastUpdate = DateAndTime.Now;
                             for (int K = 0, loopTo2 = FilesToArchive.Count - 1; K <= loopTo2; K++)
                             {
                                 LL = 2186;
@@ -6468,7 +6525,7 @@ namespace EcmArchiver
                                 LL = 2321;
                                 LL = 2326;
 
-                                // ************************************************************************	:	LL = 	2331		
+                                // ************************************************************************	:	LL = 	2331
                                 var FileAttributes = FilesToArchive[K].Split('|');
                                 LL = 2336;
                                 string file_ArchiveBit = "";
@@ -6501,6 +6558,19 @@ namespace EcmArchiver
                                 }
 
                                 My.MyProject.Forms.frmNotify.Refresh();
+
+                                // If File.Exists(file_FullName) Then
+                                // Dim Finfo As New FileInfo(file_FullName)
+                                // CurrFileSize = Finfo.Length
+                                // CurrFileName = Finfo.Name
+                                // CurrFQN = Finfo.FullName
+                                // CurrExt = Finfo.Extension
+                                // CurrCreateDate = Finfo.CreationTime
+                                // CurrLastUpdate = Finfo.LastWriteTime
+                                // Finfo = Nothing
+                                // End If
+
+
                                 LL = 2366;
                                 if (K > FilesToArchive.Count)
                                 {
@@ -6523,7 +6593,7 @@ namespace EcmArchiver
                                 // GoTo NextFile : LL = 2411
                                 // End If : LL = 2416
                                 LL = 2421;
-                                // ************************************************************************	:	LL = 	2426		
+                                // ************************************************************************	:	LL = 	2426
                                 LL = 2431;
                                 InventoryFQN = file_DirectoryName + @"\" + file_name;
                                 LL = 2436;
@@ -6532,19 +6602,19 @@ namespace EcmArchiver
                                     if (modGlobals.UseDirectoryListener.Equals(1) & !modGlobals.TempDisableDirListener)
                                     {
                                         bool bUpdt = DBLocal.setListenerfileProcessed(InventoryFQN);
-                                        if (bUpdt)
-                                        {
-                                            LOG.WriteToArchiveLog("NOTICE ArchiveContent BX01 skipped file : " + InventoryFQN);
-                                        }
-                                        else
-                                        {
-                                            LOG.WriteToArchiveLog("ERROR ArchiveContent BX02 failed to set Processed flag: " + InventoryFQN);
-                                        }
                                     }
 
                                     goto NextFile;
                                 }
-
+                                // WDM Nov-02-2020 Commented out as it is not needed the bay before we rid ourselves of trump
+                                // If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
+                                // Dim bUpdt = DBLocal.setListenerfileProcessed(InventoryFQN)
+                                // If bUpdt Then
+                                // LOG.WriteToArchiveLog("NOTICE ArchiveContent BX01 skipped file : " + InventoryFQN)
+                                // Else
+                                // LOG.WriteToArchiveLog("ERROR ArchiveContent BX02 failed to set Processed flag: " + InventoryFQN)
+                                // End If
+                                // End If
                                 LL = 2441;
                                 var UpdateTimerMain = DateAndTime.Now;
                                 LL = 2446;
@@ -6625,6 +6695,12 @@ namespace EcmArchiver
                                     file_LastAccessTime = FI.LastAccessTimeUtc;
                                     LL = 2631;
                                     file_Length = (int)FI.Length;
+                                    CurrFileSize = (int)FI.Length;
+                                    CurrFileName = FI.Name;
+                                    CurrFQN = FI.FullName;
+                                    CurrExt = FI.Extension;
+                                    CurrCreateDate = FI.CreationTime;
+                                    CurrLastUpdate = FI.LastWriteTime;
                                 }
                                 catch (Exception ex)
                                 {
@@ -6641,29 +6717,36 @@ namespace EcmArchiver
 
                                 LL = 2616;
                                 LL = 2646;
-                                // *******************************************************************	:	LL = 	2651		
-                                // *******************************************************************	:	LL = 	2656		
+                                // *******************************************************************	:	LL = 	2651
+                                // *******************************************************************	:	LL = 	2656
                                 file_FullName = file_FullName.Replace("''", "'");
                                 if (!File.Exists(file_FullName))
                                 {
                                     goto NextFile;
                                 }
 
-                                string ContentSha1Hash = ENC.GenerateSHA512HashFromFile(file_FullName);
+                                string FileHash = ENC.GenerateSHA512HashFromFile(file_FullName);
                                 LL = 2661;
-                                if (ContentSha1Hash.Length < 10)
+                                int xlen = FileHash.Length;
+                                if (FileHash.Length < 10)
                                 {
                                     LOG.WriteToArchiveLog("ERROR HASH: Skipping : " + file_FullName);
                                     goto NextFile;
                                 }
 
-                                // Changed the below line to NOT recalculate the same has but just set 
-                                // ImageHash = to ContentSha1Hash
+                                if (FileHash.Contains("0x0x"))
+                                {
+                                    LOG.WriteToArchiveLog("ERROR HASH: Skipping : " + file_FullName);
+                                    FileHash.Replace("0x0x", "0x");
+                                }
+
+                                // Changed the below line to NOT recalculate the same has but just set
+                                // ImageHash = to FileHash
                                 // Dim ImageHash As String = ENC.GenerateSHA512HashFromFile(file_FullName) : LL = 2666
-                                string ImageHash = ContentSha1Hash;
-                                int iDatasourceCnt = DBARCH.getCountDataSourceFiles(file_FullName, ContentSha1Hash);
+                                string ImageHash = FileHash;
+                                int NbrFilesFoundInRepo = DBARCH.getCountDataSourceFiles(file_FullName, FileHash);
                                 LL = 2671;
-                                if (ContentSha1Hash.Length < 10)
+                                if (FileHash.Length < 10)
                                 {
                                     LOG.WriteToArchiveLog("ERROR ArchiveContent HASH failed: " + file_FullName);
                                     if (modGlobals.UseDirectoryListener.Equals(1) & !modGlobals.TempDisableDirListener)
@@ -6678,13 +6761,13 @@ namespace EcmArchiver
                                     goto NextFile;
                                 }
 
-                                if (iDatasourceCnt > 0)
+                                if (NbrFilesFoundInRepo > 0)
                                 {
                                     LL = 2681;
                                     My.MyProject.Forms.frmNotify.BackColor = Color.LightSalmon;
                                     LL = 2686;
                                     // ************************************************************************************************************************
-                                    string ExistingSourceGuid = DBARCH.getContentGuid(file_name, ContentSha1Hash);
+                                    string ExistingSourceGuid = DBARCH.getContentGuid(file_name, FileHash);
                                     LL = 2691;
                                     DBARCH.saveContentOwner(ExistingSourceGuid, CurrUserGuidID, "C", FOLDER_FQN, modGlobals.gMachineID, modGlobals.gNetworkID);
                                     LL = 2696;
@@ -6707,8 +6790,8 @@ namespace EcmArchiver
                                 LL = 2711;
                                 My.MyProject.Forms.frmNotify.BackColor = Color.LightGoldenrodYellow;
                                 LL = 2716;
-                                // *******************************************************************	:	LL = 	2721		
-                                // *******************************************************************	:	LL = 	2726		
+                                // *******************************************************************	:	LL = 	2721
+                                // *******************************************************************	:	LL = 	2726
                                 if (DeleteOnArchive.Equals("Y"))
                                 {
                                     LL = 2731;
@@ -6723,8 +6806,8 @@ namespace EcmArchiver
                                 }
 
                                 LL = 2751;
-                                // *******************************************************************	:	LL = 	2756		
-                                // *******************************************************************	:	LL = 	2761		
+                                // *******************************************************************	:	LL = 	2756
+                                // *******************************************************************	:	LL = 	2761
                                 string SourceGuid = DBARCH.getGuid();
                                 LL = 2766;
                                 LL = 2771;
@@ -6825,7 +6908,7 @@ namespace EcmArchiver
                                         DBARCH.xTrace(965, "ArchiveContent", tMsg);
                                         LL = 3011;
                                     }
-                                    // FilesSkipped += 1	:	LL = 	3016		
+                                    // FilesSkipped += 1	:	LL = 	3016
                                     else
                                     {
                                         LL = 3021;
@@ -6835,11 +6918,11 @@ namespace EcmArchiver
                                         LL = 3031;
                                         DBARCH.xTrace(966, "ArchiveContent", tMsg);
                                         LL = 3036;
-                                        // FilesSkipped += 1	:	LL = 	3041		
+                                        // FilesSkipped += 1	:	LL = 	3041
                                     }
 
                                     LL = 3046;
-                                    // GoTo NextFile	:	LL = 	3051		
+                                    // GoTo NextFile	:	LL = 	3051
                                 }
 
                                 LL = 3056;
@@ -6868,7 +6951,7 @@ namespace EcmArchiver
                                     }
 
                                     LL = 3201;
-                                    // ** See if the STAR is in the INCLUDE list, if so, all files are included	:	LL = 	3206		
+                                    // ** See if the STAR is in the INCLUDE list, if so, all files are included	:	LL = 	3206
                                     bExt = DMA.isExtIncluded(file_Extension, ExcludedTypes);
                                     LL = 3211;
                                     if (bExt)
@@ -6891,7 +6974,7 @@ namespace EcmArchiver
 
                                 LL = 3246;
                                 LL = 3251;
-                                // ** This NEEDS to be in a keyed array	:	LL = 	3256		
+                                // ** This NEEDS to be in a keyed array	:	LL = 	3256
                                 int bcnt = 0;
                                 LL = 3261;
                                 if (ExistingFileTypes.ContainsKey(file_Extension.ToLower()))
@@ -6908,7 +6991,7 @@ namespace EcmArchiver
                                 }
 
                                 LL = 3286;
-                                // Dim bcnt As Integer = DBARCH.iGetRowCount("SourceType", "where SourceTypeCode = '" + file_Extension + "'")	:	LL = 	3291		
+                                // Dim bcnt As Integer = DBARCH.iGetRowCount("SourceType", "where SourceTypeCode = '" + file_Extension + "'")	:	LL = 	3291
                                 LL = 3296;
                                 if (bcnt == 0)
                                 {
@@ -6920,7 +7003,7 @@ namespace EcmArchiver
                                         LL = 3311;
                                         string MSG = "The file type '" + file_Extension + "' is undefined." + Constants.vbCrLf + "DO YOU WISH TO AUTOMATICALLY DEFINE IT?" + Constants.vbCrLf + "This will allow content to be archived, but not searched.";
                                         LL = 3316;
-                                        // Dim dlgRes As DialogResult = MessageBox.Show(MSG, "Filetype Undefined", MessageBoxButtons.YesNo)	:	LL = 	3321		
+                                        // Dim dlgRes As DialogResult = MessageBox.Show(MSG, "Filetype Undefined", MessageBoxButtons.YesNo)	:	LL = 	3321
                                         LL = 3326;
                                         if (ddebug)
                                         {
@@ -6996,22 +7079,22 @@ namespace EcmArchiver
                                 string StoredExternally = "N";
                                 LL = 3486;
                                 LL = 3491;
-                                // iDatasourceCnt = DBARCH.getCountDataSourceFiles(file_Name, ContentSha1Hash)	:	LL = 	3496		
-                                // If (iDatasourceCnt = 0) Then	:	LL = 	3501		
-                                // DBARCH.saveContentOwner(SourceGuid, CurrUserGuidID, "C", FOLDER_FQN, gMachineID, gNetworkID)	:	LL = 	3506		
-                                // End If	:	LL = 	3511		
+                                // NbrFilesFoundInRepo = DBARCH.getCountDataSourceFiles(file_Name, FileHash)	:	LL = 	3496
+                                // If (NbrFilesFoundInRepo = 0) Then	:	LL = 	3501
+                                // DBARCH.saveContentOwner(SourceGuid, CurrUserGuidID, "C", FOLDER_FQN, gMachineID, gNetworkID)	:	LL = 	3506
+                                // End If	:	LL = 	3511
                                 LL = 3516;
                                 Application.DoEvents();
                                 LL = 3521;
-                                // ***********************************************************************'	:	LL = 	3526		
-                                // ** New file	:	LL = 	3531		
-                                // ***********************************************************************'	:	LL = 	3536		
-                                bool BB = false;
+                                // ***********************************************************************'	:	LL = 	3526
+                                // ** New file	:	LL = 	3531
+                                // ***********************************************************************'	:	LL = 	3536
+                                bool bSuccessExecution = false;
                                 LL = 3541;
                                 string AttachmentCode = "C";
                                 LL = 3546;
                                 LL = 3551;
-                                LOG.WriteToUploadLog("PerformContentArchive: File: " + DateAndTime.Now.ToString() + file_FullName);
+                                LOG.WriteToUploadLog("ArchiveContent: 00 File: " + DateAndTime.Now.ToString() + file_FullName);
 
                                 // ** FILE ALREADY EXISTS IN THE REPOSITORY
                                 int NbrDUps = DBARCH.ckFileExistInRepo(MachineID, file_FullName);
@@ -7019,15 +7102,19 @@ namespace EcmArchiver
                                 {
                                     // ** Update the HASH and the Source Binary
                                     // * Get the file hash
-                                    if (ContentSha1Hash.Length < 10)
+                                    if (FileHash.Length < 10)
                                     {
                                         goto NextFile;
                                     }
 
-                                    DBARCH.UpdateDataSouceHashAndBinary(MachineID, file_FullName, ContentSha1Hash);
+                                    bSuccessExecution = DBARCH.UpdateSouceImage(MachineID, file_FullName, FileHash);
+                                    if (!bSuccessExecution)
+                                    {
+                                        LOG.WriteToArchiveLog("ERROR UpdateSouceImage 0X1: Failed to update ImageHash: " + file_FullName);
+                                    }
                                 }
 
-                                if (iDatasourceCnt == 0 & NbrDUps == 0)
+                                if (NbrFilesFoundInRepo == 0 & NbrDUps == 0)
                                 {
                                     LL = 3556;
                                     LL = 3561;
@@ -7041,7 +7128,7 @@ namespace EcmArchiver
                                     LL = 3581;
                                     LOG.WriteToUploadLog("INFO: File - " + file_FullName + " was found to be NEW and not in the repository.");
                                     LL = 3586;
-                                    // Me.if UseThreads = false then SB5.Text = "Loading: " + file_Name	:	LL = 	3591		
+                                    // Me.if UseThreads = false then SB5.Text = "Loading: " + file_Name	:	LL = 	3591
                                     Application.DoEvents();
                                     LL = 3596;
                                     LastVerNbr = 0;
@@ -7127,7 +7214,7 @@ namespace EcmArchiver
                                         LL = 3781;
                                         DisplayActivity = true;
                                         LL = 3786;
-                                        // WDM Commented out the below Oct 6, 2020 
+                                        // WDM Commented out the below Oct 6, 2020
                                         // If ActivityThread Is Nothing Then : LL = 3791
                                         // frmPercent.TopLevel = True : LL = 3796
                                         // ActivityThread = New Thread(AddressOf ActivateProgressBar) : LL = 3801
@@ -7149,7 +7236,7 @@ namespace EcmArchiver
                                         LL = 3846;
                                         DisplayActivity = true;
                                         LL = 3851;
-                                        // WDM Commented out the below Oct 6, 2020 
+                                        // WDM Commented out the below Oct 6, 2020
                                         // If ActivityThread Is Nothing Then : LL = 3856
                                         // frmPercent.TopLevel = True : LL = 3861
                                         // ActivityThread = New Thread(AddressOf ActivateProgressBar) : LL = 3866
@@ -7165,8 +7252,8 @@ namespace EcmArchiver
                                     LL = 3901;
                                     LOG.WriteToTimerLog("ArchiveContent-01", "Insert Content", "START");
                                     LL = 3906;
-                                    // file_FullName = UTIL.RemoveSingleQuotes(file_FullName)	:	LL = 	3911		
-                                    // file_Name = UTIL.RemoveSingleQuotes(file_Name)	:	LL = 	3916		
+                                    // file_FullName = UTIL.RemoveSingleQuotes(file_FullName)	:	LL = 	3911
+                                    // file_Name = UTIL.RemoveSingleQuotes(file_Name)	:	LL = 	3916
                                     LL = 3921;
                                     // DOCS.setSourceguid(SourceGuid) : LL = 3926
                                     // DOCS.setFqn(file_FullName) : LL = 3931
@@ -7179,10 +7266,15 @@ namespace EcmArchiver
                                     // DOCS.setDatasourceowneruserid(CurrUserGuidID) : LL = 3966
                                     // DOCS.setVersionnbr("0") : LL = 3971
                                     LL = 3976;
-                                    // *************************************************
-                                    BB = DOCS.Insert(SourceGuid, ContentSha1Hash);
+                                    // ******************************* INSERT INTITAL CONTENT DATA **************************************
+                                    bSuccessExecution = DOCS.Insert(SourceGuid, FileHash);
                                     LL = 3981;
-                                    // *************************************************
+                                    // **************************************************************************************************
+                                    if (!bSuccessExecution)
+                                    {
+                                        LOG.WriteToArchiveLog("ERROR Completion 12x: " + SourceGuid + " / " + FileHash);
+                                    }
+
                                     LOG.WriteToTimerLog("ArchiveContent-01", "Insert Content: " + file_FullName, "STOP", StepTimer);
                                     LL = 3986;
                                     LL = 3991;
@@ -7198,50 +7290,61 @@ namespace EcmArchiver
 
                                     LL = 4016;
                                     LL = 4021;
-                                    if (BB)
+                                    if (bSuccessExecution)
                                     {
                                         LL = 4026;
                                         var UpdateTimer = DateAndTime.Now;
                                         LL = 4066;
 
-                                        // *************************************************	:	LL = 	4076		
+                                        // *************************************************	:	LL = 	4076
                                         UpdateTimer = DateAndTime.Now;
                                         LL = 4081;
                                         string OriginalFileName = DMA.getFileName(file_FullName);
                                         LL = 4091;
                                         LL = 4096;
-                                        // ******************************************************************************************************************************************************************************************************************************	:	LL = 	4101		
-                                        // **--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**	:	LL = 	4111		
-                                        // **WDM - this is where the upload magic occurs. Upload content to repository	:	LL = 	4116		
-                                        LOG.WriteToTimerLog("**** ArchiveContent-01", "UpdateSourceFileImage", "START");
-                                        BB = DBARCH.UpdateSourceFileImage(OriginalFileName, UIDcurr, MachineIDcurr, SourceGuid, Conversions.ToString(file_LastAccessTime), Conversions.ToString(file_CreationTime), Conversions.ToString(file_LastWriteTime), LastVerNbr, file_FullName, RetentionCode, isPublic, ContentSha1Hash);
+                                        // **--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**	:	LL = 	4111
+                                        // **WDM - this is where the upload magic occurs. Upload content to repository	:	LL = 	4116
+                                        LOG.WriteToTimerLog("**** ArchiveContent-01", "UpdateSourceImageInRepo", "START");
+                                        // ******************************************************************************************************************************************************************************************************************************	:	LL = 	4101                                   
+                                        SB.Text = "UPLOADING NOW";
+                                        bSuccessExecution = DBARCH.UpdateSourceImageInRepo(OriginalFileName, UIDcurr, MachineIDcurr, SourceGuid, Conversions.ToString(file_LastAccessTime), Conversions.ToString(file_CreationTime), Conversions.ToString(file_LastWriteTime), LastVerNbr, file_FullName, RetentionCode, isPublic, FileHash);
                                         LL = 4121;
-                                        if (BB)
+                                        SB.Text = "";
+                                        // ******************************************************************************************************************************************************************************************************************************	:	LL = 	4101
+                                        if (bSuccessExecution)
                                         {
                                             DBLocal.updateFileArchiveInfoLastArchiveDate(file_FullName);
-                                            if (modGlobals.UseDirectoryListener.Equals(1) & !modGlobals.TempDisableDirListener)
+                                            bool bUpdt = DBLocal.setListenerfileProcessed(file_FullName);
+                                            if (!bUpdt)
                                             {
-                                                bool bUpdt = DBLocal.setListenerfileProcessed(file_FullName);
-                                                if (!bUpdt)
-                                                {
-                                                    LOG.WriteToArchiveLog("ERROR failed to set Processed flag: " + file_FullName);
-                                                }
+                                                LOG.WriteToArchiveLog("ERROR failed to set Processed flag: " + file_FullName);
                                             }
                                         }
+                                        else
+                                        {
+                                            LOG.WriteToArchiveLog("ERROR: ArchiveContent-AA1 Failed load: " + Constants.vbCrLf + file_FullName);
+                                        }
 
-                                        LOG.WriteToTimerLog("****ArchiveContent-01", "UpdateSourceFileImage", "STOP", UpdateTimer);
+                                        LOG.WriteToTimerLog("****ArchiveContent-01", "UpdateSourceImageInRepo", "STOP", UpdateTimer);
                                         UpdateTimer = DateAndTime.Now;
                                         LOG.WriteToTimerLog("**** ArchiveContent-01", "saveContentOwner", "START");
                                         DBARCH.saveContentOwner(SourceGuid, CurrUserGuidID, "C", FOLDER_FQN, modGlobals.gMachineID, modGlobals.gNetworkID);
                                         LL = 4126;
                                         LOG.WriteToTimerLog("****ArchiveContent-01", "saveContentOwner", "STOP", UpdateTimer);
-                                        // **--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**	:	LL = 	4131		
-                                        // ******************************************************************************************************************************************************************************************************************************	:	LL = 	4141		
+                                        // **--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**	:	LL = 	4131
+                                        // ******************************************************************************************************************************************************************************************************************************	:	LL = 	4141
                                         LL = 4146;
                                         if (!DeleteOnArchive.Equals("Y"))
                                         {
-                                            DBLocal.addInventoryForce(file_FullName, ckArchiveBit);
-                                            LL = 4147;
+                                            try
+                                            {
+                                                DBLocal.addInventoryForce(file_FullName, ckArchiveBit);
+                                                LL = 4147;
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                LOG.WriteToArchiveLog("ERROR ArchiveContent 02xx LocalDB Failed to add: " + file_FullName);
+                                            }
                                         }
                                         else
                                         {
@@ -7249,42 +7352,33 @@ namespace EcmArchiver
                                             LL = 4148;
                                         }
 
-                                        // ****************************************************************************************************************************	:	LL = 	4161		
-                                        if (!BB)
+                                        if (CurrFileName.Length > 0)
                                         {
-                                            LL = 4166;
-                                            // Dim isIncludedAsSubDir As Boolean = DBARCH.isSubDirIncluded(FOLDER_FQN )	:	LL = 	4171		
+                                            if (CurrExt.Trim().Length == 0)
+                                            {
+                                                CurrExt = Path.GetExtension(CurrFileName);
+                                            }
+
+                                            string NewSql = "Update DataSource set OriginalFileType = '" + CurrExt + "' , CreateDate = '" + CurrCreateDate.ToString() + "', LastWriteTime = '" + CurrLastUpdate.ToString() + "'  where SourceGuid = '" + SourceGuid + "' ";
+                                            DBARCH.ExecuteSqlNewConn(90076, NewSql);
+                                        }
+                                        // ****************************************************************************************************************************	:	LL = 	4161
+                                        if (!bSuccessExecution)
+                                        {
+                                            // Dim isIncludedAsSubDir As Boolean = DBARCH.isSubDirIncluded(FOLDER_FQN )
                                             string MySql = "Delete from DataSource where SourceGuid = '" + SourceGuid + "'";
-                                            LL = 4176;
                                             DBARCH.ExecuteSqlNewConn(90314, MySql);
-                                            LL = 4181;
                                             LOG.WriteToErrorLog("Unrecoverable LOAD Error - removed file '" + file_FullName + "' from the repository.");
-                                            LL = 4186;
                                             if (UseThreads == false)
-                                            {
                                                 SB5.BackColor = Color.Red;
-                                                LL = 4191;
-                                            }
-
                                             if (UseThreads == false)
-                                            {
                                                 SB5.ForeColor = Color.Yellow;
-                                                LL = 4196;
-                                            }
-
-                                            LL = 4201;
-                                            string DisplayMsg = "A source file failed to load. Review ERROR log.";
-                                            LL = 4206;
+                                            string DisplayMsg = "A source file failed to load. Review ERROR log." + Constants.vbCrLf + file_FullName + "LL: " + LL.ToString();
                                             My.MyProject.Forms.frmHelp.MsgToDisplay = DisplayMsg;
-                                            LL = 4211;
                                             My.MyProject.Forms.frmHelp.CallingScreenName = "ECM Archive";
-                                            LL = 4216;
                                             My.MyProject.Forms.frmHelp.CaptionName = "Fatal Load Error";
-                                            LL = 4221;
                                             My.MyProject.Forms.frmHelp.Timer1.Interval = 10000;
-                                            LL = 4226;
                                             My.MyProject.Forms.frmHelp.Show();
-                                            LL = 4231;
                                         }
                                         else
                                         {
@@ -7321,7 +7415,7 @@ namespace EcmArchiver
                                     // file_FullName = UTIL.RemoveSingleQuotes(file_FullName) : LL = 4296
                                     // file_name = UTIL.RemoveSingleQuotes(file_name) : LL = 4301
                                     LL = 4306;
-                                    if (BB)
+                                    if (bSuccessExecution)
                                     {
                                         LL = 4311;
                                         LL = 4321;
@@ -7364,10 +7458,10 @@ namespace EcmArchiver
 
                                         LL = 4411;
                                         LL = 4416;
-                                        // If CRC .Length = 0 Then	:	LL = 	4421		
-                                        // CRC  = ENC.getCountDataSourceFiles(file_FullName )	:	LL = 	4426		
-                                        // End If	:	LL = 	4431		
-                                        // ARCH.UpdateDocCrc(SourceGuid, CRC )	:	LL = 	4436		
+                                        // If CRC .Length = 0 Then	:	LL = 	4421
+                                        // CRC  = ENC.getCountDataSourceFiles(file_FullName )	:	LL = 	4426
+                                        // End If	:	LL = 	4431
+                                        // ARCH.UpdateDocCrc(SourceGuid, CRC )	:	LL = 	4436
                                         LL = 4441;
                                         DBARCH.UpdateCurrArchiveStats(file_FullName, file_Extension);
                                         LL = 4446;
@@ -7411,7 +7505,7 @@ namespace EcmArchiver
 
                                         DisplayActivity = false;
                                         LL = 4501;
-                                        // WDM Commented out the below Oct 6, 2020 
+                                        // WDM Commented out the below Oct 6, 2020
                                         // If Not ActivityThread Is Nothing Then : LL = 4506
                                         // ActivityThread.Abort() : LL = 4511
                                         // ActivityThread = Nothing : LL = 4516
@@ -7423,7 +7517,7 @@ namespace EcmArchiver
                                     }
 
                                     LL = 4536;
-                                    if (BB)
+                                    if (bSuccessExecution)
                                     {
                                         LL = 4541;
                                         var UpdateTimer2 = DateAndTime.Now;
@@ -7454,22 +7548,22 @@ namespace EcmArchiver
                                         if (!isZipFile)
                                         {
                                             LL = 4601;
-                                            // Dim TheFileIsArchived As Boolean = True	:	LL = 	4606		
-                                            // DMA.setFileArchiveAttributeSet(file_FullName, TheFileIsArchived)	:	LL = 	4611		
+                                            // Dim TheFileIsArchived As Boolean = True	:	LL = 	4606
+                                            // DMA.setFileArchiveAttributeSet(file_FullName, TheFileIsArchived)	:	LL = 	4611
                                             DMA.setArchiveBitOff(file_FullName);
                                             LL = 4616;
                                         }
 
                                         LL = 4621;
                                         LL = 4626;
-                                        // DBARCH.delFileParms(SourceGuid)	:	LL = 	4631		
-                                        // If CRC .Length = 0 Then	:	LL = 	4636		
-                                        // CRC  = ENC.getCountDataSourceFiles(file_FullName )	:	LL = 	4641		
-                                        // End If	:	LL = 	4646		
-                                        // ARCH.UpdateDocCrc(SourceGuid, CRC )	:	LL = 	4651		
+                                        // DBARCH.delFileParms(SourceGuid)	:	LL = 	4631
+                                        // If CRC .Length = 0 Then	:	LL = 	4636
+                                        // CRC  = ENC.getCountDataSourceFiles(file_FullName )	:	LL = 	4641
+                                        // End If	:	LL = 	4646
+                                        // ARCH.UpdateDocCrc(SourceGuid, CRC )	:	LL = 	4651
                                         LL = 4656;
-                                        // ** Removed Attribution Classification by WDM 9/10/2009	:	LL = 	4661		
-                                        // UpdateSrcAttrib(SourceGuid, "CRC", CRC , file_Extension)	:	LL = 	4666		
+                                        // ** Removed Attribution Classification by WDM 9/10/2009	:	LL = 	4661
+                                        // UpdateSrcAttrib(SourceGuid, "CRC", CRC , file_Extension)	:	LL = 	4666
                                         UpdateSrcAttrib(SourceGuid, "FILENAME", file_name, file_Extension);
                                         LL = 4671;
                                         UpdateSrcAttrib(SourceGuid, "CreateDate", Conversions.ToString(file_CreationTime), file_Extension);
@@ -7481,17 +7575,17 @@ namespace EcmArchiver
                                         UpdateSrcAttrib(SourceGuid, "WriteDate", Conversions.ToString(file_LastWriteTime), file_Extension);
                                         LL = 4691;
                                         LL = 4696;
-                                        // DBARCH.AddMachineSource(file_FullName, SourceGuid)	:	LL = 	4701		
+                                        // DBARCH.AddMachineSource(file_FullName, SourceGuid)	:	LL = 	4701
                                         LL = 4706;
                                         if (Conversion.Val(file_Length) > 1000000000d)
                                         {
                                             LL = 4711;
                                         }
-                                        // FrmMDIMain.SB4.Text = "Extreme File: " + file_Length + " bytes - standby"	:	LL = 	4716		
+                                        // FrmMDIMain.SB4.Text = "Extreme File: " + file_Length + " bytes - standby"	:	LL = 	4716
                                         else if (Conversion.Val(file_Length) > 2000000d)
                                         {
                                             LL = 4721;
-                                            // FrmMDIMain.SB4.Text = "Large File: " + file_Length + " bytes"	:	LL = 	4726		
+                                            // FrmMDIMain.SB4.Text = "Large File: " + file_Length + " bytes"	:	LL = 	4726
                                         }
 
                                         LL = 4731;
@@ -7506,21 +7600,21 @@ namespace EcmArchiver
                                         else if (Strings.LCase(file_Extension).Equals(".tiff") | Strings.LCase(file_Extension).Equals(".jpg"))
                                         {
                                             LL = 4751;
-                                            // ** This functionality will be added at a later time	:	LL = 	4756		
-                                            // KAT.getXMPdata(file_FullName)	:	LL = 	4761		
+                                            // ** This functionality will be added at a later time	:	LL = 	4756
+                                            // KAT.getXMPdata(file_FullName)	:	LL = 	4761
                                             Application.DoEvents();
                                             LL = 4766;
                                         }
                                         else if (Strings.LCase(file_Extension).Equals(".png") | Strings.LCase(file_Extension).Equals(".gif"))
                                         {
                                             LL = 4771;
-                                            // ** This functionality will be added at a later time	:	LL = 	4776		
-                                            // KAT.getXMPdata(file_FullName)	:	LL = 	4781		
+                                            // ** This functionality will be added at a later time	:	LL = 	4776
+                                            // KAT.getXMPdata(file_FullName)	:	LL = 	4781
                                             Application.DoEvents();
                                             LL = 4786;
                                         }
-                                        // ElseIf LCase(file_Extension).Equals(".wav") Then	:	LL = 	4791		
-                                        // MP3.getRecordingMetaData(file_FullName, SourceGuid, file_Extension)	:	LL = 	4796		
+                                        // ElseIf LCase(file_Extension).Equals(".wav") Then	:	LL = 	4791
+                                        // MP3.getRecordingMetaData(file_FullName, SourceGuid, file_Extension)	:	LL = 	4796
                                         else if (Strings.LCase(file_Extension).Equals(".wma"))
                                         {
                                             LL = 4801;
@@ -7530,8 +7624,8 @@ namespace EcmArchiver
                                         else if (Strings.LCase(file_Extension).Equals(".tif"))
                                         {
                                             LL = 4811;
-                                            // ** This functionality will be added at a later time	:	LL = 	4816		
-                                            // KAT.getXMPdata(file_FullName)	:	LL = 	4821		
+                                            // ** This functionality will be added at a later time	:	LL = 	4816
+                                            // KAT.getXMPdata(file_FullName)	:	LL = 	4821
                                             Application.DoEvents();
                                             LL = 4826;
                                         }
@@ -7684,7 +7778,7 @@ namespace EcmArchiver
                                 DoneWithIt:
                                 ;
                                 LL = 5131;
-                                // ******************************************************	:	LL = 	5136		
+                                // ******************************************************	:	LL = 	5136
                                 if (DeleteOnArchive.ToUpper().Equals("Y") & ThisFileNeedsToBeDeleted & file_FullName is object)
                                 {
                                     LL = 5141;
@@ -7702,8 +7796,8 @@ namespace EcmArchiver
 
                                         LL = 5166;
                                     }
-                                    // ISO.saveIsoFile(" FilesToDelete.dat", file_FullName + "|")	:	LL = 	5171		
-                                    // File.Delete(file_FullName)	:	LL = 	5176		
+                                    // ISO.saveIsoFile(" FilesToDelete.dat", file_FullName + "|")	:	LL = 	5171
+                                    // File.Delete(file_FullName)	:	LL = 	5176
                                     catch (ThreadAbortException ex)
                                     {
                                         LOG.WriteToArchiveLog("Thread 90 - caught ThreadAbortException - resetting.");
@@ -7755,7 +7849,7 @@ namespace EcmArchiver
                                 }
 
                                 LL = 5286;
-                                // ******************************************************	:	LL = 	5291		
+                                // ******************************************************	:	LL = 	5291
                                 if (file_FullName is object)
                                 {
                                     LL = 5296;
@@ -7866,8 +7960,15 @@ namespace EcmArchiver
                                     LL = 5456;
                                     ISO.saveIsoFile(" FilesToDelete.dat", FQN + "|");
                                     LL = 5461;
-                                    File.Delete(FQN);
-                                    LL = 5466;
+                                    try
+                                    {
+                                        File.Delete(FQN);
+                                        LL = 5466;
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        LOG.WriteToArchiveLog("DELETE FAILURE 00|" + FQN);
+                                    }
                                 }
 
                                 LL = 5471;
@@ -7896,7 +7997,6 @@ namespace EcmArchiver
                             }
                             else
                             {
-                                LL = 5521;
                                 LOG.WriteToArchiveLog("ERROR/Advisory Notice - File " + FQN + " had no known disposition, it was moved to the error directory.");
                                 LL = 5526;
                                 if (File.Exists(FQN))
@@ -7962,7 +8062,7 @@ namespace EcmArchiver
             PBx.Value = 0;
             LL = 5651;
             LL = 5656;
-            // Timer1.Enabled = True	:	LL = 	5661		
+            // Timer1.Enabled = True	:	LL = 	5661
             if (ddebug)
             {
                 LOG.WriteToArchiveLog("@@@@@@@@@@@@@@  Done with Content Archive.");
@@ -7974,7 +8074,7 @@ namespace EcmArchiver
             LL = 5676;
             PROC.KillOrphanProcesses();
             LL = 5681;
-            // FrmMDIMain.lblArchiveStatus.Text = "Archive Quiet"	:	LL = 	5686		
+            // FrmMDIMain.lblArchiveStatus.Text = "Archive Quiet"	:	LL = 	5686
             LL = 5691;
             StackLevel = 0;
             LL = 5696;
@@ -7986,10 +8086,10 @@ namespace EcmArchiver
                 LL = 5711;
                 bExplodeZipFile = false;
                 LL = 5716;
-                // FrmMDIMain.SB.Text = "Processing Quickref"	:	LL = 	5721		
-                // If i >= 24 Then	:	LL = 	5726		
-                // Debug.Print("here")	:	LL = 	5731		
-                // End If	:	LL = 	5736		
+                // FrmMDIMain.SB.Text = "Processing Quickref"	:	LL = 	5721
+                // If i >= 24 Then	:	LL = 	5726
+                // Debug.Print("here")	:	LL = 	5731
+                // End If	:	LL = 	5736
                 string cData = modGlobals.ZipFilesContent[i].ToString();
                 LL = 5741;
                 string ParentGuid = "";
@@ -8035,7 +8135,7 @@ namespace EcmArchiver
                 bUpdated = DBLocal.removeListenerfileProcessed(FilesToArchiveID);
                 if (Conversions.ToBoolean(!bUpdated))
                 {
-                    LOG.WriteToArchiveLog("ERROR failed removeListenerfileProcessed...");
+                    LOG.WriteToArchiveLog("ERROR 01 failed removeListenerfileProcessed...");
                 }
             }
 
@@ -9244,11 +9344,6 @@ namespace EcmArchiver
 
         private void cbParentFolders_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (modGlobals.gTraceFunctionCalls.Equals(1))
-            {
-                LOG.WriteToArchiveLog("--> CALL: " + MethodBase.GetCurrentMethod().ToString());
-            }
-
             ParentFolder = cbParentFolders.Text.Trim();
             btnRefreshFolders_Click(null, null);
         }
@@ -9842,57 +9937,132 @@ namespace EcmArchiver
             btnSaveChanges.BackColor = Color.OrangeRed;
         }
 
-        private void CkMonitor_CheckedChanged(object sender, EventArgs e)
+        public void ProcessListener(bool SetAction)
         {
-            if (bActiveChange == true)
+            string DirsToMonitor = System.Configuration.ConfigurationManager.AppSettings["DirsToMonitor"];
+            var ListOfDirs = new Dictionary<string, string>();
+            var stream_reader = new StreamReader(DirsToMonitor);
+            string line;
+            string[] ReadResult;
+            string ProcessSubdirectories = "";
+            string TgtDir = "";
+            string DirToProcess = "";
+            string tdir = "";
+            string action = "";
+            if (lbArchiveDirs.SelectedItems.Count.Equals(0))
             {
+                MessageBox.Show("Please select a directory before setting a listener, returning...");
                 return;
             }
 
-            if (formloaded == false)
+            try
             {
-                return;
-            }
+                TgtDir = lbArchiveDirs.SelectedItems[0].ToString().Trim();
 
-            if (lbArchiveDirs.SelectedItems.Count != 1)
-            {
-                return;
-            }
-
-            if (modGlobals.gTraceFunctionCalls.Equals(1))
-            {
-                LOG.WriteToArchiveLog("--> CALL: " + MethodBase.GetCurrentMethod().ToString());
-            }
-
-            // Dim LISTEN As New clsListener
-
-            if (CkMonitor.Checked == true)
-            {
-                LISTEN.AddDirListener(DirGuid, ckDisableDir.Checked, Conversions.ToBoolean(0), Conversions.ToBoolean(1), Conversions.ToBoolean(0), Conversions.ToBoolean(1), ckSubDirs.Checked, MachineName);
-                LISTEN.setDirListernerON(DirGuid);
-                LISTEN.PauseDirListener(DirGuid, false);
-                LISTEN.LoadListeners(MachineName);
-                SB.Text = "Listener Added.";
-            }
-            else
-            {
-                LISTEN.deleteDirListener(DirGuid);
-                LISTEN.setDirListernerOFF(DirGuid);
-                LISTEN.PauseDirListener(DirGuid, true);
-                if (ckRunUnattended.Checked == true)
+                // Read the file one line at a time.
+                using (stream_reader)
                 {
-                    LISTEN.LoadListeners(MachineName);
-                    SB.Text = "Listener disabled - restart of ECM required to remove it.";
+                    line = stream_reader.ReadLine();
+                    while (line is object)
+                    {
+                        line = line.Trim();
+                        if (!line.Substring(0, 1).Equals("#"))
+                        {
+                            ReadResult = line.Split('|');
+                            tdir = ReadResult[0].Trim();
+                            action = ReadResult[1].Trim().ToUpper();
+                            if (!tdir.Substring(1, 1).Equals("#"))
+                            {
+                                if (!ListOfDirs.ContainsKey(tdir))
+                                {
+                                    ListOfDirs.Add(tdir, action);
+                                }
+                            }
+                        }
+
+                        line = stream_reader.ReadLine();
+                    }
+                }
+
+                ProcessSubdirectories = "";
+                if (SetAction.Equals(true))
+                {
+                    if (ckSubDirs.Checked.Equals(true))
+                    {
+                        ProcessSubdirectories = "Y";
+                    }
+                    else
+                    {
+                        ProcessSubdirectories = "N";
+                    }
+                    // Add the directory to the list if it does not exist 
+                    if (!ListOfDirs.ContainsKey(TgtDir))
+                    {
+                        ListOfDirs.Add(TgtDir, ProcessSubdirectories);
+                    }
+
+                    if (File.Exists(DirsToMonitor))
+                    {
+                        File.Delete(DirsToMonitor);
+                    }
+
+                    StreamWriter xfile;
+                    xfile = My.MyProject.Computer.FileSystem.OpenTextFileWriter(DirsToMonitor, true);
+                    xfile.WriteLine("#DirectoryName | Y or N for include subdirectories or do not include subdirectories");
+                    foreach (string dir in ListOfDirs.Keys)
+                    {
+                        DirToProcess = dir + "|" + ListOfDirs[dir].ToUpper().Trim();
+                        xfile.WriteLine(DirToProcess);
+                    }
+
+                    xfile.Close();
+                    SB.Text = "Listener Turned ON for: " + TgtDir;
                 }
                 else
                 {
-                    MessageBox.Show("Listener disabled - restart of ECM required to completely remove it.", "LISTENER", MessageBoxButtons.OK);
+                    // DROP THIS FROM THE LIST OF DIRECTORIES TO PROCESS
+                    if (File.Exists(DirsToMonitor))
+                    {
+                        File.Delete(DirsToMonitor);
+                    }
+
+                    if (File.Exists(DirsToMonitor))
+                    {
+                        File.Delete(DirsToMonitor);
+                    }
+
+                    StreamWriter xfile;
+                    xfile = My.MyProject.Computer.FileSystem.OpenTextFileWriter(DirsToMonitor, true);
+                    xfile.WriteLine("#DirectoryName | Y or N for include subdirectories or do not include subdirectories");
+                    foreach (string dir in ListOfDirs.Keys)
+                    {
+                        if (!dir.ToString().ToUpper().Equals(TgtDir.ToUpper()))
+                        {
+                            DirToProcess = dir + "|" + ListOfDirs[dir].ToUpper().Trim();
+                            xfile.WriteLine(DirToProcess);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Removed from listeners: " + TgtDir);
+                        }
+                    }
+
+                    xfile.Close();
+                    SB.Text = "Listener Turned OFF for: " + TgtDir;
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: Cannot add listener: " + ex.Message);
+            }
 
-            // LISTEN = Nothing
+            return;
+        }
 
-            // btnSaveChanges.BackColor = Color.OrangeRed
+        private void CkMonitor_CheckedChanged(object sender, EventArgs e)
+        {
+            ProcessListener(true);
+            MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ");
         }
 
         private void ckRunUnattended_CheckedChanged(object sender, EventArgs e)
@@ -10689,8 +10859,8 @@ namespace EcmArchiver
             string format = "";
             // Dim result As Date
 
-            DateTimeFormatInfo Info;
-            Info = CultureInfo.CurrentUICulture.DateTimeFormat;
+            System.Globalization.DateTimeFormatInfo Info;
+            Info = System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat;
             string S = "";
             modGlobals.gDateSeparator = Info.DateSeparator;
             modGlobals.gTimeSeparator = Info.TimeSeparator;
@@ -10992,7 +11162,12 @@ namespace EcmArchiver
 
         private void ContentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            InitiateContentArchive(false);
+            var watch = Stopwatch.StartNew();
+            bool PerformQUickArchive = true;
+            BeginContentArchive(PerformQUickArchive);
+            decimal totsecs = 0m;
+            totsecs = (decimal)watch.Elapsed.TotalSeconds;
+            LOG.WriteToArchiveLog("*** TOTAL TIME FOR QUICK Archive: " + totsecs.ToString() + " Seconds");
         }
 
         private void ArchiveALLToolStripMenuItem_Click(object sender, EventArgs e)
@@ -13320,10 +13495,10 @@ namespace EcmArchiver
                 modGlobals.gCurrUserGuidID = UIDcurr;
                 try
                 {
-                    // ******************************************************************************************************
+                    // ************************************** ArchiveContent ****************************************************************
                     My.MyProject.Forms.frmNotify.TopMost = false;
                     ArchiveContent(Environment.MachineName, UIDcurr);
-                    // ******************************************************************************************************
+                    // **********************************************************************************************************************
                     LOG.WriteToUploadLog("------------------------------------------------------------");
                     LOG.WriteToUploadLog("PerformContentArchive: ArchiveContent: Start" + StartTime.ToString());
                     LOG.WriteToUploadLog("PerformContentArchive: ArchiveContent: END" + DateAndTime.Now.ToString());
@@ -13355,7 +13530,7 @@ namespace EcmArchiver
                     FQN = Strings.Mid(cData, 1, K - 1);
                     ParentGuid = Strings.Mid(cData, K + 1);
                     // DBARCH.UpdateZipFileIndicator(ParentGuid, True)
-                    LOG.WriteToUploadLog("PerformContentArchive: File: " + DateAndTime.Now.ToString() + FQN);
+                    LOG.WriteToUploadLog("PerformContentArchive 0A: File: " + DateAndTime.Now.ToString() + FQN);
                     ZF.UploadZipFile(UIDcurr, MachineIDcurr, FQN, ParentGuid, ckArchiveBit.Checked, false, RetentionCode, isPublic, StackLevel, ref ListOfFiles);
                 }
 
@@ -13390,11 +13565,12 @@ namespace EcmArchiver
                 bUpdated = DBLocal.removeListenerfileProcessed();
                 if (Conversions.ToBoolean(!bUpdated))
                 {
-                    LOG.WriteToArchiveLog("ERROR failed removeListenerfileProcessed...");
+                    LOG.WriteToArchiveLog("ERROR 02 failed removeListenerfileProcessed...");
                 }
             }
 
             My.MyProject.Forms.frmNotify.Hide();
+            modGlobals.gAutoExecContentComplete = true;
         }
 
         private void FileUploadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -13414,9 +13590,9 @@ namespace EcmArchiver
             FI = null;
             string FileGuid = Guid.NewGuid().ToString();
             string RepositoryTable = "DataSource";
-            string ContentSha1Hash = ENC.GenerateSHA512HashFromFile(FQN);
+            string SourceHash = ENC.GenerateSHA512HashFromFile(FQN);
             string AttachmentCode = "C";
-            DBARCH.UploadFileImage(modGlobals.gCurrUserGuidID, Environment.MachineName, OriginalFileName, FileGuid, FQN, RepositoryTable, RetentionCode, isPublic, ContentSha1Hash, DirName, false);
+            DBARCH.InsertSourceImage(modGlobals.gCurrUserGuidID, Environment.MachineName, OriginalFileName, FileGuid, FQN, RepositoryTable, RetentionCode, isPublic, SourceHash, DirName, false);
         }
 
         private void FileUploadBufferedToolStripMenuItem_Click(object sender, EventArgs e)
@@ -13448,7 +13624,7 @@ namespace EcmArchiver
             }
 
             string CrcHASH = ENC.GenerateSHA512HashFromFile(FQN);
-            DBARCH.UploadBuffered(4, FileBuffer, OriginalFileName, FileGuid, FQN, RepositoryTable, RetentionCode, isPublic, CrcHASH, "NA");
+            DBARCH.InsertBufferedSource(4, FileBuffer, OriginalFileName, FileGuid, FQN, RepositoryTable, RetentionCode, isPublic, CrcHASH, "NA");
         }
 
         private void FileChunkUploadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -13650,94 +13826,53 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + MethodBase.GetCurrentMethod().ToString());
             }
 
-            LOG.WriteToParmLog("Step 01");
             var NameValueTable = new NameValueCollection();
-            LOG.WriteToParmLog("Step 02");
             try
             {
-                LOG.WriteToParmLog("Step 03");
                 if (ApplicationDeployment.IsNetworkDeployed)
                 {
-                    LOG.WriteToParmLog("Step 04");
                     string QueryString = ApplicationDeployment.CurrentDeployment.ActivationUri.Query;
-                    LOG.WriteToParmLog("Step 05");
-                    LOG.WriteToParmLog("QueryString: " + QueryString);
-                    LOG.WriteToParmLog("Step 06");
                     NameValueTable = System.Web.HttpUtility.ParseQueryString(QueryString);
-                    LOG.WriteToParmLog("Step 07");
                 }
 
-                LOG.WriteToParmLog("Step 08");
                 foreach (string Arg in NameValueTable)
                 {
-                    LOG.WriteToParmLog("Step 09");
-                    LOG.WriteToParmLog("ARG: " + Arg);
-                    LOG.WriteToParmLog("Step 10");
                     if (Conversions.ToBoolean(Strings.InStr(Arg, ";")))
                     {
-                        LOG.WriteToParmLog("Step 11");
                         var AA = Arg.Split(';');
                         CompanyID = AA[0];
                         RepoID = AA[1];
-                        LOG.WriteToParmLog("Step 12");
                         string sCompanyID = REG.ReadEcmRegistrySubKey("CompanyID");
                         string sRepoID = REG.ReadEcmRegistrySubKey("RepoID");
                         string RepoCS = REG.ReadEcmRegistrySubKey("RepoCS");
                         bool bReg = false;
-                        LOG.WriteToParmLog("Step 13");
                         if (sCompanyID.Length == 0)
                         {
-                            LOG.WriteToParmLog("Step 14");
                             bReg = REG.CreateEcmRegistrySubKey("CompanyID", CompanyID);
-                            LOG.WriteToParmLog("Step 15");
                             if (!bReg)
                             {
-                                LOG.WriteToParmLog("Step 16");
                                 bReg = REG.UpdateEcmRegistrySubKey("CompanyID", CompanyID);
-                                LOG.WriteToParmLog("Step 17");
                             }
-
-                            LOG.WriteToParmLog("Step 18");
                         }
 
-                        LOG.WriteToParmLog("Step 19");
                         if (sRepoID.Length == 0)
                         {
-                            LOG.WriteToParmLog("Step 20");
                             bReg = REG.CreateEcmRegistrySubKey("RepoID", RepoID);
-                            LOG.WriteToParmLog("Step 21");
                             if (!bReg)
                             {
-                                LOG.WriteToParmLog("Step 22");
                                 bReg = REG.UpdateEcmRegistrySubKey("RepoID", RepoID);
-                                LOG.WriteToParmLog("Step 23");
                             }
-
-                            LOG.WriteToParmLog("Step 24");
                         }
 
-                        LOG.WriteToParmLog("Step 25");
                         if (RepoCS.Length == 0)
                         {
-                            LOG.WriteToParmLog("Step 26");
                             bReg = REG.CreateEcmRegistrySubKey("RepoCS", RepoCS);
-                            LOG.WriteToParmLog("Step 27");
                             if (!bReg)
                             {
-                                LOG.WriteToParmLog("Step 28");
                                 bReg = REG.UpdateEcmRegistrySubKey("RepoCS", RepoCS);
-                                LOG.WriteToParmLog("Step 29");
                             }
-
-                            LOG.WriteToParmLog("Step 30");
                         }
                     }
-                    else
-                    {
-                        LOG.WriteToParmLog("Step 31");
-                    }
-
-                    LOG.WriteToParmLog("Step 32");
                 }
             }
             catch (ThreadAbortException ex)
@@ -13747,7 +13882,6 @@ namespace EcmArchiver
             }
             catch (Exception ex)
             {
-                LOG.WriteToParmLog("Step 35");
                 LOG.WriteToArchiveLog("ERROR GetQueryStringParameters 100 - " + ex.Message);
                 LOG.WriteToParmLog("ERROR GetQueryStringParameters 100 - " + ex.Message);
                 var st = new StackTrace(true);
@@ -14328,13 +14462,16 @@ namespace EcmArchiver
 
         private void GetOutlookEmailIDsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Not currntly implemented...");
         }
 
         /// <summary>
     /// Handles the FormClosing event of the frmMain control. This is the dispose functionality.
     /// </summary>
     /// <param name="sender">The source of the event.</param>
-    /// <param name="e">The <see cref="System.Windows.Forms.FormClosingEventArgs"/> instance containing the event data.</param>
+    /// <param name="e">
+    /// The <see cref="System.Windows.Forms.FormClosingEventArgs"/> instance containing the event data.
+    /// </param>
         private void frmReconMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (modGlobals.gTraceFunctionCalls.Equals(1))
@@ -14347,12 +14484,15 @@ namespace EcmArchiver
             UTIL.cleanTempWorkingDir();
             SB.Text = "STANDBY... Setting retention dates...";
             DBARCH.spUpdateRetention();
-            Cursor = Cursors.Default;
             try
             {
                 SB.Text = "STANDBY... backing up SQLite database...";
+                var AllowedExts = DBARCH.getUsedExtension();
+                DBLocal.resetExtension();
+                DBLocal.addExtension(AllowedExts);
                 DBLocal.BackUpSQLite();
                 GC.Collect();
+                GC.WaitForPendingFinalizers();
             }
             catch (ThreadAbortException ex)
             {
@@ -14367,7 +14507,9 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("Line: " + st.GetFrame(0).GetFileLineNumber().ToString());
             }
 
+            Cursor = Cursors.Default;
             SB.Text = "Goodbye....";
+            Application.Exit();
         }
 
         private void WebSitesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -15130,12 +15272,10 @@ namespace EcmArchiver
                         tDict.Add("SapData", "");
                         tDict.Add("RowID", "");
                         myFile = null;
-
-                        // Dim RowID As String = DBARCH.ckContentExists(tDict("SourceName"), tDict("CRC"))
                         string RowID = DBARCH.ckContentExists(tDict["SourceName"], tDict["ImageHash"]);
                         if (RowID.Length.Equals(0))
                         {
-                            bool b = DBARCH.insertNewContent(tDict, FileBytes);
+                            bool b = DBARCH.insertNewContent(tDict, FileBytes, "FILE");
                             if (b)
                             {
                                 SB.Text = "Inserted: " + FQN;
@@ -16689,7 +16829,7 @@ namespace EcmArchiver
                     bUpdated = DBLocal.removeListenerfileProcessed();
                     if (Conversions.ToBoolean(!bUpdated))
                     {
-                        LOG.WriteToArchiveLog("ERROR failed removeListenerfileProcessed...");
+                        LOG.WriteToArchiveLog("ERROR 00 failed removeListenerfileProcessed...");
                     }
                 }
 
@@ -16851,9 +16991,9 @@ namespace EcmArchiver
                 targetDirectory = FolderBrowserDialog1.SelectedPath;
             }
 
-            // Individual components of a filename (i.e. each subdirectory along the path, 
-            // And the final filename) are limited to 255 characters, And the total path 
-            // length Is limited To approximately 32, 0 characters. However, on Windows, 
+            // Individual components of a filename (i.e. each subdirectory along the path,
+            // And the final filename) are limited to 255 characters, And the total path
+            // length Is limited To approximately 32, 0 characters. However, on Windows,
             // you can't exceed MAX_PATH value (259 characters for files, 248 for folders)
 
             var ListOfDir = new List<string>();
@@ -17230,9 +17370,9 @@ namespace EcmArchiver
                 targetDirectory = FolderBrowserDialog1.SelectedPath;
             }
 
-            // Individual components of a filename (i.e. each subdirectory along the path, 
-            // And the final filename) are limited to 255 characters, And the total path 
-            // length Is limited To approximately 32, 0 characters. However, on Windows, 
+            // Individual components of a filename (i.e. each subdirectory along the path,
+            // And the final filename) are limited to 255 characters, And the total path
+            // length Is limited To approximately 32, 0 characters. However, on Windows,
             // you can't exceed MAX_PATH value (259 characters for files, 248 for folders)
 
             var ListOfDir = new List<string>();
@@ -17514,7 +17654,7 @@ namespace EcmArchiver
                         LOG.WriteToDirAnalysisLog("-------------------------------------------", false);
                     }
 
-                    if (Conversions.ToBoolean(Operators.ConditionalCompareObjectGreaterEqual(FileLength, modGlobals.MaxFileToLoadMB * 1000000, false)))
+                    if (Conversions.ToBoolean(Operators.ConditionalCompareObjectGreaterEqual(FileLength, modGlobals.MaxFileToLoadMB * 1000000L, false)))
                     {
                         LOG.WriteToDirAnalysisLog("     File : " + FName + " EXCEEDS MAXIMUM ALLOWED FILE SIZE, SKIPPING.", false);
                         iBadCnt += 1;
@@ -17595,13 +17735,16 @@ namespace EcmArchiver
             MessageBox.Show(Msg);
         }
 
-        public void InitiateContentArchive(bool bQuickArchive)
+        public void BeginContentArchive(bool PerformQuickArchive)
         {
             if (modGlobals.gTraceFunctionCalls.Equals(1))
             {
                 LOG.WriteToArchiveLog("--> CALL: " + MethodBase.GetCurrentMethod().ToString());
             }
 
+            DBLocal.getUseLastArchiveDateActive();
+            DBLocal.setUseLastArchiveDateActive();
+            setLastArchiveLabel();
             try
             {
                 if (ckDisable.Checked)
@@ -17625,15 +17768,19 @@ namespace EcmArchiver
 
                 try
                 {
-                    SB.Text = "CONTENT ARCHIVE LAUNCHED";
+                    SB.Text = "Quick CONTENT ARCHIVE LAUNCHED";
                     // ****************** Execute PerformContentArchive() on a separate thread **********************************
-                    if (bQuickArchive)
+                    if (!PerformQuickArchive)
                     {
+                        SB.Text = "Full Inventory ARCHIVE LAUNCHED";
                         ResetSqlite();
                     }
-
-                    ContentThread.RunWorkerAsync();
+                    // **********************************************************************************************************
+                    modGlobals.gAutoExecContentComplete = false;
+                    PerformContentArchive();
+                    modGlobals.gAutoExecContentComplete = true;
                 }
+                // ContentThread.RunWorkerAsync()
                 // **********************************************************************************************************
                 catch (ThreadAbortException ex)
                 {
@@ -17657,9 +17804,488 @@ namespace EcmArchiver
             }
         }
 
-        private void ContentReInventoryToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ReapplyALLDBUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            InitiateContentArchive(true);
+            string msg = "This will reapply all database updates that might be missing, are you sure?";
+            var dlgRes = MessageBox.Show(msg, "DB Updates", MessageBoxButtons.YesNo);
+            if (dlgRes == DialogResult.No)
+            {
+                return;
+            }
+
+            DBARCH.ZeroizeDBUpdate();
+            SB.Text = "Applying any needed updates, standby...";
+            ApplyDDUpdates();
+            SB.Text = "Updates reapplied...";
+            MessageBox.Show("Updates complete...");
+        }
+
+        private void CreateSQLiteDBToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string NewDB = @"c:\temp\TestSQLite.db";
+            SQLiteConnection sqlite_conn;
+            if (!Directory.Exists(@"c:\temp"))
+            {
+                Directory.CreateDirectory(@"C:\temp");
+            }
+
+            if (File.Exists(NewDB))
+            {
+                File.Delete(NewDB);
+            }
+
+            sqlite_conn = new SQLiteConnection("Data Source=" + NewDB);
+            sqlite_conn.Open();
+            if (File.Exists(NewDB))
+            {
+                MessageBox.Show("Success: " + NewDB + ", created");
+            }
+            else
+            {
+                MessageBox.Show("Failure: " + NewDB + ", failed to create");
+            }
+        }
+
+        private void CanLongFilenamesBeTurnedOnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool isLongFileNamesAvail = UTIL.isLongFileNamesAvail();
+            if (isLongFileNamesAvail)
+            {
+                MessageBox.Show("This operating system can use Long File names");
+            }
+            else
+            {
+                MessageBox.Show("This operating system can NOT use Long File names");
+            }
+        }
+
+        private void TurnONLongFilenamesAdminNeededToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.Clear();
+            Clipboard.SetText(@"reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem /t REG_SZ /v LongPathsEnabled /d 1 /f");
+            MessageBox.Show("This Command is in the clipboard." + Constants.vbCrLf + "Execute this command from a command prompt as an Administrator" + Constants.vbCrLf + Constants.vbCrLf + @"reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem /t REG_SZ /v LongPathsEnabled /d 1 /f");
+        }
+
+        private void HowToTurnOnLongFilenamesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string S = "";
+            S += "In the past the maximum supported file length was 260 characters (256 usable after the drive characters And termination character). In Windows 10 long file name support can be enabled which allows file names up to 32,767 characters (although you lose a few characters for mandatory characters that are part of the name). To enable this perform the following:" + Constants.vbCrLf;
+            S += Constants.vbCrLf;
+            S += "Start the registry editor (regedit.exe)" + Constants.vbCrLf;
+            S += @"Navigate to HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem" + Constants.vbCrLf;
+            S += "Double Click LongPathsEnabled" + Constants.vbCrLf;
+            S += "Set to 1 And click OK" + Constants.vbCrLf;
+            S += "Reboot" + Constants.vbCrLf + Constants.vbCrLf;
+            S += "This can also be enabled via Group Policy via Computer Configuration > Administrative Templates > System > Filesystem > Enable NTFS long paths.";
+            S += Constants.vbCrLf;
+            S += Constants.vbCrLf;
+            S += @"reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem /t REG_SZ /v LongPathsEnabled /d 1 /f";
+            S += Constants.vbCrLf;
+            S += Constants.vbCrLf;
+            S += "This Text has been placed into the clipboard in case you wish to run from the command line as an Administrator";
+            Clipboard.Clear();
+            Clipboard.SetText(S);
+            MessageBox.Show(S);
+        }
+
+        private void CheckForViolationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ThreadSetNameHash.IsBusy)
+            {
+                SB.Text = "ABORTING, ALREADY EXECUTING...";
+                return;
+            }
+
+            try
+            {
+                ThreadSetNameHash.RunWorkerAsync();
+            }
+            catch (ThreadAbortException ex)
+            {
+                LOG.WriteToArchiveLog("Thread 90 - caught ThreadAbortException - resetting.");
+                Thread.ResetAbort();
+            }
+            catch (Exception ex)
+            {
+                SB.Text = ex.Message;
+                var st = new StackTrace(true);
+                st = new StackTrace(ex, true);
+                LOG.WriteToArchiveLog("Line: " + st.GetFrame(0).GetFileLineNumber().ToString());
+            }
+        }
+
+        private void FileNamesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void LongFilenamesOnOrOFFToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string txt = Conversions.ToString(My.MyProject.Computer.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem", "LongPathsEnabled", ""));
+            MessageBox.Show("Current Value in Registry: " + txt);
+        }
+
+        private void LongFilenameHASHToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string tgtfqn = @"C:\Users\wmiller\Documents\SQL Server Management Studio\HFit_Rewrite\CurrentWork\_Eligibility\Documentation\RoleEligibilityTracking-Chad.doc";
+            string CALCHASH = "";
+            string ENCCHASH = "";
+            var dirs = new Dictionary<string, string>();
+            // C:\DEV\ECM2020\ARCHIVER\Z7\LICENSE.TXT
+            dirs = DBARCH.getDSFQN("10", tgtfqn);
+            foreach (string xhash in dirs.Keys)
+            {
+                tgtfqn = dirs[xhash].ToUpper();
+                ENCCHASH = ENC.SHA512SqlServerHash(tgtfqn);
+                CALCHASH = DBARCH.getSqlServerHASH(tgtfqn);
+                if ((CALCHASH.ToUpper() ?? "") != (xhash.ToUpper() ?? ""))
+                {
+                    Console.WriteLine(tgtfqn);
+                    Console.WriteLine("SQL Server Hash: " + xhash);
+                    Console.WriteLine("Local Hash: " + CALCHASH);
+                    Console.WriteLine("---");
+                }
+            }
+        }
+
+        private void ValidateLongDirectroryNamesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ThreadSetNameHash.IsBusy)
+            {
+                SB.Text = "ABORTING, ALREADY EXECUTING...";
+                return;
+            }
+
+            try
+            {
+                ThreadSetNameHash.RunWorkerAsync();
+            }
+            catch (ThreadAbortException ex)
+            {
+                LOG.WriteToArchiveLog("Thread 90 - caught ThreadAbortException - resetting.");
+                Thread.ResetAbort();
+            }
+            catch (Exception ex)
+            {
+                SB.Text = ex.Message;
+                var st = new StackTrace(true);
+                st = new StackTrace(ex, true);
+                LOG.WriteToArchiveLog("Line: " + st.GetFrame(0).GetFileLineNumber().ToString());
+            }
+            // DBARCH.setDSFQN()
+        }
+
+        private void TextStringHashToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string DirName = @"C:\dev\Ecm2020";
+            string Hash1 = "";
+            string Hash2 = "";
+            DirName = DirName.ToUpper();
+            Hash1 = DBARCH.getSqlServerHASH(DirName);
+            Hash2 = ENC.SHA512SqlServerHash(DirName);
+            Console.WriteLine(Hash1);
+            Console.WriteLine(Hash2);
+            Console.WriteLine("DONE...");
+        }
+
+        private void ThreadSetNameHash_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            DBARCH.setDSFQN();
+            MessageBox.Show("Analysis of long file names complete...");
+        }
+
+        private void ValidateLongDirectroryNamesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (ThreadSetNameHash.IsBusy)
+            {
+                SB.Text = "ABORTING, ALREADY EXECUTING...";
+                return;
+            }
+
+            try
+            {
+                ThreadSetNameHash.RunWorkerAsync();
+            }
+            catch (ThreadAbortException ex)
+            {
+                LOG.WriteToArchiveLog("Thread 100A - caught ThreadSetNameHash - resetting.");
+                Thread.ResetAbort();
+            }
+            catch (Exception ex)
+            {
+                SB.Text = ex.Message;
+                var st = new StackTrace(true);
+                st = new StackTrace(ex, true);
+                LOG.WriteToArchiveLog("Line: " + st.GetFrame(0).GetFileLineNumber().ToString());
+            }
+        }
+
+        private void ValidateFileHASHCodesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DBARCH.validateFileHash();
+            MessageBox.Show("File Hash validation complete...");
+        }
+
+        private void CheckBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            ProcessListener(false);
+            MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ");
+        }
+
+        private void ValidateProcessAsFileExtsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DBARCH.RebuildCrossIndexFileTypes();
+        }
+
+        private void LinkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MessageBox.Show("NOT Operable at this time...");
+        }
+
+        private void ManualEditListenerConfigToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string DirsToMonitor = System.Configuration.ConfigurationManager.AppSettings["DirsToMonitor"];
+            Process.Start("notepad.exe", DirsToMonitor);
+        }
+
+        private void ContentNoLIstenerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var watch = Stopwatch.StartNew();
+            modGlobals.TempDisableDirListener = true;
+            bool PerformQUickArchive = false;
+            BeginContentArchive(PerformQUickArchive);
+            modGlobals.TempDisableDirListener = false;
+            watch.Stop();
+            decimal totsecs = 0m;
+            totsecs = (decimal)watch.Elapsed.TotalSeconds;
+            LOG.WriteToArchiveLog("*** TOTAL TIME FOR FULL SCAN Archive: " + totsecs.ToString() + " Seconds");
+        }
+
+        private void ValidateRetentionDatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SB.Text = "Verifying Retention Dates";
+            DBARCH.spUpdateRetention();
+            SB.Text = "Retention Dates VERIFIED";
+            MessageBox.Show("Retention Dates VERIFIED");
+        }
+
+        private void FulltextLogAnalysisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            My.MyProject.Forms.frmFti.Show();
+        }
+
+        private void UpdateAvailableIFiltersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // spAddAvailExtensions
+            DBARCH.ExecSP("spAddAvailExtensions");
+            MessageBox.Show("Filters updated...");
+        }
+
+        private void ReInventoryAllFilesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DBLocal.ReInventory();
+        }
+
+        private void GetDirFilesByFilterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Dim sFiles() As String = Directory.GetFiles("c:\dev\Ecm2020", "*.pdf|*.xlsx|*.xls|*.docx|*.doc|*.txt", SearchOption.AllDirectories)
+            int I = 0;
+            try
+            {
+                Console.WriteLine("START: ");
+                Console.WriteLine(DateAndTime.Now);
+                string FileFilter = ".txt,.doc,.docx,*.pdf,";
+                string DirName = @"c:\temp";
+                if (!Directory.Exists(@"c:\temp"))
+                {
+                    MessageBox.Show(@"Directory C:\temp does not exist and this test is designed to run against that one only... returning.");
+                    return;
+                }
+
+                DI = new DirectoryInfo(DirName);
+                foreach (FileInfo FI in (IEnumerable)DI.GetFiles("*.*", SearchOption.AllDirectories))
+                {
+                    if (FileFilter.Contains(FI.Extension))
+                    {
+                        I += 1;
+                    }
+                }
+
+                string msg = "";
+                msg = "Number Of Files Found: " + I.ToString() + Environment.NewLine;
+                Console.WriteLine("Number Of Files: " + I.ToString());
+                Console.WriteLine("END: ");
+                Console.WriteLine(DateAndTime.Now);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            MessageBox.Show("Number Of Files: " + I.ToString());
+        }
+
+        private void GenWhereINDictToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var tDict = new Dictionary<string, string>();
+            tDict = DBARCH.getIncludedFileTypeWhereIn(modGlobals.gCurrLoginID);
+            foreach (string str in tDict.Keys)
+                Console.WriteLine("DIR:" + str + "  WhereIN: " + tDict[str]);
+        }
+
+        private void Label13_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnSetLastArchiveON_Click(object sender, EventArgs e)
+        {
+            DBLocal.TurnOnUseLastArchiveDateActive();
+            if (modGlobals.gUseLastArchiveDate.Equals("1"))
+            {
+                lblUseLastArchiveDate.Text = "Last Arch ON";
+            }
+            else
+            {
+                lblUseLastArchiveDate.Text = "Last Arch OFF";
+            }
+
+            DBLocal.getUseLastArchiveDateActive();
+            setLastArchiveLabel();
+        }
+
+        private void btnSetLastArchiveOFF_Click(object sender, EventArgs e)
+        {
+            DBLocal.TurnOffUseLastArchiveDateActive();
+            if (modGlobals.gUseLastArchiveDate.Equals("1"))
+            {
+                lblUseLastArchiveDate.Text = "Last Arch ON";
+            }
+            else
+            {
+                lblUseLastArchiveDate.Text = "Last Arch OFF";
+            }
+
+            DBLocal.getUseLastArchiveDateActive();
+            setLastArchiveLabel();
+        }
+
+        private void TurnONToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DBLocal.TurnOnUseLastArchiveDateActive();
+            if (modGlobals.gUseLastArchiveDate.Equals("1"))
+            {
+                lblUseLastArchiveDate.Text = "Last Arch ON";
+            }
+            else
+            {
+                lblUseLastArchiveDate.Text = "Last Arch OFF";
+            }
+
+            DBLocal.getUseLastArchiveDateActive();
+            setLastArchiveLabel();
+        }
+
+        private void TurnOFFToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DBLocal.TurnOffUseLastArchiveDateActive();
+            if (modGlobals.gUseLastArchiveDate.Equals("1"))
+            {
+                lblUseLastArchiveDate.Text = "Last Arch ON";
+            }
+            else
+            {
+                lblUseLastArchiveDate.Text = "Last Arch OFF";
+            }
+
+            DBLocal.getUseLastArchiveDateActive();
+            setLastArchiveLabel();
+        }
+
+        private void Panel2_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void TurnListenerONToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProcessListener(true);
+            MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ");
+        }
+
+        private void TurnListenerOFFToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProcessListener(false);
+            MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ");
+        }
+
+        private void InitializeToGivenDateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            object Message, Title, xDefault, MyValue;
+            Message = "Enter a Date in the form of MM/DD/YYYY";    // Set prompt.
+            Title = "Initialze Last Archive Date";    // Set title.
+            string MO = DateAndTime.Now.Month.ToString();
+            string DA = DateAndTime.Now.Day.ToString();
+            string YR = DateAndTime.Now.Year.ToString();
+            if (MO.Length.Equals(1))
+            {
+                MO = "0" + MO;
+            }
+
+            if (DA.Length.Equals(1))
+            {
+                DA = "0" + DA;
+            }
+
+            xDefault = MO + "/" + DA + "/" + YR;
+            MyValue = Interaction.InputBox(Conversions.ToString(Message), Conversions.ToString(Title), Conversions.ToString(xDefault));
+            if (Information.IsDate(MyValue))
+            {
+                DBLocal.InitUseLastArchiveDateActive(Conversions.ToString(MyValue));
+                MessageBox.Show(Conversions.ToString(Operators.AddObject(Operators.AddObject(MyValue, " Last Archive date set to: "), MyValue)));
+            }
+            else
+            {
+                MessageBox.Show(Conversions.ToString(Operators.AddObject(MyValue, " does not appear to be a valid date, returning.")));
+            }
+
+            DBLocal.getUseLastArchiveDateActive();
+            setLastArchiveLabel();
+        }
+
+        private void ValidateRepoContentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string msg = "This process can be very time consuming as few minutes or a few dyas, are you sure?";
+            var dlgRes = MessageBox.Show(msg, "Verify ALL Files in Repo", MessageBoxButtons.YesNo);
+            if (dlgRes == DialogResult.No)
+            {
+                return;
+            }
+
+            var watch = Stopwatch.StartNew();
+            SB.Text = "CONTENT ARCHIVE LAUNCHED - Full ReInventory";
+            modGlobals.TempDisableDirListener = true;
+            // ------------------------------------------------
+            int CurrUseDirectoryListener = modGlobals.UseDirectoryListener;
+            modGlobals.UseDirectoryListener = 0;
+            DBLocal.getUseLastArchiveDateActive();
+            string CurrUseLastArchiveDate = modGlobals.gUseLastArchiveDate;
+            modGlobals.gUseLastArchiveDate = "N";
+            ResetSqlite();
+            // ***************************************************************
+            BeginContentArchive(true);
+            modGlobals.TempDisableDirListener = false;
+            // ***************************************************************
+            modGlobals.gUseLastArchiveDate = CurrUseLastArchiveDate;
+            modGlobals.UseDirectoryListener = CurrUseDirectoryListener;
+            // ------------------------------------------------
+            modGlobals.TempDisableDirListener = false;
+            SB.Text = "CONTENT ARCHIVE COMPLETED";
+            watch.Stop();
+            decimal totsecs = 0m;
+            totsecs = (decimal)watch.Elapsed.TotalSeconds;
+            LOG.WriteToArchiveLog("*** TOTAL TIME FOR FULL INVENTORY: " + totsecs.ToString() + " Seconds");
+        }
+
+        private void ArchiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
         }
     }
 

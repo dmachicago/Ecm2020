@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Drawing;
 using global::System.Globalization;
 using global::System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using global::ECMEncryption;
 using global::Ionic.Zip;
@@ -88,21 +89,45 @@ namespace EcmArchiver
 
             currDomain.UnhandledException += modGlobals.MYExnHandler;
             Application.ThreadException += modGlobals.MYThreadHandler;
-            string sDebug = "0";
-            if (sDebug.Equals("1"))
+        }
+
+        public DataSet getDataSet(string MySql)
+        {
+            var ds = new DataSet();
+            var adapter = new SqlDataAdapter();
+            string CS = getRepoConnStr();
+            var CONN = new SqlConnection(CS);
+            try
             {
-                ddebug = true;
+                CONN.Open();
+                using (CONN)
+                {
+                    var command = new SqlCommand(MySql, CONN);
+                    using (command)
+                    {
+                        adapter.SelectCommand = command;
+                        adapter.Fill(ds);
+                        adapter.Dispose();
+                    }
+                }
             }
-            else
+
+            // For i = 0 To ds.Tables(0).Rows.Count - 1
+            // MsgBox(ds.Tables(0).Rows(i).Item(0) & "  --  " & ds.Tables(0).Rows(i).Item(1))
+            // Next
+
+            catch (Exception ex)
             {
-                ddebug = false;
+                LOG.WriteToArchiveLog("ERROR getDataSet 01: " + ex.Message + Constants.vbCrLf + MySql);
             }
+
+            return ds;
         }
 
         public List<string> getUsersAllowedFileExt(string UserID)
         {
             var L = new List<string>();
-            string S = "Select distinct ExtCode from IncludedFiles where UserID = '" + UserID + "'";
+            string S = "Select distinct lower(ExtCode) from IncludedFiles where UserID = '" + UserID + "'";
             string ext = "";
             string CS = getRepoConnStr();
             var CONN = new SqlConnection(CS);
@@ -128,6 +153,382 @@ namespace EcmArchiver
             }
 
             return L;
+        }
+
+        public Dictionary<string, string> getDSFQN(string TOPN, string PASSEDfqn)
+        {
+            var L = new Dictionary<string, string>();
+            string S = "Select top " + TOPN + " FqnHASH, FQN from DataSourceFQN";
+            string fqn = "";
+            string hash = "";
+            if (PASSEDfqn.Length > 0)
+            {
+                S = "Select FqnHASH, FQN from DataSourceFQN where fqn = '" + PASSEDfqn + "' ";
+            }
+
+            string CS = getRepoConnStr();
+            var CONN = new SqlConnection(CS);
+            CONN.Open();
+            using (CONN)
+            {
+                var command = new SqlCommand(S, CONN);
+                using (command)
+                using (var RSD = command.ExecuteReader())
+                {
+                    if (RSD.HasRows)
+                    {
+                        while (RSD.Read())
+                        {
+                            hash = RSD.GetValue(0).ToString().ToLower();
+                            fqn = RSD.GetValue(1).ToString().ToLower();
+                            L.Add(hash, fqn);
+                        }
+                    }
+                }
+            }
+
+            return L;
+        }
+
+        public void setDSFQN()
+        {
+            var FM = new frmMessageBar();
+            FM.Show();
+            FM.ResetText();
+            FM.Text = "Long Running Process - Validating Long File names";
+            FM.lblmsg.Text = "";
+            FM.Refresh();
+            Application.DoEvents();
+            var ListOfDirs = new Dictionary<string, string>();
+            string S = "Select distinct upper(FQN) from DataSource where FqnHASH is null or ltrim(rtrim(FqnHASH)) = '' ";
+            string fqn = "";
+            string hash = "";
+            FM.lblmsg.Text = "Finding Long File names, standby";
+            FM.Refresh();
+            Application.DoEvents();
+            int iTotal = getCount("Select count(*) from DataSource WHERE FqnHASH is null or ltrim(rtrim(FqnHASH)) = '' ");
+            if (iTotal.Equals(0))
+            {
+                FM.Close();
+                FM.Dispose();
+                MessageBox.Show("No files found to be missing their Hash Codes, returning...");
+                return;
+            }
+
+            FM.lblmsg.Text = "Total files to process: " + iTotal.ToString();
+            FM.Refresh();
+            Application.DoEvents();
+            string CS = getRepoConnStr();
+            var CONN = new SqlConnection(CS);
+            CONN.Open();
+            var cmdSql = new SqlCommand("…");
+            cmdSql.Parameters.Add(new SqlParameter("@sId", SqlDbType.VarChar, 10));
+            FM.lblmsg.Text = "Building Long File names' HASH, standby";
+            FM.Refresh();
+            Application.DoEvents();
+            int icnt = 0;
+            try
+            {
+                using (CONN)
+                {
+                    FM.lblmsg.Text = "Calculating HASH:";
+                    var command = new SqlCommand(S, CONN);
+                    command.CommandType = CommandType.Text;
+                    using (command)
+                    using (var RSD = command.ExecuteReader())
+                    {
+                        if (RSD.HasRows)
+                        {
+                            while (RSD.Read())
+                            {
+                                icnt += 1;
+                                FM.lblCnt.Text = icnt.ToString();
+                                FM.Refresh();
+                                Application.DoEvents();
+                                fqn = RSD.GetValue(0).ToString().ToUpper();
+                                if (File.Exists(fqn))
+                                {
+                                    hash = ENC.SHA512SqlServerHash(fqn);
+                                    if (!ListOfDirs.Keys.Contains(hash))
+                                    {
+                                        ListOfDirs.Add(hash, fqn);
+                                    }
+                                }
+                                else
+                                {
+                                    LOG.WriteToArchiveLog("MISSING FILE: " + fqn);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR setDSFQN 120A: " + ex.Message);
+                LOG.WriteToArchiveLog("ERROR setDSFQN 120A: " + ex.Message);
+            }
+
+            iTotal = ListOfDirs.Count;
+            var CON = new SqlConnection(CS);
+            CON.Open();
+            using (CON)
+            {
+                var CMD = new SqlCommand("", CON);
+                using (CMD)
+                {
+                    FM.Text = "UPDATING ALL LONG NAMES - Long Running Process";
+                    CMD.Parameters.Add(new SqlParameter("@fqn", SqlDbType.VarChar, 8000));
+                    CMD.Parameters.Add(new SqlParameter("@FqnHASH", SqlDbType.VarChar, 150));
+                    iTotal = ListOfDirs.Count;
+                    icnt = 0;
+                    foreach (var currentHash in ListOfDirs.Keys)
+                    {
+                        hash = currentHash;
+                        icnt += 1;
+                        FM.lblmsg.Text = icnt.ToString() + " of " + iTotal.ToString();
+                        FM.Refresh();
+                        Application.DoEvents();
+                        fqn = ListOfDirs[hash];
+                        if (fqn.Contains("'"))
+                        {
+                            Console.WriteLine(fqn);
+                            // fqn = fqn.Replace("'", "''")
+                        }
+
+                        try
+                        {
+                            CMD.Parameters["@fqn"].Value = fqn;
+                            CMD.Parameters["@FqnHASH"].Value = hash;
+                            S = "update DataSource set FqnHASH = @FqnHASH where fqn = @fqn ; ";
+                            CMD.CommandText = S;
+                            CMD.ExecuteNonQuery();
+                            S = @"If not exists (Select 1 from DataSourceFQN where FqnHASH = @FqnHASH )
+                              INSERT INTO DataSourceFQN (FqnHASH, fqn) values (@FqnHASH, @fqn);";
+                            CMD.CommandText = S;
+                            CMD.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            LOG.WriteToArchiveLog("ERROR setDSFQN: " + ex.Message);
+                            Console.WriteLine(ex.Message);
+                        }
+                    }
+                }
+            }
+
+            FM.Close();
+            FM.Dispose();
+        }
+
+        public void validateFileHash()
+        {
+            My.MyProject.Forms.frmMessageBar.Show();
+            My.MyProject.Forms.frmMessageBar.ResetText();
+            My.MyProject.Forms.frmMessageBar.Text = "Long Running Process - Validating File Hashes";
+            My.MyProject.Forms.frmMessageBar.lblmsg.Text = "";
+            My.MyProject.Forms.frmMessageBar.Refresh();
+            Application.DoEvents();
+            string SS = "ExecuteSql(delete from DataSource where FQN is null or ltrim(rtrim(FQN)) = '';";
+            var ListToUpdateFromFileHash = new Dictionary<string, string>();
+            var ListToUpdateFromSourceImage = new Dictionary<string, string>();
+            string S = "select SourceGuid, FQN from DataSource DS where HashFile is null or ltrim(rtrim(HashFile)) = '' ;";
+            string FQN = "";
+            string hash = "";
+            string SourceGuid = "";
+            My.MyProject.Forms.frmMessageBar.lblmsg.Text = "Finding Long File names, standby";
+            My.MyProject.Forms.frmMessageBar.Refresh();
+            Application.DoEvents();
+            int iTotal = getCount("Select count(*) from DataSource WHERE FqnHASH IS NULL");
+            My.MyProject.Forms.frmMessageBar.lblmsg.Text = "Total files to process: " + iTotal.ToString();
+            My.MyProject.Forms.frmMessageBar.Refresh();
+            Application.DoEvents();
+            string CS = getRepoConnStr();
+            var CONN = new SqlConnection(CS);
+            CONN.Open();
+            bSuccess = ExecuteSql(SS, CS, false);
+            var cmdSql = new SqlCommand("…");
+            cmdSql.Parameters.Add(new SqlParameter("@sId", SqlDbType.VarChar, 10));
+            My.MyProject.Forms.frmMessageBar.lblmsg.Text = "Validating files in Repositoty";
+            My.MyProject.Forms.frmMessageBar.Refresh();
+            Application.DoEvents();
+            int icnt = 0;
+            try
+            {
+                using (CONN)
+                {
+                    var command = new SqlCommand(S, CONN);
+                    command.CommandType = CommandType.Text;
+                    using (command)
+                    using (var RSD = command.ExecuteReader())
+                    {
+                        if (RSD.HasRows)
+                        {
+                            while (RSD.Read())
+                            {
+                                icnt += 1;
+                                My.MyProject.Forms.frmMessageBar.lblCnt.Text = icnt.ToString();
+                                My.MyProject.Forms.frmMessageBar.Refresh();
+                                Application.DoEvents();
+                                SourceGuid = RSD.GetValue(0).ToString();
+                                FQN = RSD.GetValue(1).ToString();
+                                if (!File.Exists(FQN))
+                                {
+                                    if (!ListToUpdateFromSourceImage.Keys.Contains(SourceGuid))
+                                    {
+                                        ListToUpdateFromSourceImage.Add(SourceGuid, FQN);
+                                        LOG.WriteToArchiveLog(">> HASHED BINARY: " + FQN);
+                                    }
+                                }
+                                else
+                                {
+                                    hash = ENC.GenerateSHA512HashFromFile(FQN);
+                                    if (!ListToUpdateFromFileHash.Keys.Contains(SourceGuid))
+                                    {
+                                        ListToUpdateFromFileHash.Add(SourceGuid, hash);
+                                    }
+
+                                    LOG.WriteToArchiveLog("** HASHED FILE: " + FQN);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR validateFileHash 220A: " + ex.Message);
+                LOG.WriteToArchiveLog("ERROR validateFileHash 220A: " + ex.Message);
+            }
+
+            iTotal = ListToUpdateFromSourceImage.Count;
+            var CON = new SqlConnection(CS);
+            CON.Open();
+            using (CON)
+            {
+                var CMD = new SqlCommand("", CON);
+                // CMD.Parameters.Add(New SqlParameter("@SourceGuid", SqlDbType.NVarChar, 50))
+                using (CMD)
+                {
+                    My.MyProject.Forms.frmMessageBar.Text = "UPDATING HASH from SourceImage";
+                    // CMD.Parameters.Add(New SqlParameter("@SourceGuid", SqlDbType.NVarChar, 50))
+
+                    iTotal = ListToUpdateFromSourceImage.Count;
+                    icnt = 0;
+                    foreach (var currentSourceGuid in ListToUpdateFromSourceImage.Keys)
+                    {
+                        SourceGuid = currentSourceGuid;
+                        icnt += 1;
+                        My.MyProject.Forms.frmMessageBar.lblmsg.Text = icnt.ToString() + " of " + iTotal.ToString();
+                        My.MyProject.Forms.frmMessageBar.Refresh();
+                        Application.DoEvents();
+                        try
+                        {
+                            // CMD.Parameters("@SourceGuid").Value = SourceGuid
+                            S = "Update DataSource set SourceImageOrigin = 'SRCIMG', HashFile = UPPER(convert(char(128), HASHBYTES('sha2_512', cast(SourceImage as nvarchar(max))),1)) where SourceGuid = '" + SourceGuid + "'  ;";
+                            CMD.CommandText = S;
+                            CMD.ExecuteNonQuery();
+                            Application.DoEvents();
+                        }
+                        catch (Exception ex)
+                        {
+                            LOG.WriteToArchiveLog("ERROR validateFileHash 221X: " + ex.Message);
+                            Console.WriteLine(ex.Message);
+                        }
+                    }
+                }
+            }
+
+            string HashFile = "";
+            var CONX = new SqlConnection(CS);
+            CONX.Open();
+            using (CONX)
+            {
+                var CMD = new SqlCommand("", CONX);
+                using (CMD)
+                {
+                    My.MyProject.Forms.frmMessageBar.Text = "UPDATING HASH from FILE";
+                    // CMD.Parameters.Add(New SqlParameter("@SourceGuid", SqlDbType.NVarChar, 50))
+                    // CMD.Parameters.Add(New SqlParameter("@HashFile", SqlDbType.NVarChar, 50))
+
+                    iTotal = ListToUpdateFromFileHash.Count;
+                    icnt = 0;
+                    foreach (var currentSourceGuid1 in ListToUpdateFromFileHash.Keys)
+                    {
+                        SourceGuid = currentSourceGuid1;
+                        icnt += 1;
+                        HashFile = ListToUpdateFromFileHash[SourceGuid];
+                        My.MyProject.Forms.frmMessageBar.lblmsg.Text = icnt.ToString() + " of " + iTotal.ToString();
+                        My.MyProject.Forms.frmMessageBar.Refresh();
+                        Application.DoEvents();
+                        try
+                        {
+                            // CMD.Parameters("@SourceGuid").Value = SourceGuid
+                            // CMD.Parameters("@HashFile").Value = HashFile
+                            // S = "Update DataSource set SourceImageOrigin = 'FILE', HashFile = @HashFile where SourceGuid = @SourceGuid ;"
+                            S = "Update DataSource set SourceImageOrigin = 'FILE', HashFile = '" + HashFile + "' where SourceGuid = '" + SourceGuid + "' ;";
+                            CMD.CommandText = S;
+                            CMD.ExecuteNonQuery();
+                            Application.DoEvents();
+                        }
+                        catch (Exception ex)
+                        {
+                            LOG.WriteToArchiveLog("ERROR validateFileHash 221X: " + ex.Message);
+                            Console.WriteLine(ex.Message);
+                        }
+                    }
+                }
+            }
+
+            My.MyProject.Forms.frmMessageBar.Close();
+        }
+
+        public string getSqlServerHASH(string str, bool ReturnHEX = false)
+        {
+
+            // If IsNothing(ReturnHEX) Then
+            // ReturnHEX = False
+            // End If
+            string S = "";
+            str = str.Replace(" ''", "'");
+            str = str.Replace("'", "''");
+            var L = new Dictionary<string, string>();
+            if (ReturnHEX.Equals(true))
+            {
+                S = "SELECT convert(char(128), HASHBYTES('sha2_512', '" + str.ToUpper() + "'), 1) as XHASH; ";
+            }
+            else
+            {
+                S = "SELECT convert(char(128), HASHBYTES('sha2_512', '" + str.ToUpper() + "'), 2) as XHASH; ";
+            }
+
+            string hash = "";
+            string CS = getRepoConnStr();
+            var CONN = new SqlConnection(CS);
+            CONN.Open();
+            try
+            {
+                using (CONN)
+                {
+                    var command = new SqlCommand(S, CONN);
+                    using (command)
+                    using (var RSD = command.ExecuteReader())
+                    {
+                        if (RSD.HasRows)
+                        {
+                            RSD.Read();
+                            hash = RSD.GetValue(0).ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("ERROR: getSqlServerHASH <" + str + ">");
+                return "";
+            }
+
+            return hash;
         }
 
 
@@ -3042,7 +3443,7 @@ namespace EcmArchiver
             return iStr.Trim();
         }
 
-        public string getFqnFromGuid(string SourceGuid)
+        public string getFqnFromGuid(string SourceGuid, string TgtTbl = "DataSource")
         {
             if (modGlobals.gTraceFunctionCalls.Equals(1))
             {
@@ -3050,7 +3451,15 @@ namespace EcmArchiver
             }
 
             string s = "";
-            s = "Select FQN FROM DataSource Where SourceGuid = '" + SourceGuid + "'";
+            if (TgtTbl.ToUpper().Equals("DATASOURCE"))
+            {
+                s = "Select FQN FROM DataSource Where SourceGuid = '" + SourceGuid + "'";
+            }
+            else
+            {
+                s = "Select AttachmentName FROM EmailAttachment Where RowGuid = '" + SourceGuid + "'";
+            }
+
             SqlDataReader rsData = null;
             int I = 0;
             string iStr = "";
@@ -5970,9 +6379,9 @@ namespace EcmArchiver
             return b;
         }
 
-        public bool ckEmailFolderExist(string UserID, int FolderID, string FolderName, string ContainerName)
+        public bool ckEmailFolderExist(string UserID, string FolderID, string FolderName, string ContainerName)
         {
-            string s = (Conversions.ToDouble("select count(*) from EmailFolder where [UserID] = '" + UserID + "' and [FolderID] = '") + FolderID + Conversions.ToDouble("' and [FolderName] = '") + Conversions.ToDouble(FolderName) + Conversions.ToDouble("' and [ContainerName] = '") + Conversions.ToDouble(ContainerName) + Conversions.ToDouble("' ")).ToString();
+            string s = "select count(*) from EmailFolder where [UserID] = '" + UserID + "' and [FolderID] = '" + FolderID + "' and [FolderName] = '" + FolderName + "' and [ContainerName] = '" + ContainerName + "' ";
             int Cnt;
             SqlDataReader rsData = null;
             bool b = false;
@@ -6247,17 +6656,14 @@ namespace EcmArchiver
         public int getCountDataSourceFiles(string SourceName, string HexHash)
         {
             int CNT = -1;
-            if (!HexHash.Contains("0x"))
-            {
-                HexHash = "0x" + HexHash;
-            }
-            // Dim HexStr As String = HexStringToBinary(HexHash)
+            // If Not HexHash.Contains("0x") Then
+            // HexHash = "0x" + HexHash
+            // End If
+            // 'Dim HexStr As String = HexStringToBinary(HexHash)
             try
             {
                 SourceName = UTIL.RemoveSingleQuotes(SourceName);
-                // Select Case Convert(VARCHAR(MAX), Convert(VARBINARY(MAX), '48656c70', 2)) -- Assumes 0x string, no 0x wanted, returns 'Help'
-                // Dim S As String = "Select count(*) FROM DataSource where SourceName = '" + SourceName + "' and Convert(VARCHAR(MAX), Convert(VARBINARY(MAX), HexHash, 2)) = " + HexHash + "; "
-                string S = "Select count(*) FROM DataSource where SourceName = '" + SourceName + "' and ImageHash = " + HexHash + "; ";
+                string S = "Select count(*) FROM DataSource where SourceName = '" + SourceName + "' and ImageHash = '" + HexHash + "'; ";
                 CloseConn();
                 CkConn();
                 SqlDataReader rsData = null;
@@ -6273,7 +6679,6 @@ namespace EcmArchiver
             }
             catch (Exception ex)
             {
-                // xTrace(12311, "clsDataBase:getCountDataSourceFiles" + ex.Message)
                 LOG.WriteToArchiveLog("clsDatabaseARCH : getCountDataSourceFiles : 2174 : ", ex);
             }
 
@@ -6373,16 +6778,27 @@ namespace EcmArchiver
             }
             catch (Exception ex)
             {
-                LOG.WriteToArchiveLog("ERROR UpdateDataSourceFileInfo 00: " + ex.Message);
+                LOG.WriteToArchiveLog("ERROR 721x UpdateDataSourceFileInfo 00: " + ex.Message);
+                LOG.WriteToArchiveLog("[SourceName] " + SourceName.Length.ToString());
+                LOG.WriteToArchiveLog(Conversions.ToString("[Imagehash] " == Imagehash.Length.ToString()));
+                LOG.WriteToArchiveLog(Conversions.ToString("[CRC] " == Imagehash.Length.ToString()));
+                LOG.WriteToArchiveLog(Conversions.ToString("[SourceTypeCode] " == SourceTypeCode.Length.ToString()));
+                LOG.WriteToArchiveLog(Conversions.ToString("[OriginalFileType] " == OriginalFileType.Length.ToString()));
+                LOG.WriteToArchiveLog(Conversions.ToString("[MachineID] " == MachineID.Length.ToString()));
+                LOG.WriteToArchiveLog(Conversions.ToString("[RecHash] " == Imagehash.Length.ToString()));
                 b = false;
             }
 
             return b;
         }
 
-        public bool UpdateDataSouceHashAndBinary(string MachineID, string FQN, string Imagehash)
+        public bool UpdateSouceImage(string MachineID, string FQN, string Imagehash)
         {
-            FQN = FQN.Replace(" ''", "'");
+            if (FQN.Contains("'"))
+            {
+                FQN = FQN.Replace("''", "'");
+            }
+
             bool b = false;
             string ConnStr = setConnStr();
             string MySql = "";
@@ -6390,7 +6806,7 @@ namespace EcmArchiver
             MySql += " SourceImage = @FileContents ";
             MySql += " , Imagehash = @Imagehash";
             MySql += " , LastAccessDate = getdate()";
-            MySql += "where MachineID = @MachineID and FQN = @FQN";
+            MySql += " where MachineID = @MachineID and FQN = @FQN";
             try
             {
                 using (var connection = new SqlConnection(ConnStr))
@@ -6414,7 +6830,7 @@ namespace EcmArchiver
             }
             catch (Exception ex)
             {
-                LOG.WriteToArchiveLog("Error:UpdateDataSouceHashAndBinary 22.345.22 - Failed to add source image." + Constants.vbCrLf + MySql + Environment.NewLine + ex.Message);
+                LOG.WriteToArchiveLog("FATAL ERROR :UpdateSouceImage 22.345.22 - Failed to add source image." + Constants.vbCrLf + MySql + Environment.NewLine + ex.Message);
                 b = false;
             }
 
@@ -6427,6 +6843,7 @@ namespace EcmArchiver
             try
             {
                 FQN = FQN.Replace("''", "'");
+                FQN = FQN.Replace("'", "''");
                 string S = "select count(*) from DataSource where MachineID = '" + MachineID + "' and  FQN = '" + FQN + "' ";
                 SqlDataReader rsData = null;
                 bool b = false;
@@ -7096,7 +7513,7 @@ namespace EcmArchiver
             return B;
         }
 
-        public bool UpdateEmailMsg(string OriginalName, int ID, string UID, string FQN, string EmailGUID, string RetentionCode, string isPublic, string CrcHash, string DirName)
+        public bool UpdateEmailMsg(string OriginalName, int ID, string UID, string FQN, string EmailGUID, string RetentionCode, string isPublic, string SourceHash, string DirName)
         {
             int LL = 0;
             FQN = UTIL.RemoveSingleQuotes(FQN);
@@ -7135,7 +7552,7 @@ namespace EcmArchiver
                 if (bUseNewDbArch)
                 {
                     LL = 14;
-                    UploadFileImage(modGlobals.gCurrUserGuidID, Environment.MachineName, OriginalName, EmailGUID, FQN, "Email", RetentionCode, isPublic, CrcHash, DirName, false);
+                    InsertSourceImage(modGlobals.gCurrUserGuidID, Environment.MachineName, OriginalName, EmailGUID, FQN, "Email", RetentionCode, isPublic, SourceHash, DirName, false);
                     B = true;
                 }
                 // *******************************************************
@@ -7193,6 +7610,42 @@ namespace EcmArchiver
                     Debug.Print(ex.Message);
                 B = false;
                 LOG.WriteToArchiveLog("clsDatabaseARCH : UpdateAttachment : 2423 : ", ex);
+            }
+
+            return B;
+        }
+
+        public bool Exec_spUpdateLongNameHash(string SourceGuid, string FQN)
+        {
+            string InsertConnStr = getRepoConnStr();
+            bool B = false;
+            string SpCMD = "exec spUpdateLongNameHash '" + FQN + "', '" + SourceGuid + "' ";
+            // SpCMD += vbCrLf + "select * from DataSourceFQN where fqn = '" + FQN + "' "
+            // Clipboard.Clear()
+            // Clipboard.SetText(SpCMD)
+            try
+            {
+                using (var connection = new SqlConnection(InsertConnStr))
+                {
+                    using (var command = new SqlCommand("spUpdateLongNameHash", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@SourceGuid", SourceGuid);
+                        command.Parameters.AddWithValue("@FQN", FQN);
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                    }
+                }
+
+                B = true;
+            }
+            catch (Exception ex)
+            {
+                // xTrace(12315, "clsDataBase:UpdateAttachment" + ex.Message)
+                if (ddebug)
+                    Debug.Print(ex.Message);
+                B = false;
+                LOG.WriteToArchiveLog("clsDatabaseARCH : Exec_spUpdateLongNameHash : 2423 : " + ex.Message);
             }
 
             return B;
@@ -7326,7 +7779,7 @@ namespace EcmArchiver
             // ********************************************************************************************************************************************
             NewAttachmentGuid = InsertEmailAttachmentRecord(EmailGUID, AttachmentName, AttachmentCode, AttachmentType, UID, ref RetMsg, CrcHASH);
             saveContentOwner(NewAttachmentGuid, UserGuidID, "A", FileDirectory, modGlobals.gMachineID, modGlobals.gNetworkID);
-            UploadFileImage(modGlobals.gCurrUserGuidID, Environment.MachineName, AttachmentName, NewAttachmentGuid, FQN, "EmailAttachment", RetentionCode, isPublic, CrcHASH, FileDirectory, false);
+            InsertSourceImage(modGlobals.gCurrUserGuidID, Environment.MachineName, AttachmentName, NewAttachmentGuid, FQN, "EmailAttachment", RetentionCode, isPublic, CrcHASH, FileDirectory, false);
             // ********************************************************************************************************************************************
 
             bool bOcrNeeded = ckOcrNeeded(AttachmentCode);
@@ -7643,7 +8096,7 @@ namespace EcmArchiver
     /// <param name="CrcHASH">              The CRC hash.</param>
     /// <param name="FolderName">           Name of the folder.</param>
     /// <returns></returns>
-        public bool AddSourceToRepo(string UID, string MachineID, string NetworkName, string SourceGuid, string UploadFQN, string SourceName, string SourceTypeCode, string sLastAccessDate, string sCreateDate, string sLastWriteTime, string DataSourceOwnerUserID, int VersionNbr, string RetentionCode, string isPublic, string CrcHASH, string FolderName)
+        public bool AddSourceToRepo(string UID, string MachineID, string NetworkName, string SourceGuid, string UploadFQN, string SourceName, string SourceTypeCode, string sLastAccessDate, string sCreateDate, string sLastWriteTime, string DataSourceOwnerUserID, int VersionNbr, string RetentionCode, string isPublic, string FileHash, string FolderName)
         {
             if (SourceName.Trim().Length.Equals(0))
             {
@@ -7689,7 +8142,7 @@ namespace EcmArchiver
             string fExt = SourceTypeCode;
             UploadFQN = UTIL.ReplaceSingleQuotes(UploadFQN);
             bool B = false;
-            B = ckDocumentExists(SourceName, CrcHASH);
+            B = ckDocumentExists(SourceName, FileHash);
             if (B == true)
             {
                 saveContentOwner(SourceGuid, modGlobals.gCurrUserGuidID, "C", FolderName, modGlobals.gMachineID, modGlobals.gNetworkID);
@@ -7714,27 +8167,27 @@ namespace EcmArchiver
                 return false;
             }
 
-            var AttachmentBinary = CF.FileToByte(UploadFQN);
-            if (AttachmentBinary is null)
+            var SourceImage = CF.FileToByte(UploadFQN);
+            if (SourceImage is null)
             {
                 LOG.WriteToArchiveLog("Notification : AddSourceToRepo : 661c1 : FILE Failed to load: " + UploadFQN + ".");
                 return false;
             }
 
-            if (AttachmentBinary.Length == 0)
+            if (SourceImage.Length == 0)
             {
                 LOG.WriteToArchiveLog("Notification : AddSourceToRepo : 661z1 : FILE Failed to load: " + UploadFQN + ".");
                 return false;
             }
 
-            if (AttachmentBinary.Length > 500000000)
+            if (SourceImage.Length > 500000000)
             {
-                LOG.WriteToArchiveLog("Notification : AddSourceToRepo : 661b : Loading large file: " + UploadFQN + Constants.vbCrLf + "File Length: " + AttachmentBinary.Length.ToString());
+                LOG.WriteToArchiveLog("Notification : AddSourceToRepo : 661b : Loading large file: " + UploadFQN + Constants.vbCrLf + "File Length: " + SourceImage.Length.ToString());
             }
 
-            if (AttachmentBinary.Length > 1000000000)
+            if (SourceImage.Length > 1000000000)
             {
-                LOG.WriteToArchiveLog("Notification : AddSourceToRepo : 661b : Loading extremely large file: " + UploadFQN + Constants.vbCrLf + "File Length: " + AttachmentBinary.Length.ToString());
+                LOG.WriteToArchiveLog("Notification : AddSourceToRepo : 661b : Loading extremely large file: " + UploadFQN + Constants.vbCrLf + "File Length: " + SourceImage.Length.ToString());
             }
 
             try
@@ -7743,15 +8196,15 @@ namespace EcmArchiver
                 string ReturnMsg = "";
                 var TxStartTime = DateAndTime.Now;
                 var TxEndTime = DateAndTime.Now;
-                int OriginalSize = AttachmentBinary.Length;
-                AttachmentBinary = COMP.CompressBuffer(AttachmentBinary);
-                int CompressedSize = AttachmentBinary.Length;
+                int OriginalSize = SourceImage.Length;
+                SourceImage = COMP.CompressBuffer(SourceImage);
+                int CompressedSize = SourceImage.Length;
 
                 // ** Check to see if this file requires OCR or PDF processing here
                 // ** If so, copy it to the Processing directory and let the command line utiltiy process it
                 // Dim ProxyArchive As New SVCCLCArchive.Service1Client
                 // WDM CHECK THIS OUT
-                // B = AddSourceToRepo(UID, MachineID, "LOCAL", SourceGuid, UploadFQN, SourceName, SourceTypeCode, sLastAccessDate, sCreateDate, sLastWriteTime, UID, VersionNbr, RetentionCode, isPublic, CrcHASH, FolderName)
+                // B = AddSourceToRepo(UID, MachineID, "LOCAL", SourceGuid, UploadFQN, SourceName, SourceTypeCode, sLastAccessDate, sCreateDate, sLastWriteTime, UID, VersionNbr, RetentionCode, isPublic, FileHash, FolderName)
 
                 if (!B)
                 {
@@ -7814,7 +8267,7 @@ namespace EcmArchiver
             return bb;
         }
 
-        public bool UpdateSourceFileImage(string SourceName, string UID, string MachineID, string SourceGuid, string LastAccessDate, string CreateDate, string LastWriteTime, int VersionNbr, string UploadFQN, string RetentionCode, string isPublic, string CrcHASH, byte[] FileBytes = null)
+        public bool UpdateSourceImageInRepo(string SourceName, string UID, string MachineID, string SourceGuid, string LastAccessDate, string CreateDate, string LastWriteTime, int VersionNbr, string UploadFQN, string RetentionCode, string isPublic, string FileHash, byte[] FileBytes = null)
         {
 
             // DALE
@@ -7863,6 +8316,8 @@ namespace EcmArchiver
                 }
 
                 LL = 5;
+
+                // ******************************************************************************************
                 byte[] AttachmentBinary = null;
                 if (FileBytes is null) // nothing assigned
                 {
@@ -7877,6 +8332,7 @@ namespace EcmArchiver
                 {
                     AttachmentBinary = FileBytes;
                 }
+                // ******************************************************************************************
 
                 bool bExtendTime = false;
                 LL = 6;
@@ -7909,7 +8365,6 @@ namespace EcmArchiver
                 string ReturnMsg = "";
                 var TxStartTime = DateAndTime.Now;
                 var TxEndTime = DateAndTime.Now;
-                LL = 9;
                 bool bFileCompressed = false;
                 var CopyOfAttachmentBinary = AttachmentBinary;
                 OriginalSize = AttachmentBinary.Length;
@@ -7947,20 +8402,13 @@ namespace EcmArchiver
                 // **     4 - Possibly MS can give us a better way to compresss/zip messages on both ends
                 // Dim ProxyArchive As New SVCCLCArchive.Service1Client
 
-                bool bUseNewDbArch = true;
                 MachineID = Environment.MachineName;
-                if (bUseNewDbArch)
-                {
-                    LL = 16;
-                    UploadFileImage(modGlobals.gCurrUserGuidID, Environment.MachineName, SourceName, SourceGuid, UploadFQN, "DataSource", RetentionCode, isPublic, CrcHASH, FileDirectory, false);
-                    B = true;
-                }
-                else
-                {
-                    LL = 17;
-                    B = UpdateSourceFileImage(SourceName, UID, MachineID, SourceGuid, LastAccessDate, CreateDate, LastWriteTime, VersionNbr, UploadFQN, RetentionCode, isPublic, CrcHASH);
-                    UpdateSourceName(SourceGuid, SourceName);
-                }
+                B = true;
+                LL = 16;
+
+                // ************************************************************************************************************************************************************************************************
+                InsertSourceImage(modGlobals.gCurrUserGuidID, Environment.MachineName, SourceName, SourceGuid, UploadFQN, "DataSource", RetentionCode, isPublic, FileHash, FileDirectory, false);
+                // ************************************************************************************************************************************************************************************************
 
                 LL = 18;
                 if (ReturnMsg.Length > 0 | !B)
@@ -9040,6 +9488,140 @@ namespace EcmArchiver
             }
         }
 
+        public string getIncludedFileTypeWhereIn(string UserID, string DirName)
+        {
+            string ConnStr = getRepoConnStr();
+            var Conn = new SqlConnection(ConnStr);
+            bool b = false;
+            string s = "";
+            string WC = "";
+            bool bFound = false;
+            DirName = UTIL.RemoveSingleQuotes(DirName);
+            s = " SELECT [UserID]";
+            s = s + " ,[ExtCode]";
+            s = s + " ,[FQN]";
+            s = s + " FROM IncludedFiles ";
+            s = s + " where Userid = '" + UserID + "' ";
+            s = s + " and FQN = '" + DirName + "'";
+            using (Conn)
+            {
+                if (Conn.State == ConnectionState.Closed)
+                {
+                    Conn.Open();
+                }
+
+                var command = new SqlCommand(s, Conn);
+                SqlDataReader RSData = null;
+                RSData = command.ExecuteReader();
+                if (RSData.HasRows)
+                {
+                    while (RSData.Read())
+                    {
+                        bFound = true;
+                        string SS = RSData.GetValue(1).ToString().ToLower();
+                        WC += SS + ",";
+                    }
+
+                    if (bFound)
+                    {
+                        WC = WC.Trim().Substring(0, WC.Length - 1);
+                    }
+                }
+
+                RSData.Close();
+                RSData = null;
+                command.Connection.Close();
+                command = null;
+                Conn.Close();
+                Conn = null;
+            }
+
+            return WC;
+        }
+
+        public Dictionary<string, string> getIncludedFileTypeWhereIn(string UserID)
+        {
+            var TDict = new Dictionary<string, string>();
+            string ConnStr = getRepoConnStr();
+            var Conn = new SqlConnection(ConnStr);
+            bool b = false;
+            string s = "";
+            string WC = "";
+            bool bFound = false;
+            string CurrDir = "";
+            string ExtCode = "";
+            string PrevDir = "";
+            int iCnt = 0;
+            int idx = 0;
+            s = @" SELECT distinct ExtCode
+                FROM IncludedFiles 
+                where Userid = '" + UserID + "'";
+            s = "select distinct FQN, EXtcode from IncludedFiles where UserID = '" + UserID + "' order by fqn";
+            try
+            {
+                using (Conn)
+                {
+                    if (Conn.State == ConnectionState.Closed)
+                    {
+                        Conn.Open();
+                    }
+
+                    var command = new SqlCommand(s, Conn);
+                    SqlDataReader RSData = null;
+                    RSData = command.ExecuteReader();
+                    if (RSData.HasRows)
+                    {
+                        while (RSData.Read())
+                        {
+                            bFound = true;
+                            CurrDir = RSData.GetValue(0).ToString().ToLower();
+                            ExtCode = RSData.GetValue(1).ToString().ToLower();
+                            if ((PrevDir ?? "") != (CurrDir ?? "") & iCnt > 0)
+                            {
+                                // WDM Do not remove the last commas as it is used in the contains stmt later in the code
+                                // If WC.Contains(",") Then
+                                // WC = WC.Trim.Substring(0, WC.Length - 1)
+                                // End If
+                                TDict.Add(PrevDir, WC);
+                                WC = "";
+                                WC += ExtCode.ToLower() + ",";
+                            }
+                            else
+                            {
+                                WC += ExtCode.ToLower() + ",";
+                            }
+
+                            iCnt += 1;
+                            PrevDir = CurrDir;
+                        }
+                    }
+
+                    if (!TDict.Keys.Contains(CurrDir))
+                    {
+                        WC += ExtCode.ToLower() + ",";
+                        // WC = WC.Trim.Substring(0, WC.Length - 1)
+                        TDict.Add(PrevDir, WC);
+                        WC = "";
+                        WC += ExtCode.ToLower() + ",";
+                    }
+
+                    RSData.Close();
+                    RSData = null;
+                    command.Connection.Close();
+                    command = null;
+                    Conn.Close();
+                    Conn = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("ERROR getIncluded Exts 00 : " + ex.Message);
+                Console.WriteLine("ERROR getIncluded Exts 00 : " + ex.Message);
+            }
+
+            return TDict;
+        }
+
         public void LoadIncludedFileTypes(ref ListBox LB, string UserID, string DirName)
         {
             LB.Items.Clear();
@@ -9963,6 +10545,89 @@ namespace EcmArchiver
                 Conn.Close();
                 Conn = null;
             }
+        }
+
+        public Dictionary<string, string> GetUserDirectories(string UID)
+        {
+            var LOF = new Dictionary<string, string>();
+            IXV1 = 0;
+            DMA.IXV1 = 0;
+            string SQL = @"SELECT Directory.FQN, 
+                Directory.IncludeSubDirs
+                FROM  Directory 
+                WHERE ((Directory.UserID = '" + UID + @"') OR
+                (Directory.isSysDefault = 1)) and
+		        Directory.ckDisableDir = 'N'
+                order by Directory.fqn";
+            ;
+#error Cannot convert ReDimStatementSyntax - see comment for details
+            /* Cannot convert ReDimStatementSyntax, System.InvalidCastException: Unable to cast object of type 'Microsoft.CodeAnalysis.VisualBasic.Symbols.Metadata.PE.PENamedTypeSymbolWithEmittedNamespaceName' to type 'Microsoft.CodeAnalysis.IArrayTypeSymbol'.
+               at ICSharpCode.CodeConverter.CSharp.MethodBodyExecutableStatementVisitor.CreateNewArrayAssignment(ExpressionSyntax vbArrayExpression, ExpressionSyntax csArrayExpression, List`1 convertedBounds, Int32 nodeSpanStart)
+               at ICSharpCode.CodeConverter.CSharp.MethodBodyExecutableStatementVisitor.<ConvertRedimClauseAsync>d__41.MoveNext()
+            --- End of stack trace from previous location where exception was thrown ---
+               at ICSharpCode.CodeConverter.CSharp.MethodBodyExecutableStatementVisitor.<<VisitReDimStatement>b__40_0>d.MoveNext()
+            --- End of stack trace from previous location where exception was thrown ---
+               at ICSharpCode.CodeConverter.Shared.AsyncEnumerableTaskExtensions.<SelectAsync>d__3`2.MoveNext()
+            --- End of stack trace from previous location where exception was thrown ---
+               at ICSharpCode.CodeConverter.Shared.AsyncEnumerableTaskExtensions.<SelectManyAsync>d__0`2.MoveNext()
+            --- End of stack trace from previous location where exception was thrown ---
+               at ICSharpCode.CodeConverter.CSharp.MethodBodyExecutableStatementVisitor.<VisitReDimStatement>d__40.MoveNext()
+            --- End of stack trace from previous location where exception was thrown ---
+               at ICSharpCode.CodeConverter.CSharp.HoistedNodeStateVisitor.<AddLocalVariablesAsync>d__6.MoveNext()
+            --- End of stack trace from previous location where exception was thrown ---
+               at ICSharpCode.CodeConverter.CSharp.CommentConvertingMethodBodyVisitor.<DefaultVisitInnerAsync>d__3.MoveNext()
+
+            Input:
+
+                    ReDim aFolders(0)
+
+             */
+            int I = 0;
+            string ConnStr = getRepoConnStr();
+            var Conn = new SqlConnection(ConnStr);
+            bool b = false;
+            string FQN = "";
+            string IncludeSubDirs = "";
+            string DB_ID = "";
+            string ckDisableDir = "";
+            bool FirstEntryComplete = false;
+            var ListOfFiles = new List<string>();
+            string DbConnStr = "";
+            using (Conn)
+            {
+                if (Conn.State == ConnectionState.Closed)
+                {
+                    Conn.Open();
+                }
+
+                var command = new SqlCommand(SQL, Conn);
+                SqlDataReader RSData = null;
+                RSData = command.ExecuteReader();
+                I = 0;
+                if (RSData.HasRows)
+                {
+                    while (RSData.Read())
+                    {
+                        FQN = RSData.GetValue(0).ToString();
+                        IncludeSubDirs = RSData.GetValue(1).ToString();
+                        if (!LOF.Keys.Contains(FQN))
+                        {
+                            LOF.Add(FQN, IncludeSubDirs);
+                        }
+
+                        I = I + 1;
+                    }
+                }
+
+                RSData.Close();
+                RSData = null;
+                command.Connection.Close();
+                command = null;
+                Conn.Close();
+                Conn = null;
+            }
+
+            return LOF;
         }
 
         public void GetContentArchiveFileFolders(string UID, ref string[] aFolders)
@@ -25269,61 +25934,41 @@ namespace EcmArchiver
             return DBSIZEMB;
         }
 
-        public void RebuildCrossIndexFileTypes()
+        /// <summary>
+    /// Builds the dictionary.
+    /// </summary>
+    /// <param name="MySql">My SQL.</param>
+    /// <returns></returns>
+        public Dictionary<string, string> BuildDictionary(string MySql)
         {
-            string S = " SELECT  ProcessFileAs.ExtCode, DataSource.SourceGuid, DataSource.OriginalFileType, DataSource.SourceTypeCode, ProcessFileAs.ProcessExtCode";
-            S = S + " FROM         ProcessFileAs INNER JOIN";
-            S = S + " DataSource ON ProcessFileAs.ExtCode = DataSource.OriginalFileType";
-            // S = S + " where SourceTypeCode = OriginalFileType "
-
-            int I = 0;
-            int K = 0;
-            string ExtCode = "";
-            string SourceGuid = "";
-            string OriginalFileType = "";
-            string SourceTypeCode = "";
-            string ProcessExtCode = "";
+            var DICT = new Dictionary<string, string>();
+            string C1 = "";
+            string C2 = "";
             SqlDataReader rsData = null;
-            string ServerVersion = "";
+            double DBSIZEMB = 0d;
             try
             {
                 string CS = getRepoConnStr();
                 var CONN = new SqlConnection(CS);
                 CONN.Open();
-                var command = new SqlCommand(S, CONN);
+                var command = new SqlCommand(MySql, CONN);
                 rsData = command.ExecuteReader();
-                while (rsData.Read())
+                if (rsData.HasRows)
                 {
-                    Application.DoEvents();
-                    ExtCode = rsData.GetValue(0).ToString().ToLower();
-                    SourceGuid = rsData.GetValue(1).ToString();
-                    OriginalFileType = rsData.GetValue(2).ToString().ToLower();
-                    SourceTypeCode = rsData.GetValue(3).ToString().ToLower();
-                    ProcessExtCode = rsData.GetValue(4).ToString().ToLower();
-                    K += 1;
-                    if (K % 10 == 0)
+                    while (rsData.Read())
                     {
-                        // FrmMDIMain.SB4.Text = K.ToString + "/" + I.ToString
-                    }
-
-                    if (ProcessExtCode.Equals(SourceTypeCode))
-                    {
-                    }
-                    else
-                    {
-                        I += 1;
-                        S = "Update DataSource set SourceTypeCode = '" + ProcessExtCode + "' where SourceGuid = '" + SourceGuid + "' ";
-                        bool b = ExecuteSqlNewConn(90166, S);
-                        if (!b)
+                        C1 = rsData.GetValue(0).ToString();
+                        C2 = rsData.GetValue(1).ToString();
+                        if (!DICT.Keys.Contains(C1))
                         {
-                            LOG.WriteToArchiveLog("ERROR RebuildCrossIndexFileTypes: File with GUID '" + SourceGuid + "' did not UPDATE file type from '" + OriginalFileType + "' to '" + ProcessExtCode + "'.");
+                            DICT.Add(C1, C2);
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                LOG.WriteToArchiveLog("Error: clsDatabaseARCH:getSqlServerVersion Error 100: ", ex);
+                LOG.WriteToArchiveLog("Error: clsDatabaseARCH:getSqlDBSIZEMB Error 100: " + ex.Message);
             }
 
             if (!rsData.IsClosed)
@@ -25333,8 +25978,254 @@ namespace EcmArchiver
 
             rsData = null;
             GC.Collect();
-            // FrmMDIMain.SB4.Text = ""
+            return DICT;
+        }
 
+        public List<string> getListOf(string MySql)
+        {
+            var L = new List<string>();
+            string C1 = "";
+            SqlDataReader rsData = null;
+            double DBSIZEMB = 0d;
+            try
+            {
+                string CS = getRepoConnStr();
+                var CONN = new SqlConnection(CS);
+                CONN.Open();
+                var command = new SqlCommand(MySql, CONN);
+                rsData = command.ExecuteReader();
+                if (rsData.HasRows)
+                {
+                    while (rsData.Read())
+                    {
+                        C1 = rsData.GetValue(0).ToString();
+                        if (!L.Contains(C1))
+                        {
+                            L.Add(C1);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("Error: clsDatabaseARCH:getListOf Error 100: " + ex.Message + Constants.vbCrLf + MySql);
+            }
+
+            if (!rsData.IsClosed)
+            {
+                rsData.Close();
+            }
+
+            rsData = null;
+            GC.Collect();
+            return L;
+        }
+
+        public string getFileExt(string SourceGuid)
+        {
+            string MySQl = "Select FQN from DataSource where SourceGuid = '" + SourceGuid + "' ";
+            var L = new List<string>();
+            string C1 = "";
+            SqlDataReader rsData = null;
+            double DBSIZEMB = 0d;
+            string EXT = "";
+            try
+            {
+                string CS = getRepoConnStr();
+                var CONN = new SqlConnection(CS);
+                using (CONN)
+                {
+                    CONN.Open();
+                    var command = new SqlCommand(MySQl, CONN);
+                    using (command)
+                    using (rsData)
+                    {
+                        rsData = command.ExecuteReader();
+                        if (rsData.HasRows)
+                        {
+                            while (rsData.Read())
+                                C1 = rsData.GetValue(0).ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("Error: clsDatabaseARCH:getFileExt Error 100: " + ex.Message + Constants.vbCrLf + MySQl);
+            }
+
+            GC.Collect();
+            EXT = Path.GetDirectoryName(C1);
+            return EXT;
+        }
+
+        public void RebuildCrossIndexFileTypes()
+        {
+            var FM = new frmNotify();
+            FM.Show();
+            FM.Text = "VALIDATING iFilter Extensions";
+            var LisOfIncl = new List<string>();
+            LisOfIncl = getListOf("Select distinct lower([ExtCode]) FROM IncludedFiles ");
+            bool BB = true;
+            var SqlStmts = new List<string>();
+            int K = 0;
+            string CurrEXT = "";
+            string ProcessAsEXT = "";
+            string SourceGuid = "";
+            string OriginalFileType = "";
+            string SourceTypeCode = "";
+            int I = 0;
+            string MySql = "";
+            var DICT = new Dictionary<string, string>();
+            int GoodCnt = 0;
+            int BadCnt = 0;
+            MySql = "select distinct lower(ExtCode), lower(ProcessExtCode) from ProcessFileAs";
+            DICT = BuildDictionary(MySql);
+            MySql = "select sourceGuid,  lower([OriginalFileType]), lower([SourceTypeCode]) from DataSource where FQN is not null and ltrim(rtrim(fqn)) <> '' ";
+            var DS = getDataSet(MySql);
+            K = DS.Tables[0].Rows.Count;
+            var loopTo = DS.Tables[0].Rows.Count - 1;
+            for (I = 0; I <= loopTo; I++)
+            {
+                SourceGuid = Conversions.ToString(DS.Tables[0].Rows[I][0]);
+                OriginalFileType = DS.Tables[0].Rows[I][1].ToString().ToLower().Trim();
+                SourceTypeCode = DS.Tables[0].Rows[I][1].ToString().ToLower().Trim();
+                FM.lblFileSpec.Text = "File# " + I.ToString() + " of " + K.ToString();
+                FM.Refresh();
+                Application.DoEvents();
+                if (SourceTypeCode.Length > 0)
+                {
+                    if (!LisOfIncl.Contains(SourceTypeCode))
+                    {
+                        if (DICT.ContainsKey(SourceTypeCode))
+                        {
+                            S = "Update DataSource set SourceTypeCode = '" + DICT[SourceTypeCode] + "' where SourceGuid = '" + SourceGuid + "' ";
+                            SqlStmts.Add(Conversions.ToString(S));
+                            BadCnt += 1;
+                        }
+                        else
+                        {
+                            S = "Update DataSource set SourceTypeCode = '" + OriginalFileType + "' where SourceGuid = '" + SourceGuid + "' ";
+                            SqlStmts.Add(Conversions.ToString(S));
+                            BadCnt += 1;
+                        }
+                    }
+                }
+                else
+                {
+                    S = "Update DataSource set SourceTypeCode = '" + OriginalFileType + "' where SourceGuid = '" + SourceGuid + "' ";
+                    SqlStmts.Add(Conversions.ToString(S));
+                    BadCnt += 1;
+                }
+
+                if (OriginalFileType.Length > 0)
+                {
+                    if (!LisOfIncl.Contains(OriginalFileType))
+                    {
+                        S = "Update DataSource set SourceTypeCode = '" + OriginalFileType + "' where SourceGuid = '" + SourceGuid + "' ";
+                        SqlStmts.Add(Conversions.ToString(S));
+                        BadCnt += 1;
+                    }
+                    else if (!OriginalFileType.Equals(SourceTypeCode))
+                    {
+                        if (!LisOfIncl.Contains(SourceTypeCode))
+                        {
+                            ProcessAsEXT = DICT[OriginalFileType];
+                            S = "Update DataSource set SourceTypeCode = '" + ProcessAsEXT + "' where SourceGuid = '" + SourceGuid + "' ";
+                            SqlStmts.Add(Conversions.ToString(S));
+                            BadCnt += 1;
+                        }
+                        else
+                        {
+                            GoodCnt += 1;
+                        }
+                    }
+                    else if (DICT.Keys.Contains(OriginalFileType))
+                    {
+                        ProcessAsEXT = DICT[OriginalFileType];
+                        S = "Update DataSource set SourceTypeCode = '" + ProcessAsEXT + "' where SourceGuid = '" + SourceGuid + "' ";
+                        SqlStmts.Add(Conversions.ToString(S));
+                        BadCnt += 1;
+                    }
+                    else
+                    {
+                        GoodCnt += 1;
+                    }
+                }
+                else
+                {
+                    BadCnt += 1;
+                    LOG.WriteToArchiveLog("ERROR Q23: (Manually FIX) NO extension for Sourceguid " + SourceGuid);
+                    string ext = getFileExt(SourceGuid).ToLower();
+                    S = "Update DataSource set OriginalFileType = '" + ext + "' where SourceGuid = '" + SourceGuid + "' ";
+                    SqlStmts.Add(Conversions.ToString(S));
+                    if (!LisOfIncl.Contains(ext))
+                    {
+                        S = "Update DataSource set SourceTypeCode = '" + ext + "' where SourceGuid = '" + SourceGuid + "' ";
+                    }
+
+                    if (DICT.ContainsKey(ext))
+                    {
+                        string pext = DICT[ext];
+                        S = "Update DataSource set SourceTypeCode = '" + pext + "' where SourceGuid = '" + SourceGuid + "' ";
+                    }
+
+                    BadCnt += 1;
+                }
+            }
+
+            if (SqlStmts.Count > 0)
+            {
+                var CMD = new SqlCommand();
+                string connString = getRepoConnStr();
+                var conn = new SqlConnection(connString);
+                if (conn is null)
+                {
+                    conn = new SqlConnection(getRepoConnStr());
+                }
+
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.ConnectionString = getRepoConnStr();
+                    conn.Open();
+                }
+
+                FM.Text = "Applying Corrections";
+                K = SqlStmts.Count;
+                if (K > 0)
+                {
+                    I = 0;
+                    CMD.Connection = conn;
+                    CMD.CommandText = MySql;
+                    CMD.CommandType = CommandType.Text;
+                    using (conn)
+                    using (CMD)
+                        foreach (var currentMySql in SqlStmts)
+                        {
+                            MySql = currentMySql;
+                            try
+                            {
+                                I += 1;
+                                FM.lblFileSpec.Text = "File# " + I.ToString() + " of " + K.ToString();
+                                FM.Refresh();
+                                Application.DoEvents();
+                                CMD.CommandText = MySql;
+                                CMD.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+                                LOG.WriteToArchiveLog("ERROR 22x: updateDBUpdateLastwrite: " + ex.Message + Constants.vbCrLf + MySql);
+                                B = false;
+                            }
+                        }
+                }
+            }
+
+            FM.lblFileSpec.Text = "";
+            FM.Refresh();
+            Application.DoEvents();
+            FM.Close();
+            FM.Dispose();
         }
 
         public void ValidateFileTypesEmail()
@@ -27959,9 +28850,16 @@ namespace EcmArchiver
             return S;
         }
 
-        public void UploadFileImage(string UserID, string MachineID, string OriginalFileName, string FileGuid, string FQN, string RepositoryTable, string RetentionCode, string isPublic, string CrcHASH, string DirName, bool bUseZipFles)
+        public void InsertSourceImage(string UserID, string MachineID, string OriginalFileName, string FileGuid, string FQN, string RepositoryTable, string RetentionCode, string isPublic, string SourceHash, string DirName, bool bUseZipFles)
         {
-            bool BX = InsertBinaryData(RepositoryTable, FQN, CrcHASH, FileGuid);
+            bool bApplied = Exec_spUpdateLongNameHash(FileGuid, FQN);
+            if (!bApplied)
+            {
+                LOG.WriteToArchiveLog("ERROR HA12X: (Exec_spUpdateLongNameHash) : Failed to update the long file names cross references: ");
+                LOG.WriteToArchiveLog("HOW TO TEST in Sql Server: " + Constants.vbCrLf + "    exec spUpdateLongNameHash '" + FQN + "', '" + FileGuid + "' ");
+            }
+
+            bool BX = InsertBinaryData(RepositoryTable, FQN, SourceHash, FileGuid);
             if (BX)
             {
                 LOG.WriteToArchiveLog(">> ADDED to Repo: " + FQN);
@@ -27987,7 +28885,7 @@ namespace EcmArchiver
             if (Conversions.ToBoolean(modGlobals.TrackUploads))
             {
                 LL = 1;
-                LOG.WriteToUploadLog("UploadFileImage: File - start " + DateAndTime.Now.ToString() + FQN);
+                LOG.WriteToUploadLog("InsertSourceImage: File - start " + DateAndTime.Now.ToString() + FQN);
             }
 
             LL = 2;
@@ -28068,20 +28966,20 @@ namespace EcmArchiver
                     {
                         TransmissionType = "Buffered";
                         LL = 31;
-                        UploadBuffered(1, FileBuffer, OriginalFileName, FileGuid, TransferFileName, RepositoryTable, RetentionCode, isPublic, CrcHASH, DirName);
+                        InsertBufferedSource(1, FileBuffer, OriginalFileName, FileGuid, TransferFileName, RepositoryTable, RetentionCode, isPublic, SourceHash, DirName);
                     }
                     else if (RepositoryTable.ToUpper().Equals("EMAIL"))
                     {
                         TransmissionType = "Buffered";
                         LL = 34;
-                        UploadBuffered(2, FileBuffer, OriginalFileName, FileGuid, TransferFileName, RepositoryTable, RetentionCode, isPublic, CrcHASH, DirName);
+                        InsertBufferedSource(2, FileBuffer, OriginalFileName, FileGuid, TransferFileName, RepositoryTable, RetentionCode, isPublic, SourceHash, DirName);
                     }
                     else if (FLength > 0L & FLength <= MaxMeg)
                     {
                         // ** This is a small file and can be loaded quite well with a BUFFERED load
                         TransmissionType = "Buffered";
                         LL = 36;
-                        UploadBuffered(3, FileBuffer, OriginalFileName, FileGuid, TransferFileName, RepositoryTable, RetentionCode, isPublic, CrcHASH, DirName);
+                        InsertBufferedSource(3, FileBuffer, OriginalFileName, FileGuid, TransferFileName, RepositoryTable, RetentionCode, isPublic, SourceHash, DirName);
                     }
                     else if (FLength > MaxMeg & FLength < MaxGig)
                     {
@@ -28089,15 +28987,15 @@ namespace EcmArchiver
                         TransmissionType = "File Stream";
                         LL = 38;
                         // WDMXX - UploadFileStream might be able to do this, but not presently
-                        // UploadFileStream(OriginalFileName, FileGuid, TransferFileName, RepositoryTable, CrcHASH) : LL = 39
-                        UploadBuffered(4, FileBuffer, OriginalFileName, FileGuid, TransferFileName, RepositoryTable, RetentionCode, isPublic, CrcHASH, DirName);
+                        // UploadFileStream(OriginalFileName, FileGuid, TransferFileName, RepositoryTable, SourceHash) : LL = 39
+                        InsertBufferedSource(4, FileBuffer, OriginalFileName, FileGuid, TransferFileName, RepositoryTable, RetentionCode, isPublic, SourceHash, DirName);
                     }
                     else
                     {
                         // ** This is a Stupidly largr file to upload - better with a chunk load.
                         TransmissionType = "Chunked";
                         LL = 40;
-                        ChunkFileUpload(OriginalFileName, FileGuid, TransferFileName, RepositoryTable, CrcHASH);
+                        ChunkFileUpload(OriginalFileName, FileGuid, TransferFileName, RepositoryTable, SourceHash);
                         LL = 41;
                     }
 
@@ -28105,7 +29003,7 @@ namespace EcmArchiver
                 }
                 catch (Exception ex)
                 {
-                    // xTrace(772341, "00 - UploadFileImage LL=" + LL.ToString, ex.Message.ToString)
+                    // xTrace(772341, "00 - InsertSourceImage LL=" + LL.ToString, ex.Message.ToString)
                     LOG.WriteToArchiveLog("ERROR: UploadFileStrem - ", ex);
                     LOG.WriteToArchiveLog("ERROR: UploadFileStrem -LL = " + LL.ToString());
                     RC = false;
@@ -28169,27 +29067,27 @@ namespace EcmArchiver
                 LL = 54;
                 if (Conversions.ToBoolean(modGlobals.TrackUploads))
                 {
-                    LOG.WriteToUploadLog("UploadFileImage: File - END " + DateAndTime.Now.ToString() + " : " + FQN + " : Size - " + CompressedSize.ToString());
+                    LOG.WriteToUploadLog("InsertSourceImage: File - END " + DateAndTime.Now.ToString() + " : " + FQN + " : Size - " + CompressedSize.ToString());
                 }
 
                 string ThisFileExt = Path.GetExtension(FQN);
                 bool bUploadedc = ApplySourceTypeCode(MachineID, UserID, FQN, ThisFileExt, FileGuid);
                 if (!bUploadedc)
                 {
-                    LOG.WriteToArchiveLog("ERROR - UploadFileImage: Failed to Apply Source attributes.");
+                    LOG.WriteToArchiveLog("ERROR - InsertSourceImage: Failed to Apply Source attributes.");
                 }
             }
             catch (Exception ex)
             {
-                LOG.WriteToArchiveLog("ERROR - UploadFileImage: LL = " + LL.ToString() + Constants.vbCrLf + ex.Message.ToString());
+                LOG.WriteToArchiveLog("ERROR - InsertSourceImage: LL = " + LL.ToString() + Constants.vbCrLf + ex.Message.ToString());
             }
         }
 
-        public void UploadBuffered(int LocID, byte[] CompressedBuffer, string OriginalFileName, string FileGuid, string FQN, string RepositoryTable, string RetentionCode, string isPublic, string Sha1HASH, string DirName)
+        public void InsertBufferedSource(int LocID, byte[] CompressedBuffer, string OriginalFileName, string FileGuid, string FQN, string RepositoryTable, string RetentionCode, string isPublic, string FileHash, string DirName)
         {
             if (Conversions.ToBoolean(modGlobals.TrackUploads))
             {
-                LOG.WriteToUploadLog("UploadBuffered: File - start " + DateAndTime.Now.ToString() + FQN);
+                LOG.WriteToUploadLog("InsertBufferedSource: File - start " + DateAndTime.Now.ToString() + FQN);
             }
 
             int LL = 0;
@@ -28215,7 +29113,7 @@ namespace EcmArchiver
             {
                 try
                 {
-                    AddSourceToRepo(modGlobals.gCurrUserGuidID, modGlobals.gMachineID, "LOCAL", FileGuid, FQN, SourceName, SourceTypeCode, sLastAccessDate, sCreateDate, sLastWriteTime, modGlobals.gCurrUserGuidID, VersionNbr, RetentionCode, isPublic, Sha1HASH, DirName);
+                    AddSourceToRepo(modGlobals.gCurrUserGuidID, modGlobals.gMachineID, "LOCAL", FileGuid, FQN, SourceName, SourceTypeCode, sLastAccessDate, sCreateDate, sLastWriteTime, modGlobals.gCurrUserGuidID, VersionNbr, RetentionCode, isPublic, FileHash, DirName);
                 }
                 catch (Exception ex)
                 {
@@ -28224,7 +29122,7 @@ namespace EcmArchiver
                 }
             }
 
-            // Dim Sha1HASH As String = ""
+            // Dim FileHash As String = ""
             long Ticks = 0L;
             long TotalTicks = 0L;
             var EndTime = DateAndTime.Now;
@@ -28234,7 +29132,7 @@ namespace EcmArchiver
             }
 
             Ticks = DateAndTime.Now.Ticks;
-            // Sha1HASH = ENC.getCountDataSourceFiles(FQN)
+            // FileHash = ENC.getCountDataSourceFiles(FQN)
             TotalTicks = DateAndTime.Now.Ticks - Ticks;
             long Filength = 0L;
             string FIName = "";
@@ -28249,13 +29147,13 @@ namespace EcmArchiver
             oFile = new FileInfo(FQN);
             var oFileStream = oFile.OpenRead();
             long lBytes = oFileStream.Length;
-            var fileData = new byte[(int)(lBytes - 1L) + 1];
+            var SourceImage = new byte[(int)(lBytes - 1L) + 1];
             LL = 10;
             if (lBytes > 0L)
             {
                 LL = 11;
                 // Read the file into a byte array
-                oFileStream.Read(fileData, 0, (int)lBytes);
+                oFileStream.Read(SourceImage, 0, (int)lBytes);
                 LL = 12;
                 oFileStream.Close();
                 LL = 13;
@@ -28275,11 +29173,11 @@ namespace EcmArchiver
             try
             {
                 LL = 30;
-                int iFlen = fileData.Length;
+                int iFlen = SourceImage.Length;
                 string sErrmsg = "";
                 bool BB = true;
                 LL = 38;
-                sErrmsg = UploadBufferedCreate(63221, modGlobals.gCurrUserGuidID, FileGuid, iFlen, Sha1HASH, Filength, FIName, RepositoryTable, BB, OriginalFileName, fileData);
+                sErrmsg = InsertImageToRepoTable(63221, modGlobals.gCurrUserGuidID, FileGuid, iFlen, FileHash, Filength, FIName, RepositoryTable, BB, OriginalFileName, SourceImage);
                 LL = 40;
                 LL = 39;
                 if (sErrmsg.Length > 0)
@@ -28296,7 +29194,7 @@ namespace EcmArchiver
             {
                 My.MyProject.Forms.frmNotifyMessage.Show();
                 modGlobals.gNotifyMsg = "ERROR 167: - UploadBuffer: " + ex.ToString();
-                LOG.WriteToArchiveLog("ERROR 167: - UploadBuffered: ", ex);
+                LOG.WriteToArchiveLog("ERROR 167: - InsertBufferedSource: ", ex);
             }
             // xTrace(990134, "UploadBuffer LL:" + LL.ToString, ex.Message)
             // xTrace(990135, "UploadBuffer LL:" + LL.ToString, ex.InnerException.ToString)
@@ -28316,7 +29214,7 @@ namespace EcmArchiver
             double BytesPerSec = Filength / (double)ElapsedSecs;
             if (Conversions.ToBoolean(modGlobals.TrackUploads))
             {
-                LOG.WriteToUploadLog("UploadBuffered: File - start " + DateAndTime.Now.ToString() + " + / " + FQN + " : " + Filength.ToString() + " / " + DateAndTime.Now.ToString());
+                LOG.WriteToUploadLog("InsertBufferedSource: File - start " + DateAndTime.Now.ToString() + " + / " + FQN + " : " + Filength.ToString() + " / " + DateAndTime.Now.ToString());
             }
         }
 
@@ -28367,7 +29265,7 @@ namespace EcmArchiver
                             LastSegment = true;
                         }
 
-                        ErrMsg = UploadBufferedCreate(63222, modGlobals.gCurrUserGuidID, FileGuid, I, CrcHASH, Filength, FIName, RepositoryTable, LastSegment, OriginalFileName, Buffer);
+                        ErrMsg = InsertImageToRepoTable(63222, modGlobals.gCurrUserGuidID, FileGuid, I, CrcHASH, Filength, FIName, RepositoryTable, LastSegment, OriginalFileName, Buffer);
                         if (ErrMsg.Length > 0)
                         {
                             MessageBox.Show("ERROR: " + ErrMsg);
@@ -29532,7 +30430,7 @@ namespace EcmArchiver
             return B;
         }
 
-        public string UploadBufferedCreate(int ID, string UID, string tgtGuid, int iRead, string FileHash, long FileLength, string FileName, string RepositoryTable, bool LastSegment, string OriginalFileName, byte[] Buffer)
+        public string InsertImageToRepoTable(int ID, string UID, string tgtGuid, int iRead, string FileHash, long FileLength, string FileName, string RepositoryTable, bool LastSegment, string OriginalFileName, byte[] Buffer)
         {
             double LL = 0d;
             bool B = true;
@@ -29577,7 +30475,7 @@ namespace EcmArchiver
             string ErrMsg = "";
             LL = 6d;
 
-            // ' xTrace(8200, UID, "UploadBufferedCreate", "LL = " + LL.ToString)
+            // ' xTrace(8200, UID, "InsertImageToRepoTable", "LL = " + LL.ToString)
 
             string UploadPath = System.Configuration.ConfigurationManager.AppSettings["UploadPath"];
             LL = 7d;
@@ -29621,7 +30519,7 @@ namespace EcmArchiver
             catch (Exception ex)
             {
                 bLoadFileToDB = false;
-                ErrMsg = "ERROR - UploadBufferedCreate: " + FileName + Constants.vbCrLf + ex.Message.ToString();
+                ErrMsg = "ERROR - InsertImageToRepoTable: " + FileName + Constants.vbCrLf + ex.Message.ToString();
             }
             finally
             {
@@ -29632,7 +30530,7 @@ namespace EcmArchiver
             }
 
             LL = 20d;
-            // ' xTrace(8200, UID, "UploadBufferedCreate", "LL = " + LL.ToString)
+            // ' xTrace(8200, UID, "InsertImageToRepoTable", "LL = " + LL.ToString)
 
             if (bLoadFileToDB)
             {
@@ -29703,7 +30601,7 @@ namespace EcmArchiver
                 {
                     Interaction.MsgBox(ex.Message);
                 }
-                // xTrace(82889, "UploadBufferedCreate", "ERROR - UploadBufferedCreate : LL = " + LL.ToString + ":" + FileName)
+                // xTrace(82889, "InsertImageToRepoTable", "ERROR - InsertImageToRepoTable : LL = " + LL.ToString + ":" + FileName)
                 finally
                 {
                     LL = 31d;
@@ -29715,11 +30613,11 @@ namespace EcmArchiver
                 }
 
                 LL = 33d;
-                // ' xTrace(8200, UID, "UploadBufferedCreate", "LL = " + LL.ToString)
+                // ' xTrace(8200, UID, "InsertImageToRepoTable", "LL = " + LL.ToString)
 
                 if (!File.Exists(FQN2Upload))
                 {
-                    // xTrace(82900, "ERROR - UploadBufferedCreate", "LL = " + LL.ToString + ":" + FileName)
+                    // xTrace(82900, "ERROR - InsertImageToRepoTable", "LL = " + LL.ToString + ":" + FileName)
 
                 }
 
@@ -29753,7 +30651,7 @@ namespace EcmArchiver
                 try
                 {
                     LL = 36d;
-                    // ' xTrace(8200, UID, "UploadBufferedCreate", "LL = " + LL.ToString)
+                    // ' xTrace(8200, UID, "InsertImageToRepoTable", "LL = " + LL.ToString)
 
                     string MySql = @"Update [DataSource] 
                                         set SourceImage = @SourceImage 
@@ -29770,7 +30668,14 @@ namespace EcmArchiver
                         {
                             CMD.Parameters.Add(new SqlParameter("@SourceGuid", tgtGuid));
                             CMD.Parameters.Add(new SqlParameter("@SourceImage", fileData));
-                            CMD.ExecuteNonQuery();
+                            try
+                            {
+                                CMD.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+                                LOG.WriteToArchiveLog("FATAL ERROR InsertImageToRepoTable 01: " + ex.Message);
+                            }
                         }
                     }
 
@@ -29786,7 +30691,14 @@ namespace EcmArchiver
                         {
                             CMD.Parameters.Add(new SqlParameter("@EmailGuid", tgtGuid));
                             CMD.Parameters.Add(new SqlParameter("@EmailImage", fileData));
-                            CMD.ExecuteNonQuery();
+                            try
+                            {
+                                CMD.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+                                LOG.WriteToArchiveLog("FATAL ERROR InsertImageToRepoTable 02: " + ex.Message);
+                            }
                         }
                     }
 
@@ -29805,8 +30717,14 @@ namespace EcmArchiver
                             CMD.Parameters.Add(new SqlParameter("@RowGuid", tgtGuid));
                             CMD.Parameters.Add(new SqlParameter("@Attachment", fileData));
                             CMD.Parameters.Add(new SqlParameter("@LastAccessDate", DateAndTime.Now));
-                            // CMD.Parameters.Add(New SqlParameter("@AttachmentName", OriginalFileName))
-                            CMD.ExecuteNonQuery();
+                            try
+                            {
+                                CMD.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+                                LOG.WriteToArchiveLog("FATAL ERROR InsertImageToRepoTable 03: " + ex.Message);
+                            }
                         }
                     }
 
@@ -29816,7 +30734,7 @@ namespace EcmArchiver
                 {
                     SuccessfulUpload = false;
                 }
-                // xTrace(8285, "ERROR - UploadBufferedCreate", "LL = " + LL.ToString + ":" + FileName + ":" + ex.ToString)
+                // xTrace(8285, "ERROR - InsertImageToRepoTable", "LL = " + LL.ToString + ":" + FileName + ":" + ex.ToString)
                 finally
                 {
                     LL = 42d;
@@ -29835,7 +30753,7 @@ namespace EcmArchiver
                     }
                     catch (Exception ex)
                     {
-                        // xTrace(82888, "UploadBufferedCreate", "ERROR - UploadBufferedCreate  @ LL = " + LL.ToString + ":" + FileName + ":" + ex.ToString)
+                        // xTrace(82888, "InsertImageToRepoTable", "ERROR - InsertImageToRepoTable  @ LL = " + LL.ToString + ":" + FileName + ":" + ex.ToString)
                     }
 
                     if (RepositoryTable.Equals("EMAIL"))
@@ -30061,7 +30979,7 @@ namespace EcmArchiver
                 catch (Exception ex)
                 {
                     SuccessfulUpload = false;
-                    Interaction.MsgBox("ERROR UploadBufferedCreate 100: " + ex.Message);
+                    Interaction.MsgBox("ERROR InsertImageToRepoTable 100: " + ex.Message);
                 }
                 finally
                 {
@@ -30215,7 +31133,7 @@ namespace EcmArchiver
             return true;
         }
 
-        public bool insertNewContent(Dictionary<string, string> tDict, byte[] SourceImage)
+        public bool insertNewContent(Dictionary<string, string> tDict, byte[] SourceImage, string SourceImageOrigin)
         {
             if (modGlobals.gTraceFunctionCalls.Equals(1))
             {
@@ -30387,7 +31305,8 @@ namespace EcmArchiver
                         RetentionDate,
                         URLHash,
                         WebPagePublishDate,
-                        SapData
+                        SapData,
+                        SourceImageOrigin
                         ) 
                         VALUES (
                         @RowGuid,
@@ -30470,7 +31389,8 @@ namespace EcmArchiver
                         @RetentionDate,
                         @URLHash,
                         @WebPagePublishDate,
-                        @SapData
+                        @SapData,
+                        @SourceImageOrigin
                         )";
             try
             {
@@ -30563,7 +31483,7 @@ namespace EcmArchiver
                         command.Parameters.AddWithValue("@URLHash", URLHash);
                         command.Parameters.AddWithValue("@WebPagePublishDate", WebPagePublishDate);
                         command.Parameters.AddWithValue("@SapData", SapData);
-                        // command.Parameters.AddWithValue("@RowID", RowID)
+                        command.Parameters.AddWithValue("@SourceImageOrigin", SourceImageOrigin);
                         // **************************************************************************
                         connection.Open();
                         command.ExecuteNonQuery();
@@ -30799,158 +31719,171 @@ namespace EcmArchiver
                 return false;
             }
 
-            RepositoryTable = RepositoryTable.ToUpper();
-            switch (RepositoryTable.ToUpper() ?? "")
-            {
-                case "EMAIL":
-                    {
-                        S = "Update EMAIL set FileAttached = 0, CRC = '" + FileHash + "' where EmailGuid = '" + TgtGuid + "'";
-                        break;
-                    }
-
-                case "EMAILATTACHMENT":
-                    {
-                        S = "Update EmailAttachment set FileAttached = 0, CRC = '" + FileHash + "'  where RowGuid = '" + TgtGuid + "'";
-                        break;
-                    }
-
-                case "DATASOURCE":
-                    {
-                        S = "Update DataSource set FileAttached = 0, CRC = '" + FileHash + "' where SourceGuid = '" + TgtGuid + "'";
-                        break;
-                    }
-
-                default:
-                    {
-                        S = "ERROR: 10029 - RepositoryTable not correctly set.";
-                        break;
-                    }
-            }
-
-            string CS = setConnStr();
-            B = ExecuteSql(Conversions.ToString(S), CS, false);
-            LL = 4;
-            var fileData = File.ReadAllBytes(FQN);
-            int FileLength = fileData.Length;
-            bool SuccessfulUpload = true;
-            string ConnStr = setConnStr();
-            var CONN = new SqlConnection(ConnStr);
-            if (CONN.State == ConnectionState.Closed)
-            {
-                CONN.Open();
-            }
-
-            LL = 35;
-            var CMD = new SqlCommand();
-            // CMD.CommandType = CommandType.StoredProcedure
+            bool B = true;
+            int LL = 0;
             try
             {
-                // Dim MySql As String = "Update [DataSource] set SourceImage = @SourceImage Where SourceGuid = @SourceGuid"
-
-                if (RepositoryTable.Equals("DATASOURCE"))
+                RepositoryTable = RepositoryTable.ToUpper();
+                LL = 10;
+                switch (RepositoryTable.ToUpper() ?? "")
                 {
-                    var FI = new FileInfo(FQN);
-                    var LastAccessDate = FI.LastAccessTime;
-                    var LastWriteTime = FI.LastWriteTime;
-                    FI = null;
-                    CMD.Connection = CONN;
-                    CMD.CommandText = "[UpdateDataSourceImage]";
-                    CMD.CommandType = CommandType.StoredProcedure;
-                    // CMD.CommandText = MySql
-                    // CMD.CommandType = CommandType.Text
-                    using (CONN)
-                    using (CMD)
-                    {
-                        CMD.Parameters.Add(new SqlParameter("@SourceGuid", TgtGuid));
-                        CMD.Parameters.Add(new SqlParameter("@SourceImage", fileData));
-                        CMD.Parameters.Add(new SqlParameter("@LastAccessDate", LastAccessDate));
-                        CMD.Parameters.Add(new SqlParameter("@LastWriteTime", LastWriteTime));
-                        CMD.Parameters.Add(new SqlParameter("@VersionNbr", 1));
-                        CMD.ExecuteNonQuery();
-                    }
+                    case "EMAIL":
+                        {
+                            S = "Update EMAIL set FileAttached = 0, CRC = '" + FileHash + "' where EmailGuid = '" + TgtGuid + "'";
+                            break;
+                        }
+
+                    case "EMAILATTACHMENT":
+                        {
+                            S = "Update EmailAttachment set FileAttached = 0, CRC = '" + FileHash + "'  where RowGuid = '" + TgtGuid + "'";
+                            break;
+                        }
+
+                    case "DATASOURCE":
+                        {
+                            S = "Update DataSource set FileAttached = 0, CRC = '" + FileHash + "' where SourceGuid = '" + TgtGuid + "'";
+                            break;
+                        }
+
+                    default:
+                        {
+                            S = "ERROR: 10029 - RepositoryTable not correctly set.";
+                            break;
+                        }
                 }
 
-                LL = 37;
-                if (RepositoryTable.Equals("EMAIL"))
+                LL = 20;
+                string CS = setConnStr();
+                LL = 30;
+                B = ExecuteSql(Conversions.ToString(S), CS, false);
+                LL = 4;
+                LL = 40;
+                var FileBinaryData = File.ReadAllBytes(FQN);
+                int FileLength = FileBinaryData.Length;
+                bool SuccessfulUpload = true;
+                string ConnStr = setConnStr();
+                var CONN = new SqlConnection(ConnStr);
+                if (CONN.State == ConnectionState.Closed)
                 {
-                    LL = 38;
-                    CMD.Connection = CONN;
-                    CMD.CommandText = "UpdateEmailFilestream";
-                    CMD.CommandType = CommandType.StoredProcedure;
-                    using (CONN)
-                    using (CMD)
-                    {
-                        CMD.Parameters.Add(new SqlParameter("@EmailGuid", TgtGuid));
-                        CMD.Parameters.Add(new SqlParameter("@EmailImage", fileData));
-                        CMD.ExecuteNonQuery();
-                    }
+                    CONN.Open();
                 }
 
-                LL = 39;
-                if (RepositoryTable.Equals("EMAILATTACHMENT"))
+                LL = 50;
+                var CMD = new SqlCommand();
+                try
                 {
-                    LL = 40;
-                    // Dim TSql As String = "Update [EmailAttachment] set Attachment = @Attachment Where RowGuid = @RowGuid"
-                    CMD.Connection = CONN;
-                    CMD.CommandText = "UpdateEmailAttachmentFilestreamV2";
-                    // CMD.CommandText = TSql
-                    CMD.CommandType = CommandType.StoredProcedure;
-                    using (CONN)
-                    using (CMD)
+                    if (RepositoryTable.Equals("DATASOURCE"))
                     {
-                        CMD.Parameters.Add(new SqlParameter("@RowGuid", TgtGuid));
-                        CMD.Parameters.Add(new SqlParameter("@Attachment", fileData));
-                        CMD.Parameters.Add(new SqlParameter("@LastAccessDate", DateAndTime.Now));
-                        // CMD.Parameters.Add(New SqlParameter("@AttachmentName", OriginalFileName))
-                        CMD.ExecuteNonQuery();
+                        LL = 55;
+                        var FI = new FileInfo(FQN);
+                        var LastAccessDate = FI.LastAccessTime;
+                        var LastWriteTime = FI.LastWriteTime;
+                        FI = null;
+                        CMD.Connection = CONN;
+                        CMD.CommandText = "[UpdateDataSourceImage]";
+                        CMD.CommandType = CommandType.StoredProcedure;
+                        using (CONN)
+                        using (CMD)
+                        {
+                            CMD.Parameters.Add(new SqlParameter("@SourceGuid", TgtGuid));
+                            CMD.Parameters.Add(new SqlParameter("@SourceImage", FileBinaryData));
+                            CMD.Parameters.Add(new SqlParameter("@LastAccessDate", LastAccessDate));
+                            CMD.Parameters.Add(new SqlParameter("@LastWriteTime", LastWriteTime));
+                            CMD.Parameters.Add(new SqlParameter("@VersionNbr", 1));
+                            CMD.ExecuteNonQuery();
+                        }
+                    }
+
+                    LL = 60;
+                    if (RepositoryTable.Equals("EMAIL"))
+                    {
+                        LL = 70;
+                        CMD.Connection = CONN;
+                        CMD.CommandText = "UpdateEmailFilestream";
+                        CMD.CommandType = CommandType.StoredProcedure;
+                        using (CONN)
+                        using (CMD)
+                        {
+                            CMD.Parameters.Add(new SqlParameter("@EmailGuid", TgtGuid));
+                            CMD.Parameters.Add(new SqlParameter("@EmailImage", FileBinaryData));
+                            CMD.ExecuteNonQuery();
+                        }
+                    }
+
+                    LL = 80;
+                    if (RepositoryTable.Equals("EMAILATTACHMENT"))
+                    {
+                        LL = 90;
+                        // Dim TSql As String = "Update [EmailAttachment] set Attachment = @Attachment Where RowGuid = @RowGuid"
+                        CMD.Connection = CONN;
+                        CMD.CommandText = "UpdateEmailAttachmentFilestreamV2";
+                        // CMD.CommandText = TSql
+                        CMD.CommandType = CommandType.StoredProcedure;
+                        using (CONN)
+                        using (CMD)
+                        {
+                            CMD.Parameters.Add(new SqlParameter("@RowGuid", TgtGuid));
+                            CMD.Parameters.Add(new SqlParameter("@Attachment", FileBinaryData));
+                            CMD.Parameters.Add(new SqlParameter("@LastAccessDate", DateAndTime.Now));
+                            // CMD.Parameters.Add(New SqlParameter("@AttachmentName", OriginalFileName))
+                            CMD.ExecuteNonQuery();
+                        }
+                    }
+
+                    LL = 100;
+                }
+                catch (Exception ex)
+                {
+                    SuccessfulUpload = false;
+                    LOG.WriteToArchiveLog("ERROR: X01 InsertBinaryData: " + ex.Message);
+                    LOG.WriteToArchiveLog("ERROR: LL=" + LL.ToString());
+                    LOG.WriteToArchiveLog("ERROR: Binary Data Length: " + FileBinaryData.LongLength.ToString());
+                    LOG.WriteToArchiveLog("ERROR: TgtGuid Length: " + TgtGuid.ToString());
+                }
+                finally
+                {
+                    oFile = null;
+                    FileBinaryData = null;
+                    CMD.Dispose();
+                    if (CONN.State == ConnectionState.Open)
+                    {
+                        CONN.Close();
+                    }
+
+                    CONN.Dispose();
+                    if (RepositoryTable.Equals("EMAIL"))
+                    {
+                        S = "Update EMAIL set FileAttached = 1 where EmailGuid = '" + TgtGuid + "'";
+                    }
+                    else if (RepositoryTable.Equals("EMAILATTACHMENT"))
+                    {
+                        S = "Update EmailAttachment set FileAttached = 1 where EmailGuid = '" + TgtGuid + "'";
+                    }
+                    else if (RepositoryTable.Equals("DATASOURCE"))
+                    {
+                        S = "Update DataSource set FileAttached = 1 where SourceGuid = '" + TgtGuid + "'";
+                    }
+
+                    LL = 120;
+                    try
+                    {
+                        B = ExecuteSql(Conversions.ToString(S), CS, false);
+                        LL = 130;
+                        B = UpdateDataSourceFileInfo(FQN, TgtGuid, FileLength, FileHash);
+                    }
+                    catch (Exception ex)
+                    {
+                        LOG.WriteToArchiveLog("ERROR 22 InsertBinaryData: LL=" + LL.ToString() + Constants.vbCrLf + ex.Message);
                     }
                 }
-
-                LL = 41;
             }
             catch (Exception ex)
             {
-                SuccessfulUpload = false;
-            }
-            // xTrace(8285, "ERROR - UploadBufferedCreate", "LL = " + LL.ToString + ":" + FileName + ":" + ex.ToString)
-            finally
-            {
-                LL = 42;
-                oFile = null;
-                fileData = null;
-                CMD.Dispose();
-                if (CONN.State == ConnectionState.Open)
-                {
-                    CONN.Close();
-                }
-
-                CONN.Dispose();
-                // Try
-                // File.Delete(FQN)
-                // Catch ex As Exception
-                // ' xTrace(82888, "UploadBufferedCreate", "ERROR - UploadBufferedCreate  @ LL = " + LL.ToString + ":" + FileName + ":" + ex.ToString)
-                // End Try
-
-                if (RepositoryTable.Equals("EMAIL"))
-                {
-                    S = "Update EMAIL set FileAttached = 1 where EmailGuid = '" + TgtGuid + "'";
-                }
-                else if (RepositoryTable.Equals("EMAILATTACHMENT"))
-                {
-                    S = "Update EmailAttachment set FileAttached = 1 where EmailGuid = '" + TgtGuid + "'";
-                }
-                else if (RepositoryTable.Equals("DATASOURCE"))
-                {
-                    S = "Update DataSource set FileAttached = 1 where SourceGuid = '" + TgtGuid + "'";
-                }
-
-                LL = 43;
-                B = ExecuteSql(Conversions.ToString(S), CS, false);
-                LL = 44;
-                B = UpdateDataSourceFileInfo(FQN, TgtGuid, FileLength, FileHash);
+                B = false;
+                LOG.WriteToArchiveLog("ERROR 00 InsertBinaryData: LL=" + LL.ToString() + Constants.vbCrLf + ex.Message);
             }
 
-            return Conversions.ToBoolean(B);
+            return B;
         }
 
         public void spUpdateRetention()
@@ -30962,7 +31895,7 @@ namespace EcmArchiver
                 On DS.FileDirectory Like '%' + DIR.FQN + '%'
                 inner join [Retention] R
                 On R.RetentionCode = DIR.RetentionCode
-        WHERE DS.RetentionExpirationDate < '01-01-1960'";
+        WHERE DS.RetentionExpirationDate < '01-01-1971' or DS.RetentionExpirationDate is null";
             string CS = setConnStr();
             ExecuteSql(s, CS, false);
         }
@@ -31020,7 +31953,10 @@ namespace EcmArchiver
                 return false;
             }
 
-            string MySql = "update [DBUpdate] set DateApplied = getdate() where FileName = '" + FQN + "';";
+            var FI = new FileInfo(FQN);
+            string DateApplied = FI.LastWriteTime.ToString();
+            FI = null;
+            string MySql = "update [DBUpdate] set DateApplied = '" + DateApplied + "' where FileName = '" + FQN + "';";
             var CMD = new SqlCommand();
             string connString = getRepoConnStr();
             var conn = new SqlConnection(connString);
@@ -31051,6 +31987,129 @@ namespace EcmArchiver
                 }
 
             return B;
+        }
+
+        public bool ZeroizeDBUpdate()
+        {
+            bool B = true;
+            string MySql = "delete from [DBUpdate]";
+            var CMD = new SqlCommand();
+            string connString = getRepoConnStr();
+            var conn = new SqlConnection(connString);
+            if (conn is null)
+            {
+                conn = new SqlConnection(getRepoConnStr());
+            }
+
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.ConnectionString = getRepoConnStr();
+                conn.Open();
+            }
+
+            CMD.Connection = conn;
+            CMD.CommandText = MySql;
+            CMD.CommandType = CommandType.Text;
+            using (conn)
+            using (CMD)
+                try
+                {
+                    CMD.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    LOG.WriteToArchiveLog("ERROR 22x: ReapplyDBUpdate: " + ex.Message + Constants.vbCrLf + MySql);
+                    B = false;
+                }
+
+            return B;
+        }
+
+        public bool ckUpdateTbl()
+        {
+            bool B = true;
+            string MySql = @"IF NOT EXISTS
+                        (
+                            SELECT 1
+                            FROM sys.tables
+                            WHERE name = 'DBUpdate'
+                        )
+                            BEGIN
+                                CREATE TABLE [dbo].[DBUpdate]
+                                ([FileName]      [NVARCHAR](100) NOT NULL, 
+                                 [DateApplied]   [DATETIME] NOT NULL, 
+                                 [RowCreateDate] [DATETIME] NOT NULL, 
+                                 [UpdateApplied] [INT] NULL
+                                );
+                                ALTER TABLE [dbo].[DBUpdate]
+                                ADD DEFAULT(GETDATE()) FOR [DateApplied];
+                                ALTER TABLE [dbo].[DBUpdate]
+                                ADD DEFAULT(GETDATE()) FOR [RowCreateDate];
+                                ALTER TABLE [dbo].[DBUpdate]
+                                ADD DEFAULT((0)) FOR [UpdateApplied];
+                                CREATE UNIQUE CLUSTERED INDEX [PC_DBUpdate] ON [dbo].[DBUpdate]([FileName] ASC);
+                        END;";
+            var CMD = new SqlCommand();
+            string connString = getRepoConnStr();
+            var conn = new SqlConnection(connString);
+            if (conn is null)
+            {
+                conn = new SqlConnection(getRepoConnStr());
+            }
+
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.ConnectionString = getRepoConnStr();
+                conn.Open();
+            }
+
+            CMD.Connection = conn;
+            CMD.CommandText = MySql;
+            CMD.CommandType = CommandType.Text;
+            using (conn)
+            using (CMD)
+                try
+                {
+                    CMD.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    LOG.WriteToArchiveLog("ERROR 22x: updateDBUpdateLastwrite: " + ex.Message + Constants.vbCrLf + MySql);
+                    B = false;
+                }
+
+            return B;
+        }
+
+        public List<string> getUsedExtension()
+        {
+            var exts = new List<string>();
+            string ext = "";
+            string s = "SELECT distinct [ExtCode] FROM [IncludedFiles]";
+            string CS = getRepoConnStr();
+            var CONN = new SqlConnection(CS);
+            CONN.Open();
+            using (CONN)
+            {
+                var command = new SqlCommand(s, CONN);
+                using (command)
+                using (var RSD = command.ExecuteReader())
+                {
+                    if (RSD.HasRows)
+                    {
+                        while (RSD.Read())
+                        {
+                            ext = RSD.GetValue(0).ToString();
+                            if (!exts.Contains(ext))
+                            {
+                                exts.Add(ext);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return exts;
         }
 
         public int getDBUpdateExists(string FQN)

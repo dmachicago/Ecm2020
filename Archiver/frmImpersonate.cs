@@ -20,6 +20,7 @@ namespace EcmArchiver
         private clsUtility UTIL = new clsUtility();
         private clsDatabaseARCH DBARCH = new clsDatabaseARCH();
         private ECMEncrypt ENC = new ECMEncrypt();
+        private clsLogging LOG = new clsLogging();
 
         private void btnAssign_Click(object sender, EventArgs e)
         {
@@ -85,6 +86,7 @@ namespace EcmArchiver
             try
             {
                 File.Delete(FQN);
+                LOG.WriteToDeleteLog("DELETE FAILURE 01|" + FQN);
                 MessageBox.Show("Success: impersonation removed.");
             }
             catch (Exception ex)

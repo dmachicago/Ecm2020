@@ -57,7 +57,7 @@ namespace EcmArchiver
             lblCnt.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblCnt.AutoSize = true;
             lblCnt.ForeColor = Color.White;
-            lblCnt.Location = new Point(1147, 9);
+            lblCnt.Location = new Point(16, 36);
             lblCnt.Margin = new Padding(4, 0, 4, 0);
             lblCnt.Name = "lblCnt";
             lblCnt.Size = new Size(51, 17);
@@ -69,11 +69,11 @@ namespace EcmArchiver
             AutoScaleDimensions = new SizeF(8.0f, 16.0f);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Maroon;
-            ClientSize = new Size(1211, 36);
+            ClientSize = new Size(1211, 62);
             Controls.Add(lblCnt);
             Controls.Add(lblmsg);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "frmMessageBar";
             Text = "Notice                  (frmMessageBar)";
             ResumeLayout(false);

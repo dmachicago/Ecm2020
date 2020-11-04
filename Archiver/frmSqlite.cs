@@ -1,18 +1,15 @@
 ﻿using System;
 using global::System.Configuration;
 using System.Data;
-using global::System.IO;
+// Imports Microsoft.Data.Sqlite
+using global::System.Data.SQLite;
 using System.Windows.Forms;
-using global::Microsoft.Data.Sqlite;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
 using MODI;
 
 namespace EcmArchiver
 {
-    // Imports System.Data.SQLite
-
-
     public partial class frmSqlite
     {
         public frmSqlite()
@@ -41,61 +38,25 @@ namespace EcmArchiver
 
         private clsLogging LOG = new clsLogging();
         public string cs = "";
-        public SqliteConnection SLiteConn = new SqliteConnection();
+        public SQLiteConnection SLiteConn = new SQLiteConnection();
+        private clsDbLocal SQLiteDB = new clsDbLocal();
         private int UseDebugSQLite = Conversions.ToInteger(ConfigurationManager.AppSettings["UseDebugSQLite"]);
 
         private string getCs()
         {
             string strPath = "";
             string connstr = "";
-            if (UseDebugSQLite.Equals(1))
-            {
-                slDatabase = ConfigurationManager.AppSettings["SQLiteDir"];
-                tchar = slDatabase.Substring(Operators.SubtractObject(slDatabase.Length, 1));
-                if (!tchar.Equals(@"\"))
-                {
-                    strPath += @"\";
-                }
-
-                if (!Directory.Exists(Conversions.ToString(slDatabase)))
-                {
-                    Directory.CreateDirectory(Conversions.ToString(slDatabase));
-                }
-
-                slDatabase += "EcmArchive.db";
-                if (!File.Exists(Conversions.ToString(slDatabase)))
-                {
-                    tchar = strPath.Substring(strPath.Length - 1);
-                    if (!tchar.Equals(@"\"))
-                        strPath += @"\";
-                    My.MyProject.Computer.FileSystem.CopyFile(strPath + @"SQLiteDB\EcmArchive.db", Conversions.ToString(slDatabase), overwrite: false);
-                }
-
-                connstr = Conversions.ToString(Operators.AddObject("data source=", slDatabase));
-            }
-            else
-            {
-                tchar = strPath.Substring(strPath.Length - 1);
-                if (!tchar.Equals(@"\"))
-                    strPath += @"\";
-                slDatabase = strPath + @"SQLiteDB\EcmArchive.db";
-                if (!File.Exists(Conversions.ToString(slDatabase)))
-                {
-                    MessageBox.Show("SQLite DB missing, please correct this issue...");
-                }
-
-                connstr = "data source=" + strPath + "EcmArchive.db;";
-            }
-
+            slDatabase = ConfigurationManager.AppSettings["SQLiteLocalDB"];
+            connstr = Conversions.ToString(Operators.AddObject("data source=", slDatabase));
             lblConn.Text = connstr;
             return connstr;
         }
 
         private void btnExec_Click(object sender, EventArgs e)
         {
-            modGlobals.setSLConn();
+            SQLiteDB.setSLConn();
             string S = txtSql.Text;
-            var CMD = new SqliteCommand(S, SLiteConn);
+            var CMD = new SQLiteCommand();
             try
             {
                 CMD.ExecuteNonQuery();
@@ -143,7 +104,7 @@ namespace EcmArchiver
             {
             }
             // Dim ds As DataSet = New DataSet()
-            // Dim cmdx As New SqliteCommand(sql, SLconn)
+            // Dim cmdx As New SqliteCommand(sql, SQLiteCONN)
             // Dim da = New SQLiteDataAdapter(cmdx)
             // da.Fill(ds)
             // dg.DataSource = ds.Tables(0).DefaultView
@@ -292,7 +253,7 @@ namespace EcmArchiver
             CheckBox7.Checked = false;
             CheckBox8.Checked = false;
             int i = 0;
-            modGlobals.setSLConn();
+            SQLiteDB.setSLConn();
             string sql = "";
             if (txtLimit.Text.Length == 0 | txtLimit.Text.Trim().Equals("0"))
             {
@@ -315,15 +276,15 @@ namespace EcmArchiver
             string DirHash = "";
             try
             {
-                modGlobals.SLConn.Open();
+                SQLiteDB.SQLiteCONN.Open();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("XX991: " + ex.Message);
             }
 
-            using (modGlobals.SLConn)
-            using (var CMD = new SqliteCommand(sql, modGlobals.SLConn))
+            using (SQLiteDB.SQLiteCONN)
+            using (var CMD = new SQLiteCommand(sql, SQLiteDB.SQLiteCONN))
             {
                 var rdr = CMD.ExecuteReader();
                 using (rdr)
@@ -367,7 +328,7 @@ namespace EcmArchiver
             // CheckBox3.Checked = True
 
             int i = 0;
-            modGlobals.setSLConn();
+            SQLiteDB.setSLConn();
             string sql = "";
             if (txtLimit.Text.Length == 0 | txtLimit.Text.Trim().Equals("0"))
             {
@@ -388,15 +349,15 @@ namespace EcmArchiver
             string FileHash = "";
             try
             {
-                modGlobals.SLConn.Open();
+                SQLiteDB.SQLiteCONN.Open();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("XX991: " + ex.Message);
             }
 
-            using (modGlobals.SLConn)
-            using (var CMD = new SqliteCommand(sql, modGlobals.SLConn))
+            using (SQLiteDB.SQLiteCONN)
+            using (var CMD = new SQLiteCommand(sql, SQLiteDB.SQLiteCONN))
             {
                 var rdr = CMD.ExecuteReader();
                 using (rdr)
@@ -469,63 +430,17 @@ namespace EcmArchiver
             {
                 try
                 {
-                    string slDatabase = "";
-                    string tchar = "";
-                    string cs = "";
-                    string strPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase);
-                    int I = 0;
-                    I = strPath.IndexOf(":");
-                    I += 2;
-                    strPath = strPath.Substring(I);
-                    if (UseDebugSQLite.Equals(1))
-                    {
-                        slDatabase = ConfigurationManager.AppSettings["SQLiteDir"];
-                        tchar = slDatabase.Substring(slDatabase.Length - 1);
-                        if (!tchar.Equals(@"\"))
-                        {
-                            strPath += @"\";
-                        }
-
-                        if (!Directory.Exists(slDatabase))
-                        {
-                            Directory.CreateDirectory(slDatabase);
-                        }
-
-                        slDatabase += "EcmArchive.db";
-                        if (!File.Exists(slDatabase))
-                        {
-                            tchar = strPath.Substring(strPath.Length - 1);
-                            if (!tchar.Equals(@"\"))
-                                strPath += @"\";
-                            My.MyProject.Computer.FileSystem.CopyFile(strPath + @"SQLiteDB\EcmArchive.db", slDatabase, overwrite: false);
-                        }
-
-                        cs = "data source=" + slDatabase;
-                    }
-                    else
-                    {
-                        tchar = strPath.Substring(strPath.Length - 1);
-                        if (!tchar.Equals(@"\"))
-                            strPath += @"\";
-                        slDatabase = strPath + @"SQLiteDB\EcmArchive.db";
-                        if (!File.Exists(slDatabase))
-                        {
-                            MessageBox.Show("SQLite DB missing, please correct this issue...");
-                        }
-
-                        cs = "data source=" + strPath + "EcmArchive.db;";
-                    }
-
-                    // Dim cs As String = strPath + "\CE\EcmArchive.db;"
-                    SLiteConn.ConnectionString = cs;
-                    SLiteConn.Open();
+                    string slDatabase = ConfigurationManager.AppSettings["SQLiteLocalDB"];
+                    cs = "data source=" + slDatabase;
+                    SQLiteDB.SQLiteCONN.ConnectionString = cs;
+                    SQLiteDB.SQLiteCONN.Open();
                     bb = true;
-                    modGlobals.bSLConn = true;
+                    bSLConn = true;
                 }
                 catch (Exception ex)
                 {
                     bb = false;
-                    modGlobals.bSLConn = false;
+                    bSLConn = false;
                 }
             }
 
@@ -542,11 +457,11 @@ namespace EcmArchiver
         public string getCount(string tbl)
         {
             int i = 0;
-            modGlobals.setSLConn();
-            using (modGlobals.SLConn)
+            SQLiteDB.setSLConn();
+            using (SQLiteDB.SQLiteCONN)
             {
                 string sql = "SELECT count(*) FROM " + tbl;
-                using (var CMD = new SqliteCommand(sql, modGlobals.SLConn))
+                using (var CMD = new SQLiteCommand(sql, SQLiteDB.SQLiteCONN))
                 {
                     var rdr = CMD.ExecuteReader();
                     using (rdr)

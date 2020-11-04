@@ -1336,6 +1336,7 @@ namespace EcmArchiver
             catch (System.Exception ex)
             {
                 LOG.WriteToArchiveLog("ERROR 100 clsEmailFunctions:deleteFile - failed to delete file '" + FQN + "'.");
+                LOG.WriteToArchiveLog("DELETE FAILURE 04|" + FQN);
             }
         }
 
@@ -4869,28 +4870,32 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("ERROR: ApplyPendingEmail - 100 : " + ex.Message);
                 DeleteFiles = false;
             }
-            finally
+
+            if (DeleteFiles == true)
             {
-                if (DeleteFiles == true)
+                File F;
+                int iFiles = 0;
+                foreach (string sFile in FilesToDelete)
                 {
-                    File F;
-                    int iFiles = 0;
-                    foreach (string sFile in FilesToDelete)
+                    iFiles += 1;
+                    string FQN = sFile;
+                    try
                     {
-                        iFiles += 1;
-                        string FQN = sFile;
-                        // frmExchangeMonitor.lblMsg.Text = "Cleanup files: " + iFiles.ToString
-                        // frmExchangeMonitor.lblMsg.Refresh()
-                        System.Windows.Forms.Application.DoEvents();
                         if (File.Exists(FQN))
                         {
                             File.Delete(FQN);
                         }
                     }
-
-                    F = null;
+                    catch (System.Exception ex)
+                    {
+                        LOG.WriteToArchiveLog("DELETE FAILURE 05|" + FQN);
+                    }
                 }
+
+                F = null;
             }
+
+
             // frmExchangeMonitor.lblMsg.Text = ""
         }
 

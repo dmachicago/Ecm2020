@@ -96,6 +96,8 @@ namespace EcmArchiver
             {
                 ckDisableListener.Visible = false;
             }
+
+            DBARCH.ckUpdateTbl();
         }
 
         private void OK_Click(object sender, EventArgs e)

@@ -10,7 +10,7 @@ using MODI;
 
 namespace EcmArchiver
 {
-    public class clsDATASOURCE_V2
+    public class clsDataSource_V2
     {
 
         // ** DIM the selected table columns 
@@ -566,7 +566,7 @@ namespace EcmArchiver
 
 
         // ** Generate the INSERT method 
-        public bool Insert(string SourceGuid, string CRC)
+        public bool Insert(string SourceGuid, string FileHash)
         {
             if (VersionNbr.Length.Equals(0))
             {
@@ -651,8 +651,8 @@ namespace EcmArchiver
             s = s + "'" + OcrText + "'" + "," + Constants.vbCrLf;
             s = s + "'" + ImageHiddenText + "'" + "," + Constants.vbCrLf;
             s = s + "'" + isWebPage + "'" + "," + Constants.vbCrLf;
-            s = s + "'" + CRC + "'" + "," + Constants.vbCrLf;
-            s = s + "'" + CRC + "'" + ")";
+            s = s + "'" + FileHash + "'" + "," + Constants.vbCrLf;
+            s = s + "'" + FileHash + "'" + ")";
             bool BB = false;
             BB = DBARCH.ExecuteSqlNewConn(s, false);
             if (!BB)
@@ -660,18 +660,15 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("ERROR clsDataSource_V2 00 Insert: " + Constants.vbCrLf + s);
             }
 
-            s = "Update DataSource set CRC = convert(nvarchar(249), " + CRC + ") where SourceGuid = '" + RowGuid + "'";
-            BB = DBARCH.ExecuteSqlNewConn(s, false);
-            if (!BB)
+            bool DoNotProcess = true;
+            if (!DoNotProcess)
             {
-                LOG.WriteToArchiveLog("ERROR clsDataSource_V2 01 Insert: " + Constants.vbCrLf + s);
-            }
-
-            s = "Update DataSource set ImageHash = convert(nvarchar(249), " + CRC + ") where SourceGuid = '" + RowGuid + "'";
-            BB = DBARCH.ExecuteSqlNewConn(s, false);
-            if (!BB)
-            {
-                LOG.WriteToArchiveLog("ERROR clsDataSource_V2 02 Insert: " + Constants.vbCrLf + s);
+                s = "Update DataSource set CRC = '" + FileHash + "',ImageHash = '" + FileHash + "'  where SourceGuid = '" + RowGuid + "'";
+                BB = DBARCH.ExecuteSqlNewConn(s, false);
+                if (!BB)
+                {
+                    LOG.WriteToArchiveLog("ERROR clsDataSource_V2 01 Insert: " + Constants.vbCrLf + s);
+                }
             }
 
             return BB;

@@ -102,6 +102,29 @@ namespace EcmArchiver.My
             }
 
             [EditorBrowsable(EditorBrowsableState.Never)]
+            public frmDBUpdates m_frmDBUpdates;
+
+            public frmDBUpdates frmDBUpdates
+            {
+                [DebuggerHidden]
+                get
+                {
+                    m_frmDBUpdates = Create__Instance__(m_frmDBUpdates);
+                    return m_frmDBUpdates;
+                }
+
+                [DebuggerHidden]
+                set
+                {
+                    if (ReferenceEquals(value, m_frmDBUpdates))
+                        return;
+                    if (value is object)
+                        throw new ArgumentException("Property can only be set to Nothing");
+                    Dispose__Instance__(ref m_frmDBUpdates);
+                }
+            }
+
+            [EditorBrowsable(EditorBrowsableState.Never)]
             public frmEncryptString m_frmEncryptString;
 
             public frmEncryptString frmEncryptString
@@ -167,6 +190,29 @@ namespace EcmArchiver.My
                     if (value is object)
                         throw new ArgumentException("Property can only be set to Nothing");
                     Dispose__Instance__(ref m_frmExhangeMail);
+                }
+            }
+
+            [EditorBrowsable(EditorBrowsableState.Never)]
+            public frmFti m_frmFti;
+
+            public frmFti frmFti
+            {
+                [DebuggerHidden]
+                get
+                {
+                    m_frmFti = Create__Instance__(m_frmFti);
+                    return m_frmFti;
+                }
+
+                [DebuggerHidden]
+                set
+                {
+                    if (ReferenceEquals(value, m_frmFti))
+                        return;
+                    if (value is object)
+                        throw new ArgumentException("Property can only be set to Nothing");
+                    Dispose__Instance__(ref m_frmFti);
                 }
             }
 

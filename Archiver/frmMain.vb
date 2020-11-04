@@ -31,6 +31,8 @@ Public Class frmMain : Implements IDisposable
     Dim SkipPermission As Boolean = False
     Dim LocalDBBackUpComplete As Boolean = False
 
+    Dim DirectoryList As New Dictionary(Of String, String)
+
     Dim bUseRemoteServer As Boolean = False
     Dim MachineIDcurr As String = ""
     Dim UIDcurr As String = ""
@@ -303,6 +305,7 @@ Public Class frmMain : Implements IDisposable
 
         DBLocal.getUseLastArchiveDateActive()
         setLastArchiveLabel()
+        getLIsteners()
 
         'INSERT ALL THE REPO ALLOWED EXTENSIONS INTO THE SQLITE DB
         Dim AllowedExts As List(Of String) = DBARCH.getUsedExtension()
@@ -2293,11 +2296,25 @@ SKIPFOLDER:
             SB.Text = "You must select an item from the listbox..."
             Return
         End If
+        If I.Equals(1) Then
+            Dim tgtDir As String = lbArchiveDirs.SelectedItems(0)
+            If DirectoryList.ContainsKey(tgtDir) Then
+                lblListenerState.Text = "Listener ON"
+            Else
+                lblListenerState.Text = "Listener OFF"
+            End If
+        End If
+
+        If I > 1 Then
+            lblListenerState.Text = ""
+        End If
 
         If I <> 1 Then
             CkMonitor.Visible = False
+            CheckBox2.Visible = False
         Else
             CkMonitor.Visible = True
+            CheckBox2.Visible = True
         End If
 
         bActiveChange = True
@@ -3733,14 +3750,19 @@ SKIPFOLDER:
                 MessageBox.Show("You have failed to select a file ARCHIVE DIRECTORY, pick one and only one, returning.")
                 Return
             End If
+            If iCnt > 1 Then
+                MessageBox.Show("Please select one and only one directory to remove, returning.")
+                Return
+            End If
+
+            Dim TgtDir As String = lbArchiveDirs.SelectedItems(0)
             Dim msg As String = "This will DELETE the selected directory AND ALL SUB-DIRECTORIES from the archive process, are you sure?"
             Dim dlgRes As DialogResult = MessageBox.Show(msg, "Remove Directory", MessageBoxButtons.YesNo)
+
             If dlgRes = Windows.Forms.DialogResult.No Then
                 Me.Cursor = System.Windows.Forms.Cursors.Default
                 Return
             End If
-
-
 
             Me.Cursor = System.Windows.Forms.Cursors.WaitCursor
             Dim FQN As String = txtDir.Text.Trim
@@ -3775,7 +3797,8 @@ SKIPFOLDER:
                 B = DBARCH.ExecuteSqlNewConn(90313, S)
                 ProcessListener(False)
             End If
-
+            SB.Text = "Directory <" + TgtDir + "> removed."
+            ProcessListener(False)
             DBARCH.GetDirectories(lbArchiveDirs, gCurrUserGuidID, False)
         Catch ex As ThreadAbortException
             LOG.WriteToArchiveLog("Thread 90 - caught ThreadAbortException - resetting.")
@@ -6918,13 +6941,40 @@ NextRec:
         btnSaveChanges.BackColor = Color.OrangeRed
     End Sub
 
+    Sub getListeners()
+
+        DirectoryList.Clear()
+
+        Dim tdir As String = ""
+        Dim Action As String = ""
+        Dim DirsToMonitor As String = System.Configuration.ConfigurationManager.AppSettings("DirsToMonitor")
+
+        Dim stream_reader As New IO.StreamReader(DirsToMonitor)
+        Using stream_reader
+            line = stream_reader.ReadLine()
+            Do While Not (line Is Nothing)
+                line = line.Trim()
+                If Not line.Substring(0, 1).Equals("#") Then
+                    ReadResult = line.Split("|")
+                    tdir = ReadResult(0).Trim
+                    Action = ReadResult(1).Trim.ToUpper
+                    If Not tdir.Substring(1, 1).Equals("#") Then
+                        If Not DirectoryList.ContainsKey(tdir) Then
+                            DirectoryList.Add(tdir, Action)
+                        End If
+                    End If
+                End If
+                line = stream_reader.ReadLine()
+            Loop
+            stream_reader.Close()
+            stream_reader.Dispose()
+        End Using
+    End Sub
+
     Sub ProcessListener(SetAction As Boolean)
 
         Dim DirsToMonitor As String = System.Configuration.ConfigurationManager.AppSettings("DirsToMonitor")
-        Dim ListOfDirs As New Dictionary(Of String, String)
-        Dim stream_reader As New IO.StreamReader(DirsToMonitor)
-        Dim line As String
-        Dim ReadResult() As String
+
         Dim ProcessSubdirectories As String = ""
         Dim TgtDir As String = ""
         Dim DirToProcess As String = ""
@@ -6932,93 +6982,91 @@ NextRec:
         Dim tdir As String = ""
         Dim action As String = ""
 
-
         If lbArchiveDirs.SelectedItems.Count.Equals(0) Then
-            MessageBox.Show("Please select a directory before setting a listener, returning...")
+            MessageBox.Show("Please select 1 or more directories before setting a listener, returning...")
             Return
         End If
 
         Try
-            TgtDir = lbArchiveDirs.SelectedItems(0).ToString.Trim
-
             ' Read the file one line at a time.
-            Using stream_reader
-                line = stream_reader.ReadLine()
-                Do While Not (line Is Nothing)
-                    line = line.Trim()
-                    If Not line.Substring(0, 1).Equals("#") Then
-                        ReadResult = line.Split("|")
-                        tdir = ReadResult(0).Trim
-                        action = ReadResult(1).Trim.ToUpper
-                        If Not tdir.Substring(1, 1).Equals("#") Then
-                            If Not ListOfDirs.ContainsKey(tdir) Then
-                                ListOfDirs.Add(tdir, action)
-                            End If
-                        End If
-                    End If
-                    line = stream_reader.ReadLine()
-                Loop
-            End Using
-
+            getLIsteners()
+StartOver:
             ProcessSubdirectories = ""
+            For i = 0 To lbArchiveDirs.SelectedItems.Count - 1
+                '****
+                Dim DirName As String = lbArchiveDirs.SelectedItem.ToString.Trim
+                Me.txtDir.Text = DirName
+                'DBARCH.LoadAvailFileTypes(lbAvailExts)
+                Dim DBID As String = ""
+                Dim IncludeSubDirs As String = ""
+                Dim VersionFiles As String = ""
+                Dim FolderDisabled As String = ""
+                Dim isMetaData As String = ""
+                Dim isPublic As String = ""
+                Dim OcrDirectory As String = ""
+                Dim OcrPdf As String = ""
+                Dim isSysDefault As String = ""
+                Dim DeleteOnArchive As String = ""
 
-            If SetAction.Equals(True) Then
-                If ckSubDirs.Checked.Equals(True) Then
-                    ProcessSubdirectories = "Y"
+                DBARCH.GetDirectoryData(gCurrUserGuidID, DirName, DBID, IncludeSubDirs, VersionFiles, FolderDisabled, isMetaData, isPublic, OcrDirectory, isSysDefault, Me.ckArchiveBit.Checked, ListenForChanges, ListenDirectory, ListenSubDirectory, DirGuid, OcrPdf, DeleteOnArchive)
+
+                cbFileDB.Text = DBID
+                ckSubDirs.Checked = cvtTF(IncludeSubDirs)
+                '****
+                TgtDir = lbArchiveDirs.SelectedItems(i).ToString.Trim
+                If SetAction.Equals(True) Then
+                    If ckSubDirs.Checked.Equals(True) Then
+                        ProcessSubdirectories = "Y"
+                    Else
+                        ProcessSubdirectories = "N"
+                    End If
+                    'Add the directory to the list if it does not exist 
+                    If Not DirectoryList.ContainsKey(TgtDir) Then
+                        DirectoryList.Add(TgtDir, ProcessSubdirectories)
+                    Else
+                        DirectoryList(TgtDir) = ProcessSubdirectories
+                    End If
                 Else
-                    ProcessSubdirectories = "N"
+                    'DROP THIS FROM THE LIST OF DIRECTORIES TO PROCESS
+                    If DirectoryList.ContainsKey(TgtDir) Then
+                        DirectoryList.Remove(TgtDir)
+                        GoTo StartOver
+                    End If
                 End If
-                'Add the directory to the list if it does not exist 
-                If Not ListOfDirs.ContainsKey(TgtDir) Then
-                    ListOfDirs.Add(TgtDir, ProcessSubdirectories)
-                End If
+            Next
 
-                If File.Exists(DirsToMonitor) Then
-                    File.Delete(DirsToMonitor)
-                End If
+            If File.Exists(DirsToMonitor) Then
+                File.Delete(DirsToMonitor)
+            End If
 
-                Dim xfile As System.IO.StreamWriter
-                xfile = My.Computer.FileSystem.OpenTextFileWriter(DirsToMonitor, True)
+            'Dim stream_reader As New IO.StreamReader(DirsToMonitor)
+            Using xfile As System.IO.StreamWriter = My.Computer.FileSystem.OpenTextFileWriter(DirsToMonitor, True)
                 xfile.WriteLine("#DirectoryName | Y or N for include subdirectories or do not include subdirectories")
-                For Each dir As String In ListOfDirs.Keys
-                    DirToProcess = dir + "|" + ListOfDirs(dir).ToUpper.Trim
+                For Each dir As String In DirectoryList.Keys
+                    DirToProcess = dir + "|" + DirectoryList(dir).ToUpper.Trim
                     xfile.WriteLine(DirToProcess)
                 Next
-                xfile.Close()
-                SB.Text = "Listener Turned ON for: " + TgtDir
-            Else
-                'DROP THIS FROM THE LIST OF DIRECTORIES TO PROCESS
-                If File.Exists(DirsToMonitor) Then
-                    File.Delete(DirsToMonitor)
-                End If
+            End Using
 
-                If File.Exists(DirsToMonitor) Then
-                    File.Delete(DirsToMonitor)
-                End If
-
-                Dim xfile As System.IO.StreamWriter
-                xfile = My.Computer.FileSystem.OpenTextFileWriter(DirsToMonitor, True)
-                xfile.WriteLine("#DirectoryName | Y or N for include subdirectories or do not include subdirectories")
-                For Each dir As String In ListOfDirs.Keys
-                    If Not dir.ToString.ToUpper.Equals(TgtDir.ToUpper) Then
-                        DirToProcess = dir + "|" + ListOfDirs(dir).ToUpper.Trim
-                        xfile.WriteLine(DirToProcess)
-                    Else
-                        Console.WriteLine("Removed from listeners: " + TgtDir)
-                    End If
-                Next
-                xfile.Close()
-                SB.Text = "Listener Turned OFF for: " + TgtDir
-            End If
         Catch ex As Exception
             MessageBox.Show("ERROR: Cannot add listener: " + ex.Message)
         End Try
+
+        getLIsteners()
 
         Return
     End Sub
 
     Private Sub CkMonitor_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CkMonitor.CheckedChanged
-
+        If lbArchiveDirs.SelectedItems.Count.Equals(0) Then
+            MessageBox.Show("To use this, one and only one directory must be selected, returning")
+            Return
+        End If
+        If lbArchiveDirs.SelectedItems.Count > 1 Then
+            MessageBox.Show("To use this, one and only one directory must be selected - Please use the Utility Listener item to process multiple listeners, returning")
+            Return
+        End If
+        CkMonitor.Checked = False
         ProcessListener(True)
         MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ")
     End Sub
@@ -10961,6 +11009,8 @@ GoodLogin:
         Me.Cursor = Cursors.Default
         SB.Text = "Goodbye...."
 
+        LoginForm1.Close()
+
         Application.Exit()
 
     End Sub
@@ -13518,6 +13568,15 @@ SkipIT:
     End Sub
 
     Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox2.CheckedChanged
+        If lbArchiveDirs.SelectedItems.Count.Equals(0) Then
+            MessageBox.Show("To use this, one and only one directory must be selected, returning")
+            Return
+        End If
+        If lbArchiveDirs.SelectedItems.Count > 1 Then
+            MessageBox.Show("To use this, one and only one directory must be selected - Please use the Utility Listener item to process multiple listeners, returning")
+            Return
+        End If
+        CheckBox2.Checked = False
         ProcessListener(False)
         MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ")
     End Sub
@@ -13665,17 +13724,16 @@ SkipIT:
         setLastArchiveLabel()
     End Sub
 
-    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
-
-    End Sub
 
     Private Sub TurnListenerONToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TurnListenerONToolStripMenuItem.Click
         ProcessListener(True)
+        getListeners()
         MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ")
     End Sub
 
     Private Sub TurnListenerOFFToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TurnListenerOFFToolStripMenuItem.Click
         ProcessListener(False)
+        getListeners()
         MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ")
     End Sub
 
@@ -13748,6 +13806,35 @@ SkipIT:
 
     Private Sub ArchiveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ArchiveToolStripMenuItem.Click
 
+    End Sub
+
+    Private Sub ListenerONALLDirsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListenerONALLDirsToolStripMenuItem.Click
+        Try
+            Dim I As Int32 = 0
+            For I = 0 To lbArchiveDirs.Items.Count - 1
+                lbActiveFolder.SetSelected(I, True)
+                ProcessListener(True)
+                lbActiveFolder.SetSelected(I, False)
+            Next i
+        Catch ex As Exception
+            Console.WriteLine("ERROR: " + ex.Message)
+        End Try
+        MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ")
+    End Sub
+
+    Private Sub ListenerOFFALLDirsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListenerOFFALLDirsToolStripMenuItem.Click
+        Try
+            Dim I As Int32 = 0
+            For I = 0 To lbArchiveDirs.Items.Count - 1
+                lbActiveFolder.SetSelected(I, True)
+                ProcessListener(False)
+                lbActiveFolder.SetSelected(I, False)
+            Next I
+        Catch ex As Exception
+            Console.WriteLine("ERROR: " + ex.Message)
+        End Try
+
+        MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ")
     End Sub
 End Class
 

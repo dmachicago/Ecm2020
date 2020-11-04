@@ -6631,11 +6631,6 @@ namespace EcmArchiver
 
         public void RegisterAllContainers(ref List<string> Containers)
         {
-            if (modGlobals.gTraceFunctionCalls.Equals(1))
-            {
-                LOG.WriteToArchiveLog("--> CALL: " + MethodBase.GetCurrentMethod().ToString());
-            }
-
             bool bOfficeInstalled = true;
             bool B = false;
             Containers.Clear();
@@ -6715,7 +6710,6 @@ namespace EcmArchiver
             Outlook.NameSpace oMAPI = null;
             Outlook.MAPIFolder oParentFolder = null;
             Outlook.MAPIFolder oChildFolder = null;
-            // Dim sArray() As String
             int i;
             int iElement = 0;
             oOutlook = new Outlook.Application();
@@ -6827,27 +6821,32 @@ namespace EcmArchiver
                             tFolderName = tFolderName.Trim();
                             int II = EMF.cnt_PK_EmailFolder(ChildID, modGlobals.gCurrUserGuidID);
                             II = EMF.cnt_UI_EmailFolder(Container, tFolderName, modGlobals.gCurrUserGuidID);
+                            int LL = 10;
                             if (II == 0)
                             {
                                 try
                                 {
                                     EMF.setFolderid(ref ChildID);
+                                    LL = 20;
                                     EMF.setFoldername(ref tFolderName);
+                                    LL = 30;
                                     EMF.setParentfolderid(ref ParentID);
+                                    LL = 40;
                                     string argval = oParentFolder.Name;
                                     EMF.setParentfoldername(ref argval);
                                     oParentFolder.Name = argval;
+                                    LL = 50;
                                     EMF.setUserid(ref modGlobals.gCurrUserGuidID);
+                                    LL = 60;
                                     EMF.setStoreid(ref StoreID);
+                                    LL = 70;
                                     bool BB = EMF.Insert(Container);
+                                    LL = 80;
                                 }
-                                // If Not BB Then
-                                // messagebox.show("Did not add folder " + tFolderName  + " to list of folders...")
-                                // End If
                                 catch (Exception ex)
                                 {
-                                    LOG.WriteToArchiveLog("ERROR: getOutlookFolderNames 100: " + ex.Message + Constants.vbCrLf + Constants.vbCrLf + ex.StackTrace);
-                                    LOG.WriteToArchiveLog("ERROR: getOutlookFolderNames 100: tFolderName  = " + tFolderName + " : " + "oParentFolder.Name = " + oParentFolder.Name);
+                                    LOG.WriteToArchiveLog("ERROR: getOutlookFolderNames 100a LL =: " + LL.ToString());
+                                    LOG.WriteToArchiveLog("ERROR: getOutlookFolderNames 100a: tFolderName  = " + tFolderName + " : " + "oParentFolder.Name = " + oParentFolder.Name);
                                 }
                             }
                             else
@@ -7060,29 +7059,38 @@ namespace EcmArchiver
                             tFolderName = tFolderName.Trim();
                             int II = EMF.cnt_PK_EmailFolder(ChildID, modGlobals.gCurrUserGuidID);
                             II = EMF.cnt_UI_EmailFolder(FileDirectory, tFolderName, modGlobals.gCurrUserGuidID);
+                            int kk = 10;
                             if (II == 0)
                             {
+                                kk = 20;
                                 try
                                 {
+                                    kk = 30;
                                     EMF.setFolderid(ref ChildID);
+                                    kk = 40;
                                     EMF.setFoldername(ref tFolderName);
+                                    kk = 50;
                                     EMF.setParentfolderid(ref ParentID);
+                                    kk = 60;
                                     string argval = oParentFolder.Name;
                                     EMF.setParentfoldername(ref argval);
                                     oParentFolder.Name = argval;
+                                    kk = 70;
                                     EMF.setUserid(ref modGlobals.gCurrUserGuidID);
+                                    kk = 80;
                                     EMF.setStoreid(ref StoreID);
+                                    kk = 90;
                                     string argval1 = "?";
                                     EMF.setSelectedforarchive(ref argval1);
+                                    kk = 100;
                                     bool BB = EMF.Insert(FileDirectory);
+                                    kk = 110;
                                 }
-                                // If Not BB Then
-                                // messagebox.show("Did not add folder " + tFolderName  + " to list of folders...")
-                                // End If
                                 catch (Exception ex)
                                 {
-                                    LOG.WriteToArchiveLog("ERROR: getOutlookFolderNames 100: " + ex.Message + Constants.vbCrLf + Constants.vbCrLf + ex.StackTrace);
-                                    LOG.WriteToArchiveLog("ERROR: getOutlookFolderNames 100: tFolderName  = " + tFolderName + " : " + "oParentFolder.Name = " + oParentFolder.Name);
+                                    LOG.WriteToArchiveLog("ERROR: getOutlookFolderNames 100b kk =: " + kk.ToString());
+                                    LOG.WriteToArchiveLog("ERROR: getOutlookFolderNames 100b: " + ex.Message + Constants.vbCrLf + Constants.vbCrLf + ex.StackTrace);
+                                    LOG.WriteToArchiveLog("ERROR: getOutlookFolderNames 100b: tFolderName  = " + tFolderName + " : " + "oParentFolder.Name = " + oParentFolder.Name);
                                 }
                             }
                             else
@@ -7391,11 +7399,6 @@ namespace EcmArchiver
 
         public ArrayList getOutlookParentFolderNames()
         {
-            if (modGlobals.gTraceFunctionCalls.Equals(1))
-            {
-                LOG.WriteToArchiveLog("--> CALL: " + MethodBase.GetCurrentMethod().ToString());
-            }
-
             var AL = new ArrayList();
             bool B = false;
             try
@@ -8202,7 +8205,7 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + MethodBase.GetCurrentMethod().ToString());
             };
 #error Cannot convert OnErrorGoToStatementSyntax - see comment for details
-            /* Cannot convert OnErrorGoToStatementSyntax, CONVERSION ERROR: Conversion for OnErrorGoToLabelStatement not implemented, please report this issue in 'On Error GoTo Err_Handler' at character 337088
+            /* Cannot convert OnErrorGoToStatementSyntax, CONVERSION ERROR: Conversion for OnErrorGoToLabelStatement not implemented, please report this issue in 'On Error GoTo Err_Handler' at character 337026
 
 
             Input:
@@ -8255,7 +8258,7 @@ namespace EcmArchiver
             MessageBox.Show(Information.Err().Description + " - Error No: " + Information.Err().Number);
             ;
 #error Cannot convert ResumeStatementSyntax - see comment for details
-            /* Cannot convert ResumeStatementSyntax, CONVERSION ERROR: Conversion for ResumeLabelStatement not implemented, please report this issue in 'Resume Exit_Handler' at character 338598
+            /* Cannot convert ResumeStatementSyntax, CONVERSION ERROR: Conversion for ResumeLabelStatement not implemented, please report this issue in 'Resume Exit_Handler' at character 338536
 
 
             Input:
@@ -8271,7 +8274,7 @@ namespace EcmArchiver
                 LOG.WriteToArchiveLog("--> CALL: " + MethodBase.GetCurrentMethod().ToString());
             };
 #error Cannot convert OnErrorGoToStatementSyntax - see comment for details
-            /* Cannot convert OnErrorGoToStatementSyntax, CONVERSION ERROR: Conversion for OnErrorGoToLabelStatement not implemented, please report this issue in 'On Error GoTo Err_Handler' at character 339030
+            /* Cannot convert OnErrorGoToStatementSyntax, CONVERSION ERROR: Conversion for OnErrorGoToLabelStatement not implemented, please report this issue in 'On Error GoTo Err_Handler' at character 338968
 
 
             Input:
@@ -8331,7 +8334,7 @@ namespace EcmArchiver
             MessageBox.Show(Information.Err().Description, ((double)Constants.vbExclamation + Conversions.ToDouble(" - Error No: ")).ToString() + Information.Err().Number);
             ;
 #error Cannot convert ResumeStatementSyntax - see comment for details
-            /* Cannot convert ResumeStatementSyntax, CONVERSION ERROR: Conversion for ResumeLabelStatement not implemented, please report this issue in 'Resume Exit_Handler' at character 340854
+            /* Cannot convert ResumeStatementSyntax, CONVERSION ERROR: Conversion for ResumeLabelStatement not implemented, please report this issue in 'Resume Exit_Handler' at character 340792
 
 
             Input:
@@ -8558,7 +8561,7 @@ namespace EcmArchiver
                 string EmailGuid = SelectedRow.Cells["EmailGuid"].Value.ToString();
                 ;
 #error Cannot convert OnErrorGoToStatementSyntax - see comment for details
-                /* Cannot convert OnErrorGoToStatementSyntax, CONVERSION ERROR: Conversion for OnErrorGoToLabelStatement not implemented, please report this issue in 'On Error GoTo Err_Handler' at character 359895
+                /* Cannot convert OnErrorGoToStatementSyntax, CONVERSION ERROR: Conversion for OnErrorGoToLabelStatement not implemented, please report this issue in 'On Error GoTo Err_Handler' at character 359833
 
 
                 Input:
@@ -8626,7 +8629,7 @@ namespace EcmArchiver
             Interaction.MsgBox(Information.Err().Description, Constants.vbExclamation, "Error No: " + Information.Err().Number);
             ;
 #error Cannot convert ResumeStatementSyntax - see comment for details
-            /* Cannot convert ResumeStatementSyntax, CONVERSION ERROR: Conversion for ResumeLabelStatement not implemented, please report this issue in 'Resume Exit_Handler' at character 362626
+            /* Cannot convert ResumeStatementSyntax, CONVERSION ERROR: Conversion for ResumeLabelStatement not implemented, please report this issue in 'Resume Exit_Handler' at character 362564
 
 
             Input:
@@ -8640,7 +8643,7 @@ namespace EcmArchiver
             bool InitializeOutlookRet = default;
             ;
 #error Cannot convert OnErrorGoToStatementSyntax - see comment for details
-            /* Cannot convert OnErrorGoToStatementSyntax, CONVERSION ERROR: Conversion for OnErrorGoToLabelStatement not implemented, please report this issue in 'On Error GoTo Err_Handler' at character 362717
+            /* Cannot convert OnErrorGoToStatementSyntax, CONVERSION ERROR: Conversion for OnErrorGoToLabelStatement not implemented, please report this issue in 'On Error GoTo Err_Handler' at character 362655
 
 
             Input:
@@ -8667,7 +8670,7 @@ namespace EcmArchiver
             ;
             ;
 #error Cannot convert ResumeStatementSyntax - see comment for details
-            /* Cannot convert ResumeStatementSyntax, CONVERSION ERROR: Conversion for ResumeLabelStatement not implemented, please report this issue in 'Resume Exit_Handler' at character 363163
+            /* Cannot convert ResumeStatementSyntax, CONVERSION ERROR: Conversion for ResumeLabelStatement not implemented, please report this issue in 'Resume Exit_Handler' at character 363101
 
 
             Input:
@@ -10383,7 +10386,7 @@ namespace EcmArchiver
                 string ContentSha1Hash = ENC.GenerateSHA512HashFromFile(file_FullName);
                 // ** Update the HASH and the Source Binary
                 // * Get the file hash
-                UpdateDataSouceHashAndBinary(Environment.MachineName, file_FullName, ContentSha1Hash);
+                UpdateSouceImage(Environment.MachineName, file_FullName, ContentSha1Hash);
             }
 
             if (iDatasourceCnt == 0)
@@ -10824,7 +10827,6 @@ namespace EcmArchiver
             if (xDebug)
                 LOG.WriteToArchiveLog("clsArchiver:ArchiveContent 100");
             string AttachmentCode = "";
-            string CrcHash = ENC.GenerateSHA512HashFromFile(FQN);
             string ImageHash = ENC.GenerateSHA512HashFromFile(FQN);
             if (isEmailAttachment == true)
             {
@@ -10999,15 +11001,6 @@ namespace EcmArchiver
                     {
                         StepTimer = DateAndTime.Now;
                         LOG.WriteToTimerLog("ArchiveContent01", "ProcessFile", "STOP");
-                        // [SourceGuid] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-                        // [CreateDate] [datetime] NULL CONSTRAINT [CURRDATE_04012008185318003] DEFAULT
-                        // (getdate()), [SourceName] [nvarchar](254) COLLATE SQL_Latin1_General_CP1_CI_AS
-                        // NULL, [SourceImage] [image] NULL, [SourceTypeCode] [nvarchar](50) COLLATE
-                        // SQL_Latin1_General_CP1_CI_AS NOT NULL, [FQN] [nvarchar](254) COLLATE
-                        // SQL_Latin1_General_CP1_CI_AS NULL, [VersionNbr] [int] NULL CONSTRAINT
-                        // [DF_DataSource_VersionNbr] DEFAULT ((0)), [LastAccessDate] [datetime] NULL,
-                        // [FileLength] [int] NULL, [LastWriteTime] [datetime] NULL,
-
                         string SourceGuid = getGuid();
                         var FileAttributes = DirFiles[K].Split('|');
                         string file_FullName = FileAttributes[1];
@@ -11035,14 +11028,16 @@ namespace EcmArchiver
                         ckSourceTypeCode(ref file_SourceTypeCode);
                         string StoredExternally = "N";
                         bool FileNeedsUpdating = false;
-                        int iDatasourceCnt = getCountDataSourceFiles(file_SourceName, CrcHash);
+                        int iDatasourceCnt = getCountDataSourceFiles(file_SourceName, ImageHash);
                         int NbrDUps = ckFileExistInRepo(Environment.MachineName, file_FullName);
                         if (NbrDUps > 0)
                         {
                             string FHASH = ENC.GenerateSHA512HashFromFile(file_FullName);
                             // ** Update the HASH and the Source Binary
                             // * Get the file hash
-                            UpdateDataSouceHashAndBinary(Environment.MachineName, file_FullName, FHASH);
+                            // *****************************************************************************
+                            UpdateSouceImage(Environment.MachineName, file_FullName, FHASH);
+                            // *****************************************************************************
                         }
 
                         if (iDatasourceCnt == 0)
@@ -11063,7 +11058,14 @@ namespace EcmArchiver
                             // ********************************************************************************
                             var StartInsert = DateAndTime.Now;
                             LOG.WriteToTimerLog("Start ArchiveContent01", "AddSourceToRepo:" + file_FullName, "START");
-                            bool BB = AddSourceToRepo(UID, MachineID, modGlobals.gNetworkID, SourceGuid, file_FullName, file_SourceName, file_SourceTypeCode, file_LastAccessDate, file_CreateDate, file_LastWriteTime, modGlobals.gCurrUserGuidID, LastVerNbr, RetentionCode, isPublic, CrcHash, file_DirName);
+
+                            // ****************************************************************************************************************************************************************
+                            // ****************************************************************************************************************************************************************
+                            bool BB = AddSourceToRepo(UID, MachineID, modGlobals.gNetworkID, SourceGuid, file_FullName, file_SourceName, file_SourceTypeCode, file_LastAccessDate, file_CreateDate, file_LastWriteTime, modGlobals.gCurrUserGuidID, LastVerNbr, RetentionCode, isPublic, ImageHash, file_DirName);
+                            // ****************************************************************************************************************************************************************
+                            // ****************************************************************************************************************************************************************
+
+
                             string fExt = DMA.getFileExtension(file_FullName);
                             if (FQN.ToUpper().Equals("ZIP"))
                             {
@@ -11088,6 +11090,13 @@ namespace EcmArchiver
 
                             if (BB)
                             {
+                                bool bApplied = Exec_spUpdateLongNameHash(SourceGuid, file_FullName);
+                                if (!bApplied)
+                                {
+                                    LOG.WriteToArchiveLog("ERROR 12Q1: (Exec_spUpdateLongNameHash) : Failed to update the long file names cross references: ");
+                                    LOG.WriteToArchiveLog("HOW TO TEST in Sql Server: " + Constants.vbCrLf + "    exec spUpdateLongNameHash '" + file_FullName + "', '" + SourceGuid + "' ");
+                                }
+
                                 string VersionNbr = "0";
                                 var UpdateInsert = DateAndTime.Now;
                                 LOG.WriteToTimerLog("ArchiveContent01", "UpdateInsert:" + file_FullName, "STOP");
@@ -11143,173 +11152,15 @@ namespace EcmArchiver
 
                                 LOG.WriteToTimerLog("ArchiveContent01", "UpdateInsert" + file_FullName, "STOP", UpdateInsert);
                             }
-                            // Else
-                            // '*****************************************
-                            // '* The File Already exists in the Repository
-                            // '* Just add the user to the ContentUser table
-                            // '*****************************************
-                            // Dim UpdateSource As Date = Now
-                            // LOG.WriteToTimerLog("ArchiveContent01A", "UpdateSource" + file_FullName, "START")
-                            // If UCase(FOLDER_VersionFiles ).Equals("Y") Then
-                            // If xDebug Then LOG.WriteToArchiveLog("clsArchiver:ArchiveContent 1001 files versioned" + file_FullName )
-                            // '** Get the last version number of this file in the repository,
-                            // Dim LastVerNbr As Integer = GetMaxDataSourceVersionNbr(UID, file_FullName )
-                            // Dim NextVersionNbr As Integer = LastVerNbr + 1
-                            // '** See if this version has been changed
-                            // bChanged = isSourcefileOlderThanLastEntry(file_SourceName, CrcHash)
-                            // '** If it has, add it to the repository
-                            // If bChanged Then
-
-                            // Dim fExt As String = DMA.getFileExtension(file_FullName) If
-                            // FQN.ToUpper.Equals("ZIP") Then DBLocal.addZipFile(file_FullName, False,
-                            // SourceGuid) Dim StackLevel As Integer = 0 Dim ListOfFiles As New
-                            // Dictionary(Of String, Integer) ZF.UploadZipFile(gCurrUserGuidID,
-                            // gMachineID, file_FullName, SourceGuid, True, False, RetentionCode,
-                            // isPublic, StackLevel, ListOfFiles) ListOfFiles = Nothing GC.Collect() End If
-
-                            // '********************************************************************************************************
-                            // Dim StartInsert As Date = Now LOG.WriteToTimerLog("Start ArchiveContent01",
-                            // "UpdtInsertSourcefile:" + file_FullName, "START") Dim BB As Boolean =
-                            // AddSourceToRepo(UID, MachineID, gNetworkID, SourceGuid, _ file_FullName, _
-                            // file_SourceName, _ file_SourceTypeCode, _ file_LastAccessDate , _
-                            // file_CreateDate , _ file_LastWriteTime , gCurrUserGuidID, NextVersionNbr,
-                            // RetentionCode, isPublic, CrcHash, file_DirName )
-
-                            // If BB Then LOG.WriteToTimerLog("END ArchiveContent01B",
-                            // "UpdtInsertSourcefile" + file_FullName, "STOP", StartInsert) Else
-                            // LOG.WriteToTimerLog("FAIL ArchiveContent01B", "UpdtInsertSourcefile" +
-                            // file_FullName, "STOP", StartInsert) End If '********************************************************************************************************
-
-                            // If BB Then If LibraryList.Count > 0 Then For II As Integer = 0 To
-                            // LibraryList.Count - 1 Dim LibraryName = LibraryList(II)
-                            // AddLibraryItem(SourceGuid, file_SourceName, file_SourceTypeCode,
-                            // LibraryName ) Next End If If xDebug Then
-                            // LOG.WriteToArchiveLog("clsArchiver:ArchiveContent 1002 file ADDED" +
-                            // file_FullName ) Else If xDebug Then
-                            // LOG.WriteToArchiveLog("clsArchiver:ArchiveContent 1003 file FAILED TO ADD"
-                            // + file_FullName ) End If
-
-                            // 'Dim VersionNbr As String = "0" Dim CRC As String =
-                            // DMA.CalcCRC(file_FullName) addContentHashKey(SourceGuid, NextVersionNbr,
-                            // file_CreateDate , file_FullName, OriginalFileType, file_Length , CRC, MachineID)
-
-                            // UpdateDocFqn(SourceGuid, file_FullName) UpdateDocSize(SourceGuid,
-                            // file_Length ) UpdateDocDir(SourceGuid, file_FullName)
-                            // UpdateDocOriginalFileType(SourceGuid, OriginalFileType )
-                            // setRetentionDate(SourceGuid , RetentionCode , OriginalFileType )
-
-                            // Dim SS = "" SS = "update dataSource set KeyWords = '" + Keywords + "' where
-                            // SourceGuid = '" + SourceGuid + "' " BB = ExecuteSqlNewConn(SS, False) SS =
-                            // "update dataSource set Description = '" + Description + "' where SourceGuid
-                            // = '" + SourceGuid + "' " BB = ExecuteSqlNewConn(SS, False)
-
-                            // If OcrText .Trim.Length > 0 Then AppendOcrText(SourceGuid , OcrText ) End If
-
-                            // Dim UserGuid = gCurrUserGuidID SS = "update QuickRefItems set SourceGuid =
-                            // '" + SourceGuid + "' where DataSourceOwnerUserID = '" + UserGuid + "' and
-                            // FQN = '" + FQN + "' " BB = ExecuteSqlNewConn(SS, False)
-
-                            // 'delFileParms(SourceGuid ) InsertSrcAttrib(SourceGuid , "FILENAME",
-                            // file_SourceName, OriginalFileType ) InsertSrcAttrib(SourceGuid ,
-                            // "CreateDate", file_CreateDate , OriginalFileType )
-                            // InsertSrcAttrib(SourceGuid , "FILESIZE", file_Length , OriginalFileType )
-                            // InsertSrcAttrib(SourceGuid , "ChangeDate", file_LastAccessDate,
-                            // OriginalFileType ) InsertSrcAttrib(SourceGuid , "WriteDate",
-                            // file_LastWriteTime , OriginalFileType ) InsertSrcAttrib(SourceGuid , "MD
-                            // Author", Author, OriginalFileType ) If Not file_SourceTypeCode
-                            // .Equals(OriginalFileType ) Then InsertSrcAttrib(SourceGuid , "IndexAs",
-                            // file_LastWriteTime , file_SourceTypeCode) End If If
-                            // (LCase(file_SourceTypeCode).Equals(".doc") Or
-                            // LCase(file_SourceTypeCode).Equals(".docx")) And ckMetaData .Equals("Y")
-                            // Then GetWordDocMetadata(file_FullName, SourceGuid , OriginalFileType ) End
-                            // If If (file_SourceTypeCode.Equals(".xls") _ Or
-                            // file_SourceTypeCode.Equals(".xlsx") Or file_SourceTypeCode.Equals(".xlsm"))
-                            // And ckMetaData .Equals("Y") Then Me.GetExcelMetaData(file_FullName,
-                            // SourceGuid , OriginalFileType ) End If
-
-                            // End If LOG.WriteToTimerLog("ArchiveContent01", "UpdateSource:1" +
-                            // file_FullName, "end", UpdateSource) Else If xDebug Then
-                            // LOG.WriteToArchiveLog("clsArchiver:ArchiveContent 1004 The document has
-                            // changed, but versioning is not on" + file_FullName ) '** The document has
-                            // changed, but versioning is not on... '** Delete and re-add. '** If zero add
-                            // '** if 1, see if changed and if so, update, if not skip it Dim LastVerNbr
-                            // As Integer = GetMaxDataSourceVersionNbr(UID, _ file_FullName ) bChanged =
-                            // isSourcefileOlderThanLastEntry(file_SourceName, CrcHash) '** If it has, add
-                            // it to the repository If bChanged Then If xDebug Then
-                            // LOG.WriteToArchiveLog("clsArchiver:ArchiveContent 1005 The document has
-                            // changed: " + file_FullName ) Dim BB As Boolean = False 'Dim BB As Boolean =
-                            // DeleteDocumentByName(UID, file_SourceName, SourceGuid) Dim
-                            // UpdateSourceImageDte As Date = Now
-
-                            // LOG.WriteToTimerLog("ArchiveContent01", "UpdateSourceFileImage:1" +
-                            // file_FullName, "start")
-
-                            // Dim CurrentVersionNbr As Integer = 0
-
-                            // '********************************************************************************************************
-                            // Dim StartInsert As Date = Now LOG.WriteToTimerLog("Start ArchiveContent01",
-                            // "UpdtInsertSourcefile:" + file_FullName, "START") BB =
-                            // UpdateSourceFileImage(FileName, UID, MachineID, SourceGuid,
-                            // file_LastAccessDate, file_CreateDate, file_LastWriteTime,
-                            // CurrentVersionNbr, FQN, RetenCode, isPublic, CrcHash) If BB Then
-                            // LOG.WriteToTimerLog("END ArchiveContent01C", "UpdtInsertSourcefile" +
-                            // file_FullName, "STOP", StartInsert) Else LOG.WriteToTimerLog("FAIL
-                            // ArchiveContent01C", "UpdtInsertSourcefile" + file_FullName, "STOP",
-                            // StartInsert) End If '********************************************************************************************************
-
-                            // If Not BB Then Dim MySql = "Delete from DataSource where SourceGuid = '" +
-                            // SourceGuid + "'" ExecuteSqlNewConn(MySql)
-                            // LOG.WriteToArchiveLog("Unrecoverable Error - removed file '" +
-                            // file_FullName + "' from the repository.") End If
-
-                            // If LibraryList.Count > 0 Then For II As Integer = 0 To LibraryList.Count -
-                            // 1 Dim LibraryName = LibraryList(II) AddLibraryItem(SourceGuid,
-                            // file_SourceName, file_SourceTypeCode, LibraryName ) Next End If
-
-                            // Dim DateX01 As Date = Now LOG.WriteToTimerLog("ArchiveContent01",
-                            // "UpdateDocFqn" + file_FullName, "start")
-
-                            // UpdateDocFqn(SourceGuid, file_FullName) UpdateDocSize(SourceGuid,
-                            // file_Length ) UpdateDocOriginalFileType(SourceGuid, OriginalFileType )
-                            // UpdateDocDir(SourceGuid, file_FullName) setRetentionDate(SourceGuid ,
-                            // RetentionCode , OriginalFileType )
-
-                            // LOG.WriteToTimerLog("ArchiveContent01", "UpdateDocFqn-1" + file_FullName,
-                            // "end", DateX01)
-
-                            // Dim SS = "" SS = "update dataSource set KeyWords = '" + Keywords + "' where
-                            // SourceGuid = '" + SourceGuid + "' " BB = ExecuteSqlNewConn(SS, False) SS =
-                            // "update dataSource set Description = '" + Description + "' where SourceGuid
-                            // = '" + SourceGuid + "' " BB = ExecuteSqlNewConn(SS, False) If OcrText
-                            // .Trim.Length > 0 Then AppendOcrText(SourceGuid , OcrText ) End If Dim
-                            // UserGuid = gCurrUserGuidID SS = "update QuickRefItems set SourceGuid = '" +
-                            // SourceGuid + "' where DataSourceOwnerUserID = '" + UserGuid + "' and FQN =
-                            // '" + FQN + "' " BB = ExecuteSqlNewConn(SS, False)
-
-                            // 'delFileParms(SourceGuid ) InsertSrcAttrib(SourceGuid , "FILENAME",
-                            // file_SourceName, OriginalFileType ) InsertSrcAttrib(SourceGuid ,
-                            // "CreateDate", file_CreateDate , OriginalFileType )
-                            // InsertSrcAttrib(SourceGuid , "FILESIZE", file_Length , OriginalFileType )
-                            // InsertSrcAttrib(SourceGuid , "ChangeDate", file_LastAccessDate,
-                            // OriginalFileType ) InsertSrcAttrib(SourceGuid , "WriteDate",
-                            // file_LastWriteTime , OriginalFileType ) InsertSrcAttrib(SourceGuid , "MD
-                            // Author", Author, OriginalFileType ) If Not file_SourceTypeCode
-                            // .Equals(OriginalFileType ) Then InsertSrcAttrib(SourceGuid , "IndexAs",
-                            // file_LastWriteTime , file_SourceTypeCode) End If If
-                            // (LCase(file_SourceTypeCode).Equals(".doc") Or
-                            // LCase(file_SourceTypeCode).Equals(".docx")) And ckMetaData .Equals("Y")
-                            // Then GetWordDocMetadata(file_FullName, SourceGuid , OriginalFileType ) End
-                            // If If (file_SourceTypeCode.Equals(".xls") _ Or
-                            // file_SourceTypeCode.Equals(".xlsx") Or file_SourceTypeCode.Equals(".xlsm"))
-                            // And ckMetaData .Equals("Y") Then Me.GetExcelMetaData(file_FullName,
-                            // SourceGuid , OriginalFileType ) End If If xDebug Then
-                            // LOG.WriteToArchiveLog("10000 Processed " + file_FullName)
-                            // LOG.WriteToTimerLog("ArchiveContent01", "UpdateDocFqn-2" + file_FullName,
-                            // "end", DateX01) Else If xDebug Then LOG.WriteToArchiveLog("Document " +
-                            // file_FullName + " has not changed, SKIPPING.") If xDebug Then
-                            // LOG.WriteToArchiveLog("Document " + file_FullName + " has not changed,
-                            // SKIPPING.") End If End If LOG.WriteToTimerLog("ArchiveContent01",
-                            // "UpdateSource" + file_FullName, "STOP", UpdateSource)
+                        }
+                        else
+                        {
+                            bool bApplied = Exec_spUpdateLongNameHash(SourceGuid, file_FullName);
+                            if (!bApplied)
+                            {
+                                LOG.WriteToArchiveLog("ERROR QX221: (Exec_spUpdateLongNameHash) : Failed to update the long file names cross references: ");
+                                LOG.WriteToArchiveLog("HOW TO TEST in Sql Server: " + Constants.vbCrLf + "    exec spUpdateLongNameHash '" + file_FullName + "', '" + SourceGuid + "' ");
+                            }
                         }
 
                         NextFile:
@@ -12859,7 +12710,7 @@ namespace EcmArchiver
                 bExists = true;
             }
 
-            var DOCS = new clsDATASOURCE_V2();
+            var DOCS = new clsDataSource_V2();
             var PROC = new clsProcess();
             int NbrFilesInDir = 0;
             int LastVerNbr = 0;
@@ -13440,7 +13291,7 @@ namespace EcmArchiver
                         // ***********************************************************************'
                         // ** New file
                         // ***********************************************************************'
-                        bool BB = false;
+                        bool bSuccessExecution = false;
                         string AttachmentCode = "C";
                         string ContentTypeCode = "C";
                         LOG.WriteToListenLog("File : " + file_FullName + " was found to be NEW and not in the repository.");
@@ -13460,7 +13311,7 @@ namespace EcmArchiver
                             bool B = ExecuteSqlNewConn(90213, S);
                             string tguid = getContentGuid(FQN, CrcHash);
                             string FileDirectory = Path.GetDirectoryName(FQN);
-                            BB = saveContentOwner(tguid, modGlobals.gCurrLoginID, ContentTypeCode, FileDirectory, modGlobals.gMachineID, modGlobals.gNetworkID);
+                            bSuccessExecution = saveContentOwner(tguid, modGlobals.gCurrLoginID, ContentTypeCode, FileDirectory, modGlobals.gMachineID, modGlobals.gNetworkID);
                             goto NextFile;
                         }
 
@@ -13481,8 +13332,8 @@ namespace EcmArchiver
                             DOCS.setDatasourceowneruserid(ref modGlobals.gCurrUserGuidID);
                             string argval4 = "0";
                             DOCS.setVersionnbr(ref argval4);
-                            BB = DOCS.Insert(SourceGuid, CrcHash);
-                            if (BB)
+                            bSuccessExecution = DOCS.Insert(SourceGuid, ImageHash);
+                            if (bSuccessExecution)
                             {
                                 LOG.WriteToListenLog("ArchiveSingleFile : FILE added to repo 100: " + file_FullName);
                                 Successful = true;
@@ -13491,15 +13342,15 @@ namespace EcmArchiver
                                 // Dim WC  = DOCS.wc_UKI_Documents(SourceGuid)
                                 // DOCS.ImageUpdt_SourceImage(WC, file_FullName)
                                 // ****************************************************************************************************************************************************************************************************************
-                                BB = UpdateSourceFileImage(file_FullName, UID, MachineID, SourceGuid, file_LastAccessDate, file_CreateDate, file_LastWriteTime, LastVerNbr, file_FullName, RetentionCode, isPublic, CrcHash);
+                                bSuccessExecution = UpdateSourceImageInRepo(file_FullName, UID, MachineID, SourceGuid, file_LastAccessDate, file_CreateDate, file_LastWriteTime, LastVerNbr, file_FullName, RetentionCode, isPublic, CrcHash);
                                 // ****************************************************************************************************************************************************************************************************************
 
-                                if (!BB)
+                                if (!bSuccessExecution)
                                 {
                                     string MySql = "Delete from DataSource where SourceGuid = '" + SourceGuid + "'";
                                     ExecuteSqlNewConn(90214, MySql);
                                     LOG.WriteToErrorLog("Unrecoverable Error - removed file '" + file_FullName + "' from the repository.");
-                                    string DisplayMsg = "A source file failed to load. Review ERROR log.";
+                                    string DisplayMsg = "A source file failed to load. Review ERROR log." + Constants.vbCrLf + file_FullName;
                                     My.MyProject.Forms.frmHelp.MsgToDisplay = DisplayMsg;
                                     My.MyProject.Forms.frmHelp.CallingScreenName = "ECM Archive";
                                     My.MyProject.Forms.frmHelp.CaptionName = "Fatal Load Error";
@@ -13517,7 +13368,7 @@ namespace EcmArchiver
                             file_SourceName = UTIL.RemoveSingleQuotes(file_SourceName);
                         }
 
-                        if (BB)
+                        if (bSuccessExecution)
                         {
                             FilesBackedUp += 1;
                             file_FullName = UTIL.RemoveSingleQuotes(file_FullName);
@@ -13538,7 +13389,7 @@ namespace EcmArchiver
                                 LOG.WriteToListenLog("ArchiveSingleFile : AddSourceToRepo :FAILED TO LOAD: 8013a: " + file_SourceName);
                         }
 
-                        if (BB)
+                        if (bSuccessExecution)
                         {
                             Successful = true;
                             Application.DoEvents();
@@ -14303,6 +14154,7 @@ namespace EcmArchiver
                         }
                         catch (Exception ex)
                         {
+                            LOG.WriteToArchiveLog("DELETE FAILURE 06|" + FQN);
                             Console.WriteLine("Failed to delete 0C: " + FQN);
                         }
                     }

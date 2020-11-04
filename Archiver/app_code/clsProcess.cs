@@ -247,6 +247,7 @@ namespace EcmArchiver
             {
                 MessageBox.Show("Could not start application for " + fqn + Constants.vbCrLf + ex.Message, "Error");
                 LOG.WriteToArchiveLog("clsProcess : StartProcessFromFilefqnAndWait : 9 : " + ex.Message);
+                LOG.WriteToArchiveLog("DELETE FAILURE 03|" + fqn);
             }
         }
 

@@ -1,7 +1,6 @@
 ﻿using global::System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using System.Diagnostics;
 using global::System.IO;
 using System.Linq;
@@ -10,7 +9,6 @@ using global::System.Text;
 using global::System.Text.RegularExpressions;
 using System.Windows.Forms;
 using global::ECMEncryption;
-using global::Microsoft.Data.Sqlite;
 using Outlook = Microsoft.Office.Interop.Outlook;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
@@ -22,25 +20,26 @@ namespace EcmArchiver
     {
         private static ECMEncrypt ENC = new ECMEncrypt();
         private static clsIsolatedStorage ISO = new clsIsolatedStorage();
-        public static bool bSLConn = false;
-        public static SqliteConnection SLConn = new SqliteConnection();
 
         // Private Declare Function GetShortPathName Lib "kernel32" Alias "GetShortPathNameA" (ByVal
         // longPath As String, ByVal shortPath As String, ByVal shortBufferSize As Long) As Long
 
+        public static string FTILogs = System.Configuration.ConfigurationManager.AppSettings["FTILogs"];
+        public static int ContentBatchSize = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["ContentBatchSize"]);
+        public static int gUseThreading = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["UseThreading"]);
+        public static int gTraceFunctionCalls = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["TraceFunctionCALLS"]);
+        public static int TrackUploads = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["TrackUploads"]);
+        public static int UseDebugSQLite = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["UseDebugSQLite"]);
+        public static long MaxFileToLoadMB = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["MaxFileToLoadMB"]);
+        public static bool TempDisableDirListener = false;
+        public static int UseDirectoryListener = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["UseDirectoryListener"]);
+        public static string SQLiteListenerDB = System.Configuration.ConfigurationManager.AppSettings["SQLiteListenerDB"];
+        public static string gUseLastArchiveDate = "0";
+        public static DateTime gLastArchiveDate = Convert.ToDateTime("1/1/1900");
         public static List<string> gAllowedExts = new List<string>();
         public static int FilesBackedUp = 0;
         public static int FilesSkipped = 0;
         public static int MoreFileToProcess = 0;
-        public static int ContentBatchSize = Conversions.ToInteger(System.Configuration.ConfigurationManager.AppSettings["ContentBatchSize"]);
-        public static int gUseThreading = Conversions.ToInteger(System.Configuration.ConfigurationManager.AppSettings["UseThreading"]);
-        public static int gTraceFunctionCalls = Conversions.ToInteger(System.Configuration.ConfigurationManager.AppSettings["TraceFunctionCALLS"]);
-        public static int TrackUploads = Conversions.ToInteger(System.Configuration.ConfigurationManager.AppSettings["TrackUploads"]);
-        public static int UseDebugSQLite = Conversions.ToInteger(System.Configuration.ConfigurationManager.AppSettings["UseDebugSQLite"]);
-        public static int MaxFileToLoadMB = Conversions.ToInteger(System.Configuration.ConfigurationManager.AppSettings["MaxFileToLoadMB"]);
-        public static bool TempDisableDirListener = false;
-        public static int UseDirectoryListener = Conversions.ToInteger(System.Configuration.ConfigurationManager.AppSettings["UseDirectoryListener"]);
-        public static string SQLiteListenerDB = System.Configuration.ConfigurationManager.AppSettings["SQLiteListenerDB"];
         public static string gBatchLogin = "";
         public static string gBatchEncryptedPW = "";
         public static bool gEmailArchiveDisabled = false;
@@ -57,11 +56,7 @@ namespace EcmArchiver
         public static Dictionary<int, string> gDictOfConstr = new Dictionary<int, string>();
         public static Dictionary<string, string> DictEmails = new Dictionary<string, string>();
         public static Dictionary<string, string> DictContent = new Dictionary<string, string>();
-        // Public ProxyFS As New SVCFS.Service1Client()
-        // 'Public ProxyArchive As New SVCCLCArchive.Service1Client()
-        // Public ProxyGateway As New SVCGateway.Service1Client()
-        // Public ProxySearch As New SVCSearch.Service1Client()
-
+        public static string gLocalDBCS = "";
         public static bool gResetEndpoints = true;
         public static bool gLoginValidated = true;
         public static string SVCFS_Endpoint = "";
@@ -220,29 +215,6 @@ namespace EcmArchiver
             LOG = null;
         }
 
-        public static bool closeSLConn()
-        {
-            bool bb = false;
-            if (SLConn.State.Equals(ConnectionState.Open))
-            {
-                try
-                {
-                    SLConn.Close();
-                    bb = true;
-                }
-                catch (Exception ex)
-                {
-                    bb = false;
-                }
-                finally
-                {
-                    SLConn.Dispose();
-                }
-            }
-
-            return bb;
-        }
-
         private static void setUseDebugSQLite()
         {
             try
@@ -252,6 +224,22 @@ namespace EcmArchiver
             catch (Exception ex)
             {
                 UseDebugSQLite = 0;
+            }
+        }
+
+        public static void CreateSQLiteDBIfMissing()
+        {
+            slDatabase = System.Configuration.ConfigurationManager.AppSettings["SQLiteLocalDB"];
+            OriginalDB = getPublishedSQLiteDBpath();
+            string tdir = Path.GetDirectoryName(Conversions.ToString(slDatabase));
+            if (!Directory.Exists(tdir))
+            {
+                Directory.CreateDirectory(tdir);
+            }
+
+            if (!File.Exists(Conversions.ToString(slDatabase)))
+            {
+                File.Copy(Conversions.ToString(OriginalDB), Conversions.ToString(slDatabase), false);
             }
         }
 
@@ -281,74 +269,6 @@ namespace EcmArchiver
             }
 
             return dbfqn;
-        }
-
-
-        /// <summary>
-    /// Sets the sl connection.
-    /// </summary>
-    /// <returns></returns>
-        public static bool setSLConn()
-        {
-            bool bb = true;
-            setUseDebugSQLite();
-            if (!SLConn.State.Equals(ConnectionState.Open))
-            {
-                try
-                {
-                    string slDatabase = "";
-                    string tchar = "";
-                    string cs = "";
-                    string strPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase);
-                    int I = 0;
-                    I = strPath.IndexOf(":");
-                    I += 2;
-                    strPath = strPath.Substring(I);
-                    if (UseDebugSQLite.Equals(1))
-                    {
-                        slDatabase = System.Configuration.ConfigurationManager.AppSettings["SQLiteDir"];
-                        tchar = slDatabase.Substring(slDatabase.Length - 1);
-                        if (!tchar.Equals(@"\"))
-                        {
-                            strPath += @"\";
-                        }
-
-                        if (!Directory.Exists(slDatabase))
-                        {
-                            Directory.CreateDirectory(slDatabase);
-                        }
-
-                        slDatabase += "EcmArchive.db";
-                        if (!File.Exists(slDatabase))
-                        {
-                            string dbfqn = getPublishedSQLiteDBpath();
-                            tchar = strPath.Substring(strPath.Length - 1);
-                            if (!tchar.Equals(@"\"))
-                                strPath += @"\";
-                            My.MyProject.Computer.FileSystem.CopyFile(dbfqn, slDatabase, overwrite: false);
-                        }
-
-                        cs = "data source=" + slDatabase;
-                    }
-                    else
-                    {
-                        string dbfqn = getPublishedSQLiteDBpath();
-                        cs = "data source=" + dbfqn;
-                    }
-
-                    SLConn.ConnectionString = cs;
-                    SLConn.Open();
-                    bb = true;
-                    bSLConn = true;
-                }
-                catch (Exception ex)
-                {
-                    bb = false;
-                    bSLConn = false;
-                }
-            }
-
-            return bb;
         }
 
         public static string setThesaurusConnStr()

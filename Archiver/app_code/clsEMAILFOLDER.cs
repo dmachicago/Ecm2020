@@ -1,7 +1,6 @@
 ﻿using global::System.Data.SqlClient;
 using System.Windows.Forms;
 using global::Microsoft.VisualBasic;
-using Microsoft.VisualBasic.CompilerServices;
 using MODI;
 
 namespace EcmArchiver
@@ -205,7 +204,7 @@ namespace EcmArchiver
                 ContainerName = "";
             }
 
-            bool bb = DBARCH.ckEmailFolderExist(UserID, Conversions.ToInteger(FolderID), FolderName, ContainerName);
+            bool bb = DBARCH.ckEmailFolderExist(UserID, FolderID, FolderName, ContainerName);
             if (!bb)
             {
                 b = DBARCH.ExecuteSqlNewConn(s, false);

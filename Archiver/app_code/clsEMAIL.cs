@@ -653,7 +653,7 @@ namespace EcmArchiver
             s = s + "'" + CRC + "', " + Constants.vbCrLf;
             s = s + "'" + CRC + "') " + Constants.vbCrLf;
             bool BB = DBARCH.ExecuteSqlNewConn(s, false);
-            s = "Update DataSource set CRC = convert(nvarchar(100), " + CRC + ") where EmailGuid = '" + NewID + "'";
+            s = "Update DataSource set CRC = '" + CRC + "' where EmailGuid = '" + NewID + "'";
             BB = DBARCH.ExecuteSqlNewConn(s, false);
             s = "Update DataSource set ImageHash = convert(nvarchar(100), " + CRC + ") where EmailGuid = '" + NewID + "'";
             BB = DBARCH.ExecuteSqlNewConn(s, false);
