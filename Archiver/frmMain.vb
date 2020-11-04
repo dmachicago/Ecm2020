@@ -7890,8 +7890,16 @@ SKIPTHISREC:
     End Sub
 
     Private Sub ContentToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ContentToolStripMenuItem.Click
+
+        Dim watch As Stopwatch = Stopwatch.StartNew()
         Dim PerformQUickArchive As Boolean = True
+
         BeginContentArchive(PerformQUickArchive)
+
+        Dim totsecs As Decimal = 0
+        totsecs = watch.Elapsed.TotalSeconds
+        LOG.WriteToArchiveLog("*** TOTAL TIME FOR QUICK Archive: " + totsecs.ToString + " Seconds")
+
     End Sub
 
     Private Sub ArchiveALLToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ArchiveALLToolStripMenuItem.Click
@@ -13528,10 +13536,16 @@ SkipIT:
     End Sub
 
     Private Sub ContentNoLIstenerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContentNoLIstenerToolStripMenuItem.Click
+
+        Dim watch As Stopwatch = Stopwatch.StartNew()
         TempDisableDirListener = True
         Dim PerformQUickArchive As Boolean = False
         BeginContentArchive(PerformQUickArchive)
         TempDisableDirListener = False
+        watch.Stop()
+        Dim totsecs As Decimal = 0
+        totsecs = watch.Elapsed.TotalSeconds
+        LOG.WriteToArchiveLog("*** TOTAL TIME FOR FULL SCAN Archive: " + totsecs.ToString + " Seconds")
 
     End Sub
 
@@ -13703,6 +13717,8 @@ SkipIT:
             Return
         End If
 
+        Dim watch As Stopwatch = Stopwatch.StartNew()
+
         SB.Text = "CONTENT ARCHIVE LAUNCHED - Full ReInventory"
         TempDisableDirListener = True
         '------------------------------------------------
@@ -13721,6 +13737,13 @@ SkipIT:
         '------------------------------------------------
         TempDisableDirListener = False
         SB.Text = "CONTENT ARCHIVE COMPLETED"
+
+        watch.Stop()
+        Dim totsecs As Decimal = 0
+        totsecs = watch.Elapsed.TotalSeconds
+        LOG.WriteToArchiveLog("*** TOTAL TIME FOR FULL INVENTORY: " + totsecs.ToString + " Seconds")
+
+
     End Sub
 
     Private Sub ArchiveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ArchiveToolStripMenuItem.Click
