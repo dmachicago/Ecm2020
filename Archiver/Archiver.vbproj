@@ -62,7 +62,7 @@
     <WebPage>Publish.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>130</ApplicationRevision>
+    <ApplicationRevision>131</ApplicationRevision>
     <ApplicationVersion>4.6.2.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -332,6 +332,7 @@
     <Compile Include="app_code\clsLogging.vb" />
     <Compile Include="app_code\clsMP3.vb" />
     <Compile Include="app_code\clsMsWord.vb" />
+    <Compile Include="app_code\clsNetworkFileListener.vb" />
     <Compile Include="app_code\clsProcess.vb" />
     <Compile Include="app_code\clsPROCESSFILEAS.vb" />
     <Compile Include="app_code\clsPst.vb" />
@@ -359,6 +360,12 @@
     <Compile Include="app_code\clsWMAID3Tag.vb" />
     <Compile Include="app_code\clsZIPDATASOURCE.vb" />
     <Compile Include="app_code\clsZipFiles.vb" />
+    <Compile Include="frmListenerTest.Designer.vb">
+      <DependentUpon>frmListenerTest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmListenerTest.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="LiteDB.vb" />
     <Compile Include="CodeFile1.vb" />
     <Compile Include="CodeFile2.vb" />
@@ -611,6 +618,9 @@
     <EmbeddedResource Include="frmFti.resx">
       <DependentUpon>frmFti.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmListenerTest.resx">
+      <DependentUpon>frmListenerTest.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmNotifyBatchOCR.resx">
       <DependentUpon>frmNotifyBatchOCR.vb</DependentUpon>
     </EmbeddedResource>
@@ -745,6 +755,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="_FTI\spFtiStatus.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="_SQL_Query\CheckIfExistsStatements.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="_SQL_Query\DropAllAutoGenStatistics.sql">
@@ -1338,82 +1351,82 @@
   <ItemGroup>
     <PublishFile Include="Microsoft.SqlServer.Diagnostics.STrace">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.SqlServer.Management.SmoMetadataProvider">
       <Visible>False</Visible>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.SqlServer.Management.SqlParser">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.SqlServer.ServiceBrokerEnum">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.SqlServer.Smo">
       <Visible>False</Visible>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.SqlServer.SqlClrProvider">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.Vbe.Interop">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="stdole">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

@@ -13836,6 +13836,10 @@ SkipIT:
 
         MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ")
     End Sub
+
+    Private Sub NetworkListenerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NetworkListenerToolStripMenuItem.Click
+        FrmListenerTest.Show()
+    End Sub
 End Class
 
 <System.Runtime.Serialization.DataContract()>
