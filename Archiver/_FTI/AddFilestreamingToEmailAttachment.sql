@@ -1,4 +1,8 @@
 
+EXEC dbo.sp_fulltext_table @tabname=N'[dbo].[DataSource]', @action=N'deactivate'
+GO
+
+
 ALTER TABLE Datasource ALTER COLUMN RowGuid Add ROWGUIDCOL 
 go
 ALTER TABLE EmailAttachment ALTER COLUMN RowGuid Add ROWGUIDCOL 
@@ -36,3 +40,5 @@ go
 /* drop the xx<ColumnName> column */
 ALTER TABLE EmailAttachment DROP COLUMN AttachmentBak
 
+EXEC dbo.sp_fulltext_table @tabname=N'[dbo].[DataSource]', @action=N'activate'
+GO

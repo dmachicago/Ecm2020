@@ -28,6 +28,7 @@ Partial Class FrmListenerTest
         Me.lbOutput = New System.Windows.Forms.ListBox()
         Me.ckStop = New System.Windows.Forms.CheckBox()
         Me.SB = New System.Windows.Forms.TextBox()
+        Me.btnViewLog = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'txtDir
@@ -36,8 +37,7 @@ Partial Class FrmListenerTest
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtDir.Location = New System.Drawing.Point(37, 76)
         Me.txtDir.Name = "txtDir"
-        Me.txtDir.ReadOnly = True
-        Me.txtDir.Size = New System.Drawing.Size(700, 22)
+        Me.txtDir.Size = New System.Drawing.Size(676, 22)
         Me.txtDir.TabIndex = 0
         '
         'Button1
@@ -52,7 +52,7 @@ Partial Class FrmListenerTest
         'Button2
         '
         Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button2.Location = New System.Drawing.Point(614, 35)
+        Me.Button2.Location = New System.Drawing.Point(166, 35)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(123, 35)
         Me.Button2.TabIndex = 2
@@ -68,13 +68,13 @@ Partial Class FrmListenerTest
         Me.lbOutput.ItemHeight = 16
         Me.lbOutput.Location = New System.Drawing.Point(37, 155)
         Me.lbOutput.Name = "lbOutput"
-        Me.lbOutput.Size = New System.Drawing.Size(700, 372)
+        Me.lbOutput.Size = New System.Drawing.Size(676, 372)
         Me.lbOutput.TabIndex = 4
         '
         'ckStop
         '
         Me.ckStop.AutoSize = True
-        Me.ckStop.Location = New System.Drawing.Point(280, 43)
+        Me.ckStop.Location = New System.Drawing.Point(424, 43)
         Me.ckStop.Name = "ckStop"
         Me.ckStop.Size = New System.Drawing.Size(178, 21)
         Me.ckStop.TabIndex = 5
@@ -88,14 +88,25 @@ Partial Class FrmListenerTest
         Me.SB.Location = New System.Drawing.Point(37, 127)
         Me.SB.Name = "SB"
         Me.SB.ReadOnly = True
-        Me.SB.Size = New System.Drawing.Size(700, 22)
+        Me.SB.Size = New System.Drawing.Size(676, 22)
         Me.SB.TabIndex = 6
+        '
+        'btnViewLog
+        '
+        Me.btnViewLog.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnViewLog.Location = New System.Drawing.Point(295, 35)
+        Me.btnViewLog.Name = "btnViewLog"
+        Me.btnViewLog.Size = New System.Drawing.Size(123, 35)
+        Me.btnViewLog.TabIndex = 7
+        Me.btnViewLog.Text = "View Capture"
+        Me.btnViewLog.UseVisualStyleBackColor = True
         '
         'FrmListenerTest
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(758, 565)
+        Me.Controls.Add(Me.btnViewLog)
         Me.Controls.Add(Me.SB)
         Me.Controls.Add(Me.ckStop)
         Me.Controls.Add(Me.lbOutput)
@@ -115,4 +126,5 @@ Partial Class FrmListenerTest
     Friend WithEvents lbOutput As ListBox
     Friend WithEvents ckStop As CheckBox
     Friend WithEvents SB As TextBox
+    Friend WithEvents btnViewLog As Button
 End Class

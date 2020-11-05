@@ -5,6 +5,11 @@ go
 ALTER TABLE Datasource ALTER COLUMN RowGuid Add ROWGUIDCOL 
 go
 
+
+EXEC dbo.sp_fulltext_table @tabname=N'[dbo].[DataSource]', @action=N'deactivate'
+GO
+
+
 --A Directory MUST exist for storing files into from the file stream
 --Modify the FILENAME as needed prior to running this command.
 --Additionally, make certain the file group exists.
@@ -51,5 +56,9 @@ ALTER TABLE DataSOurce DROP COLUMN SourceImageBAK
 go
 --Repopulate the NEW index pointing to the FileStream data
 ALTER FULLTEXT INDEX ON DataSource START FULL POPULATION;  
+
+EXEC dbo.sp_fulltext_table @tabname=N'[dbo].[DataSource]', @action=N'activate'
+GO
+
 
 -- exec spFtiStatus

@@ -29,7 +29,7 @@
     <ProductName>ECMListener</ProductName>
     <PublisherName>ECMLibrary</PublisherName>
     <SuiteName>ECM</SuiteName>
-    <ApplicationRevision>41</ApplicationRevision>
+    <ApplicationRevision>46</ApplicationRevision>
     <ApplicationVersion>2.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>

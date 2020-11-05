@@ -107,9 +107,27 @@ Public Class FrmListenerTest
             End Using
 
         Catch ex As Exception
+            MessageBox.Show("Could not store data into file " & FQN & ". Program terminating.", "Error", MessageBoxButtons.OK)
+
+        End Try
+
+    End Sub
+
+    Private Sub btnViewLog_Click(sender As Object, e As EventArgs) Handles btnViewLog.Click
+
+        Dim FQN As String = "C:\_ChangeLogs\FileChanges.dat"
+        Try
+            lbOutput.Items.Clear()
+            Dim reader As StreamReader = My.Computer.FileSystem.OpenTextFileReader(FQN)
+            Dim a As String
+            Do
+                a = reader.ReadLine
+                lbOutput.Items.Add(a)
+            Loop Until a Is Nothing
+            reader.Close()
+        Catch ex As Exception
             MessageBox.Show("Could not store data into file " & FQN &
                       ". Program terminating.", "Error", MessageBoxButtons.OK)
-
         End Try
 
     End Sub

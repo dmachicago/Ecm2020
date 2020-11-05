@@ -16,9 +16,21 @@ using System.Runtime.InteropServices;
 
 namespace DirListen
 {
+    /// <summary>
+    /// FSW will work with network drives but since this is a service you 
+    /// must make sure your service has network access, by default it won't.  
+    /// Thus you can't use a FSW in a service to monitor network drives, by 
+    /// default.  Getting over that, also be aware that mapped drives are per
+    /// user.Therefore any mapped drives you use must be created inside the
+    /// service.
+    /// 
+    /// Finally note that FSW doesn't work with all network drives.  Even when 
+    /// it does you are not guaranteed to get all change notifications.It
+    /// depends upon the remote server.
+    /// </summary>
     class DirListener
     {
-
+    
         [DllImport("kernel32.dll")]
         static extern IntPtr GetConsoleWindow();
 
@@ -156,36 +168,43 @@ namespace DirListen
             try
             {
                 string path = dirs[0].Trim();
+                //path = "@" + path;
                 string IncludeSubs = dirs[1].ToUpper().Trim();
                 LL = 300;
                 if (IncludeSubs.Equals("N")){
-                    FileSystemWatcher fileSystemWatcher = new FileSystemWatcher
+                    FileSystemWatcher watcher = new FileSystemWatcher
                     {
                         IncludeSubdirectories = false,
                         Path = path
                     };
-                    fileSystemWatcher.Created += FileSystemWatcher_Created;
-                    fileSystemWatcher.Renamed += FileSystemWatcher_Renamed;
-                    fileSystemWatcher.Deleted += FileSystemWatcher_Deleted;
-                    fileSystemWatcher.Changed += FileSystemWatcher_Changed;
+                    /* Watch for changes in LastAccess and LastWrite times, and
+                        the renaming of files or directories. */
+                    watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
+                       | NotifyFilters.FileName | NotifyFilters.DirectoryName | NotifyFilters.Size;
+
+                    watcher.Created += FileSystemWatcher_Created;
+                    watcher.Renamed += FileSystemWatcher_Renamed;
+                    watcher.Deleted += FileSystemWatcher_Deleted;
+                    watcher.Changed += FileSystemWatcher_Changed;
+                    
                     LL = 302;
-                    fileSystemWatcher.EnableRaisingEvents = true;
-                    fileSystemWatcher.IncludeSubdirectories = true;
+                    watcher.EnableRaisingEvents = true;
+                    watcher.IncludeSubdirectories = true;
                     LL = 305;
                 }
                 else {
-                    FileSystemWatcher fileSystemWatcher = new FileSystemWatcher
+                    FileSystemWatcher watcher = new FileSystemWatcher
                     {
                         IncludeSubdirectories = true,
                         Path = path
                     };
-                    fileSystemWatcher.Created += FileSystemWatcher_Created;
-                    fileSystemWatcher.Renamed += FileSystemWatcher_Renamed;
-                    fileSystemWatcher.Deleted += FileSystemWatcher_Deleted;
-                    fileSystemWatcher.Changed += FileSystemWatcher_Changed;
+                    watcher.Created += FileSystemWatcher_Created;
+                    watcher.Renamed += FileSystemWatcher_Renamed;
+                    watcher.Deleted += FileSystemWatcher_Deleted;
+                    watcher.Changed += FileSystemWatcher_Changed;
                     LL = 302;
-                    fileSystemWatcher.EnableRaisingEvents = true;
-                    fileSystemWatcher.IncludeSubdirectories = true;
+                    watcher.EnableRaisingEvents = true;
+                    watcher.IncludeSubdirectories = true;
                     LL = 305;
                 }                
                 LL = 301;                
@@ -203,8 +222,8 @@ namespace DirListen
                 LL = 401;
                 string dir = System.IO.Path.GetDirectoryName(e.FullPath);
                 LL = 402;
-                ArchiveListener.UTIL.LogMsg("U", e.FullPath, dir);
-                Console.WriteLine("U| {0}", e.Name);
+                ArchiveListener.UTIL.LogMsg("U", e.FullPath, dir, "");
+                Console.WriteLine("U|{0}|{1}", e.Name,"");
             }
             catch (Exception ex)
             {
@@ -220,32 +239,35 @@ namespace DirListen
                 LL = 401;
                 string dir = System.IO.Path.GetDirectoryName(e.FullPath);
                 LL = 402;
-                ArchiveListener.UTIL.LogMsg("C", e.FullPath, dir);
+                ArchiveListener.UTIL.LogMsg("C", e.FullPath, dir,"");
                 LL = 403;
-                Console.WriteLine("C| {0}", e.Name);
+                Console.WriteLine("C| {0}|{1}", e.Name,"");
             }
             catch (Exception ex)
             {
                 ArchiveListener.UTIL.LogError("ERROR Created: " + LL.ToString() + ex.Message);
             }
         }
-        private static void FileSystemWatcher_Renamed(object sender, FileSystemEventArgs e)
+
+        private static void FileSystemWatcher_Renamed(object source, RenamedEventArgs e)
         {
-            LL = 500;
+            // Specify what is done when a file is renamed.
             try
             {
+                //string OldName = e.Name.
                 LL = 501;
                 string dir = System.IO.Path.GetDirectoryName(e.FullPath);
                 LL = 502;
-                ArchiveListener.UTIL.LogMsg("R", e.FullPath, dir);
+                ArchiveListener.UTIL.LogMsg("R", e.FullPath, dir, e.OldFullPath);
                 LL = 503;
-                Console.WriteLine("R| {0}", e.Name);
-            }            
+                Console.WriteLine("R| {0}|{1}", e.Name, e.OldFullPath);
+            }
             catch (Exception ex)
             {
                 ArchiveListener.UTIL.LogError("ERROR Rename: " + LL.ToString() + ex.Message);
             }
         }
+
         private static void FileSystemWatcher_Deleted(object sender, FileSystemEventArgs e)
         {
             LL = 600;
@@ -254,9 +276,9 @@ namespace DirListen
                 LL = 601;
                 string dir = System.IO.Path.GetDirectoryName(e.FullPath);
                 LL = 602;
-                ArchiveListener.UTIL.LogMsg("D", e.FullPath, dir);
+                ArchiveListener.UTIL.LogMsg("D", e.FullPath, dir,"");
                 LL = 603;
-                Console.WriteLine("D| {0}", e.Name);
+                Console.WriteLine("D| {0}|{1}", e.Name,"");
             }
             catch (Exception ex)
             {
