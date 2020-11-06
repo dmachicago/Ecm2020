@@ -16,7 +16,6 @@ Public Class clsDbLocal : Implements IDisposable
     Public bSQLiteCOnnected As Boolean = False
     Public SQLiteCONN As New SQLiteConnection()
 
-
     Private ContactCS As String = ""
     Private ZipCS As String = ""
     Private FileCS As String = ""

@@ -40,6 +40,7 @@ Partial Class frmFti
         Me.btnFindItem = New System.Windows.Forms.Button()
         Me.txtMaxNbr = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.btnSummarize = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'lbFtiLogs
@@ -222,11 +223,21 @@ Partial Class frmFti
         Me.Label2.TabIndex = 17
         Me.Label2.Text = "Max #:"
         '
+        'btnSummarize
+        '
+        Me.btnSummarize.Location = New System.Drawing.Point(354, 6)
+        Me.btnSummarize.Name = "btnSummarize"
+        Me.btnSummarize.Size = New System.Drawing.Size(204, 32)
+        Me.btnSummarize.TabIndex = 18
+        Me.btnSummarize.Text = "Summarize"
+        Me.btnSummarize.UseVisualStyleBackColor = True
+        '
         'frmFti
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1019, 552)
+        Me.Controls.Add(Me.btnSummarize)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtMaxNbr)
         Me.Controls.Add(Me.btnFindItem)
@@ -270,4 +281,5 @@ Partial Class frmFti
     Friend WithEvents btnFindItem As Button
     Friend WithEvents txtMaxNbr As TextBox
     Friend WithEvents Label2 As Label
+    Friend WithEvents btnSummarize As Button
 End Class

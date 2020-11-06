@@ -14495,6 +14495,38 @@ REDO:
 
     End Function
 
+    Function getSourceNameByGuid(ByVal RowGuid As String) As String
+
+        Dim SourceName As String = ""
+        Dim sGuid As String = ""
+        Try
+            Dim S As String = "Select SourceName FROM DataSource where RowGuid = '" + RowGuid + "' "
+            CloseConn()
+            CkConn()
+            Dim rsData As SqlDataReader = Nothing
+            Dim b As Boolean = False
+            Dim CS As String = getRepoConnStr()
+            Dim CONN As New SqlConnection(CS)
+            Using CONN
+                CONN.Open()
+                Dim command As New SqlCommand(S, CONN)
+                Using command
+                    Using rsData
+                        rsData = command.ExecuteReader()
+                        If rsData.HasRows Then
+                            rsData.Read()
+                            SourceName = rsData.GetString(0)
+                        End If
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("clsDatabaseARCH : getSourceNameByGuid : 2174 : " + ex.Message)
+        End Try
+        Return SourceName
+
+    End Function
+
     Sub LoadEntryIdByUserID(ByRef L As SortedList)
 
         Dim S As String = "Select EmailIdentifier from email where UserID = '" + gCurrUserGuidID + "' "
@@ -22264,7 +22296,7 @@ P1:
         MySql = "select distinct lower(ExtCode), lower(ProcessExtCode) from ProcessFileAs"
         DICT = BuildDictionary(MySql)
 
-        MySql = "select sourceGuid,  lower([OriginalFileType]), lower([SourceTypeCode]) from DataSource where FQN is not null and ltrim(rtrim(fqn)) <> '' "
+        MySql = "select sourceGuid, lower([OriginalFileType]), lower([SourceTypeCode]) from DataSource where FQN is not null and ltrim(rtrim(fqn)) <> '' "
         Dim DS As DataSet = getDataSet(MySql)
 
         K = DS.Tables(0).Rows.Count

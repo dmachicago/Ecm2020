@@ -11010,8 +11010,12 @@ GoodLogin:
         SB.Text = "Goodbye...."
 
         LoginForm1.Close()
+        Try
+            Application.Exit()
+        Catch ex As Exception
+            MessageBox.Show("Could not exist the application, please do a manual shutdown.")
+        End Try
 
-        Application.Exit()
 
     End Sub
 
@@ -13839,6 +13843,41 @@ SkipIT:
 
     Private Sub NetworkListenerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NetworkListenerToolStripMenuItem.Click
         FrmListenerTest.Show()
+    End Sub
+
+    Private Sub SQLiteDBConnectToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SQLiteDBConnectToolStripMenuItem.Click
+
+        Dim dlg As New FolderBrowserDialog
+        Dim slDatabase As String = ""
+        Dim SQLiteCONN As New SQLiteConnection()
+        Dim result As DialogResult = OpenFileDialog1.ShowDialog()
+
+        If result = Windows.Forms.DialogResult.OK Then
+            slDatabase = OpenFileDialog1.FileName
+        End If
+
+        If slDatabase.Length.Equals(0) Then
+            MessageBox.Show("Cancelled, returning.")
+            Return
+        End If
+
+
+        Try
+            If Not File.Exists(slDatabase) Then
+                MessageBox.Show("SQLite DB MISSING: " + slDatabase)
+                Return
+            End If
+
+            cs = "data source=" + slDatabase
+            gLocalDBCS = cs
+            SQLiteCONN.ConnectionString = cs
+            SQLiteCONN.Open()
+            MessageBox.Show("SQLite Connected!!")
+        Catch ex As Exception
+            Dim LG As New clsLogging
+            MessageBox.Show("ERROR LOCALDB setSLConn: " + ex.Message)
+        End Try
+
     End Sub
 End Class
 
