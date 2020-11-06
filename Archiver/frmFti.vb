@@ -3,6 +3,7 @@ Imports System.IO
 
 Public Class frmFti
 
+    Dim CancelNow As Boolean = False
     Dim LOG As New clsLogging
     Dim DBArch As New clsDatabaseARCH
     Dim FTIAnalysisDB As String = System.Configuration.ConfigurationManager.AppSettings("FTIAnalysisDB")
@@ -48,6 +49,11 @@ Public Class frmFti
 
     Private Sub btnScanGuids_Click(sender As Object, e As EventArgs) Handles btnScanGuids.Click
 
+        If lbFtiLogs.SelectedItems.Count.Equals(0) Then
+            MessageBox.Show("Please select at least one file to search, returning...")
+            Return
+        End If
+
         lbOutput.Items.Clear()
 
         Dim FQN As String = ""
@@ -56,7 +62,8 @@ Public Class frmFti
         Dim IFound As Integer = 0
 
         Dim MaxCnt As Integer = Convert.ToInt32(txtMaxNbr.Text)
-
+        SB.Text = "Starting Search"
+        Dim K As Integer = 0
         For Each S As String In lbFtiLogs.SelectedItems
             FQN = FTILogs + "\" + S
             Dim reader As StreamReader = My.Computer.FileSystem.OpenTextFileReader(FQN)
@@ -65,17 +72,18 @@ Public Class frmFti
             Me.Cursor = Cursors.WaitCursor
             Do
                 Application.DoEvents()
-                I += 1
+                K += 1
                 If I >= MaxCnt Then
                     Exit Do
                 End If
-                If I Mod 100 = 0 Then
-                    SB.Text = I.ToString
+                If K Mod 5 = 0 Then
+                    SB.Text = K.ToString
                     SB.Refresh()
                 End If
                 line = reader.ReadLine
                 If Not IsNothing(line) Then
                     If line.Contains(TgtText) Then
+                        I += 1
                         lbOutput.Items.Add(line)
                         IFound += 1
                         lblMsg.Text = "Items Found: " + IFound.ToString
@@ -85,10 +93,8 @@ Public Class frmFti
             Me.Cursor = Cursors.Default
             reader.Close()
             reader.Dispose()
-            SB.Text = ""
-            SBFqn.Text = ""
         Next
-
+        SBFqn.Text = "Search Complete..."
     End Sub
 
     Function getSourceKey(line As String) As String
@@ -123,7 +129,7 @@ Public Class frmFti
 
         If line.Contains("Error '") Then
             ErrType = "Error"
-        ElseIf line.Contains("Warning: '") Then
+        ElseIf line.Contains("Warning:") Then
             ErrType = "Warning"
         Else
             ErrType = ""
@@ -199,22 +205,38 @@ Public Class frmFti
         Dim B As Boolean = True
         Dim iCnt As Int64 = 0
 
+        Dim iTotal As Int64 = 0
+
+        For Each LogFile As String In lbFtiLogs.SelectedItems
+            FQN = FTILogs + "\" + LogFile
+            SBFqn.Text = "Counting Rows: " + LogFile
+            iTotal += File.ReadAllLines(FQN).Length
+        Next
+        PB.Maximum = iTotal
         EmptyTables()
 
         For Each LogFile As String In lbFtiLogs.SelectedItems
             FQN = FTILogs + "\" + LogFile
             SBFqn.Text = LogFile
 
+            Dim AR() As String = Nothing
+            Dim ReturnStr As String = ""
+            Dim TypeCode As String = ""
+            Dim OriginalExt As String = ""
             Using reader As StreamReader = My.Computer.FileSystem.OpenTextFileReader(FQN)
                 Do
                     iCnt += 1
-                    If iCnt Mod 100 = 0 Then
-                        SB.Text = "Lines Processed: " + iCnt.ToString
+                    If iCnt Mod 5 = 0 Then
+                        SB.Text = "Lines Processed: " + iCnt.ToString + " of " + iTotal.ToString
+                        PB.Increment(5)
+                        'PB.ref
                     End If
                     Application.DoEvents()
                     line = reader.ReadLine
                     If Not IsNothing(line) Then
                         '******************************
+                        TypeCode = ""
+                        OriginalExt = ""
                         ErrorMsg = getErrorMsg(line)
                         SourceKey = getSourceKey(line)
                         TypeErr = getErrorType(line)
@@ -222,19 +244,26 @@ Public Class frmFti
                         '******************************
                         If ErrorMsg.Trim.Length > 0 And SourceKey.Trim.Length > 0 And TypeErr.Trim.Length > 0 And ErrTbl.Trim.Length > 0 Then
                             If Not SourceKeys.ContainsKey(SourceKey) Then
-                                SourceName = DBArch.getSourceNameByGuid(SourceKey)
-                                If SourceName.Trim.Length.Equals(0) Then
+                                ReturnStr = DBArch.getSourceNameByGuid(SourceKey)
+                                If ReturnStr.Trim.Length.Equals(0) Then
                                     SourceName = "Not Found"
+                                    TypeCode = "?"
+                                    OriginalExt = "?"
+                                Else
+                                    AR = ReturnStr.Split("|")
+                                    SourceName = AR(0)
+                                    TypeCode = AR(1)
+                                    OriginalExt = AR(2)
                                 End If
                                 If SourceKey.Trim.Length > 0 Then
                                     SourceKeys.Add(SourceKey, SourceName)
                                 End If
-                                ErrRowNbr = saveFtiErr(ErrorMsg, TypeErr, ErrTbl, 0)
-                                saveFtiSourceGuid(ErrRowNbr, SourceKey, SourceName, 0)
+                                ErrRowNbr = saveFtiErr(ErrorMsg, TypeErr, ErrTbl, 1)
+                                saveFtiSourceGuid(ErrRowNbr, SourceKey, SourceName, 0, TypeCode, OriginalExt)
                             Else
                                 SourceName = SourceKeys(SourceKey)
                                 ErrRowNbr = saveFtiErr(ErrorMsg, TypeErr, ErrTbl, 1)
-                                saveFtiSourceGuid(ErrRowNbr, SourceKey, SourceName, 1)
+                                saveFtiSourceGuid(ErrRowNbr, SourceKey, SourceName, 1, TypeCode, OriginalExt)
                             End If
 
                             If Not SourceKeyCnt.ContainsKey(SourceKey) Then
@@ -246,66 +275,66 @@ Public Class frmFti
                             End If
                         End If
                     End If
-
-                Loop Until line Is Nothing
+                    Application.DoEvents()
+                Loop Until line Is Nothing Or CancelNow.Equals(True)
             End Using
+            If CancelNow.Equals(True) Then
+                Exit For
+            End If
         Next
+        CancelNow = False
         SBFqn.Text = "FINISHED..."
     End Sub
 
-    Function saveFtiSourceGuid(ErrRowNbr As Int64, TableKey As String, SourceName As String, cnt As Integer) As Boolean
+    Function saveFtiSourceGuid(ErrRowNbr As Int64, TableKey As String, SourceName As String, cnt As Integer, TypeCode As String, OriginalExt As String) As Boolean
 
         Dim B As Boolean = True
         'Dim FtiCONN As New SQLiteConnection()
         Dim CS As String = "data source= " + FTIAnalysisDB
         Dim MySql As String = ""
+        Dim iCnt As Integer = 0
 
         SetDBConn()
 
-        If cnt.Equals(0) Then
-            Try
-                MySql = "Insert or ignore into KeyTable (ErrRowNbr, TableKey, SourceName, OccrCnt) values (@ErrRowNbr, @TableKey, @SourceName, @OccrCnt)"
-                Using FtiCONN
-                    Dim CMD As New SQLiteCommand(MySql, FtiCONN)
-                    Try
-                        CMD.Parameters.AddWithValue("@ErrRowNbr", ErrRowNbr)
-                        CMD.Parameters.AddWithValue("@TableKey", TableKey)
-                        CMD.Parameters.AddWithValue("@SourceName", SourceName)
-                        CMD.Parameters.AddWithValue("@OccrCnt", cnt)
-                        CMD.ExecuteNonQuery()
-                        B = True
-                    Catch ex As Exception
-                        B = False
-                        LOG.WriteToArchiveLog("ERROR: saveFtiSourceGuid 00 - " + ex.Message + vbCrLf + MySql)
-                    Finally
-                        CMD.Dispose()
-                        GC.Collect()
-                        GC.WaitForPendingFinalizers()
-                    End Try
-                End Using
-            Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR: saveFtiSourceGuid 01 - " + ex.Message)
-                B = False
-            End Try
-        Else
-            MySql = "update KeyTable set OccrCnt = OccrCnt + 1 where TableKey = '" + TableKey + "'"
+        Try
+            MySql = "Insert or ignore into KeyTable (ErrRowNbr, TableKey, SourceName, OccrCnt, TypeCode, OriginalExt) values (@ErrRowNbr, @TableKey, @SourceName, @OccrCnt, @TypeCode, @OriginalExt)"
             Using FtiCONN
-                Dim CMD As New SQLiteCommand(MySql, FtiCONN)
+
+                Dim CMD As New SQLiteCommand(FtiCONN)
+                CMD.Parameters.AddWithValue("@ErrRowNbr", ErrRowNbr)
+                CMD.Parameters.AddWithValue("@TableKey", TableKey)
+                CMD.Parameters.AddWithValue("@SourceName", SourceName)
+                CMD.Parameters.AddWithValue("@TypeCode", TypeCode)
+                CMD.Parameters.AddWithValue("@OriginalExt", OriginalExt)
+
+                CMD.CommandText = "select count(*) as CNT from KeyTable where TableKey = @TableKey "
+                iCnt = Convert.ToInt32(CMD.ExecuteScalar())
+
+                If iCnt > 0 Then
+                    MySql = "update KeyTable set OccrCnt = OccrCnt+1 where TableKey = @TableKey"
+                Else
+                    cnt = 1
+                    CMD.Parameters.AddWithValue("@OccrCnt", cnt)
+                    MySql = "Insert into KeyTable (ErrRowNbr, TableKey, SourceName, OccrCnt,TypeCode, OriginalExt) values (@ErrRowNbr, @TableKey, @SourceName, @OccrCnt, @TypeCode, @OriginalExt)"
+                End If
+
                 Try
+                    CMD.CommandText = MySql
                     CMD.ExecuteNonQuery()
                     B = True
                 Catch ex As Exception
                     B = False
-                    LOG.WriteToArchiveLog("ERROR: saveFtiSourceGuid 11 - " + ex.Message + vbCrLf + MySql)
+                    LOG.WriteToArchiveLog("ERROR: saveFtiSourceGuid 00 - " + ex.Message + vbCrLf + MySql)
                 Finally
                     CMD.Dispose()
                     GC.Collect()
                     GC.WaitForPendingFinalizers()
                 End Try
             End Using
-        End If
-
-
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR: saveFtiSourceGuid 01 - " + ex.Message)
+            B = False
+        End Try
 
         Return B
     End Function
@@ -338,7 +367,7 @@ Public Class frmFti
             End Using
         Catch ex As Exception
             LOG.WriteToArchiveLog("ERROR SaveErr 00 : " + ex.Message)
-            End Try
+        End Try
 
     End Sub
 
@@ -347,60 +376,51 @@ Public Class frmFti
         Dim ErrRowNbr As Int64 = -1
         Dim CS As String = "data source= " + FTIAnalysisDB
         Dim MySql As String = "Insert or ignore into Errors (ErrorMsg, TypeErr, ErrTbl) values (@ErrorMsg, @TypeErr, @ErrTbl)"
+        Dim iCnt As Integer = 0
         'FtiCONN.Open()
         SetDBConn()
 
-        If OccrCnt.Equals(0) Then
-            MySql = "Insert or ignore into Errors (ErrorMsg, TypeErr, ErrTbl) values (@ErrorMsg, @TypeErr, @ErrTbl)"
-            Try
-                Using FtiCONN
-                    Dim CMD As New SQLiteCommand(MySql, FtiCONN)
-                    Try
-                        CMD.Parameters.AddWithValue("@ErrorMsg", ErrorMsg)
-                        CMD.Parameters.AddWithValue("@TypeErr", TypeErr)
-                        CMD.Parameters.AddWithValue("@ErrTbl", ErrTbl)
+        MySql = ""
+        Try
+            Using FtiCONN
+                Dim CMD As New SQLiteCommand(FtiCONN)
+                Try
+                    CMD.Parameters.AddWithValue("@ErrorMsg", ErrorMsg)
+                    CMD.Parameters.AddWithValue("@TypeErr", TypeErr)
+                    CMD.Parameters.AddWithValue("@ErrTbl", ErrTbl)
+
+                    CMD.CommandText = "select count(*) as CNT from Errors where ErrorMsg = @ErrorMsg and TypeErr = @TypeErr and ErrTbl = @ErrTbl "
+                    iCnt = Convert.ToInt64(CMD.ExecuteScalar())
+                    If iCnt.Equals(0) Then
+                        MySql = "Insert into Errors (ErrorMsg, TypeErr, ErrTbl, OccrCnt) values (@ErrorMsg, @TypeErr, @ErrTbl, 1)"
+                        CMD.CommandText = MySql
                         CMD.ExecuteNonQuery()
 
                         CMD.CommandText = "select last_insert_rowid()"
                         ErrRowNbr = Convert.ToInt64(CMD.ExecuteScalar())
-
-                    Catch ex As Exception
-                        LOG.WriteToArchiveLog("ERROR: saveFtiErr 04 - " + ex.Message + vbCrLf + MySql)
-                        bConnSet = False
-                    Finally
-                        CMD.Dispose()
-                        GC.Collect()
-                        GC.WaitForPendingFinalizers()
-                    End Try
-                End Using
-            Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR SaveErr 00 : " + ex.Message)
-            End Try
-        Else
-            MySql = "Update Errors set OccrCnt = OccrCnt+1 where ErrorMsg = @ErrorMsg and TypeErr = @TypeErr and ErrTbl = @ErrTbl "
-            Try
-                Using FtiCONN
-                    Dim CMD As New SQLiteCommand(MySql, FtiCONN)
-                    Try
-                        CMD.Parameters.AddWithValue("@ErrorMsg", ErrorMsg)
-                        CMD.Parameters.AddWithValue("@TypeErr", TypeErr)
-                        CMD.Parameters.AddWithValue("@ErrTbl", ErrTbl)
+                    Else
+                        MySql = "Update Errors set OccrCnt = OccrCnt+1 where ErrorMsg = @ErrorMsg and TypeErr = @TypeErr and ErrTbl = @ErrTbl "
+                        CMD.CommandText = MySql
                         CMD.ExecuteNonQuery()
-                    Catch ex As Exception
-                        LOG.WriteToArchiveLog("ERROR: saveFtiErr 10 - " + ex.Message + vbCrLf + MySql)
-                        bConnSet = False
-                    Finally
-                        CMD.Dispose()
-                        GC.Collect()
-                        GC.WaitForPendingFinalizers()
-                    End Try
-                End Using
-                ErrRowNbr = 0
-            Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR SaveErr 01 : " + ex.Message)
-                ErrRowNbr = -1
-            End Try
-        End If
+
+                        CMD.CommandText = "select ErrRowNbr as CNT from Errors where ErrorMsg = @ErrorMsg and TypeErr = @TypeErr and ErrTbl = @ErrTbl "
+                        ErrRowNbr = Convert.ToInt64(CMD.ExecuteScalar())
+                        MySql = ""
+                    End If
+                Catch ex As Exception
+                    LOG.WriteToArchiveLog("ERROR: saveFtiErr 04 - " + ex.Message + vbCrLf + MySql)
+                    bConnSet = False
+                Finally
+                    CMD.Dispose()
+                    GC.Collect()
+                    GC.WaitForPendingFinalizers()
+                End Try
+            End Using
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR SaveErr 00 : " + ex.Message)
+        End Try
+
+
 
         Return ErrRowNbr
     End Function
@@ -520,6 +540,10 @@ Public Class frmFti
 
     Private Sub btnSummarize_Click(sender As Object, e As EventArgs) Handles btnSummarize.Click
         SummarizeLogs()
+    End Sub
+
+    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        CancelNow = True
     End Sub
 End Class
 

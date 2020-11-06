@@ -14496,11 +14496,11 @@ REDO:
     End Function
 
     Function getSourceNameByGuid(ByVal RowGuid As String) As String
-
+        Dim TD As New Dictionary(Of String, String)
         Dim SourceName As String = ""
         Dim sGuid As String = ""
         Try
-            Dim S As String = "Select SourceName FROM DataSource where RowGuid = '" + RowGuid + "' "
+            Dim S As String = "select top 1 SourceName, SourceTypeCode, OriginalFileType from DataSource where RowGuid = '" + RowGuid + "'"
             CloseConn()
             CkConn()
             Dim rsData As SqlDataReader = Nothing
@@ -14516,6 +14516,9 @@ REDO:
                         If rsData.HasRows Then
                             rsData.Read()
                             SourceName = rsData.GetString(0)
+                            SourceTypeCode = rsData.GetString(1)
+                            OriginalFileType = rsData.GetString(2)
+                            SourceName = SourceName + "|" + SourceTypeCode + "|" + OriginalFileType
                         End If
                     End Using
                 End Using

@@ -41,6 +41,8 @@ Partial Class frmFti
         Me.txtMaxNbr = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnSummarize = New System.Windows.Forms.Button()
+        Me.btnCancel = New System.Windows.Forms.Button()
+        Me.PB = New System.Windows.Forms.ProgressBar()
         Me.SuspendLayout()
         '
         'lbFtiLogs
@@ -112,7 +114,7 @@ Partial Class frmFti
         Me.lbOutput.Location = New System.Drawing.Point(354, 44)
         Me.lbOutput.Name = "lbOutput"
         Me.lbOutput.ScrollAlwaysVisible = True
-        Me.lbOutput.Size = New System.Drawing.Size(639, 308)
+        Me.lbOutput.Size = New System.Drawing.Size(639, 276)
         Me.lbOutput.TabIndex = 6
         '
         'btnSave
@@ -232,11 +234,31 @@ Partial Class frmFti
         Me.btnSummarize.Text = "Summarize"
         Me.btnSummarize.UseVisualStyleBackColor = True
         '
+        'btnCancel
+        '
+        Me.btnCancel.BackColor = System.Drawing.Color.MidnightBlue
+        Me.btnCancel.ForeColor = System.Drawing.Color.Yellow
+        Me.btnCancel.Location = New System.Drawing.Point(636, 6)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(75, 32)
+        Me.btnCancel.TabIndex = 19
+        Me.btnCancel.Text = "Cancel"
+        Me.btnCancel.UseVisualStyleBackColor = False
+        '
+        'PB
+        '
+        Me.PB.Location = New System.Drawing.Point(354, 327)
+        Me.PB.Name = "PB"
+        Me.PB.Size = New System.Drawing.Size(639, 15)
+        Me.PB.TabIndex = 20
+        '
         'frmFti
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1019, 552)
+        Me.Controls.Add(Me.PB)
+        Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnSummarize)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtMaxNbr)
@@ -282,4 +304,6 @@ Partial Class frmFti
     Friend WithEvents txtMaxNbr As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents btnSummarize As Button
+    Friend WithEvents btnCancel As Button
+    Friend WithEvents PB As ProgressBar
 End Class
