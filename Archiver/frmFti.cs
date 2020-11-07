@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using global::System.Data.SQLite;
 using global::System.IO;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
@@ -12,19 +15,32 @@ namespace EcmArchiver
         public frmFti()
         {
             InitializeComponent();
-            _lbFtiLogs.Name = "lbFtiLogs";
             _btnScanGuids.Name = "btnScanGuids";
             _btnSelectAll.Name = "btnSelectAll";
             _lbOutput.Name = "lbOutput";
             _Button1.Name = "Button1";
             _btnFindItem.Name = "btnFindItem";
+            _btnSummarize.Name = "btnSummarize";
+            _btnCancel.Name = "btnCancel";
         }
 
+        private bool CancelNow = false;
+        private clsLogging LOG = new clsLogging();
         private clsDatabaseARCH DBArch = new clsDatabaseARCH();
+        private string FTIAnalysisDB = System.Configuration.ConfigurationManager.AppSettings["FTIAnalysisDB"];
+        private Dictionary<long, string> DictSourceGuids = new Dictionary<long, string>();
+        private Dictionary<string, string> DictErrors = new Dictionary<string, string>();
+        private Dictionary<string, string> SourceKeys = new Dictionary<string, string>();
+        private Dictionary<string, int> SourceKeyCnt = new Dictionary<string, int>();
+        private SQLiteConnection FtiCONN = new SQLiteConnection();
 
         private void frmFti_Load(object sender, EventArgs e)
         {
             getFtiLogs();
+        }
+
+        public void AnalyzeSelectedLogs()
+        {
         }
 
         public void getFtiLogs()
@@ -50,12 +66,20 @@ namespace EcmArchiver
 
         private void btnScanGuids_Click(object sender, EventArgs e)
         {
+            if (lbFtiLogs.SelectedItems.Count.Equals(0))
+            {
+                MessageBox.Show("Please select at least one file to search, returning...");
+                return;
+            }
+
             lbOutput.Items.Clear();
             string FQN = "";
             string TgtText = txtSourceGuid.Text;
             int I = 0;
             int IFound = 0;
             int MaxCnt = Convert.ToInt32(txtMaxNbr.Text);
+            SB.Text = "Starting Search";
+            int K = 0;
             foreach (string S in lbFtiLogs.SelectedItems)
             {
                 FQN = modGlobals.FTILogs + @"\" + S;
@@ -66,15 +90,15 @@ namespace EcmArchiver
                 do
                 {
                     Application.DoEvents();
-                    I += 1;
+                    K += 1;
                     if (I >= MaxCnt)
                     {
                         break;
                     }
 
-                    if (I % 100 == 0)
+                    if (K % 5 == 0)
                     {
-                        SB.Text = I.ToString();
+                        SB.Text = K.ToString();
                         SB.Refresh();
                     }
 
@@ -83,6 +107,7 @@ namespace EcmArchiver
                     {
                         if (line.Contains(TgtText))
                         {
+                            I += 1;
                             lbOutput.Items.Add(line);
                             IFound += 1;
                             lblMsg.Text = "Items Found: " + IFound.ToString();
@@ -93,13 +118,408 @@ namespace EcmArchiver
                 Cursor = Cursors.Default;
                 reader.Close();
                 reader.Dispose();
-                SB.Text = "";
-                SBFqn.Text = "";
+            }
+
+            SBFqn.Text = "Search Complete...";
+        }
+
+        public string getSourceKey(string line)
+        {
+            string SourceKey = "";
+            int I = 0;
+            int J = 0;
+            try
+            {
+                I = line.IndexOf("full-text key value");
+                if (I > 0)
+                {
+                    I = line.IndexOf("'", I + 1);
+                    if (I >= 0)
+                    {
+                        J = line.IndexOf("'", I + 1);
+                        if (J >= 0)
+                        {
+                            SourceKey = line.Substring(I + 1, J - I - 1);
+                        }
+                        else
+                        {
+                            return "";
+                        }
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                }
+                else
+                {
+                    return "";
+                }
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("ERROR getSourceKey 00 : " + ex.Message + Constants.vbCrLf + line);
+            }
+
+            return SourceKey;
+        }
+
+        public string getErrorType(string line)
+        {
+            string ErrType = "";
+            if (line.Contains("Error '"))
+            {
+                ErrType = "Error";
+            }
+            else if (line.Contains("Warning:"))
+            {
+                ErrType = "Warning";
+            }
+            else
+            {
+                ErrType = "";
+            }
+
+            return ErrType;
+        }
+
+        public string getErrorMsg(string line)
+        {
+            string ErrMsg = "";
+            int I = 0;
+            int J = 0;
+            int len = 0;
+            int linelen = 0;
+            try
+            {
+                if (line.Contains("Error '"))
+                {
+                    I = line.IndexOf("Error '");
+                    I = line.IndexOf("'", I + 1);
+                    J = line.IndexOf(".'", I + 1);
+                    ErrMsg = line.Substring(I + 1, J - I - 1);
+                }
+                else if (line.Contains("Warning:"))
+                {
+                    // Warning: No appropriate filter was found during full-text index population for table or indexed view '[ECM.Library.FS].[dbo].[DataSource]' (table or indexed view ID '1634820886', database ID '9'), full-text key value 'DAF4BA6F-1BE7-4247-95B0-04F8D9F22A70'. Some columns of the row were not indexed.
+                    I = line.IndexOf("Warning:");
+                    I = line.IndexOf(":", I + 1);
+                    J = line.IndexOf("[", I + 1);
+                    len = J - I - 2;
+                    linelen = line.Length;
+                    ErrMsg = line.Substring(I + 1, len);
+                    ErrMsg = ErrMsg.Trim();
+                }
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("Error 00 getErrorMsg: " + ex.Message + Constants.vbCrLf + line);
+            }
+
+            return ErrMsg;
+        }
+
+        public string getErrorTbl(string line)
+        {
+            string ErrTbl = "";
+            int I = 0;
+            int J = 0;
+            try
+            {
+                if (line.Contains("indexed view '"))
+                {
+                    I = line.IndexOf("indexed view '");
+                    I = line.IndexOf("'", I + 1);
+                    J = line.IndexOf("'", I + 1);
+                    ErrTbl = line.Substring(I + 1, J - I - 1);
+                }
+                else if (line.Contains("Warning: '"))
+                {
+                    ErrTbl = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("Error 00 getErrorTbl: " + ex.Message + Constants.vbCrLf + line);
+            }
+
+            return ErrTbl;
+        }
+
+        public void SummarizeLogs()
+        {
+            var KT = new clsKeyTable();
+            var ER = new clsErrors();
+            string SourceName = "";
+            string FQN = "";
+            string line = "";
+            int idx = 0;
+            int I = 0;
+            int J = 0;
+            string ErrorMsg = "";
+            string TypeErr = "";
+            string SourceKey = "";
+            string ErrTbl = "";
+            long ErrRowNbr = 0L;
+            bool B = true;
+            long iCnt = 0L;
+            long iTotal = 0L;
+            foreach (string LogFile in lbFtiLogs.SelectedItems)
+            {
+                FQN = modGlobals.FTILogs + @"\" + LogFile;
+                SBFqn.Text = "Counting Rows: " + LogFile;
+                iTotal += File.ReadAllLines(FQN).Length;
+            }
+
+            PB.Maximum = (int)iTotal;
+            EmptyTables();
+            foreach (string LogFile in lbFtiLogs.SelectedItems)
+            {
+                FQN = modGlobals.FTILogs + @"\" + LogFile;
+                SBFqn.Text = LogFile;
+                string[] AR = null;
+                string ReturnStr = "";
+                string TypeCode = "";
+                string OriginalExt = "";
+                using (var reader = My.MyProject.Computer.FileSystem.OpenTextFileReader(FQN))
+                {
+                    do
+                    {
+                        iCnt += 1L;
+                        if (iCnt % 5L == 0L)
+                        {
+                            SB.Text = "Lines Processed: " + iCnt.ToString() + " of " + iTotal.ToString();
+                            PB.Increment(5);
+                            // PB.ref
+                        }
+
+                        Application.DoEvents();
+                        line = reader.ReadLine();
+                        if (!Information.IsNothing(line))
+                        {
+                            // ******************************
+                            TypeCode = "";
+                            OriginalExt = "";
+                            ErrorMsg = getErrorMsg(line);
+                            SourceKey = getSourceKey(line);
+                            TypeErr = getErrorType(line);
+                            ErrTbl = getErrorTbl(line);
+                            // ******************************
+                            if (ErrorMsg.Trim().Length > 0 & SourceKey.Trim().Length > 0 & TypeErr.Trim().Length > 0 & ErrTbl.Trim().Length > 0)
+                            {
+                                if (!SourceKeys.ContainsKey(SourceKey))
+                                {
+                                    ReturnStr = DBArch.getSourceNameByGuid(SourceKey);
+                                    if (ReturnStr.Trim().Length.Equals(0))
+                                    {
+                                        SourceName = "Not Found";
+                                        TypeCode = "?";
+                                        OriginalExt = "?";
+                                    }
+                                    else
+                                    {
+                                        AR = ReturnStr.Split('|');
+                                        SourceName = AR[0];
+                                        TypeCode = AR[1];
+                                        OriginalExt = AR[2];
+                                    }
+
+                                    if (SourceKey.Trim().Length > 0)
+                                    {
+                                        SourceKeys.Add(SourceKey, SourceName);
+                                    }
+
+                                    ErrRowNbr = saveFtiErr(ErrorMsg, TypeErr, ErrTbl, 1);
+                                    saveFtiSourceGuid(ErrRowNbr, SourceKey, SourceName, 0, TypeCode, OriginalExt);
+                                }
+                                else
+                                {
+                                    SourceName = SourceKeys[SourceKey];
+                                    ErrRowNbr = saveFtiErr(ErrorMsg, TypeErr, ErrTbl, 1);
+                                    saveFtiSourceGuid(ErrRowNbr, SourceKey, SourceName, 1, TypeCode, OriginalExt);
+                                }
+
+                                if (!SourceKeyCnt.ContainsKey(SourceKey))
+                                {
+                                    SourceKeyCnt.Add(SourceKey, 1);
+                                }
+                                else
+                                {
+                                    int kcnt = SourceKeyCnt[SourceKey];
+                                    kcnt += 1;
+                                    SourceKeyCnt[SourceKey] = kcnt;
+                                }
+                            }
+                        }
+
+                        Application.DoEvents();
+                    }
+                    while (!(line is null | CancelNow.Equals(true)));
+                }
+
+                if (CancelNow.Equals(true))
+                {
+                    break;
+                }
+            }
+
+            CancelNow = false;
+            SBFqn.Text = "FINISHED...";
+        }
+
+        public bool saveFtiSourceGuid(long ErrRowNbr, string TableKey, string SourceName, int cnt, string TypeCode, string OriginalExt)
+        {
+            bool B = true;
+            // Dim FtiCONN As New SQLiteConnection()
+            string CS = "data source= " + FTIAnalysisDB;
+            string MySql = "";
+            int iCnt = 0;
+            SetDBConn();
+            try
+            {
+                MySql = "Insert or ignore into KeyTable (ErrRowNbr, TableKey, SourceName, OccrCnt, TypeCode, OriginalExt) values (@ErrRowNbr, @TableKey, @SourceName, @OccrCnt, @TypeCode, @OriginalExt)";
+                using (FtiCONN)
+                {
+                    var CMD = new SQLiteCommand(FtiCONN);
+                    CMD.Parameters.AddWithValue("@ErrRowNbr", ErrRowNbr);
+                    CMD.Parameters.AddWithValue("@TableKey", TableKey);
+                    CMD.Parameters.AddWithValue("@SourceName", SourceName);
+                    CMD.Parameters.AddWithValue("@TypeCode", TypeCode);
+                    CMD.Parameters.AddWithValue("@OriginalExt", OriginalExt);
+                    CMD.CommandText = "select count(*) as CNT from KeyTable where TableKey = @TableKey ";
+                    iCnt = Convert.ToInt32(CMD.ExecuteScalar());
+                    if (iCnt > 0)
+                    {
+                        MySql = "update KeyTable set OccrCnt = OccrCnt+1 where TableKey = @TableKey";
+                    }
+                    else
+                    {
+                        cnt = 1;
+                        CMD.Parameters.AddWithValue("@OccrCnt", cnt);
+                        MySql = "Insert into KeyTable (ErrRowNbr, TableKey, SourceName, OccrCnt,TypeCode, OriginalExt) values (@ErrRowNbr, @TableKey, @SourceName, @OccrCnt, @TypeCode, @OriginalExt)";
+                    }
+
+                    try
+                    {
+                        CMD.CommandText = MySql;
+                        CMD.ExecuteNonQuery();
+                        B = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        B = false;
+                        LOG.WriteToArchiveLog("ERROR: saveFtiSourceGuid 00 - " + ex.Message + Constants.vbCrLf + MySql);
+                    }
+                    finally
+                    {
+                        CMD.Dispose();
+                        GC.Collect();
+                        GC.WaitForPendingFinalizers();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("ERROR: saveFtiSourceGuid 01 - " + ex.Message);
+                B = false;
+            }
+
+            return B;
+        }
+
+        public void EmptyTables()
+        {
+            long ErrRowNbr = -1;
+            string CS = "data source= " + FTIAnalysisDB;
+            string MySql = "";
+            SetDBConn();
+            MySql = "delete from Errors ";
+            var CMD = new SQLiteCommand(MySql, FtiCONN);
+            try
+            {
+                using (FtiCONN)
+                    try
+                    {
+                        CMD.ExecuteNonQuery();
+                        CMD.CommandText = "Delete from KeyTable";
+                        CMD.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        LOG.WriteToArchiveLog("ERROR: saveFtiErr 04 - " + ex.Message + Constants.vbCrLf + MySql);
+                        bConnSet = false;
+                    }
+                    finally
+                    {
+                        CMD.Dispose();
+                        GC.Collect();
+                        GC.WaitForPendingFinalizers();
+                    }
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("ERROR SaveErr 00 : " + ex.Message);
             }
         }
 
-        private void lbFtiLogs_SelectedIndexChanged(object sender, EventArgs e)
+        public long saveFtiErr(string ErrorMsg, string TypeErr, string ErrTbl, int OccrCnt)
         {
+            long ErrRowNbr = -1;
+            string CS = "data source= " + FTIAnalysisDB;
+            string MySql = "Insert or ignore into Errors (ErrorMsg, TypeErr, ErrTbl) values (@ErrorMsg, @TypeErr, @ErrTbl)";
+            int iCnt = 0;
+            // FtiCONN.Open()
+            SetDBConn();
+            MySql = "";
+            try
+            {
+                using (FtiCONN)
+                {
+                    var CMD = new SQLiteCommand(FtiCONN);
+                    try
+                    {
+                        CMD.Parameters.AddWithValue("@ErrorMsg", ErrorMsg);
+                        CMD.Parameters.AddWithValue("@TypeErr", TypeErr);
+                        CMD.Parameters.AddWithValue("@ErrTbl", ErrTbl);
+                        CMD.CommandText = "select count(*) as CNT from Errors where ErrorMsg = @ErrorMsg and TypeErr = @TypeErr and ErrTbl = @ErrTbl ";
+                        iCnt = (int)Convert.ToInt64(CMD.ExecuteScalar());
+                        if (iCnt.Equals(0))
+                        {
+                            MySql = "Insert into Errors (ErrorMsg, TypeErr, ErrTbl, OccrCnt) values (@ErrorMsg, @TypeErr, @ErrTbl, 1)";
+                            CMD.CommandText = MySql;
+                            CMD.ExecuteNonQuery();
+                            CMD.CommandText = "select last_insert_rowid()";
+                            ErrRowNbr = Convert.ToInt64(CMD.ExecuteScalar());
+                        }
+                        else
+                        {
+                            MySql = "Update Errors set OccrCnt = OccrCnt+1 where ErrorMsg = @ErrorMsg and TypeErr = @TypeErr and ErrTbl = @ErrTbl ";
+                            CMD.CommandText = MySql;
+                            CMD.ExecuteNonQuery();
+                            CMD.CommandText = "select ErrRowNbr as CNT from Errors where ErrorMsg = @ErrorMsg and TypeErr = @TypeErr and ErrTbl = @ErrTbl ";
+                            ErrRowNbr = Convert.ToInt64(CMD.ExecuteScalar());
+                            MySql = "";
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        LOG.WriteToArchiveLog("ERROR: saveFtiErr 04 - " + ex.Message + Constants.vbCrLf + MySql);
+                        bConnSet = false;
+                    }
+                    finally
+                    {
+                        CMD.Dispose();
+                        GC.Collect();
+                        GC.WaitForPendingFinalizers();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("ERROR SaveErr 00 : " + ex.Message);
+            }
+
+            return ErrRowNbr;
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -178,5 +598,73 @@ namespace EcmArchiver
                 SB.Text = "NOTICE: Cannot retrieve data from this information.";
             }
         }
+
+        public bool SetDBConn()
+        {
+            bool bb = true;
+            string cs = "";
+            try
+            {
+                FtiCONN = new SQLiteConnection();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("WARNING: " + ex.Message);
+            }
+
+            if (!FtiCONN.State.Equals(ConnectionState.Open))
+            {
+                try
+                {
+                    FTIAnalysisDB = System.Configuration.ConfigurationManager.AppSettings["FTIAnalysisDB"];
+                    if (!File.Exists(FTIAnalysisDB))
+                    {
+                        MessageBox.Show("FATAL ERR SQLite DB MISSING: " + FTIAnalysisDB);
+                    }
+
+                    cs = "data source=" + FTIAnalysisDB;
+                    modGlobals.gLocalDBCS = cs;
+                    FtiCONN.ConnectionString = cs;
+                    FtiCONN.Open();
+                    bb = true;
+                    bSQLiteCOnnected = true;
+                }
+                catch (Exception ex)
+                {
+                    var LG = new clsLogging();
+                    LG.WriteToArchiveLog("ERROR LOCALDB SetDBConn: " + ex.Message + Constants.vbCrLf + cs);
+                    LG = null;
+                    bb = false;
+                    bSQLiteCOnnected = false;
+                }
+            }
+
+            return bb;
+        }
+
+        private void btnSummarize_Click(object sender, EventArgs e)
+        {
+            SummarizeLogs();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            CancelNow = true;
+        }
+    }
+
+    public class clsKeyTable
+    {
+        private string TableKey;
+        private string SourceName;
+        private int OccurCnt;
+    }
+
+    public class clsErrors
+    {
+        private string ErrorMsg;
+        private string ErrTbl;
+        private string TypeErr;
+        private int OccurCnt;
     }
 }

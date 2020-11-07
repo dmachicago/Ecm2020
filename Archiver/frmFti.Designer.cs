@@ -38,8 +38,7 @@ namespace EcmArchiver
         [DebuggerStepThrough()]
         private void InitializeComponent()
         {
-            _lbFtiLogs = new ListBox();
-            _lbFtiLogs.SelectedIndexChanged += new EventHandler(lbFtiLogs_SelectedIndexChanged);
+            lbFtiLogs = new ListBox();
             _btnScanGuids = new Button();
             _btnScanGuids.Click += new EventHandler(btnScanGuids_Click);
             txtSourceGuid = new TextBox();
@@ -62,18 +61,23 @@ namespace EcmArchiver
             _btnFindItem.Click += new EventHandler(btnFindItem_Click);
             txtMaxNbr = new TextBox();
             Label2 = new Label();
+            _btnSummarize = new Button();
+            _btnSummarize.Click += new EventHandler(btnSummarize_Click);
+            _btnCancel = new Button();
+            _btnCancel.Click += new EventHandler(btnCancel_Click);
+            PB = new ProgressBar();
             SuspendLayout();
             // 
             // lbFtiLogs
             // 
-            _lbFtiLogs.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            _lbFtiLogs.FormattingEnabled = true;
-            _lbFtiLogs.ItemHeight = 16;
-            _lbFtiLogs.Location = new Point(12, 44);
-            _lbFtiLogs.Name = "_lbFtiLogs";
-            _lbFtiLogs.SelectionMode = SelectionMode.MultiExtended;
-            _lbFtiLogs.Size = new Size(300, 308);
-            _lbFtiLogs.TabIndex = 0;
+            lbFtiLogs.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            lbFtiLogs.FormattingEnabled = true;
+            lbFtiLogs.ItemHeight = 16;
+            lbFtiLogs.Location = new Point(12, 44);
+            lbFtiLogs.Name = "lbFtiLogs";
+            lbFtiLogs.SelectionMode = SelectionMode.MultiExtended;
+            lbFtiLogs.Size = new Size(300, 308);
+            lbFtiLogs.TabIndex = 0;
             // 
             // btnScanGuids
             // 
@@ -131,7 +135,7 @@ namespace EcmArchiver
             _lbOutput.Location = new Point(354, 44);
             _lbOutput.Name = "_lbOutput";
             _lbOutput.ScrollAlwaysVisible = true;
-            _lbOutput.Size = new Size(639, 308);
+            _lbOutput.Size = new Size(639, 276);
             _lbOutput.TabIndex = 6;
             // 
             // btnSave
@@ -240,11 +244,41 @@ namespace EcmArchiver
             Label2.TabIndex = 17;
             Label2.Text = "Max #:";
             // 
+            // btnSummarize
+            // 
+            _btnSummarize.Location = new Point(354, 6);
+            _btnSummarize.Name = "_btnSummarize";
+            _btnSummarize.Size = new Size(204, 32);
+            _btnSummarize.TabIndex = 18;
+            _btnSummarize.Text = "Summarize";
+            _btnSummarize.UseVisualStyleBackColor = true;
+            // 
+            // btnCancel
+            // 
+            _btnCancel.BackColor = Color.MidnightBlue;
+            _btnCancel.ForeColor = Color.Yellow;
+            _btnCancel.Location = new Point(636, 6);
+            _btnCancel.Name = "_btnCancel";
+            _btnCancel.Size = new Size(75, 32);
+            _btnCancel.TabIndex = 19;
+            _btnCancel.Text = "Cancel";
+            _btnCancel.UseVisualStyleBackColor = false;
+            // 
+            // PB
+            // 
+            PB.Location = new Point(354, 327);
+            PB.Name = "PB";
+            PB.Size = new Size(639, 15);
+            PB.TabIndex = 20;
+            // 
             // frmFti
             // 
             AutoScaleDimensions = new SizeF(8.0f, 16.0f);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1019, 552);
+            Controls.Add(PB);
+            Controls.Add(_btnCancel);
+            Controls.Add(_btnSummarize);
             Controls.Add(Label2);
             Controls.Add(txtMaxNbr);
             Controls.Add(_btnFindItem);
@@ -262,7 +296,7 @@ namespace EcmArchiver
             Controls.Add(Label1);
             Controls.Add(txtSourceGuid);
             Controls.Add(_btnScanGuids);
-            Controls.Add(_lbFtiLogs);
+            Controls.Add(lbFtiLogs);
             Name = "frmFti";
             Text = "frmFti";
             Load += new EventHandler(frmFti_Load);
@@ -270,32 +304,7 @@ namespace EcmArchiver
             PerformLayout();
         }
 
-        private ListBox _lbFtiLogs;
-
-        internal ListBox lbFtiLogs
-        {
-            [MethodImpl(MethodImplOptions.Synchronized)]
-            get
-            {
-                return _lbFtiLogs;
-            }
-
-            [MethodImpl(MethodImplOptions.Synchronized)]
-            set
-            {
-                if (_lbFtiLogs != null)
-                {
-                    _lbFtiLogs.SelectedIndexChanged -= lbFtiLogs_SelectedIndexChanged;
-                }
-
-                _lbFtiLogs = value;
-                if (_lbFtiLogs != null)
-                {
-                    _lbFtiLogs.SelectedIndexChanged += lbFtiLogs_SelectedIndexChanged;
-                }
-            }
-        }
-
+        internal ListBox lbFtiLogs;
         private Button _btnScanGuids;
 
         internal Button btnScanGuids
@@ -438,5 +447,58 @@ namespace EcmArchiver
 
         internal TextBox txtMaxNbr;
         internal Label Label2;
+        private Button _btnSummarize;
+
+        internal Button btnSummarize
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _btnSummarize;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_btnSummarize != null)
+                {
+                    _btnSummarize.Click -= btnSummarize_Click;
+                }
+
+                _btnSummarize = value;
+                if (_btnSummarize != null)
+                {
+                    _btnSummarize.Click += btnSummarize_Click;
+                }
+            }
+        }
+
+        private Button _btnCancel;
+
+        internal Button btnCancel
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _btnCancel;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_btnCancel != null)
+                {
+                    _btnCancel.Click -= btnCancel_Click;
+                }
+
+                _btnCancel = value;
+                if (_btnCancel != null)
+                {
+                    _btnCancel.Click += btnCancel_Click;
+                }
+            }
+        }
+
+        internal ProgressBar PB;
     }
 }

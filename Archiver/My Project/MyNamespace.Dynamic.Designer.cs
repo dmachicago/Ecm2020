@@ -355,6 +355,29 @@ namespace EcmArchiver.My
             }
 
             [EditorBrowsable(EditorBrowsableState.Never)]
+            public FrmListenerTest m_FrmListenerTest;
+
+            public FrmListenerTest FrmListenerTest
+            {
+                [DebuggerHidden]
+                get
+                {
+                    m_FrmListenerTest = Create__Instance__(m_FrmListenerTest);
+                    return m_FrmListenerTest;
+                }
+
+                [DebuggerHidden]
+                set
+                {
+                    if (ReferenceEquals(value, m_FrmListenerTest))
+                        return;
+                    if (value is object)
+                        throw new ArgumentException("Property can only be set to Nothing");
+                    Dispose__Instance__(ref m_FrmListenerTest);
+                }
+            }
+
+            [EditorBrowsable(EditorBrowsableState.Never)]
             public frmMain m_frmMain;
 
             public frmMain frmMain

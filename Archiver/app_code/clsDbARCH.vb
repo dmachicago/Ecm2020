@@ -28028,6 +28028,29 @@ NextOne:
 
     End Function
 
+    Function getSrcDT() As DataTable
+        Dim strSql As String = "select RowGuid, SourceName, OriginalFileType, SourceTypeCode from DataSource"
+        Dim DT As New DataTable
+        Dim CS As String = getRepoConnStr()
+        Dim CONN As New SqlConnection(CS)
+
+        Try
+            Using CONN
+                CONN.Open()
+                Using dad As New SqlDataAdapter(strSql, CONN)
+                    dad.Fill(DT)
+                End Using
+                CONN.Close()
+            End Using
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("FATAL ERROR getErrDT: " + ex.Message)
+        End Try
+
+        Dim count_row As Integer = DT.Rows.Count
+
+        Return DT
+    End Function
+
 #Region "IDisposable Support"
     Private disposedValue As Boolean ' To detect redundant calls
 

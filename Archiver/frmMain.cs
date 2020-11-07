@@ -156,7 +156,6 @@ namespace EcmArchiver
             _ckDisable.Name = "ckDisable";
             _gbContentMgt.Name = "gbContentMgt";
             _btnCountFiles.Name = "btnCountFiles";
-            _Panel2.Name = "Panel2";
             _btnSetLastArchiveOFF.Name = "btnSetLastArchiveOFF";
             _btnSetLastArchiveON.Name = "btnSetLastArchiveON";
             _CheckBox2.Name = "CheckBox2";
@@ -231,6 +230,8 @@ namespace EcmArchiver
             _InitializeToGivenDateToolStripMenuItem.Name = "InitializeToGivenDateToolStripMenuItem";
             _TurnListenerONToolStripMenuItem.Name = "TurnListenerONToolStripMenuItem";
             _TurnListenerOFFToolStripMenuItem.Name = "TurnListenerOFFToolStripMenuItem";
+            _ListenerONALLDirsToolStripMenuItem.Name = "ListenerONALLDirsToolStripMenuItem";
+            _ListenerOFFALLDirsToolStripMenuItem.Name = "ListenerOFFALLDirsToolStripMenuItem";
             _LIstWindowsLogsToolStripMenuItem.Name = "LIstWindowsLogsToolStripMenuItem";
             _CheckLogsForListenerInfoToolStripMenuItem.Name = "CheckLogsForListenerInfoToolStripMenuItem";
             _ReInventoryAllFilesToolStripMenuItem.Name = "ReInventoryAllFilesToolStripMenuItem";
@@ -289,6 +290,8 @@ namespace EcmArchiver
             _TextStringHashToolStripMenuItem.Name = "TextStringHashToolStripMenuItem";
             _GetDirFilesByFilterToolStripMenuItem.Name = "GetDirFilesByFilterToolStripMenuItem";
             _GenWhereINDictToolStripMenuItem.Name = "GenWhereINDictToolStripMenuItem";
+            _NetworkListenerToolStripMenuItem.Name = "NetworkListenerToolStripMenuItem";
+            _SQLiteDBConnectToolStripMenuItem.Name = "SQLiteDBConnectToolStripMenuItem";
             _ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
             _AboutToolStripMenuItem.Name = "AboutToolStripMenuItem";
             _OnlineHelpToolStripMenuItem.Name = "OnlineHelpToolStripMenuItem";
@@ -321,6 +324,7 @@ namespace EcmArchiver
         private string VerifyEmbeddedZipFiles = "";
         private bool SkipPermission = false;
         private bool LocalDBBackUpComplete = false;
+        private Dictionary<string, string> DirectoryList = new Dictionary<string, string>();
         private bool bUseRemoteServer = false;
         private string MachineIDcurr = "";
         private string UIDcurr = "";
@@ -488,6 +492,7 @@ namespace EcmArchiver
             DBLocal.setFirstUseLastArchiveDateActive();
             DBLocal.getUseLastArchiveDateActive();
             setLastArchiveLabel();
+            getListeners();
 
             // INSERT ALL THE REPO ALLOWED EXTENSIONS INTO THE SQLITE DB
             var AllowedExts = DBARCH.getUsedExtension();
@@ -3488,13 +3493,33 @@ namespace EcmArchiver
                 return;
             }
 
+            if (I.Equals(1))
+            {
+                string tgtDir = Conversions.ToString(lbArchiveDirs.SelectedItems[0]);
+                if (DirectoryList.ContainsKey(tgtDir))
+                {
+                    lblListenerState.Text = "Listener ON";
+                }
+                else
+                {
+                    lblListenerState.Text = "Listener OFF";
+                }
+            }
+
+            if (I > 1)
+            {
+                lblListenerState.Text = "";
+            }
+
             if (I != 1)
             {
                 CkMonitor.Visible = false;
+                CheckBox2.Visible = false;
             }
             else
             {
                 CkMonitor.Visible = true;
+                CheckBox2.Visible = true;
             }
 
             bActiveChange = true;
@@ -5215,6 +5240,13 @@ namespace EcmArchiver
                     return;
                 }
 
+                if (iCnt > 1)
+                {
+                    MessageBox.Show("Please select one and only one directory to remove, returning.");
+                    return;
+                }
+
+                string TgtDir = Conversions.ToString(lbArchiveDirs.SelectedItems[0]);
                 string msg = "This will DELETE the selected directory AND ALL SUB-DIRECTORIES from the archive process, are you sure?";
                 var dlgRes = MessageBox.Show(msg, "Remove Directory", MessageBoxButtons.YesNo);
                 if (dlgRes == DialogResult.No)
@@ -5259,6 +5291,8 @@ namespace EcmArchiver
                     ProcessListener(false);
                 }
 
+                SB.Text = "Directory <" + TgtDir + "> removed.";
+                ProcessListener(false);
                 var argLB = lbArchiveDirs;
                 DBARCH.GetDirectories(ref argLB, modGlobals.gCurrUserGuidID, false);
                 lbArchiveDirs = argLB;
@@ -9937,13 +9971,44 @@ namespace EcmArchiver
             btnSaveChanges.BackColor = Color.OrangeRed;
         }
 
+        public void getListeners()
+        {
+            DirectoryList.Clear();
+            string tdir = "";
+            string Action = "";
+            string DirsToMonitor = System.Configuration.ConfigurationManager.AppSettings["DirsToMonitor"];
+            var stream_reader = new StreamReader(DirsToMonitor);
+            using (stream_reader)
+            {
+                line = stream_reader.ReadLine();
+                while (line is object)
+                {
+                    line = line.Trim();
+                    if (!line.Substring(0, 1).Equals("#"))
+                    {
+                        ReadResult = line.Split("|");
+                        tdir = Conversions.ToString(ReadResult((object)0).Trim);
+                        Action = Conversions.ToString(ReadResult((object)1).Trim.ToUpper);
+                        if (!tdir.Substring(1, 1).Equals("#"))
+                        {
+                            if (!DirectoryList.ContainsKey(tdir))
+                            {
+                                DirectoryList.Add(tdir, Action);
+                            }
+                        }
+                    }
+
+                    line = stream_reader.ReadLine();
+                }
+
+                stream_reader.Close();
+                stream_reader.Dispose();
+            }
+        }
+
         public void ProcessListener(bool SetAction)
         {
             string DirsToMonitor = System.Configuration.ConfigurationManager.AppSettings["DirsToMonitor"];
-            var ListOfDirs = new Dictionary<string, string>();
-            var stream_reader = new StreamReader(DirsToMonitor);
-            string line;
-            string[] ReadResult;
             string ProcessSubdirectories = "";
             string TgtDir = "";
             string DirToProcess = "";
@@ -9951,104 +10016,82 @@ namespace EcmArchiver
             string action = "";
             if (lbArchiveDirs.SelectedItems.Count.Equals(0))
             {
-                MessageBox.Show("Please select a directory before setting a listener, returning...");
+                MessageBox.Show("Please select 1 or more directories before setting a listener, returning...");
                 return;
             }
 
             try
             {
-                TgtDir = lbArchiveDirs.SelectedItems[0].ToString().Trim();
-
                 // Read the file one line at a time.
-                using (stream_reader)
-                {
-                    line = stream_reader.ReadLine();
-                    while (line is object)
-                    {
-                        line = line.Trim();
-                        if (!line.Substring(0, 1).Equals("#"))
-                        {
-                            ReadResult = line.Split('|');
-                            tdir = ReadResult[0].Trim();
-                            action = ReadResult[1].Trim().ToUpper();
-                            if (!tdir.Substring(1, 1).Equals("#"))
-                            {
-                                if (!ListOfDirs.ContainsKey(tdir))
-                                {
-                                    ListOfDirs.Add(tdir, action);
-                                }
-                            }
-                        }
-
-                        line = stream_reader.ReadLine();
-                    }
-                }
-
+                getListeners();
+                StartOver:
+                ;
                 ProcessSubdirectories = "";
-                if (SetAction.Equals(true))
+                for (int i = 0, loopTo = lbArchiveDirs.SelectedItems.Count - 1; i <= loopTo; i++)
                 {
-                    if (ckSubDirs.Checked.Equals(true))
+                    // ****
+                    string DirName = lbArchiveDirs.SelectedItem.ToString().Trim();
+                    txtDir.Text = DirName;
+                    // DBARCH.LoadAvailFileTypes(lbAvailExts)
+                    string DBID = "";
+                    string IncludeSubDirs = "";
+                    string VersionFiles = "";
+                    string FolderDisabled = "";
+                    string isMetaData = "";
+                    string isPublic = "";
+                    string OcrDirectory = "";
+                    string OcrPdf = "";
+                    string isSysDefault = "";
+                    string DeleteOnArchive = "";
+                    bool argArchiveSkipBit = ckArchiveBit.Checked;
+                    DBARCH.GetDirectoryData(modGlobals.gCurrUserGuidID, DirName, ref DBID, ref IncludeSubDirs, ref VersionFiles, ref FolderDisabled, ref isMetaData, ref isPublic, ref OcrDirectory, ref isSysDefault, ref argArchiveSkipBit, ref ListenForChanges, ref ListenDirectory, ref ListenSubDirectory, ref DirGuid, ref OcrPdf, ref DeleteOnArchive);
+                    ckArchiveBit.Checked = argArchiveSkipBit;
+                    cbFileDB.Text = DBID;
+                    ckSubDirs.Checked = cvtTF(IncludeSubDirs);
+                    // ****
+                    TgtDir = lbArchiveDirs.SelectedItems[i].ToString().Trim();
+                    if (SetAction.Equals(true))
                     {
-                        ProcessSubdirectories = "Y";
-                    }
-                    else
-                    {
-                        ProcessSubdirectories = "N";
-                    }
-                    // Add the directory to the list if it does not exist 
-                    if (!ListOfDirs.ContainsKey(TgtDir))
-                    {
-                        ListOfDirs.Add(TgtDir, ProcessSubdirectories);
-                    }
-
-                    if (File.Exists(DirsToMonitor))
-                    {
-                        File.Delete(DirsToMonitor);
-                    }
-
-                    StreamWriter xfile;
-                    xfile = My.MyProject.Computer.FileSystem.OpenTextFileWriter(DirsToMonitor, true);
-                    xfile.WriteLine("#DirectoryName | Y or N for include subdirectories or do not include subdirectories");
-                    foreach (string dir in ListOfDirs.Keys)
-                    {
-                        DirToProcess = dir + "|" + ListOfDirs[dir].ToUpper().Trim();
-                        xfile.WriteLine(DirToProcess);
-                    }
-
-                    xfile.Close();
-                    SB.Text = "Listener Turned ON for: " + TgtDir;
-                }
-                else
-                {
-                    // DROP THIS FROM THE LIST OF DIRECTORIES TO PROCESS
-                    if (File.Exists(DirsToMonitor))
-                    {
-                        File.Delete(DirsToMonitor);
-                    }
-
-                    if (File.Exists(DirsToMonitor))
-                    {
-                        File.Delete(DirsToMonitor);
-                    }
-
-                    StreamWriter xfile;
-                    xfile = My.MyProject.Computer.FileSystem.OpenTextFileWriter(DirsToMonitor, true);
-                    xfile.WriteLine("#DirectoryName | Y or N for include subdirectories or do not include subdirectories");
-                    foreach (string dir in ListOfDirs.Keys)
-                    {
-                        if (!dir.ToString().ToUpper().Equals(TgtDir.ToUpper()))
+                        if (ckSubDirs.Checked.Equals(true))
                         {
-                            DirToProcess = dir + "|" + ListOfDirs[dir].ToUpper().Trim();
-                            xfile.WriteLine(DirToProcess);
+                            ProcessSubdirectories = "Y";
                         }
                         else
                         {
-                            Console.WriteLine("Removed from listeners: " + TgtDir);
+                            ProcessSubdirectories = "N";
+                        }
+                        // Add the directory to the list if it does not exist 
+                        if (!DirectoryList.ContainsKey(TgtDir))
+                        {
+                            DirectoryList.Add(TgtDir, ProcessSubdirectories);
+                        }
+                        else
+                        {
+                            DirectoryList[TgtDir] = ProcessSubdirectories;
                         }
                     }
+                    // DROP THIS FROM THE LIST OF DIRECTORIES TO PROCESS
+                    else if (DirectoryList.ContainsKey(TgtDir))
+                    {
+                        DirectoryList.Remove(TgtDir);
+                        goto StartOver;
+                    }
+                }
 
-                    xfile.Close();
-                    SB.Text = "Listener Turned OFF for: " + TgtDir;
+                if (File.Exists(DirsToMonitor))
+                {
+                    File.Delete(DirsToMonitor);
+                }
+
+                // Dim stream_reader As New IO.StreamReader(DirsToMonitor)
+                using (var xfile = My.MyProject.Computer.FileSystem.OpenTextFileWriter(DirsToMonitor, true))
+                {
+                    xfile.WriteLine("#DirectoryName | Y or N for include subdirectories or do not include subdirectories");
+                    foreach (string dir in DirectoryList.Keys)
+                    {
+                        DirToProcess = dir + "|" + DirectoryList[dir].ToUpper().Trim();
+                        xfile.WriteLine(DirToProcess);
+                    }
                 }
             }
             catch (Exception ex)
@@ -10056,11 +10099,25 @@ namespace EcmArchiver
                 MessageBox.Show("ERROR: Cannot add listener: " + ex.Message);
             }
 
+            getListeners();
             return;
         }
 
         private void CkMonitor_CheckedChanged(object sender, EventArgs e)
         {
+            if (lbArchiveDirs.SelectedItems.Count.Equals(0))
+            {
+                MessageBox.Show("To use this, one and only one directory must be selected, returning");
+                return;
+            }
+
+            if (lbArchiveDirs.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("To use this, one and only one directory must be selected - Please use the Utility Listener item to process multiple listeners, returning");
+                return;
+            }
+
+            CkMonitor.Checked = false;
             ProcessListener(true);
             MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ");
         }
@@ -14509,7 +14566,15 @@ namespace EcmArchiver
 
             Cursor = Cursors.Default;
             SB.Text = "Goodbye....";
-            Application.Exit();
+            My.MyProject.Forms.LoginForm1.Close();
+            try
+            {
+                Application.Exit();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Could not exist the application, please do a manual shutdown.");
+            }
         }
 
         private void WebSitesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -18027,6 +18092,19 @@ namespace EcmArchiver
 
         private void CheckBox2_CheckedChanged(object sender, EventArgs e)
         {
+            if (lbArchiveDirs.SelectedItems.Count.Equals(0))
+            {
+                MessageBox.Show("To use this, one and only one directory must be selected, returning");
+                return;
+            }
+
+            if (lbArchiveDirs.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("To use this, one and only one directory must be selected - Please use the Utility Listener item to process multiple listeners, returning");
+                return;
+            }
+
+            CheckBox2.Checked = false;
             ProcessListener(false);
             MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ");
         }
@@ -18200,19 +18278,17 @@ namespace EcmArchiver
             setLastArchiveLabel();
         }
 
-        private void Panel2_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
         private void TurnListenerONToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ProcessListener(true);
+            getListeners();
             MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ");
         }
 
         private void TurnListenerOFFToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ProcessListener(false);
+            getListeners();
             MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ");
         }
 
@@ -18286,6 +18362,91 @@ namespace EcmArchiver
 
         private void ArchiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        }
+
+        private void ListenerONALLDirsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int I = 0;
+                var loopTo = lbArchiveDirs.Items.Count - 1;
+                for (I = 0; I <= loopTo; I++)
+                {
+                    lbActiveFolder.SetSelected(I, true);
+                    ProcessListener(true);
+                    lbActiveFolder.SetSelected(I, false);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: " + ex.Message);
+            }
+
+            MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ");
+        }
+
+        private void ListenerOFFALLDirsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int I = 0;
+                var loopTo = lbArchiveDirs.Items.Count - 1;
+                for (I = 0; I <= loopTo; I++)
+                {
+                    lbActiveFolder.SetSelected(I, true);
+                    ProcessListener(false);
+                    lbActiveFolder.SetSelected(I, false);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: " + ex.Message);
+            }
+
+            MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ");
+        }
+
+        private void NetworkListenerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            My.MyProject.Forms.FrmListenerTest.Show();
+        }
+
+        private void SQLiteDBConnectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var dlg = new FolderBrowserDialog();
+            string slDatabase = "";
+            var SQLiteCONN = new SQLiteConnection();
+            var result = OpenFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                slDatabase = OpenFileDialog1.FileName;
+            }
+
+            if (slDatabase.Length.Equals(0))
+            {
+                MessageBox.Show("Cancelled, returning.");
+                return;
+            }
+
+            try
+            {
+                if (!File.Exists(slDatabase))
+                {
+                    MessageBox.Show("SQLite DB MISSING: " + slDatabase);
+                    return;
+                }
+
+                cs = "data source=" + slDatabase;
+                modGlobals.gLocalDBCS = Conversions.ToString(cs);
+                SQLiteCONN.ConnectionString = Conversions.ToString(cs);
+                SQLiteCONN.Open();
+                MessageBox.Show("SQLite Connected!!");
+            }
+            catch (Exception ex)
+            {
+                var LG = new clsLogging();
+                MessageBox.Show("ERROR LOCALDB setSLConn: " + ex.Message);
+            }
         }
     }
 

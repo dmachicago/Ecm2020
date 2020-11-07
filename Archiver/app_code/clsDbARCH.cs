@@ -16741,6 +16741,47 @@ namespace EcmArchiver
             return sGuid;
         }
 
+        public string getSourceNameByGuid(string RowGuid)
+        {
+            var TD = new Dictionary<string, string>();
+            string SourceName = "";
+            string sGuid = "";
+            try
+            {
+                string S = "select top 1 SourceName, SourceTypeCode, OriginalFileType from DataSource where RowGuid = '" + RowGuid + "'";
+                CloseConn();
+                CkConn();
+                SqlDataReader rsData = null;
+                bool b = false;
+                string CS = getRepoConnStr();
+                var CONN = new SqlConnection(CS);
+                using (CONN)
+                {
+                    CONN.Open();
+                    var command = new SqlCommand(S, CONN);
+                    using (command)
+                    using (rsData)
+                    {
+                        rsData = command.ExecuteReader();
+                        if (rsData.HasRows)
+                        {
+                            rsData.Read();
+                            SourceName = rsData.GetString(0);
+                            SourceTypeCode = rsData.GetString(1);
+                            OriginalFileType = rsData.GetString(2);
+                            SourceName = Conversions.ToString(Operators.AddObject(Operators.AddObject(Operators.AddObject(SourceName + "|", SourceTypeCode), "|"), OriginalFileType));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("clsDatabaseARCH : getSourceNameByGuid : 2174 : " + ex.Message);
+            }
+
+            return SourceName;
+        }
+
         public void LoadEntryIdByUserID(ref SortedList L)
         {
             string S = "Select EmailIdentifier from email where UserID = '" + modGlobals.gCurrUserGuidID + "' ";
@@ -26081,7 +26122,7 @@ namespace EcmArchiver
             int BadCnt = 0;
             MySql = "select distinct lower(ExtCode), lower(ProcessExtCode) from ProcessFileAs";
             DICT = BuildDictionary(MySql);
-            MySql = "select sourceGuid,  lower([OriginalFileType]), lower([SourceTypeCode]) from DataSource where FQN is not null and ltrim(rtrim(fqn)) <> '' ";
+            MySql = "select sourceGuid, lower([OriginalFileType]), lower([SourceTypeCode]) from DataSource where FQN is not null and ltrim(rtrim(fqn)) <> '' ";
             var DS = getDataSet(MySql);
             K = DS.Tables[0].Rows.Count;
             var loopTo = DS.Tables[0].Rows.Count - 1;

@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SQLite
 Imports System.IO
+Imports System.Linq
 
 Public Class frmFti
 
@@ -12,6 +13,12 @@ Public Class frmFti
     Dim SourceKeys As New Dictionary(Of String, String)
     Dim SourceKeyCnt As New Dictionary(Of String, Integer)
     Dim FtiCONN As New SQLiteConnection()
+    Dim UseMemOptTabl As String = System.Configuration.ConfigurationManager.AppSettings("UseMemOptTabl")
+
+    Dim KT As New List(Of clsKeyTable)
+    'New KT With {.TableKey = XX", .SourceName = "xx", .OccurCnt = 20, .TypeCode = 'xx', .OriginalExt = 'xx}
+    Dim ERRS As New List(Of clsErrors)
+    'New ERRS With {.ErrorMsg = XX", .SourceName = "xx", .OccurCnt = 20, .ErrTble = 'xx', .TypeErr = 'xx}
 
     Private Sub frmFti_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -124,6 +131,7 @@ Public Class frmFti
 
         Return SourceKey
     End Function
+
     Function getErrorType(line As String) As String
         Dim ErrType As String = ""
 
@@ -188,8 +196,6 @@ Public Class frmFti
     End Function
 
     Sub SummarizeLogs()
-        Dim KT As New clsKeyTable
-        Dim ER As New clsErrors
 
         Dim SourceName As String = ""
         Dim FQN As String = ""
@@ -204,8 +210,13 @@ Public Class frmFti
         Dim ErrRowNbr As Int64 = 0
         Dim B As Boolean = True
         Dim iCnt As Int64 = 0
-
         Dim iTotal As Int64 = 0
+        Dim SrcDetDR() As DataRow = Nothing
+
+        Dim SrcDT As DataTable = Nothing
+        If UseMemOptTabl.Equals("1") Then
+            SrcDT = DBArch.getSrcDT()
+        End If
 
         For Each LogFile As String In lbFtiLogs.SelectedItems
             FQN = FTILogs + "\" + LogFile
@@ -244,26 +255,54 @@ Public Class frmFti
                         '******************************
                         If ErrorMsg.Trim.Length > 0 And SourceKey.Trim.Length > 0 And TypeErr.Trim.Length > 0 And ErrTbl.Trim.Length > 0 Then
                             If Not SourceKeys.ContainsKey(SourceKey) Then
-                                ReturnStr = DBArch.getSourceNameByGuid(SourceKey)
-                                If ReturnStr.Trim.Length.Equals(0) Then
-                                    SourceName = "Not Found"
-                                    TypeCode = "?"
-                                    OriginalExt = "?"
+                                'WDM Set this up as selectable because MEMORY may be critical depending upon available RAM
+                                If UseMemOptTabl.Equals("1") Then
+                                    SrcDetDR = SrcDT.Select("RowGuid = '" + SourceKey + "'")
+                                    If SrcDetDR.Count > 0 Then
+                                        SourceName = SrcDetDR(0).Item("SourceName")
+                                        OriginalExt = SrcDetDR(0).Item("OriginalFileType")
+                                        TypeCode = SrcDetDR(0).Item("SourceTypeCode")
+                                    Else
+                                        SourceName = "Not Found"
+                                        TypeCode = "?"
+                                        OriginalExt = "?"
+                                    End If
                                 Else
-                                    AR = ReturnStr.Split("|")
-                                    SourceName = AR(0)
-                                    TypeCode = AR(1)
-                                    OriginalExt = AR(2)
+                                    ReturnStr = DBArch.getSourceNameByGuid(SourceKey)
+                                    If ReturnStr.Trim.Length.Equals(0) Then
+                                        SourceName = "Not Found"
+                                        TypeCode = "?"
+                                        OriginalExt = "?"
+                                    Else
+                                        AR = ReturnStr.Split("|")
+                                        SourceName = AR(0)
+                                        TypeCode = AR(1)
+                                        OriginalExt = AR(2)
+                                    End If
                                 End If
+
                                 If SourceKey.Trim.Length > 0 Then
                                     SourceKeys.Add(SourceKey, SourceName)
                                 End If
-                                ErrRowNbr = saveFtiErr(ErrorMsg, TypeErr, ErrTbl, 1)
-                                saveFtiSourceGuid(ErrRowNbr, SourceKey, SourceName, 0, TypeCode, OriginalExt)
+
+                                If UseMemOptTabl.Equals("1") Then
+                                    saveFtiErrDS(ErrorMsg, TypeErr, ErrTbl)
+                                Else
+                                    ErrRowNbr = saveFtiErr(ErrorMsg, TypeErr, ErrTbl, 1)
+                                End If
+                                If UseMemOptTabl.Equals("1") Then
+                                    saveFtiSourceGuidDS(ErrRowNbr, SourceKey, SourceName, TypeCode, OriginalExt)
+                                Else
+                                    saveFtiSourceGuid(ErrRowNbr, SourceKey, SourceName, 0, TypeCode, OriginalExt)
+                                End If
                             Else
-                                SourceName = SourceKeys(SourceKey)
-                                ErrRowNbr = saveFtiErr(ErrorMsg, TypeErr, ErrTbl, 1)
-                                saveFtiSourceGuid(ErrRowNbr, SourceKey, SourceName, 1, TypeCode, OriginalExt)
+                                If UseMemOptTabl.Equals("1") Then
+                                    saveFtiSourceGuidDS(ErrRowNbr, SourceKey, SourceName, TypeCode, OriginalExt)
+                                Else
+                                    SourceName = SourceKeys(SourceKey)
+                                    ErrRowNbr = saveFtiErr(ErrorMsg, TypeErr, ErrTbl, 1)
+                                    saveFtiSourceGuid(ErrRowNbr, SourceKey, SourceName, 1, TypeCode, OriginalExt)
+                                End If
                             End If
 
                             If Not SourceKeyCnt.ContainsKey(SourceKey) Then
@@ -282,8 +321,139 @@ Public Class frmFti
                 Exit For
             End If
         Next
+        PB.Value = 0
+        If CancelNow.Equals(False) And UseMemOptTabl.Equals("1") Then
+            applyERRDeails()
+            applyFTIDetails()
+        End If
         CancelNow = False
         SBFqn.Text = "FINISHED..."
+    End Sub
+
+    Function setSingleQuotes(Str As String) As String
+        If Str.Contains("'") Then
+            Str = Str.Replace("''", "'")
+            Str = Str.Replace("'", "''")
+        End If
+
+        Return Str
+    End Function
+
+    Sub applyERRDeails()
+
+        Dim ErrRowNbr As Int64 = -1
+        Dim CS As String = "data source= " + FTIAnalysisDB
+        Dim MySql As String = ""
+        Dim iCnt As Integer = 0
+
+        Dim ErrorMsg As String = ""
+        Dim TypeErr As String = ""
+        Dim ErrTbl As String = ""
+        Dim OccurCnt As Integer = 0
+
+        'FtiCONN.Open()
+        SetDBConn()
+
+        SBFqn.Text = "Applying Error details To Database"
+
+        MySql = ""
+        Try
+            Using FtiCONN
+                Dim CMD As New SQLiteCommand(FtiCONN)
+                Using CMD
+                    For Each item As clsErrors In ERRS
+                        iCnt += 1
+                        SB.Text = "Rec # " + iCnt.ToString
+                        Application.DoEvents()
+
+                        Try
+                            ErrorMsg = setSingleQuotes(item.ErrorMsg)
+                            TypeErr = setSingleQuotes(item.TypeErr)
+                            ErrTbl = setSingleQuotes(item.ErrTbl)
+                            OccurCnt = item.OccurCnt
+                            MySql = "Insert into Errors (ErrorMsg, TypeErr, ErrTbl, OccrCnt) values ('" + ErrorMsg + "', '" + TypeErr + "', '" + ErrTbl + "', " + OccurCnt.ToString + ")"
+
+                            CMD.CommandText = MySql
+                            CMD.ExecuteNonQuery()
+
+                        Catch ex As Exception
+                            LOG.WriteToArchiveLog("ERROR: applyERRDeails 04 - " + ex.Message + vbCrLf + MySql)
+                            bConnSet = False
+                        End Try
+                    Next
+
+                End Using
+
+            End Using
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR SaveErr 00 : " + ex.Message)
+        End Try
+
+    End Sub
+
+    Sub applyFTIDetails()
+
+        Dim SqlStmt As String = ""
+        Dim B As Boolean = True
+        'Dim FtiCONN As New SQLiteConnection()
+        Dim CS As String = "data source= " + FTIAnalysisDB
+        Dim MySql As String = ""
+        Dim iCnt As Integer = 0
+        Dim ErrRowNbr As Integer = 0
+        Dim TableKey As String = ""
+        Dim SourceName As String = ""
+        Dim TypeCode As String = ""
+        Dim OriginalExt As String = ""
+        Dim KeyTbl As New clsKeyTable
+
+        SBFqn.Text = "Applying ROW ERROR details to Database"
+
+        SetDBConn()
+
+        Try
+            MySql = "Insert or ignore into KeyTable (ErrRowNbr, TableKey, SourceName, OccrCnt, TypeCode, OriginalExt) values (@ErrRowNbr, @TableKey, @SourceName, @OccrCnt, @TypeCode, @OriginalExt)"
+            Using FtiCONN
+
+                Dim CMD As New SQLiteCommand(FtiCONN)
+                Using CMD
+                    For Each item As clsKeyTable In KT
+                        iCnt += 1
+                        SB.Text = "Rec #" + iCnt.ToString
+                        Application.DoEvents()
+                        Try
+                            ErrRowNbr = item.ErrRowNbr
+                            TableKey = item.TableKey
+                            SourceName = item.SourceName
+                            TypeCode = item.TypeCode
+                            OriginalExt = item.OriginalExt
+                            OccrCnt = item.OccurCnt
+
+                            'CMD.Parameters.AddWithValue("@ErrRowNbr", ErrRowNbr)
+                            'CMD.Parameters.AddWithValue("@TableKey", TableKey)
+                            'CMD.Parameters.AddWithValue("@SourceName", SourceName)
+                            'CMD.Parameters.AddWithValue("@TypeCode", TypeCode)
+                            'CMD.Parameters.AddWithValue("@OriginalExt", OriginalExt)
+
+                            MySql = "Insert into KeyTable (ErrRowNbr, TableKey, SourceName, OccrCnt,TypeCode, OriginalExt) 
+                                    values (
+                                    " + ErrRowNbr.ToString + ", '" + TableKey + "', '" + SourceName + "', " + OccrCnt.ToString + ", '" + TypeCode + "', '" + OriginalExt + "')"
+
+                            CMD.CommandText = MySql
+                            CMD.ExecuteNonQuery()
+                            B = True
+                        Catch ex As Exception
+                            B = False
+                            LOG.WriteToArchiveLog("ERROR: applyFTIDetails 00 - " + ex.Message + vbCrLf + MySql)
+                        End Try
+                    Next
+                End Using
+            End Using
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR: saveFtiSourceGuid 01 - " + ex.Message)
+            B = False
+        End Try
+
+
     End Sub
 
     Function saveFtiSourceGuid(ErrRowNbr As Int64, TableKey As String, SourceName As String, cnt As Integer, TypeCode As String, OriginalExt As String) As Boolean
@@ -371,6 +541,56 @@ Public Class frmFti
 
     End Sub
 
+    Function saveFtiErrDS(ErrorMsg As String, TypeErr As String, ErrTbl As String) As Int64
+
+        Dim index As Integer = 0
+        Dim NewRowID As Integer = ERRS.Count + 1
+        Dim SelectedRow = From thErr In ERRS Where thErr.ErrorMsg.Equals(ErrorMsg)
+        'Order By theElement.Name
+        If SelectedRow.Count = 1 Then
+            For Each item In SelectedRow
+                item.OccurCnt = item.OccurCnt + 1
+            Next
+        ElseIf SelectedRow.Count.Equals(0) Then
+            Dim theErr As New clsErrors
+            theErr.ErrRowNbr = 1
+            theErr.OccurCnt = 1
+            theErr.ErrorMsg = ErrorMsg
+            theErr.TypeErr = TypeErr
+            theErr.ErrTbl = ErrTbl
+            ERRS.Add(theErr)
+        Else
+            Console.WriteLine("ERROR saveFtiErrDS")
+        End If
+        'New ERRS With {.ErrorMsg = XX", .SourceName = "xx", .OccurCnt = 20, .ErrTble = 'xx', .TypeErr = 'xx}
+    End Function
+
+    Function saveFtiSourceGuidDS(ErrRowNbr As Integer, SourceKey As String, SourceName As String, TypeCode As String, OriginalExt As String) As Int64
+        '(ErrRowNbr, SourceKey, SourceName,  TypeCode, OriginalExt)
+        Dim index As Integer = 0
+        Dim NewRowID As Integer = ERRS.Count + 1
+        Dim SelectedRow = From theGuid In KT Where theGuid.TableKey.Equals(SourceKey)
+
+        If SelectedRow.Count = 1 Then
+            For Each item In SelectedRow
+                item.OccurCnt = item.OccurCnt + 1
+            Next
+        ElseIf SelectedRow.Count.Equals(0) Then
+            Dim KeyTable As New clsKeyTable
+            KeyTable.ErrRowNbr = ErrRowNbr
+            KeyTable.TableKey = SourceKey
+            KeyTable.SourceName = SourceName
+            KeyTable.TypeCode = TypeCode
+            KeyTable.OriginalExt = OriginalExt
+            KeyTable.OccurCnt = 1
+            KT.Add(KeyTable)
+        Else
+            Console.WriteLine("ERROR saveFtiSourceGuidDS")
+        End If
+        'New ERRS With {.ErrorMsg = XX", .SourceName = "xx", .OccurCnt = 20, .ErrTble = 'xx', .TypeErr = 'xx}
+    End Function
+
+
     Function saveFtiErr(ErrorMsg As String, TypeErr As String, ErrTbl As String, OccrCnt As Integer) As Int64
 
         Dim ErrRowNbr As Int64 = -1
@@ -420,8 +640,6 @@ Public Class frmFti
             LOG.WriteToArchiveLog("ERROR SaveErr 00 : " + ex.Message)
         End Try
 
-
-
         Return ErrRowNbr
     End Function
 
@@ -470,9 +688,6 @@ Public Class frmFti
         Catch ex As Exception
             SB.Text = "ERROR: " + ex.Message
         End Try
-
-
-
 
     End Sub
 
@@ -545,17 +760,22 @@ Public Class frmFti
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         CancelNow = True
     End Sub
+
 End Class
 
 Public Class clsKeyTable
-    Dim TableKey As String
-    Dim SourceName As String
-    Dim OccurCnt As Integer
+    Property ErrRowNbr As Int64
+    Property TableKey As String
+    Property SourceName As String
+    Property OccurCnt As Integer
+    Property TypeCode As String
+    Property OriginalExt As String
 End Class
 
 Public Class clsErrors
-    Dim ErrorMsg As String
-    Dim ErrTbl As String
-    Dim TypeErr As String
-    Dim OccurCnt As Integer
+    Property ErrRowNbr As Int64
+    Property ErrorMsg As String
+    Property ErrTbl As String
+    Property TypeErr As String
+    Property OccurCnt As Integer
 End Class
