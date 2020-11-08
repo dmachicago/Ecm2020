@@ -1256,9 +1256,17 @@ Public Class frmMain : Implements IDisposable
 
         TimerAutoExec.Enabled = False
         If Not ckDisable.Checked And Not ckDisableContentArchive.Checked And gAutoExec.Equals(True) Then
+
             SB2.Text = "LAUNCHING ContentThread"
-            ContentThread.RunWorkerAsync()
-            'ContentToolStripMenuItem_Click(Nothing, Nothing)
+            Dim UseFastScan As String = System.Configuration.ConfigurationManager.AppSettings("UseFastScan")
+
+            If UseFastScan <> "1" Then
+                ContentThread.RunWorkerAsync()
+            Else
+                SB2.Text = "LAUNCHING Fast Scan"
+                ContentFastScanToolStripMenuItem_Click(Nothing, Nothing)
+            End If
+
             TimerAutoExec.Enabled = True
         Else
             gAutoExecContentComplete = True
