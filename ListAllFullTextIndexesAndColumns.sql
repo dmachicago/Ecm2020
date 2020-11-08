@@ -1,3 +1,4 @@
+--WDM
 SELECT 
     t.name AS TableName, 
     c.name AS FTCatalogName ,

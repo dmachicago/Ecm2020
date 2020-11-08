@@ -8151,7 +8151,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
                 FROM IncludedFiles 
                 where Userid = '" + UserID + "'"
 
-        s = "select distinct FQN, EXtcode from IncludedFiles where UserID = '" + UserID + "' order by fqn"
+        s = "select distinct FQN, EXtcode from IncludedFiles where UserID = '" + UserID + "'"
         Try
             Using Conn
                 If Conn.State = ConnectionState.Closed Then

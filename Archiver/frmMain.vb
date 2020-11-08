@@ -3943,7 +3943,7 @@ SKIPFOLDER:
         frmPercent.Close()
     End Sub
 
-    Sub ArchiveContent(MachineID As String, CurrUserGuidID As String)
+    Sub ArchiveContent(MachineID As String, CurrUserGuidID As String, Optional FilesToBeUploaded As List(Of String) = Nothing)
 
         FilesBackedUp = 0
         FilesSkipped = 0
@@ -4064,6 +4064,8 @@ SKIPFOLDER:
         Dim ThisFileNeedsToBeMoved As Boolean = False : LL = 481
         Dim ThisFileNeedsToBeDeleted As Boolean = False : LL = 486
         LL = 491
+
+
 
         '********************************************************************	:	LL = 	496
         frmNotify.lblPdgPages.Text = "LOCATING FILES"
@@ -4417,6 +4419,8 @@ Process01:
                             If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
                                 FilesToArchive = DBLocal.getListenerfiles()
                                 FilesToArchiveID = DBLocal.getListenerfilesID()
+                            ElseIf Not isnothing(FilesToBeUploaded) And FilesToBeUploaded.Count > 0 Then
+                                FilesToArchive = FilesToBeUploaded
                             Else
                                 UTIL.GetFilesToArchive(iInventory, ckArchiveBit, bSubDirFlg, FOLDER_FQN, FilterList, FilesToArchive, IncludedTypes, ExcludedTypes) : LL = 2006
                             End If
@@ -4526,6 +4530,12 @@ Process01:
                                 file_FullName = FilesToArchive(K)
                                 'frmNotify.lblPdgPages.Text = "Dir: " + ParentDir
                                 'frmNotify.lblFileSpec.Text = (K).ToString + " of " + ArchCnt.ToString + " : " + file_name
+                            ElseIf FilesToBeUploaded.Count > 0 Then
+                                file_ArchiveBit = ""
+                                file_name = Path.GetFileName(FilesToArchive(K))
+                                file_Extension = Path.GetExtension(FilesToArchive(K))
+                                file_DirectoryName = Path.GetDirectoryName(FilesToArchive(K))
+                                file_FullName = FilesToArchive(K)
                             Else
                                 file_ArchiveBit = FileAttributes(0).ToUpper : LL = 2341
                                 file_name = FileAttributes(1) : LL = 2351
@@ -10048,7 +10058,7 @@ GoodLogin:
 
     End Sub
 
-    Private Sub PerformContentArchive()
+    Private Sub PerformContentArchive(Optional FilesToBeUploaded As List(Of String) = Nothing)
 
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -10131,9 +10141,11 @@ GoodLogin:
 
             gCurrUserGuidID = UIDcurr
             Try
-                '************************************** ArchiveContent ****************************************************************
                 frmNotify.TopMost = False
-                ArchiveContent(Environment.MachineName, UIDcurr)
+                '************************************** ArchiveContent ****************************************************************
+                '**********************************************************************************************************************
+                ArchiveContent(Environment.MachineName, UIDcurr, FilesToBeUploaded)
+                '**********************************************************************************************************************
                 '**********************************************************************************************************************
                 LOG.WriteToUploadLog("------------------------------------------------------------")
                 LOG.WriteToUploadLog("PerformContentArchive: ArchiveContent: Start" + StartTime.ToString)
@@ -13878,6 +13890,26 @@ SkipIT:
             MessageBox.Show("ERROR LOCALDB setSLConn: " + ex.Message)
         End Try
 
+    End Sub
+
+    Private Sub ContentFastScanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContentFastScanToolStripMenuItem.Click
+
+        Dim watch As Stopwatch = Stopwatch.StartNew()
+        Dim QI As New clsQuickInventory
+        Dim ArchiveList As New List(Of String)
+
+        ArchiveList = QI.PerformQuickInventory(Environment.MachineName, gCurrLoginID)
+
+        QI = Nothing
+
+        SB.Text = "QUICK INVENTORY COMPLETE: " + ArchiveList.Count.ToString + " files found need processing."
+
+        PerformContentArchive(ArchiveList)
+
+        watch.Stop()
+        Dim msg As String = "!!! Quick Scan found " + ArchiveList.Count.ToString + " files to archive and ran in " + watch.Elapsed.TotalSeconds.ToString + " seconds."
+        LOG.WriteToArchiveLog(msg)
+        SB.Text = msg
     End Sub
 End Class
 
