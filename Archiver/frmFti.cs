@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using global::System.Data.SQLite;
 using global::System.IO;
+using global::System.Linq;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
@@ -33,6 +34,11 @@ namespace EcmArchiver
         private Dictionary<string, string> SourceKeys = new Dictionary<string, string>();
         private Dictionary<string, int> SourceKeyCnt = new Dictionary<string, int>();
         private SQLiteConnection FtiCONN = new SQLiteConnection();
+        private string UseMemOptTabl = System.Configuration.ConfigurationManager.AppSettings["UseMemOptTabl"];
+        private List<clsKeyTable> KT = new List<clsKeyTable>();
+        // New KT With {.TableKey = XX", .SourceName = "xx", .OccurCnt = 20, .TypeCode = 'xx', .OriginalExt = 'xx}
+        private List<clsErrors> ERRS = new List<clsErrors>();
+        // New ERRS With {.ErrorMsg = XX", .SourceName = "xx", .OccurCnt = 20, .ErrTble = 'xx', .TypeErr = 'xx}
 
         private void frmFti_Load(object sender, EventArgs e)
         {
@@ -248,8 +254,6 @@ namespace EcmArchiver
 
         public void SummarizeLogs()
         {
-            var KT = new clsKeyTable();
-            var ER = new clsErrors();
             string SourceName = "";
             string FQN = "";
             string line = "";
@@ -264,6 +268,13 @@ namespace EcmArchiver
             bool B = true;
             long iCnt = 0L;
             long iTotal = 0L;
+            DataRow[] SrcDetDR = null;
+            DataTable SrcDT = null;
+            if (UseMemOptTabl.Equals("1"))
+            {
+                SrcDT = DBArch.getSrcDT();
+            }
+
             foreach (string LogFile in lbFtiLogs.SelectedItems)
             {
                 FQN = modGlobals.FTILogs + @"\" + LogFile;
@@ -309,19 +320,39 @@ namespace EcmArchiver
                             {
                                 if (!SourceKeys.ContainsKey(SourceKey))
                                 {
-                                    ReturnStr = DBArch.getSourceNameByGuid(SourceKey);
-                                    if (ReturnStr.Trim().Length.Equals(0))
+                                    // WDM Set this up as selectable because MEMORY may be critical depending upon available RAM
+                                    if (UseMemOptTabl.Equals("1"))
                                     {
-                                        SourceName = "Not Found";
-                                        TypeCode = "?";
-                                        OriginalExt = "?";
+                                        SrcDetDR = SrcDT.Select("RowGuid = '" + SourceKey + "'");
+                                        if (SrcDetDR.Count() > 0)
+                                        {
+                                            SourceName = Conversions.ToString(SrcDetDR[0]["SourceName"]);
+                                            OriginalExt = Conversions.ToString(SrcDetDR[0]["OriginalFileType"]);
+                                            TypeCode = Conversions.ToString(SrcDetDR[0]["SourceTypeCode"]);
+                                        }
+                                        else
+                                        {
+                                            SourceName = "Not Found";
+                                            TypeCode = "?";
+                                            OriginalExt = "?";
+                                        }
                                     }
                                     else
                                     {
-                                        AR = ReturnStr.Split('|');
-                                        SourceName = AR[0];
-                                        TypeCode = AR[1];
-                                        OriginalExt = AR[2];
+                                        ReturnStr = DBArch.getSourceNameByGuid(SourceKey);
+                                        if (ReturnStr.Trim().Length.Equals(0))
+                                        {
+                                            SourceName = "Not Found";
+                                            TypeCode = "?";
+                                            OriginalExt = "?";
+                                        }
+                                        else
+                                        {
+                                            AR = ReturnStr.Split('|');
+                                            SourceName = AR[0];
+                                            TypeCode = AR[1];
+                                            OriginalExt = AR[2];
+                                        }
                                     }
 
                                     if (SourceKey.Trim().Length > 0)
@@ -329,8 +360,27 @@ namespace EcmArchiver
                                         SourceKeys.Add(SourceKey, SourceName);
                                     }
 
-                                    ErrRowNbr = saveFtiErr(ErrorMsg, TypeErr, ErrTbl, 1);
-                                    saveFtiSourceGuid(ErrRowNbr, SourceKey, SourceName, 0, TypeCode, OriginalExt);
+                                    if (UseMemOptTabl.Equals("1"))
+                                    {
+                                        saveFtiErrDS(ErrorMsg, TypeErr, ErrTbl);
+                                    }
+                                    else
+                                    {
+                                        ErrRowNbr = saveFtiErr(ErrorMsg, TypeErr, ErrTbl, 1);
+                                    }
+
+                                    if (UseMemOptTabl.Equals("1"))
+                                    {
+                                        saveFtiSourceGuidDS((int)ErrRowNbr, SourceKey, SourceName, TypeCode, OriginalExt);
+                                    }
+                                    else
+                                    {
+                                        saveFtiSourceGuid(ErrRowNbr, SourceKey, SourceName, 0, TypeCode, OriginalExt);
+                                    }
+                                }
+                                else if (UseMemOptTabl.Equals("1"))
+                                {
+                                    saveFtiSourceGuidDS((int)ErrRowNbr, SourceKey, SourceName, TypeCode, OriginalExt);
                                 }
                                 else
                                 {
@@ -363,8 +413,141 @@ namespace EcmArchiver
                 }
             }
 
+            PB.Value = 0;
+            if (CancelNow.Equals(false) & UseMemOptTabl.Equals("1"))
+            {
+                applyERRDeails();
+                applyFTIDetails();
+            }
+
             CancelNow = false;
             SBFqn.Text = "FINISHED...";
+        }
+
+        public string setSingleQuotes(string Str)
+        {
+            if (Str.Contains("'"))
+            {
+                Str = Str.Replace("''", "'");
+                Str = Str.Replace("'", "''");
+            }
+
+            return Str;
+        }
+
+        public void applyERRDeails()
+        {
+            long ErrRowNbr = -1;
+            string CS = "data source= " + FTIAnalysisDB;
+            string MySql = "";
+            int iCnt = 0;
+            string ErrorMsg = "";
+            string TypeErr = "";
+            string ErrTbl = "";
+            int OccurCnt = 0;
+
+            // FtiCONN.Open()
+            SetDBConn();
+            SBFqn.Text = "Applying Error details To Database";
+            MySql = "";
+            try
+            {
+                using (FtiCONN)
+                {
+                    var CMD = new SQLiteCommand(FtiCONN);
+                    using (CMD)
+                        foreach (clsErrors item in ERRS)
+                        {
+                            iCnt += 1;
+                            SB.Text = "Rec # " + iCnt.ToString();
+                            Application.DoEvents();
+                            try
+                            {
+                                ErrorMsg = setSingleQuotes(item.ErrorMsg);
+                                TypeErr = setSingleQuotes(item.TypeErr);
+                                ErrTbl = setSingleQuotes(item.ErrTbl);
+                                OccurCnt = item.OccurCnt;
+                                MySql = "Insert into Errors (ErrorMsg, TypeErr, ErrTbl, OccrCnt) values ('" + ErrorMsg + "', '" + TypeErr + "', '" + ErrTbl + "', " + OccurCnt.ToString() + ")";
+                                CMD.CommandText = MySql;
+                                CMD.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+                                LOG.WriteToArchiveLog("ERROR: applyERRDeails 04 - " + ex.Message + Constants.vbCrLf + MySql);
+                                bConnSet = false;
+                            }
+                        }
+                }
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("ERROR SaveErr 00 : " + ex.Message);
+            }
+        }
+
+        public void applyFTIDetails()
+        {
+            string SqlStmt = "";
+            bool B = true;
+            // Dim FtiCONN As New SQLiteConnection()
+            string CS = "data source= " + FTIAnalysisDB;
+            string MySql = "";
+            int iCnt = 0;
+            int ErrRowNbr = 0;
+            string TableKey = "";
+            string SourceName = "";
+            string TypeCode = "";
+            string OriginalExt = "";
+            var KeyTbl = new clsKeyTable();
+            SBFqn.Text = "Applying ROW ERROR details to Database";
+            SetDBConn();
+            try
+            {
+                MySql = "Insert or ignore into KeyTable (ErrRowNbr, TableKey, SourceName, OccrCnt, TypeCode, OriginalExt) values (@ErrRowNbr, @TableKey, @SourceName, @OccrCnt, @TypeCode, @OriginalExt)";
+                using (FtiCONN)
+                {
+                    var CMD = new SQLiteCommand(FtiCONN);
+                    using (CMD)
+                        foreach (clsKeyTable item in KT)
+                        {
+                            iCnt += 1;
+                            SB.Text = "Rec #" + iCnt.ToString();
+                            Application.DoEvents();
+                            try
+                            {
+                                ErrRowNbr = (int)item.ErrRowNbr;
+                                TableKey = item.TableKey;
+                                SourceName = item.SourceName;
+                                TypeCode = item.TypeCode;
+                                OriginalExt = item.OriginalExt;
+                                OccrCnt = item.OccurCnt;
+
+                                // CMD.Parameters.AddWithValue("@ErrRowNbr", ErrRowNbr)
+                                // CMD.Parameters.AddWithValue("@TableKey", TableKey)
+                                // CMD.Parameters.AddWithValue("@SourceName", SourceName)
+                                // CMD.Parameters.AddWithValue("@TypeCode", TypeCode)
+                                // CMD.Parameters.AddWithValue("@OriginalExt", OriginalExt)
+
+                                MySql = @"Insert into KeyTable (ErrRowNbr, TableKey, SourceName, OccrCnt,TypeCode, OriginalExt) 
+                                    values (
+                                    " + ErrRowNbr.ToString() + ", '" + TableKey + "', '" + SourceName + "', " + OccrCnt.ToString() + ", '" + TypeCode + "', '" + OriginalExt + "')";
+                                CMD.CommandText = MySql;
+                                CMD.ExecuteNonQuery();
+                                B = true;
+                            }
+                            catch (Exception ex)
+                            {
+                                B = false;
+                                LOG.WriteToArchiveLog("ERROR: applyFTIDetails 00 - " + ex.Message + Constants.vbCrLf + MySql);
+                            }
+                        }
+                }
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("ERROR: saveFtiSourceGuid 01 - " + ex.Message);
+                B = false;
+            }
         }
 
         public bool saveFtiSourceGuid(long ErrRowNbr, string TableKey, string SourceName, int cnt, string TypeCode, string OriginalExt)
@@ -460,6 +643,71 @@ namespace EcmArchiver
             {
                 LOG.WriteToArchiveLog("ERROR SaveErr 00 : " + ex.Message);
             }
+        }
+
+        public long saveFtiErrDS(string ErrorMsg, string TypeErr, string ErrTbl)
+        {
+            int index = 0;
+            int NewRowID = ERRS.Count + 1;
+            var SelectedRow = from thErr in ERRS
+                              where thErr.ErrorMsg.Equals(ErrorMsg)
+                              select thErr;
+            // Order By theElement.Name
+            if (SelectedRow.Count() == 1)
+            {
+                foreach (var item in SelectedRow)
+                    item.OccurCnt = item.OccurCnt + 1;
+            }
+            else if (SelectedRow.Count().Equals(0))
+            {
+                var theErr = new clsErrors();
+                theErr.ErrRowNbr = 1L;
+                theErr.OccurCnt = 1;
+                theErr.ErrorMsg = ErrorMsg;
+                theErr.TypeErr = TypeErr;
+                theErr.ErrTbl = ErrTbl;
+                ERRS.Add(theErr);
+            }
+            else
+            {
+                Console.WriteLine("ERROR saveFtiErrDS");
+            }
+
+            return default;
+            // New ERRS With {.ErrorMsg = XX", .SourceName = "xx", .OccurCnt = 20, .ErrTble = 'xx', .TypeErr = 'xx}
+        }
+
+        public long saveFtiSourceGuidDS(int ErrRowNbr, string SourceKey, string SourceName, string TypeCode, string OriginalExt)
+        {
+            // (ErrRowNbr, SourceKey, SourceName,  TypeCode, OriginalExt)
+            int index = 0;
+            int NewRowID = ERRS.Count + 1;
+            var SelectedRow = from theGuid in KT
+                              where theGuid.TableKey.Equals(SourceKey)
+                              select theGuid;
+            if (SelectedRow.Count() == 1)
+            {
+                foreach (var item in SelectedRow)
+                    item.OccurCnt = item.OccurCnt + 1;
+            }
+            else if (SelectedRow.Count().Equals(0))
+            {
+                var KeyTable = new clsKeyTable();
+                KeyTable.ErrRowNbr = ErrRowNbr;
+                KeyTable.TableKey = SourceKey;
+                KeyTable.SourceName = SourceName;
+                KeyTable.TypeCode = TypeCode;
+                KeyTable.OriginalExt = OriginalExt;
+                KeyTable.OccurCnt = 1;
+                KT.Add(KeyTable);
+            }
+            else
+            {
+                Console.WriteLine("ERROR saveFtiSourceGuidDS");
+            }
+
+            return default;
+            // New ERRS With {.ErrorMsg = XX", .SourceName = "xx", .OccurCnt = 20, .ErrTble = 'xx', .TypeErr = 'xx}
         }
 
         public long saveFtiErr(string ErrorMsg, string TypeErr, string ErrTbl, int OccrCnt)
@@ -655,16 +903,20 @@ namespace EcmArchiver
 
     public class clsKeyTable
     {
-        private string TableKey;
-        private string SourceName;
-        private int OccurCnt;
+        public long ErrRowNbr { get; set; }
+        public string TableKey { get; set; }
+        public string SourceName { get; set; }
+        public int OccurCnt { get; set; }
+        public string TypeCode { get; set; }
+        public string OriginalExt { get; set; }
     }
 
     public class clsErrors
     {
-        private string ErrorMsg;
-        private string ErrTbl;
-        private string TypeErr;
-        private int OccurCnt;
+        public long ErrRowNbr { get; set; }
+        public string ErrorMsg { get; set; }
+        public string ErrTbl { get; set; }
+        public string TypeErr { get; set; }
+        public int OccurCnt { get; set; }
     }
 }

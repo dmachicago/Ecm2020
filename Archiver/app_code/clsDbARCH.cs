@@ -32201,6 +32201,34 @@ namespace EcmArchiver
             return AppliedDate;
         }
 
+        public DataTable getSrcDT()
+        {
+            string strSql = "select RowGuid, SourceName, OriginalFileType, SourceTypeCode from DataSource";
+            var DT = new DataTable();
+            string CS = getRepoConnStr();
+            var CONN = new SqlConnection(CS);
+            try
+            {
+                using (CONN)
+                {
+                    CONN.Open();
+                    using (var dad = new SqlDataAdapter(strSql, CONN))
+                    {
+                        dad.Fill(DT);
+                    }
+
+                    CONN.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                LOG.WriteToArchiveLog("FATAL ERROR getErrDT: " + ex.Message);
+            }
+
+            int count_row = DT.Rows.Count;
+            return DT;
+        }
+
         /* TODO ERROR: Skipped RegionDirectiveTrivia */
         private bool disposedValue; // To detect redundant calls
 

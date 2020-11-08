@@ -10,7 +10,7 @@ namespace EcmArchiver
     {
         public byte[] StrToByteArray(string str)
         {
-            var encoding = new global::System.Text.UTF8Encoding();
+            var encoding = new System.Text.UTF8Encoding();
             return encoding.GetBytes(str);
         } // StrToByteArray
 
