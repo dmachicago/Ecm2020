@@ -632,8 +632,8 @@ Public Class clsDbLocal : Implements IDisposable
             Catch ex As Exception
                 If Not ex.Message.Contains("Cannot access a disposed object") Then
                     LOG.WriteToArchiveLog("NOTICE: SQLiteConn closed" + ex.Message)
-                Else
-                    Console.WriteLine("INFO: SQLiteConn Dispose" + ex.Message)
+                    'Else
+                    '    Console.WriteLine("INFO: SQLiteConn Dispose" + ex.Message)
                 End If
             End Try
         End If
@@ -2253,23 +2253,15 @@ Public Class clsDbLocal : Implements IDisposable
         setSLConn()
 
         Dim CMD As New SQLiteCommand(S, SQLiteCONN)
-
-        Try
-            CMD.ExecuteNonQuery()
-        Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/truncateDirs 104 - " + ex.Message + vbCrLf + S)
-        Finally
-            CMD.Dispose()
-            'If cn IsNot Nothing Then
-            '    If cn.State = ConnectionState.Open Then
-            '        cn.Close()
-            '    End If
-            '    cn.Dispose()
-            'End If
-            GC.Collect()
-            GC.WaitForPendingFinalizers()
-        End Try
-
+        Using CMD
+            Try
+                CMD.ExecuteNonQuery()
+            Catch ex As Exception
+                LOG.WriteToArchiveLog("ERROR: clsDbLocal/truncateDirs 104 - " + ex.Message + vbCrLf + S)
+            Finally
+                GC.Collect()
+            End Try
+        End Using
     End Sub
 
     Sub truncateDirFiles()

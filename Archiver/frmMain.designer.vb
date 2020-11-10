@@ -169,6 +169,7 @@ Partial Class frmMain
         Me.ExchangeEmailsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContentToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContentNoLIstenerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ContentFastScanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ScheduleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SetArchiveIntervalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -366,7 +367,6 @@ Partial Class frmMain
         Me.lblNotice = New System.Windows.Forms.Label()
         Me.ThreadValidateSourceName = New System.ComponentModel.BackgroundWorker()
         Me.ThreadSetNameHash = New System.ComponentModel.BackgroundWorker()
-        Me.ContentFastScanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.gbEmail.SuspendLayout()
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbFiletypes.SuspendLayout()
@@ -2197,6 +2197,12 @@ Partial Class frmMain
         Me.ContentNoLIstenerToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
         Me.ContentNoLIstenerToolStripMenuItem.Text = "Content ( Scan)"
         '
+        'ContentFastScanToolStripMenuItem
+        '
+        Me.ContentFastScanToolStripMenuItem.Name = "ContentFastScanToolStripMenuItem"
+        Me.ContentFastScanToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.ContentFastScanToolStripMenuItem.Text = "Content (Fast Scan)"
+        '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
@@ -3782,12 +3788,6 @@ Partial Class frmMain
         '
         'ThreadSetNameHash
         '
-        '
-        'ContentFastScanToolStripMenuItem
-        '
-        Me.ContentFastScanToolStripMenuItem.Name = "ContentFastScanToolStripMenuItem"
-        Me.ContentFastScanToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
-        Me.ContentFastScanToolStripMenuItem.Text = "Content (Fast Scan)"
         '
         'frmMain
         '

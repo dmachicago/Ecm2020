@@ -8629,12 +8629,36 @@ GetNextParentFolder:
             saveContentOwner(SourceGuid, gCurrUserGuidID, "C", RSSProcessingDir, gMachineID, gNetworkID)
         End If
 
-        Dim NbrDUps As Integer = ckFileExistInRepo(Environment.MachineName, file_FullName)
-        If NbrDUps > 0 Then
-            Dim ContentSha1Hash As String = ENC.GenerateSHA512HashFromFile(file_FullName)
-            '** Update the HASH and the Source Binary
-            '* Get the file hash
-            UpdateSouceImage(Environment.MachineName, file_FullName, ContentSha1Hash)
+        Dim ListOfGuids As New List(Of String)
+        ListOfGuids = ckFileExistInRepo(Environment.MachineName, file_FullName)
+        If ListOfGuids.Count > 0 Then
+            Dim FI2 As New FileInfo(file_FullName)
+            file_LastAccessTime = FI2.LastAccessTime
+            file_CreationTime = FI2.CreationTime
+            file_LastWriteTime = FI2.LastWriteTime
+            FI2 = Nothing
+
+            LastVerNbr = 0
+            Dim FileHash As String = ENC.GenerateSHA512HashFromFile(file_FullName)
+            For Each SourceGuid In ListOfGuids
+                bSuccessExecution = UpdateSourceImageInRepo(file_FullName,
+                                                gCurrLoginID,
+                                                Environment.MachineName,
+                                                SourceGuid,
+                                                file_LastAccessTime,
+                                                file_CreationTime,
+                                                file_LastWriteTime,
+                                                LastVerNbr,
+                                                file_FullName,
+                                                RetentionCode,
+                                                isPublic,
+                                                FileHash)
+                'bSuccessExecution = DBARCH.UpdateSouceImage(MachineID, file_FullName, FileHash)
+                If Not bSuccessExecution Then
+                    LOG.WriteToArchiveLog("ERROR UpdateSouceImage 0X1: Failed to update ImageHash: " + file_FullName)
+                End If
+            Next
+
         End If
 
 
@@ -9249,14 +9273,36 @@ ProcessOneFileOnly:
                     Dim FileNeedsUpdating As Boolean = False
                     Dim iDatasourceCnt As Integer = getCountDataSourceFiles(file_SourceName, ImageHash)
 
-                    Dim NbrDUps As Integer = ckFileExistInRepo(Environment.MachineName, file_FullName)
-                    If NbrDUps > 0 Then
-                        Dim FHASH As String = ENC.GenerateSHA512HashFromFile(file_FullName)
-                        '** Update the HASH and the Source Binary
-                        '* Get the file hash
-                        '*****************************************************************************
-                        UpdateSouceImage(Environment.MachineName, file_FullName, FHASH)
-                        '*****************************************************************************
+                    Dim ListOfGuids As New List(Of String)
+                    ListOfGuids = ckFileExistInRepo(Environment.MachineName, file_FullName)
+                    If ListOfGuids.Count > 0 Then
+                        Dim FI2 As New FileInfo(file_FullName)
+                        file_LastAccessTime = FI2.LastAccessTime
+                        file_CreationTime = FI2.CreationTime
+                        file_LastWriteTime = FI2.LastWriteTime
+                        FI2 = Nothing
+
+                        LastVerNbr = 0
+                        Dim filehash As String = ENC.GenerateSHA512HashFromFile(file_FullName)
+                        For Each SourceGuid In ListOfGuids
+                            bSuccessExecution = UpdateSourceImageInRepo(file_FullName,
+                                                gCurrLoginID,
+                                                Environment.MachineName,
+                                                SourceGuid,
+                                                file_LastAccessTime,
+                                                file_CreationTime,
+                                                file_LastWriteTime,
+                                                LastVerNbr,
+                                                file_FullName,
+                                                RetentionCode,
+                                                isPublic,
+                                                FileHash)
+                            'bSuccessExecution = DBARCH.UpdateSouceImage(MachineID, file_FullName, FileHash)
+                            If Not bSuccessExecution Then
+                                LOG.WriteToArchiveLog("ERROR UpdateSouceImage 0X1: Failed to update ImageHash: " + file_FullName)
+                            End If
+                        Next
+
                     End If
 
                     If (iDatasourceCnt = 0) Then
@@ -9271,7 +9317,7 @@ ProcessOneFileOnly:
                         '* The file DOES NOT exist in the reporsitory, add it now.
                         '********************************************************************************
                         Application.DoEvents()
-                        Dim LastVerNbr As Integer = 0
+                        LastVerNbr = 0
 
                         '********************************************************************************
                         Dim StartInsert As Date = Now
@@ -9282,7 +9328,11 @@ ProcessOneFileOnly:
                         Dim BB As Boolean = AddSourceToRepo(UID, MachineID, gNetworkID, SourceGuid, file_FullName, file_SourceName, file_SourceTypeCode, file_LastAccessDate, file_CreateDate, file_LastWriteTime, gCurrUserGuidID, LastVerNbr, RetentionCode, isPublic, ImageHash, file_DirName)
                         '****************************************************************************************************************************************************************
                         '****************************************************************************************************************************************************************
-
+                        If BB Then
+                            LOG.WriteToDBUpdatesLog("UPDATED/ADDED FILE: " + SourceGuid + " : " + file_FullName)
+                        Else
+                            LOG.WriteToDBUpdatesLog("ERROR FAILED- FILE: " + SourceGuid + " : " + file_FullName)
+                        End If
 
                         Dim fExt As String = DMA.getFileExtension(file_FullName)
                         If FQN.ToUpper.Equals("ZIP") Then

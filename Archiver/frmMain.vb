@@ -305,7 +305,7 @@ Public Class frmMain : Implements IDisposable
 
         DBLocal.getUseLastArchiveDateActive()
         setLastArchiveLabel()
-        getLIsteners()
+        getListeners()
 
         'INSERT ALL THE REPO ALLOWED EXTENSIONS INTO THE SQLITE DB
         Dim AllowedExts As List(Of String) = DBARCH.getUsedExtension()
@@ -991,8 +991,13 @@ Public Class frmMain : Implements IDisposable
             If ddebug Then LOG.WriteToArchiveLog("frmMain:Load process 10 successful.") : LL = 436
             LL = 437
             If cbParentFolders.Items.Count > 0 Then : LL = 438
-                cbParentFolders.Text = cbParentFolders.Items(cbParentFolders.Items.Count - 1) : LL = 439
-                btnActive_Click(Nothing, Nothing) : LL = 440
+                Try
+                    cbParentFolders.Text = cbParentFolders.Items(cbParentFolders.Items.Count - 1) : LL = 439
+                    btnActive_Click(Nothing, Nothing) : LL = 440
+                Catch ex As Exception
+                    LOG.WriteToArchiveLog("WARNING frmMain 202A: " + ex.Message)
+                End Try
+
             End If : LL = 441
 
             updateMessageBar("11 of 18")
@@ -3951,7 +3956,7 @@ SKIPFOLDER:
         frmPercent.Close()
     End Sub
 
-    Sub ArchiveContent(MachineID As String, CurrUserGuidID As String, Optional FilesToBeUploaded As List(Of String) = Nothing)
+    Sub ArchiveContent(MachineID As String, CurrUserGuidID As String, FilesToBeUploaded As List(Of String))
 
         FilesBackedUp = 0
         FilesSkipped = 0
@@ -3960,6 +3965,7 @@ SKIPFOLDER:
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
+        Dim FOLDER_IncludeSubDirs As String = ""
         Dim LL As Integer = 0
         Dim cFolder As String = ""
         Dim pFolder As String = "XXX"
@@ -4200,7 +4206,7 @@ SKIPFOLDER:
                     If ddebug Then LOG.WriteToArchiveLog("frmMain : ArchiveContent :8002 :FOLDER_FQN : " + FOLDER_FQN) : LL = 991
 
                     Dim ParmMsg As String = "" : LL = 996
-                    Dim FOLDER_IncludeSubDirs As String = FolderParms(1) : LL = 1001
+                    FOLDER_IncludeSubDirs = FolderParms(1) : LL = 1001
                     ParmMsg += "FOLDER_IncludeSubDirs set to " + FOLDER_IncludeSubDirs + " for " + FOLDER_FQN + vbCrLf : LL = 1006
 
                     LL = 1011
@@ -4427,8 +4433,10 @@ Process01:
                             If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
                                 FilesToArchive = DBLocal.getListenerfiles()
                                 FilesToArchiveID = DBLocal.getListenerfilesID()
-                            ElseIf Not isnothing(FilesToBeUploaded) And FilesToBeUploaded.Count > 0 Then
-                                FilesToArchive = FilesToBeUploaded
+                            ElseIf Not IsNothing(FilesToBeUploaded) Then
+                                If FilesToBeUploaded.Count > 0 Then
+                                    FilesToArchive = FilesToBeUploaded
+                                End If
                             Else
                                 UTIL.GetFilesToArchive(iInventory, ckArchiveBit, bSubDirFlg, FOLDER_FQN, FilterList, FilesToArchive, IncludedTypes, ExcludedTypes) : LL = 2006
                             End If
@@ -4529,27 +4537,29 @@ Process01:
                             Dim file_Extension As String = ""
                             Dim file_DirectoryName As String = ""
 
-                            If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
+                            If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then : LL = 2337
                                 'FileAttributes() = FilesToArchive(K).Split("|") : LL = 2336
-                                file_ArchiveBit = ""
-                                file_name = Path.GetFileName(FilesToArchive(K))
-                                file_Extension = Path.GetExtension(FilesToArchive(K))
-                                file_DirectoryName = Path.GetDirectoryName(FilesToArchive(K))
-                                file_FullName = FilesToArchive(K)
+                                file_ArchiveBit = "" : LL = 2338
+                                file_name = Path.GetFileName(FilesToArchive(K)) : LL = 2339
+                                file_Extension = Path.GetExtension(FilesToArchive(K)) : LL = 2340
+                                file_DirectoryName = Path.GetDirectoryName(FilesToArchive(K)) : LL = 2341
+                                file_FullName = FilesToArchive(K) : LL = 2342
                                 'frmNotify.lblPdgPages.Text = "Dir: " + ParentDir
                                 'frmNotify.lblFileSpec.Text = (K).ToString + " of " + ArchCnt.ToString + " : " + file_name
-                            ElseIf FilesToBeUploaded.Count > 0 Then
-                                file_ArchiveBit = ""
-                                file_name = Path.GetFileName(FilesToArchive(K))
-                                file_Extension = Path.GetExtension(FilesToArchive(K))
-                                file_DirectoryName = Path.GetDirectoryName(FilesToArchive(K))
-                                file_FullName = FilesToArchive(K)
+                            ElseIf Not isnothing(FilesToBeUploaded) Then : LL = 2343
+                                If FilesToBeUploaded.Count > 0 Then
+                                    file_ArchiveBit = "" : LL = 2345
+                                    file_name = Path.GetFileName(FilesToArchive(K)) : LL = 2345
+                                    file_Extension = Path.GetExtension(FilesToArchive(K)) : LL = 2346
+                                    file_DirectoryName = Path.GetDirectoryName(FilesToArchive(K)) : LL = 2347
+                                    file_FullName = FilesToArchive(K) : LL = 2348
+                                End If
                             Else
-                                file_ArchiveBit = FileAttributes(0).ToUpper : LL = 2341
-                                file_name = FileAttributes(1) : LL = 2351
+                                file_ArchiveBit = FileAttributes(0).ToUpper : LL = 2349
+                                file_name = FileAttributes(1) : LL = 2350
                                 file_Extension = FileAttributes(2) : LL = 2356
                                 file_DirectoryName = FileAttributes(3) : LL = 2361
-                                file_FullName = file_DirectoryName + "\" + file_name
+                                file_FullName = file_DirectoryName + "\" + file_name : LL = 2362
                                 'frmNotify.lblPdgPages.Text = "Dir: " + file_DirectoryName
                                 'frmNotify.lblFileSpec.Text = (K).ToString + " of " + ArchCnt.ToString + " : " + file_name
                             End If
@@ -4681,7 +4691,14 @@ Process01:
                             'ImageHash = to FileHash
                             'Dim ImageHash As String = ENC.GenerateSHA512HashFromFile(file_FullName) : LL = 2666
                             Dim ImageHash As String = FileHash
-                            Dim NbrFilesFoundInRepo As Integer = DBARCH.getCountDataSourceFiles(file_FullName, FileHash) : LL = 2671
+                            Dim NbrFilesFoundInRepo As Integer = 0
+                            NbrFilesFoundInRepo = DBARCH.getCountDataSourceFiles(file_FullName, FileHash) : LL = 2671
+
+                            'If Not IsNothing(FilesToBeUploaded) Then
+                            '    NbrFilesFoundInRepo = FilesToBeUploaded.Count
+                            'Else
+                            '    NbrFilesFoundInRepo = DBARCH.getCountDataSourceFiles(file_FullName, FileHash) : LL = 2671
+                            'End If
 
                             If FileHash.Length < 10 Then
                                 LOG.WriteToArchiveLog("ERROR ArchiveContent HASH failed: " + file_FullName)
@@ -4868,20 +4885,31 @@ Process01:
                             LOG.WriteToUploadLog("ArchiveContent: 00 File: " + Now.ToString + file_FullName)
 
                             '** FILE ALREADY EXISTS IN THE REPOSITORY
-                            Dim NbrDUps As Integer = DBARCH.ckFileExistInRepo(MachineID, file_FullName)
-                            If NbrDUps > 0 Then
-                                '** Update the HASH and the Source Binary
-                                '* Get the file hash
-                                If FileHash.Length < 10 Then
-                                    GoTo NextFile
-                                End If
-                                bSuccessExecution = DBARCH.UpdateSouceImage(MachineID, file_FullName, FileHash)
-                                If Not bSuccessExecution Then
-                                    LOG.WriteToArchiveLog("ERROR UpdateSouceImage 0X1: Failed to update ImageHash: " + file_FullName)
-                                End If
+                            Dim ListOfGuids As New List(Of String)
+                            ListOfGuids = DBARCH.ckFileExistInRepo(MachineID, file_FullName)
+                            If ListOfGuids.Count > 0 Then
+                                For Each SourceGuid In ListOfGuids
+                                    Try
+                                        'Dim FI3 As New FileInfo(file_FullName)
+                                        'file_LastAccessTime = FI3.LastAccessTime
+                                        'file_CreationTime = FI3.CreationTime
+                                        'file_LastWriteTime = FI3.LastWriteTime
+                                        'LastVerNbr = 0
+                                        bSuccessExecution = DBARCH.UpdateSouceImage(SourceGuid, file_FullName)
+                                        If bSuccessExecution Then
+                                            LOG.WriteToArchiveLog("NOTICE UpdateSouceImage Z4: Updated ImageHash: " + file_FullName)
+                                        Else
+                                            LOG.WriteToArchiveLog("ERROR UpdateSouceImage 0X1: Failed to update ImageHash: " + file_FullName)
+                                        End If
+                                        'FI3 = Nothing
+                                    Catch ex As Exception
+                                        LOG.WriteToDBUpdatesLog("ERROR 200A : " + ex.Message)
+                                    End Try
+                                Next
+                                GoTo DoneWithIt
                             End If
 
-                            If NbrFilesFoundInRepo = 0 And NbrDUps = 0 Then : LL = 3556
+                            If NbrFilesFoundInRepo = 0 And ListOfGuids.Count.Equals(0) Then : LL = 3556
                                 LL = 3561
                                 Dim TS As TimeSpan : LL = 3566
                                 Dim sTime As Date = Now : LL = 3571
@@ -4989,7 +5017,7 @@ Process01:
 
                                     '*************************************************	:	LL = 	4076
                                     UpdateTimer = Now : LL = 4081
-                                    Dim OriginalFileName As String = DMA.getFileName(file_FullName) : LL = 4091
+                                    OriginalFileName = DMA.getFileName(file_FullName) : LL = 4091
                                     LL = 4096
                                     '**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**--**	:	LL = 	4111
                                     '**WDM - this is where the upload magic occurs. Upload content to repository	:	LL = 	4116
@@ -7007,7 +7035,7 @@ NextRec:
 
         Try
             ' Read the file one line at a time.
-            getLIsteners()
+            getListeners()
 StartOver:
             ProcessSubdirectories = ""
             For i = 0 To lbArchiveDirs.SelectedItems.Count - 1
@@ -7070,7 +7098,7 @@ StartOver:
             MessageBox.Show("ERROR: Cannot add listener: " + ex.Message)
         End Try
 
-        getLIsteners()
+        getListeners()
 
         Return
     End Sub
@@ -10156,11 +10184,11 @@ GoodLogin:
                 '**********************************************************************************************************************
                 '**********************************************************************************************************************
                 LOG.WriteToUploadLog("------------------------------------------------------------")
-                LOG.WriteToUploadLog("PerformContentArchive: ArchiveContent: Start" + StartTime.ToString)
-                LOG.WriteToUploadLog("PerformContentArchive: ArchiveContent: END" + Now.ToString)
+                LOG.WriteToUploadLog("00 PerformContentArchive: ArchiveContent: Start" + StartTime.ToString)
+                LOG.WriteToUploadLog("00 PerformContentArchive: ArchiveContent: END" + Now.ToString)
             Catch ex As Exception
-                LOG.WriteToArchiveLog("PerformContentArchive/ArchiveContent 01: " + ex.Message)
-                LOG.WriteToArchiveLog("PerformContentArchive/ArchiveContent 02: " + ex.StackTrace.ToString)
+                LOG.WriteToArchiveLog("01 ERROR PerformContentArchive/ArchiveContent 01: " + ex.Message)
+                LOG.WriteToArchiveLog("01 ERROR PerformContentArchive/ArchiveContent 02: " + ex.StackTrace.ToString)
             End Try
 
             '********************************************************'
@@ -13839,7 +13867,7 @@ SkipIT:
                 lbActiveFolder.SetSelected(I, True)
                 ProcessListener(True)
                 lbActiveFolder.SetSelected(I, False)
-            Next i
+            Next I
         Catch ex As Exception
             Console.WriteLine("ERROR: " + ex.Message)
         End Try
@@ -13901,7 +13929,9 @@ SkipIT:
     End Sub
 
     Private Sub ContentFastScanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContentFastScanToolStripMenuItem.Click
-
+        frmMessageBar.Show()
+        frmMessageBar.lblmsg.Text = "STANDBY, pulling data from Repository"
+        frmMessageBar.Refresh()
         Dim watch As Stopwatch = Stopwatch.StartNew()
         Dim QI As New clsQuickInventory
         Dim ArchiveList As New List(Of String)
@@ -13909,6 +13939,7 @@ SkipIT:
         ArchiveList = QI.PerformQuickInventory(Environment.MachineName, gCurrLoginID)
 
         QI = Nothing
+        frmMessageBar.Close()
 
         SB.Text = "QUICK INVENTORY COMPLETE: " + ArchiveList.Count.ToString + " files found need processing."
 
@@ -13918,6 +13949,23 @@ SkipIT:
         Dim msg As String = "!!! Quick Scan found " + ArchiveList.Count.ToString + " files to archive and ran in " + watch.Elapsed.TotalSeconds.ToString + " seconds."
         LOG.WriteToArchiveLog(msg)
         SB.Text = msg
+    End Sub
+
+    Private Sub ContentToolStripMenuItem_MouseEnter(sender As Object, e As EventArgs) Handles ContentToolStripMenuItem.MouseEnter
+        If gUseLastArchiveDate.Equals("1") Then
+            ContentToolStripMenuItem.Text = ContentToolStripMenuItem.Text + " {Lastarchive ON}"
+        End If
+    End Sub
+
+    Private Sub ContentToolStripMenuItem_MouseLeave(sender As Object, e As EventArgs) Handles ContentToolStripMenuItem.MouseLeave
+
+        If ContentToolStripMenuItem.Text.Contains("{Lastarchive ON}") Then
+            Dim S = ContentToolStripMenuItem.Text
+            Dim I As Integer = S.IndexOf("{")
+            S = S.Substring(0, I - 1)
+            S = S.Trim()
+            ContentToolStripMenuItem.Text = S
+        End If
     End Sub
 End Class
 

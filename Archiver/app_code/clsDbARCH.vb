@@ -5697,13 +5697,13 @@ Public Class clsDatabaseARCH : Implements IDisposable
             FQN = FQN.Replace("''", "'")
         End If
 
-
         Dim b As Boolean = False
         Dim ConnStr As String = setConnStr()
         Dim MySql As String = ""
+        Dim SourceImage As Byte() = IO.File.ReadAllBytes(FQN)
 
         MySql = "UPDATE DataSource SET "
-        MySql += " SourceImage = @FileContents "
+        MySql += " SourceImage = @SourceImage "
         MySql += " , Imagehash = @Imagehash"
         MySql += " , LastAccessDate = getdate()"
         MySql += " where MachineID = @MachineID and FQN = @FQN"
@@ -5717,10 +5717,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
                     Command.Parameters.Add(New SqlParameter("@MachineID", MachineID))
                     Command.Parameters.Add(New SqlParameter("@FQN", FQN))
                     Command.Parameters.Add(New SqlParameter("@Imagehash", Imagehash))
-                    Command.Parameters.Add("@FileContents", SqlDbType.VarBinary).Value = IO.File.ReadAllBytes(FQN)
+                    Command.Parameters.Add(New SqlParameter("@SourceImage", SourceImage))
                     Command.ExecuteNonQuery()
                 End Using
             End Using
+            LOG.WriteToDBUpdatesLog("NOTICE Successfully updated SourceImage for <" + FQN + ">")
             b = True
         Catch ex As Exception
             LOG.WriteToArchiveLog("FATAL ERROR :UpdateSouceImage 22.345.22 - Failed to add source image." + vbCrLf + MySql + Environment.NewLine + ex.Message)
@@ -5730,26 +5731,100 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
-    Public Function ckFileExistInRepo(MachineID As String, ByVal FQN As String) As Integer
-        Dim CNT As Integer = -1
+    Function UpdateSouceImage(SourceGuid As String, FQN As String) As Boolean
+
+        If FQN.Contains("'") Then
+            FQN = FQN.Replace("''", "'")
+        End If
+
+        If Not File.Exists(FQN) Then
+            LOG.WriteToDBUpdatesLog("ERROR 626x: FIle Missing 00A: " + FQN)
+            Return False
+        End If
+
+        Dim B As Boolean = True
+        Try
+            Dim FI As New FileInfo(FQN)
+
+            Dim LastWriteTime As DateTime = FI.LastWriteTime
+            Dim LastAccessTime As DateTime = FI.LastAccessTime
+            Dim FLen As Int64 = FI.Length
+
+            FI = Nothing
+
+            Dim SourceImage As Byte() = File.ReadAllBytes(FQN)
+            Dim CMD As New SqlCommand
+            Dim connString As String = getRepoConnStr()
+            Dim conn As New SqlConnection(connString)
+
+            MySql = "update DataSource set FileLength = @FileLength, LastAccessDate = @LastAccessDate, LastWriteTime = @LastWriteTime, SourceImage = @SourceImage
+                where SourceGuid = @SourceGuid"
+            Try
+                conn.Open()
+                Using conn
+                    I = 0
+                    CMD.Connection = conn
+                    CMD.CommandText = MySql
+                    CMD.CommandType = CommandType.Text
+                    Using conn
+                        Using CMD
+                            CMD.Parameters.Add(New SqlParameter("@FileLength", FLen))
+                            CMD.Parameters.Add(New SqlParameter("@LastAccessDate", LastAccessTime))
+                            CMD.Parameters.Add(New SqlParameter("@LastWriteTime", LastWriteTime))
+                            CMD.Parameters.Add(New SqlParameter("@SourceImage", SourceImage))
+                            CMD.Parameters.Add(New SqlParameter("@SourceGuid", SourceGuid))
+
+                            CMD.CommandText = MySql
+                            CMD.ExecuteNonQuery()
+                        End Using
+                    End Using
+                End Using
+                B = True
+            Catch ex As Exception
+                LOG.WriteToDBUpdatesLog("ERROR 44x: UpdateSouceImage 01: " + ex.Message + vbCrLf + MySql)
+                LOG.WriteToArchiveLog("ERROR 44x: UpdateSouceImage 01: " + ex.Message + vbCrLf + MySql)
+                B = False
+            End Try
+
+        Catch ex As Exception
+            LOG.WriteToDBUpdatesLog("ERROR 44x: UpdateSouceImage 00A: " + ex.Message)
+            LOG.WriteToArchiveLog("ERROR 44x: UpdateSouceImage 00A: " + ex.Message)
+        End Try
+
+        Return b
+
+    End Function
+
+    Public Function ckFileExistInRepo(MachineID As String, ByVal FQN As String) As List(Of String)
+
+        Dim BFound As Boolean = False
+        Dim ListOfGuids As New List(Of String)
+        Dim SourceGuid As String = ""
 
         Try
             FQN = FQN.Replace("''", "'")
             FQN = FQN.Replace("'", "''")
-            Dim S As String = "select count(*) from DataSource where MachineID = '" + MachineID + "' and  FQN = '" + FQN + "' "
+            Dim S As String = "select SOurceGuid from DataSource where MachineID = '" + MachineID + "' and  FQN = '" + FQN + "' "
             Dim rsData As SqlDataReader = Nothing
             Dim b As Boolean = False
             Dim CS As String = getRepoConnStr()
             Dim CONN As New SqlConnection(CS)
             CONN.Open()
             Dim command As New SqlCommand(S, CONN)
-
+            Dim FOund As Boolean = False
             rsData = command.ExecuteReader()
             Using command
                 Using CONN
                     Using rsData
-                        rsData.Read()
-                        CNT = rsData.GetInt32(0)
+                        'rsData.Read()
+                        'If rsData.HasRows Then
+                        Do While rsData.Read()
+                                SourceGuid = rsData.GetValue(0).ToString
+                                ListOfGuids.Add(SourceGuid)
+                                rsData.Read()
+                                BFound = True
+                            Loop
+                        'End If
                     End Using
                 End Using
             End Using
@@ -5758,7 +5833,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
             ' xTrace(12311, "clsDataBase:getCountDataSourceFiles" + ex.Message)
             LOG.WriteToArchiveLog("clsDatabaseARCH : getCountDataSourceFiles : 2174 : ", ex)
         End Try
-        Return CNT
+        Return ListOfGuids
     End Function
 
     Public Function getCountDataSourceFiles(ByVal SourceName As String, WebPagePublishDate As Date) As Integer
@@ -6765,26 +6840,6 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return pext
     End Function
 
-    ''' <summary>
-    ''' Inserts the sourcefile.
-    ''' </summary>
-    ''' <param name="UID">                  The uid.</param>
-    ''' <param name="MachineID">            The machine identifier.</param>
-    ''' <param name="NetworkName">          Name of the network.</param>
-    ''' <param name="SourceGuid">           The source unique identifier.</param>
-    ''' <param name="UploadFQN">            The upload FQN.</param>
-    ''' <param name="SourceName">           Name of the source.</param>
-    ''' <param name="SourceTypeCode">       The source type code.</param>
-    ''' <param name="sLastAccessDate">      The s last access date.</param>
-    ''' <param name="sCreateDate">          The s create date.</param>
-    ''' <param name="sLastWriteTime">       The s last write time.</param>
-    ''' <param name="DataSourceOwnerUserID">The data source owner user identifier.</param>
-    ''' <param name="VersionNbr">           The version NBR.</param>
-    ''' <param name="RetentionCode">        The retention code.</param>
-    ''' <param name="isPublic">             The is public.</param>
-    ''' <param name="CrcHASH">              The CRC hash.</param>
-    ''' <param name="FolderName">           Name of the folder.</param>
-    ''' <returns></returns>
     Public Function AddSourceToRepo(ByVal UID As String, ByVal MachineID As String, NetworkName As String,
                                      ByVal SourceGuid As String,
                                        ByVal UploadFQN As String,
@@ -6815,20 +6870,20 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
         Try
             LastWriteTime = CDate(sLastWriteTime)
-        Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: InsertSourceFile 100 - LastWriteTime: " + ex.Message + vbCrLf + sLastWriteTime)
+        Catch ex0 As Exception
+            LOG.WriteToDBUpdatesLog("ERROR: AddSourceToRepo 100 - LastWriteTime: " + ex0.Message + vbCrLf + sLastWriteTime)
         End Try
 
         Try
             LastAccessDate = CDate(sLastAccessDate)
-        Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: InsertSourceFile 101 - LastAccessDate: " + ex.Message + vbCrLf + sLastAccessDate)
+        Catch ex1 As Exception
+            LOG.WriteToDBUpdatesLog("ERROR: AddSourceToRepo 101 - LastAccessDate: " + ex1.Message + vbCrLf + sLastAccessDate)
         End Try
 
         Try
             CreateDate = CDate(sCreateDate)
-        Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: InsertSourceFile 102 - CreateDate: " + ex.Message + vbCrLf + sCreateDate)
+        Catch ex2 As Exception
+            LOG.WriteToDBUpdatesLog("ERROR: AddSourceToRepo 102 - CreateDate: " + ex2.Message + vbCrLf + sCreateDate)
         End Try
 
         Dim fExt As String = SourceTypeCode
@@ -6839,7 +6894,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
         B = ckDocumentExists(SourceName, FileHash)
         If B = True Then
             saveContentOwner(SourceGuid, gCurrUserGuidID, "C", FolderName, gMachineID, gNetworkID)
-            LOG.WriteToArchiveLog("Info: clsDatabaseARCH : AddSourceToRepo: file exists, did not update or overwrite." + vbCrLf + UploadFQN)
+            LOG.WriteToDBUpdatesLog("Info: clsDatabaseARCH : AddSourceToRepo: file exists, did not update or overwrite." + vbCrLf + UploadFQN)
             Return True
         Else
             Console.WriteLine("No Exists: " + SourceName)
@@ -6855,24 +6910,24 @@ Public Class clsDatabaseARCH : Implements IDisposable
         UploadFQN = UTIL.ReplaceSingleQuotes(UploadFQN)
 
         If Not File.Exists(UploadFQN) Then
-            LOG.WriteToArchiveLog("ERROR - AddSourceToRepo : 2519.2c : could not find file {" + UploadFQN + "}, skipped.")
+            LOG.WriteToDBUpdatesLog("ERROR - AddSourceToRepo : 2519.2c : could not find file {" + UploadFQN + "}, skipped.")
             Return False
         End If
 
         Dim SourceImage() As Byte = CF.FileToByte(UploadFQN)
         If SourceImage Is Nothing Then
-            LOG.WriteToArchiveLog("Notification : AddSourceToRepo : 661c1 : FILE Failed to load: " + UploadFQN + ".")
+            LOG.WriteToDBUpdatesLog("Notification : AddSourceToRepo : 661c1 : FILE Failed to load: " + UploadFQN + ".")
             Return False
         End If
         If SourceImage.Length = 0 Then
-            LOG.WriteToArchiveLog("Notification : AddSourceToRepo : 661z1 : FILE Failed to load: " + UploadFQN + ".")
+            LOG.WriteToDBUpdatesLog("Notification : AddSourceToRepo : 661z1 : FILE Failed to load: " + UploadFQN + ".")
             Return False
         End If
         If SourceImage.Length > 500000000 Then
-            LOG.WriteToArchiveLog("Notification : AddSourceToRepo : 661b : Loading large file: " + UploadFQN + vbCrLf + "File Length: " + SourceImage.Length.ToString)
+            LOG.WriteToDBUpdatesLog("Notification : AddSourceToRepo : 661b : Loading large file: " + UploadFQN + vbCrLf + "File Length: " + SourceImage.Length.ToString)
         End If
         If SourceImage.Length > 1000000000 Then
-            LOG.WriteToArchiveLog("Notification : AddSourceToRepo : 661b : Loading extremely large file: " + UploadFQN + vbCrLf + "File Length: " + SourceImage.Length.ToString)
+            LOG.WriteToDBUpdatesLog("Notification : AddSourceToRepo : 661b : Loading extremely large file: " + UploadFQN + vbCrLf + "File Length: " + SourceImage.Length.ToString)
         End If
 
         Try
@@ -6892,10 +6947,16 @@ Public Class clsDatabaseARCH : Implements IDisposable
             'WDM CHECK THIS OUT
             'B = AddSourceToRepo(UID, MachineID, "LOCAL", SourceGuid, UploadFQN, SourceName, SourceTypeCode, sLastAccessDate, sCreateDate, sLastWriteTime, UID, VersionNbr, RetentionCode, isPublic, FileHash, FolderName)
 
+            '********************************************************************************
+            '************************ UpdateSourceImage *************************************
+            B = UpdateSourceImage(SourceGuid, SourceImage)
+            '********************************************************************************
+            '********************************************************************************
+
             If Not B Then
-                LOG.WriteToArchiveLog("ERROR Load Failed for: " + UploadFQN + vbCrLf + ReturnMsg)
+                LOG.WriteToDBUpdatesLog("ERROR Load Failed for: " + UploadFQN + vbCrLf + ReturnMsg)
             Else
-                LOG.WriteToArchiveLog("Notice Load successful for: " + UploadFQN)
+                LOG.WriteToDBUpdatesLog("Notice Load successful for: " + UploadFQN)
                 saveContentOwner(SourceGuid, gCurrUserGuidID, "C", FolderName, gMachineID, gNetworkID)
                 If ckOcrNeeded(fExt) Then
                     SetOcrProcessingParms(SourceGuid, "C", SourceName)
@@ -6908,11 +6969,56 @@ Public Class clsDatabaseARCH : Implements IDisposable
             GC.WaitForPendingFinalizers()
         Catch ex As Exception
             B = False
-            ' xTrace(82715, "AddSourceToRepo: ", ex.Message.ToString)
-            LOG.WriteToArchiveLog("clsDatabaseARCH : xInsertSourcefile : 2495b : ", ex)
-            LOG.WriteToArchiveLog("clsDatabaseARCH : xInsertSourcefile : 2495b File: " + UploadFQN)
+            LOG.WriteToDBUpdatesLog("clsDatabaseARCH : AddSourceToRepo : 2495b : " + UploadFQN + vbCrLf + ex.Message)
         End Try
         Return B
+    End Function
+
+    Function UpdateSourceImage(SourceGuid As String, SourceImage As Byte()) As Boolean
+
+        Dim B As Boolean = True
+        Dim CMD As New SqlCommand
+        Dim connString As String = getRepoConnStr()
+        Dim conn As New SqlConnection(connString)
+        Dim MySql As String = "Update DataSource set SourceImage = @SourceImage where SourceGuid = @SourceGuid"
+
+        Try
+            If conn Is Nothing Then
+                conn = New SqlConnection(getRepoConnStr())
+            End If
+            If conn.State = ConnectionState.Closed Then
+                conn.ConnectionString = getRepoConnStr()
+                conn.Open()
+            End If
+            Try
+                I = 0
+                CMD.Connection = conn
+                CMD.CommandText = MySql
+                CMD.CommandType = CommandType.Text
+                Using conn
+                    Using CMD
+                        CMD.Parameters.Add(New SqlParameter("@SourceImage", SourceImage))
+                        CMD.Parameters.Add(New SqlParameter("@SourceGuid", SourceGuid))
+                        CMD.ExecuteNonQuery()
+                        CMD.CommandText = MySql
+                        CMD.ExecuteNonQuery()
+                    End Using
+                End Using
+                B = True
+            Catch ex As Exception
+                LOG.WriteToDBUpdatesLog("ERROR 22x: UpdateSourceImage 01: " + ex.Message + vbCrLf + MySql)
+                LOG.WriteToArchiveLog("ERROR 22x: UpdateSourceImage 01: " + ex.Message + vbCrLf + MySql)
+                B = False
+            End Try
+        Catch ex As Exception
+            B = False
+            LOG.WriteToDBUpdatesLog("ERROR UpdateSourceImage 00: " + ex.Message)
+            LOG.WriteToArchiveLog("ERROR UpdateSourceImage 00: " + ex.Message)
+        End Try
+
+
+        Return B
+
     End Function
 
     Private Function ApplySourceTypeCode(MachineName As String, UserID As String, SourceName As String, FileExt As String, SourceGuid As String) As Boolean
@@ -6952,8 +7058,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
                                       ByVal UploadFQN As String,
                                       ByVal RetentionCode As String,
                                       ByVal isPublic As String,
-                                      FileHash As String,
-                                      Optional FileBytes As Byte() = Nothing) As Boolean
+                                      FileHash As String) As Boolean
 
         'DALE
         SourceName = SourceName.Replace("''", "'")
@@ -7000,14 +7105,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
             '******************************************************************************************
             Dim AttachmentBinary() As Byte = Nothing
-            If FileBytes Is Nothing Then ' nothing assigned
-                AttachmentBinary = System.IO.File.ReadAllBytes(UploadFQN)
-            ElseIf FileBytes.Length.Equals(0) Then
-                'AttachmentBinary = CF.FileToByte(UploadFQN)
-                AttachmentBinary = System.IO.File.ReadAllBytes(UploadFQN)
-            Else
-                AttachmentBinary = FileBytes
-            End If
+            AttachmentBinary = System.IO.File.ReadAllBytes(UploadFQN)
             '******************************************************************************************
 
             Dim bExtendTime As Boolean = False
@@ -7074,9 +7172,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
             LL = 16
 
             '************************************************************************************************************************************************************************************************
-            InsertSourceImage(gCurrUserGuidID, Environment.MachineName, SourceName, SourceGuid, UploadFQN, "DataSource", RetentionCode, isPublic, FileHash, FileDirectory, False)
+            Dim BBX As Boolean = InsertSourceImage(gCurrUserGuidID, Environment.MachineName, SourceName, SourceGuid, UploadFQN, "DataSource", RetentionCode, isPublic, FileHash, FileDirectory, False)
             '************************************************************************************************************************************************************************************************
-
+            If Not BBX Then
+                Return False
+            End If
             LL = 18
             If ReturnMsg.Length > 0 Or Not B Then
                 LL = 19
@@ -24926,7 +25026,7 @@ NextOne:
         Return S
     End Function
 
-    Sub InsertSourceImage(UserID As String, ByVal MachineID As String,
+    Function InsertSourceImage(UserID As String, ByVal MachineID As String,
                 ByVal OriginalFileName As String,
                 ByVal FileGuid As String,
                 ByVal FQN As String,
@@ -24935,7 +25035,9 @@ NextOne:
                 ByVal isPublic As String,
                 SourceHash As String,
                 DirName As String,
-                bUseZipFles As Boolean)
+                bUseZipFles As Boolean) As Boolean
+
+        Dim bSuccess As Boolean = True
 
         Dim bApplied As Boolean = Exec_spUpdateLongNameHash(FileGuid, FQN)
         If Not bApplied Then
@@ -24948,11 +25050,11 @@ NextOne:
             LOG.WriteToArchiveLog(">> ADDED to Repo: " + FQN)
         Else
             LOG.WriteToArchiveLog(">> ERROR failed ADD to Repo: " + FQN)
-            Return
+            Return False
         End If
 
         If Not bUseZipFles Then
-            Return
+            Return True
         End If
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -24980,7 +25082,7 @@ NextOne:
 
         Dim RC As Boolean = True
         If Not File.Exists(FQN) Then
-            Return
+            Return False
         End If
 
         Dim FIOriginal As New FileInfo(FQN)
@@ -25068,6 +25170,7 @@ NextOne:
                 LOG.WriteToArchiveLog("ERROR: UploadFileStrem - ", ex)
                 LOG.WriteToArchiveLog("ERROR: UploadFileStrem -LL = " + LL.ToString)
                 RC = False
+                bSuccess = False
             Finally
                 'ISO.saveIsoFile(" FilesToDelete.dat", TransferFileName + "|")
                 'File.Delete(TransferFileName)
@@ -25125,10 +25228,11 @@ NextOne:
                 LOG.WriteToArchiveLog("ERROR - InsertSourceImage: Failed to Apply Source attributes.")
             End If
         Catch ex As Exception
+            bSuccess = False
             LOG.WriteToArchiveLog("ERROR - InsertSourceImage: LL = " + LL.ToString + vbCrLf + ex.Message.ToString)
         End Try
-
-    End Sub
+        Return bSuccess
+    End Function
 
     Sub InsertBufferedSource(ByVal LocID As Integer, ByVal CompressedBuffer As Byte(),
                        ByVal OriginalFileName As String,
