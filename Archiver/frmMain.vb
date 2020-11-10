@@ -301,6 +301,9 @@ Public Class frmMain : Implements IDisposable
         updateMessageBar("Applying any needed updates, standby...")
         ApplyDDUpdates()
 
+        '*** Check SQLite databasews exist and create if not
+        DBLocal.ValidateDatabases()
+
         DBLocal.setFirstUseLastArchiveDateActive()
 
         DBLocal.getUseLastArchiveDateActive()
@@ -5338,7 +5341,7 @@ NextFolder:
                     st = New StackTrace(ex, True)
                     LOG.WriteToArchiveLog("Line: " & st.GetFrame(0).GetFileLineNumber().ToString)
                     LOG.WriteToArchiveLog("LL=" + LL.ToString)
-                    LOG.WriteToArchiveLog("ERROR: Failed to ArchiveContent: " + file_FullName + ", skipping : " + ex.Message)
+                    LOG.WriteToArchiveLog("ERROR: Failed to ArchiveContent: <" + file_FullName + ">, skipping : " + ex.Message)
                     GC.Collect()
                     GC.WaitForPendingFinalizers()
                 End Try
@@ -11033,6 +11036,7 @@ GoodLogin:
         SB.Text = "STANDBY... Setting retention dates..."
         DBARCH.spUpdateRetention()
 
+        DBLocal.ValidateDatabases()
 
         Try
             SB.Text = "STANDBY... backing up SQLite database..."

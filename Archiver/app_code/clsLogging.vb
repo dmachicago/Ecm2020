@@ -857,13 +857,7 @@ GetNextLine:
 
     Public Sub WriteToArchiveLog(ByVal Msg As String, ex1 As Exception)
         Try
-
-            'Dim st As New StackTrace(True)
-            'st = New StackTrace(ex1, True)
-
             Dim errmsg As String = "eRRmSG: " & ex1.Message
-            'Dim linemsg As String = "Line: " & st.GetFrame(0).GetFileLineNumber().ToString
-
             If errmsg.Contains("Access to the path") Then
                 Dim wi As WindowsIdentity = System.Security.Principal.WindowsIdentity.GetCurrent()
                 Dim userIdentity As String = wi.Name

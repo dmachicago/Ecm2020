@@ -4264,6 +4264,58 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Sub
 
+    Sub ValidateDatabases()
+
+        Dim SQLiteListenerDB As String = System.Configuration.ConfigurationManager.AppSettings("SQLiteListenerDB")
+        Dim SQLiteLocalDB As String = System.Configuration.ConfigurationManager.AppSettings("SQLiteLocalDB")
+        Dim FTIAnalysisDB As String = System.Configuration.ConfigurationManager.AppSettings("FTIAnalysisDB")
+        Dim DB As String = ""
+        Dim FName As String = ""
+
+        FName = Path.GetFileName(SQLiteListenerDB)
+        Dim AppPath As String = My.Application.Info.DirectoryPath
+        Dim tgtDB As String() = Directory.GetFiles(AppPath, FName, SearchOption.AllDirectories)
+
+        If Not File.Exists(SQLiteListenerDB) Then
+            Try
+                DB = tgtDB(0)
+                If File.Exists(DB) Then
+                    File.Copy(DB, SQLiteListenerDB)
+                End If
+            Catch ex As Exception
+                MessageBox.Show("Failed to create SQLiteListenerDB")
+            End Try
+        End If
+
+        FName = Path.GetFileName(SQLiteLocalDB)
+        If Not File.Exists(SQLiteLocalDB) Then
+            tgtDB = Directory.GetFiles(AppPath, FName, SearchOption.AllDirectories)
+            Try
+                DB = tgtDB(0)
+                If File.Exists(DB) Then
+                    File.Copy(DB, SQLiteLocalDB)
+                End If
+            Catch ex As Exception
+                MessageBox.Show("Failed to create SQLiteLocalDB")
+            End Try
+        End If
+
+        FName = Path.GetFileName(FTIAnalysisDB)
+        If Not File.Exists(FTIAnalysisDB) Then
+            tgtDB = Directory.GetFiles(AppPath, FName, SearchOption.AllDirectories)
+            Try
+                DB = tgtDB(0)
+                If File.Exists(DB) Then
+                    File.Copy(DB, FTIAnalysisDB)
+                End If
+            Catch ex As Exception
+                MessageBox.Show("Failed to create FTIAnalysisDB")
+            End Try
+        End If
+
+    End Sub
+
+
     ' TODO: override Finalize() only if Dispose(disposing As Boolean) above has code to free unmanaged resources.
     'Protected Overrides Sub Finalize()
     '    ' Do not change this code.  Put cleanup code in Dispose(disposing As Boolean) above.

@@ -89,8 +89,8 @@ Public Class clsDBUpdate
                 sline = sline.Trim()
                 tline = sline.ToUpper
                 If tline.Equals("GO") Then
-                    frmDBUpdates.txtSql.Text = Path.GetFileName(MySql)
-                    frmDBUpdates.Refresh()
+                    'frmDBUpdates.txtSql.Text = Path.GetFileName(MySql)
+                    'frmDBUpdates.Refresh()
                     Application.DoEvents()
                     LOG.WriteToDBUpdatesLog("--************************************")
                     LOG.WriteToDBUpdatesLog("--Update File:" + FQN)
