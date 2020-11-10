@@ -5026,9 +5026,9 @@ Process01:
                                     '**WDM - this is where the upload magic occurs. Upload content to repository	:	LL = 	4116
                                     LOG.WriteToTimerLog("**** ArchiveContent-01", "UpdateSourceImageInRepo", "START")
                                     '******************************************************************************************************************************************************************************************************************************	:	LL = 	4101                                   
-                                    SB.Text = "UPLOADING NOW"
+                                    'SB.Text = "UPLOADING NOW"
                                     bSuccessExecution = DBARCH.UpdateSourceImageInRepo(OriginalFileName, UIDcurr, MachineIDcurr, SourceGuid, file_LastAccessTime, file_CreationTime, file_LastWriteTime, LastVerNbr, file_FullName, RetentionCode, isPublic, FileHash) : LL = 4121
-                                    SB.Text = ""
+                                    'SB.Text = ""
                                     '******************************************************************************************************************************************************************************************************************************	:	LL = 	4101
                                     If bSuccessExecution Then
                                         DBLocal.updateFileArchiveInfoLastArchiveDate(file_FullName)

@@ -3889,62 +3889,49 @@ Public Class clsDatabaseARCH : Implements IDisposable
                 Dim CN As New SqlConnection(CnStr)
                 CN.Open()
                 Dim dbCmd As SqlCommand = CN.CreateCommand()
+                Using dbCmd
+                    Using CN
+                        dbCmd.Connection = CN
+                        Try
+                            dbCmd.CommandText = sql
+                            dbCmd.ExecuteNonQuery()
+                            BB = True
+                        Catch ex As Exception
+                            rc = False
 
-                Using CN
-                    dbCmd.Connection = CN
-                    Try
-                        dbCmd.CommandText = sql
-                        dbCmd.ExecuteNonQuery()
-                        BB = True
-                    Catch ex As Exception
-                        rc = False
-
-                        If InStr(ex.Message, "Could not allocate space", CompareMethod.Text) > 0 And InStr(ex.Message, "is full", CompareMethod.Text) > 0 Then
-                            frmOutOfSpace.Show()
-                            Application.DoEvents()
-                        End If
-                        If InStr(ex.Message, "The DELETE statement conflicted with the REFERENCE", CompareMethod.Text) > 0 Then
-                            ' If gRunUnattended = False Then MessageBox.Show("It appears this user has DATA within the repository associated to them and cannot be deleted." + vbCrLf + vbCrLf + ex.Message)
-                            LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 1464c0 It appears this user has DATA within the repository associated to them and cannot be deleted." + vbCrLf + vbCrLf + ex.Message)
-                            BB = False
-                        ElseIf InStr(ex.Message, "HelpText", CompareMethod.Text) > 0 Then
-                            BB = True
-                        ElseIf InStr(ex.Message, "duplicate key row", CompareMethod.Text) > 0 Then
-                            LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 1464c1 - NOT AN ERROR, JUST RI PROTECTING THE DBARCH.")
-                            LOG.WriteToArchiveLog("Advisory - clsDatabaseARCH : ExecuteSqlNewConn : 1464c1 : ", ex)
-                            BB = True
-                        ElseIf InStr(ex.Message, "duplicate key", CompareMethod.Text) > 0 Then
-                            LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 1464c2 - NOT AN ERROR, JUST RI PROTECTING THE DBARCH.")
-                            LOG.WriteToArchiveLog("Advisory - clsDatabaseARCH : ExecuteSqlNewConn : 1465c2 : ", ex)
-                            LOG.WriteToArchiveLog("Advisory - clsDatabaseARCH : ExecuteSqlNewConn : 1465c2 : " + sql)
-                            BB = True
-                        ElseIf InStr(ex.Message, "duplicate", CompareMethod.Text) > 0 Then
-                            LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 1464c3 - NOT AN ERROR, JUST RI PROTECTING THE DBARCH.")
-                            LOG.WriteToArchiveLog("Advisory - clsDatabaseARCH : ExecuteSqlNewConn : 1466c3 : ", ex)
-                            LOG.WriteToArchiveLog("Advisory - clsDatabaseARCH : ExecuteSqlNewConn : 1466c3 : " + sql)
-                            BB = True
-                        Else
-                            'messagebox.show("Execute SQL: " + ex.message + vbCrLf + "Please review the trace log." + vbCrLf + sql)
-                            'If ddebug Then Clipboard.SetText(sql)
-                            BB = False
-                            ' xTrace(1998121, "ExecuteSqlNoTx: ", ex.Message.ToString)
-                            ' xTrace(2998121, "ExecuteSqlNoTx: ", ex.StackTrace.ToString)
-                            ' xTrace(3998121, "ExecuteSqlNoTx: ", Mid(sql, 1, 2000))
-                            LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 9448a2x.1: ", ex)
-                            LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 9448a2x.2: " + vbCrLf + sql + vbCrLf)
-                        End If
-                    Finally
-                        If CN IsNot Nothing Then
-                            If CN.State = ConnectionState.Open Then
-                                CN.Close()
+                            If InStr(ex.Message, "Could not allocate space", CompareMethod.Text) > 0 And InStr(ex.Message, "is full", CompareMethod.Text) > 0 Then
+                                frmOutOfSpace.Show()
+                                Application.DoEvents()
                             End If
-                            CN = Nothing
-                        End If
-                        If dbCmd IsNot Nothing Then
-                            dbCmd = Nothing
-                        End If
-                    End Try
+                            If InStr(ex.Message, "The DELETE statement conflicted with the REFERENCE", CompareMethod.Text) > 0 Then
+                                ' If gRunUnattended = False Then MessageBox.Show("It appears this user has DATA within the repository associated to them and cannot be deleted." + vbCrLf + vbCrLf + ex.Message)
+                                LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 1464c0 It appears this user has DATA within the repository associated to them and cannot be deleted." + vbCrLf + vbCrLf + ex.Message)
+                                BB = False
+                            ElseIf InStr(ex.Message, "HelpText", CompareMethod.Text) > 0 Then
+                                BB = True
+                            ElseIf InStr(ex.Message, "duplicate key row", CompareMethod.Text) > 0 Then
+                                BB = True
+                            ElseIf InStr(ex.Message, "duplicate key", CompareMethod.Text) > 0 Then
+                                LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 1464c2 - NOT AN ERROR, JUST RI PROTECTING THE DBARCH.")
+                                LOG.WriteToArchiveLog("Advisory - clsDatabaseARCH : ExecuteSqlNewConn : 1465c2 : ", ex)
+                                LOG.WriteToArchiveLog("Advisory - clsDatabaseARCH : ExecuteSqlNewConn : 1465c2 : " + sql)
+                                BB = True
+                            ElseIf InStr(ex.Message, "duplicate", CompareMethod.Text) > 0 Then
+                                LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 1464c3 - NOT AN ERROR, JUST RI PROTECTING THE DBARCH.")
+                                LOG.WriteToArchiveLog("Advisory - clsDatabaseARCH : ExecuteSqlNewConn : 1466c3 : ", ex)
+                                LOG.WriteToArchiveLog("Advisory - clsDatabaseARCH : ExecuteSqlNewConn : 1466c3 : " + sql)
+                                BB = True
+                            ElseIf ex.Message.Contains("Cannot insert duplicate key row") Then
+                                BB = True
+                            Else
+                                BB = False
+                                LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 9448a2x.1: ", ex)
+                                LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 9448a2x.2: " + vbCrLf + sql + vbCrLf)
+                            End If
+                        End Try
+                    End Using
                 End Using
+
             End If
 
             GC.Collect()

@@ -16,46 +16,52 @@ Public Class clsDBUpdate
         FilterList.Clear()
         FilterList.Add("*.sql")
 
-        Dim FLDR As String = System.AppDomain.CurrentDomain.BaseDirectory()
-        Dim UPDTFOLDER As String = FLDR + "\DBUpdates"
+        Try
+            Dim FLDR As String = System.AppDomain.CurrentDomain.BaseDirectory()
+            Dim UPDTFOLDER As String = FLDR + "\DBUpdates"
 
-        If Not Directory.Exists(UPDTFOLDER) Then
-            Return True
-        End If
-
-        Dim strFileSize As String = ""
-        Dim di As New IO.DirectoryInfo(UPDTFOLDER)
-        Dim aryFi As IO.FileInfo() = di.GetFiles("*.sql")
-        Dim fi As IO.FileInfo
-        Dim iline As Integer = 0
-
-        For Each fi In aryFi
-
-            Dim FName As String = fi.Name
-            Dim FQN As String = fi.FullName
-            Dim LastWriteTime As DateTime = fi.LastWriteTime
-            Dim I As Integer = DB.getDBUpdateExists(FQN)
-
-            frmDBUpdates.SB.Text = fi.Name
-            frmDBUpdates.Refresh()
-            Application.DoEvents()
-
-            If I > 0 Then
-                Dim DateApplied As DateTime = DB.getDBUpdateLastWriteDate(FQN)
-                Dim secs As Integer = SecDiff(LastWriteTime, DateApplied)
-                'If LastWriteTime > DateApplied Then
-                If secs > 0 Then
-                    Dim fn As String = Path.GetFileName(FQN)
-                    LOG.WriteToArchiveLog("APPLYING DB UPDATE: " + fn)
-                    frmDBUpdates.txtFile.Text = Path.GetFileName(FQN)
-                    ApplyUpdate(FQN)
-                    LOG.WriteToArchiveLog("COMPLETED DB UPDATE: " + fn)
-                    Console.WriteLine("APPLIED")
-                End If
-            Else
-                ApplyUpdate(FQN)
+            If Not Directory.Exists(UPDTFOLDER) Then
+                Return True
             End If
-        Next
+
+            Dim strFileSize As String = ""
+            Dim di As New IO.DirectoryInfo(UPDTFOLDER)
+            Dim aryFi As IO.FileInfo() = di.GetFiles("*.sql")
+            Dim fi As IO.FileInfo
+            Dim iline As Integer = 0
+
+            For Each fi In aryFi
+
+                Dim FName As String = fi.Name
+                Dim FQN As String = fi.FullName
+                Dim LastWriteTime As DateTime = fi.LastWriteTime
+                Dim I As Integer = DB.getDBUpdateExists(FQN)
+
+                frmDBUpdates.SB.Text = fi.Name
+                frmDBUpdates.Refresh()
+                Application.DoEvents()
+
+                If I > 0 Then
+                    Dim DateApplied As DateTime = DB.getDBUpdateLastWriteDate(FQN)
+                    Dim secs As Integer = SecDiff(LastWriteTime, DateApplied)
+                    'If LastWriteTime > DateApplied Then
+                    If secs > 0 Then
+                        Dim fn As String = Path.GetFileName(FQN)
+                        LOG.WriteToArchiveLog("APPLYING DB UPDATE: " + fn)
+                        frmDBUpdates.txtFile.Text = Path.GetFileName(FQN)
+                        ApplyUpdate(FQN)
+                        LOG.WriteToArchiveLog("COMPLETED DB UPDATE: " + fn)
+                        Console.WriteLine("APPLIED")
+                    End If
+                Else
+                    ApplyUpdate(FQN)
+                End If
+            Next
+
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR CheckForDBUpdates 00: " + ex.Message)
+        End Try
+
 
     End Function
 
@@ -81,66 +87,71 @@ Public Class clsDBUpdate
         Dim cs As String = DB.getRepoConnStr
         Dim B As Boolean = False
         Dim iline As Integer = 0
-        Using reader
-            sline = reader.ReadLine
-            Do
-                iline += 1
-                Application.DoEvents()
-                sline = sline.Trim()
-                tline = sline.ToUpper
-                If tline.Equals("GO") Then
-                    'frmDBUpdates.txtSql.Text = Path.GetFileName(MySql)
-                    'frmDBUpdates.Refresh()
-                    Application.DoEvents()
-                    LOG.WriteToDBUpdatesLog("--************************************")
-                    LOG.WriteToDBUpdatesLog("--Update File:" + FQN)
-                    LOG.WriteToDBUpdatesLog(MySql)
-                    B = DB.ExecuteSql(MySql, cs, False)
-                    If B Then
-                        B = DB.insertDBUpdate(FQN)
-                        If B Then
-                            LOG.WriteToArchiveLog("DB Update applied from " + FQN)
-                            B = MarkFileAsApplied(FQN, cs)
-                            If B Then
-                                Dim FN As String = Path.GetFileName(FQN)
-                                LOG.WriteToArchiveLog("Notice DB Update:" + FN + " marked as APPLIED.")
-                                DB.updateDBUpdateLastwrite(FQN)
-                            End If
-                        End If
-                    Else
-                        LOG.WriteToArchiveLog("ERROR: DB Update FAILED from " + FQN + vbCrLf + MySql)
-                    End If
-                    MySql = ""
-                Else
-                    MySql += sline + Environment.NewLine
-                End If
+
+        Try
+            Using reader
                 sline = reader.ReadLine
-            Loop Until sline Is Nothing
-        End Using
-
-        If MySql.Trim.Length > 0 Then
-            frmDBUpdates.txtSql.Text = Path.GetFileName(MySql)
-            LOG.WriteToDBUpdatesLog("--************************************")
-            LOG.WriteToDBUpdatesLog("--Update File:" + FQN)
-            LOG.WriteToDBUpdatesLog(MySql)
-            B = DB.ExecuteSql(MySql, cs, False)
-            If B Then
-                B = DB.insertDBUpdate(FQN)
-                If B Then
-                    LOG.WriteToArchiveLog("DB Update applied from " + FQN)
-                    B = MarkFileAsApplied(FQN, cs)
-                    DB.updateDBUpdateLastwrite(FQN)
-                    If B Then
-                        Dim FN As String = Path.GetFileName(FQN)
-                        LOG.WriteToArchiveLog("Notice DB  Update: " + FN + " marked as APPLIED.")
+                Do
+                    iline += 1
+                    Application.DoEvents()
+                    sline = sline.Trim()
+                    tline = sline.ToUpper
+                    If tline.Equals("GO") Then
+                        'frmDBUpdates.txtSql.Text = Path.GetFileName(MySql)
+                        'frmDBUpdates.Refresh()
+                        Application.DoEvents()
+                        LOG.WriteToDBUpdatesLog("--************************************")
+                        LOG.WriteToDBUpdatesLog("--Update File:" + FQN)
+                        LOG.WriteToDBUpdatesLog(MySql)
+                        B = DB.ExecuteSql(MySql, cs, False)
+                        If B Then
+                            B = DB.insertDBUpdate(FQN)
+                            If B Then
+                                LOG.WriteToArchiveLog("DB Update applied from " + FQN)
+                                B = MarkFileAsApplied(FQN, cs)
+                                If B Then
+                                    Dim FN As String = Path.GetFileName(FQN)
+                                    LOG.WriteToArchiveLog("Notice DB Update:" + FN + " marked as APPLIED.")
+                                    DB.updateDBUpdateLastwrite(FQN)
+                                End If
+                            End If
+                        Else
+                            LOG.WriteToArchiveLog("ERROR: DB Update FAILED from " + FQN + vbCrLf + MySql)
+                        End If
+                        MySql = ""
+                    Else
+                        MySql += sline + Environment.NewLine
                     End If
-                End If
-            Else
-                LOG.WriteToArchiveLog("ERROR: DB Update FAILED from " + FQN + vbCrLf + MySql)
-            End If
-        End If
+                    sline = reader.ReadLine
+                Loop Until sline Is Nothing
+            End Using
 
-        B = MarkFileAsApplied(FQN, cs)
+            If MySql.Trim.Length > 0 Then
+                frmDBUpdates.txtSql.Text = Path.GetFileName(MySql)
+                LOG.WriteToDBUpdatesLog("--************************************")
+                LOG.WriteToDBUpdatesLog("--Update File:" + FQN)
+                LOG.WriteToDBUpdatesLog(MySql)
+                B = DB.ExecuteSql(MySql, cs, False)
+                If B Then
+                    B = DB.insertDBUpdate(FQN)
+                    If B Then
+                        LOG.WriteToArchiveLog("DB Update applied from " + FQN)
+                        B = MarkFileAsApplied(FQN, cs)
+                        DB.updateDBUpdateLastwrite(FQN)
+                        If B Then
+                            Dim FN As String = Path.GetFileName(FQN)
+                            LOG.WriteToArchiveLog("Notice DB  Update: " + FN + " marked as APPLIED.")
+                        End If
+                    End If
+                Else
+                    LOG.WriteToArchiveLog("ERROR: DB Update FAILED from " + FQN + vbCrLf + MySql)
+                End If
+            End If
+
+            B = MarkFileAsApplied(FQN, cs)
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR: ApplyUpdate 00: " + ex.Message)
+        End Try
 
         frmDBUpdates.txtSql.Text = ""
 

@@ -20,4 +20,3 @@ AS
      INSERT INTO DataSourceDelHist (SourceGuid, FQN)
      SELECT SourceGuid, FQN
      FROM DELETED 
-go

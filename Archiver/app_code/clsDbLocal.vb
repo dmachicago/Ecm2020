@@ -159,7 +159,7 @@ Public Class clsDbLocal : Implements IDisposable
                                         Console.WriteLine("*")
                                     End If
                                 Catch ex As Exception
-                                    LOG.WriteToArchiveLog("ERROR 01 Reinventory: " + ex.Message)
+                                    LOG.WriteToSQLiteLog("ERROR 01 Reinventory: " + ex.Message)
                                 End Try
 
                                 Application.DoEvents()
@@ -190,24 +190,24 @@ Public Class clsDbLocal : Implements IDisposable
                                         Console.WriteLine("-")
                                     End If
                                 Catch ex As Exception
-                                    LOG.WriteToArchiveLog("ERROR 02 Reinventory: " + ex.Message)
+                                    LOG.WriteToSQLiteLog("ERROR 02 Reinventory: " + ex.Message)
                                 End Try
 
                             Next
                             Application.DoEvents()
                         End If
                     Else
-                        LOG.WriteToArchiveLog("ERROR Missing Directory on this machine: " + DirName)
+                        LOG.WriteToSQLiteLog("ERROR Missing Directory on this machine: " + DirName)
                     End If
                 Catch ex As Exception
-                    LOG.WriteToArchiveLog("ERROR X03 Reinventory: " + ex.Message)
+                    LOG.WriteToSQLiteLog("ERROR X03 Reinventory: " + ex.Message)
                 End Try
             Next
 
             FRM.Close()
             FRM = Nothing
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR 00 Reinventory: " + ex.Message)
+            LOG.WriteToSQLiteLog("ERROR 00 Reinventory: " + ex.Message)
         End Try
     End Sub
 
@@ -268,7 +268,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Public Function ckListenerfileProcessed(ListenerFileName As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim bProcessed As Boolean = False
@@ -399,7 +399,7 @@ Public Class clsDbLocal : Implements IDisposable
                                 End If
                             End If
                         Catch ex As Exception
-                            LOG.WriteToArchiveLog("ERROR getListenerFiles 02: " + ex.Message)
+                            LOG.WriteToSQLiteLog("ERROR getListenerFiles 02: " + ex.Message)
                         End Try
                     End If
                     FRM.Refresh()
@@ -447,7 +447,7 @@ Public Class clsDbLocal : Implements IDisposable
     Public Function setListenerfileProcessed(FQN As String) As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         FQN = FQN.Replace("''", "'")
@@ -465,7 +465,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.ExecuteNonQuery()
             bConnSet = True
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setListenerfileProcessed 04 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/setListenerfileProcessed 04 - " + ex.Message + vbCrLf + S)
             bConnSet = False
         Finally
             CMD.Dispose()
@@ -478,7 +478,7 @@ Public Class clsDbLocal : Implements IDisposable
     Public Function removeListenerfileProcessed() As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim B As Boolean = True
@@ -493,7 +493,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setListenerfileProcessed 04 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/setListenerfileProcessed 04 - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -506,7 +506,7 @@ Public Class clsDbLocal : Implements IDisposable
     Public Function removeListenerfileProcessed(RowIDs As List(Of String)) As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         If RowIDs.Count.Equals(0) Then
@@ -534,7 +534,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/removeListenerfileProcessed 8 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/removeListenerfileProcessed 8 - " + ex.Message + vbCrLf + S)
             b = False
         Finally
             CMD.Dispose()
@@ -549,7 +549,7 @@ Public Class clsDbLocal : Implements IDisposable
     Public Function ListenerRemoveProcessed() As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim bProcessed As Boolean = False
@@ -562,7 +562,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setListenerfileProcessed 04 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/setListenerfileProcessed 04 - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -574,7 +574,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Private Sub RecursiveSearch(ByRef strDirectory As String, ByRef array As ArrayList)
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim dirInfo As New IO.DirectoryInfo(strDirectory)
@@ -616,7 +616,7 @@ Public Class clsDbLocal : Implements IDisposable
     Protected Overloads Overrides Sub Finalize()
         MyBase.Finalize()
         'If gTraceFunctionCalls.Equals(1) Then
-        '    LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+        '    LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         'End If
 
         If Not IsNothing(SQLiteCONN) Then
@@ -628,10 +628,11 @@ Public Class clsDbLocal : Implements IDisposable
                     SQLiteCONN.Dispose()
                 Catch ex As Exception
                     Console.WriteLine("INFO: SQLiteConn Dispose" + ex.Message)
+                    LOG.WriteToSQLiteLog("INFO QA1: SQLiteConn Dispose" + ex.Message)
                 End Try
             Catch ex As Exception
                 If Not ex.Message.Contains("Cannot access a disposed object") Then
-                    LOG.WriteToArchiveLog("NOTICE: SQLiteConn closed" + ex.Message)
+                    LOG.WriteToSQLiteLog("NOTICE: SQLiteConn closed" + ex.Message)
                     'Else
                     '    Console.WriteLine("INFO: SQLiteConn Dispose" + ex.Message)
                 End If
@@ -642,7 +643,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Sub InventoryDir(ByVal DirName As String, ByVal bUseArchiveBit As Boolean)
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim B As Boolean = True
@@ -650,7 +651,7 @@ Public Class clsDbLocal : Implements IDisposable
         If DirID < 0 Then
             B = addDir(DirName, bUseArchiveBit)
             If Not B Then
-                LOG.WriteToArchiveLog("ERROR: clsDbLocal/InventoryDir - Failed to inventory directory '" + DirName + "'.")
+                LOG.WriteToSQLiteLog("ERROR: clsDbLocal/InventoryDir - Failed to inventory directory '" + DirName + "'.")
             End If
         End If
 
@@ -658,11 +659,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     Sub InventoryFile(ByVal FileName As String, FileHash As String)
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim B As Boolean = True
@@ -670,7 +671,7 @@ Public Class clsDbLocal : Implements IDisposable
         If FileID < 0 Then
             B = addFile(FileName, FileHash)
             If Not B Then
-                LOG.WriteToArchiveLog("ERROR: clsDbLocal/InventoryDir - Failed to inventory file '" + FileName + "'.")
+                LOG.WriteToSQLiteLog("ERROR: clsDbLocal/InventoryDir - Failed to inventory file '" + FileName + "'.")
             End If
         End If
 
@@ -678,7 +679,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function GetDirID(ByVal DirName As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         If DirName.Contains("'") Then
@@ -720,7 +721,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
             rs.Dispose()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR XX1: clsDbLocal/GetDirID - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR XX1: clsDbLocal/GetDirID - " + ex.Message + vbCrLf + S)
             DirID = -1
         Finally
             CMD.Dispose()
@@ -741,7 +742,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function GetDirID(ByVal DirName As String, ByRef UseArchiveBit As Boolean) As Integer
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         UseArchiveBit = False
@@ -779,7 +780,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
             rs.Dispose()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR XX2: clsDbLocal/GetDirID - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR XX2: clsDbLocal/GetDirID - " + ex.Message + vbCrLf + S)
             DirID = -1
         Finally
 
@@ -800,7 +801,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function addDir(ByVal FQN As String, ByVal bUseArchiveBit As Boolean) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         setSLConn()
@@ -840,7 +841,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.ExecuteNonQuery()
 
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addDir - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/addDir - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -878,7 +879,7 @@ Public Class clsDbLocal : Implements IDisposable
                         CMD.CommandText = S
                         CMD.ExecuteNonQuery()
                     Catch ex As Exception
-                        LOG.WriteToArchiveLog("ERROR 01: clsDbLocal/resetExtension 01 - " + ex.Message + vbCrLf + S)
+                        LOG.WriteToSQLiteLog("ERROR 01: clsDbLocal/resetExtension 01 - " + ex.Message + vbCrLf + S)
                         B = False
                     End Try
                 End Using
@@ -886,7 +887,7 @@ Public Class clsDbLocal : Implements IDisposable
             B = True
         Catch ex As Exception
             B = False
-            LOG.WriteToArchiveLog("ERROR 01: clsDbLocal/resetExtension 02 - " + ex.Message)
+            LOG.WriteToSQLiteLog("ERROR 01: clsDbLocal/resetExtension 02 - " + ex.Message)
         End Try
 
         Return B
@@ -896,7 +897,7 @@ Public Class clsDbLocal : Implements IDisposable
     Function addExtension(AllowedExts As List(Of String)) As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim WC As String = "("
@@ -925,25 +926,20 @@ Public Class clsDbLocal : Implements IDisposable
         End If
 
         Dim CMD As SQLiteCommand = ListernerConn.CreateCommand()
-
-        Try
-
-            CMD.CommandText = "delete from Exts " + WhereNotIN
-            CMD.ExecuteNonQuery()
-
-            For Each xt As String In AllowedExts
-                CMD.CommandText = "insert or ignore into Exts (Extension,Validated) values ('" + ext + "',1)"
+        Using CMD
+            Try
+                CMD.CommandText = "delete from Exts " + WhereNotIN
                 CMD.ExecuteNonQuery()
-            Next
+                For Each xt As String In AllowedExts
+                    CMD.CommandText = "insert or ignore into Exts (Extension,Validated) values ('" + ext + "',1)"
+                    CMD.ExecuteNonQuery()
+                Next
+            Catch ex As Exception
+                LOG.WriteToSQLiteLog("ERROR: clsDbLocal/addExtension - " + ex.Message + vbCrLf + S)
+                B = False
+            End Try
+        End Using
 
-        Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addExtension - " + ex.Message + vbCrLf + S)
-            B = False
-        Finally
-            CMD.Dispose()
-            GC.Collect()
-            GC.WaitForPendingFinalizers()
-        End Try
 
         Return B
 
@@ -953,7 +949,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function delDir(ByVal DirName As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         setSLConn()
@@ -974,7 +970,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@DirName", DirName)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/delDir - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/delDir - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -995,7 +991,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function GetFileID(ByVal FileName As String, FileHash As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         setSLConn()
@@ -1028,7 +1024,7 @@ Public Class clsDbLocal : Implements IDisposable
                 End Using
             End Using
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR cbLocalDB/GetFileID: " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR cbLocalDB/GetFileID: " + ex.Message + vbCrLf + S)
         End Try
 
         Return FileID
@@ -1037,7 +1033,7 @@ Public Class clsDbLocal : Implements IDisposable
     Function addFile(ByVal FileName As String, FileHash As String) As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         If FileName.Contains("'") Then
@@ -1059,7 +1055,7 @@ Public Class clsDbLocal : Implements IDisposable
                 SQLiteCONN.Open()
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("NOTICE addfile 100: " + ex.Message)
+            LOG.WriteToSQLiteLog("NOTICE addfile 100: " + ex.Message)
         End Try
         If B.Equals(False) Then
             If Not setSLConn() Then
@@ -1074,7 +1070,7 @@ Public Class clsDbLocal : Implements IDisposable
                 'CMD.Parameters.AddWithValue("FileHash", FileHash)
                 CMD.ExecuteNonQuery()
             Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR 20x: clsDbLocal/addFile - " + ex.Message + vbCrLf + S)
+                LOG.WriteToSQLiteLog("ERROR 20x: clsDbLocal/addFile - " + ex.Message + vbCrLf + S)
                 B = False
             Finally
                 CMD.Dispose()
@@ -1089,7 +1085,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function addContact(ByVal FullName As String, ByVal Email1Address As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         setSLConn()
@@ -1116,7 +1112,7 @@ Public Class clsDbLocal : Implements IDisposable
                 'CMD.Parameters.AddWithValue("@RowID", "null")
                 CMD.ExecuteNonQuery()
             Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR: clsDbLocal/addContact - " + ex.Message + vbCrLf + S)
+                LOG.WriteToSQLiteLog("ERROR: clsDbLocal/addContact - " + ex.Message + vbCrLf + S)
                 B = False
             Finally
                 GC.Collect()
@@ -1129,7 +1125,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function fileExists(ByVal FileName As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim B As Boolean = False
@@ -1163,7 +1159,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function contactExists(ByVal FullName As String, ByVal Email1Address As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim B As Boolean = False
@@ -1202,7 +1198,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function delFile(ByVal FileName As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         setSLConn()
@@ -1220,7 +1216,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/delFile - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/delFile - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -1241,7 +1237,7 @@ Public Class clsDbLocal : Implements IDisposable
     Function addInventoryForce(ByVal FQN As String, ByVal bArchiveBit As Boolean) As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         If FQN.Contains("''") Then
@@ -1278,7 +1274,7 @@ Public Class clsDbLocal : Implements IDisposable
             LastUpdate = FI.LastWriteTime
         Catch ex As Exception
             B = False
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addInventoryForce 00 - " + ex.Message)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/addInventoryForce 00 - " + ex.Message)
             Return B
         End Try
 
@@ -1287,12 +1283,12 @@ Public Class clsDbLocal : Implements IDisposable
 
         If DirID < 0 Then
             B = addDir(sDirName, False)
-            LOG.WriteToArchiveLog("NOTICE: clsDbLocal/setInventoryArchive 01 - Added directory " + sDirName + ".")
+            LOG.WriteToSQLiteLog("NOTICE: clsDbLocal/setInventoryArchive 01 - Added directory " + sDirName + ".")
             DirID = GetDirID(sDirName)
         End If
         If FileID < 0 Then
             B = addFile(sFileName, FileHash)
-            LOG.WriteToArchiveLog("NOTICE: clsDbLocal/setInventoryArchive 02 - Added file " + sFileName + ".")
+            LOG.WriteToSQLiteLog("NOTICE: clsDbLocal/setInventoryArchive 02 - Added file " + sFileName + ".")
             FileID = GetFileID(sFileName, FileHash)
         End If
 
@@ -1310,7 +1306,7 @@ Public Class clsDbLocal : Implements IDisposable
         S += "" + NeedsArchive.ToString + ", "
         S += "'" + FileHash + "') "
 
-        'LOG.WriteToArchiveLog("Remove after debug  SQL: " + vbCrLf + S)
+        'LOG.WriteToSQLiteLog("Remove after debug  SQL: " + vbCrLf + S)
 
         'Dim cn As New SqlCeConnection(InvCS)
         If Not setSLConn() Then
@@ -1323,8 +1319,8 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.ExecuteNonQuery()
             B = True
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR 1A: clsDbLocal/addInventoryForce - " + ex.Message)
-            LOG.WriteToArchiveLog("ERROR 1A: clsDbLocal/addInventoryForce SQL: " + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR 1A: clsDbLocal/addInventoryForce - " + ex.Message)
+            LOG.WriteToSQLiteLog("ERROR 1A: clsDbLocal/addInventoryForce SQL: " + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -1338,7 +1334,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Public Sub RebuildDB()
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim S As String = ""
@@ -1514,13 +1510,13 @@ Public Class clsDbLocal : Implements IDisposable
     Sub ApplySQL(S As String)
 
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
 
         setSLConn()
 
-        LOG.WriteToArchiveLog("NOTICE: Executing SQL: " + vbCrLf + S)
+        LOG.WriteToSQLiteLog("NOTICE: Executing SQL: " + vbCrLf + S)
 
         'Dim cn As New SqlCeConnection(InvCS)
         If Not setSLConn() Then
@@ -1533,8 +1529,8 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.ExecuteNonQuery()
         Catch ex As Exception
             MessageBox.Show("ERROR 1A: clsDbLocal/ApplySQL: " + ex.Message + vbCrLf + S)
-            LOG.WriteToArchiveLog("ERROR 1A: clsDbLocal/ApplySQL: " + ex.Message)
-            LOG.WriteToArchiveLog("ERROR 1A: clsDbLocal/ApplySQL: " + S)
+            LOG.WriteToSQLiteLog("ERROR 1A: clsDbLocal/ApplySQL: " + ex.Message)
+            LOG.WriteToSQLiteLog("ERROR 1A: clsDbLocal/ApplySQL: " + S)
             B = False
         Finally
             CMD.Dispose()
@@ -1551,7 +1547,7 @@ Public Class clsDbLocal : Implements IDisposable
                           ByVal ArchiveBit As Boolean,
                           ByVal FileHash As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim FileExist As Boolean = True
@@ -1590,7 +1586,7 @@ Public Class clsDbLocal : Implements IDisposable
             'CMD.Parameters.AddWithValue("@FileHash", FileHash)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addInventory - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/addInventory - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -1611,7 +1607,7 @@ Public Class clsDbLocal : Implements IDisposable
     Function delInventory(ByVal DirID As Integer,
                           ByVal FileID As Integer) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         setSLConn()
@@ -1637,7 +1633,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@FileID", FileID)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/delInventory - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/delInventory - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -1657,7 +1653,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function InventoryExists(ByVal DirID As Integer, ByVal FileID As Integer, CRC As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim B As Boolean = False
@@ -1692,7 +1688,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
             rs.Dispose()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/InventoryExists - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/InventoryExists - " + ex.Message + vbCrLf + S)
             CRC = ""
         Finally
             'If cn IsNot Nothing Then
@@ -1713,7 +1709,7 @@ Public Class clsDbLocal : Implements IDisposable
     Function InventoryHashCompare(ByVal DirID As Integer,
                           ByVal FileID As Integer, ByVal CurrHash As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim B As Boolean = False
@@ -1752,7 +1748,7 @@ Public Class clsDbLocal : Implements IDisposable
                 B = False
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/InventoryExists - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/InventoryExists - " + ex.Message + vbCrLf + S)
             FileID = -1
         Finally
             'If cn IsNot Nothing Then
@@ -1772,7 +1768,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function setInventoryArchive(ByVal FQN As String, ByVal ArchiveFlag As Boolean, FileHash As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim B As Boolean = True
@@ -1784,7 +1780,7 @@ Public Class clsDbLocal : Implements IDisposable
             sFileName = FI.Name
         Catch ex As Exception
             B = False
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setInventoryArchive 00 - " + ex.Message)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/setInventoryArchive 00 - " + ex.Message)
             Return B
         End Try
 
@@ -1800,12 +1796,12 @@ Public Class clsDbLocal : Implements IDisposable
 
         If DirID < 0 Then
             B = False
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setInventoryArchive 01 - Could not get the directory id for " + sDirName + ".")
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/setInventoryArchive 01 - Could not get the directory id for " + sDirName + ".")
             Return B
         End If
         If FileID < 0 Then
             B = False
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setInventoryArchive 02 - Could not get the file id for " + sFileName + ".")
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/setInventoryArchive 02 - Could not get the file id for " + sFileName + ".")
             Return B
         End If
 
@@ -1833,7 +1829,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@FileID", FileID)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setInventoryArchive 04 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/setInventoryArchive 04 - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -1853,7 +1849,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function setInventoryArchive(ByVal DirID As Integer, ByVal FileID As Integer, ByVal ArchiveFlag As Boolean) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim B As Boolean = True
@@ -1885,7 +1881,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@FileID", FileID)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setInventoryArchive 104 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/setInventoryArchive 104 - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -1933,7 +1929,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Dispose()
             B = True
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR UpdateFileArchiveInfo 00: " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR UpdateFileArchiveInfo 00: " + ex.Message + vbCrLf + S)
             B = False
         End Try
         Return B
@@ -1969,8 +1965,8 @@ Public Class clsDbLocal : Implements IDisposable
             rs.Dispose()
 
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/InventoryExists - " + ex.Message + vbCrLf + S)
-            LOG.WriteToArchiveLog("ERROR 923A getFileArchiveInfo : " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/InventoryExists - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR 923A getFileArchiveInfo : " + ex.Message + vbCrLf + S)
         End Try
 
         Return I
@@ -2012,14 +2008,14 @@ Public Class clsDbLocal : Implements IDisposable
                 B = True
             Catch ex As Exception
                 LOG.WriteToDirFileLog("ERROR addFileArchiveInfo 00: " + ex.Message + vbCrLf + S)
-                LOG.WriteToArchiveLog("ERROR addFileArchiveInfo 00: " + ex.Message + vbCrLf + S)
+                LOG.WriteToSQLiteLog("ERROR addFileArchiveInfo 00: " + ex.Message + vbCrLf + S)
                 B = False
             End Try
         Catch ex As Exception
             LOG.WriteToDirFileLog("ERROR AddFileArchiveInfo 01a: " + ex.Message)
             LOG.WriteToDirFileLog("ERROR AddFileArchiveInfo 02a: skipping file : " + FQN)
-            LOG.WriteToArchiveLog("ERROR AddFileArchiveInfo 01b: " + ex.Message)
-            LOG.WriteToArchiveLog("ERROR AddFileArchiveInfo 02b: skipping file : " + FQN)
+            LOG.WriteToSQLiteLog("ERROR AddFileArchiveInfo 01b: " + ex.Message)
+            LOG.WriteToSQLiteLog("ERROR AddFileArchiveInfo 02b: skipping file : " + FQN)
             B = False
         End Try
 
@@ -2029,7 +2025,7 @@ Public Class clsDbLocal : Implements IDisposable
     Function getFileArchiveInfo(FQN As String) As Dictionary(Of String, String)
 
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim INFO As New Dictionary(Of String, String)
@@ -2092,11 +2088,11 @@ Public Class clsDbLocal : Implements IDisposable
                 rs.Dispose()
 
             Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR: clsDbLocal/InventoryExists - " + ex.Message + vbCrLf + S)
-                LOG.WriteToArchiveLog("ERROR 923A getFileArchiveInfo : " + ex.Message + vbCrLf + S)
+                LOG.WriteToSQLiteLog("ERROR: clsDbLocal/InventoryExists - " + ex.Message + vbCrLf + S)
+                LOG.WriteToSQLiteLog("ERROR 923A getFileArchiveInfo : " + ex.Message + vbCrLf + S)
             End Try
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR 923b getFileArchiveInfo : " + ex.Message)
+            LOG.WriteToSQLiteLog("ERROR 923b getFileArchiveInfo : " + ex.Message)
         End Try
 
         GC.Collect()
@@ -2109,7 +2105,7 @@ Public Class clsDbLocal : Implements IDisposable
     Function ckNeedsArchive(ByVal FQN As String, ByVal SkipIfArchiveBitOn As Boolean, ByRef FileHash As String) As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim iArchiveFlag As Integer = 0
@@ -2139,7 +2135,7 @@ Public Class clsDbLocal : Implements IDisposable
         End If
 
         If Not File.Exists(FQN) Then
-            LOG.WriteToArchiveLog("Notice: clsDbLocal/ckNeedsArchive 00 - could not find file " + FQN + ", skipping...")
+            LOG.WriteToSQLiteLog("Notice: clsDbLocal/ckNeedsArchive 00 - could not find file " + FQN + ", skipping...")
             Return False
         End If
 
@@ -2152,7 +2148,7 @@ Public Class clsDbLocal : Implements IDisposable
             LastUpdate = FI.LastWriteTime
         Catch ex As Exception
             B = False
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/ckNeedsArchive 00.A - ", ex)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/ckNeedsArchive 00.A - " + ex.Message)
             Return B
         End Try
 
@@ -2161,13 +2157,13 @@ Public Class clsDbLocal : Implements IDisposable
 
         If DirID < 0 Then
             B = addDir(sDirName, False)
-            LOG.WriteToArchiveLog("Notice: clsDbLocal/ckNeedsArchive 01 - Added directory " + sDirName + ".")
+            LOG.WriteToSQLiteLog("Notice: clsDbLocal/ckNeedsArchive 01 - Added directory " + sDirName + ".")
             DirID = GetDirID(sDirName)
         End If
         If FileID < 0 Then
             sFileName = sFileName.Replace("'", "''")
             B = addFile(sFileName, FileHash)
-            LOG.WriteToArchiveLog("Notice: clsDbLocal/ckNeedsArchive 02 - Added file " + sFileName + ".")
+            LOG.WriteToSQLiteLog("Notice: clsDbLocal/ckNeedsArchive 02 - Added file " + sFileName + ".")
             FileID = GetFileID(sFileName, FileHash)
         End If
 
@@ -2226,7 +2222,7 @@ Public Class clsDbLocal : Implements IDisposable
                 B = False
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/InventoryExists - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/InventoryExists - " + ex.Message + vbCrLf + S)
             FileID = -1
         Finally
             'If cn IsNot Nothing Then
@@ -2246,7 +2242,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Sub truncateDirs()
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim S As String = "delete from Directory"
@@ -2257,7 +2253,7 @@ Public Class clsDbLocal : Implements IDisposable
             Try
                 CMD.ExecuteNonQuery()
             Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR: clsDbLocal/truncateDirs 104 - " + ex.Message + vbCrLf + S)
+                LOG.WriteToSQLiteLog("ERROR: clsDbLocal/truncateDirs 104 - " + ex.Message + vbCrLf + S)
             Finally
                 GC.Collect()
             End Try
@@ -2266,7 +2262,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Sub truncateDirFiles()
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim S As String = "delete from DirFilesID"
@@ -2276,7 +2272,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/truncateContacts 104 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/truncateContacts 104 - " + ex.Message + vbCrLf + S)
         Finally
             CMD.Dispose()
             GC.Collect()
@@ -2286,7 +2282,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Sub truncateContacts()
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim S As String = "delete from ContactsArchive"
@@ -2296,7 +2292,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/truncateContacts 104 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/truncateContacts 104 - " + ex.Message + vbCrLf + S)
         Finally
             CMD.Dispose()
             GC.Collect()
@@ -2306,7 +2302,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Sub truncateExchange()
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim S As String = "delete from Exchange"
@@ -2316,7 +2312,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/truncateExchange 104 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/truncateExchange 104 - " + ex.Message + vbCrLf + S)
         Finally
             CMD.Dispose()
             'If cn IsNot Nothing Then
@@ -2332,7 +2328,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Sub truncateOutlook()
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim S As String = "delete from Outlook"
@@ -2342,7 +2338,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/truncateOutlook 104 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/truncateOutlook 104 - " + ex.Message + vbCrLf + S)
         Finally
             CMD.Dispose()
             'If cn IsNot Nothing Then
@@ -2358,7 +2354,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Sub truncateFiles()
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim S As String = "delete from Files"
@@ -2369,7 +2365,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/truncateFiles 104 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/truncateFiles 104 - " + ex.Message + vbCrLf + S)
         Finally
             CMD.Dispose()
             'If cn IsNot Nothing Then
@@ -2385,7 +2381,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Sub truncateInventory()
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim S As String = "delete from Inventory"
@@ -2395,7 +2391,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/truncateInventory 104 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/truncateInventory 104 - " + ex.Message + vbCrLf + S)
         Finally
             CMD.Dispose()
             GC.Collect()
@@ -2405,7 +2401,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Sub BackupDirTbl()
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         setSLConn()
@@ -2448,7 +2444,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
             rs.Dispose()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/BackupDirTbl - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/BackupDirTbl - " + ex.Message + vbCrLf + S)
         Finally
             fOut.Close()
             fOut.Dispose()
@@ -2466,7 +2462,7 @@ Public Class clsDbLocal : Implements IDisposable
     Sub BackUpSQLite()
 
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim BackupSQLiteHrs As Integer = System.Configuration.ConfigurationManager.AppSettings("BackupSQLiteHrs")
@@ -2492,7 +2488,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Sub BackupSQLiteDB()
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim strPath As String = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase)
@@ -2509,7 +2505,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Sub RestoreSQLite()
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim strPath As String = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase)
@@ -2526,7 +2522,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Sub BackupOutlookTbl()
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         setSLConn()
@@ -2566,7 +2562,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
             rs.Dispose()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/BackupOutlookTbl - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/BackupOutlookTbl - " + ex.Message + vbCrLf + S)
         Finally
             fOut.Close()
             fOut.Dispose()
@@ -2583,7 +2579,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Sub BackupExchangeTbl()
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         setSLConn()
@@ -2630,7 +2626,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
             rs.Dispose()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/BackupOutlookTbl - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/BackupOutlookTbl - " + ex.Message + vbCrLf + S)
         Finally
             fOut.Close()
             fOut.Dispose()
@@ -2647,7 +2643,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function addOutlook(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         setSLConn()
@@ -2675,7 +2671,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@RowID", "null")
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addOutlook - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/addOutlook - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -2688,7 +2684,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function addExchange(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         setSLConn()
@@ -2710,7 +2706,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@RowID", "null")
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addExchange - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/addExchange - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -2723,7 +2719,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function OutlookExists(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim B As Boolean = False
@@ -2763,7 +2759,7 @@ Public Class clsDbLocal : Implements IDisposable
                 B = False
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/OutlookExists - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/OutlookExists - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             'If cn IsNot Nothing Then
@@ -2783,7 +2779,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function ExchangeExists(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         setSLConn()
@@ -2825,7 +2821,7 @@ Public Class clsDbLocal : Implements IDisposable
                 B = False
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/OutlookExists - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/OutlookExists - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             'If cn IsNot Nothing Then
@@ -2845,7 +2841,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function MarkExchangeFound(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         setSLConn()
@@ -2866,7 +2862,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@sKey", sKey)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/MarkExchangeFound - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/MarkExchangeFound - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -2886,7 +2882,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function MarkOutlookFound(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim B As Boolean = True
@@ -2906,7 +2902,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@sKey", sKey)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/MarkOutlookFound - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/MarkOutlookFound - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -2926,7 +2922,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function delOutlook(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         setSLConn()
@@ -2947,7 +2943,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@sKey", sKey)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/delOutlook - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/delOutlook - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -2967,7 +2963,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function delExchange(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         setSLConn()
@@ -2988,7 +2984,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@sKey", sKey)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/delExchange - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/delExchange - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3008,7 +3004,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function delOutlookMissing(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim B As Boolean = True
@@ -3026,7 +3022,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/delOutlookMissing - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/delOutlookMissing - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3046,7 +3042,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function delExchangeMissing(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         setSLConn()
@@ -3065,7 +3061,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/delExchangeMissing - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/delExchangeMissing - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3085,7 +3081,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function setOutlookMissing() As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim B As Boolean = True
@@ -3103,7 +3099,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setOutlookMissing - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/setOutlookMissing - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3123,7 +3119,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function setExchangeMissing(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim B As Boolean = True
@@ -3140,7 +3136,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setExchangeMissing - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/setExchangeMissing - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3160,7 +3156,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function setOutlookKeyFound(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         If sKey.Length > 500 Then
@@ -3183,7 +3179,7 @@ Public Class clsDbLocal : Implements IDisposable
             'CMD.Parameters.AddWithValue("@sKey", sKey)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("WARNING: clsDbLocal/setOutlookKeyFound - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("WARNING: clsDbLocal/setOutlookKeyFound - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3197,7 +3193,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function setExchangeKeyFound(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim B As Boolean = True
@@ -3216,7 +3212,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@sKey", sKey)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setExchangeKeyFound - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/setExchangeKeyFound - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3230,7 +3226,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Sub LoadExchangeKeys(ByRef L As SortedList(Of String, String))
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim S As String = "Select sKey from Exchange"
@@ -3249,30 +3245,28 @@ Public Class clsDbLocal : Implements IDisposable
         Try
 
             CMD.CommandType = CommandType.Text
-
-            '** if you don’t set the result set to scrollable HasRows does not work
-            Dim rs As SQLiteDataReader = CMD.ExecuteReader()
-            Dim iKey As Integer = 0
-            If rs.HasRows Then
-                Do While rs.Read()
-                    sKey = rs.GetString(0)
-                    If L.IndexOfKey(sKey) < 0 Then
-                        Try
-                            L.Add(sKey, iKey.ToString)
-                        Catch ex2 As System.Exception
-                            Console.WriteLine(ex2.Message)
-                        End Try
+            Using CMD
+                '** if you don’t set the result set to scrollable HasRows does not work
+                Dim rs As SQLiteDataReader = CMD.ExecuteReader()
+                Dim iKey As Integer = 0
+                Using rs
+                    If rs.HasRows Then
+                        Do While rs.Read()
+                            sKey = rs.GetString(0)
+                            If L.IndexOfKey(sKey) < 0 Then
+                                Try
+                                    L.Add(sKey, iKey.ToString)
+                                Catch ex2 As System.Exception
+                                    Console.WriteLine(ex2.Message)
+                                End Try
+                            End If
+                            iKey += 1
+                        Loop
                     End If
-                    iKey += 1
-                Loop
-            End If
-
-            If Not rs.IsClosed Then
-                rs.Close()
-            End If
-            rs.Dispose()
+                End Using
+            End Using
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/BackupDirTbl - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/BackupDirTbl - " + ex.Message + vbCrLf + S)
         Finally
 
         End Try
@@ -3283,7 +3277,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function addListener(ByVal FQN As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         setSLConn()
@@ -3299,24 +3293,21 @@ Public Class clsDbLocal : Implements IDisposable
 
 
         Dim CMD As New SQLiteCommand(S, SQLiteCONN)
-        Try
-            CMD.Parameters.AddWithValue("@FQN", FQN)
-            CMD.ExecuteNonQuery()
-        Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addListener - " + ex.Message + vbCrLf + S)
-            B = False
-        Finally
-            CMD.Dispose()
-            GC.Collect()
-            GC.WaitForPendingFinalizers()
-        End Try
-
+        Using CMD
+            Try
+                CMD.Parameters.AddWithValue("@FQN", FQN)
+                CMD.ExecuteNonQuery()
+            Catch ex As Exception
+                LOG.WriteToSQLiteLog("ERROR: clsDbLocal/addListener - " + ex.Message + vbCrLf + S)
+                B = False
+            End Try
+        End Using
         Return B
     End Function
 
     Function DelListenersProcessed() As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim B As Boolean = True
@@ -3334,7 +3325,7 @@ Public Class clsDbLocal : Implements IDisposable
             'CMD.Parameters.AddWithValue("@FQN", FQN)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addListener - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/addListener - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3347,7 +3338,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function MarkListenersProcessed(ByVal FQN As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim B As Boolean = True
@@ -3366,7 +3357,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@FQN", FQN)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addListener - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/addListener - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3379,7 +3370,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function removeListenerFile(ByVal FQN As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim B As Boolean = True
@@ -3397,7 +3388,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@FQN", FQN)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addListener - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/addListener - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3411,7 +3402,7 @@ Public Class clsDbLocal : Implements IDisposable
     Sub getListenerFiles(ByRef L As SortedList(Of String, Integer))
 
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         setSLConn()
@@ -3447,14 +3438,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
             rs.Dispose()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/getListenerFiles - " + ex.Message + vbCrLf + S)
-        Finally
-            'If SQLiteCONN IsNot Nothing Then
-            '    If SQLiteCONN.State = ConnectionState.Open Then
-            '        SQLiteCONN.Close()
-            '    End If
-            '    SQLiteCONN.Dispose()
-            'End If
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/getListenerFiles - " + ex.Message + vbCrLf + S)
         End Try
         GC.Collect()
         GC.WaitForPendingFinalizers()
@@ -3462,7 +3446,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function ActiveListenerFiles() As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim B As Boolean = False
@@ -3500,7 +3484,7 @@ Public Class clsDbLocal : Implements IDisposable
                 B = False
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/ActiveListenerFiles - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/ActiveListenerFiles - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             'If cn IsNot Nothing Then
@@ -3520,7 +3504,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function addZipFile(ByVal FQN As String, ByVal ParentGuid As String, ByVal bThisIsAnEmail As Boolean) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim EmailAttachment As Integer = 0
@@ -3551,7 +3535,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             SQLiteCONN.Open()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("NOTICE addZipfile 100: " + ex.Message)
+            LOG.WriteToSQLiteLog("NOTICE addZipfile 100: " + ex.Message)
         End Try
 
 
@@ -3568,7 +3552,7 @@ Public Class clsDbLocal : Implements IDisposable
         Catch ex As Exception
             If InStr(ex.Message, "duplicate value cannot") > 0 Then
             Else
-                LOG.WriteToArchiveLog("ERROR 100H: clsDbLocal/addZipFile - " + ex.Message + vbCrLf + S)
+                LOG.WriteToSQLiteLog("ERROR 100H: clsDbLocal/addZipFile - " + ex.Message + vbCrLf + S)
             End If
             B = False
         Finally
@@ -3583,7 +3567,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function setZipFileProcessed(ByVal FileName As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim B As Boolean = True
@@ -3610,7 +3594,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@FileName", FileName)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setZipFileProcessed - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/setZipFileProcessed - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3624,7 +3608,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function setZipNbrOfFiles(ByVal FileName As String, ByVal NumberOfZipFiles As Integer) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim B As Boolean = True
@@ -3646,7 +3630,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@FileName", FileName)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setZipNbrOfFiles - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/setZipNbrOfFiles - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3660,7 +3644,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function setZipInWork(ByVal FileName As String, ByVal NumberOfZipFiles As Integer) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim B As Boolean = True
@@ -3683,7 +3667,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@FileName", FileName)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setZipInWork - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/setZipInWork - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3702,7 +3686,7 @@ Public Class clsDbLocal : Implements IDisposable
 
         Try
             If gTraceFunctionCalls.Equals(1) Then
-                LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+                LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
             End If
 
 
@@ -3726,7 +3710,7 @@ Public Class clsDbLocal : Implements IDisposable
                     Try
                         CMD.ExecuteNonQuery()
                     Catch ex As Exception
-                        LOG.WriteToArchiveLog("ERROR 00: clsDbLocal/cleanZipFiles - " + ex.Message + vbCrLf + S)
+                        LOG.WriteToSQLiteLog("ERROR 00: clsDbLocal/cleanZipFiles - " + ex.Message + vbCrLf + S)
                         B = False
                     Finally
                         GC.Collect()
@@ -3736,7 +3720,7 @@ Public Class clsDbLocal : Implements IDisposable
             End Using
             B = True
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR 01: clsDbLocal/cleanZipFiles - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR 01: clsDbLocal/cleanZipFiles - " + ex.Message + vbCrLf + S)
             B = False
         End Try
 
@@ -3746,7 +3730,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Function zeroizeZipFiles() As Boolean
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim B As Boolean = True
@@ -3768,7 +3752,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/zeroizeZipFiles - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/zeroizeZipFiles - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3782,7 +3766,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Sub getZipFiles(ByRef L As SortedList(Of String, Integer))
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         setSLConn()
@@ -3819,7 +3803,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
             rs.Dispose()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/getZipFiles - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/getZipFiles - " + ex.Message + vbCrLf + S)
         Finally
             'If SQLiteCONN IsNot Nothing Then
             '    If SQLiteCONN.State = ConnectionState.Open Then
@@ -3834,7 +3818,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     Sub getCE_EmailIdentifiers(ByRef L As SortedList)
         If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+            LOG.WriteToSQLiteLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
 
@@ -3881,7 +3865,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
             rs.Dispose()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/BackupOutlookTbl - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/BackupOutlookTbl - " + ex.Message + vbCrLf + S)
         Finally
             If SQLiteCONN IsNot Nothing Then
                 If SQLiteCONN.State = ConnectionState.Open Then
@@ -3896,7 +3880,7 @@ Public Class clsDbLocal : Implements IDisposable
     Public Function setListenerConn() As Boolean
 
         If Not File.Exists(SQLiteListenerDB) Then
-            LOG.WriteToArchiveLog("FATAL ERROR: Listener SQLite DB does not exist: " + SQLiteListenerDB)
+            LOG.WriteToSQLiteLog("FATAL ERROR: Listener SQLite DB does not exist: " + SQLiteListenerDB)
             MessageBox.Show("FATAL ERROR: Listener SQLite DB does not exist: " + SQLiteListenerDB)
             Return False
         End If
@@ -3946,7 +3930,7 @@ Public Class clsDbLocal : Implements IDisposable
                 bSQLiteCOnnected = True
             Catch ex As Exception
                 Dim LG As New clsLogging
-                LG.WriteToArchiveLog("ERROR LOCALDB setSLConn: " + ex.Message + vbCrLf + cs)
+                LG.WriteToSQLiteLog("ERROR LOCALDB setSLConn: " + ex.Message + vbCrLf + cs)
                 LG = Nothing
                 bb = False
                 bSQLiteCOnnected = False
@@ -3967,7 +3951,7 @@ Public Class clsDbLocal : Implements IDisposable
             NewConn.Open()
         Catch ex As Exception
             Dim LG As New clsLogging
-            LG.WriteToArchiveLog("ERROR LOCALDB getSLConn: " + ex.Message + vbCrLf + cs)
+            LG.WriteToSQLiteLog("ERROR LOCALDB getSLConn: " + ex.Message + vbCrLf + cs)
             LG = Nothing
             NewConn = Nothing
         End Try
@@ -4060,7 +4044,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
             rs.Dispose()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/getUseLastArchiveDateActive - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/getUseLastArchiveDateActive - " + ex.Message + vbCrLf + S)
         Finally
             If SQLiteCONN IsNot Nothing Then
                 If SQLiteCONN.State = ConnectionState.Open Then
@@ -4084,7 +4068,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/zeroizeZipFiles - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/zeroizeZipFiles - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -4107,7 +4091,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/zeroizeZipFiles - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/zeroizeZipFiles - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -4145,7 +4129,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
             rs.Dispose()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/BackupOutlookTbl - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/BackupOutlookTbl - " + ex.Message + vbCrLf + S)
         Finally
             If SQLiteCONN IsNot Nothing Then
                 If SQLiteCONN.State = ConnectionState.Open Then
@@ -4173,7 +4157,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/InitUseLastArchiveDateActive - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/InitUseLastArchiveDateActive - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -4194,7 +4178,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/ZeroizeLastArchiveDate - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/ZeroizeLastArchiveDate - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -4227,7 +4211,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/InitUseLastArchiveDateActive - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/InitUseLastArchiveDateActive - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
@@ -4252,7 +4236,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/zeroizeZipFiles - " + ex.Message + vbCrLf + S)
+            LOG.WriteToSQLiteLog("ERROR: clsDbLocal/zeroizeZipFiles - " + ex.Message + vbCrLf + S)
             B = False
         Finally
             CMD.Dispose()
