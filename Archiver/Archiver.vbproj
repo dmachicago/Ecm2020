@@ -62,7 +62,7 @@
     <WebPage>Publish.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>141</ApplicationRevision>
+    <ApplicationRevision>146</ApplicationRevision>
     <ApplicationVersion>4.6.2.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -798,6 +798,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="_SQL_Query\ResetRepositoryHashCodes.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="_SQL_Query\SetFulltextIndexToManualWIthIncrementalUpdate.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="_SQL_Query\ShrinkAllDBLogs.sql">

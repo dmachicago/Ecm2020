@@ -27989,8 +27989,11 @@ NextOne:
     Public Function ckUpdateTbl() As Boolean
 
         Dim B As Boolean = True
-
-        Dim MySql = "IF NOT EXISTS
+        Dim LL As Integer = 0
+        Dim connString As String = getRepoConnStr()
+        Try
+            LL = 10
+            Dim MySql = "IF NOT EXISTS
                         (
                             SELECT 1
                             FROM sys.tables
@@ -28011,32 +28014,52 @@ NextOne:
                                 ADD DEFAULT((0)) FOR [UpdateApplied];
                                 CREATE UNIQUE CLUSTERED INDEX [PC_DBUpdate] ON [dbo].[DBUpdate]([FileName] ASC);
                         END;"
+            LL = 20
+            Dim CMD As New SqlCommand
 
-        Dim CMD As New SqlCommand
-        Dim connString As String = getRepoConnStr()
-        Dim conn As New SqlConnection(connString)
-
-        If conn Is Nothing Then
-            conn = New SqlConnection(getRepoConnStr())
-        End If
-        If conn.State = ConnectionState.Closed Then
-            conn.ConnectionString = getRepoConnStr()
-            conn.Open()
-        End If
-
-        CMD.Connection = conn
-        CMD.CommandText = MySql
-        CMD.CommandType = CommandType.Text
-        Using conn
-            Using CMD
-                Try
-                    CMD.ExecuteNonQuery()
-                Catch ex As Exception
-                    LOG.WriteToArchiveLog("ERROR 22x: updateDBUpdateLastwrite: " + ex.Message + vbCrLf + MySql)
-                    B = False
-                End Try
+            LL = 30
+            Dim conn As New SqlConnection(connString)
+            LL = 40
+            If conn Is Nothing Then
+                LL = 50
+                conn = New SqlConnection(getRepoConnStr())
+            End If
+            LL = 60
+            If conn.State = ConnectionState.Closed Then
+                LL = 70
+                conn.ConnectionString = getRepoConnStr()
+                LL = 80
+                conn.Open()
+            End If
+            LL = 90
+            CMD.Connection = conn
+            LL = 100
+            CMD.CommandText = MySql
+            LL = 110
+            CMD.CommandType = CommandType.Text
+            LL = 130
+            Using conn
+                LL = 140
+                Using CMD
+                    LL = 150
+                    Try
+                        LL = 160
+                        CMD.ExecuteNonQuery()
+                        LL = 170
+                    Catch ex As Exception
+                        LOG.WriteToArchiveLog("ERROR 22x: updateDBUpdateLastwrite: " + ex.Message + vbCrLf + MySql)
+                        B = False
+                    End Try
+                    LL = 180
+                End Using
+                LL = 190
             End Using
-        End Using
+            LL = 200
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR 01A ckUpdateTbl: LL=" + LL.ToString + vbCrLf + connString + vbCrLf + ex.Message)
+            B = False
+        End Try
+
         Return B
     End Function
 

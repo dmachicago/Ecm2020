@@ -85,7 +85,7 @@ Public Class LoginForm1
             ckDisableListener.Visible = False
         End If
 
-        DBARCH.ckUpdateTbl()
+        'DBARCH.ckUpdateTbl()
 
     End Sub
 

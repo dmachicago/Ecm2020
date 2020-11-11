@@ -3,13 +3,28 @@ Imports Microsoft.Win32
 Imports System.IO
 Imports System.Diagnostics.PerformanceCounter
 Imports ECMEncryption
+Imports System.Text.RegularExpressions
 
 Public Class clsUtility
 
     Dim LOG As New clsLogging
     Dim ISO As New clsIsolatedStorage
-    Dim ENC As new ECMEncrypt
+    Dim ENC As New ECMEncrypt
     Dim dblocal As New clsDbLocal
+
+    Function SplitCamelCase(str As String) As String
+
+        Dim LineOut As String = ""
+        Dim Dows As MatchCollection = Regex.Matches(str, "[A-Z][a-z]+")
+
+        For Each s As Object In Dows
+            LineOut += s.ToString + " "
+        Next
+
+        LineOut = LineOut.Trim()
+        Return LineOut
+
+    End Function
 
     Public Function isLongFileNamesAvail() As Boolean
         Dim OsVersion As String = Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion", "ProductName", Nothing).ToString
@@ -1314,7 +1329,7 @@ Public Class clsUtility
 
     Sub xSaveCurrentConnectionInfo()
 
-        Dim ENC As new ECMEncrypt
+        Dim ENC As New ECMEncrypt
 
         Dim TempDir As String = Environment.GetEnvironmentVariable("temp")
         Dim EcmConStr As String = "ECM" + Chr(254)
@@ -1350,7 +1365,7 @@ Public Class clsUtility
 
         Try
             LOG.WriteToInstallLog("Track 1")
-            Dim ENC As new ECMEncrypt
+            Dim ENC As New ECMEncrypt
 
             Dim TempDir As String = Environment.GetEnvironmentVariable("temp")
             Dim EcmConStr As String = "ECM" + Chr(254)

@@ -1276,6 +1276,7 @@ Public Class frmMain : Implements IDisposable
             End If
 
             TimerAutoExec.Enabled = True
+            TimerAutoExec.Interval = 5000
         Else
             gAutoExecContentComplete = True
         End If
@@ -1285,6 +1286,7 @@ Public Class frmMain : Implements IDisposable
         If Not ckDisable.Checked And Not ckDisableOutlookEmailArchive.Checked And gAutoExec.Equals(True) Then
             OutlookEmailsToolStripMenuItem_Click(Nothing, Nothing)
             TimerAutoExec.Enabled = True
+            TimerAutoExec.Interval = 5000
         Else
             gAutoExecEmailComplete = True
         End If
@@ -1295,6 +1297,7 @@ Public Class frmMain : Implements IDisposable
         If Not ckDisable.Checked And Not ckDisableExchange.Checked And gAutoExec.Equals(True) Then
             ExchangeEmailsToolStripMenuItem_Click(Nothing, Nothing)
             TimerAutoExec.Enabled = True
+            TimerAutoExec.Interval = 5000
         Else
             gAutoExecExchangeComplete = True
         End If
@@ -7989,9 +7992,9 @@ SKIPTHISREC:
     Private Sub ContentToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ContentToolStripMenuItem.Click
 
         Dim watch As Stopwatch = Stopwatch.StartNew()
-        Dim PerformQUickArchive As Boolean = True
+        Dim PerformQuickArchive As Boolean = True
 
-        BeginContentArchive(PerformQUickArchive)
+        PerformQuickScan(PerformQUickArchive)
 
         Dim totsecs As Decimal = 0
         totsecs = watch.Elapsed.TotalSeconds
@@ -13366,7 +13369,7 @@ SkipIT:
         MessageBox.Show(Msg)
     End Sub
 
-    Sub BeginContentArchive(PerformQuickArchive As Boolean)
+    Sub PerformQuickScan(PerformQuickArchive As Boolean)
 
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13655,7 +13658,7 @@ SkipIT:
         Dim watch As Stopwatch = Stopwatch.StartNew()
         TempDisableDirListener = True
         Dim PerformQUickArchive As Boolean = False
-        BeginContentArchive(PerformQUickArchive)
+        PerformQuickScan(PerformQUickArchive)
         TempDisableDirListener = False
         watch.Stop()
         Dim totsecs As Decimal = 0
@@ -13843,7 +13846,7 @@ SkipIT:
         gUseLastArchiveDate = "N"
         ResetSqlite()
         '***************************************************************
-        BeginContentArchive(True)
+        PerformQuickScan(True)
         TempDisableDirListener = False
         '***************************************************************
         gUseLastArchiveDate = CurrUseLastArchiveDate
@@ -13933,6 +13936,11 @@ SkipIT:
     End Sub
 
     Private Sub ContentFastScanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContentFastScanToolStripMenuItem.Click
+
+        gAutoExecContentComplete = False
+        Dim prevtitle As String = frmNotify.Text
+        frmNotify.Text = "FAST Archive in progress"
+
         frmMessageBar.Show()
         frmMessageBar.lblmsg.Text = "STANDBY, pulling data from Repository"
         frmMessageBar.Refresh()
@@ -13940,7 +13948,7 @@ SkipIT:
         Dim QI As New clsQuickInventory
         Dim ArchiveList As New List(Of String)
 
-        ArchiveList = QI.PerformQuickInventory(Environment.MachineName, gCurrLoginID)
+        ArchiveList = QI.PerformFastInventory(Environment.MachineName, gCurrLoginID)
 
         QI = Nothing
         frmMessageBar.Close()
@@ -13950,9 +13958,15 @@ SkipIT:
         PerformContentArchive(ArchiveList)
 
         watch.Stop()
-        Dim msg As String = "!!! Quick Scan found " + ArchiveList.Count.ToString + " files to archive and ran in " + watch.Elapsed.TotalSeconds.ToString + " seconds."
+        Dim msg As String = "!!! FAST Scan found " + ArchiveList.Count.ToString + " files to archive and ran in " + watch.Elapsed.TotalSeconds.ToString + " seconds."
         LOG.WriteToArchiveLog(msg)
         SB.Text = msg
+
+        frmNotify.Text = prevtitle
+        frmNotify.Hide()
+        frmNotify.Close()
+
+        gAutoExecContentComplete = True
     End Sub
 
     Private Sub ContentToolStripMenuItem_MouseEnter(sender As Object, e As EventArgs) Handles ContentToolStripMenuItem.MouseEnter
@@ -13970,6 +13984,22 @@ SkipIT:
             S = S.Trim()
             ContentToolStripMenuItem.Text = S
         End If
+    End Sub
+
+    Private Sub TestCKDBTBLToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TestCKDBTBLToolStripMenuItem.Click
+        Dim B As Boolean = DBARCH.ckUpdateTbl()
+        If B Then
+            MessageBox.Show("Successful Call")
+        Else
+            MessageBox.Show("ERROR Check Archive Log for message <ERROR 01A ckUpdateTbl> and get copy all the details of the error.")
+        End If
+    End Sub
+
+    Private Sub TestCamelCaseSplitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TestCamelCaseSplitToolStripMenuItem.Click
+        Dim s As String = "ThisIsAFileNameToBeSplit"
+        Dim s2 As String = UTIL.SplitCamelCase(s)
+        s = s + vbCrLf + s2
+        MessageBox.Show(s)
     End Sub
 End Class
 

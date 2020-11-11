@@ -271,6 +271,7 @@ Partial Class frmMain
         Me.GenWhereINDictToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NetworkListenerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SQLiteDBConnectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TestCKDBTBLToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -367,6 +368,7 @@ Partial Class frmMain
         Me.lblNotice = New System.Windows.Forms.Label()
         Me.ThreadValidateSourceName = New System.ComponentModel.BackgroundWorker()
         Me.ThreadSetNameHash = New System.ComponentModel.BackgroundWorker()
+        Me.TestCamelCaseSplitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.gbEmail.SuspendLayout()
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbFiletypes.SuspendLayout()
@@ -2697,7 +2699,7 @@ Partial Class frmMain
         '
         'TestToolStripMenuItem
         '
-        Me.TestToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DirectoryInventoryToolStripMenuItem, Me.ListFilesInDirectoryToolStripMenuItem, Me.GetAllSubdirFilesToolStripMenuItem, Me.OCRToolStripMenuItem, Me.FileHashToolStripMenuItem, Me.FileUploadToolStripMenuItem, Me.FileUploadBufferedToolStripMenuItem, Me.FileChunkUploadToolStripMenuItem, Me.RSSPullToolStripMenuItem, Me.ShowEndpointsToolStripMenuItem, Me.UnhandledExceptionsToolStripMenuItem, Me.ListenerFunctionsToolStripMenuItem, Me.CreateSQLiteDBToolStripMenuItem, Me.LongFilenameHASHToolStripMenuItem, Me.ValidateLongDirectroryNamesToolStripMenuItem, Me.TextStringHashToolStripMenuItem, Me.GetDirFilesByFilterToolStripMenuItem, Me.GenWhereINDictToolStripMenuItem, Me.NetworkListenerToolStripMenuItem, Me.SQLiteDBConnectToolStripMenuItem})
+        Me.TestToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DirectoryInventoryToolStripMenuItem, Me.ListFilesInDirectoryToolStripMenuItem, Me.GetAllSubdirFilesToolStripMenuItem, Me.OCRToolStripMenuItem, Me.FileHashToolStripMenuItem, Me.FileUploadToolStripMenuItem, Me.FileUploadBufferedToolStripMenuItem, Me.FileChunkUploadToolStripMenuItem, Me.RSSPullToolStripMenuItem, Me.TestCamelCaseSplitToolStripMenuItem, Me.ShowEndpointsToolStripMenuItem, Me.UnhandledExceptionsToolStripMenuItem, Me.ListenerFunctionsToolStripMenuItem, Me.CreateSQLiteDBToolStripMenuItem, Me.LongFilenameHASHToolStripMenuItem, Me.ValidateLongDirectroryNamesToolStripMenuItem, Me.TextStringHashToolStripMenuItem, Me.GetDirFilesByFilterToolStripMenuItem, Me.GenWhereINDictToolStripMenuItem, Me.NetworkListenerToolStripMenuItem, Me.SQLiteDBConnectToolStripMenuItem, Me.TestCKDBTBLToolStripMenuItem})
         Me.TestToolStripMenuItem.Name = "TestToolStripMenuItem"
         Me.TestToolStripMenuItem.Size = New System.Drawing.Size(47, 24)
         Me.TestToolStripMenuItem.Text = "Test"
@@ -2829,6 +2831,12 @@ Partial Class frmMain
         Me.SQLiteDBConnectToolStripMenuItem.Name = "SQLiteDBConnectToolStripMenuItem"
         Me.SQLiteDBConnectToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
         Me.SQLiteDBConnectToolStripMenuItem.Text = "SQLite DB Connect"
+        '
+        'TestCKDBTBLToolStripMenuItem
+        '
+        Me.TestCKDBTBLToolStripMenuItem.Name = "TestCKDBTBLToolStripMenuItem"
+        Me.TestCKDBTBLToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.TestCKDBTBLToolStripMenuItem.Text = "Test CKDB TBL"
         '
         'ExitToolStripMenuItem
         '
@@ -3789,6 +3797,12 @@ Partial Class frmMain
         'ThreadSetNameHash
         '
         '
+        'TestCamelCaseSplitToolStripMenuItem
+        '
+        Me.TestCamelCaseSplitToolStripMenuItem.Name = "TestCamelCaseSplitToolStripMenuItem"
+        Me.TestCamelCaseSplitToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.TestCamelCaseSplitToolStripMenuItem.Text = "Test Camel Case Split"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -4209,4 +4223,6 @@ Partial Class frmMain
     Friend WithEvents NetworkListenerToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SQLiteDBConnectToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ContentFastScanToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TestCKDBTBLToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TestCamelCaseSplitToolStripMenuItem As ToolStripMenuItem
 End Class

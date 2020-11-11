@@ -13,7 +13,7 @@ Public Class clsQuickInventory
     Dim DictOfDirs As Dictionary(Of String, String)
     Dim DictOfWC As New Dictionary(Of String, String)
 
-    Function PerformQuickInventory(MachineName As String, UserID As String) As List(Of String)
+    Function PerformFastInventory(MachineName As String, UserID As String) As List(Of String)
 
         FRM.Title = "QUICK Archive with Inventory"
         FRM.Show()
@@ -21,21 +21,40 @@ Public Class clsQuickInventory
 
         Try
             getUserDIRS()
+            FRM.Label1.Text = "Standby, pulling repo data... "
+            FRM.Refresh()
+            Application.DoEvents()
 
             DS = GetRepoInventory(MachineName, UserID)
             ListOfDirs = DBA.getListOf("select distinct FileDirectory from datasource where FileDirectory Is Not null And ltrim(rtrim(FileDirectory)) != '' order by FileDirectory ")
 
+            FRM.Label1.Text = "Data Pulled"
+            FRM.Refresh()
+            Application.DoEvents()
+            Dim K As Integer = 0
+
             For Each DirName As String In DictOfDirs.Keys
-                Recurse = DictOfDirs(DirName).ToUpper
-                ProcessDirectory(DirName, Recurse)
+                Try
+                    K += 1
+                    If Directory.Exists(DirName) Then
+                        Recurse = DictOfDirs(DirName).ToUpper
+                        ProcessDirectory(DirName, Recurse)
+                    Else
+                        LOG.WriteToArchiveLog("NOTICE PerformFastInventory 020: Directory <" + DirName + ">, not found... skipping.")
+                    End If
+                Catch ex As Exception
+                    LOG.WriteToArchiveLog("ERROR PerformFastInventory 010: " + ex.Message)
+                End Try
+
             Next
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR PerformQuickInventory 00: " + ex.Message)
+            LOG.WriteToArchiveLog("ERROR PerformFastInventory 00: " + ex.Message)
         End Try
 
 
         FRM.Dispose()
         FRM.Close()
+        frmNotify.Close()
 
         Return ArchiveList
 
@@ -46,6 +65,7 @@ Public Class clsQuickInventory
         Dim watch As Stopwatch = Stopwatch.StartNew()
 
         If Not Directory.Exists(DirName) Then
+            LOG.WriteToArchiveLog("ERROR: <" + DirName + "> no longer exists, skipping.")
             Return 0
         End If
 
@@ -54,7 +74,7 @@ Public Class clsQuickInventory
         Dim FQN As String = ""
         Dim FileLEngth As Int64 = 0
         Dim LastWriteDate As DateTime = Now
-        Dim di As DirectoryInfo = New DirectoryInfo(DirName)
+
         Dim Yr1 As String = ""
         Dim Mo1 As String = ""
         Dim Da1 As String = ""
@@ -66,140 +86,129 @@ Public Class clsQuickInventory
         Dim iTotal = 0
         Dim LL As Integer = 0
 
+        Dim directories As String() = Nothing
+        Dim ListOfDirs As New List(Of String)
+
+
         Try
+            LL = 1000
             If Recurse.ToUpper.Equals("Y") Then
-                LL = 1
-                For Each fi As FileInfo In di.GetFiles("*.*", SearchOption.AllDirectories)
-                    iTotal += 1
-                    LL = 2
-                    FRM.lblFileSpec.Text = fi.DirectoryName
-                    FRM.lblPdgPages.Text = "Files #" + iTotal.ToString
-                    Application.DoEvents()
-
-                    Try
-                        If fi.FullName.Contains(".") And Not fi.FullName.Contains(".git") Then
-                            LL = 3
-
-                            Application.DoEvents()
-                            LL = 4
-                            Dim TgtExt As String = fi.Extension.ToLower + ","
-                            Dim TgtDir As String = fi.DirectoryName
-                            LL = 5
-                            LastWriteDate = fi.LastWriteTime
-                            FQN = fi.FullName
-                            LL = 6
-                            If AllowedExts.Contains(TgtExt) Then
-                                LL = 7
-                                If FQN.Contains("'") Then
-                                    FQN = FQN.Replace("''", "'")
-                                    FQN = FQN.Replace("'", "''")
-                                End If
-                                Dim Rows() As DataRow = DS.Tables(0).Select("FileLength > 0 And LastWriteTime > #01-01-1900# and  Fqn = '" + FQN + "' ")
-                                LL = 8
-                                If Rows.Count.Equals(1) Then
-                                    Try
-                                        LL = 9
-                                        FileLEngth = Convert.ToInt64(Rows(0).Item("FileLEngth"))
-                                        LastWriteDate = Convert.ToDateTime(Rows(0).Item("LastWriteTime"))
-                                        LL = 10
-                                        Dim CurrnoOfSeconds As Integer = (Now - fi.LastWriteTime).TotalMinutes
-                                        Dim PrevnoOfSeconds As Integer = (Now - LastWriteDate).TotalMinutes
-                                        LL = 11
-                                        If CurrnoOfSeconds < PrevnoOfSeconds Or FileLEngth <> fi.Length Then
-                                            LL = 12
-                                            ArchiveList.Add(fi.FullName)
-                                        End If
-                                        LL = 13
-                                    Catch ex As Exception
-                                        LOG.WriteToArchiveLog("ERROR ProcessDirectory 100: LL=" + LL.ToString + vbCrLf + FQN + vbCrLf + ex.Message)
-                                    End Try
-                                Else
-                                    LL = 14
-                                    Dim fext As String = Path.GetExtension(FQN)
-                                    LL = 15
-                                    ArchiveList.Add(fi.FullName)
-                                End If
-                                LL = 16
-                            End If
-                            LL = 17
-                        End If
-                        LL = 18
-                    Catch ex As Exception
-                        LOG.WriteToArchiveLog("ERROR ProcessDirectory 11: LL=" + LL.ToString + vbCrLf + FQN + vbCrLf + ex.Message)
-                    End Try
-                    LL = 19
+                LL = 1100
+                ListOfDirs.Add(DirName)
+                directories = Directory.GetDirectories(DirName, "*", SearchOption.AllDirectories)
+                LL = 1200
+                For Each sitem As String In directories
+                    LL = 1210
+                    If Not ListOfDirs.Contains(sitem) Then
+                        LL = 1220
+                        ListOfDirs.Add(sitem)
+                    End If
+                    LL = 1230
                 Next
-                LL = 20
+                LL = 1240
+                directories = Nothing
             Else
-                LL = 21
-                For Each fi As FileInfo In di.GetFiles("*.*", SearchOption.TopDirectoryOnly)
-                    LL = 22
-                    Try
-                        If fi.FullName.Contains(".") And Not fi.FullName.Contains(".git") Then
-                            LL = 23
-                            Application.DoEvents()
-                            LL = 24
+                LL = 1300
+                ListOfDirs.Add(DirName)
+                'directories = Directory.GetDirectories(DirName, "*", SearchOption.TopDirectoryOnly)
+                LL = 1400
+            End If
 
-                            'Dim AllowedExts As String = getLIstOfAllowedEXtensions(DirName)
-                            Dim TgtExt As String = fi.Extension.ToLower + ","
-                            Dim TgtDir As String = fi.DirectoryName
-                            LL = 25
-                            LastWriteDate = fi.LastWriteTime
-                            FQN = fi.FullName
-                            LL = 26
-                            If AllowedExts.Contains(TgtExt) Then
-                                LL = 27
-                                If FQN.Contains("'") Then
-                                    FQN = FQN.Replace("''", "'")
-                                    FQN = FQN.Replace("'", "''")
-                                End If
-                                Dim Rows() As DataRow = DS.Tables(0).Select("FileLength > 0 And LastWriteTime > #01-01-1900# and  Fqn = '" + FQN + "' ")
-                                LL = 28
-                                If Rows.Count.Equals(1) Then
-                                    Try
-                                        LL = 29
-                                        FileLEngth = Convert.ToInt64(Rows(0).Item("FileLEngth"))
-                                        LastWriteDate = Convert.ToDateTime(Rows(0).Item("LastWriteTime"))
-                                        LL = 30
-                                        Dim CurrnoOfSeconds As Integer = (Now - fi.LastWriteTime).TotalMinutes
-                                        Dim PrevnoOfSeconds As Integer = (Now - LastWriteDate).TotalMinutes
-                                        LL = 31
-                                        If CurrnoOfSeconds < PrevnoOfSeconds Or FileLEngth <> fi.Length Then
-                                            LL = 32
+            ListOfDirs.Sort()
+
+            Dim iDirCnt As Integer = 0
+            LL = 900
+
+            For Each dir As String In ListOfDirs
+                Try
+                    iDirCnt += 1
+                    FRM.Label1.Text = "DIR: " + iDirCnt.ToString + " of " + ListOfDirs.Count.ToString
+                    FRM.Refresh()
+                    LL = 910
+                    iTotal = 0
+                    'If (dir <> dir + "/System Volume Information") Then
+                    If Not dir.ToLower.Contains("system volume information") Then
+                        Dim di As DirectoryInfo = New DirectoryInfo(dir)
+                        LL = 1
+                        For Each fi As FileInfo In di.GetFiles("*.*", SearchOption.AllDirectories)
+
+                            iTotal += 1
+                            LL = 2
+
+                            FRM.lblFileSpec.Text = fi.DirectoryName
+                            FRM.lblPdgPages.Text = "Files #" + iTotal.ToString
+                            Application.DoEvents()
+
+                            Try
+                                If fi.FullName.Contains(".") And Not fi.FullName.Contains(".git") And Not fi.FullName.Contains("\git\") Then
+                                    LL = 3
+                                    Application.DoEvents()
+                                    LL = 4
+                                    Dim TgtExt As String = fi.Extension.ToLower + ","
+                                    Dim TgtDir As String = fi.DirectoryName
+                                    LL = 5
+                                    LastWriteDate = fi.LastWriteTime
+                                    FQN = fi.FullName
+                                    LL = 6
+                                    If AllowedExts.Contains(TgtExt) Then
+                                        LL = 7
+                                        If FQN.Contains("'") Then
+                                            FQN = FQN.Replace("''", "'")
+                                            FQN = FQN.Replace("'", "''")
+                                        End If
+                                        Dim Rows() As DataRow = DS.Tables(0).Select("FileLength > 0 And LastWriteTime > #01-01-1900# and  Fqn = '" + FQN + "' ")
+                                        LL = 8
+                                        If Rows.Count.Equals(1) Then
+                                            Try
+                                                LL = 9
+                                                FileLEngth = Convert.ToInt64(Rows(0).Item("FileLEngth"))
+                                                LastWriteDate = Convert.ToDateTime(Rows(0).Item("LastWriteTime"))
+                                                LL = 10
+                                                Dim CurrnoOfSeconds As Integer = (Now - fi.LastWriteTime).TotalMinutes
+                                                Dim PrevnoOfSeconds As Integer = (Now - LastWriteDate).TotalMinutes
+                                                LL = 11
+                                                If CurrnoOfSeconds < PrevnoOfSeconds Or FileLEngth <> fi.Length Then
+                                                    LL = 12
+                                                    ArchiveList.Add(fi.FullName)
+                                                End If
+                                                LL = 13
+                                            Catch ex As Exception
+                                                LOG.WriteToArchiveLog("ERROR ProcessDirectory 100: LL=" + LL.ToString + vbCrLf + FQN + vbCrLf + ex.Message)
+                                            End Try
+                                        Else
+                                            LL = 14
+                                            Dim fext As String = Path.GetExtension(FQN)
+                                            LL = 15
                                             ArchiveList.Add(fi.FullName)
                                         End If
-                                        LL = 34
-                                    Catch ex As Exception
-                                        LOG.WriteToArchiveLog("ERROR ProcessDirectory 100: LL=" + LL.ToString + vbCrLf + FQN + ex.Message)
-                                    End Try
-                                    LL = 34
-                                Else
-                                    LL = 35
-                                    Dim fext As String = Path.GetExtension(FQN)
-                                    LL = 36
-                                    ArchiveList.Add(fi.FullName)
-                                    LL = 37
+                                        LL = 16
+                                    End If
+                                    LL = 17
                                 End If
-                                LL = 38
-                            End If
-                            LL = 39
-                        End If
-                        LL = 40
-                    Catch ex As Exception
-                        LOG.WriteToArchiveLog("ERROR ProcessDirectory 22: LL=" + LL.ToString + vbCrLf + FQN + vbCrLf + ex.Message)
-                    End Try
-                    LL = 41
-                Next
-                LL = 42
-            End If
+                                LL = 18
+                            Catch ex As Exception
+                                LOG.WriteToArchiveLog("ERROR ProcessDirectory 11: LL=" + LL.ToString + vbCrLf + FQN + vbCrLf + ex.Message)
+                            End Try
+                            LL = 19
+                            di = Nothing
+                        Next
+                        LL = 20
+                    Else
+                        LOG.WriteToArchiveLog("Notice 01: skipping systems directory: " + dir + "/System Volume Information")
+                    End If
+                Catch ex As Exception
+                    LOG.WriteToArchiveLog("ERROR ProcessDirectory 22X1: " + "DIRNAME: " + dir + vbCrLf + ex.Message)
+                End Try
+            Next
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR Processdirectory 00: LL=" + LL.ToString + vbCrLf + FQN + vbCrLf + ex.Message)
+
+            LOG.WriteToArchiveLog("ERROR Processdirectory 00: LL=" + LL.ToString + "Recurse <" + Recurse + ">" + vbCrLf + "DIRNAME: <" + DirName + ">" + vbCrLf + "FQN: <" + FQN + ">" + vbCrLf + ex.Message)
         End Try
 
         watch.Stop()
 
-        FRM.Close()
-        FRM.Dispose()
+        'FRM.Close()
+        'FRM.Dispose()
 
         Return iTotal
 

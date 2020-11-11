@@ -127,7 +127,7 @@ Public Class clsDBUpdate
             End Using
 
             If MySql.Trim.Length > 0 Then
-                frmDBUpdates.txtSql.Text = Path.GetFileName(MySql)
+                'frmDBUpdates.txtSql.Text = Path.GetFileName(MySql)
                 LOG.WriteToDBUpdatesLog("--************************************")
                 LOG.WriteToDBUpdatesLog("--Update File:" + FQN)
                 LOG.WriteToDBUpdatesLog(MySql)
