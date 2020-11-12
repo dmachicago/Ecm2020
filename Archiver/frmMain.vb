@@ -14001,6 +14001,10 @@ SkipIT:
         s = s + vbCrLf + s2
         MessageBox.Show(s)
     End Sub
+
+    Private Sub OpenSQLHelpScreenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenSQLHelpScreenToolStripMenuItem.Click
+        frmSqlHelp.Show()
+    End Sub
 End Class
 
 <System.Runtime.Serialization.DataContract()>

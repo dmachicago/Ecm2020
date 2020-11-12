@@ -259,6 +259,7 @@ Partial Class frmMain
         Me.FileUploadBufferedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileChunkUploadToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RSSPullToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TestCamelCaseSplitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShowEndpointsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UnhandledExceptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListenerFunctionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -368,7 +369,7 @@ Partial Class frmMain
         Me.lblNotice = New System.Windows.Forms.Label()
         Me.ThreadValidateSourceName = New System.ComponentModel.BackgroundWorker()
         Me.ThreadSetNameHash = New System.ComponentModel.BackgroundWorker()
-        Me.TestCamelCaseSplitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenSQLHelpScreenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.gbEmail.SuspendLayout()
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbFiletypes.SuspendLayout()
@@ -2171,101 +2172,101 @@ Partial Class frmMain
         'ArchiveALLToolStripMenuItem
         '
         Me.ArchiveALLToolStripMenuItem.Name = "ArchiveALLToolStripMenuItem"
-        Me.ArchiveALLToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.ArchiveALLToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.ArchiveALLToolStripMenuItem.Text = "Archive ALL"
         '
         'OutlookEmailsToolStripMenuItem
         '
         Me.OutlookEmailsToolStripMenuItem.Name = "OutlookEmailsToolStripMenuItem"
-        Me.OutlookEmailsToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.OutlookEmailsToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.OutlookEmailsToolStripMenuItem.Text = "Outlook Emails"
         '
         'ExchangeEmailsToolStripMenuItem
         '
         Me.ExchangeEmailsToolStripMenuItem.Name = "ExchangeEmailsToolStripMenuItem"
-        Me.ExchangeEmailsToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.ExchangeEmailsToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.ExchangeEmailsToolStripMenuItem.Text = "Exchange Emails"
         '
         'ContentToolStripMenuItem
         '
         Me.ContentToolStripMenuItem.Name = "ContentToolStripMenuItem"
-        Me.ContentToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.ContentToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.ContentToolStripMenuItem.Text = "Content (Quick)"
         Me.ContentToolStripMenuItem.ToolTipText = "Uses the localized SQLite inventory "
         '
         'ContentNoLIstenerToolStripMenuItem
         '
         Me.ContentNoLIstenerToolStripMenuItem.Name = "ContentNoLIstenerToolStripMenuItem"
-        Me.ContentNoLIstenerToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.ContentNoLIstenerToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.ContentNoLIstenerToolStripMenuItem.Text = "Content ( Scan)"
         '
         'ContentFastScanToolStripMenuItem
         '
         Me.ContentFastScanToolStripMenuItem.Name = "ContentFastScanToolStripMenuItem"
-        Me.ContentFastScanToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.ContentFastScanToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.ContentFastScanToolStripMenuItem.Text = "Content (Fast Scan)"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(216, 26)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(211, 26)
         Me.ToolStripMenuItem1.Text = "Outlook Contacts"
         '
         'ScheduleToolStripMenuItem
         '
         Me.ScheduleToolStripMenuItem.Name = "ScheduleToolStripMenuItem"
-        Me.ScheduleToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.ScheduleToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.ScheduleToolStripMenuItem.Text = "Schedule"
         '
         'SetArchiveIntervalToolStripMenuItem
         '
         Me.SetArchiveIntervalToolStripMenuItem.Name = "SetArchiveIntervalToolStripMenuItem"
-        Me.SetArchiveIntervalToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.SetArchiveIntervalToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.SetArchiveIntervalToolStripMenuItem.Text = "Set Archive Interval"
         '
         'ToolStripSeparator7
         '
         Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
-        Me.ToolStripSeparator7.Size = New System.Drawing.Size(213, 6)
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(208, 6)
         '
         'SelectedFilesToolStripMenuItem
         '
         Me.SelectedFilesToolStripMenuItem.Name = "SelectedFilesToolStripMenuItem"
-        Me.SelectedFilesToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.SelectedFilesToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.SelectedFilesToolStripMenuItem.Text = "Selected Files"
         '
         'ToolStripSeparator6
         '
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(213, 6)
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(208, 6)
         '
         'ArchiveRSSPullsToolStripMenuItem
         '
         Me.ArchiveRSSPullsToolStripMenuItem.Name = "ArchiveRSSPullsToolStripMenuItem"
-        Me.ArchiveRSSPullsToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.ArchiveRSSPullsToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.ArchiveRSSPullsToolStripMenuItem.Text = "Archive RSS Pulls"
         '
         'WebSitesToolStripMenuItem
         '
         Me.WebSitesToolStripMenuItem.Name = "WebSitesToolStripMenuItem"
-        Me.WebSitesToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.WebSitesToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.WebSitesToolStripMenuItem.Text = "Archive Web Sites"
         '
         'WebPagesToolStripMenuItem
         '
         Me.WebPagesToolStripMenuItem.Name = "WebPagesToolStripMenuItem"
-        Me.WebPagesToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.WebPagesToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
         Me.WebPagesToolStripMenuItem.Text = "Archive Web Pages"
         '
         'ToolStripSeparator5
         '
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(213, 6)
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(208, 6)
         '
         'ExitToolStripMenuItem1
         '
         Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
-        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(216, 26)
+        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(211, 26)
         Me.ExitToolStripMenuItem1.Text = "Exit"
         '
         'LoginToolStripMenuItem
@@ -2296,7 +2297,7 @@ Partial Class frmMain
         '
         'UtilityToolStripMenuItem
         '
-        Me.UtilityToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RepositoryUtilitiesToolStripMenuItem, Me.LastArchiveDateToolStripMenuItem, Me.ListenerUtilitiesToolStripMenuItem, Me.SQLiteUtiltiiesToolStripMenuItem, Me.ReOCRToolStripMenuItem, Me.RetentionManagementToolStripMenuItem, Me.FileNamesToolStripMenuItem, Me.EncryptStringToolStripMenuItem, Me.OpenLicenseFormToolStripMenuItem, Me.FulltextLogAnalysisToolStripMenuItem, Me.UpdateAvailableIFiltersToolStripMenuItem, Me.ValidateRepoContentsToolStripMenuItem})
+        Me.UtilityToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RepositoryUtilitiesToolStripMenuItem, Me.LastArchiveDateToolStripMenuItem, Me.ListenerUtilitiesToolStripMenuItem, Me.SQLiteUtiltiiesToolStripMenuItem, Me.ReOCRToolStripMenuItem, Me.RetentionManagementToolStripMenuItem, Me.FileNamesToolStripMenuItem, Me.OpenSQLHelpScreenToolStripMenuItem, Me.EncryptStringToolStripMenuItem, Me.OpenLicenseFormToolStripMenuItem, Me.FulltextLogAnalysisToolStripMenuItem, Me.UpdateAvailableIFiltersToolStripMenuItem, Me.ValidateRepoContentsToolStripMenuItem})
         Me.UtilityToolStripMenuItem.Name = "UtilityToolStripMenuItem"
         Me.UtilityToolStripMenuItem.Size = New System.Drawing.Size(276, 26)
         Me.UtilityToolStripMenuItem.Text = "Utility"
@@ -2757,6 +2758,12 @@ Partial Class frmMain
         Me.RSSPullToolStripMenuItem.Name = "RSSPullToolStripMenuItem"
         Me.RSSPullToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
         Me.RSSPullToolStripMenuItem.Text = "RSS Pull"
+        '
+        'TestCamelCaseSplitToolStripMenuItem
+        '
+        Me.TestCamelCaseSplitToolStripMenuItem.Name = "TestCamelCaseSplitToolStripMenuItem"
+        Me.TestCamelCaseSplitToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.TestCamelCaseSplitToolStripMenuItem.Text = "Test Camel Case Split"
         '
         'ShowEndpointsToolStripMenuItem
         '
@@ -3797,11 +3804,11 @@ Partial Class frmMain
         'ThreadSetNameHash
         '
         '
-        'TestCamelCaseSplitToolStripMenuItem
+        'OpenSQLHelpScreenToolStripMenuItem
         '
-        Me.TestCamelCaseSplitToolStripMenuItem.Name = "TestCamelCaseSplitToolStripMenuItem"
-        Me.TestCamelCaseSplitToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
-        Me.TestCamelCaseSplitToolStripMenuItem.Text = "Test Camel Case Split"
+        Me.OpenSQLHelpScreenToolStripMenuItem.Name = "OpenSQLHelpScreenToolStripMenuItem"
+        Me.OpenSQLHelpScreenToolStripMenuItem.Size = New System.Drawing.Size(254, 26)
+        Me.OpenSQLHelpScreenToolStripMenuItem.Text = "Open SQL Help Screen"
         '
         'frmMain
         '
@@ -4225,4 +4232,5 @@ Partial Class frmMain
     Friend WithEvents ContentFastScanToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TestCKDBTBLToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TestCamelCaseSplitToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents OpenSQLHelpScreenToolStripMenuItem As ToolStripMenuItem
 End Class

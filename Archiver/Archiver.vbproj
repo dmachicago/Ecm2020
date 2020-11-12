@@ -62,7 +62,7 @@
     <WebPage>Publish.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>146</ApplicationRevision>
+    <ApplicationRevision>147</ApplicationRevision>
     <ApplicationVersion>4.6.2.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -371,6 +371,12 @@
       <DependentUpon>frmLocalParameters.vb</DependentUpon>
     </Compile>
     <Compile Include="frmLocalParameters.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSqlHelp.Designer.vb">
+      <DependentUpon>frmSqlHelp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSqlHelp.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LiteDB.vb" />
@@ -722,6 +728,9 @@
     <EmbeddedResource Include="frmSenderMgt.resx">
       <DependentUpon>frmSenderMgt.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSqlHelp.resx">
+      <DependentUpon>frmSqlHelp.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSqlite.resx">
       <DependentUpon>frmSqlite.vb</DependentUpon>
     </EmbeddedResource>
@@ -818,10 +827,10 @@
     </None>
     <None Include="Resources\DMALogo0.jpg" />
     <None Include="Resources\DMALogo2.jpg" />
-    <Content Include="_FTI\AddFilestreamingToDataSource.sql">
+    <Content Include="_SQL_Query\AddFilestreamingToDataSource.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="_FTI\AddFilestreamingToEmailAttachment.sql">
+    <Content Include="_SQL_Query\AddFilestreamingToEmailAttachment.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="_FTI\FTI_ShowIndexedTokens.sql">
