@@ -62,7 +62,7 @@
     <WebPage>Publish.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>147</ApplicationRevision>
+    <ApplicationRevision>151</ApplicationRevision>
     <ApplicationVersion>4.6.2.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -186,7 +186,9 @@
     <Reference Include="Microsoft.SqlServer.Types, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.SqlServerCe.Client, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServerCe.Client, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Vsa" />
     <Reference Include="O2S.Components.PDF4NET">
       <HintPath>RequiredDLL\O2S.Components.PDF4NET.dll</HintPath>
@@ -1214,10 +1216,22 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Z7\lang\en.ttt" />
+    <None Include="_Documentation\Fix_C_SystemVolumeInformationIsNotAccessible.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="_Documentation\FullTextIndexesDetail.10.17.2020.csv.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="_Documentation\NetworkDriveSetup.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="_Documentation\PDF iFilter Installation.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="_Documentation\Populate Full-Text Indexes - SQL Server _ Microsoft Docs.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="_Documentation\sp_fulltext_keymappings %28Transact-SQL%29 - SQL Server _ Microsoft Docs.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="_Documentation\SQLiteConnectWithSSMS.docx">

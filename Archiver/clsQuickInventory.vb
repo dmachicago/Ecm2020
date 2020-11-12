@@ -2,6 +2,7 @@
 
 Public Class clsQuickInventory
 
+    Public UTIL As New clsUtility
     Public LOG As New clsLogging
     Dim DBLocal As New clsDbLocal
     Dim DBA As New clsDatabaseARCH
@@ -45,12 +46,10 @@ Public Class clsQuickInventory
                 Catch ex As Exception
                     LOG.WriteToArchiveLog("ERROR PerformFastInventory 010: " + ex.Message)
                 End Try
-
             Next
         Catch ex As Exception
             LOG.WriteToArchiveLog("ERROR PerformFastInventory 00: " + ex.Message)
         End Try
-
 
         FRM.Dispose()
         FRM.Close()
@@ -58,6 +57,43 @@ Public Class clsQuickInventory
 
         Return ArchiveList
 
+    End Function
+
+    Function GetAllSubFolders(ByVal path As String) As IEnumerable(Of DirectoryInfo)
+        Dim subFolders As New List(Of DirectoryInfo)
+
+        Try
+            subFolders.AddRange(New DirectoryInfo(path).GetDirectories())
+        Catch ex As Exception
+            'error handling code goes here'
+            Console.WriteLine(ex.Message)
+        End Try
+
+        Dim innerSubFolders As New List(Of DirectoryInfo)
+        For Each folder In subFolders
+            innerSubFolders.AddRange(GetAllSubFolders(folder.FullName))
+        Next
+
+        'add the inner sub folders'
+        subFolders.AddRange(innerSubFolders)
+
+        'return the directories'
+        Return subFolders
+    End Function
+
+    Public Function GetFilesWithoutErrors(ByVal sourceFolder As String, ByVal filter As String) As List(Of String)
+
+        Dim list = New List(Of String)()
+
+        For Each subfolder As String In Directory.GetDirectories(sourceFolder)
+
+            Try
+                list.AddRange(GetFilesWithoutErrors(subfolder, filter))
+            Catch __unusedException1__ As Exception
+            End Try
+        Next
+
+        list.AddRange(Directory.GetFiles(sourceFolder, filter))
     End Function
 
     Function ProcessDirectory(DirName As String, Recurse As String) As Integer
@@ -89,13 +125,13 @@ Public Class clsQuickInventory
         Dim directories As String() = Nothing
         Dim ListOfDirs As New List(Of String)
 
-
         Try
             LL = 1000
             If Recurse.ToUpper.Equals("Y") Then
                 LL = 1100
                 ListOfDirs.Add(DirName)
-                directories = Directory.GetDirectories(DirName, "*", SearchOption.AllDirectories)
+                'directories = GetAllSubFolders(DirName)
+                directories = Directory.GetDirectories(DirName, "*.*", SearchOption.AllDirectories)
                 LL = 1200
                 For Each sitem As String In directories
                     LL = 1210
@@ -119,16 +155,18 @@ Public Class clsQuickInventory
             Dim iDirCnt As Integer = 0
             LL = 900
 
-            For Each dir As String In ListOfDirs
+            For Each CurrDir As String In ListOfDirs
+                LL = 905
                 Try
                     iDirCnt += 1
-                    FRM.Label1.Text = "DIR: " + iDirCnt.ToString + " of " + ListOfDirs.Count.ToString
+                    FRM.Label1.Text = "CurrDir: " + iDirCnt.ToString + " of " + ListOfDirs.Count.ToString
                     FRM.Refresh()
                     LL = 910
                     iTotal = 0
-                    'If (dir <> dir + "/System Volume Information") Then
-                    If Not dir.ToLower.Contains("system volume information") Then
-                        Dim di As DirectoryInfo = New DirectoryInfo(dir)
+
+                    'If (CurrDir <> CurrDir + "/System Volume Information") Then
+                    If Not CurrDir.ToLower.Contains("volume information") Then
+                        Dim di As DirectoryInfo = New DirectoryInfo(CurrDir)
                         LL = 1
                         For Each fi As FileInfo In di.GetFiles("*.*", SearchOption.AllDirectories)
 
@@ -194,10 +232,10 @@ Public Class clsQuickInventory
                         Next
                         LL = 20
                     Else
-                        LOG.WriteToArchiveLog("Notice 01: skipping systems directory: " + dir + "/System Volume Information")
+                        LOG.WriteToArchiveLog("Notice 01: skipping systems directory: LL=" + LL.ToString + " : " + CurrDir + "/System Volume Information")
                     End If
                 Catch ex As Exception
-                    LOG.WriteToArchiveLog("ERROR ProcessDirectory 22X1: " + "DIRNAME: " + dir + vbCrLf + ex.Message)
+                    LOG.WriteToArchiveLog("ERROR ProcessDirectory 22X1: LL=" + LL.ToString + " : " + "DIRNAME: " + CurrDir + vbCrLf + ex.Message)
                 End Try
             Next
         Catch ex As Exception

@@ -13691,10 +13691,10 @@ SkipIT:
     Private Sub GetDirFilesByFilterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GetDirFilesByFilterToolStripMenuItem.Click
         'Dim sFiles() As String = Directory.GetFiles("c:\dev\Ecm2020", "*.pdf|*.xlsx|*.xls|*.docx|*.doc|*.txt", SearchOption.AllDirectories)
         Dim I As Integer = 0
-        Try
+        Dim Dirs As New List(Of String)
+        Dim msg As String = ""
 
-            Console.WriteLine("START: ")
-            Console.WriteLine(Now)
+        Try
 
             Dim FileFilter As String = (".txt,.doc,.docx,*.pdf,")
             Dim DirName As String = "c:\temp"
@@ -13707,22 +13707,28 @@ SkipIT:
             DI = New DirectoryInfo(DirName)
 
             For Each FI As FileInfo In DI.GetFiles("*.*", SearchOption.AllDirectories)
+                If Not Dirs.Contains(FI.DirectoryName) Then
+                    Dirs.Add(FI.DirectoryName)
+                End If
                 If FileFilter.Contains(FI.Extension) Then
                     I += 1
                 End If
             Next
-            Dim msg As String = ""
-            msg = ("Number Of Files Found: " + I.ToString()) + Environment.NewLine
 
-            Console.WriteLine("Number Of Files: " + I.ToString())
-            Console.WriteLine("END: ")
-            Console.WriteLine(Now)
+            For Each dir As String In Dirs
+                Console.WriteLine(dir)
+            Next
 
+            Console.WriteLine("*******")
+            Console.WriteLine("Total DIRS: " + Dirs.Count.ToString)
+            Console.WriteLine("Total Files: " + I.ToString)
+
+            msg = "Total DIRS: " + Dirs.Count.ToString + vbCrLf + "Total Files: " + I.ToString
         Catch ex As Exception
             Console.WriteLine(ex.Message)
         End Try
 
-        MessageBox.Show("Number Of Files: " + I.ToString())
+        MessageBox.Show(msg)
     End Sub
 
     Private Sub GenWhereINDictToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenWhereINDictToolStripMenuItem.Click
@@ -13942,23 +13948,33 @@ SkipIT:
         frmNotify.Text = "FAST Archive in progress"
 
         frmMessageBar.Show()
+        frmMessageBar.Text = "FAST SCAN Running"
         frmMessageBar.lblmsg.Text = "STANDBY, pulling data from Repository"
         frmMessageBar.Refresh()
         Dim watch As Stopwatch = Stopwatch.StartNew()
         Dim QI As New clsQuickInventory
         Dim ArchiveList As New List(Of String)
 
+        PB1.Style = ProgressBarStyle.Marquee
+        PB1.MarqueeAnimationSpeed = 50
+        '********************************************************************************
         ArchiveList = QI.PerformFastInventory(Environment.MachineName, gCurrLoginID)
+        '********************************************************************************
+        PB1.MarqueeAnimationSpeed = 0
+        PB1.Value = 0
 
         QI = Nothing
         frmMessageBar.Close()
 
-        SB.Text = "QUICK INVENTORY COMPLETE: " + ArchiveList.Count.ToString + " files found need processing."
+        SB.Text = "FAST SCAN COMPLETE: " + ArchiveList.Count.ToString + " files found need processing."
+        SB.Refresh()
 
+        '********************************************************************************
         PerformContentArchive(ArchiveList)
+        '********************************************************************************
 
         watch.Stop()
-        Dim msg As String = "!!! FAST Scan found " + ArchiveList.Count.ToString + " files to archive and ran in " + watch.Elapsed.TotalSeconds.ToString + " seconds."
+        Dim msg As String = "!!! FAST Scan archived " + ArchiveList.Count.ToString + " files to repo and ran in " + watch.Elapsed.TotalSeconds.ToString + " seconds."
         LOG.WriteToArchiveLog(msg)
         SB.Text = msg
 

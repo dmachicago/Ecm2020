@@ -1920,7 +1920,7 @@ Public Class clsUtility
         Dim fi As IO.FileInfo
         Dim FileLength As Int64 = 0
         Dim LastAccessDate As DateTime = Nothing
-        Dim Files As List(Of FileInfo) = Nothing
+
         Dim File_Name As String = ""
         Dim FQN As String = ""
 
@@ -1930,6 +1930,7 @@ Public Class clsUtility
         'End If
         frmNotify.Text = "CONTENT: Inventory"
 
+        Dim Files As List(Of FileInfo) = Nothing
         If IncludeSubDir = True Then
             Files = GetFilesRecursive(DirToInventory, FilterList)
         Else
