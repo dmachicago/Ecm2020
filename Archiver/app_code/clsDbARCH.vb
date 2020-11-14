@@ -9491,7 +9491,7 @@ SkipThisOne:
                             GoTo SkipThisOne
                         End If
 
-                        If FQN.Trim.Length > 260 Then
+                        If FQN.Trim.Length > MaxFileNameLength Then
                             FQN = getShortDirName(FQN)
                         End If
 

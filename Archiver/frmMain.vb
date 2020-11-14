@@ -13354,7 +13354,7 @@ NEXTONE:
                     End If
                 End If
 
-                If FName.Trim.Length > 260 Then
+                If FName.Trim.Length > MaxFileNameLength Then
                     LOG.WriteToDirAnalysisLog("     File name too long: " + FName + " - SKIPPING FILE.", False)
                     iBadCnt += 1
                     GoTo SkipIT

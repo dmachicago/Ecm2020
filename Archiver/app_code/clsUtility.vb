@@ -1995,7 +1995,7 @@ Public Class clsUtility
                     End If
                 End If
                 LL = 40
-                If File_Name.Trim.Length > 260 Then
+                If File_Name.Trim.Length > MaxFileNameLength Then
                     LOG.WriteToArchiveLog("ERROR GetFileToArchive: file name too long: " + File_Name + " - SKIPPING FILE.")
                     GoTo SkipIT
                 End If
