@@ -1,0 +1,101 @@
+#********************************************************************************************************************
+# https://kbroman.org/github_tutorial/pages/first_time.html
+#Go into the directory containing the project.
+
+Type git init.
+Type git add -A to add all of the relevant files.
+
+You’ll probably want to create a .gitignore file right away, to indicate all of the files you don’t want to track. Use git add .gitignore, too.
+
+Type git commit -m "1st load"
+
+Connect it to github
+You’ve now got a local git repository. 
+You can use git locally, like that, if you want. 
+But if you want the thing to have a home on github, 
+do the following.
+
+Go to github.
+Log in to your account.
+Click the new repository button in the top-right. You’ll have an option there to initialize the repository with a README file, but I don’t.
+Click the “Create repository” button.
+Now, follow the second set of instructions, “Push an existing repository…”
+
+#**************** CREATE GIT PULL ********************************************
+remote: Create a pull request for 'ecm2020-11-14' on GitHub by visiting:
+remote:      https://github.com/dmachicago/Ecm2020/pull/new/ecm2020-11-14
+#*****************************************************************************
+
+#**************** CREATE NEW REPO FROM CMD LINE ***************
+echo "# Ecm2020" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/dmachicago/Ecm2020.git
+git push -u origin main
+#**************** CREATE NEW REPO FROM CMD LINE ***************
+echo "# PassagePoint" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M master
+git remote add origin https://github.com/dmachicago/PassagePoint.git
+git push -u origin master
+
+#**************** push an existing repository from the command line ***************
+git remote add origin https://github.com/dmachicago/PassagePoint.git
+git branch -M master
+git push -u origin master
+
+
+$ git remote add origin git@github.com:username/new_repo
+$ git push -u origin master
+
+#Actually, the first line of the instructions will say
+
+$ git remote add origin https://github.com/username/new_repo
+
+
+#create a new repository on the command line HTTPS
+
+#https://github.com/dmachicago/k3Master.git
+#Get started by creating a new file or uploading an existing file. 
+#We recommend every repository include a README, LICENSE, and .gitignore.
+
+#**********************************************************
+git config --global core.editor "nano"
+#**********************************************************
+
+#************ FORCE PUSH **********************************************
+git push -f origin master
+#**********************************************************
+
+#create a new repository on the command line
+echo "# k3Master" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/dmachicago/EcmMaster.git
+git push -u origin master
+
+#or push an existing repository from the command line
+git remote add origin https://github.com/dmachicago/ecm2020.git
+git push -u origin master
+#**********************************************************
+git checkout master
+git merge ecm2020-11-05
+git checkout ecm2020-11-05
+#**********************************************************
+#create a new repository on the command line SSH
+
+echo "# ECM2020" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:dmachicago/ecm2020.git
+git push -u origin master
+
+#or push an existing repository from the command line
+git remote add origin git@github.com:dmachicago/k3Master.git
+git push -u origin master
