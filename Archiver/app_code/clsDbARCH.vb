@@ -8719,6 +8719,45 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    Function GetDirectories(ByVal UserID As String) As List(Of String)
+        '*WDM 11/14/2020 - Modified query to bring back list of directories
+        Dim LOS As New List(Of String)
+        Dim S As String = ""
+        S = ""
+
+        S = "Select    distinct [FQN] " + vbCrLf
+        S = S + "             FROM [Directory] " + vbCrLf
+            S = S + " where [UserID] = '" + gCurrUserGuidID + "' " + vbCrLf
+        S = S + " order by fqn " + vbCrLf
+
+        Dim ConnStr As String = getRepoConnStr()
+        Dim Conn As New SqlConnection(ConnStr)
+        Dim b As Boolean = False
+
+        Using Conn
+            If Conn.State = ConnectionState.Closed Then
+                Conn.Open()
+            End If
+            Dim command As New SqlCommand(S, Conn)
+            Using command
+                Dim RSData As SqlDataReader = Nothing
+                Using RSData
+                    RSData = command.ExecuteReader()
+                    Dim II As Integer = 0
+                    If RSData.HasRows Then
+                        Do While RSData.Read()
+                            Dim SS As String = RSData.GetValue(0).ToString
+                            LOS.Add(SS)
+                        Loop
+                    End If
+                End Using
+            End Using
+        End Using
+
+        Return LOS
+
+    End Function
+
     Sub GetIncludedFiles(ByRef LB As ListBox, ByVal UserID As String, ByVal FQN As String)
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim S As String = "Select [ExtCode] FROM [IncludedFiles] where [UserID] = '" + UserID + "'  and [FQN] = '" + FQN + "'"
@@ -27985,6 +28024,44 @@ NextOne:
         Return B
     End Function
 
+    Public Function SyncSelectedDirectories(ListOfDirToKeep As String) As Boolean
+
+        Dim B As Boolean = True
+        Dim LL As Integer = 0
+        Dim AffectedRecs As Integer = 0
+        Dim connString As String = getRepoConnStr()
+        Try
+            LL = 10
+            Dim MySql = "Delete from IncludedFiles where FQN not in " + ListOfDirToKeep + " and UserID = '" + gCurrLoginID + "'"
+
+            LL = 20
+            Dim CMD As New SqlCommand
+
+            Using CMD
+                Dim conn As New SqlConnection(connString)
+                CMD.Connection = conn
+                CMD.CommandText = MySql
+                CMD.CommandType = CommandType.Text : LL = 30
+                If conn.State = ConnectionState.Closed Then
+                    conn.ConnectionString = getRepoConnStr() : LL = 40
+                    conn.Open() : LL = 50
+                End If
+                Using conn
+                    LL = 50
+                    AffectedRecs = CMD.ExecuteNonQuery()
+                    If AffectedRecs > 0 Then
+                        LOG.WriteToArchiveLog("NOTICE SyncSelectedDirectories 001: Removed " + AffectedRecs.ToString + " unreferenced directories from the repository.")
+                    End If
+                End Using
+            End Using
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR 01A ckUpdateTbl: LL=" + LL.ToString + vbCrLf + connString + vbCrLf + ex.Message)
+            B = False
+        End Try
+
+        Return B
+
+    End Function
 
     Public Function ckUpdateTbl() As Boolean
 
@@ -28163,6 +28240,77 @@ NextOne:
         Dim count_row As Integer = DT.Rows.Count
 
         Return DT
+    End Function
+
+    Function fetchWhereInClause(DirName As String) As String
+        Dim WhereIn As String = ""
+        Dim spName As String = "GenWhereInClause"
+
+        Try
+            CloseConn()
+            CkConn()
+
+            Dim CMD As SqlCommand = New SqlCommand(spName, gConn)
+            CMD.CommandType = Data.CommandType.StoredProcedure
+
+            Dim DIR As IDbDataParameter = CMD.CreateParameter()
+            Dim UID As IDbDataParameter = CMD.CreateParameter()
+            Dim ReturnParm As IDbDataParameter = CMD.CreateParameter()
+
+            UID.ParameterName = "@UserID"
+            UID.Value = gCurrUserGuidID
+            ReturnParm.Direction = System.Data.ParameterDirection.Input
+            ReturnParm.DbType = System.Data.DbType.String
+            CMD.Parameters.Add(UID)
+
+            DIR.ParameterName = "@DIR"
+            DIR.Value = DirName
+            ReturnParm.Direction = System.Data.ParameterDirection.Input
+            ReturnParm.DbType = System.Data.DbType.String
+            CMD.Parameters.Add(DIR)
+
+            ReturnParm.ParameterName = "@result"
+            ReturnParm.Direction = System.Data.ParameterDirection.Output
+            ReturnParm.DbType = System.Data.DbType.String
+            ReturnParm.Size = 1000
+            CMD.Parameters.Add(ReturnParm)
+
+            CMD.ExecuteNonQuery()
+
+            WhereIn = ReturnParm.Value
+        Catch ex As Exception
+            WhereIn = ""
+            LOG.WriteToArchiveLog("ERROR fetchWhereInClause: " + ex.Message)
+        End Try
+
+
+
+        Return WhereIn
+    End Function
+
+    Function getWhereInClauses() As Dictionary(Of String, String)
+
+        Dim DICT_WhereAS As New Dictionary(Of String, String)
+        Dim B As Boolean = False
+        Dim TimeTrk As Boolean = True
+        Dim spName As String = "GenWhereInClause"
+        Try
+
+            Dim DIRS As New List(Of String)
+            DIRS = GetDirectories(gCurrLoginID)
+
+            For Each DirName As String In DIRS
+                Dim WClause As String = fetchWhereInClause(DirName)
+                If Not DICT_WhereAS.Keys.Contains(DirName) Then
+                    DICT_WhereAS.Add(DirName, WClause)
+                End If
+            Next
+
+        Catch ex As Exception
+            DICT_WhereAS = Nothing
+            LOG.WriteToArchiveLog("getWhereInClauses : ExecSP : 1221 : ", ex)
+        End Try
+        Return DICT_WhereAS
     End Function
 
 #Region "IDisposable Support"

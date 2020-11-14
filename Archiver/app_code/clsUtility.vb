@@ -1855,13 +1855,18 @@ Public Class clsUtility
         Return tFQN
     End Function
 
-    Public Function GetFiles(ByVal Path As String, ByVal FilterList As List(Of String)) As List(Of FileInfo)
+    Public Function GetFiles(ByVal Path As String, ByVal FilterList As List(Of String), Recurse As String) As List(Of FileInfo)
         Dim d As New DirectoryInfo(Path)
         Dim files As List(Of FileInfo) = New List(Of FileInfo)
         For Each Filter As String In FilterList
             'the files are appended to the file array
             Application.DoEvents()
-            files.AddRange(d.GetFiles(Filter))
+            If Recurse.Equals("Y") Then
+                files.AddRange(d.GetFiles(Filter, SearchOption.AllDirectories))
+            Else
+                files.AddRange(d.GetFiles(Filter, SearchOption.TopDirectoryOnly))
+            End If
+
         Next
         Return (files)
     End Function
@@ -1886,7 +1891,7 @@ Public Class clsUtility
             frmNotify.Refresh()
             Try
                 ' Add all immediate file paths
-                result.AddRange(GetFiles(dir, FilterList))
+                result.AddRange(GetFiles(dir, FilterList, "N"))
 
                 ' Loop through all subdirectories and add them to the stack.
                 Dim directoryName As String
@@ -1902,12 +1907,20 @@ Public Class clsUtility
         Return result
     End Function
 
-    Sub GetFilesToArchive(ByRef iInventoryCnt As Integer, ByVal ckArchiveBit As Boolean, ByVal IncludeSubDir As Boolean, ByVal DirToInventory As String, ByVal FilterList As List(Of String),
-                          ByRef FilesToArchive As List(Of String), IncludedTypes As ArrayList, ExcludedTypes As ArrayList)
+    Sub GetFilesToArchive(ByRef iInventoryCnt As Integer,
+                            ByVal ckArchiveBit As Boolean,
+                            ByVal IncludeSubDir As Boolean,
+                            ByVal DirToInventory As String,
+                            ByVal FilterList As List(Of String),
+                            ByRef FilesToArchive As List(Of String),
+                            IncludedTypes As ArrayList,
+                            ExcludedTypes As ArrayList)
 
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
+
+        Dim WhereIN As String = gWhereInDict(DirToInventory)
 
         FilesToArchive.Clear()
 
@@ -1934,7 +1947,7 @@ Public Class clsUtility
         If IncludeSubDir = True Then
             Files = GetFilesRecursive(DirToInventory, FilterList)
         Else
-            Files = GetFiles(DirToInventory, FilterList)
+            Files = GetFiles(DirToInventory, FilterList, "N")
         End If
 
         Dim LL As Integer = 0
@@ -2050,10 +2063,12 @@ Public Class clsUtility
                 LL = 170
                 If NeedsUpdate Then
                     LL = 180
-                    FilesBackedUp += 1
-                    MSG = ArchiveAttr & "|" & File_Name & "|" & fi.Extension & "|" & FOLDER_FQN & "|" & fi.Length & "|" & fi.CreationTime & "|" & fi.LastWriteTime & "|" & fi.LastAccessTime
-                    LL = 190
-                    FilesToArchive.Add(MSG)
+                    If WhereIN.Contains("'" + fi.Extension + "'") Then
+                        FilesBackedUp += 1
+                        MSG = ArchiveAttr & "|" & File_Name & "|" & fi.Extension & "|" & FOLDER_FQN & "|" & fi.Length & "|" & fi.CreationTime & "|" & fi.LastWriteTime & "|" & fi.LastAccessTime
+                        LL = 190
+                        FilesToArchive.Add(MSG)
+                    End If
                     LL = 200
                 Else
                     LL = 210

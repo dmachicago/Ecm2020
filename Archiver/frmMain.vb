@@ -298,6 +298,11 @@ Public Class frmMain : Implements IDisposable
         Dim OSVer As String = UTIL.getOsVersion()
         Dim isLongFileNamesAvail As Boolean = UTIL.isLongFileNamesAvail
 
+        Dim CurrentLoginID As String = ""
+        CurrentLoginID = LoginForm1.txtLoginID.Text
+        gCurrLoginID = CurrentLoginID
+
+
         updateMessageBar("Applying any needed updates, standby...")
         ApplyDDUpdates()
 
@@ -309,6 +314,8 @@ Public Class frmMain : Implements IDisposable
         DBLocal.getUseLastArchiveDateActive()
         setLastArchiveLabel()
         getListeners()
+
+        gWhereInDict = DBARCH.getWhereInClauses
 
         'INSERT ALL THE REPO ALLOWED EXTENSIONS INTO THE SQLITE DB
         Dim AllowedExts As List(Of String) = DBARCH.getUsedExtension()
@@ -339,14 +346,9 @@ Public Class frmMain : Implements IDisposable
         End If
 
 
-        Dim CurrentLoginID As String = ""
-        'CurrentLoginID = System.Environment.UserName
-
-        CurrentLoginID = LoginForm1.txtLoginID.Text
-        gCurrLoginID = CurrentLoginID
         If TRACEFLOW = 1 Then DBARCH.RemoteTrace(9901, "Main", "40")
         updateMessageBar("1 of 18")
-
+        gMasterTypeExecution = ""
         Try
             args = Environment.GetCommandLineArgs() : LL = 64
             gRunMode = "GUI" : LL = 65
@@ -360,8 +362,19 @@ Public Class frmMain : Implements IDisposable
                 For Each Arg As String In args : LL = 67
                     If InStr(Arg, ";") Then
                         Dim AA() As String = Arg.Split(";")
-                        CompanyID = AA(0)
-                        RepoID = AA(1)
+                        If AA.Length.Equals(1) Then
+                            CompanyID = AA(0)
+                        End If
+                        If AA.Length.Equals(2) Then
+                            CompanyID = AA(0)
+                            RepoID = AA(1)
+                        End If
+                        If AA.Length.Equals(3) Then
+                            CompanyID = AA(0)
+                            RepoID = AA(1)
+                            gMasterTypeExecution = AA(2).ToUpper
+                        End If
+
                         Dim sCompanyID As String = REG.ReadEcmRegistrySubKey("CompanyID")
                         Dim sRepoID As String = REG.ReadEcmRegistrySubKey("RepoID")
                         Dim bReg As Boolean = False
@@ -1268,12 +1281,27 @@ Public Class frmMain : Implements IDisposable
             SB2.Text = "LAUNCHING ContentThread"
             Dim UseFastScan As String = System.Configuration.ConfigurationManager.AppSettings("UseFastScan")
 
-            If UseFastScan <> "1" Then
-                ContentThread.RunWorkerAsync()
-            Else
-                SB2.Text = "LAUNCHING Fast Scan"
-                ContentFastScanToolStripMenuItem_Click(Nothing, Nothing)
-            End If
+            Select Case gMasterTypeExecution
+                Case "S"
+                    UseDirectoryListener = 0
+                    gTempDisableDirListener = True
+                    ContentNoLIstenerToolStripMenuItem_Click(Nothing, Nothing)
+                Case "F"
+                    UseDirectoryListener = 0
+                    gTempDisableDirListener = True
+                    ContentFastScanToolStripMenuItem_Click(Nothing, Nothing)
+                Case "Q"
+                    UseDirectoryListener = 0
+                    gTempDisableDirListener = True
+                    ContentToolStripMenuItem_Click(Nothing, Nothing)
+                Case Else
+                    If UseFastScan <> "1" Then
+                        ContentThread.RunWorkerAsync()
+                    Else
+                        SB2.Text = "LAUNCHING Fast Scan"
+                        ContentFastScanToolStripMenuItem_Click(Nothing, Nothing)
+                    End If
+            End Select
 
             TimerAutoExec.Enabled = True
             TimerAutoExec.Interval = 5000
@@ -3426,6 +3454,8 @@ SKIPFOLDER:
         btnRefresh.Text = "Show Enabled"
         Button5_Click(Nothing, Nothing)
 
+        SyncSelectedDirectories()
+
         IncludeListHasChanged = False
         Me.SB.Text = "Complete..."
         Me.PBx.Value = 0
@@ -3980,6 +4010,7 @@ SKIPFOLDER:
         Dim PauseThreadMS As Integer = 0
         Dim FOLDER_FQN As String = "XXX"
         Dim ParentDir As String = "XXX"
+        Dim WhereIN As String = ""
 
         LL = 1
         Dim bExplodeZipFile As Boolean = False : LL = 6
@@ -4085,12 +4116,10 @@ SKIPFOLDER:
         Dim ThisFileNeedsToBeDeleted As Boolean = False : LL = 486
         LL = 491
 
-
-
         '********************************************************************	:	LL = 	496
         frmNotify.lblPdgPages.Text = "LOCATING FILES"
 
-        If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
+        If UseDirectoryListener.Equals(1) And Not gTempDisableDirListener Then
             frmNotify.lblPdgPages.Text = ""
             ActiveFolders = DBLocal.getListenerfTopDir()
         Else
@@ -4116,6 +4145,7 @@ SKIPFOLDER:
         Try
             For i As Integer = 0 To ActiveFolders.Count - 1 : LL = 636
                 Application.DoEvents()
+
                 Try
                     LL = 641
                     iContent += 1 : LL = 646
@@ -4166,7 +4196,7 @@ SKIPFOLDER:
                     Dim FolderParmStr As String = ActiveFolders(i).ToString.Trim : LL = 826
                     Dim FolderParms() As String = FolderParmStr.Split("|") : LL = 831
 
-                    If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
+                    If UseDirectoryListener.Equals(1) And Not gTempDisableDirListener Then
                         FOLDER_FQN = Path.GetDirectoryName(ActiveFolders(i))
                         ParentDir = Path.GetDirectoryName(ActiveFolders(i))
                         GoTo Process01
@@ -4175,7 +4205,7 @@ SKIPFOLDER:
                     LL = 836
                     FOLDER_FQN = FolderParms(0) : LL = 841
                     LL = 846
-                    If FOLDER_FQN.Trim.Length > 248 Then : LL = 851
+                    If FOLDER_FQN.Trim.Length > MaxFolderNameLength Then : LL = 851
                         LOG.WriteToArchiveLog("ERROR: folder name too long: " + FOLDER_FQN)
                         FOLDER_FQN = getShortDirName(FOLDER_FQN) : LL = 856
                         LOG.WriteToArchiveLog("NOTICE: Shortened name: " + FOLDER_FQN)
@@ -4184,6 +4214,8 @@ SKIPFOLDER:
                             GoTo NextFolder
                         End If : LL = 861
                     End If : LL = 861
+
+                    'WhereIN = gWhereInDict(FOLDER_FQN)
 
                     LL = 866
                     Dim bDisabled As Boolean = DBARCH.ckFolderDisabled(CurrUserGuidID, FOLDER_FQN) : LL = 871
@@ -4436,7 +4468,7 @@ Process01:
                             frmNotify.Refresh() : LL = 1996
                             Dim iInventory As Integer = 0 : LL = 2001
                             '***********************************************************************************************************************
-                            If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
+                            If UseDirectoryListener.Equals(1) And Not gTempDisableDirListener Then
                                 FilesToArchive = DBLocal.getListenerfiles()
                                 FilesToArchiveID = DBLocal.getListenerfilesID()
                             ElseIf Not IsNothing(FilesToBeUploaded) Then
@@ -4502,7 +4534,7 @@ Process01:
 
                         For K As Integer = 0 To FilesToArchive.Count - 1 : LL = 2186
 
-                            If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
+                            If UseDirectoryListener.Equals(1) And Not gTempDisableDirListener Then
                                 ParentDir = Path.GetDirectoryName(FilesToArchive(K))
                                 ListenerDir = Path.GetDirectoryName(FilesToArchive(K))
                             End If
@@ -4524,14 +4556,6 @@ Process01:
                                 GoTo DoneWithIt : LL = 2261
                             End If : LL = 2266
                             LL = 2271
-                            ''WDM Commentefd out oct-5-2020
-                            'If FilesToArchive(K).Length > 5 Then : LL = 2276
-                            '    ArchIndicator = Mid(FilesToArchive(K), 1, 5).ToUpper : LL = 2281
-                            '    If ArchIndicator.Equals("False") And ckArchiveBit = True Then : LL = 2286
-                            '        GoTo NextFile : LL = 2291
-                            '    End If : LL = 2296
-                            'End If : LL = 2301
-                            LL = 2306
                             If PauseThreadMS > 0 Then : LL = 2311
                                 System.Threading.Thread.Sleep(50) : LL = 2316
                             End If : LL = 2321
@@ -4543,7 +4567,7 @@ Process01:
                             Dim file_Extension As String = ""
                             Dim file_DirectoryName As String = ""
 
-                            If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then : LL = 2337
+                            If UseDirectoryListener.Equals(1) And Not gTempDisableDirListener Then : LL = 2337
                                 'FileAttributes() = FilesToArchive(K).Split("|") : LL = 2336
                                 file_ArchiveBit = "" : LL = 2338
                                 file_name = Path.GetFileName(FilesToArchive(K)) : LL = 2339
@@ -4552,7 +4576,7 @@ Process01:
                                 file_FullName = FilesToArchive(K) : LL = 2342
                                 'frmNotify.lblPdgPages.Text = "Dir: " + ParentDir
                                 'frmNotify.lblFileSpec.Text = (K).ToString + " of " + ArchCnt.ToString + " : " + file_name
-                            ElseIf Not isnothing(FilesToBeUploaded) Then : LL = 2343
+                            ElseIf Not IsNothing(FilesToBeUploaded) Then : LL = 2343
                                 If FilesToBeUploaded.Count > 0 Then
                                     file_ArchiveBit = "" : LL = 2345
                                     file_name = Path.GetFileName(FilesToArchive(K)) : LL = 2345
@@ -4571,18 +4595,6 @@ Process01:
                             End If
                             frmNotify.Refresh()
 
-                            'If File.Exists(file_FullName) Then
-                            '    Dim Finfo As New FileInfo(file_FullName)
-                            '    CurrFileSize = Finfo.Length
-                            '    CurrFileName = Finfo.Name
-                            '    CurrFQN = Finfo.FullName
-                            '    CurrExt = Finfo.Extension
-                            '    CurrCreateDate = Finfo.CreationTime
-                            '    CurrLastUpdate = Finfo.LastWriteTime
-                            '    Finfo = Nothing
-                            'End If
-
-
                             LL = 2366
                             If K > FilesToArchive.Count Then : LL = 2371
                                 GoTo NextFolder : LL = 2376
@@ -4590,22 +4602,21 @@ Process01:
                             If FilesToArchive(K) = Nothing Then : LL = 2386
                                 GoTo NextFile : LL = 2391
                             End If : LL = 2396
-                            'wdm commented out oct-5-2020
-                            'If ckArchiveBit = True And file_ArchiveBit.Equals("False") Then : LL = 2406
-                            '    GoTo NextFile : LL = 2411
-                            'End If : LL = 2416
-                            LL = 2421
                             '************************************************************************	:	LL = 	2426
                             LL = 2431
                             InventoryFQN = file_DirectoryName + "\" + file_name : LL = 2436
                             If Not File.Exists(InventoryFQN) Then
-                                If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
+                                If UseDirectoryListener.Equals(1) And Not gTempDisableDirListener Then
                                     Dim bUpdt = DBLocal.setListenerfileProcessed(InventoryFQN)
                                 End If
                                 GoTo NextFile
                             End If
+
+                            If WhereiN.Contains(file_Extension) Then
+                                Console.WriteLine("This file will be processed")
+                            End If
                             'WDM Nov-02-2020 Commented out as it is not needed the bay before we rid ourselves of trump
-                            'If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
+                            'If UseDirectoryListener.Equals(1) And Not gTempDisableDirListener Then
                             '    Dim bUpdt = DBLocal.setListenerfileProcessed(InventoryFQN)
                             '    If bUpdt Then
                             '        LOG.WriteToArchiveLog("NOTICE ArchiveContent BX01 skipped file : " + InventoryFQN)
@@ -4708,7 +4719,7 @@ Process01:
 
                             If FileHash.Length < 10 Then
                                 LOG.WriteToArchiveLog("ERROR ArchiveContent HASH failed: " + file_FullName)
-                                If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
+                                If UseDirectoryListener.Equals(1) And Not gTempDisableDirListener Then
                                     Dim bUpdt = DBLocal.setListenerfileProcessed(file_FullName)
                                     If Not bUpdt Then
                                         LOG.WriteToArchiveLog("ERROR 00A1 failed to set Processed flag: " + file_FullName)
@@ -4723,7 +4734,7 @@ Process01:
                                 Dim ExistingSourceGuid As String = DBARCH.getContentGuid(file_name, FileHash) : LL = 2691
                                 DBARCH.saveContentOwner(ExistingSourceGuid, CurrUserGuidID, "C", FOLDER_FQN, gMachineID, gNetworkID) : LL = 2696
                                 '************************************************************************************************************************
-                                If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
+                                If UseDirectoryListener.Equals(1) And Not gTempDisableDirListener Then
                                     Dim bUpdt = DBLocal.setListenerfileProcessed(file_FullName)
                                     If Not bUpdt Then
                                         LOG.WriteToArchiveLog("ERROR failed to set Processed flag: " + file_FullName)
@@ -4893,14 +4904,9 @@ Process01:
                             '** FILE ALREADY EXISTS IN THE REPOSITORY
                             Dim ListOfGuids As New List(Of String)
                             ListOfGuids = DBARCH.ckFileExistInRepo(MachineID, file_FullName)
-                            If ListOfGuids.Count > 0 Then
+                            If ListOfGuids.Count > 1 Then
                                 For Each SourceGuid In ListOfGuids
                                     Try
-                                        'Dim FI3 As New FileInfo(file_FullName)
-                                        'file_LastAccessTime = FI3.LastAccessTime
-                                        'file_CreationTime = FI3.CreationTime
-                                        'file_LastWriteTime = FI3.LastWriteTime
-                                        'LastVerNbr = 0
                                         bSuccessExecution = DBARCH.UpdateSouceImage(SourceGuid, file_FullName)
                                         If bSuccessExecution Then
                                             LOG.WriteToArchiveLog("NOTICE UpdateSouceImage Z4: Updated ImageHash: " + file_FullName)
@@ -5259,7 +5265,7 @@ NextFile:                   LL = 5046
                             If ddebug Then LOG.WriteToArchiveLog("frmMain : AddSourceToRepo :Success: 8032") : LL = 5056
                             Application.DoEvents() : LL = 5061
 
-                            If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
+                            If UseDirectoryListener.Equals(1) And Not gTempDisableDirListener Then
                                 Dim bUpdt = DBLocal.setListenerfileProcessed(file_FullName)
                                 If Not bUpdt Then
                                     LOG.WriteToArchiveLog("ERROR 12x1 failed to set Processed flag: " + file_FullName)
@@ -5459,7 +5465,7 @@ NextFolder:
         frmNotify.Refresh() : LL = 5841
         LL = 5846
 
-        If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
+        If UseDirectoryListener.Equals(1) And Not gTempDisableDirListener Then
             bUpdated = DBLocal.removeListenerfileProcessed(FilesToArchiveID)
             If Not bUpdated Then
                 LOG.WriteToArchiveLog("ERROR 01 failed removeListenerfileProcessed...")
@@ -7992,9 +7998,9 @@ SKIPTHISREC:
     Private Sub ContentToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ContentToolStripMenuItem.Click
 
         Dim watch As Stopwatch = Stopwatch.StartNew()
-        Dim PerformQuickArchive As Boolean = True
+        Dim PerformQuickArchiveFLG As Boolean = True
 
-        PerformQuickScan(PerformQUickArchive)
+        PerformQuickScan(PerformQuickArchiveFLG)
 
         Dim totsecs As Decimal = 0
         totsecs = watch.Elapsed.TotalSeconds
@@ -8512,12 +8518,29 @@ GoodLogin:
     End Sub
 
     Private Sub ListFilesInDirectoryToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListFilesInDirectoryToolStripMenuItem.Click
+
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         FilesBackedUp = 0
         FilesSkipped = 0
+
+        Dim Recurse As String = "Y"
+        Dim message, title As String
+        Dim DirName As Object
+        ' Set prompt.
+        message = "Enter the Directory you wish to scan:"
+        ' Set title.
+        title = "Directory Scan Timer"
+
+        ' Display message, title, and default value.
+        DirName = InputBox(message, title)
+        ' If user has clicked Cancel, set DirName to defaultValue
+        If DirName Is "" Then
+            MessageBox.Show("A directory must be supplied, returning...")
+            Return
+        End If
 
         Dim IncludedExts As New ArrayList
         Dim ExcludedExts As New ArrayList
@@ -8526,19 +8549,34 @@ GoodLogin:
         Dim strFileSize As String = ""
         Dim FilterList As New List(Of String)
         Dim ArchiveAttr As Boolean = False
+        Dim DirToInventory As String = DirName.ToString
+        Dim iInventory As Integer = 0
+        Dim totsecs As Decimal = 0
 
         FilterList.Add("*.xls")
+        FilterList.Add("*.xlsX")
         FilterList.Add("*.doc")
+        FilterList.Add("*.docx")
         FilterList.Add("*.vb")
+        FilterList.Add("*.cs")
+        FilterList.Add("*.c")
+        FilterList.Add("*.zip")
+        FilterList.Add("*.txt")
 
         Console.WriteLine("Start: " + Now.ToString)
 
-        Dim DirToInventory As String = "C:\dev"
-        Dim iInventory As Integer = 0
-        UTIL.GetFilesToArchive(iInventory, ArchiveAttr, False, DirToInventory, FilterList, FilesToArchive, IncludedExts, ExcludedExts)
-        'For Each S As String In FilesToArchive
-        '    Console.WriteLine(S)
-        'Next
+        Dim watch As Stopwatch = Stopwatch.StartNew()
+        Dim FFIles As New List(Of FileInfo)
+
+        FFIles = UTIL.GetFiles(DirName, FilterList, Recurse)
+        Dim iTot As Integer = FFIles.Count
+
+        'UTIL.GetFilesToArchive(iInventory, ArchiveAttr, False, DirToInventory, FilterList, FilesToArchive, IncludedExts, ExcludedExts)
+        totsecs = watch.Elapsed.TotalSeconds
+        MSG = "*** TOTAL TIME FOR to Scan Directory names: " + totsecs.ToString + " Seconds and finding " + iTot.ToString + " files."
+        LOG.WriteToArchiveLog(MSG)
+        MessageBox.Show(MSG)
+
         Console.WriteLine("End: " + Now.ToString)
         GC.Collect()
         GC.WaitForFullGCApproach()
@@ -10118,7 +10156,7 @@ GoodLogin:
 
         End If
 
-        If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
+        If UseDirectoryListener.Equals(1) And Not gTempDisableDirListener Then
             frmNotify.Text = "Processing Listener"
             frmNotify.Refresh()
         Else
@@ -10251,7 +10289,7 @@ GoodLogin:
         'Thread.EndCriticalRegion()
         gAutoExecContentComplete = True
 
-        If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
+        If UseDirectoryListener.Equals(1) And Not gTempDisableDirListener Then
             bUpdated = DBLocal.removeListenerfileProcessed()
             If Not bUpdated Then
                 LOG.WriteToArchiveLog("ERROR 02 failed removeListenerfileProcessed...")
@@ -12575,7 +12613,7 @@ NEXTONE:
 
             LOG.WriteToArchiveLog("ARCHIVER CLOSING DOWN SUCCESSFULLY.")
 
-            If UseDirectoryListener.Equals(1) And Not TempDisableDirListener Then
+            If UseDirectoryListener.Equals(1) And Not gTempDisableDirListener Then
                 bUpdated = DBLocal.removeListenerfileProcessed()
                 If Not bUpdated Then
                     LOG.WriteToArchiveLog("ERROR 00 failed removeListenerfileProcessed...")
@@ -13406,7 +13444,9 @@ SkipIT:
                 End If
                 '**********************************************************************************************************
                 gAutoExecContentComplete = False
+                '-------------------------------------------------------------
                 PerformContentArchive()
+                '-------------------------------------------------------------
                 gAutoExecContentComplete = True
                 'ContentThread.RunWorkerAsync()
                 '**********************************************************************************************************
@@ -13656,10 +13696,10 @@ SkipIT:
     Private Sub ContentNoLIstenerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContentNoLIstenerToolStripMenuItem.Click
 
         Dim watch As Stopwatch = Stopwatch.StartNew()
-        TempDisableDirListener = True
+        gTempDisableDirListener = True
         Dim PerformQUickArchive As Boolean = False
         PerformQuickScan(PerformQUickArchive)
-        TempDisableDirListener = False
+        gTempDisableDirListener = False
         watch.Stop()
         Dim totsecs As Decimal = 0
         totsecs = watch.Elapsed.TotalSeconds
@@ -13843,7 +13883,7 @@ SkipIT:
         Dim watch As Stopwatch = Stopwatch.StartNew()
 
         SB.Text = "CONTENT ARCHIVE LAUNCHED - Full ReInventory"
-        TempDisableDirListener = True
+        gTempDisableDirListener = True
         '------------------------------------------------
         Dim CurrUseDirectoryListener As Int32 = UseDirectoryListener
         UseDirectoryListener = 0
@@ -13853,12 +13893,12 @@ SkipIT:
         ResetSqlite()
         '***************************************************************
         PerformQuickScan(True)
-        TempDisableDirListener = False
+        gTempDisableDirListener = False
         '***************************************************************
         gUseLastArchiveDate = CurrUseLastArchiveDate
         UseDirectoryListener = CurrUseDirectoryListener
         '------------------------------------------------
-        TempDisableDirListener = False
+        gTempDisableDirListener = False
         SB.Text = "CONTENT ARCHIVE COMPLETED"
 
         watch.Stop()
@@ -13908,20 +13948,23 @@ SkipIT:
 
     Private Sub SQLiteDBConnectToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SQLiteDBConnectToolStripMenuItem.Click
 
-        Dim dlg As New FolderBrowserDialog
-        Dim slDatabase As String = ""
-        Dim SQLiteCONN As New SQLiteConnection()
-        Dim result As DialogResult = OpenFileDialog1.ShowDialog()
+        Dim message, title As String
+        Dim DbFQN As Object
+        ' Set prompt.
+        message = "Enter the Directory you wish to scan:"
+        ' Set title.
+        title = "Directory Scan Timer"
 
-        If result = Windows.Forms.DialogResult.OK Then
-            slDatabase = OpenFileDialog1.FileName
-        End If
-
-        If slDatabase.Length.Equals(0) Then
-            MessageBox.Show("Cancelled, returning.")
+        ' Display message, title, and default value.
+        DbFQN = InputBox(message, title)
+        ' If user has clicked Cancel, set DirName to defaultValue
+        If DbFQN Is "" Then
+            MessageBox.Show("A fully qualified path and name to a SQLite DB must be supplied, returning...")
             Return
         End If
 
+
+        Dim SQLiteCONN As New SQLiteConnection()
 
         Try
             If Not File.Exists(slDatabase) Then
@@ -13929,14 +13972,14 @@ SkipIT:
                 Return
             End If
 
-            cs = "data source=" + slDatabase
+            cs = "data source=" + DbFQN
             gLocalDBCS = cs
             SQLiteCONN.ConnectionString = cs
             SQLiteCONN.Open()
-            MessageBox.Show("SQLite Connected!!")
+            MessageBox.Show("Successful SQLite Connected!!")
         Catch ex As Exception
             Dim LG As New clsLogging
-            MessageBox.Show("ERROR LOCALDB setSLConn: " + ex.Message)
+            MessageBox.Show("ERROR Connection failed: " + ex.Message)
         End Try
 
     End Sub
@@ -14020,6 +14063,93 @@ SkipIT:
 
     Private Sub OpenSQLHelpScreenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenSQLHelpScreenToolStripMenuItem.Click
         frmSqlHelp.Show()
+    End Sub
+
+    Private Sub OpenFileReadWriteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenFileReadWriteToolStripMenuItem.Click
+        ' Call ShowDialog.
+        Dim result As DialogResult = OpenFileDialog1.ShowDialog()
+        Dim FQN As String = OpenFileDialog1.FileName
+        Dim Msg As String = ""
+        Dim lines As String = ""
+        Dim iCnt As Integer = 0
+        Dim readText As String() = Nothing
+
+        ' Test result.
+        If result = Windows.Forms.DialogResult.OK Then
+            Try
+                readText = File.ReadAllLines(FQN)
+                iCnt = readText.Length
+                If iCnt >= 3 Then
+                    lines = readText(0) + vbCrLf
+                    lines += readText(1)
+                End If
+                Msg = "Lines read: " + iCnt.ToString + vbCrLf
+                Msg += lines
+                MessageBox.Show(Msg)
+            Catch ex As Exception
+                Msg = "ERROR Fail to read: " + ex.Message
+                MessageBox.Show(Msg)
+            End Try
+        End If
+    End Sub
+
+    Private Sub QuickListFilesInDIrAndSubdirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles QuickListFilesInDIrAndSubdirToolStripMenuItem.Click
+
+        Dim Message As String = "Enter the Directory you wish to scan:"
+
+        title = "Directory Scan Timer"
+        DirName = InputBox(Message, title)
+
+        If DirName Is "" Then
+            MessageBox.Show("A directory must be supplied, returning...")
+            Return
+        End If
+
+        Dim watch As Stopwatch = Stopwatch.StartNew()
+        Dim allFiles As IEnumerable(Of String) = Directory.EnumerateFiles(DirName, "*.*", SearchOption.AllDirectories)
+        'Dim filePaths As IList(Of String) = allFiles.Where(Function(f) f.IndexOf(TextBox_sa.Text, StringComparison.OrdinalIgnoreCase) <> -1).ToList()
+
+        watch.Stop()
+        Dim totsecs As Double = watch.Elapsed.TotalSeconds
+        LOG.WriteToArchiveLog("*** TOTAL TIME FOR QUICK Search: " + watch.Elapsed.TotalMilliseconds.ToString + " Seconds")
+
+        For ii As Integer = 0 To 5
+            Dim FN As String = allFiles(ii).ToString
+            Console.WriteLine(FN)
+        Next
+
+        MessageBox.Show("#FIles Loaded: " + allFiles.Count.ToString + " : Time in Secs: " + watch.Elapsed.TotalMilliseconds.ToString)
+
+    End Sub
+
+    Private Sub GenWhereinClausesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenWhereinClausesToolStripMenuItem.Click
+        Dim WC As Dictionary(Of String, String)
+        WC = DBARCH.getWhereInClauses
+        For Each str As String In WC.Keys
+            Console.WriteLine(str, " : ", WC(str))
+        Next
+
+    End Sub
+
+    Private Sub SyncSelectedDirectories()
+
+        Dim Str As String = ""
+        Dim S As String = ""
+        For i As Integer = 0 To lbArchiveDirs.Items.Count - 1
+            S = lbArchiveDirs.Items(i)
+            Str += "'" + S + "',"
+        Next
+
+        Str = Str.Substring(0, Str.Length - 1)
+        Str = "(" + Str + ")"
+        Console.WriteLine(Str)
+
+        Dim B As Boolean = DBARCH.SyncSelectedDirectories(Str)
+
+    End Sub
+
+    Private Sub TestSyncSelectedFoldersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TestSyncSelectedFoldersToolStripMenuItem.Click
+        SyncSelectedDirectories()
     End Sub
 End Class
 

@@ -24,6 +24,8 @@ namespace EcmArchiver
         // Private Declare Function GetShortPathName Lib "kernel32" Alias "GetShortPathNameA" (ByVal
         // longPath As String, ByVal shortPath As String, ByVal shortBufferSize As Long) As Long
 
+        public static bool gMasterTypeExecution = false;
+
         public static string FTILogs = System.Configuration.ConfigurationManager.AppSettings["FTILogs"];
         public static int ContentBatchSize = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["ContentBatchSize"]);
         public static int gUseThreading = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["UseThreading"]);

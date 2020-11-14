@@ -229,6 +229,7 @@ Partial Class frmMain
         Me.CheckForViolationsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ValidateFileHASHCodesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ValidateProcessAsFileExtsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenSQLHelpScreenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EncryptStringToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenLicenseFormToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FulltextLogAnalysisToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -251,13 +252,16 @@ Partial Class frmMain
         Me.FileTypesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DirectoryInventoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ListFilesInDirectoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenFileReadWriteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GetAllSubdirFilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ListFilesInDirectoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.OCRToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileHashToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileUploadToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileUploadBufferedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileChunkUploadToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.RSSPullToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TestCamelCaseSplitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShowEndpointsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -265,14 +269,16 @@ Partial Class frmMain
         Me.ListenerFunctionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GetListenerFilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CreateSQLiteDBToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SQLiteDBConnectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LongFilenameHASHToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ValidateLongDirectroryNamesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TextStringHashToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ValidateLongDirectroryNamesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GetDirFilesByFilterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GenWhereINDictToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NetworkListenerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SQLiteDBConnectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TestCKDBTBLToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.QuickListFilesInDIrAndSubdirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GenWhereinClausesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -369,7 +375,7 @@ Partial Class frmMain
         Me.lblNotice = New System.Windows.Forms.Label()
         Me.ThreadValidateSourceName = New System.ComponentModel.BackgroundWorker()
         Me.ThreadSetNameHash = New System.ComponentModel.BackgroundWorker()
-        Me.OpenSQLHelpScreenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TestSyncSelectedFoldersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.gbEmail.SuspendLayout()
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbFiletypes.SuspendLayout()
@@ -2569,6 +2575,12 @@ Partial Class frmMain
         Me.ValidateProcessAsFileExtsToolStripMenuItem.Size = New System.Drawing.Size(308, 26)
         Me.ValidateProcessAsFileExtsToolStripMenuItem.Text = "Validate iFilter Extensions"
         '
+        'OpenSQLHelpScreenToolStripMenuItem
+        '
+        Me.OpenSQLHelpScreenToolStripMenuItem.Name = "OpenSQLHelpScreenToolStripMenuItem"
+        Me.OpenSQLHelpScreenToolStripMenuItem.Size = New System.Drawing.Size(254, 26)
+        Me.OpenSQLHelpScreenToolStripMenuItem.Text = "Open SQL Help Screen"
+        '
         'EncryptStringToolStripMenuItem
         '
         Me.EncryptStringToolStripMenuItem.Name = "EncryptStringToolStripMenuItem"
@@ -2700,7 +2712,7 @@ Partial Class frmMain
         '
         'TestToolStripMenuItem
         '
-        Me.TestToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DirectoryInventoryToolStripMenuItem, Me.ListFilesInDirectoryToolStripMenuItem, Me.GetAllSubdirFilesToolStripMenuItem, Me.OCRToolStripMenuItem, Me.FileHashToolStripMenuItem, Me.FileUploadToolStripMenuItem, Me.FileUploadBufferedToolStripMenuItem, Me.FileChunkUploadToolStripMenuItem, Me.RSSPullToolStripMenuItem, Me.TestCamelCaseSplitToolStripMenuItem, Me.ShowEndpointsToolStripMenuItem, Me.UnhandledExceptionsToolStripMenuItem, Me.ListenerFunctionsToolStripMenuItem, Me.CreateSQLiteDBToolStripMenuItem, Me.LongFilenameHASHToolStripMenuItem, Me.ValidateLongDirectroryNamesToolStripMenuItem, Me.TextStringHashToolStripMenuItem, Me.GetDirFilesByFilterToolStripMenuItem, Me.GenWhereINDictToolStripMenuItem, Me.NetworkListenerToolStripMenuItem, Me.SQLiteDBConnectToolStripMenuItem, Me.TestCKDBTBLToolStripMenuItem})
+        Me.TestToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DirectoryInventoryToolStripMenuItem, Me.OpenFileReadWriteToolStripMenuItem, Me.GetAllSubdirFilesToolStripMenuItem, Me.ListFilesInDirectoryToolStripMenuItem, Me.ToolStripSeparator1, Me.OCRToolStripMenuItem, Me.FileHashToolStripMenuItem, Me.FileUploadToolStripMenuItem, Me.FileUploadBufferedToolStripMenuItem, Me.FileChunkUploadToolStripMenuItem, Me.ToolStripSeparator2, Me.RSSPullToolStripMenuItem, Me.TestCamelCaseSplitToolStripMenuItem, Me.ShowEndpointsToolStripMenuItem, Me.UnhandledExceptionsToolStripMenuItem, Me.ListenerFunctionsToolStripMenuItem, Me.CreateSQLiteDBToolStripMenuItem, Me.SQLiteDBConnectToolStripMenuItem, Me.LongFilenameHASHToolStripMenuItem, Me.TextStringHashToolStripMenuItem, Me.ValidateLongDirectroryNamesToolStripMenuItem, Me.GetDirFilesByFilterToolStripMenuItem, Me.GenWhereINDictToolStripMenuItem, Me.NetworkListenerToolStripMenuItem, Me.TestCKDBTBLToolStripMenuItem, Me.QuickListFilesInDIrAndSubdirToolStripMenuItem, Me.GenWhereinClausesToolStripMenuItem, Me.TestSyncSelectedFoldersToolStripMenuItem})
         Me.TestToolStripMenuItem.Name = "TestToolStripMenuItem"
         Me.TestToolStripMenuItem.Size = New System.Drawing.Size(47, 24)
         Me.TestToolStripMenuItem.Text = "Test"
@@ -2708,80 +2720,96 @@ Partial Class frmMain
         'DirectoryInventoryToolStripMenuItem
         '
         Me.DirectoryInventoryToolStripMenuItem.Name = "DirectoryInventoryToolStripMenuItem"
-        Me.DirectoryInventoryToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.DirectoryInventoryToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
         Me.DirectoryInventoryToolStripMenuItem.Text = "Directory Inventory"
         '
-        'ListFilesInDirectoryToolStripMenuItem
+        'OpenFileReadWriteToolStripMenuItem
         '
-        Me.ListFilesInDirectoryToolStripMenuItem.Name = "ListFilesInDirectoryToolStripMenuItem"
-        Me.ListFilesInDirectoryToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
-        Me.ListFilesInDirectoryToolStripMenuItem.Text = "List Files in Directory"
+        Me.OpenFileReadWriteToolStripMenuItem.Name = "OpenFileReadWriteToolStripMenuItem"
+        Me.OpenFileReadWriteToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
+        Me.OpenFileReadWriteToolStripMenuItem.Text = "Open File Read/Write"
         '
         'GetAllSubdirFilesToolStripMenuItem
         '
         Me.GetAllSubdirFilesToolStripMenuItem.Name = "GetAllSubdirFilesToolStripMenuItem"
-        Me.GetAllSubdirFilesToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.GetAllSubdirFilesToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
         Me.GetAllSubdirFilesToolStripMenuItem.Text = "Get All Subdir Files"
+        '
+        'ListFilesInDirectoryToolStripMenuItem
+        '
+        Me.ListFilesInDirectoryToolStripMenuItem.Name = "ListFilesInDirectoryToolStripMenuItem"
+        Me.ListFilesInDirectoryToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
+        Me.ListFilesInDirectoryToolStripMenuItem.Text = "List Files in Directory"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(293, 6)
         '
         'OCRToolStripMenuItem
         '
         Me.OCRToolStripMenuItem.Name = "OCRToolStripMenuItem"
-        Me.OCRToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.OCRToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
         Me.OCRToolStripMenuItem.Text = "OCR"
         '
         'FileHashToolStripMenuItem
         '
         Me.FileHashToolStripMenuItem.Name = "FileHashToolStripMenuItem"
-        Me.FileHashToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.FileHashToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
         Me.FileHashToolStripMenuItem.Text = "File Hash"
         '
         'FileUploadToolStripMenuItem
         '
         Me.FileUploadToolStripMenuItem.Name = "FileUploadToolStripMenuItem"
-        Me.FileUploadToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.FileUploadToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
         Me.FileUploadToolStripMenuItem.Text = "File Upload (Stream)"
         '
         'FileUploadBufferedToolStripMenuItem
         '
         Me.FileUploadBufferedToolStripMenuItem.Name = "FileUploadBufferedToolStripMenuItem"
-        Me.FileUploadBufferedToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.FileUploadBufferedToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
         Me.FileUploadBufferedToolStripMenuItem.Text = "File Upload (Buffered)"
         '
         'FileChunkUploadToolStripMenuItem
         '
         Me.FileChunkUploadToolStripMenuItem.Name = "FileChunkUploadToolStripMenuItem"
-        Me.FileChunkUploadToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.FileChunkUploadToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
         Me.FileChunkUploadToolStripMenuItem.Text = "File Chunk Upload"
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(293, 6)
         '
         'RSSPullToolStripMenuItem
         '
         Me.RSSPullToolStripMenuItem.Name = "RSSPullToolStripMenuItem"
-        Me.RSSPullToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.RSSPullToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
         Me.RSSPullToolStripMenuItem.Text = "RSS Pull"
         '
         'TestCamelCaseSplitToolStripMenuItem
         '
         Me.TestCamelCaseSplitToolStripMenuItem.Name = "TestCamelCaseSplitToolStripMenuItem"
-        Me.TestCamelCaseSplitToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.TestCamelCaseSplitToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
         Me.TestCamelCaseSplitToolStripMenuItem.Text = "Test Camel Case Split"
         '
         'ShowEndpointsToolStripMenuItem
         '
         Me.ShowEndpointsToolStripMenuItem.Name = "ShowEndpointsToolStripMenuItem"
-        Me.ShowEndpointsToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.ShowEndpointsToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
         Me.ShowEndpointsToolStripMenuItem.Text = "Show Endpoints"
         '
         'UnhandledExceptionsToolStripMenuItem
         '
         Me.UnhandledExceptionsToolStripMenuItem.Name = "UnhandledExceptionsToolStripMenuItem"
-        Me.UnhandledExceptionsToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.UnhandledExceptionsToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
         Me.UnhandledExceptionsToolStripMenuItem.Text = "Unhandled Exception(s)"
         '
         'ListenerFunctionsToolStripMenuItem
         '
         Me.ListenerFunctionsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GetListenerFilesToolStripMenuItem})
         Me.ListenerFunctionsToolStripMenuItem.Name = "ListenerFunctionsToolStripMenuItem"
-        Me.ListenerFunctionsToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.ListenerFunctionsToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
         Me.ListenerFunctionsToolStripMenuItem.Text = "Listener Functions"
         '
         'GetListenerFilesToolStripMenuItem
@@ -2793,57 +2821,69 @@ Partial Class frmMain
         'CreateSQLiteDBToolStripMenuItem
         '
         Me.CreateSQLiteDBToolStripMenuItem.Name = "CreateSQLiteDBToolStripMenuItem"
-        Me.CreateSQLiteDBToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.CreateSQLiteDBToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
         Me.CreateSQLiteDBToolStripMenuItem.Text = "Create SQLite DB"
+        '
+        'SQLiteDBConnectToolStripMenuItem
+        '
+        Me.SQLiteDBConnectToolStripMenuItem.Name = "SQLiteDBConnectToolStripMenuItem"
+        Me.SQLiteDBConnectToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
+        Me.SQLiteDBConnectToolStripMenuItem.Text = "SQLite DB Connect"
         '
         'LongFilenameHASHToolStripMenuItem
         '
         Me.LongFilenameHASHToolStripMenuItem.Name = "LongFilenameHASHToolStripMenuItem"
-        Me.LongFilenameHASHToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.LongFilenameHASHToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
         Me.LongFilenameHASHToolStripMenuItem.Text = "Long Filename HASH"
-        '
-        'ValidateLongDirectroryNamesToolStripMenuItem
-        '
-        Me.ValidateLongDirectroryNamesToolStripMenuItem.Name = "ValidateLongDirectroryNamesToolStripMenuItem"
-        Me.ValidateLongDirectroryNamesToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
-        Me.ValidateLongDirectroryNamesToolStripMenuItem.Text = "Validate Long Directrory Names"
-        Me.ValidateLongDirectroryNamesToolStripMenuItem.Visible = False
         '
         'TextStringHashToolStripMenuItem
         '
         Me.TextStringHashToolStripMenuItem.Name = "TextStringHashToolStripMenuItem"
-        Me.TextStringHashToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.TextStringHashToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
         Me.TextStringHashToolStripMenuItem.Text = "Text String Hash"
+        '
+        'ValidateLongDirectroryNamesToolStripMenuItem
+        '
+        Me.ValidateLongDirectroryNamesToolStripMenuItem.Name = "ValidateLongDirectroryNamesToolStripMenuItem"
+        Me.ValidateLongDirectroryNamesToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
+        Me.ValidateLongDirectroryNamesToolStripMenuItem.Text = "Validate Long Directrory Names"
+        Me.ValidateLongDirectroryNamesToolStripMenuItem.Visible = False
         '
         'GetDirFilesByFilterToolStripMenuItem
         '
         Me.GetDirFilesByFilterToolStripMenuItem.Name = "GetDirFilesByFilterToolStripMenuItem"
-        Me.GetDirFilesByFilterToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.GetDirFilesByFilterToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
         Me.GetDirFilesByFilterToolStripMenuItem.Text = "Get Dir Files by Filter"
         '
         'GenWhereINDictToolStripMenuItem
         '
         Me.GenWhereINDictToolStripMenuItem.Name = "GenWhereINDictToolStripMenuItem"
-        Me.GenWhereINDictToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.GenWhereINDictToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
         Me.GenWhereINDictToolStripMenuItem.Text = "Gen WhereIN Dict"
         '
         'NetworkListenerToolStripMenuItem
         '
         Me.NetworkListenerToolStripMenuItem.Name = "NetworkListenerToolStripMenuItem"
-        Me.NetworkListenerToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.NetworkListenerToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
         Me.NetworkListenerToolStripMenuItem.Text = "Network Listener"
-        '
-        'SQLiteDBConnectToolStripMenuItem
-        '
-        Me.SQLiteDBConnectToolStripMenuItem.Name = "SQLiteDBConnectToolStripMenuItem"
-        Me.SQLiteDBConnectToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
-        Me.SQLiteDBConnectToolStripMenuItem.Text = "SQLite DB Connect"
         '
         'TestCKDBTBLToolStripMenuItem
         '
         Me.TestCKDBTBLToolStripMenuItem.Name = "TestCKDBTBLToolStripMenuItem"
-        Me.TestCKDBTBLToolStripMenuItem.Size = New System.Drawing.Size(295, 26)
+        Me.TestCKDBTBLToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
         Me.TestCKDBTBLToolStripMenuItem.Text = "Test CKDB TBL"
+        '
+        'QuickListFilesInDIrAndSubdirToolStripMenuItem
+        '
+        Me.QuickListFilesInDIrAndSubdirToolStripMenuItem.Name = "QuickListFilesInDIrAndSubdirToolStripMenuItem"
+        Me.QuickListFilesInDIrAndSubdirToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
+        Me.QuickListFilesInDIrAndSubdirToolStripMenuItem.Text = "Quick List Files in DIr and Subdir"
+        '
+        'GenWhereinClausesToolStripMenuItem
+        '
+        Me.GenWhereinClausesToolStripMenuItem.Name = "GenWhereinClausesToolStripMenuItem"
+        Me.GenWhereinClausesToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
+        Me.GenWhereinClausesToolStripMenuItem.Text = "Gen Wherein Clauses"
         '
         'ExitToolStripMenuItem
         '
@@ -3804,11 +3844,11 @@ Partial Class frmMain
         'ThreadSetNameHash
         '
         '
-        'OpenSQLHelpScreenToolStripMenuItem
+        'TestSyncSelectedFoldersToolStripMenuItem
         '
-        Me.OpenSQLHelpScreenToolStripMenuItem.Name = "OpenSQLHelpScreenToolStripMenuItem"
-        Me.OpenSQLHelpScreenToolStripMenuItem.Size = New System.Drawing.Size(254, 26)
-        Me.OpenSQLHelpScreenToolStripMenuItem.Text = "Open SQL Help Screen"
+        Me.TestSyncSelectedFoldersToolStripMenuItem.Name = "TestSyncSelectedFoldersToolStripMenuItem"
+        Me.TestSyncSelectedFoldersToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
+        Me.TestSyncSelectedFoldersToolStripMenuItem.Text = "Test Sync Selected Folders"
         '
         'frmMain
         '
@@ -4233,4 +4273,10 @@ Partial Class frmMain
     Friend WithEvents TestCKDBTBLToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TestCamelCaseSplitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OpenSQLHelpScreenToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents OpenFileReadWriteToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
+    Friend WithEvents QuickListFilesInDIrAndSubdirToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents GenWhereinClausesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TestSyncSelectedFoldersToolStripMenuItem As ToolStripMenuItem
 End Class

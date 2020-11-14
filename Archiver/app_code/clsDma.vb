@@ -767,7 +767,7 @@ FERR:
             If IncludeSubDir = True Then
                 Files = UTIL.GetFilesRecursive(DirName, FilterList)
             Else
-                Files = UTIL.GetFiles(DirName, FilterList)
+                Files = UTIL.GetFiles(DirName, FilterList, "N")
             End If
             Dim XX As Integer = 0
             Try

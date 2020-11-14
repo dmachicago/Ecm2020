@@ -449,9 +449,9 @@ SKIPOUT:
 
     Private Sub ckDisableListener_CheckedChanged(sender As Object, e As EventArgs) Handles ckDisableListener.CheckedChanged
         If ckDisableListener.Checked Then
-            TempDisableDirListener = True
+            gTempDisableDirListener = True
         Else
-            TempDisableDirListener = False
+            gTempDisableDirListener = False
         End If
     End Sub
 End Class

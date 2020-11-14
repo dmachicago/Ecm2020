@@ -37,11 +37,15 @@ Public Class clsQuickInventory
             For Each DirName As String In DictOfDirs.Keys
                 Try
                     K += 1
-                    If Directory.Exists(DirName) Then
-                        Recurse = DictOfDirs(DirName).ToUpper
-                        ProcessDirectory(DirName, Recurse)
-                    Else
-                        LOG.WriteToArchiveLog("NOTICE PerformFastInventory 020: Directory <" + DirName + ">, not found... skipping.")
+                    Dim WhereIN As String = gWhereInDict(DirName)
+
+                    If Not WhereIN.Equals("0") Then
+                        If Directory.Exists(DirName) Then
+                            Recurse = DictOfDirs(DirName).ToUpper
+                            ProcessDirectory(DirName, Recurse, WhereIN)
+                        Else
+                            LOG.WriteToArchiveLog("NOTICE PerformFastInventory 020: Directory <" + DirName + ">, not found... skipping.")
+                        End If
                     End If
                 Catch ex As Exception
                     LOG.WriteToArchiveLog("ERROR PerformFastInventory 010: " + ex.Message)
@@ -96,7 +100,7 @@ Public Class clsQuickInventory
         list.AddRange(Directory.GetFiles(sourceFolder, filter))
     End Function
 
-    Function ProcessDirectory(DirName As String, Recurse As String) As Integer
+    Function ProcessDirectory(DirName As String, Recurse As String, WhereIN As String) As Integer
 
         Dim watch As Stopwatch = Stopwatch.StartNew()
 
@@ -107,6 +111,7 @@ Public Class clsQuickInventory
 
         Dim AllowedExts As String = DBA.getIncludedFileTypeWhereIn(gCurrLoginID, DirName)
         AllowedExts = AllowedExts + ","
+        AllowedExts = WhereIN
         Dim FQN As String = ""
         Dim FileLEngth As Int64 = 0
         Dim LastWriteDate As DateTime = Now
@@ -182,7 +187,8 @@ Public Class clsQuickInventory
                                     LL = 3
                                     Application.DoEvents()
                                     LL = 4
-                                    Dim TgtExt As String = fi.Extension.ToLower + ","
+                                    'Dim TgtExt As String = fi.Extension.ToLower + ","
+                                    Dim TgtExt As String = "'" + fi.Extension.ToLower + "'"
                                     Dim TgtDir As String = fi.DirectoryName
                                     LL = 5
                                     LastWriteDate = fi.LastWriteTime

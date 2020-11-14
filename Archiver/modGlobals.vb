@@ -16,6 +16,13 @@ Module modGlobals
     ' Private Declare Function GetShortPathName Lib "kernel32" Alias "GetShortPathNameA" (ByVal
     ' longPath As String, ByVal shortPath As String, ByVal shortBufferSize As Long) As Long
 
+    Public gWhereInDict As New Dictionary(Of String, String)
+
+    Public MaxFolderNameLength As Integer = System.Configuration.ConfigurationManager.AppSettings("MaxFolderNameLength")
+    Public MaxFileNameLength As Integer = System.Configuration.ConfigurationManager.AppSettings("MaxFileNameLength")
+
+
+
     Public FTILogs As String = System.Configuration.ConfigurationManager.AppSettings("FTILogs")
     Public ContentBatchSize As Int32 = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings("ContentBatchSize"))
     Public gUseThreading As Int32 = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings("UseThreading"))
@@ -23,7 +30,7 @@ Module modGlobals
     Public TrackUploads As Int32 = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings("TrackUploads"))
     Public UseDebugSQLite As Int32 = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings("UseDebugSQLite"))
     Public MaxFileToLoadMB As Int64 = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings("MaxFileToLoadMB"))
-    Public TempDisableDirListener As Boolean = False
+    Public gTempDisableDirListener As Boolean = False
     Public UseDirectoryListener As Int32 = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings("UseDirectoryListener"))
     Public SQLiteListenerDB As String = System.Configuration.ConfigurationManager.AppSettings("SQLiteListenerDB")
 
