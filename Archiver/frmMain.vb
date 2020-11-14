@@ -13542,8 +13542,9 @@ SkipIT:
         S += vbCrLf
         S += "This Text has been placed into the clipboard in case you wish to run from the command line as an Administrator"
 
+        Dim cmd As String = "reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem /t REG_SZ /v LongPathsEnabled /d 1 /f"
         Clipboard.Clear()
-        Clipboard.SetText(S)
+        Clipboard.SetText(cmd)
 
         MessageBox.Show(S)
 
