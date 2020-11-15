@@ -2346,9 +2346,15 @@ SKIPFOLDER:
         If I.Equals(1) Then
             Dim tgtDir As String = lbArchiveDirs.SelectedItems(0)
             If DirectoryList.ContainsKey(tgtDir) Then
+                lblListenerState.BackColor = Color.DarkGreen
+                lblListenerState.ForeColor = Color.White
                 lblListenerState.Text = "Listener ON"
+                lblListenerState.BorderStyle = BorderStyle.Fixed3D
             Else
+                lblListenerState.BackColor = Color.DarkRed
+                lblListenerState.ForeColor = Color.Yellow
                 lblListenerState.Text = "Listener OFF"
+                lblListenerState.BorderStyle = BorderStyle.FixedSingle
             End If
         End If
 
@@ -13483,29 +13489,6 @@ SkipIT:
 
     End Sub
 
-    Private Sub CreateSQLiteDBToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CreateSQLiteDBToolStripMenuItem.Click
-
-        Dim NewDB As String = "c:\temp\TestSQLite.db"
-        Dim sqlite_conn As SQLiteConnection
-
-        If Not Directory.Exists("c:\temp") Then
-            Directory.CreateDirectory("C:\temp")
-        End If
-
-        If File.Exists(NewDB) Then
-            File.Delete(NewDB)
-        End If
-
-        sqlite_conn = New SQLiteConnection("Data Source=" + NewDB)
-        sqlite_conn.Open()
-
-        If File.Exists(NewDB) Then
-            MessageBox.Show("Success: " + NewDB + ", created")
-        Else
-            MessageBox.Show("Failure: " + NewDB + ", failed to create")
-        End If
-
-    End Sub
 
     Private Sub CanLongFilenamesBeTurnedOnToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CanLongFilenamesBeTurnedOnToolStripMenuItem.Click
         Dim isLongFileNamesAvail As Boolean = UTIL.isLongFileNamesAvail
@@ -13789,9 +13772,9 @@ SkipIT:
     Private Sub btnSetLastArchiveON_Click(sender As Object, e As EventArgs) Handles btnSetLastArchiveON.Click
         DBLocal.TurnOnUseLastArchiveDateActive()
         If gUseLastArchiveDate.Equals("1") Then
-            lblUseLastArchiveDate.Text = "Last Arch ON"
+            lblUseLastArchiveDate.Text = "Use Last Archive Date ON"
         Else
-            lblUseLastArchiveDate.Text = "Last Arch OFF"
+            lblUseLastArchiveDate.Text = "Use Last Archive Date OFF"
         End If
         DBLocal.getUseLastArchiveDateActive()
         setLastArchiveLabel()
@@ -13800,9 +13783,9 @@ SkipIT:
     Private Sub btnSetLastArchiveOFF_Click(sender As Object, e As EventArgs) Handles btnSetLastArchiveOFF.Click
         DBLocal.TurnOffUseLastArchiveDateActive()
         If gUseLastArchiveDate.Equals("1") Then
-            lblUseLastArchiveDate.Text = "Last Arch ON"
+            lblUseLastArchiveDate.Text = "Use Last Archive Date ON"
         Else
-            lblUseLastArchiveDate.Text = "Last Arch OFF"
+            lblUseLastArchiveDate.Text = "Use Last Archive Date OFF"
         End If
         DBLocal.getUseLastArchiveDateActive()
         setLastArchiveLabel()
@@ -13811,9 +13794,9 @@ SkipIT:
     Private Sub TurnONToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TurnONToolStripMenuItem.Click
         DBLocal.TurnOnUseLastArchiveDateActive()
         If gUseLastArchiveDate.Equals("1") Then
-            lblUseLastArchiveDate.Text = "Last Arch ON"
+            lblUseLastArchiveDate.Text = "Use Last Archive Date ON"
         Else
-            lblUseLastArchiveDate.Text = "Last Arch OFF"
+            lblUseLastArchiveDate.Text = "Use Last Archive Date OFF"
         End If
         DBLocal.getUseLastArchiveDateActive()
         setLastArchiveLabel()
@@ -13822,14 +13805,13 @@ SkipIT:
     Private Sub TurnOFFToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TurnOFFToolStripMenuItem.Click
         DBLocal.TurnOffUseLastArchiveDateActive()
         If gUseLastArchiveDate.Equals("1") Then
-            lblUseLastArchiveDate.Text = "Last Arch ON"
+            lblUseLastArchiveDate.Text = "Use Last Archive Date ON"
         Else
-            lblUseLastArchiveDate.Text = "Last Arch OFF"
+            lblUseLastArchiveDate.Text = "Use Last Archive Date OFF"
         End If
         DBLocal.getUseLastArchiveDateActive()
         setLastArchiveLabel()
     End Sub
-
 
     Private Sub TurnListenerONToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TurnListenerONToolStripMenuItem.Click
         ProcessListener(True)
@@ -13947,43 +13929,6 @@ SkipIT:
         FrmListenerTest.Show()
     End Sub
 
-    Private Sub SQLiteDBConnectToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SQLiteDBConnectToolStripMenuItem.Click
-
-        Dim message, title As String
-        Dim DbFQN As Object
-        ' Set prompt.
-        message = "Enter the Directory you wish to scan:"
-        ' Set title.
-        title = "Directory Scan Timer"
-
-        ' Display message, title, and default value.
-        DbFQN = InputBox(message, title)
-        ' If user has clicked Cancel, set DirName to defaultValue
-        If DbFQN Is "" Then
-            MessageBox.Show("A fully qualified path and name to a SQLite DB must be supplied, returning...")
-            Return
-        End If
-
-
-        Dim SQLiteCONN As New SQLiteConnection()
-
-        Try
-            If Not File.Exists(slDatabase) Then
-                MessageBox.Show("SQLite DB MISSING: " + slDatabase)
-                Return
-            End If
-
-            cs = "data source=" + DbFQN
-            gLocalDBCS = cs
-            SQLiteCONN.ConnectionString = cs
-            SQLiteCONN.Open()
-            MessageBox.Show("Successful SQLite Connected!!")
-        Catch ex As Exception
-            Dim LG As New clsLogging
-            MessageBox.Show("ERROR Connection failed: " + ex.Message)
-        End Try
-
-    End Sub
 
     Private Sub ContentFastScanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContentFastScanToolStripMenuItem.Click
 
@@ -14097,7 +14042,7 @@ SkipIT:
     Private Sub QuickListFilesInDIrAndSubdirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles QuickListFilesInDIrAndSubdirToolStripMenuItem.Click
 
         Dim Message As String = "Enter the Directory you wish to scan:"
-
+        Dim STime As DateTime = Now
         title = "Directory Scan Timer"
         DirName = InputBox(Message, title)
 
@@ -14119,7 +14064,9 @@ SkipIT:
             Console.WriteLine(FN)
         Next
 
-        MessageBox.Show("#FIles Loaded: " + allFiles.Count.ToString + " : Time in Secs: " + watch.Elapsed.TotalMilliseconds.ToString)
+        Dim SECS As Long = DateDiff(DateInterval.Second, STime, Now)
+
+        MessageBox.Show("#FIles Loaded: " + allFiles.Count.ToString + " : Time in Secs: " + SECS.ToString)
 
     End Sub
 
@@ -14151,6 +14098,68 @@ SkipIT:
 
     Private Sub TestSyncSelectedFoldersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TestSyncSelectedFoldersToolStripMenuItem.Click
         SyncSelectedDirectories()
+    End Sub
+
+    Private Sub DBConnectToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DBConnectToolStripMenuItem.Click
+
+        Dim message, title As String
+        Dim DbFQN As Object
+        ' Set prompt.
+        message = "Enter the Directory you wish to scan:"
+        ' Set title.
+        title = "Directory Scan Timer"
+
+        ' Display message, title, and default value.
+        DbFQN = InputBox(message, title)
+        ' If user has clicked Cancel, set DirName to defaultValue
+        If DbFQN Is "" Then
+            MessageBox.Show("A fully qualified path and name to a SQLite DB must be supplied, returning...")
+            Return
+        End If
+
+
+        Dim SQLiteCONN As New SQLiteConnection()
+
+        Try
+            If Not File.Exists(slDatabase) Then
+                MessageBox.Show("SQLite DB MISSING: " + slDatabase)
+                Return
+            End If
+
+            cs = "data source=" + DbFQN
+            gLocalDBCS = cs
+            SQLiteCONN.ConnectionString = cs
+            SQLiteCONN.Open()
+            MessageBox.Show("Successful SQLite Connected!!")
+        Catch ex As Exception
+            Dim LG As New clsLogging
+            MessageBox.Show("ERROR Connection failed: " + ex.Message)
+        End Try
+
+    End Sub
+
+    Private Sub CreateSQLiteDBToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CreateSQLiteDBToolStripMenuItem1.Click
+
+        Dim NewDB As String = "c:\temp\TestSQLite.db"
+        Dim sqlite_conn As SQLiteConnection
+
+        If Not Directory.Exists("c:\temp") Then
+            Directory.CreateDirectory("C:\temp")
+        End If
+
+        If File.Exists(NewDB) Then
+            File.Delete(NewDB)
+        End If
+
+        sqlite_conn = New SQLiteConnection("Data Source=" + NewDB)
+        sqlite_conn.Open()
+
+        If File.Exists(NewDB) Then
+            MessageBox.Show("Success: " + NewDB + ", created")
+        Else
+            MessageBox.Show("Failure: " + NewDB + ", failed to create")
+        End If
+
     End Sub
 End Class
 

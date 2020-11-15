@@ -28078,11 +28078,11 @@ NextOne:
                         )
                             BEGIN
                                 CREATE TABLE [dbo].[DBUpdate]
-                                ([FileName]      [NVARCHAR](100) NOT NULL, 
-                                 [DateApplied]   [DATETIME] NOT NULL, 
-                                 [RowCreateDate] [DATETIME] NOT NULL, 
-                                 [UpdateApplied] [INT] NULL
-                                );
+                                    ([FileName]      [NVARCHAR](100) NOT NULL, 
+                                     [DateApplied]   [DATETIME] NOT NULL, 
+                                     [RowCreateDate] [DATETIME] NOT NULL, 
+                                     [UpdateApplied] [INT] NULL
+                                    );
                                 ALTER TABLE [dbo].[DBUpdate]
                                 ADD DEFAULT(GETDATE()) FOR [DateApplied];
                                 ALTER TABLE [dbo].[DBUpdate]

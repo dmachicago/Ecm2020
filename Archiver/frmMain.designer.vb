@@ -21,13 +21,13 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.gbEmail = New System.Windows.Forms.GroupBox()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Label34 = New System.Windows.Forms.Label()
@@ -264,12 +264,13 @@ Partial Class frmMain
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.RSSPullToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TestCamelCaseSplitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SQLiteTestsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DBConnectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CreateSQLiteDBToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShowEndpointsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UnhandledExceptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListenerFunctionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GetListenerFilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CreateSQLiteDBToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SQLiteDBConnectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LongFilenameHASHToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TextStringHashToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ValidateLongDirectroryNamesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -279,6 +280,7 @@ Partial Class frmMain
         Me.TestCKDBTBLToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.QuickListFilesInDIrAndSubdirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GenWhereinClausesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TestSyncSelectedFoldersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -375,7 +377,7 @@ Partial Class frmMain
         Me.lblNotice = New System.Windows.Forms.Label()
         Me.ThreadValidateSourceName = New System.ComponentModel.BackgroundWorker()
         Me.ThreadSetNameHash = New System.ComponentModel.BackgroundWorker()
-        Me.TestSyncSelectedFoldersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
         Me.gbEmail.SuspendLayout()
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbFiletypes.SuspendLayout()
@@ -2712,7 +2714,7 @@ Partial Class frmMain
         '
         'TestToolStripMenuItem
         '
-        Me.TestToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DirectoryInventoryToolStripMenuItem, Me.OpenFileReadWriteToolStripMenuItem, Me.GetAllSubdirFilesToolStripMenuItem, Me.ListFilesInDirectoryToolStripMenuItem, Me.ToolStripSeparator1, Me.OCRToolStripMenuItem, Me.FileHashToolStripMenuItem, Me.FileUploadToolStripMenuItem, Me.FileUploadBufferedToolStripMenuItem, Me.FileChunkUploadToolStripMenuItem, Me.ToolStripSeparator2, Me.RSSPullToolStripMenuItem, Me.TestCamelCaseSplitToolStripMenuItem, Me.ShowEndpointsToolStripMenuItem, Me.UnhandledExceptionsToolStripMenuItem, Me.ListenerFunctionsToolStripMenuItem, Me.CreateSQLiteDBToolStripMenuItem, Me.SQLiteDBConnectToolStripMenuItem, Me.LongFilenameHASHToolStripMenuItem, Me.TextStringHashToolStripMenuItem, Me.ValidateLongDirectroryNamesToolStripMenuItem, Me.GetDirFilesByFilterToolStripMenuItem, Me.GenWhereINDictToolStripMenuItem, Me.NetworkListenerToolStripMenuItem, Me.TestCKDBTBLToolStripMenuItem, Me.QuickListFilesInDIrAndSubdirToolStripMenuItem, Me.GenWhereinClausesToolStripMenuItem, Me.TestSyncSelectedFoldersToolStripMenuItem})
+        Me.TestToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DirectoryInventoryToolStripMenuItem, Me.OpenFileReadWriteToolStripMenuItem, Me.GetAllSubdirFilesToolStripMenuItem, Me.ListFilesInDirectoryToolStripMenuItem, Me.ToolStripSeparator1, Me.SQLiteTestsToolStripMenuItem, Me.ListenerFunctionsToolStripMenuItem, Me.ToolStripSeparator8, Me.QuickListFilesInDIrAndSubdirToolStripMenuItem, Me.OCRToolStripMenuItem, Me.FileHashToolStripMenuItem, Me.FileUploadToolStripMenuItem, Me.FileUploadBufferedToolStripMenuItem, Me.FileChunkUploadToolStripMenuItem, Me.LongFilenameHASHToolStripMenuItem, Me.ValidateLongDirectroryNamesToolStripMenuItem, Me.TestSyncSelectedFoldersToolStripMenuItem, Me.ToolStripSeparator2, Me.TestCamelCaseSplitToolStripMenuItem, Me.ShowEndpointsToolStripMenuItem, Me.UnhandledExceptionsToolStripMenuItem, Me.TextStringHashToolStripMenuItem, Me.GetDirFilesByFilterToolStripMenuItem, Me.GenWhereINDictToolStripMenuItem, Me.NetworkListenerToolStripMenuItem, Me.TestCKDBTBLToolStripMenuItem, Me.GenWhereinClausesToolStripMenuItem, Me.RSSPullToolStripMenuItem})
         Me.TestToolStripMenuItem.Name = "TestToolStripMenuItem"
         Me.TestToolStripMenuItem.Size = New System.Drawing.Size(47, 24)
         Me.TestToolStripMenuItem.Text = "Test"
@@ -2793,6 +2795,25 @@ Partial Class frmMain
         Me.TestCamelCaseSplitToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
         Me.TestCamelCaseSplitToolStripMenuItem.Text = "Test Camel Case Split"
         '
+        'SQLiteTestsToolStripMenuItem
+        '
+        Me.SQLiteTestsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DBConnectToolStripMenuItem, Me.CreateSQLiteDBToolStripMenuItem1})
+        Me.SQLiteTestsToolStripMenuItem.Name = "SQLiteTestsToolStripMenuItem"
+        Me.SQLiteTestsToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
+        Me.SQLiteTestsToolStripMenuItem.Text = "SQLite Tests"
+        '
+        'DBConnectToolStripMenuItem
+        '
+        Me.DBConnectToolStripMenuItem.Name = "DBConnectToolStripMenuItem"
+        Me.DBConnectToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.DBConnectToolStripMenuItem.Text = "DB Connect"
+        '
+        'CreateSQLiteDBToolStripMenuItem1
+        '
+        Me.CreateSQLiteDBToolStripMenuItem1.Name = "CreateSQLiteDBToolStripMenuItem1"
+        Me.CreateSQLiteDBToolStripMenuItem1.Size = New System.Drawing.Size(216, 26)
+        Me.CreateSQLiteDBToolStripMenuItem1.Text = "Create SQLite DB"
+        '
         'ShowEndpointsToolStripMenuItem
         '
         Me.ShowEndpointsToolStripMenuItem.Name = "ShowEndpointsToolStripMenuItem"
@@ -2817,18 +2838,6 @@ Partial Class frmMain
         Me.GetListenerFilesToolStripMenuItem.Name = "GetListenerFilesToolStripMenuItem"
         Me.GetListenerFilesToolStripMenuItem.Size = New System.Drawing.Size(195, 26)
         Me.GetListenerFilesToolStripMenuItem.Text = "Get Listener Files"
-        '
-        'CreateSQLiteDBToolStripMenuItem
-        '
-        Me.CreateSQLiteDBToolStripMenuItem.Name = "CreateSQLiteDBToolStripMenuItem"
-        Me.CreateSQLiteDBToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
-        Me.CreateSQLiteDBToolStripMenuItem.Text = "Create SQLite DB"
-        '
-        'SQLiteDBConnectToolStripMenuItem
-        '
-        Me.SQLiteDBConnectToolStripMenuItem.Name = "SQLiteDBConnectToolStripMenuItem"
-        Me.SQLiteDBConnectToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
-        Me.SQLiteDBConnectToolStripMenuItem.Text = "SQLite DB Connect"
         '
         'LongFilenameHASHToolStripMenuItem
         '
@@ -2884,6 +2893,12 @@ Partial Class frmMain
         Me.GenWhereinClausesToolStripMenuItem.Name = "GenWhereinClausesToolStripMenuItem"
         Me.GenWhereinClausesToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
         Me.GenWhereinClausesToolStripMenuItem.Text = "Gen Wherein Clauses"
+        '
+        'TestSyncSelectedFoldersToolStripMenuItem
+        '
+        Me.TestSyncSelectedFoldersToolStripMenuItem.Name = "TestSyncSelectedFoldersToolStripMenuItem"
+        Me.TestSyncSelectedFoldersToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
+        Me.TestSyncSelectedFoldersToolStripMenuItem.Text = "Test Selected Folders Sync "
         '
         'ExitToolStripMenuItem
         '
@@ -3350,47 +3365,47 @@ Partial Class frmMain
         '
         'dgWebPage
         '
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgWebPage.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgWebPage.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle8
         Me.dgWebPage.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgWebPage.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader
         Me.dgWebPage.BackgroundColor = System.Drawing.Color.DimGray
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgWebPage.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgWebPage.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
         Me.dgWebPage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Transparent
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Yellow
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Navy
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgWebPage.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.Transparent
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Yellow
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Navy
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgWebPage.DefaultCellStyle = DataGridViewCellStyle10
         Me.dgWebPage.GridColor = System.Drawing.SystemColors.ControlDarkDark
         Me.dgWebPage.Location = New System.Drawing.Point(43, 110)
         Me.dgWebPage.Margin = New System.Windows.Forms.Padding(4)
         Me.dgWebPage.MultiSelect = False
         Me.dgWebPage.Name = "dgWebPage"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgWebPage.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgWebPage.RowHeadersDefaultCellStyle = DataGridViewCellStyle11
         Me.dgWebPage.Size = New System.Drawing.Size(1071, 297)
         Me.dgWebPage.TabIndex = 10
         '
@@ -3580,34 +3595,34 @@ Partial Class frmMain
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgWebSite.BackgroundColor = System.Drawing.SystemColors.ControlLight
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgWebSite.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgWebSite.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
         Me.dgWebSite.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgWebSite.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgWebSite.DefaultCellStyle = DataGridViewCellStyle13
         Me.dgWebSite.Location = New System.Drawing.Point(43, 108)
         Me.dgWebSite.Margin = New System.Windows.Forms.Padding(4)
         Me.dgWebSite.Name = "dgWebSite"
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgWebSite.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgWebSite.RowHeadersDefaultCellStyle = DataGridViewCellStyle14
         Me.dgWebSite.Size = New System.Drawing.Size(1071, 318)
         Me.dgWebSite.TabIndex = 10
         '
@@ -3844,11 +3859,10 @@ Partial Class frmMain
         'ThreadSetNameHash
         '
         '
-        'TestSyncSelectedFoldersToolStripMenuItem
+        'ToolStripSeparator8
         '
-        Me.TestSyncSelectedFoldersToolStripMenuItem.Name = "TestSyncSelectedFoldersToolStripMenuItem"
-        Me.TestSyncSelectedFoldersToolStripMenuItem.Size = New System.Drawing.Size(296, 26)
-        Me.TestSyncSelectedFoldersToolStripMenuItem.Text = "Test Sync Selected Folders"
+        Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
+        Me.ToolStripSeparator8.Size = New System.Drawing.Size(293, 6)
         '
         'frmMain
         '
@@ -4046,14 +4060,9 @@ Partial Class frmMain
     Friend WithEvents HistoryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ckExpand As System.Windows.Forms.CheckBox
     Friend WithEvents ViewLogsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents TestToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents DirectoryInventoryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ListFilesInDirectoryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents GetAllSubdirFilesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ViewOCRErrorFilesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ScheduleToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tbExchange As System.Windows.Forms.ToolStripStatusLabel
-    Friend WithEvents OCRToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PB1 As System.Windows.Forms.ToolStripProgressBar
     Friend WithEvents tsStatus02 As System.Windows.Forms.ToolStripStatusLabel
@@ -4092,14 +4101,10 @@ Partial Class frmMain
     Friend WithEvents btnRefreshDefaults As System.Windows.Forms.Button
     Friend WithEvents btnDefaultAsso As System.Windows.Forms.Button
     Friend WithEvents btnAddDefaults As System.Windows.Forms.Button
-    Friend WithEvents FileHashToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents BackgroundWorker2 As System.ComponentModel.BackgroundWorker
     Friend WithEvents ContentThread As System.ComponentModel.BackgroundWorker
-    Friend WithEvents FileUploadToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents FileUploadBufferedToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents FileChunkUploadToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents BackgroundDirListener As System.ComponentModel.BackgroundWorker
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents btnActivate As System.Windows.Forms.Button
@@ -4127,7 +4132,6 @@ Partial Class frmMain
     Friend WithEvents EstimateNumberOfFilesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents Label16 As System.Windows.Forms.Label
-    Friend WithEvents RSSPullToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TabPage4 As System.Windows.Forms.TabPage
     Friend WithEvents btnRemoveRSSfeed As System.Windows.Forms.Button
     Friend WithEvents btnAddRssFeed As System.Windows.Forms.Button
@@ -4195,7 +4199,6 @@ Partial Class frmMain
     Friend WithEvents RetentionRulesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RulesExecutionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CheckForUpdatesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ShowEndpointsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ShowSystemVersionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents Label34 As System.Windows.Forms.Label
     Friend WithEvents Label36 As System.Windows.Forms.Label
@@ -4210,10 +4213,7 @@ Partial Class frmMain
     Friend WithEvents OpenLicenseFormToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Button4 As Button
     Friend WithEvents TimerAutoExec As Timer
-    Friend WithEvents UnhandledExceptionsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents lblNotice As Label
-    Friend WithEvents ListenerFunctionsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents GetListenerFilesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ThreadValidateSourceName As System.ComponentModel.BackgroundWorker
     Friend WithEvents RepositoryUtilitiesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ListenerUtilitiesToolStripMenuItem As ToolStripMenuItem
@@ -4233,15 +4233,11 @@ Partial Class frmMain
     Friend WithEvents InventoryDirectoryToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ValidateDirectoryFilesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ReapplyALLDBUpdatesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CreateSQLiteDBToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FileNamesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CanLongFilenamesBeTurnedOnToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CheckForViolationsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TurnONLongFilenamesAdminNeededToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents HowToTurnOnLongFilenamesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents LongFilenameHASHToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ValidateLongDirectroryNamesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents TextStringHashToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ThreadSetNameHash As System.ComponentModel.BackgroundWorker
     Friend WithEvents ValidateFileHASHCodesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CheckBox2 As CheckBox
@@ -4252,8 +4248,6 @@ Partial Class frmMain
     Friend WithEvents FulltextLogAnalysisToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents UpdateAvailableIFiltersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ReInventoryAllFilesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents GetDirFilesByFilterToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents GenWhereINDictToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents btnSetLastArchiveOFF As Button
     Friend WithEvents btnSetLastArchiveON As Button
     Friend WithEvents lblUseLastArchiveDate As Label
@@ -4267,16 +4261,38 @@ Partial Class frmMain
     Friend WithEvents ListenerONALLDirsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ListenerOFFALLDirsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents lblListenerState As Label
-    Friend WithEvents NetworkListenerToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SQLiteDBConnectToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ContentFastScanToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents TestCKDBTBLToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents TestCamelCaseSplitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OpenSQLHelpScreenToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TestToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DirectoryInventoryToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OpenFileReadWriteToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents GetAllSubdirFilesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ListFilesInDirectoryToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents OCRToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FileHashToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FileUploadToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FileUploadBufferedToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FileChunkUploadToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
+    Friend WithEvents RSSPullToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TestCamelCaseSplitToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SQLiteTestsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DBConnectToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CreateSQLiteDBToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ShowEndpointsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents UnhandledExceptionsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ListenerFunctionsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents GetListenerFilesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LongFilenameHASHToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TextStringHashToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ValidateLongDirectroryNamesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents GetDirFilesByFilterToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents GenWhereINDictToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents NetworkListenerToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TestCKDBTBLToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents QuickListFilesInDIrAndSubdirToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents GenWhereinClausesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TestSyncSelectedFoldersToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator8 As ToolStripSeparator
 End Class
