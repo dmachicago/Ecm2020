@@ -8234,9 +8234,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Dim iCnt As Integer = 0
         Dim idx As Integer = 0
 
-        s = " SELECT distinct ExtCode
-                FROM IncludedFiles 
-                where Userid = '" + UserID + "'"
+        s = " SELECT distinct ExtCode FROM IncludedFiles where Userid = '" + UserID + "'"
 
         s = "select distinct FQN, EXtcode from IncludedFiles where UserID = '" + UserID + "'"
         Try
@@ -8259,11 +8257,17 @@ Public Class clsDatabaseARCH : Implements IDisposable
                             'If WC.Contains(",") Then
                             '    WC = WC.Trim.Substring(0, WC.Length - 1)
                             'End If
-                            TDict.Add(PrevDir, WC)
-                            WC = ""
-                            WC += ExtCode.ToLower + ","
+                            If Not TDict.Keys.Contains(PrevDir) Then
+                                TDict.Add(PrevDir, WC)
+                                WC = ""
+                                WC += ExtCode.ToLower + ","
+                            Else
+                                WC = ""
+                                WC += ExtCode.ToLower + ","
+                                TDict(PrevDir) = WC
+                            End If
                         Else
-                            WC += ExtCode.ToLower + ","
+                                WC += ExtCode.ToLower + ","
                         End If
                         iCnt += 1
                         PrevDir = CurrDir
@@ -10388,6 +10392,41 @@ SkipThisOne:
             L.Sort()
         End Using
         Return L
+    End Function
+
+    Public Function GetIncludedFiletypesByUserID(ByVal UserID As String) As String
+
+        Dim ConnStr As String = getRepoConnStr()
+        Dim xlist As String = ""
+        Dim S As String = ""
+        Dim Conn As New SqlConnection(ConnStr)
+        Dim b As Boolean = False
+        Dim IncludeExt As String = ""
+
+
+        S = "select distinct lower(extcode) from IncludedFiles where UserID = '" + UserID + "' "
+
+        Using Conn
+            If Conn.State = ConnectionState.Closed Then
+                Conn.Open()
+            End If
+
+            Dim command As New SqlCommand(S, Conn)
+            Dim RSData As SqlDataReader = Nothing
+            RSData = command.ExecuteReader()
+            If RSData.HasRows Then
+                Do While RSData.Read()
+                    xlist += RSData.GetValue(0).ToString + ","
+                Loop
+            End If
+            RSData.Close()
+            RSData = Nothing
+            command.Connection.Close()
+            command = Nothing
+            Conn.Close()
+            Conn = Nothing
+        End Using
+        Return xlist
     End Function
 
 

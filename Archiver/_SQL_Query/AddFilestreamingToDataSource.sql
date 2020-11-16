@@ -5,6 +5,12 @@ go
 ALTER TABLE Datasource ALTER COLUMN RowGuid Add ROWGUIDCOL 
 go
 
+DISABLE TRIGGER [TRG_DEL_DataSourceDelHist] ON DataSource;  
+DISABLE TRIGGER [trgDataSourceDelete] ON DataSource;  
+DISABLE TRIGGER [trigSetDataSourceOcr] ON DataSource;  
+DISABLE TRIGGER [trigSetHashFile] ON DataSource;  
+DISABLE TRIGGER [trigSetHashFileOnUpdt] ON DataSource;  
+go
 
 EXEC dbo.sp_fulltext_table @tabname=N'[dbo].[DataSource]', @action=N'deactivate'
 GO
@@ -60,5 +66,11 @@ ALTER FULLTEXT INDEX ON DataSource START FULL POPULATION;
 EXEC dbo.sp_fulltext_table @tabname=N'[dbo].[DataSource]', @action=N'activate'
 GO
 
+enable TRIGGER [TRG_DEL_DataSourceDelHist] ON DataSource;  
+enable TRIGGER [trgDataSourceDelete] ON DataSource;  
+enable TRIGGER [trigSetDataSourceOcr] ON DataSource;  
+enable TRIGGER [trigSetHashFile] ON DataSource;  
+enable TRIGGER [trigSetHashFileOnUpdt] ON DataSource;  
+go
 
 -- exec spFtiStatus
