@@ -77,13 +77,13 @@ Public Class clsDbLocal : Implements IDisposable
             'WDM COMMENTED OUT Nov-01-2020
             'Dim AllowedExts As List(Of String) = DB.getUsersAllowedFileExt(gCurrUserGuidID)
 
-            truncateDirs()
-            truncateFiles()
-            truncateInventory()
-            'DBLocal.truncateOutlook()
-            'DBLocal.truncateExchange()
-            'DBLocal.truncateContacts()
-            truncateDirFiles()
+            'truncateDirs()
+            'truncateFiles()
+            'truncateInventory()
+            ''DBLocal.truncateOutlook()
+            ''DBLocal.truncateExchange()
+            ''DBLocal.truncateContacts()
+            'truncateDirFiles()
 
             'aFolders(0) = FQN + "|" + IncludeSubDirs + "|" + DB_ID + "|" + VersionFiles + "|" + DisableFolder + "|" + OcrDirectory + "|" + RetentionCode
             'DB.GetContentArchiveFileFolders(gCurrLoginID, aFolders)
@@ -134,7 +134,7 @@ Public Class clsDbLocal : Implements IDisposable
                         If IncludeSubDirs.ToUpper.Equals("Y") Then
                             iCnt = 0
                             di = New DirectoryInfo(DirName)
-                            For Each FI In di.GetFiles("*.*", SearchOption.AllDirectories)
+                            For Each FI In di.GetFiles("*", SearchOption.AllDirectories)
                                 Try
                                     iCnt += 1
                                     FQN = FI.FullName
@@ -145,7 +145,7 @@ Public Class clsDbLocal : Implements IDisposable
                                     CurrDir = FI.DirectoryName
                                     FRM.Label1.Text = CurrDir
 
-                                    If Not FQN.Contains("\.git") Then
+                                    If Not FQN.Contains(".git") And Not FQN.Contains("\git\") Then
                                         If WC.Contains(EXT + ",") Then
                                             FRM.lblPdgPages.Text = FI.Name + " @ " + FI.Length.ToString()
                                             FRM.lblFileSpec.Text = iCnt.ToString
@@ -156,7 +156,7 @@ Public Class clsDbLocal : Implements IDisposable
                                             B = addInventory(DirID, FileID, FI.Length, LastWriteTime, False, hash)
                                         End If
                                     Else
-                                        Console.WriteLine("*")
+                                        Console.Write("*")
                                     End If
                                 Catch ex As Exception
                                     LOG.WriteToArchiveLog("ERROR 01 Reinventory: " + ex.Message)
@@ -174,7 +174,7 @@ Public Class clsDbLocal : Implements IDisposable
                                     LastWriteTime = FI.LastWriteTime
                                     CreationTime = FI.CreationTime
                                     EXT = FI.Extension
-                                    If Not FQN.Contains("\.git") Then
+                                    If Not FQN.Contains(".git") And Not FQN.Contains("\git\") Then
                                         CurrDir = FI.DirectoryName
                                         FRM.Label1.Text = CurrDir
                                         If WC.Contains(EXT + ",") Then
@@ -192,7 +192,6 @@ Public Class clsDbLocal : Implements IDisposable
                                 Catch ex As Exception
                                     LOG.WriteToArchiveLog("ERROR 02 Reinventory: " + ex.Message)
                                 End Try
-
                             Next
                             Application.DoEvents()
                         End If
@@ -4453,6 +4452,40 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Sub
 
+    Function getFileInventory() As Dictionary(Of String, DateTime)
+
+        Dim DICT As New Dictionary(Of String, DateTime)
+
+        bConnSet = setListenerConn()
+
+        Dim FilesToProcess As New List(Of String)
+        Dim sql As String = "select FQN from FileNeedProcessing limit 1 ;"
+        Dim FQN As String = ""
+        Dim DirName As String = ""
+        Dim i As Integer = 0
+
+        Using CMD As New SQLiteCommand(sql, ListernerConn)
+            CMD.CommandText = sql
+            Dim rdr As SQLiteDataReader = CMD.ExecuteReader()
+            Using rdr
+                While (rdr.Read())
+                    FQN = rdr.GetValue(0).ToString()
+                    DirName = Path.GetDirectoryName(FQN)
+                    If Not FilesToProcess.Contains(DirName) Then
+                        FilesToProcess.Add(DirName)
+                        Exit While
+                    End If
+                End While
+            End Using
+        End Using
+
+        If FilesToProcess.Count.Equals(0) Then
+            FilesToProcess.Add("C:\temp")
+        End If
+
+
+
+    End Function
 
     ' TODO: override Finalize() only if Dispose(disposing As Boolean) above has code to free unmanaged resources.
     'Protected Overrides Sub Finalize()

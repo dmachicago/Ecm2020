@@ -6,6 +6,7 @@
 /3rdPartySoftware
 /.git
 /.vs
+.vs
 ns
 bin
 debug
