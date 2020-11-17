@@ -1,0 +1,214 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Rewards">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="hfit-tgt.cloudapp.net,2:dmiller">
+          <Created>2015-07-01T17:10:28.5363595-05:00</Created>
+          <Type>SQL</Type>
+          <Server>hfit-tgt.cloudapp.net,2</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB>KenticoCMS_Prod1</InitialDB>
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="tgt-azusql01.cloudapp.net,1433:dmiller">
+          <Created>2015-10-19T08:50:19.9976735-05:00</Created>
+          <Type>SQL</Type>
+          <Server>tgt-azusql01.cloudapp.net,1433</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="create_job_EDW_getStaging_RewardUserDetail.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>create_job_EDW_getStaging_RewardUserDetail.sql</FullPath>
+        </FileNode>
+        <FileNode Name="create_job_EDW_GetStagingData_RewardAwardDetail.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>create_job_EDW_GetStagingData_RewardAwardDetail.sql</FullPath>
+        </FileNode>
+        <FileNode Name="create_job_EDW_GetStagingData_RewardsDefinition.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>create_job_EDW_GetStagingData_RewardsDefinition.sql</FullPath>
+        </FileNode>
+        <FileNode Name="create_job_EDW_GetStagingData_RewardTriggerParameters.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>create_job_EDW_GetStagingData_RewardTriggerParameters.sql</FullPath>
+        </FileNode>
+        <FileNode Name="create_job_EDW_GetStagingData_RewardUserLevel.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>create_job_EDW_GetStagingData_RewardUserLevel.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Create_STAGING_EDW_RewardTriggerParameters.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>Create_STAGING_EDW_RewardTriggerParameters.sql</FullPath>
+        </FileNode>
+        <FileNode Name="create_STAGING_EDW_RewardUserDetail.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>create_STAGING_EDW_RewardUserDetail.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CkRewardUserDetailHasChanged.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CkRewardUserDetailHasChanged.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_RewardAwardDetail_AddDeletedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_RewardAwardDetail_AddDeletedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_RewardAwardDetail_AddNewRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_RewardAwardDetail_AddNewRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_RewardAwardDetail_AddUpdatedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_RewardAwardDetail_AddUpdatedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_RewardsDefinition_AddDeletedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_RewardsDefinition_AddDeletedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_RewardTriggerParameters_AddDeletedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_RewardTriggerParameters_AddDeletedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_RewardTriggerParameters_AddNewRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_RewardTriggerParameters_AddNewRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_RewardTriggerParameters_AddUpdatedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_RewardTriggerParameters_AddUpdatedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_RewardUserDetail_AddDeletedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_RewardUserDetail_AddDeletedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_RewardUserDetail_AddNewRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_RewardUserDetail_AddNewRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_RewardUserDetail_AddUpdatedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_RewardUserDetail_AddUpdatedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_RewardsDefinition_AddNewRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_RewardsDefinition_AddNewRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_RewardsDefinition_AddUpdatedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_RewardsDefinition_AddUpdatedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_STAGING_EDW_RewardAwardDetail.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_STAGING_EDW_RewardAwardDetail.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_STAGING_EDW_RewardsDefinition.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_STAGING_EDW_RewardsDefinition.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_STAGING_EDW_RewardTriggerParameters.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_STAGING_EDW_RewardTriggerParameters.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_STAGING_EDW_RewardUserDetail.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_STAGING_EDW_RewardUserDetail.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_STAGING_EDW_RewardUserLevel.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_STAGING_EDW_RewardUserLevel.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TEST_EDW_RewardAwardDetail.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>TEST_EDW_RewardAwardDetail.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TEST_EDW_RewardsDefinition.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>TEST_EDW_RewardsDefinition.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TEST_EDW_RewardTriggerParameters.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>TEST_EDW_RewardTriggerParameters.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TEST_EDW_RewardUserDetail.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>TEST_EDW_RewardUserDetail.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

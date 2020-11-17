@@ -1,0 +1,917 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="HealthAssessmentCT">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="hfit-azulowersql01.cloudapp.net:dmiller">
+          <Created>2015-09-09T06:17:49.4168606-06:00</Created>
+          <Type>SQL</Type>
+          <Server>hfit-azulowersql01.cloudapp.net</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="hfitazuprdsql05.cloudapp.net:dale.miller">
+          <Created>2016-04-09T08:02:44.4099056-06:00</Created>
+          <Type>SQL</Type>
+          <Server>hfitazuprdsql05.cloudapp.net</Server>
+          <UserName>dale.miller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="hfit-sqlprd.cloudapp.net,5:dmiller">
+          <Created>2015-07-13T09:58:22.8772579-06:00</Created>
+          <Type>SQL</Type>
+          <Server>hfit-sqlprd.cloudapp.net,5</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="hfit-tgt.cloudapp.net,2:dmiller">
+          <Created>2015-07-02T10:11:30.7052634-06:00</Created>
+          <Type>SQL</Type>
+          <Server>hfit-tgt.cloudapp.net,2</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB>KenticoCMS_Prod1</InitialDB>
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="tgt-azusql01.cloudapp.net,1433:dmiller">
+          <Created>2015-08-31T06:22:31.131612-06:00</Created>
+          <Type>SQL</Type>
+          <Server>tgt-azusql01.cloudapp.net,1433</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="tgt-azusql02.cloudapp.net,1433:dmiller">
+          <Created>2016-02-29T10:28:12.7868088-07:00</Created>
+          <Type>SQL</Type>
+          <Server>tgt-azusql02.cloudapp.net,1433</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="@IVP.HA.Pull.Build.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>@IVP.HA.Pull.Build.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_@BaseLineCT_Pull_Col_changes.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>_@BaseLineCT_Pull_Col_changes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_ChangePrimaryKey.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>_ChangePrimaryKey.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_FIND_Modifed_Columns_CT.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>_FIND_Modifed_Columns_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="create_CT_VersionTracking.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>create_CT_VersionTracking.sql</FullPath>
+        </FileNode>
+        <FileNode Name="denormalize_view_to_column_level.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>denormalize_view_to_column_level.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DropAllForeignKeyCONSTRAINTS.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>DropAllForeignKeyCONSTRAINTS.sql</FullPath>
+        </FileNode>
+        <FileNode Name="findDisabledJobs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>findDisabledJobs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="FindNestedViews.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>FindNestedViews.sql</FullPath>
+        </FileNode>
+        <FileNode Name="GetRowCountForAllTablesInDB.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>GetRowCountForAllTablesInDB.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ImplementChangeTrackingPartial.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>ImplementChangeTrackingPartial.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Index_Recs_HA.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>Index_Recs_HA.sql</FullPath>
+        </FileNode>
+        <FileNode Name="InsertUnionDataIntoTempTable.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>InsertUnionDataIntoTempTable.sql</FullPath>
+        </FileNode>
+        <FileNode Name="JOB_proc_HA_MasterUpdate.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>JOB_proc_HA_MasterUpdate.sql</FullPath>
+        </FileNode>
+        <FileNode Name="job_statistics.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>job_statistics.sql</FullPath>
+        </FileNode>
+        <FileNode Name="JobDDL.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>JobDDL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Load_Test_Pages.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>Load_Test_Pages.sql</FullPath>
+        </FileNode>
+        <FileNode Name="MASTER_CT_ON-OFF.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>MASTER_CT_ON-OFF.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Modify_FACT_EDW_HFIT_HEALTHASSESMENTUSERQUESTIONGROUPRESULTS.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>Modify_FACT_EDW_HFIT_HEALTHASSESMENTUSERQUESTIONGROUPRESULTS.sql</FullPath>
+        </FileNode>
+        <FileNode Name="PrintImmediate.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>PrintImmediate.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_ConvertProcViewToMartView.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_ConvertProcViewToMartView.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_create_FACT_Tables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_create_FACT_Tables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_EDW_Reload_EDW_HealthAssessment.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_EDW_Reload_EDW_HealthAssessment.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_EDW_UpdateFACTTables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_EDW_UpdateFACTTables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_EnableChangeTracking.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_EnableChangeTracking.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_GenCTVerHIST_Trigger.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_GenCTVerHIST_Trigger.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_GenHistoryTrigger.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_GenHistoryTrigger.sql</FullPath>
+        </FileNode>
+        <FileNode Name="CheckForHealthAssesmentUpdates.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>CheckForHealthAssesmentUpdates.sql</FullPath>
+        </FileNode>
+        <FileNode Name="CI_ItemID_HealthAssesmentUserAnswers.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>CI_ItemID_HealthAssesmentUserAnswers.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Create_STAGED_EDW_HA_RiskArea_GroupResult_Joined.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>Create_STAGED_EDW_HA_RiskArea_GroupResult_Joined.sql</FullPath>
+        </FileNode>
+        <FileNode Name="CREATE_STAGING_EDW_HealthAssessment_TABLE.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>CREATE_STAGING_EDW_HealthAssessment_TABLE.sql</FullPath>
+        </FileNode>
+        <FileNode Name="create_TEMP_Staging_EDW_HealthAssessment_DATA.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>create_TEMP_Staging_EDW_HealthAssessment_DATA.sql</FullPath>
+        </FileNode>
+        <FileNode Name="CreateJobPullEdwData.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>CreateJobPullEdwData.sql</FullPath>
+        </FileNode>
+        <FileNode Name="createTable_EDW_CT_ExecutionLog.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>createTable_EDW_CT_ExecutionLog.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_HA_MarkNewRecords.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_HA_MarkNewRecords.sql</FullPath>
+        </FileNode>
+        <FileNode Name="func_EDW_fetchHaData.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>func_EDW_fetchHaData.sql</FullPath>
+        </FileNode>
+        <FileNode Name="isJobRunning.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>isJobRunning.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_Add_EDW_CT_StdCols.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_Add_EDW_CT_StdCols.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_Apply_EDW_HA_Updates_ToStaging_Table.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_Apply_EDW_HA_Updates_ToStaging_Table.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CkHaDataChanged.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CkHaDataChanged.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_clean_EDW_Staging.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_clean_EDW_Staging.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_Create_STAGED_EDW_PkHashkey_TBL.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_Create_STAGED_EDW_PkHashkey_TBL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CREATE_STAGING_EDW_HealthAssessment_TABLE.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CREATE_STAGING_EDW_HealthAssessment_TABLE.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_HA_AddDeletedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_HA_AddDeletedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_HA_AddNewRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_HA_AddNewRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_HA_AddUpdatedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_HA_AddUpdatedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_HA_MarkDeletedRecords.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_HA_MarkDeletedRecords.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_HA_MarkUpdatedRecords.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_HA_MarkUpdatedRecords.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_Performance_History.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_Performance_History.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_Denormalize_EDW_HealthAssessment_VIEWS.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_Denormalize_EDW_HealthAssessment_VIEWS.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_Denormalize_EDW_HealthAssessment_VIEWS_CT_Only.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_Denormalize_EDW_HealthAssessment_VIEWS_CT_Only.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_Denormalize_EDW_HealthAssessment_Views_TVAR.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_Denormalize_EDW_HealthAssessment_Views_TVAR.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_Denormalize_EDW_Views.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_Denormalize_EDW_Views.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_EDW_BuildHAHashkeys.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_EDW_BuildHAHashkeys.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_EDW_ChangeGmtToCentralTime.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_EDW_ChangeGmtToCentralTime.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_EDW_Create_HA_TempTable.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_EDW_Create_HA_TempTable.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_EDW_Create_HFIT_LKP_EDW_ALLOWED_MPI.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_EDW_Create_HFIT_LKP_EDW_ALLOWED_MPI.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_EDW_Gen_Temp_PkHashKeys.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_EDW_Gen_Temp_PkHashKeys.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_EDW_HA_Master.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_EDW_HA_Master.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_EDW_Procedure_Performance_Monitor.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_EDW_Procedure_Performance_Monitor.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_EDW_PullHA_Temp_Data.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_EDW_PullHA_Temp_Data.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_EDW_Populate_Staging_Tables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_EDW_Populate_Staging_Tables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_genPullChangesProc.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_genPullChangesProc.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_genPullSyncProcTests.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_genPullSyncProcTests.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_genSelectInto.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>proc_genSelectInto.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_GetColumnID.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_GetColumnID.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_GetMaxCTVersionNbr.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_GetMaxCTVersionNbr.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_HA_Create_BASE_MART_EDW_HealthAssesment.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_HA_Create_BASE_MART_EDW_HealthAssesment.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_HA_MasterUpdate.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>proc_HA_MasterUpdate.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_HA_Update_CMS_Site.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_HA_Update_CMS_Site.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_HA_Update_HFit_Account.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_HA_Update_HFit_Account.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_HA_Update_HFit_HealthAssesmentUserAnswers.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_HA_Update_HFit_HealthAssesmentUserAnswers.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_HA_Update_HFit_HealthAssesmentUserModule.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_HA_Update_HFit_HealthAssesmentUserModule.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_HA_Update_HFit_HealthAssesmentUserQuestion.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_HA_Update_HFit_HealthAssesmentUserQuestion.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_HA_Update_HFit_HealthAssesmentUserRiskArea.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>proc_HA_Update_HFit_HealthAssesmentUserRiskArea.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_HA_Update_HFit_HealthAssesmentUserRiskCategory.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_HA_Update_HFit_HealthAssesmentUserRiskCategory.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_HA_Update_View_EDW_HealthAssesmentQuestions.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_HA_Update_View_EDW_HealthAssesmentQuestions.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_Load_HA_CT_TempTable.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_Load_HA_CT_TempTable.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_MartRemoveDelTableNotNulls.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_MartRemoveDelTableNotNulls.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_MartTestTableDataPull.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_MartTestTableDataPull.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_Pull_HA_HashKeys.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_Pull_HA_HashKeys.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_PullEDW_HealthAssesment_CT.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_PullEDW_HealthAssesment_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_QuickRowCount.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_QuickRowCount.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_EDW_CombinedHAViews.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_EDW_CombinedHAViews.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_RemoveNotNullCols.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_RemoveNotNullCols.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_SaveCTVerHist.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_SaveCTVerHist.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_SaveCurrCTVersionNbr.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_SaveCurrCTVersionNbr.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_STAGING_EDW_HA_Changes.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_STAGING_EDW_HA_Changes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_STAGING_EDW_HA_Changes_V2.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_STAGING_EDW_HA_Changes_V2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_STAGING_EDW_HealthAssesmentClientView.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_STAGING_EDW_HealthAssesmentClientView.sql</FullPath>
+        </FileNode>
+        <FileNode Name="PROC_Staging_Pull_EDW_HealthAssesment_TEMPDATA.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>PROC_Staging_Pull_EDW_HealthAssesment_TEMPDATA.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_trace.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_trace.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_TrackTableRowCounts.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_TrackTableRowCounts.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_Validate_TrackerName_Length.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_Validate_TrackerName_Length.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_dependsV2.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>sp_dependsV2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sync_table_colunns.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>sync_table_colunns.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TEMP_GEN_HA_TableVars.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>TEMP_GEN_HA_TableVars.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Test_EDW_HealthAssesment.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>Test_EDW_HealthAssesment.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Test_EDW_HealthAssesment_V2.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>Test_EDW_HealthAssesment_V2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TEST_NoCT_LoadAndUpdateData.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>TEST_NoCT_LoadAndUpdateData.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TEST_proc_Gen_EDW_HealthAssessment_Staging_Tables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>TEST_proc_Gen_EDW_HealthAssessment_Staging_Tables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TESTING_Update_HA_BaseTable_Timestamp_by_MS.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>TESTING_Update_HA_BaseTable_Timestamp_by_MS.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TRIG_DEL_BASE_HFit_HealthAssesmentUserStarted_HA_Sync.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>TRIG_DEL_BASE_HFit_HealthAssesmentUserStarted_HA_Sync.sql</FullPath>
+        </FileNode>
+        <FileNode Name="View_CMS_Tree_Joined.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>View_CMS_Tree_Joined.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_CT_VersionTracking.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_CT_VersionTracking.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssesment_MART.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_HealthAssesment_MART.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssessment_MART_Pull_CMS1.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>view_EDW_HealthAssessment_MART_Pull_CMS1.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssessment_MART_Pull_CMS2.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>view_EDW_HealthAssessment_MART_Pull_CMS2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssessment_MART_Pull_CMS3.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_HealthAssessment_MART_Pull_CMS3.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssessment_MART_WithCT.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_HealthAssessment_MART_WithCT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_PullHAData_NoCT.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_PullHAData_NoCT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_PullHAData_NoCT_Deletes.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_PullHAData_NoCT_Deletes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_PullHAData_NoCT_Indexed.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_PullHAData_NoCT_Indexed.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_PullHAData_NoCT_Inserts.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_PullHAData_NoCT_Inserts.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_PullHAData_NoCT_Updates.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_PullHAData_NoCT_Updates.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_RewardTriggerParameters_CT.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_RewardTriggerParameters_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_RewardUserLevel.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_RewardUserLevel.sql</FullPath>
+        </FileNode>
+        <FileNode Name="View_FACT_HFIT_HEALTHASSESMENTUSERRISKAREA.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>View_FACT_HFIT_HEALTHASSESMENTUSERRISKAREA.sql</FullPath>
+        </FileNode>
+        <FileNode Name="View_HFit_HACampaign_Joined.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>View_HFit_HACampaign_Joined.sql</FullPath>
+        </FileNode>
+        <FileNode Name="View_HFit_HealthAssesmentQuestions.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>View_HFit_HealthAssesmentQuestions.sql</FullPath>
+        </FileNode>
+        <FileNode Name="View_HFit_RewardLevel_Joined.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>View_HFit_RewardLevel_Joined.sql</FullPath>
+        </FileNode>
+        <FileNode Name="View_HFit_RewardTrigger_Joined.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>View_HFit_RewardTrigger_Joined.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_MART_EDW_HealthAssesment.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>view_MART_EDW_HealthAssesment.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_MART_HealthAssesment.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_MART_HealthAssesment.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_MART_HealthAssesment_CT.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>view_MART_HealthAssesment_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="XXX_CodeToPullChangesOnlyByVersionID.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>XXX_CodeToPullChangesOnlyByVersionID.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items>
+        <FileNode Name="@IVP.HA.Pull.Build.bat">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>@IVP.HA.Pull.Build.bat</FullPath>
+        </FileNode>
+        <FileNode Name="@IVP.MART.Build.bat">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>@IVP.MART.Build.bat</FullPath>
+        </FileNode>
+        <FileNode Name="_CkFileExists.bat">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>_CkFileExists.bat</FullPath>
+        </FileNode>
+        <FileNode Name="_ImplementAuditTracking.03.25.bat">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>_ImplementAuditTracking.03.25.bat</FullPath>
+        </FileNode>
+        <FileNode Name="_ImplementChangeTracking.03.25.BAT">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>_ImplementChangeTracking.03.25.BAT</FullPath>
+        </FileNode>
+        <FileNode Name="_VerifyFileExist.bat">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>_VerifyFileExist.bat</FullPath>
+        </FileNode>
+        <FileNode Name="CheckFile.bat">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>CheckFile.bat</FullPath>
+        </FileNode>
+        <FileNode Name="CheckFileHA_IVP.bat">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>CheckFileHA_IVP.bat</FullPath>
+        </FileNode>
+        <FileNode Name="ckFileCT.bat">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>ckFileCT.bat</FullPath>
+        </FileNode>
+        <FileNode Name="CT Test Flow.vsdx">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>CT Test Flow.vsdx</FullPath>
+        </FileNode>
+        <FileNode Name="HealthAssessmentIndexedViewFlow.vsdx">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>HealthAssessmentIndexedViewFlow.vsdx</FullPath>
+        </FileNode>
+        <FileNode Name="proc_EDW_BuildHAHashkeys">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>proc_EDW_BuildHAHashkeys</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

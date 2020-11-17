@@ -1,0 +1,14 @@
+N|ALIEN15|AW2016|sa|Junebug1
+N|SVR2016|AW_VMWARE|sa|Junebug1
+N|SVR2016|DFINAnalytics|sa|Junebug1
+N|SVR2016|DFS|sa|Junebug1
+N|SVR2016|MstrData|sa|Junebug1
+N|SVR2016|MstrLog|sa|Junebug1
+N|SVR2016|MstrPort|sa|Junebug1
+N|SVR2016|TestXml|sa|Junebug1
+N|ALIEN15|DFINAnalytics|sa|Junebug1
+N|ALIEN15|PowerDatabase|sa|Junebug1
+N|ALIEN15|TestDB|sa|Junebug1
+N|ALIEN15|WDM|sa|Junebug1
+Y|dfin.database.windows.net,1433|AW_AZURE|wmiller|Junebug1
+Y|dfin.database.windows.net,1433|TestAzureDB|wmiller|Junebug1

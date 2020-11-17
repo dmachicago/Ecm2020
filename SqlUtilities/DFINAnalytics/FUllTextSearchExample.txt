@@ -1,0 +1,81 @@
+CREATE FULLTEXT CATALOG FT_Catalog_ECM;
+GO
+CREATE FULLTEXT INDEX ON dbo.ResearchDocument ( 
+		DocTitle Language 1033, 
+		ReviewerName Language 1033, 
+		EmailAddress Language 1033, 
+		Comments Language 1033 ) 
+	KEY INDEX FTIDX_ECM_Docs ON FT_Catalog_ECM;
+GO
+
+--script using the sys.dm_fts_keywords dynamic management function.
+DECLARE @SearchText NVARCHAR(2000)
+SET @SearchText = ''
+
+SELECT
+   @SearchText = @SearchText + display_term + ' OR '
+FROM
+   sys.dm_fts_index_keywords ( DB_ID('ECMDatabase'), object_id('ResearchDocument') )
+WHERE
+   display_term like '%fermi%';
+   
+
+--Reduce incore Search Variable   
+SELECT
+   @SearchText = LEFT (@SearchText, LEN(@SearchText) - 4);
+
+   
+--Contents "fermilab OR fermilaboritory" in my test case
+--In this case the OR of candidate tokens provides the list to Full Text Search.
+--As mentioned before, the performance is based on the ability of the function
+--to return those values.   You can also create a physical table that you
+--periodically repopulate with the contents of the function, so that you can query it more quickly.
+SELECT *
+FROM
+   ResearchDocument
+WHERE
+   CONTAINS(*, @SearchText);
+   
+--Search ONE column   
+SELECT
+   DocTitle, GammaPenetrationCoeff
+FROM
+   Production.Product
+WHERE
+   GammaPenetrationCoeff >= 4.5
+   AND CONTAINS(DocTitle, 'Higgs boson')
+GO
+
+--Search for terms lingusitically similar 
+SELECT	
+   Title
+FROM
+   dbo.ResearchDocument
+WHERE
+   FREETEXT (ResearchDocument, 'God Particle')
+GO
+
+
+--***********************************************************************
+SELECT * FROM sys.fulltext_languages;   
+
+SELECT * FROM sys.dm_fts_index_keywords(db_id('TestXml'), object_id('dbo.Docs'))  
+GO  
+
+EXEC sp_help_fulltext_system_components 'filter';    
+
+exec sp_fulltext_service 'update_languages';   
+
+EXEC sp_fulltext_service 'load_os_resources', 1  
+GO
+EXEC sp_fulltext_service 'verify_signature', 0
+GO
+exec sp_fulltext_service 'restart_all_fdhosts';  
+go
+
+SELECT *
+FROM sys.fulltext_document_types
+WHERE document_type LIKE '%pdf%'
+
+
+select DocID, DocExt from Docs where contains(*,'bond');

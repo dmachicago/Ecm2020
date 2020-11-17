@@ -1,0 +1,176 @@
+﻿<html lang="en">
+<head>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META name="Generator" content="Visustin">
+<META name="description" content="T-SQL flow chart saved by Aivosto Visustin (www.aivosto.com).">
+<META name="keywords" content="T-SQL, flow graph, diagram">
+
+<title>T-SQL flow chart: proc_genBaseUpdtTrigger.sql</title>
+
+<style type="text/css">
+<!--
+BODY      { margin: 0; }
+TEXTAREA  { background: #ffffcc; font-size: 8pt; }
+A:link, A:visited { color: blue; }
+TR.bar    { background: white; font-family: Verdana, Arial, Sans-Serif; font-size: 70%; }
+TR TD     { padding: 0; background: white; }
+TR.bar TD { padding: 2px 5px 2px 5px; background: #ccccff; }
+-->
+</style>
+
+<script type="text/javascript">
+<!--
+function hidecode(id) { 
+  if (id.style.display=="none") {
+    id.style.display="";
+    hidelink.innerHTML="Hide code";
+  } else {
+    id.style.display="none";
+    hidelink.innerHTML="Show code";
+  }
+}
+-->
+</script>
+</head>
+
+
+<body scroll=no>
+
+<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+
+<tr height="100%"><td id="#upper" colspan="2">
+ <iframe name="pic" width="100%" height="100%" src="proc_genBaseUpdtTrigger.png" frameborder="0" title="T-SQL flow chart: proc_genBaseUpdtTrigger.sql">
+  <a href="proc_genBaseUpdtTrigger.png"><img src="proc_genBaseUpdtTrigger.png" height="100%" title="T-SQL flow chart: proc_genBaseUpdtTrigger.sql"></a>
+ </iframe>
+</td></tr>
+
+<tr id="sourcecode"><td colspan="2">
+<textarea rows=15 readonly=yes style="width:100%; border-width:0;">
+
+GO
+PRINT 'Creating proc_genBaseUpdtTrigger';
+GO
+IF EXISTS ( SELECT
+           name
+           FROM sys.procedures
+           WHERE name = 'proc_genBaseUpdtTrigger')
+  BEGIN
+     DROP PROCEDURE
+        proc_genBaseUpdtTrigger;
+  END;
+GO
+
+/*
+declare @DDL as nvarchar(max) = '' ;
+exec proc_genBaseUpdtTrigger 'BASE_CMS_User', @DDL
+declare @S as nvarchar(max) = '' ;
+set @S = @DDL ;
+print @S ;
+*/
+
+CREATE PROCEDURE proc_genBaseUpdtTrigger (
+    @FactTable AS NVARCHAR (250)
+   , @DDL AS NVARCHAR (MAX) OUT)
+AS
+BEGIN
+
+/*------------------------------------------------------------------------------
+********************************************************************************
+Author:   W. Dale Miller
+Date:     11.12.2015
+Copyright:  DMA, Ltd.
+Purpose:          Generates a dynamic DELETE TRIGGER for a Table
+Last Test:  10.19.2015 WDM
+********************************************************************************
+*/
+
+  -- DECLARE @FactTable AS nvarchar ( 250 ) = 'view_EDW_HealthAssesment_CT';
+
+  DECLARE
+  @TBL NVARCHAR ( 100)
+ , @COL NVARCHAR ( 100)
+ , @DType AS NVARCHAR ( 50)
+ , @LEN AS INT
+ , @PRECISION AS INT
+ , @SCALE AS INT
+ , @mysql AS NVARCHAR ( MAX)
+ , @mysql2 AS NVARCHAR ( MAX) = 'SELECT '
+ , @i AS INT = 0
+ , @IS_NULLABLE AS NVARCHAR ( 10) ;
+
+  DECLARE db_cursor CURSOR
+     FOR
+       SELECT
+           table_name
+          , COLUMN_NAME
+          , DATA_TYPE
+          , character_maximum_length
+          , numeric_precision
+          , numeric_scale
+          , IS_NULLABLE
+           FROM information_schema.columns
+           WHERE table_name = @FactTable
+           ORDER BY
+             COLUMN_NAME;
+
+  --SELECT max(CT.SYS_CHANGE_VERSION) FROM CHANGETABLE(changes dbo.BASE_CMS_User, null) AS CT
+  OPEN db_cursor;
+  FETCH NEXT FROM db_cursor INTO @TBL , @COL , @DType , @LEN , @PRECISION , @SCALE , @IS_NULLABLE;
+  SET @mysql = 'DECLARE @ACTION as char(1) = ''U'';' + CHAR ( 10) ;
+  SET @mysql = @mysql + 'INSERT INTO ' + @TBL + '_DEL' + CHAR ( 10) ;
+  SET @mysql = @mysql + '(' + CHAR ( 10) ;
+  WHILE @@FETCH_STATUS = 0
+     BEGIN
+       SET @i = @i + 1;
+       IF @i = 1
+         BEGIN
+            SET @mysql = @mysql + ' [' + @col + ']';
+            SET @mysql2 = @mysql2 + CHAR (10) + ' [' + @col + ']';
+         END;
+       ELSE
+         BEGIN
+            SET @mysql = @mysql + CHAR ( 10) + '      , ';
+            SET @mysql = @mysql + '[' + @col + '] ';
+            SET @mysql2 = @mysql2 + CHAR ( 10) + '     , ';
+            SET @mysql2 = @mysql2 + '[' + @col + '] ';
+         END;
+
+       FETCH NEXT FROM db_cursor INTO  @TBL , @COL , @DType , @LEN , @PRECISION , @SCALE , @IS_NULLABLE;
+     END;
+  SET @mysql2 = REPLACE (@mysql2, '[Action]', '@Action') ;
+  SET @mysql = @mysql + ')' + CHAR ( 10) ;
+  --SET @mysql2 = @mysql2 + CHAR ( 10) + 'FROM ' + @FactTable;
+  SET @mysql2 = @mysql2 + CHAR ( 10) + 'FROM inserted ';
+  SET @mysql = @mysql + ' ' + @mysql2;
+
+  DECLARE @TrigDDL AS NVARCHAR (MAX) = 'CREATE TRIGGER TRIG_UPDT_' + @FactTable + CHAR (10) ;
+  SET @TrigDDL = @TrigDDL + '    ON dbo.' + @FactTable + CHAR (10) ;
+  SET @TrigDDL = @TrigDDL + '    AFTER UPDATE ' + CHAR (10) ;
+  SET @TrigDDL = @TrigDDL + 'AS ' + CHAR (10) ;
+  SET @TrigDDL = @TrigDDL + 'BEGIN ' + CHAR (10) ;
+  SET @TrigDDL = @TrigDDL + @mysql + CHAR (10) ;
+  SET @TrigDDL = @TrigDDL + 'END; ' + CHAR (10) ;
+
+  SELECT
+      @DDL = @TrigDDL;
+
+  --PRINT 'TRIGGER DDL: ***************************************';
+  --PRINT @DDL;
+  --PRINT '***************************************';
+  CLOSE db_cursor;
+  DEALLOCATE db_cursor;
+END;
+GO
+PRINT 'Created proc_genBaseUpdtTrigger';
+GO
+
+</textarea>
+</td></tr>
+
+<tr class="bar">
+ <td align="left"><a href="javascript:hidecode(sourcecode);" id="hidelink">Hide code</a></td>
+ <td align="right"><a href="http://www.aivosto.com/visustin.html">Visustin flow chart for T-SQL</a></td></tr>
+</table>
+
+</body>
+</html>

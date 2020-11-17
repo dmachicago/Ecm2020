@@ -1,0 +1,479 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="TrackerCompositeCT">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="hfit-azulowersql01.cloudapp.net:dmiller">
+          <Created>2015-10-23T08:03:53.9174163-06:00</Created>
+          <Type>SQL</Type>
+          <Server>hfit-azulowersql01.cloudapp.net</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="hfit-sqlprd.cloudapp.net,5:dmiller">
+          <Created>2016-01-06T15:23:58.4707986-07:00</Created>
+          <Type>SQL</Type>
+          <Server>hfit-sqlprd.cloudapp.net,5</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="hfit-tgt.cloudapp.net,2:dmiller">
+          <Created>2015-07-01T06:49:35.2245002-06:00</Created>
+          <Type>SQL</Type>
+          <Server>hfit-tgt.cloudapp.net,2</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB>KenticoCMS_Prod1</InitialDB>
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="tgt-azusql01.cloudapp.net,1433:dmiller">
+          <Created>2015-10-23T08:15:47.9332557-06:00</Created>
+          <Type>SQL</Type>
+          <Server>tgt-azusql01.cloudapp.net,1433</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="tgt-azusql02.cloudapp.net,1433:dmiller">
+          <Created>2016-03-25T11:37:02.5227863-06:00</Created>
+          <Type>SQL</Type>
+          <Server>tgt-azusql02.cloudapp.net,1433</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="_CheckRiCounts.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>_CheckRiCounts.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_FIND_Modifed_Columns_CT.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>_FIND_Modifed_Columns_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ALterCT_RetentionPeriod.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>ALterCT_RetentionPeriod.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Create_FACT_EDW_TrackerCompositeDetails.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>Create_FACT_EDW_TrackerCompositeDetails.sql</FullPath>
+        </FileNode>
+        <FileNode Name="create_FactTrackerViews.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>create_FactTrackerViews.sql</FullPath>
+        </FileNode>
+        <FileNode Name="create_job_EDW_GetStagingData_Trackers.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>create_job_EDW_GetStagingData_Trackers.sql</FullPath>
+        </FileNode>
+        <FileNode Name="create_Tracker_Indexes.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>create_Tracker_Indexes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Enable_Disable_MART_Table_Triggers.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Enable_Disable_MART_Table_Triggers.sql</FullPath>
+        </FileNode>
+        <FileNode Name="findLocks.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>findLocks.sql</FullPath>
+        </FileNode>
+        <FileNode Name="generate_All_Procedures_ReloadAll.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>generate_All_Procedures_ReloadAll.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Migrate_DataMart_Data_From_New_Servers.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>Migrate_DataMart_Data_From_New_Servers.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_AddSurrogateKeyToMissingTables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_AddSurrogateKeyToMissingTables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="LastStep_PopulateTrackerTables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>LastStep_PopulateTrackerTables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="MASTER_LKP_CTVersion.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>MASTER_LKP_CTVersion.sql</FullPath>
+        </FileNode>
+        <FileNode Name="populate_Tracker_FACT_Tables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>populate_Tracker_FACT_Tables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_AddSurrogateKeyRel.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_AddSurrogateKeyRel.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CheckOrphanData.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CheckOrphanData.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_ckChangeTracking.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_ckChangeTracking.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CkTrackerDataChanged.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CkTrackerDataChanged.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_ConvertAllDatetimeToDatetime2.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_ConvertAllDatetimeToDatetime2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_DIM_HFit_TrackerBMI_Cursor.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_DIM_HFit_TrackerBMI_Cursor.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_DIM_HFit_TrackerCardio_Cursor.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_DIM_HFit_TrackerCardio_Cursor.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_FACT_TrackerCompositeDetails_TrackerWholeGrains.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_FACT_TrackerCompositeDetails_TrackerWholeGrains.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_GenJobTrackerAddStep.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_GenJobTrackerAddStep.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_GenJobTrackerTableSync.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_GenJobTrackerTableSync.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_GenTableColumnsVariables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_GenTableColumnsVariables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_GenTrackerCTProc.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_GenTrackerCTProc.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_GenTrackerCTProcMASTER.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_GenTrackerCTProcMASTER.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_GenTrackerFactTable.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_GenTrackerFactTable.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_getAllTableIndexes.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_getAllTableIndexes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_GetTableForeignKeys.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_GetTableForeignKeys.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_MASTER_LKP_CTVersion_Fetch.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_MASTER_LKP_CTVersion_Fetch.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_MASTER_LKP_CTVersion_Update.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_MASTER_LKP_CTVersion_Update.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_PULL_ALL_Tracker_StoredProceduresFromDB.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_PULL_ALL_Tracker_StoredProceduresFromDB.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_RemoveAllCmsUserForeignKeys.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_RemoveAllCmsUserForeignKeys.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Proc_RenameFACT_RowNumber.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>Proc_RenameFACT_RowNumber.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_RI_Tracker_User.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_RI_Tracker_User.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_Set_Fact_TrackerDataSurrogateKeyData.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_Set_Fact_TrackerDataSurrogateKeyData.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_SetStdColsTracker.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_SetStdColsTracker.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_SetTrackerDataSurrogateKey.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_SetTrackerDataSurrogateKey.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_SetTrackerKeyColToStandardLength.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_SetTrackerKeyColToStandardLength.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_SetTrackerPrimaryKey.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_SetTrackerPrimaryKey.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_STAGING_EDW_CompositeTracker.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_STAGING_EDW_CompositeTracker.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_TableContainsAllCols.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_TableContainsAllCols.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_TableHasCol.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_TableHasCol.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_TrackerAddTrackerName.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_TrackerAddTrackerName.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_TrackerAlterPKEY.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_TrackerAlterPKEY.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_UdpateTrackerCompositeFACTTbl.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_UdpateTrackerCompositeFACTTbl.sql</FullPath>
+        </FileNode>
+        <FileNode Name="procGetTablePK.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>procGetTablePK.sql</FullPath>
+        </FileNode>
+        <FileNode Name="RegenerateTrackerCTProcs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>RegenerateTrackerCTProcs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Reload_ALL_BASE_Tables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>Reload_ALL_BASE_Tables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="RenameFACT_RowNumber.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>RenameFACT_RowNumber.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ScriptAllForeignKeyConstraints.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>ScriptAllForeignKeyConstraints.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SurrogateKey_Create.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>SurrogateKey_Create.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Test_TrackerComposite.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>Test_TrackerComposite.sql</FullPath>
+        </FileNode>
+        <FileNode Name="verify_JOINED_Tables_KeysAndIndexes.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>verify_JOINED_Tables_KeysAndIndexes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_DIM_UserPptDetail.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_DIM_UserPptDetail.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_TrackerCompositeDetails.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_TrackerCompositeDetails.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_TrackerCompositeDetails_CT.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_TrackerCompositeDetails_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_TrackerCompositeDetails_CT_ONLY.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_TrackerCompositeDetails_CT_ONLY.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_MART_HealthAssesment.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_MART_HealthAssesment.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_PPT_CMSUser.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_PPT_CMSUser.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_PPT_User_TrackerDetails.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_PPT_User_TrackerDetails.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items>
+        <FileNode Name="@IVP.Tracker_Build.bat">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>@IVP.Tracker_Build.bat</FullPath>
+        </FileNode>
+        <FileNode Name="CheckTrackerFileExist.bat">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>CheckTrackerFileExist.bat</FullPath>
+        </FileNode>
+        <FileNode Name="TrackerInventory.xlsx">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>TrackerInventory.xlsx</FullPath>
+        </FileNode>
+        <FileNode Name="TrackerSetupFlow.vsdx">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>TrackerSetupFlow.vsdx</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

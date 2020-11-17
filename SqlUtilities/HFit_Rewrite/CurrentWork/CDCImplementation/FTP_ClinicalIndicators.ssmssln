@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# SQL Server Management Studio Solution File, Format Version 12.00
+Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "FTP_ClinicalIndicators", "FTP_ClinicalIndicators.ssmssqlproj", "{B7D6E2FC-0AE1-41DF-97FD-423B87745705}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Default|Default = Default|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7D6E2FC-0AE1-41DF-97FD-423B87745705}.Default|Default.ActiveCfg = Default
+		{4CF0EB6F-F8B4-4B4B-8EA7-61A5C7604313}.Default|Default.ActiveCfg = Default
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

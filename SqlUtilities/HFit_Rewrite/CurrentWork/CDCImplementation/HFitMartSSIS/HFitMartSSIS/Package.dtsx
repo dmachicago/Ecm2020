@@ -1,0 +1,1077 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable
+  DTS:refId="Package" xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:CreatorName="Lenovo-WDM\wmiller"
+  DTS:CreatorComputerName="LENOVO-WDM"
+  DTS:CreationDate="11/24/2015 5:12:41 PM"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{0B6A315C-BFF4-4AED-B544-04A539AAB2FE}"
+  DTS:LastModifiedProductVersion="11.0.2100.60"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:DTSID="{B84444D2-8FA4-45C7-92DF-597663BF22C7}"
+  DTS:CreationName="SSIS.Package.3">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[tgt-azusql01.cloudapp.net,1433.KenticoCMS_DataMart.dmiller]"
+      DTS:ObjectName="tgt-azusql01.cloudapp.net,1433.KenticoCMS_DataMart.dmiller"
+      DTS:DTSID="{D824D6EC-9D20-4411-9F98-4E9E5224CF11}"
+      DTS:CreationName="OLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=tgt-azusql01.cloudapp.net,1433;User ID=dmiller;Initial Catalog=KenticoCMS_DataMart;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7u0Q1ak/qE2oABo4TjJIyQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACVZkVmNLoG69gt0cUqaaA/vO8CiZAZXzG4WTPRqtS6YgAAAAAOgAAAAAIAACAAAABsGxmcx7yGgHWBwm97BHDpjcAyF6A8g7ygzpDRzYK64CAAAABqU8TOYaAJNxecG3aJcgXA83EJM8UoNLDS3sVIbuquUUAAAACaSYkXw1yZvvAyAeVZd9o805C8a9/pag9waV2dgm7VRzERTuD6IQg2G9CE1o24jiFqaNa4u6Zl5Z7NWXGk3dZP</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:DTSID="{FF7E5801-A7C5-4102-AF7A-CCFF4CB8E80B}"
+      DTS:Description="Data Flow Task"
+      DTS:CreationName="SSIS.Pipeline.3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED"
+              name="dim_HFit_HealthAssesmentUserRiskArea_jOINED"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              description="OLE DB Destination"
+              usesDispositions="true"
+              version="4"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4">
+              <properties>
+                <property
+                  name="CommandTimeout"
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out.">0</property>
+                <property
+                  name="OpenRowset"
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset.">[dbo].[DIM_EDW_HFit_HealthAssesmentUserRiskArea_Joined]</property>
+                <property
+                  name="OpenRowsetVariable"
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."></property>
+                <property
+                  name="SqlCommand"
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  name="DefaultCodePage"
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source.">1252</property>
+                <property
+                  name="AlwaysUseDefaultCodePage"
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data.">false</property>
+                <property
+                  name="AccessMode"
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  typeConverter="AccessMode">3</property>
+                <property
+                  name="FastLoadKeepIdentity"
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on.">false</property>
+                <property
+                  name="FastLoadKeepNulls"
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on.">false</property>
+                <property
+                  name="FastLoadOptions"
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on.">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  name="FastLoadMaxInsertCommitSize"
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on.">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Connections[OleDbConnection]"
+                  name="OleDbConnection"
+                  description="The OLE DB runtime connection used to access the database."
+                  connectionManagerID="Package.ConnectionManagers[tgt-azusql01.cloudapp.net,1433.KenticoCMS_DataMart.dmiller]"
+                  connectionManagerRefId="Package.ConnectionManagers[tgt-azusql01.cloudapp.net,1433.KenticoCMS_DataMart.dmiller]" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Destination Input"
+                  hasSideEffects="true"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].Columns[UserRiskAreaItemID]"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[UserRiskAreaItemID]"
+                      externalMetadataColumnId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[UserRiskAreaItemID]"
+                      cachedName="UserRiskAreaItemID"
+                      cachedDataType="i4" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].Columns[HARISKCATEGORYITEMID]"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HARISKCATEGORYITEMID]"
+                      externalMetadataColumnId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[HARISKCATEGORYITEMID]"
+                      cachedName="HARISKCATEGORYITEMID"
+                      cachedDataType="i4" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].Columns[USERRISKAREACODENAME]"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[USERRISKAREACODENAME]"
+                      externalMetadataColumnId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[USERRISKAREACODENAME]"
+                      cachedName="USERRISKAREACODENAME"
+                      cachedDataType="wstr"
+                      cachedLength="100" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].Columns[HARISKAREANODEGUID]"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HARISKAREANODEGUID]"
+                      externalMetadataColumnId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[HARISKAREANODEGUID]"
+                      cachedName="HARISKAREANODEGUID"
+                      cachedDataType="guid" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].Columns[HARISKAREAVERSIONID]"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HARISKAREAVERSIONID]"
+                      externalMetadataColumnId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[HARISKAREAVERSIONID]"
+                      cachedName="HARISKAREAVERSIONID"
+                      cachedDataType="i4" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].Columns[HARISKAREASCORE]"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HARISKAREASCORE]"
+                      externalMetadataColumnId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[HARISKAREASCORE]"
+                      cachedName="HARISKAREASCORE"
+                      cachedDataType="r8" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].Columns[RISKAREAPREWEIGHTEDSCORE]"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[RISKAREAPREWEIGHTEDSCORE]"
+                      externalMetadataColumnId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[RISKAREAPREWEIGHTEDSCORE]"
+                      cachedName="RISKAREAPREWEIGHTEDSCORE"
+                      cachedDataType="r8" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].Columns[HAUserRiskArea_ITEMMODIFIEDWHEN]"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HAUserRiskArea_ITEMMODIFIEDWHEN]"
+                      externalMetadataColumnId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[HAUserRiskArea_ITEMMODIFIEDWHEN]"
+                      cachedName="HAUserRiskArea_ITEMMODIFIEDWHEN"
+                      cachedDataType="dbTimeStamp2"
+                      cachedScale="7" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].Columns[HAUserRiskArea_LASTMODIFIED]"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HAUserRiskArea_LASTMODIFIED]"
+                      externalMetadataColumnId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[HAUserRiskArea_LASTMODIFIED]"
+                      cachedName="HAUserRiskArea_LASTMODIFIED"
+                      cachedDataType="dbTimeStamp2"
+                      cachedScale="7" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].Columns[HAUserRiskArea_LastUpdateID]"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HAUserRiskArea_LastUpdateID]"
+                      externalMetadataColumnId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[HAUserRiskArea_LastUpdateID]"
+                      cachedName="HAUserRiskArea_LastUpdateID"
+                      cachedDataType="i4" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].Columns[HARiskAreaItemID]"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HARiskAreaItemID]"
+                      externalMetadataColumnId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[HARiskAreaItemID]"
+                      cachedName="HARiskAreaItemID"
+                      cachedDataType="i4" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].Columns[HAUserQuestionGroupResultsItemID]"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HAUserQuestionGroupResultsItemID]"
+                      externalMetadataColumnId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[HAUserQuestionGroupResultsItemID]"
+                      cachedName="HAUserQuestionGroupResultsItemID"
+                      cachedDataType="i4" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].Columns[POINTRESULTS]"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[POINTRESULTS]"
+                      externalMetadataColumnId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[POINTRESULTS]"
+                      cachedName="POINTRESULTS"
+                      cachedDataType="i4" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].Columns[QUESTIONGROUPCODENAME]"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[QUESTIONGROUPCODENAME]"
+                      externalMetadataColumnId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[QUESTIONGROUPCODENAME]"
+                      cachedName="QUESTIONGROUPCODENAME"
+                      cachedDataType="wstr"
+                      cachedLength="100" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].Columns[HAUserQuestionGroupResults_LASTMODIFIED]"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HAUserQuestionGroupResults_LASTMODIFIED]"
+                      externalMetadataColumnId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[HAUserQuestionGroupResults_LASTMODIFIED]"
+                      cachedName="HAUserQuestionGroupResults_LASTMODIFIED"
+                      cachedDataType="dbTimeStamp2"
+                      cachedScale="7" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].Columns[HAUserQuestionGroupResults_LastUpdateID]"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HAUserQuestionGroupResults_LastUpdateID]"
+                      externalMetadataColumnId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[HAUserQuestionGroupResults_LastUpdateID]"
+                      cachedName="HAUserQuestionGroupResults_LastUpdateID"
+                      cachedDataType="i4" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].Columns[LastModifiedWhen]"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[LastModifiedWhen]"
+                      externalMetadataColumnId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[LastModifiedWhen]"
+                      cachedName="LastModifiedWhen"
+                      cachedDataType="dbTimeStamp2"
+                      cachedScale="7" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].Columns[LastUpdateID]"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[LastUpdateID]"
+                      externalMetadataColumnId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[LastUpdateID]"
+                      cachedName="LastUpdateID"
+                      cachedDataType="i4" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].Columns[LASTLOADEDDATE]"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[LASTLOADEDDATE]"
+                      externalMetadataColumnId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[LASTLOADEDDATE]"
+                      cachedName="LASTLOADEDDATE"
+                      cachedDataType="dbTimeStamp" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].Columns[SVR]"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[SVR]"
+                      externalMetadataColumnId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[SVR]"
+                      cachedName="SVR"
+                      cachedDataType="wstr"
+                      cachedLength="100" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].Columns[DBNAME]"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[DBNAME]"
+                      externalMetadataColumnId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[DBNAME]"
+                      cachedName="DBNAME"
+                      cachedDataType="wstr"
+                      cachedLength="100" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].Columns[LastModifiedDate]"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[LastModifiedDate]"
+                      externalMetadataColumnId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[LastModifiedDate]"
+                      cachedName="LastModifiedDate"
+                      cachedDataType="dbTimeStamp" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].Columns[DeletedFlg]"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[DeletedFlg]"
+                      externalMetadataColumnId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[DeletedFlg]"
+                      cachedName="DeletedFlg"
+                      cachedDataType="i4" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[HARISKAREANODEGUID]"
+                      name="HARISKAREANODEGUID"
+                      dataType="guid" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[HARISKAREASCORE]"
+                      name="HARISKAREASCORE"
+                      dataType="r8" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[HARISKCATEGORYITEMID]"
+                      name="HARISKCATEGORYITEMID"
+                      dataType="i4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[LASTLOADEDDATE]"
+                      name="LASTLOADEDDATE"
+                      dataType="dbTimeStamp" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[SVR]"
+                      name="SVR"
+                      dataType="wstr"
+                      length="100" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[DBNAME]"
+                      name="DBNAME"
+                      dataType="wstr"
+                      length="100" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[DeletedFlg]"
+                      name="DeletedFlg"
+                      dataType="i4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[UserRiskAreaItemID]"
+                      name="UserRiskAreaItemID"
+                      dataType="i4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[USERRISKAREACODENAME]"
+                      name="USERRISKAREACODENAME"
+                      dataType="wstr"
+                      length="100" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[HARISKAREAVERSIONID]"
+                      name="HARISKAREAVERSIONID"
+                      dataType="i4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[RISKAREAPREWEIGHTEDSCORE]"
+                      name="RISKAREAPREWEIGHTEDSCORE"
+                      dataType="r8" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[HAUserRiskArea_ITEMMODIFIEDWHEN]"
+                      name="HAUserRiskArea_ITEMMODIFIEDWHEN"
+                      dataType="dbTimeStamp2"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[HAUserRiskArea_LASTMODIFIED]"
+                      name="HAUserRiskArea_LASTMODIFIED"
+                      dataType="dbTimeStamp2"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[HAUserRiskArea_LastUpdateID]"
+                      name="HAUserRiskArea_LastUpdateID"
+                      dataType="i4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[HARiskAreaItemID]"
+                      name="HARiskAreaItemID"
+                      dataType="i4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[HAUserQuestionGroupResultsItemID]"
+                      name="HAUserQuestionGroupResultsItemID"
+                      dataType="i4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[POINTRESULTS]"
+                      name="POINTRESULTS"
+                      dataType="i4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[QUESTIONGROUPCODENAME]"
+                      name="QUESTIONGROUPCODENAME"
+                      dataType="wstr"
+                      length="100" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[HAUserQuestionGroupResults_LASTMODIFIED]"
+                      name="HAUserQuestionGroupResults_LASTMODIFIED"
+                      dataType="dbTimeStamp2"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[HAUserQuestionGroupResults_LastUpdateID]"
+                      name="HAUserQuestionGroupResults_LastUpdateID"
+                      dataType="i4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[LastModifiedWhen]"
+                      name="LastModifiedWhen"
+                      dataType="dbTimeStamp2"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[LastUpdateID]"
+                      name="LastUpdateID"
+                      dataType="i4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[LastModifiedDate]"
+                      name="LastModifiedDate"
+                      dataType="dbTimeStamp" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[RowNbr]"
+                      name="RowNbr"
+                      dataType="i4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[TimeZone]"
+                      name="TimeZone"
+                      dataType="wstr"
+                      length="10" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[ConvertedToCentralTime]"
+                      name="ConvertedToCentralTime"
+                      dataType="bool" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input].ExternalColumns[HashCode]"
+                      name="HashCode"
+                      dataType="wstr"
+                      length="75" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Outputs[OLE DB Destination Error Output]"
+                  name="OLE DB Destination Error Output"
+                  exclusionGroup="1"
+                  synchronousInputId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input]"
+                  isErrorOut="true">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      lineageId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      lineageId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea"
+              name="FACT_HFit_HealthAssesmentUserRiskArea"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              description="OLE DB Source"
+              usesDispositions="true"
+              version="7"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7">
+              <properties>
+                <property
+                  name="CommandTimeout"
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out.">0</property>
+                <property
+                  name="OpenRowset"
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."></property>
+                <property
+                  name="OpenRowsetVariable"
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."></property>
+                <property
+                  name="SqlCommand"
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT
+           HAUserRiskArea.ITEMID AS UserRiskAreaItemID
+         , HAUserRiskArea.HARISKCATEGORYITEMID
+         , HAUserRiskArea.CODENAME AS USERRISKAREACODENAME
+         , HAUserRiskArea.HARISKAREANODEGUID
+         , NULL AS HARISKAREAVERSIONID
+         , HAUserRiskArea.HARISKAREASCORE
+         , HAUserRiskArea.PREWEIGHTEDSCORE AS RISKAREAPREWEIGHTEDSCORE
+         , HAUserRiskArea.ITEMMODIFIEDWHEN AS HAUserRiskArea_ITEMMODIFIEDWHEN
+         , HAUserRiskArea.ITEMMODIFIEDWHEN AS HAUserRiskArea_LASTMODIFIED   --HAUserRiskArea.LASTLOADEDDATE 
+         , NULL AS HAUserRiskArea_LastUpdateID   --HAUserRiskArea.LastUpdateID 
+
+         , HAUserQuestionGroupResults.HARiskAreaItemID
+         , HAUserQuestionGroupResults.ItemID AS HAUserQuestionGroupResultsItemID
+         , HAUserQuestionGroupResults.POINTRESULTS
+         , HAUserQuestionGroupResults.CODENAME AS QUESTIONGROUPCODENAME
+         , HAUserQuestionGroupResults.ITEMMODIFIEDWHEN AS HAUserQuestionGroupResults_LASTMODIFIED	--HAUserQuestionGroupResults.LASTLOADEDDATE 
+         , NULL AS HAUserQuestionGroupResults_LastUpdateID	--HAUserQuestionGroupResults.LastUpdateID 
+
+         , HAUserRiskArea.ItemModifiedWhen AS LastModifiedWhen
+         , 0 AS LastUpdateID
+         , GETDATE () AS LASTLOADEDDATE
+         , HAUserRiskArea.SVR AS SVR
+         , HAUserRiskArea.DBNAME AS DBNAME
+         , HAUserRiskArea.LastModifiedDate
+         , 0 AS DeletedFlg
+           FROM DBO.FACT_HFit_HealthAssesmentUserRiskArea AS HAUserRiskArea
+                    LEFT JOIN DBO.FACT_HFIT_HEALTHASSESMENTUSERQUESTIONGROUPRESULTS AS HAUserQuestionGroupResults
+                        ON HAUserRiskArea.ITEMID = HAUserQuestionGroupResults.HARiskAreaItemID
+                       AND HAUserRiskArea.SVR = HAUserQuestionGroupResults.SVR
+                       AND HAUserRiskArea.DBNAME = HAUserQuestionGroupResults.DBNAME;</property>
+                <property
+                  name="SqlCommandVariable"
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."></property>
+                <property
+                  name="DefaultCodePage"
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source.">1252</property>
+                <property
+                  name="AlwaysUseDefaultCodePage"
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data.">false</property>
+                <property
+                  name="AccessMode"
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  typeConverter="AccessMode">2</property>
+                <property
+                  name="ParameterMapping"
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Connections[OleDbConnection]"
+                  name="OleDbConnection"
+                  description="The OLE DB runtime connection used to access the database."
+                  connectionManagerID="Package.ConnectionManagers[tgt-azusql01.cloudapp.net,1433.KenticoCMS_DataMart.dmiller]"
+                  connectionManagerRefId="Package.ConnectionManagers[tgt-azusql01.cloudapp.net,1433.KenticoCMS_DataMart.dmiller]" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[UserRiskAreaItemID]"
+                      name="UserRiskAreaItemID"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[UserRiskAreaItemID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[UserRiskAreaItemID]" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HARISKCATEGORYITEMID]"
+                      name="HARISKCATEGORYITEMID"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HARISKCATEGORYITEMID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[HARISKCATEGORYITEMID]" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[USERRISKAREACODENAME]"
+                      name="USERRISKAREACODENAME"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[USERRISKAREACODENAME]"
+                      length="100"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[USERRISKAREACODENAME]" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HARISKAREANODEGUID]"
+                      name="HARISKAREANODEGUID"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HARISKAREANODEGUID]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[HARISKAREANODEGUID]" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HARISKAREAVERSIONID]"
+                      name="HARISKAREAVERSIONID"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HARISKAREAVERSIONID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[HARISKAREAVERSIONID]" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HARISKAREASCORE]"
+                      name="HARISKAREASCORE"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HARISKAREASCORE]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[HARISKAREASCORE]" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[RISKAREAPREWEIGHTEDSCORE]"
+                      name="RISKAREAPREWEIGHTEDSCORE"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[RISKAREAPREWEIGHTEDSCORE]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[RISKAREAPREWEIGHTEDSCORE]" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HAUserRiskArea_ITEMMODIFIEDWHEN]"
+                      name="HAUserRiskArea_ITEMMODIFIEDWHEN"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HAUserRiskArea_ITEMMODIFIEDWHEN]"
+                      scale="7"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[HAUserRiskArea_ITEMMODIFIEDWHEN]" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HAUserRiskArea_LASTMODIFIED]"
+                      name="HAUserRiskArea_LASTMODIFIED"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HAUserRiskArea_LASTMODIFIED]"
+                      scale="7"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[HAUserRiskArea_LASTMODIFIED]" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HAUserRiskArea_LastUpdateID]"
+                      name="HAUserRiskArea_LastUpdateID"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HAUserRiskArea_LastUpdateID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[HAUserRiskArea_LastUpdateID]" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HARiskAreaItemID]"
+                      name="HARiskAreaItemID"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HARiskAreaItemID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[HARiskAreaItemID]" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HAUserQuestionGroupResultsItemID]"
+                      name="HAUserQuestionGroupResultsItemID"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HAUserQuestionGroupResultsItemID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[HAUserQuestionGroupResultsItemID]" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[POINTRESULTS]"
+                      name="POINTRESULTS"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[POINTRESULTS]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[POINTRESULTS]" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[QUESTIONGROUPCODENAME]"
+                      name="QUESTIONGROUPCODENAME"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[QUESTIONGROUPCODENAME]"
+                      length="100"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[QUESTIONGROUPCODENAME]" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HAUserQuestionGroupResults_LASTMODIFIED]"
+                      name="HAUserQuestionGroupResults_LASTMODIFIED"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HAUserQuestionGroupResults_LASTMODIFIED]"
+                      scale="7"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[HAUserQuestionGroupResults_LASTMODIFIED]" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HAUserQuestionGroupResults_LastUpdateID]"
+                      name="HAUserQuestionGroupResults_LastUpdateID"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[HAUserQuestionGroupResults_LastUpdateID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[HAUserQuestionGroupResults_LastUpdateID]" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[LastModifiedWhen]"
+                      name="LastModifiedWhen"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[LastModifiedWhen]"
+                      scale="7"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[LastModifiedWhen]" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[LastUpdateID]"
+                      name="LastUpdateID"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[LastUpdateID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[LastUpdateID]" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[LASTLOADEDDATE]"
+                      name="LASTLOADEDDATE"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[LASTLOADEDDATE]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[LASTLOADEDDATE]" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[SVR]"
+                      name="SVR"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[SVR]"
+                      length="100"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[SVR]" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[DBNAME]"
+                      name="DBNAME"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[DBNAME]"
+                      length="100"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[DBNAME]" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[LastModifiedDate]"
+                      name="LastModifiedDate"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[LastModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[LastModifiedDate]" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[DeletedFlg]"
+                      name="DeletedFlg"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].Columns[DeletedFlg]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      truncationRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[DeletedFlg]" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[UserRiskAreaItemID]"
+                      name="UserRiskAreaItemID"
+                      dataType="i4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[HARISKCATEGORYITEMID]"
+                      name="HARISKCATEGORYITEMID"
+                      dataType="i4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[USERRISKAREACODENAME]"
+                      name="USERRISKAREACODENAME"
+                      dataType="wstr"
+                      length="100" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[HARISKAREANODEGUID]"
+                      name="HARISKAREANODEGUID"
+                      dataType="guid" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[HARISKAREAVERSIONID]"
+                      name="HARISKAREAVERSIONID"
+                      dataType="i4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[HARISKAREASCORE]"
+                      name="HARISKAREASCORE"
+                      dataType="r8" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[RISKAREAPREWEIGHTEDSCORE]"
+                      name="RISKAREAPREWEIGHTEDSCORE"
+                      dataType="r8" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[HAUserRiskArea_ITEMMODIFIEDWHEN]"
+                      name="HAUserRiskArea_ITEMMODIFIEDWHEN"
+                      dataType="dbTimeStamp2"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[HAUserRiskArea_LASTMODIFIED]"
+                      name="HAUserRiskArea_LASTMODIFIED"
+                      dataType="dbTimeStamp2"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[HAUserRiskArea_LastUpdateID]"
+                      name="HAUserRiskArea_LastUpdateID"
+                      dataType="i4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[HARiskAreaItemID]"
+                      name="HARiskAreaItemID"
+                      dataType="i4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[HAUserQuestionGroupResultsItemID]"
+                      name="HAUserQuestionGroupResultsItemID"
+                      dataType="i4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[POINTRESULTS]"
+                      name="POINTRESULTS"
+                      dataType="i4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[QUESTIONGROUPCODENAME]"
+                      name="QUESTIONGROUPCODENAME"
+                      dataType="wstr"
+                      length="100" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[HAUserQuestionGroupResults_LASTMODIFIED]"
+                      name="HAUserQuestionGroupResults_LASTMODIFIED"
+                      dataType="dbTimeStamp2"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[HAUserQuestionGroupResults_LastUpdateID]"
+                      name="HAUserQuestionGroupResults_LastUpdateID"
+                      dataType="i4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[LastModifiedWhen]"
+                      name="LastModifiedWhen"
+                      dataType="dbTimeStamp2"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[LastUpdateID]"
+                      name="LastUpdateID"
+                      dataType="i4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[LASTLOADEDDATE]"
+                      name="LASTLOADEDDATE"
+                      dataType="dbTimeStamp" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[SVR]"
+                      name="SVR"
+                      dataType="wstr"
+                      length="100" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[DBNAME]"
+                      name="DBNAME"
+                      dataType="wstr"
+                      length="100" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[LastModifiedDate]"
+                      name="LastModifiedDate"
+                      dataType="dbTimeStamp" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output].ExternalColumns[DeletedFlg]"
+                      name="DeletedFlg"
+                      dataType="i4" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output]"
+                  name="OLE DB Source Error Output"
+                  isErrorOut="true">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[UserRiskAreaItemID]"
+                      name="UserRiskAreaItemID"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[UserRiskAreaItemID]"
+                      dataType="i4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[HARISKCATEGORYITEMID]"
+                      name="HARISKCATEGORYITEMID"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[HARISKCATEGORYITEMID]"
+                      dataType="i4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[USERRISKAREACODENAME]"
+                      name="USERRISKAREACODENAME"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[USERRISKAREACODENAME]"
+                      length="100"
+                      dataType="wstr" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[HARISKAREANODEGUID]"
+                      name="HARISKAREANODEGUID"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[HARISKAREANODEGUID]"
+                      dataType="guid" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[HARISKAREAVERSIONID]"
+                      name="HARISKAREAVERSIONID"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[HARISKAREAVERSIONID]"
+                      dataType="i4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[HARISKAREASCORE]"
+                      name="HARISKAREASCORE"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[HARISKAREASCORE]"
+                      dataType="r8" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[RISKAREAPREWEIGHTEDSCORE]"
+                      name="RISKAREAPREWEIGHTEDSCORE"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[RISKAREAPREWEIGHTEDSCORE]"
+                      dataType="r8" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[HAUserRiskArea_ITEMMODIFIEDWHEN]"
+                      name="HAUserRiskArea_ITEMMODIFIEDWHEN"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[HAUserRiskArea_ITEMMODIFIEDWHEN]"
+                      scale="7"
+                      dataType="dbTimeStamp2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[HAUserRiskArea_LASTMODIFIED]"
+                      name="HAUserRiskArea_LASTMODIFIED"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[HAUserRiskArea_LASTMODIFIED]"
+                      scale="7"
+                      dataType="dbTimeStamp2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[HAUserRiskArea_LastUpdateID]"
+                      name="HAUserRiskArea_LastUpdateID"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[HAUserRiskArea_LastUpdateID]"
+                      dataType="i4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[HARiskAreaItemID]"
+                      name="HARiskAreaItemID"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[HARiskAreaItemID]"
+                      dataType="i4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[HAUserQuestionGroupResultsItemID]"
+                      name="HAUserQuestionGroupResultsItemID"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[HAUserQuestionGroupResultsItemID]"
+                      dataType="i4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[POINTRESULTS]"
+                      name="POINTRESULTS"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[POINTRESULTS]"
+                      dataType="i4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[QUESTIONGROUPCODENAME]"
+                      name="QUESTIONGROUPCODENAME"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[QUESTIONGROUPCODENAME]"
+                      length="100"
+                      dataType="wstr" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[HAUserQuestionGroupResults_LASTMODIFIED]"
+                      name="HAUserQuestionGroupResults_LASTMODIFIED"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[HAUserQuestionGroupResults_LASTMODIFIED]"
+                      scale="7"
+                      dataType="dbTimeStamp2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[HAUserQuestionGroupResults_LastUpdateID]"
+                      name="HAUserQuestionGroupResults_LastUpdateID"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[HAUserQuestionGroupResults_LastUpdateID]"
+                      dataType="i4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[LastModifiedWhen]"
+                      name="LastModifiedWhen"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[LastModifiedWhen]"
+                      scale="7"
+                      dataType="dbTimeStamp2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[LastUpdateID]"
+                      name="LastUpdateID"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[LastUpdateID]"
+                      dataType="i4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[LASTLOADEDDATE]"
+                      name="LASTLOADEDDATE"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[LASTLOADEDDATE]"
+                      dataType="dbTimeStamp" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[SVR]"
+                      name="SVR"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[SVR]"
+                      length="100"
+                      dataType="wstr" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[DBNAME]"
+                      name="DBNAME"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[DBNAME]"
+                      length="100"
+                      dataType="wstr" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[LastModifiedDate]"
+                      name="LastModifiedDate"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[LastModifiedDate]"
+                      dataType="dbTimeStamp" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[DeletedFlg]"
+                      name="DeletedFlg"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[DeletedFlg]"
+                      dataType="i4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      lineageId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea.Outputs[OLE DB Source Output]"
+              endId="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED.Inputs[OLE DB Destination Input]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Data Flow Task"
+          TopLeft="155,53" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="276,42"
+          Id="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea"
+          TopLeft="197,80" />
+        <NodeLayout
+          Size="309,42"
+          Id="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED"
+          TopLeft="320,377" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="335,122">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="139.5,255"
+              Start="0,0"
+              End="139.5,247.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,123.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,123.5"
+                    Point2="0,127.5"
+                    Point3="4,127.5" />
+                  <mssgle:LineSegment
+                    End="135.5,127.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="135.5,127.5"
+                    Point2="139.5,127.5"
+                    Point3="139.5,131.5" />
+                  <mssgle:LineSegment
+                    End="139.5,247.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\FACT_HFit_HealthAssesmentUserRiskArea">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\dim_HFit_HealthAssesmentUserRiskArea_jOINED">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

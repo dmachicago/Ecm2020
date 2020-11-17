@@ -1,0 +1,29 @@
+--CHECK_CONSTRAINTS 	Contains one row for each CHECK constraint in the current database 
+--COLUMN_DOMAIN_USAGE 	Contains one row for each column, in the current database, that has a user-defined data type. --COLUMN_PRIVILEGES 	Contains one row for each column with a privilege either granted to or by the current user in the current database 
+--COLUMNS 	Contains one row for each column accessible to the current user in the current database. 
+--CONSTRAINT_COLUMN_USAGE 	Contains one row for each column, in the current database, that has a constraint defined on it. 
+--CONSTRAINT_TABLE_USAGE 	Contains one row for each table, in the current database, that has a constraint defined on it. 
+--DOMAIN_CONSTRAINTS 	Contains one row for each user-defined data type, accessible to the current user in the current database, with a rule bound to it 
+--DOMAINS 	Contains one row for each user-defined data type accessible to the current user in the current database 
+--KEY_COLUMN_USAGE 	Contains one row for each column, in the current database, that is constrained as a key 
+--PARAMETERS 	Contains one row for each parameter of a user-defined function or stored procedure accessible to the current user in the current database. 
+--REFERENTIAL_CONSTRAINTS 	Contains one row for each foreign constraint in the current database. This information schema view returns information about the objects to which the current user has permissions. 
+--ROUTINE_COLUMNS 	Contains one row for each column returned by the table-valued functions accessible to the current user in the current database 
+--ROUTINES 	Contains one row for each stored procedure and function accessible to the current user in the current database. 
+--SCHEMATA 	Contains one row for each database that has permissions for the current user 
+--TABLE_CONSTRAINTS 	Contains one row for each table constraint in the current database. 
+--TABLE_PRIVILEGES 	Contains one row for each table privilege granted to or by the current user in the current database 
+--TABLES 	Contains one row for each table in the current database for which the current user has permissions 
+--VIEW_COLUMN_USAGE 	Contains one row for each column, in the current database, used in a view definition 
+--VIEW_TABLE_USAGE 	Contains one row for each table, in the current database, used in a view 
+--VIEWS 	Contains one row for views accessible to the current user in the current database 
+
+-- W. Dale Miller
+-- DMA, Limited
+-- Offered under GNU License
+-- July 26, 2016
+
+-- W. Dale Miller
+-- DMA, Limited
+-- Offered under GNU License
+-- July 26, 2016

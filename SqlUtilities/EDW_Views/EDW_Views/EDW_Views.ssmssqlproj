@@ -1,0 +1,1096 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="EDW_Views">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="hfit-sqlqa.cloudapp.net, 1 = GREEN (QA):dmiller">
+          <Created>2015-04-27T18:58:08.0270459-05:00</Created>
+          <Type>SQL</Type>
+          <Server>hfit-sqlqa.cloudapp.net, 1 = GREEN (QA)</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="_EDW_Fix.10.23.2014.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>_EDW_Fix.10.23.2014.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_EDW_Fix.MINOR.10.23.2014.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>_EDW_Fix.MINOR.10.23.2014.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_EDW_View_Generation_Scripts.07.31.2014.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>_EDW_View_Generation_Scripts.07.31.2014.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_error_datetime2.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>_error_datetime2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_MasterBuildDev.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>_MasterBuildDev.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_ViewFixMaster.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>_ViewFixMaster.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Alter_view_EDW_BioMetrics.CR12945.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Alter_view_EDW_BioMetrics.CR12945.sql</FullPath>
+        </FileNode>
+        <FileNode Name="alter_view_EDW_HealthAssesment.47619.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>alter_view_EDW_HealthAssesment.47619.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ALTER_view_EDW_HealthAssesmentDeffinition.47619.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>ALTER_view_EDW_HealthAssesmentDeffinition.47619.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Check_View_HA_Perf.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Check_View_HA_Perf.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Create_HFit_LKP_EDW_RejectMPI_Table.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Create_HFit_LKP_EDW_RejectMPI_Table.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Create_HFit_LKP_TrackerVendor_Table.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Create_HFit_LKP_TrackerVendor_Table.sql</FullPath>
+        </FileNode>
+        <FileNode Name="CreateEDW_HealthAssessmentDefinition.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>CreateEDW_HealthAssessmentDefinition.sql</FullPath>
+        </FileNode>
+        <FileNode Name="createProc_GetRecordCount.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>createProc_GetRecordCount.sql</FullPath>
+        </FileNode>
+        <FileNode Name="CreateTableEDW_HealthAssessment.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>CreateTableEDW_HealthAssessment.sql</FullPath>
+        </FileNode>
+        <FileNode Name="createTableEDW_PerformanceMeasure.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>createTableEDW_PerformanceMeasure.sql</FullPath>
+        </FileNode>
+        <FileNode Name="CreateTracker_EDW_Metadata.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>CreateTracker_EDW_Metadata.sql</FullPath>
+        </FileNode>
+        <FileNode Name="CreateTrackerPerfIndexes.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>CreateTrackerPerfIndexes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DropViewCleanUp.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>DropViewCleanUp.sql</FullPath>
+        </FileNode>
+        <FileNode Name="findObjectDependencies.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>findObjectDependencies.sql</FullPath>
+        </FileNode>
+        <FileNode Name="FindViewsThatUseTable.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>FindViewsThatUseTable.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Fix.12.03.2014.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Fix.12.03.2014.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Generate alter statements to modify datetime to datetime2.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Generate alter statements to modify datetime to datetime2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="GreenToClientDemoSynchronize.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>GreenToClientDemoSynchronize.sql</FullPath>
+        </FileNode>
+        <FileNode Name="GreenToClientDemoSynchronize_Script2.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>GreenToClientDemoSynchronize_Script2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="HealthAssesmentRewrite.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>HealthAssesmentRewrite.sql</FullPath>
+        </FileNode>
+        <FileNode Name="HFIT_Build_Tracker_Metadata_Environment.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>HFIT_Build_Tracker_Metadata_Environment.sql</FullPath>
+        </FileNode>
+        <FileNode Name="hFit_CheckViewsForDups.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>hFit_CheckViewsForDups.sql</FullPath>
+        </FileNode>
+        <FileNode Name="HFIT_Count_EDW_Rows.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>HFIT_Count_EDW_Rows.sql</FullPath>
+        </FileNode>
+        <FileNode Name="HFIT_CreateTrackerDateIndexes.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>HFIT_CreateTrackerDateIndexes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="HFIT_GetClassData.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>HFIT_GetClassData.sql</FullPath>
+        </FileNode>
+        <FileNode Name="HFIT_GetDocumentData.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>HFIT_GetDocumentData.sql</FullPath>
+        </FileNode>
+        <FileNode Name="HFIT_GetSiteData.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>HFIT_GetSiteData.sql</FullPath>
+        </FileNode>
+        <FileNode Name="HFIT_HAView_Verification_Procedure.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>HFIT_HAView_Verification_Procedure.sql</FullPath>
+        </FileNode>
+        <FileNode Name="HFit_Indexes_New.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>HFit_Indexes_New.sql</FullPath>
+        </FileNode>
+        <FileNode Name="HFit_LKP_GoalCloseReason_Create_Table.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>HFit_LKP_GoalCloseReason_Create_Table.sql</FullPath>
+        </FileNode>
+        <FileNode Name="HFit_UserIDandGUID.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>HFit_UserIDandGUID.sql</FullPath>
+        </FileNode>
+        <FileNode Name="HFitSiteAcctBySiteID.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>HFitSiteAcctBySiteID.sql</FullPath>
+        </FileNode>
+        <FileNode Name="HFitSiteInfo.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>HFitSiteInfo.sql</FullPath>
+        </FileNode>
+        <FileNode Name="IVP.ViewDatetime2Fix.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlqa.cloudapp.net, 1 = GREEN (QA):False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlqa.cloudapp.net, 1 = GREEN (QA)</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>IVP.ViewDatetime2Fix.sql</FullPath>
+        </FileNode>
+        <FileNode Name="IVP_EDW_DATA_VIEWS.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>IVP_EDW_DATA_VIEWS.sql</FullPath>
+        </FileNode>
+        <FileNode Name="IVP_Views.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>IVP_Views.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Job_EDW_GenerateKenticoMetadata.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Job_EDW_GenerateKenticoMetadata.sql</FullPath>
+        </FileNode>
+        <FileNode Name="MasterBuildDev.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>MasterBuildDev.sql</FullPath>
+        </FileNode>
+        <FileNode Name="NULLDataSetHealthAssessment.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>NULLDataSetHealthAssessment.sql</FullPath>
+        </FileNode>
+        <FileNode Name="parseXmlFromTableCol.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>parseXmlFromTableCol.sql</FullPath>
+        </FileNode>
+        <FileNode Name="PopulatePaEmailsCursor.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>PopulatePaEmailsCursor.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Proc_EDW_GenerateMetadata.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Proc_EDW_GenerateMetadata.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Proc_EDW_HealthAssessment.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Proc_EDW_HealthAssessment.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Proc_EDW_HealthAssessmentDefinition.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Proc_EDW_HealthAssessmentDefinition.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_EDW_MeasurePerf.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>proc_EDW_MeasurePerf.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Proc_EDW_RewardUserDetail.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Proc_EDW_RewardUserDetail.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Proc_EDW_RewardUserDetailTEMP.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Proc_EDW_RewardUserDetailTEMP.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Proc_EDW_TrackerMetadataExtract.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Proc_EDW_TrackerMetadataExtract.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_GenViewDDL.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>proc_GenViewDDL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_GetRecordCount.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>proc_GetRecordCount.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_PullEDW_HealthAssesment_CT.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>proc_PullEDW_HealthAssesment_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="QuickFix.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>QuickFix.sql</FullPath>
+        </FileNode>
+        <FileNode Name="QuickFix11262014.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>QuickFix11262014.sql</FullPath>
+        </FileNode>
+        <FileNode Name="RebuildIndexOnline.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>RebuildIndexOnline.sql</FullPath>
+        </FileNode>
+        <FileNode Name="RebuildReorgIndex.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>RebuildReorgIndex.sql</FullPath>
+        </FileNode>
+        <FileNode Name="RefundProcess.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>RefundProcess.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SetDB.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>SetDB.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_send_dbmail.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>sp_send_dbmail.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery34.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery34.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLRecursiveCall.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>SQLRecursiveCall.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLRowNumbers.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>SQLRowNumbers.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SSIS_Logs.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>SSIS_Logs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SyncSQL.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>SyncSQL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TableVariableTestScript.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>TableVariableTestScript.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Temp.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Temp.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TestEDW_ViewRowCounts.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>TestEDW_ViewRowCounts.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TestViewsExecution.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>TestViewsExecution.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TheEnd.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>TheEnd.sql</FullPath>
+        </FileNode>
+        <FileNode Name="trg_Tracker_EDW_Metadata_LastModified.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>trg_Tracker_EDW_Metadata_LastModified.sql</FullPath>
+        </FileNode>
+        <FileNode Name="triggerSetHashUpdate.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>triggerSetHashUpdate.sql</FullPath>
+        </FileNode>
+        <FileNode Name="triggerSetHashUpdatePA.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>triggerSetHashUpdatePA.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TurnOnXpCmdShell.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>TurnOnXpCmdShell.sql</FullPath>
+        </FileNode>
+        <FileNode Name="udfElapsedTime.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>udfElapsedTime.sql</FullPath>
+        </FileNode>
+        <FileNode Name="udfTimeSpanFromMilliSeconds.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>udfTimeSpanFromMilliSeconds.sql</FullPath>
+        </FileNode>
+        <FileNode Name="validateHealthAssessmentRecCounts.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>validateHealthAssessmentRecCounts.sql</FullPath>
+        </FileNode>
+        <FileNode Name="View_CMS_Tree_Joined using BASE tables.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>View_CMS_Tree_Joined using BASE tables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_CMS_Tree_Joined_BaseLine.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_CMS_Tree_Joined_BaseLine.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_Awards.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_Awards.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_BioMetrics.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_BioMetrics.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_BioMetrics_CT.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_BioMetrics_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_BioMetrics_STAGE.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_BioMetrics_STAGE.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_BioMetrics_V2.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_BioMetrics_V2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_BiometricViewRejectCriteria.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_BiometricViewRejectCriteria.sql</FullPath>
+        </FileNode>
+        <FileNode Name="View_EDW_CDC_HealthAssesmentUserAnswers.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>View_EDW_CDC_HealthAssesmentUserAnswers.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_ClientCompany.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_ClientCompany.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_Coaches.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlqa.cloudapp.net, 1 = GREEN (QA):False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlqa.cloudapp.net, 1 = GREEN (QA)</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_Coaches.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_Coaches_CT.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_Coaches_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_Coaches_STAGED.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_Coaches_STAGED.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_CoachingDefinition.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_CoachingDefinition.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_CoachingDefinition_CT.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_CoachingDefinition_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_CoachingDefinition_STAGE.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_CoachingDefinition_STAGE.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_CoachingDetail.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlqa.cloudapp.net, 1 = GREEN (QA):False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlqa.cloudapp.net, 1 = GREEN (QA)</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_CoachingDetail.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_CoachingDetail_CT.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_CoachingDetail_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_CoachingDetail_STAGE.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_CoachingDetail_STAGE.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_CT_ExecutionLog.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_CT_ExecutionLog.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HADefinition.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_HADefinition.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HADefinition_MultiSelect.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_HADefinition_MultiSelect.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssesment.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_HealthAssesment.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssesment_CT.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_HealthAssesment_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssesment_DEV_Env.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_HealthAssesment_DEV_Env.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssesmentALL.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_HealthAssesmentALL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="View_EDW_HealthAssesmentAnswers.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlqa.cloudapp.net, 1 = GREEN (QA):False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlqa.cloudapp.net, 1 = GREEN (QA)</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>View_EDW_HealthAssesmentAnswers.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssesmentClientView.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_HealthAssesmentClientView.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssesmentClientView_CT.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_HealthAssesmentClientView_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssesmentDeffinition.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlqa.cloudapp.net, 1 = GREEN (QA):False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlqa.cloudapp.net, 1 = GREEN (QA)</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_HealthAssesmentDeffinition.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssesmentDeffinition.Test.Script.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_HealthAssesmentDeffinition.Test.Script.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssesmentDeffinition.V1.0.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_HealthAssesmentDeffinition.V1.0.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssesmentDeffinition_BAK.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_HealthAssesmentDeffinition_BAK.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssesmentDeffinition_Rewrite.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_HealthAssesmentDeffinition_Rewrite.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssesmentDeffinition_V0.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_HealthAssesmentDeffinition_V0.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssesmentDeffinitionCustom.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_HealthAssesmentDeffinitionCustom.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssesmentDeffinitionV2.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_HealthAssesmentDeffinitionV2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssesmentDeffinitionV3.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_HealthAssesmentDeffinitionV3.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssesmentDeffinitionV4.Broken.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_HealthAssesmentDeffinitionV4.Broken.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssesmentDefinition_CT.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_HealthAssesmentDefinition_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="View_EDW_HealthAssesmentQuestions.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlqa.cloudapp.net, 1 = GREEN (QA):False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlqa.cloudapp.net, 1 = GREEN (QA)</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>View_EDW_HealthAssesmentQuestions.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssesmentV2.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_HealthAssesmentV2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssessment_Staged.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlqa.cloudapp.net, 1 = GREEN (QA):False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlqa.cloudapp.net, 1 = GREEN (QA)</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_HealthAssessment_Staged.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthAssessmentDefinition_Staged.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlqa.cloudapp.net, 1 = GREEN (QA):False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlqa.cloudapp.net, 1 = GREEN (QA)</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_HealthAssessmentDefinition_Staged.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthInterestDetail.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlqa.cloudapp.net, 1 = GREEN (QA):False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlqa.cloudapp.net, 1 = GREEN (QA)</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_HealthInterestDetail.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthInterestDetail_CT.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_HealthInterestDetail_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthInterestList.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlqa.cloudapp.net, 1 = GREEN (QA):False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlqa.cloudapp.net, 1 = GREEN (QA)</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_HealthInterestList.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthInterestList_CT.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_HealthInterestList_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HealthInterestList_STAGED.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_HealthInterestList_STAGED.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_HFit_HealthAssesmentUserModule.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_HFit_HealthAssesmentUserModule.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_Participant.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_Participant.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_RewardAwardDetail.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_RewardAwardDetail.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_RewardAwardDetail_CT.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_RewardAwardDetail_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_RewardAwardDetail_STAGED.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_RewardAwardDetail_STAGED.sql</FullPath>
+        </FileNode>
+        <FileNode Name="View_EDW_RewardProgram_Joined.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlqa.cloudapp.net, 1 = GREEN (QA):False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlqa.cloudapp.net, 1 = GREEN (QA)</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>View_EDW_RewardProgram_Joined.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_RewardsDefinition.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlqa.cloudapp.net, 1 = GREEN (QA):False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlqa.cloudapp.net, 1 = GREEN (QA)</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_RewardsDefinition.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_RewardsDefinition_CT.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_RewardsDefinition_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_RewardsDefinition_STAGE.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_RewardsDefinition_STAGE.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_RewardsDefinition_TEST.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_RewardsDefinition_TEST.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_RewardTriggerParameters.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlqa.cloudapp.net, 1 = GREEN (QA):False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlqa.cloudapp.net, 1 = GREEN (QA)</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_RewardTriggerParameters.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_RewardTriggerParameters_CT.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_RewardTriggerParameters_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_RewardTriggerParameters_STAGED.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_RewardTriggerParameters_STAGED.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_RewardUserDetail.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlqa.cloudapp.net, 1 = GREEN (QA):False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlqa.cloudapp.net, 1 = GREEN (QA)</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_RewardUserDetail.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_RewardUserDetail_CT.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_RewardUserDetail_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_RewardUserDetail_temp.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_RewardUserDetail_temp.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_RewardUserLevel.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlqa.cloudapp.net, 1 = GREEN (QA):False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlqa.cloudapp.net, 1 = GREEN (QA)</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_RewardUserLevel.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_RewardUserLevel_CT.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_RewardUserLevel_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_RewardUserLevel_STAGED.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_RewardUserLevel_STAGED.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_ScreeningsFromTrackers.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlqa.cloudapp.net, 1 = GREEN (QA):False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlqa.cloudapp.net, 1 = GREEN (QA)</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_ScreeningsFromTrackers.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_SmallStepResponses.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlqa.cloudapp.net, 1 = GREEN (QA):False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlqa.cloudapp.net, 1 = GREEN (QA)</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_SmallStepResponses.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_SmallStepResponses_CT.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_SmallStepResponses_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_TrackerCompositeDetails.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_TrackerCompositeDetails.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_TrackerCompositeDetails_CT.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_TrackerCompositeDetails_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_TrackerCompositeDetails_CT_ONLY.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_EDW_TrackerCompositeDetails_CT_ONLY.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_TrackerMetadata.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlqa.cloudapp.net, 1 = GREEN (QA):False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlqa.cloudapp.net, 1 = GREEN (QA)</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_TrackerMetadata.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_TrackerShots.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlqa.cloudapp.net, 1 = GREEN (QA):False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlqa.cloudapp.net, 1 = GREEN (QA)</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_TrackerShots.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_TrackerTests.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlqa.cloudapp.net, 1 = GREEN (QA):False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlqa.cloudapp.net, 1 = GREEN (QA)</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_TrackerTests.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_HA_Definition_BasicColumns.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_HA_Definition_BasicColumns.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_HealthInterestDetail_STAGED.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_HealthInterestDetail_STAGED.sql</FullPath>
+        </FileNode>
+        <FileNode Name="View_HFit_FeatureConfiguration.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>View_HFit_FeatureConfiguration.sql</FullPath>
+        </FileNode>
+        <FileNode Name="View_Hfit_GoalTracker.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>View_Hfit_GoalTracker.sql</FullPath>
+        </FileNode>
+        <FileNode Name="View_HFit_GroupConfiguration.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>View_HFit_GroupConfiguration.sql</FullPath>
+        </FileNode>
+        <FileNode Name="View_HFit_HACampaign_Joined.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>View_HFit_HACampaign_Joined.sql</FullPath>
+        </FileNode>
+        <FileNode Name="View_HFit_HealthAssesmentQuestionsV2.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>View_HFit_HealthAssesmentQuestionsV2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_HFit_HealthAssesmentUserModule.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_HFit_HealthAssesmentUserModule.sql</FullPath>
+        </FileNode>
+        <FileNode Name="View_Hfit_HealthAssessmentDefinition.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>View_Hfit_HealthAssessmentDefinition.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_HFIT_TrackerMaster.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>view_HFIT_TrackerMaster.sql</FullPath>
+        </FileNode>
+        <FileNode Name="wdmParseString.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>wdmParseString.sql</FullPath>
+        </FileNode>
+        <FileNode Name="WordNetDualRelationshipSelect.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>WordNetDualRelationshipSelect.sql</FullPath>
+        </FileNode>
+        <FileNode Name="WordNetGetWord.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>WordNetGetWord.sql</FullPath>
+        </FileNode>
+        <FileNode Name="X1.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>X1.sql</FullPath>
+        </FileNode>
+        <FileNode Name="X2.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>X2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="X3.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>X3.sql</FullPath>
+        </FileNode>
+        <FileNode Name="X5.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>X5.sql</FullPath>
+        </FileNode>
+        <FileNode Name="XmlParse.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>XmlParse.sql</FullPath>
+        </FileNode>
+        <FileNode Name="XmlParseToTable.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>XmlParseToTable.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ZeroizeEmailFields.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>ZeroizeEmailFields.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

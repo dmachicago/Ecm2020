@@ -1,0 +1,464 @@
+2/25/2019 12:13 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 12:13 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 12:13 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 12:13 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 12:13 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 12:13 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 12:13 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 12:13 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 12:14 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 12:14 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 12:14 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 12:14 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 12:14 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 12:14 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 12:14 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 12:14 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 12:15 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 12:15 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 12:43 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 12:43 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 12:43 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 12:43 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 12:43 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 12:43 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 12:43 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 12:43 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 12:43 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 12:43 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 12:44 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 12:44 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 12:44 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 12:44 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 12:45 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 12:45 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 12:45 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 12:45 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 1:13 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 1:13 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 1:13 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 1:13 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 1:13 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 1:13 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 1:13 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 1:13 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 1:13 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 1:13 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 1:14 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 1:14 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 1:14 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 1:14 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 1:14 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 1:14 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 1:15 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 1:15 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 1:43 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 1:43 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 1:43 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 1:43 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 1:43 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 1:43 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 1:43 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 1:43 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 1:44 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 1:44 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 1:44 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 1:44 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 1:44 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 1:44 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 1:45 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 1:45 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 1:45 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 1:45 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 2:13 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 2:13 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 2:13 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 2:13 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 2:13 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 2:13 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 2:13 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 2:13 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 2:14 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 2:14 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 2:14 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 2:14 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 2:14 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 2:14 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 2:14 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 2:14 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 2:15 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 2:15 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 2:43 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 2:43 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 2:43 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 2:43 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 2:43 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 2:43 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 2:44 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 2:44 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 2:44 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 2:44 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 2:44 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 2:44 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 2:45 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 2:45 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 2:45 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 2:45 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 2:46 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 2:46 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 3:13 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 3:13 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 3:13 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 3:13 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 3:14 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 3:14 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 3:14 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 3:14 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 3:14 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 3:14 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 3:15 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 3:15 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 3:15 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 3:15 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 3:43 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 3:43 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 3:43 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 3:43 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 3:44 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 3:44 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 3:44 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 3:44 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 3:45 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 3:45 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 3:45 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 3:45 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 3:45 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 3:45 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 4:13 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 4:13 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 4:13 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 4:13 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 4:13 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 4:13 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 4:14 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 4:14 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 4:14 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 4:14 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 4:14 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 4:14 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 4:15 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 4:15 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 4:15 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 4:15 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 4:16 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 4:16 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 4:43 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 4:43 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 4:43 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 4:43 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 4:44 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 4:44 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 4:44 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 4:44 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 4:44 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 4:44 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 4:45 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 4:45 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 4:45 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 4:45 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 4:46 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 4:46 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 4:46 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 4:46 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 5:13 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 5:13 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 5:13 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 5:13 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 5:13 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 5:13 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 5:14 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 5:14 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 5:14 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 5:14 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 5:14 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 5:14 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 5:15 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 5:15 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 5:15 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 5:15 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 5:15 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 5:15 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 5:43 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 5:43 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 5:43 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 5:43 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 5:44 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 5:44 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 5:44 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 5:44 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 5:44 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 5:44 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 5:44 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 5:44 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 5:45 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 5:45 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 6:13 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 6:13 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 6:13 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 6:13 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 6:14 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 6:14 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 6:14 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 6:14 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 6:14 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 6:14 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 6:15 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 6:15 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 6:15 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 6:15 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 6:43 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 6:43 AM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 6:43 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 6:43 AM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 6:44 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 6:44 AM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 6:44 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 6:44 AM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 6:44 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 6:44 AM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 6:44 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 6:44 AM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/25/2019 6:45 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/25/2019 6:45 AM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;

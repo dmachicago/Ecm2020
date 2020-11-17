@@ -1,0 +1,30 @@
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\DFS_BoundQry_ProcessAllTables.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_ UTIL_Monitor_TPS.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_ UTIL_ReorgFragmentedIndexes.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_CaptureWorstPerfQuery.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_BoundQry_ProcessAllTables.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_CleanDFSTables.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_GetAllTableSizesAndRowCnt.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_MonitorLocks.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_JOB_UTIL_MonitorDeadlocks.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_StdFunctions.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_UTIL_DbMon_IndexVolitity.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_UTIL_DBSpace.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_UTIL_DBTableSpace.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_UTIL_DFS_DbSize.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_UTIL_GetIndexStats.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_UTIL_MonitorDeadlocks.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_UTIL_MonitorMostCommonWaits.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_UTIL_ParallelMonitor.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_UTIL_QryPlanStats.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_UTIL_TempDbMonitor.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_UTIL_TrackSessionWaitStats.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_UTIL_TxMonitorTableStats.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\_ApplyIVP_AllDatabases.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\_CreateJobExample.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\_InstallJobsIntoScheduler.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\_JOB_ UTIL_DefragAllIndexesV2.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\_RunAllJobs.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\modules\JOB_StdFunctions.ps1
+D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\modules\_DB_FUNCS.ps1

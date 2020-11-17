@@ -8720,8 +8720,51 @@ Public Class clsDatabaseARCH : Implements IDisposable
             Conn.Close()
             Conn = Nothing
         End Using
-
     End Sub
+
+    Function GetDirectoryDICT(ByVal UserID As String) As Dictionary(Of String, String)
+        '*WDM 11/14/2020 - Modified query to bring back list of directories
+
+        Dim LOS As New Dictionary(Of String, String)
+        Dim S As String = ""
+        S = ""
+
+        S = "Select [FQN], IncludeSubDirs " + vbCrLf
+        S = S + "  FROM [Directory] " + vbCrLf
+        S = S + "  where [UserID] = '" + UserID + "' " + vbCrLf
+        S = S + "  order by fqn " + vbCrLf
+
+        Dim ConnStr As String = getRepoConnStr()
+        Dim Conn As New SqlConnection(ConnStr)
+        Dim b As Boolean = False
+
+        Using Conn
+            If Conn.State = ConnectionState.Closed Then
+                Conn.Open()
+            End If
+            Dim command As New SqlCommand(S, Conn)
+            Using command
+                Dim RSData As SqlDataReader = Nothing
+                Using RSData
+                    RSData = command.ExecuteReader()
+                    Dim II As Integer = 0
+                    If RSData.HasRows Then
+                        Do While RSData.Read()
+                            Dim SS As String = RSData.GetValue(0).ToString
+                            Dim SD As String = RSData.GetValue(1).ToString
+                            If Not LOS.Keys.Contains(SS) Then
+                                LOS.Add(SS, SD)
+                            End If
+                        Loop
+                    End If
+                End Using
+            End Using
+        End Using
+
+        Return LOS
+
+    End Function
+
 
     Function GetDirectories(ByVal UserID As String) As List(Of String)
         '*WDM 11/14/2020 - Modified query to bring back list of directories
@@ -8731,7 +8774,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
         S = "Select    distinct [FQN] " + vbCrLf
         S = S + "             FROM [Directory] " + vbCrLf
-            S = S + " where [UserID] = '" + gCurrUserGuidID + "' " + vbCrLf
+        S = S + " where [UserID] = '" + UserID + "' " + vbCrLf
         S = S + " order by fqn " + vbCrLf
 
         Dim ConnStr As String = getRepoConnStr()

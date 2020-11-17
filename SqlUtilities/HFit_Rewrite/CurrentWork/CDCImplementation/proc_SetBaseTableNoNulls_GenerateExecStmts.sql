@@ -1,0 +1,745 @@
+
+
+select 'exec proc_SetBaseTableNoNulls ' + table_name + char(10) + 'GO'  +char(10) 
++ 'exec proc_InstantiateDefaults_' + table_name  + char(10) + 'GO' +char(10) 
+from information_schema.tables 
+where (table_name like 'BASE_%' or table_name like 'FACT_%')
+and table_name not like '%verhist' 
+and table_name not like '%_del' 
+order by table_name
+
+
+exec proc_SetBaseTableNoNulls BASE_CMS_Class
+GO
+exec proc_InstantiateDefaults_BASE_CMS_Class
+GO
+
+exec proc_SetBaseTableNoNulls BASE_CMS_Document
+GO
+exec proc_InstantiateDefaults_BASE_CMS_Document
+GO
+
+exec proc_SetBaseTableNoNulls BASE_CMS_Site
+GO
+exec proc_InstantiateDefaults_BASE_CMS_Site
+GO
+
+exec proc_SetBaseTableNoNulls BASE_CMS_Tree
+GO
+exec proc_InstantiateDefaults_BASE_CMS_Tree
+GO
+
+exec proc_SetBaseTableNoNulls BASE_cms_user
+GO
+exec proc_InstantiateDefaults_BASE_cms_user
+GO
+
+exec proc_SetBaseTableNoNulls BASE_cms_usersettings
+GO
+exec proc_InstantiateDefaults_BASE_cms_usersettings
+GO
+
+exec proc_SetBaseTableNoNulls BASE_cms_usersite
+GO
+exec proc_InstantiateDefaults_BASE_cms_usersite
+GO
+
+exec proc_SetBaseTableNoNulls BASE_COM_SKU
+GO
+exec proc_InstantiateDefaults_BASE_COM_SKU
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_Account
+GO
+exec proc_InstantiateDefaults_BASE_HFit_Account
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_CoachingHealthArea
+GO
+exec proc_InstantiateDefaults_BASE_HFit_CoachingHealthArea
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_CoachingHealthInterest
+GO
+exec proc_InstantiateDefaults_BASE_HFit_CoachingHealthInterest
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_HACampaign
+GO
+exec proc_InstantiateDefaults_BASE_HFit_HACampaign
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_HealthAssesmentMatrixQuestion
+GO
+exec proc_InstantiateDefaults_BASE_HFit_HealthAssesmentMatrixQuestion
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_HealthAssesmentModule
+GO
+exec proc_InstantiateDefaults_BASE_HFit_HealthAssesmentModule
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_HealthAssesmentMultipleChoiceQuestion
+GO
+exec proc_InstantiateDefaults_BASE_HFit_HealthAssesmentMultipleChoiceQuestion
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_HealthAssesmentRiskArea
+GO
+exec proc_InstantiateDefaults_BASE_HFit_HealthAssesmentRiskArea
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_HealthAssesmentRiskCategory
+GO
+exec proc_InstantiateDefaults_BASE_HFit_HealthAssesmentRiskCategory
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_HealthAssesmentUserAnswers
+GO
+exec proc_InstantiateDefaults_BASE_HFit_HealthAssesmentUserAnswers
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_HealthAssesmentUserModule
+GO
+exec proc_InstantiateDefaults_BASE_HFit_HealthAssesmentUserModule
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_HealthAssesmentUserQuestion
+GO
+exec proc_InstantiateDefaults_BASE_HFit_HealthAssesmentUserQuestion
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_HealthAssesmentUserQuestionGroupResults
+GO
+exec proc_InstantiateDefaults_BASE_HFit_HealthAssesmentUserQuestionGroupResults
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_HealthAssesmentUserRiskArea
+GO
+exec proc_InstantiateDefaults_BASE_HFit_HealthAssesmentUserRiskArea
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_HealthAssesmentUserRiskCategory
+GO
+exec proc_InstantiateDefaults_BASE_HFit_HealthAssesmentUserRiskCategory
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_HealthAssesmentUserStarted
+GO
+exec proc_InstantiateDefaults_BASE_HFit_HealthAssesmentUserStarted
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_HealthAssessment
+GO
+exec proc_InstantiateDefaults_BASE_HFit_HealthAssessment
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_HealthAssessmentFreeForm
+GO
+exec proc_InstantiateDefaults_BASE_HFit_HealthAssessmentFreeForm
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFIT_LKP_EDW_REJECTMPI
+GO
+exec proc_InstantiateDefaults_BASE_HFIT_LKP_EDW_REJECTMPI
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_LKP_RewardActivity
+GO
+exec proc_InstantiateDefaults_BASE_HFit_LKP_RewardActivity
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_LKP_RewardLevelType
+GO
+exec proc_InstantiateDefaults_BASE_HFit_LKP_RewardLevelType
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_LKP_RewardTrigger
+GO
+exec proc_InstantiateDefaults_BASE_HFit_LKP_RewardTrigger
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_LKP_RewardTriggerParameterOperator
+GO
+exec proc_InstantiateDefaults_BASE_HFit_LKP_RewardTriggerParameterOperator
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_LKP_RewardType
+GO
+exec proc_InstantiateDefaults_BASE_HFit_LKP_RewardType
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_LKP_TrackerVendor
+GO
+exec proc_InstantiateDefaults_BASE_HFit_LKP_TrackerVendor
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_OutComeMessages
+GO
+exec proc_InstantiateDefaults_BASE_HFit_OutComeMessages
+GO
+
+exec proc_SetBaseTableNoNulls BASE_hfit_PPTEligibility
+GO
+exec proc_InstantiateDefaults_BASE_hfit_PPTEligibility
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_RewardActivity
+GO
+exec proc_InstantiateDefaults_BASE_HFit_RewardActivity
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_RewardException
+GO
+exec proc_InstantiateDefaults_BASE_HFit_RewardException
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_RewardGroup
+GO
+exec proc_InstantiateDefaults_BASE_HFit_RewardGroup
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_RewardLevel
+GO
+exec proc_InstantiateDefaults_BASE_HFit_RewardLevel
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_RewardProgram
+GO
+exec proc_InstantiateDefaults_BASE_HFit_RewardProgram
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_RewardsUserActivityDetail
+GO
+exec proc_InstantiateDefaults_BASE_HFit_RewardsUserActivityDetail
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_RewardsUserLevelDetail
+GO
+exec proc_InstantiateDefaults_BASE_HFit_RewardsUserLevelDetail
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_RewardTrigger
+GO
+exec proc_InstantiateDefaults_BASE_HFit_RewardTrigger
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_RewardTriggerParameter
+GO
+exec proc_InstantiateDefaults_BASE_HFit_RewardTriggerParameter
+GO
+
+exec proc_SetBaseTableNoNulls BASE_Hfit_SmallStepResponses
+GO
+exec proc_InstantiateDefaults_BASE_Hfit_SmallStepResponses
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_ToDoSmallSteps
+GO
+exec proc_InstantiateDefaults_BASE_HFit_ToDoSmallSteps
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFIT_Tracker
+GO
+exec proc_InstantiateDefaults_BASE_HFIT_Tracker
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerBloodPressure
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerBloodPressure
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerBloodSugarAndGlucose
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerBloodSugarAndGlucose
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerBMI
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerBMI
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerBodyFat
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerBodyFat
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerBodyMeasurements
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerBodyMeasurements
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerCardio
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerCardio
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerCholesterol
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerCholesterol
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerCollectionSource
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerCollectionSource
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerCotinine
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerCotinine
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerDailySteps
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerDailySteps
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerDef_Tracker
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerDef_Tracker
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerFlexibility
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerFlexibility
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerFruits
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerFruits
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerHbA1c
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerHbA1c
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerHeight
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerHeight
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerHighFatFoods
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerHighFatFoods
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerHighSodiumFoods
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerHighSodiumFoods
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerInstance_Tracker
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerInstance_Tracker
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerMealPortions
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerMealPortions
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerMedicalCarePlan
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerMedicalCarePlan
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerPreventiveCare
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerPreventiveCare
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerRegularMeals
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerRegularMeals
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerRestingHeartRate
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerRestingHeartRate
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerShots
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerShots
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerSitLess
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerSitLess
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerSleepPlan
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerSleepPlan
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerStrength
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerStrength
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerStress
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerStress
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerStressManagement
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerStressManagement
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerSugaryDrinks
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerSugaryDrinks
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerSugaryFoods
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerSugaryFoods
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerTests
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerTests
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerTobaccoAttestation
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerTobaccoAttestation
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerTobaccoFree
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerTobaccoFree
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerVegetables
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerVegetables
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerWater
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerWater
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerWeight
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerWeight
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_TrackerWholeGrains
+GO
+exec proc_InstantiateDefaults_BASE_HFit_TrackerWholeGrains
+GO
+
+exec proc_SetBaseTableNoNulls BASE_HFit_UserTracker
+GO
+exec proc_InstantiateDefaults_BASE_HFit_UserTracker
+GO
+
+exec proc_SetBaseTableNoNulls BASE_view_EDW_TrackerCompositeDetails_CT_ONLY
+GO
+exec proc_InstantiateDefaults_BASE_view_EDW_TrackerCompositeDetails_CT_ONLY
+GO
+
+exec proc_SetBaseTableNoNulls FACT_EDW_BASE_HFIT_HEALTHASSESMENTUSERSTARTED
+GO
+exec proc_InstantiateDefaults_FACT_EDW_BASE_HFIT_HEALTHASSESMENTUSERSTARTED
+GO
+
+exec proc_SetBaseTableNoNulls FACT_EDW_CMS_USER
+GO
+exec proc_InstantiateDefaults_FACT_EDW_CMS_USER
+GO
+
+exec proc_SetBaseTableNoNulls FACT_EDW_CMS_USERSETTINGS
+GO
+exec proc_InstantiateDefaults_FACT_EDW_CMS_USERSETTINGS
+GO
+
+exec proc_SetBaseTableNoNulls FACT_EDW_CMS_USERSITE
+GO
+exec proc_InstantiateDefaults_FACT_EDW_CMS_USERSITE
+GO
+
+exec proc_SetBaseTableNoNulls FACT_EDW_COMBINEDHAVIEWS
+GO
+exec proc_InstantiateDefaults_FACT_EDW_COMBINEDHAVIEWS
+GO
+
+exec proc_SetBaseTableNoNulls FACT_EDW_HA_RiskArea_GroupResult_Joined
+GO
+exec proc_InstantiateDefaults_FACT_EDW_HA_RiskArea_GroupResult_Joined
+GO
+
+exec proc_SetBaseTableNoNulls FACT_EDW_HealthAssesment
+GO
+exec proc_InstantiateDefaults_FACT_EDW_HealthAssesment
+GO
+
+exec proc_SetBaseTableNoNulls FACT_EDW_HealthAssessment
+GO
+exec proc_InstantiateDefaults_FACT_EDW_HealthAssessment
+GO
+
+exec proc_SetBaseTableNoNulls FACT_EDW_HEALTHASSESSMENTDEFINITION
+GO
+exec proc_InstantiateDefaults_FACT_EDW_HEALTHASSESSMENTDEFINITION
+GO
+
+exec proc_SetBaseTableNoNulls FACT_EDW_HFIT_HEALTHASSESMENTUSERANSWERS
+GO
+exec proc_InstantiateDefaults_FACT_EDW_HFIT_HEALTHASSESMENTUSERANSWERS
+GO
+
+exec proc_SetBaseTableNoNulls FACT_EDW_HFIT_HEALTHASSESMENTUSERMODULE
+GO
+exec proc_InstantiateDefaults_FACT_EDW_HFIT_HEALTHASSESMENTUSERMODULE
+GO
+
+exec proc_SetBaseTableNoNulls FACT_EDW_HFIT_HEALTHASSESMENTUSERQUESTION
+GO
+exec proc_InstantiateDefaults_FACT_EDW_HFIT_HEALTHASSESMENTUSERQUESTION
+GO
+
+exec proc_SetBaseTableNoNulls FACT_EDW_HFIT_HEALTHASSESMENTUSERQUESTIONGROUPRESULTS
+GO
+exec proc_InstantiateDefaults_FACT_EDW_HFIT_HEALTHASSESMENTUSERQUESTIONGROUPRESULTS
+GO
+
+exec proc_SetBaseTableNoNulls FACT_EDW_HFIT_HEALTHASSESMENTUSERRISKAREA
+GO
+exec proc_InstantiateDefaults_FACT_EDW_HFIT_HEALTHASSESMENTUSERRISKAREA
+GO
+
+exec proc_SetBaseTableNoNulls FACT_EDW_HFIT_HEALTHASSESMENTUSERRISKAREA_JOINED
+GO
+exec proc_InstantiateDefaults_FACT_EDW_HFIT_HEALTHASSESMENTUSERRISKAREA_JOINED
+GO
+
+exec proc_SetBaseTableNoNulls FACT_EDW_HFIT_HEALTHASSESMENTUSERRISKCATEGORY
+GO
+exec proc_InstantiateDefaults_FACT_EDW_HFIT_HEALTHASSESMENTUSERRISKCATEGORY
+GO
+
+exec proc_SetBaseTableNoNulls FACT_EDW_HFIT_HEALTHASSESMENTUSERSTARTED
+GO
+exec proc_InstantiateDefaults_FACT_EDW_HFIT_HEALTHASSESMENTUSERSTARTED
+GO
+
+exec proc_SetBaseTableNoNulls FACT_EDW_MASTER_TABLES
+GO
+exec proc_InstantiateDefaults_FACT_EDW_MASTER_TABLES
+GO
+
+exec proc_SetBaseTableNoNulls FACT_EDW_TrackerCompositeDetails
+GO
+exec proc_InstantiateDefaults_FACT_EDW_TrackerCompositeDetails
+GO
+
+exec proc_SetBaseTableNoNulls FACT_EDW_Trackers
+GO
+exec proc_InstantiateDefaults_FACT_EDW_Trackers
+GO
+
+exec proc_SetBaseTableNoNulls FACT_EDW_VIEW_HFIT_HACAMPAIGN_JOINED
+GO
+exec proc_InstantiateDefaults_FACT_EDW_VIEW_HFIT_HACAMPAIGN_JOINED
+GO
+
+exec proc_SetBaseTableNoNulls FACT_EDW_VIEW_HFIT_HEALTHASSESSMENT_JOINED
+GO
+exec proc_InstantiateDefaults_FACT_EDW_VIEW_HFIT_HEALTHASSESSMENT_JOINED
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerBloodPressure
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerBloodPressure
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerBloodSugarAndGlucose
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerBloodSugarAndGlucose
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerBMI
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerBMI
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerBodyFat
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerBodyFat
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerBodyMeasurements
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerBodyMeasurements
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerCardio
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerCardio
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerCholesterol
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerCholesterol
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerCotinine
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerCotinine
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerDailySteps
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerDailySteps
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerFlexibility
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerFlexibility
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerFruits
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerFruits
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerHbA1c
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerHbA1c
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerHeight
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerHeight
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerHighFatFoods
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerHighFatFoods
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerHighSodiumFoods
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerHighSodiumFoods
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerInstance_Tracker
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerInstance_Tracker
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerMealPortions
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerMealPortions
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerMedicalCarePlan
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerMedicalCarePlan
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerPreventiveCare
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerPreventiveCare
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerRegularMeals
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerRegularMeals
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerRestingHeartRate
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerRestingHeartRate
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerShots
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerShots
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerSitLess
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerSitLess
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerSleepPlan
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerSleepPlan
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerStrength
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerStrength
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerStress
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerStress
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerStressManagement
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerStressManagement
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerSugaryDrinks
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerSugaryDrinks
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerSugaryFoods
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerSugaryFoods
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerTobaccoAttestation
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerTobaccoAttestation
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerTobaccoFree
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerTobaccoFree
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerVegetables
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerVegetables
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerWater
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerWater
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerWeight
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerWeight
+GO
+
+exec proc_SetBaseTableNoNulls FACT_HFit_TrackerWholeGrains
+GO
+exec proc_InstantiateDefaults_FACT_HFit_TrackerWholeGrains
+GO
+
+exec proc_SetBaseTableNoNulls FACT_MART_EDW_HealthAssesment
+GO
+exec proc_InstantiateDefaults_FACT_MART_EDW_HealthAssesment
+GO
+
+exec proc_SetBaseTableNoNulls FACT_TrackerData
+GO
+exec proc_InstantiateDefaults_FACT_TrackerData
+GO
+
+exec proc_SetBaseTableNoNulls FACT_View_EDW_HealthAssesmentQuestions
+GO
+exec proc_InstantiateDefaults_FACT_View_EDW_HealthAssesmentQuestions
+GO

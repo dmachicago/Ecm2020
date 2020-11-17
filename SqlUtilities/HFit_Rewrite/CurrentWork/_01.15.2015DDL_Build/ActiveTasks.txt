@@ -1,0 +1,15 @@
+47937 - (ACTIVE with Mark) Missing HA Question and Answer data for Client Dupont
+
+47619 - (DONE needs to be applied) The Health Assessment Definition interface view contains HTML tags
+47520 - (DONE) Add Column RewardActivityLKPName 
+47923 - (DONE needs to be applied) Include Reason Code on how Coach Closes a Participant Goal in the feed to the EDW
+47517 - (DONE needs to be applied) Eliminate Matrix Questions with NULL Answer GUID's from the Health Assessment Definition view
+47516 - (DONE needs to be applied) Clean up test data in EDW Health Assessment Fact Data view (reject selected MPI codes)
+47736 - (DONE needs to be applied) Health Assessment Definition View - remove HTML from returned columns
+46929 - (DONE needs to be applied) Include Reason Coach Closes a Participant Goal in the feed to the EDW
+47917 - (DONE needs to be applied) Update data view to include reason code
+47918 - (DONE) Design test case (task 47923)
+47920 - (DONE) execute test case (task 47923)
+47923 - (DONE) Include Reason Code on how Coach Closes a Participant Goal 
+47629 - (DONE needs to be applied)  Include Reason Code on how Coach Closes a Participant Goal 
+47647 - (DONE) Enble the creation of a unique identifier in the EDW Biometric data view

@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# SQL Server Management Studio Solution File, Format Version 14.00
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "DFINAnalytics", "DFINAnalytics.ssmssqlproj", "{8725C3F8-5A5A-4B2D-A17C-9878D3AD98E4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ACD33B11-1937-4EA5-A817-8A4EC584157F}"
+	ProjectSection(SolutionItems) = preProject
+		_Verify_Procedure_Run_Successfully.sql = _Verify_Procedure_Run_Successfully.sql
+		BATCH_FILES\IVP_DFINAnalytics.sql = BATCH_FILES\IVP_DFINAnalytics.sql
+		sp_MeasurePerformanceInSP.sql = sp_MeasurePerformanceInSP.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PShell", "PShell", "{9F3B71B4-0CB5-4BB9-8576-3685B27C3629}"
+	ProjectSection(SolutionItems) = preProject
+		PowerShell\_ExecSP_ReturnDataset.ps1 = PowerShell\_ExecSP_ReturnDataset.ps1
+		PowerShell\_TemplateRunSqlQuery.ps1 = PowerShell\_TemplateRunSqlQuery.ps1
+		PowerShell\auto-login.ps1 = PowerShell\auto-login.ps1
+		PowerShell\CollectInfoAllServersOnNetwork.ps1 = PowerShell\CollectInfoAllServersOnNetwork.ps1
+		PowerShell\ConnectAndRunSProc.ps1 = PowerShell\ConnectAndRunSProc.ps1
+		PowerShell\CreateDatabaseAndRemove.ps1 = PowerShell\CreateDatabaseAndRemove.ps1
+		PowerShell\ExecProc_DFS_GetAllTableSizesAndRowCnt.ps1 = PowerShell\ExecProc_DFS_GetAllTableSizesAndRowCnt.ps1
+		PowerShell\ExecSP.ps1 = PowerShell\ExecSP.ps1
+		PowerShell\ExecuteIVP.ps1 = PowerShell\ExecuteIVP.ps1
+		PowerShell\ExecuteStoredProcPassingParms.ps1 = PowerShell\ExecuteStoredProcPassingParms.ps1
+		PowerShell\FindAllComputersUsingActiveDirectory.ps1 = PowerShell\FindAllComputersUsingActiveDirectory.ps1
+		PowerShell\genAllDDLFromDatabase.ps1 = PowerShell\genAllDDLFromDatabase.ps1
+		PowerShell\Get-BiosVersionQueryAD.ps1 = PowerShell\Get-BiosVersionQueryAD.ps1
+		PowerShell\Get-BiosVersionReadTxtFile.ps1 = PowerShell\Get-BiosVersionReadTxtFile.ps1
+		PowerShell\GetAllDbNamesAskLoginCreds.ps1 = PowerShell\GetAllDbNamesAskLoginCreds.ps1
+		PowerShell\getAllDbNamesFromServer.ps1 = PowerShell\getAllDbNamesFromServer.ps1
+		PowerShell\GetSqlServerSettings-Properties.ps1 = PowerShell\GetSqlServerSettings-Properties.ps1
+		PowerShell\InstallSqlServerModule.ps1 = PowerShell\InstallSqlServerModule.ps1
+		PowerShell\ListServerDatabases.ps1 = PowerShell\ListServerDatabases.ps1
+		PowerShell\PowerShell Get List Of Databases On Server.docx = PowerShell\PowerShell Get List Of Databases On Server.docx
+		PowerShell\PowerShellForEachDB_Example.ps1 = PowerShell\PowerShellForEachDB_Example.ps1
+		PowerShell\PSList.txt = PowerShell\PSList.txt
+		PowerShell\RunExistingSQLScriptProgrammaticallySMO.ps1 = PowerShell\RunExistingSQLScriptProgrammaticallySMO.ps1
+		PowerShell\RunSqlScriptFile.ps1 = PowerShell\RunSqlScriptFile.ps1
+		PowerShell\RunSqlStoredProcedure.ps1 = PowerShell\RunSqlStoredProcedure.ps1
+		PowerShell\ScriptAllObjectsInAllDatabasesToFile.ps1 = PowerShell\ScriptAllObjectsInAllDatabasesToFile.ps1
+		PowerShell\ServerList.txt = PowerShell\ServerList.txt
+		PowerShell\TestServerConnection.ps1 = PowerShell\TestServerConnection.ps1
+		PowerShell\WinAzureSqlDB_PS.ps1 = PowerShell\WinAzureSqlDB_PS.ps1
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Default|Default = Default|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8725C3F8-5A5A-4B2D-A17C-9878D3AD98E4}.Default|Default.ActiveCfg = Default
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

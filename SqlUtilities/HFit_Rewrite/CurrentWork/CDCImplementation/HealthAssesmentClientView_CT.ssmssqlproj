@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="HealthAssesmentClientView_CT">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="hfit-tgt.cloudapp.net,2:dmiller">
+          <Created>2015-07-09T16:48:16.548855-05:00</Created>
+          <Type>SQL</Type>
+          <Server>hfit-tgt.cloudapp.net,2</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB>KenticoCMS_Prod1</InitialDB>
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="tgt-azusql01.cloudapp.net,1433:dmiller">
+          <Created>2015-10-19T08:51:25.4634179-05:00</Created>
+          <Type>SQL</Type>
+          <Server>tgt-azusql01.cloudapp.net,1433</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="proc_STAGING_EDW_HealthAssesmentClientView.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_STAGING_EDW_HealthAssesmentClientView.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

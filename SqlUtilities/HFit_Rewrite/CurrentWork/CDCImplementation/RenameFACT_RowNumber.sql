@@ -1,0 +1,76 @@
+
+use [KenticoCMS_DataMart_2]
+go
+
+EXEC Proc_RenameFACT_RowNumber 'FACT_TrackerData'
+go
+EXEC Proc_RenameFACT_RowNumber 'FACT_HFit_TrackerSitLess'
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerSleepPlan
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerStrength
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerStress
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerStressManagement
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerSugaryDrinks
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerSugaryFoods
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerTobaccoFree
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerVegetables
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerHeight
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerWater
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerWeight
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerWholeGrains
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerCotinine
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerPreventiveCare
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerCardio
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerTobaccoAttestation
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerMedicalCarePlan
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerRegularMeals
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerRestingHeartRate
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerBloodSugarAndGlucose
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerBloodPressure
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerBMI
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerBodyFat
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerBodyMeasurements
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerDailySteps
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerHbA1c
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerHighFatFoods
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerHighSodiumFoods
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerInstance_Tracker
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerCholesterol
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerMealPortions
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerFlexibility
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerFruits
+GO
+EXEC Proc_RenameFACT_RowNumber FACT_HFit_TrackerShots
+GO

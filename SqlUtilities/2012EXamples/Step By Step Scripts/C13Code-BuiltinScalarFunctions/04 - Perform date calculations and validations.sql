@@ -1,0 +1,6 @@
+SELECT
+DATEDIFF(dd, GETDATE(), '5/26/2013') AS DaysUntilMyBirthday,
+DATEADD(y, 1, GETDATE()) AS DateAdd,
+EOMONTH(GETDATE()) AS EOMonth, --New to SQL Server 2012
+ISDATE(GETDATE()) AS IsValidDate,
+ISDATE('13/1/2122') AS InvalidDate

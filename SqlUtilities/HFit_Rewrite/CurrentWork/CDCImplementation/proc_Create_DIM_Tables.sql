@@ -1,0 +1,985 @@
+
+
+go
+print 'Executing proc_Create_DIM_Tables.sql'
+go
+if exists (select name from sys.procedures where name = 'proc_Create_DIM_Tables')
+    drop procedure proc_Create_DIM_Tables ;
+go
+CREATE PROCEDURE [dbo].[proc_Create_DIM_Tables]
+AS
+BEGIN
+    SET NOCOUNT ON;
+    IF NOT EXISTS ( SELECT
+                           NAME
+                           FROM SYS.TABLES
+                           WHERE
+                           NAME = 'DIM_EDW_HealthAssessment') 
+        BEGIN
+            SET ANSI_NULLS ON;
+            SET QUOTED_IDENTIFIER ON;
+            SET ANSI_PADDING ON;
+            CREATE TABLE DBO.DIM_EDW_HEALTHASSESSMENT (
+                         USERSTARTEDITEMID INT NULL
+                       , HEALTHASSESMENTUSERSTARTEDNODEGUID UNIQUEIDENTIFIER NULL
+                       , USERID BIGINT NULL
+                       , USERGUID UNIQUEIDENTIFIER NULL
+                       , HFITUSERMPINUMBER BIGINT NULL
+                       , SITEGUID UNIQUEIDENTIFIER NULL
+                       , ACCOUNTID INT NULL
+                       , ACCOUNTCD NVARCHAR ( 8) NULL
+                       , ACCOUNTNAME NVARCHAR ( 200) NULL
+                       , HASTARTEDDT DATETIME NULL
+                       , HACOMPLETEDDT DATETIME NULL
+                       , USERMODULEITEMID INT NULL
+                       , USERMODULECODENAME NVARCHAR ( 100) NULL
+                       , HAMODULENODEGUID UNIQUEIDENTIFIER NULL
+                       , CMSNODEGUID UNIQUEIDENTIFIER NULL
+                       , HAMODULEVERSIONID INT NULL
+                       , USERRISKCATEGORYITEMID INT NULL
+                       , USERRISKCATEGORYCODENAME NVARCHAR ( 100) NULL
+                       , HARISKCATEGORYNODEGUID UNIQUEIDENTIFIER NULL
+                       , HARISKCATEGORYVERSIONID INT NULL
+                       , USERRISKAREAITEMID INT NULL
+                       , USERRISKAREACODENAME NVARCHAR ( 100) NULL
+                       , HARISKAREANODEGUID UNIQUEIDENTIFIER NULL
+                       , HARISKAREAVERSIONID INT NULL
+                       , USERQUESTIONITEMID INT NULL
+                       , TITLE VARCHAR (MAX) NULL
+                       , HAQUESTIONGUID UNIQUEIDENTIFIER NULL
+                       , USERQUESTIONCODENAME NVARCHAR ( 100) NULL
+                       , HAQUESTIONDOCUMENTID INT NULL
+                       , HAQUESTIONVERSIONID INT NULL
+                       , HAQUESTIONNODEGUID UNIQUEIDENTIFIER NULL
+                       , USERANSWERITEMID INT NULL
+                       , HAANSWERNODEGUID UNIQUEIDENTIFIER NULL
+                       , HAANSWERVERSIONID INT NULL
+                       , USERANSWERCODENAME NVARCHAR ( 100) NULL
+                       , HAANSWERVALUE NVARCHAR ( 255) NULL
+                       , HAMODULESCORE FLOAT NULL
+                       , HARISKCATEGORYSCORE FLOAT NULL
+                       , HARISKAREASCORE FLOAT NULL
+                       , HAQUESTIONSCORE FLOAT NULL
+                       , HAANSWERPOINTS INT NULL
+                       , POINTRESULTS INT NULL
+                       , UOMCODE NVARCHAR ( 10) NULL
+                       , HASCORE INT NULL
+                       , MODULEPREWEIGHTEDSCORE FLOAT NULL
+                       , RISKCATEGORYPREWEIGHTEDSCORE FLOAT NULL
+                       , RISKAREAPREWEIGHTEDSCORE FLOAT NULL
+                       , QUESTIONPREWEIGHTEDSCORE FLOAT NULL
+                       , QUESTIONGROUPCODENAME NVARCHAR ( 100) NULL
+                       , ITEMCREATEDWHEN DATETIME NULL
+                       , ITEMMODIFIEDWHEN DATETIME NULL
+                       , ISPROFESSIONALLYCOLLECTED BIT NULL
+                       , HARISKCATEGORY_ITEMMODIFIEDWHEN DATETIME NULL
+                       , HAUSERRISKAREA_ITEMMODIFIEDWHEN DATETIME NULL
+                       , HAUSERQUESTION_ITEMMODIFIEDWHEN DATETIME NULL
+                       , HAUSERANSWERS_ITEMMODIFIEDWHEN DATETIME NULL
+                       , HAPAPERFLG BIT NULL
+                       , HATELEPHONICFLG BIT NULL
+                       , HASTARTEDMODE INT NULL
+                       , HACOMPLETEDMODE INT NULL
+                       , DOCUMENTCULTURE_VHCJ NVARCHAR ( 10) NULL
+                       , DOCUMENTCULTURE_HAQUESTIONSVIEW NVARCHAR ( 10) NULL
+                       , CAMPAIGNNODEGUID UNIQUEIDENTIFIER NULL
+                       , HACAMPAIGNID INT NULL
+                       , HASHCODE NVARCHAR ( 75) NULL
+                       , PKHASHCODE NVARCHAR ( 75) NULL
+                       , CHANGED_FLG INT NULL
+                       , LastModifiedDATE DATETIME NULL
+                       , HEALTHASSESSMENTTYPE VARCHAR ( 9) NULL
+                       , HAUSERSTARTED_LASTMODIFIED DATETIME NULL
+                       , CMSUSER_LASTMODIFIED DATETIME NULL
+                       , USERSETTINGS_LASTMODIFIED DATETIME NULL
+                       , USERSITE_LASTMODIFIED DATETIME NULL
+                       , CMSSITE_LASTMODIFIED DATETIME NULL
+                       , ACCT_LASTMODIFIED DATETIME NULL
+                       , HAUSERMODULE_LASTMODIFIED DATETIME NULL
+                       , VHCJ_LASTMODIFIED DATETIME NULL
+                       , VHAJ_LASTMODIFIED DATETIME NULL
+                       , HARISKCATEGORY_LASTMODIFIED DATETIME NULL
+                       , HAUSERRISKAREA_LASTMODIFIED DATETIME NULL
+                       , HAUSERQUESTION_LASTMODIFIED DATETIME NULL
+                       , HAQUESTIONSVIEW_LASTMODIFIED DATETIME NULL
+                       , HAUSERQUESTIONGROUPRESULTS_LASTMODIFIED DATETIME NULL
+                       , HAUSERANSWERS_LASTMODIFIED DATETIME NULL
+                       , HAUSERSTARTED_LASTUPDATEID INT NULL
+                       , CMSUSER_LASTUPDATEID INT NULL
+                       , USERSETTINGS_LASTUPDATEID INT NULL
+                       , USERSITE_LASTUPDATEID INT NULL
+                       , CMSSITE_LASTUPDATEID DATETIME NULL
+                       , ACCT_LASTUPDATEID DATETIME NULL
+                       , HAUSERMODULE_LASTUPDATEID INT NULL
+                       , VHCJ_LASTUPDATEID INT NULL
+                       , VHAJ_LASTUPDATEID INT NULL
+                       , HARISKCATEGORY_LASTUPDATEID INT NULL
+                       , HAUSERRISKAREA_LASTUPDATEID INT NULL
+                       , HAUSERQUESTION_LASTUPDATEID INT NULL
+                       , HAQUESTIONSVIEW_LASTUPDATEID INT NULL
+                       , HAUSERQUESTIONGROUPRESULTS_LASTUPDATEID INT NULL
+                       , HAUSERANSWERS_LASTUPDATEID INT NULL
+                       , LASTUPDATEID INT NULL
+                       , DELETEFLG INT NULL
+                       , SVR NVARCHAR ( 128) NULL
+                       , DBNAME NVARCHAR ( 128) NULL
+                       , DELETEDFLG INT NULL
+                       , ROWNBR INT NULL
+                       , TIMEZONE NVARCHAR ( 10) NULL
+                       , CONVERTEDTOCENTRALTIME BIT NULL
+            ) 
+            ON [PRIMARY] TEXTIMAGE_ON [PRIMARY];
+            EXEC DBO.PROC_ADD_EDW_CT_STDCOLS DIM_EDW_HEALTHASSESSMENT;
+            CREATE NONCLUSTERED INDEX PI_EDW_HEALTHASSESSMENT_CDT ON DBO.DIM_EDW_HEALTHASSESSMENT
+            (
+            CONVERTEDTOCENTRALTIME ASC
+            , SVR ASC
+            , DBNAME ASC
+            )WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+            CREATE NONCLUSTERED INDEX PI_EDW_HEALTHASSESSMENT_DATES ON DBO.DIM_EDW_HEALTHASSESSMENT
+            (
+            SVR ASC , DBNAME ASC
+            , LastModifiedDATE ASC
+            --HAUSERSTARTED_LASTMODIFIED ASC ,
+            --CMSUSER_LASTMODIFIED ASC ,
+            --USERSETTINGS_LASTMODIFIED ASC ,
+            --USERSITE_LASTMODIFIED ASC ,
+            --CMSSITE_LASTMODIFIED ASC ,
+            --ACCT_LASTMODIFIED ASC ,
+            --HAUSERMODULE_LASTMODIFIED ASC ,
+            --VHCJ_LASTMODIFIED ASC ,
+            --VHAJ_LASTMODIFIED ASC ,
+            --HARISKCATEGORY_LASTMODIFIED ASC ,
+            --HAUSERRISKAREA_LASTMODIFIED ASC ,
+            --HAUSERQUESTION_LASTMODIFIED ASC ,
+            --HAQUESTIONSVIEW_LASTMODIFIED ASC ,
+            --HAUSERQUESTIONGROUPRESULTS_LASTMODIFIED ASC ,
+            --HAUSERANSWERS_LASTMODIFIED ASC
+            )WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+
+            CREATE CLUSTERED INDEX PI_EDW_HEALTHASSESSMENT_NATKEY ON DBO.DIM_EDW_HEALTHASSESSMENT
+            (
+            SVR ASC , DBNAME ASC , LastModifiedDATE ASC , USERSTARTEDITEMID ASC ,
+            USERGUID ASC ,
+            PKHASHCODE ASC ,
+            DELETEDFLG
+            )WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+            IF NOT EXISTS ( SELECT
+                                   NAME
+                                   FROM SYS.INDEXES
+                                   WHERE
+                                   NAME = 'DIM_EDW_HealthAssessment') 
+                BEGIN
+                    CREATE NONCLUSTERED INDEX PI_EDW_HEALTHASSESSMENT_DELFLG
+                    ON DBO.DIM_EDW_HEALTHASSESSMENT ( LastModifiedDATE , DELETEDFLG , SVR ASC , DBNAME ASC) ;
+                END;
+        END;
+    IF NOT EXISTS ( SELECT
+                           NAME
+                           FROM SYS.TABLES
+                           WHERE
+                           NAME = 'DIM_EDW_CombinedHAViews') 
+        BEGIN
+            EXEC PrintImmediate  ' Initalizing DIM_EDW_CombinedHAViews';
+            CREATE TABLE DBO.DIM_EDW_COMBINEDHAVIEWS (
+                         USERRISKCATEGORYITEMID INT NULL
+                       , USERRISKCATEGORYCODENAME NVARCHAR ( 100) NOT NULL
+                       , HARISKCATEGORYNODEGUID UNIQUEIDENTIFIER NOT NULL
+                       , HARISKCATEGORYSCORE FLOAT NULL
+                       , RISKCATEGORYPREWEIGHTEDSCORE FLOAT NULL
+                       , HARISKCATEGORY_ITEMMODIFIEDWHEN DATETIME NULL
+                       , HAMODULEITEMID INT NULL
+                       , USERRISKAREAITEMID INT NULL
+                       , USERRISKAREACODENAME NVARCHAR ( 100) NOT NULL
+                       , HARISKAREANODEGUID UNIQUEIDENTIFIER NOT NULL
+                       , HARISKAREASCORE FLOAT NULL
+                       , RISKAREAPREWEIGHTEDSCORE FLOAT NULL
+                       , HAUSERRISKAREA_ITEMMODIFIEDWHEN DATETIME NULL
+                       , USERQUESTIONITEMID INT NULL
+                       , HAQUESTIONGUID UNIQUEIDENTIFIER NOT NULL
+                       , USERQUESTIONCODENAME NVARCHAR ( 100) NOT NULL
+                       , HAQUESTIONNODEGUID UNIQUEIDENTIFIER NOT NULL
+                       , HAQUESTIONSCORE FLOAT NULL
+                       , QUESTIONPREWEIGHTEDSCORE FLOAT NULL
+                       , ISPROFESSIONALLYCOLLECTED BIT NOT NULL
+                       , HAUSERQUESTION_ITEMMODIFIEDWHEN DATETIME NULL
+                       , TITLE VARCHAR ( MAX) NULL
+                       , DOCUMENTCULTURE_HAQUESTIONSVIEW NVARCHAR ( 10) NOT NULL
+                       , HAQUESTIONSVIEW_LASTMODIFIED DATETIME NOT NULL
+                       , GROUPRESULTSITEMID INT NULL
+                       , POINTRESULTS INT NULL
+                       , QUESTIONGROUPCODENAME NVARCHAR ( 100) NULL
+                       , HARISKAREAITEMID INT NULL
+                       , HAUSERQUESTIONGROUPRESULTS_LASTMODIFIED DATETIME NULL
+                       , USERANSWERITEMID INT NULL
+                       , HAANSWERNODEGUID UNIQUEIDENTIFIER NOT NULL
+                       , USERANSWERCODENAME NVARCHAR ( 100) NOT NULL
+                       , HAANSWERVALUE NVARCHAR ( 255) NULL
+                       , HAANSWERPOINTS INT NULL
+                       , UOMCODE NVARCHAR ( 10) NULL
+                       , HAQUESTIONITEMID INT NOT NULL
+                       , ITEMCREATEDWHEN DATETIME NULL
+                       , HAUSERANSWERS_ITEMMODIFIEDWHEN DATETIME NULL
+                       , LASTLOADEDDATE DATETIME NOT NULL
+                       , SVR NVARCHAR ( 128) NULL
+                       , DBNAME NVARCHAR ( 128) NULL
+                       , DELETEDFLG INT NOT NULL
+            ) 
+            ON [PRIMARY] TEXTIMAGE_ON [PRIMARY];
+            CREATE CLUSTERED INDEX PI_EDW_COMBINEDHAVIEWS ON DBO.DIM_EDW_COMBINEDHAVIEWS
+            (
+            USERRISKCATEGORYITEMID ASC ,
+            USERRISKAREAITEMID ASC ,
+            HARISKAREANODEGUID ASC ,
+            USERQUESTIONITEMID ASC ,
+            HAQUESTIONGUID ASC ,
+            HAQUESTIONNODEGUID ASC ,
+            HAANSWERNODEGUID ASC ,
+            SVR ASC , DBNAME ASC
+            )WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+            EXEC DBO.PROC_ADD_EDW_CT_STDCOLS DIM_EDW_COMBINEDHAVIEWS;
+        END;
+    IF NOT EXISTS ( SELECT
+                           NAME
+                           FROM SYS.TABLES
+                           WHERE
+                           NAME = 'DIM_EDW_CMS_USER') 
+        BEGIN
+            CREATE TABLE DBO.DIM_EDW_CMS_USER (
+                         USERGUID UNIQUEIDENTIFIER NOT NULL
+                       , LASTMODIFIEDWHEN DATETIME2 ( 7) NOT NULL
+                       , LASTUPDATEID INT NOT NULL
+                       , LASTLOADEDDATE DATETIME NOT NULL
+                       , SVR NVARCHAR ( 128) NULL
+                       , DBNAME NVARCHAR ( 128) NULL
+                       , DELETEDFLG INT NOT NULL
+                       , USERID INT NULL
+            ) 
+            ON [PRIMARY];
+            CREATE UNIQUE CLUSTERED INDEX PI_DIM_EDW_CMS_USER ON DBO.DIM_EDW_CMS_USER
+            (
+            USERID ASC ,
+            USERGUID ASC , SVR ASC , DBNAME ASC
+            )WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+            EXEC DBO.PROC_ADD_EDW_CT_STDCOLS DIM_EDW_CMS_USER;
+        END;
+    IF NOT EXISTS ( SELECT
+                           NAME
+                           FROM SYS.TABLES
+                           WHERE
+                           NAME = 'DIM_EDW_CMS_USERSETTINGS') 
+        BEGIN
+            CREATE TABLE DBO.DIM_EDW_CMS_USERSETTINGS (
+                         USERSETTINGSUSERID INT NOT NULL
+                       , HFITUSERMPINUMBER BIGINT NULL
+                       , LASTUPDATEID INT NOT NULL
+                       , LASTLOADEDDATE DATETIME NOT NULL
+                       , SVR NVARCHAR ( 128) NULL
+                       , DBNAME NVARCHAR ( 128) NULL
+                       , DELETEDFLG INT NOT NULL
+                       , USERSETTINGSID INT NULL
+                       , LASTMODIFIEDWHEN DATETIME2 ( 7) NULL
+            ) 
+            ON [PRIMARY];
+            EXEC DBO.PROC_ADD_EDW_CT_STDCOLS DIM_EDW_CMS_USERSETTINGS;
+            CREATE CLUSTERED INDEX PI_CMS_USER ON DBO.DIM_EDW_CMS_USERSETTINGS
+            (
+            USERSETTINGSID ASC ,
+            USERSETTINGSUSERID ASC ,
+            HFITUSERMPINUMBER ASC , SVR ASC , DBNAME ASC
+            )WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+
+            CREATE NONCLUSTERED INDEX PI_CMS_USER_IDS ON DBO.DIM_EDW_CMS_USERSETTINGS
+            (
+            USERSETTINGSUSERID ASC ,
+            HFITUSERMPINUMBER ASC
+            ) 
+            INCLUDE ( LASTUPDATEID ,
+            LASTLOADEDDATE ,
+            SVR ,
+            DBNAME ,
+            DELETEDFLG ,
+            USERSETTINGSID) WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+        END;
+    IF NOT EXISTS ( SELECT
+                           NAME
+                           FROM SYS.TABLES
+                           WHERE
+                           NAME = 'DIM_EDW_CMS_USERSITE') 
+        BEGIN
+            CREATE TABLE DBO.DIM_EDW_CMS_USERSITE (
+                         USERID INT NOT NULL
+                       , SITEID INT NOT NULL
+                       , LASTUPDATEID INT NOT NULL
+                       , LASTLOADEDDATE DATETIME NOT NULL
+                       , SVR NVARCHAR ( 128) NULL
+                       , DBNAME NVARCHAR ( 128) NULL
+                       , DELETEDFLG INT NOT NULL
+                       , USERSITEID INT NULL
+                       , LASTMODIFIEDWHEN DATETIME2 ( 7) NULL
+            ) 
+            ON [PRIMARY];
+            EXEC DBO.PROC_ADD_EDW_CT_STDCOLS DIM_EDW_CMS_USERSITE;
+            CREATE CLUSTERED INDEX PI_EDW_CMS_USERSITE ON DBO.DIM_EDW_CMS_USERSITE
+            (
+            USERSITEID ASC ,
+            USERID ASC ,
+            SITEID ASC , SVR ASC , DBNAME ASC
+            )WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+            CREATE NONCLUSTERED INDEX PI_EDW_CMS_USERSITE_UID ON DBO.DIM_EDW_CMS_USERSITE
+            (
+            USERID ASC
+            ) 
+            INCLUDE ( SITEID ,
+            LASTUPDATEID ,
+            LASTLOADEDDATE ,
+            SVR ,
+            DBNAME ,
+            DELETEDFLG ,
+            USERSITEID) WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+        END;
+    IF NOT EXISTS ( SELECT
+                           NAME
+                           FROM SYS.TABLES
+                           WHERE
+                           NAME = 'DIM_EDW_HealthAssessmentDefinition') 
+        BEGIN
+            CREATE TABLE DBO.DIM_EDW_HEALTHASSESSMENTDEFINITION (
+                         SITEGUID INT NULL
+                       , ACCOUNTCD INT NULL
+                       , HANODEID INT NOT NULL
+                       , HANODENAME NVARCHAR ( 100) NOT NULL
+                       , HADOCUMENTID INT NULL
+                       , HANODESITEID INT NOT NULL
+                       , HADOCPUBVERID INT NULL
+                       , MODTITLE VARCHAR ( MAX) NULL
+                       , INTROTEXT VARCHAR ( MAX) NULL
+                       , MODDOCGUID UNIQUEIDENTIFIER NOT NULL
+                       , MODWEIGHT INT NOT NULL
+                       , MODISENABLED BIT NOT NULL
+                       , MODCODENAME NVARCHAR ( 100) NOT NULL
+                       , MODDOCPUBVERID INT NULL
+                       , RCTITLE VARCHAR ( MAX) NULL
+                       , RCWEIGHT INT NOT NULL
+                       , RCDOCUMENTGUID UNIQUEIDENTIFIER NOT NULL
+                       , RCISENABLED BIT NOT NULL
+                       , RCCODENAME NVARCHAR ( 100) NOT NULL
+                       , RCDOCPUBVERID INT NULL
+                       , RATYTLE VARCHAR ( MAX) NULL
+                       , RAWEIGHT INT NOT NULL
+                       , RADOCUMENTGUID UNIQUEIDENTIFIER NOT NULL
+                       , RAISENABLED BIT NOT NULL
+                       , RACODENAME NVARCHAR ( 100) NOT NULL
+                       , RASCORINGSTRATEGYID INT NOT NULL
+                       , RADOCPUBVERID INT NULL
+                       , QUESTIONTYPE NVARCHAR ( 100) NOT NULL
+                       , QUESTITLE VARCHAR ( MAX) NULL
+                       , QUESWEIGHT INT NOT NULL
+                       , QUESISREQUIRED BIT NOT NULL
+                       , QUESDOCUMENTGUID UNIQUEIDENTIFIER NOT NULL
+                       , QUESISENABLED BIT NOT NULL
+                       , QUESISVISIBLE NVARCHAR ( MAX) NULL
+                       , QUESISSTAGING BIT NOT NULL
+                       , QUESTIONCODENAME NVARCHAR ( 100) NOT NULL
+                       , QUESDOCPUBVERID INT NULL
+                       , ANSVALUE NVARCHAR ( 150) NULL
+                       , ANSPOINTS INT NULL
+                       , ANSDOCUMENTGUID UNIQUEIDENTIFIER NULL
+                       , ANSISENABLED BIT NULL
+                       , ANSCODENAME NVARCHAR ( 100) NULL
+                       , ANSUOM NVARCHAR ( 5) NULL
+                       , ANSDOCPUBVERID INT NULL
+                       , CHANGETYPE VARCHAR ( 1) NOT NULL
+                       , DOCUMENTCREATEDWHEN DATETIME NULL
+                       , DOCUMENTMODIFIEDWHEN DATETIME NULL
+                       , CMSTREENODEGUID UNIQUEIDENTIFIER NOT NULL
+                       , HANODEGUID UNIQUEIDENTIFIER NOT NULL
+                       , SITELASTMODIFIED INT NULL
+                       , ACCOUNT_ITEMMODIFIEDWHEN INT NULL
+                       , CAMPAIGN_DOCUMENTMODIFIEDWHEN INT NULL
+                       , ASSESSMENT_DOCUMENTMODIFIEDWHEN DATETIME NULL
+                       , MODULE_DOCUMENTMODIFIEDWHEN DATETIME NULL
+                       , RISKCATEGORY_DOCUMENTMODIFIEDWHEN DATETIME NULL
+                       , RISKAREA_DOCUMENTMODIFIEDWHEN DATETIME NULL
+                       , QUESTION_DOCUMENTMODIFIEDWHEN DATETIME NULL
+                       , ANSWER_DOCUMENTMODIFIEDWHEN DATETIME NULL
+                       , ALLOWMULTISELECT BIT NULL
+                       , LOCID VARCHAR ( 5) NOT NULL
+                       , CMS_CLASS_CTID INT NULL
+                       , CMS_CLASS_SCV BIGINT NULL
+                       , CMS_DOCUMENT_CTID INT NULL
+                       , CMS_DOCUMENT_SCV BIGINT NULL
+                       , CMS_SITE_CTID INT NULL
+                       , CMS_SITE_SCV BIGINT NULL
+                       , CMS_TREE_CTID INT NULL
+                       , CMS_TREE_SCV BIGINT NULL
+                       , CMS_USER_CTID INT NULL
+                       , CMS_USER_SCV BIGINT NULL
+                       , COM_SKU_CTID INT NULL
+                       , COM_SKU_SCV BIGINT NULL
+                       , HFIT_HEALTHASSESMENTMATRIXQUESTION_CTID INT NULL
+                       , HFIT_HEALTHASSESMENTMATRIXQUESTION_SCV BIGINT NULL
+                       , HFIT_HEALTHASSESMENTMODULE_CTID INT NULL
+                       , HFIT_HEALTHASSESMENTMODULE_SCV BIGINT NULL
+                       , HFIT_HEALTHASSESMENTMULTIPLECHOICEQUESTION_CTID INT NULL
+                       , HFIT_HEALTHASSESMENTMULTIPLECHOICEQUESTION_SCV BIGINT NULL
+                       , HFIT_HEALTHASSESMENTRISKAREA_CTID INT NULL
+                       , HFIT_HEALTHASSESMENTRISKAREA_SCV BIGINT NULL
+                       , HFIT_HEALTHASSESMENTRISKCATEGORY_CTID INT NULL
+                       , HFIT_HEALTHASSESMENTRISKCATEGORY_SCV BIGINT NULL
+                       , HFIT_HEALTHASSESSMENT_CTID INT NULL
+                       , HFIT_HEALTHASSESSMENT_SCV BIGINT NULL
+                       , HFIT_HEALTHASSESSMENTFREEFORM_CTID INT NULL
+                       , HFIT_HEALTHASSESSMENTFREEFORM_SCV BIGINT NULL
+                       , CMS_CLASS_CHANGE_OPERATION NCHAR ( 1) NULL
+                       , CMS_DOCUMENT_CHANGE_OPERATION NCHAR ( 1) NULL
+                       , CMS_SITE_CHANGE_OPERATION NCHAR ( 1) NULL
+                       , CMS_TREE_CHANGE_OPERATION NCHAR ( 1) NULL
+                       , CMS_USER_CHANGE_OPERATION NCHAR ( 1) NULL
+                       , COM_SKU_CHANGE_OPERATION NCHAR ( 1) NULL
+                       , HFIT_HEALTHASSESMENTMATRIXQUESTION_CHANGE_OPERATION NCHAR ( 1) NULL
+                       , HFIT_HEALTHASSESMENTMODULE_CHANGE_OPERATION NCHAR ( 1) NULL
+                       , HFIT_HEALTHASSESMENTMULTIPLECHOICEQUESTION_CHANGE_OPERATION NCHAR ( 1) NULL
+                       , HFIT_HEALTHASSESMENTRISKAREA_CHANGE_OPERATION NCHAR ( 1) NULL
+                       , HFIT_HEALTHASSESMENTRISKCATEGORY_CHANGE_OPERATION NCHAR ( 1) NULL
+                       , HFIT_HEALTHASSESSMENT_CHANGE_OPERATION NCHAR ( 1) NULL
+                       , HFIT_HEALTHASSESSMENTFREEFORM_CHANGE_OPERATION NCHAR ( 1) NULL
+                       , CHANGED_FLG INT NULL
+                       , CHANGE_TYPE_CODE NCHAR ( 1) NULL
+                       , LastModifiedDATE DATETIME NULL
+                       , ROWNBR INT NULL
+                       , DELETEDFLG BIT NULL
+                       , TIMEZONE NVARCHAR ( 10) NULL
+                       , CONVERTEDTOCENTRALTIME BIT NULL
+            ) 
+            ON [PRIMARY] TEXTIMAGE_ON [PRIMARY];
+            EXEC DBO.PROC_ADD_EDW_CT_STDCOLS DIM_EDW_HEALTHASSESSMENTDEFINITION;
+            CREATE CLUSTERED INDEX PI_DIM_EDW_HEALTHASSESSMENTDEFINITION ON DBO.DIM_EDW_HEALTHASSESSMENTDEFINITION
+            (
+            SITEGUID ASC
+            , ACCOUNTCD ASC
+            , HANODEID ASC
+            , HADOCUMENTID ASC , SVR ASC , DBNAME ASC
+            )WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+        END;
+    IF NOT EXISTS ( SELECT
+                           NAME
+                           FROM SYS.TABLES
+                           WHERE
+                           NAME = 'DIM_EDW_HFIT_HEALTHASSESMENTUSERANSWERS') 
+        BEGIN
+            CREATE TABLE DBO.DIM_EDW_HFIT_HEALTHASSESMENTUSERANSWERS (
+                         HAANSWERNODEGUID UNIQUEIDENTIFIER NOT NULL
+                       , CODENAME NVARCHAR ( 100) NOT NULL
+                       , HAANSWERVALUE NVARCHAR ( 255) NULL
+                       , HAANSWERPOINTS INT NULL
+                       , UOMCODE NVARCHAR ( 10) NULL
+                       , ITEMCREATEDWHEN DATETIME2 ( 7) NULL
+                       , ITEMMODIFIEDWHEN DATETIME2 ( 7) NULL
+                       , HAQUESTIONITEMID INT NOT NULL
+                       , LASTUPDATEID INT NOT NULL
+                       , LASTLOADEDDATE DATETIME NOT NULL
+                       , SVR NVARCHAR ( 128) NULL
+                       , DBNAME NVARCHAR ( 128) NULL
+                       , DELETEDFLG INT NOT NULL
+                       , ITEMID INT NULL
+                       , LASTMODIFIEDWHEN DATETIME2 ( 7) NULL
+            ) 
+            ON [PRIMARY];
+            EXEC DBO.PROC_ADD_EDW_CT_STDCOLS DIM_EDW_HFIT_HEALTHASSESMENTUSERANSWERS;
+
+            CREATE CLUSTERED INDEX PI_BASE_HFIT_HEALTHASSESMENTUSERANSWERS ON DBO.DIM_EDW_HFIT_HEALTHASSESMENTUSERANSWERS
+            (
+            ITEMID ASC ,
+            HAQUESTIONITEMID ASC ,
+            HAANSWERNODEGUID ASC ,
+            CODENAME ASC ,
+            HAANSWERVALUE ASC ,
+            HAANSWERPOINTS ASC ,
+            UOMCODE ASC ,
+            ITEMCREATEDWHEN ASC ,
+            ITEMMODIFIEDWHEN ASC ,
+            LASTUPDATEID , LastModifiedDATE , SVR ASC , DBNAME ASC
+            )WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+
+            CREATE NONCLUSTERED INDEX PI_BASE_HFIT_HEALTHASSESMENTUSERANSWERS_HAQUESTIONITEMID ON DBO.DIM_EDW_HFIT_HEALTHASSESMENTUSERANSWERS
+            (
+            HAQUESTIONITEMID ASC , SVR ASC , DBNAME ASC
+            )WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+
+            CREATE NONCLUSTERED INDEX PI_BASE_HFIT_HEALTHASSESMENTUSERANSWERS_LASTUPDATEID ON DBO.DIM_EDW_HFIT_HEALTHASSESMENTUSERANSWERS
+            (
+            ITEMID ASC ,
+            LASTUPDATEID ASC , SVR ASC , DBNAME ASC
+            )WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+        END;
+    IF NOT EXISTS ( SELECT
+                           NAME
+                           FROM SYS.TABLES
+                           WHERE
+                           NAME = 'DIM_EDW_HFIT_HEALTHASSESMENTUSERMODULE') 
+        BEGIN
+            CREATE TABLE DBO.DIM_EDW_HFIT_HEALTHASSESMENTUSERMODULE (
+                         HASTARTEDITEMID INT NOT NULL
+                       , CODENAME NVARCHAR ( 100) NOT NULL
+                       , HAMODULENODEGUID UNIQUEIDENTIFIER NOT NULL
+                       , HAMODULESCORE FLOAT NOT NULL
+                       , PREWEIGHTEDSCORE FLOAT NULL
+                       , LASTUPDATEID INT NOT NULL
+                       , LASTLOADEDDATE DATETIME NOT NULL
+                       , SVR NVARCHAR ( 128) NULL
+                       , DBNAME NVARCHAR ( 128) NULL
+                       , DELETEDFLG INT NOT NULL
+                       , ITEMID INT NULL
+                       , LASTMODIFIEDWHEN DATETIME2 ( 7) NULL
+            ) 
+            ON [PRIMARY];
+            EXEC DBO.PROC_ADD_EDW_CT_STDCOLS DIM_EDW_HFIT_HEALTHASSESMENTUSERMODULE;
+            CREATE NONCLUSTERED INDEX PI_EDW_HFIT_HEALTHASSESMENTUSERMODULE ON DBO.DIM_EDW_HFIT_HEALTHASSESMENTUSERMODULE
+            (
+            ITEMID ASC ,
+            HASTARTEDITEMID ASC , SVR ASC , DBNAME ASC
+            ) 
+            INCLUDE ( CODENAME ,
+            HAMODULENODEGUID ,
+            HAMODULESCORE ,
+            PREWEIGHTEDSCORE) WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+            CREATE NONCLUSTERED INDEX PI_EDW_HFIT_HEALTHASSESMENTUSERMODULE_HASITEMID ON DBO.DIM_EDW_HFIT_HEALTHASSESMENTUSERMODULE
+            (
+            HASTARTEDITEMID ASC
+            ) 
+            INCLUDE ( CODENAME ,
+            HAMODULENODEGUID ,
+            HAMODULESCORE ,
+            PREWEIGHTEDSCORE ,
+            LASTUPDATEID ,
+            LASTLOADEDDATE ,
+            SVR ,
+            DBNAME ,
+            DELETEDFLG ,
+            LASTMODIFIEDWHEN ,
+            ITEMID) WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+        END;
+    IF NOT EXISTS ( SELECT
+                           NAME
+                           FROM SYS.TABLES
+                           WHERE
+                           NAME = 'DIM_EDW_HFit_HealthAssesmentUserQuestion') 
+        BEGIN
+            CREATE TABLE DBO.DIM_EDW_HFIT_HEALTHASSESMENTUSERQUESTION (
+                         HAQUESTIONNODEGUID UNIQUEIDENTIFIER NOT NULL
+                       , CODENAME NVARCHAR ( 100) NOT NULL
+                       , HAQUESTIONSCORE FLOAT NULL
+                       , PREWEIGHTEDSCORE FLOAT NULL
+                       , ISPROFESSIONALLYCOLLECTED BIT NOT NULL
+                       , ITEMMODIFIEDWHEN DATETIME2 ( 7) NULL
+                       , HARISKAREAITEMID INT NOT NULL
+                       , HFIT_HEALTHASSESMENTUSERQUESTION_CTID INT NULL
+                       , HFIT_HEALTHASSESMENTUSERQUESTION_CHANGE_OPERATION NCHAR ( 1) NULL
+                       , CT_HFIT_HEALTHASSESMENTUSERQUESTION_SCV BIGINT NULL
+                       , LASTUPDATEID INT NOT NULL
+                       , LASTLOADEDDATE DATETIME NOT NULL
+                       , SVR NVARCHAR ( 128) NULL
+                       , DBNAME NVARCHAR ( 128) NULL
+                       , DELETEDFLG INT NOT NULL
+                       , ITEMID INT NULL
+                       , LASTMODIFIEDWHEN DATETIME2 ( 7) NULL
+            ) 
+            ON [PRIMARY];
+            EXEC DBO.PROC_ADD_EDW_CT_STDCOLS DIM_EDW_HFIT_HEALTHASSESMENTUSERQUESTION;
+
+            CREATE CLUSTERED INDEX PI_HFIT_HEALTHASSESMENTUSERQUESTION ON DBO.DIM_EDW_HFIT_HEALTHASSESMENTUSERQUESTION
+            (
+            ITEMID ASC ,
+            HARISKAREAITEMID ASC ,
+            HAQUESTIONNODEGUID ASC ,
+            CODENAME ASC ,
+            HAQUESTIONSCORE ASC ,
+            PREWEIGHTEDSCORE ASC ,
+            ISPROFESSIONALLYCOLLECTED ,
+            ITEMMODIFIEDWHEN ASC ,
+            LASTUPDATEID ASC ,
+            LASTLOADEDDATE ASC , SVR ASC , DBNAME ASC , LASTMODIFIEDWHEN
+            )WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+
+            CREATE NONCLUSTERED INDEX PI01_DIM_EDW_HFIT_HEALTHASSESMENTUSERQUESTION ON DBO.DIM_EDW_HFIT_HEALTHASSESMENTUSERQUESTION
+            (
+            HARISKAREAITEMID ASC , SVR ASC , DBNAME ASC
+            ) 
+            INCLUDE ( ITEMID ,
+            HAQUESTIONNODEGUID ,
+            CODENAME ,
+            HAQUESTIONSCORE ,
+            PREWEIGHTEDSCORE ,
+            ISPROFESSIONALLYCOLLECTED ,
+            ITEMMODIFIEDWHEN ,
+            LASTUPDATEID ,
+            LASTLOADEDDATE , LASTMODIFIEDWHEN) WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+
+            CREATE UNIQUE NONCLUSTERED INDEX UK_DIM_EDW_HFIT_HEALTHASSESMENTUSERQUESTION ON DBO.DIM_EDW_HFIT_HEALTHASSESMENTUSERQUESTION
+            (
+            ITEMID ASC ,
+            LASTUPDATEID ASC , SVR ASC , DBNAME ASC , LASTMODIFIEDWHEN
+            )WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+        END;
+    IF NOT EXISTS ( SELECT
+                           NAME
+                           FROM SYS.TABLES
+                           WHERE
+                           NAME = 'DIM_EDW_HFit_HealthAssesmentUserQuestionGroupResults') 
+        BEGIN
+            CREATE TABLE DBO.DIM_EDW_HFIT_HEALTHASSESMENTUSERQUESTIONGROUPRESULTS (
+                         POINTRESULTS INT NOT NULL
+                       , CODENAME NVARCHAR ( 100) NOT NULL
+                       , HARISKAREAITEMID INT NOT NULL
+                       , LASTUPDATEID INT NOT NULL
+                       , LASTLOADEDDATE DATETIME NOT NULL
+                       , SVR NVARCHAR ( 128) NULL
+                       , DBNAME NVARCHAR ( 128) NULL
+                       , DELETEDFLG INT NOT NULL
+                       , ITEMID INT NULL
+                       , LASTMODIFIEDWHEN DATETIME2 ( 7) NULL
+            ) 
+            ON [PRIMARY];
+            EXEC DBO.PROC_ADD_EDW_CT_STDCOLS DIM_EDW_HFIT_HEALTHASSESMENTUSERQUESTIONGROUPRESULTS;
+            CREATE NONCLUSTERED INDEX PI_HEALTHASSESMENTUSERQUESTIONGROUPRESULTS ON DBO.DIM_EDW_HFIT_HEALTHASSESMENTUSERQUESTIONGROUPRESULTS
+            (
+            ITEMID ASC , SVR ASC , DBNAME ASC
+            ) 
+            INCLUDE ( POINTRESULTS ,
+            CODENAME ,
+            HARISKAREAITEMID) WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+            CREATE NONCLUSTERED INDEX PI_DIM_HAUSERQUESTIONGROUPRESULTS ON DBO.DIM_EDW_HFIT_HEALTHASSESMENTUSERQUESTIONGROUPRESULTS
+            (
+            HARISKAREAITEMID ASC , SVR ASC , DBNAME ASC
+            ) 
+            INCLUDE ( ITEMID ,
+            POINTRESULTS ,
+            CODENAME) WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+        END;
+    IF NOT EXISTS ( SELECT
+                           NAME
+                           FROM SYS.TABLES
+                           WHERE
+                           NAME = 'DIM_EDW_HFit_HealthAssesmentUserRiskArea') 
+        BEGIN
+            CREATE TABLE DBO.DIM_EDW_HFIT_HEALTHASSESMENTUSERRISKAREA (
+                         CODENAME NVARCHAR ( 100) NOT NULL
+                       , HARISKAREANODEGUID UNIQUEIDENTIFIER NOT NULL
+                       , HARISKAREASCORE FLOAT NULL
+                       , PREWEIGHTEDSCORE FLOAT NULL
+                       , ITEMMODIFIEDWHEN DATETIME2 ( 7) NULL
+                       , HARISKCATEGORYITEMID INT NOT NULL
+                       , LASTUPDATEID INT NOT NULL
+                       , LASTLOADEDDATE DATETIME NOT NULL
+                       , SVR NVARCHAR ( 128) NULL
+                       , DBNAME NVARCHAR ( 128) NULL
+                       , DELETEDFLG INT NOT NULL
+                       , ITEMID INT NULL
+                       , LASTMODIFIEDWHEN DATETIME2 ( 7) NULL
+            ) 
+            ON [PRIMARY];
+            EXEC DBO.PROC_ADD_EDW_CT_STDCOLS DIM_EDW_HFIT_HEALTHASSESMENTUSERRISKAREA;
+            CREATE NONCLUSTERED INDEX PI_HEALTHASSESMENTUSERRISKAREA_CATEGORY ON DBO.DIM_EDW_HFIT_HEALTHASSESMENTUSERRISKAREA
+            (
+            HARISKCATEGORYITEMID ASC
+            ) 
+            INCLUDE ( CODENAME ,
+            HARISKAREANODEGUID ,
+            HARISKAREASCORE ,
+            PREWEIGHTEDSCORE ,
+            ITEMMODIFIEDWHEN ,
+            LASTUPDATEID ,
+            LASTLOADEDDATE ,
+            SVR ,
+            DBNAME ,
+            DELETEDFLG ,
+            ITEMID , LASTMODIFIEDWHEN) WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+        END;
+    IF NOT EXISTS ( SELECT
+                           NAME
+                           FROM SYS.TABLES
+                           WHERE
+                           NAME = 'DIM_EDW_HFIT_HEALTHASSESMENTUSERRISKCATEGORY') 
+        BEGIN
+            CREATE TABLE DBO.DIM_EDW_HFIT_HEALTHASSESMENTUSERRISKCATEGORY (
+                         CODENAME NVARCHAR ( 100) NOT NULL
+                       , HARISKCATEGORYNODEGUID UNIQUEIDENTIFIER NOT NULL
+                       , HARISKCATEGORYSCORE FLOAT NULL
+                       , PREWEIGHTEDSCORE FLOAT NULL
+                       , ITEMMODIFIEDWHEN DATETIME2 ( 7) NULL
+                       , HAMODULEITEMID INT NOT NULL
+                       , LASTUPDATEID INT NOT NULL
+                       , LASTLOADEDDATE DATETIME NOT NULL
+                       , SVR NVARCHAR ( 128) NULL
+                       , DBNAME NVARCHAR ( 128) NULL
+                       , DELETEDFLG INT NOT NULL
+                       , ITEMID INT NULL
+                       , LASTMODIFIEDWHEN DATETIME2 ( 7) NULL
+            ) 
+            ON [PRIMARY];
+            EXEC DBO.PROC_ADD_EDW_CT_STDCOLS DIM_EDW_HFIT_HEALTHASSESMENTUSERRISKCATEGORY;
+            CREATE NONCLUSTERED INDEX PI_EDW_HEALTHASSESMENTUSERRISKCATEGORY ON DBO.DIM_EDW_HFIT_HEALTHASSESMENTUSERRISKCATEGORY
+            (
+            ITEMID ASC ,
+            HAMODULEITEMID ASC , SVR ASC , DBNAME ASC
+            ) 
+            INCLUDE ( CODENAME ,
+            HARISKCATEGORYNODEGUID ,
+            HARISKCATEGORYSCORE ,
+            PREWEIGHTEDSCORE ,
+            ITEMMODIFIEDWHEN , LASTMODIFIEDWHEN) WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+            CREATE NONCLUSTERED INDEX PI_EDW_HEALTHASSESMENTUSERRISKCATEGORY_HAMODID ON DBO.DIM_EDW_HFIT_HEALTHASSESMENTUSERRISKCATEGORY
+            (
+            HAMODULEITEMID ASC
+            ) 
+            INCLUDE ( CODENAME ,
+            HARISKCATEGORYNODEGUID ,
+            HARISKCATEGORYSCORE ,
+            PREWEIGHTEDSCORE ,
+            ITEMMODIFIEDWHEN ,
+            LASTUPDATEID ,
+            LASTLOADEDDATE ,
+            SVR ,
+            DBNAME ,
+            DELETEDFLG ,
+            ITEMID) WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+        END;
+    IF NOT EXISTS ( SELECT
+                           NAME
+                           FROM SYS.TABLES
+                           WHERE
+                           NAME = 'DIM_EDW_BASE_HFIT_HEALTHASSESMENTUSERSTARTED') 
+        BEGIN
+            CREATE TABLE DBO.DIM_EDW_BASE_HFIT_HEALTHASSESMENTUSERSTARTED (
+                         USERID BIGINT NOT NULL
+                       , HASTARTEDDT DATETIME2 ( 7) NOT NULL
+                       , HACOMPLETEDDT DATETIME2 ( 7) NULL
+                       , HASCORE INT NULL
+                       , HAPAPERFLG BIT NOT NULL
+                       , HATELEPHONICFLG BIT NOT NULL
+                       , HASTARTEDMODE INT NOT NULL
+                       , HACOMPLETEDMODE INT NOT NULL
+                       , HACAMPAIGNNODEGUID UNIQUEIDENTIFIER NOT NULL
+                       , HADOCUMENTCONFIGID INT NULL
+                       , ITEMMODIFIEDWHEN DATETIME2 ( 7) NULL
+                       , LASTUPDATEID INT NOT NULL
+                       , LASTLOADEDDATE DATETIME NOT NULL
+                       , SVR NVARCHAR ( 128) NULL
+                       , DBNAME NVARCHAR ( 128) NULL
+                       , DELETEDFLG INT NOT NULL
+                       , ITEMID INT NULL
+                       , LASTMODIFIEDWHEN DATETIME2 ( 7) NULL
+            ) 
+            ON [PRIMARY];
+            EXEC DBO.PROC_ADD_EDW_CT_STDCOLS DIM_EDW_BASE_HFIT_HEALTHASSESMENTUSERSTARTED;
+            CREATE NONCLUSTERED INDEX PI_BASE_HFIT_HEALTHASSESMENTUSERSTARTED ON DBO.DIM_EDW_BASE_HFIT_HEALTHASSESMENTUSERSTARTED
+            (
+            ITEMID ASC ,
+            USERID ASC , SVR ASC , DBNAME ASC
+            ) 
+            INCLUDE ( HASTARTEDDT ,
+            HACOMPLETEDDT ,
+            HASCORE ,
+            HAPAPERFLG ,
+            HATELEPHONICFLG ,
+            HASTARTEDMODE ,
+            HACAMPAIGNNODEGUID ,
+            HADOCUMENTCONFIGID) WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+        END;
+    IF NOT EXISTS ( SELECT
+                           NAME
+                           FROM SYS.TABLES
+                           WHERE
+                           NAME = 'DIM_View_EDW_HealthAssesmentQuestions') 
+        BEGIN
+            CREATE TABLE DBO.DIM_View_EDW_HealthAssesmentQuestions (
+                        SVR NVARCHAR ( 128) NULL
+                       , DBNAME NVARCHAR ( 128) NULL
+                       , TITLE NVARCHAR ( MAX) NULL
+                       , DOCUMENTCULTURE NVARCHAR ( 10) NOT NULL
+                       , NODEGUID UNIQUEIDENTIFIER NOT NULL
+                       , LASTUPDATEID INT NOT NULL
+                       , LASTLOADEDDATE DATETIME NOT NULL
+                       , DELETEDFLG INT NOT NULL
+                       , LASTMODIFIEDWHEN DATETIME2 ( 7) NULL
+            ) 
+            ON [PRIMARY] TEXTIMAGE_ON [PRIMARY];
+            EXEC DBO.PROC_ADD_EDW_CT_STDCOLS DIM_View_EDW_HealthAssesmentQuestions;
+            CREATE UNIQUE CLUSTERED INDEX PI_VIEW_EDW_HEALTHASSESMENTQUESTIONS ON DBO.DIM_View_EDW_HealthAssesmentQuestions
+            (
+            SVR ASC , DBNAME ASC, DOCUMENTCULTURE ASC ,
+            NODEGUID ASC 
+            )WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+        END;
+    IF NOT EXISTS ( SELECT
+                           NAME
+                           FROM SYS.TABLES
+                           WHERE
+                           NAME = 'DIM_EDW_VIEW_HFIT_HACAMPAIGN_JOINED') 
+        BEGIN
+            CREATE TABLE DBO.DIM_EDW_VIEW_HFIT_HACAMPAIGN_JOINED (
+                         DOCUMENTCULTURE NVARCHAR ( 10) NOT NULL
+                       , HACAMPAIGNID INT NOT NULL
+                       , NODEGUID UNIQUEIDENTIFIER NOT NULL
+                       , NODESITEID INT NOT NULL
+                       , HEALTHASSESSMENTID INT NOT NULL
+                       , LASTUPDATEID INT NOT NULL
+                       , LASTLOADEDDATE DATETIME NOT NULL
+                       , SVR NVARCHAR ( 128) NULL
+                       , DBNAME NVARCHAR ( 128) NULL
+                       , DELETEDFLG INT NOT NULL
+                       , LASTMODIFIEDWHEN DATETIME2 ( 7) NULL
+            ) 
+            ON [PRIMARY];
+            EXEC DBO.PROC_ADD_EDW_CT_STDCOLS DIM_EDW_VIEW_HFIT_HACAMPAIGN_JOINED;
+            CREATE UNIQUE CLUSTERED INDEX PI_VIEW_HFIT_HACAMPAIGN_JOINED ON DBO.DIM_EDW_VIEW_HFIT_HACAMPAIGN_JOINED
+            (
+            DOCUMENTCULTURE ASC ,
+            HACAMPAIGNID ASC ,
+            NODEGUID ASC ,
+            NODESITEID ASC ,
+            HEALTHASSESSMENTID ASC , SVR ASC , DBNAME ASC
+            )WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+            CREATE NONCLUSTERED INDEX PI_VIEW_HFIT_HACAMPAIGN_JOINED_CULTURE ON DBO.DIM_EDW_VIEW_HFIT_HACAMPAIGN_JOINED
+            (
+            NODEGUID ASC ,
+            DOCUMENTCULTURE ASC , SVR ASC , DBNAME ASC
+            )WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+        END;
+
+    -- drop table DIM_EDW_VIEW_HFIT_HEALTHASSESSMENT_JOINED
+
+    IF NOT EXISTS ( SELECT
+                           NAME
+                           FROM SYS.TABLES
+                           WHERE
+                           NAME = 'DIM_EDW_VIEW_HFIT_HEALTHASSESSMENT_JOINED') 
+        BEGIN
+            CREATE TABLE DBO.DIM_EDW_VIEW_HFIT_HEALTHASSESSMENT_JOINED (
+                         NODEGUID UNIQUEIDENTIFIER NOT NULL
+                       , DOCUMENTID INT NOT NULL
+                       , DOCUMENTCULTURE NVARCHAR ( 10) NOT NULL
+                       , LASTUPDATEID INT NOT NULL
+                       , LASTLOADEDDATE DATETIME NOT NULL
+                       , SVR NVARCHAR ( 128) NULL
+                       , DBNAME NVARCHAR ( 128) NULL
+                       , DELETEDFLG INT NOT NULL
+                       , LASTMODIFIEDWHEN DATETIME2 ( 7) NULL
+            ) 
+            ON [PRIMARY];
+            EXEC DBO.PROC_ADD_EDW_CT_STDCOLS DIM_EDW_VIEW_HFIT_HEALTHASSESSMENT_JOINED;
+            CREATE UNIQUE CLUSTERED INDEX PI_VIEW_HFIT_HEALTHASSESSMENT_JOINED ON DBO.DIM_EDW_VIEW_HFIT_HEALTHASSESSMENT_JOINED
+            (
+            NODEGUID ASC ,
+            DOCUMENTID ASC , SVR ASC , DBNAME ASC
+            )WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+        END;
+    IF NOT EXISTS ( SELECT
+                           NAME
+                           FROM SYS.TABLES
+                           WHERE
+                           NAME = 'DIM_View_EDW_HealthAssesmentQuestions') 
+        BEGIN
+            CREATE TABLE DBO.DIM_VIEW_EDW_HEALTHASSESMENTQUESTIONS (
+                        SVR NVARCHAR ( 128) NULL
+                       , DBNAME NVARCHAR ( 128) NULL
+                       , TITLE VARCHAR ( MAX) NULL
+                       , DOCUMENTCULTURE NVARCHAR ( 10) NOT NULL
+                       , LASTUPDATEID INT NOT NULL
+                       , LASTLOADEDDATE DATETIME NOT NULL
+                       , DELETEDFLG INT NOT NULL
+                       , NODEGUID UNIQUEIDENTIFIER NULL
+                       , LASTMODIFIEDWHEN DATETIME2 ( 7) NULL
+            ) 
+            ON [PRIMARY] TEXTIMAGE_ON [PRIMARY];
+            EXEC DBO.PROC_ADD_EDW_CT_STDCOLS DIM_VIEW_EDW_HEALTHASSESMENTQUESTIONS;
+            CREATE UNIQUE CLUSTERED INDEX PI_VIEW_EDW_HEALTHASSESMENTQUESTIONS ON DBO.DIM_View_EDW_HealthAssesmentQuestions
+            (
+		  SVR ASC , DBNAME ASC, 
+            DOCUMENTCULTURE ASC ,
+            NODEGUID ASC 
+            )WITH ( PAD_INDEX = OFF , STATISTICS_NORECOMPUTE = OFF , SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , DROP_EXISTING = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+        END;
+    IF EXISTS ( SELECT
+                       NAME
+                       FROM SYS.TABLES
+                       WHERE
+                       NAME = 'DIM_EDW_HFIT_HEALTHASSESMENTUSERRISKAREA_Joined') 
+        BEGIN
+            DROP TABLE
+                 DBO.DIM_EDW_HFIT_HEALTHASSESMENTUSERRISKAREA_JOINED;
+        END;
+    IF NOT EXISTS ( SELECT
+                           NAME
+                           FROM SYS.TABLES
+                           WHERE
+                           NAME = 'DIM_EDW_HFIT_HEALTHASSESMENTUSERRISKAREA_Joined') 
+        BEGIN
+            EXEC PrintImmediate  'POPULATING DIM_EDW_HFIT_HEALTHASSESMENTUSERRISKAREA_Joined';
+            SELECT
+                   HAUSERRISKAREA.ITEMID AS                       USERRISKAREAITEMID
+                 , HAUSERRISKAREA.HARISKCATEGORYITEMID
+                 , HAUSERRISKAREA.CODENAME AS                     USERRISKAREACODENAME
+                 , HAUSERRISKAREA.HARISKAREANODEGUID
+                 , NULL AS                                        HARISKAREAVERSIONID
+                 , HAUSERRISKAREA.HARISKAREASCORE
+                 , HAUSERRISKAREA.PREWEIGHTEDSCORE AS             RISKAREAPREWEIGHTEDSCORE
+                 , HAUSERRISKAREA.ITEMMODIFIEDWHEN AS             HAUSERRISKAREA_ITEMMODIFIEDWHEN
+                 , HAUSERRISKAREA.ITEMMODIFIEDWHEN AS             HAUSERRISKAREA_LASTMODIFIED
+
+                   --HAUserRiskArea.LASTLOADEDDATE 
+
+                 , NULL AS                                        HAUSERRISKAREA_LASTUPDATEID
+
+                   --HAUserRiskArea.LastUpdateID 
+
+                 , HAUSERQUESTIONGROUPRESULTS.HARISKAREAITEMID
+                 , HAUSERQUESTIONGROUPRESULTS.ITEMID AS           HAUSERQUESTIONGROUPRESULTSITEMID
+                 , HAUSERQUESTIONGROUPRESULTS.POINTRESULTS
+                 , HAUSERQUESTIONGROUPRESULTS.CODENAME AS         QUESTIONGROUPCODENAME
+                 , HAUSERQUESTIONGROUPRESULTS.ITEMMODIFIEDWHEN AS HAUSERQUESTIONGROUPRESULTS_LASTMODIFIED
+
+                   --HAUserQuestionGroupResults.LASTLOADEDDATE 
+
+                 , NULL AS                                        HAUSERQUESTIONGROUPRESULTS_LASTUPDATEID
+
+                   --HAUserQuestionGroupResults.LastUpdateID 
+
+                 , HAUSERRISKAREA.ITEMMODIFIEDWHEN AS             LASTMODIFIEDWHEN
+                 , 0 AS                                           LASTUPDATEID
+                 , GETDATE () AS                                  LASTLOADEDDATE
+                 , @@Servername AS                                SVR
+                 , DB_NAME () AS                                  DBNAME
+                 , 0 AS                                           DELETEDFLG
+            INTO
+                 DIM_EDW_HFIT_HEALTHASSESMENTUSERRISKAREA_JOINED
+                   FROM
+                        DBO.BASE_HFIT_HEALTHASSESMENTUSERRISKAREA AS HAUSERRISKAREA --ON HARISKCATEGORY.ITEMID = HAUserRiskArea.HARISKCATEGORYITEMID
+                             LEFT JOIN DBO.BASE_HFIT_HEALTHASSESMENTUSERQUESTIONGROUPRESULTS AS HAUSERQUESTIONGROUPRESULTS
+                             ON
+                   HAUSERRISKAREA.ITEMID = HAUSERQUESTIONGROUPRESULTS.HARISKAREAITEMID;
+            EXEC DBO.PROC_ADD_EDW_CT_STDCOLS DIM_EDW_HFIT_HEALTHASSESMENTUSERRISKAREA_JOINED;
+            IF NOT EXISTS ( SELECT
+                                   COLUMN_NAME
+                                   FROM INFORMATION_SCHEMA.COLUMNS
+                                   WHERE
+                                   TABLE_NAME = 'DIM_EDW_HFIT_HealthAssesmentUserRiskArea_Joined' AND
+                                   COLUMN_NAME = 'HARISKCATEGORYITEMID') 
+                BEGIN
+                    EXEC PrintImmediate  'ADDING HARISKCATEGORYITEMID to DIM_EDW_HFIT_HealthAssesmentUserRiskArea_Joined';
+                    ALTER TABLE DBO.DIM_EDW_HFIT_HEALTHASSESMENTUSERRISKAREA_JOINED
+                    ADD
+                                HARISKCATEGORYITEMID INT NULL;
+                END;
+            CREATE CLUSTERED INDEX PI_EDW_HFIT_HEALTHASSESMENTUSERRISKAREA_JOINED ON DBO.DIM_EDW_HFIT_HEALTHASSESMENTUSERRISKAREA_JOINED ( USERRISKAREAITEMID ASC , HAUSERQUESTIONGROUPRESULTSITEMID ASC , SVR ASC , DBNAME ASC) ;
+            CREATE NONCLUSTERED INDEX CI_EDW_HFIT_HEALTHASSESMENTUSERRISKAREA_JOINED
+            ON DBO.DIM_EDW_HFIT_HEALTHASSESMENTUSERRISKAREA_JOINED ( HAUSERQUESTIONGROUPRESULTSITEMID) 
+            INCLUDE ( USERRISKAREAITEMID , LASTUPDATEID , SVR , DBNAME) ;
+        END;
+    SET NOCOUNT OFF;
+END;
+
+go
+print 'Executed proc_Create_DIM_Tables.sql'
+go

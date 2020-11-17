@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="HealthInterest">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="hfit-tgt.cloudapp.net,2:dmiller">
+          <Created>2015-07-10T06:56:17.1509672-06:00</Created>
+          <Type>SQL</Type>
+          <Server>hfit-tgt.cloudapp.net,2</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="proc_CT_HealthInterestDetail_AddDeletedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_HealthInterestDetail_AddDeletedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_HealthInterestDetail_AddNewRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_HealthInterestDetail_AddNewRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_HealthInterestDetail_AddUpdatedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_HealthInterestDetail_AddUpdatedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_HealthInterestList_AddDeletedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_HealthInterestList_AddDeletedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_HealthInterestList_AddNewRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_HealthInterestList_AddNewRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_HealthInterestList_AddUpdatedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_HealthInterestList_AddUpdatedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_STAGING_EDW_HealthInterestDetail.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_STAGING_EDW_HealthInterestDetail.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_STAGING_EDW_HealthInterestList.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_STAGING_EDW_HealthInterestList.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Test_EDW_HealthInterestList.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>Test_EDW_HealthInterestList.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Test_EDW_HealthInterestDetail.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>Test_EDW_HealthInterestDetail.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

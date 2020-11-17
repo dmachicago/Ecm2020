@@ -1,0 +1,6 @@
+Hello...
+You opened this document thinking that there was something here that was reminiscent to code and so were tricked.
+I apologize. It was unavoidable. You would think I would not have time to add this note. You would think I should move on.
+Well, thanks for opening and thanks for reading the 
+SQL Server Tacklebox.  I hope you enjoy it.
+Rodney

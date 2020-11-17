@@ -1,0 +1,1210 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="DFINAnalytics">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="ALIEN15:ALIEN15\wdale">
+          <Created>2019-01-21T08:35:38.9770841-07:00</Created>
+          <Type>SQL</Type>
+          <Server>ALIEN15</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB>AW2016</InitialDB>
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="ALIEN15:sa">
+          <Created>2019-03-13T09:09:51.171311-06:00</Created>
+          <Type>SQL</Type>
+          <Server>ALIEN15</Server>
+          <UserName>sa</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB>DFINAnalytics</InitialDB>
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="dfin.database.windows.net,1433:wmiller">
+          <Created>2019-02-11T18:04:58.490307-07:00</Created>
+          <Type>SQL</Type>
+          <Server>dfin.database.windows.net,1433</Server>
+          <UserName>wmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB>TestAzureDB</InitialDB>
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="FWPAXE-SQLPV002\SQL002, 2710:ALIEN15\wdale">
+          <Created>2019-01-20T13:30:47.5742235-07:00</Created>
+          <Type>SQL</Type>
+          <Server>FWPAXE-SQLPV002\SQL002, 2710</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="SVR2016:sa">
+          <Created>2019-01-22T09:49:22.3636446-07:00</Created>
+          <Type>SQL</Type>
+          <Server>SVR2016</Server>
+          <UserName>sa</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="_ChangeDB_Dynamically.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>_ChangeDB_Dynamically.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_CreateTempProc.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>_CreateTempProc.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_CreateTempProc_HowToUse.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>_CreateTempProc_HowToUse.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_DropAllDFINProcs.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>_DropAllDFINProcs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_DropAllDFINTables.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>_DropAllDFINTables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_FillActiveServerTablesData.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>_FillActiveServerTablesData.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_forEachDB.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>_forEachDB.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_GenAddSvrNameToAllTblsSQL.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>_GenAddSvrNameToAllTblsSQL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_GenerateDB_Attaches_For_TextFile.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>_GenerateDB_Attaches_For_TextFile.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_GetProcDependencies.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>_GetProcDependencies.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_IVP_DFSAnalytics.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>_IVP_DFSAnalytics.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_populateActiveServersTable.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>_populateActiveServersTable.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_PopulateInitialActiveServerComponents.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>_PopulateInitialActiveServerComponents.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_PopulateInitialActiveServersAndJobs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>_PopulateInitialActiveServersAndJobs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_QRY_CheckDailyStats.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>_QRY_CheckDailyStats.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_SSIS_LOG.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>_SSIS_LOG.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_TempDb_ProcExecTest.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>_TempDb_ProcExecTest.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_Verify_Procedure_Run_Successfully.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>_Verify_Procedure_Run_Successfully.sql</FullPath>
+        </FileNode>
+        <FileNode Name="AddMissingUID2Tables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>AddMissingUID2Tables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="az_DropAllTables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>az_DropAllTables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="AzueFindSizeOfAllDB.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>AzueFindSizeOfAllDB.sql</FullPath>
+        </FileNode>
+        <FileNode Name="azure_sp_MSforeachdb.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>azure_sp_MSforeachdb.sql</FullPath>
+        </FileNode>
+        <FileNode Name="CheckAndBuildUID_Indexes.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>CheckAndBuildUID_Indexes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="create_DFS_WaitTypes_TableAndPopulate.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>create_DFS_WaitTypes_TableAndPopulate.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Create_TRACKED_DATABASES_Table.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Create_TRACKED_DATABASES_Table.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Create_View_DFS_Workload.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Create_View_DFS_Workload.sql</FullPath>
+        </FileNode>
+        <FileNode Name="create_view_SessionStatus.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>create_view_SessionStatus.sql</FullPath>
+        </FileNode>
+        <FileNode Name="createActiveServerJobsInsertProcs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>createActiveServerJobsInsertProcs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="createActiveServersTable.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>createActiveServersTable.sql</FullPath>
+        </FileNode>
+        <FileNode Name="createSeq2008.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>createSeq2008.sql</FullPath>
+        </FileNode>
+        <FileNode Name="createSeq2008_V2.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>createSeq2008_V2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="CreateViewReturningSequentialNumbers.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>CreateViewReturningSequentialNumbers.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DBMON_TxMonitorTableStats.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DBMON_TxMonitorTableStats.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DFS_GetAllTableSizesAndRowCnt.sq.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DFS_GetAllTableSizesAndRowCnt.sq.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DFS_GetAllTableSizesAndRowCnt.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DFS_GetAllTableSizesAndRowCnt.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DFS_GetAllTableSizesAndRowCntForEachDB.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DFS_GetAllTableSizesAndRowCntForEachDB.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DFS_MonitorQueryPlans.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DFS_MonitorQueryPlans.sql</FullPath>
+        </FileNode>
+        <FileNode Name="dm_exec_session_wait_stats.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>dm_exec_session_wait_stats.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DMV_SuggestMissingFKIndexes.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DMV_SuggestMissingFKIndexes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DMV_SuggestMissingIndexes.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DMV_SuggestMissingIndexes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DMV_TableReadsAndWrites.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DMV_TableReadsAndWrites.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DMV_TableReadsAndWrites_RunOnAllDB.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DMV_TableReadsAndWrites_RunOnAllDB.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DVM_IdentifyQueriesCandidatesForOptimization.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DVM_IdentifyQueriesCandidatesForOptimization.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Event_FindBlockers.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Event_FindBlockers.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Event_LongRunningQueries.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Event_LongRunningQueries.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Event_system_health.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Event_system_health.sql</FullPath>
+        </FileNode>
+        <FileNode Name="find_Blocking_History.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>find_Blocking_History.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Find_Dependencies.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Find_Dependencies.sql</FullPath>
+        </FileNode>
+        <FileNode Name="FIND_ProcsThatUseSpecificTable.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>FIND_ProcsThatUseSpecificTable.sql</FullPath>
+        </FileNode>
+        <FileNode Name="find_Table_Locks.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>find_Table_Locks.sql</FullPath>
+        </FileNode>
+        <FileNode Name="FIND_TablesWithRowLenViolation.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>FIND_TablesWithRowLenViolation.sql</FullPath>
+        </FileNode>
+        <FileNode Name="FindBlockedSPIDS.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>FindBlockedSPIDS.sql</FullPath>
+        </FileNode>
+        <FileNode Name="FindBlockingDetail.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>FindBlockingDetail.sql</FullPath>
+        </FileNode>
+        <FileNode Name="FindBlockingSpids.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>FindBlockingSpids.sql</FullPath>
+        </FileNode>
+        <FileNode Name="FindBlockingSpidsSQLstmt.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>FindBlockingSpidsSQLstmt.sql</FullPath>
+        </FileNode>
+        <FileNode Name="FindIdleSessionsWithOpenTransactions.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>FindIdleSessionsWithOpenTransactions.sql</FullPath>
+        </FileNode>
+        <FileNode Name="FindInfoAboutQryConnection.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>FindInfoAboutQryConnection.sql</FullPath>
+        </FileNode>
+        <FileNode Name="FindingTopX_Queries.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>FindingTopX_Queries.sql</FullPath>
+        </FileNode>
+        <FileNode Name="findLocks.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>findLocks.sql</FullPath>
+        </FileNode>
+        <FileNode Name="findLongestRunningProcessesHistory.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>findLongestRunningProcessesHistory.sql</FullPath>
+        </FileNode>
+        <FileNode Name="findLongRunningQueries.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>findLongRunningQueries.sql</FullPath>
+        </FileNode>
+        <FileNode Name="FindParallelism.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>FindParallelism.sql</FullPath>
+        </FileNode>
+        <FileNode Name="findQueriesRunningInParallel.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>findQueriesRunningInParallel.sql</FullPath>
+        </FileNode>
+        <FileNode Name="FindRunningJobsTime.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>FindRunningJobsTime.sql</FullPath>
+        </FileNode>
+        <FileNode Name="FindTableLocks.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>FindTableLocks.sql</FullPath>
+        </FileNode>
+        <FileNode Name="findTempDbContention.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>findTempDbContention.sql</FullPath>
+        </FileNode>
+        <FileNode Name="FindWorstPerformingQueriesUsing_Cursor.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>FindWorstPerformingQueriesUsing_Cursor.sql</FullPath>
+        </FileNode>
+        <FileNode Name="FindWorstPerformingQueriesUsing_ForEachDB.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>FindWorstPerformingQueriesUsing_ForEachDB.sql</FullPath>
+        </FileNode>
+        <FileNode Name="fnGetTableIndexes.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>fnGetTableIndexes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ForEachDB_Cursor.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>ForEachDB_Cursor.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Func_genInsertSql.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Func_genInsertSql.sql</FullPath>
+        </FileNode>
+        <FileNode Name="genActiveServersInserts.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>genActiveServersInserts.sql</FullPath>
+        </FileNode>
+        <FileNode Name="generatedWorstPerformingSqlForAllDBs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>generatedWorstPerformingSqlForAllDBs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="genReorgIndexStmtsForDatabase.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>genReorgIndexStmtsForDatabase.sql</FullPath>
+        </FileNode>
+        <FileNode Name="genWorstPerformQueriesStmts.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>genWorstPerformQueriesStmts.sql</FullPath>
+        </FileNode>
+        <FileNode Name="getAllDatabaseIndexesIntoTempTable.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>getAllDatabaseIndexesIntoTempTable.sql</FullPath>
+        </FileNode>
+        <FileNode Name="getAllTablesRowCountAndSizeForDB.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>getAllTablesRowCountAndSizeForDB.sql</FullPath>
+        </FileNode>
+        <FileNode Name="getBlocks.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>getBlocks.sql</FullPath>
+        </FileNode>
+        <FileNode Name="getConnectionCount.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>getConnectionCount.sql</FullPath>
+        </FileNode>
+        <FileNode Name="getCurrentInstalledPackagesSQL.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>getCurrentInstalledPackagesSQL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="GetDFS_TableRowCounts.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>GetDFS_TableRowCounts.sql</FullPath>
+        </FileNode>
+        <FileNode Name="getExecutionPlanForSPID.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>getExecutionPlanForSPID.sql</FullPath>
+        </FileNode>
+        <FileNode Name="getFragmentationOfSingleIndex.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>getFragmentationOfSingleIndex.sql</FullPath>
+        </FileNode>
+        <FileNode Name="getIndexSize.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>getIndexSize.sql</FullPath>
+        </FileNode>
+        <FileNode Name="getLastBatchOfSPIDS.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>getLastBatchOfSPIDS.sql</FullPath>
+        </FileNode>
+        <FileNode Name="getLocksAndBlocksHistory.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>getLocksAndBlocksHistory.sql</FullPath>
+        </FileNode>
+        <FileNode Name="getLongRunningSPIDHistory.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>getLongRunningSPIDHistory.sql</FullPath>
+        </FileNode>
+        <FileNode Name="getProcDepends.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>getProcDepends.sql</FullPath>
+        </FileNode>
+        <FileNode Name="getSessionStatus.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>getSessionStatus.sql</FullPath>
+        </FileNode>
+        <FileNode Name="getStoredProcedureCodeByProcName.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>getStoredProcedureCodeByProcName.sql</FullPath>
+        </FileNode>
+        <FileNode Name="getTableIndexesStats.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>getTableIndexesStats.sql</FullPath>
+        </FileNode>
+        <FileNode Name="getTableIndexesStatsForAllDB.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>getTableIndexesStatsForAllDB.sql</FullPath>
+        </FileNode>
+        <FileNode Name="GloballyCreateProcedure.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>GloballyCreateProcedure.sql</FullPath>
+        </FileNode>
+        <FileNode Name="isJobRunning.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:FWPAXE-SQLPV002\SQL002, 2710:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>FWPAXE-SQLPV002\SQL002, 2710</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>isJobRunning.sql</FullPath>
+        </FileNode>
+        <FileNode Name="JOB_UTIL_CPU_BoundQry.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:FWPAXE-SQLPV002\SQL002, 2710:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>FWPAXE-SQLPV002\SQL002, 2710</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>JOB_UTIL_CPU_BoundQry.sql</FullPath>
+        </FileNode>
+        <FileNode Name="JOB_UTIL_IO_BoundQry.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:FWPAXE-SQLPV002\SQL002, 2710:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>FWPAXE-SQLPV002\SQL002, 2710</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>JOB_UTIL_IO_BoundQry.sql</FullPath>
+        </FileNode>
+        <FileNode Name="JOB_UTIL_MonitorWorkload.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:FWPAXE-SQLPV002\SQL002, 2710:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>FWPAXE-SQLPV002\SQL002, 2710</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>JOB_UTIL_MonitorWorkload.sql</FullPath>
+        </FileNode>
+        <FileNode Name="JOB_UTIL_TxMonitorIDX.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:FWPAXE-SQLPV002\SQL002, 2710:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>FWPAXE-SQLPV002\SQL002, 2710</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>JOB_UTIL_TxMonitorIDX.sql</FullPath>
+        </FileNode>
+        <FileNode Name="JOB_UTIL_TxMonitorTableStats.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:FWPAXE-SQLPV002\SQL002, 2710:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>FWPAXE-SQLPV002\SQL002, 2710</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>JOB_UTIL_TxMonitorTableStats.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ListAllTablesIndexesAndColumns.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>ListAllTablesIndexesAndColumns.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ListCMS_Servers.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>ListCMS_Servers.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Log_Reader_01.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Log_Reader_01.sql</FullPath>
+        </FileNode>
+        <FileNode Name="LogDetails.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>LogDetails.sql</FullPath>
+        </FileNode>
+        <FileNode Name="MonitorBlockingDetail.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>MonitorBlockingDetail.sql</FullPath>
+        </FileNode>
+        <FileNode Name="monitorTempDB.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>monitorTempDB.sql</FullPath>
+        </FileNode>
+        <FileNode Name="OpenRowSet.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>OpenRowSet.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ParallelExecutionStatsOnSPID.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>ParallelExecutionStatsOnSPID.sql</FullPath>
+        </FileNode>
+        <FileNode Name="PartionFunctions.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>PartionFunctions.sql</FullPath>
+        </FileNode>
+        <FileNode Name="PartitionTable.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>PartitionTable.sql</FullPath>
+        </FileNode>
+        <FileNode Name="PerformanceMonitorForProcs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>PerformanceMonitorForProcs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="PrintImmediate_TempDB.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>PrintImmediate_TempDB.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_TABLE_GROWTH_HISTORY.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>proc_TABLE_GROWTH_HISTORY.sql</FullPath>
+        </FileNode>
+        <FileNode Name="qry_Add_NewColumn_To_Each_Table.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>qry_Add_NewColumn_To_Each_Table.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ReorgAllTablesFullScript.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>ReorgAllTablesFullScript.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ReorgAllTablesGenScripts.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>ReorgAllTablesGenScripts.sql</FullPath>
+        </FileNode>
+        <FileNode Name="RunAllScriptsInDir.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>RunAllScriptsInDir.sql</FullPath>
+        </FileNode>
+        <FileNode Name="showTableStatistics.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>showTableStatistics.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_ckProcessDB.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_ckProcessDB.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_FindDependencies.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:FWPAXE-SQLPV002\SQL002, 2710:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>FWPAXE-SQLPV002\SQL002, 2710</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_FindDependencies.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_MeasurePerformanceInSP.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>sp_MeasurePerformanceInSP.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_PerfMonitor.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>sp_PerfMonitor.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_UTIL_GetTableRowsSizeForEachDB.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_UTIL_GetTableRowsSizeForEachDB.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_UTIL_RebuildAllDbIndexes.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_UTIL_RebuildAllDbIndexes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_UTIL_RebuildAllDbIndexes-USAGE.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>sp_UTIL_RebuildAllDbIndexes-USAGE.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_Who_is_active_v11_32.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_Who_is_active_v11_32.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DFS_DBVersion.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DFS_DBVersion.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_UTIL_GetSeq.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_UTIL_GetSeq.sql</FullPath>
+        </FileNode>
+        <FileNode Name="PrintImmediate.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>PrintImmediate.sql</FullPath>
+        </FileNode>
+        <FileNode Name="CREATE_DFS_DB2Skip.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>CREATE_DFS_DB2Skip.sql</FullPath>
+        </FileNode>
+        <FileNode Name="create_master_seq.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>create_master_seq.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DFS_CleanDFSTables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DFS_CleanDFSTables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_add_job_quick.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_add_job_quick.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_CreateAllDfinTables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>_CreateAllDfinTables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DFS_IO_BoundQry2000_ProcessTable.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DFS_IO_BoundQry2000_ProcessTable.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DFS_CPU_BoundQry2000_ProcessTable.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DFS_CPU_BoundQry2000_ProcessTable.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DFS_CPU_BoundQry_ProcessTable.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DFS_CPU_BoundQry_ProcessTable.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DFS_IO_BoundQry_ProcessTable.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DFS_IO_BoundQry_ProcessTable.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Create#usp_myTempWorker_SP.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Create#usp_myTempWorker_SP.sql</FullPath>
+        </FileNode>
+        <FileNode Name="dm_os_waiting_tasks.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>dm_os_waiting_tasks.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sp_foreachdb_TempDB.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sp_foreachdb_TempDB.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_Emergency_StartAllAnalyticsJobs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>_Emergency_StartAllAnalyticsJobs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="_CreateDFIN_User.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>_CreateDFIN_User.sql</FullPath>
+        </FileNode>
+        <FileNode Name="AddUID_ToAllTables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>AddUID_ToAllTables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="test_GetNbr1.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>test_GetNbr1.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TestDBConnection.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>TestDBConnection.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_ActiveDatabases.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>UTIL_ActiveDatabases.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_ActiveJobs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_ActiveJobs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_DB_And_Table_Size_Monitor.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>UTIL_DB_And_Table_Size_Monitor.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_DetermineWhichWaitsMostCommon.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_DetermineWhichWaitsMostCommon.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_DFS_DbFileSizing_Azure.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>UTIL_DFS_DbFileSizing_Azure.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_dm_exec_procedure_stats.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>UTIL_dm_exec_procedure_stats.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_getActiveDatabases.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_getActiveDatabases.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_GetSeq.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>UTIL_GetSeq.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_PowershellJobSchedule.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>UTIL_PowershellJobSchedule.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_RebuildAllDbIndexUsingDBCC.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>UTIL_RebuildAllDbIndexUsingDBCC.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_RecordCount.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_RecordCount.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_MSforeachdb.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_MSforeachdb.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_RecordGrowthHistory.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_RecordGrowthHistory.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_SavePullCnt.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>UTIL_SavePullCnt.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_SSIS_RunStats.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>UTIL_SSIS_RunStats.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_SsisExecHist.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>UTIL_SsisExecHist.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_TrackSessionWaitStats.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>UTIL_TrackSessionWaitStats.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_UpdateQryPlansAndText.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>UTIL_UpdateQryPlansAndText.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_WorstPerformingQuerries2008_TempDB.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_WorstPerformingQuerries2008_TempDB.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_ADD_DFS_QrysPlans_TempDB.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_ADD_DFS_QrysPlans_TempDB.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_ADD_DFS_QrysPlans.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_ADD_DFS_QrysPlans.sql</FullPath>
+        </FileNode>
+        <FileNode Name="sync_Login_Spids.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:FWPAXE-SQLPV002\SQL002, 2710:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>FWPAXE-SQLPV002\SQL002, 2710</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>sync_Login_Spids.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SYSMonitorTPS.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SYSMonitorTPS.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_DatabaseAndFileSize.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_DatabaseAndFileSize.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_DBMon_EachDB.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_DBMon_EachDB.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_DBMon_EachDB_JOB.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_DBMon_EachDB_JOB.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_DbMon_IndexVolitity.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_DbMon_IndexVolitity.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_DefragAllIndexes.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_DefragAllIndexes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_DefragSpecificTables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:FWPAXE-SQLPV002\SQL002, 2710:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>FWPAXE-SQLPV002\SQL002, 2710</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_DefragSpecificTables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_GetAllDBTblStats.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_GetAllDBTblStats.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_Monitor_TPS.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_Monitor_TPS.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_MonitorDeadlocks.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_MonitorDeadlocks.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_MonitorWorkload.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_MonitorWorkload.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_ReorgFragmentedIndexes.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_ReorgFragmentedIndexes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_TableGrowthHistory.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_TableGrowthHistory.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_TableGrowthHistory_ForEachDB.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:FWPAXE-SQLPV002\SQL002, 2710:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>FWPAXE-SQLPV002\SQL002, 2710</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_TableGrowthHistory_ForEachDB.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_TrackWorkloadForEachDB.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:FWPAXE-SQLPV002\SQL002, 2710:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>FWPAXE-SQLPV002\SQL002, 2710</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_TrackWorkloadForEachDB.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_TrackWorkloadForEachDB_TEST.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:FWPAXE-SQLPV002\SQL002, 2710:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>FWPAXE-SQLPV002\SQL002, 2710</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_TrackWorkloadForEachDB_TEST.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_WorstPerformingQuerries.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_WorstPerformingQuerries.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_WorstPerformingQuerries_RUN.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_WorstPerformingQuerries_RUN.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_WorstPerformingQuerries_RUN_ForOneSpecificDatabase.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_WorstPerformingQuerries_RUN_ForOneSpecificDatabase.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UTIL_WorstPerformingQuerries2008.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ALIEN15:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ALIEN15</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UTIL_WorstPerformingQuerries2008.sql</FullPath>
+        </FileNode>
+        <FileNode Name="VerifyUIDIndexes.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>VerifyUIDIndexes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="viewDFS_QryOptStats.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>viewDFS_QryOptStats.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

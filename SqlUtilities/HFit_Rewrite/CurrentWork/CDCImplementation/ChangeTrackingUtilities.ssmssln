@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# SQL Server Management Studio Solution File, Format Version 11.00
+Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "ChangeTrackingUtilities", "ChangeTrackingUtilities.ssmssqlproj", "{0281EC6B-2DF8-4780-865C-ED2CF8EABE82}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Default|Default = Default|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0281EC6B-2DF8-4780-865C-ED2CF8EABE82}.Default|Default.ActiveCfg = Default
+		{9359788B-FB14-4F01-A933-100045D8C7AD}.Default|Default.ActiveCfg = Default
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

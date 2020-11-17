@@ -1,0 +1,33 @@
+Following is a list of performance counters I am usually taking to spot low hanging fruits when measuring ASP.NET performance:
+
+Resource utilization
+
+\.Processor\%Processor Time 
+\.NET CLR Memory(*)\Allocated Bytes/sec 
+\.NET CLR Memory(*)\% Time in GC 
+\.NET CLR Exceptions(*)\# of Exceps Thrown / sec 
+\.NET CLR Loading(*)\Current Assemblies
+
+Throughput
+
+\.NET CLR LocksAndThreads(*)\Contention Rate / sec 
+\.NET CLR LocksAndThreads(*)\Current Queue Length 
+\ASP.NET\Requests Queued 
+\ASP.NET\Request Wait Time 
+\ASP.NET\Requests Current 
+\ASP.NET Applications\Requests In Application Queue 
+\ASP.NET Applications\Pipeline Instance Count 
+\ASP.NET Applications\Requests Executing 
+\ASP.NET Applications\Requests/Sec 
+\Web Service\Current ISAPI Extension Requests 
+
+Response time
+
+\ASP.NET\Request Execution Time
+
+SQL Server
+
+SQL Server: General Statistics\Logins/sec 
+SQL Server: General Statistics\Logouts/sec 
+SQL Server: General Statistics\User Connections
+

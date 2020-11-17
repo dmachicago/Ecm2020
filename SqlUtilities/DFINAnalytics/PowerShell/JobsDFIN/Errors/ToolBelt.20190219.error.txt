@@ -1,0 +1,30 @@
+2/19/2019 9:16 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/19/2019 9:16 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/19/2019 9:16 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/19/2019 9:16 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/19/2019 12:04 PM | ERROR: | INIT-INSTANCE | INIT-DB | RunAllJobs | Initialize the error file |;
+2/19/2019 12:46 PM | ERROR: | INIT-INSTANCE | INIT-DB | RunAllJobs | Initialize the error file |;
+2/19/2019 1:00 PM | ERROR: | INIT-INSTANCE | INIT-DB | RunAllJobs | Initialize the error file |;
+2/19/2019 6:38 PM | ERROR: | INIT-INSTANCE | INIT-DB | RunAllJobs | Initialize the error file |;
+2/19/2019 6:43 PM | ERROR: | ALIEN15 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/19/2019 6:43 PM | ERROR: | ALIEN15 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/19/2019 6:43 PM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/19/2019 6:43 PM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/19/2019 6:43 PM | ERROR: | SVR2016 | PowerDatabase | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/19/2019 6:43 PM | ERROR: | SVR2016 | PowerDatabase | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/19/2019 6:43 PM | ERROR: | SVR2016 | TestDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/19/2019 6:43 PM | ERROR: | SVR2016 | TestDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/19/2019 7:30 PM | ERROR: | INIT-INSTANCE | INIT-DB | RunAllJobs | Initialize the error file |;
+2/19/2019 8:44 PM | ERROR: | INIT-INSTANCE | INIT-DB | RunAllJobs | Initialize the error file |;

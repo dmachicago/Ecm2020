@@ -1,0 +1,681 @@
+ Volume in drive C is OS
+ Volume Serial Number is 8C01-FBBA
+
+ Directory of C:\Users\wdale\Documents\SQL Server Management Studio\DFINAnalytics
+
+01/21/2019  01:21 PM               996 sp_UTIL_GetSeq.sql
+               1 File(s)            996 bytes
+               0 Dir(s)  449,890,566,144 bytes free
+ Volume in drive C is OS
+ Volume Serial Number is 8C01-FBBA
+
+ Directory of C:\Users\wdale\Documents\SQL Server Management Studio\DFINAnalytics
+
+01/21/2019  10:50 AM               277 PrintImmediate.sql
+               1 File(s)            277 bytes
+               0 Dir(s)  449,890,566,144 bytes free
+ Volume in drive C is OS
+ Volume Serial Number is 8C01-FBBA
+
+ Directory of C:\Users\wdale\Documents\SQL Server Management Studio\DFINAnalytics
+
+01/21/2019  11:48 AM               624 CREATE_DFS_DB2Skip.sql
+               1 File(s)            624 bytes
+               0 Dir(s)  449,890,566,144 bytes free
+ Volume in drive C is OS
+ Volume Serial Number is 8C01-FBBA
+
+ Directory of C:\Users\wdale\Documents\SQL Server Management Studio\DFINAnalytics
+
+01/21/2019  12:48 PM               779 sp_ckProcessDB.sql
+               1 File(s)            779 bytes
+               0 Dir(s)  449,890,566,144 bytes free
+ Volume in drive C is OS
+ Volume Serial Number is 8C01-FBBA
+
+ Directory of C:\Users\wdale\Documents\SQL Server Management Studio\DFINAnalytics
+
+01/21/2019  03:28 PM             1,960 DFS_DBVersion.sql
+               1 File(s)          1,960 bytes
+               0 Dir(s)  449,890,566,144 bytes free
+ Volume in drive C is OS
+ Volume Serial Number is 8C01-FBBA
+
+ Directory of C:\Users\wdale\Documents\SQL Server Management Studio\DFINAnalytics
+
+01/21/2019  02:58 PM               864 createSeq2008.sql
+               1 File(s)            864 bytes
+               0 Dir(s)  449,890,566,144 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  08:29 AM           162,594 create_DFS_WaitTypes_TableAndPopulate.sql
+               1 File(s)        162,594 bytes
+               0 Dir(s)  226,661,445,632 bytes free
+ Volume in drive C is OS
+ Volume Serial Number is 8C01-FBBA
+
+ Directory of C:\Users\wdale\Documents\SQL Server Management Studio\DFINAnalytics
+
+01/21/2019  11:48 AM             7,305 DMV_SuggestMissingIndexes.sql
+               1 File(s)          7,305 bytes
+               0 Dir(s)  449,890,566,144 bytes free
+ Volume in drive C is OS
+ Volume Serial Number is 8C01-FBBA
+
+ Directory of C:\Users\wdale\Documents\SQL Server Management Studio\DFINAnalytics
+
+01/21/2019  11:48 AM             4,730 DMV_SuggestMissingFKIndexes.sql
+               1 File(s)          4,730 bytes
+               0 Dir(s)  449,890,566,144 bytes free
+ Volume in drive C is OS
+ Volume Serial Number is 8C01-FBBA
+
+ Directory of C:\Users\wdale\Documents\SQL Server Management Studio\DFINAnalytics
+
+01/21/2019  11:48 AM             4,194 DMV_TableReadsAndWrites.sql
+               1 File(s)          4,194 bytes
+               0 Dir(s)  449,890,566,144 bytes free
+ Volume in drive C is OS
+ Volume Serial Number is 8C01-FBBA
+
+ Directory of C:\Users\wdale\Documents\SQL Server Management Studio\DFINAnalytics
+
+01/21/2019  10:20 AM             9,417 DVM_IdentifyQueriesCandidatesForOptimization.sql
+               1 File(s)          9,417 bytes
+               0 Dir(s)  449,890,566,144 bytes free
+ Volume in drive C is OS
+ Volume Serial Number is 8C01-FBBA
+
+ Directory of C:\Users\wdale\Documents\SQL Server Management Studio\DFINAnalytics
+
+01/21/2019  11:48 AM             3,753 find_Blocking_History.sql
+               1 File(s)          3,753 bytes
+               0 Dir(s)  449,890,566,144 bytes free
+ Volume in drive C is OS
+ Volume Serial Number is 8C01-FBBA
+
+ Directory of C:\Users\wdale\Documents\SQL Server Management Studio\DFINAnalytics
+
+01/21/2019  12:55 PM            14,953 UTIL_WorstPerformingQuerries2008.sql
+               1 File(s)         14,953 bytes
+               0 Dir(s)  449,890,566,144 bytes free
+ Volume in drive C is OS
+ Volume Serial Number is 8C01-FBBA
+
+ Directory of C:\Users\wdale\Documents\SQL Server Management Studio\DFINAnalytics
+
+01/21/2019  11:27 AM             3,304 FindBlockingDetail.sql
+               1 File(s)          3,304 bytes
+               0 Dir(s)  449,890,566,144 bytes free
+ Volume in drive C is OS
+ Volume Serial Number is 8C01-FBBA
+
+ Directory of C:\Users\wdale\Documents\SQL Server Management Studio\DFINAnalytics
+
+01/21/2019  11:48 AM               919 UTIL_RebuildAllDbIndexUsingDBCC.sql
+               1 File(s)            919 bytes
+               0 Dir(s)  449,890,566,144 bytes free
+ Volume in drive C is OS
+ Volume Serial Number is 8C01-FBBA
+
+ Directory of C:\Users\wdale\Documents\SQL Server Management Studio\DFIN
+
+01/21/2019  11:46 AM             7,399 UTIL_MonitorWorkload.sql
+               1 File(s)          7,399 bytes
+               0 Dir(s)  449,890,566,144 bytes free
+ Volume in drive C is OS
+ Volume Serial Number is 8C01-FBBA
+
+ Directory of C:\Users\wdale\Documents\SQL Server Management Studio\DFINAnalytics
+
+01/21/2019  11:54 AM             8,074 FindBlockedSPIDS.sql
+               1 File(s)          8,074 bytes
+               0 Dir(s)  449,890,566,144 bytes free
+ Volume in drive C is OS
+ Volume Serial Number is 8C01-FBBA
+
+ Directory of C:\Users\wdale\Documents\SQL Server Management Studio\DFINAnalytics
+
+01/21/2019  11:57 AM             6,279 findLocks.sql
+               1 File(s)          6,279 bytes
+               0 Dir(s)  449,890,566,144 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  07:57 AM             3,650 MonitorBlockingDetail.sql
+               1 File(s)          3,650 bytes
+               0 Dir(s)  226,661,445,632 bytes free
+ Volume in drive C is OS
+ Volume Serial Number is 8C01-FBBA
+
+ Directory of C:\Users\wdale\Documents\SQL Server Management Studio\DFINAnalytics
+
+01/21/2019  12:43 PM             4,503 UTIL_MonitorDeadlocks.sql
+               1 File(s)          4,503 bytes
+               0 Dir(s)  449,890,566,144 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  08:42 AM            21,716 UTIL_ReorgFragmentedIndexes.sql
+               1 File(s)         21,716 bytes
+               0 Dir(s)  226,661,445,632 bytes free
+ Volume in drive C is OS
+ Volume Serial Number is 8C01-FBBA
+
+ Directory of C:\Users\wdale\Documents\SQL Server Management Studio\DFINAnalytics
+
+01/21/2019  12:51 PM             4,903 UTIL_TableGrowthHistory.sql
+               1 File(s)          4,903 bytes
+               0 Dir(s)  449,890,566,144 bytes free
+ Volume in drive C is OS
+ Volume Serial Number is 8C01-FBBA
+
+ Directory of C:\Users\wdale\Documents\SQL Server Management Studio\DFINAnalytics
+
+01/21/2019  01:25 PM             3,593 PerformanceMonitorForProcs.sql
+               1 File(s)          3,593 bytes
+               0 Dir(s)  449,890,566,144 bytes free
+ Volume in drive C is OS
+ Volume Serial Number is 8C01-FBBA
+
+ Directory of C:\Users\wdale\Documents\SQL Server Management Studio\DFINAnalytics
+
+01/21/2019  01:37 PM             2,060 DFS_CleanDFSTables.sql
+               1 File(s)          2,060 bytes
+               0 Dir(s)  449,890,566,144 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  08:23 AM             7,389 UTIL_Monitor_TPS.sql
+               1 File(s)          7,389 bytes
+               0 Dir(s)  226,661,445,632 bytes free
+ Volume in drive C is OS
+ Volume Serial Number is 8C01-FBBA
+
+ Directory of C:\Users\wdale\Documents\SQL Server Management Studio\DFINAnalytics
+
+01/21/2019  03:08 PM             5,762 Create_View_DFS_Workload.sql
+               1 File(s)          5,762 bytes
+               0 Dir(s)  449,890,566,144 bytes free
+ Volume in drive C is OS
+ Volume Serial Number is 8C01-FBBA
+
+ Directory of C:\Users\wdale\Documents\SQL Server Management Studio\DFINAnalytics
+
+01/21/2019  03:05 PM             1,645 create_view_SessionStatus.sql
+               1 File(s)          1,645 bytes
+               0 Dir(s)  449,890,566,144 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  01:21 PM               996 sp_UTIL_GetSeq.sql
+               1 File(s)            996 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  08:42 AM               590 PrintImmediate.sql
+               1 File(s)            590 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  11:48 AM               624 CREATE_DFS_DB2Skip.sql
+               1 File(s)            624 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  12:48 PM               779 sp_ckProcessDB.sql
+               1 File(s)            779 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  03:28 PM             1,960 DFS_DBVersion.sql
+               1 File(s)          1,960 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  02:58 PM               864 createSeq2008.sql
+               1 File(s)            864 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  08:29 AM           162,594 create_DFS_WaitTypes_TableAndPopulate.sql
+               1 File(s)        162,594 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  11:48 AM             7,305 DMV_SuggestMissingIndexes.sql
+               1 File(s)          7,305 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  11:48 AM             4,730 DMV_SuggestMissingFKIndexes.sql
+               1 File(s)          4,730 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  11:48 AM             4,194 DMV_TableReadsAndWrites.sql
+               1 File(s)          4,194 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  10:20 AM             9,417 DVM_IdentifyQueriesCandidatesForOptimization.sql
+               1 File(s)          9,417 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  11:48 AM             3,753 find_Blocking_History.sql
+               1 File(s)          3,753 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  09:40 AM            14,893 UTIL_WorstPerformingQuerries2008.sql
+               1 File(s)         14,893 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  11:27 AM             3,304 FindBlockingDetail.sql
+               1 File(s)          3,304 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  09:40 AM               904 UTIL_RebuildAllDbIndexUsingDBCC.sql
+               1 File(s)            904 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  09:40 AM             7,210 UTIL_MonitorWorkload.sql
+               1 File(s)          7,210 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  08:42 AM             8,077 FindBlockedSPIDS.sql
+               1 File(s)          8,077 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  09:42 AM             6,242 findLocks.sql
+               1 File(s)          6,242 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  07:57 AM             3,650 MonitorBlockingDetail.sql
+               1 File(s)          3,650 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  12:43 PM             4,503 UTIL_MonitorDeadlocks.sql
+               1 File(s)          4,503 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  10:03 AM            21,744 UTIL_ReorgFragmentedIndexes.sql
+               1 File(s)         21,744 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  12:51 PM             4,903 UTIL_TableGrowthHistory.sql
+               1 File(s)          4,903 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  01:25 PM             3,593 PerformanceMonitorForProcs.sql
+               1 File(s)          3,593 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  01:37 PM             2,060 DFS_CleanDFSTables.sql
+               1 File(s)          2,060 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  08:23 AM             7,389 UTIL_Monitor_TPS.sql
+               1 File(s)          7,389 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  03:08 PM             5,762 Create_View_DFS_Workload.sql
+               1 File(s)          5,762 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  03:05 PM             1,645 create_view_SessionStatus.sql
+               1 File(s)          1,645 bytes
+               0 Dir(s)  226,660,548,608 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  01:21 PM               996 sp_UTIL_GetSeq.sql
+               1 File(s)            996 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  08:42 AM               590 PrintImmediate.sql
+               1 File(s)            590 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  11:48 AM               624 CREATE_DFS_DB2Skip.sql
+               1 File(s)            624 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  12:48 PM               779 sp_ckProcessDB.sql
+               1 File(s)            779 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  03:28 PM             1,960 DFS_DBVersion.sql
+               1 File(s)          1,960 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  02:58 PM               864 createSeq2008.sql
+               1 File(s)            864 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  08:29 AM           162,594 create_DFS_WaitTypes_TableAndPopulate.sql
+               1 File(s)        162,594 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  11:48 AM             7,305 DMV_SuggestMissingIndexes.sql
+               1 File(s)          7,305 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  11:48 AM             4,730 DMV_SuggestMissingFKIndexes.sql
+               1 File(s)          4,730 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  11:48 AM             4,194 DMV_TableReadsAndWrites.sql
+               1 File(s)          4,194 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  10:20 AM             9,417 DVM_IdentifyQueriesCandidatesForOptimization.sql
+               1 File(s)          9,417 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  11:48 AM             3,753 find_Blocking_History.sql
+               1 File(s)          3,753 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  09:40 AM            14,893 UTIL_WorstPerformingQuerries2008.sql
+               1 File(s)         14,893 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  11:27 AM             3,304 FindBlockingDetail.sql
+               1 File(s)          3,304 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  09:40 AM               904 UTIL_RebuildAllDbIndexUsingDBCC.sql
+               1 File(s)            904 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  09:40 AM             7,210 UTIL_MonitorWorkload.sql
+               1 File(s)          7,210 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  08:42 AM             8,077 FindBlockedSPIDS.sql
+               1 File(s)          8,077 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  09:42 AM             6,242 findLocks.sql
+               1 File(s)          6,242 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  07:57 AM             3,650 MonitorBlockingDetail.sql
+               1 File(s)          3,650 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  12:43 PM             4,503 UTIL_MonitorDeadlocks.sql
+               1 File(s)          4,503 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  10:03 AM            21,744 UTIL_ReorgFragmentedIndexes.sql
+               1 File(s)         21,744 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  12:51 PM             4,903 UTIL_TableGrowthHistory.sql
+               1 File(s)          4,903 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  01:25 PM             3,593 PerformanceMonitorForProcs.sql
+               1 File(s)          3,593 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  01:37 PM             2,060 DFS_CleanDFSTables.sql
+               1 File(s)          2,060 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/22/2019  08:23 AM             7,389 UTIL_Monitor_TPS.sql
+               1 File(s)          7,389 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  03:08 PM             5,762 Create_View_DFS_Workload.sql
+               1 File(s)          5,762 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+ Volume in drive D is DATA
+ Volume Serial Number is A00F-FF24
+
+ Directory of D:\dev\SQL\DFINAnalytics
+
+01/21/2019  03:05 PM             1,645 create_view_SessionStatus.sql
+               1 File(s)          1,645 bytes
+               0 Dir(s)  226,660,544,512 bytes free
+"D:\dev\SQL\DFINAnalytics\create_master_seq.sql" exists
+"D:\dev\SQL\DFINAnalytics\sp_UTIL_GetSeq.sql" exists
+"D:\dev\SQL\DFINAnalytics\PrintImmediate.sql" exists
+"D:\dev\SQL\DFINAnalytics\CREATE_DFS_DB2Skip.sql" exists
+"D:\dev\SQL\DFINAnalytics\sp_ckProcessDB.sql" exists
+"D:\dev\SQL\DFINAnalytics\DFS_DBVersion.sql" exists
+"D:\dev\SQL\DFINAnalytics\createSeq2008.sql" exists
+"D:\dev\SQL\DFINAnalytics\create_DFS_WaitTypes_TableAndPopulate.sql" exists
+"D:\dev\SQL\DFINAnalytics\DMV_SuggestMissingIndexes.sql" exists
+"D:\dev\SQL\DFINAnalytics\DMV_SuggestMissingFKIndexes.sql" exists
+"D:\dev\SQL\DFINAnalytics\DMV_TableReadsAndWrites.sql" exists
+"D:\dev\SQL\DFINAnalytics\DVM_IdentifyQueriesCandidatesForOptimization.sql" exists
+"D:\dev\SQL\DFINAnalytics\find_Blocking_History.sql" exists
+"D:\dev\SQL\DFINAnalytics\UTIL_WorstPerformingQuerries2008.sql" exists
+"D:\dev\SQL\DFINAnalytics\FindBlockingDetail.sql" exists
+"D:\dev\SQL\DFINAnalytics\UTIL_RebuildAllDbIndexUsingDBCC.sql" exists
+"D:\dev\SQL\DFINAnalytics\UTIL_MonitorWorkload.sql" exists
+"D:\dev\SQL\DFINAnalytics\FindBlockedSPIDS.sql" exists
+"D:\dev\SQL\DFINAnalytics\findLocks.sql" exists
+"D:\dev\SQL\DFINAnalytics\MonitorBlockingDetail.sql" exists
+"D:\dev\SQL\DFINAnalytics\UTIL_MonitorDeadlocks.sql" exists
+"D:\dev\SQL\DFINAnalytics\UTIL_ReorgFragmentedIndexes.sql" exists
+"D:\dev\SQL\DFINAnalytics\UTIL_TableGrowthHistory.sql" exists
+"D:\dev\SQL\DFINAnalytics\PerformanceMonitorForProcs.sql" exists
+"D:\dev\SQL\DFINAnalytics\DFS_CleanDFSTables.sql" exists
+"D:\dev\SQL\DFINAnalytics\UTIL_Monitor_TPS.sql" exists
+"D:\dev\SQL\DFINAnalytics\Create_View_DFS_Workload.sql" exists
+"D:\dev\SQL\DFINAnalytics\create_view_SessionStatus.sql" exists
+"D:\dev\SQL\DFINAnalytics\create_master_seq.sql" exists
+"D:\dev\SQL\DFINAnalytics\sp_UTIL_GetSeq.sql" exists
+"D:\dev\SQL\DFINAnalytics\PrintImmediate.sql" exists
+"D:\dev\SQL\DFINAnalytics\CREATE_DFS_DB2Skip.sql" exists
+"D:\dev\SQL\DFINAnalytics\sp_ckProcessDB.sql" exists

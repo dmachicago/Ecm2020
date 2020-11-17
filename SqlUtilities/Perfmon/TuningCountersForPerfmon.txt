@@ -1,0 +1,109 @@
+General IIS Tuning Counters for Perfmon
+
+Processor\% Processor Time – refers to the average percentage of processor time occupied. It is a main indicator to consider when deciding whether the CPU power of the IIS server is enough. It is recommended for this counter to remain below 85% for the system to be considered healthy.
+
+System\Processor Queue Length – the processor queue is being filled up with threads when the server’s processors are busy servicing other threads at the moment. If this counter is usually above 2 and the % Processor Time remains on high levels, then the processors are considered a bottleneck in the system.
+
+Memory\Available Mbytes – refers to the amount of physical memory (measured in MBytes) on the system that can be used by new processes. If the free memory is equal or greater than 50%, the system is considered healthy. A value of 25% free memory indicates a potential problem. If the memory is below 10%, the condition has to be examined carefully and precautions have to be taken. If the free memory is less than 5%, the performance of the system is negatively impacted.
+
+Memory\Pages/sec – refers to the amount of read and write requests from memory to disk. If this value remains high and the Available Mbytes are less than 10%, then the Memory subsystem is considered a bottleneck. Less than 500 Pages/sec are considered normal, more than 500 may affect system’s performance.
+
+PhysicalDisk\% Disk Time – refers to the percentage of time the disk was occupied. It takes into account both read and write requests sent to the disk.
+
+Network Interface\Bytes Total/sec – refers to the total amount of bytes – both sent and received – over the network. If the value of this counter is usually greater than 80%, then maybe another or faster network card should be installed on the server.
+
+IIS role specific counters
+
+ASP.NET Applications\Requests/Sec – shows the throughput of the ASP.NET application on the server. It is monitored along with other counters to determine whether the server is handling the application as it’s supposed to.
+
+ASP.NET\Application Restarts – indicates the number of restarts of the application in the server’s uptime. A high value of this indicator should be monitored. The general counters can help you identify whether it is caused by a bottleneck in the system or by the application itself.
+
+ASP.NET\Request Wait Time – shows the amount of time (in milliseconds) that the last request was held in the queue.It should be close to 0 ms. If this indicator is usually greater than 1000 ms, the performance of the IIS server is suffering.
+
+ASP.NET\Requests Queued –  the queue fills up with requests that wait to be processed. This counter should be monitored to find out when an application is overwhelmed. Then, an analysis of the application and server performance altogether can help the administrator identify the cause for the filled queue.
+
+.NET CLR Exceptions\# of Exceps Thrown / sec – shows the number of exceptions per second that the application is throwing. Exceptions should be rare, because each exception takes a lot of system resources. That’s why this counter should be carefully monitored, especially if it is greater than 5% of the counter ASP.NET Applications\Requests/Sec or 100 exceptions/sec for example.
+
+.NET CLR Memory\# Total Committed Bytes – shows the amount of virtual memory reserved for the application on the paging file. It should be monitored along with the general counters to identify issues with the performance of the IIS. Problems can be caused by a small amount of memory installed or by an application overusing the memory.
+
+Web Service\Get Requests/sec – measures the amount of GET requests processed in a second. If the value is too high for a particular IIS server, then load balancing or clustering technologies can be applied to lower the burden of the server in question.
+
+Web Service\Post Requests/sec – measures the amount of POST requests processed in a second. Again, if the value is too high for a particular IIS server, then load balancing or clustering technologies can be applied to lower the burden of the server in question.
+
+Web Service\Current Connections – shows the number of active connections with the Web Service. Like with the other web service counters, if the value of this counter is usually too big for the server (the actual number depends on the specific hardware and software installed), then load balancing solutions can be implemented.
+http://blog.monitis.com/index.php/2012/04/02/important-iis7-counters/
+Also, you can check the following link for Preferred Values for Frequently Used Performance Counters
+
+NOTE: http://technet.microsoft.com/en-us/library/cc782186(v=ws.10).aspx
+
+Memory\Pages/sec	0–20. (Unhealthy if greater than 80; probably indicates not enough RAM.)
+
+Memory\Available Bytes	10% of physical memory.
+
+Memory\Committed Bytes	No more than 75 percent of physical memory.
+
+Memory\Pool Nonpaged Bytes	A steady value. (A slow rise might indicate a memory leak.)
+
+Processor\% Processor Time	Less than 75 percent.
+
+Processor\Interrupts/sec	Depends on the processor, and on network hardware and drivers. Up to 3,500 for a 90–megahertz (MHz) Pentium; more than 19,000 for a 500–MHz Pentium or more than 58,000 for a 1.5–gigahertz (GHz) Pentium. Lower is better. If the value is too high, try moving some hardware devices to a different server.
+
+Processor\System Processor Queue Length	4 or less.
+
+LogicalDisk\% Disk Time
+
+PhysicalDisk\% Disk Time	As low as possible.
+
+LogicalDisk\Avg. Disk Queue Length
+
+PhysicalDisk\Avg. Disk Queue Length	Less than 4.
+
+LogicalDisk\Avg. Disk Bytes/Transfer
+
+PhysicalDisk\Avg. Disk Bytes/Transfer	As high as possible.
+
+System\Context Switches/sec	Compare this value with the value of Web Service\Total Method Requests/sec. Context switches per request (Context Switches/sec divided by Total Method 
+Requests/sec) should be low.
+
+System\System Calls/sec	As low as possible.
+
+Web Service\Bytes Total/sec	As high as possible.
+
+Web Service\Total Method Requests/sec	As high as possible.
+
+Web Service\Current Connections	As high as possible.
+
+Web Service Cache\File Cache Hits %	As high as possible for static content.
+Note: This value might be low if the Kernel URI cache hits percentage is high.
+
+Web Service Cache\Kernel:URI Cache Flushes	As low as possible, relative to the number of requests.
+Note: This number increases every time a file is flushed from the HTTP.sys response cache (HTTP.sys is the kernel-mode device driver in IIS 6.0), which means that the content has not been accessed in the past 2–4 minutes. The only way to decrease this number is to flush the cache less often, although frequent flushing can cause HTTP.sys to use more memory for content that is not being accessed.
+
+Web Service Cache\Kernel:URI Cache Misses	As low as possible. (Each request for dynamic content increases the value of the counter by one.)
+
+Web Service Cache\Kernel:URI Cache Hits %	As high as possible. (Applies to static unauthenticated content and dynamic content that is marked as cacheable.)
+
+Active Server Pages\Request Wait Time	As low as possible.
+
+Active Server Pages\Requests Queued	As low as possible.
+
+Active Server Pages\Transactions/sec	As high as possible.
+Note: ASP transactions degrade overall server performance because each transaction requires interaction with a database. If you are concerned about server performance, use ASP transactions sparingly.
+
+
+You may need to monitor the back database performance as well
+•These are listed OBJECT first, then COUNTER
+•Memory – Available MBytes
+•Paging File – % Usage
+•Physical Disk – Avg. Disk sec/Read
+•Physical Disk – Avg. Disk sec/Write
+•Physical Disk – Disk Reads/sec
+•Physical Disk – Disk Writes/sec
+•Processor – % Processor Time
+•SQLServer: Buffer Manager – Page life expectancy
+•SQLServer: General Statistics – User Connections
+•SQLServer: Memory Manager – Memory Grants Pending
+•SQLServer: SQL Statistics – Batch Requests/sec
+•SQLServer: SQL Statistics – Compilations/sec
+•SQLServer: SQL Statistics – Recompilations/sec
+•System – Processor Queue Length

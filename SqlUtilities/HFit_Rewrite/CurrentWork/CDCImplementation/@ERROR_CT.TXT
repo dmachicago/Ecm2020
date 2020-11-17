@@ -1,0 +1,7 @@
+FATAL ERROR : FILE MISSING "PROC_CREATE_FACT_Tables.SQL"     
+FATAL ERROR : FILE MISSING "View_EDW_STAGED_HFIT_HEALTHASSESMENTUSERRISKAREA_Joined.sql"     
+FATAL ERROR : FILE MISSING "View_EDW_STAGED_HFIT_HEALTHASSESMENTUSERRISKAREA_Joined.SQL"     
+FATAL ERROR : FILE MISSING C:\Users\wmiller\Documents\SQL     
+FATAL ERROR : FILE MISSING job_EDW_GetStagingData_RewardUserDetail.sql     
+FATAL ERROR : FILE MISSING "C:\Users\wmiller\Documents\SQL Server Management Studio\HFit_Rewrite\CurrentWork\view_EDW_RewardUserLevel.sql"     
+FATAL ERROR : FILE MISSING "PROC_view_EDW_HealthAssesment_CT.sql"     

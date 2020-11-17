@@ -1,0 +1,8 @@
+2/20/2019 12:08 PM | ERROR: | INIT-INSTANCE | INIT-DB | RunAllJobs | Initialize the error file |;
+2/20/2019 1:58 PM | ERROR: | INIT-INSTANCE | INIT-DB | RunAllJobs | Initialize the error file |;
+2/20/2019 2:07 PM | ERROR: | INIT-INSTANCE | INIT-DB | RunAllJobs | Initialize the error file |;
+2/20/2019 2:09 PM | ERROR: | INIT-INSTANCE | INIT-DB | RunAllJobs | Initialize the error file |;
+2/20/2019 2:31 PM | ERROR: | INIT-INSTANCE | INIT-DB | RunAllJobs | Initialize the error file |;
+2/20/2019 3:50 PM | ERROR: | INIT-INSTANCE | INIT-DB | RunAllJobs | Initialize the error file |;
+2/20/2019 4:06 PM | ERROR: | INIT-INSTANCE | INIT-DB | RunAllJobs | Initialize the error file |;
+2/20/2019 6:07 PM | ERROR: | INIT-INSTANCE | INIT-DB | RunAllJobs | Initialize the error file |;

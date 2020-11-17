@@ -4547,8 +4547,8 @@ Process01:
                             If UseDirectoryListener.Equals(1) And Not gTempDisableDirListener Then
                                 ParentDir = Path.GetDirectoryName(FilesToArchive(K))
                                 ListenerDir = Path.GetDirectoryName(FilesToArchive(K))
-                                LOG.WriteToArchiveLog("REMOVE LATER 600: Archiving ParentDir: " + ParentDir)
-                                LOG.WriteToArchiveLog("REMOVE LATER 600: Archiving ListenerDir: " + ListenerDir)
+                                LOG.WriteToArchiveLog("REMOVE LATER 600a: Archiving ParentDir: " + ParentDir)
+                                LOG.WriteToArchiveLog("REMOVE LATER 600b: Archiving ListenerDir: " + ListenerDir)
                             End If
 
                             LL = 2191
@@ -8552,25 +8552,9 @@ GoodLogin:
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
-        FilesBackedUp = 0
-        FilesSkipped = 0
-
+        Dim WC As String = ""
         Dim Recurse As String = "Y"
-        Dim message, title As String
-        Dim DirName As Object
-        ' Set prompt.
-        message = "Enter the Directory you wish to scan:"
-        ' Set title.
-        title = "Directory Scan Timer"
-
-        ' Display message, title, and default value.
-        DirName = InputBox(message, title)
-        ' If user has clicked Cancel, set DirName to defaultValue
-        If DirName Is "" Then
-            MessageBox.Show("A directory must be supplied, returning...")
-            Return
-        End If
-
+        Dim DirName As String = ""
         Dim IncludedExts As New ArrayList
         Dim ExcludedExts As New ArrayList
         Dim FilesToArchive As New List(Of String)
@@ -8578,27 +8562,35 @@ GoodLogin:
         Dim strFileSize As String = ""
         Dim FilterList As New List(Of String)
         Dim ArchiveAttr As Boolean = False
-        Dim DirToInventory As String = DirName.ToString
         Dim iInventory As Integer = 0
         Dim totsecs As Decimal = 0
-
-        FilterList.Add("*.xls")
-        FilterList.Add("*.xlsX")
-        FilterList.Add("*.doc")
-        FilterList.Add("*.docx")
-        FilterList.Add("*.vb")
-        FilterList.Add("*.cs")
-        FilterList.Add("*.c")
-        FilterList.Add("*.zip")
-        FilterList.Add("*.txt")
-
-        Console.WriteLine("Start: " + Now.ToString)
-
+        Dim Level As Integer = 0
+        Dim FileToProcess As New List(Of String)
+        Dim DirsToProcess As Dictionary(Of String, String) = DBARCH.GetDirectoryDICT(gCurrLoginID)
         Dim watch As Stopwatch = Stopwatch.StartNew()
-        Dim FFIles As New List(Of FileInfo)
+        Dim iFileFound As Integer = 0
+        Console.WriteLine("Start: " + Now.ToString)
+        For Each DirName In DirsToProcess.Keys
+            Dim FFIles As New List(Of FileInfo)
+            If Directory.Exists(DirName) Then
+                WC = ""
+                Recurse = DirsToProcess(DirName)
+                DBLocal.GetParentWC(Level, DirName, gWhereInDict, WC)
+                FFIles.AddRange(UTIL.GetFiles(DirName, Recurse))
+                For Each FI As FileInfo In FFIles
+                    If WC.Contains(FI.Extension) And Not FI.FullName.Contains(".git") And Not FI.FullName.Contains("\git\") Then
+                        iFileFound += 1
+                        If Not FileToProcess.Contains(FI.FullName) Then
+                            FileToProcess.Add(FI.FullName)
+                        End If
+                    End If
+                Next
+                Console.WriteLine(DirName, FFIles.Count)
+            End If
+            FFIles = Nothing
+        Next
 
-        FFIles = UTIL.GetFiles(DirName, FilterList, Recurse)
-        Dim iTot As Integer = FFIles.Count
+        Dim iTot As Integer = FileToProcess.Count
 
         'UTIL.GetFilesToArchive(iInventory, ArchiveAttr, False, DirToInventory, FilterList, FilesToArchive, IncludedExts, ExcludedExts)
         totsecs = watch.Elapsed.TotalSeconds
@@ -8611,6 +8603,8 @@ GoodLogin:
         GC.WaitForFullGCApproach()
 
     End Sub
+
+
 
     Private Sub GetAllSubdirFilesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GetAllSubdirFilesToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then

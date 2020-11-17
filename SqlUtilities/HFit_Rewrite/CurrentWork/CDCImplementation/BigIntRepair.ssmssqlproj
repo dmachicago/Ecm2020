@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="BigIntRepair">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="hfit-azulowersql01.cloudapp.net:dale.miller">
+          <Created>2016-03-28T12:24:11.6973371-06:00</Created>
+          <Type>SQL</Type>
+          <Server>hfit-azulowersql01.cloudapp.net</Server>
+          <UserName>dale.miller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="hfit-azulowersql01.cloudapp.net:dmiller">
+          <Created>2016-01-08T09:14:52.4477132-07:00</Created>
+          <Type>SQL</Type>
+          <Server>hfit-azulowersql01.cloudapp.net</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="hfit-AZUQACCLUS01.cloudapp.net:dmiller">
+          <Created>2016-03-28T13:21:14.0630021-06:00</Created>
+          <Type>SQL</Type>
+          <Server>hfit-AZUQACCLUS01.cloudapp.net</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="hfit-sqlprd.cloudapp.net,5:dmiller">
+          <Created>2015-12-21T10:22:02.0272393-07:00</Created>
+          <Type>SQL</Type>
+          <Server>hfit-sqlprd.cloudapp.net,5</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="tgt-azusql01.cloudapp.net,1433:dmiller">
+          <Created>2015-12-19T08:20:01.5015453-07:00</Created>
+          <Type>SQL</Type>
+          <Server>tgt-azusql01.cloudapp.net,1433</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="tgt-azusql02.cloudapp.net,1433:dmiller">
+          <Created>2016-03-24T10:29:12.356755-06:00</Created>
+          <Type>SQL</Type>
+          <Server>tgt-azusql02.cloudapp.net,1433</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="@IVP.BigInt_Build.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>@IVP.BigInt_Build.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DropAllForeignKeyCONSTRAINTS.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>DropAllForeignKeyCONSTRAINTS.sql</FullPath>
+        </FileNode>
+        <FileNode Name="find_ForeignKeyDetails.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>find_ForeignKeyDetails.sql</FullPath>
+        </FileNode>
+        <FileNode Name="find_UnusedIndexes.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlprd.cloudapp.net,5:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlprd.cloudapp.net,5</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>find_UnusedIndexes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="FindDuplicateIndexes_CTE.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlprd.cloudapp.net,5:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlprd.cloudapp.net,5</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>FindDuplicateIndexes_CTE.sql</FullPath>
+        </FileNode>
+        <FileNode Name="FindDuplicateIndexes_V2.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlprd.cloudapp.net,5:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlprd.cloudapp.net,5</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>FindDuplicateIndexes_V2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ForeignKeyConstraintParentChild.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>ForeignKeyConstraintParentChild.sql</FullPath>
+        </FileNode>
+        <FileNode Name="PrintImmediate.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>PrintImmediate.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_AddMissingTableFKeys.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-sqlprd.cloudapp.net,5:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-sqlprd.cloudapp.net,5</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_AddMissingTableFKeys.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_AllTblConstraintsDrop.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_AllTblConstraintsDrop.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_AllTblConstraintsReGen.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_AllTblConstraintsReGen.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_BigIntViewRebuild.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_BigIntViewRebuild.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_ConvertBigintToInt.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_ConvertBigintToInt.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_GetTableForeignKeys.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_GetTableForeignKeys.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_MasterBigintToInt.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_MasterBigintToInt.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_TableDefaultConstraintExists.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_TableDefaultConstraintExists.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_TableFKeysDrop.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_TableFKeysDrop.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ScriptAllForeignKeyConstraints.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>ScriptAllForeignKeyConstraints.sql</FullPath>
+        </FileNode>
+        <FileNode Name="StoredProcOutputToTable.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>StoredProcOutputToTable.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items>
+        <FileNode Name="@IVP.BigInt_Build.bat">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>@IVP.BigInt_Build.bat</FullPath>
+        </FileNode>
+        <FileNode Name="BigIntRepair.vsdx">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>BigIntRepair.vsdx</FullPath>
+        </FileNode>
+        <FileNode Name="CheckBigIntFile.bat">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>CheckBigIntFile.bat</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

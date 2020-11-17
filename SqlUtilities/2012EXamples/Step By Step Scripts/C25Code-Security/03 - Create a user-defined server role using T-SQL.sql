@@ -1,0 +1,14 @@
+USE [master]
+GO
+CREATE SERVER ROLE [BulkAdminAndDBCreator]
+GO
+ALTER SERVER ROLE [BulkAdminAndDBCreator] ADD MEMBER [DOMAIN\jdoe]
+GO
+use [master]
+GO
+GRANT ADMINISTER BULK OPERATIONS TO [BulkAdminAndDBCreator]
+GO
+use [master]
+GO
+GRANT CREATE ANY DATABASE TO [BulkAdminAndDBCreator]
+GO

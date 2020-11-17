@@ -1,0 +1,161 @@
+
+
+go
+print 'Executing proc_GenTrackerCTProc.sq;'
+go
+
+if exists (select name from sys.procedures where name = 'proc_GenTrackerCTProc')
+    drop procedure proc_GenTrackerCTProc ;
+
+go
+
+create procedure proc_GenTrackerCTProc (@TblName as nvarchar(100))
+as
+begin
+--SELECT column_name FROM INFORMATION_SCHEMA.columns WHERE table_name = 'BASE_HFit_TrackerBMI';
+DECLARE
+       @tName NVARCHAR (100) = 'BASE_HFit_TrackerCardio'
+     , @cName NVARCHAR (100) = ''
+     , @S NVARCHAR (MAX) = ''
+     , @S2 NVARCHAR (MAX) = '';
+
+DECLARE C CURSOR
+    FOR
+        SELECT
+               column_name
+               FROM INFORMATION_SCHEMA.columns
+               WHERE
+               table_name = @tName;
+
+OPEN C;
+FETCH NEXT FROM C
+INTO @cName;
+SET @S = '-- PULL AND INSERT ALL RECORDS FROM: ' + @tName + + CHAR (10) ;
+SET @S = @S + 'INSERT INTO FACT_TrackerData (TrackerName' + CHAR (10) ;
+
+SET @S2 = 'Select ''' + @tName + '''' + CHAR (10) ;
+
+WHILE
+       @@FETCH_STATUS = 0
+    BEGIN
+        SET @S = @S + '    ,' + @cName + CHAR (10) ;
+        SET @S2 = @S2 + '    ,' + @cName + CHAR (10) ;
+        FETCH NEXT FROM C INTO @cName;
+    END;
+CLOSE C;
+DEALLOCATE C;
+SET @S = @S + '    )' + CHAR (10) ;
+SET @S2 = @S2 + ' FROM ' + @tName + ' ;' + CHAR (10) ;
+
+SET @S = @S + @S2;
+
+PRINT @S;
+
+--***************************************************************
+DECLARE CInserts CURSOR
+    FOR
+        SELECT
+               column_name
+               FROM INFORMATION_SCHEMA.columns
+               WHERE
+               table_name = @tName;
+
+OPEN CInserts;
+FETCH NEXT FROM CInserts
+INTO @cName;
+
+DECLARE
+       @S0 AS NVARCHAR (MAX) = '';
+SET @S0 = '-- PULL ALL NEW RECORDS FROM: ' + @tName + + CHAR (10) ;
+SET @S0 = @S0 + 'WITH CTE (SVR, DBNAME, ItemID) AS ( ' + CHAR (10) ;
+SET @S0 = @S0 + '        SELECT SVR, DBNAME, ItemID FROM ' + @tName + ' ' + CHAR (10) ;
+SET @S0 = @S0 + '        EXCEPT ' + CHAR (10) ;
+SET @S0 = @S0 + '        SELECT SVR, DBNAME, ItemID FROM FACT_TrackerData WHERE TrackerName = ''' + @tName + '''' + CHAR (10) ;
+SET @S0 = @S0 + ') ' + CHAR (10) ;
+
+SET @S = '    INSERT INTO FACT_TrackerData ' + CHAR (10) ;
+SET @S = @S + '    (TrackerName ' + CHAR (10) ;
+SET @S2 = '   SELECT ' + CHAR (10) ;
+SET @S2 = @S2 + '        ''' + @tName + '''' + CHAR (10) ;
+WHILE
+       @@FETCH_STATUS = 0
+    BEGIN
+        SET @S = @S + '    ,' + @cName + CHAR (10) ;
+        SET @S2 = @S2 + '    ,BT.' + @cName + CHAR (10) ;
+        FETCH NEXT FROM CInserts INTO @cName;
+    END;
+CLOSE CInserts;
+DEALLOCATE CInserts;
+SET @S = @S + '    )' + CHAR (10) ;
+SET @S2 = @S2 + ' FROM ' + @tName + ' as BT' + CHAR (10) ;
+SET @S2 = @S2 + '     JOIN CTE ' + CHAR (10) ;
+SET @S2 = @S2 + '     ON CTE.SVR = BT.SVR ' + CHAR (10) ;
+SET @S2 = @S2 + '     AND CTE.DBNAME = BT.DBNAME ' + CHAR (10) ;
+SET @S2 = @S2 + '     AND CTE.ItemID = BT.ItemID ;' + CHAR (10) ;
+
+SET @S0 = @S0 + @S + @S2;
+PRINT '--************************************';
+PRINT @S0;
+
+--**************************************************************************************************************
+SET @S0 = ' -- APPLY ALL DELETES IF ANY' + CHAR (10) ;
+SET @S0 = @S0 + '    DELETE FT ' + CHAR (10) ;
+SET @S0 = @S0 + '        from CHANGETABLE (CHANGES ' + @tName + ', 0) AS C ' + CHAR (10) ;
+SET @S0 = @S0 + '	   inner join FACT_TrackerData as FT ' + CHAR (10) ;
+SET @S0 = @S0 + '	   		  on C.DBNAME = FT.DBNAME	 ' + CHAR (10) ;
+SET @S0 = @S0 + '	   		  and C.DBNAME = FT.DBNAME	 ' + CHAR (10) ;
+SET @S0 = @S0 + '	   		  AND C.ItemID = FT.ItemID ' + CHAR (10) ;
+SET @S0 = @S0 + '	   		   AND C.SYS_CHANGE_OPERATION = ''D'' ' + CHAR (10) ;
+PRINT '--************************************';
+PRINT @S0;
+
+--**************************************************************************************************************
+DECLARE CUpdt CURSOR
+    FOR
+        SELECT
+               column_name
+               FROM INFORMATION_SCHEMA.columns
+               WHERE
+               table_name = @tName;
+
+OPEN CUpdt;
+FETCH NEXT FROM CUpdt
+INTO @cName;
+
+DECLARE
+       @i AS INT = 0;
+SET @S = 'update FACT_TrackerData' + CHAR (10) ;
+SET @S = @S + '   set ' + CHAR (10) ;
+
+WHILE
+       @@FETCH_STATUS = 0
+    BEGIN
+        IF @i = 0
+            BEGIN
+                SET @S = @S + '    ' + @cName + ' = BT.' + @cName + CHAR (10) ;
+            END;
+        ELSE
+            BEGIN
+                SET @S = @S + '    ,' + @cName + ' = BT.' + @cName + CHAR (10) ;
+            END;
+        SET @i = @i + 1;
+        FETCH NEXT FROM CUpdt INTO @cName;
+    END;
+
+CLOSE CUpdt;
+DEALLOCATE CUpdt;
+
+SET @S = @S + '  from  ' + CHAR (10) ;
+SET @S = @S + '  	   CHANGETABLE (CHANGES ' + @tName + ', 0) AS C ' + CHAR (10) ;
+SET @S = @S + '  	   inner join ' + @tName + ' as BT' + CHAR (10) ;
+SET @S = @S + '  	     on C.SVR = BT.SVR' + CHAR (10) ;
+SET @S = @S + '  		  AND C.DBNAME = BT.DBNAME	' + CHAR (10) ;
+SET @S = @S + '  		  AND C.ItemID = BT.ItemID' + CHAR (10) ;
+SET @S = @S + '  		  AND C.SYS_CHANGE_OPERATION = ''U'' ' + CHAR (10) ;
+PRINT '--************************************';
+PRINT @S;
+end ;
+
+go
+print 'Executed proc_GenTrackerCTProc.sq;'
+go

@@ -1,0 +1,227 @@
+﻿<html lang="en">
+<head>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META name="Generator" content="Visustin">
+<META name="description" content="T-SQL flow chart saved by Aivosto Visustin (www.aivosto.com).">
+<META name="keywords" content="T-SQL, flow graph, diagram">
+
+<title>T-SQL flow chart: proc_SetPrimaryKeyToSurrogateKey.sql</title>
+
+<style type="text/css">
+<!--
+BODY      { margin: 0; }
+TEXTAREA  { background: #ffffcc; font-size: 8pt; }
+A:link, A:visited { color: blue; }
+TR.bar    { background: white; font-family: Verdana, Arial, Sans-Serif; font-size: 70%; }
+TR TD     { padding: 0; background: white; }
+TR.bar TD { padding: 2px 5px 2px 5px; background: #ccccff; }
+-->
+</style>
+
+<script type="text/javascript">
+<!--
+function hidecode(id) { 
+  if (id.style.display=="none") {
+    id.style.display="";
+    hidelink.innerHTML="Hide code";
+  } else {
+    id.style.display="none";
+    hidelink.innerHTML="Show code";
+  }
+}
+-->
+</script>
+</head>
+
+
+<body scroll=no>
+
+<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+
+<tr height="100%"><td id="#upper" colspan="2">
+ <iframe name="pic" width="100%" height="100%" src="proc_SetPrimaryKeyToSurrogateKey.png" frameborder="0" title="T-SQL flow chart: proc_SetPrimaryKeyToSurrogateKey.sql">
+  <a href="proc_SetPrimaryKeyToSurrogateKey.png"><img src="proc_SetPrimaryKeyToSurrogateKey.png" height="100%" title="T-SQL flow chart: proc_SetPrimaryKeyToSurrogateKey.sql"></a>
+ </iframe>
+</td></tr>
+
+<tr id="sourcecode"><td colspan="2">
+<textarea rows=15 readonly=yes style="width:100%; border-width:0;">
+
+--use KenticoCMS_Datamart_2 ;
+GO
+PRINT 'Executing proc_SetPrimaryKeyToSurrogateKey.sql';
+GO
+IF EXISTS (SELECT
+        name
+     FROM sys.procedures
+     WHERE
+        name = 'proc_SetPrimaryKeyToSurrogateKey')
+ BEGIN
+   DROP PROCEDURE
+       proc_SetPrimaryKeyToSurrogateKey
+ END;
+GO
+
+-- exec proc_SetPrimaryKeyToSurrogateKey 'BASE_HFit_CoachingHealthInterest'
+CREATE PROCEDURE proc_SetPrimaryKeyToSurrogateKey (
+  @BASETable AS NVARCHAR (250))
+AS
+BEGIN
+ DECLARE
+     @InstanceName NVARCHAR (250) = 'KenticoCMS_1';
+ DECLARE
+     @TblName NVARCHAR (250) = 'HFit_CoachingHealthInterest';
+ DECLARE
+     @DelTable NVARCHAR (250) = @BASETable + '_DEL';
+
+ SET @TblName = ltrim (rtrim ( substring (@BASETable , charindex ('_' , @BASETable) + 1 , 9999))) ;
+ PRINT '@TblName : ' + @TblName;
+
+ DECLARE
+     @S NVARCHAR (MAX) = ''
+    , @mysql NVARCHAR (MAX) = ''
+    , @SurrogateKeyName AS NVARCHAR (100) = '';
+
+ SET @SurrogateKeyName = 'SurrogateKey_' + @TblName;
+ IF NOT EXISTS (SELECT
+           COLUMN_NAME
+         FROM INFORMATION_SCHEMA.COLUMNS
+         WHERE
+           COLUMN_NAME = @SurrogateKeyName AND
+           TABLE_NAME = @BASETable)
+   BEGIN
+      PRINT 'Adding Column ' + @SurrogateKeyName;
+      SET @S = 'ALTER TABLE ' + @BASETable + ' ADD ' + @SurrogateKeyName + ' bigint identity (1,1) not NULL ';
+      PRINT @s;
+      EXEC (@S) ;
+   END;
+ ELSE
+   BEGIN
+      PRINT 'Column ' + @SurrogateKeyName + ' already exists in ' + @BASETable + '.';
+   END;
+
+ IF NOT EXISTS (SELECT
+           COLUMN_NAME
+         FROM INFORMATION_SCHEMA.COLUMNS
+         WHERE
+           COLUMN_NAME = @SurrogateKeyName AND
+           TABLE_NAME = @DelTable)
+   BEGIN
+      PRINT 'Adding Column ' + @SurrogateKeyName;
+      SET @S = 'ALTER TABLE ' + @DelTable + ' ADD ' + @SurrogateKeyName + ' bigint NULL ';
+      PRINT @s;
+      EXEC (@S) ;
+   END;
+ ELSE
+   BEGIN
+      PRINT 'Column ' + @SurrogateKeyName + ' already exists in ' + @DelTable + '.';
+   END;
+
+ -- EXEC proc_ChangeTracking  @InstanceName , @BASETable , 0;
+
+ BEGIN TRY
+   SET @S = 'ALTER TABLE dbo.' + @BASETable + ' DISABLE CHANGE_TRACKING ';
+   EXEC (@S) ;
+   PRINT 'Change Tracking disabled, proceeding.';
+ END TRY
+ BEGIN CATCH
+   PRINT 'Change Tracking not enabled, proceeding.';
+ END CATCH;
+
+ DECLARE
+     @TblKeys AS NVARCHAR (2000) = '';
+ DECLARE
+     @PK AS NVARCHAR (2000) = NULL;
+
+ EXEC @TblKeys = procGetTablePK @InstanceName , @BASETable , @PK OUT;
+
+ SET @TblKeys = @PK;
+ PRINT @TblKeys;
+
+ DECLARE --@NewPkCols AS NVARCHAR (2000) = 'SVR, DBNAME, SYS_CHANGE_VERSION, ' + @TblKeys;
+     @NewPkCols AS NVARCHAR (2000) = 'SVR, DBNAME, ' + @TblKeys;
+
+ SET @mysql = '';
+ DECLARE
+     @IdxName AS NVARCHAR (2000) = 'UKI_' + @BASETable + ' ';
+
+ SET @IdxName = 'CI_' + @BASETable + ' ';
+
+ IF NOT EXISTS (SELECT
+           name
+         FROM sys.indexes
+         WHERE name = @IdxName)
+   BEGIN
+      DECLARE     --@CICols AS NVARCHAR (2000) = replace (@NewPkCols , 'SYS_CHANGE_VERSION,' , '') ;
+         @CICols AS NVARCHAR (2000) = @NewPkCols;
+   END;
+ BEGIN
+   PRINT 'Creating Index: ' + @IdxName;
+   SET @mysql = 'CREATE NONCLUSTERED INDEX [' + @IdxName + '] ON [dbo].[' + @BASETable + '] ' + CHAR (10) ;
+   SET @mysql += '(' + CHAR (10) ;
+   SET @mysql += @CICols + CHAR (10) ;
+   SET @mysql += ')' + CHAR (10) ;
+   SET @mysql += ' INCLUDE (LastModifiedDate, HashCode) ' + CHAR (10) ;
+   EXEC (@mysql) ;
+   PRINT @mysql;
+   PRINT 'Created: ' + @IdxName;
+ END;
+
+ DECLARE
+     @PKIndexName AS  NVARCHAR (500) = '';
+ SET @PKIndexName = (SELECT  DISTINCT
+            i.name AS IndexName
+          FROM    sys.indexes AS i
+             INNER JOIN
+             sys.index_columns AS ic
+             ON
+            i.OBJECT_ID = ic.OBJECT_ID AND
+            i.index_id = ic.index_id
+          WHERE
+            i.is_primary_key = 1 AND
+            OBJECT_NAME (ic.OBJECT_ID) = @BASETable) ;
+
+ PRINT '@PKIndexName = ' + @PKIndexName;
+
+ PRINT 'ADDING PK to: ' + @BASETable + '  - KEY: ' + @NewPkCols;
+ PRINT 'drop primary key if it exists HERE';
+ SET @MySql = 'ALTER TABLE ' + @BASETable + ' DROP CONSTRAINT ' + @PKIndexName;
+ PRINT @MySQl;
+ EXEC (@MySQl) ;
+
+ PRINT 'PK Constraint: ' + @IdxName;
+ BEGIN TRY
+   --ALTER TABLE ConstraintTable ADD CONSTRAINT Ct_ID PRIMARY KEY (ID)
+   SET @MySql = 'ALTER TABLE ' + @BASETable + ' ADD CONSTRAINT ' + @PKIndexName + ' PRIMARY KEY CLUSTERED (' + @SurrogateKeyName + ') ';
+   PRINT @MySql;
+   EXEC (@MySql) ;
+   PRINT 'Added Primary Key: ' + @PKIndexName + ' ON ' + @SurrogateKeyName;
+ END TRY
+ BEGIN CATCH
+   PRINT '!!! WARNING ON : Primary Key: ' + @PKIndexName + ' ON ' + @NewPkCols;
+ --EXECUTE usp_GetErrorInfo;
+ END CATCH;
+
+ BEGIN TRY
+   SET @S = 'ALTER TABLE dbo.' + @BASETable + ' ENABLE CHANGE_TRACKING ';
+   EXEC (@S) ;
+   PRINT 'Change Tracking enabled, proceeding.';
+ END TRY
+ BEGIN CATCH
+   PRINT 'Change Tracking not disabled, proceeding.';
+ END CATCH;
+END;
+GO
+PRINT 'Executed proc_SetPrimaryKeyToSurrogateKey.sql';
+GO
+
+</textarea>
+</td></tr>
+
+<tr class="bar">
+ <td align="left"><a href="javascript:hidecode(sourcecode);" id="hidelink">Hide code</a></td>
+ <td align="right"><a href="http://www.aivosto.com/visustin.html">Visustin flow chart for T-SQL</a></td></tr>
+</table>
+
+</body>
+</html>

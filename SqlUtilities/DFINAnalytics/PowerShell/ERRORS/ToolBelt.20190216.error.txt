@@ -1,0 +1,3 @@
+2/16/2019 2:17 PM | ERROR: | INIT-INSTANCE | INIT-DB | RunAllJobs | Initialize the error file |;
+2/16/2019 2:17 PM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_BoundQry_ProcessAllTables.ps1 |  |;
+2/16/2019 2:17 PM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_BoundQry_ProcessAllTables.ps1 |  |;

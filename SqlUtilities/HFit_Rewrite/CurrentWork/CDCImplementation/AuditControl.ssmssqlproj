@@ -1,0 +1,287 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="AuditControl">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="hfit-azulowersql01.cloudapp.net:dmiller">
+          <Created>2015-11-04T07:40:55.941475-06:00</Created>
+          <Type>SQL</Type>
+          <Server>hfit-azulowersql01.cloudapp.net</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB>KenticoCMSTest</InitialDB>
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="tgt-azusql01.cloudapp.net,1433:dmiller">
+          <Created>2015-11-04T08:18:47.4778644-06:00</Created>
+          <Type>SQL</Type>
+          <Server>tgt-azusql01.cloudapp.net,1433</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="ckChangeTrackingTurnedON.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>ckChangeTrackingTurnedON.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Create_job_EDW_GetStagingData_CMS_UserSite.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>Create_job_EDW_GetStagingData_CMS_UserSite.sql</FullPath>
+        </FileNode>
+        <FileNode Name="create_job_EDW_GetStagingData_CT_USER.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>create_job_EDW_GetStagingData_CT_USER.sql</FullPath>
+        </FileNode>
+        <FileNode Name="create_table_STAGING_cms_user.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>create_table_STAGING_cms_user.sql</FullPath>
+        </FileNode>
+        <FileNode Name="create_table_STAGING_CMS_UserSettings.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>create_table_STAGING_CMS_UserSettings.sql</FullPath>
+        </FileNode>
+        <FileNode Name="create_table_STAGING_CMS_UserSite.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>create_table_STAGING_CMS_UserSite.sql</FullPath>
+        </FileNode>
+        <FileNode Name="createTable_EDW_CT_ExecutionLog.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>createTable_EDW_CT_ExecutionLog.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DisableCT_EDW.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>DisableCT_EDW.sql</FullPath>
+        </FileNode>
+        <FileNode Name="PPT_Eligibility_Test_Qrys.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>PPT_Eligibility_Test_Qrys.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_ChangeTracking.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_ChangeTracking.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CMS_User_AddDeletedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CMS_User_AddDeletedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CMS_UserSettings_AddDeletedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CMS_UserSettings_AddDeletedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CMS_UserSite_AddDeletedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CMS_UserSite_AddDeletedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_CMS_User_AddNewRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_CMS_User_AddNewRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_CMS_USER_AddUpdatedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_CMS_USER_AddUpdatedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_CMS_USER_History.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_CMS_USER_History.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_CMS_UserSettings_AddNewRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_CMS_UserSettings_AddNewRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_CMS_UserSite_AddNewRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_CMS_UserSite_AddNewRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_CMS_UserSite_AddUpdatedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_CMS_UserSite_AddUpdatedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_CMS_UserSite_History.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_CMS_UserSite_History.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_getPrevVer.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_getPrevVer.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_HFIT_PPTEligibility_AddNewRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_HFIT_PPTEligibility_AddNewRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_HFIT_PPTEligibility_AddUpdatedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_HFIT_PPTEligibility_AddUpdatedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_HFIT_PPTEligibility_History.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_HFIT_PPTEligibility_History.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_DisableAuditControl.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_DisableAuditControl.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_EnableAuditControl.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_EnableAuditControl.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_HFIT_PPTEligibility_AddDeletedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_HFIT_PPTEligibility_AddDeletedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_QuickRowCount.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_QuickRowCount.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_STAGING_EDW_CT_USER.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_STAGING_EDW_CT_USER.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SetCtHA.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>SetCtHA.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TEST_CMS_UserSite_CT.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>TEST_CMS_UserSite_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TRIG_CMS_User_Audit.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>TRIG_CMS_User_Audit.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TRIG_CMS_UserSettings_Audit.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>TRIG_CMS_UserSettings_Audit.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TRIG_CMS_UserSite_Audit.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>TRIG_CMS_UserSite_Audit.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TRIG_HFIT_PPTEligibility_Audit.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>TRIG_HFIT_PPTEligibility_Audit.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_AUDIT_CMS_User.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_AUDIT_CMS_User.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_AUDIT_CMS_UserSite.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_AUDIT_CMS_UserSite.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_AUDIT_HFit_PPTEligibility.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-azulowersql01.cloudapp.net:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-azulowersql01.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_AUDIT_HFit_PPTEligibility.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items>
+        <FileNode Name="_ImplementAuditTracking.03.25.bat">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>_ImplementAuditTracking.03.25.bat</FullPath>
+        </FileNode>
+        <FileNode Name="CMS_UserSite_CT.ssmssln">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>CMS_UserSite_CT.ssmssln</FullPath>
+        </FileNode>
+        <FileNode Name="CMS_UserSite_CT.ssmssqlproj">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>CMS_UserSite_CT.ssmssqlproj</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

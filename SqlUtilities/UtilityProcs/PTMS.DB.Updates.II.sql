@@ -1,0 +1,1 @@
+alter table ptms_CourseEvaluation alter column Evaluation nvarchar(max)

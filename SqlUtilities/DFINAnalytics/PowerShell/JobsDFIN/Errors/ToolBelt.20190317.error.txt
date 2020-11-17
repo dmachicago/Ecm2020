@@ -1,0 +1,36 @@
+3/17/2019 12:24 PM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_CleanDFSTables.ps1 |  |;
+3/17/2019 12:24 PM | ERROR: | SVR2016 | AW_VMWARE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_CleanDFSTables.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+3/17/2019 12:24 PM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_CleanDFSTables.ps1 |  |;
+3/17/2019 12:24 PM | ERROR: | SVR2016 | DFINAnalytics | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_CleanDFSTables.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+3/17/2019 12:24 PM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_CleanDFSTables.ps1 |  |;
+3/17/2019 12:24 PM | ERROR: | SVR2016 | DFS | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_CleanDFSTables.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+3/17/2019 12:25 PM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_CleanDFSTables.ps1 |  |;
+3/17/2019 12:25 PM | ERROR: | SVR2016 | MstrData | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_CleanDFSTables.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+3/17/2019 12:25 PM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_CleanDFSTables.ps1 |  |;
+3/17/2019 12:25 PM | ERROR: | SVR2016 | MstrLog | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_CleanDFSTables.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+3/17/2019 12:25 PM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_CleanDFSTables.ps1 |  |;
+3/17/2019 12:25 PM | ERROR: | SVR2016 | MstrPort | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_CleanDFSTables.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+3/17/2019 12:26 PM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_CleanDFSTables.ps1 |  |;
+3/17/2019 12:26 PM | ERROR: | SVR2016 | TestXml | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_CleanDFSTables.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+3/17/2019 12:26 PM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_CleanDFSTables.ps1 |  |;
+3/17/2019 12:26 PM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_CleanDFSTables.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+3/17/2019 12:26 PM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_CleanDFSTables.ps1 |  |;
+3/17/2019 12:26 PM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_DFS_CleanDFSTables.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;

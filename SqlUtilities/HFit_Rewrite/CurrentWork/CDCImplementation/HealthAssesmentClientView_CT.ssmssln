@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# SQL Server Management Studio Solution File, Format Version 11.00
+Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "HealthAssesmentClientView_CT", "HealthAssesmentClientView_CT.ssmssqlproj", "{339BC940-BF53-4A34-9333-42209D68C30A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Default|Default = Default|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{339BC940-BF53-4A34-9333-42209D68C30A}.Default|Default.ActiveCfg = Default
+		{B7CE85A8-9BEA-481A-8A8A-440AE8BBC1DA}.Default|Default.ActiveCfg = Default
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

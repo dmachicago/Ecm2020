@@ -1,0 +1,15 @@
+--Use this code to add a file and filegroup to a database
+USE master;
+ALTER DATABASE SBSChp4TSQL
+	ADD FILEGROUP SBSTSQLGroup1;
+
+ALTER DATABASE SBSChp4TSQL
+ADD File
+(
+	NAME='SBSChp4TSQL2',
+	FILENAME = 'C:\SQLDATA\SBSTSQL2.ndf',
+	SIZE=10MB,
+	MAXSIZE=20,
+	FILEGROWTH=10%
+)
+TO FILEGROUP SBSTSQLGroup1;

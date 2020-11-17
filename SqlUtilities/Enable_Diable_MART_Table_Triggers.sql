@@ -1,0 +1,6886 @@
+use KenticoCMS_Datamart_2
+go
+-- DISABLE TRIGGER dbo.uAddress ON dbo.Address;
+
+--NOTE: Depending upon what is wanted, use either the ENABLE or DISABLE commands as needed.
+SELECT
+    'DISABLE TRIGGER dbo.'+sysobjects.name+' ON dbo.'+OBJECT_NAME(parent_obj)+ char(10) + 'GO' as DisableTriggersCMD,
+    'ENABLE TRIGGER dbo.'+sysobjects.name+' ON dbo.'+OBJECT_NAME(parent_obj)+ char(10) + 'GO' as EnableTriggersCMD,
+     sysobjects.name AS trigger_name 
+    ,USER_NAME(sysobjects.uid) AS trigger_owner 
+    ,s.name AS table_schema 
+    ,OBJECT_NAME(parent_obj) AS table_name 
+    ,OBJECTPROPERTY( id, 'ExecIsUpdateTrigger') AS isupdate 
+    ,OBJECTPROPERTY( id, 'ExecIsDeleteTrigger') AS isdelete 
+    ,OBJECTPROPERTY( id, 'ExecIsInsertTrigger') AS isinsert 
+    ,OBJECTPROPERTY( id, 'ExecIsAfterTrigger') AS isafter 
+    ,OBJECTPROPERTY( id, 'ExecIsInsteadOfTrigger') AS isinsteadof 
+    ,OBJECTPROPERTY(id, 'ExecIsTriggerDisabled') AS [disabled] 
+FROM sysobjects 
+INNER JOIN sysusers 
+    ON sysobjects.uid = sysusers.uid 
+INNER JOIN sys.tables t 
+    ON sysobjects.parent_obj = t.object_id 
+INNER JOIN sys.schemas s 
+    ON t.schema_id = s.schema_id 
+WHERE sysobjects.type = 'TR' 
+and OBJECT_NAME(parent_obj) like 'BASE_%'
+ or OBJECT_NAME(parent_obj) like 'FACT_%'
+
+ --***************************************************************
+ go
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Email ON dbo.BASE_CMS_Email
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_PM_ProjectTaskPriority ON dbo.BASE_PM_ProjectTaskPriority
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_VolumeDiscount ON dbo.BASE_COM_VolumeDiscount
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_TrackerTests ON dbo.BASE_view_EDW_TrackerTests
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Staging_Clinical ON dbo.BASE_HFit_Staging_Clinical
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_CoachingAuditLogType ON dbo.BASE_HFit_LKP_CoachingAuditLogType
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentSysBpScoring ON dbo.BASE_HFit_HealthAssessmentSysBpScoring
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_FormUserControl ON dbo.BASE_CMS_FormUserControl
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentRiskCategoryCodeNames ON dbo.BASE_HFit_HealthAssesmentRiskCategoryCodeNames
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_HES_ValueType ON dbo.BASE_HFit_LKP_HES_ValueType
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ValMeasureType ON dbo.BASE_HFit_ValMeasureType
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Site ON dbo.BASE_CMS_Site
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_TrackerTests ON dbo.BASE_view_EDW_TrackerTests
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Staging_Clinical ON dbo.BASE_HFit_Staging_Clinical
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_RPT_CoachingFromPortal ON dbo.BASE_RPT_CoachingFromPortal
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HSAbout ON dbo.BASE_HFit_HSAbout
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CallList ON dbo.BASE_HFit_CallList
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_RoleApplication ON dbo.BASE_CMS_RoleApplication
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_CoachingAuditLogType ON dbo.BASE_HFit_LKP_CoachingAuditLogType
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentSysBpScoring ON dbo.BASE_HFit_HealthAssessmentSysBpScoring
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Workflow ON dbo.BASE_CMS_Workflow
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_ResourceString_Joined ON dbo.BASE_View_CMS_ResourceString_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ValMeasureType ON dbo.BASE_HFit_ValMeasureType
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Site ON dbo.BASE_CMS_Site
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ProgramFeedNotificationSettings ON dbo.BASE_HFit_ProgramFeedNotificationSettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_RPT_CoachingFromPortal ON dbo.BASE_RPT_CoachingFromPortal
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_RewardActivity ON dbo.BASE_HFit_LKP_RewardActivity
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerBodyMeasurements ON dbo.BASE_HFit_TrackerBodyMeasurements
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HSAbout ON dbo.BASE_HFit_HSAbout
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_BlogPost_Joined ON dbo.BASE_View_CONTENT_BlogPost_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CallList ON dbo.BASE_HFit_CallList
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_RoleApplication ON dbo.BASE_CMS_RoleApplication
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Workflow ON dbo.BASE_CMS_Workflow
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_ResourceString_Joined ON dbo.BASE_View_CMS_ResourceString_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentQuestionGroupCodeNames ON dbo.BASE_HFit_HealthAssesmentQuestionGroupCodeNames
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengeRegistrationSettings ON dbo.BASE_HFit_ChallengeRegistrationSettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ProgramFeedNotificationSettings ON dbo.BASE_HFit_ProgramFeedNotificationSettings
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_hFit_ChallengePPTEligiblePostTemplate ON dbo.BASE_hFit_ChallengePPTEligiblePostTemplate
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Configuration_LMCoaching ON dbo.BASE_HFit_Configuration_LMCoaching
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_EDW_HealthAssesmentQuestions ON dbo.BASE_View_EDW_HealthAssesmentQuestions
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengeNewsletterRelationship ON dbo.BASE_HFit_ChallengeNewsletterRelationship
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_RewardActivity ON dbo.BASE_HFit_LKP_RewardActivity
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerBodyMeasurements ON dbo.BASE_HFit_TrackerBodyMeasurements
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingEvalHAQA_Joined ON dbo.BASE_View_HFit_CoachingEvalHAQA_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_BlogPost_Joined ON dbo.BASE_View_CONTENT_BlogPost_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PPTStatusEnum ON dbo.BASE_HFit_PPTStatusEnum
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingEnrollment ON dbo.BASE_View_HFit_CoachingEnrollment
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentQuestionGroupCodeNames ON dbo.BASE_HFit_HealthAssesmentQuestionGroupCodeNames
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentDiasBpScoring ON dbo.BASE_HFit_HealthAssessmentDiasBpScoring
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_SM_TwitterApplication ON dbo.BASE_SM_TwitterApplication
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengeRegistrationSettings ON dbo.BASE_HFit_ChallengeRegistrationSettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_hFit_ChallengePPTEligiblePostTemplate ON dbo.BASE_hFit_ChallengePPTEligiblePostTemplate
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingNotAssignedSettings_Joined ON dbo.BASE_View_HFit_CoachingNotAssignedSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Configuration_LMCoaching ON dbo.BASE_HFit_Configuration_LMCoaching
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_EDW_HealthAssesmentQuestions ON dbo.BASE_View_EDW_HealthAssesmentQuestions
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengeNewsletterRelationship ON dbo.BASE_HFit_ChallengeNewsletterRelationship
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HA_IPadLog ON dbo.BASE_HFit_HA_IPadLog
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingEvalHAQA_Joined ON dbo.BASE_View_HFit_CoachingEvalHAQA_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_RewardTriggerParameterOperator ON dbo.BASE_HFit_LKP_RewardTriggerParameterOperator
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PPTStatusEnum ON dbo.BASE_HFit_PPTStatusEnum
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingEnrollment ON dbo.BASE_View_HFit_CoachingEnrollment
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_Discount ON dbo.BASE_COM_Discount
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_Client ON dbo.BASE_Hfit_Client
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Event_Joined ON dbo.BASE_View_HFit_Event_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentDiasBpScoring ON dbo.BASE_HFit_HealthAssessmentDiasBpScoring
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_SM_TwitterApplication ON dbo.BASE_SM_TwitterApplication
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingNotAssignedSettings_Joined ON dbo.BASE_View_HFit_CoachingNotAssignedSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_Post_Joined ON dbo.BASE_View_hfit_Post_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HA_IPadLog ON dbo.BASE_HFit_HA_IPadLog
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ScreeningEvent ON dbo.BASE_HFit_ScreeningEvent
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_RewardTriggerParameterOperator ON dbo.BASE_HFit_LKP_RewardTriggerParameterOperator
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_TrackerTobaccoQuitAids ON dbo.BASE_HFit_LKP_TrackerTobaccoQuitAids
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentUserQuestion ON dbo.BASE_HFit_HealthAssesmentUserQuestion
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_Discount ON dbo.BASE_COM_Discount
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_RewardCompleted_FIX ON dbo.BASE_HFit_LKP_RewardCompleted_FIX
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_Client ON dbo.BASE_Hfit_Client
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Event_Joined ON dbo.BASE_View_HFit_Event_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingLibraryHealthArea ON dbo.BASE_HFit_CoachingLibraryHealthArea
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_DeviceProfileLayout ON dbo.BASE_CMS_DeviceProfileLayout
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_SiteDomainAlias ON dbo.BASE_CMS_SiteDomainAlias
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RewardProgram_Joined ON dbo.BASE_View_HFit_RewardProgram_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_Post_Joined ON dbo.BASE_View_hfit_Post_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ScreeningEvent ON dbo.BASE_HFit_ScreeningEvent
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerTobaccoFree ON dbo.BASE_HFit_TrackerTobaccoFree
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssessmentFreeForm_Joined ON dbo.BASE_View_HFit_HealthAssessmentFreeForm_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingNotAssignedSettings ON dbo.BASE_HFit_CoachingNotAssignedSettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_TrackerTobaccoQuitAids ON dbo.BASE_HFit_LKP_TrackerTobaccoQuitAids
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentUserQuestion ON dbo.BASE_HFit_HealthAssesmentUserQuestion
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_RewardCompleted_FIX ON dbo.BASE_HFit_LKP_RewardCompleted_FIX
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_ChallengeAbout_Joined ON dbo.BASE_View_hfit_ChallengeAbout_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFIT_SsoConfiguration_Joined ON dbo.BASE_View_HFIT_SsoConfiguration_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingLibraryHealthArea ON dbo.BASE_HFit_CoachingLibraryHealthArea
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_DeviceProfileLayout ON dbo.BASE_CMS_DeviceProfileLayout
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_SiteDomainAlias ON dbo.BASE_CMS_SiteDomainAlias
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RewardProgram_Joined ON dbo.BASE_View_HFit_RewardProgram_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Newsletter ON dbo.BASE_HFit_Newsletter
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_Membership_MembershipUser_Joined ON dbo.BASE_View_Membership_MembershipUser_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerTobaccoFree ON dbo.BASE_HFit_TrackerTobaccoFree
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssessmentFreeForm_Joined ON dbo.BASE_View_HFit_HealthAssessmentFreeForm_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingNotAssignedSettings ON dbo.BASE_HFit_CoachingNotAssignedSettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_ChallengeAbout_Joined ON dbo.BASE_View_hfit_ChallengeAbout_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_TimezoneConfiguration ON dbo.BASE_Hfit_TimezoneConfiguration
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFIT_SsoConfiguration_Joined ON dbo.BASE_View_HFIT_SsoConfiguration_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAdvisingSessionCompleted ON dbo.BASE_HFit_HealthAdvisingSessionCompleted
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PostQuote ON dbo.BASE_HFit_PostQuote
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Membership ON dbo.BASE_CMS_Membership
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Newsletter ON dbo.BASE_HFit_Newsletter
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_SM_TwitterAccount ON dbo.BASE_SM_TwitterAccount
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Membership_MembershipUser_Joined ON dbo.BASE_View_Membership_MembershipUser_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardProgram ON dbo.BASE_HFit_RewardProgram
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ScheduledNotificationHistory ON dbo.BASE_HFit_ScheduledNotificationHistory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentImportStagingException ON dbo.BASE_HFit_HealthAssessmentImportStagingException
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_TimezoneConfiguration ON dbo.BASE_Hfit_TimezoneConfiguration
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAdvisingSessionCompleted ON dbo.BASE_HFit_HealthAdvisingSessionCompleted
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_PageTemplateSite ON dbo.BASE_CMS_PageTemplateSite
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_VersionHistory ON dbo.BASE_CMS_VersionHistory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_HAassessment ON dbo.BASE_view_EDW_HAassessment
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PostQuote ON dbo.BASE_HFit_PostQuote
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerDocument ON dbo.BASE_HFit_TrackerDocument
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Membership ON dbo.BASE_CMS_Membership
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_SmallStepResponses ON dbo.BASE_Hfit_SmallStepResponses
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_SM_TwitterAccount ON dbo.BASE_SM_TwitterAccount
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardProgram ON dbo.BASE_HFit_RewardProgram
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ScheduledNotificationHistory ON dbo.BASE_HFit_ScheduledNotificationHistory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentImportStagingException ON dbo.BASE_HFit_HealthAssessmentImportStagingException
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardActivity ON dbo.BASE_HFit_RewardActivity
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_PageTemplateSite ON dbo.BASE_CMS_PageTemplateSite
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_Bundle ON dbo.BASE_COM_Bundle
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_VersionHistory ON dbo.BASE_CMS_VersionHistory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_HAassessment ON dbo.BASE_view_EDW_HAassessment
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ConsentAndReleaseAgreement ON dbo.BASE_HFit_ConsentAndReleaseAgreement
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerPreventiveCare ON dbo.BASE_HFit_TrackerPreventiveCare
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerDocument ON dbo.BASE_HFit_TrackerDocument
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_SmallStepResponses ON dbo.BASE_Hfit_SmallStepResponses
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_ResourceTranslated_Joined ON dbo.BASE_View_CMS_ResourceTranslated_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardActivity ON dbo.BASE_HFit_RewardActivity
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_Bundle ON dbo.BASE_COM_Bundle
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_EDW_RoleMemberToday ON dbo.BASE_EDW_RoleMemberToday
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ConsentAndReleaseAgreement ON dbo.BASE_HFit_ConsentAndReleaseAgreement
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_ShippingCost ON dbo.BASE_COM_ShippingCost
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerPreventiveCare ON dbo.BASE_HFit_TrackerPreventiveCare
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_BookingEvent_Joined ON dbo.BASE_View_CONTENT_BookingEvent_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserCoachingAlert_NotMet ON dbo.BASE_HFit_UserCoachingAlert_NotMet
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_ResourceTranslated_Joined ON dbo.BASE_View_CMS_ResourceTranslated_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Event ON dbo.BASE_HFit_Event
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_EDW_RoleMemberToday ON dbo.BASE_EDW_RoleMemberToday
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingAuditLog ON dbo.BASE_HFit_CoachingAuditLog
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingHealthInterest ON dbo.BASE_HFit_CoachingHealthInterest
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_HealthInterestDetail ON dbo.BASE_view_EDW_HealthInterestDetail
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_MVTCombination ON dbo.BASE_OM_MVTCombination
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_ShippingCost ON dbo.BASE_COM_ShippingCost
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingEvalHARiskArea_Joined ON dbo.BASE_View_HFit_CoachingEvalHARiskArea_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_Currency ON dbo.BASE_COM_Currency
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Class_Joined ON dbo.BASE_View_HFit_Class_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_BookingEvent_Joined ON dbo.BASE_View_CONTENT_BookingEvent_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserCoachingAlert_NotMet ON dbo.BASE_HFit_UserCoachingAlert_NotMet
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_AllowedChildClasses ON dbo.BASE_CMS_AllowedChildClasses
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerSugaryDrinks ON dbo.BASE_HFit_TrackerSugaryDrinks
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Event ON dbo.BASE_HFit_Event
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_SKUOptionCategory ON dbo.BASE_COM_SKUOptionCategory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingPrivacyPolicy_Joined ON dbo.BASE_View_HFit_CoachingPrivacyPolicy_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingAuditLog ON dbo.BASE_HFit_CoachingAuditLog
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingHealthInterest ON dbo.BASE_HFit_CoachingHealthInterest
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_HealthInterestDetail ON dbo.BASE_view_EDW_HealthInterestDetail
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_MVTCombination ON dbo.BASE_OM_MVTCombination
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingEvalHARiskArea_Joined ON dbo.BASE_View_HFit_CoachingEvalHARiskArea_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_Currency ON dbo.BASE_COM_Currency
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Class_Joined ON dbo.BASE_View_HFit_Class_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardsReprocessQueue ON dbo.BASE_HFit_RewardsReprocessQueue
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_AllowedChildClasses ON dbo.BASE_CMS_AllowedChildClasses
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Resource ON dbo.BASE_CMS_Resource
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_GoalOutcome ON dbo.BASE_HFit_GoalOutcome
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerFlexibility ON dbo.BASE_HFit_TrackerFlexibility
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerSugaryDrinks ON dbo.BASE_HFit_TrackerSugaryDrinks
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Goal_Joined ON dbo.BASE_View_HFit_Goal_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Class ON dbo.BASE_CMS_Class
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_ScoreContactRule ON dbo.BASE_OM_ScoreContactRule
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_SKUOptionCategory ON dbo.BASE_COM_SKUOptionCategory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingPrivacyPolicy_Joined ON dbo.BASE_View_HFit_CoachingPrivacyPolicy_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PostMessage ON dbo.BASE_HFit_PostMessage
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_PostChallenge_Joined ON dbo.BASE_View_HFit_PostChallenge_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WorkflowTransition ON dbo.BASE_CMS_WorkflowTransition
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardsReprocessQueue ON dbo.BASE_HFit_RewardsReprocessQueue
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Resource ON dbo.BASE_CMS_Resource
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_GoalOutcome ON dbo.BASE_HFit_GoalOutcome
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerFlexibility ON dbo.BASE_HFit_TrackerFlexibility
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_TimeZone ON dbo.BASE_CMS_TimeZone
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Goal_Joined ON dbo.BASE_View_HFit_Goal_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingLibraryResources ON dbo.BASE_HFit_CoachingLibraryResources
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Class ON dbo.BASE_CMS_Class
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RewardsAboutInfoItem_Joined ON dbo.BASE_View_HFit_RewardsAboutInfoItem_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_ScoreContactRule ON dbo.BASE_OM_ScoreContactRule
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_HAHealthCheckCampaignData ON dbo.BASE_Hfit_HAHealthCheckCampaignData
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PostMessage ON dbo.BASE_HFit_PostMessage
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_SSIS_ScreeningMapping ON dbo.BASE_HFit_SSIS_ScreeningMapping
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_SearchTask ON dbo.BASE_CMS_SearchTask
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_PostChallenge_Joined ON dbo.BASE_View_HFit_PostChallenge_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WorkflowTransition ON dbo.BASE_CMS_WorkflowTransition
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssessmentModuleConfiguration_Joined ON dbo.BASE_View_HFit_HealthAssessmentModuleConfiguration_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_challengeBase_Joined ON dbo.BASE_View_hfit_challengeBase_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_TimeZone ON dbo.BASE_CMS_TimeZone
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_SsoRequest_Joined ON dbo.BASE_View_HFit_SsoRequest_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_PM_ProjectTaskStatus ON dbo.BASE_PM_ProjectTaskStatus
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_Wishlist ON dbo.BASE_COM_Wishlist
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingLibraryResources ON dbo.BASE_HFit_CoachingLibraryResources
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RewardsAboutInfoItem_Joined ON dbo.BASE_View_HFit_RewardsAboutInfoItem_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_HAHealthCheckCampaignData ON dbo.BASE_Hfit_HAHealthCheckCampaignData
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_SSIS_ScreeningMapping ON dbo.BASE_HFit_SSIS_ScreeningMapping
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_SearchTask ON dbo.BASE_CMS_SearchTask
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentUserQuestionImport ON dbo.BASE_HFit_HealthAssesmentUserQuestionImport
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_Order ON dbo.BASE_COM_Order
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_RewardFrequency ON dbo.BASE_HFit_LKP_RewardFrequency
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_Newsletter_Subscriptions_Joined ON dbo.BASE_View_Newsletter_Subscriptions_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssessmentModuleConfiguration_Joined ON dbo.BASE_View_HFit_HealthAssessmentModuleConfiguration_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_Tree_Joined ON dbo.BASE_View_CMS_Tree_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_challengeBase_Joined ON dbo.BASE_View_hfit_challengeBase_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_SsoRequest_Joined ON dbo.BASE_View_HFit_SsoRequest_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_PM_ProjectTaskStatus ON dbo.BASE_PM_ProjectTaskStatus
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserRewardPoints ON dbo.BASE_HFit_UserRewardPoints
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_Wishlist ON dbo.BASE_COM_Wishlist
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ObjectVersionHistory ON dbo.BASE_CMS_ObjectVersionHistory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentUserQuestionImport ON dbo.BASE_HFit_HealthAssesmentUserQuestionImport
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Avatar ON dbo.BASE_CMS_Avatar
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_Activity ON dbo.BASE_OM_Activity
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_Order ON dbo.BASE_COM_Order
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserCoachingAlert_MeetNotModify ON dbo.BASE_HFit_UserCoachingAlert_MeetNotModify
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_RewardFrequency ON dbo.BASE_HFit_LKP_RewardFrequency
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Newsletter_Subscriptions_Joined ON dbo.BASE_View_Newsletter_Subscriptions_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingUserServiceLevel ON dbo.BASE_HFit_CoachingUserServiceLevel
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ValMeasureValues ON dbo.BASE_HFit_ValMeasureValues
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WebPartContainerSite ON dbo.BASE_CMS_WebPartContainerSite
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserRewardPoints ON dbo.BASE_HFit_UserRewardPoints
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ObjectVersionHistory ON dbo.BASE_CMS_ObjectVersionHistory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_ShippingOption ON dbo.BASE_COM_ShippingOption
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_SKU ON dbo.BASE_COM_SKU
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HSBiometricChart ON dbo.BASE_HFit_HSBiometricChart
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CentralConfig ON dbo.BASE_HFit_CentralConfig
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Avatar ON dbo.BASE_CMS_Avatar
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_RolePermission ON dbo.BASE_CMS_RolePermission
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_Activity ON dbo.BASE_OM_Activity
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserCoachingAlert_MeetNotModify ON dbo.BASE_HFit_UserCoachingAlert_MeetNotModify
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingUserServiceLevel ON dbo.BASE_HFit_CoachingUserServiceLevel
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ValMeasureValues ON dbo.BASE_HFit_ValMeasureValues
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WebPartContainerSite ON dbo.BASE_CMS_WebPartContainerSite
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardDatesAggregator ON dbo.BASE_HFit_RewardDatesAggregator
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_ShippingOption ON dbo.BASE_COM_ShippingOption
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_EDW_GroupMemberToday ON dbo.BASE_EDW_GroupMemberToday
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_SKU ON dbo.BASE_COM_SKU
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HSBiometricChart ON dbo.BASE_HFit_HSBiometricChart
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CentralConfig ON dbo.BASE_HFit_CentralConfig
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_RolePermission ON dbo.BASE_CMS_RolePermission
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_RoleResourcePermission_Joined ON dbo.BASE_View_CMS_RoleResourcePermission_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_EmailAttachment ON dbo.BASE_CMS_EmailAttachment
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardDatesAggregator ON dbo.BASE_HFit_RewardDatesAggregator
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengeRegistrationTempData ON dbo.BASE_HFit_ChallengeRegistrationTempData
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_EDW_GroupMemberToday ON dbo.BASE_EDW_GroupMemberToday
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_challengeOffering ON dbo.BASE_hfit_challengeOffering
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_Cellphone_Joined ON dbo.BASE_View_CONTENT_Cellphone_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserTracker ON dbo.BASE_HFit_UserTracker
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_HelpTopic ON dbo.BASE_CMS_HelpTopic
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentStarted ON dbo.BASE_HFit_HealthAssesmentStarted
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_RoleResourcePermission_Joined ON dbo.BASE_View_CMS_RoleResourcePermission_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_AccountContact ON dbo.BASE_OM_AccountContact
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_EmailAttachment ON dbo.BASE_CMS_EmailAttachment
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengeRegistrationTempData ON dbo.BASE_HFit_ChallengeRegistrationTempData
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_LKP_CustomTrackerDefaultMetadata ON dbo.BASE_Hfit_LKP_CustomTrackerDefaultMetadata
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingEnrollmentSyncStaging ON dbo.BASE_HFit_CoachingEnrollmentSyncStaging
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_HealthInterestList ON dbo.BASE_view_EDW_HealthInterestList
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_challengeOffering ON dbo.BASE_hfit_challengeOffering
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingEvalHARiskCategory_Joined ON dbo.BASE_View_HFit_CoachingEvalHARiskCategory_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_Cellphone_Joined ON dbo.BASE_View_CONTENT_Cellphone_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserTracker ON dbo.BASE_HFit_UserTracker
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentTCHDLRatioScoring ON dbo.BASE_HFit_HealthAssessmentTCHDLRatioScoring
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_HelpTopic ON dbo.BASE_CMS_HelpTopic
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentStarted ON dbo.BASE_HFit_HealthAssesmentStarted
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_DiscountCoupon ON dbo.BASE_COM_DiscountCoupon
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_AccountContact ON dbo.BASE_OM_AccountContact
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ClientContact ON dbo.BASE_HFit_ClientContact
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_LKP_CustomTrackerDefaultMetadata ON dbo.BASE_Hfit_LKP_CustomTrackerDefaultMetadata
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingEnrollmentSyncStaging ON dbo.BASE_HFit_CoachingEnrollmentSyncStaging
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_HealthInterestList ON dbo.BASE_view_EDW_HealthInterestList
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ClassSite ON dbo.BASE_CMS_ClassSite
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingEvalHARiskCategory_Joined ON dbo.BASE_View_HFit_CoachingEvalHARiskCategory_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ScreeningEventCategory ON dbo.BASE_HFit_ScreeningEventCategory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentTCHDLRatioScoring ON dbo.BASE_HFit_HealthAssessmentTCHDLRatioScoring
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WorkflowAction ON dbo.BASE_CMS_WorkflowAction
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_Tree_Joined_Linked ON dbo.BASE_View_CMS_Tree_Joined_Linked
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_DiscountCoupon ON dbo.BASE_COM_DiscountCoupon
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ClientContact ON dbo.BASE_HFit_ClientContact
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_GoalCategory_Joined ON dbo.BASE_View_HFit_GoalCategory_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Staging_Fulfillment ON dbo.BASE_HFit_Staging_Fulfillment
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ClassSite ON dbo.BASE_CMS_ClassSite
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_PostEmptyFeed_Joined ON dbo.BASE_View_HFit_PostEmptyFeed_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ScreeningEventCategory ON dbo.BASE_HFit_ScreeningEventCategory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WorkflowAction ON dbo.BASE_CMS_WorkflowAction
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingAuditLog ON dbo.BASE_View_HFit_CoachingAuditLog
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentRecomendationClientConfig ON dbo.BASE_HFit_HealthAssesmentRecomendationClientConfig
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_GoalCategory_Joined ON dbo.BASE_View_HFit_GoalCategory_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingEnrollmentSettings ON dbo.BASE_HFit_CoachingEnrollmentSettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Staging_Fulfillment ON dbo.BASE_HFit_Staging_Fulfillment
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RewardTrigger_Joined ON dbo.BASE_View_HFit_RewardTrigger_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengePPTRegisteredPostTemplate ON dbo.BASE_HFit_ChallengePPTRegisteredPostTemplate
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_PostEmptyFeed_Joined ON dbo.BASE_View_HFit_PostEmptyFeed_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerHbA1c ON dbo.BASE_HFit_TrackerHbA1c
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingAuditLog ON dbo.BASE_View_HFit_CoachingAuditLog
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthSummarySettings_Joined ON dbo.BASE_View_HFit_HealthSummarySettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_ChallengeFAQ_Joined ON dbo.BASE_View_hfit_ChallengeFAQ_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TipOfTheDay ON dbo.BASE_HFit_TipOfTheDay
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentRecomendationClientConfig ON dbo.BASE_HFit_HealthAssesmentRecomendationClientConfig
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_SsoRequestAttributes_Joined ON dbo.BASE_View_HFit_SsoRequestAttributes_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingEnrollmentSettings ON dbo.BASE_HFit_CoachingEnrollmentSettings
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentFastingGlucoseScoring ON dbo.BASE_HFit_HealthAssessmentFastingGlucoseScoring
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RewardTrigger_Joined ON dbo.BASE_View_HFit_RewardTrigger_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengePPTRegisteredPostTemplate ON dbo.BASE_HFit_ChallengePPTRegisteredPostTemplate
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_Job_Joined ON dbo.BASE_View_CONTENT_Job_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PostReminder ON dbo.BASE_HFit_PostReminder
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerHbA1c ON dbo.BASE_HFit_TrackerHbA1c
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PPTStatusIpadMappingCodeCleanup ON dbo.BASE_HFit_PPTStatusIpadMappingCodeCleanup
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_NewsletterSubscriberUserRole_Joined ON dbo.BASE_View_NewsletterSubscriberUserRole_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthSummarySettings_Joined ON dbo.BASE_View_HFit_HealthSummarySettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_ChallengeFAQ_Joined ON dbo.BASE_View_hfit_ChallengeFAQ_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TipOfTheDay ON dbo.BASE_HFit_TipOfTheDay
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_SsoRequestAttributes_Joined ON dbo.BASE_View_HFit_SsoRequestAttributes_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Permission ON dbo.BASE_CMS_Permission
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentFastingGlucoseScoring ON dbo.BASE_HFit_HealthAssessmentFastingGlucoseScoring
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_Job_Joined ON dbo.BASE_View_CONTENT_Job_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PostReminder ON dbo.BASE_HFit_PostReminder
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PPTStatusIpadMappingCodeCleanup ON dbo.BASE_HFit_PPTStatusIpadMappingCodeCleanup
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentUserStarted_HA_Sync ON dbo.BASE_HFit_HealthAssesmentUserStarted
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_NewsletterSubscriberUserRole_Joined ON dbo.BASE_View_NewsletterSubscriberUserRole_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingEvalHAQA ON dbo.BASE_HFit_CoachingEvalHAQA
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardOverrideLog ON dbo.BASE_HFit_RewardOverrideLog
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Permission ON dbo.BASE_CMS_Permission
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_SMTPServer ON dbo.BASE_CMS_SMTPServer
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RegistrationWelcome ON dbo.BASE_HFit_RegistrationWelcome
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerSleepPlan ON dbo.BASE_HFit_TrackerSleepPlan
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ContactGroupMembership ON dbo.BASE_HFit_ContactGroupMembership
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ChallengeRegistrationEmail_Joined ON dbo.BASE_View_HFit_ChallengeRegistrationEmail_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingEvalHAQA ON dbo.BASE_HFit_CoachingEvalHAQA
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardOverrideLog ON dbo.BASE_HFit_RewardOverrideLog
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PostSubscriber_ContactBackup ON dbo.BASE_HFit_PostSubscriber_ContactBackup
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentRiskArea ON dbo.BASE_HFit_HealthAssesmentRiskArea
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_SMTPServer ON dbo.BASE_CMS_SMTPServer
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RegistrationWelcome ON dbo.BASE_HFit_RegistrationWelcome
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerSleepPlan ON dbo.BASE_HFit_TrackerSleepPlan
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ContactGroupMembership ON dbo.BASE_HFit_ContactGroupMembership
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ChallengeRegistrationEmail_Joined ON dbo.BASE_View_HFit_ChallengeRegistrationEmail_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardsUserTrigger ON dbo.BASE_HFit_RewardsUserTrigger
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_SiteRoleResourceUIElement_Joined ON dbo.BASE_View_CMS_SiteRoleResourceUIElement_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PostSubscriber_ContactBackup ON dbo.BASE_HFit_PostSubscriber_ContactBackup
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_EventLogMaintenance ON dbo.BASE_HFit_EventLogMaintenance
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentRiskArea ON dbo.BASE_HFit_HealthAssesmentRiskArea
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Chat_Message ON dbo.BASE_Chat_Message
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_MVTCombinationVariation ON dbo.BASE_OM_MVTCombinationVariation
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardsUserTrigger ON dbo.BASE_HFit_RewardsUserTrigger
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_MembershipRole ON dbo.BASE_CMS_MembershipRole
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_Event_Joined ON dbo.BASE_View_CONTENT_Event_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_CardioActivityIntensity ON dbo.BASE_HFit_LKP_CardioActivityIntensity
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Coach_Bio ON dbo.BASE_View_HFit_Coach_Bio
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_SiteRoleResourceUIElement_Joined ON dbo.BASE_View_CMS_SiteRoleResourceUIElement_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ScheduledTaskHistory ON dbo.BASE_HFit_ScheduledTaskHistory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_AlternativeForm ON dbo.BASE_CMS_AlternativeForm
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentImportStagingMaster ON dbo.BASE_HFit_HealthAssessmentImportStagingMaster
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_GoalCloseReason ON dbo.BASE_HFit_LKP_GoalCloseReason
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_EventLogMaintenance ON dbo.BASE_HFit_EventLogMaintenance
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_TrackerFlexibilityActivity ON dbo.BASE_HFit_LKP_TrackerFlexibilityActivity
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WebFarmServer ON dbo.BASE_CMS_WebFarmServer
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Chat_Message ON dbo.BASE_Chat_Message
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CMS_User_CHANGES ON dbo.BASE_HFit_CMS_User_CHANGES
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerCollectionSource ON dbo.BASE_HFit_TrackerCollectionSource
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_SKUTaxClasses ON dbo.BASE_COM_SKUTaxClasses
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_CoachingServiceLevelStatus ON dbo.BASE_HFit_LKP_CoachingServiceLevelStatus
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerBMI ON dbo.BASE_HFit_TrackerBMI
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_Participant ON dbo.BASE_view_EDW_Participant
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_MVTCombinationVariation ON dbo.BASE_OM_MVTCombinationVariation
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingEvalHARiskModule_Joined ON dbo.BASE_View_HFit_CoachingEvalHARiskModule_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_MembershipRole ON dbo.BASE_CMS_MembershipRole
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_Event_Joined ON dbo.BASE_View_CONTENT_Event_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_CardioActivityIntensity ON dbo.BASE_HFit_LKP_CardioActivityIntensity
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Coach_Bio ON dbo.BASE_View_HFit_Coach_Bio
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ScheduledTaskHistory ON dbo.BASE_HFit_ScheduledTaskHistory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_AlternativeForm ON dbo.BASE_CMS_AlternativeForm
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_GoalSubCategory ON dbo.BASE_HFit_GoalSubCategory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentImportStagingMaster ON dbo.BASE_HFit_HealthAssessmentImportStagingMaster
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_GoalCloseReason ON dbo.BASE_HFit_LKP_GoalCloseReason
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_TrackerFlexibilityActivity ON dbo.BASE_HFit_LKP_TrackerFlexibilityActivity
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WebFarmServer ON dbo.BASE_CMS_WebFarmServer
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CMS_User_CHANGES ON dbo.BASE_HFit_CMS_User_CHANGES
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerCollectionSource ON dbo.BASE_HFit_TrackerCollectionSource
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_Search ON dbo.BASE_OM_Search
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_SKUTaxClasses ON dbo.BASE_COM_SKUTaxClasses
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingTermsAndConditionsSettings_Joined ON dbo.BASE_View_HFit_CoachingTermsAndConditionsSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_CoachingServiceLevelStatus ON dbo.BASE_HFit_LKP_CoachingServiceLevelStatus
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerBMI ON dbo.BASE_HFit_TrackerBMI
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_Participant ON dbo.BASE_view_EDW_Participant
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingEvalHARiskModule_Joined ON dbo.BASE_View_HFit_CoachingEvalHARiskModule_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_GoalSubCategory ON dbo.BASE_HFit_GoalSubCategory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Tree ON dbo.BASE_CMS_Tree
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_GoalSubCategory_Joined ON dbo.BASE_View_HFit_GoalSubCategory_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_Carrier ON dbo.BASE_COM_Carrier
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_Search ON dbo.BASE_OM_Search
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingTermsAndConditionsSettings_Joined ON dbo.BASE_View_HFit_CoachingTermsAndConditionsSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_SsoAttributeData ON dbo.BASE_HFit_SsoAttributeData
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_PostHealthEducation_Joined ON dbo.BASE_View_HFit_PostHealthEducation_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_RewardLevelType ON dbo.BASE_HFit_LKP_RewardLevelType
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_Department ON dbo.BASE_COM_Department
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Pillar ON dbo.BASE_HFit_Pillar
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardsUserActivityDetail ON dbo.BASE_HFit_RewardsUserActivityDetail
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Tree ON dbo.BASE_CMS_Tree
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Community_Friend ON dbo.BASE_Community_Friend
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_GoalSubCategory_Joined ON dbo.BASE_View_HFit_GoalSubCategory_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingMyHealthInterestsSettings ON dbo.BASE_HFit_CoachingMyHealthInterestsSettings
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UnitOfMeasure ON dbo.BASE_HFit_UnitOfMeasure
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_Carrier ON dbo.BASE_COM_Carrier
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RewardTriggerParameter_Joined ON dbo.BASE_View_HFit_RewardTriggerParameter_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardAboutInfoItem ON dbo.BASE_HFit_RewardAboutInfoItem
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_SsoAttributeData ON dbo.BASE_HFit_SsoAttributeData
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_PostHealthEducation_Joined ON dbo.BASE_View_HFit_PostHealthEducation_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_RewardLevelType ON dbo.BASE_HFit_LKP_RewardLevelType
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_Department ON dbo.BASE_COM_Department
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_OrderAddress ON dbo.BASE_COM_OrderAddress
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Pillar ON dbo.BASE_HFit_Pillar
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardsUserActivityDetail ON dbo.BASE_HFit_RewardsUserActivityDetail
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HRA_Joined ON dbo.BASE_View_HFit_HRA_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_challengeGeneralSettings_Joined ON dbo.BASE_View_hfit_challengeGeneralSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_TemporalConfigurationContainer_Joined ON dbo.BASE_View_hfit_TemporalConfigurationContainer_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Community_Friend ON dbo.BASE_Community_Friend
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingMyHealthInterestsSettings ON dbo.BASE_HFit_CoachingMyHealthInterestsSettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UnitOfMeasure ON dbo.BASE_HFit_UnitOfMeasure
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RewardTriggerParameter_Joined ON dbo.BASE_View_HFit_RewardTriggerParameter_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardAboutInfoItem ON dbo.BASE_HFit_RewardAboutInfoItem
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_KBArticle_Joined ON dbo.BASE_View_CONTENT_KBArticle_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Company ON dbo.BASE_HFit_Company
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_BiometricViewRejectCriteria ON dbo.BASE_view_EDW_BiometricViewRejectCriteria
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_ActivityType ON dbo.BASE_OM_ActivityType
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_OrderAddress ON dbo.BASE_COM_OrderAddress
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_OM_Account_Joined ON dbo.BASE_View_OM_Account_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ResourceLibrary ON dbo.BASE_CMS_ResourceLibrary
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HRA_Joined ON dbo.BASE_View_HFit_HRA_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_WellnessGoal ON dbo.BASE_HFit_WellnessGoal
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WebPartLayout ON dbo.BASE_CMS_WebPartLayout
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_challengeGeneralSettings_Joined ON dbo.BASE_View_hfit_challengeGeneralSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_TemporalConfigurationContainer_Joined ON dbo.BASE_View_hfit_TemporalConfigurationContainer_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_KBArticle_Joined ON dbo.BASE_View_CONTENT_KBArticle_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WorkflowUser ON dbo.BASE_CMS_WorkflowUser
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Company ON dbo.BASE_HFit_Company
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HSGraphRangeSetting ON dbo.BASE_HFit_HSGraphRangeSetting
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_BiometricViewRejectCriteria ON dbo.BASE_view_EDW_BiometricViewRejectCriteria
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_challenge ON dbo.BASE_hfit_challenge
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_RoleUIElement ON dbo.BASE_CMS_RoleUIElement
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_ActivityType ON dbo.BASE_OM_ActivityType
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_ToDoHealthAssesment ON dbo.BASE_View_ToDoHealthAssesment
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_OM_Account_Joined ON dbo.BASE_View_OM_Account_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ResourceLibrary ON dbo.BASE_CMS_ResourceLibrary
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingLMTemporalContainer ON dbo.BASE_HFit_CoachingLMTemporalContainer
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_WellnessGoal ON dbo.BASE_HFit_WellnessGoal
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WebPartLayout ON dbo.BASE_CMS_WebPartLayout
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Transformation ON dbo.BASE_CMS_Transformation
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_CouponCode ON dbo.BASE_COM_CouponCode
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_HealthAssesment ON dbo.BASE_view_EDW_HealthAssesment
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_HAHealthCheckCodes ON dbo.BASE_Hfit_HAHealthCheckCodes
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Session ON dbo.BASE_CMS_Session
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WorkflowUser ON dbo.BASE_CMS_WorkflowUser
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HSGraphRangeSetting ON dbo.BASE_HFit_HSGraphRangeSetting
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_challenge ON dbo.BASE_hfit_challenge
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_RoleUIElement ON dbo.BASE_CMS_RoleUIElement
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessment ON dbo.BASE_HFit_HealthAssessment
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_ToDoHealthAssesment ON dbo.BASE_View_ToDoHealthAssesment
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingLMTemporalContainer ON dbo.BASE_HFit_CoachingLMTemporalContainer
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Transformation ON dbo.BASE_CMS_Transformation
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_CouponCode ON dbo.BASE_COM_CouponCode
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_HealthAssesment ON dbo.BASE_view_EDW_HealthAssesment
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_ChallengeTeam ON dbo.BASE_hfit_ChallengeTeam
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Document ON dbo.BASE_CMS_Document
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_HAHealthCheckCodes ON dbo.BASE_Hfit_HAHealthCheckCodes
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengePostTemplate ON dbo.BASE_HFit_ChallengePostTemplate
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Session ON dbo.BASE_CMS_Session
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_ShippingOptionTaxClass ON dbo.BASE_COM_ShippingOptionTaxClass
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentUserQuestionStaging ON dbo.BASE_HFit_HealthAssesmentUserQuestionStaging
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessment ON dbo.BASE_HFit_HealthAssessment
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_RewardGroupLevel ON dbo.BASE_HFit_LKP_RewardGroupLevel
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerVegetables ON dbo.BASE_HFit_TrackerVegetables
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Messaging_Message ON dbo.BASE_Messaging_Message
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_ChallengeTeam ON dbo.BASE_hfit_ChallengeTeam
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Document ON dbo.BASE_CMS_Document
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ObjectWorkflowTrigger ON dbo.BASE_CMS_ObjectWorkflowTrigger
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_Supplier ON dbo.BASE_COM_Supplier
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengePostTemplate ON dbo.BASE_HFit_ChallengePostTemplate
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HA_UseAndDisclosure ON dbo.BASE_HFit_HA_UseAndDisclosure
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_ShippingOptionTaxClass ON dbo.BASE_COM_ShippingOptionTaxClass
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentUserQuestionStaging ON dbo.BASE_HFit_HealthAssesmentUserQuestionStaging
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ToDoSmallSteps ON dbo.BASE_HFit_ToDoSmallSteps
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_FAQ_Joined ON dbo.BASE_View_CONTENT_FAQ_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Badge ON dbo.BASE_CMS_Badge
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_RewardGroupLevel ON dbo.BASE_HFit_LKP_RewardGroupLevel
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerVegetables ON dbo.BASE_HFit_TrackerVegetables
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentUserQuestionGroupResults ON dbo.BASE_HFit_HealthAssesmentUserQuestionGroupResults
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_ExchangeTable ON dbo.BASE_COM_ExchangeTable
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_ClientDeviceSuspensionLog ON dbo.BASE_Hfit_ClientDeviceSuspensionLog
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Messaging_Message ON dbo.BASE_Messaging_Message
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ObjectWorkflowTrigger ON dbo.BASE_CMS_ObjectWorkflowTrigger
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingEnrollmentReport ON dbo.BASE_HFit_CoachingEnrollmentReport
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_Supplier ON dbo.BASE_COM_Supplier
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_RewardAwardDetail ON dbo.BASE_view_EDW_RewardAwardDetail
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Country ON dbo.BASE_CMS_Country
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HA_UseAndDisclosure ON dbo.BASE_HFit_HA_UseAndDisclosure
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingGetStarted_Joined ON dbo.BASE_View_HFit_CoachingGetStarted_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ToDoSmallSteps ON dbo.BASE_HFit_ToDoSmallSteps
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_FAQ_Joined ON dbo.BASE_View_CONTENT_FAQ_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ScreeningEventDate ON dbo.BASE_HFit_ScreeningEventDate
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Badge ON dbo.BASE_CMS_Badge
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentUserQuestionGroupResults ON dbo.BASE_HFit_HealthAssesmentUserQuestionGroupResults
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_ExchangeTable ON dbo.BASE_COM_ExchangeTable
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_ClientDeviceSuspensionLog ON dbo.BASE_Hfit_ClientDeviceSuspensionLog
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardDefaultSettings ON dbo.BASE_HFit_RewardDefaultSettings
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_StagingEligibility ON dbo.BASE_HFit_StagingEligibility
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_DocumentAlias ON dbo.BASE_CMS_DocumentAlias
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentModuleCodeNames ON dbo.BASE_HFit_HealthAssesmentModuleCodeNames
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingEnrollmentReport ON dbo.BASE_HFit_CoachingEnrollmentReport
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_RewardAwardDetail ON dbo.BASE_view_EDW_RewardAwardDetail
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Country ON dbo.BASE_CMS_Country
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerRegularMeals ON dbo.BASE_HFit_TrackerRegularMeals
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingGetStarted_Joined ON dbo.BASE_View_HFit_CoachingGetStarted_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ScreeningEventDate ON dbo.BASE_HFit_ScreeningEventDate
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_EmailTemplate ON dbo.BASE_CMS_EmailTemplate
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardDefaultSettings ON dbo.BASE_HFit_RewardDefaultSettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_StagingEligibility ON dbo.BASE_HFit_StagingEligibility
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_DocumentAlias ON dbo.BASE_CMS_DocumentAlias
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentModuleCodeNames ON dbo.BASE_HFit_HealthAssesmentModuleCodeNames
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_EDW_HealthAssessment ON dbo.BASE_EDW_HealthAssessment
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_PostMessage_Joined ON dbo.BASE_View_HFit_PostMessage_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerRegularMeals ON dbo.BASE_HFit_TrackerRegularMeals
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_EDW_RewardProgram_Joined ON dbo.BASE_View_EDW_RewardProgram_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_InlineControl ON dbo.BASE_CMS_InlineControl
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_AccountStatus ON dbo.BASE_OM_AccountStatus
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_TipOfTheDayCategory ON dbo.BASE_Hfit_TipOfTheDayCategory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_EmailTemplate ON dbo.BASE_CMS_EmailTemplate
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerSugaryFoods ON dbo.BASE_HFit_TrackerSugaryFoods
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HA_UseAndDisclosure_Joined ON dbo.BASE_View_HFit_HA_UseAndDisclosure_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Coaches ON dbo.BASE_HFit_Coaches
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RewardTriggerTobaccoParameter_Joined ON dbo.BASE_View_HFit_RewardTriggerTobaccoParameter_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_EDW_HealthAssessment ON dbo.BASE_EDW_HealthAssessment
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_PostMessage_Joined ON dbo.BASE_View_HFit_PostMessage_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PostSubscriber ON dbo.BASE_HFit_PostSubscriber
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentTCScoring ON dbo.BASE_HFit_HealthAssessmentTCScoring
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_EDW_RewardProgram_Joined ON dbo.BASE_View_EDW_RewardProgram_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_InlineControl ON dbo.BASE_CMS_InlineControl
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HSAbout_Joined ON dbo.BASE_View_HFit_HSAbout_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_AccountStatus ON dbo.BASE_OM_AccountStatus
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ChallengeNewsletter_Joined ON dbo.BASE_View_HFit_ChallengeNewsletter_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_TipOfTheDayCategory ON dbo.BASE_Hfit_TipOfTheDayCategory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_TermsConditions_Joined ON dbo.BASE_View_HFit_TermsConditions_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardException ON dbo.BASE_HFit_RewardException
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerSugaryFoods ON dbo.BASE_HFit_TrackerSugaryFoods
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HA_UseAndDisclosure_Joined ON dbo.BASE_View_HFit_HA_UseAndDisclosure_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Coaches ON dbo.BASE_HFit_Coaches
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RewardTriggerTobaccoParameter_Joined ON dbo.BASE_View_HFit_RewardTriggerTobaccoParameter_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_PPTEligibility ON dbo.BASE_hfit_PPTEligibility
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HACampaign ON dbo.BASE_HFit_HACampaign
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_Laptop_Joined ON dbo.BASE_View_CONTENT_Laptop_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PostSubscriber ON dbo.BASE_HFit_PostSubscriber
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_ClientCompany ON dbo.BASE_view_EDW_ClientCompany
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentTCScoring ON dbo.BASE_HFit_HealthAssessmentTCScoring
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WorkflowHistory ON dbo.BASE_CMS_WorkflowHistory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_OM_Account_MembershipJoined ON dbo.BASE_View_OM_Account_MembershipJoined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HSAbout_Joined ON dbo.BASE_View_HFit_HSAbout_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerFruits ON dbo.BASE_HFit_TrackerFruits
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ChallengeNewsletter_Joined ON dbo.BASE_View_HFit_ChallengeNewsletter_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_TermsConditions_Joined ON dbo.BASE_View_HFit_TermsConditions_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardException ON dbo.BASE_HFit_RewardException
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_PPTEligibility ON dbo.BASE_hfit_PPTEligibility
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ContactGroupSyncExclude ON dbo.BASE_HFit_ContactGroupSyncExclude
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HACampaign ON dbo.BASE_HFit_HACampaign
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_Laptop_Joined ON dbo.BASE_View_CONTENT_Laptop_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_ClientCompany ON dbo.BASE_view_EDW_ClientCompany
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WorkflowHistory ON dbo.BASE_CMS_WorkflowHistory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_OM_Account_MembershipJoined ON dbo.BASE_View_OM_Account_MembershipJoined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_Tree_Joined_Versions ON dbo.BASE_View_CMS_Tree_Joined_Versions
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_CoachingCMTemporalContainer ON dbo.BASE_hfit_CoachingCMTemporalContainer
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LoginPageSettings ON dbo.BASE_HFit_LoginPageSettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerFruits ON dbo.BASE_HFit_TrackerFruits
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentRecomendations ON dbo.BASE_HFit_HealthAssesmentRecomendations
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengePPTRegisteredRDPostTemplate ON dbo.BASE_HFit_ChallengePPTRegisteredRDPostTemplate
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ContactGroupSyncExclude ON dbo.BASE_HFit_ContactGroupSyncExclude
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_Tree_Joined_Versions ON dbo.BASE_View_CMS_Tree_Joined_Versions
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_CoachingCMTemporalContainer ON dbo.BASE_hfit_CoachingCMTemporalContainer
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LoginPageSettings ON dbo.BASE_HFit_LoginPageSettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentRecomendations ON dbo.BASE_HFit_HealthAssesmentRecomendations
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_EventType ON dbo.BASE_HFit_EventType
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengePPTRegisteredRDPostTemplate ON dbo.BASE_HFit_ChallengePPTRegisteredRDPostTemplate
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_MVTest ON dbo.BASE_OM_MVTest
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerHighFatFoods ON dbo.BASE_HFit_TrackerHighFatFoods
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_MembershipUser ON dbo.BASE_CMS_MembershipUser
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_SchedulerEventAppointmentSlot ON dbo.BASE_HFit_SchedulerEventAppointmentSlot
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ACL ON dbo.BASE_CMS_ACL
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Personalization ON dbo.BASE_CMS_Personalization
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_EventType ON dbo.BASE_HFit_EventType
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_MVTest ON dbo.BASE_OM_MVTest
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerHighFatFoods ON dbo.BASE_HFit_TrackerHighFatFoods
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_MembershipUser ON dbo.BASE_CMS_MembershipUser
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_File_Joined ON dbo.BASE_View_CONTENT_File_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_Hfit_CoachingSystemSettings_Joined ON dbo.BASE_View_Hfit_CoachingSystemSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_SchedulerEventAppointmentSlot ON dbo.BASE_HFit_SchedulerEventAppointmentSlot
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_GroupAddUsers ON dbo.BASE_HFit_GroupAddUsers
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardParameterBase ON dbo.BASE_HFit_RewardParameterBase
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingGetUserDaysSinceActivity ON dbo.BASE_View_HFit_CoachingGetUserDaysSinceActivity
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ACL ON dbo.BASE_CMS_ACL
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Personalization ON dbo.BASE_CMS_Personalization
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_SMTPServerSite ON dbo.BASE_CMS_SMTPServerSite
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_UserAgent ON dbo.BASE_OM_UserAgent
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingCommitToQuit ON dbo.BASE_HFit_CoachingCommitToQuit
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_RewardsDefinition ON dbo.BASE_view_EDW_RewardsDefinition
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingHATemporalContainer_Joined ON dbo.BASE_View_HFit_CoachingHATemporalContainer_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_File_Joined ON dbo.BASE_View_CONTENT_File_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardsAwardUserDetailArchive ON dbo.BASE_HFit_RewardsAwardUserDetailArchive
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Hfit_CoachingSystemSettings_Joined ON dbo.BASE_View_Hfit_CoachingSystemSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_GroupAddUsers ON dbo.BASE_HFit_GroupAddUsers
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardParameterBase ON dbo.BASE_HFit_RewardParameterBase
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingGetUserDaysSinceActivity ON dbo.BASE_View_HFit_CoachingGetUserDaysSinceActivity
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_SMTPServerSite ON dbo.BASE_CMS_SMTPServerSite
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_UserAgent ON dbo.BASE_OM_UserAgent
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Configuration_CallLogCoaching_Joined ON dbo.BASE_View_HFit_Configuration_CallLogCoaching_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingCommitToQuit ON dbo.BASE_HFit_CoachingCommitToQuit
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_RewardsDefinition ON dbo.BASE_view_EDW_RewardsDefinition
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFIT_SsoConfiguration ON dbo.BASE_HFIT_SsoConfiguration
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingHATemporalContainer_Joined ON dbo.BASE_View_HFit_CoachingHATemporalContainer_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PLPPackageContent ON dbo.BASE_HFit_PLPPackageContent
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardsAwardUserDetailArchive ON dbo.BASE_HFit_RewardsAwardUserDetailArchive
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PostSubscriber_ContactMap ON dbo.BASE_HFit_PostSubscriber_ContactMap
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserGoal ON dbo.BASE_HFit_UserGoal
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Configuration_CallLogCoaching_Joined ON dbo.BASE_View_HFit_Configuration_CallLogCoaching_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFIT_SsoConfiguration ON dbo.BASE_HFIT_SsoConfiguration
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_PostQuote_Joined ON dbo.BASE_View_HFit_PostQuote_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_OrderItem ON dbo.BASE_COM_OrderItem
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PLPPackageContent ON dbo.BASE_HFit_PLPPackageContent
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Attachment ON dbo.BASE_CMS_Attachment
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentLDLScoring ON dbo.BASE_HFit_HealthAssessmentLDLScoring
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PostSubscriber_ContactMap ON dbo.BASE_HFit_PostSubscriber_ContactMap
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_GoalStatus ON dbo.BASE_HFit_LKP_GoalStatus
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HACampaign_Joined ON dbo.BASE_View_HFit_HACampaign_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_CoachingCMExclusions ON dbo.BASE_HFit_LKP_CoachingCMExclusions
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserGoal ON dbo.BASE_HFit_UserGoal
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_TrackerSleepPlanTechniques ON dbo.BASE_HFit_LKP_TrackerSleepPlanTechniques
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WebFarmServerTask ON dbo.BASE_CMS_WebFarmServerTask
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RightsResponsibilities_Joined ON dbo.BASE_View_HFit_RightsResponsibilities_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_PostQuote_Joined ON dbo.BASE_View_HFit_PostQuote_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_configFeatures ON dbo.BASE_HFit_configFeatures
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_OrderItem ON dbo.BASE_COM_OrderItem
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Attachment ON dbo.BASE_CMS_Attachment
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HSBiometricChart_Joined ON dbo.BASE_View_HFit_HSBiometricChart_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_WellnessGoalPostTemplate ON dbo.BASE_hfit_WellnessGoalPostTemplate
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentLDLScoring ON dbo.BASE_HFit_HealthAssessmentLDLScoring
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_challengeOffering_Joined ON dbo.BASE_View_hfit_challengeOffering_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_GoalStatus ON dbo.BASE_HFit_LKP_GoalStatus
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_Hfit_TimezoneConfiguration_Joined ON dbo.BASE_View_Hfit_TimezoneConfiguration_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HACampaign_Joined ON dbo.BASE_View_HFit_HACampaign_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_CoachingCMExclusions ON dbo.BASE_HFit_LKP_CoachingCMExclusions
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_TrackerSleepPlanTechniques ON dbo.BASE_HFit_LKP_TrackerSleepPlanTechniques
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentRiskCategory ON dbo.BASE_HFit_HealthAssesmentRiskCategory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_OrderStatus ON dbo.BASE_COM_OrderStatus
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WebFarmServerTask ON dbo.BASE_CMS_WebFarmServerTask
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_HAHealthCheckLog ON dbo.BASE_Hfit_HAHealthCheckLog
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RightsResponsibilities_Joined ON dbo.BASE_View_HFit_RightsResponsibilities_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_MenuItem_Joined ON dbo.BASE_View_CONTENT_MenuItem_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_configFeatures ON dbo.BASE_HFit_configFeatures
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_InternalStatus ON dbo.BASE_COM_InternalStatus
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HSHealthMeasuresSettings ON dbo.BASE_HFit_HSHealthMeasuresSettings
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_Coaches ON dbo.BASE_view_EDW_Coaches
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_ChallengeAbout ON dbo.BASE_hfit_ChallengeAbout
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ScheduledTask ON dbo.BASE_CMS_ScheduledTask
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentThresholds ON dbo.BASE_HFit_HealthAssesmentThresholds
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_OM_AccountContact_AccountJoined ON dbo.BASE_View_OM_AccountContact_AccountJoined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HSBiometricChart_Joined ON dbo.BASE_View_HFit_HSBiometricChart_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_WellnessGoalPostTemplate ON dbo.BASE_hfit_WellnessGoalPostTemplate
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_challengeOffering_Joined ON dbo.BASE_View_hfit_challengeOffering_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Hfit_TimezoneConfiguration_Joined ON dbo.BASE_View_Hfit_TimezoneConfiguration_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentRiskCategory ON dbo.BASE_HFit_HealthAssesmentRiskCategory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_OrderStatus ON dbo.BASE_COM_OrderStatus
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_HAHealthCheckLog ON dbo.BASE_Hfit_HAHealthCheckLog
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentBmiScoring ON dbo.BASE_HFit_HealthAssessmentBmiScoring
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_MenuItem_Joined ON dbo.BASE_View_CONTENT_MenuItem_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_InternalStatus ON dbo.BASE_COM_InternalStatus
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HSHealthMeasuresSettings ON dbo.BASE_HFit_HSHealthMeasuresSettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_Coaches ON dbo.BASE_view_EDW_Coaches
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_ChallengeAbout ON dbo.BASE_hfit_ChallengeAbout
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ScheduledTask ON dbo.BASE_CMS_ScheduledTask
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingWelcomeSettings_Joined ON dbo.BASE_View_HFit_CoachingWelcomeSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentThresholds ON dbo.BASE_HFit_HealthAssesmentThresholds
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_OM_AccountContact_AccountJoined ON dbo.BASE_View_OM_AccountContact_AccountJoined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_Tree_Joined_Versions_Attachments ON dbo.BASE_View_CMS_Tree_Joined_Versions_Attachments
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingCallLogTemporalContainer ON dbo.BASE_HFit_CoachingCallLogTemporalContainer
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_ChallengeTeams ON dbo.BASE_hfit_ChallengeTeams
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentBmiScoring ON dbo.BASE_HFit_HealthAssessmentBmiScoring
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_ShoppingCart ON dbo.BASE_COM_ShoppingCart
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingWelcomeSettings_Joined ON dbo.BASE_View_HFit_CoachingWelcomeSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerCardio ON dbo.BASE_HFit_TrackerCardio
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_Tree_Joined_Versions_Attachments ON dbo.BASE_View_CMS_Tree_Joined_Versions_Attachments
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingCallLogTemporalContainer ON dbo.BASE_HFit_CoachingCallLogTemporalContainer
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssesmentAnswers ON dbo.BASE_View_HFit_HealthAssesmentAnswers
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_ChallengeTeams ON dbo.BASE_hfit_ChallengeTeams
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_ShoppingCart ON dbo.BASE_COM_ShoppingCart
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFIT_Configuration_HACoaching ON dbo.BASE_HFIT_Configuration_HACoaching
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerCardio ON dbo.BASE_HFit_TrackerCardio
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ResourceSite ON dbo.BASE_CMS_ResourceSite
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WebTemplate ON dbo.BASE_CMS_WebTemplate
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ClientSecurityQuestions ON dbo.BASE_HFit_ClientSecurityQuestions
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssesmentAnswers ON dbo.BASE_View_HFit_HealthAssesmentAnswers
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_ImageGallery_Joined ON dbo.BASE_View_CONTENT_ImageGallery_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ScreeningTemporalContainer ON dbo.BASE_HFit_ScreeningTemporalContainer
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFIT_Configuration_HACoaching ON dbo.BASE_HFIT_Configuration_HACoaching
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ResourceSite ON dbo.BASE_CMS_ResourceSite
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WebTemplate ON dbo.BASE_CMS_WebTemplate
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingReadyForNotification ON dbo.BASE_View_HFit_CoachingReadyForNotification
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ClientSecurityQuestions ON dbo.BASE_HFit_ClientSecurityQuestions
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_TranslationService ON dbo.BASE_CMS_TranslationService
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_StagingScreenings ON dbo.BASE_HFit_StagingScreenings
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_CoachViewTimeZone ON dbo.BASE_HFit_LKP_CoachViewTimeZone
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_RewardTriggerParameters ON dbo.BASE_view_EDW_RewardTriggerParameters
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingHealthActionPlan_Joined ON dbo.BASE_View_HFit_CoachingHealthActionPlan_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_ImageGallery_Joined ON dbo.BASE_View_CONTENT_ImageGallery_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ScreeningTemporalContainer ON dbo.BASE_HFit_ScreeningTemporalContainer
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerInstance_Tracker ON dbo.BASE_HFit_TrackerInstance_Tracker
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Board_Board ON dbo.BASE_Board_Board
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingReadyForNotification ON dbo.BASE_View_HFit_CoachingReadyForNotification
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_TranslationService ON dbo.BASE_CMS_TranslationService
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerCotinine ON dbo.BASE_HFit_TrackerCotinine
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_StagingScreenings ON dbo.BASE_HFit_StagingScreenings
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFIT_Configuration_CMCoaching_Joined ON dbo.BASE_View_HFIT_Configuration_CMCoaching_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_CoachViewTimeZone ON dbo.BASE_HFit_LKP_CoachViewTimeZone
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Community_Group ON dbo.BASE_Community_Group
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_RewardTriggerParameters ON dbo.BASE_view_EDW_RewardTriggerParameters
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingHealthActionPlan_Joined ON dbo.BASE_View_HFit_CoachingHealthActionPlan_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerInstance_Tracker ON dbo.BASE_HFit_TrackerInstance_Tracker
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_RewardLevel ON dbo.BASE_HFit_LKP_RewardLevel
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Board_Board ON dbo.BASE_Board_Board
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_TipOfTheDayCategoryCT ON dbo.BASE_Hfit_TipOfTheDayCategoryCT
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Community_GroupMember ON dbo.BASE_Community_GroupMember
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentHbA1cScoring ON dbo.BASE_HFit_HealthAssessmentHbA1cScoring
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerCotinine ON dbo.BASE_HFit_TrackerCotinine
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_OpenIDUser ON dbo.BASE_CMS_OpenIDUser
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFIT_Configuration_CMCoaching_Joined ON dbo.BASE_View_HFIT_Configuration_CMCoaching_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Community_Group ON dbo.BASE_Community_Group
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_PostReminder_Joined ON dbo.BASE_View_HFit_PostReminder_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HAAgreement ON dbo.BASE_HFit_HAAgreement
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_BannedIP ON dbo.BASE_CMS_BannedIP
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingEnrollmentSettings_Joined ON dbo.BASE_View_HFit_CoachingEnrollmentSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_RewardLevel ON dbo.BASE_HFit_LKP_RewardLevel
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_UnitOfMeasure ON dbo.BASE_HFit_LKP_UnitOfMeasure
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_TipOfTheDayCategoryCT ON dbo.BASE_Hfit_TipOfTheDayCategoryCT
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Community_GroupMember ON dbo.BASE_Community_GroupMember
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_Hfit_HACampaigns_Joined ON dbo.BASE_View_Hfit_HACampaigns_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingGetStarted ON dbo.BASE_HFit_CoachingGetStarted
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentHbA1cScoring ON dbo.BASE_HFit_HealthAssessmentHbA1cScoring
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ScheduledNotification_Joined ON dbo.BASE_View_HFit_ScheduledNotification_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_OpenIDUser ON dbo.BASE_CMS_OpenIDUser
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_CssStylesheet ON dbo.BASE_CMS_CssStylesheet
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_PostReminder_Joined ON dbo.BASE_View_HFit_PostReminder_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HAAgreement ON dbo.BASE_HFit_HAAgreement
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_BannedIP ON dbo.BASE_CMS_BannedIP
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_ContactGroup ON dbo.BASE_OM_ContactGroup
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingEnrollmentSettings_Joined ON dbo.BASE_View_HFit_CoachingEnrollmentSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HSGraphRangeSetting_Joined ON dbo.BASE_View_HFit_HSGraphRangeSetting_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_UnitOfMeasure ON dbo.BASE_HFit_LKP_UnitOfMeasure
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ChallengePostTemplate_Joined ON dbo.BASE_View_HFit_ChallengePostTemplate_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_TipOfTheDay_Joined ON dbo.BASE_View_HFit_TipOfTheDay_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Hfit_HACampaigns_Joined ON dbo.BASE_View_Hfit_HACampaigns_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingGetStarted ON dbo.BASE_HFit_CoachingGetStarted
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_PressRelease_Joined ON dbo.BASE_View_CONTENT_PressRelease_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_DocumentCategory ON dbo.BASE_CMS_DocumentCategory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ScheduledNotification_Joined ON dbo.BASE_View_HFit_ScheduledNotification_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ContentBlock ON dbo.BASE_HFit_ContentBlock
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_UserCulture ON dbo.BASE_CMS_UserCulture
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_News_Joined ON dbo.BASE_View_CONTENT_News_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_CssStylesheet ON dbo.BASE_CMS_CssStylesheet
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_RewardTrigger ON dbo.BASE_HFit_LKP_RewardTrigger
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_Tree_Joined_Linked ON dbo.BASE_View_CMS_Tree_Joined_Linked
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_CoachingDefinition ON dbo.BASE_view_EDW_CoachingDefinition
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_ContactGroup ON dbo.BASE_OM_ContactGroup
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardsUserInterfaceState ON dbo.BASE_HFit_RewardsUserInterfaceState
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_OM_AccountContact_ContactJoined ON dbo.BASE_View_OM_AccountContact_ContactJoined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HSGraphRangeSetting_Joined ON dbo.BASE_View_HFit_HSGraphRangeSetting_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ChallengePostTemplate_Joined ON dbo.BASE_View_HFit_ChallengePostTemplate_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_EmailUser ON dbo.BASE_CMS_EmailUser
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_TipOfTheDay_Joined ON dbo.BASE_View_HFit_TipOfTheDay_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_CurrencyExchangeRate ON dbo.BASE_COM_CurrencyExchangeRate
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_DocumentCategory ON dbo.BASE_CMS_DocumentCategory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ContentBlock ON dbo.BASE_HFit_ContentBlock
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_UserCulture ON dbo.BASE_CMS_UserCulture
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_News_Joined ON dbo.BASE_View_CONTENT_News_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_RewardTrigger ON dbo.BASE_HFit_LKP_RewardTrigger
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_CoachingDefinition ON dbo.BASE_view_EDW_CoachingDefinition
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardsUserInterfaceState ON dbo.BASE_HFit_RewardsUserInterfaceState
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_InlineControlSite ON dbo.BASE_CMS_InlineControlSite
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_OM_AccountContact_ContactJoined ON dbo.BASE_View_OM_AccountContact_ContactJoined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_EmailUser ON dbo.BASE_CMS_EmailUser
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_FooterAdministration ON dbo.BASE_HFit_FooterAdministration
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_CurrencyExchangeRate ON dbo.BASE_COM_CurrencyExchangeRate
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_EDW_HealthAssessmentDefinition ON dbo.BASE_EDW_HealthAssessmentDefinition
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_MVTVariant ON dbo.BASE_OM_MVTVariant
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentTriglyceridesScoring ON dbo.BASE_HFit_HealthAssessmentTriglyceridesScoring
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_InlineControlSite ON dbo.BASE_CMS_InlineControlSite
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardsUserLevelDetail ON dbo.BASE_HFit_RewardsUserLevelDetail
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_SchedulerEventType ON dbo.BASE_HFit_SchedulerEventType
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_FooterAdministration ON dbo.BASE_HFit_FooterAdministration
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssesmentPageBreaks ON dbo.BASE_View_HFit_HealthAssesmentPageBreaks
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_EDW_HealthAssessmentDefinition ON dbo.BASE_EDW_HealthAssessmentDefinition
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_MVTVariant ON dbo.BASE_OM_MVTVariant
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_BookingSystem_Joined ON dbo.BASE_View_BookingSystem_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentTriglyceridesScoring ON dbo.BASE_HFit_HealthAssessmentTriglyceridesScoring
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WorkflowScope ON dbo.BASE_CMS_WorkflowScope
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardsUserLevelDetail ON dbo.BASE_HFit_RewardsUserLevelDetail
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_UserRole_MembershipRole_ValidOnly_Joined ON dbo.BASE_View_CMS_UserRole_MembershipRole_ValidOnly_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_SchedulerEventType ON dbo.BASE_HFit_SchedulerEventType
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_GroupRebuildSchedule ON dbo.BASE_HFit_GroupRebuildSchedule
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssesmentPageBreaks ON dbo.BASE_View_HFit_HealthAssesmentPageBreaks
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_State ON dbo.BASE_CMS_State
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_PM_Project ON dbo.BASE_PM_Project
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_TaxClassCountry ON dbo.BASE_COM_TaxClassCountry
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_settingkeybak ON dbo.BASE_CMS_settingkeybak
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WorkflowScope ON dbo.BASE_CMS_WorkflowScope
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingServiceLevelProgramDates ON dbo.BASE_View_HFit_CoachingServiceLevelProgramDates
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_UserRole_MembershipRole_ValidOnly_Joined ON dbo.BASE_View_CMS_UserRole_MembershipRole_ValidOnly_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_GroupRebuildSchedule ON dbo.BASE_HFit_GroupRebuildSchedule
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_MarketplaceProduct ON dbo.BASE_Hfit_MarketplaceProduct
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_User_With_HFitCoachingSettings ON dbo.BASE_View_CMS_User_With_HFitCoachingSettings
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentRecomendationTypes ON dbo.BASE_HFit_HealthAssesmentRecomendationTypes
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_State ON dbo.BASE_CMS_State
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_PM_Project ON dbo.BASE_PM_Project
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_TaxClassCountry ON dbo.BASE_COM_TaxClassCountry
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingWelcomeSettings ON dbo.BASE_HFit_CoachingWelcomeSettings
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_RewardUserDetail ON dbo.BASE_view_EDW_RewardUserDetail
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_SsoData ON dbo.BASE_HFit_SsoData
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingHealthArea_Joined ON dbo.BASE_View_HFit_CoachingHealthArea_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_settingkeybak ON dbo.BASE_CMS_settingkeybak
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_Post ON dbo.BASE_hfit_Post
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingServiceLevelProgramDates ON dbo.BASE_View_HFit_CoachingServiceLevelProgramDates
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerWater ON dbo.BASE_HFit_TrackerWater
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_MarketplaceProduct ON dbo.BASE_Hfit_MarketplaceProduct
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_User_With_HFitCoachingSettings ON dbo.BASE_View_CMS_User_With_HFitCoachingSettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentRecomendationTypes ON dbo.BASE_HFit_HealthAssesmentRecomendationTypes
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFIT_Configuration_HACoaching_Joined ON dbo.BASE_View_HFIT_Configuration_HACoaching_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingWelcomeSettings ON dbo.BASE_HFit_CoachingWelcomeSettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_RewardUserDetail ON dbo.BASE_view_EDW_RewardUserDetail
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_SsoData ON dbo.BASE_HFit_SsoData
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingHealthArea_Joined ON dbo.BASE_View_HFit_CoachingHealthArea_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_MetaFile ON dbo.BASE_CMS_MetaFile
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HSLearnMoreDocument_Joined ON dbo.BASE_View_HFit_HSLearnMoreDocument_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_OrderItemSKUFile ON dbo.BASE_COM_OrderItemSKUFile
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_Post ON dbo.BASE_hfit_Post
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HES_Award ON dbo.BASE_HFit_HES_Award
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Announcements ON dbo.BASE_HFit_Announcements
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerWater ON dbo.BASE_HFit_TrackerWater
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentUserRiskArea ON dbo.BASE_HFit_HealthAssesmentUserRiskArea
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Query ON dbo.BASE_CMS_Query
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WebFarmTask ON dbo.BASE_CMS_WebFarmTask
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFIT_Configuration_HACoaching_Joined ON dbo.BASE_View_HFIT_Configuration_HACoaching_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_SettingsCategory ON dbo.BASE_CMS_SettingsCategory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_PrivacyPolicy_Joined ON dbo.BASE_View_HFit_PrivacyPolicy_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerHighSodiumFoods ON dbo.BASE_HFit_TrackerHighSodiumFoods
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_configGroupToFeature ON dbo.BASE_HFit_configGroupToFeature
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_MetaFile ON dbo.BASE_CMS_MetaFile
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HESChallenge_Joined ON dbo.BASE_View_HFit_HESChallenge_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFIT_Tracker ON dbo.BASE_HFIT_Tracker
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HSLearnMoreDocument_Joined ON dbo.BASE_View_HFit_HSLearnMoreDocument_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_OrderItemSKUFile ON dbo.BASE_COM_OrderItemSKUFile
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HES_Award ON dbo.BASE_HFit_HES_Award
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Announcements ON dbo.BASE_HFit_Announcements
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_WellnessGoals ON dbo.BASE_HFit_WellnessGoals
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentUserRiskArea ON dbo.BASE_HFit_HealthAssesmentUserRiskArea
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Query ON dbo.BASE_CMS_Query
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HAWelcomeSettings_Joined ON dbo.BASE_View_HFit_HAWelcomeSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_CoachingSystemSettings ON dbo.BASE_Hfit_CoachingSystemSettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WebFarmTask ON dbo.BASE_CMS_WebFarmTask
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_Product_Joined ON dbo.BASE_View_CONTENT_Product_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ScreeningEvent_Joined ON dbo.BASE_View_HFit_ScreeningEvent_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_SettingsCategory ON dbo.BASE_CMS_SettingsCategory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_PrivacyPolicy_Joined ON dbo.BASE_View_HFit_PrivacyPolicy_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_Tree_Joined_Regular ON dbo.BASE_View_CMS_Tree_Joined_Regular
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerHighSodiumFoods ON dbo.BASE_HFit_TrackerHighSodiumFoods
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_configGroupToFeature ON dbo.BASE_HFit_configGroupToFeature
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HESChallenge_Joined ON dbo.BASE_View_HFit_HESChallenge_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HSLearnMoreDocument ON dbo.BASE_HFit_HSLearnMoreDocument
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFIT_Tracker ON dbo.BASE_HFIT_Tracker
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_challengeBase ON dbo.BASE_hfit_challengeBase
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerCategory ON dbo.BASE_HFit_TrackerCategory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HSHealthMeasuresSettings_Joined ON dbo.BASE_View_HFit_HSHealthMeasuresSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_WellnessGoals ON dbo.BASE_HFit_WellnessGoals
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ChallengePPTEligibleCDPostTemplate_Joined ON dbo.BASE_View_HFit_ChallengePPTEligibleCDPostTemplate_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_Hfit_TipOfTheDayCategory_Joined ON dbo.BASE_View_Hfit_TipOfTheDayCategory_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HAWelcomeSettings_Joined ON dbo.BASE_View_HFit_HAWelcomeSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_CoachingSystemSettings ON dbo.BASE_Hfit_CoachingSystemSettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_Product_Joined ON dbo.BASE_View_CONTENT_Product_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ScreeningEvent_Joined ON dbo.BASE_View_HFit_ScreeningEvent_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_Office_Joined ON dbo.BASE_View_CONTENT_Office_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HSLearnMoreDocument ON dbo.BASE_HFit_HSLearnMoreDocument
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_CoachingDetail ON dbo.BASE_view_EDW_CoachingDetail
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_challengeBase ON dbo.BASE_hfit_challengeBase
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardsUserSummaryArchive ON dbo.BASE_HFit_RewardsUserSummaryArchive
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerCategory ON dbo.BASE_HFit_TrackerCategory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_OM_ContactGroupMember_AccountJoined ON dbo.BASE_View_OM_ContactGroupMember_AccountJoined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HSHealthMeasuresSettings_Joined ON dbo.BASE_View_HFit_HSHealthMeasuresSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ChallengePPTEligibleCDPostTemplate_Joined ON dbo.BASE_View_HFit_ChallengePPTEligibleCDPostTemplate_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Hfit_TipOfTheDayCategory_Joined ON dbo.BASE_View_Hfit_TipOfTheDayCategory_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerTests ON dbo.BASE_HFit_TrackerTests
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_challengeTypes ON dbo.BASE_hfit_challengeTypes
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_Office_Joined ON dbo.BASE_View_CONTENT_Office_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_ShoppingCartSKU ON dbo.BASE_COM_ShoppingCartSKU
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_CoachingDetail ON dbo.BASE_view_EDW_CoachingDetail
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardsUserSummaryArchive ON dbo.BASE_HFit_RewardsUserSummaryArchive
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_TrackerCompositeDetails ON dbo.BASE_view_EDW_TrackerCompositeDetails
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_OM_ContactGroupMember_AccountJoined ON dbo.BASE_View_OM_ContactGroupMember_AccountJoined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_AttachmentForEmail ON dbo.BASE_CMS_AttachmentForEmail
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingHATemporalContainer ON dbo.BASE_HFit_CoachingHATemporalContainer
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentModuleConfiguration ON dbo.BASE_HFit_HealthAssessmentModuleConfiguration
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFIt_PptEligibility_mosbrun ON dbo.BASE_HFIt_PptEligibility_mosbrun
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFIT_Account ON dbo.BASE_HFIT_Account
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerTests ON dbo.BASE_HFit_TrackerTests
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_TaxClass ON dbo.BASE_COM_TaxClass
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_challengeTypes ON dbo.BASE_hfit_challengeTypes
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentMatrixQuestion ON dbo.BASE_HFit_HealthAssesmentMatrixQuestion
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_ShoppingCartSKU ON dbo.BASE_COM_ShoppingCartSKU
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_Manufacturer ON dbo.BASE_COM_Manufacturer
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_TrackerCompositeDetails ON dbo.BASE_view_EDW_TrackerCompositeDetails
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_AttachmentForEmail ON dbo.BASE_CMS_AttachmentForEmail
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ResourceString ON dbo.BASE_CMS_ResourceString
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingHATemporalContainer ON dbo.BASE_HFit_CoachingHATemporalContainer
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentModuleConfiguration ON dbo.BASE_HFit_HealthAssessmentModuleConfiguration
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFIt_PptEligibility_mosbrun ON dbo.BASE_HFIt_PptEligibility_mosbrun
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFIT_Account ON dbo.BASE_HFIT_Account
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_TaxClass ON dbo.BASE_COM_TaxClass
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssesmentQuestions ON dbo.BASE_View_HFit_HealthAssesmentQuestions
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentMatrixQuestion ON dbo.BASE_HFit_HealthAssesmentMatrixQuestion
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_Manufacturer ON dbo.BASE_COM_Manufacturer
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_SecurityQuestion ON dbo.BASE_HFit_SecurityQuestion
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_SearchEngine ON dbo.BASE_CMS_SearchEngine
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentThresholdTypes ON dbo.BASE_HFit_HealthAssesmentThresholdTypes
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_UserSettingsRole_Joined ON dbo.BASE_View_CMS_UserSettingsRole_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ResourceString ON dbo.BASE_CMS_ResourceString
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_MultiBuyCouponCode ON dbo.BASE_COM_MultiBuyCouponCode
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentThresholdGrouping ON dbo.BASE_HFit_HealthAssesmentThresholdGrouping
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssesmentQuestions ON dbo.BASE_View_HFit_HealthAssesmentQuestions
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_StatbridgeFileDownload ON dbo.BASE_HFit_StatbridgeFileDownload
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentPhysicalActivityScoring ON dbo.BASE_HFit_HealthAssesmentPhysicalActivityScoring
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentCodeNamesToTrackerMapping ON dbo.BASE_HFit_HealthAssessmentCodeNamesToTrackerMapping
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_SecurityQuestion ON dbo.BASE_HFit_SecurityQuestion
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_SearchEngine ON dbo.BASE_CMS_SearchEngine
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_Hfit_Client_Joined ON dbo.BASE_View_Hfit_Client_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentThresholdTypes ON dbo.BASE_HFit_HealthAssesmentThresholdTypes
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_UserSettingsRole_Joined ON dbo.BASE_View_CMS_UserSettingsRole_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_MultiBuyCouponCode ON dbo.BASE_COM_MultiBuyCouponCode
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_OutComeMessages ON dbo.BASE_HFit_OutComeMessages
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserCoachingAlert_NotMet_Step1 ON dbo.BASE_HFit_UserCoachingAlert_NotMet_Step1
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserSchedulerAppointment ON dbo.BASE_HFit_UserSchedulerAppointment
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentThresholdGrouping ON dbo.BASE_HFit_HealthAssesmentThresholdGrouping
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_StatbridgeFileDownload ON dbo.BASE_HFit_StatbridgeFileDownload
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_FastingState ON dbo.BASE_HFit_LKP_FastingState
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentPhysicalActivityScoring ON dbo.BASE_HFit_HealthAssesmentPhysicalActivityScoring
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingHealthActionPlan ON dbo.BASE_HFit_CoachingHealthActionPlan
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_ScheduledNotificationDeliveryType ON dbo.BASE_HFit_LKP_ScheduledNotificationDeliveryType
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentCodeNamesToTrackerMapping ON dbo.BASE_HFit_HealthAssessmentCodeNamesToTrackerMapping
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_RewardUserLevel ON dbo.BASE_view_EDW_RewardUserLevel
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingLibraryHealthArea_Joined ON dbo.BASE_View_HFit_CoachingLibraryHealthArea_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentFreeForm ON dbo.BASE_HFit_HealthAssessmentFreeForm
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Hfit_Client_Joined ON dbo.BASE_View_Hfit_Client_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_OutComeMessages ON dbo.BASE_HFit_OutComeMessages
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserCoachingAlert_NotMet_Step1 ON dbo.BASE_HFit_UserCoachingAlert_NotMet_Step1
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Tobacco_Goal ON dbo.BASE_HFit_Tobacco_Goal
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Community_GroupRolePermission ON dbo.BASE_Community_GroupRolePermission
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserSchedulerAppointment ON dbo.BASE_HFit_UserSchedulerAppointment
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentUserAnswers ON dbo.BASE_HFit_HealthAssesmentUserAnswers
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_FastingState ON dbo.BASE_HFit_LKP_FastingState
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Configuration_Joined ON dbo.BASE_View_HFit_Configuration_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingHealthActionPlan ON dbo.BASE_HFit_CoachingHealthActionPlan
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_ScheduledNotificationDeliveryType ON dbo.BASE_HFit_LKP_ScheduledNotificationDeliveryType
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_RewardUserLevel ON dbo.BASE_view_EDW_RewardUserLevel
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingLibraryHealthArea_Joined ON dbo.BASE_View_HFit_CoachingLibraryHealthArea_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_LoginPageSettings_Joined ON dbo.BASE_View_HFit_LoginPageSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentFreeForm ON dbo.BASE_HFit_HealthAssessmentFreeForm
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Widget ON dbo.BASE_CMS_Widget
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Tobacco_Goal ON dbo.BASE_HFit_Tobacco_Goal
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Community_GroupRolePermission ON dbo.BASE_Community_GroupRolePermission
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentUserAnswers ON dbo.BASE_HFit_HealthAssesmentUserAnswers
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Configuration_Joined ON dbo.BASE_View_HFit_Configuration_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ProgramFeedNotificationSettings_Joined ON dbo.BASE_View_HFit_ProgramFeedNotificationSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_LoginPageSettings_Joined ON dbo.BASE_View_HFit_LoginPageSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_ContactGroupMember ON dbo.BASE_OM_ContactGroupMember
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssesmentRiskCategory_Joined ON dbo.BASE_View_HFit_HealthAssesmentRiskCategory_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Chat_Room ON dbo.BASE_Chat_Room
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Widget ON dbo.BASE_CMS_Widget
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_TranslationSubmission ON dbo.BASE_CMS_TranslationSubmission
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssesmentMatrixQuestion_Joined ON dbo.BASE_View_HFit_HealthAssesmentMatrixQuestion_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_CoachingServiceLevel ON dbo.BASE_HFit_LKP_CoachingServiceLevel
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_SimpleArticle_Joined ON dbo.BASE_View_CONTENT_SimpleArticle_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_DocumentTag ON dbo.BASE_CMS_DocumentTag
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ScreeningEventCategory_Joined ON dbo.BASE_View_HFit_ScreeningEventCategory_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CustomSettingsTemporalContainer ON dbo.BASE_HFit_CustomSettingsTemporalContainer
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_Contact ON dbo.BASE_OM_Contact
+GO
+DISABLE TRIGGER dbo.DF_TrackerName_FACT_TrackerData ON dbo.FACT_TrackerData
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_UserRole ON dbo.BASE_CMS_UserRole
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ProgramFeedNotificationSettings_Joined ON dbo.BASE_View_HFit_ProgramFeedNotificationSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_ContactGroupMember ON dbo.BASE_OM_ContactGroupMember
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssesmentRiskCategory_Joined ON dbo.BASE_View_HFit_HealthAssesmentRiskCategory_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Chat_Room ON dbo.BASE_Chat_Room
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_hFit_ChallengePPTEligiblePostTemplate_Joined ON dbo.BASE_View_hFit_ChallengePPTEligiblePostTemplate_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_EventLog ON dbo.BASE_CMS_EventLog
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_TranslationSubmission ON dbo.BASE_CMS_TranslationSubmission
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Tobacco_Goal_Joined ON dbo.BASE_View_HFit_Tobacco_Goal_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardGroup ON dbo.BASE_HFit_RewardGroup
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssesmentMatrixQuestion_Joined ON dbo.BASE_View_HFit_HealthAssesmentMatrixQuestion_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_CoachingServiceLevel ON dbo.BASE_HFit_LKP_CoachingServiceLevel
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_Customer ON dbo.BASE_COM_Customer
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_SimpleArticle_Joined ON dbo.BASE_View_CONTENT_SimpleArticle_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_DocumentTag ON dbo.BASE_CMS_DocumentTag
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ScreeningEventCategory_Joined ON dbo.BASE_View_HFit_ScreeningEventCategory_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CustomSettingsTemporalContainer ON dbo.BASE_HFit_CustomSettingsTemporalContainer
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_Contact ON dbo.BASE_OM_Contact
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_UserRole ON dbo.BASE_CMS_UserRole
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_PressRelease_Joined ON dbo.BASE_View_CONTENT_PressRelease_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_CoachingPPTAvailable ON dbo.BASE_view_EDW_CoachingPPTAvailable
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Layout ON dbo.BASE_CMS_Layout
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_OM_ContactGroupMember_ContactJoined ON dbo.BASE_View_OM_ContactGroupMember_ContactJoined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hFit_ChallengePPTEligiblePostTemplate_Joined ON dbo.BASE_View_hFit_ChallengePPTEligiblePostTemplate_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_EventLog ON dbo.BASE_CMS_EventLog
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_cms_user ON dbo.BASE_cms_user
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Tobacco_Goal_Joined ON dbo.BASE_View_HFit_Tobacco_Goal_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardGroup ON dbo.BASE_HFit_RewardGroup
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Fulfillment ON dbo.BASE_HFit_Fulfillment
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentHDLScoring ON dbo.BASE_HFit_HealthAssessmentHDLScoring
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_Customer ON dbo.BASE_COM_Customer
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_PageTemplate ON dbo.BASE_CMS_PageTemplate
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerSummary ON dbo.BASE_HFit_TrackerSummary
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_PageVisit ON dbo.BASE_OM_PageVisit
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_CoachingPPTAvailable ON dbo.BASE_view_EDW_CoachingPPTAvailable
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Banner ON dbo.BASE_CMS_Banner
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Layout ON dbo.BASE_CMS_Layout
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_OM_ContactGroupMember_ContactJoined ON dbo.BASE_View_OM_ContactGroupMember_ContactJoined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Screening_CNT ON dbo.BASE_HFit_Screening_CNT
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_CoachingOptOutReason ON dbo.BASE_HFit_LKP_CoachingOptOutReason
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_cms_user ON dbo.BASE_cms_user
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Fulfillment ON dbo.BASE_HFit_Fulfillment
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentHDLScoring ON dbo.BASE_HFit_HealthAssessmentHDLScoring
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_PageTemplate ON dbo.BASE_CMS_PageTemplate
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_CssStylesheetSite ON dbo.BASE_CMS_CssStylesheetSite
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_PageVisit ON dbo.BASE_OM_PageVisit
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Newsletter_Joined ON dbo.BASE_View_HFit_Newsletter_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Banner ON dbo.BASE_CMS_Banner
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Screening_CNT ON dbo.BASE_HFit_Screening_CNT
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_CoachingOptOutReason ON dbo.BASE_HFit_LKP_CoachingOptOutReason
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_GroupRemovedUsers ON dbo.BASE_HFit_GroupRemovedUsers
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssesmentQuestionTitleIDX ON dbo.BASE_View_HFit_HealthAssesmentQuestionTitleIDX
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_PM_ProjectRolePermission ON dbo.BASE_PM_ProjectRolePermission
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_TaxClassState ON dbo.BASE_COM_TaxClassState
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerSummary ON dbo.BASE_HFit_TrackerSummary
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_CssStylesheetSite ON dbo.BASE_CMS_CssStylesheetSite
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Newsletter_Joined ON dbo.BASE_View_HFit_Newsletter_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_WebPartCategoryWebpart_Joined ON dbo.BASE_View_CMS_WebPartCategoryWebpart_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_GroupRemovedUsers ON dbo.BASE_HFit_GroupRemovedUsers
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_MarketplaceProductTypes ON dbo.BASE_Hfit_MarketplaceProductTypes
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssesmentQuestionTitleIDX ON dbo.BASE_View_HFit_HealthAssesmentQuestionTitleIDX
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_PM_ProjectRolePermission ON dbo.BASE_PM_ProjectRolePermission
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_TaxClassState ON dbo.BASE_COM_TaxClassState
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_SsoRequest ON dbo.BASE_HFit_SsoRequest
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFIT_Configuration_Screening ON dbo.BASE_HFIT_Configuration_Screening
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PostChallenge ON dbo.BASE_HFit_PostChallenge
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ClientContact_Joined ON dbo.BASE_View_HFit_ClientContact_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssesmentMultipleChoiceQuestion_Joined ON dbo.BASE_View_HFit_HealthAssesmentMultipleChoiceQuestion_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_WebPartCategoryWebpart_Joined ON dbo.BASE_View_CMS_WebPartCategoryWebpart_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_MarketplaceProductTypes ON dbo.BASE_Hfit_MarketplaceProductTypes
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserCoachingAlert_NotMet_Step2 ON dbo.BASE_HFit_UserCoachingAlert_NotMet_Step2
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Staging_Coach ON dbo.BASE_HFit_Staging_Coach
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_RoleEligibility ON dbo.BASE_view_EDW_RoleEligibility
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_SsoRequest ON dbo.BASE_HFit_SsoRequest
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingLibraryResource_Joined ON dbo.BASE_View_HFit_CoachingLibraryResource_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFIT_Configuration_Screening ON dbo.BASE_HFIT_Configuration_Screening
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PostChallenge ON dbo.BASE_HFit_PostChallenge
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ClientContact_Joined ON dbo.BASE_View_HFit_ClientContact_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssesmentMultipleChoiceQuestion_Joined ON dbo.BASE_View_HFit_HealthAssesmentMultipleChoiceQuestion_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HESChallenge ON dbo.BASE_HFit_HESChallenge
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_BiometricData ON dbo.BASE_HFit_BiometricData
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserCoachingAlert_NotMet_Step2 ON dbo.BASE_HFit_UserCoachingAlert_NotMet_Step2
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_TrackerStrengthActivity ON dbo.BASE_HFit_LKP_TrackerStrengthActivity
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Configuration_LMCoaching_Joined ON dbo.BASE_View_HFit_Configuration_LMCoaching_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Staging_Coach ON dbo.BASE_HFit_Staging_Coach
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_EDW_PerformanceMeasure ON dbo.BASE_EDW_PerformanceMeasure
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_RoleEligibility ON dbo.BASE_view_EDW_RoleEligibility
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_HealthAssessmentImportStatus ON dbo.BASE_HFit_LKP_HealthAssessmentImportStatus
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingLibraryResource_Joined ON dbo.BASE_View_HFit_CoachingLibraryResource_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerInstance_Item ON dbo.BASE_HFit_TrackerInstance_Item
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_Hfit_MarketplaceProduct_Joined ON dbo.BASE_View_Hfit_MarketplaceProduct_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WorkflowStep ON dbo.BASE_CMS_WorkflowStep
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HESChallenge ON dbo.BASE_HFit_HESChallenge
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_BiometricData ON dbo.BASE_HFit_BiometricData
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_TrackerStrengthActivity ON dbo.BASE_HFit_LKP_TrackerStrengthActivity
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Tag ON dbo.BASE_CMS_Tag
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Configuration_LMCoaching_Joined ON dbo.BASE_View_HFit_Configuration_LMCoaching_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_EDW_PerformanceMeasure ON dbo.BASE_EDW_PerformanceMeasure
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengeRegistrationEmail ON dbo.BASE_HFit_ChallengeRegistrationEmail
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_HealthAssessmentImportStatus ON dbo.BASE_HFit_LKP_HealthAssessmentImportStatus
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RegistrationWelcome_Joined ON dbo.BASE_View_HFit_RegistrationWelcome_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerInstance_Item ON dbo.BASE_HFit_TrackerInstance_Item
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Join_ClinicalSourceTracker ON dbo.BASE_HFit_Join_ClinicalSourceTracker
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_ChallengeFAQ ON dbo.BASE_hfit_ChallengeFAQ
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Hfit_MarketplaceProduct_Joined ON dbo.BASE_View_Hfit_MarketplaceProduct_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WorkflowStep ON dbo.BASE_CMS_WorkflowStep
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerMealPortions ON dbo.BASE_HFit_TrackerMealPortions
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_CoachingUserCMCondition ON dbo.BASE_Hfit_CoachingUserCMCondition
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_Smartphone_Joined ON dbo.BASE_View_CONTENT_Smartphone_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Tag ON dbo.BASE_CMS_Tag
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ScreeningEventDate_Joined ON dbo.BASE_View_HFit_ScreeningEventDate_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HaScoringStrategies ON dbo.BASE_HFit_HaScoringStrategies
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_UserRole_Joined ON dbo.BASE_View_CMS_UserRole_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengeRegistrationEmail ON dbo.BASE_HFit_ChallengeRegistrationEmail
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RegistrationWelcome_Joined ON dbo.BASE_View_HFit_RegistrationWelcome_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Join_ClinicalSourceTracker ON dbo.BASE_HFit_Join_ClinicalSourceTracker
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_coachExclusion ON dbo.BASE_coachExclusion
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_ChallengeFAQ ON dbo.BASE_hfit_ChallengeFAQ
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerMealPortions ON dbo.BASE_HFit_TrackerMealPortions
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_SM_FacebookAccount ON dbo.BASE_SM_FacebookAccount
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ChallengePPTRegisteredPostTemplate_Joined ON dbo.BASE_View_HFit_ChallengePPTRegisteredPostTemplate_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_TrackerCategory_Joined ON dbo.BASE_View_HFit_TrackerCategory_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_CoachingUserCMCondition ON dbo.BASE_Hfit_CoachingUserCMCondition
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerDailySteps ON dbo.BASE_HFit_TrackerDailySteps
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_Smartphone_Joined ON dbo.BASE_View_CONTENT_Smartphone_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengeUserRegistration ON dbo.BASE_HFit_ChallengeUserRegistration
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ScreeningEventDate_Joined ON dbo.BASE_View_HFit_ScreeningEventDate_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HaScoringStrategies ON dbo.BASE_HFit_HaScoringStrategies
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_UserRole_Joined ON dbo.BASE_View_CMS_UserRole_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerStress ON dbo.BASE_HFit_TrackerStress
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_coachExclusion ON dbo.BASE_coachExclusion
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_CoachingPPTEligible ON dbo.BASE_view_EDW_CoachingPPTEligible
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_AttachmentHistory ON dbo.BASE_CMS_AttachmentHistory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_SM_FacebookAccount ON dbo.BASE_SM_FacebookAccount
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ChallengePPTRegisteredPostTemplate_Joined ON dbo.BASE_View_HFit_ChallengePPTRegisteredPostTemplate_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_TrackerCategory_Joined ON dbo.BASE_View_HFit_TrackerCategory_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Relationship ON dbo.BASE_CMS_Relationship
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WebPart ON dbo.BASE_CMS_WebPart
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerDailySteps ON dbo.BASE_HFit_TrackerDailySteps
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengeUserRegistration ON dbo.BASE_HFit_ChallengeUserRegistration
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerStress ON dbo.BASE_HFit_TrackerStress
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_SettingsKey ON dbo.BASE_CMS_SettingsKey
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_CoachingPPTEligible ON dbo.BASE_view_EDW_CoachingPPTEligible
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssesmentModule_Joined ON dbo.BASE_View_HFit_HealthAssesmentModule_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_AttachmentHistory ON dbo.BASE_CMS_AttachmentHistory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingSessionCompleted ON dbo.BASE_HFit_CoachingSessionCompleted
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Relationship ON dbo.BASE_CMS_Relationship
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WebPart ON dbo.BASE_CMS_WebPart
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_SettingsKey ON dbo.BASE_CMS_SettingsKey
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerRestingHeartRate ON dbo.BASE_HFit_TrackerRestingHeartRate
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_Tree_Joined_Attachments ON dbo.BASE_View_CMS_Tree_Joined_Attachments
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_SecurityQuestionSettings ON dbo.BASE_Hfit_SecurityQuestionSettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssesmentModule_Joined ON dbo.BASE_View_HFit_HealthAssesmentModule_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingSessionCompleted ON dbo.BASE_HFit_CoachingSessionCompleted
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_MultiBuyDiscount ON dbo.BASE_COM_MultiBuyDiscount
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_HFit_HealthAssesmentUserResponses ON dbo.BASE_view_HFit_HealthAssesmentUserResponses
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_SyncTaskSettings ON dbo.BASE_HFit_SyncTaskSettings
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_ScreeningsFromTrackers ON dbo.BASE_view_EDW_ScreeningsFromTrackers
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerRestingHeartRate ON dbo.BASE_HFit_TrackerRestingHeartRate
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_Tree_Joined_Attachments ON dbo.BASE_View_CMS_Tree_Joined_Attachments
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_SecurityQuestionSettings ON dbo.BASE_Hfit_SecurityQuestionSettings
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_WidgetCategoryWidget_Joined ON dbo.BASE_View_CMS_WidgetCategoryWidget_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Configuration ON dbo.BASE_HFit_Configuration
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_MultiBuyDiscount ON dbo.BASE_COM_MultiBuyDiscount
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_ContactStatus ON dbo.BASE_OM_ContactStatus
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_HFit_HealthAssesmentUserResponses ON dbo.BASE_view_HFit_HealthAssesmentUserResponses
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_SyncTaskSettings ON dbo.BASE_HFit_SyncTaskSettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_ScreeningsFromTrackers ON dbo.BASE_view_EDW_ScreeningsFromTrackers
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_OptionCategory ON dbo.BASE_COM_OptionCategory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerBloodSugarAndGlucose ON dbo.BASE_HFit_TrackerBloodSugarAndGlucose
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingCallLogTemporalContainer_Joined ON dbo.BASE_View_HFit_CoachingCallLogTemporalContainer_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_WidgetCategoryWidget_Joined ON dbo.BASE_View_CMS_WidgetCategoryWidget_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Configuration ON dbo.BASE_HFit_Configuration
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentNonFastingGlucoseScoring ON dbo.BASE_HFit_HealthAssessmentNonFastingGlucoseScoring
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserCoachingAlert_NotMet_Step3 ON dbo.BASE_HFit_UserCoachingAlert_NotMet_Step3
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ToDoPersonal ON dbo.BASE_HFit_ToDoPersonal
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Community_Invitation ON dbo.BASE_Community_Invitation
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_ContactStatus ON dbo.BASE_OM_ContactStatus
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingLibraryResource ON dbo.BASE_HFit_CoachingLibraryResource
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_RewardType ON dbo.BASE_HFit_LKP_RewardType
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingLibraryResources_Joined ON dbo.BASE_View_HFit_CoachingLibraryResources_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_OptionCategory ON dbo.BASE_COM_OptionCategory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_OrderStatusUser ON dbo.BASE_COM_OrderStatusUser
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerBloodSugarAndGlucose ON dbo.BASE_HFit_TrackerBloodSugarAndGlucose
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingCallLogTemporalContainer_Joined ON dbo.BASE_View_HFit_CoachingCallLogTemporalContainer_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardTrigger ON dbo.BASE_HFit_RewardTrigger
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ResourceTranslation ON dbo.BASE_CMS_ResourceTranslation
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_ABTest ON dbo.BASE_OM_ABTest
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_UserType ON dbo.BASE_HFit_LKP_UserType
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentNonFastingGlucoseScoring ON dbo.BASE_HFit_HealthAssessmentNonFastingGlucoseScoring
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PPTStatus ON dbo.BASE_HFit_PPTStatus
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserCoachingAlert_NotMet_Step3 ON dbo.BASE_HFit_UserCoachingAlert_NotMet_Step3
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ToDoPersonal ON dbo.BASE_HFit_ToDoPersonal
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Community_Invitation ON dbo.BASE_Community_Invitation
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFIT_Configuration_Screening_Joined ON dbo.BASE_View_HFIT_Configuration_Screening_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingLibraryResource ON dbo.BASE_HFit_CoachingLibraryResource
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_OM_ContactGroupMember_User_ContactJoined ON dbo.BASE_View_OM_ContactGroupMember_User_ContactJoined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_RewardType ON dbo.BASE_HFit_LKP_RewardType
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingLibraryResources_Joined ON dbo.BASE_View_HFit_CoachingLibraryResources_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_SearchIndex ON dbo.BASE_CMS_SearchIndex
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Message_Joined ON dbo.BASE_View_HFit_Message_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_OrderStatusUser ON dbo.BASE_COM_OrderStatusUser
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardTrigger ON dbo.BASE_HFit_RewardTrigger
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ResourceTranslation ON dbo.BASE_CMS_ResourceTranslation
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_ABTest ON dbo.BASE_OM_ABTest
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_UserType ON dbo.BASE_HFit_LKP_UserType
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardsAboutInfoItem ON dbo.BASE_HFit_RewardsAboutInfoItem
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PPTStatus ON dbo.BASE_HFit_PPTStatus
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_DocumentTypeScope ON dbo.BASE_CMS_DocumentTypeScope
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentPredefinedAnswer ON dbo.BASE_HFit_HealthAssesmentPredefinedAnswer
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFIT_Configuration_Screening_Joined ON dbo.BASE_View_HFIT_Configuration_Screening_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_DataEntry_Clinical ON dbo.BASE_HFit_DataEntry_Clinical
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentConfiguration ON dbo.BASE_HFit_HealthAssessmentConfiguration
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_OM_ContactGroupMember_User_ContactJoined ON dbo.BASE_View_OM_ContactGroupMember_User_ContactJoined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RewardActivity_Joined ON dbo.BASE_View_HFit_RewardActivity_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_EDW_HFIT_HealthAssesmentUserRiskArea_Joined ON dbo.BASE_View_EDW_HFIT_HealthAssesmentUserRiskArea_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Board_Message ON dbo.BASE_Board_Message
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_SearchIndex ON dbo.BASE_CMS_SearchIndex
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Message_Joined ON dbo.BASE_View_HFit_Message_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssesmentRiskArea_Joined ON dbo.BASE_View_HFit_HealthAssesmentRiskArea_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerWeight ON dbo.BASE_HFit_TrackerWeight
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardsAboutInfoItem ON dbo.BASE_HFit_RewardsAboutInfoItem
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Form ON dbo.BASE_CMS_Form
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingTermsAndConditionsSettings ON dbo.BASE_HFit_CoachingTermsAndConditionsSettings
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_CustomerCreditHistory ON dbo.BASE_COM_CustomerCreditHistory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_HealthAssessmentDataForImport ON dbo.BASE_Hfit_HealthAssessmentDataForImport
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_Wireframe_Joined ON dbo.BASE_View_CONTENT_Wireframe_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_DocumentTypeScope ON dbo.BASE_CMS_DocumentTypeScope
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentPredefinedAnswer ON dbo.BASE_HFit_HealthAssesmentPredefinedAnswer
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ScreeningTemporalContainer_Joined ON dbo.BASE_View_HFit_ScreeningTemporalContainer_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_DataEntry_Clinical ON dbo.BASE_HFit_DataEntry_Clinical
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentConfiguration ON dbo.BASE_HFit_HealthAssessmentConfiguration
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RewardActivity_Joined ON dbo.BASE_View_HFit_RewardActivity_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_SKUAllowedOption ON dbo.BASE_COM_SKUAllowedOption
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Board_Message ON dbo.BASE_Board_Message
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Message ON dbo.BASE_HFit_Message
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssesmentRiskArea_Joined ON dbo.BASE_View_HFit_HealthAssesmentRiskArea_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerWeight ON dbo.BASE_HFit_TrackerWeight
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ChallengePPTRegisteredRDPostTemplate_Joined ON dbo.BASE_View_HFit_ChallengePPTRegisteredRDPostTemplate_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Form ON dbo.BASE_CMS_Form
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_TrackerDocument_Joined ON dbo.BASE_View_HFit_TrackerDocument_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingTermsAndConditionsSettings ON dbo.BASE_HFit_CoachingTermsAndConditionsSettings
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_FulfillmentCodes ON dbo.BASE_HFit_FulfillmentCodes
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_CustomerCreditHistory ON dbo.BASE_COM_CustomerCreditHistory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_HealthAssessmentDataForImport ON dbo.BASE_Hfit_HealthAssessmentDataForImport
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_Wireframe_Joined ON dbo.BASE_View_CONTENT_Wireframe_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ScreeningTemporalContainer_Joined ON dbo.BASE_View_HFit_ScreeningTemporalContainer_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_PersonalizationVariant ON dbo.BASE_OM_PersonalizationVariant
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_SKUAllowedOption ON dbo.BASE_COM_SKUAllowedOption
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Message ON dbo.BASE_HFit_Message
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_CoachingPPTEnrolled ON dbo.BASE_view_EDW_CoachingPPTEnrolled
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_PM_ProjectStatus_Joined ON dbo.BASE_View_PM_ProjectStatus_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Screening_MAP ON dbo.BASE_HFit_Screening_MAP
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WidgetCategory ON dbo.BASE_CMS_WidgetCategory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ChallengePPTRegisteredRDPostTemplate_Joined ON dbo.BASE_View_HFit_ChallengePPTRegisteredRDPostTemplate_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_HES_AwardType ON dbo.BASE_HFit_LKP_HES_AwardType
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_TrackerDocument_Joined ON dbo.BASE_View_HFit_TrackerDocument_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_FulfillmentCodes ON dbo.BASE_HFit_FulfillmentCodes
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_ContactRole ON dbo.BASE_OM_ContactRole
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Culture ON dbo.BASE_CMS_Culture
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_PersonalizationVariant ON dbo.BASE_OM_PersonalizationVariant
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_GroupRewardLevel_Joined ON dbo.BASE_View_HFit_GroupRewardLevel_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_EventLog_Joined ON dbo.BASE_View_CMS_EventLog_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_CoachingPPTEnrolled ON dbo.BASE_view_EDW_CoachingPPTEnrolled
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_PM_ProjectStatus_Joined ON dbo.BASE_View_PM_ProjectStatus_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Screening_MAP ON dbo.BASE_HFit_Screening_MAP
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WidgetCategory ON dbo.BASE_CMS_WidgetCategory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_HES_AwardType ON dbo.BASE_HFit_LKP_HES_AwardType
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_TranslationSubmissionItem ON dbo.BASE_CMS_TranslationSubmissionItem
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_PM_ProjectStatus ON dbo.BASE_PM_ProjectStatus
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_UserDepartment ON dbo.BASE_COM_UserDepartment
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_ContactRole ON dbo.BASE_OM_ContactRole
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Culture ON dbo.BASE_CMS_Culture
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerShots ON dbo.BASE_HFit_TrackerShots
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_GroupRewardLevel_Joined ON dbo.BASE_View_HFit_GroupRewardLevel_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentUserRiskCategory ON dbo.BASE_HFit_HealthAssesmentUserRiskCategory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_TranslationSubmissionItem ON dbo.BASE_CMS_TranslationSubmissionItem
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentRiskAreaCodeNames ON dbo.BASE_HFit_HealthAssesmentRiskAreaCodeNames
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_PM_ProjectStatus ON dbo.BASE_PM_ProjectStatus
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_UserDepartment ON dbo.BASE_COM_UserDepartment
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_SmallStepResponses ON dbo.BASE_view_EDW_SmallStepResponses
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_SsoRequestAttributes ON dbo.BASE_HFit_SsoRequestAttributes
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerShots ON dbo.BASE_HFit_TrackerShots
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_ObjectVersionHistoryUser_Joined ON dbo.BASE_View_CMS_ObjectVersionHistoryUser_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PostEmptyFeed ON dbo.BASE_HFit_PostEmptyFeed
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_LicenseKey ON dbo.BASE_CMS_LicenseKey
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Chat_User ON dbo.BASE_Chat_User
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_COM_SKUOptionCategory_OptionCategory_Joined ON dbo.BASE_View_COM_SKUOptionCategory_OptionCategory_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_BioMetrics ON dbo.BASE_view_EDW_BioMetrics
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentUserRiskCategory ON dbo.BASE_HFit_HealthAssesmentUserRiskCategory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentRiskAreaCodeNames ON dbo.BASE_HFit_HealthAssesmentRiskAreaCodeNames
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserTrackerCategory ON dbo.BASE_HFit_UserTrackerCategory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentImportStaging ON dbo.BASE_HFit_HealthAssessmentImportStaging
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_PageTemplateCategory ON dbo.BASE_CMS_PageTemplateCategory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_SmallStepResponses ON dbo.BASE_view_EDW_SmallStepResponses
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_SsoRequestAttributes ON dbo.BASE_HFit_SsoRequestAttributes
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardTriggerTobaccoParameter ON dbo.BASE_HFit_RewardTriggerTobaccoParameter
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_BannerCategory ON dbo.BASE_CMS_BannerCategory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PostEmptyFeed ON dbo.BASE_HFit_PostEmptyFeed
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_CoachingCMTemporalContainer_Joined ON dbo.BASE_View_hfit_CoachingCMTemporalContainer_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_LicenseKey ON dbo.BASE_CMS_LicenseKey
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Chat_User ON dbo.BASE_Chat_User
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HESChallengeTable ON dbo.BASE_HFit_HESChallengeTable
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_COM_SKUOptionCategory_OptionCategory_Joined ON dbo.BASE_View_COM_SKUOptionCategory_OptionCategory_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_BioMetrics ON dbo.BASE_view_EDW_BioMetrics
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Blurb ON dbo.BASE_HFit_Blurb
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserCoachingAlert_NotMet_Step4 ON dbo.BASE_HFit_UserCoachingAlert_NotMet_Step4
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserTrackerCategory ON dbo.BASE_HFit_UserTrackerCategory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentImportStaging ON dbo.BASE_HFit_HealthAssessmentImportStaging
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_PageTemplateCategory ON dbo.BASE_CMS_PageTemplateCategory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingEvalHARiskModule ON dbo.BASE_HFit_CoachingEvalHARiskModule
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardTriggerTobaccoParameter ON dbo.BASE_HFit_RewardTriggerTobaccoParameter
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingLibrarySettings_Joined ON dbo.BASE_View_HFit_CoachingLibrarySettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_BannerCategory ON dbo.BASE_CMS_BannerCategory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_CoachingCMTemporalContainer_Joined ON dbo.BASE_View_hfit_CoachingCMTemporalContainer_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HESChallengeTable ON dbo.BASE_HFit_HESChallengeTable
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Blurb ON dbo.BASE_HFit_Blurb
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerHeight ON dbo.BASE_HFit_TrackerHeight
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserCoachingAlert_NotMet_Step4 ON dbo.BASE_HFit_UserCoachingAlert_NotMet_Step4
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RightsResponsibilities ON dbo.BASE_HFit_RightsResponsibilities
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ConsentAndRelease_Joined ON dbo.BASE_View_HFit_ConsentAndRelease_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingEvalHARiskModule ON dbo.BASE_HFit_CoachingEvalHARiskModule
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentModule ON dbo.BASE_HFit_HealthAssesmentModule
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengeRegistrationPostTemplate ON dbo.BASE_HFit_ChallengeRegistrationPostTemplate
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingLibrarySettings_Joined ON dbo.BASE_View_HFit_CoachingLibrarySettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_join_ClinicalTrackers ON dbo.BASE_HFit_join_ClinicalTrackers
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerBloodPressure ON dbo.BASE_HFit_TrackerBloodPressure
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_challengeGeneralSettings ON dbo.BASE_hfit_challengeGeneralSettings
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_Hfit_MyHealthSettings_Joined ON dbo.BASE_View_Hfit_MyHealthSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerHeight ON dbo.BASE_HFit_TrackerHeight
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardLevel ON dbo.BASE_HFit_RewardLevel
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RightsResponsibilities ON dbo.BASE_HFit_RightsResponsibilities
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ConsentAndRelease_Joined ON dbo.BASE_View_HFit_ConsentAndRelease_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentModule ON dbo.BASE_HFit_HealthAssesmentModule
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengeRegistrationPostTemplate ON dbo.BASE_HFit_ChallengeRegistrationPostTemplate
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RewardDefaultSettings_Joined ON dbo.BASE_View_HFit_RewardDefaultSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_join_ClinicalTrackers ON dbo.BASE_HFit_join_ClinicalTrackers
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerBloodPressure ON dbo.BASE_HFit_TrackerBloodPressure
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_challengeGeneralSettings ON dbo.BASE_hfit_challengeGeneralSettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Hfit_MyHealthSettings_Joined ON dbo.BASE_View_Hfit_MyHealthSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardLevel ON dbo.BASE_HFit_RewardLevel
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssesmentPredefinedAnswer_Joined ON dbo.BASE_View_HFit_HealthAssesmentPredefinedAnswer_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_CoachingCMConditions ON dbo.BASE_HFit_LKP_CoachingCMConditions
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Class ON dbo.BASE_HFit_Class
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_SecurityQuestion_Joined ON dbo.BASE_View_HFit_SecurityQuestion_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Ref_RewardTrackerValidation ON dbo.BASE_HFit_Ref_RewardTrackerValidation
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RewardDefaultSettings_Joined ON dbo.BASE_View_HFit_RewardDefaultSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ChallengeRegistrationPostTemplate_Joined ON dbo.BASE_View_HFit_ChallengeRegistrationPostTemplate_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_UserSearch_Joined ON dbo.BASE_View_HFit_UserSearch_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssesmentPredefinedAnswer_Joined ON dbo.BASE_View_HFit_HealthAssesmentPredefinedAnswer_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_CoachingCMConditions ON dbo.BASE_HFit_LKP_CoachingCMConditions
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_TrackerTable ON dbo.BASE_HFit_LKP_TrackerTable
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Class ON dbo.BASE_HFit_Class
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_SecurityQuestion_Joined ON dbo.BASE_View_HFit_SecurityQuestion_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Ref_RewardTrackerValidation ON dbo.BASE_HFit_Ref_RewardTrackerValidation
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentAnswerCodeNames ON dbo.BASE_HFit_HealthAssesmentAnswerCodeNames
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFIT_LKP_EDW_REJECTMPI ON dbo.BASE_HFIT_LKP_EDW_REJECTMPI
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WorkflowStepRoles ON dbo.BASE_CMS_WorkflowStepRoles
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_PM_ProjectTaskStatus_Joined ON dbo.BASE_View_PM_ProjectTaskStatus_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ChallengeRegistrationPostTemplate_Joined ON dbo.BASE_View_HFit_ChallengeRegistrationPostTemplate_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_UserSearch_Joined ON dbo.BASE_View_HFit_UserSearch_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_TrackerTable ON dbo.BASE_HFit_LKP_TrackerTable
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_TagGroup ON dbo.BASE_CMS_TagGroup
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_EDW_RoleMemberHistory ON dbo.BASE_EDW_RoleMemberHistory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentAnswerCodeNames ON dbo.BASE_HFit_HealthAssesmentAnswerCodeNames
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFIT_LKP_EDW_REJECTMPI ON dbo.BASE_HFIT_LKP_EDW_REJECTMPI
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WorkflowStepRoles ON dbo.BASE_CMS_WorkflowStepRoles
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_PM_ProjectTaskStatus_Joined ON dbo.BASE_View_PM_ProjectTaskStatus_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Configuration_CallLogCoaching ON dbo.BASE_HFit_Configuration_CallLogCoaching
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_MultiBuyDiscountDepartment ON dbo.BASE_COM_MultiBuyDiscountDepartment
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_MockMpiData ON dbo.BASE_HFit_MockMpiData
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_TemporalConfigurationContainer ON dbo.BASE_hfit_TemporalConfigurationContainer
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_TagGroup ON dbo.BASE_CMS_TagGroup
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_EDW_RoleMemberHistory ON dbo.BASE_EDW_RoleMemberHistory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthSummarySettings ON dbo.BASE_HFit_HealthSummarySettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Configuration_CallLogCoaching ON dbo.BASE_HFit_Configuration_CallLogCoaching
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_MultiBuyDiscountDepartment ON dbo.BASE_COM_MultiBuyDiscountDepartment
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_MockMpiData ON dbo.BASE_HFit_MockMpiData
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentUserModule ON dbo.BASE_HFit_HealthAssesmentUserModule
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_ToDoHealthAssesmentCompleted ON dbo.BASE_View_ToDoHealthAssesmentCompleted
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_TemporalConfigurationContainer ON dbo.BASE_hfit_TemporalConfigurationContainer
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_Frequency ON dbo.BASE_HFit_LKP_Frequency
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_StressManagementActivity ON dbo.BASE_HFit_LKP_StressManagementActivity
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ObjectRelationship ON dbo.BASE_CMS_ObjectRelationship
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_EDW_BiometricViewRejectCriteria ON dbo.BASE_EDW_BiometricViewRejectCriteria
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardsUserRepeatableTriggerDetail ON dbo.BASE_HFit_RewardsUserRepeatableTriggerDetail
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_Article_Joined ON dbo.BASE_View_CONTENT_Article_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_AutomationHistory ON dbo.BASE_CMS_AutomationHistory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthSummarySettings ON dbo.BASE_HFit_HealthSummarySettings
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_RelationshipName ON dbo.BASE_CMS_RelationshipName
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentUserModule ON dbo.BASE_HFit_HealthAssesmentUserModule
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WebPartCategory ON dbo.BASE_CMS_WebPartCategory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_ToDoHealthAssesmentCompleted ON dbo.BASE_View_ToDoHealthAssesmentCompleted
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_Frequency ON dbo.BASE_HFit_LKP_Frequency
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_StressManagementActivity ON dbo.BASE_HFit_LKP_StressManagementActivity
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ObjectRelationship ON dbo.BASE_CMS_ObjectRelationship
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_EDW_BiometricViewRejectCriteria ON dbo.BASE_EDW_BiometricViewRejectCriteria
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardsUserRepeatableTriggerDetail ON dbo.BASE_HFit_RewardsUserRepeatableTriggerDetail
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingCommitToQuit_Joined ON dbo.BASE_View_HFit_CoachingCommitToQuit_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_Article_Joined ON dbo.BASE_View_CONTENT_Article_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_AutomationHistory ON dbo.BASE_CMS_AutomationHistory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_ABVariant ON dbo.BASE_OM_ABVariant
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserCoachingAlert_NotMet_Step5 ON dbo.BASE_HFit_UserCoachingAlert_NotMet_Step5
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_RelationshipName ON dbo.BASE_CMS_RelationshipName
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerTobaccoAttestation ON dbo.BASE_HFit_TrackerTobaccoAttestation
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WebPartCategory ON dbo.BASE_CMS_WebPartCategory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingLMTemporalContainer_Joined ON dbo.BASE_View_HFit_CoachingLMTemporalContainer_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingCommitToQuit_Joined ON dbo.BASE_View_HFit_CoachingCommitToQuit_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_ABVariant ON dbo.BASE_OM_ABVariant
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserCoachingAlert_NotMet_Step5 ON dbo.BASE_HFit_UserCoachingAlert_NotMet_Step5
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerTobaccoAttestation ON dbo.BASE_HFit_TrackerTobaccoAttestation
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ContentBlock_Joined ON dbo.BASE_View_HFit_ContentBlock_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_EligibilityLoadTracking ON dbo.BASE_HFit_EligibilityLoadTracking
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_Boards_BoardMessage_Joined ON dbo.BASE_View_Boards_BoardMessage_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerStrength ON dbo.BASE_HFit_TrackerStrength
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingLMTemporalContainer_Joined ON dbo.BASE_View_HFit_CoachingLMTemporalContainer_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_PaymentOption ON dbo.BASE_COM_PaymentOption
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_OutComeMessages_Joined ON dbo.BASE_View_HFit_OutComeMessages_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_IP ON dbo.BASE_OM_IP
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ContentBlock_Joined ON dbo.BASE_View_HFit_ContentBlock_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingMyGoalsSettings ON dbo.BASE_HFit_CoachingMyGoalsSettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_EligibilityLoadTracking ON dbo.BASE_HFit_EligibilityLoadTracking
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Boards_BoardMessage_Joined ON dbo.BASE_View_Boards_BoardMessage_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RewardGroup_Joined ON dbo.BASE_View_HFit_RewardGroup_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_SKUDiscountCoupon ON dbo.BASE_COM_SKUDiscountCoupon
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerStrength ON dbo.BASE_HFit_TrackerStrength
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_PaymentOption ON dbo.BASE_COM_PaymentOption
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_OutComeMessages_Joined ON dbo.BASE_View_HFit_OutComeMessages_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_IP ON dbo.BASE_OM_IP
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentPaperException ON dbo.BASE_HFit_HealthAssessmentPaperException
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingEvalHARiskCategory ON dbo.BASE_HFit_CoachingEvalHARiskCategory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Goal ON dbo.BASE_HFit_Goal
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardGroupSummary ON dbo.BASE_HFit_RewardGroupSummary
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_Forums_GroupForumPost_Joined ON dbo.BASE_View_Forums_GroupForumPost_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_Hfit_SecurityQuestionSettings_Joined ON dbo.BASE_View_Hfit_SecurityQuestionSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_AbuseReport ON dbo.BASE_CMS_AbuseReport
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingMyGoalsSettings ON dbo.BASE_HFit_CoachingMyGoalsSettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RewardGroup_Joined ON dbo.BASE_View_HFit_RewardGroup_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_Rule ON dbo.BASE_OM_Rule
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_BookingSystem_Joined ON dbo.BASE_View_BookingSystem_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_SKUDiscountCoupon ON dbo.BASE_COM_SKUDiscountCoupon
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_Tree_Joined ON dbo.BASE_View_CMS_Tree_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerBodyFat ON dbo.BASE_HFit_TrackerBodyFat
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Role ON dbo.BASE_CMS_Role
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentPaperException ON dbo.BASE_HFit_HealthAssessmentPaperException
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ChallengeRegistrationSettings_Joined ON dbo.BASE_View_HFit_ChallengeRegistrationSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_WellnessGoal_Joined ON dbo.BASE_View_HFit_WellnessGoal_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingEvalHARiskCategory ON dbo.BASE_HFit_CoachingEvalHARiskCategory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Goal ON dbo.BASE_HFit_Goal
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardGroupSummary ON dbo.BASE_HFit_RewardGroupSummary
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Forums_GroupForumPost_Joined ON dbo.BASE_View_Forums_GroupForumPost_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Hfit_SecurityQuestionSettings_Joined ON dbo.BASE_View_Hfit_SecurityQuestionSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentUserStarted ON dbo.BASE_HFit_HealthAssesmentUserStarted
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_AbuseReport ON dbo.BASE_CMS_AbuseReport
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_Rule ON dbo.BASE_OM_Rule
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_HACampaigns ON dbo.BASE_Hfit_HACampaigns
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_EligibilityHistory ON dbo.BASE_view_EDW_EligibilityHistory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_SmallSteps ON dbo.BASE_HFit_SmallSteps
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_SearchIndexCulture ON dbo.BASE_CMS_SearchIndexCulture
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerBodyFat ON dbo.BASE_HFit_TrackerBodyFat
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerMedicalCarePlan ON dbo.BASE_HFit_TrackerMedicalCarePlan
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_Reporting_CategoryReport_Joined ON dbo.BASE_View_Reporting_CategoryReport_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Role ON dbo.BASE_CMS_Role
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardsAwardUserDetail ON dbo.BASE_HFit_RewardsAwardUserDetail
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PPTStatus_CR27070 ON dbo.BASE_HFit_PPTStatus_CR27070
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ChallengeRegistrationSettings_Joined ON dbo.BASE_View_HFit_ChallengeRegistrationSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_WellnessGoal_Joined ON dbo.BASE_View_HFit_WellnessGoal_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_DocumentTypeScopeClass ON dbo.BASE_CMS_DocumentTypeScopeClass
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentQuestionCodeNames ON dbo.BASE_HFit_HealthAssesmentQuestionCodeNames
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentUserStarted ON dbo.BASE_HFit_HealthAssesmentUserStarted
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_PM_ProjectTask ON dbo.BASE_PM_ProjectTask
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_VariantOption ON dbo.BASE_COM_VariantOption
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_HACampaigns ON dbo.BASE_Hfit_HACampaigns
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengePPTEligibleCDPostTemplate ON dbo.BASE_HFit_ChallengePPTEligibleCDPostTemplate
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_EligibilityHistory ON dbo.BASE_view_EDW_EligibilityHistory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_SmallSteps ON dbo.BASE_HFit_SmallSteps
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_SearchIndexCulture ON dbo.BASE_CMS_SearchIndexCulture
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerMedicalCarePlan ON dbo.BASE_HFit_TrackerMedicalCarePlan
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Reporting_CategoryReport_Joined ON dbo.BASE_View_Reporting_CategoryReport_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingLibrarySettings ON dbo.BASE_HFit_CoachingLibrarySettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardsAwardUserDetail ON dbo.BASE_HFit_RewardsAwardUserDetail
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PPTStatus_CR27070 ON dbo.BASE_HFit_PPTStatus_CR27070
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_FormRole ON dbo.BASE_CMS_FormRole
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerDef_Tracker ON dbo.BASE_HFit_TrackerDef_Tracker
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_DocumentTypeScopeClass ON dbo.BASE_CMS_DocumentTypeScopeClass
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentQuestionCodeNames ON dbo.BASE_HFit_HealthAssesmentQuestionCodeNames
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_PM_ProjectTask ON dbo.BASE_PM_ProjectTask
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_VariantOption ON dbo.BASE_COM_VariantOption
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerStressManagement ON dbo.BASE_HFit_TrackerStressManagement
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssessment_Joined ON dbo.BASE_View_HFit_HealthAssessment_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Staging_Blurb ON dbo.BASE_HFit_Staging_Blurb
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengePPTEligibleCDPostTemplate ON dbo.BASE_HFit_ChallengePPTEligibleCDPostTemplate
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HA_IPadExceptionLog ON dbo.BASE_HFit_HA_IPadExceptionLog
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PostHealthEducation ON dbo.BASE_HFit_PostHealthEducation
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingLibrarySettings ON dbo.BASE_HFit_CoachingLibrarySettings
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TodoSource ON dbo.BASE_HFit_TodoSource
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_FormRole ON dbo.BASE_CMS_FormRole
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_PageTemplateCategoryPageTemplate_Joined ON dbo.BASE_View_CMS_PageTemplateCategoryPageTemplate_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ValMeasures ON dbo.BASE_HFit_ValMeasures
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentDataForMissingResponses ON dbo.BASE_HFit_HealthAssessmentDataForMissingResponses
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerDef_Tracker ON dbo.BASE_HFit_TrackerDef_Tracker
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerStressManagement ON dbo.BASE_HFit_TrackerStressManagement
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_SM_FacebookApplication ON dbo.BASE_SM_FacebookApplication
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssessment_Joined ON dbo.BASE_View_HFit_HealthAssessment_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_TrackerMetadata ON dbo.BASE_view_EDW_TrackerMetadata
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Staging_Blurb ON dbo.BASE_HFit_Staging_Blurb
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_Tree_Joined_Regular ON dbo.BASE_View_CMS_Tree_Joined_Regular
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HA_IPadExceptionLog ON dbo.BASE_HFit_HA_IPadExceptionLog
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PostHealthEducation ON dbo.BASE_HFit_PostHealthEducation
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerDef_Item ON dbo.BASE_HFit_TrackerDef_Item
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HRA ON dbo.BASE_HFit_HRA
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_Blog_Joined ON dbo.BASE_View_CONTENT_Blog_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Calculator ON dbo.BASE_HFit_Calculator
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WidgetRole ON dbo.BASE_CMS_WidgetRole
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TodoSource ON dbo.BASE_HFit_TodoSource
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_RewardCompleted ON dbo.BASE_HFit_LKP_RewardCompleted
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_PageTemplateCategoryPageTemplate_Joined ON dbo.BASE_View_CMS_PageTemplateCategoryPageTemplate_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ValMeasures ON dbo.BASE_HFit_ValMeasures
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentDataForMissingResponses ON dbo.BASE_HFit_HealthAssessmentDataForMissingResponses
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_SM_FacebookApplication ON dbo.BASE_SM_FacebookApplication
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_TrackerMetadata ON dbo.BASE_view_EDW_TrackerMetadata
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_DeviceProfile ON dbo.BASE_CMS_DeviceProfile
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PrivacyPolicy ON dbo.BASE_HFit_PrivacyPolicy
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_PaymentShipping ON dbo.BASE_COM_PaymentShipping
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerDef_Item ON dbo.BASE_HFit_TrackerDef_Item
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HRA ON dbo.BASE_HFit_HRA
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardTriggerParameter ON dbo.BASE_HFit_RewardTriggerParameter
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_Blog_Joined ON dbo.BASE_View_CONTENT_Blog_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Calculator ON dbo.BASE_HFit_Calculator
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WidgetRole ON dbo.BASE_CMS_WidgetRole
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_ToDoCoachingEnrollment ON dbo.BASE_view_ToDoCoachingEnrollment
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_RewardCompleted ON dbo.BASE_HFit_LKP_RewardCompleted
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ScheduledNotification ON dbo.BASE_HFit_ScheduledNotification
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_Awards ON dbo.BASE_view_EDW_Awards
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengeRegistrations ON dbo.BASE_HFit_ChallengeRegistrations
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_DeviceProfile ON dbo.BASE_CMS_DeviceProfile
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PrivacyPolicy ON dbo.BASE_HFit_PrivacyPolicy
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingMyGoalsSettings_Joined ON dbo.BASE_View_HFit_CoachingMyGoalsSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingHealthArea ON dbo.BASE_HFit_CoachingHealthArea
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengeNewsletter ON dbo.BASE_HFit_ChallengeNewsletter
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_PaymentShipping ON dbo.BASE_COM_PaymentShipping
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardTriggerParameter ON dbo.BASE_HFit_RewardTriggerParameter
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_ToDoCoachingEnrollment ON dbo.BASE_view_ToDoCoachingEnrollment
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ScheduledNotification ON dbo.BASE_HFit_ScheduledNotification
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_Account ON dbo.BASE_OM_Account
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_Awards ON dbo.BASE_view_EDW_Awards
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HAWelcomeSettings ON dbo.BASE_HFit_HAWelcomeSettings
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CustomSettingsTemporalContainer_Joined ON dbo.BASE_View_HFit_CustomSettingsTemporalContainer_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengeRegistrations ON dbo.BASE_HFit_ChallengeRegistrations
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_ContactGroupType ON dbo.BASE_HFit_LKP_ContactGroupType
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingMyGoalsSettings_Joined ON dbo.BASE_View_HFit_CoachingMyGoalsSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingHealthArea ON dbo.BASE_HFit_CoachingHealthArea
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengeNewsletter ON dbo.BASE_HFit_ChallengeNewsletter
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Pillar_Joined ON dbo.BASE_View_HFit_Pillar_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_MacroRule ON dbo.BASE_CMS_MacroRule
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_SM_LinkedInAccount ON dbo.BASE_SM_LinkedInAccount
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentImportStagingDetail ON dbo.BASE_HFit_HealthAssessmentImportStagingDetail
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_DepartmentTaxClass ON dbo.BASE_COM_DepartmentTaxClass
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_Account ON dbo.BASE_OM_Account
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ClassType ON dbo.BASE_HFit_ClassType
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HAWelcomeSettings ON dbo.BASE_HFit_HAWelcomeSettings
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_PageTemplateScope ON dbo.BASE_CMS_PageTemplateScope
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CustomSettingsTemporalContainer_Joined ON dbo.BASE_View_HFit_CustomSettingsTemporalContainer_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingPrivacyPolicy ON dbo.BASE_HFit_CoachingPrivacyPolicy
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_ContactGroupType ON dbo.BASE_HFit_LKP_ContactGroupType
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RewardLevel_Joined ON dbo.BASE_View_HFit_RewardLevel_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_TrackerVendor ON dbo.BASE_HFit_LKP_TrackerVendor
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Screening_PPT ON dbo.BASE_HFit_Screening_PPT
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_EventLog_Joined ON dbo.BASE_View_CMS_EventLog_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Category ON dbo.BASE_CMS_Category
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Pillar_Joined ON dbo.BASE_View_HFit_Pillar_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_MacroRule ON dbo.BASE_CMS_MacroRule
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Screening_QST ON dbo.BASE_HFit_Screening_QST
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_SM_LinkedInAccount ON dbo.BASE_SM_LinkedInAccount
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_CoachingUserCMExclusion ON dbo.BASE_Hfit_CoachingUserCMExclusion
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentImportStagingDetail ON dbo.BASE_HFit_HealthAssessmentImportStagingDetail
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_DepartmentTaxClass ON dbo.BASE_COM_DepartmentTaxClass
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Calculator_Joined ON dbo.BASE_View_HFit_Calculator_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ClassType ON dbo.BASE_HFit_ClassType
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_SmallSteps_Joined ON dbo.BASE_View_HFit_SmallSteps_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_PageTemplateScope ON dbo.BASE_CMS_PageTemplateScope
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingPrivacyPolicy ON dbo.BASE_HFit_CoachingPrivacyPolicy
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_SiteCulture ON dbo.BASE_CMS_SiteCulture
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RewardLevel_Joined ON dbo.BASE_View_HFit_RewardLevel_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_TrackerVendor ON dbo.BASE_HFit_LKP_TrackerVendor
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Screening_PPT ON dbo.BASE_HFit_Screening_PPT
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Category ON dbo.BASE_CMS_Category
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Screening_QST ON dbo.BASE_HFit_Screening_QST
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_ChallengeTeam_Joined ON dbo.BASE_View_hfit_ChallengeTeam_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_WellnessGoalPostTemplate_Joined ON dbo.BASE_View_hfit_WellnessGoalPostTemplate_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_CoachingUserCMExclusion ON dbo.BASE_Hfit_CoachingUserCMExclusion
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Calculator_Joined ON dbo.BASE_View_HFit_Calculator_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_SmallSteps_Joined ON dbo.BASE_View_HFit_SmallSteps_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_SiteCulture ON dbo.BASE_CMS_SiteCulture
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_MultiBuyDiscountSKU ON dbo.BASE_COM_MultiBuyDiscountSKU
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_MyHealthSettings ON dbo.BASE_Hfit_MyHealthSettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_ChallengeTeam_Joined ON dbo.BASE_View_hfit_ChallengeTeam_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_WellnessGoalPostTemplate_Joined ON dbo.BASE_View_hfit_WellnessGoalPostTemplate_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TermsConditions ON dbo.BASE_HFit_TermsConditions
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_TrackerShots ON dbo.BASE_view_EDW_TrackerShots
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_EDW_HealthAssesmentAnswers ON dbo.BASE_View_EDW_HealthAssesmentAnswers
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_cms_usersite ON dbo.BASE_cms_usersite
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerWholeGrains ON dbo.BASE_HFit_TrackerWholeGrains
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFIT_Configuration_CMCoaching ON dbo.BASE_HFIT_Configuration_CMCoaching
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_MultiBuyDiscountSKU ON dbo.BASE_COM_MultiBuyDiscountSKU
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_MyHealthSettings ON dbo.BASE_Hfit_MyHealthSettings
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_cms_usersettings ON dbo.BASE_cms_usersettings
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ACLItem ON dbo.BASE_CMS_ACLItem
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TermsConditions ON dbo.BASE_HFit_TermsConditions
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_VersionAttachment ON dbo.BASE_CMS_VersionAttachment
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_EDW_RoleMembership ON dbo.BASE_EDW_RoleMembership
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_TrackerShots ON dbo.BASE_view_EDW_TrackerShots
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_EDW_HealthAssesmentAnswers ON dbo.BASE_View_EDW_HealthAssesmentAnswers
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_cms_usersite ON dbo.BASE_cms_usersite
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerWholeGrains ON dbo.BASE_HFit_TrackerWholeGrains
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFIT_Configuration_CMCoaching ON dbo.BASE_HFIT_Configuration_CMCoaching
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_cms_usersettings ON dbo.BASE_cms_usersettings
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_Relationship_Joined ON dbo.BASE_View_CMS_Relationship_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ACLItem ON dbo.BASE_CMS_ACLItem
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_Address ON dbo.BASE_COM_Address
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_VersionAttachment ON dbo.BASE_CMS_VersionAttachment
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_EDW_RoleMembership ON dbo.BASE_EDW_RoleMembership
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentAnswers ON dbo.BASE_HFit_HealthAssesmentAnswers
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ConsentAndRelease ON dbo.BASE_HFit_ConsentAndRelease
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WorkflowStepUser ON dbo.BASE_CMS_WorkflowStepUser
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_BlogMonth_Joined ON dbo.BASE_View_CONTENT_BlogMonth_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_Relationship_Joined ON dbo.BASE_View_CMS_Relationship_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_TemplateDeviceLayout ON dbo.BASE_CMS_TemplateDeviceLayout
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_Address ON dbo.BASE_COM_Address
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerCholesterol ON dbo.BASE_HFit_TrackerCholesterol
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentAnswers ON dbo.BASE_HFit_HealthAssesmentAnswers
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ConsentAndRelease ON dbo.BASE_HFit_ConsentAndRelease
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WorkflowStepUser ON dbo.BASE_CMS_WorkflowStepUser
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingEvalHAOverall_Joined ON dbo.BASE_View_HFit_CoachingEvalHAOverall_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_BlogMonth_Joined ON dbo.BASE_View_CONTENT_BlogMonth_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_view_ToDoCoachingEnrollmentCompleted ON dbo.BASE_view_ToDoCoachingEnrollmentCompleted
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_TemplateDeviceLayout ON dbo.BASE_CMS_TemplateDeviceLayout
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_EmailTemplate ON dbo.BASE_HFit_EmailTemplate
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentMultipleChoiceQuestion ON dbo.BASE_HFit_HealthAssesmentMultipleChoiceQuestion
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerCholesterol ON dbo.BASE_HFit_TrackerCholesterol
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingMyHealthInterestsSettings_Joined ON dbo.BASE_View_HFit_CoachingMyHealthInterestsSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_Membership ON dbo.BASE_OM_Membership
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingEvalHAOverall_Joined ON dbo.BASE_View_HFit_CoachingEvalHAOverall_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_CallResult ON dbo.BASE_HFit_LKP_CallResult
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_view_ToDoCoachingEnrollmentCompleted ON dbo.BASE_view_ToDoCoachingEnrollmentCompleted
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_FulfillmentFeatures ON dbo.BASE_HFit_LKP_FulfillmentFeatures
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_EmailTemplate_Joined ON dbo.BASE_View_HFit_EmailTemplate_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_EmailTemplate ON dbo.BASE_HFit_EmailTemplate
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_TrackerCardioActivity ON dbo.BASE_HFit_LKP_TrackerCardioActivity
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentMultipleChoiceQuestion ON dbo.BASE_HFit_HealthAssesmentMultipleChoiceQuestion
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_ObjectVersionHistoryUser_Joined ON dbo.BASE_View_CMS_ObjectVersionHistoryUser_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_SKUFile ON dbo.BASE_COM_SKUFile
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ObjectSettings ON dbo.BASE_CMS_ObjectSettings
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingMyHealthInterestsSettings_Joined ON dbo.BASE_View_HFit_CoachingMyHealthInterestsSettings_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_PLPPackageContent_Joined ON dbo.BASE_View_HFit_PLPPackageContent_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_Membership ON dbo.BASE_OM_Membership
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardsUserSummary ON dbo.BASE_HFit_RewardsUserSummary
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_AutomationState ON dbo.BASE_CMS_AutomationState
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_CallResult ON dbo.BASE_HFit_LKP_CallResult
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_RelationshipNameSite ON dbo.BASE_CMS_RelationshipNameSite
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_GoalCategory ON dbo.BASE_HFit_GoalCategory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WebPartContainer ON dbo.BASE_CMS_WebPartContainer
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_FulfillmentFeatures ON dbo.BASE_HFit_LKP_FulfillmentFeatures
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_EmailTemplate_Joined ON dbo.BASE_View_HFit_EmailTemplate_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingEvalHAOverall ON dbo.BASE_HFit_CoachingEvalHAOverall
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_TrackerCardioActivity ON dbo.BASE_HFit_LKP_TrackerCardioActivity
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RewardParameterBase_Joined ON dbo.BASE_View_HFit_RewardParameterBase_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_OM_Score ON dbo.BASE_OM_Score
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_SKUFile ON dbo.BASE_COM_SKUFile
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ObjectSettings ON dbo.BASE_CMS_ObjectSettings
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_EDW_GroupMemberHistory ON dbo.BASE_EDW_GroupMemberHistory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_PLPPackageContent_Joined ON dbo.BASE_View_HFit_PLPPackageContent_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardsUserSummary ON dbo.BASE_HFit_RewardsUserSummary
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_RewardTriggerParameter ON dbo.BASE_HFit_LKP_RewardTriggerParameter
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_AutomationState ON dbo.BASE_CMS_AutomationState
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_LKP_NicotineAssessment ON dbo.BASE_Hfit_LKP_NicotineAssessment
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_RelationshipNameSite ON dbo.BASE_CMS_RelationshipNameSite
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssessmentConfiguration_Joined ON dbo.BASE_View_HFit_HealthAssessmentConfiguration_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingEvalHARiskArea ON dbo.BASE_HFit_CoachingEvalHARiskArea
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_GoalCategory ON dbo.BASE_HFit_GoalCategory
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WebPartContainer ON dbo.BASE_CMS_WebPartContainer
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_challenge_Joined ON dbo.BASE_View_hfit_challenge_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_SocialProof_Joined ON dbo.BASE_View_hfit_SocialProof_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingEvalHAOverall ON dbo.BASE_HFit_CoachingEvalHAOverall
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RewardParameterBase_Joined ON dbo.BASE_View_HFit_RewardParameterBase_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_Score ON dbo.BASE_OM_Score
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerSitLess ON dbo.BASE_HFit_TrackerSitLess
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_PublicStatus ON dbo.BASE_COM_PublicStatus
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_EDW_GroupMemberHistory ON dbo.BASE_EDW_GroupMemberHistory
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_SocialProof ON dbo.BASE_hfit_SocialProof
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_SearchIndexSite ON dbo.BASE_CMS_SearchIndexSite
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_RewardTriggerParameter ON dbo.BASE_HFit_LKP_RewardTriggerParameter
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_ChallengeTeams_Joined ON dbo.BASE_View_hfit_ChallengeTeams_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_LKP_NicotineAssessment ON dbo.BASE_Hfit_LKP_NicotineAssessment
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_UIElement ON dbo.BASE_CMS_UIElement
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_View_Integration_Task_Joined ON dbo.BASE_View_Integration_Task_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssessmentConfiguration_Joined ON dbo.BASE_View_HFit_HealthAssessmentConfiguration_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingEvalHARiskArea ON dbo.BASE_HFit_CoachingEvalHARiskArea
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_challenge_Joined ON dbo.BASE_View_hfit_challenge_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Email ON dbo.BASE_CMS_Email
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_SocialProof_Joined ON dbo.BASE_View_hfit_SocialProof_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_PM_ProjectTaskPriority ON dbo.BASE_PM_ProjectTaskPriority
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_COM_VolumeDiscount ON dbo.BASE_COM_VolumeDiscount
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerSitLess ON dbo.BASE_HFit_TrackerSitLess
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_PublicStatus ON dbo.BASE_COM_PublicStatus
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_SocialProof ON dbo.BASE_hfit_SocialProof
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_SearchIndexSite ON dbo.BASE_CMS_SearchIndexSite
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_ChallengeTeams_Joined ON dbo.BASE_View_hfit_ChallengeTeams_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_FormUserControl ON dbo.BASE_CMS_FormUserControl
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_UIElement ON dbo.BASE_CMS_UIElement
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentRiskCategoryCodeNames ON dbo.BASE_HFit_HealthAssesmentRiskCategoryCodeNames
+GO
+DISABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Integration_Task_Joined ON dbo.BASE_View_Integration_Task_Joined
+GO
+DISABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_HES_ValueType ON dbo.BASE_HFit_LKP_HES_ValueType
+GO
+--***************************************************************
+ go
+ ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Email ON dbo.BASE_CMS_Email
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_PM_ProjectTaskPriority ON dbo.BASE_PM_ProjectTaskPriority
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_VolumeDiscount ON dbo.BASE_COM_VolumeDiscount
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_TrackerTests ON dbo.BASE_view_EDW_TrackerTests
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Staging_Clinical ON dbo.BASE_HFit_Staging_Clinical
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_CoachingAuditLogType ON dbo.BASE_HFit_LKP_CoachingAuditLogType
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentSysBpScoring ON dbo.BASE_HFit_HealthAssessmentSysBpScoring
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_FormUserControl ON dbo.BASE_CMS_FormUserControl
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentRiskCategoryCodeNames ON dbo.BASE_HFit_HealthAssesmentRiskCategoryCodeNames
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_HES_ValueType ON dbo.BASE_HFit_LKP_HES_ValueType
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ValMeasureType ON dbo.BASE_HFit_ValMeasureType
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Site ON dbo.BASE_CMS_Site
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_TrackerTests ON dbo.BASE_view_EDW_TrackerTests
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Staging_Clinical ON dbo.BASE_HFit_Staging_Clinical
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_RPT_CoachingFromPortal ON dbo.BASE_RPT_CoachingFromPortal
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HSAbout ON dbo.BASE_HFit_HSAbout
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CallList ON dbo.BASE_HFit_CallList
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_RoleApplication ON dbo.BASE_CMS_RoleApplication
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_CoachingAuditLogType ON dbo.BASE_HFit_LKP_CoachingAuditLogType
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentSysBpScoring ON dbo.BASE_HFit_HealthAssessmentSysBpScoring
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Workflow ON dbo.BASE_CMS_Workflow
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_ResourceString_Joined ON dbo.BASE_View_CMS_ResourceString_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ValMeasureType ON dbo.BASE_HFit_ValMeasureType
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Site ON dbo.BASE_CMS_Site
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ProgramFeedNotificationSettings ON dbo.BASE_HFit_ProgramFeedNotificationSettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_RPT_CoachingFromPortal ON dbo.BASE_RPT_CoachingFromPortal
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_RewardActivity ON dbo.BASE_HFit_LKP_RewardActivity
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerBodyMeasurements ON dbo.BASE_HFit_TrackerBodyMeasurements
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HSAbout ON dbo.BASE_HFit_HSAbout
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_BlogPost_Joined ON dbo.BASE_View_CONTENT_BlogPost_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CallList ON dbo.BASE_HFit_CallList
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_RoleApplication ON dbo.BASE_CMS_RoleApplication
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Workflow ON dbo.BASE_CMS_Workflow
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_ResourceString_Joined ON dbo.BASE_View_CMS_ResourceString_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentQuestionGroupCodeNames ON dbo.BASE_HFit_HealthAssesmentQuestionGroupCodeNames
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengeRegistrationSettings ON dbo.BASE_HFit_ChallengeRegistrationSettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ProgramFeedNotificationSettings ON dbo.BASE_HFit_ProgramFeedNotificationSettings
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_hFit_ChallengePPTEligiblePostTemplate ON dbo.BASE_hFit_ChallengePPTEligiblePostTemplate
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Configuration_LMCoaching ON dbo.BASE_HFit_Configuration_LMCoaching
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_EDW_HealthAssesmentQuestions ON dbo.BASE_View_EDW_HealthAssesmentQuestions
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengeNewsletterRelationship ON dbo.BASE_HFit_ChallengeNewsletterRelationship
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_RewardActivity ON dbo.BASE_HFit_LKP_RewardActivity
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerBodyMeasurements ON dbo.BASE_HFit_TrackerBodyMeasurements
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingEvalHAQA_Joined ON dbo.BASE_View_HFit_CoachingEvalHAQA_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_BlogPost_Joined ON dbo.BASE_View_CONTENT_BlogPost_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PPTStatusEnum ON dbo.BASE_HFit_PPTStatusEnum
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingEnrollment ON dbo.BASE_View_HFit_CoachingEnrollment
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentQuestionGroupCodeNames ON dbo.BASE_HFit_HealthAssesmentQuestionGroupCodeNames
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentDiasBpScoring ON dbo.BASE_HFit_HealthAssessmentDiasBpScoring
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_SM_TwitterApplication ON dbo.BASE_SM_TwitterApplication
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengeRegistrationSettings ON dbo.BASE_HFit_ChallengeRegistrationSettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_hFit_ChallengePPTEligiblePostTemplate ON dbo.BASE_hFit_ChallengePPTEligiblePostTemplate
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingNotAssignedSettings_Joined ON dbo.BASE_View_HFit_CoachingNotAssignedSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Configuration_LMCoaching ON dbo.BASE_HFit_Configuration_LMCoaching
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_EDW_HealthAssesmentQuestions ON dbo.BASE_View_EDW_HealthAssesmentQuestions
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengeNewsletterRelationship ON dbo.BASE_HFit_ChallengeNewsletterRelationship
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HA_IPadLog ON dbo.BASE_HFit_HA_IPadLog
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingEvalHAQA_Joined ON dbo.BASE_View_HFit_CoachingEvalHAQA_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_RewardTriggerParameterOperator ON dbo.BASE_HFit_LKP_RewardTriggerParameterOperator
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PPTStatusEnum ON dbo.BASE_HFit_PPTStatusEnum
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingEnrollment ON dbo.BASE_View_HFit_CoachingEnrollment
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_Discount ON dbo.BASE_COM_Discount
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_Client ON dbo.BASE_Hfit_Client
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Event_Joined ON dbo.BASE_View_HFit_Event_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentDiasBpScoring ON dbo.BASE_HFit_HealthAssessmentDiasBpScoring
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_SM_TwitterApplication ON dbo.BASE_SM_TwitterApplication
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingNotAssignedSettings_Joined ON dbo.BASE_View_HFit_CoachingNotAssignedSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_Post_Joined ON dbo.BASE_View_hfit_Post_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HA_IPadLog ON dbo.BASE_HFit_HA_IPadLog
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ScreeningEvent ON dbo.BASE_HFit_ScreeningEvent
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_RewardTriggerParameterOperator ON dbo.BASE_HFit_LKP_RewardTriggerParameterOperator
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_TrackerTobaccoQuitAids ON dbo.BASE_HFit_LKP_TrackerTobaccoQuitAids
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentUserQuestion ON dbo.BASE_HFit_HealthAssesmentUserQuestion
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_Discount ON dbo.BASE_COM_Discount
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_RewardCompleted_FIX ON dbo.BASE_HFit_LKP_RewardCompleted_FIX
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_Client ON dbo.BASE_Hfit_Client
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Event_Joined ON dbo.BASE_View_HFit_Event_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingLibraryHealthArea ON dbo.BASE_HFit_CoachingLibraryHealthArea
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_DeviceProfileLayout ON dbo.BASE_CMS_DeviceProfileLayout
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_SiteDomainAlias ON dbo.BASE_CMS_SiteDomainAlias
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RewardProgram_Joined ON dbo.BASE_View_HFit_RewardProgram_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_Post_Joined ON dbo.BASE_View_hfit_Post_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ScreeningEvent ON dbo.BASE_HFit_ScreeningEvent
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerTobaccoFree ON dbo.BASE_HFit_TrackerTobaccoFree
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssessmentFreeForm_Joined ON dbo.BASE_View_HFit_HealthAssessmentFreeForm_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingNotAssignedSettings ON dbo.BASE_HFit_CoachingNotAssignedSettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_TrackerTobaccoQuitAids ON dbo.BASE_HFit_LKP_TrackerTobaccoQuitAids
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentUserQuestion ON dbo.BASE_HFit_HealthAssesmentUserQuestion
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_RewardCompleted_FIX ON dbo.BASE_HFit_LKP_RewardCompleted_FIX
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_ChallengeAbout_Joined ON dbo.BASE_View_hfit_ChallengeAbout_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFIT_SsoConfiguration_Joined ON dbo.BASE_View_HFIT_SsoConfiguration_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingLibraryHealthArea ON dbo.BASE_HFit_CoachingLibraryHealthArea
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_DeviceProfileLayout ON dbo.BASE_CMS_DeviceProfileLayout
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_SiteDomainAlias ON dbo.BASE_CMS_SiteDomainAlias
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RewardProgram_Joined ON dbo.BASE_View_HFit_RewardProgram_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Newsletter ON dbo.BASE_HFit_Newsletter
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_Membership_MembershipUser_Joined ON dbo.BASE_View_Membership_MembershipUser_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerTobaccoFree ON dbo.BASE_HFit_TrackerTobaccoFree
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssessmentFreeForm_Joined ON dbo.BASE_View_HFit_HealthAssessmentFreeForm_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingNotAssignedSettings ON dbo.BASE_HFit_CoachingNotAssignedSettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_ChallengeAbout_Joined ON dbo.BASE_View_hfit_ChallengeAbout_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_TimezoneConfiguration ON dbo.BASE_Hfit_TimezoneConfiguration
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFIT_SsoConfiguration_Joined ON dbo.BASE_View_HFIT_SsoConfiguration_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAdvisingSessionCompleted ON dbo.BASE_HFit_HealthAdvisingSessionCompleted
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PostQuote ON dbo.BASE_HFit_PostQuote
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Membership ON dbo.BASE_CMS_Membership
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Newsletter ON dbo.BASE_HFit_Newsletter
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_SM_TwitterAccount ON dbo.BASE_SM_TwitterAccount
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Membership_MembershipUser_Joined ON dbo.BASE_View_Membership_MembershipUser_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardProgram ON dbo.BASE_HFit_RewardProgram
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ScheduledNotificationHistory ON dbo.BASE_HFit_ScheduledNotificationHistory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentImportStagingException ON dbo.BASE_HFit_HealthAssessmentImportStagingException
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_TimezoneConfiguration ON dbo.BASE_Hfit_TimezoneConfiguration
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAdvisingSessionCompleted ON dbo.BASE_HFit_HealthAdvisingSessionCompleted
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_PageTemplateSite ON dbo.BASE_CMS_PageTemplateSite
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_VersionHistory ON dbo.BASE_CMS_VersionHistory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_HAassessment ON dbo.BASE_view_EDW_HAassessment
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PostQuote ON dbo.BASE_HFit_PostQuote
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerDocument ON dbo.BASE_HFit_TrackerDocument
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Membership ON dbo.BASE_CMS_Membership
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_SmallStepResponses ON dbo.BASE_Hfit_SmallStepResponses
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_SM_TwitterAccount ON dbo.BASE_SM_TwitterAccount
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardProgram ON dbo.BASE_HFit_RewardProgram
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ScheduledNotificationHistory ON dbo.BASE_HFit_ScheduledNotificationHistory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentImportStagingException ON dbo.BASE_HFit_HealthAssessmentImportStagingException
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardActivity ON dbo.BASE_HFit_RewardActivity
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_PageTemplateSite ON dbo.BASE_CMS_PageTemplateSite
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_Bundle ON dbo.BASE_COM_Bundle
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_VersionHistory ON dbo.BASE_CMS_VersionHistory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_HAassessment ON dbo.BASE_view_EDW_HAassessment
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ConsentAndReleaseAgreement ON dbo.BASE_HFit_ConsentAndReleaseAgreement
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerPreventiveCare ON dbo.BASE_HFit_TrackerPreventiveCare
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerDocument ON dbo.BASE_HFit_TrackerDocument
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_SmallStepResponses ON dbo.BASE_Hfit_SmallStepResponses
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_ResourceTranslated_Joined ON dbo.BASE_View_CMS_ResourceTranslated_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardActivity ON dbo.BASE_HFit_RewardActivity
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_Bundle ON dbo.BASE_COM_Bundle
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_EDW_RoleMemberToday ON dbo.BASE_EDW_RoleMemberToday
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ConsentAndReleaseAgreement ON dbo.BASE_HFit_ConsentAndReleaseAgreement
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_ShippingCost ON dbo.BASE_COM_ShippingCost
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerPreventiveCare ON dbo.BASE_HFit_TrackerPreventiveCare
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_BookingEvent_Joined ON dbo.BASE_View_CONTENT_BookingEvent_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserCoachingAlert_NotMet ON dbo.BASE_HFit_UserCoachingAlert_NotMet
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_ResourceTranslated_Joined ON dbo.BASE_View_CMS_ResourceTranslated_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Event ON dbo.BASE_HFit_Event
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_EDW_RoleMemberToday ON dbo.BASE_EDW_RoleMemberToday
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingAuditLog ON dbo.BASE_HFit_CoachingAuditLog
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingHealthInterest ON dbo.BASE_HFit_CoachingHealthInterest
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_HealthInterestDetail ON dbo.BASE_view_EDW_HealthInterestDetail
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_MVTCombination ON dbo.BASE_OM_MVTCombination
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_ShippingCost ON dbo.BASE_COM_ShippingCost
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingEvalHARiskArea_Joined ON dbo.BASE_View_HFit_CoachingEvalHARiskArea_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_Currency ON dbo.BASE_COM_Currency
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Class_Joined ON dbo.BASE_View_HFit_Class_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_BookingEvent_Joined ON dbo.BASE_View_CONTENT_BookingEvent_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserCoachingAlert_NotMet ON dbo.BASE_HFit_UserCoachingAlert_NotMet
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_AllowedChildClasses ON dbo.BASE_CMS_AllowedChildClasses
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerSugaryDrinks ON dbo.BASE_HFit_TrackerSugaryDrinks
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Event ON dbo.BASE_HFit_Event
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_SKUOptionCategory ON dbo.BASE_COM_SKUOptionCategory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingPrivacyPolicy_Joined ON dbo.BASE_View_HFit_CoachingPrivacyPolicy_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingAuditLog ON dbo.BASE_HFit_CoachingAuditLog
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingHealthInterest ON dbo.BASE_HFit_CoachingHealthInterest
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_HealthInterestDetail ON dbo.BASE_view_EDW_HealthInterestDetail
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_MVTCombination ON dbo.BASE_OM_MVTCombination
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingEvalHARiskArea_Joined ON dbo.BASE_View_HFit_CoachingEvalHARiskArea_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_Currency ON dbo.BASE_COM_Currency
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Class_Joined ON dbo.BASE_View_HFit_Class_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardsReprocessQueue ON dbo.BASE_HFit_RewardsReprocessQueue
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_AllowedChildClasses ON dbo.BASE_CMS_AllowedChildClasses
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Resource ON dbo.BASE_CMS_Resource
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_GoalOutcome ON dbo.BASE_HFit_GoalOutcome
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerFlexibility ON dbo.BASE_HFit_TrackerFlexibility
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerSugaryDrinks ON dbo.BASE_HFit_TrackerSugaryDrinks
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Goal_Joined ON dbo.BASE_View_HFit_Goal_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Class ON dbo.BASE_CMS_Class
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_ScoreContactRule ON dbo.BASE_OM_ScoreContactRule
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_SKUOptionCategory ON dbo.BASE_COM_SKUOptionCategory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingPrivacyPolicy_Joined ON dbo.BASE_View_HFit_CoachingPrivacyPolicy_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PostMessage ON dbo.BASE_HFit_PostMessage
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_PostChallenge_Joined ON dbo.BASE_View_HFit_PostChallenge_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WorkflowTransition ON dbo.BASE_CMS_WorkflowTransition
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardsReprocessQueue ON dbo.BASE_HFit_RewardsReprocessQueue
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Resource ON dbo.BASE_CMS_Resource
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_GoalOutcome ON dbo.BASE_HFit_GoalOutcome
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerFlexibility ON dbo.BASE_HFit_TrackerFlexibility
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_TimeZone ON dbo.BASE_CMS_TimeZone
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Goal_Joined ON dbo.BASE_View_HFit_Goal_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingLibraryResources ON dbo.BASE_HFit_CoachingLibraryResources
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Class ON dbo.BASE_CMS_Class
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RewardsAboutInfoItem_Joined ON dbo.BASE_View_HFit_RewardsAboutInfoItem_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_ScoreContactRule ON dbo.BASE_OM_ScoreContactRule
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_HAHealthCheckCampaignData ON dbo.BASE_Hfit_HAHealthCheckCampaignData
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PostMessage ON dbo.BASE_HFit_PostMessage
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_SSIS_ScreeningMapping ON dbo.BASE_HFit_SSIS_ScreeningMapping
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_SearchTask ON dbo.BASE_CMS_SearchTask
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_PostChallenge_Joined ON dbo.BASE_View_HFit_PostChallenge_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WorkflowTransition ON dbo.BASE_CMS_WorkflowTransition
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssessmentModuleConfiguration_Joined ON dbo.BASE_View_HFit_HealthAssessmentModuleConfiguration_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_challengeBase_Joined ON dbo.BASE_View_hfit_challengeBase_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_TimeZone ON dbo.BASE_CMS_TimeZone
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_SsoRequest_Joined ON dbo.BASE_View_HFit_SsoRequest_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_PM_ProjectTaskStatus ON dbo.BASE_PM_ProjectTaskStatus
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_Wishlist ON dbo.BASE_COM_Wishlist
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingLibraryResources ON dbo.BASE_HFit_CoachingLibraryResources
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RewardsAboutInfoItem_Joined ON dbo.BASE_View_HFit_RewardsAboutInfoItem_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_HAHealthCheckCampaignData ON dbo.BASE_Hfit_HAHealthCheckCampaignData
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_SSIS_ScreeningMapping ON dbo.BASE_HFit_SSIS_ScreeningMapping
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_SearchTask ON dbo.BASE_CMS_SearchTask
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentUserQuestionImport ON dbo.BASE_HFit_HealthAssesmentUserQuestionImport
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_Order ON dbo.BASE_COM_Order
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_RewardFrequency ON dbo.BASE_HFit_LKP_RewardFrequency
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_Newsletter_Subscriptions_Joined ON dbo.BASE_View_Newsletter_Subscriptions_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssessmentModuleConfiguration_Joined ON dbo.BASE_View_HFit_HealthAssessmentModuleConfiguration_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_Tree_Joined ON dbo.BASE_View_CMS_Tree_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_challengeBase_Joined ON dbo.BASE_View_hfit_challengeBase_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_SsoRequest_Joined ON dbo.BASE_View_HFit_SsoRequest_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_PM_ProjectTaskStatus ON dbo.BASE_PM_ProjectTaskStatus
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserRewardPoints ON dbo.BASE_HFit_UserRewardPoints
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_Wishlist ON dbo.BASE_COM_Wishlist
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ObjectVersionHistory ON dbo.BASE_CMS_ObjectVersionHistory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentUserQuestionImport ON dbo.BASE_HFit_HealthAssesmentUserQuestionImport
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Avatar ON dbo.BASE_CMS_Avatar
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_Activity ON dbo.BASE_OM_Activity
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_Order ON dbo.BASE_COM_Order
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserCoachingAlert_MeetNotModify ON dbo.BASE_HFit_UserCoachingAlert_MeetNotModify
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_RewardFrequency ON dbo.BASE_HFit_LKP_RewardFrequency
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Newsletter_Subscriptions_Joined ON dbo.BASE_View_Newsletter_Subscriptions_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingUserServiceLevel ON dbo.BASE_HFit_CoachingUserServiceLevel
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ValMeasureValues ON dbo.BASE_HFit_ValMeasureValues
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WebPartContainerSite ON dbo.BASE_CMS_WebPartContainerSite
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserRewardPoints ON dbo.BASE_HFit_UserRewardPoints
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ObjectVersionHistory ON dbo.BASE_CMS_ObjectVersionHistory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_ShippingOption ON dbo.BASE_COM_ShippingOption
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_SKU ON dbo.BASE_COM_SKU
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HSBiometricChart ON dbo.BASE_HFit_HSBiometricChart
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CentralConfig ON dbo.BASE_HFit_CentralConfig
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Avatar ON dbo.BASE_CMS_Avatar
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_RolePermission ON dbo.BASE_CMS_RolePermission
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_Activity ON dbo.BASE_OM_Activity
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserCoachingAlert_MeetNotModify ON dbo.BASE_HFit_UserCoachingAlert_MeetNotModify
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingUserServiceLevel ON dbo.BASE_HFit_CoachingUserServiceLevel
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ValMeasureValues ON dbo.BASE_HFit_ValMeasureValues
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WebPartContainerSite ON dbo.BASE_CMS_WebPartContainerSite
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardDatesAggregator ON dbo.BASE_HFit_RewardDatesAggregator
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_ShippingOption ON dbo.BASE_COM_ShippingOption
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_EDW_GroupMemberToday ON dbo.BASE_EDW_GroupMemberToday
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_SKU ON dbo.BASE_COM_SKU
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HSBiometricChart ON dbo.BASE_HFit_HSBiometricChart
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CentralConfig ON dbo.BASE_HFit_CentralConfig
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_RolePermission ON dbo.BASE_CMS_RolePermission
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_RoleResourcePermission_Joined ON dbo.BASE_View_CMS_RoleResourcePermission_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_EmailAttachment ON dbo.BASE_CMS_EmailAttachment
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardDatesAggregator ON dbo.BASE_HFit_RewardDatesAggregator
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengeRegistrationTempData ON dbo.BASE_HFit_ChallengeRegistrationTempData
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_EDW_GroupMemberToday ON dbo.BASE_EDW_GroupMemberToday
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_challengeOffering ON dbo.BASE_hfit_challengeOffering
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_Cellphone_Joined ON dbo.BASE_View_CONTENT_Cellphone_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserTracker ON dbo.BASE_HFit_UserTracker
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_HelpTopic ON dbo.BASE_CMS_HelpTopic
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentStarted ON dbo.BASE_HFit_HealthAssesmentStarted
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_RoleResourcePermission_Joined ON dbo.BASE_View_CMS_RoleResourcePermission_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_AccountContact ON dbo.BASE_OM_AccountContact
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_EmailAttachment ON dbo.BASE_CMS_EmailAttachment
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengeRegistrationTempData ON dbo.BASE_HFit_ChallengeRegistrationTempData
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_LKP_CustomTrackerDefaultMetadata ON dbo.BASE_Hfit_LKP_CustomTrackerDefaultMetadata
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingEnrollmentSyncStaging ON dbo.BASE_HFit_CoachingEnrollmentSyncStaging
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_HealthInterestList ON dbo.BASE_view_EDW_HealthInterestList
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_challengeOffering ON dbo.BASE_hfit_challengeOffering
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingEvalHARiskCategory_Joined ON dbo.BASE_View_HFit_CoachingEvalHARiskCategory_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_Cellphone_Joined ON dbo.BASE_View_CONTENT_Cellphone_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserTracker ON dbo.BASE_HFit_UserTracker
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentTCHDLRatioScoring ON dbo.BASE_HFit_HealthAssessmentTCHDLRatioScoring
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_HelpTopic ON dbo.BASE_CMS_HelpTopic
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentStarted ON dbo.BASE_HFit_HealthAssesmentStarted
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_DiscountCoupon ON dbo.BASE_COM_DiscountCoupon
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_AccountContact ON dbo.BASE_OM_AccountContact
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ClientContact ON dbo.BASE_HFit_ClientContact
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_LKP_CustomTrackerDefaultMetadata ON dbo.BASE_Hfit_LKP_CustomTrackerDefaultMetadata
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingEnrollmentSyncStaging ON dbo.BASE_HFit_CoachingEnrollmentSyncStaging
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_HealthInterestList ON dbo.BASE_view_EDW_HealthInterestList
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ClassSite ON dbo.BASE_CMS_ClassSite
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingEvalHARiskCategory_Joined ON dbo.BASE_View_HFit_CoachingEvalHARiskCategory_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ScreeningEventCategory ON dbo.BASE_HFit_ScreeningEventCategory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentTCHDLRatioScoring ON dbo.BASE_HFit_HealthAssessmentTCHDLRatioScoring
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WorkflowAction ON dbo.BASE_CMS_WorkflowAction
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_Tree_Joined_Linked ON dbo.BASE_View_CMS_Tree_Joined_Linked
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_DiscountCoupon ON dbo.BASE_COM_DiscountCoupon
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ClientContact ON dbo.BASE_HFit_ClientContact
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_GoalCategory_Joined ON dbo.BASE_View_HFit_GoalCategory_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Staging_Fulfillment ON dbo.BASE_HFit_Staging_Fulfillment
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ClassSite ON dbo.BASE_CMS_ClassSite
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_PostEmptyFeed_Joined ON dbo.BASE_View_HFit_PostEmptyFeed_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ScreeningEventCategory ON dbo.BASE_HFit_ScreeningEventCategory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WorkflowAction ON dbo.BASE_CMS_WorkflowAction
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingAuditLog ON dbo.BASE_View_HFit_CoachingAuditLog
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentRecomendationClientConfig ON dbo.BASE_HFit_HealthAssesmentRecomendationClientConfig
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_GoalCategory_Joined ON dbo.BASE_View_HFit_GoalCategory_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingEnrollmentSettings ON dbo.BASE_HFit_CoachingEnrollmentSettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Staging_Fulfillment ON dbo.BASE_HFit_Staging_Fulfillment
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RewardTrigger_Joined ON dbo.BASE_View_HFit_RewardTrigger_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengePPTRegisteredPostTemplate ON dbo.BASE_HFit_ChallengePPTRegisteredPostTemplate
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_PostEmptyFeed_Joined ON dbo.BASE_View_HFit_PostEmptyFeed_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerHbA1c ON dbo.BASE_HFit_TrackerHbA1c
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingAuditLog ON dbo.BASE_View_HFit_CoachingAuditLog
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthSummarySettings_Joined ON dbo.BASE_View_HFit_HealthSummarySettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_ChallengeFAQ_Joined ON dbo.BASE_View_hfit_ChallengeFAQ_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TipOfTheDay ON dbo.BASE_HFit_TipOfTheDay
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentRecomendationClientConfig ON dbo.BASE_HFit_HealthAssesmentRecomendationClientConfig
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_SsoRequestAttributes_Joined ON dbo.BASE_View_HFit_SsoRequestAttributes_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingEnrollmentSettings ON dbo.BASE_HFit_CoachingEnrollmentSettings
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentFastingGlucoseScoring ON dbo.BASE_HFit_HealthAssessmentFastingGlucoseScoring
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RewardTrigger_Joined ON dbo.BASE_View_HFit_RewardTrigger_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengePPTRegisteredPostTemplate ON dbo.BASE_HFit_ChallengePPTRegisteredPostTemplate
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_Job_Joined ON dbo.BASE_View_CONTENT_Job_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PostReminder ON dbo.BASE_HFit_PostReminder
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerHbA1c ON dbo.BASE_HFit_TrackerHbA1c
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PPTStatusIpadMappingCodeCleanup ON dbo.BASE_HFit_PPTStatusIpadMappingCodeCleanup
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_NewsletterSubscriberUserRole_Joined ON dbo.BASE_View_NewsletterSubscriberUserRole_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthSummarySettings_Joined ON dbo.BASE_View_HFit_HealthSummarySettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_ChallengeFAQ_Joined ON dbo.BASE_View_hfit_ChallengeFAQ_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TipOfTheDay ON dbo.BASE_HFit_TipOfTheDay
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_SsoRequestAttributes_Joined ON dbo.BASE_View_HFit_SsoRequestAttributes_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Permission ON dbo.BASE_CMS_Permission
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentFastingGlucoseScoring ON dbo.BASE_HFit_HealthAssessmentFastingGlucoseScoring
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_Job_Joined ON dbo.BASE_View_CONTENT_Job_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PostReminder ON dbo.BASE_HFit_PostReminder
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PPTStatusIpadMappingCodeCleanup ON dbo.BASE_HFit_PPTStatusIpadMappingCodeCleanup
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentUserStarted_HA_Sync ON dbo.BASE_HFit_HealthAssesmentUserStarted
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_NewsletterSubscriberUserRole_Joined ON dbo.BASE_View_NewsletterSubscriberUserRole_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingEvalHAQA ON dbo.BASE_HFit_CoachingEvalHAQA
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardOverrideLog ON dbo.BASE_HFit_RewardOverrideLog
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Permission ON dbo.BASE_CMS_Permission
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_SMTPServer ON dbo.BASE_CMS_SMTPServer
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RegistrationWelcome ON dbo.BASE_HFit_RegistrationWelcome
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerSleepPlan ON dbo.BASE_HFit_TrackerSleepPlan
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ContactGroupMembership ON dbo.BASE_HFit_ContactGroupMembership
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ChallengeRegistrationEmail_Joined ON dbo.BASE_View_HFit_ChallengeRegistrationEmail_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingEvalHAQA ON dbo.BASE_HFit_CoachingEvalHAQA
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardOverrideLog ON dbo.BASE_HFit_RewardOverrideLog
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PostSubscriber_ContactBackup ON dbo.BASE_HFit_PostSubscriber_ContactBackup
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentRiskArea ON dbo.BASE_HFit_HealthAssesmentRiskArea
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_SMTPServer ON dbo.BASE_CMS_SMTPServer
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RegistrationWelcome ON dbo.BASE_HFit_RegistrationWelcome
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerSleepPlan ON dbo.BASE_HFit_TrackerSleepPlan
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ContactGroupMembership ON dbo.BASE_HFit_ContactGroupMembership
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ChallengeRegistrationEmail_Joined ON dbo.BASE_View_HFit_ChallengeRegistrationEmail_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardsUserTrigger ON dbo.BASE_HFit_RewardsUserTrigger
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_SiteRoleResourceUIElement_Joined ON dbo.BASE_View_CMS_SiteRoleResourceUIElement_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PostSubscriber_ContactBackup ON dbo.BASE_HFit_PostSubscriber_ContactBackup
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_EventLogMaintenance ON dbo.BASE_HFit_EventLogMaintenance
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentRiskArea ON dbo.BASE_HFit_HealthAssesmentRiskArea
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Chat_Message ON dbo.BASE_Chat_Message
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_MVTCombinationVariation ON dbo.BASE_OM_MVTCombinationVariation
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardsUserTrigger ON dbo.BASE_HFit_RewardsUserTrigger
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_MembershipRole ON dbo.BASE_CMS_MembershipRole
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_Event_Joined ON dbo.BASE_View_CONTENT_Event_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_CardioActivityIntensity ON dbo.BASE_HFit_LKP_CardioActivityIntensity
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Coach_Bio ON dbo.BASE_View_HFit_Coach_Bio
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_SiteRoleResourceUIElement_Joined ON dbo.BASE_View_CMS_SiteRoleResourceUIElement_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ScheduledTaskHistory ON dbo.BASE_HFit_ScheduledTaskHistory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_AlternativeForm ON dbo.BASE_CMS_AlternativeForm
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentImportStagingMaster ON dbo.BASE_HFit_HealthAssessmentImportStagingMaster
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_GoalCloseReason ON dbo.BASE_HFit_LKP_GoalCloseReason
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_EventLogMaintenance ON dbo.BASE_HFit_EventLogMaintenance
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_TrackerFlexibilityActivity ON dbo.BASE_HFit_LKP_TrackerFlexibilityActivity
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WebFarmServer ON dbo.BASE_CMS_WebFarmServer
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Chat_Message ON dbo.BASE_Chat_Message
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CMS_User_CHANGES ON dbo.BASE_HFit_CMS_User_CHANGES
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerCollectionSource ON dbo.BASE_HFit_TrackerCollectionSource
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_SKUTaxClasses ON dbo.BASE_COM_SKUTaxClasses
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_CoachingServiceLevelStatus ON dbo.BASE_HFit_LKP_CoachingServiceLevelStatus
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerBMI ON dbo.BASE_HFit_TrackerBMI
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_Participant ON dbo.BASE_view_EDW_Participant
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_MVTCombinationVariation ON dbo.BASE_OM_MVTCombinationVariation
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingEvalHARiskModule_Joined ON dbo.BASE_View_HFit_CoachingEvalHARiskModule_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_MembershipRole ON dbo.BASE_CMS_MembershipRole
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_Event_Joined ON dbo.BASE_View_CONTENT_Event_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_CardioActivityIntensity ON dbo.BASE_HFit_LKP_CardioActivityIntensity
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Coach_Bio ON dbo.BASE_View_HFit_Coach_Bio
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ScheduledTaskHistory ON dbo.BASE_HFit_ScheduledTaskHistory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_AlternativeForm ON dbo.BASE_CMS_AlternativeForm
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_GoalSubCategory ON dbo.BASE_HFit_GoalSubCategory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentImportStagingMaster ON dbo.BASE_HFit_HealthAssessmentImportStagingMaster
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_GoalCloseReason ON dbo.BASE_HFit_LKP_GoalCloseReason
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_TrackerFlexibilityActivity ON dbo.BASE_HFit_LKP_TrackerFlexibilityActivity
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WebFarmServer ON dbo.BASE_CMS_WebFarmServer
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CMS_User_CHANGES ON dbo.BASE_HFit_CMS_User_CHANGES
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerCollectionSource ON dbo.BASE_HFit_TrackerCollectionSource
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_Search ON dbo.BASE_OM_Search
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_SKUTaxClasses ON dbo.BASE_COM_SKUTaxClasses
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingTermsAndConditionsSettings_Joined ON dbo.BASE_View_HFit_CoachingTermsAndConditionsSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_CoachingServiceLevelStatus ON dbo.BASE_HFit_LKP_CoachingServiceLevelStatus
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerBMI ON dbo.BASE_HFit_TrackerBMI
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_Participant ON dbo.BASE_view_EDW_Participant
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingEvalHARiskModule_Joined ON dbo.BASE_View_HFit_CoachingEvalHARiskModule_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_GoalSubCategory ON dbo.BASE_HFit_GoalSubCategory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Tree ON dbo.BASE_CMS_Tree
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_GoalSubCategory_Joined ON dbo.BASE_View_HFit_GoalSubCategory_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_Carrier ON dbo.BASE_COM_Carrier
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_Search ON dbo.BASE_OM_Search
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingTermsAndConditionsSettings_Joined ON dbo.BASE_View_HFit_CoachingTermsAndConditionsSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_SsoAttributeData ON dbo.BASE_HFit_SsoAttributeData
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_PostHealthEducation_Joined ON dbo.BASE_View_HFit_PostHealthEducation_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_RewardLevelType ON dbo.BASE_HFit_LKP_RewardLevelType
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_Department ON dbo.BASE_COM_Department
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Pillar ON dbo.BASE_HFit_Pillar
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardsUserActivityDetail ON dbo.BASE_HFit_RewardsUserActivityDetail
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Tree ON dbo.BASE_CMS_Tree
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Community_Friend ON dbo.BASE_Community_Friend
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_GoalSubCategory_Joined ON dbo.BASE_View_HFit_GoalSubCategory_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingMyHealthInterestsSettings ON dbo.BASE_HFit_CoachingMyHealthInterestsSettings
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UnitOfMeasure ON dbo.BASE_HFit_UnitOfMeasure
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_Carrier ON dbo.BASE_COM_Carrier
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RewardTriggerParameter_Joined ON dbo.BASE_View_HFit_RewardTriggerParameter_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardAboutInfoItem ON dbo.BASE_HFit_RewardAboutInfoItem
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_SsoAttributeData ON dbo.BASE_HFit_SsoAttributeData
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_PostHealthEducation_Joined ON dbo.BASE_View_HFit_PostHealthEducation_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_RewardLevelType ON dbo.BASE_HFit_LKP_RewardLevelType
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_Department ON dbo.BASE_COM_Department
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_OrderAddress ON dbo.BASE_COM_OrderAddress
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Pillar ON dbo.BASE_HFit_Pillar
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardsUserActivityDetail ON dbo.BASE_HFit_RewardsUserActivityDetail
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HRA_Joined ON dbo.BASE_View_HFit_HRA_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_challengeGeneralSettings_Joined ON dbo.BASE_View_hfit_challengeGeneralSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_TemporalConfigurationContainer_Joined ON dbo.BASE_View_hfit_TemporalConfigurationContainer_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Community_Friend ON dbo.BASE_Community_Friend
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingMyHealthInterestsSettings ON dbo.BASE_HFit_CoachingMyHealthInterestsSettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UnitOfMeasure ON dbo.BASE_HFit_UnitOfMeasure
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RewardTriggerParameter_Joined ON dbo.BASE_View_HFit_RewardTriggerParameter_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardAboutInfoItem ON dbo.BASE_HFit_RewardAboutInfoItem
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_KBArticle_Joined ON dbo.BASE_View_CONTENT_KBArticle_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Company ON dbo.BASE_HFit_Company
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_BiometricViewRejectCriteria ON dbo.BASE_view_EDW_BiometricViewRejectCriteria
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_ActivityType ON dbo.BASE_OM_ActivityType
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_OrderAddress ON dbo.BASE_COM_OrderAddress
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_OM_Account_Joined ON dbo.BASE_View_OM_Account_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ResourceLibrary ON dbo.BASE_CMS_ResourceLibrary
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HRA_Joined ON dbo.BASE_View_HFit_HRA_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_WellnessGoal ON dbo.BASE_HFit_WellnessGoal
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WebPartLayout ON dbo.BASE_CMS_WebPartLayout
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_challengeGeneralSettings_Joined ON dbo.BASE_View_hfit_challengeGeneralSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_TemporalConfigurationContainer_Joined ON dbo.BASE_View_hfit_TemporalConfigurationContainer_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_KBArticle_Joined ON dbo.BASE_View_CONTENT_KBArticle_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WorkflowUser ON dbo.BASE_CMS_WorkflowUser
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Company ON dbo.BASE_HFit_Company
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HSGraphRangeSetting ON dbo.BASE_HFit_HSGraphRangeSetting
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_BiometricViewRejectCriteria ON dbo.BASE_view_EDW_BiometricViewRejectCriteria
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_challenge ON dbo.BASE_hfit_challenge
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_RoleUIElement ON dbo.BASE_CMS_RoleUIElement
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_ActivityType ON dbo.BASE_OM_ActivityType
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_ToDoHealthAssesment ON dbo.BASE_View_ToDoHealthAssesment
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_OM_Account_Joined ON dbo.BASE_View_OM_Account_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ResourceLibrary ON dbo.BASE_CMS_ResourceLibrary
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingLMTemporalContainer ON dbo.BASE_HFit_CoachingLMTemporalContainer
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_WellnessGoal ON dbo.BASE_HFit_WellnessGoal
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WebPartLayout ON dbo.BASE_CMS_WebPartLayout
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Transformation ON dbo.BASE_CMS_Transformation
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_CouponCode ON dbo.BASE_COM_CouponCode
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_HealthAssesment ON dbo.BASE_view_EDW_HealthAssesment
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_HAHealthCheckCodes ON dbo.BASE_Hfit_HAHealthCheckCodes
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Session ON dbo.BASE_CMS_Session
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WorkflowUser ON dbo.BASE_CMS_WorkflowUser
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HSGraphRangeSetting ON dbo.BASE_HFit_HSGraphRangeSetting
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_challenge ON dbo.BASE_hfit_challenge
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_RoleUIElement ON dbo.BASE_CMS_RoleUIElement
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessment ON dbo.BASE_HFit_HealthAssessment
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_ToDoHealthAssesment ON dbo.BASE_View_ToDoHealthAssesment
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingLMTemporalContainer ON dbo.BASE_HFit_CoachingLMTemporalContainer
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Transformation ON dbo.BASE_CMS_Transformation
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_CouponCode ON dbo.BASE_COM_CouponCode
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_HealthAssesment ON dbo.BASE_view_EDW_HealthAssesment
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_ChallengeTeam ON dbo.BASE_hfit_ChallengeTeam
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Document ON dbo.BASE_CMS_Document
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_HAHealthCheckCodes ON dbo.BASE_Hfit_HAHealthCheckCodes
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengePostTemplate ON dbo.BASE_HFit_ChallengePostTemplate
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Session ON dbo.BASE_CMS_Session
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_ShippingOptionTaxClass ON dbo.BASE_COM_ShippingOptionTaxClass
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentUserQuestionStaging ON dbo.BASE_HFit_HealthAssesmentUserQuestionStaging
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessment ON dbo.BASE_HFit_HealthAssessment
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_RewardGroupLevel ON dbo.BASE_HFit_LKP_RewardGroupLevel
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerVegetables ON dbo.BASE_HFit_TrackerVegetables
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Messaging_Message ON dbo.BASE_Messaging_Message
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_ChallengeTeam ON dbo.BASE_hfit_ChallengeTeam
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Document ON dbo.BASE_CMS_Document
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ObjectWorkflowTrigger ON dbo.BASE_CMS_ObjectWorkflowTrigger
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_Supplier ON dbo.BASE_COM_Supplier
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengePostTemplate ON dbo.BASE_HFit_ChallengePostTemplate
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HA_UseAndDisclosure ON dbo.BASE_HFit_HA_UseAndDisclosure
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_ShippingOptionTaxClass ON dbo.BASE_COM_ShippingOptionTaxClass
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentUserQuestionStaging ON dbo.BASE_HFit_HealthAssesmentUserQuestionStaging
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ToDoSmallSteps ON dbo.BASE_HFit_ToDoSmallSteps
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_FAQ_Joined ON dbo.BASE_View_CONTENT_FAQ_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Badge ON dbo.BASE_CMS_Badge
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_RewardGroupLevel ON dbo.BASE_HFit_LKP_RewardGroupLevel
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerVegetables ON dbo.BASE_HFit_TrackerVegetables
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentUserQuestionGroupResults ON dbo.BASE_HFit_HealthAssesmentUserQuestionGroupResults
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_ExchangeTable ON dbo.BASE_COM_ExchangeTable
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_ClientDeviceSuspensionLog ON dbo.BASE_Hfit_ClientDeviceSuspensionLog
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Messaging_Message ON dbo.BASE_Messaging_Message
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ObjectWorkflowTrigger ON dbo.BASE_CMS_ObjectWorkflowTrigger
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingEnrollmentReport ON dbo.BASE_HFit_CoachingEnrollmentReport
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_Supplier ON dbo.BASE_COM_Supplier
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_RewardAwardDetail ON dbo.BASE_view_EDW_RewardAwardDetail
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Country ON dbo.BASE_CMS_Country
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HA_UseAndDisclosure ON dbo.BASE_HFit_HA_UseAndDisclosure
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingGetStarted_Joined ON dbo.BASE_View_HFit_CoachingGetStarted_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ToDoSmallSteps ON dbo.BASE_HFit_ToDoSmallSteps
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_FAQ_Joined ON dbo.BASE_View_CONTENT_FAQ_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ScreeningEventDate ON dbo.BASE_HFit_ScreeningEventDate
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Badge ON dbo.BASE_CMS_Badge
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentUserQuestionGroupResults ON dbo.BASE_HFit_HealthAssesmentUserQuestionGroupResults
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_ExchangeTable ON dbo.BASE_COM_ExchangeTable
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_ClientDeviceSuspensionLog ON dbo.BASE_Hfit_ClientDeviceSuspensionLog
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardDefaultSettings ON dbo.BASE_HFit_RewardDefaultSettings
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_StagingEligibility ON dbo.BASE_HFit_StagingEligibility
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_DocumentAlias ON dbo.BASE_CMS_DocumentAlias
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentModuleCodeNames ON dbo.BASE_HFit_HealthAssesmentModuleCodeNames
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingEnrollmentReport ON dbo.BASE_HFit_CoachingEnrollmentReport
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_RewardAwardDetail ON dbo.BASE_view_EDW_RewardAwardDetail
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Country ON dbo.BASE_CMS_Country
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerRegularMeals ON dbo.BASE_HFit_TrackerRegularMeals
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingGetStarted_Joined ON dbo.BASE_View_HFit_CoachingGetStarted_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ScreeningEventDate ON dbo.BASE_HFit_ScreeningEventDate
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_EmailTemplate ON dbo.BASE_CMS_EmailTemplate
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardDefaultSettings ON dbo.BASE_HFit_RewardDefaultSettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_StagingEligibility ON dbo.BASE_HFit_StagingEligibility
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_DocumentAlias ON dbo.BASE_CMS_DocumentAlias
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentModuleCodeNames ON dbo.BASE_HFit_HealthAssesmentModuleCodeNames
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_EDW_HealthAssessment ON dbo.BASE_EDW_HealthAssessment
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_PostMessage_Joined ON dbo.BASE_View_HFit_PostMessage_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerRegularMeals ON dbo.BASE_HFit_TrackerRegularMeals
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_EDW_RewardProgram_Joined ON dbo.BASE_View_EDW_RewardProgram_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_InlineControl ON dbo.BASE_CMS_InlineControl
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_AccountStatus ON dbo.BASE_OM_AccountStatus
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_TipOfTheDayCategory ON dbo.BASE_Hfit_TipOfTheDayCategory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_EmailTemplate ON dbo.BASE_CMS_EmailTemplate
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerSugaryFoods ON dbo.BASE_HFit_TrackerSugaryFoods
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HA_UseAndDisclosure_Joined ON dbo.BASE_View_HFit_HA_UseAndDisclosure_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Coaches ON dbo.BASE_HFit_Coaches
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RewardTriggerTobaccoParameter_Joined ON dbo.BASE_View_HFit_RewardTriggerTobaccoParameter_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_EDW_HealthAssessment ON dbo.BASE_EDW_HealthAssessment
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_PostMessage_Joined ON dbo.BASE_View_HFit_PostMessage_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PostSubscriber ON dbo.BASE_HFit_PostSubscriber
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentTCScoring ON dbo.BASE_HFit_HealthAssessmentTCScoring
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_EDW_RewardProgram_Joined ON dbo.BASE_View_EDW_RewardProgram_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_InlineControl ON dbo.BASE_CMS_InlineControl
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HSAbout_Joined ON dbo.BASE_View_HFit_HSAbout_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_AccountStatus ON dbo.BASE_OM_AccountStatus
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ChallengeNewsletter_Joined ON dbo.BASE_View_HFit_ChallengeNewsletter_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_TipOfTheDayCategory ON dbo.BASE_Hfit_TipOfTheDayCategory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_TermsConditions_Joined ON dbo.BASE_View_HFit_TermsConditions_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardException ON dbo.BASE_HFit_RewardException
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerSugaryFoods ON dbo.BASE_HFit_TrackerSugaryFoods
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HA_UseAndDisclosure_Joined ON dbo.BASE_View_HFit_HA_UseAndDisclosure_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Coaches ON dbo.BASE_HFit_Coaches
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RewardTriggerTobaccoParameter_Joined ON dbo.BASE_View_HFit_RewardTriggerTobaccoParameter_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_PPTEligibility ON dbo.BASE_hfit_PPTEligibility
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HACampaign ON dbo.BASE_HFit_HACampaign
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_Laptop_Joined ON dbo.BASE_View_CONTENT_Laptop_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PostSubscriber ON dbo.BASE_HFit_PostSubscriber
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_ClientCompany ON dbo.BASE_view_EDW_ClientCompany
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentTCScoring ON dbo.BASE_HFit_HealthAssessmentTCScoring
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WorkflowHistory ON dbo.BASE_CMS_WorkflowHistory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_OM_Account_MembershipJoined ON dbo.BASE_View_OM_Account_MembershipJoined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HSAbout_Joined ON dbo.BASE_View_HFit_HSAbout_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerFruits ON dbo.BASE_HFit_TrackerFruits
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ChallengeNewsletter_Joined ON dbo.BASE_View_HFit_ChallengeNewsletter_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_TermsConditions_Joined ON dbo.BASE_View_HFit_TermsConditions_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardException ON dbo.BASE_HFit_RewardException
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_PPTEligibility ON dbo.BASE_hfit_PPTEligibility
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ContactGroupSyncExclude ON dbo.BASE_HFit_ContactGroupSyncExclude
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HACampaign ON dbo.BASE_HFit_HACampaign
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_Laptop_Joined ON dbo.BASE_View_CONTENT_Laptop_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_ClientCompany ON dbo.BASE_view_EDW_ClientCompany
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WorkflowHistory ON dbo.BASE_CMS_WorkflowHistory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_OM_Account_MembershipJoined ON dbo.BASE_View_OM_Account_MembershipJoined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_Tree_Joined_Versions ON dbo.BASE_View_CMS_Tree_Joined_Versions
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_CoachingCMTemporalContainer ON dbo.BASE_hfit_CoachingCMTemporalContainer
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LoginPageSettings ON dbo.BASE_HFit_LoginPageSettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerFruits ON dbo.BASE_HFit_TrackerFruits
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentRecomendations ON dbo.BASE_HFit_HealthAssesmentRecomendations
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengePPTRegisteredRDPostTemplate ON dbo.BASE_HFit_ChallengePPTRegisteredRDPostTemplate
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ContactGroupSyncExclude ON dbo.BASE_HFit_ContactGroupSyncExclude
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_Tree_Joined_Versions ON dbo.BASE_View_CMS_Tree_Joined_Versions
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_CoachingCMTemporalContainer ON dbo.BASE_hfit_CoachingCMTemporalContainer
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LoginPageSettings ON dbo.BASE_HFit_LoginPageSettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentRecomendations ON dbo.BASE_HFit_HealthAssesmentRecomendations
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_EventType ON dbo.BASE_HFit_EventType
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengePPTRegisteredRDPostTemplate ON dbo.BASE_HFit_ChallengePPTRegisteredRDPostTemplate
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_MVTest ON dbo.BASE_OM_MVTest
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerHighFatFoods ON dbo.BASE_HFit_TrackerHighFatFoods
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_MembershipUser ON dbo.BASE_CMS_MembershipUser
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_SchedulerEventAppointmentSlot ON dbo.BASE_HFit_SchedulerEventAppointmentSlot
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ACL ON dbo.BASE_CMS_ACL
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Personalization ON dbo.BASE_CMS_Personalization
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_EventType ON dbo.BASE_HFit_EventType
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_MVTest ON dbo.BASE_OM_MVTest
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerHighFatFoods ON dbo.BASE_HFit_TrackerHighFatFoods
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_MembershipUser ON dbo.BASE_CMS_MembershipUser
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_File_Joined ON dbo.BASE_View_CONTENT_File_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_Hfit_CoachingSystemSettings_Joined ON dbo.BASE_View_Hfit_CoachingSystemSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_SchedulerEventAppointmentSlot ON dbo.BASE_HFit_SchedulerEventAppointmentSlot
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_GroupAddUsers ON dbo.BASE_HFit_GroupAddUsers
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardParameterBase ON dbo.BASE_HFit_RewardParameterBase
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingGetUserDaysSinceActivity ON dbo.BASE_View_HFit_CoachingGetUserDaysSinceActivity
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ACL ON dbo.BASE_CMS_ACL
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Personalization ON dbo.BASE_CMS_Personalization
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_SMTPServerSite ON dbo.BASE_CMS_SMTPServerSite
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_UserAgent ON dbo.BASE_OM_UserAgent
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingCommitToQuit ON dbo.BASE_HFit_CoachingCommitToQuit
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_RewardsDefinition ON dbo.BASE_view_EDW_RewardsDefinition
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingHATemporalContainer_Joined ON dbo.BASE_View_HFit_CoachingHATemporalContainer_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_File_Joined ON dbo.BASE_View_CONTENT_File_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardsAwardUserDetailArchive ON dbo.BASE_HFit_RewardsAwardUserDetailArchive
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Hfit_CoachingSystemSettings_Joined ON dbo.BASE_View_Hfit_CoachingSystemSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_GroupAddUsers ON dbo.BASE_HFit_GroupAddUsers
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardParameterBase ON dbo.BASE_HFit_RewardParameterBase
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingGetUserDaysSinceActivity ON dbo.BASE_View_HFit_CoachingGetUserDaysSinceActivity
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_SMTPServerSite ON dbo.BASE_CMS_SMTPServerSite
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_UserAgent ON dbo.BASE_OM_UserAgent
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Configuration_CallLogCoaching_Joined ON dbo.BASE_View_HFit_Configuration_CallLogCoaching_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingCommitToQuit ON dbo.BASE_HFit_CoachingCommitToQuit
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_RewardsDefinition ON dbo.BASE_view_EDW_RewardsDefinition
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFIT_SsoConfiguration ON dbo.BASE_HFIT_SsoConfiguration
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingHATemporalContainer_Joined ON dbo.BASE_View_HFit_CoachingHATemporalContainer_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PLPPackageContent ON dbo.BASE_HFit_PLPPackageContent
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardsAwardUserDetailArchive ON dbo.BASE_HFit_RewardsAwardUserDetailArchive
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PostSubscriber_ContactMap ON dbo.BASE_HFit_PostSubscriber_ContactMap
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserGoal ON dbo.BASE_HFit_UserGoal
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Configuration_CallLogCoaching_Joined ON dbo.BASE_View_HFit_Configuration_CallLogCoaching_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFIT_SsoConfiguration ON dbo.BASE_HFIT_SsoConfiguration
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_PostQuote_Joined ON dbo.BASE_View_HFit_PostQuote_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_OrderItem ON dbo.BASE_COM_OrderItem
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PLPPackageContent ON dbo.BASE_HFit_PLPPackageContent
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Attachment ON dbo.BASE_CMS_Attachment
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentLDLScoring ON dbo.BASE_HFit_HealthAssessmentLDLScoring
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PostSubscriber_ContactMap ON dbo.BASE_HFit_PostSubscriber_ContactMap
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_GoalStatus ON dbo.BASE_HFit_LKP_GoalStatus
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HACampaign_Joined ON dbo.BASE_View_HFit_HACampaign_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_CoachingCMExclusions ON dbo.BASE_HFit_LKP_CoachingCMExclusions
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserGoal ON dbo.BASE_HFit_UserGoal
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_TrackerSleepPlanTechniques ON dbo.BASE_HFit_LKP_TrackerSleepPlanTechniques
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WebFarmServerTask ON dbo.BASE_CMS_WebFarmServerTask
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RightsResponsibilities_Joined ON dbo.BASE_View_HFit_RightsResponsibilities_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_PostQuote_Joined ON dbo.BASE_View_HFit_PostQuote_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_configFeatures ON dbo.BASE_HFit_configFeatures
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_OrderItem ON dbo.BASE_COM_OrderItem
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Attachment ON dbo.BASE_CMS_Attachment
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HSBiometricChart_Joined ON dbo.BASE_View_HFit_HSBiometricChart_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_WellnessGoalPostTemplate ON dbo.BASE_hfit_WellnessGoalPostTemplate
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentLDLScoring ON dbo.BASE_HFit_HealthAssessmentLDLScoring
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_challengeOffering_Joined ON dbo.BASE_View_hfit_challengeOffering_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_GoalStatus ON dbo.BASE_HFit_LKP_GoalStatus
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_Hfit_TimezoneConfiguration_Joined ON dbo.BASE_View_Hfit_TimezoneConfiguration_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HACampaign_Joined ON dbo.BASE_View_HFit_HACampaign_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_CoachingCMExclusions ON dbo.BASE_HFit_LKP_CoachingCMExclusions
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_TrackerSleepPlanTechniques ON dbo.BASE_HFit_LKP_TrackerSleepPlanTechniques
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentRiskCategory ON dbo.BASE_HFit_HealthAssesmentRiskCategory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_OrderStatus ON dbo.BASE_COM_OrderStatus
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WebFarmServerTask ON dbo.BASE_CMS_WebFarmServerTask
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_HAHealthCheckLog ON dbo.BASE_Hfit_HAHealthCheckLog
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RightsResponsibilities_Joined ON dbo.BASE_View_HFit_RightsResponsibilities_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_MenuItem_Joined ON dbo.BASE_View_CONTENT_MenuItem_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_configFeatures ON dbo.BASE_HFit_configFeatures
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_InternalStatus ON dbo.BASE_COM_InternalStatus
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HSHealthMeasuresSettings ON dbo.BASE_HFit_HSHealthMeasuresSettings
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_Coaches ON dbo.BASE_view_EDW_Coaches
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_ChallengeAbout ON dbo.BASE_hfit_ChallengeAbout
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ScheduledTask ON dbo.BASE_CMS_ScheduledTask
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentThresholds ON dbo.BASE_HFit_HealthAssesmentThresholds
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_OM_AccountContact_AccountJoined ON dbo.BASE_View_OM_AccountContact_AccountJoined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HSBiometricChart_Joined ON dbo.BASE_View_HFit_HSBiometricChart_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_WellnessGoalPostTemplate ON dbo.BASE_hfit_WellnessGoalPostTemplate
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_challengeOffering_Joined ON dbo.BASE_View_hfit_challengeOffering_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Hfit_TimezoneConfiguration_Joined ON dbo.BASE_View_Hfit_TimezoneConfiguration_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentRiskCategory ON dbo.BASE_HFit_HealthAssesmentRiskCategory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_OrderStatus ON dbo.BASE_COM_OrderStatus
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_HAHealthCheckLog ON dbo.BASE_Hfit_HAHealthCheckLog
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentBmiScoring ON dbo.BASE_HFit_HealthAssessmentBmiScoring
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_MenuItem_Joined ON dbo.BASE_View_CONTENT_MenuItem_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_InternalStatus ON dbo.BASE_COM_InternalStatus
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HSHealthMeasuresSettings ON dbo.BASE_HFit_HSHealthMeasuresSettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_Coaches ON dbo.BASE_view_EDW_Coaches
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_ChallengeAbout ON dbo.BASE_hfit_ChallengeAbout
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ScheduledTask ON dbo.BASE_CMS_ScheduledTask
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingWelcomeSettings_Joined ON dbo.BASE_View_HFit_CoachingWelcomeSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentThresholds ON dbo.BASE_HFit_HealthAssesmentThresholds
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_OM_AccountContact_AccountJoined ON dbo.BASE_View_OM_AccountContact_AccountJoined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_Tree_Joined_Versions_Attachments ON dbo.BASE_View_CMS_Tree_Joined_Versions_Attachments
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingCallLogTemporalContainer ON dbo.BASE_HFit_CoachingCallLogTemporalContainer
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_ChallengeTeams ON dbo.BASE_hfit_ChallengeTeams
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentBmiScoring ON dbo.BASE_HFit_HealthAssessmentBmiScoring
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_ShoppingCart ON dbo.BASE_COM_ShoppingCart
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingWelcomeSettings_Joined ON dbo.BASE_View_HFit_CoachingWelcomeSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerCardio ON dbo.BASE_HFit_TrackerCardio
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_Tree_Joined_Versions_Attachments ON dbo.BASE_View_CMS_Tree_Joined_Versions_Attachments
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingCallLogTemporalContainer ON dbo.BASE_HFit_CoachingCallLogTemporalContainer
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssesmentAnswers ON dbo.BASE_View_HFit_HealthAssesmentAnswers
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_ChallengeTeams ON dbo.BASE_hfit_ChallengeTeams
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_ShoppingCart ON dbo.BASE_COM_ShoppingCart
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFIT_Configuration_HACoaching ON dbo.BASE_HFIT_Configuration_HACoaching
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerCardio ON dbo.BASE_HFit_TrackerCardio
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ResourceSite ON dbo.BASE_CMS_ResourceSite
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WebTemplate ON dbo.BASE_CMS_WebTemplate
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ClientSecurityQuestions ON dbo.BASE_HFit_ClientSecurityQuestions
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssesmentAnswers ON dbo.BASE_View_HFit_HealthAssesmentAnswers
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_ImageGallery_Joined ON dbo.BASE_View_CONTENT_ImageGallery_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ScreeningTemporalContainer ON dbo.BASE_HFit_ScreeningTemporalContainer
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFIT_Configuration_HACoaching ON dbo.BASE_HFIT_Configuration_HACoaching
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ResourceSite ON dbo.BASE_CMS_ResourceSite
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WebTemplate ON dbo.BASE_CMS_WebTemplate
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingReadyForNotification ON dbo.BASE_View_HFit_CoachingReadyForNotification
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ClientSecurityQuestions ON dbo.BASE_HFit_ClientSecurityQuestions
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_TranslationService ON dbo.BASE_CMS_TranslationService
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_StagingScreenings ON dbo.BASE_HFit_StagingScreenings
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_CoachViewTimeZone ON dbo.BASE_HFit_LKP_CoachViewTimeZone
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_RewardTriggerParameters ON dbo.BASE_view_EDW_RewardTriggerParameters
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingHealthActionPlan_Joined ON dbo.BASE_View_HFit_CoachingHealthActionPlan_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_ImageGallery_Joined ON dbo.BASE_View_CONTENT_ImageGallery_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ScreeningTemporalContainer ON dbo.BASE_HFit_ScreeningTemporalContainer
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerInstance_Tracker ON dbo.BASE_HFit_TrackerInstance_Tracker
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Board_Board ON dbo.BASE_Board_Board
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingReadyForNotification ON dbo.BASE_View_HFit_CoachingReadyForNotification
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_TranslationService ON dbo.BASE_CMS_TranslationService
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerCotinine ON dbo.BASE_HFit_TrackerCotinine
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_StagingScreenings ON dbo.BASE_HFit_StagingScreenings
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFIT_Configuration_CMCoaching_Joined ON dbo.BASE_View_HFIT_Configuration_CMCoaching_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_CoachViewTimeZone ON dbo.BASE_HFit_LKP_CoachViewTimeZone
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Community_Group ON dbo.BASE_Community_Group
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_RewardTriggerParameters ON dbo.BASE_view_EDW_RewardTriggerParameters
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingHealthActionPlan_Joined ON dbo.BASE_View_HFit_CoachingHealthActionPlan_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerInstance_Tracker ON dbo.BASE_HFit_TrackerInstance_Tracker
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_RewardLevel ON dbo.BASE_HFit_LKP_RewardLevel
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Board_Board ON dbo.BASE_Board_Board
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_TipOfTheDayCategoryCT ON dbo.BASE_Hfit_TipOfTheDayCategoryCT
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Community_GroupMember ON dbo.BASE_Community_GroupMember
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentHbA1cScoring ON dbo.BASE_HFit_HealthAssessmentHbA1cScoring
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerCotinine ON dbo.BASE_HFit_TrackerCotinine
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_OpenIDUser ON dbo.BASE_CMS_OpenIDUser
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFIT_Configuration_CMCoaching_Joined ON dbo.BASE_View_HFIT_Configuration_CMCoaching_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Community_Group ON dbo.BASE_Community_Group
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_PostReminder_Joined ON dbo.BASE_View_HFit_PostReminder_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HAAgreement ON dbo.BASE_HFit_HAAgreement
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_BannedIP ON dbo.BASE_CMS_BannedIP
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingEnrollmentSettings_Joined ON dbo.BASE_View_HFit_CoachingEnrollmentSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_RewardLevel ON dbo.BASE_HFit_LKP_RewardLevel
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_UnitOfMeasure ON dbo.BASE_HFit_LKP_UnitOfMeasure
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_TipOfTheDayCategoryCT ON dbo.BASE_Hfit_TipOfTheDayCategoryCT
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Community_GroupMember ON dbo.BASE_Community_GroupMember
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_Hfit_HACampaigns_Joined ON dbo.BASE_View_Hfit_HACampaigns_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingGetStarted ON dbo.BASE_HFit_CoachingGetStarted
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentHbA1cScoring ON dbo.BASE_HFit_HealthAssessmentHbA1cScoring
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ScheduledNotification_Joined ON dbo.BASE_View_HFit_ScheduledNotification_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_OpenIDUser ON dbo.BASE_CMS_OpenIDUser
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_CssStylesheet ON dbo.BASE_CMS_CssStylesheet
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_PostReminder_Joined ON dbo.BASE_View_HFit_PostReminder_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HAAgreement ON dbo.BASE_HFit_HAAgreement
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_BannedIP ON dbo.BASE_CMS_BannedIP
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_ContactGroup ON dbo.BASE_OM_ContactGroup
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingEnrollmentSettings_Joined ON dbo.BASE_View_HFit_CoachingEnrollmentSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HSGraphRangeSetting_Joined ON dbo.BASE_View_HFit_HSGraphRangeSetting_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_UnitOfMeasure ON dbo.BASE_HFit_LKP_UnitOfMeasure
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ChallengePostTemplate_Joined ON dbo.BASE_View_HFit_ChallengePostTemplate_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_TipOfTheDay_Joined ON dbo.BASE_View_HFit_TipOfTheDay_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Hfit_HACampaigns_Joined ON dbo.BASE_View_Hfit_HACampaigns_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingGetStarted ON dbo.BASE_HFit_CoachingGetStarted
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_PressRelease_Joined ON dbo.BASE_View_CONTENT_PressRelease_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_DocumentCategory ON dbo.BASE_CMS_DocumentCategory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ScheduledNotification_Joined ON dbo.BASE_View_HFit_ScheduledNotification_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ContentBlock ON dbo.BASE_HFit_ContentBlock
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_UserCulture ON dbo.BASE_CMS_UserCulture
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_News_Joined ON dbo.BASE_View_CONTENT_News_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_CssStylesheet ON dbo.BASE_CMS_CssStylesheet
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_RewardTrigger ON dbo.BASE_HFit_LKP_RewardTrigger
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_Tree_Joined_Linked ON dbo.BASE_View_CMS_Tree_Joined_Linked
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_CoachingDefinition ON dbo.BASE_view_EDW_CoachingDefinition
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_ContactGroup ON dbo.BASE_OM_ContactGroup
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardsUserInterfaceState ON dbo.BASE_HFit_RewardsUserInterfaceState
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_OM_AccountContact_ContactJoined ON dbo.BASE_View_OM_AccountContact_ContactJoined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HSGraphRangeSetting_Joined ON dbo.BASE_View_HFit_HSGraphRangeSetting_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ChallengePostTemplate_Joined ON dbo.BASE_View_HFit_ChallengePostTemplate_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_EmailUser ON dbo.BASE_CMS_EmailUser
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_TipOfTheDay_Joined ON dbo.BASE_View_HFit_TipOfTheDay_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_CurrencyExchangeRate ON dbo.BASE_COM_CurrencyExchangeRate
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_DocumentCategory ON dbo.BASE_CMS_DocumentCategory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ContentBlock ON dbo.BASE_HFit_ContentBlock
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_UserCulture ON dbo.BASE_CMS_UserCulture
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_News_Joined ON dbo.BASE_View_CONTENT_News_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_RewardTrigger ON dbo.BASE_HFit_LKP_RewardTrigger
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_CoachingDefinition ON dbo.BASE_view_EDW_CoachingDefinition
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardsUserInterfaceState ON dbo.BASE_HFit_RewardsUserInterfaceState
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_InlineControlSite ON dbo.BASE_CMS_InlineControlSite
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_OM_AccountContact_ContactJoined ON dbo.BASE_View_OM_AccountContact_ContactJoined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_EmailUser ON dbo.BASE_CMS_EmailUser
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_FooterAdministration ON dbo.BASE_HFit_FooterAdministration
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_CurrencyExchangeRate ON dbo.BASE_COM_CurrencyExchangeRate
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_EDW_HealthAssessmentDefinition ON dbo.BASE_EDW_HealthAssessmentDefinition
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_MVTVariant ON dbo.BASE_OM_MVTVariant
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentTriglyceridesScoring ON dbo.BASE_HFit_HealthAssessmentTriglyceridesScoring
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_InlineControlSite ON dbo.BASE_CMS_InlineControlSite
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardsUserLevelDetail ON dbo.BASE_HFit_RewardsUserLevelDetail
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_SchedulerEventType ON dbo.BASE_HFit_SchedulerEventType
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_FooterAdministration ON dbo.BASE_HFit_FooterAdministration
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssesmentPageBreaks ON dbo.BASE_View_HFit_HealthAssesmentPageBreaks
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_EDW_HealthAssessmentDefinition ON dbo.BASE_EDW_HealthAssessmentDefinition
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_MVTVariant ON dbo.BASE_OM_MVTVariant
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_BookingSystem_Joined ON dbo.BASE_View_BookingSystem_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentTriglyceridesScoring ON dbo.BASE_HFit_HealthAssessmentTriglyceridesScoring
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WorkflowScope ON dbo.BASE_CMS_WorkflowScope
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardsUserLevelDetail ON dbo.BASE_HFit_RewardsUserLevelDetail
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_UserRole_MembershipRole_ValidOnly_Joined ON dbo.BASE_View_CMS_UserRole_MembershipRole_ValidOnly_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_SchedulerEventType ON dbo.BASE_HFit_SchedulerEventType
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_GroupRebuildSchedule ON dbo.BASE_HFit_GroupRebuildSchedule
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssesmentPageBreaks ON dbo.BASE_View_HFit_HealthAssesmentPageBreaks
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_State ON dbo.BASE_CMS_State
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_PM_Project ON dbo.BASE_PM_Project
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_TaxClassCountry ON dbo.BASE_COM_TaxClassCountry
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_settingkeybak ON dbo.BASE_CMS_settingkeybak
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WorkflowScope ON dbo.BASE_CMS_WorkflowScope
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingServiceLevelProgramDates ON dbo.BASE_View_HFit_CoachingServiceLevelProgramDates
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_UserRole_MembershipRole_ValidOnly_Joined ON dbo.BASE_View_CMS_UserRole_MembershipRole_ValidOnly_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_GroupRebuildSchedule ON dbo.BASE_HFit_GroupRebuildSchedule
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_MarketplaceProduct ON dbo.BASE_Hfit_MarketplaceProduct
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_User_With_HFitCoachingSettings ON dbo.BASE_View_CMS_User_With_HFitCoachingSettings
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentRecomendationTypes ON dbo.BASE_HFit_HealthAssesmentRecomendationTypes
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_State ON dbo.BASE_CMS_State
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_PM_Project ON dbo.BASE_PM_Project
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_TaxClassCountry ON dbo.BASE_COM_TaxClassCountry
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingWelcomeSettings ON dbo.BASE_HFit_CoachingWelcomeSettings
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_RewardUserDetail ON dbo.BASE_view_EDW_RewardUserDetail
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_SsoData ON dbo.BASE_HFit_SsoData
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingHealthArea_Joined ON dbo.BASE_View_HFit_CoachingHealthArea_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_settingkeybak ON dbo.BASE_CMS_settingkeybak
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_Post ON dbo.BASE_hfit_Post
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingServiceLevelProgramDates ON dbo.BASE_View_HFit_CoachingServiceLevelProgramDates
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerWater ON dbo.BASE_HFit_TrackerWater
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_MarketplaceProduct ON dbo.BASE_Hfit_MarketplaceProduct
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_User_With_HFitCoachingSettings ON dbo.BASE_View_CMS_User_With_HFitCoachingSettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentRecomendationTypes ON dbo.BASE_HFit_HealthAssesmentRecomendationTypes
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFIT_Configuration_HACoaching_Joined ON dbo.BASE_View_HFIT_Configuration_HACoaching_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingWelcomeSettings ON dbo.BASE_HFit_CoachingWelcomeSettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_RewardUserDetail ON dbo.BASE_view_EDW_RewardUserDetail
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_SsoData ON dbo.BASE_HFit_SsoData
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingHealthArea_Joined ON dbo.BASE_View_HFit_CoachingHealthArea_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_MetaFile ON dbo.BASE_CMS_MetaFile
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HSLearnMoreDocument_Joined ON dbo.BASE_View_HFit_HSLearnMoreDocument_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_OrderItemSKUFile ON dbo.BASE_COM_OrderItemSKUFile
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_Post ON dbo.BASE_hfit_Post
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HES_Award ON dbo.BASE_HFit_HES_Award
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Announcements ON dbo.BASE_HFit_Announcements
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerWater ON dbo.BASE_HFit_TrackerWater
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentUserRiskArea ON dbo.BASE_HFit_HealthAssesmentUserRiskArea
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Query ON dbo.BASE_CMS_Query
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WebFarmTask ON dbo.BASE_CMS_WebFarmTask
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFIT_Configuration_HACoaching_Joined ON dbo.BASE_View_HFIT_Configuration_HACoaching_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_SettingsCategory ON dbo.BASE_CMS_SettingsCategory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_PrivacyPolicy_Joined ON dbo.BASE_View_HFit_PrivacyPolicy_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerHighSodiumFoods ON dbo.BASE_HFit_TrackerHighSodiumFoods
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_configGroupToFeature ON dbo.BASE_HFit_configGroupToFeature
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_MetaFile ON dbo.BASE_CMS_MetaFile
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HESChallenge_Joined ON dbo.BASE_View_HFit_HESChallenge_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFIT_Tracker ON dbo.BASE_HFIT_Tracker
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HSLearnMoreDocument_Joined ON dbo.BASE_View_HFit_HSLearnMoreDocument_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_OrderItemSKUFile ON dbo.BASE_COM_OrderItemSKUFile
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HES_Award ON dbo.BASE_HFit_HES_Award
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Announcements ON dbo.BASE_HFit_Announcements
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_WellnessGoals ON dbo.BASE_HFit_WellnessGoals
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentUserRiskArea ON dbo.BASE_HFit_HealthAssesmentUserRiskArea
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Query ON dbo.BASE_CMS_Query
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HAWelcomeSettings_Joined ON dbo.BASE_View_HFit_HAWelcomeSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_CoachingSystemSettings ON dbo.BASE_Hfit_CoachingSystemSettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WebFarmTask ON dbo.BASE_CMS_WebFarmTask
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_Product_Joined ON dbo.BASE_View_CONTENT_Product_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ScreeningEvent_Joined ON dbo.BASE_View_HFit_ScreeningEvent_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_SettingsCategory ON dbo.BASE_CMS_SettingsCategory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_PrivacyPolicy_Joined ON dbo.BASE_View_HFit_PrivacyPolicy_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_Tree_Joined_Regular ON dbo.BASE_View_CMS_Tree_Joined_Regular
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerHighSodiumFoods ON dbo.BASE_HFit_TrackerHighSodiumFoods
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_configGroupToFeature ON dbo.BASE_HFit_configGroupToFeature
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HESChallenge_Joined ON dbo.BASE_View_HFit_HESChallenge_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HSLearnMoreDocument ON dbo.BASE_HFit_HSLearnMoreDocument
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFIT_Tracker ON dbo.BASE_HFIT_Tracker
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_challengeBase ON dbo.BASE_hfit_challengeBase
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerCategory ON dbo.BASE_HFit_TrackerCategory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HSHealthMeasuresSettings_Joined ON dbo.BASE_View_HFit_HSHealthMeasuresSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_WellnessGoals ON dbo.BASE_HFit_WellnessGoals
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ChallengePPTEligibleCDPostTemplate_Joined ON dbo.BASE_View_HFit_ChallengePPTEligibleCDPostTemplate_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_Hfit_TipOfTheDayCategory_Joined ON dbo.BASE_View_Hfit_TipOfTheDayCategory_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HAWelcomeSettings_Joined ON dbo.BASE_View_HFit_HAWelcomeSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_CoachingSystemSettings ON dbo.BASE_Hfit_CoachingSystemSettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_Product_Joined ON dbo.BASE_View_CONTENT_Product_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ScreeningEvent_Joined ON dbo.BASE_View_HFit_ScreeningEvent_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_Office_Joined ON dbo.BASE_View_CONTENT_Office_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HSLearnMoreDocument ON dbo.BASE_HFit_HSLearnMoreDocument
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_CoachingDetail ON dbo.BASE_view_EDW_CoachingDetail
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_challengeBase ON dbo.BASE_hfit_challengeBase
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardsUserSummaryArchive ON dbo.BASE_HFit_RewardsUserSummaryArchive
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerCategory ON dbo.BASE_HFit_TrackerCategory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_OM_ContactGroupMember_AccountJoined ON dbo.BASE_View_OM_ContactGroupMember_AccountJoined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HSHealthMeasuresSettings_Joined ON dbo.BASE_View_HFit_HSHealthMeasuresSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ChallengePPTEligibleCDPostTemplate_Joined ON dbo.BASE_View_HFit_ChallengePPTEligibleCDPostTemplate_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Hfit_TipOfTheDayCategory_Joined ON dbo.BASE_View_Hfit_TipOfTheDayCategory_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerTests ON dbo.BASE_HFit_TrackerTests
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_challengeTypes ON dbo.BASE_hfit_challengeTypes
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_Office_Joined ON dbo.BASE_View_CONTENT_Office_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_ShoppingCartSKU ON dbo.BASE_COM_ShoppingCartSKU
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_CoachingDetail ON dbo.BASE_view_EDW_CoachingDetail
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardsUserSummaryArchive ON dbo.BASE_HFit_RewardsUserSummaryArchive
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_TrackerCompositeDetails ON dbo.BASE_view_EDW_TrackerCompositeDetails
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_OM_ContactGroupMember_AccountJoined ON dbo.BASE_View_OM_ContactGroupMember_AccountJoined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_AttachmentForEmail ON dbo.BASE_CMS_AttachmentForEmail
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingHATemporalContainer ON dbo.BASE_HFit_CoachingHATemporalContainer
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentModuleConfiguration ON dbo.BASE_HFit_HealthAssessmentModuleConfiguration
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFIt_PptEligibility_mosbrun ON dbo.BASE_HFIt_PptEligibility_mosbrun
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFIT_Account ON dbo.BASE_HFIT_Account
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerTests ON dbo.BASE_HFit_TrackerTests
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_TaxClass ON dbo.BASE_COM_TaxClass
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_challengeTypes ON dbo.BASE_hfit_challengeTypes
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentMatrixQuestion ON dbo.BASE_HFit_HealthAssesmentMatrixQuestion
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_ShoppingCartSKU ON dbo.BASE_COM_ShoppingCartSKU
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_Manufacturer ON dbo.BASE_COM_Manufacturer
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_TrackerCompositeDetails ON dbo.BASE_view_EDW_TrackerCompositeDetails
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_AttachmentForEmail ON dbo.BASE_CMS_AttachmentForEmail
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ResourceString ON dbo.BASE_CMS_ResourceString
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingHATemporalContainer ON dbo.BASE_HFit_CoachingHATemporalContainer
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentModuleConfiguration ON dbo.BASE_HFit_HealthAssessmentModuleConfiguration
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFIt_PptEligibility_mosbrun ON dbo.BASE_HFIt_PptEligibility_mosbrun
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFIT_Account ON dbo.BASE_HFIT_Account
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_TaxClass ON dbo.BASE_COM_TaxClass
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssesmentQuestions ON dbo.BASE_View_HFit_HealthAssesmentQuestions
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentMatrixQuestion ON dbo.BASE_HFit_HealthAssesmentMatrixQuestion
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_Manufacturer ON dbo.BASE_COM_Manufacturer
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_SecurityQuestion ON dbo.BASE_HFit_SecurityQuestion
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_SearchEngine ON dbo.BASE_CMS_SearchEngine
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentThresholdTypes ON dbo.BASE_HFit_HealthAssesmentThresholdTypes
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_UserSettingsRole_Joined ON dbo.BASE_View_CMS_UserSettingsRole_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ResourceString ON dbo.BASE_CMS_ResourceString
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_MultiBuyCouponCode ON dbo.BASE_COM_MultiBuyCouponCode
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentThresholdGrouping ON dbo.BASE_HFit_HealthAssesmentThresholdGrouping
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssesmentQuestions ON dbo.BASE_View_HFit_HealthAssesmentQuestions
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_StatbridgeFileDownload ON dbo.BASE_HFit_StatbridgeFileDownload
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentPhysicalActivityScoring ON dbo.BASE_HFit_HealthAssesmentPhysicalActivityScoring
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentCodeNamesToTrackerMapping ON dbo.BASE_HFit_HealthAssessmentCodeNamesToTrackerMapping
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_SecurityQuestion ON dbo.BASE_HFit_SecurityQuestion
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_SearchEngine ON dbo.BASE_CMS_SearchEngine
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_Hfit_Client_Joined ON dbo.BASE_View_Hfit_Client_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentThresholdTypes ON dbo.BASE_HFit_HealthAssesmentThresholdTypes
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_UserSettingsRole_Joined ON dbo.BASE_View_CMS_UserSettingsRole_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_MultiBuyCouponCode ON dbo.BASE_COM_MultiBuyCouponCode
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_OutComeMessages ON dbo.BASE_HFit_OutComeMessages
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserCoachingAlert_NotMet_Step1 ON dbo.BASE_HFit_UserCoachingAlert_NotMet_Step1
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserSchedulerAppointment ON dbo.BASE_HFit_UserSchedulerAppointment
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentThresholdGrouping ON dbo.BASE_HFit_HealthAssesmentThresholdGrouping
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_StatbridgeFileDownload ON dbo.BASE_HFit_StatbridgeFileDownload
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_FastingState ON dbo.BASE_HFit_LKP_FastingState
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentPhysicalActivityScoring ON dbo.BASE_HFit_HealthAssesmentPhysicalActivityScoring
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingHealthActionPlan ON dbo.BASE_HFit_CoachingHealthActionPlan
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_ScheduledNotificationDeliveryType ON dbo.BASE_HFit_LKP_ScheduledNotificationDeliveryType
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentCodeNamesToTrackerMapping ON dbo.BASE_HFit_HealthAssessmentCodeNamesToTrackerMapping
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_RewardUserLevel ON dbo.BASE_view_EDW_RewardUserLevel
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingLibraryHealthArea_Joined ON dbo.BASE_View_HFit_CoachingLibraryHealthArea_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentFreeForm ON dbo.BASE_HFit_HealthAssessmentFreeForm
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Hfit_Client_Joined ON dbo.BASE_View_Hfit_Client_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_OutComeMessages ON dbo.BASE_HFit_OutComeMessages
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserCoachingAlert_NotMet_Step1 ON dbo.BASE_HFit_UserCoachingAlert_NotMet_Step1
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Tobacco_Goal ON dbo.BASE_HFit_Tobacco_Goal
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Community_GroupRolePermission ON dbo.BASE_Community_GroupRolePermission
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserSchedulerAppointment ON dbo.BASE_HFit_UserSchedulerAppointment
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentUserAnswers ON dbo.BASE_HFit_HealthAssesmentUserAnswers
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_FastingState ON dbo.BASE_HFit_LKP_FastingState
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Configuration_Joined ON dbo.BASE_View_HFit_Configuration_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingHealthActionPlan ON dbo.BASE_HFit_CoachingHealthActionPlan
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_ScheduledNotificationDeliveryType ON dbo.BASE_HFit_LKP_ScheduledNotificationDeliveryType
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_RewardUserLevel ON dbo.BASE_view_EDW_RewardUserLevel
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingLibraryHealthArea_Joined ON dbo.BASE_View_HFit_CoachingLibraryHealthArea_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_LoginPageSettings_Joined ON dbo.BASE_View_HFit_LoginPageSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentFreeForm ON dbo.BASE_HFit_HealthAssessmentFreeForm
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Widget ON dbo.BASE_CMS_Widget
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Tobacco_Goal ON dbo.BASE_HFit_Tobacco_Goal
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Community_GroupRolePermission ON dbo.BASE_Community_GroupRolePermission
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentUserAnswers ON dbo.BASE_HFit_HealthAssesmentUserAnswers
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Configuration_Joined ON dbo.BASE_View_HFit_Configuration_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ProgramFeedNotificationSettings_Joined ON dbo.BASE_View_HFit_ProgramFeedNotificationSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_LoginPageSettings_Joined ON dbo.BASE_View_HFit_LoginPageSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_ContactGroupMember ON dbo.BASE_OM_ContactGroupMember
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssesmentRiskCategory_Joined ON dbo.BASE_View_HFit_HealthAssesmentRiskCategory_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Chat_Room ON dbo.BASE_Chat_Room
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Widget ON dbo.BASE_CMS_Widget
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_TranslationSubmission ON dbo.BASE_CMS_TranslationSubmission
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssesmentMatrixQuestion_Joined ON dbo.BASE_View_HFit_HealthAssesmentMatrixQuestion_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_CoachingServiceLevel ON dbo.BASE_HFit_LKP_CoachingServiceLevel
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_SimpleArticle_Joined ON dbo.BASE_View_CONTENT_SimpleArticle_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_DocumentTag ON dbo.BASE_CMS_DocumentTag
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ScreeningEventCategory_Joined ON dbo.BASE_View_HFit_ScreeningEventCategory_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CustomSettingsTemporalContainer ON dbo.BASE_HFit_CustomSettingsTemporalContainer
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_Contact ON dbo.BASE_OM_Contact
+GO
+ENABLE TRIGGER dbo.DF_TrackerName_FACT_TrackerData ON dbo.FACT_TrackerData
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_UserRole ON dbo.BASE_CMS_UserRole
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ProgramFeedNotificationSettings_Joined ON dbo.BASE_View_HFit_ProgramFeedNotificationSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_ContactGroupMember ON dbo.BASE_OM_ContactGroupMember
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssesmentRiskCategory_Joined ON dbo.BASE_View_HFit_HealthAssesmentRiskCategory_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Chat_Room ON dbo.BASE_Chat_Room
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_hFit_ChallengePPTEligiblePostTemplate_Joined ON dbo.BASE_View_hFit_ChallengePPTEligiblePostTemplate_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_EventLog ON dbo.BASE_CMS_EventLog
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_TranslationSubmission ON dbo.BASE_CMS_TranslationSubmission
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Tobacco_Goal_Joined ON dbo.BASE_View_HFit_Tobacco_Goal_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardGroup ON dbo.BASE_HFit_RewardGroup
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssesmentMatrixQuestion_Joined ON dbo.BASE_View_HFit_HealthAssesmentMatrixQuestion_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_CoachingServiceLevel ON dbo.BASE_HFit_LKP_CoachingServiceLevel
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_Customer ON dbo.BASE_COM_Customer
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_SimpleArticle_Joined ON dbo.BASE_View_CONTENT_SimpleArticle_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_DocumentTag ON dbo.BASE_CMS_DocumentTag
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ScreeningEventCategory_Joined ON dbo.BASE_View_HFit_ScreeningEventCategory_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CustomSettingsTemporalContainer ON dbo.BASE_HFit_CustomSettingsTemporalContainer
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_Contact ON dbo.BASE_OM_Contact
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_UserRole ON dbo.BASE_CMS_UserRole
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_PressRelease_Joined ON dbo.BASE_View_CONTENT_PressRelease_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_CoachingPPTAvailable ON dbo.BASE_view_EDW_CoachingPPTAvailable
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Layout ON dbo.BASE_CMS_Layout
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_OM_ContactGroupMember_ContactJoined ON dbo.BASE_View_OM_ContactGroupMember_ContactJoined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hFit_ChallengePPTEligiblePostTemplate_Joined ON dbo.BASE_View_hFit_ChallengePPTEligiblePostTemplate_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_EventLog ON dbo.BASE_CMS_EventLog
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_cms_user ON dbo.BASE_cms_user
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Tobacco_Goal_Joined ON dbo.BASE_View_HFit_Tobacco_Goal_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardGroup ON dbo.BASE_HFit_RewardGroup
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Fulfillment ON dbo.BASE_HFit_Fulfillment
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentHDLScoring ON dbo.BASE_HFit_HealthAssessmentHDLScoring
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_Customer ON dbo.BASE_COM_Customer
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_PageTemplate ON dbo.BASE_CMS_PageTemplate
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerSummary ON dbo.BASE_HFit_TrackerSummary
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_PageVisit ON dbo.BASE_OM_PageVisit
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_CoachingPPTAvailable ON dbo.BASE_view_EDW_CoachingPPTAvailable
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Banner ON dbo.BASE_CMS_Banner
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Layout ON dbo.BASE_CMS_Layout
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_OM_ContactGroupMember_ContactJoined ON dbo.BASE_View_OM_ContactGroupMember_ContactJoined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Screening_CNT ON dbo.BASE_HFit_Screening_CNT
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_CoachingOptOutReason ON dbo.BASE_HFit_LKP_CoachingOptOutReason
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_cms_user ON dbo.BASE_cms_user
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Fulfillment ON dbo.BASE_HFit_Fulfillment
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentHDLScoring ON dbo.BASE_HFit_HealthAssessmentHDLScoring
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_PageTemplate ON dbo.BASE_CMS_PageTemplate
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_CssStylesheetSite ON dbo.BASE_CMS_CssStylesheetSite
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_PageVisit ON dbo.BASE_OM_PageVisit
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Newsletter_Joined ON dbo.BASE_View_HFit_Newsletter_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Banner ON dbo.BASE_CMS_Banner
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Screening_CNT ON dbo.BASE_HFit_Screening_CNT
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_CoachingOptOutReason ON dbo.BASE_HFit_LKP_CoachingOptOutReason
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_GroupRemovedUsers ON dbo.BASE_HFit_GroupRemovedUsers
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssesmentQuestionTitleIDX ON dbo.BASE_View_HFit_HealthAssesmentQuestionTitleIDX
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_PM_ProjectRolePermission ON dbo.BASE_PM_ProjectRolePermission
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_TaxClassState ON dbo.BASE_COM_TaxClassState
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerSummary ON dbo.BASE_HFit_TrackerSummary
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_CssStylesheetSite ON dbo.BASE_CMS_CssStylesheetSite
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Newsletter_Joined ON dbo.BASE_View_HFit_Newsletter_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_WebPartCategoryWebpart_Joined ON dbo.BASE_View_CMS_WebPartCategoryWebpart_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_GroupRemovedUsers ON dbo.BASE_HFit_GroupRemovedUsers
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_MarketplaceProductTypes ON dbo.BASE_Hfit_MarketplaceProductTypes
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssesmentQuestionTitleIDX ON dbo.BASE_View_HFit_HealthAssesmentQuestionTitleIDX
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_PM_ProjectRolePermission ON dbo.BASE_PM_ProjectRolePermission
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_TaxClassState ON dbo.BASE_COM_TaxClassState
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_SsoRequest ON dbo.BASE_HFit_SsoRequest
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFIT_Configuration_Screening ON dbo.BASE_HFIT_Configuration_Screening
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PostChallenge ON dbo.BASE_HFit_PostChallenge
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ClientContact_Joined ON dbo.BASE_View_HFit_ClientContact_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssesmentMultipleChoiceQuestion_Joined ON dbo.BASE_View_HFit_HealthAssesmentMultipleChoiceQuestion_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_WebPartCategoryWebpart_Joined ON dbo.BASE_View_CMS_WebPartCategoryWebpart_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_MarketplaceProductTypes ON dbo.BASE_Hfit_MarketplaceProductTypes
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserCoachingAlert_NotMet_Step2 ON dbo.BASE_HFit_UserCoachingAlert_NotMet_Step2
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Staging_Coach ON dbo.BASE_HFit_Staging_Coach
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_RoleEligibility ON dbo.BASE_view_EDW_RoleEligibility
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_SsoRequest ON dbo.BASE_HFit_SsoRequest
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingLibraryResource_Joined ON dbo.BASE_View_HFit_CoachingLibraryResource_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFIT_Configuration_Screening ON dbo.BASE_HFIT_Configuration_Screening
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PostChallenge ON dbo.BASE_HFit_PostChallenge
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ClientContact_Joined ON dbo.BASE_View_HFit_ClientContact_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssesmentMultipleChoiceQuestion_Joined ON dbo.BASE_View_HFit_HealthAssesmentMultipleChoiceQuestion_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HESChallenge ON dbo.BASE_HFit_HESChallenge
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_BiometricData ON dbo.BASE_HFit_BiometricData
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserCoachingAlert_NotMet_Step2 ON dbo.BASE_HFit_UserCoachingAlert_NotMet_Step2
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_TrackerStrengthActivity ON dbo.BASE_HFit_LKP_TrackerStrengthActivity
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Configuration_LMCoaching_Joined ON dbo.BASE_View_HFit_Configuration_LMCoaching_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Staging_Coach ON dbo.BASE_HFit_Staging_Coach
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_EDW_PerformanceMeasure ON dbo.BASE_EDW_PerformanceMeasure
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_RoleEligibility ON dbo.BASE_view_EDW_RoleEligibility
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_HealthAssessmentImportStatus ON dbo.BASE_HFit_LKP_HealthAssessmentImportStatus
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingLibraryResource_Joined ON dbo.BASE_View_HFit_CoachingLibraryResource_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerInstance_Item ON dbo.BASE_HFit_TrackerInstance_Item
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_Hfit_MarketplaceProduct_Joined ON dbo.BASE_View_Hfit_MarketplaceProduct_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WorkflowStep ON dbo.BASE_CMS_WorkflowStep
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HESChallenge ON dbo.BASE_HFit_HESChallenge
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_BiometricData ON dbo.BASE_HFit_BiometricData
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_TrackerStrengthActivity ON dbo.BASE_HFit_LKP_TrackerStrengthActivity
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Tag ON dbo.BASE_CMS_Tag
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Configuration_LMCoaching_Joined ON dbo.BASE_View_HFit_Configuration_LMCoaching_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_EDW_PerformanceMeasure ON dbo.BASE_EDW_PerformanceMeasure
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengeRegistrationEmail ON dbo.BASE_HFit_ChallengeRegistrationEmail
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_HealthAssessmentImportStatus ON dbo.BASE_HFit_LKP_HealthAssessmentImportStatus
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RegistrationWelcome_Joined ON dbo.BASE_View_HFit_RegistrationWelcome_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerInstance_Item ON dbo.BASE_HFit_TrackerInstance_Item
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Join_ClinicalSourceTracker ON dbo.BASE_HFit_Join_ClinicalSourceTracker
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_ChallengeFAQ ON dbo.BASE_hfit_ChallengeFAQ
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Hfit_MarketplaceProduct_Joined ON dbo.BASE_View_Hfit_MarketplaceProduct_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WorkflowStep ON dbo.BASE_CMS_WorkflowStep
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerMealPortions ON dbo.BASE_HFit_TrackerMealPortions
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_CoachingUserCMCondition ON dbo.BASE_Hfit_CoachingUserCMCondition
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_Smartphone_Joined ON dbo.BASE_View_CONTENT_Smartphone_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Tag ON dbo.BASE_CMS_Tag
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ScreeningEventDate_Joined ON dbo.BASE_View_HFit_ScreeningEventDate_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HaScoringStrategies ON dbo.BASE_HFit_HaScoringStrategies
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_UserRole_Joined ON dbo.BASE_View_CMS_UserRole_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengeRegistrationEmail ON dbo.BASE_HFit_ChallengeRegistrationEmail
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RegistrationWelcome_Joined ON dbo.BASE_View_HFit_RegistrationWelcome_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Join_ClinicalSourceTracker ON dbo.BASE_HFit_Join_ClinicalSourceTracker
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_coachExclusion ON dbo.BASE_coachExclusion
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_ChallengeFAQ ON dbo.BASE_hfit_ChallengeFAQ
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerMealPortions ON dbo.BASE_HFit_TrackerMealPortions
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_SM_FacebookAccount ON dbo.BASE_SM_FacebookAccount
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ChallengePPTRegisteredPostTemplate_Joined ON dbo.BASE_View_HFit_ChallengePPTRegisteredPostTemplate_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_TrackerCategory_Joined ON dbo.BASE_View_HFit_TrackerCategory_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_CoachingUserCMCondition ON dbo.BASE_Hfit_CoachingUserCMCondition
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerDailySteps ON dbo.BASE_HFit_TrackerDailySteps
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_Smartphone_Joined ON dbo.BASE_View_CONTENT_Smartphone_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengeUserRegistration ON dbo.BASE_HFit_ChallengeUserRegistration
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ScreeningEventDate_Joined ON dbo.BASE_View_HFit_ScreeningEventDate_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HaScoringStrategies ON dbo.BASE_HFit_HaScoringStrategies
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_UserRole_Joined ON dbo.BASE_View_CMS_UserRole_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerStress ON dbo.BASE_HFit_TrackerStress
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_coachExclusion ON dbo.BASE_coachExclusion
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_CoachingPPTEligible ON dbo.BASE_view_EDW_CoachingPPTEligible
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_AttachmentHistory ON dbo.BASE_CMS_AttachmentHistory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_SM_FacebookAccount ON dbo.BASE_SM_FacebookAccount
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ChallengePPTRegisteredPostTemplate_Joined ON dbo.BASE_View_HFit_ChallengePPTRegisteredPostTemplate_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_TrackerCategory_Joined ON dbo.BASE_View_HFit_TrackerCategory_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Relationship ON dbo.BASE_CMS_Relationship
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WebPart ON dbo.BASE_CMS_WebPart
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerDailySteps ON dbo.BASE_HFit_TrackerDailySteps
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengeUserRegistration ON dbo.BASE_HFit_ChallengeUserRegistration
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerStress ON dbo.BASE_HFit_TrackerStress
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_SettingsKey ON dbo.BASE_CMS_SettingsKey
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_CoachingPPTEligible ON dbo.BASE_view_EDW_CoachingPPTEligible
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssesmentModule_Joined ON dbo.BASE_View_HFit_HealthAssesmentModule_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_AttachmentHistory ON dbo.BASE_CMS_AttachmentHistory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingSessionCompleted ON dbo.BASE_HFit_CoachingSessionCompleted
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Relationship ON dbo.BASE_CMS_Relationship
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WebPart ON dbo.BASE_CMS_WebPart
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_SettingsKey ON dbo.BASE_CMS_SettingsKey
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerRestingHeartRate ON dbo.BASE_HFit_TrackerRestingHeartRate
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_Tree_Joined_Attachments ON dbo.BASE_View_CMS_Tree_Joined_Attachments
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_SecurityQuestionSettings ON dbo.BASE_Hfit_SecurityQuestionSettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssesmentModule_Joined ON dbo.BASE_View_HFit_HealthAssesmentModule_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingSessionCompleted ON dbo.BASE_HFit_CoachingSessionCompleted
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_MultiBuyDiscount ON dbo.BASE_COM_MultiBuyDiscount
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_HFit_HealthAssesmentUserResponses ON dbo.BASE_view_HFit_HealthAssesmentUserResponses
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_SyncTaskSettings ON dbo.BASE_HFit_SyncTaskSettings
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_ScreeningsFromTrackers ON dbo.BASE_view_EDW_ScreeningsFromTrackers
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerRestingHeartRate ON dbo.BASE_HFit_TrackerRestingHeartRate
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_Tree_Joined_Attachments ON dbo.BASE_View_CMS_Tree_Joined_Attachments
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_SecurityQuestionSettings ON dbo.BASE_Hfit_SecurityQuestionSettings
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_WidgetCategoryWidget_Joined ON dbo.BASE_View_CMS_WidgetCategoryWidget_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Configuration ON dbo.BASE_HFit_Configuration
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_MultiBuyDiscount ON dbo.BASE_COM_MultiBuyDiscount
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_ContactStatus ON dbo.BASE_OM_ContactStatus
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_HFit_HealthAssesmentUserResponses ON dbo.BASE_view_HFit_HealthAssesmentUserResponses
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_SyncTaskSettings ON dbo.BASE_HFit_SyncTaskSettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_ScreeningsFromTrackers ON dbo.BASE_view_EDW_ScreeningsFromTrackers
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_OptionCategory ON dbo.BASE_COM_OptionCategory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerBloodSugarAndGlucose ON dbo.BASE_HFit_TrackerBloodSugarAndGlucose
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingCallLogTemporalContainer_Joined ON dbo.BASE_View_HFit_CoachingCallLogTemporalContainer_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_WidgetCategoryWidget_Joined ON dbo.BASE_View_CMS_WidgetCategoryWidget_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Configuration ON dbo.BASE_HFit_Configuration
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentNonFastingGlucoseScoring ON dbo.BASE_HFit_HealthAssessmentNonFastingGlucoseScoring
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserCoachingAlert_NotMet_Step3 ON dbo.BASE_HFit_UserCoachingAlert_NotMet_Step3
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ToDoPersonal ON dbo.BASE_HFit_ToDoPersonal
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Community_Invitation ON dbo.BASE_Community_Invitation
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_ContactStatus ON dbo.BASE_OM_ContactStatus
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingLibraryResource ON dbo.BASE_HFit_CoachingLibraryResource
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_RewardType ON dbo.BASE_HFit_LKP_RewardType
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingLibraryResources_Joined ON dbo.BASE_View_HFit_CoachingLibraryResources_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_OptionCategory ON dbo.BASE_COM_OptionCategory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_OrderStatusUser ON dbo.BASE_COM_OrderStatusUser
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerBloodSugarAndGlucose ON dbo.BASE_HFit_TrackerBloodSugarAndGlucose
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingCallLogTemporalContainer_Joined ON dbo.BASE_View_HFit_CoachingCallLogTemporalContainer_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardTrigger ON dbo.BASE_HFit_RewardTrigger
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ResourceTranslation ON dbo.BASE_CMS_ResourceTranslation
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_ABTest ON dbo.BASE_OM_ABTest
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_UserType ON dbo.BASE_HFit_LKP_UserType
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentNonFastingGlucoseScoring ON dbo.BASE_HFit_HealthAssessmentNonFastingGlucoseScoring
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PPTStatus ON dbo.BASE_HFit_PPTStatus
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserCoachingAlert_NotMet_Step3 ON dbo.BASE_HFit_UserCoachingAlert_NotMet_Step3
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ToDoPersonal ON dbo.BASE_HFit_ToDoPersonal
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Community_Invitation ON dbo.BASE_Community_Invitation
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFIT_Configuration_Screening_Joined ON dbo.BASE_View_HFIT_Configuration_Screening_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingLibraryResource ON dbo.BASE_HFit_CoachingLibraryResource
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_OM_ContactGroupMember_User_ContactJoined ON dbo.BASE_View_OM_ContactGroupMember_User_ContactJoined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_RewardType ON dbo.BASE_HFit_LKP_RewardType
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingLibraryResources_Joined ON dbo.BASE_View_HFit_CoachingLibraryResources_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_SearchIndex ON dbo.BASE_CMS_SearchIndex
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Message_Joined ON dbo.BASE_View_HFit_Message_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_OrderStatusUser ON dbo.BASE_COM_OrderStatusUser
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardTrigger ON dbo.BASE_HFit_RewardTrigger
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ResourceTranslation ON dbo.BASE_CMS_ResourceTranslation
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_ABTest ON dbo.BASE_OM_ABTest
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_UserType ON dbo.BASE_HFit_LKP_UserType
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardsAboutInfoItem ON dbo.BASE_HFit_RewardsAboutInfoItem
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PPTStatus ON dbo.BASE_HFit_PPTStatus
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_DocumentTypeScope ON dbo.BASE_CMS_DocumentTypeScope
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentPredefinedAnswer ON dbo.BASE_HFit_HealthAssesmentPredefinedAnswer
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFIT_Configuration_Screening_Joined ON dbo.BASE_View_HFIT_Configuration_Screening_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_DataEntry_Clinical ON dbo.BASE_HFit_DataEntry_Clinical
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentConfiguration ON dbo.BASE_HFit_HealthAssessmentConfiguration
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_OM_ContactGroupMember_User_ContactJoined ON dbo.BASE_View_OM_ContactGroupMember_User_ContactJoined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RewardActivity_Joined ON dbo.BASE_View_HFit_RewardActivity_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_EDW_HFIT_HealthAssesmentUserRiskArea_Joined ON dbo.BASE_View_EDW_HFIT_HealthAssesmentUserRiskArea_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Board_Message ON dbo.BASE_Board_Message
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_SearchIndex ON dbo.BASE_CMS_SearchIndex
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Message_Joined ON dbo.BASE_View_HFit_Message_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssesmentRiskArea_Joined ON dbo.BASE_View_HFit_HealthAssesmentRiskArea_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerWeight ON dbo.BASE_HFit_TrackerWeight
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardsAboutInfoItem ON dbo.BASE_HFit_RewardsAboutInfoItem
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Form ON dbo.BASE_CMS_Form
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingTermsAndConditionsSettings ON dbo.BASE_HFit_CoachingTermsAndConditionsSettings
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_CustomerCreditHistory ON dbo.BASE_COM_CustomerCreditHistory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_HealthAssessmentDataForImport ON dbo.BASE_Hfit_HealthAssessmentDataForImport
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_Wireframe_Joined ON dbo.BASE_View_CONTENT_Wireframe_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_DocumentTypeScope ON dbo.BASE_CMS_DocumentTypeScope
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentPredefinedAnswer ON dbo.BASE_HFit_HealthAssesmentPredefinedAnswer
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ScreeningTemporalContainer_Joined ON dbo.BASE_View_HFit_ScreeningTemporalContainer_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_DataEntry_Clinical ON dbo.BASE_HFit_DataEntry_Clinical
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentConfiguration ON dbo.BASE_HFit_HealthAssessmentConfiguration
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RewardActivity_Joined ON dbo.BASE_View_HFit_RewardActivity_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_SKUAllowedOption ON dbo.BASE_COM_SKUAllowedOption
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Board_Message ON dbo.BASE_Board_Message
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Message ON dbo.BASE_HFit_Message
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssesmentRiskArea_Joined ON dbo.BASE_View_HFit_HealthAssesmentRiskArea_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerWeight ON dbo.BASE_HFit_TrackerWeight
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ChallengePPTRegisteredRDPostTemplate_Joined ON dbo.BASE_View_HFit_ChallengePPTRegisteredRDPostTemplate_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Form ON dbo.BASE_CMS_Form
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_TrackerDocument_Joined ON dbo.BASE_View_HFit_TrackerDocument_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingTermsAndConditionsSettings ON dbo.BASE_HFit_CoachingTermsAndConditionsSettings
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_FulfillmentCodes ON dbo.BASE_HFit_FulfillmentCodes
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_CustomerCreditHistory ON dbo.BASE_COM_CustomerCreditHistory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_HealthAssessmentDataForImport ON dbo.BASE_Hfit_HealthAssessmentDataForImport
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_Wireframe_Joined ON dbo.BASE_View_CONTENT_Wireframe_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ScreeningTemporalContainer_Joined ON dbo.BASE_View_HFit_ScreeningTemporalContainer_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_PersonalizationVariant ON dbo.BASE_OM_PersonalizationVariant
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_SKUAllowedOption ON dbo.BASE_COM_SKUAllowedOption
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Message ON dbo.BASE_HFit_Message
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_CoachingPPTEnrolled ON dbo.BASE_view_EDW_CoachingPPTEnrolled
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_PM_ProjectStatus_Joined ON dbo.BASE_View_PM_ProjectStatus_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Screening_MAP ON dbo.BASE_HFit_Screening_MAP
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WidgetCategory ON dbo.BASE_CMS_WidgetCategory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ChallengePPTRegisteredRDPostTemplate_Joined ON dbo.BASE_View_HFit_ChallengePPTRegisteredRDPostTemplate_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_HES_AwardType ON dbo.BASE_HFit_LKP_HES_AwardType
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_TrackerDocument_Joined ON dbo.BASE_View_HFit_TrackerDocument_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_FulfillmentCodes ON dbo.BASE_HFit_FulfillmentCodes
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_ContactRole ON dbo.BASE_OM_ContactRole
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Culture ON dbo.BASE_CMS_Culture
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_PersonalizationVariant ON dbo.BASE_OM_PersonalizationVariant
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_GroupRewardLevel_Joined ON dbo.BASE_View_HFit_GroupRewardLevel_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_EventLog_Joined ON dbo.BASE_View_CMS_EventLog_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_CoachingPPTEnrolled ON dbo.BASE_view_EDW_CoachingPPTEnrolled
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_PM_ProjectStatus_Joined ON dbo.BASE_View_PM_ProjectStatus_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Screening_MAP ON dbo.BASE_HFit_Screening_MAP
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WidgetCategory ON dbo.BASE_CMS_WidgetCategory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_HES_AwardType ON dbo.BASE_HFit_LKP_HES_AwardType
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_TranslationSubmissionItem ON dbo.BASE_CMS_TranslationSubmissionItem
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_PM_ProjectStatus ON dbo.BASE_PM_ProjectStatus
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_UserDepartment ON dbo.BASE_COM_UserDepartment
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_ContactRole ON dbo.BASE_OM_ContactRole
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Culture ON dbo.BASE_CMS_Culture
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerShots ON dbo.BASE_HFit_TrackerShots
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_GroupRewardLevel_Joined ON dbo.BASE_View_HFit_GroupRewardLevel_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentUserRiskCategory ON dbo.BASE_HFit_HealthAssesmentUserRiskCategory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_TranslationSubmissionItem ON dbo.BASE_CMS_TranslationSubmissionItem
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentRiskAreaCodeNames ON dbo.BASE_HFit_HealthAssesmentRiskAreaCodeNames
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_PM_ProjectStatus ON dbo.BASE_PM_ProjectStatus
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_UserDepartment ON dbo.BASE_COM_UserDepartment
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_SmallStepResponses ON dbo.BASE_view_EDW_SmallStepResponses
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_SsoRequestAttributes ON dbo.BASE_HFit_SsoRequestAttributes
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerShots ON dbo.BASE_HFit_TrackerShots
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_ObjectVersionHistoryUser_Joined ON dbo.BASE_View_CMS_ObjectVersionHistoryUser_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PostEmptyFeed ON dbo.BASE_HFit_PostEmptyFeed
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_LicenseKey ON dbo.BASE_CMS_LicenseKey
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Chat_User ON dbo.BASE_Chat_User
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_COM_SKUOptionCategory_OptionCategory_Joined ON dbo.BASE_View_COM_SKUOptionCategory_OptionCategory_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_BioMetrics ON dbo.BASE_view_EDW_BioMetrics
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentUserRiskCategory ON dbo.BASE_HFit_HealthAssesmentUserRiskCategory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentRiskAreaCodeNames ON dbo.BASE_HFit_HealthAssesmentRiskAreaCodeNames
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserTrackerCategory ON dbo.BASE_HFit_UserTrackerCategory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentImportStaging ON dbo.BASE_HFit_HealthAssessmentImportStaging
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_PageTemplateCategory ON dbo.BASE_CMS_PageTemplateCategory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_SmallStepResponses ON dbo.BASE_view_EDW_SmallStepResponses
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_SsoRequestAttributes ON dbo.BASE_HFit_SsoRequestAttributes
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardTriggerTobaccoParameter ON dbo.BASE_HFit_RewardTriggerTobaccoParameter
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_BannerCategory ON dbo.BASE_CMS_BannerCategory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PostEmptyFeed ON dbo.BASE_HFit_PostEmptyFeed
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_CoachingCMTemporalContainer_Joined ON dbo.BASE_View_hfit_CoachingCMTemporalContainer_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_LicenseKey ON dbo.BASE_CMS_LicenseKey
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Chat_User ON dbo.BASE_Chat_User
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HESChallengeTable ON dbo.BASE_HFit_HESChallengeTable
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_COM_SKUOptionCategory_OptionCategory_Joined ON dbo.BASE_View_COM_SKUOptionCategory_OptionCategory_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_BioMetrics ON dbo.BASE_view_EDW_BioMetrics
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Blurb ON dbo.BASE_HFit_Blurb
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserCoachingAlert_NotMet_Step4 ON dbo.BASE_HFit_UserCoachingAlert_NotMet_Step4
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserTrackerCategory ON dbo.BASE_HFit_UserTrackerCategory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentImportStaging ON dbo.BASE_HFit_HealthAssessmentImportStaging
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_PageTemplateCategory ON dbo.BASE_CMS_PageTemplateCategory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingEvalHARiskModule ON dbo.BASE_HFit_CoachingEvalHARiskModule
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardTriggerTobaccoParameter ON dbo.BASE_HFit_RewardTriggerTobaccoParameter
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingLibrarySettings_Joined ON dbo.BASE_View_HFit_CoachingLibrarySettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_BannerCategory ON dbo.BASE_CMS_BannerCategory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_CoachingCMTemporalContainer_Joined ON dbo.BASE_View_hfit_CoachingCMTemporalContainer_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HESChallengeTable ON dbo.BASE_HFit_HESChallengeTable
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Blurb ON dbo.BASE_HFit_Blurb
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerHeight ON dbo.BASE_HFit_TrackerHeight
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserCoachingAlert_NotMet_Step4 ON dbo.BASE_HFit_UserCoachingAlert_NotMet_Step4
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RightsResponsibilities ON dbo.BASE_HFit_RightsResponsibilities
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ConsentAndRelease_Joined ON dbo.BASE_View_HFit_ConsentAndRelease_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingEvalHARiskModule ON dbo.BASE_HFit_CoachingEvalHARiskModule
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentModule ON dbo.BASE_HFit_HealthAssesmentModule
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengeRegistrationPostTemplate ON dbo.BASE_HFit_ChallengeRegistrationPostTemplate
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingLibrarySettings_Joined ON dbo.BASE_View_HFit_CoachingLibrarySettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_join_ClinicalTrackers ON dbo.BASE_HFit_join_ClinicalTrackers
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerBloodPressure ON dbo.BASE_HFit_TrackerBloodPressure
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_challengeGeneralSettings ON dbo.BASE_hfit_challengeGeneralSettings
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_Hfit_MyHealthSettings_Joined ON dbo.BASE_View_Hfit_MyHealthSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerHeight ON dbo.BASE_HFit_TrackerHeight
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardLevel ON dbo.BASE_HFit_RewardLevel
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RightsResponsibilities ON dbo.BASE_HFit_RightsResponsibilities
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ConsentAndRelease_Joined ON dbo.BASE_View_HFit_ConsentAndRelease_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentModule ON dbo.BASE_HFit_HealthAssesmentModule
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengeRegistrationPostTemplate ON dbo.BASE_HFit_ChallengeRegistrationPostTemplate
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RewardDefaultSettings_Joined ON dbo.BASE_View_HFit_RewardDefaultSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_join_ClinicalTrackers ON dbo.BASE_HFit_join_ClinicalTrackers
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerBloodPressure ON dbo.BASE_HFit_TrackerBloodPressure
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_challengeGeneralSettings ON dbo.BASE_hfit_challengeGeneralSettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Hfit_MyHealthSettings_Joined ON dbo.BASE_View_Hfit_MyHealthSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardLevel ON dbo.BASE_HFit_RewardLevel
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssesmentPredefinedAnswer_Joined ON dbo.BASE_View_HFit_HealthAssesmentPredefinedAnswer_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_CoachingCMConditions ON dbo.BASE_HFit_LKP_CoachingCMConditions
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Class ON dbo.BASE_HFit_Class
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_SecurityQuestion_Joined ON dbo.BASE_View_HFit_SecurityQuestion_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Ref_RewardTrackerValidation ON dbo.BASE_HFit_Ref_RewardTrackerValidation
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RewardDefaultSettings_Joined ON dbo.BASE_View_HFit_RewardDefaultSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ChallengeRegistrationPostTemplate_Joined ON dbo.BASE_View_HFit_ChallengeRegistrationPostTemplate_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_UserSearch_Joined ON dbo.BASE_View_HFit_UserSearch_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssesmentPredefinedAnswer_Joined ON dbo.BASE_View_HFit_HealthAssesmentPredefinedAnswer_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_CoachingCMConditions ON dbo.BASE_HFit_LKP_CoachingCMConditions
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_TrackerTable ON dbo.BASE_HFit_LKP_TrackerTable
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Class ON dbo.BASE_HFit_Class
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_SecurityQuestion_Joined ON dbo.BASE_View_HFit_SecurityQuestion_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Ref_RewardTrackerValidation ON dbo.BASE_HFit_Ref_RewardTrackerValidation
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentAnswerCodeNames ON dbo.BASE_HFit_HealthAssesmentAnswerCodeNames
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFIT_LKP_EDW_REJECTMPI ON dbo.BASE_HFIT_LKP_EDW_REJECTMPI
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WorkflowStepRoles ON dbo.BASE_CMS_WorkflowStepRoles
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_PM_ProjectTaskStatus_Joined ON dbo.BASE_View_PM_ProjectTaskStatus_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ChallengeRegistrationPostTemplate_Joined ON dbo.BASE_View_HFit_ChallengeRegistrationPostTemplate_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_UserSearch_Joined ON dbo.BASE_View_HFit_UserSearch_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_TrackerTable ON dbo.BASE_HFit_LKP_TrackerTable
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_TagGroup ON dbo.BASE_CMS_TagGroup
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_EDW_RoleMemberHistory ON dbo.BASE_EDW_RoleMemberHistory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentAnswerCodeNames ON dbo.BASE_HFit_HealthAssesmentAnswerCodeNames
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFIT_LKP_EDW_REJECTMPI ON dbo.BASE_HFIT_LKP_EDW_REJECTMPI
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WorkflowStepRoles ON dbo.BASE_CMS_WorkflowStepRoles
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_PM_ProjectTaskStatus_Joined ON dbo.BASE_View_PM_ProjectTaskStatus_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Configuration_CallLogCoaching ON dbo.BASE_HFit_Configuration_CallLogCoaching
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_MultiBuyDiscountDepartment ON dbo.BASE_COM_MultiBuyDiscountDepartment
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_MockMpiData ON dbo.BASE_HFit_MockMpiData
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_TemporalConfigurationContainer ON dbo.BASE_hfit_TemporalConfigurationContainer
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_TagGroup ON dbo.BASE_CMS_TagGroup
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_EDW_RoleMemberHistory ON dbo.BASE_EDW_RoleMemberHistory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthSummarySettings ON dbo.BASE_HFit_HealthSummarySettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Configuration_CallLogCoaching ON dbo.BASE_HFit_Configuration_CallLogCoaching
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_MultiBuyDiscountDepartment ON dbo.BASE_COM_MultiBuyDiscountDepartment
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_MockMpiData ON dbo.BASE_HFit_MockMpiData
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentUserModule ON dbo.BASE_HFit_HealthAssesmentUserModule
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_ToDoHealthAssesmentCompleted ON dbo.BASE_View_ToDoHealthAssesmentCompleted
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_TemporalConfigurationContainer ON dbo.BASE_hfit_TemporalConfigurationContainer
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_Frequency ON dbo.BASE_HFit_LKP_Frequency
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_StressManagementActivity ON dbo.BASE_HFit_LKP_StressManagementActivity
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ObjectRelationship ON dbo.BASE_CMS_ObjectRelationship
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_EDW_BiometricViewRejectCriteria ON dbo.BASE_EDW_BiometricViewRejectCriteria
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardsUserRepeatableTriggerDetail ON dbo.BASE_HFit_RewardsUserRepeatableTriggerDetail
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_Article_Joined ON dbo.BASE_View_CONTENT_Article_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_AutomationHistory ON dbo.BASE_CMS_AutomationHistory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthSummarySettings ON dbo.BASE_HFit_HealthSummarySettings
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_RelationshipName ON dbo.BASE_CMS_RelationshipName
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentUserModule ON dbo.BASE_HFit_HealthAssesmentUserModule
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WebPartCategory ON dbo.BASE_CMS_WebPartCategory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_ToDoHealthAssesmentCompleted ON dbo.BASE_View_ToDoHealthAssesmentCompleted
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_Frequency ON dbo.BASE_HFit_LKP_Frequency
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_StressManagementActivity ON dbo.BASE_HFit_LKP_StressManagementActivity
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ObjectRelationship ON dbo.BASE_CMS_ObjectRelationship
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_EDW_BiometricViewRejectCriteria ON dbo.BASE_EDW_BiometricViewRejectCriteria
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardsUserRepeatableTriggerDetail ON dbo.BASE_HFit_RewardsUserRepeatableTriggerDetail
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingCommitToQuit_Joined ON dbo.BASE_View_HFit_CoachingCommitToQuit_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_Article_Joined ON dbo.BASE_View_CONTENT_Article_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_AutomationHistory ON dbo.BASE_CMS_AutomationHistory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_ABVariant ON dbo.BASE_OM_ABVariant
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_UserCoachingAlert_NotMet_Step5 ON dbo.BASE_HFit_UserCoachingAlert_NotMet_Step5
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_RelationshipName ON dbo.BASE_CMS_RelationshipName
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerTobaccoAttestation ON dbo.BASE_HFit_TrackerTobaccoAttestation
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WebPartCategory ON dbo.BASE_CMS_WebPartCategory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingLMTemporalContainer_Joined ON dbo.BASE_View_HFit_CoachingLMTemporalContainer_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingCommitToQuit_Joined ON dbo.BASE_View_HFit_CoachingCommitToQuit_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_ABVariant ON dbo.BASE_OM_ABVariant
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_UserCoachingAlert_NotMet_Step5 ON dbo.BASE_HFit_UserCoachingAlert_NotMet_Step5
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerTobaccoAttestation ON dbo.BASE_HFit_TrackerTobaccoAttestation
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ContentBlock_Joined ON dbo.BASE_View_HFit_ContentBlock_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_EligibilityLoadTracking ON dbo.BASE_HFit_EligibilityLoadTracking
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_Boards_BoardMessage_Joined ON dbo.BASE_View_Boards_BoardMessage_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerStrength ON dbo.BASE_HFit_TrackerStrength
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingLMTemporalContainer_Joined ON dbo.BASE_View_HFit_CoachingLMTemporalContainer_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_PaymentOption ON dbo.BASE_COM_PaymentOption
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_OutComeMessages_Joined ON dbo.BASE_View_HFit_OutComeMessages_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_IP ON dbo.BASE_OM_IP
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ContentBlock_Joined ON dbo.BASE_View_HFit_ContentBlock_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingMyGoalsSettings ON dbo.BASE_HFit_CoachingMyGoalsSettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_EligibilityLoadTracking ON dbo.BASE_HFit_EligibilityLoadTracking
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Boards_BoardMessage_Joined ON dbo.BASE_View_Boards_BoardMessage_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RewardGroup_Joined ON dbo.BASE_View_HFit_RewardGroup_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_SKUDiscountCoupon ON dbo.BASE_COM_SKUDiscountCoupon
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerStrength ON dbo.BASE_HFit_TrackerStrength
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_PaymentOption ON dbo.BASE_COM_PaymentOption
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_OutComeMessages_Joined ON dbo.BASE_View_HFit_OutComeMessages_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_IP ON dbo.BASE_OM_IP
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentPaperException ON dbo.BASE_HFit_HealthAssessmentPaperException
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingEvalHARiskCategory ON dbo.BASE_HFit_CoachingEvalHARiskCategory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Goal ON dbo.BASE_HFit_Goal
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardGroupSummary ON dbo.BASE_HFit_RewardGroupSummary
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_Forums_GroupForumPost_Joined ON dbo.BASE_View_Forums_GroupForumPost_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_Hfit_SecurityQuestionSettings_Joined ON dbo.BASE_View_Hfit_SecurityQuestionSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_AbuseReport ON dbo.BASE_CMS_AbuseReport
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingMyGoalsSettings ON dbo.BASE_HFit_CoachingMyGoalsSettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RewardGroup_Joined ON dbo.BASE_View_HFit_RewardGroup_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_Rule ON dbo.BASE_OM_Rule
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_BookingSystem_Joined ON dbo.BASE_View_BookingSystem_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_SKUDiscountCoupon ON dbo.BASE_COM_SKUDiscountCoupon
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_Tree_Joined ON dbo.BASE_View_CMS_Tree_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerBodyFat ON dbo.BASE_HFit_TrackerBodyFat
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Role ON dbo.BASE_CMS_Role
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentPaperException ON dbo.BASE_HFit_HealthAssessmentPaperException
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_ChallengeRegistrationSettings_Joined ON dbo.BASE_View_HFit_ChallengeRegistrationSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_WellnessGoal_Joined ON dbo.BASE_View_HFit_WellnessGoal_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingEvalHARiskCategory ON dbo.BASE_HFit_CoachingEvalHARiskCategory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Goal ON dbo.BASE_HFit_Goal
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardGroupSummary ON dbo.BASE_HFit_RewardGroupSummary
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Forums_GroupForumPost_Joined ON dbo.BASE_View_Forums_GroupForumPost_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Hfit_SecurityQuestionSettings_Joined ON dbo.BASE_View_Hfit_SecurityQuestionSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentUserStarted ON dbo.BASE_HFit_HealthAssesmentUserStarted
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_AbuseReport ON dbo.BASE_CMS_AbuseReport
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_Rule ON dbo.BASE_OM_Rule
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_HACampaigns ON dbo.BASE_Hfit_HACampaigns
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_EligibilityHistory ON dbo.BASE_view_EDW_EligibilityHistory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_SmallSteps ON dbo.BASE_HFit_SmallSteps
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_SearchIndexCulture ON dbo.BASE_CMS_SearchIndexCulture
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerBodyFat ON dbo.BASE_HFit_TrackerBodyFat
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerMedicalCarePlan ON dbo.BASE_HFit_TrackerMedicalCarePlan
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_Reporting_CategoryReport_Joined ON dbo.BASE_View_Reporting_CategoryReport_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Role ON dbo.BASE_CMS_Role
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardsAwardUserDetail ON dbo.BASE_HFit_RewardsAwardUserDetail
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PPTStatus_CR27070 ON dbo.BASE_HFit_PPTStatus_CR27070
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_ChallengeRegistrationSettings_Joined ON dbo.BASE_View_HFit_ChallengeRegistrationSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_WellnessGoal_Joined ON dbo.BASE_View_HFit_WellnessGoal_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_DocumentTypeScopeClass ON dbo.BASE_CMS_DocumentTypeScopeClass
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentQuestionCodeNames ON dbo.BASE_HFit_HealthAssesmentQuestionCodeNames
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentUserStarted ON dbo.BASE_HFit_HealthAssesmentUserStarted
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_PM_ProjectTask ON dbo.BASE_PM_ProjectTask
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_VariantOption ON dbo.BASE_COM_VariantOption
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_HACampaigns ON dbo.BASE_Hfit_HACampaigns
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengePPTEligibleCDPostTemplate ON dbo.BASE_HFit_ChallengePPTEligibleCDPostTemplate
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_EligibilityHistory ON dbo.BASE_view_EDW_EligibilityHistory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_SmallSteps ON dbo.BASE_HFit_SmallSteps
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_SearchIndexCulture ON dbo.BASE_CMS_SearchIndexCulture
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerMedicalCarePlan ON dbo.BASE_HFit_TrackerMedicalCarePlan
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Reporting_CategoryReport_Joined ON dbo.BASE_View_Reporting_CategoryReport_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingLibrarySettings ON dbo.BASE_HFit_CoachingLibrarySettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardsAwardUserDetail ON dbo.BASE_HFit_RewardsAwardUserDetail
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PPTStatus_CR27070 ON dbo.BASE_HFit_PPTStatus_CR27070
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_FormRole ON dbo.BASE_CMS_FormRole
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerDef_Tracker ON dbo.BASE_HFit_TrackerDef_Tracker
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_DocumentTypeScopeClass ON dbo.BASE_CMS_DocumentTypeScopeClass
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentQuestionCodeNames ON dbo.BASE_HFit_HealthAssesmentQuestionCodeNames
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_PM_ProjectTask ON dbo.BASE_PM_ProjectTask
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_VariantOption ON dbo.BASE_COM_VariantOption
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerStressManagement ON dbo.BASE_HFit_TrackerStressManagement
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssessment_Joined ON dbo.BASE_View_HFit_HealthAssessment_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Staging_Blurb ON dbo.BASE_HFit_Staging_Blurb
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengePPTEligibleCDPostTemplate ON dbo.BASE_HFit_ChallengePPTEligibleCDPostTemplate
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HA_IPadExceptionLog ON dbo.BASE_HFit_HA_IPadExceptionLog
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PostHealthEducation ON dbo.BASE_HFit_PostHealthEducation
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingLibrarySettings ON dbo.BASE_HFit_CoachingLibrarySettings
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TodoSource ON dbo.BASE_HFit_TodoSource
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_FormRole ON dbo.BASE_CMS_FormRole
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_PageTemplateCategoryPageTemplate_Joined ON dbo.BASE_View_CMS_PageTemplateCategoryPageTemplate_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ValMeasures ON dbo.BASE_HFit_ValMeasures
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentDataForMissingResponses ON dbo.BASE_HFit_HealthAssessmentDataForMissingResponses
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerDef_Tracker ON dbo.BASE_HFit_TrackerDef_Tracker
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerStressManagement ON dbo.BASE_HFit_TrackerStressManagement
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_SM_FacebookApplication ON dbo.BASE_SM_FacebookApplication
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssessment_Joined ON dbo.BASE_View_HFit_HealthAssessment_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_TrackerMetadata ON dbo.BASE_view_EDW_TrackerMetadata
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Staging_Blurb ON dbo.BASE_HFit_Staging_Blurb
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_Tree_Joined_Regular ON dbo.BASE_View_CMS_Tree_Joined_Regular
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HA_IPadExceptionLog ON dbo.BASE_HFit_HA_IPadExceptionLog
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PostHealthEducation ON dbo.BASE_HFit_PostHealthEducation
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerDef_Item ON dbo.BASE_HFit_TrackerDef_Item
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HRA ON dbo.BASE_HFit_HRA
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_Blog_Joined ON dbo.BASE_View_CONTENT_Blog_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Calculator ON dbo.BASE_HFit_Calculator
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WidgetRole ON dbo.BASE_CMS_WidgetRole
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TodoSource ON dbo.BASE_HFit_TodoSource
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_RewardCompleted ON dbo.BASE_HFit_LKP_RewardCompleted
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_PageTemplateCategoryPageTemplate_Joined ON dbo.BASE_View_CMS_PageTemplateCategoryPageTemplate_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ValMeasures ON dbo.BASE_HFit_ValMeasures
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentDataForMissingResponses ON dbo.BASE_HFit_HealthAssessmentDataForMissingResponses
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_SM_FacebookApplication ON dbo.BASE_SM_FacebookApplication
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_TrackerMetadata ON dbo.BASE_view_EDW_TrackerMetadata
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_DeviceProfile ON dbo.BASE_CMS_DeviceProfile
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_PrivacyPolicy ON dbo.BASE_HFit_PrivacyPolicy
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_PaymentShipping ON dbo.BASE_COM_PaymentShipping
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerDef_Item ON dbo.BASE_HFit_TrackerDef_Item
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HRA ON dbo.BASE_HFit_HRA
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardTriggerParameter ON dbo.BASE_HFit_RewardTriggerParameter
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_Blog_Joined ON dbo.BASE_View_CONTENT_Blog_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Calculator ON dbo.BASE_HFit_Calculator
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WidgetRole ON dbo.BASE_CMS_WidgetRole
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_ToDoCoachingEnrollment ON dbo.BASE_view_ToDoCoachingEnrollment
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_RewardCompleted ON dbo.BASE_HFit_LKP_RewardCompleted
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ScheduledNotification ON dbo.BASE_HFit_ScheduledNotification
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_Awards ON dbo.BASE_view_EDW_Awards
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengeRegistrations ON dbo.BASE_HFit_ChallengeRegistrations
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_DeviceProfile ON dbo.BASE_CMS_DeviceProfile
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_PrivacyPolicy ON dbo.BASE_HFit_PrivacyPolicy
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingMyGoalsSettings_Joined ON dbo.BASE_View_HFit_CoachingMyGoalsSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingHealthArea ON dbo.BASE_HFit_CoachingHealthArea
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ChallengeNewsletter ON dbo.BASE_HFit_ChallengeNewsletter
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_PaymentShipping ON dbo.BASE_COM_PaymentShipping
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardTriggerParameter ON dbo.BASE_HFit_RewardTriggerParameter
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_ToDoCoachingEnrollment ON dbo.BASE_view_ToDoCoachingEnrollment
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ScheduledNotification ON dbo.BASE_HFit_ScheduledNotification
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_Account ON dbo.BASE_OM_Account
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_Awards ON dbo.BASE_view_EDW_Awards
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HAWelcomeSettings ON dbo.BASE_HFit_HAWelcomeSettings
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CustomSettingsTemporalContainer_Joined ON dbo.BASE_View_HFit_CustomSettingsTemporalContainer_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengeRegistrations ON dbo.BASE_HFit_ChallengeRegistrations
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_ContactGroupType ON dbo.BASE_HFit_LKP_ContactGroupType
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingMyGoalsSettings_Joined ON dbo.BASE_View_HFit_CoachingMyGoalsSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingHealthArea ON dbo.BASE_HFit_CoachingHealthArea
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ChallengeNewsletter ON dbo.BASE_HFit_ChallengeNewsletter
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Pillar_Joined ON dbo.BASE_View_HFit_Pillar_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_MacroRule ON dbo.BASE_CMS_MacroRule
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_SM_LinkedInAccount ON dbo.BASE_SM_LinkedInAccount
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssessmentImportStagingDetail ON dbo.BASE_HFit_HealthAssessmentImportStagingDetail
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_DepartmentTaxClass ON dbo.BASE_COM_DepartmentTaxClass
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_Account ON dbo.BASE_OM_Account
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ClassType ON dbo.BASE_HFit_ClassType
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HAWelcomeSettings ON dbo.BASE_HFit_HAWelcomeSettings
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_PageTemplateScope ON dbo.BASE_CMS_PageTemplateScope
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CustomSettingsTemporalContainer_Joined ON dbo.BASE_View_HFit_CustomSettingsTemporalContainer_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingPrivacyPolicy ON dbo.BASE_HFit_CoachingPrivacyPolicy
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_ContactGroupType ON dbo.BASE_HFit_LKP_ContactGroupType
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RewardLevel_Joined ON dbo.BASE_View_HFit_RewardLevel_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_TrackerVendor ON dbo.BASE_HFit_LKP_TrackerVendor
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Screening_PPT ON dbo.BASE_HFit_Screening_PPT
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_EventLog_Joined ON dbo.BASE_View_CMS_EventLog_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Category ON dbo.BASE_CMS_Category
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Pillar_Joined ON dbo.BASE_View_HFit_Pillar_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_MacroRule ON dbo.BASE_CMS_MacroRule
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_Screening_QST ON dbo.BASE_HFit_Screening_QST
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_SM_LinkedInAccount ON dbo.BASE_SM_LinkedInAccount
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_CoachingUserCMExclusion ON dbo.BASE_Hfit_CoachingUserCMExclusion
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssessmentImportStagingDetail ON dbo.BASE_HFit_HealthAssessmentImportStagingDetail
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_DepartmentTaxClass ON dbo.BASE_COM_DepartmentTaxClass
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_Calculator_Joined ON dbo.BASE_View_HFit_Calculator_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ClassType ON dbo.BASE_HFit_ClassType
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_SmallSteps_Joined ON dbo.BASE_View_HFit_SmallSteps_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_PageTemplateScope ON dbo.BASE_CMS_PageTemplateScope
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingPrivacyPolicy ON dbo.BASE_HFit_CoachingPrivacyPolicy
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_SiteCulture ON dbo.BASE_CMS_SiteCulture
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RewardLevel_Joined ON dbo.BASE_View_HFit_RewardLevel_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_TrackerVendor ON dbo.BASE_HFit_LKP_TrackerVendor
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Screening_PPT ON dbo.BASE_HFit_Screening_PPT
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_Category ON dbo.BASE_CMS_Category
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_Screening_QST ON dbo.BASE_HFit_Screening_QST
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_ChallengeTeam_Joined ON dbo.BASE_View_hfit_ChallengeTeam_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_WellnessGoalPostTemplate_Joined ON dbo.BASE_View_hfit_WellnessGoalPostTemplate_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_CoachingUserCMExclusion ON dbo.BASE_Hfit_CoachingUserCMExclusion
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_Calculator_Joined ON dbo.BASE_View_HFit_Calculator_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_SmallSteps_Joined ON dbo.BASE_View_HFit_SmallSteps_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_SiteCulture ON dbo.BASE_CMS_SiteCulture
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_MultiBuyDiscountSKU ON dbo.BASE_COM_MultiBuyDiscountSKU
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_MyHealthSettings ON dbo.BASE_Hfit_MyHealthSettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_ChallengeTeam_Joined ON dbo.BASE_View_hfit_ChallengeTeam_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_WellnessGoalPostTemplate_Joined ON dbo.BASE_View_hfit_WellnessGoalPostTemplate_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TermsConditions ON dbo.BASE_HFit_TermsConditions
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_EDW_TrackerShots ON dbo.BASE_view_EDW_TrackerShots
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_EDW_HealthAssesmentAnswers ON dbo.BASE_View_EDW_HealthAssesmentAnswers
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_cms_usersite ON dbo.BASE_cms_usersite
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerWholeGrains ON dbo.BASE_HFit_TrackerWholeGrains
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFIT_Configuration_CMCoaching ON dbo.BASE_HFIT_Configuration_CMCoaching
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_MultiBuyDiscountSKU ON dbo.BASE_COM_MultiBuyDiscountSKU
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_MyHealthSettings ON dbo.BASE_Hfit_MyHealthSettings
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_cms_usersettings ON dbo.BASE_cms_usersettings
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ACLItem ON dbo.BASE_CMS_ACLItem
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TermsConditions ON dbo.BASE_HFit_TermsConditions
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_VersionAttachment ON dbo.BASE_CMS_VersionAttachment
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_EDW_RoleMembership ON dbo.BASE_EDW_RoleMembership
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_EDW_TrackerShots ON dbo.BASE_view_EDW_TrackerShots
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_EDW_HealthAssesmentAnswers ON dbo.BASE_View_EDW_HealthAssesmentAnswers
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_cms_usersite ON dbo.BASE_cms_usersite
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerWholeGrains ON dbo.BASE_HFit_TrackerWholeGrains
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFIT_Configuration_CMCoaching ON dbo.BASE_HFIT_Configuration_CMCoaching
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_cms_usersettings ON dbo.BASE_cms_usersettings
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_Relationship_Joined ON dbo.BASE_View_CMS_Relationship_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ACLItem ON dbo.BASE_CMS_ACLItem
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_Address ON dbo.BASE_COM_Address
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_VersionAttachment ON dbo.BASE_CMS_VersionAttachment
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_EDW_RoleMembership ON dbo.BASE_EDW_RoleMembership
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentAnswers ON dbo.BASE_HFit_HealthAssesmentAnswers
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_ConsentAndRelease ON dbo.BASE_HFit_ConsentAndRelease
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WorkflowStepUser ON dbo.BASE_CMS_WorkflowStepUser
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CONTENT_BlogMonth_Joined ON dbo.BASE_View_CONTENT_BlogMonth_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CMS_Relationship_Joined ON dbo.BASE_View_CMS_Relationship_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_TemplateDeviceLayout ON dbo.BASE_CMS_TemplateDeviceLayout
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_Address ON dbo.BASE_COM_Address
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerCholesterol ON dbo.BASE_HFit_TrackerCholesterol
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentAnswers ON dbo.BASE_HFit_HealthAssesmentAnswers
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_ConsentAndRelease ON dbo.BASE_HFit_ConsentAndRelease
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WorkflowStepUser ON dbo.BASE_CMS_WorkflowStepUser
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingEvalHAOverall_Joined ON dbo.BASE_View_HFit_CoachingEvalHAOverall_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_CONTENT_BlogMonth_Joined ON dbo.BASE_View_CONTENT_BlogMonth_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_view_ToDoCoachingEnrollmentCompleted ON dbo.BASE_view_ToDoCoachingEnrollmentCompleted
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_TemplateDeviceLayout ON dbo.BASE_CMS_TemplateDeviceLayout
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_EmailTemplate ON dbo.BASE_HFit_EmailTemplate
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentMultipleChoiceQuestion ON dbo.BASE_HFit_HealthAssesmentMultipleChoiceQuestion
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerCholesterol ON dbo.BASE_HFit_TrackerCholesterol
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_CoachingMyHealthInterestsSettings_Joined ON dbo.BASE_View_HFit_CoachingMyHealthInterestsSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_Membership ON dbo.BASE_OM_Membership
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingEvalHAOverall_Joined ON dbo.BASE_View_HFit_CoachingEvalHAOverall_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_CallResult ON dbo.BASE_HFit_LKP_CallResult
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_view_ToDoCoachingEnrollmentCompleted ON dbo.BASE_view_ToDoCoachingEnrollmentCompleted
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_FulfillmentFeatures ON dbo.BASE_HFit_LKP_FulfillmentFeatures
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_EmailTemplate_Joined ON dbo.BASE_View_HFit_EmailTemplate_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_EmailTemplate ON dbo.BASE_HFit_EmailTemplate
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_TrackerCardioActivity ON dbo.BASE_HFit_LKP_TrackerCardioActivity
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_HealthAssesmentMultipleChoiceQuestion ON dbo.BASE_HFit_HealthAssesmentMultipleChoiceQuestion
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_CMS_ObjectVersionHistoryUser_Joined ON dbo.BASE_View_CMS_ObjectVersionHistoryUser_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_SKUFile ON dbo.BASE_COM_SKUFile
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_ObjectSettings ON dbo.BASE_CMS_ObjectSettings
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_CoachingMyHealthInterestsSettings_Joined ON dbo.BASE_View_HFit_CoachingMyHealthInterestsSettings_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_PLPPackageContent_Joined ON dbo.BASE_View_HFit_PLPPackageContent_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_Membership ON dbo.BASE_OM_Membership
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_RewardsUserSummary ON dbo.BASE_HFit_RewardsUserSummary
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_AutomationState ON dbo.BASE_CMS_AutomationState
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_CallResult ON dbo.BASE_HFit_LKP_CallResult
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_RelationshipNameSite ON dbo.BASE_CMS_RelationshipNameSite
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_GoalCategory ON dbo.BASE_HFit_GoalCategory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_WebPartContainer ON dbo.BASE_CMS_WebPartContainer
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_FulfillmentFeatures ON dbo.BASE_HFit_LKP_FulfillmentFeatures
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_EmailTemplate_Joined ON dbo.BASE_View_HFit_EmailTemplate_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingEvalHAOverall ON dbo.BASE_HFit_CoachingEvalHAOverall
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_TrackerCardioActivity ON dbo.BASE_HFit_LKP_TrackerCardioActivity
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_RewardParameterBase_Joined ON dbo.BASE_View_HFit_RewardParameterBase_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_OM_Score ON dbo.BASE_OM_Score
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_SKUFile ON dbo.BASE_COM_SKUFile
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_ObjectSettings ON dbo.BASE_CMS_ObjectSettings
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_EDW_GroupMemberHistory ON dbo.BASE_EDW_GroupMemberHistory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_PLPPackageContent_Joined ON dbo.BASE_View_HFit_PLPPackageContent_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_RewardsUserSummary ON dbo.BASE_HFit_RewardsUserSummary
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_RewardTriggerParameter ON dbo.BASE_HFit_LKP_RewardTriggerParameter
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_AutomationState ON dbo.BASE_CMS_AutomationState
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_Hfit_LKP_NicotineAssessment ON dbo.BASE_Hfit_LKP_NicotineAssessment
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_RelationshipNameSite ON dbo.BASE_CMS_RelationshipNameSite
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_HFit_HealthAssessmentConfiguration_Joined ON dbo.BASE_View_HFit_HealthAssessmentConfiguration_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_CoachingEvalHARiskArea ON dbo.BASE_HFit_CoachingEvalHARiskArea
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_GoalCategory ON dbo.BASE_HFit_GoalCategory
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_WebPartContainer ON dbo.BASE_CMS_WebPartContainer
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_challenge_Joined ON dbo.BASE_View_hfit_challenge_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_SocialProof_Joined ON dbo.BASE_View_hfit_SocialProof_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingEvalHAOverall ON dbo.BASE_HFit_CoachingEvalHAOverall
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_RewardParameterBase_Joined ON dbo.BASE_View_HFit_RewardParameterBase_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_OM_Score ON dbo.BASE_OM_Score
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_TrackerSitLess ON dbo.BASE_HFit_TrackerSitLess
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_PublicStatus ON dbo.BASE_COM_PublicStatus
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_EDW_GroupMemberHistory ON dbo.BASE_EDW_GroupMemberHistory
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_hfit_SocialProof ON dbo.BASE_hfit_SocialProof
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_SearchIndexSite ON dbo.BASE_CMS_SearchIndexSite
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_LKP_RewardTriggerParameter ON dbo.BASE_HFit_LKP_RewardTriggerParameter
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_hfit_ChallengeTeams_Joined ON dbo.BASE_View_hfit_ChallengeTeams_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_Hfit_LKP_NicotineAssessment ON dbo.BASE_Hfit_LKP_NicotineAssessment
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_UIElement ON dbo.BASE_CMS_UIElement
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_View_Integration_Task_Joined ON dbo.BASE_View_Integration_Task_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_HFit_HealthAssessmentConfiguration_Joined ON dbo.BASE_View_HFit_HealthAssessmentConfiguration_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_CoachingEvalHARiskArea ON dbo.BASE_HFit_CoachingEvalHARiskArea
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_challenge_Joined ON dbo.BASE_View_hfit_challenge_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_Email ON dbo.BASE_CMS_Email
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_SocialProof_Joined ON dbo.BASE_View_hfit_SocialProof_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_PM_ProjectTaskPriority ON dbo.BASE_PM_ProjectTaskPriority
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_COM_VolumeDiscount ON dbo.BASE_COM_VolumeDiscount
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_HFit_TrackerSitLess ON dbo.BASE_HFit_TrackerSitLess
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_COM_PublicStatus ON dbo.BASE_COM_PublicStatus
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_hfit_SocialProof ON dbo.BASE_hfit_SocialProof
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_SearchIndexSite ON dbo.BASE_CMS_SearchIndexSite
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_hfit_ChallengeTeams_Joined ON dbo.BASE_View_hfit_ChallengeTeams_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_CMS_FormUserControl ON dbo.BASE_CMS_FormUserControl
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_CMS_UIElement ON dbo.BASE_CMS_UIElement
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_HealthAssesmentRiskCategoryCodeNames ON dbo.BASE_HFit_HealthAssesmentRiskCategoryCodeNames
+GO
+ENABLE TRIGGER dbo.TRIG_UPDT_BASE_View_Integration_Task_Joined ON dbo.BASE_View_Integration_Task_Joined
+GO
+ENABLE TRIGGER dbo.TRIG_DEL_BASE_HFit_LKP_HES_ValueType ON dbo.BASE_HFit_LKP_HES_ValueType
+GO
+-- W. Dale Miller
+-- DMA, Limited
+-- Offered under GNU License
+-- July 26, 2016
+
+-- W. Dale Miller
+-- DMA, Limited
+-- Offered under GNU License
+-- July 26, 2016

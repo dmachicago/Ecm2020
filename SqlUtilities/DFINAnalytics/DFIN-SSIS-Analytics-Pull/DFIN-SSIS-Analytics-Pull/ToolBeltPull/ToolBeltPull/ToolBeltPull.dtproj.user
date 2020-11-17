@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataTransformationsUserConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Configurations>
+    <Configuration>
+      <Name>Development</Name>
+      <Options>
+        <ServerName>Alien15</ServerName>
+        <PathOnServer />
+        <UserIDs>
+          <ConfigurationSetting>
+            <Id>{0E038B80-B481-4C50-9569-D0FA2B0ED04B}</Id>
+            <Name>{0E038B80-B481-4C50-9569-D0FA2B0ED04B}</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAALeV6FyeyykiFbqb9tcvrJQAAAABOAAAAewAwAEUAMAAzADgAQgA4ADAALQBCADQAOAAxAC0ANABDADUAMAAtADkANQA2ADkALQBEADAARgBBADIAQgAwAEUARAAwADQAQgB9AAAAEGYAAAABAAAgAAAA87lHoxHWySQXzSkLxNl0XOHfyoTF+PonIXNGJPnCK3oAAAAADoAAAAACAAAgAAAAoBVda8N4dr9DY1cHhu9uICA7b38SeXRn8c9pNk5eVFUQAAAAdN3snPosptMcFlOoGLouj0AAAABrI+rJ/fQTBW9AB2X5T12hPWTg16PhAeVHyULALv9r3MbcXJR32DUnAuiW86CCFT2DkYUrGnfJ6d+bdh2M7LQm</Value>
+          </ConfigurationSetting>
+        </UserIDs>
+        <UserPasswords>
+          <ConfigurationSetting>
+            <Id>{0E038B80-B481-4C50-9569-D0FA2B0ED04B}</Id>
+            <Name>{0E038B80-B481-4C50-9569-D0FA2B0ED04B}</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAALeV6FyeyykiFbqb9tcvrJQAAAABOAAAAewAwAEUAMAAzADgAQgA4ADAALQBCADQAOAAxAC0ANABDADUAMAAtADkANQA2ADkALQBEADAARgBBADIAQgAwAEUARAAwADQAQgB9AAAAEGYAAAABAAAgAAAAWYoUkDy5RVqBN2UKUhrTelZ2ED3RP2i1TfshVP2Eaa0AAAAADoAAAAACAAAgAAAA/EIyzT+ina9p9mW8pNDw+js+claARFZO9qHxi+FVX3QgAAAAtmq0nCBDtkendsSFsFHGgTL+Yd/rs4zxe/I9FZguGpNAAAAAgOy6MqwkvV5U7hFpTxhYiyj7MqaLEqBQCKikVNNI+f6QyRR8tW70tQZXeixpiip9J3XkfVI3AvZCRNyezGwo6w==</Value>
+          </ConfigurationSetting>
+        </UserPasswords>
+        <OfflineMode>false</OfflineMode>
+        <ProgressReporting>true</ProgressReporting>
+        <ParameterConfigurationSensitiveValues>
+          <ConfigurationSetting>
+            <Id>LastModifiedTime</Id>
+            <Name>LastModifiedTime</Name>
+            <Value xsi:type="xsd:dateTime">2019-02-13T18:52:02.8075059Z</Value>
+          </ConfigurationSetting>
+        </ParameterConfigurationSensitiveValues>
+      </Options>
+    </Configuration>
+  </Configurations>
+</DataTransformationsUserConfiguration>

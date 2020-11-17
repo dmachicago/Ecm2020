@@ -1,0 +1,343 @@
+DROP VIEW [dbo].[view_Dim_Account]
+GO
+
+DROP VIEW [dbo].[view_Dim_Participant]
+GO
+
+DROP VIEW [dbo].[view_Dim_EnrollmentCategory]
+GO
+
+DROP VIEW [dbo].[view_Dim_ServiceLevelCategory]
+GO
+
+DROP VIEW [dbo].[view_Dim_ConditionCategory]
+GO
+
+DROP VIEW [dbo].[view_Dim_ExclusionCategory]
+GO
+
+DROP VIEW [dbo].[view_HFit_CoachingServiceLevelEnrollment]
+GO
+
+DROP VIEW [dbo].[view_HFit_CoachingConditionEnrollment]
+GO
+
+DROP VIEW [dbo].[view_HFit_CoachingConditionExclusion]
+GO
+
+DROP VIEW [dbo].[view_Fact_CoachingParticipants]
+GO
+
+-- CREATE VIEW view_Dim_Account
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE VIEW [dbo].[view_Dim_Account]
+AS
+	SELECT
+		SurrogateKey_HFIT_Account
+		,AccountName
+	FROM HFIT_Account
+GO
+
+
+-- CREATE VIEW view_Dim_Participant
+SET ANSI_NULLS OOTED_IDENTIFIER ON
+GO
+
+CREATE VIEW [dbo].[view_Dim_Participant]
+AS
+	SELECT
+		U.SurrogateKey_CMS_User
+		,A.SurrogateKey_HFit_Account
+		,U.FirstName
+		,U.MiddleName
+		,U.LastName
+		,U.FullName
+		,U.Email
+		,U.UserCreated
+	FROM
+		CMS_User AS U
+		JOIN CMS_UserSettings AS US1 ON U.SurrogateKey_CMS_User = US1.SurrogateKey_CMS_User
+			AND ISNULL(US1.HFitUserMpiNumber, 0) > 0
+		JOIN CMS_UserSite AS US2 ON U.SurrogateKey_CMS_User = US2.SurrogateKey_CMS_User
+		JOIN HFit_Account AS A ON US2.SurrogateKey_CMS_Site = A.SurrogateKey_CMS_Site
+GO
+
+-- CREATE VIEW view_Dim_EnrollmentCategory
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE VIEW [dbo].[view_Dim_EnrollmentCategory]
+AS
+	SELECT
+		1 AS SurrogateKey_EnrollmentCategory
+		,'Available' AS EnrollmentCategory
+	UNION ALL
+	SELECT
+		2 AS SurrogateKey_EnrollmentCategory
+		,'Eligible' AS EnrollmentCategory
+	UNION ALL
+	SELECT
+		3 AS SurrogateKey_EnrollmentCategory
+		,'Enrolled' AS EnrollmentCategory
+GO
+
+
+-- CREATE VIEW view_Dim_ServiceLevelCategory
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE VIEW [dbo].[view_Dim_ServiceLevelCategory]
+AS
+	SELECT
+		1 AS SurrogateKey_ServiceLevelCategory
+		,'HA' AS CoachingDescription
+		,'HA' AS ServiceLevelDescription
+	UNION ALL
+	SELECT
+		2 AS SurrogateKey_ServiceLevelCategory
+		,'LM' AS CoachingDescription
+		,'LM' AS ServiceLevelDescription
+	UNION ALL
+	SELECT
+		3 AS SurrogateKey_ServiceLevelCategory
+		,'CM' AS CoachingDescription
+		,'AP' AS ServiceLevelDescription
+	UNION ALL
+	SELECT
+		4 AS SurrogateKey_ServiceLevelCategory
+		,'CM' AS CoachingDescription
+		,'RN' AS ServiceLevelDescription
+	UNION ALL
+	SELECT
+		50 AS SurrogateKey_ServiceLevelCategory
+		,'CM' AS CoachingDescription
+		,'CM' AS ServiceLevelDescription
+	UNION ALL
+	SELECT
+		99 AS SurrogateKey_ServiceLevelCategory
+		,'NA' AS CoachingDescription
+		,'NA' AS ServiceLevelDescription
+GO
+
+
+-- CREATE VIEW view_Dim_ConditionCategory
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE VIEW [dbo].[view_Dim_ConditionCategory]
+AS
+	SELECT DISTINCT
+		Code AS SurrogateKey_ConditionCategory
+		,Description AS Condition
+	FROM HFit_LKP_CoachingCMConditions
+	UNION
+	SELECT
+		99 AS SurrogateKey_ConditionCategory
+		,'Not Specified' AS Condition
+GO
+
+
+-- CREATE VIEW view_Dim_ExclusionCategory
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE VIEW [dbo].[view_Dim_ExclusionCategory]
+AS
+	SELECT DISTINCT
+		Code AS SurrogateKey_ExclusionCategory
+		,Description AS Condition
+	FROM HFit_LKP_CoachingCMExclusions
+	UNION
+	SELECT
+		99 AS SurrogateKey_ExclusionCategory
+		,'Not Specified' AS Condition
+GO
+
+
+-- CREATE VIEW view_HFit_CoachingServiceLevelEnrollment
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE VIEW [dbo].[view_HFit_CoachingServiceLevelEnrollment]
+AS
+	SELECT
+		A.SurrogateKey_CMS_User
+		,A.SurrogateKey_HFit_Account
+		,1 AS SurrogateKey_EnrollmentCategory
+		,2 AS SurrogateKey_ServiceLevelCategory
+	FROM
+		view_EDW_CoachingPPTAvailable AS A
+	WHERE IsLMAvailable = 1
+	UNION
+	SELECT
+		A.SurrogateKey_CMS_User
+		,A.SurrogateKey_HFit_Account
+		,1 AS SurrogateKey_EnrollmentCategory
+		,50 AS SurrogateKey_ServiceLevelCategory
+	FROM
+		view_EDW_CoachingPPTAvailable AS A
+	WHERE IsCMAvailable = 1
+	UNION
+	SELECT
+		E.SurrogateKey_CMS_User
+		,E.SurrogateKey_HFit_Account
+		,2 AS SurrogateKey_EnrollmentCategory
+		,SL.SurrogateKey_ServiceLevelCategory
+	FROM
+		view_EDW_CoachingPPTEligible AS E
+		JOIN view_Dim_ServiceLevelCategory AS SL ON E.CoachingDescription = SL.CoachingDescription
+			AND E.ServiceLevelDescription = SL.ServiceLevelDescription
+	UNION
+	SELECT
+		E.SurrogateKey_CMS_User
+		,E.SurrogateKey_HFit_Account
+		,3 AS SurrogateKey_EnrollmentCategory
+		,SL.SurrogateKey_ServiceLevelCategory
+	FROM
+		view_EDW_CoachingPPTEnrolled AS E
+		JOIN view_Dim_ServiceLevelCategory AS SL ON E.CoachingDescription = SL.CoachingDescription
+			AND E.ServiceLevelDescription = SL.ServiceLevelDescription
+GO
+
+
+-- CREATE VIEW view_HFit_CoachingConditionEnrollment
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE VIEW [dbo].[view_HFit_CoachingConditionEnrollment]
+AS
+	SELECT
+		PPT.SurrogateKey_CMS_User
+		,PPT.SurrogateKey_HFit_Account
+		,COND.Code AS SurrogateKey_ConditionCategory
+	FROM
+		view_Dim_Participant AS PPT
+		JOIN Hfit_CoachingUserCMCondition AS C ON PPT.SurrogateKey_CMS_User = C.SurrogateKey_CMS_User
+			AND C.IsEnrolled = 1
+		JOIN HFit_LKP_CoachingCMConditions AS COND on C.ConditionItemID = COND.ItemID
+			AND C.DBNAME = COND.DBNAME
+			AND C.SVR = COND.SVR
+GO
+
+
+-- CREATE VIEW view_HFit_CoachingConditionExclusion
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE VIEW [dbo].[view_HFit_CoachingConditionExclusion]
+AS
+	SELECT
+		PPT.SurrogateKey_CMS_User
+		,PPT.SurrogateKey_HFit_Account
+		,COND.Code AS SurrogateKey_ExclusionCategory
+	FROM
+		view_Dim_Participant AS PPT
+		JOIN Hfit_CoachingUserCMExclusion AS CX ON PPT.SurrogateKey_CMS_User = CX.SurrogateKey_CMS_User
+		JOIN HFit_LKP_CoachingCMExclusions AS COND on CX.ExclusionItemID = COND.ItemID
+			AND CX.DBNAME = COND.DBNAME
+			AND CX.SVR = COND.SVR
+GO
+
+
+-- CREATE VIEW view_Fact_CoachingParticipants
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE VIEW [dbo].[view_Fact_CoachingParticipants]
+AS
+	SELECT DISTINCT
+		SL.SurrogateKey_CMS_User
+		,SL.SurrogateKey_EnrollmentCategory
+		,SL.SurrogateKey_ServiceLevelCategory
+		,COALESCE(C.SurrogateKey_ConditionCategory, 99) AS SurrogateKey_ConditionCategory
+		,COALESCE(CX.SurrogateKey_ExclusionCategory, 99) AS SurrogateKey_ExclusionCategory
+	FROM
+		view_HFit_CoachingServiceLevelEnrollment AS SL
+		LEFT JOIN view_HFit_CoachingConditionEnrollment AS C ON SL.SurrogateKey_CMS_User = C.SurrogateKey_CMS_User
+		LEFT JOIN view_HFit_CoachingConditionExclusion AS CX ON SL.SurrogateKey_CMS_User = CX.SurrogateKey_CMS_User
+GO
+
+
+---- Indexes
+--CREATE NONCLUSTERED INDEX [IX_CMS_UserSite_Site_SurrogateKey]
+--ON [dbo].[cms_usersite] ([SurrogateKey_CMS_Site])
+--INCLUDE ([SurrogateKey_cms_user])
+--GO
+
+--CREATE NONCLUSTERED INDEX [IX_CMS_UserSite_User_SurrogateKey]
+--ON [dbo].[cms_usersite] ([SurrogateKey_cms_user])
+--GO
+
+--CREATE NONCLUSTERED INDEX [IX_CMS_UserSettings_SurrogateKey]
+--ON [dbo].[cms_usersettings] ([SurrogateKey_CMS_User])
+--INCLUDE ([HFitUserMpiNumber])
+--GO
+
+--CREATE NONCLUSTERED INDEX [IX_HFIT_CoachingUserCMCondition_IsPrimary]
+--ON [dbo].[Hfit_CoachingUserCMCondition] ([IsPrimary])
+--INCLUDE ([ConditionItemID],[IsEnrolled],[SVR],[DBNAME],[SurrogateKey_CMS_User])
+--GO
+
+--CREATE NONCLUSTERED INDEX [IX_HFIT_CoachingUserCMCondition_SurrogateKey]
+--ON [dbo].[Hfit_CoachingUserCMCondition] ([IsPrimary],[SurrogateKey_CMS_User])
+--INCLUDE ([ConditionItemID],[SVR],[DBNAME])
+--GO
+
+--CREATE NONCLUSTERED INDEX [IX_EDW_CoachingPPTEligible_SurrogateKey]
+--ON [dbo].[view_EDW_CoachingPPTEligible] ([SurrogateKey_cms_user])
+--INCLUDE ([CoachingDescription],[ServiceLevelDescription],[SurrogateKey_HFit_Account])
+--GO
+
+--CREATE NONCLUSTERED INDEX [IX_EDW_CoachingPPTAvailable_IsCMAvailable]
+--ON [dbo].[view_EDW_CoachingPPTAvailable] ([IsCMAvailable])
+--INCLUDE ([SurrogateKey_HFit_Account],[SurrogateKey_cms_user])
+--GO
+
+--CREATE NONCLUSTERED INDEX [IX_EDW_CoachingPPTAvailable_IsCMAvailable_SK]
+--ON [dbo].[view_EDW_CoachingPPTAvailable] ([IsCMAvailable],[SurrogateKey_cms_user])
+--INCLUDE ([SurrogateKey_HFit_Account])
+--GO
+
+--CREATE NONCLUSTERED INDEX [IX_EDW_CoachingPPTAvailable_IsLMAvailable]
+--ON [dbo].[view_EDW_CoachingPPTAvailable] ([IsLMAvailable])
+--INCLUDE ([SurrogateKey_HFit_Account],[SurrogateKey_cms_user])
+--GO
+
+--CREATE NONCLUSTERED INDEX [IX_EDW_CoachingPPTAvailable_IsLMAvailable_SK]
+--ON [dbo].[view_EDW_CoachingPPTAvailable] ([IsLMAvailable],[SurrogateKey_cms_user])
+--INCLUDE ([SurrogateKey_HFit_Account])
+--GO
+
+--CREATE NONCLUSTERED INDEX [IX_EDW_CoachingPPTEnrolled_SurrogateKey]
+--ON [dbo].[view_EDW_CoachingPPTEnrolled] ([SurrogateKey_cms_user])
+--INCLUDE ([CoachingDescription],[ServiceLevelDescription],[SurrogateKey_HFit_Account])
+--GO

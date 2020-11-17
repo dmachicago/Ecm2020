@@ -1,0 +1,1 @@
+2/16/2019 7:06 AM | ERROR: from | INIT-INSTANCE | INIT-DB | RunAllJobs | Initialize the error file |;

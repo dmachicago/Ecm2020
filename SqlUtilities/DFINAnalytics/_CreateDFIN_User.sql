@@ -1,0 +1,12 @@
+--* USEMASTER
+GO
+
+
+IF NOT EXISTS (SELECT name 
+  FROM [sys].[database_principals]
+  WHERE [type] = 'S' AND name = N'DFIN')
+Begin
+	CREATE LOGIN [DFIN] WITH PASSWORD=N'CopperGold@01', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=ON
+end
+ALTER SERVER ROLE [sysadmin] ADD MEMBER [DFIN]
+GO

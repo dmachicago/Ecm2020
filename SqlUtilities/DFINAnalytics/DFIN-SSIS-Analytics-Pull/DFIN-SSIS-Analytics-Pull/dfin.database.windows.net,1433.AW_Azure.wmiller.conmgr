@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="dfin.database.windows.net,1433.AW_Azure.wmiller"
+  DTS:DTSID="{919088C0-A73A-4D4E-95B3-C55B78D7F3ED}"
+  DTS:CreationName="ADO">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=dfin.database.windows.net,1433;User ID=wmiller;Initial Catalog=AW_Azure;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAALeV6FyeyykiFbqb9tcvrJQAAAAACAAAAAAAQZgAAAAEAACAAAAB1LPcQUT0J4ichgXcyoQ8xPfeSM5/DJAeyOPhcG8507AAAAAAOgAAAAAIAACAAAABBGGszmT5nXuk1dQBjpNuXOWR3IIzu1kWxdGgTEd7oXIAAAAAtSrohZ+Dm5lwBYfrUb56257ErlK2jbB2+HwkVCJljpcQK0MIeOz0ehklXKtpAdo9eIMg2qgYvy8qXe2C9Cr/zI0ld/2nWOvjJBxRXA7uYLDCUdDIkgbf6pU+q5yrBS7xBaGSpaxSi0XK81WYYh2b0BAVWUktFX4KdsSsPcFGpq0AAAAAfHl0oUG6S387SJ5uwZ6tK6XqCDAGAVSQowc+NpyNkIWSJYsHx50L+QAJHQgRxXQWdzHCrU/SFR7C09suuMNKQ</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

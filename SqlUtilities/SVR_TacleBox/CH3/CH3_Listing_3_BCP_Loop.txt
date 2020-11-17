@@ -1,0 +1,10 @@
+   set n=%1
+    set i= 1
+    :loop
+    bcp dba_rep..SQL_Conn in
+          C:\Writing\Simple Talk Book\Ch3\Out1.txt" 
+                             -n -b 50000 –T -h "TABLOCK"
+    if %i% == %n% goto end
+   set /a i=i+1
+   goto loop
+    :end

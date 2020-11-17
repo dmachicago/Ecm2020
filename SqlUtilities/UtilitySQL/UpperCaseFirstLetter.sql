@@ -1,0 +1,2 @@
+UPDATE EmailAddress
+SET LName=UPPER(LEFT(LName,1))+LOWER(SUBSTRING(LName,2,LEN(LName)))

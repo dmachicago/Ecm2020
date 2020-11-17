@@ -1,0 +1,18 @@
+CREATE TABLE [dbo].[SQL_Conn](
+   [Run_Date] [datetime] NULL,
+   [Server] [varchar](100) NULL,
+   [spid] [int] NULL,
+   [blocked] [bit] NULL,
+   [waittime] [int] NULL,
+   [name] [nvarchar](128) NULL,
+   [lastwaittype] [nvarchar](150) NULL,
+   [cpu] [int] NULL,
+   [login_time] [datetime] NULL,
+   [last_batch] [datetime] NULL,
+   [status] [nvarchar](50) NULL,
+   [hostname] [nvarchar](128) NULL,
+   [program_name] [nvarchar](150) NULL,
+   [cmd] [nvarchar](60) NULL,
+   [loginame] [nvarchar](128) NULL,
+   [duration] [datetime] NULL
+) ON [PRIMARY]

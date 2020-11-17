@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="CoachingCT">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="hfit-tgt.cloudapp.net,2:dmiller">
+          <Created>2015-07-01T16:17:45.0603273-06:00</Created>
+          <Type>SQL</Type>
+          <Server>hfit-tgt.cloudapp.net,2</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="tgt-azusql01.cloudapp.net,1433:dmiller">
+          <Created>2015-10-19T07:49:54.2672018-06:00</Created>
+          <Type>SQL</Type>
+          <Server>tgt-azusql01.cloudapp.net,1433</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="tgt-azusql02.cloudapp.net,1433:dmiller">
+          <Created>2016-02-29T08:52:52.6101596-07:00</Created>
+          <Type>SQL</Type>
+          <Server>tgt-azusql02.cloudapp.net,1433</Server>
+          <UserName>dmiller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="create_job_EDW_GetStagingData_CoachingDefinition.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>create_job_EDW_GetStagingData_CoachingDefinition.sql</FullPath>
+        </FileNode>
+        <FileNode Name="create_job_EDW_GetStagingData_CoachingDetail.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>create_job_EDW_GetStagingData_CoachingDetail.sql</FullPath>
+        </FileNode>
+        <FileNode Name="FindNestedViews.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>FindNestedViews.sql</FullPath>
+        </FileNode>
+        <FileNode Name="job_EDW_GetStagingData_Coaches.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>job_EDW_GetStagingData_Coaches.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_Coaching_AddDeletedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_Coaching_AddDeletedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_Coaching_AddNewRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_Coaching_AddNewRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_Coaching_AddUpdatedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_Coaching_AddUpdatedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_CoachingDefinition_AddDeletedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_CoachingDefinition_AddDeletedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_CoachingDefinition_AddNewRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_CoachingDefinition_AddNewRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_CoachingDefinition_AddUpdatedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_CoachingDefinition_AddUpdatedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_CoachingDetail_AddDeletedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_CoachingDetail_AddDeletedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_CoachingDetail_AddNewRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_CoachingDetail_AddNewRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_CoachingDetail_AddUpdatedRecs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_CoachingDetail_AddUpdatedRecs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_CT_STAGING_EDW_CoachingDetail_NoDups.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_CT_STAGING_EDW_CoachingDetail_NoDups.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_GenBAseTableFromView.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_GenBAseTableFromView.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_STAGING_EDW_Coaches.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_STAGING_EDW_Coaches.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_STAGING_EDW_CoachingDefinition.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_STAGING_EDW_CoachingDefinition.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_STAGING_EDW_CoachingDetail.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>proc_STAGING_EDW_CoachingDetail.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Test_EDW_Coaches.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfit-tgt.cloudapp.net,2:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfit-tgt.cloudapp.net,2</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>Test_EDW_Coaches.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Test_EDW_CoachingDetail.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>Test_EDW_CoachingDetail.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Test_EDW_proc_CoachingDefinition.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql01.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql01.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>Test_EDW_proc_CoachingDefinition.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_CoachingDetail_CT.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_CoachingDetail_CT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view_EDW_CoachingDetail_MART.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:tgt-azusql02.cloudapp.net,1433:False:dmiller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>tgt-azusql02.cloudapp.net,1433</AssociatedConnSrvName>
+          <AssociatedConnUserName>dmiller</AssociatedConnUserName>
+          <FullPath>view_EDW_CoachingDetail_MART.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items>
+        <FileNode Name="Pull_View_Into_Base_Table.vsdx">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Pull_View_Into_Base_Table.vsdx</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

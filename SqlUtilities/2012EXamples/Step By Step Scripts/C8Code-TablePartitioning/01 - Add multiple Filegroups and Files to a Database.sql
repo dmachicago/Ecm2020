@@ -1,0 +1,63 @@
+--Run this script prior to completing the steps in Chatper 8
+ALTER DATABASE AdventureWorks2012
+	ADD FILEGROUP Sales2005;
+--Use this code to add multiple filegroups to the AdventureWorks2012 database
+USE master;
+ALTER DATABASE AdventureWorks2012
+ADD FILE
+(
+NAME = 'Sales2005',
+FILENAME = 'C:\SQLData\Sales2005File.ndf',
+SIZE = 5MB,
+MAXSIZE = 200MB,
+FILEGROWTH = 5MB
+)
+TO FILEGROUP Sales2005;
+ALTER DATABASE AdventureWorks2012
+ADD FILEGROUP Sales2006;
+ALTER DATABASE AdventureWorks2012
+ADD FILE
+(
+NAME = 'Sales2006',
+FILENAME = 'C:\SQLData\Sales2006File.ndf',
+SIZE = 5MB,
+MAXSIZE = 200MB,
+FILEGROWTH = 5MB
+)
+TO FILEGROUP Sales2006;
+ALTER DATABASE AdventureWorks2012
+ADD FILEGROUP Sales2007;
+ALTER DATABASE AdventureWorks2012
+ADD FILE
+(
+NAME = 'Sales2007',
+FILENAME = 'C:\SQLData\Sales2007File.ndf',
+SIZE = 5MB,
+MAXSIZE = 200MB,
+FILEGROWTH = 5MB
+)
+TO FILEGROUP Sales2007;
+ALTER DATABASE AdventureWorks2012
+ADD FILEGROUP Sales2008;
+ALTER DATABASE AdventureWorks2012
+ADD FILE
+(
+NAME = 'Sales2008',
+FILENAME = 'C:\SQLData\Sales2008File.ndf',
+SIZE = 5MB,
+MAXSIZE = 200MB,
+FILEGROWTH = 5MB
+)
+TO FILEGROUP Sales2008;
+ALTER DATABASE AdventureWorks2012
+ADD FILEGROUP Sales2009;
+ALTER DATABASE AdventureWorks2012
+ADD FILE
+(
+NAME = 'Sales2009',
+FILENAME = 'C:\SQLData\Sales2009File.ndf',
+SIZE = 5MB,
+MAXSIZE = 200MB,
+FILEGROWTH = 5MB
+)
+TO FILEGROUP Sales2009;

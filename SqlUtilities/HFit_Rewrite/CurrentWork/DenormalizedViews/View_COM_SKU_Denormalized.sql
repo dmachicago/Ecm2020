@@ -1,0 +1,8 @@
+
+--CREATE VIEW [dbo].[View_COM_SKU]
+--AS
+--SELECT * FROM COM_SKU
+
+GO
+
+

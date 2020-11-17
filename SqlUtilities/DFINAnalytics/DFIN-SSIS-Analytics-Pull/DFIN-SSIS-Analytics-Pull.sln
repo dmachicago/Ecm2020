@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "DFIN-SSIS-Analytics-Pull", "DFIN-SSIS-Analytics-Pull\DFIN-SSIS-Analytics-Pull.dtproj", "{4ABAEFD4-A502-4567-BF18-31AA483E6893}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4ABAEFD4-A502-4567-BF18-31AA483E6893}.Development|Default.ActiveCfg = Development
+		{4ABAEFD4-A502-4567-BF18-31AA483E6893}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F1B40E45-FFF3-4E5C-919D-7BA27F0430EC}
+	EndGlobalSection
+EndGlobal

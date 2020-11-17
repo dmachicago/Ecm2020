@@ -1,0 +1,6 @@
+EDW_RoleMemberHistory
+EDW_RoleMemberToday
+EDW_RoleMembership
+LKP_EDW_CMSRole
+EDW_GroupMemberHistory
+EDW_GroupMemberToday

@@ -1,0 +1,10 @@
+12.0
+8
+1       SQLCHAR             0       100     ","      1     MeasureCode                    SQL_Latin1_General_CP1_CI_AS
+2       SQLCHAR             0       24      ","      2     EventDate                      ""
+3       SQLCHAR             0       12      ","      3     MPI                            ""
+4       SQLCHAR             0       24      ","      4     UPD_RT                         ""
+5       SQLCHAR             0       24      ","      5     SRC_FILE_DT                    ""
+6       SQLCHAR             0       24      ","      6     INS_DT                         ""
+7       SQLCHAR             0       256     ","      7     FTPFileSource                  SQL_Latin1_General_CP1_CI_AS
+8       SQLCHAR             0       200     "\r\n"   8     HashCode                       SQL_Latin1_General_CP1_CI_AS

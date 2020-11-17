@@ -1,0 +1,156 @@
+﻿<html lang="en">
+<head>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META name="Generator" content="Visustin">
+<META name="description" content="T-SQL flow chart saved by Aivosto Visustin (www.aivosto.com).">
+<META name="keywords" content="T-SQL, flow graph, diagram">
+
+<title>T-SQL flow chart: proc_TrackerAddTrackerName.sql</title>
+
+<style type="text/css">
+<!--
+BODY      { margin: 0; }
+TEXTAREA  { background: #ffffcc; font-size: 8pt; }
+A:link, A:visited { color: blue; }
+TR.bar    { background: white; font-family: Verdana, Arial, Sans-Serif; font-size: 70%; }
+TR TD     { padding: 0; background: white; }
+TR.bar TD { padding: 2px 5px 2px 5px; background: #ccccff; }
+-->
+</style>
+
+<script type="text/javascript">
+<!--
+function hidecode(id) { 
+  if (id.style.display=="none") {
+    id.style.display="";
+    hidelink.innerHTML="Hide code";
+  } else {
+    id.style.display="none";
+    hidelink.innerHTML="Show code";
+  }
+}
+-->
+</script>
+</head>
+
+
+<body scroll=no>
+
+<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+
+<tr height="100%"><td id="#upper" colspan="2">
+ <iframe name="pic" width="100%" height="100%" src="proc_TrackerAddTrackerName2.png" frameborder="0" title="T-SQL flow chart: proc_TrackerAddTrackerName.sql">
+  <a href="proc_TrackerAddTrackerName2.png"><img src="proc_TrackerAddTrackerName2.png" height="100%" title="T-SQL flow chart: proc_TrackerAddTrackerName.sql"></a>
+ </iframe>
+</td></tr>
+
+<tr id="sourcecode"><td colspan="2">
+<textarea rows=15 readonly=yes style="width:100%; border-width:0;">
+
+
+-- use KenticoCMS_DataMart
+GO
+PRINT 'Executing proc_TrackerAddTrackerName.sql';
+GO
+IF EXISTS (SELECT
+        name
+    FROM sys.procedures
+    WHERE
+        name = 'proc_TrackerAddTrackerName')
+ BEGIN
+  DROP PROCEDURE
+      proc_TrackerAddTrackerName;
+ END;
+GO
+-- exec proc_TrackerAddTrackerName
+CREATE PROCEDURE proc_TrackerAddTrackerName
+AS
+BEGIN
+
+/*-----------------------------------------------------------------------------------
+Author:   W. Dale Miller
+Date:     01.08.2016
+Purpose:          Modifies each tracker table such that it contains the column TrackerName.
+        TrackerName is used in the Primary Keys of trackers and needs to be in
+        all tracker tables.
+*/
+ DECLARE
+    @TblName AS NVARCHAR (100) = ''
+   , @msg AS NVARCHAR (4000) = ''
+   , @cmd AS NVARCHAR (4000) = ''
+   , @TrackerName AS NVARCHAR (100) = '';
+
+ DECLARE C CURSOR
+  FOR
+     SELECT
+         table_name
+     FROM information_Schema.tables
+     WHERE
+     table_name LIKE 'BASE_HFit_Tracker%' OR
+     table_name LIKE 'FACT_HFit_Tracker%' OR
+     table_name LIKE 'BASE_HFit_ToDoSmallSteps' OR
+     table_name LIKE 'BASE_HFit_TrackerBloodPressure';
+ --AND table_name NOT LIKE '%VerHist'
+ --AND table_name NOT LIKE '%_DEL';
+
+ OPEN C;
+
+ FETCH NEXT FROM C INTO @TblName;
+
+ WHILE
+    @@FETCH_STATUS = 0
+  BEGIN
+
+     SET @msg = 'Processing: ' + @TblName;
+     EXEC PrintImmediate @msg;
+
+     IF NOT EXISTS (SELECT
+               column_name
+             FROM information_schema.columns
+             WHERE
+               table_name = @TblName AND
+               column_name = 'TrackerName')
+       BEGIN
+          SET @msg = 'Modifying: ' + @TblName;
+          EXEC PrintImmediate @msg;
+          SET @cmd = 'Alter table ' + @TblName + ' add TrackerName nvarchar(100) null ';
+          BEGIN TRY
+            EXEC (@cmd) ;
+          END TRY
+          BEGIN CATCH
+            SET @msg = 'FAILED TO Modify: ' + @TblName;
+            EXEC PrintImmediate @msg;
+          END CATCH;
+       END;
+     IF EXISTS (SELECT
+              column_name
+           FROM information_schema.columns
+           WHERE
+              table_name = @TblName AND
+              column_name = 'TrackerName')
+       BEGIN
+          SET @TrackerName = replace (@TblName , 'BASE_' , '') ;
+          SET @TrackerName = replace (@TblName , 'FACT_' , '') ;
+          SET @cmd = 'Update ' + @TblName + ' set TrackerName = ''' + @TrackerName + ''' where  TrackerName is null ';
+       END;
+     FETCH NEXT FROM C INTO @TblName;
+  END;
+
+ CLOSE C;
+ DEALLOCATE C;
+END;
+
+GO
+PRINT 'Executed proc_TrackerAddTrackerName.sql';
+GO
+
+</textarea>
+</td></tr>
+
+<tr class="bar">
+ <td align="left"><a href="javascript:hidecode(sourcecode);" id="hidelink">Hide code</a></td>
+ <td align="right"><a href="http://www.aivosto.com/visustin.html">Visustin flow chart for T-SQL</a></td></tr>
+</table>
+
+</body>
+</html>

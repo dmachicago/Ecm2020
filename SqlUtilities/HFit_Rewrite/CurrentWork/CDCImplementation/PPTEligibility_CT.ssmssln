@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# SQL Server Management Studio Solution File, Format Version 11.00
+Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "PPTEligibility_CT", "PPTEligibility_CT.ssmssqlproj", "{1752E924-6C2C-494D-BCB4-362241EAD8E1}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 1
+		SccProjectName0 = \u0022$/PPTEligibility_CT.root/PPTEligibility_CT\u0022,\u0020PPOFAAAA
+		SccLocalPath0 = .
+		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Default|Default = Default|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1752E924-6C2C-494D-BCB4-362241EAD8E1}.Default|Default.ActiveCfg = Default
+		{DD0CA983-6508-4D51-9FA2-5EA7699EEB11}.Default|Default.ActiveCfg = Default
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

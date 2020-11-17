@@ -1,0 +1,64 @@
+TOOLS:
+https://desktop.github.com/
+https://github.com/dmachicago/ToolBelt
+
+remote: Create a pull request for 'ToolBelt-2' on GitHub by visiting:
+remote:      https://github.com/wdalemiller/ToolBelt/pull/new/ToolBelt-2
+remote:
+To https://github.com/wdalemiller/ToolBelt.git
+ * [new branch]      ToolBelt-2 -> ToolBelt-2
+
+ 
+ Note: Vim is the default editor for many programs. 
+ If you haven’t used Vim before and wish to exit a 
+ session without saving your changes, press Esc then 
+ type :q! and hit Return. If you want to save your 
+ changes and quit, press Esc then type :wq and hit 
+ Return.
+ https://swcarpentry.github.io/git-novice/02-setup/
+ 
+
+
+GIT Add New Repository
+https://help.github.com/en/articles/adding-an-existing-project-to-github-using-the-command-line
+
+https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html
+To view the information that you entered, along with other global options, type:
+git config --global --list
+
+git remote add origin https://github.com/wdalemiller/ToolBelt.git
+git push -u origin master
+
+
+Repository location: 
+https://github.com/wdalemiller/ToolBelt
+https://dfsarc.visualstudio.com/DFSArc/_git/dfin-database-tool-belt
+origin  https://github.com/wdalemiller/ToolBelt.git (fetch)
+LOCAL:  C:\Users\wdale\GitHub\ToolBelt
+origin  https://github.com/wdalemiller/ToolBelt.git (push)
+
+
+
+
+First step: create SSH key
+ssh-keygen
+
+Second step: get your public SSH key that was generated at `cat ~/.ssh/id_rsa.pub`
+
+Third step: load SSH key into Azure DevOps
+Click on the right hand, top most icon, goto security, then on the next screen, click on `SSH public keys`
+Next click on "add"
+
+Give your key a name of any description and add your key in the below textbox
+
+Next step, navigate to your repository at 
+https://dfsarc.visualstudio.com/DFSArc/_git/dfin-database-tool-belt
+and then get the GIT URL
+the SSH URL in the `Clone` box of DFSArc@vs-ssh.visualstudio.com:v3/DFSArc/DFSArc/dfin-database-tool-belt
+Clone the codebase into the directory of your choosing with the configured command line from above with the command `git clone DFSArc@vs-ssh.visualstudio.com:v3/DFSArc/DFSArc/dfin-database-tool-belt`
+
+Add your changes with `git add .`
+Create a new branch with `git checkout -b BRANCH_NAME`
+
+Commit with `git commit -m COMMIT_MESSAGE`
+push your branch up to Azure DevOps with `git push --set-upstream origin BRANCH_NAME`

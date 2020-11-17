@@ -1,0 +1,11 @@
+
+Update MPI_STAT_TRACKER set ELAPSEDMINUTES = 
+    (cast(ENDTIME as date) - cast(STARTTIME as date))
+    * 24 * 60 
+   WHERE ELAPSEDMINUTES IS NULL; 
+
+select RunID, STARTTIME, ENDTIME, round(
+    (cast(ENDTIME as date) - cast(STARTTIME as date))
+    * 24 * 60 
+  ) as ELAPSEDMINUTES FROM MPI_STAT_TRACKER WHERE ELAPSEDMINUTES IS NULL; 
+

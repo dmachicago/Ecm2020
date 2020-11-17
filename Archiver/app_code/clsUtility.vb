@@ -1855,19 +1855,39 @@ Public Class clsUtility
         Return tFQN
     End Function
 
+    Public Function GetFiles(ByVal Path As String, Recurse As String) As List(Of FileInfo)
+        Dim d As New DirectoryInfo(Path)
+        Dim files As List(Of FileInfo) = New List(Of FileInfo)
+        Try
+            If Recurse.Equals("Y") Then
+                files.AddRange(d.GetFiles("*", SearchOption.AllDirectories))
+            Else
+                files.AddRange(d.GetFiles("*", SearchOption.TopDirectoryOnly))
+            End If
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR GetFiles 01A: Path <" + Path + ">" + vbCrLf + ex.Message)
+        End Try
+
+        Return (files)
+    End Function
+
     Public Function GetFiles(ByVal Path As String, ByVal FilterList As List(Of String), Recurse As String) As List(Of FileInfo)
         Dim d As New DirectoryInfo(Path)
         Dim files As List(Of FileInfo) = New List(Of FileInfo)
-        For Each Filter As String In FilterList
-            'the files are appended to the file array
-            Application.DoEvents()
-            If Recurse.Equals("Y") Then
-                files.AddRange(d.GetFiles(Filter, SearchOption.AllDirectories))
-            Else
-                files.AddRange(d.GetFiles(Filter, SearchOption.TopDirectoryOnly))
-            End If
+        Try
+            For Each Filter As String In FilterList
+                'the files are appended to the file array
+                Application.DoEvents()
+                If Recurse.Equals("Y") Then
+                    files.AddRange(d.GetFiles(Filter, SearchOption.AllDirectories))
+                Else
+                    files.AddRange(d.GetFiles(Filter, SearchOption.TopDirectoryOnly))
+                End If
+            Next
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR clsUtility/GetFiles :" + ex.Message)
+        End Try
 
-        Next
         Return (files)
     End Function
 

@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="FTP_ClinicalIndicators">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="hfitazuprdsql05.cloudapp.net:dale.miller">
+          <Created>2016-11-27T10:18:13.1981916-06:00</Created>
+          <Type>SQL</Type>
+          <Server>hfitazuprdsql05.cloudapp.net</Server>
+          <UserName>dale.miller</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="ADD_ClinicalIndicators_LOG.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>ADD_ClinicalIndicators_LOG.sql</FullPath>
+        </FileNode>
+        <FileNode Name="CK_Qry.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>CK_Qry.sql</FullPath>
+        </FileNode>
+        <FileNode Name="CountOccurancesOfString.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>CountOccurancesOfString.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Create_BASE_view_RDW_ClinicalIndicators_DEL.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Create_BASE_view_RDW_ClinicalIndicators_DEL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Create_BASE_view_SIEBEL_ClinicalIndicators_DEL.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Create_BASE_view_SIEBEL_ClinicalIndicators_DEL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Create_dma_FtpDirectory.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>Create_dma_FtpDirectory.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Create_job_ClinicalIndicators.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>Create_job_ClinicalIndicators.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Create_STAGING_view_RDW_ClinicalIndicators.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Create_STAGING_view_RDW_ClinicalIndicators.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Create_STAGING_view_SIEBEL_ClinicalIndicators.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Create_STAGING_view_SIEBEL_ClinicalIndicators.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Create_TEMP_SIEBEL_ClinicalIndicators.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>Create_TEMP_SIEBEL_ClinicalIndicators.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Create_TRIG_DEL_BASE_view_RDW_ClinicalIndicators.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>Create_TRIG_DEL_BASE_view_RDW_ClinicalIndicators.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Create_TRIG_INS_BASE_view_RDW_ClinicalIndicators.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>Create_TRIG_INS_BASE_view_RDW_ClinicalIndicators.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Create_TRIG_INS_BASE_view_SIEBEL_ClinicalIndicators.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>Create_TRIG_INS_BASE_view_SIEBEL_ClinicalIndicators.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Create_TRIG_UPDT_BASE_view_RDW_ClinicalIndicators.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>Create_TRIG_UPDT_BASE_view_RDW_ClinicalIndicators.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Create_TRIG_UPDT_BASE_view_SIEBEL_ClinicalIndicators.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>Create_TRIG_UPDT_BASE_view_SIEBEL_ClinicalIndicators.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Creatge_TRIG_INS_BASE_view_SIEBEL_ClinicalIndicators.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>Creatge_TRIG_INS_BASE_view_SIEBEL_ClinicalIndicators.sql</FullPath>
+        </FileNode>
+        <FileNode Name="dma_CleanUpFtpDirectory.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>dma_CleanUpFtpDirectory.sql</FullPath>
+        </FileNode>
+        <FileNode Name="dma_GetFileProperties.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>dma_GetFileProperties.sql</FullPath>
+        </FileNode>
+        <FileNode Name="dma_LoadFtpData.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>dma_LoadFtpData.sql</FullPath>
+        </FileNode>
+        <FileNode Name="dma_LoadTextFileIntoTempTable.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>dma_LoadTextFileIntoTempTable.sql</FullPath>
+        </FileNode>
+        <FileNode Name="dma_ProcessFtpDirectory.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>dma_ProcessFtpDirectory.sql</FullPath>
+        </FileNode>
+        <FileNode Name="FTP_BulkLoadWithFormatFile.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>FTP_BulkLoadWithFormatFile.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_ActivateTable.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>proc_ActivateTable.sql</FullPath>
+        </FileNode>
+        <FileNode Name="PROC_Oracle_view_RDW_ClinicalIndicators.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>PROC_Oracle_view_RDW_ClinicalIndicators.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_view_RDW_ClinicalIndicators.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>proc_view_RDW_ClinicalIndicators.sql</FullPath>
+        </FileNode>
+        <FileNode Name="proc_view_SIEBEL_ClinicalIndicators.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>proc_view_SIEBEL_ClinicalIndicators.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TRIG_DEL_BASE_view_SIEBEL_ClinicalIndicators.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:hfitazuprdsql05.cloudapp.net:False:dale.miller</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>hfitazuprdsql05.cloudapp.net</AssociatedConnSrvName>
+          <AssociatedConnUserName>dale.miller</AssociatedConnUserName>
+          <FullPath>TRIG_DEL_BASE_view_SIEBEL_ClinicalIndicators.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items>
+        <FileNode Name="FTP_ClinicalIndicators.vsdx">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>FTP_ClinicalIndicators.vsdx</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

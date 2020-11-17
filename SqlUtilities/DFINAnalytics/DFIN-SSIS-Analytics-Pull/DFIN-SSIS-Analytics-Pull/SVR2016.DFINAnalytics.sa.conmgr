@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="SVR2016.DFINAnalytics.sa"
+  DTS:DTSID="{B8A37221-3430-4217-BBA8-DA37932D305B}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=SVR2016;User ID=sa;Initial Catalog=DFINAnalytics;Provider=SQLNCLI11.1;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAALeV6FyeyykiFbqb9tcvrJQAAAAACAAAAAAAQZgAAAAEAACAAAAAEkOIoSf8s1UY5gIiLw7cKu/fgvowaqc4gsp0nwS5NPwAAAAAOgAAAAAIAACAAAAC1bzOWPCRtJhLLLQMpd+JUhBiDHk9/mU5RxlmL9LvD34AAAAAcxrrtGLwQDSTNRiYnzA3iuzvwUqJ68P+9/NTg+zrn6yS/zbrT9xxwHQFR2jl/rNMxqPZKmDrC+mcRLBi5feCk3lFjlaACiA6GGnjGlidAcRrTZwjZfRaDF1bTL0P8ihOMD12RZA61XWB5zYS+b+XN3PWz6GprXK9O8Hjlx6FCw0AAAAA9T0hEuQw21iqNe/Bu7+IiokqTvdb/IywLSLOQNcmfyCR/nG5neaRlLZY8fBERxRwOdGv+gQj1Mrhmoz4a7eWn</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

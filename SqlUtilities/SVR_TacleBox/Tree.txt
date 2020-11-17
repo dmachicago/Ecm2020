@@ -1,0 +1,48 @@
+Folder PATH listing
+Volume serial number is 18E4-FD31
+C:.
+³   Tree.txt
+³   
+CH1
+³       CH1_Listing_1_Automated_Configuration_Script.sql
+³       Create_DBAMain_2.sql
+³       
+CH2
+³       CH2_Listing_1_Server_Info.sql
+³       CH2_Listing_2_and_3_Database_Info.sql
+³       CH2_Listing_4_Database_Backup_Info.sql
+³       CH2_Listing_5_Security_Info.sql
+³       CH2_Listing_6_Agent_Job_Info_SQL_2000.sql
+³       CH2_Listing_6_Agent_Job_Info_SQL_2005_2008.sql
+³       CH2_Listing_7_SQL_Servers_Table_Query.sql
+³       DBA_Repository_Solution.zip
+³       
+CH3
+³       CH3_Listing_1_Create_SQLConn_Table.sql
+³       CH3_Listing_3_BCP_Loop.txt
+³       
+CH4
+³       CH4_Listing_5_Size_Query.sql
+³       
+CH5
+³       CH5_Listing_1_Create_ImportantData_Table.sql
+³       Ch5_Listing_2_Bad_Code_BEWARE.sql
+³       CH5_Listing_3_Automated_Discovery_Query.sql
+³       CH5_Listing_4_uspfindproblems.sql
+³       
+CH6
+³       No_Code_For_CH_6.txt
+³       
+CH7
+³       CH7_Listing_11_usp_startTrace.sql
+³       CH7_Listing_12_usp_stoptrace.sql
+³       CH7_Listing_1_syslogins.sql
+³       CH7_Listing_4_Group_Members.sql
+³       CH7_Listing_5_Database_Users.sql
+³       CH7_Listing_6_GetServiceCredentials.sql
+³       CH7_Listing_7_Error_Log_Audit.sql
+³       CH7_Listing_8_DDL_Trigger.sql
+³       
+CH8
+        CH8_Listing_6_Integrity_Check_All_Dbs.sql
+        

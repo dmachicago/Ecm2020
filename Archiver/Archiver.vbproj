@@ -62,7 +62,7 @@
     <WebPage>Publish.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>171</ApplicationRevision>
+    <ApplicationRevision>172</ApplicationRevision>
     <ApplicationVersion>4.6.2.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -797,6 +797,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="_SQL_Query\CheckIfExistsStatements.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="_SQL_Query\CreateListenerSchemaAndTables.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="_SQL_Query\DropAllAutoGenStatistics.sql">

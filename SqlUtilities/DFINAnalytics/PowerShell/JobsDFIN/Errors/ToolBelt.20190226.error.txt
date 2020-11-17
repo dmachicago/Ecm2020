@@ -1,0 +1,36 @@
+2/26/2019 3:13 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/26/2019 3:13 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/26/2019 3:13 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/26/2019 3:13 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/26/2019 3:43 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/26/2019 3:43 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/26/2019 3:43 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/26/2019 3:43 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/26/2019 4:43 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/26/2019 4:43 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/26/2019 5:13 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/26/2019 5:13 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/26/2019 5:13 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/26/2019 5:13 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/26/2019 5:43 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/26/2019 5:43 AM | ERROR: | dfin.database.windows.net,1433 | TestAzureDB | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;
+2/26/2019 5:43 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 |  |;
+2/26/2019 5:43 AM | ERROR: | dfin.database.windows.net,1433 | AW_AZURE | D:\dev\SQL\DFINAnalytics\PowerShell\JobsDFIN\JOB_MonitorWorkload.ps1 | ManagedBatchParser.ParserException
+   at ManagedBatchParser.Parser.Parse()
+   at Microsoft.SqlServer.Management.PowerShell.ExecutionProcessor.ExecuteTSql(String sqlCommand) |;

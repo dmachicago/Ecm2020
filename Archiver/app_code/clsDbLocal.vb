@@ -380,12 +380,13 @@ Public Class clsDbLocal : Implements IDisposable
             Dim ExtCnt As Integer = 0
             Dim LastIdx As Integer = 0
             Dim Len As Int64 = 0
+            Dim Level As Int64 = 0
 
             Dim DictOfExtensions As New Dictionary(Of String, String)
             DictOfExtensions = DB.getIncludedFileTypeWhereIn(gCurrLoginID)
             LOG.WriteToArchiveLog("REMOVE LATER 3029 getListenerfiles: DictOfExtensions cnt = " + DictOfExtensions.Count.ToString)
 
-
+            Dim SpecificDirExts As String = ""
             Dim DirExts As String = ""
             DirExts = getAllowedExtension()
 
@@ -410,11 +411,19 @@ Public Class clsDbLocal : Implements IDisposable
                                 DIR = FI.DirectoryName
                                 Len = FI.Length
 
+                                Dim WC As String = ""
+                                GetParentWC(Level, DIR, gWhereInDict, WC)
+                                WC = WC.Replace("'", "")
+
+                                If WC.Length.Equals(0) Then
+                                    WC = DirExts
+                                End If
+
                                 If ext.Length > 0 Then
                                     'WDM Commented Out the below Nov-02-2020 (day before we get rid of trump)
                                     'AllowedExts = getAllowedExtension(DIR, 0)
                                     'DirExts = getAllowedExtension(DIR, 0, DictOfExtensions)
-                                    If DirExts.Contains(ext.ToLower + ",") Then
+                                    If WC.Contains(ext.ToLower + ",") Then
                                         If Not FilesToProcess.Contains(FQN) Then
                                             FRM.lblPdgPages.Text = "Processing: " + FQN
                                             LOG.WriteToArchiveLog("REMOVE LATER 650.4 getListenerfiles Processing = <" + FQN + ">")
@@ -446,6 +455,36 @@ Public Class clsDbLocal : Implements IDisposable
         LOG.WriteToArchiveLog("REMOVE LATER 3010A: getListenerfiles FilesToProcess: " + FilesToProcess.Count.ToString + vbCrLf + SQL)
         Return FilesToProcess
     End Function
+
+    ''' <summary>
+    ''' Gets WhereIN clause from the the parent dirtectory.
+    ''' </summary>
+    ''' <param name="Level">The level.</param>
+    ''' <param name="path">The path.</param>
+    ''' <param name="Dirs">The dirs.</param>
+    ''' <returns></returns>
+    Sub GetParentWC(Level As Integer, path As String, DirsOfWC As Dictionary(Of String, String), ByRef WC As String)
+
+        If DirsOfWC.Keys.Contains(path) Then
+            WC = DirsOfWC(path)
+        End If
+        Try
+            If WC.Length.Equals(0) Then
+                Dim DirectoryInfo As DirectoryInfo = Directory.GetParent(path)
+                If DirsOfWC.Keys.Contains(DirectoryInfo.FullName.ToLower) Then
+                    WC = DirsOfWC(path)
+                Else
+                    Level += 1
+                    Dim DI As DirectoryInfo = Directory.GetParent(path)
+                    Dim NewPath As String = DI.FullName
+                    GetParentWC(Level, NewPath, DirsOfWC, WC)
+                End If
+            End If
+        Catch ex As Exception
+            System.Console.WriteLine("Path: " + path + vbCrLf + ex.Message)
+        End Try
+    End Sub
+
 
     Public Function getListenerfilesID() As List(Of String)
 
@@ -2054,6 +2093,87 @@ Public Class clsDbLocal : Implements IDisposable
 
         Return B
     End Function
+
+    Function getSQLiteFiles() As Dictionary(Of String, String)
+
+        If gTraceFunctionCalls.Equals(1) Then
+            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+        End If
+
+        Dim INFO As New Dictionary(Of String, String)
+
+        Try
+
+            Dim val As Object = ""
+            Dim FileSize As Int64 = 0
+            Dim LastUpdate As DateTime = Nothing
+            Dim LastArchiveDate As DateTime = Nothing
+
+            Dim S As String = ""
+
+            FQN = fixSingleQuotes(FQN)
+            S = "Select LastArchiveDate, FileLength, LastModDate From DirFilesID D  Where FQN = '" + FQN + "' "
+            S = "Select cast(LastArchiveDate as text) as LAD, FileLength, cast(LastModDate as text) as LMD From DirFilesID   Where FQN = '" + FQN + "' "
+            setSLConn()
+
+            Try
+                Dim CMD As New SQLiteCommand(S, SQLiteCONN)
+                CMD.CommandType = CommandType.Text
+
+                Dim rs As SQLiteDataReader = CMD.ExecuteReader()
+
+                If rs.HasRows Then
+                    rs.Read()
+                    Try
+                        Dim LAD As String = ""
+                        LAD = rs.GetString(0)
+                        LastArchiveDate = Convert.ToDateTime(LAD)
+                    Catch ex As Exception
+                        LastArchiveDate = Convert.ToDateTime("01-01-1970")
+                    End Try
+
+                    FileSize = rs.GetInt64(1)
+
+                    Try
+                        Dim LAD As String = ""
+                        LAD = rs.GetString(2)
+                        LastUpdate = Convert.ToDateTime(LAD)
+                    Catch ex As Exception
+                        LastUpdate = Convert.ToDateTime("01-01-1970")
+                    End Try
+
+                    If LastUpdate < Convert.ToDateTime("01-01-1970") Then
+                        LastUpdate = Convert.ToDateTime("01-01-1970")
+                    End If
+
+                    INFO.Add("FileSize", FileSize.ToString)
+                    INFO.Add("LastUpdate", LastUpdate.ToString)
+                    INFO.Add("LastArchiveDate", LastArchiveDate.ToString)
+                    INFO.Add("AddNewRec", "N")
+                Else
+                    INFO.Add("AddNewRec", "Y")
+                End If
+
+                If Not rs.IsClosed Then
+                    rs.Close()
+                End If
+                rs.Dispose()
+
+            Catch ex As Exception
+                LOG.WriteToArchiveLog("ERROR: clsDbLocal/InventoryExists - " + ex.Message + vbCrLf + S)
+                LOG.WriteToArchiveLog("ERROR 923A getFileArchiveInfo : " + ex.Message + vbCrLf + S)
+            End Try
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR 923b getFileArchiveInfo : " + ex.Message)
+        End Try
+
+        GC.Collect()
+        GC.WaitForPendingFinalizers()
+
+
+        Return INFO
+    End Function
+
 
     Function getFileArchiveInfo(FQN As String) As Dictionary(Of String, String)
 

@@ -1,0 +1,24 @@
+DROP VIEW View_EDW_CDC_HealthAssesmentUserAnswers
+go
+DROP VIEW View_EDW_HAModuleNodeGUID
+go
+DROP VIEW View_EDW_HARiskCategoryNodeGUID
+go
+DROP VIEW View_EDW_HFit_HealthAssesmentUserAnswers
+go
+DROP VIEW View_EDW_HFit_HealthAssesmentUserModule
+go
+DROP VIEW View_EDW_HFit_HealthAssesmentUserQuestion
+go
+DROP VIEW View_EDW_HFit_HealthAssesmentUserRiskArea
+go
+DROP VIEW View_EDW_HFit_HealthAssesmentUserRiskCategory
+go
+DROP VIEW View_EDW_HFit_HealthAssesmentUserStarted
+go
+DROP VIEW View_EDW_QuestionNodeGuid
+go
+DROP VIEW View_EDW_RiskAreaNodeGuid
+go
+DROP VIEW View_HFit_HealthAssesmentUserModule
+go

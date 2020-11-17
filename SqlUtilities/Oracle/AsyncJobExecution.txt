@@ -1,0 +1,22 @@
+DBMS_ALERT.REGISTER('Mpi_Proc1');
+DBMS_ALERT.REGISTER('Mpi_Proc2');
+DBMS_ALERT.REGISTER('Mpi_Proc3');
+DBMS_ALERT.REGISTER('Mpi_Proc4');
+DBMS_ALERT.REGISTER('Mpi_Proc5');
+...
+DBMS_JOB.SUBMIT(Oracle_MPI_Process, 'Mpi_Proc1; DBMS_ALERT.SIGNAL(''Mpi_Proc1'',''msg1''); COMMIT;');
+DBMS_JOB.SUBMIT(Oracle_MPI_Process, 'Mpi_Proc2; DBMS_ALERT.SIGNAL(''Mpi_Proc2'',''msg2''); COMMIT;');
+DBMS_JOB.SUBMIT(Oracle_MPI_Process, 'Mpi_Proc3; DBMS_ALERT.SIGNAL(''Mpi_Proc3'',''msg3''); COMMIT;');
+DBMS_JOB.SUBMIT(Oracle_MPI_Process, 'Mpi_Proc4; DBMS_ALERT.SIGNAL(''Mpi_Proc4'',''msg4''); COMMIT;');
+DBMS_JOB.SUBMIT(Oracle_MPI_Process, 'Mpi_Proc5; DBMS_ALERT.SIGNAL(''Mpi_Proc5'',''msg5''); COMMIT;');
+...
+...
+DBMS_ALERT.WAITONE('Mpi_Proc1',msg1, status1);
+DBMS_ALERT.WAITONE('Mpi_Proc2',msg2, status2);
+DBMS_ALERT.WAITONE('Mpi_Proc3',msg3, status3);
+DBMS_ALERT.WAITONE('Mpi_Proc4',msg4, status4);
+DBMS_ALERT.WAITONE('Mpi_Proc5',msg5, status5);
+
+if status1=0 and status2=0 and status3=0 and
+status4=0 and status5=0  
+then do whatever....

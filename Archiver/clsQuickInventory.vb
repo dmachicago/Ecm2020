@@ -27,7 +27,7 @@ Public Class clsQuickInventory
             Application.DoEvents()
 
             DS = GetRepoInventory(MachineName, UserID)
-            ListOfDirs = DBA.getListOf("select distinct FileDirectory from datasource where FileDirectory Is Not null And ltrim(rtrim(FileDirectory)) != '' order by FileDirectory ")
+            ListOfDirs = DBA.getListOf("select FQN from Directory where UserID = '" + gCurrLoginID + "' and IncludeSubDirs = 'Y' ;")
 
             FRM.Label1.Text = "Data Pulled"
             FRM.Refresh()
@@ -133,26 +133,16 @@ Public Class clsQuickInventory
         Try
             LL = 1000
             If Recurse.ToUpper.Equals("Y") Then
-                LL = 1100
                 ListOfDirs.Add(DirName)
-                'directories = GetAllSubFolders(DirName)
                 directories = Directory.GetDirectories(DirName, "*.*", SearchOption.AllDirectories)
-                LL = 1200
                 For Each sitem As String In directories
-                    LL = 1210
                     If Not ListOfDirs.Contains(sitem) Then
-                        LL = 1220
                         ListOfDirs.Add(sitem)
                     End If
-                    LL = 1230
                 Next
-                LL = 1240
                 directories = Nothing
             Else
-                LL = 1300
                 ListOfDirs.Add(DirName)
-                'directories = Directory.GetDirectories(DirName, "*", SearchOption.TopDirectoryOnly)
-                LL = 1400
             End If
 
             ListOfDirs.Sort()

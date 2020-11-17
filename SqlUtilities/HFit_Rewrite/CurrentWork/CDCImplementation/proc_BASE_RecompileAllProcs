@@ -1,0 +1,62 @@
+
+
+DROP PROCEDURE
+     proc_BASE_RecompileAllProcs;
+GO
+-- exec proc_BASE_RecompileAllProcs
+CREATE PROCEDURE proc_BASE_RecompileAllProcs
+AS
+BEGIN
+    DECLARE @Table VARCHAR (200) ;
+    DECLARE @DBName VARCHAR (200) ;
+    DECLARE @CommandToExecute VARCHAR (8000) ;
+    DECLARE @AllSPLoop INT;
+    DECLARE @AllSPList TABLE
+            (
+                             UIDTableList INT IDENTITY (1, 1) 
+                           , OwnerName VARCHAR (128) 
+                           , TableName VARCHAR (128)) ;
+
+    DECLARE @msg AS NVARCHAR (2000) = '';
+
+    INSERT INTO @AllSPList (
+           OwnerName
+         , TableName) 
+    SELECT
+           u.Name
+         , o.Name
+           FROM dbo.sysobjects AS o
+                    INNER JOIN dbo.sysusers AS u
+                        ON o.uid = u.uid
+           WHERE o.Type = 'U'
+             AND o.name LIKE 'proc_FACT%'
+              OR o.name LIKE '%_CTHIST'
+           ORDER BY
+                    o.Name;
+    SELECT
+           @AllSPLoop = MAX (UIDTableList) 
+           FROM @AllSPList;
+    WHILE @AllSPLoop > 0
+        BEGIN
+            SELECT
+                   @Table = TableName
+                 , @DBName = OwnerName
+                   FROM @AllSPList
+                   WHERE UIDTableList = @AllSPLoop;
+
+            SET @msg = 'Recompiling ' + @DBName + '.' + @Table;
+            EXEC PrintImmediate @msg;
+
+            SET @CommandToExecute = 'EXEC sp_recompile ' + '[' + @DBName + '.' + @Table + ']' + CHAR (13) ;
+            BEGIN TRY
+                EXEC (@CommandToExecute) ;
+            --PRINT 'Compiled: ' + @Table;
+            END TRY
+            BEGIN CATCH
+                SELECT
+                       'Error In ' + '[' + @DBName + '.' + @Table + ']' + CHAR (13) ;
+            END CATCH;
+            SELECT
+                   @AllSPLoop = @AllSPLoop - 1;
+        END;
+END;

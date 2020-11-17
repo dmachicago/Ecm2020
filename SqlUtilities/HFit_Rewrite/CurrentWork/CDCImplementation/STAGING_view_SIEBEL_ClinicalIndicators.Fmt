@@ -1,0 +1,21 @@
+12.0
+19
+1       SQLCHAR             0       24      ","      1     HBA1C                                                ""
+2       SQLCHAR             0       24      ","      2     CHOLESTEROL                                          ""
+3       SQLCHAR             0       24      ","      3     MICROALBUMINDATE                                     ""
+4       SQLCHAR             0       24      ","      4     FOOTEXAMDATE                                         ""
+5       SQLCHAR             0       100     ","      5     LST2WKSDEPRESSEDHOPELESS                             SQL_Latin1_General_CP1_CI_AS
+6       SQLCHAR             0       100     ","      6     LST2WKSINTERESTPLEASURE                              SQL_Latin1_General_CP1_CI_AS
+7       SQLCHAR             0       100     ","      7     LST2WKSNERVOUSANXIOUS                                SQL_Latin1_General_CP1_CI_AS
+8       SQLCHAR             0       100     ","      8     LST2WKSSTOPCONTROLLWORRY                             SQL_Latin1_General_CP1_CI_AS
+9       SQLCHAR             0       12      ","      9     AVERAGEPAINLEVEL                                     ""
+10      SQLCHAR             0       100     ","      10    HEIGHT                                               SQL_Latin1_General_CP1_CI_AS
+11      SQLCHAR             0       12      ","      11    WEIGHT                                               ""
+12      SQLCHAR             0       24      ","      12    LAST_UPD                                             ""
+13      SQLCHAR             0       100     ","      13    ROW_ID                                               SQL_Latin1_General_CP1_CI_AS
+14      SQLCHAR             0       100     ","      14    MPI                                                  SQL_Latin1_General_CP1_CI_AS
+15      SQLCHAR             0       100     ","      15    CAREPLANCOMPLIANCE                                   SQL_Latin1_General_CP1_CI_AS
+16      SQLCHAR             0       24      ","      16    FLUSHOTDATE                                          ""
+17      SQLCHAR             0       24      ","      17    EYE_EXAM_DATE                                        ""
+18      SQLCHAR             0       256     ","      18    FTPFileSource                                        SQL_Latin1_General_CP1_CI_AS
+19      SQLCHAR             0       200     "\r\n"   19    HashCode                                             SQL_Latin1_General_CP1_CI_AS

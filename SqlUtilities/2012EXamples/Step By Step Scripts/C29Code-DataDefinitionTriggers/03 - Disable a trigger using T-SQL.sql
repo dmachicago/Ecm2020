@@ -1,0 +1,4 @@
+USE AdventureWorks2012
+GO
+DISABLE TRIGGER trAuditTableChanges ON DATABASE;
+GO

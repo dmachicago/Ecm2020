@@ -1,0 +1,5 @@
+
+-- W. Dale Miller
+-- DMA, Limited
+-- Offered under MIT License
+-- July 26, 2016
