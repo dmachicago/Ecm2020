@@ -820,6 +820,12 @@
     <Content Include="_SQL_Query\ShrinkAllDBLogs.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="_SQL_Query\spFindUnindexedFiles.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="_SQL_Query\ValidateAllProcessAsCodes.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="DBUpdates\sp_ApplySourceTypeCode.sq">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

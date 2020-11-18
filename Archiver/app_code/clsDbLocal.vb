@@ -149,7 +149,7 @@ Public Class clsDbLocal : Implements IDisposable
                                         If WC.Contains(EXT + ",") Then
                                             FRM.lblPdgPages.Text = FI.Name + " @ " + FI.Length.ToString()
                                             FRM.lblFileSpec.Text = iCnt.ToString
-                                            hash = ENC.SHA512SqlServerHash(FI.FullName)
+                                            hash = ENC.SHA512SqlServerHash(FI.FullName.ToLower)
                                             B = addFile(FI.Name, hash)
                                             FileID = GetFileID(FI.Name, hash)
                                             'hash = ENC.SHA512SqlServerHash(FI.FullName)
@@ -180,7 +180,7 @@ Public Class clsDbLocal : Implements IDisposable
                                         If WC.Contains(EXT + ",") Then
                                             FRM.lblPdgPages.Text = FI.Name + " @ " + FI.Length.ToString()
                                             FRM.lblFileSpec.Text = iCnt.ToString
-                                            hash = ENC.SHA512SqlServerHash(FI.FullName)
+                                            hash = ENC.SHA512SqlServerHash(FI.FullName.ToLower)
                                             B = addFile(FI.Name, hash)
                                             FileID = GetFileID(FI.Name, hash)
                                             'hash = ENC.SHA512SqlServerHash(FI.FullName)
@@ -812,6 +812,7 @@ Public Class clsDbLocal : Implements IDisposable
     End Function
 
     Function GetDirID(ByVal DirName As String, ByRef UseArchiveBit As Boolean) As Integer
+
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
@@ -819,7 +820,6 @@ Public Class clsDbLocal : Implements IDisposable
         UseArchiveBit = False
         Dim DirID As Integer = -1
         Dim S As String = "Select DirID,UseArchiveBit from Directory where DirName = '" + DirName + "' "
-        'Dim cn As New SqlCeConnection(DirCS)
 
         Try
             If bSQLiteCOnnected.Equals(False) Then
@@ -829,12 +829,10 @@ Public Class clsDbLocal : Implements IDisposable
                 End If
             End If
 
-
             Dim CMD As New SQLiteCommand(S, SQLiteCONN)
             CMD.CommandType = CommandType.Text
 
             '** if you don’t set the result set to scrollable HasRows does not work
-
             Dim rs As SQLiteDataReader = CMD.ExecuteReader()
 
             If rs.HasRows Then
@@ -1154,7 +1152,7 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
-    Function addDirectory(ByVal DictOfDirs As Dictionary(Of String, String)) As Boolean
+    Function addDirectory(ByVal DictOfDirs As Dictionary(Of String, Integer)) As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1181,19 +1179,33 @@ Public Class clsDbLocal : Implements IDisposable
                 Return 0
             End If
         End If
-
+        Dim ID As Integer = 0
         Using CMD As New SQLiteCommand(S, SQLiteCONN)
             Try
                 'CMD.Parameters.AddWithValue("FileName", FileName)
                 'CMD.Parameters.AddWithValue("FileHash", FileHash)
-                For Each FName As String In DictOfDirs.Keys
-                    Dim Hash As String = DictOfDirs(FName.ToLower)
-                    CMD.Parameters.Add("DirName", DbType.String, FName)
-                    CMD.Parameters.Add("DirHash", DbType.String, Hash)
-                    S = "insert or ignore into Files (DirName, DirHash) values (@DirName,@DIrHash) "
-                    CMD.ExecuteNonQuery()
-                Next
+                For Each DIRName As String In DictOfDirs.Keys
+                    Try
+                        Application.DoEvents()
+                        If DictOfDirs.Keys.Contains(DIRName) Then
+                            ID = DictOfDirs(DIRName)
+                        Else
+                            ID = 0
+                        End If
 
+                        If ID.Equals(0) Then
+                            Dim Hash As String = ENC.SHA512SqlServerHash(DIRName.ToLower)
+                            CMD.Parameters.AddWithValue("DirName", DIRName)
+                            CMD.Parameters.AddWithValue("DirHash", Hash)
+                            'insert into Directory (DirName, DirHash, UseArchiveBit) values ('TEST','A0', 0) 
+                            S = "insert or ignore into Directory (DirName, DirHash, UseArchiveBit) values (@DirName,@DirHash,0) "
+                            CMD.CommandText = S
+                            CMD.ExecuteNonQuery()
+                        End If
+                    Catch ex As Exception
+                        LOG.WriteToArchiveLog("ERROR addInventory 00: " + ex.Message)
+                    End Try
+                Next
             Catch ex As Exception
                 LOG.WriteToArchiveLog("ERROR 20x: clsDbLocal/addDirectory - " + ex.Message + vbCrLf + S)
                 B = False
@@ -1208,15 +1220,17 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
-    Function addFile(ByVal DictOfFiles As Dictionary(Of String, String)) As Boolean
+    Function addFile(ByVal DictOfFiles As Dictionary(Of String, Integer)) As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
+        Dim ID As Integer = 0
         Dim B As Boolean = True
         Dim UseArchiveBit As Integer = 0
         Dim S As String = "insert or ignore into Files (FileName, FileHash) values (?,?) "
+
         B = setSLConn()
         Try
             If SQLiteCONN.State = ConnectionState.Closed Then
@@ -1241,13 +1255,25 @@ Public Class clsDbLocal : Implements IDisposable
                 'CMD.Parameters.AddWithValue("FileName", FileName)
                 'CMD.Parameters.AddWithValue("FileHash", FileHash)
                 For Each FName As String In DictOfFiles.Keys
-                    Dim Hash As String = DictOfFiles(FName.ToLower)
-                    CMD.Parameters.Add("FileName", DbType.String, FName)
-                    CMD.Parameters.Add("FileHash", DbType.String, Hash)
-                    S = "insert or ignore into Files (FileName, FileHash) values (@FileName,@FileHash) "
-                    CMD.ExecuteNonQuery()
+                    Try
+                        Application.DoEvents()
+                        If DictOfFiles.Keys.Contains(FName) Then
+                            ID = DictOfFiles(FName)
+                        Else
+                            ID = 0
+                        End If
+                        If ID.Equals(0) Then
+                            Dim Hash As String = ENC.SHA512SqlServerHash(FName.ToLower)
+                            CMD.Parameters.AddWithValue("FileName", FName)
+                            CMD.Parameters.AddWithValue("FileHash", Hash)
+                            S = "insert or ignore into Files (FileName, FileHash) values (@FileName,@FileHash) "
+                            CMD.CommandText = S
+                            CMD.ExecuteNonQuery()
+                        End If
+                    Catch ex As Exception
+                        LOG.WriteToArchiveLog("ERROR addFile 12X: " + ex.Message)
+                    End Try
                 Next
-
             Catch ex As Exception
                 LOG.WriteToArchiveLog("ERROR 20x: clsDbLocal/addFile - " + ex.Message + vbCrLf + S)
                 B = False
@@ -1271,7 +1297,7 @@ Public Class clsDbLocal : Implements IDisposable
         Dim FName As String = ""
         Dim DName As String = ""
         Dim B As Boolean = True
-        Dim LastWriteDate As String = Now.ToString
+        Dim LastWriteDate As String = ""
         Dim UseArchiveBit As Integer = 0
         Dim S As String = "insert or ignore into Files (FileName, FileHash) values (?,?) "
 
@@ -1301,35 +1327,53 @@ Public Class clsDbLocal : Implements IDisposable
         ', [DirID] int Not NULL
         ', [FileID] int Not NULL
         ', [FileExist] bit DEFAULT (1) NULL
-        ', [FileSize] bigint NULL
+        Dim FileSize As Int64 = 0
         ', [CreateDate] datetime NULL
         ', [LastUpdate] datetime NULL
         ', [LastArchiveUpdate] datetime NULL
         ', [ArchiveBit] bit NULL
         ', [NeedsArchive] bit NULL
         ', [FileHash] nvarchar(512) NULL COLLATE NOCASE
-
+        Dim Hash As String = ""
         Using CMD As New SQLiteCommand(S, SQLiteCONN)
             Try
                 'CMD.Parameters.AddWithValue("FileName", FileName)
                 'CMD.Parameters.AddWithValue("FileHash", FileHash)
                 For Each FQN In DictLWD.Keys
-                    DName = Path.GetDirectoryName(FQN)
-                    FName = Path.GetFileName(FQN)
+                    Application.DoEvents()
+                    Try
+                        Dim FI As New FileInfo(FQN)
+                        DName = FI.DirectoryName
+                        FName = FI.Name
+                        FileSize = FI.Length
+                        LastWriteDate = FI.LastWriteTime.ToString
+                        FI = Nothing
 
-                    DirID = DictDirID(DName)
-                    FileID = DictFileID(FName)
-                    LastWriteDate = DictLWD(FName)
+                        Try
+                            DirID = DictDirID(DName)
+                            FileID = DictFileID(FName)
+                        Catch ex As Exception
+                            LOG.WriteToArchiveLog("ERROR addInventory 12X: DID not find either the Dir '" + DName + "' or the File '" + FName + "' in the SQLite DB, skipping and not adding to inventory." + vbCrLf + ex.Message)
+                            DirID = 0
+                            FileID = 0
+                        End Try
 
-                    hash = ENC.SHA512SqlServerHash(FQN.ToLower)
-                    CMD.Parameters.Add("DirID", DbType.Int32, DirID)
-                    CMD.Parameters.Add("FileID", DbType.Int32, FileID)
-                    CMD.Parameters.Add("FileSize", DbType.Int64, FileSize)
-                    CMD.Parameters.Add("LastUpdate", DbType.DateTime, LastWriteDate)
-                    CMD.Parameters.Add("FileHash", DbType.String, hash)
-                    S = "insert or ignore into Inventory (DirID, FileID, FileSize, LastUpdate, FileHash) 
-                                            values (@DirID, @FileID, @FileSize, @LastUpdate, @FileHash) "
-                    CMD.ExecuteNonQuery()
+                        If DirID > 0 And FileID > 0 Then
+                            Hash = ENC.SHA512SqlServerHash(FQN.ToLower)
+                            CMD.Parameters.AddWithValue("DirID", DirID)
+                            CMD.Parameters.AddWithValue("FileID", FileID)
+                            CMD.Parameters.AddWithValue("FileSize", FileSize)
+                            CMD.Parameters.AddWithValue("LastUpdate", LastWriteDate)
+                            CMD.Parameters.AddWithValue("FileHash", Hash)
+                            S = "insert or ignore into Inventory (DirID, FileID, FileSize, LastUpdate, FileHash) 
+                                            values (@DirID, @FileID, @FileSize, '" + LastWriteDate + "', @FileHash) "
+                            CMD.CommandText = S
+                            CMD.ExecuteNonQuery()
+                        End If
+                    Catch ex As Exception
+                        LOG.WriteToArchiveLog("ERROR addInventory 01: " + ex.Message)
+                    End Try
+
                 Next
 
             Catch ex As Exception
@@ -4682,26 +4726,34 @@ Public Class clsDbLocal : Implements IDisposable
     Function LoadDirs() As Dictionary(Of String, Integer)
 
         Dim DIRS As New Dictionary(Of String, Integer)
-        Dim sql As String = "select DirName, DirID from FileNeedProcessing order by DirID  desc;"
+        Dim sql As String = "select DirName, DirID from [Directory] order by DirID  desc;"
         Dim FQN As String = ""
         Dim DirName As String = ""
         Dim DirID As Integer = 0
         Dim i As Integer = 0
 
-        Using CMD As New SQLiteCommand(sql, ListernerConn)
-            CMD.CommandText = sql
-            Dim rdr As SQLiteDataReader = CMD.ExecuteReader()
-            Using rdr
-                While (rdr.Read())
-                    DirName = rdr.GetValue(0).ToString()
-                    DirID = rdr.GetInt32(1)
-                    If Not DIRS.Keys.Contains(DirName) Then
-                        DIRS.Add(DirName, DirID)
-                        Exit While
-                    End If
-                End While
+        setSLConn()
+        Dim CMD As New SQLiteCommand(sql, SQLiteCONN)
+
+        Try
+            Using CMD
+                CMD.CommandText = sql
+                Dim rdr As SQLiteDataReader = CMD.ExecuteReader()
+                Using rdr
+                    While (rdr.Read())
+                        DirName = rdr.GetValue(0).ToString()
+                        DirID = rdr.GetInt32(1)
+                        If Not DIRS.Keys.Contains(DirName) Then
+                            DIRS.Add(DirName, DirID)
+                        End If
+                    End While
+                End Using
             End Using
-        End Using
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR DBLOCAL/LoadDirs: " + ex.Message)
+        End Try
+
+
 
         Return DIRS
 
@@ -4709,26 +4761,32 @@ Public Class clsDbLocal : Implements IDisposable
     Function LoadFiles() As Dictionary(Of String, Integer)
 
         Dim FILES As New Dictionary(Of String, Integer)
-        Dim sql As String = "select FileName, FileID from FileNeedProcessing order by FileID desc;"
+        Dim sql As String = "select FileName, FileID from [Files] order by FileID desc;"
         Dim FQN As String = ""
         Dim FileName As String = ""
         Dim FileID As Integer = 0
         Dim i As Integer = 0
 
-        Using CMD As New SQLiteCommand(sql, ListernerConn)
-            CMD.CommandText = sql
-            Dim rdr As SQLiteDataReader = CMD.ExecuteReader()
-            Using rdr
-                While (rdr.Read())
-                    FileName = rdr.GetValue(0).ToString()
-                    FileID = rdr.GetInt32(1)
-                    If Not FILES.Keys.Contains(DirName) Then
-                        FILES.Add(FileName, FileID)
-                        Exit While
-                    End If
-                End While
+        setSLConn()
+        Dim CMD As New SQLiteCommand(sql, SQLiteCONN)
+
+        Try
+            Using CMD
+                CMD.CommandText = sql
+                Dim rdr As SQLiteDataReader = CMD.ExecuteReader()
+                Using rdr
+                    While (rdr.Read())
+                        FileName = rdr.GetValue(0).ToString()
+                        FileID = rdr.GetInt32(1)
+                        If Not FILES.Keys.Contains(FileName) Then
+                            FILES.Add(FileName, FileID)
+                        End If
+                    End While
+                End Using
             End Using
-        End Using
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR DBLOCAL/LoadFiles : " + ex.Message)
+        End Try
 
         Return FILES
 

@@ -8546,7 +8546,8 @@ GoodLogin:
         GC.WaitForFullGCApproach()
     End Sub
 
-    Sub InventoryRepoDirectories()
+    Sub InventoryRepoDirectories(ProcessOnlyNewFile As Boolean)
+
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
@@ -8571,56 +8572,79 @@ GoodLogin:
         Dim watch As Stopwatch = Stopwatch.StartNew()
         Dim iFileFound As Integer = 0
         Dim TgtDir As String = ""
-
+        Dim Hash As String = ""
+        Dim LastWriteDate As DateTime = Now
 
         Dim DictFileID As New Dictionary(Of String, Integer)
         Dim DictDirID As New Dictionary(Of String, Integer)
         Dim DictDir As New Dictionary(Of String, String)
         Dim DictFile As New Dictionary(Of String, String)
         Dim DictInv As New Dictionary(Of String, String)
-        Dim DictInvDate As New Dictionary(Of String, DateTime)
-        Dim Hash As String = ""
-        Dim LastWriteDate As DateTime = Now
+        Dim DictInvDate As New Dictionary(Of String, String)
 
+        Dim ExistingDictDirID As Dictionary(Of String, Integer) = DBLocal.LoadDirs()
+        Dim ExistingDictFileID As Dictionary(Of String, Integer) = DBLocal.LoadFiles()
+        Dim iFiles As Integer = 0
+
+        PB1.Style = ProgressBarStyle.Marquee
+        PB1.MarqueeAnimationSpeed = 50
 
         For Each DirName In DirsToProcess.Keys
-            SB.Text = DirName
+            SB.Text = "STARTING INVENTORY: " + DirName
             Dim FFIles As New List(Of FileInfo)
             If Directory.Exists(DirName) Then
                 WC = ""
                 Recurse = DirsToProcess(DirName)
                 DBLocal.GetParentWC(Level, DirName, gWhereInDict, WC)
                 WC = WC.Replace("'", "")
-                'FFIles.AddRange(UTIL.GetFiles(DirName, Recurse))
                 FFIles = UTIL.GetFiles(DirName, Recurse)
+                Dim NewFile As Boolean = False
+                iFiles = 0
                 For Each FI As FileInfo In FFIles
+                    iFiles += 1
+                    If (iFiles Mod 100).Equals(0) Then
+                        SB2.Text = iFiles.ToString + " of " + FFIles.Count.ToString + " files"
+                    End If
                     DirName = FI.DirectoryName
                     FileName = FI.Name
                     FQN = FI.FullName
                     LastWriteDate = FI.LastWriteTime
                     TgtDir = FI.Extension + ","
+
                     If WC.Contains(TgtDir) And Not FI.FullName.Contains(".git") And Not FI.FullName.Contains("\git\") Then
+
                         If TgtDir.Length >= 3 Then
                             iFileFound += 1
                             SB2.Text = iFileFound.ToString
-                            If Not DictDir.Keys.Contains(DirName) Then
-                                Hash = ENC.SHA512SqlServerHash(DirName)
-                                DictDir.Add(DirName, Hash)
+                            If Not ExistingDictDirID.Keys.Contains(DirName) Then
+                                'Hash = ENC.SHA512SqlServerHash(DirName)
+                                'DictDir.Add(DirName, Hash)
+                                ExistingDictDirID.Add(DirName, 0)
+                                NewFile = True
                             End If
-                            If Not DictFile.Keys.Contains(FileName) Then
-                                Hash = ENC.SHA512SqlServerHash(FileName)
-                                DictFile.Add(FileName, Hash)
+                            If Not ExistingDictFileID.Keys.Contains(FileName) Then
+                                'Hash = ENC.SHA512SqlServerHash(FileName)
+                                'DictFile.Add(FileName, Hash)
+                                ExistingDictFileID.Add(FileName, 0)
+                                NewFile = True
                             End If
-                            If Not DictInv.Keys.Contains(FQN) Then
-                                Hash = ENC.SHA512SqlServerHash(FQN)
-                                DictInv.Add(FQN, Hash)
-                            End If
-                            If Not DictInvDate.Keys.Contains(FQN) Then
-                                DictInvDate.Add(FQN, LastWriteDate)
+                            'If Not DictInv.Keys.Contains(FQN) Then
+                            '    Hash = ENC.SHA512SqlServerHash(FQN)
+                            '    DictInv.Add(FQN, Hash)
+                            'End If
+                            If ProcessOnlyNewFile Then
+                                If Not DictInvDate.Keys.Contains(FQN) And NewFile.Equals(True) Then
+                                    DictInvDate.Add(FQN, LastWriteDate.ToString)
+                                End If
+                            Else
+                                If Not DictInvDate.Keys.Contains(FQN) Then
+                                    DictInvDate.Add(FQN, LastWriteDate.ToString)
+                                End If
                             End If
                         End If
                     End If
                 Next
+
                 Application.DoEvents()
             End If
             FFIles = Nothing
@@ -8628,21 +8652,45 @@ GoodLogin:
 
         Dim iTot As Integer = FileToProcess.Count
 
-        'UTIL.GetFilesToArchive(iInventory, ArchiveAttr, False, DirToInventory, FilterList, FilesToArchive, IncludedExts, ExcludedExts)
-        totsecs = watch.Elapsed.TotalSeconds
-        MSG = "*** TOTAL TIME FOR to Scan Directory names: " + totsecs.ToString + " Seconds and finding " + iFileFound.ToString + " files."
-        LOG.WriteToArchiveLog(MSG)
-        MessageBox.Show(MSG)
+        Dim COLOR As Object = PB1.ForeColor
+        PB1.ForeColor = COLOR.Blue
 
-        Console.WriteLine("End: " + Now.ToString)
+        If ExistingDictDirID.Count > 0 Then
+            SB.Text = "ADDING NEWLY FOUND DIRECTOPRIES:"
+            DBLocal.addDirectory(ExistingDictDirID)
+            ExistingDictDirID.Clear()
+            ExistingDictDirID = Nothing
+        End If
+        If ExistingDictFileID.Count > 0 Then
+            SB.Text = "ADDING NEWLY FOUND FILES:"
+            DBLocal.addFile(ExistingDictFileID)
+            ExistingDictFileID.Clear()
+            ExistingDictFileID = Nothing
+        End If
+        If DictInvDate.Count > 0 Then
+            SB.Text = "UPDATING INVENTORY:"
+            DBLocal.addInventory(DictInvDate)
+        End If
+
+        PB1.ForeColor = COLOR
+
+        totsecs = watch.Elapsed.TotalSeconds
+        MSG = "*** Scan Time: " + totsecs.ToString("N2") + " Seconds & inventoried, " + iFileFound.ToString + ", files."
+        SB.Text = MSG
+        LOG.WriteToArchiveLog(MSG)
+
+        Console.WriteLine(MSG)
         GC.Collect()
         GC.WaitForFullGCApproach()
+
+        PB1.Value = 0
+        PB1.Visible = False
 
     End Sub
 
     Private Sub ListFilesInDirectoryToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListFilesInDirectoryToolStripMenuItem.Click
 
-        InventoryRepoDirectories()
+        InventoryRepoDirectories(True)
 
     End Sub
 
@@ -13770,7 +13818,8 @@ SkipIT:
     End Sub
 
     Private Sub ReInventoryAllFilesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReInventoryAllFilesToolStripMenuItem.Click
-        DBLocal.ReInventory()
+        'DBLocal.ReInventory()
+        InventoryRepoDirectories(False)
     End Sub
 
     Private Sub GetDirFilesByFilterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GetDirFilesByFilterToolStripMenuItem.Click
@@ -14216,6 +14265,10 @@ SkipIT:
             MessageBox.Show("Failure: " + NewDB + ", failed to create")
         End If
 
+    End Sub
+
+    Private Sub ReinventoryFilesOnlyNewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReinventoryFilesOnlyNewToolStripMenuItem.Click
+        InventoryRepoDirectories(True)
     End Sub
 End Class
 
