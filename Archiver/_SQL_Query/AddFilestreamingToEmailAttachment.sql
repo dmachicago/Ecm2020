@@ -1,10 +1,8 @@
 
-EXEC dbo.sp_fulltext_table @tabname=N'[dbo].[DataSource]', @action=N'deactivate'
+EXEC dbo.sp_fulltext_table @tabname=N'[dbo].[EmailAttachment]', @action=N'deactivate'
 GO
 
 
-ALTER TABLE Datasource ALTER COLUMN RowGuid Add ROWGUIDCOL 
-go
 ALTER TABLE EmailAttachment ALTER COLUMN RowGuid Add ROWGUIDCOL 
 go
 
@@ -16,16 +14,16 @@ ADD FILE
   NAME= '_ContentFS',
   FILENAME = 'D:\ECMContentFS\FSEmailAttach.dat'
 )
-TO FILEGROUP FG_ECM_FileStream;
+TO FILEGROUP fgfsContent;
 go
 
-ALTER DATABASE [ECM.Library.FS] SET FILESTREAM( DIRECTORY_NAME = 'FG_ECM_FileStream' ) WITH NO_WAIT;
+ALTER DATABASE [ECM.Library.FS] SET FILESTREAM( DIRECTORY_NAME = 'fgfsContent' ) WITH NO_WAIT;
 GO
 
 ALTER DATABASE [ECM.Library.FS] SET FILESTREAM( NON_TRANSACTED_ACCESS = FULL ) WITH NO_WAIT;
 GO
 
-sp_RENAME 'DataSource.Attachment', 'AttachmentBak' , 'COLUMN'
+sp_RENAME 'EmailAttachment.Attachment', 'AttachmentBak' , 'COLUMN'
 go
 ALTER TABLE EmailAttachment ADD Attachment varbinary(max) FILESTREAM NULL
 go
@@ -40,5 +38,5 @@ go
 /* drop the xx<ColumnName> column */
 ALTER TABLE EmailAttachment DROP COLUMN AttachmentBak
 
-EXEC dbo.sp_fulltext_table @tabname=N'[dbo].[DataSource]', @action=N'activate'
+EXEC dbo.sp_fulltext_table @tabname=N'[dbo].[EmailAttachment]', @action=N'activate'
 GO

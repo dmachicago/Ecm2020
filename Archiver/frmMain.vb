@@ -8546,8 +8546,7 @@ GoodLogin:
         GC.WaitForFullGCApproach()
     End Sub
 
-    Private Sub ListFilesInDirectoryToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListFilesInDirectoryToolStripMenuItem.Click
-
+    Sub InventoryRepoDirectories()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
@@ -8555,6 +8554,8 @@ GoodLogin:
         Dim WC As String = ""
         Dim Recurse As String = "Y"
         Dim DirName As String = ""
+        Dim FQN As String = ""
+        Dim FileName As String = ""
         Dim IncludedExts As New ArrayList
         Dim ExcludedExts As New ArrayList
         Dim FilesToArchive As New List(Of String)
@@ -8569,23 +8570,58 @@ GoodLogin:
         Dim DirsToProcess As Dictionary(Of String, String) = DBARCH.GetDirectoryDICT(gCurrLoginID)
         Dim watch As Stopwatch = Stopwatch.StartNew()
         Dim iFileFound As Integer = 0
-        Console.WriteLine("Start: " + Now.ToString)
+        Dim TgtDir As String = ""
+
+
+        Dim DictFileID As New Dictionary(Of String, Integer)
+        Dim DictDirID As New Dictionary(Of String, Integer)
+        Dim DictDir As New Dictionary(Of String, String)
+        Dim DictFile As New Dictionary(Of String, String)
+        Dim DictInv As New Dictionary(Of String, String)
+        Dim DictInvDate As New Dictionary(Of String, DateTime)
+        Dim Hash As String = ""
+        Dim LastWriteDate As DateTime = Now
+
+
         For Each DirName In DirsToProcess.Keys
+            SB.Text = DirName
             Dim FFIles As New List(Of FileInfo)
             If Directory.Exists(DirName) Then
                 WC = ""
                 Recurse = DirsToProcess(DirName)
                 DBLocal.GetParentWC(Level, DirName, gWhereInDict, WC)
-                FFIles.AddRange(UTIL.GetFiles(DirName, Recurse))
+                WC = WC.Replace("'", "")
+                'FFIles.AddRange(UTIL.GetFiles(DirName, Recurse))
+                FFIles = UTIL.GetFiles(DirName, Recurse)
                 For Each FI As FileInfo In FFIles
-                    If WC.Contains(FI.Extension) And Not FI.FullName.Contains(".git") And Not FI.FullName.Contains("\git\") Then
-                        iFileFound += 1
-                        If Not FileToProcess.Contains(FI.FullName) Then
-                            FileToProcess.Add(FI.FullName)
+                    DirName = FI.DirectoryName
+                    FileName = FI.Name
+                    FQN = FI.FullName
+                    LastWriteDate = FI.LastWriteTime
+                    TgtDir = FI.Extension + ","
+                    If WC.Contains(TgtDir) And Not FI.FullName.Contains(".git") And Not FI.FullName.Contains("\git\") Then
+                        If TgtDir.Length >= 3 Then
+                            iFileFound += 1
+                            SB2.Text = iFileFound.ToString
+                            If Not DictDir.Keys.Contains(DirName) Then
+                                Hash = ENC.SHA512SqlServerHash(DirName)
+                                DictDir.Add(DirName, Hash)
+                            End If
+                            If Not DictFile.Keys.Contains(FileName) Then
+                                Hash = ENC.SHA512SqlServerHash(FileName)
+                                DictFile.Add(FileName, Hash)
+                            End If
+                            If Not DictInv.Keys.Contains(FQN) Then
+                                Hash = ENC.SHA512SqlServerHash(FQN)
+                                DictInv.Add(FQN, Hash)
+                            End If
+                            If Not DictInvDate.Keys.Contains(FQN) Then
+                                DictInvDate.Add(FQN, LastWriteDate)
+                            End If
                         End If
                     End If
                 Next
-                Console.WriteLine(DirName, FFIles.Count)
+                Application.DoEvents()
             End If
             FFIles = Nothing
         Next
@@ -8594,13 +8630,19 @@ GoodLogin:
 
         'UTIL.GetFilesToArchive(iInventory, ArchiveAttr, False, DirToInventory, FilterList, FilesToArchive, IncludedExts, ExcludedExts)
         totsecs = watch.Elapsed.TotalSeconds
-        MSG = "*** TOTAL TIME FOR to Scan Directory names: " + totsecs.ToString + " Seconds and finding " + iTot.ToString + " files."
+        MSG = "*** TOTAL TIME FOR to Scan Directory names: " + totsecs.ToString + " Seconds and finding " + iFileFound.ToString + " files."
         LOG.WriteToArchiveLog(MSG)
         MessageBox.Show(MSG)
 
         Console.WriteLine("End: " + Now.ToString)
         GC.Collect()
         GC.WaitForFullGCApproach()
+
+    End Sub
+
+    Private Sub ListFilesInDirectoryToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListFilesInDirectoryToolStripMenuItem.Click
+
+        InventoryRepoDirectories()
 
     End Sub
 

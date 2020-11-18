@@ -1857,12 +1857,17 @@ Public Class clsUtility
 
     Public Function GetFiles(ByVal Path As String, Recurse As String) As List(Of FileInfo)
         Dim d As New DirectoryInfo(Path)
-        Dim files As List(Of FileInfo) = New List(Of FileInfo)
+        Dim files As New List(Of FileInfo)
+
         Try
             If Recurse.Equals("Y") Then
-                files.AddRange(d.GetFiles("*", SearchOption.AllDirectories))
+                For Each fi As FileInfo In d.GetFiles("*", SearchOption.AllDirectories)
+                    files.Add(fi)
+                Next
             Else
-                files.AddRange(d.GetFiles("*", SearchOption.TopDirectoryOnly))
+                For Each fi As FileInfo In d.GetFiles("*", SearchOption.TopDirectoryOnly)
+                    files.Add(fi)
+                Next
             End If
         Catch ex As Exception
             LOG.WriteToArchiveLog("ERROR GetFiles 01A: Path <" + Path + ">" + vbCrLf + ex.Message)

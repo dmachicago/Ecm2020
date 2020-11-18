@@ -1154,6 +1154,199 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    Function addDirectory(ByVal DictOfDirs As Dictionary(Of String, String)) As Boolean
+
+        If gTraceFunctionCalls.Equals(1) Then
+            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+        End If
+
+        Dim B As Boolean = True
+        Dim UseArchiveBit As Integer = 0
+        Dim S As String = "insert or ignore into Files (DirName, DirHash) values (?,?) "
+        B = setSLConn()
+        Try
+            If SQLiteCONN.State = ConnectionState.Closed Then
+                SQLiteCONN.Open()
+                B = True
+            End If
+            If Not B Then
+                SQLiteCONN.Open()
+            End If
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("NOTICE addDirectory 100: " + ex.Message)
+        End Try
+        If B.Equals(False) Then
+            If Not setSLConn() Then
+                MessageBox.Show("NOTICE 07: The Local DB failed to open.: " + gLocalDBCS)
+                Return 0
+            End If
+        End If
+
+        Using CMD As New SQLiteCommand(S, SQLiteCONN)
+            Try
+                'CMD.Parameters.AddWithValue("FileName", FileName)
+                'CMD.Parameters.AddWithValue("FileHash", FileHash)
+                For Each FName As String In DictOfDirs.Keys
+                    Dim Hash As String = DictOfDirs(FName.ToLower)
+                    CMD.Parameters.Add("DirName", DbType.String, FName)
+                    CMD.Parameters.Add("DirHash", DbType.String, Hash)
+                    S = "insert or ignore into Files (DirName, DirHash) values (@DirName,@DIrHash) "
+                    CMD.ExecuteNonQuery()
+                Next
+
+            Catch ex As Exception
+                LOG.WriteToArchiveLog("ERROR 20x: clsDbLocal/addDirectory - " + ex.Message + vbCrLf + S)
+                B = False
+            Finally
+                CMD.Dispose()
+                GC.Collect()
+                GC.WaitForPendingFinalizers()
+            End Try
+        End Using
+
+        Return B
+
+    End Function
+
+    Function addFile(ByVal DictOfFiles As Dictionary(Of String, String)) As Boolean
+
+        If gTraceFunctionCalls.Equals(1) Then
+            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+        End If
+
+        Dim B As Boolean = True
+        Dim UseArchiveBit As Integer = 0
+        Dim S As String = "insert or ignore into Files (FileName, FileHash) values (?,?) "
+        B = setSLConn()
+        Try
+            If SQLiteCONN.State = ConnectionState.Closed Then
+                SQLiteCONN.Open()
+                B = True
+            End If
+            If Not B Then
+                SQLiteCONN.Open()
+            End If
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("NOTICE addfile 100: " + ex.Message)
+        End Try
+        If B.Equals(False) Then
+            If Not setSLConn() Then
+                MessageBox.Show("NOTICE 07: The Local DB failed to open.: " + gLocalDBCS)
+                Return 0
+            End If
+        End If
+
+        Using CMD As New SQLiteCommand(S, SQLiteCONN)
+            Try
+                'CMD.Parameters.AddWithValue("FileName", FileName)
+                'CMD.Parameters.AddWithValue("FileHash", FileHash)
+                For Each FName As String In DictOfFiles.Keys
+                    Dim Hash As String = DictOfFiles(FName.ToLower)
+                    CMD.Parameters.Add("FileName", DbType.String, FName)
+                    CMD.Parameters.Add("FileHash", DbType.String, Hash)
+                    S = "insert or ignore into Files (FileName, FileHash) values (@FileName,@FileHash) "
+                    CMD.ExecuteNonQuery()
+                Next
+
+            Catch ex As Exception
+                LOG.WriteToArchiveLog("ERROR 20x: clsDbLocal/addFile - " + ex.Message + vbCrLf + S)
+                B = False
+            Finally
+                CMD.Dispose()
+                GC.Collect()
+                GC.WaitForPendingFinalizers()
+            End Try
+        End Using
+
+        Return B
+
+    End Function
+
+    Function addInventory(ByVal DictLWD As Dictionary(Of String, String)) As Boolean
+
+        Dim DictDirID As Dictionary(Of String, Integer) = LoadDirs()
+        Dim DictFileID As Dictionary(Of String, Integer) = LoadFiles()
+
+        Dim FQN As String = ""
+        Dim FName As String = ""
+        Dim DName As String = ""
+        Dim B As Boolean = True
+        Dim LastWriteDate As String = Now.ToString
+        Dim UseArchiveBit As Integer = 0
+        Dim S As String = "insert or ignore into Files (FileName, FileHash) values (?,?) "
+
+        B = setSLConn()
+        Try
+            If SQLiteCONN.State = ConnectionState.Closed Then
+                SQLiteCONN.Open()
+                B = True
+            End If
+            If Not B Then
+                SQLiteCONN.Open()
+            End If
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("NOTICE addfile 100: " + ex.Message)
+        End Try
+        If B.Equals(False) Then
+            If Not setSLConn() Then
+                MessageBox.Show("NOTICE 07: The Local DB failed to open.: " + gLocalDBCS)
+                Return 0
+            End If
+        End If
+
+        Dim DirID As Integer = 0
+        Dim FileID As Integer = 0
+
+        '  [InvID] Integer primary key autoincrement  
+        ', [DirID] int Not NULL
+        ', [FileID] int Not NULL
+        ', [FileExist] bit DEFAULT (1) NULL
+        ', [FileSize] bigint NULL
+        ', [CreateDate] datetime NULL
+        ', [LastUpdate] datetime NULL
+        ', [LastArchiveUpdate] datetime NULL
+        ', [ArchiveBit] bit NULL
+        ', [NeedsArchive] bit NULL
+        ', [FileHash] nvarchar(512) NULL COLLATE NOCASE
+
+        Using CMD As New SQLiteCommand(S, SQLiteCONN)
+            Try
+                'CMD.Parameters.AddWithValue("FileName", FileName)
+                'CMD.Parameters.AddWithValue("FileHash", FileHash)
+                For Each FQN In DictLWD.Keys
+                    DName = Path.GetDirectoryName(FQN)
+                    FName = Path.GetFileName(FQN)
+
+                    DirID = DictDirID(DName)
+                    FileID = DictFileID(FName)
+                    LastWriteDate = DictLWD(FName)
+
+                    hash = ENC.SHA512SqlServerHash(FQN.ToLower)
+                    CMD.Parameters.Add("DirID", DbType.Int32, DirID)
+                    CMD.Parameters.Add("FileID", DbType.Int32, FileID)
+                    CMD.Parameters.Add("FileSize", DbType.Int64, FileSize)
+                    CMD.Parameters.Add("LastUpdate", DbType.DateTime, LastWriteDate)
+                    CMD.Parameters.Add("FileHash", DbType.String, hash)
+                    S = "insert or ignore into Inventory (DirID, FileID, FileSize, LastUpdate, FileHash) 
+                                            values (@DirID, @FileID, @FileSize, @LastUpdate, @FileHash) "
+                    CMD.ExecuteNonQuery()
+                Next
+
+            Catch ex As Exception
+                LOG.WriteToArchiveLog("ERROR 20x: clsDbLocal/addFile - " + ex.Message + vbCrLf + S)
+                B = False
+            Finally
+                CMD.Dispose()
+                GC.Collect()
+                GC.WaitForPendingFinalizers()
+            End Try
+        End Using
+
+        Return B
+
+    End Function
+
+
     Function addContact(ByVal FullName As String, ByVal Email1Address As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2610,6 +2803,8 @@ Public Class clsDbLocal : Implements IDisposable
         GC.Collect()
         GC.WaitForPendingFinalizers()
     End Sub
+
+
 
     Sub BackUpSQLite()
 
@@ -4482,10 +4677,63 @@ Public Class clsDbLocal : Implements IDisposable
         If FilesToProcess.Count.Equals(0) Then
             FilesToProcess.Add("C:\temp")
         End If
+    End Function
 
+    Function LoadDirs() As Dictionary(Of String, Integer)
 
+        Dim DIRS As New Dictionary(Of String, Integer)
+        Dim sql As String = "select DirName, DirID from FileNeedProcessing order by DirID  desc;"
+        Dim FQN As String = ""
+        Dim DirName As String = ""
+        Dim DirID As Integer = 0
+        Dim i As Integer = 0
+
+        Using CMD As New SQLiteCommand(sql, ListernerConn)
+            CMD.CommandText = sql
+            Dim rdr As SQLiteDataReader = CMD.ExecuteReader()
+            Using rdr
+                While (rdr.Read())
+                    DirName = rdr.GetValue(0).ToString()
+                    DirID = rdr.GetInt32(1)
+                    If Not DIRS.Keys.Contains(DirName) Then
+                        DIRS.Add(DirName, DirID)
+                        Exit While
+                    End If
+                End While
+            End Using
+        End Using
+
+        Return DIRS
 
     End Function
+    Function LoadFiles() As Dictionary(Of String, Integer)
+
+        Dim FILES As New Dictionary(Of String, Integer)
+        Dim sql As String = "select FileName, FileID from FileNeedProcessing order by FileID desc;"
+        Dim FQN As String = ""
+        Dim FileName As String = ""
+        Dim FileID As Integer = 0
+        Dim i As Integer = 0
+
+        Using CMD As New SQLiteCommand(sql, ListernerConn)
+            CMD.CommandText = sql
+            Dim rdr As SQLiteDataReader = CMD.ExecuteReader()
+            Using rdr
+                While (rdr.Read())
+                    FileName = rdr.GetValue(0).ToString()
+                    FileID = rdr.GetInt32(1)
+                    If Not FILES.Keys.Contains(DirName) Then
+                        FILES.Add(FileName, FileID)
+                        Exit While
+                    End If
+                End While
+            End Using
+        End Using
+
+        Return FILES
+
+    End Function
+
 
     ' TODO: override Finalize() only if Dispose(disposing As Boolean) above has code to free unmanaged resources.
     'Protected Overrides Sub Finalize()
