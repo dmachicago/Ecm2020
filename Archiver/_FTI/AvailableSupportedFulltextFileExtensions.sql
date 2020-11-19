@@ -1,14 +1,19 @@
+IF EXISTS
+(
+    SELECT 1
+    FROM sys.tables
+    WHERE name = 'FulltextSUpportedFileExtension'
+)
+    DROP TABLE FulltextSUpportedFileExtension;
+GO
+SELECT document_type, 
+       version, 
+       manufacturer
+INTO FulltextSupportedFileExtension
+FROM sys.fulltext_document_types;
 
-
-if exists (select 1 from sys.tables where name = 'FulltextSUpportedFileExtension')
-	drop table FulltextSUpportedFileExtension
+CREATE INDEX PI_FulltextSUpportedFileExtension ON FulltextSUpportedFileExtension(document_type);
 go
-
-select document_type, version, manufacturer 
-into FulltextSUpportedFileExtension
-from sys.fulltext_document_types;
-
-create index PI_FulltextSUpportedFileExtension on FulltextSUpportedFileExtension (document_type)
-
-
-select * from FulltextSUpportedFileExtension order by document_type
+SELECT *
+FROM FulltextSUpportedFileExtension
+ORDER BY document_type;

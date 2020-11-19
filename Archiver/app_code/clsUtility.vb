@@ -2337,6 +2337,9 @@ SkipIT:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Cleans the temporary working dir.
+    ''' </summary>
     Public Sub cleanTempWorkingDir()
 
         Dim tPath As String = LOG.getTempEnvironDir
@@ -2459,6 +2462,7 @@ SkipIT:
         DirsToRemove = Nothing
         GC.Collect()
     End Sub
+
     '******************************************************************************
     '*Purpose   :                   Get File Count in a specified directory
     '*Inputs: strPath(string)   :   Path of the folder.
@@ -2507,6 +2511,8 @@ SkipIT:
         Next
         Return image
     End Function
+
+
     Enum BWMode
         By_Lightness
         By_RGB_Value
