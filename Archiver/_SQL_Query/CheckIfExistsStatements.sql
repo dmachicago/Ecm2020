@@ -1,3 +1,4 @@
+--D. Miller Nov 2021
 --**************************************************
 --Check if a schema exists…then create it
 IF NOT EXISTS (SELECT 0

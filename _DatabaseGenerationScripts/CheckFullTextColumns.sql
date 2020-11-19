@@ -1,3 +1,4 @@
+--D. Miller March 2015
 SELECT 
     t.name AS TableName, 
     c.name AS FTCatalogName ,

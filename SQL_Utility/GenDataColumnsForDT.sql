@@ -1,5 +1,4 @@
 --select top 18 * from INFORMATION_SCHEMA.COLUMNS
-
 DECLARE @cols NVARCHAR(2000)= 'SentOn, 
        ShortSubj, 
        SenderEmailAddress, 

@@ -1,4 +1,4 @@
-
+--D. Miller June 2016
 go
 SELECT
       QUOTENAME(SCHEMA_NAME(sOBJ.schema_id)) + '.' + QUOTENAME(sOBJ.name) AS [TableName]

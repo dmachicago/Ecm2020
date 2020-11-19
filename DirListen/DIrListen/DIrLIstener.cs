@@ -167,20 +167,19 @@ namespace DirListen
         {
             try
             {
-                string path = dirs[0].Trim();
-                //path = "@" + path;
+                string ListenerDIR = dirs[0].Trim();
                 string IncludeSubs = dirs[1].ToUpper().Trim();
+                
                 LL = 300;
                 if (IncludeSubs.Equals("N")){
                     FileSystemWatcher watcher = new FileSystemWatcher
                     {
                         IncludeSubdirectories = false,
-                        Path = path
+                        Path = ListenerDIR
                     };
-                    /* Watch for changes in LastAccess and LastWrite times, and
-                        the renaming of files or directories. */
-                    watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
-                       | NotifyFilters.FileName | NotifyFilters.DirectoryName | NotifyFilters.Size;
+                    /* Watch for changes in LastAccess and LastWrite times, and the renaming of files or directories. */
+                    //watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.DirectoryName | NotifyFilters.Size;
+                    watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.DirectoryName | NotifyFilters.Size;
 
                     watcher.Created += FileSystemWatcher_Created;
                     watcher.Renamed += FileSystemWatcher_Renamed;
@@ -196,8 +195,10 @@ namespace DirListen
                     FileSystemWatcher watcher = new FileSystemWatcher
                     {
                         IncludeSubdirectories = true,
-                        Path = path
+                        Path = ListenerDIR
                     };
+                    //watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.DirectoryName | NotifyFilters.Size;
+                    watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.DirectoryName | NotifyFilters.Size;
                     watcher.Created += FileSystemWatcher_Created;
                     watcher.Renamed += FileSystemWatcher_Renamed;
                     watcher.Deleted += FileSystemWatcher_Deleted;
@@ -214,16 +215,25 @@ namespace DirListen
                 ArchiveListener.UTIL.LogError("ERROR MonitorDirectory: " + LL.ToString() + ex.Message);
             }
         }
+        private static string GetPath(object sndr) {
+            string ListenerDIR = "";
+            System.Reflection.PropertyInfo pi = sndr.GetType().GetProperty("Path");
+            ListenerDIR = (String)(pi.GetValue(sndr, null));
+            return ListenerDIR;
+        }
+        
         private static void FileSystemWatcher_Changed(object sender, FileSystemEventArgs e)
         {
             LL = 400;
+            
             try
             {
                 LL = 401;
                 string dir = System.IO.Path.GetDirectoryName(e.FullPath);
-                LL = 402;
-                ArchiveListener.UTIL.LogMsg("U", e.FullPath, dir, "");
-                Console.WriteLine("U|{0}|{1}", e.Name,"");
+                string ListenerDIR = "";
+                ListenerDIR = GetPath(sender);
+                ArchiveListener.UTIL.LogMsg("U", ListenerDIR, e.FullPath, dir, "");
+                Console.WriteLine("U|{0} | {1} | {2} | {3}", ListenerDIR, e.Name, dir,"");                
             }
             catch (Exception ex)
             {
@@ -238,10 +248,12 @@ namespace DirListen
             {
                 LL = 401;
                 string dir = System.IO.Path.GetDirectoryName(e.FullPath);
+                String ListenerDIR = "";
+                ListenerDIR = GetPath(sender);
                 LL = 402;
-                ArchiveListener.UTIL.LogMsg("C", e.FullPath, dir,"");
+                ArchiveListener.UTIL.LogMsg("C",ListenerDIR, e.FullPath, dir,"");
                 LL = 403;
-                Console.WriteLine("C| {0}|{1}", e.Name,"");
+                Console.WriteLine("U|{0} | {1} | {2} | {3}", ListenerDIR, e.Name, dir, "");
             }
             catch (Exception ex)
             {
@@ -257,8 +269,10 @@ namespace DirListen
                 //string OldName = e.Name.
                 LL = 501;
                 string dir = System.IO.Path.GetDirectoryName(e.FullPath);
+                String ListenerDIR = "";
+                ListenerDIR = GetPath(source);
                 LL = 502;
-                ArchiveListener.UTIL.LogMsg("R", e.FullPath, dir, e.OldFullPath);
+                ArchiveListener.UTIL.LogMsg("R",ListenerDIR, e.FullPath, dir, e.OldFullPath);
                 LL = 503;
                 Console.WriteLine("R| {0}|{1}", e.Name, e.OldFullPath);
             }
@@ -275,8 +289,10 @@ namespace DirListen
             {
                 LL = 601;
                 string dir = System.IO.Path.GetDirectoryName(e.FullPath);
+                String ListenerDIR = "";
+                ListenerDIR = GetPath(sender);
                 LL = 602;
-                ArchiveListener.UTIL.LogMsg("D", e.FullPath, dir,"");
+                ArchiveListener.UTIL.LogMsg("D", ListenerDIR, e.FullPath, dir,"");
                 LL = 603;
                 Console.WriteLine("D| {0}|{1}", e.Name,"");
             }
@@ -304,6 +320,8 @@ namespace DirListen
             {
                 LL = 801;
                 string[] files = Directory.GetFiles(ArchiveListener.UTIL.LogPATH);
+                String ListenerDIR = "";
+                ListenerDIR = GetPath(sender);
                 LL = 803;
                 foreach (string file in files)
                 {

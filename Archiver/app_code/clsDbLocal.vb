@@ -361,6 +361,7 @@ Public Class clsDbLocal : Implements IDisposable
         FRM.Title = "Getting LISTENER Files"
         FRM.Text = "Getting LISTENER Files"
         Dim SQL As String = ""
+        Dim ListenerDIR As String = ""
 
         Dim LConn As New SQLiteConnection()
         Dim cs As String = ""
@@ -370,7 +371,7 @@ Public Class clsDbLocal : Implements IDisposable
             LConn.ConnectionString = cs
             LConn.Open()
 
-            SQL = "select distinct FQN from FileNeedProcessing where FileApplied = 0 order by FQN ;"
+            SQL = "select distinct FQN, ListenerDIR from FileNeedProcessing where FileApplied = 0 order by FQN ;"
             Dim FQN As String = ""
             Dim ext As String = ""
             Dim DIR As String = ""
@@ -383,7 +384,7 @@ Public Class clsDbLocal : Implements IDisposable
 
             Dim DictOfExtensions As New Dictionary(Of String, String)
             DictOfExtensions = DB.getIncludedFileTypeWhereIn(gCurrLoginID)
-            LOG.WriteToArchiveLog("REMOVE LATER 3029 getListenerfiles: DictOfExtensions cnt = " + DictOfExtensions.Count.ToString)
+            'LOG.WriteToArchiveLog("REMOVE LATER 3029 getListenerfiles: DictOfExtensions cnt = " + DictOfExtensions.Count.ToString)
 
             Dim SpecificDirExts As String = ""
             Dim DirExts As String = ""
@@ -394,14 +395,15 @@ Public Class clsDbLocal : Implements IDisposable
                 Dim iCnt As Integer = 0
                 Dim rdr As SQLiteDataReader = CMD.ExecuteReader()
                 Using rdr
-                    LOG.WriteToArchiveLog("REMOVE LATER 3030 getListenerfiles: opening reader")
+                    'LOG.WriteToArchiveLog("REMOVE LATER 3030 getListenerfiles: opening reader")
                     While (rdr.Read())
                         iCnt += 1
 
                         FQN = rdr.GetValue(0).ToString()
+                        ListenerDIR = rdr.GetValue(1).ToString()
                         FRM.lblFileSpec.Text = iCnt.ToString
 
-                        LOG.WriteToArchiveLog("REMOVE LATER 3010: getListenerfiles FQN: <" + FQN + ">")
+                        'LOG.WriteToArchiveLog("REMOVE LATER 3010: getListenerfiles FQN: <" + FQN + ">")
 
                         If Not FQN.Contains("\.git") Then
                             Try
@@ -411,7 +413,14 @@ Public Class clsDbLocal : Implements IDisposable
                                 Len = FI.Length
 
                                 Dim WC As String = ""
-                                GetParentWC(Level, DIR, gWhereInDict, WC)
+                                Dim wcMethod As Integer = 1
+
+                                WC = gWhereInDict(ListenerDIR)
+
+                                If WC.Length <= 2 Then
+                                    GetParentWC(Level, DIR, gWhereInDict, WC)
+                                End If
+
                                 WC = WC.Replace("'", "")
 
                                 If WC.Length.Equals(0) Then
@@ -425,10 +434,10 @@ Public Class clsDbLocal : Implements IDisposable
                                     If WC.Contains(ext.ToLower + ",") Then
                                         If Not FilesToProcess.Contains(FQN) Then
                                             FRM.lblPdgPages.Text = "Processing: " + FQN
-                                            LOG.WriteToArchiveLog("REMOVE LATER 650.4 getListenerfiles Processing = <" + FQN + ">")
+                                            'LOG.WriteToArchiveLog("REMOVE LATER 650.4 getListenerfiles Processing = <" + FQN + ">")
                                             FilesToProcess.Add(FQN)
                                         Else
-                                            LOG.WriteToArchiveLog("REMOVE LATER 650.5 getListenerfiles SKIPPING = <" + FQN + ">")
+                                            'LOG.WriteToArchiveLog("REMOVE LATER 650.5 getListenerfiles SKIPPING = <" + FQN + ">")
                                         End If
                                     Else
                                         Dim xmsg As String = ""
@@ -451,7 +460,7 @@ Public Class clsDbLocal : Implements IDisposable
 
         FRM.Close()
         FRM.Dispose()
-        LOG.WriteToArchiveLog("REMOVE LATER 3010A: getListenerfiles FilesToProcess: " + FilesToProcess.Count.ToString + vbCrLf + SQL)
+        'LOG.WriteToArchiveLog("REMOVE LATER 3010A: getListenerfiles FilesToProcess: " + FilesToProcess.Count.ToString + vbCrLf + SQL)
         Return FilesToProcess
     End Function
 
@@ -1614,7 +1623,7 @@ Public Class clsDbLocal : Implements IDisposable
         S += "" + NeedsArchive.ToString + ", "
         S += "'" + FileHash + "') "
 
-        'LOG.WriteToArchiveLog("Remove after debug  SQL: " + vbCrLf + S)
+        ''LOG.WriteToArchiveLog("REMOVE after debug  SQL: " + vbCrLf + S)
 
         'Dim cn As New SqlCeConnection(InvCS)
         If Not setSLConn() Then

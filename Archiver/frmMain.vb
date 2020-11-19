@@ -4128,7 +4128,7 @@ SKIPFOLDER:
         If UseDirectoryListener.Equals(1) And Not gTempDisableDirListener Then
             frmNotify.lblPdgPages.Text = ""
             ActiveFolders = DBLocal.getListenerfTopDir()
-            LOG.WriteToArchiveLog("REMOVE LATER 300: Starting ActiveFolders Count: " + ActiveFolders.Count.ToString)
+            'LOG.WriteToArchiveLog("REMOVE LATER 300: Starting ActiveFolders Count: " + ActiveFolders.Count.ToString)
         Else
             frmNotify.lblPdgPages.Text = ""
             DBARCH.GetContentArchiveFileFolders(CurrUserGuidID, ActiveFolders, "") : LL = 501
@@ -4203,11 +4203,11 @@ SKIPFOLDER:
                     Dim FolderParmStr As String = ActiveFolders(i).ToString.Trim : LL = 826
                     Dim FolderParms() As String = FolderParmStr.Split("|") : LL = 831
 
-                    LOG.WriteToArchiveLog("REMOVE LATER 400.10: Archiving UseDirectoryListener.Equals = <" + UseDirectoryListener.ToString + ">  ParentDir <" + ParentDir + ">")
+                    'LOG.WriteToArchiveLog("REMOVE LATER 400.10: Archiving UseDirectoryListener.Equals = <" + UseDirectoryListener.ToString + ">  ParentDir <" + ParentDir + ">")
                     If UseDirectoryListener.Equals(1) And Not gTempDisableDirListener Then
                         FOLDER_FQN = Path.GetDirectoryName(ActiveFolders(i))
                         ParentDir = Path.GetDirectoryName(ActiveFolders(i))
-                        LOG.WriteToArchiveLog("REMOVE LATER 400.11: Archiving FOLDER_FQN = <" + FOLDER_FQN + ">  ParentDir <" + ParentDir + ">")
+                        'LOG.WriteToArchiveLog("REMOVE LATER 400.11: Archiving FOLDER_FQN = <" + FOLDER_FQN + ">  ParentDir <" + ParentDir + ">")
                         GoTo Process01
                     End If
 
@@ -4542,13 +4542,13 @@ Process01:
 
                         For K As Integer = 0 To FilesToArchive.Count - 1 : LL = 2186
 
-                            LOG.WriteToArchiveLog("REMOVE LATER 600: Archiving gTempDisableDirListener: " + gTempDisableDirListener.ToString)
+                            'LOG.WriteToArchiveLog("REMOVE LATER 600: Archiving gTempDisableDirListener: " + gTempDisableDirListener.ToString)
 
                             If UseDirectoryListener.Equals(1) And Not gTempDisableDirListener Then
                                 ParentDir = Path.GetDirectoryName(FilesToArchive(K))
                                 ListenerDir = Path.GetDirectoryName(FilesToArchive(K))
-                                LOG.WriteToArchiveLog("REMOVE LATER 600a: Archiving ParentDir: " + ParentDir)
-                                LOG.WriteToArchiveLog("REMOVE LATER 600b: Archiving ListenerDir: " + ListenerDir)
+                                'LOG.WriteToArchiveLog("REMOVE LATER 600a: Archiving ParentDir: " + ParentDir)
+                                'LOG.WriteToArchiveLog("REMOVE LATER 600b: Archiving ListenerDir: " + ListenerDir)
                             End If
 
                             LL = 2191
@@ -4586,7 +4586,7 @@ Process01:
                                 file_Extension = Path.GetExtension(FilesToArchive(K)) : LL = 2340
                                 file_DirectoryName = Path.GetDirectoryName(FilesToArchive(K)) : LL = 2341
                                 file_FullName = FilesToArchive(K) : LL = 2342
-                                LOG.WriteToArchiveLog("REMOVE LATER 900: Archiving : ")
+                                'LOG.WriteToArchiveLog("REMOVE LATER 900: Archiving : ")
                                 'frmNotify.lblPdgPages.Text = "Dir: " + ParentDir
                                 'frmNotify.lblFileSpec.Text = (K).ToString + " of " + ArchCnt.ToString + " : " + file_name
                             ElseIf Not IsNothing(FilesToBeUploaded) Then : LL = 2343
@@ -4608,7 +4608,7 @@ Process01:
                             End If
                             frmNotify.Refresh()
 
-                            LOG.WriteToArchiveLog("REMOVE LATER 00 - Processing File: <" + file_FullName + ">")
+                            'LOG.WriteToArchiveLog("REMOVE LATER 00 - Processing File: <" + file_FullName + ">")
 
                             LL = 2366
                             If K > FilesToArchive.Count Then : LL = 2371
@@ -4621,15 +4621,15 @@ Process01:
                             LL = 2431
                             InventoryFQN = file_DirectoryName + "\" + file_name : LL = 2436
                             If Not File.Exists(InventoryFQN) Then
-                                LOG.WriteToArchiveLog("REMOVE LATER 02 - Processing File: <" + file_FullName + ">")
+                                'LOG.WriteToArchiveLog("REMOVE LATER 02 - Processing File: <" + file_FullName + ">")
                                 If UseDirectoryListener.Equals(1) And Not gTempDisableDirListener Then
-                                    LOG.WriteToArchiveLog("REMOVE LATER 900: setListenerfileProcessed : <" + InventoryFQN + ">")
+                                    'LOG.WriteToArchiveLog("REMOVE LATER 900: setListenerfileProcessed : <" + InventoryFQN + ">")
                                     Dim bUpdt = DBLocal.setListenerfileProcessed(InventoryFQN)
                                 End If
                                 GoTo NextFile
                             End If
 
-                            If WhereiN.Contains(file_Extension) Then
+                            If WhereIN.Contains(file_Extension) Then
                                 Console.WriteLine("This file will be processed")
                             End If
                             'WDM Nov-02-2020 Commented out as it is not needed the bay before we rid ourselves of trump
@@ -4691,7 +4691,7 @@ Process01:
                                 CurrCreateDate = FI.CreationTime
                                 CurrLastUpdate = FI.LastWriteTime
 
-                                LOG.WriteToArchiveLog("REMOVE LATER 03 - Processing File: <" + CurrFQN + ">")
+                                'LOG.WriteToArchiveLog("REMOVE LATER 03 - Processing File: <" + CurrFQN + ">")
 
                             Catch ex As Exception
                                 LOG.WriteToArchiveLog("ERROR 22x1 ArchiveContent: " + ex.Message)
@@ -4743,20 +4743,20 @@ Process01:
                                     If Not bUpdt Then
                                         LOG.WriteToArchiveLog("ERROR 00A1 failed to set Processed flag: " + file_FullName)
                                     Else
-                                        LOG.WriteToArchiveLog("REMOVE LATER 900: setListenerfileProcessed : <" + file_FullName + ">")
+                                        'LOG.WriteToArchiveLog("REMOVE LATER 900: setListenerfileProcessed : <" + file_FullName + ">")
                                     End If
                                 End If
                                 GoTo NextFile
                             End If
 
                             If (NbrFilesFoundInRepo > 0) Then : LL = 2681
-                                LOG.WriteToArchiveLog("REMOVE LATER 1000: NbrFilesFoundInRepo > 0")
-                                LOG.WriteToArchiveLog("REMOVE LATER 06 - Processing File: <" + CurrFQN + ">")
+                                'LOG.WriteToArchiveLog("REMOVE LATER 1000: NbrFilesFoundInRepo > 0")
+                                'LOG.WriteToArchiveLog("REMOVE LATER 06 - Processing File: <" + CurrFQN + ">")
                                 frmNotify.BackColor = Color.LightSalmon : LL = 2686
                                 '************************************************************************************************************************
                                 Dim ExistingSourceGuid As String = DBARCH.getContentGuid(file_name, FileHash) : LL = 2691
                                 DBARCH.saveContentOwner(ExistingSourceGuid, CurrUserGuidID, "C", FOLDER_FQN, gMachineID, gNetworkID) : LL = 2696
-                                LOG.WriteToArchiveLog("REMOVE LATER 910: saveContentOwner : <" + file_FullName + ">")
+                                'LOG.WriteToArchiveLog("REMOVE LATER 910: saveContentOwner : <" + file_FullName + ">")
                                 '************************************************************************************************************************
                                 If UseDirectoryListener.Equals(1) And Not gTempDisableDirListener Then
                                     Dim bUpdt = DBLocal.setListenerfileProcessed(file_FullName)
@@ -5035,7 +5035,7 @@ Process01:
                                 'DOCS.setVersionnbr("0") : LL = 3971
                                 LL = 3976
                                 '******************************* INSERT INTITAL CONTENT DATA **************************************
-                                LOG.WriteToArchiveLog("REMOVE LATER 10 - Processing File: <" + SourceGuid + ">")
+                                'LOG.WriteToArchiveLog("REMOVE LATER 10 - Processing File: <" + SourceGuid + ">")
                                 bSuccessExecution = DOCS.Insert(SourceGuid, FileHash) : LL = 3981
                                 '**************************************************************************************************
                                 If Not bSuccessExecution Then
@@ -5295,7 +5295,7 @@ NextFile:                   LL = 5046
                                 If Not bUpdt Then
                                     LOG.WriteToArchiveLog("ERROR 12x1 failed to set Processed flag: " + file_FullName)
                                 Else
-                                    LOG.WriteToArchiveLog("REMOVE LATER 1010: setListenerfileProcessed")
+                                    'LOG.WriteToArchiveLog("REMOVE LATER 1010: setListenerfileProcessed")
                                 End If
                             End If
 
@@ -5492,7 +5492,7 @@ NextFolder:
         frmNotify.Refresh() : LL = 5841
         LL = 5846
 
-        LOG.WriteToArchiveLog("REMOVE LATER 2000: UseDirectoryListener = " + UseDirectoryListener.ToString + " : gTempDisableDirListener =" + gTempDisableDirListener.ToString)
+        'LOG.WriteToArchiveLog("REMOVE LATER 2000: UseDirectoryListener = " + UseDirectoryListener.ToString + " : gTempDisableDirListener =" + gTempDisableDirListener.ToString)
 
         If UseDirectoryListener.Equals(1) And Not gTempDisableDirListener Then
             bUpdated = DBLocal.removeListenerfileProcessed(FilesToArchiveID)
@@ -10257,7 +10257,7 @@ GoodLogin:
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
-        LOG.WriteToArchiveLog("REMOVE LATER 100: Starting Archive")
+        'LOG.WriteToArchiveLog("REMOVE LATER 100: Starting Archive")
 
         Dim bopen As Boolean = ckFormOpen("frmMain")
         If Not bopen Then
@@ -10339,7 +10339,7 @@ GoodLogin:
                 frmNotify.TopMost = False
                 '************************************** ArchiveContent ****************************************************************
                 '**********************************************************************************************************************
-                LOG.WriteToArchiveLog("REMOVE LATER 200: Starting ArchiveContent")
+                'LOG.WriteToArchiveLog("REMOVE LATER 200: Starting ArchiveContent")
                 ArchiveContent(Environment.MachineName, UIDcurr, FilesToBeUploaded)
                 '**********************************************************************************************************************
                 '**********************************************************************************************************************

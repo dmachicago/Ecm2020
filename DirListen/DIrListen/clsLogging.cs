@@ -8,11 +8,13 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace ArchiveListener
 {
     static public class UTIL
     {
+        static public string fqn = "";
         static public int LogID = 0;
         static string CS = "";
         public static int LL = 0;
@@ -35,7 +37,7 @@ namespace ArchiveListener
             }
         }
 
-        public static Boolean AddSQLiteFile(string ContainingFile, string FQN, int LineID, string OldFileName)
+        public static Boolean AddSQLiteFile(string ContainingFile, string ListenerDir, string FQN, int LineID, string OldFileName)
         {
             LL = 1000;
             Boolean b = true;
@@ -49,6 +51,11 @@ namespace ArchiveListener
                 if (FQN.Contains("'")){
                     FQN.Replace("''", "'");
                     FQN.Replace("'", "''");
+                }
+                if (ListenerDir.Contains("'"))
+                {
+                    ListenerDir.Replace("''", "'");
+                    ListenerDir.Replace("'", "''");
                 }
                 LL = 1001;
                 SqliteConnection sqlite_conn = new SqliteConnection();
@@ -75,14 +82,16 @@ namespace ArchiveListener
                         {
                             LL = 1008;
                             if (OldFileName.Trim().Length>0){
-                                sqlite_cmd.CommandText = "INSERT OR IGNORE INTO FileNeedProcessing(ContainingFile, FQN,LineID,RowCreateDate, OldFileName) VALUES('" + ContainingFile + "','" + FQN + "', " + LineID.ToString() + ", '" + DateTime.Now.ToString() + "', '" + OldFileName +"'); ";
+                                LL = 1009;
+                                sqlite_cmd.CommandText = "INSERT OR IGNORE INTO FileNeedProcessing(ContainingFile,ListenerDir, FQN,LineID,RowCreateDate, OldFileName) VALUES('" + ContainingFile + "','" + ListenerDir +"','" + FQN + "', " + LineID.ToString() + ", '" + DateTime.Now.ToString() + "', '" + OldFileName +"'); ";
                             }
                             else{
-                                sqlite_cmd.CommandText = "INSERT OR IGNORE INTO FileNeedProcessing(ContainingFile, FQN,LineID,RowCreateDate) VALUES('" + ContainingFile + "','" + FQN + "', " + LineID.ToString() + ", '" + DateTime.Now.ToString() + "'); ";
+                                LL = 1010;
+                                sqlite_cmd.CommandText = "INSERT OR IGNORE INTO FileNeedProcessing(ContainingFile,ListenerDir, FQN,LineID,RowCreateDate) VALUES('" + ContainingFile + "','" + ListenerDir + "','" + FQN + "', " + LineID.ToString() + ", '" + DateTime.Now.ToString() + "'); ";
                             }
                             sqlite_cmd.ExecuteNonQuery();
                         }
-                        LL = 1009;
+                        LL = 1011;
                     }
                     catch (Exception ex)
                     {
@@ -143,7 +152,7 @@ namespace ArchiveListener
             return s;
         }
 
-        public static void LogMsg(string action, string TrackedFQN, string dir, string OldFileName)
+        public static void LogMsg(string action, string ListenerDir, string TrackedFQN, string dir, string OldFileName)
         {
             try
             {
@@ -171,7 +180,7 @@ namespace ArchiveListener
                     mo = "0" + mo;
                 }
                 //string fqn = LogPATH + "\\" + yr + "." + mo + "." + da + "." + hr + "." + "Change.log";
-                string fqn = LogPATH + "\\" + yr + "." + mo + "." + da + "." + "Change.log";
+                fqn = LogPATH + "\\" + yr + "." + mo + "." + da + "." + "Change.log";
 
                 string txt = "";
                 int i = 0;
@@ -179,7 +188,7 @@ namespace ArchiveListener
                 i = TrackedFQN.LastIndexOf(".");
                 if (i > 0)
                 {
-                    EXT = TrackedFQN.Substring(i + 1).ToUpper();
+                    EXT = "." + TrackedFQN.Substring(i + 1).ToLower();
                 }
                 else
                 {
@@ -188,14 +197,19 @@ namespace ArchiveListener
 
                 if (!EXT.Equals("?") && !TrackedFQN.Contains("~"))
                 {
-                    AddSQLiteFile(fqn, TrackedFQN, LogID, OldFileName);
+                    //AddSQLiteFile(fqn, ListenerDir, TrackedFQN, LogID, OldFileName);
+                    //C:\dev\ECM2020\DirListen\DIrListen\bin\Debug\Errors.2020.11.19.log
+                    if (!TrackedFQN.Contains("Errors.20") )
+                    {
+                        new Thread(() => AddSQLiteFile(fqn, ListenerDir, TrackedFQN, LogID, OldFileName)).Start();
+                    }                    
                 }
 
                 try
                 {
                     using (StreamWriter sw = File.AppendText(fqn))
                     {
-                        txt = DateTime.Now.ToString() + "|" + LogID.ToString() + "|" + action + "|" + dir + "|" + TrackedFQN + "|" + EXT;
+                        txt = DateTime.Now.ToString() + "|" + LogID.ToString() + "|" + action + "|" + ListenerDir + "|" + dir + "|" + TrackedFQN + "|" + EXT;
                         sw.WriteLine(txt);
                     }
                 }

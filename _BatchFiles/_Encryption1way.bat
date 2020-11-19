@@ -1,3 +1,4 @@
+rem D. Miller Jan 2016
 C:
 
 rem cd D:\dev\EcmMasterSingleSource\ECM\EncryptString

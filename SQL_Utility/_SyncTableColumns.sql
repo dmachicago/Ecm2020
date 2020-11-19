@@ -1,4 +1,4 @@
-
+--D. Miller
 DECLARE @name VARCHAR(50) ;
 DECLARE @TABLE_NAME varchar(250) ; 
 DECLARE @COLUMN_NAME varchar(250) ;

@@ -1,4 +1,4 @@
-
+--D. Miller
 --SELECT DISTINCT 
 --       OBJECT_NAME(fic.[object_id]) table_name, 
 --       [name] column_name

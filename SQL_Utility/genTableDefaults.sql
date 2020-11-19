@@ -1,4 +1,4 @@
-
+--D. Miller December 2012
 select schema_name(t.schema_id) + '.' + t.[name] as [table],
     col.column_id,
     col.[name] as column_name,

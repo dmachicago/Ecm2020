@@ -1,3 +1,4 @@
+--D. Miller Oct 2021
 SELECT DISTINCT 'DROP STATISTICS '
 + QUOTENAME(SCHEMA_NAME(ob.Schema_id)) + '.'
 + QUOTENAME(OBJECT_NAME(s.object_id)) + '.' +

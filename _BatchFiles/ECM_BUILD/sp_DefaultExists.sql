@@ -1,3 +1,4 @@
+--D. Miller July 1012
 IF EXISTS
 (
     SELECT 1
