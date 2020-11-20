@@ -4707,7 +4707,7 @@ Public Class clsDbLocal : Implements IDisposable
         bConnSet = setListenerConn()
 
         Dim FilesToProcess As New List(Of String)
-        Dim sql As String = "select FQN from FileNeedProcessing limit 1 ;"
+        Dim sql As String = "select FQN, RowCreateDate from FileNeedProcessing;"
         Dim FQN As String = ""
         Dim DirName As String = ""
         Dim i As Integer = 0
@@ -4730,6 +4730,9 @@ Public Class clsDbLocal : Implements IDisposable
         If FilesToProcess.Count.Equals(0) Then
             FilesToProcess.Add("C:\temp")
         End If
+
+        Return DICT
+
     End Function
 
     Function LoadDirs() As Dictionary(Of String, Integer)
@@ -4762,11 +4765,14 @@ Public Class clsDbLocal : Implements IDisposable
             LOG.WriteToArchiveLog("ERROR DBLOCAL/LoadDirs: " + ex.Message)
         End Try
 
-
-
         Return DIRS
 
     End Function
+
+    ''' <summary>
+    ''' Loads the files from the SQLite database.
+    ''' </summary>
+    ''' <returns></returns>
     Function LoadFiles() As Dictionary(Of String, Integer)
 
         Dim FILES As New Dictionary(Of String, Integer)

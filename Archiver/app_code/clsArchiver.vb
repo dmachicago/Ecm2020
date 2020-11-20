@@ -9371,7 +9371,7 @@ ProcessOneFileOnly:
                                 AppendOcrText(SourceGuid, OcrText)
                             End If
 
-
+                            UpdateRetentionCode(SourceGuid, RetentionCode)
                             UpdateDocFqn(SourceGuid, file_FullName)
                             UpdateDocSize(SourceGuid, file_Length)
                             UpdateDocDir(SourceGuid, file_FullName)

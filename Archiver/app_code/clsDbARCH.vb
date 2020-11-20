@@ -11793,6 +11793,21 @@ REDO:
 
     End Sub
 
+    Public Sub UpdateRetentionCode(ByVal SourceGuid As String, ByVal RetentionCode As String)
+
+        Dim S As String = ""
+        S = S + "  UPDATE [DataSource]"
+        S = S + "  set [RetentionCode] = '" + RetentionCode + "' "
+        S = S + "  WHERE [SourceGuid] = '" + SourceGuid + "'"
+
+        Dim B As Boolean = Me.ExecuteSqlNewConn(S, False)
+
+        If Not B Then
+            LOG.WriteToArchiveLog("Failed to update File RetentionCode '" + RetentionCode + "'.")
+        End If
+
+    End Sub
+
     Public Sub UpdateDocFqn(ByVal DocGuid As String, ByVal FQN As String)
         FQN = UTIL.RemoveSingleQuotes(FQN)
 
