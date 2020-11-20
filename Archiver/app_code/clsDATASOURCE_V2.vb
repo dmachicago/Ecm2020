@@ -450,7 +450,7 @@ Public Class clsDataSource_V2
 
 
     '** Generate the INSERT method 
-    Public Function Insert(SourceGuid As String, FileHash As String) As Boolean
+    Public Function Insert(SourceGuid As String, FileHash As String, RetentionYears As Integer, RetentionExpirationDate As String) As Boolean
 
         If VersionNbr.Length.Equals(0) Then
             VersionNbr = "1"

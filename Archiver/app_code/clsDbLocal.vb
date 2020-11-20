@@ -4813,6 +4813,8 @@ Public Class clsDbLocal : Implements IDisposable
     Public Sub Dispose() Implements IDisposable.Dispose
         ' Do not change this code.  Put cleanup code in Dispose(disposing As Boolean) above.
         Dispose(True)
+        SQLiteCONN.Dispose()
+        ListernerConn.Dispose()
         ' TODO: uncomment the following line if Finalize() is overridden above.
         ' GC.SuppressFinalize(Me)
     End Sub

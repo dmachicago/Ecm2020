@@ -5678,7 +5678,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
-    Function UpdateSouceImage(MachineID As String, FQN As String, Imagehash As String) As Boolean
+    Function UpdateSouceImage(MachineID As String, FQN As String, Imagehash As String, RetentionExpirationDate As DateTime) As Boolean
 
         If FQN.Contains("'") Then
             FQN = FQN.Replace("''", "'")
@@ -5688,11 +5688,14 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Dim ConnStr As String = setConnStr()
         Dim MySql As String = ""
         Dim SourceImage As Byte() = IO.File.ReadAllBytes(FQN)
+        Dim ImageLen As Integer = SourceImage.Length
 
         MySql = "UPDATE DataSource SET "
         MySql += " SourceImage = @SourceImage "
         MySql += " , Imagehash = @Imagehash"
         MySql += " , LastAccessDate = getdate()"
+        MySql += " , RetentionExpirationDate = @RetentionExpirationDate"
+        MySql += " , ImageLen = @ImageLen"
         MySql += " where MachineID = @MachineID and FQN = @FQN"
 
         Try
@@ -5705,6 +5708,9 @@ Public Class clsDatabaseARCH : Implements IDisposable
                     Command.Parameters.Add(New SqlParameter("@FQN", FQN))
                     Command.Parameters.Add(New SqlParameter("@Imagehash", Imagehash))
                     Command.Parameters.Add(New SqlParameter("@SourceImage", SourceImage))
+                    Command.Parameters.Add(New SqlParameter("@RetentionExpirationDate", RetentionExpirationDate))
+                    Command.Parameters.Add(New SqlParameter("@ImageLen", ImageLen))
+
                     Command.ExecuteNonQuery()
                 End Using
             End Using
@@ -5718,7 +5724,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
-    Function UpdateSouceImage(SourceGuid As String, FQN As String) As Boolean
+    Function UpdateSouceImage(SourceGuid As String, FQN As String, RetentionYears As Integer) As Boolean
 
         If FQN.Contains("'") Then
             FQN = FQN.Replace("''", "'")
@@ -5743,8 +5749,9 @@ Public Class clsDatabaseARCH : Implements IDisposable
             Dim CMD As New SqlCommand
             Dim connString As String = getRepoConnStr()
             Dim conn As New SqlConnection(connString)
+            Dim RetentionExpirationDate As DateTime = DateAdd("yyyy", RetentionYears, Now)
 
-            MySql = "update DataSource set FileLength = @FileLength, LastAccessDate = @LastAccessDate, LastWriteTime = @LastWriteTime, SourceImage = @SourceImage
+            MySql = "update DataSource set RetentionExpirationDate = @RetentionExpirationDate, FileLength = @FileLength, LastAccessDate = @LastAccessDate, LastWriteTime = @LastWriteTime, SourceImage = @SourceImage
                 where SourceGuid = @SourceGuid"
             Try
                 conn.Open()
@@ -5755,6 +5762,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
                     CMD.CommandType = CommandType.Text
                     Using conn
                         Using CMD
+                            CMD.Parameters.Add(New SqlParameter("@RetentionExpirationDate", RetentionExpirationDate))
                             CMD.Parameters.Add(New SqlParameter("@FileLength", FLen))
                             CMD.Parameters.Add(New SqlParameter("@LastAccessDate", LastAccessTime))
                             CMD.Parameters.Add(New SqlParameter("@LastWriteTime", LastWriteTime))
@@ -5778,7 +5786,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
             LOG.WriteToArchiveLog("ERROR 44x: UpdateSouceImage 00A: " + ex.Message)
         End Try
 
-        Return b
+        Return B
 
     End Function
 
@@ -27352,6 +27360,11 @@ NextOne:
         Dim WebPagePublishDate As String = tDict("WebPagePublishDate")
         Dim SapData As String = tDict("SapData")
         'Dim RowID As String = tDict("RowID")
+
+        If Convert.ToDateTime(RetentionDate) <= Now Then
+            Dim NewDate As DateTime = DateAdd("yyyy", 10, Now)
+            RetentionDate = NewDate.ToString
+        End If
 
         Dim B As Boolean = True
         Dim TSQL As String = "INSERT INTO DataSource ( 

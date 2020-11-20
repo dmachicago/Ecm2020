@@ -1,0 +1,804 @@
+{\rtf1\ansi\ansicpg1252\uc1\deff0\deflang1033\deflangfe1033{\fonttbl{\f0\froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f1\froman\fcharset161\fprq2 Times New Roman;}{\f2\froman\fcharset162\fprq2 Times New Roman;}{\f3\froman
+\fcharset186\fprq2 Times New Roman;}{\f4\froman\fcharset238\fprq2 Times New Roman;}{\f5\froman\fcharset204\fprq2 Times New Roman;}{\f6\froman\fcharset2\fprq2{\*\panose 05050102010706020507}Symbol;}{\f7\fnil\fcharset2\fprq2{
+\*\panose 05000000000000000000}Wingdings;}{\f8\froman\fcharset2\fprq2{\*\panose 05020102010507070707}Wingdings 2;}{\f9\froman\fcharset2\fprq2{\*\panose 05040102010807070707}Wingdings 3;}{\f10\fswiss\fcharset0\fprq2{
+\*\panose 020f0704030504030204}Arial Rounded MT Bold;}{\f11\froman\fcharset0\fprq2{\*\panose 02050604050505020204}Bookman Old Style;}{\f12\froman\fcharset161\fprq2 Bookman Old Style;}{\f13\froman\fcharset162\fprq2 Bookman Old Style;}{\f14\froman
+\fcharset186\fprq2 Bookman Old Style;}{\f15\froman\fcharset238\fprq2 Bookman Old Style;}{\f16\froman\fcharset204\fprq2 Bookman Old Style;}{\f17\fmodern\fcharset0\fprq1{\*\panose 02070309020205020404}Courier New;}{\f18\fmodern\fcharset161
+\fprq1 Courier New;}{\f19\fmodern\fcharset162\fprq1 Courier New;}{\f20\fmodern\fcharset186\fprq1 Courier New;}{\f21\fmodern\fcharset238\fprq1 Courier New;}{\f22\fmodern\fcharset204\fprq1 Courier New;}{\f23\fswiss\fcharset0\fprq2{
+\*\panose 020b0604020202020204}Arial;}{\f24\fswiss\fcharset161\fprq2 Arial;}{\f25\fswiss\fcharset162\fprq2 Arial;}{\f26\fswiss\fcharset186\fprq2 Arial;}{\f27\fswiss\fcharset238\fprq2 Arial;}{\f28\fswiss\fcharset204\fprq2 Arial;}{\f29\fswiss\fcharset0
+\fprq2{\*\panose 020f0502020204030204}Calibri;}{\f30\fswiss\fcharset161\fprq2 Calibri;}{\f31\fswiss\fcharset162\fprq2 Calibri;}{\f32\fswiss\fcharset186\fprq2 Calibri;}{\f33\fswiss\fcharset238\fprq2 Calibri;}{\f34\fswiss\fcharset204\fprq2 Calibri;}}{
+\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;\red255\green255\blue0;\red255\green255\blue255;\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;
+\red128\green0\blue128;\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;\red192\green192\blue192;\red63\green133\blue198;\red62\green134\blue198;\red191\green191\blue191;\red255\green255\blue191;\red0\green134\blue205;}{\stylesheet{
+\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \fs24\cgrid \snext0 Normal;}{\*\cs1\additive Default Paragraph Font;}}{\*\listtable{\list\listtemplateid546702833\listsimple1{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0
+\levelspace288\levelindent0{\leveltext\'01\'b7 ?;}{\levelnumbers;}\f6\fs22\expnd0\expndtw1\cgrid \fi0\li432\jclisttab\tx288}\listid81784226}{\list\listtemplateid1341515133\listsimple1{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0
+\levelstartat0\levelspace432\levelindent0{\leveltext\'01\'6f ?;}{\levelnumbers;}\f17\fs22\expnd0\expndtw3\cgrid \fi0\li1152\jclisttab\tx432}\listid123974089}{\list\listtemplateid315003360\listsimple1{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0
+\levelfollow0\levelstartat0\levelspace216\levelindent0{\leveltext\'01\'6e ?;}{\levelnumbers;}\f7\fs22\expnd0\expndtw-1\cgrid \fi0\li1872\jclisttab\tx216}\listid87198627}{\list\listtemplateid2013530674\listsimple1{\listlevel\levelnfc0\levelnfcn0\leveljc0
+\leveljcn0\levelfollow0\levelstartat1\levelspace216\levelindent0{\leveltext\'02\'00.;}{\levelnumbers\'01;}\fs22\cgrid \fi0\li504\jclisttab\tx216}\listid13286441}}{\*\listoverridetable{\listoverride\listid81784226\listoverridecount0\ls1}{\listoverride
+\listid123974089\listoverridecount0\ls2}{\listoverride\listid87198627\listoverridecount0\ls3}{\listoverride\listid123974089\listoverridecount1{\lfolevel\listoverrideformat{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0
+\levelspace360\levelindent0{\leveltext\'01\'6f ?;}{\levelnumbers;}\f17\fs22\expnd1\expndtw6\cgrid \fi-360\li1512\jclisttab\tx360}}\ls4}{\listoverride\listid81784226\listoverridecount1{\lfolevel\listoverrideformat{\listlevel\levelnfc23\levelnfcn23\leveljc0
+\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\leveltext\'01\'b7 ?;}{\levelnumbers;}\f6\fs22\cgrid \fi0\li360\jclisttab\tx360}}\ls5}{\listoverride\listid13286441\listoverridecount0\ls6}}
+{\info{\version1}{\creatim\yr2010\mo7\dy14\hr15\min15}}\paperw11918\paperh16854\margl1340\margr1338\margt536\margb7978\deftab720\widowctrl\ftnbj\aenddoc\formshade\viewkind1\viewscale100\pgbrdrhead\pgbrdrfoot\fet0\useltbaln\jexpand\noxlattoyen\expshrtn
+\noultrlspc\dntblnsbdb\nospaceforul\horzdoc\ftnlytwnine\htmautsp\nolnhtadjtbl\useltbaln\alntblind\lytcalctblwd\lyttblrtgr\lnbrkrule\nobrkwrptbl\snaptogridincell\allowfieldendsel\wrppunct\asianbrkrule\newtblstyruls\nogrowautofit\sectd\stextflow0
+\margrsxn1278\margbsxn7948\linex0\sectdefaultcl\trowd\trgaph0\trql\trrh-723\clvertalb\clbrdrb\brdrs\brdrw14\brdrcf17 \cltxlrtb\cellx6940\clvertalt\cltxlrtb\cellx9240\pard\plain \qr\ri2384\sb396\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\f10
+\fs19\expnd0\expndtw1\b\cgrid {Building the case for BI projects \'97 Tony Harper}{\f11\fs6\cgrid \cell }\pard\plain \qr\li136\sb18\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\fs24\cgrid {{\*\shppict{\pict{\*\picprop\shplid1027{\sp{
+\sn shapeType}{\sv 75}}{\sp{\sn fFlipH}{\sv 0}}{\sp{\sn fFlipV}{\sv 0}}{\sp{\sn pibName}{\sv _Pic1}}{\sp{\sn pibFlags}{\sv 1}}{\sp{\sn fillColor}{\sv 268435473}}{\sp{\sn fFilled}{\sv 0}}{\sp{\sn fLine}{\sv 0}}}\picscalex100\picscaley100\piccropl0
+\piccropr0\piccropt0\piccropb0\picw3809\pich1149\picwgoal2160\pichgoal652\jpegblip\bliptag924670149{\*\blipuid 371d58c51dc74e5ba410a34f4e29c10d}
+ffd8ffe000104a46494600010101009600960000ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720
+222c231c1c2837292c30313434341f27393d38323c2e333432ffdb0043010909090c0b0c180d0d1832211c213232323232323232323232323232323232323232
+323232323232323232323232323232323232323232323232323232323232ffc0001108004400e103012200021101031101ffc4001f0000010501010101010100
+000000000000000102030405060708090a0bffc400b5100002010303020403050504040000017d01020300041105122131410613516107227114328191a10823
+42b1c11552d1f02433627282090a161718191a25262728292a3435363738393a434445464748494a535455565758595a636465666768696a737475767778797a
+838485868788898a92939495969798999aa2a3a4a5a6a7a8a9aab2b3b4b5b6b7b8b9bac2c3c4c5c6c7c8c9cad2d3d4d5d6d7d8d9dae1e2e3e4e5e6e7e8e9eaf1
+f2f3f4f5f6f7f8f9faffc4001f0100030101010101010101010000000000000102030405060708090a0bffc400b5110002010204040304070504040001027700
+0102031104052131061241510761711322328108144291a1b1c109233352f0156272d10a162434e125f11718191a262728292a35363738393a43444546474849
+4a535455565758595a636465666768696a737475767778797a82838485868788898a92939495969798999aa2a3a4a5a6a7a8a9aab2b3b4b5b6b7b8b9bac2c3c4
+c5c6c7c8c9cad2d3d4d5d6d7d8d9dae2e3e4e5e6e7e8e9eaf2f3f4f5f6f7f8f9faffda000c03010002110311003f00f7da2bcf35cf8a7069d7b716569a6cb2cd
+048d13b4ce154329c1c019c8c8f6aea7c27accdaff00872db51b848d2694b8658c10a30e40c649ec057454c2d5a705526ac99cf4f154aa5474e0eed1b5451457
+39d01456078a3c5769e1682092e609a669cb0458c0c718ce493c75ae6bc3df11eebc41e29b4d396c21b7b69b7e4972efc2330e781dbd2ba2185ab3a6ea25a2fd
+0e69e2e942a2a6dfbcff0053d128a28ae73a428a28a0028a28a0028a28a0028a2b27c41e22b1f0dd80babd663b8ed8e3419676c6703fc6aa3194da8c55d9339c
+6117293b235a8af1dbaf8b5ac493136b67670c5d95c33b7e2723f956f784be23dd6b7aac3a6de69cbe6cb9c4b6e480b81924a9cf1ef9aec9e5d5e10e76b6f338
+e19961e73504f7f23d128ae2fc41f1234ed0f517b04b69aea788e25da42aafb64f535d0e83aed9f88b4c5beb2de23dc5195c619587507f315cf3c3d58414e51d
+19d10c4529cdd38cb5469d1451589b0514556d42dbedba6dd5ae76f9d0bc79f4c823fad35bea27b6859a2bcd7c3bf11e2b080e99e225963b9b53e519954b6ec1
+c7cc3ae47af7a3c67f10ed1b4a5b5d06f0bcd3ff00ac9914af969e8323a9fd2bb3ea15fda725be7d0e3fafd0f67cf7f97536fc41f10f4ad0ee3ecb1ab5edc8fb
+c90b0da87d0b7afb0cd6e6877ba8ea362b777f651d9f9a03470872cea3fdac8183ed5e25e06b45bef1a69b1b80cab2194eeff654b7f302be80abc750a787b538
+abbddb33c0d7a988bd493b2d920a28a2bcf3d13e71f12ffc8d5ac7fd7f4dff00a19af60f869ff223da7fbf27fe866bc7fc4bff002356b1ff005fd37fe866b62c
+3c7ba8e8fe1db6d2b4c4485e32ecf3b00c4e589c00781d7be6be9b154275f0f1843cbf23e630988850c44e73db5fccf76a2bc2ad3e24f89ada60f25e25ca6798
+e589707f1500feb5ea7e13f175a78a6d1da3430dd438f361639c67b83dc75af1b1180ad423cd2d5791ed61f1f46bcb963a3f339af8bca0e93a6b7713b0fcd7ff
+00ad5c67c3aff91f34dffb6bff00a29ebb5f8bdff206d3ff00ebe0ff00e835c57c3aff0091f34dff00b6bffa29ebd4c2ff00c8be5e92fd4f2b15ff002308fac7
+f43dea8ac0f17f88dbc31a32df25b0b867944414bed00904e7a1f4e95c4681f1075ad73c57616929820b596421e38a3ea3693c9393f962bc8a583ab529ba8b65
+fa1ec55c652a551537bbfd4f56a28af20d57e2aeacd34b0d8dadbdb2ab15ded991b8fc87e95387c2d4c436a1d0ac462a9e1d273ea7afd1599e1dbb9efbc39a75
+ddcbef9e6b74776c0192473c0e2b13c5de3bb5f0d38b48a2fb4dfb2eed9bb0a83b6e3fd3f954c284e753d9c55d953af0853f69276475d45785cff12fc4f34a5d
+2f228173f72381081ff7d027f5ad8d1be2c5ec3208f58b64b88bfe7a4236b8fc3a1fd2bb259562231be8ce38e6b8794adaa3d72bc6fe2cddc927892dad493e54
+36c1957dd98e4fe83f2af5a8efe09f4d17f6eeb2c2d1798854f0c319af05f16f8897c4fabc77eb6a6db6c2222864df9c12739c0f5fd2ab2aa52759cada22335a
+b154396fab367e1c7866c3c437b7b2ea286586d553116e2a18b6ee491cf1b7f5af50d1bc27a46837b3dd69f6e6379942905cb051ed9e467fa0af22f06f8c17c2
+7f6ddd626ebed3e5f49766ddbbbd8e7ef7e95e9fe11f18bf8ae4b9dba69b68a0033219b7e58f418da3d0d6b98c313cf297d8d3afe9ea6596cf0dc918e9cfaf4d
+7eff004380f17f8275b6f12de5cda5949756f7321955e3e719e4823b60d777f0f7c3f75a0e80eb7aa52e2e25f31a3ce760c00071df8ae7fc51f12eff004bd5ee
+f4db2b2b75303ec32cac5b3ee00c63f5ae97c05acdf6bbe1e7bcbf944937da1d010a140000c0c0fad4e265897855ed1251d3d7c8bc3470cb14fd9b6e5afa2ee7
+5145795f89be24eb161aadde9b6d676f6ed04853cc7cc8c7d08e806460f43535b7c544b6f0e5b9b889aef563b8483ee28c1386381dc6381fa5737f6757e5524b
+73a7fb470fcce2dec7a7515e1d2fc4ef12c936f49ede25ff009e690823f5c9fd6bbaf05f8f57c4531b0bd8520be0bb94a1f96503ae01e87da8ad9757a50e77aa
+f2151cc68559f22d1f9995f10bc0d2dd4eface9513492bff00c7c40bd4f1f7947f31f8fad7949041c1e0d7d455f3ff008e6ee0bcf18ea125b0411ab84ca01862
+a0063c75e41af472bc54ea7eea5b25bfe879d9ae1614ff007b1ddbdbf539f8e478a4592376475390ca7047e35ebdf0ff00c70faab2e91a9bafda953f73331e66
+c7507fdac7e7553c15f0f6d67d21eeb5eb32f25c60c51976568d7d4e08e4ff008545e20f876da295d6740965636ac2636ee72c029ce54ff43f9f6aac4d7c3621
+ba32dfa3e97270d87c4e1d2ad1dbaaeb63d4a8ac2ff84a6cff00e79cbf9515e1fb1a9d8f77db53ee7877897fe46ad63febfa6ffd0cd76de02f03697ac691fda9
+a9879f7bb2a4218aa8038c923935c4f897fe46ad63febfa6ff00d0cd7af7c32ff912adff00ebac9ffa157bf8ea93a7858b83b6df91f3f81a50a98a929abeff00
+99c67c43f0659e8305bea1a623476cefe5491162db5b048209e71c1fd2b9cf086a52e97e2ad3e78df6abccb14b9e85188073fcfea057a97c51c7fc21ad9ff9f8
+8f1fad78b5beefb4c5b3ef6f18fae6ab033957c33551df744e3a11a18a4e9ab6ccf58f8bbff206d3ff00ebe0ff00e835c57c3aff0091f34dff00b6bffa29ebb5
+f8bbff00206d3bfebe0ffe835c57c3aff91f34dffb6bff00a29eb1c2ff00b84bd25fa9b62bfe4611f58fe877ff00167fe45383febf13ff00407af3af027fc8ed
+a5ff00d753ff00a09af45f8b3ff229c1ff005f89ff00a03d79d7813fe476d2ff00eba9ff00d04d182ff7197cff0020c6ff00bf47e5f99f4057cc777ff1f93ffd
+746fe75f4e57cc777ff1f93ffd746fe75964dbcfe5fa9b673b43e7fa1ef1a2df2699f0f2cefa4194b7b05908f5c2e715e0d737335e5d4b7370e649a562eec7a9
+27ad7afea4ccbf0610af5fb1423f02cb9af1bae8cb60af527d6f639b339bb53874b5cf71f0af82b45b7f0fdacb73a7c37373710a492bdc20720b0ce067a633da
+bcdbc7da15be81e25682d1765b4d12cd1a649d992411cfb83f9d652ddeb8a8a12e3510a06000ef8c541709a95d387b85bb99c0c069033103d39ad2861ea53aae
+a4aa5d3e8655f114ea5254e34ecd753d2be13df7dab4cd474999d8aa10e8b9e8ac086c7e23f5ae47c79a159787b5e8acec15c42d6eb210edb8e4b30fe82b6fe1
+4453c3e25bb1245222359b1cb290321d3fc4d56f8b1ff23641ff005e69ff00a13d654fddc7c945e8d5cdaa7bd808ca4b54ec47f0f3c31a6f891f511a82cade40
+8f66c7dbf7b767f90af57d0bc3da7f876d64b7d3d1d5247dec5db712718eb5c0fc1eff0059acfd21ff00d9ebd4ebcfccaacfdbca17d34d3e48f472ca50f611a9
+6d75d7e6cf9efc6bff00239eabff005dcff215e9bf0aff00e4506ffafa7fe4b5e65e35ff0091cf55ff00aee7f90af4df857ff22837fd7d3ff25aeec77fb947e5
+f91c180ff7d97cff003380f890813c737c47f12c64ff00df0a3fa53bc0de0e8fc51713cb753b47696e543aa7de727b67b0e3ad1f12ff00e477bbff00723ffd00
+5755f083fe3c755ffae91ff235a54ab2a781528bd6cbf433a74a3531ee335a5dfea6778f3c11a5e83a1c57da70951c4c11c3bee04107f5c815cbf8218af8d34a
+20e0f9d8fd0d7a77c52ff9138ffd7c27f5af30f057fc8e7a57fd771fc8d2c254954c1c9cdddebf90f174e14f19150565a7e67b6f882df5abbb316fa34d6b0349
+959669f76e55c7f0800f3f5ac1f0efc37d3346963babb737b7687702eb88d4fb2fafb9aed68af0a388a9087245d933dd961e9ce6a72576b6f20a28a2b137136a
+ff00747e5452d1401f38f897fe46ad63febfa6ff00d0cd7a5fc33f106989a02e9935dc70ddc4eedb2521770273904f5fe75c6eb9e13d7eefc41a95cc1a4dd345
+35d4b2236deaa5c907f2aad7fe04f10d85b4570da7c92c6e818887e76424742a39e3d7a57d355546bd18d394d2dba9f2f45d7a15a556306f7e8ceb3e29788ece
+e6d2df48b49d267f304d3346c18280080b91df9ce3d87ad711e14d3df53f14e9b6e89bc79eaf20edb14ee6fd01a6d9785f5dd426115b695744fabc65147d59b0
+07e75ec1e09f0747e18b479667f32fee140948c6100e76aff53df02b3a956960f0fece0eeffad4d69d2ab8dc47b49ab2feb4317e2e83fd8ba79ec2e0ff00e826
+b8af87640f1e6999ff00a6bffa29ebd5fc6fe1e97c49e1f36b6ee16e22904d103c062011b49ed904fe38af149f43d6f4cbb0b269f790ce872acb1b75f5561d7e
+a2a3012854c2ba37b3d57de5e3e13a78a55ad75a3fb8f54f8b0a4f84a120702f109ffbe5ebcc7c23751d978b74c9e660b189c0663d0678c9fcebd3f46d3afbc4
+ff000ee4d37594b98aeb2ca92dc06de483b91ce79239c7d05798ea9e12d774890adce9d314070258977a1fc474fc706ab02e0a9cb0f296b76bfe189c729ba90c
+4c63a593f4f53dfef6fadb4eb396eeee658a088659d8f02be699dc4971248b9c339233ee6b4acbc3daeead22c56da7dd4b8e01652aabff00026c01f9d5fd43c0
+7af58ea16f66b66d70f3a06468b9507037027a0c138c9e2b4c251a5856e2e69b7fa19e32b55c5a5250692f9ee7a9e9ba78d63e19db5802333d804527a06dbc7e
+a057841041208208e083dabe83f06e957da2f86adac350789a58cb1023c9da092704f73c9e9f4ed9ae5bc6ff000f24d4ae5f54d1957ed321ccd6e4850e7fbca4
+f00fae7afd7af260b170a55a7093d1bd19d78dc24ead184e2b54b54757e12d62df59f0e59cd0caaf2c712473af747030723f0e3dab4aff0051b3d2ed1aeafae2
+38215eace71f80f53ec2be799f49d674ab8225b2bcb69471bb630fc88ebf854f67e1cf106b53660d3eee6623fd6480a8ff00be9b03f5a73cb293939fb4b47fae
+b714333aaa2a1ecef2feba58f7cd2755b4d6b4e8afec9f7c32671918208ea08ec6bc93e2c7fc8d907fd79a7fe84f5de7813c2d75e19d3e6177721e5b821da14f
+bb1903d7b9f5edfceb96f891e1ed5f55f12457161a7cd7110b5542e83233b98e3f5158e0fd9d3c5be597bbaea6f8df6b5308b9a3ef69a0ef83dfeb359fa43ffb
+3d7a9d79dfc2fd1752d21f543a859cb6de688b679831bb1bf3fcc57a2573e61252c4c9a77dbf247465d171c3454959ebf9b3e7bf1aff00c8e7aaff00d773fc85
+7a6fc2bff9141bfebe9ff92d715e2bf0aebb7be2ad46e6db4bb89619262c8eabc118aeff00e1d69b79a5f861adefadde09bed0edb1c60e081cd7a18da907838a
+4d5f4fc8f3b054e71c64a4d3b6bf99e71f12ff00e477bbff00723ffd005755f083fe3c755ffae91ff23595e3df0d6b5a978b6e6e6cf4e9e78192301d07070a01
+ae8be18e8fa869169a8aea16925bb492214120c6400734ebd483c028a6af65fa050a7358f7269daeff0052c7c52ff9138ffd7c27f5af30f057fc8e7a57fd771f
+c8d7acfc43d3af354f0b9b7b1b779e6f3d1b620c9c0cf35e7de14f0aebb65e2ad3ae6e74bb88a18e605dd9780306960aa4161249b57d7f21e369ce58c8c9276d
+3f33db28a28af08f7428a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a
+0028a28a0028a28a0028a28a00ffd9
+}}}\cell \pard\plain \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\fs24\cgrid {\row }\trowd\trgaph0\trql\trrh-10\clvertalt\clbrdrt\brdrs\brdrw14\brdrcf17 \cltxlrtb\cellx6940\clvertalt\cltxlrtb\cellx9240\intbl\cell \intbl\cell \pard \nowidctlpar
+\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\pard\plain \sa628\sl-20\slmult0\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \fs24\cgrid {
+\par }\pard\pard \li72\sl201\slmult1\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \f10\fs21\expnd1\expndtw8\b\cgrid {y OR}{\fs27\expnd3\expndtw18\cgrid  R}{ESOLUTION}{\fs27\expnd3\expndtw18\cgrid :}{\f11\fs6\expnd3\expndtw18\cgrid 
+\par }\sb324\sl204\slmult1\nowidctlpar\adjustright \fs27\expnd5\expndtw26\cgrid {I}{\fs21\expnd3\expndtw16\cgrid  WILL}{ F}{\fs21\expnd3\expndtw16\cgrid ORMALISE THE}{ B}{\fs21\expnd3\expndtw16\cgrid USINESS}{ C}{\fs21\expnd3\expndtw16\cgrid ASE FOR}{ M}{
+\fs21\expnd3\expndtw16\cgrid y}{ BI}{\fs21\expnd3\expndtw16\cgrid  PROJECTS}{.}{\f11\fs6\cgrid 
+\par }\qj\ri72\sb432\sl216\slmult1\nowidctlpar\adjustright \f0\fs22\expnd0\expndtw1\b0\cgrid {In the current climate IT budgets are facing increased pressure. Whilst large strategic BI projects are}{\f11\fs6\cgrid  }{\expnd1\expndtw5\cgrid still going ahe
+ad, for example driving a performance management culture based on measures}{\f11\fs6\expnd1\expndtw5\cgrid  }{\expnd0\expndtw3\cgrid provided by BI, many tactical projects are facing tough competition. Only those offering clear}{\f11\fs6\expnd0\expndtw3
+\cgrid  }{\expnd0\expndtw-2\cgrid quantifiable financial benefits will progress.}{\f11\fs6\expnd0\expndtw-2\cgrid 
+\par }\sb216\sl240\slmult1\nowidctlpar\adjustright {Unfortunately, many organisations do not formalise the benefits case for their BI projects. This can}{\f11\fs6\cgrid  }{\expnd0\expndtw0\cgrid lead to wild expectations and disappointment with the outcom
+e. Or worse, an over reliance on Excel}{\f11\fs6\expnd0\expndtw0\cgrid  }{\expnd0\expndtw-1\cgrid based point solutions instead of BI.}{\f11\fs6\expnd0\expndtw-1\cgrid 
+\par }\sb144\nowidctlpar\adjustright \expnd0\expndtw2\cgrid {Organisations that take time to put together a business case will find it easy to estimate the costs}{\f11\fs6\cgrid  }{\expnd0\expndtw0\cgrid involved in a BI project. The benefits case however
+ often relies on intangible factors that cannot be}{\f11\fs6\expnd0\expndtw0\cgrid  }{assigned a \'a3 value. Examples are}{\f10\fs19\b\cgrid  'better information'}{ or}{\f10\fs19\b\cgrid  'improved decision making'}{. Whilst these}{\f11\fs6\cgrid  }{
+\expnd0\expndtw0\cgrid are extremely valuable to an organisation, they are unlikely to provide a strong case for project funding}{\f11\fs6\expnd0\expndtw0\cgrid  }{\expnd0\expndtw0\cgrid in the current economic environment.}{\f11\fs6\expnd0\expndtw0\cgrid 
+\par }\ql\sb180\sl216\slmult1\nowidctlpar\adjustright \expnd0\expndtw-2\cgrid {This article will show you how to build a case for the benefits of BI by identifying and grouping benefits}{\f11\fs6\cgrid  }{\expnd0\expndtw0\cgrid and then applying an open a
+nd transparent valuation methodology to arrive at a \'a3 value.}{\f11\fs6\expnd0\expndtw0\cgrid 
+\par }\ri0\sb216\sl240\slmult1\nowidctlpar\adjustright \f10\fs19\expnd0\expndtw2\b\cgrid {Benefit Groupings}{\f11\fs6\cgrid 
+\par }\li792\ri4032\sb144\nowidctlpar\adjustright \f0\fs22\expnd0\expndtw-2\b0\cgrid {Direct quantifiable benefits \'97 Primary benefits}{\f11\fs6\cgrid  }{\expnd-1\expndtw-5\cgrid Indirect quantifiable benefits - Secondary benefits}{\f11\fs6\expnd-1
+\expndtw-5\cgrid  }{\expnd0\expndtw-4\cgrid Unquantifiable benefits \'97 Other benefits}{\f11\fs6\expnd0\expndtw-4\cgrid 
+\par }\pard\plain\sect\sectd\stextflow0\marglsxn1338\margrsxn1280\margbsxn6528\linex0\sectdefaultcl\trowd\trgaph0\trql\trrh-723\clvertalb\clbrdrb\brdrs\brdrw14\brdrcf17 \cltxlrtb\cellx6942\clvertalt\cltxlrtb\cellx9240\pard\plain \qr\ri2384\sb396
+\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\f10\fs19\expnd0\expndtw1\b\cgrid {Building the case for BI projects \'97 Tony Harper}{\f11\fs6\cgrid \cell }\pard\plain \qr\li136\sb18\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\fs24
+\cgrid {{\*\shppict{\pict{\*\picprop\shplid1028{\sp{\sn shapeType}{\sv 75}}{\sp{\sn fFlipH}{\sv 0}}{\sp{\sn fFlipV}{\sv 0}}{\sp{\sn pibName}{\sv _Pic2}}{\sp{\sn pibFlags}{\sv 1}}{\sp{\sn fillColor}{\sv 268435473}}{\sp{\sn fFilled}{\sv 0}}{\sp{\sn fLine}{
+\sv 0}}}\picscalex100\picscaley100\piccropl0\piccropr0\piccropt0\piccropb0\picw3809\pich1149\picwgoal2160\pichgoal652\jpegblip\bliptag-1355297087{\*\blipuid af37cec1fed44db087face1a6a0ceae4}
+ffd8ffe000104a46494600010101009600960000ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720
+222c231c1c2837292c30313434341f27393d38323c2e333432ffdb0043010909090c0b0c180d0d1832211c213232323232323232323232323232323232323232
+323232323232323232323232323232323232323232323232323232323232ffc0001108004400e103012200021101031101ffc4001f0000010501010101010100
+000000000000000102030405060708090a0bffc400b5100002010303020403050504040000017d01020300041105122131410613516107227114328191a10823
+42b1c11552d1f02433627282090a161718191a25262728292a3435363738393a434445464748494a535455565758595a636465666768696a737475767778797a
+838485868788898a92939495969798999aa2a3a4a5a6a7a8a9aab2b3b4b5b6b7b8b9bac2c3c4c5c6c7c8c9cad2d3d4d5d6d7d8d9dae1e2e3e4e5e6e7e8e9eaf1
+f2f3f4f5f6f7f8f9faffc4001f0100030101010101010101010000000000000102030405060708090a0bffc400b5110002010204040304070504040001027700
+0102031104052131061241510761711322328108144291a1b1c109233352f0156272d10a162434e125f11718191a262728292a35363738393a43444546474849
+4a535455565758595a636465666768696a737475767778797a82838485868788898a92939495969798999aa2a3a4a5a6a7a8a9aab2b3b4b5b6b7b8b9bac2c3c4
+c5c6c7c8c9cad2d3d4d5d6d7d8d9dae2e3e4e5e6e7e8e9eaf2f3f4f5f6f7f8f9faffda000c03010002110311003f00f7da2bcf35cf8a7069d7b716569a6cb2cd
+048d13b4ce154329c1c019c8c8f6aea7c27accdaff00872db51b848d2694b8658c10a30e40c649ec057454c2d5a705526ac99cf4f154aa5474e0eed1b5451457
+39d01456078a3c5769e1682092e609a669cb0458c0c718ce493c75ae6bc3df11eebc41e29b4d396c21b7b69b7e4972efc2330e781dbd2ba2185ab3a6ea25a2fd
+0e69e2e942a2a6dfbcff0053d128a28ae73a428a28a0028a28a0028a28a0028a2b27c41e22b1f0dd80babd663b8ed8e3419676c6703fc6aa3194da8c55d9339c
+6117293b235a8af1dbaf8b5ac493136b67670c5d95c33b7e2723f956f784be23dd6b7aac3a6de69cbe6cb9c4b6e480b81924a9cf1ef9aec9e5d5e10e76b6f338
+e19961e73504f7f23d128ae2fc41f1234ed0f517b04b69aea788e25da42aafb64f535d0e83aed9f88b4c5beb2de23dc5195c619587507f315cf3c3d58414e51d
+19d10c4529cdd38cb5469d1451589b0514556d42dbedba6dd5ae76f9d0bc79f4c823fad35bea27b6859a2bcd7c3bf11e2b080e99e225963b9b53e519954b6ec1
+c7cc3ae47af7a3c67f10ed1b4a5b5d06f0bcd3ff00ac9914af969e8323a9fd2bb3ea15fda725be7d0e3fafd0f67cf7f97536fc41f10f4ad0ee3ecb1ab5edc8fb
+c90b0da87d0b7afb0cd6e6877ba8ea362b777f651d9f9a03470872cea3fdac8183ed5e25e06b45bef1a69b1b80cab2194eeff654b7f302be80abc750a787b538
+abbddb33c0d7a988bd493b2d920a28a2bcf3d13e71f12ffc8d5ac7fd7f4dff00a19af60f869ff223da7fbf27fe866bc7fc4bff002356b1ff005fd37fe866b62c
+3c7ba8e8fe1db6d2b4c4485e32ecf3b00c4e589c00781d7be6be9b154275f0f1843cbf23e630988850c44e73db5fccf76a2bc2ad3e24f89ada60f25e25ca6798
+e589707f1500feb5ea7e13f175a78a6d1da3430dd438f361639c67b83dc75af1b1180ad423cd2d5791ed61f1f46bcb963a3f339af8bca0e93a6b7713b0fcd7ff
+00ad5c67c3aff91f34dffb6bff00a29ebb5f8bdff206d3ff00ebe0ff00e835c57c3aff0091f34dff00b6bffa29ebd4c2ff00c8be5e92fd4f2b15ff002308fac7
+f43dea8ac0f17f88dbc31a32df25b0b867944414bed00904e7a1f4e95c4681f1075ad73c57616929820b596421e38a3ea3693c9393f962bc8a583ab529ba8b65
+fa1ec55c652a551537bbfd4f56a28af20d57e2aeacd34b0d8dadbdb2ab15ded991b8fc87e95387c2d4c436a1d0ac462a9e1d273ea7afd1599e1dbb9efbc39a75
+ddcbef9e6b74776c0192473c0e2b13c5de3bb5f0d38b48a2fb4dfb2eed9bb0a83b6e3fd3f954c284e753d9c55d953af0853f69276475d45785cff12fc4f34a5d
+2f228173f72381081ff7d027f5ad8d1be2c5ec3208f58b64b88bfe7a4236b8fc3a1fd2bb259562231be8ce38e6b8794adaa3d72bc6fe2cddc927892dad493e54
+36c1957dd98e4fe83f2af5a8efe09f4d17f6eeb2c2d1798854f0c319af05f16f8897c4fabc77eb6a6db6c2222864df9c12739c0f5fd2ab2aa52759cada22335a
+b154396fab367e1c7866c3c437b7b2ea286586d553116e2a18b6ee491cf1b7f5af50d1bc27a46837b3dd69f6e6379942905cb051ed9e467fa0af22f06f8c17c2
+7f6ddd626ebed3e5f49766ddbbbd8e7ef7e95e9fe11f18bf8ae4b9dba69b68a0033219b7e58f418da3d0d6b98c313cf297d8d3afe9ea6596cf0dc918e9cfaf4d
+7eff004380f17f8275b6f12de5cda5949756f7321955e3e719e4823b60d777f0f7c3f75a0e80eb7aa52e2e25f31a3ce760c00071df8ae7fc51f12eff004bd5ee
+f4db2b2b75303ec32cac5b3ee00c63f5ae97c05acdf6bbe1e7bcbf944937da1d010a140000c0c0fad4e265897855ed1251d3d7c8bc3470cb14fd9b6e5afa2ee7
+5145795f89be24eb161aadde9b6d676f6ed04853cc7cc8c7d08e806460f43535b7c544b6f0e5b9b889aef563b8483ee28c1386381dc6381fa5737f6757e5524b
+73a7fb470fcce2dec7a7515e1d2fc4ef12c936f49ede25ff009e690823f5c9fd6bbaf05f8f57c4531b0bd8520be0bb94a1f96503ae01e87da8ad9757a50e77aa
+f2151cc68559f22d1f9995f10bc0d2dd4eface9513492bff00c7c40bd4f1f7947f31f8fad7949041c1e0d7d455f3ff008e6ee0bcf18ea125b0411ab84ca01862
+a0063c75e41af472bc54ea7eea5b25bfe879d9ae1614ff007b1ddbdbf539f8e478a4592376475390ca7047e35ebdf0ff00c70faab2e91a9bafda953f73331e66
+c7507fdac7e7553c15f0f6d67d21eeb5eb32f25c60c51976568d7d4e08e4ff008545e20f876da295d6740965636ac2636ee72c029ce54ff43f9f6aac4d7c3621
+ba32dfa3e97270d87c4e1d2ad1dbaaeb63d4a8ac2ff84a6cff00e79cbf9515e1fb1a9d8f77db53ee7877897fe46ad63febfa6ffd0cd76de02f03697ac691fda9
+a9879f7bb2a4218aa8038c923935c4f897fe46ad63febfa6ff00d0cd7af7c32ff912adff00ebac9ffa157bf8ea93a7858b83b6df91f3f81a50a98a929abeff00
+99c67c43f0659e8305bea1a623476cefe5491162db5b048209e71c1fd2b9cf086a52e97e2ad3e78df6abccb14b9e85188073fcfea057a97c51c7fc21ad9ff9f8
+8f1fad78b5beefb4c5b3ef6f18fae6ab033957c33551df744e3a11a18a4e9ab6ccf58f8bbff206d3ff00ebe0ff00e835c57c3aff0091f34dff00b6bffa29ebb5
+f8bbff00206d3bfebe0ffe835c57c3aff91f34dffb6bff00a29eb1c2ff00b84bd25fa9b62bfe4611f58fe877ff00167fe45383febf13ff00407af3af027fc8ed
+a5ff00d753ff00a09af45f8b3ff229c1ff005f89ff00a03d79d7813fe476d2ff00eba9ff00d04d182ff7197cff0020c6ff00bf47e5f99f4057cc777ff1f93ffd
+746fe75f4e57cc777ff1f93ffd746fe75964dbcfe5fa9b673b43e7fa1ef1a2df2699f0f2cefa4194b7b05908f5c2e715e0d737335e5d4b7370e649a562eec7a9
+27ad7afea4ccbf0610af5fb1423f02cb9af1bae8cb60af527d6f639b339bb53874b5cf71f0af82b45b7f0fdacb73a7c37373710a492bdc20720b0ce067a633da
+bcdbc7da15be81e25682d1765b4d12cd1a649d992411cfb83f9d652ddeb8a8a12e3510a06000ef8c541709a95d387b85bb99c0c069033103d39ad2861ea53aae
+a4aa5d3e8655f114ea5254e34ecd753d2be13df7dab4cd474999d8aa10e8b9e8ac086c7e23f5ae47c79a159787b5e8acec15c42d6eb210edb8e4b30fe82b6fe1
+4453c3e25bb1245222359b1cb290321d3fc4d56f8b1ff23641ff005e69ff00a13d654fddc7c945e8d5cdaa7bd808ca4b54ec47f0f3c31a6f891f511a82cade40
+8f66c7dbf7b767f90af57d0bc3da7f876d64b7d3d1d5247dec5db712718eb5c0fc1eff0059acfd21ff00d9ebd4ebcfccaacfdbca17d34d3e48f472ca50f611a9
+6d75d7e6cf9efc6bff00239eabff005dcff215e9bf0aff00e4506ffafa7fe4b5e65e35ff0091cf55ff00aee7f90af4df857ff22837fd7d3ff25aeec77fb947e5
+f91c180ff7d97cff003380f890813c737c47f12c64ff00df0a3fa53bc0de0e8fc51713cb753b47696e543aa7de727b67b0e3ad1f12ff00e477bbff00723ffd00
+5755f083fe3c755ffae91ff235a54ab2a781528bd6cbf433a74a3531ee335a5dfea6778f3c11a5e83a1c57da70951c4c11c3bee04107f5c815cbf8218af8d34a
+20e0f9d8fd0d7a77c52ff9138ffd7c27f5af30f057fc8e7a57fd771fc8d2c254954c1c9cdddebf90f174e14f19150565a7e67b6f882df5abbb316fa34d6b0349
+959669f76e55c7f0800f3f5ac1f0efc37d3346963babb737b7687702eb88d4fb2fafb9aed68af0a388a9087245d933dd961e9ce6a72576b6f20a28a2b137136a
+ff00747e5452d1401f38f897fe46ad63febfa6ff00d0cd7a5fc33f106989a02e9935dc70ddc4eedb2521770273904f5fe75c6eb9e13d7eefc41a95cc1a4dd345
+35d4b2236deaa5c907f2aad7fe04f10d85b4570da7c92c6e818887e76424742a39e3d7a57d355546bd18d394d2dba9f2f45d7a15a556306f7e8ceb3e29788ece
+e6d2df48b49d267f304d3346c18280080b91df9ce3d87ad711e14d3df53f14e9b6e89bc79eaf20edb14ee6fd01a6d9785f5dd426115b695744fabc65147d59b0
+07e75ec1e09f0747e18b479667f32fee140948c6100e76aff53df02b3a956960f0fece0eeffad4d69d2ab8dc47b49ab2feb4317e2e83fd8ba79ec2e0ff00e826
+b8af87640f1e6999ff00a6bffa29ebd5fc6fe1e97c49e1f36b6ee16e22904d103c062011b49ed904fe38af149f43d6f4cbb0b269f790ce872acb1b75f5561d7e
+a2a3012854c2ba37b3d57de5e3e13a78a55ad75a3fb8f54f8b0a4f84a120702f109ffbe5ebcc7c23751d978b74c9e660b189c0663d0678c9fcebd3f46d3afbc4
+ff000ee4d37594b98aeb2ca92dc06de483b91ce79239c7d05798ea9e12d774890adce9d314070258977a1fc474fc706ab02e0a9cb0f296b76bfe189c729ba90c
+4c63a593f4f53dfef6fadb4eb396eeee658a088659d8f02be699dc4971248b9c339233ee6b4acbc3daeead22c56da7dd4b8e01652aabff00026c01f9d5fd43c0
+7af58ea16f66b66d70f3a06468b9507037027a0c138c9e2b4c251a5856e2e69b7fa19e32b55c5a5250692f9ee7a9e9ba78d63e19db5802333d804527a06dbc7e
+a057841041208208e083dabe83f06e957da2f86adac350789a58cb1023c9da092704f73c9e9f4ed9ae5bc6ff000f24d4ae5f54d1957ed321ccd6e4850e7fbca4
+f00fae7afd7af260b170a55a7093d1bd19d78dc24ead184e2b54b54757e12d62df59f0e59cd0caaf2c712473af747030723f0e3dab4aff0051b3d2ed1aeafae2
+38215eace71f80f53ec2be799f49d674ab8225b2bcb69471bb630fc88ebf854f67e1cf106b53660d3eee6623fd6480a8ff00be9b03f5a73cb293939fb4b47fae
+b714333aaa2a1ecef2feba58f7cd2755b4d6b4e8afec9f7c32671918208ea08ec6bc93e2c7fc8d907fd79a7fe84f5de7813c2d75e19d3e6177721e5b821da14f
+bb1903d7b9f5edfceb96f891e1ed5f55f12457161a7cd7110b5542e83233b98e3f5158e0fd9d3c5be597bbaea6f8df6b5308b9a3ef69a0ef83dfeb359fa43ffb
+3d7a9d79dfc2fd1752d21f543a859cb6de688b679831bb1bf3fcc57a2573e61252c4c9a77dbf247465d171c3454959ebf9b3e7bf1aff00c8e7aaff00d773fc85
+7a6fc2bff9141bfebe9ff92d715e2bf0aebb7be2ad46e6db4bb89619262c8eabc118aeff00e1d69b79a5f861adefadde09bed0edb1c60e081cd7a18da907838a
+4d5f4fc8f3b054e71c64a4d3b6bf99e71f12ff00e477bbff00723ffd005755f083fe3c755ffae91ff23595e3df0d6b5a978b6e6e6cf4e9e78192301d07070a01
+ae8be18e8fa869169a8aea16925bb492214120c6400734ebd483c028a6af65fa050a7358f7269daeff0052c7c52ff9138ffd7c27f5af30f057fc8e7a57fd771f
+c8d7acfc43d3af354f0b9b7b1b779e6f3d1b620c9c0cf35e7de14f0aebb65e2ad3ae6e74bb88a18e605dd9780306960aa4161249b57d7f21e369ce58c8c9276d
+3f33db28a28af08f7428a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a
+0028a28a0028a28a0028a28a00ffd9
+}}}\cell \pard\plain \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\fs24\cgrid {\row }\trowd\trgaph0\trql\trrh-39\clvertalt\clbrdrt\brdrs\brdrw14\brdrcf17 \cltxlrtb\cellx6942\clvertalt\cltxlrtb\cellx9240\intbl\cell \intbl\cell \pard \nowidctlpar
+\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\pard\plain \sa916\sl-20\slmult0\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \fs24\cgrid {
+\par }\pard\pard \li72\nowidctlpar\tqr\tx4519\aspalpha\aspnum\nocwrap\adjustright \f10\expnd-2\expndtw-10\b\cgrid {1.1\tab }{\expnd2\expndtw14\cgrid Direct quantifiable benefits}{\f11\fs6\expnd4\expndtw24\cgrid 
+\par }\pard \li72\ri72\sb108\sl211\slmult1\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \f0\fs22\expnd0\expndtw2\b0\cgrid {These can be quantified and are directly attributed to the project. These are often the only benefits}{\f11\fs6\cgrid  }{\expnd0
+\expndtw-2\cgrid that are considered. They will typically include things like:}{\f11\fs6\expnd0\expndtw-2\cgrid 
+\par }\ri0\sb180\sl240\slmult1\nowidctlpar\adjustright \f10\fs19\expnd0\expndtw0\b\cgrid {Departmental}{\f11\fs6\cgrid 
+\par }{\pntext\pard\plain \f6\fs22\expnd0\expndtw1\cgrid \'b7\tab}\pard \li432\sl206\slmult1\nowidctlpar\jclisttab\tx720{\*\pn\pnlvlblt\ilvl0\pnrnot0\pnf6\pnfs22\pnulnone\pnstart1\pnhang\pnsp288{\pntxtb \'b7\tab}}\ls1\aspalpha\aspnum\nocwrap\adjustright 
+\f0\fs22\expnd0\expndtw1\b0\cgrid {Number of days saved automating a month end process.}{\f11\fs6\cgrid 
+\par }{\pntext\pard\plain \f17\fs22\expnd0\expndtw3\cgrid \'6f\tab}\pard \li1152\sl204\slmult1\nowidctlpar\jclisttab\tx1584{\*\pn\pnlvlblt\ilvl0\pnrnot0\pnf17\pnfs22\pnulnone\pnstart1\pnhang\pnsp432{\pntxtb \'6f\tab}}\ls2\aspalpha\aspnum\nocwrap
+\adjustright \expnd0\expndtw3\cgrid {Real world examples for producing month end reporting packs}{\f11\fs6\cgrid 
+\par }{\pntext\pard\plain \f7\fs22\expnd0\expndtw-1\cgrid \'6e\tab}\pard \li1872\nowidctlpar\jclisttab\tx2088{\*\pn\pnlvlblt\ilvl0\pnrnot0\pnf7\pnfs22\pnulnone\pnstart1\pnhang\pnsp216{\pntxtb \'6e\tab}}\ls3\aspalpha\aspnum\nocwrap\adjustright \expnd0
+\expndtw-1\cgrid {e.g. Building company went from 7 FTE's to 0.5 FTE's}{\f11\fs6\cgrid 
+\par }\expnd0\expndtw0\cgrid {e.g. Financial services company went from 8 FTE's to 0.5 FTE's}{\f11\fs6\cgrid 
+\par }{\pntext\pard\plain \f6\fs22\expnd0\expndtw1\cgrid \'b7\tab}\pard \li432\sl201\slmult1\nowidctlpar\jclisttab\tx720{\*\pn\pnlvlblt\ilvl0\pnrnot0\pnf6\pnfs22\pnulnone\pnstart1\pnhang\pnsp288{\pntxtb \'b7\tab}}\ls1\aspalpha\aspnum\nocwrap\adjustright {
+Cost savings from more efficient access to data}{\f11\fs6\cgrid 
+\par }{\pntext\pard\plain \f17\fs22\expnd0\expndtw3\cgrid \'6f\tab}\pard \li1152\sl206\slmult1\nowidctlpar\jclisttab\tx1584{\*\pn\pnlvlblt\ilvl0\pnrnot0\pnf17\pnfs22\pnulnone\pnstart1\pnhang\pnsp432{\pntxtb \'6f\tab}}\ls2\aspalpha\aspnum\nocwrap
+\adjustright \expnd0\expndtw4\cgrid {Data merged together from several sources allowing easier analysis}{\f11\fs6\cgrid 
+\par }{\pntext\pard\plain \f6\fs22\expnd0\expndtw1\cgrid \'b7\tab}\pard \li432\sl204\slmult1\nowidctlpar\jclisttab\tx720{\*\pn\pnlvlblt\ilvl0\pnrnot0\pnf6\pnfs22\pnulnone\pnstart1\pnhang\pnsp288{\pntxtb \'b7\tab}}\ls1\aspalpha\aspnum\nocwrap\adjustright 
+\expnd0\expndtw0\cgrid {Shorter budget / planning cycle}{\f11\fs6\cgrid 
+\par }{\pntext\pard\plain \f17\fs22\expnd0\expndtw3\cgrid \'6f\tab}\pard \li1152\sl208\slmult1\nowidctlpar\jclisttab\tx1584{\*\pn\pnlvlblt\ilvl0\pnrnot0\pnf17\pnfs22\pnulnone\pnstart1\pnhang\pnsp432{\pntxtb \'6f\tab}}\ls2\aspalpha\aspnum\nocwrap
+\adjustright \expnd1\expndtw5\cgrid {Reduced effort in producing and managing budgets.}{\f11\fs6\cgrid 
+\par }\pard \li72\sl201\slmult1\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \f10\fs19\expnd0\expndtw0\b\cgrid {IT related}{\f11\fs6\cgrid 
+\par }{\pntext\pard\plain \f6\fs22\expnd0\expndtw1\cgrid \'b7\tab}\pard \li432\sb72\sl211\slmult1\nowidctlpar\jclisttab\tx720{\*\pn\pnlvlblt\ilvl0\pnrnot0\pnf6\pnfs22\pnulnone\pnstart1\pnhang\pnsp288{\pntxtb \'b7\tab}}\ls1\aspalpha\aspnum\nocwrap
+\adjustright \f0\fs22\expnd0\expndtw-1\b0\cgrid {Savings from turning off a legacy system}{\f11\fs6\cgrid 
+\par }\sb0\sl208\slmult1\nowidctlpar\adjustright \expnd0\expndtw0\cgrid {Reduced support costs by consolidating skill sets}{\f11\fs6\cgrid 
+\par }{Savings in OLTP application hardware by off-loading reporting to a dedicated environment}{\f11\fs6\cgrid 
+\par }\sl211\slmult1\nowidctlpar\adjustright {OLTP report development costs i.e. ABAP development}{\f11\fs6\cgrid 
+\par }\sl208\slmult1\nowidctlpar\adjustright {OLTP performance improvements}{\f11\fs6\cgrid 
+\par }\expnd0\expndtw-1\cgrid {Legacy / history data migration to SAP-ERP}{\f11\fs6\cgrid 
+\par }\sl211\slmult1\nowidctlpar\adjustright \expnd0\expndtw-2\cgrid {Rationalisation / review of existing reports}{\f11\fs6\cgrid 
+\par }\sl204\slmult1\nowidctlpar\adjustright \expnd0\expndtw0\cgrid {Delivers a landscape for future projects}{\f11\fs6\cgrid 
+\par }{\pntext\pard\plain \f17\fs22\expnd1\expndtw6\cgrid \'6f\tab}\pard \fi-360\li1512\ri72\sb36\sl199\slmult1\nowidctlpar\jclisttab\tx1512{\*\pn\pnlvlblt\ilvl0\pnrnot0\pnf17\pnfs22\pnulnone\pnstart1\pnindent360\pnhang\pnsp360{\pntxtb \'6f\tab}}\ls4
+\aspalpha\aspnum\nocwrap\adjustright \expnd1\expndtw6\cgrid {An organisation saved 1 FTE by removing the need to run an RFP process for}{\f11\fs6\cgrid  }{\expnd0\expndtw0\cgrid hardware, operating systems and software for every project}{\f11\fs6\expnd0
+\expndtw0\cgrid 
+\par }\pard \li72\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \f10\fs19\expnd0\expndtw0\b\cgrid {Organisational}{\f11\fs6\cgrid 
+\par }{\pntext\pard\plain \f6\fs22\expnd0\expndtw1\cgrid \'b7\tab}\pard \li432\sl211\slmult1\nowidctlpar\jclisttab\tx720{\*\pn\pnlvlblt\ilvl0\pnrnot0\pnf6\pnfs22\pnulnone\pnstart1\pnhang\pnsp288{\pntxtb \'b7\tab}}\ls1\aspalpha\aspnum\nocwrap\adjustright 
+\f0\fs22\b0\cgrid {Revenue generated from selling information to partner organisations i.e. sales analysis data}{\f11\fs6\cgrid 
+\par }\expnd0\expndtw-1\cgrid {Global visibility of supplier spend allowing better deals to be negotiated}{\f11\fs6\cgrid 
+\par }\sl201\slmult1\nowidctlpar\adjustright \expnd0\expndtw-2\cgrid {Identifying areas of inefficiency within the organisation}{\f11\fs6\cgrid 
+\par }{\pntext\pard\plain \f17\fs22\expnd0\expndtw3\cgrid \'6f\tab}\pard \li1152\sl-189\slmult0\nowidctlpar\jclisttab\tx1584{\*\pn\pnlvlblt\ilvl0\pnrnot0\pnf17\pnfs22\pnulnone\pnstart1\pnhang\pnsp432{\pntxtb \'6f\tab}}\ls2\aspalpha\aspnum\nocwrap
+\adjustright \expnd3\expndtw18\cgrid {Stock levels}{\f11\fs6\cgrid 
+\par }\sl208\slmult1\nowidctlpar\adjustright \expnd2\expndtw12\cgrid {Unpaid invoices}{\f11\fs6\cgrid 
+\par }\sl201\slmult1\nowidctlpar\adjustright \expnd2\expndtw10\cgrid {Duplicate invoices}{\f11\fs6\cgrid 
+\par }\sl211\slmult1\nowidctlpar\adjustright \expnd1\expndtw5\cgrid {Failure to secure discounts from suppliers}{\f11\fs6\cgrid 
+\par }\pard\plain\sect\sectd\stextflow0\marglsxn1338\margrsxn1280\margbsxn9728\linex0\sectdefaultcl\trowd\trgaph0\trql\trrh-723\clvertalb\clbrdrb\brdrs\brdrw14\brdrcf17 \cltxlrtb\cellx6942\clvertalt\cltxlrtb\cellx9240\pard\plain \qr\ri2384\sb396
+\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\f10\fs19\expnd0\expndtw1\b\cgrid {Building the case for BI projects \'97 Tony Harper}{\f11\fs6\cgrid \cell }\pard\plain \qr\li136\sb18\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\fs24
+\cgrid {{\*\shppict{\pict{\*\picprop\shplid1029{\sp{\sn shapeType}{\sv 75}}{\sp{\sn fFlipH}{\sv 0}}{\sp{\sn fFlipV}{\sv 0}}{\sp{\sn pibName}{\sv _Pic3}}{\sp{\sn pibFlags}{\sv 1}}{\sp{\sn fillColor}{\sv 268435473}}{\sp{\sn fFilled}{\sv 0}}{\sp{\sn fLine}{
+\sv 0}}}\picscalex100\picscaley100\piccropl0\piccropr0\piccropt0\piccropb0\picw3809\pich1149\picwgoal2160\pichgoal652\jpegblip\bliptag-425906633{\*\blipuid e69d2e3719b84ac8885d12835d1f40cb}
+ffd8ffe000104a46494600010101009600960000ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720
+222c231c1c2837292c30313434341f27393d38323c2e333432ffdb0043010909090c0b0c180d0d1832211c213232323232323232323232323232323232323232
+323232323232323232323232323232323232323232323232323232323232ffc0001108004400e103012200021101031101ffc4001f0000010501010101010100
+000000000000000102030405060708090a0bffc400b5100002010303020403050504040000017d01020300041105122131410613516107227114328191a10823
+42b1c11552d1f02433627282090a161718191a25262728292a3435363738393a434445464748494a535455565758595a636465666768696a737475767778797a
+838485868788898a92939495969798999aa2a3a4a5a6a7a8a9aab2b3b4b5b6b7b8b9bac2c3c4c5c6c7c8c9cad2d3d4d5d6d7d8d9dae1e2e3e4e5e6e7e8e9eaf1
+f2f3f4f5f6f7f8f9faffc4001f0100030101010101010101010000000000000102030405060708090a0bffc400b5110002010204040304070504040001027700
+0102031104052131061241510761711322328108144291a1b1c109233352f0156272d10a162434e125f11718191a262728292a35363738393a43444546474849
+4a535455565758595a636465666768696a737475767778797a82838485868788898a92939495969798999aa2a3a4a5a6a7a8a9aab2b3b4b5b6b7b8b9bac2c3c4
+c5c6c7c8c9cad2d3d4d5d6d7d8d9dae2e3e4e5e6e7e8e9eaf2f3f4f5f6f7f8f9faffda000c03010002110311003f00f7da2bcf35cf8a7069d7b716569a6cb2cd
+048d13b4ce154329c1c019c8c8f6aea7c27accdaff00872db51b848d2694b8658c10a30e40c649ec057454c2d5a705526ac99cf4f154aa5474e0eed1b5451457
+39d01456078a3c5769e1682092e609a669cb0458c0c718ce493c75ae6bc3df11eebc41e29b4d396c21b7b69b7e4972efc2330e781dbd2ba2185ab3a6ea25a2fd
+0e69e2e942a2a6dfbcff0053d128a28ae73a428a28a0028a28a0028a28a0028a2b27c41e22b1f0dd80babd663b8ed8e3419676c6703fc6aa3194da8c55d9339c
+6117293b235a8af1dbaf8b5ac493136b67670c5d95c33b7e2723f956f784be23dd6b7aac3a6de69cbe6cb9c4b6e480b81924a9cf1ef9aec9e5d5e10e76b6f338
+e19961e73504f7f23d128ae2fc41f1234ed0f517b04b69aea788e25da42aafb64f535d0e83aed9f88b4c5beb2de23dc5195c619587507f315cf3c3d58414e51d
+19d10c4529cdd38cb5469d1451589b0514556d42dbedba6dd5ae76f9d0bc79f4c823fad35bea27b6859a2bcd7c3bf11e2b080e99e225963b9b53e519954b6ec1
+c7cc3ae47af7a3c67f10ed1b4a5b5d06f0bcd3ff00ac9914af969e8323a9fd2bb3ea15fda725be7d0e3fafd0f67cf7f97536fc41f10f4ad0ee3ecb1ab5edc8fb
+c90b0da87d0b7afb0cd6e6877ba8ea362b777f651d9f9a03470872cea3fdac8183ed5e25e06b45bef1a69b1b80cab2194eeff654b7f302be80abc750a787b538
+abbddb33c0d7a988bd493b2d920a28a2bcf3d13e71f12ffc8d5ac7fd7f4dff00a19af60f869ff223da7fbf27fe866bc7fc4bff002356b1ff005fd37fe866b62c
+3c7ba8e8fe1db6d2b4c4485e32ecf3b00c4e589c00781d7be6be9b154275f0f1843cbf23e630988850c44e73db5fccf76a2bc2ad3e24f89ada60f25e25ca6798
+e589707f1500feb5ea7e13f175a78a6d1da3430dd438f361639c67b83dc75af1b1180ad423cd2d5791ed61f1f46bcb963a3f339af8bca0e93a6b7713b0fcd7ff
+00ad5c67c3aff91f34dffb6bff00a29ebb5f8bdff206d3ff00ebe0ff00e835c57c3aff0091f34dff00b6bffa29ebd4c2ff00c8be5e92fd4f2b15ff002308fac7
+f43dea8ac0f17f88dbc31a32df25b0b867944414bed00904e7a1f4e95c4681f1075ad73c57616929820b596421e38a3ea3693c9393f962bc8a583ab529ba8b65
+fa1ec55c652a551537bbfd4f56a28af20d57e2aeacd34b0d8dadbdb2ab15ded991b8fc87e95387c2d4c436a1d0ac462a9e1d273ea7afd1599e1dbb9efbc39a75
+ddcbef9e6b74776c0192473c0e2b13c5de3bb5f0d38b48a2fb4dfb2eed9bb0a83b6e3fd3f954c284e753d9c55d953af0853f69276475d45785cff12fc4f34a5d
+2f228173f72381081ff7d027f5ad8d1be2c5ec3208f58b64b88bfe7a4236b8fc3a1fd2bb259562231be8ce38e6b8794adaa3d72bc6fe2cddc927892dad493e54
+36c1957dd98e4fe83f2af5a8efe09f4d17f6eeb2c2d1798854f0c319af05f16f8897c4fabc77eb6a6db6c2222864df9c12739c0f5fd2ab2aa52759cada22335a
+b154396fab367e1c7866c3c437b7b2ea286586d553116e2a18b6ee491cf1b7f5af50d1bc27a46837b3dd69f6e6379942905cb051ed9e467fa0af22f06f8c17c2
+7f6ddd626ebed3e5f49766ddbbbd8e7ef7e95e9fe11f18bf8ae4b9dba69b68a0033219b7e58f418da3d0d6b98c313cf297d8d3afe9ea6596cf0dc918e9cfaf4d
+7eff004380f17f8275b6f12de5cda5949756f7321955e3e719e4823b60d777f0f7c3f75a0e80eb7aa52e2e25f31a3ce760c00071df8ae7fc51f12eff004bd5ee
+f4db2b2b75303ec32cac5b3ee00c63f5ae97c05acdf6bbe1e7bcbf944937da1d010a140000c0c0fad4e265897855ed1251d3d7c8bc3470cb14fd9b6e5afa2ee7
+5145795f89be24eb161aadde9b6d676f6ed04853cc7cc8c7d08e806460f43535b7c544b6f0e5b9b889aef563b8483ee28c1386381dc6381fa5737f6757e5524b
+73a7fb470fcce2dec7a7515e1d2fc4ef12c936f49ede25ff009e690823f5c9fd6bbaf05f8f57c4531b0bd8520be0bb94a1f96503ae01e87da8ad9757a50e77aa
+f2151cc68559f22d1f9995f10bc0d2dd4eface9513492bff00c7c40bd4f1f7947f31f8fad7949041c1e0d7d455f3ff008e6ee0bcf18ea125b0411ab84ca01862
+a0063c75e41af472bc54ea7eea5b25bfe879d9ae1614ff007b1ddbdbf539f8e478a4592376475390ca7047e35ebdf0ff00c70faab2e91a9bafda953f73331e66
+c7507fdac7e7553c15f0f6d67d21eeb5eb32f25c60c51976568d7d4e08e4ff008545e20f876da295d6740965636ac2636ee72c029ce54ff43f9f6aac4d7c3621
+ba32dfa3e97270d87c4e1d2ad1dbaaeb63d4a8ac2ff84a6cff00e79cbf9515e1fb1a9d8f77db53ee7877897fe46ad63febfa6ffd0cd76de02f03697ac691fda9
+a9879f7bb2a4218aa8038c923935c4f897fe46ad63febfa6ff00d0cd7af7c32ff912adff00ebac9ffa157bf8ea93a7858b83b6df91f3f81a50a98a929abeff00
+99c67c43f0659e8305bea1a623476cefe5491162db5b048209e71c1fd2b9cf086a52e97e2ad3e78df6abccb14b9e85188073fcfea057a97c51c7fc21ad9ff9f8
+8f1fad78b5beefb4c5b3ef6f18fae6ab033957c33551df744e3a11a18a4e9ab6ccf58f8bbff206d3ff00ebe0ff00e835c57c3aff0091f34dff00b6bffa29ebb5
+f8bbff00206d3bfebe0ffe835c57c3aff91f34dffb6bff00a29eb1c2ff00b84bd25fa9b62bfe4611f58fe877ff00167fe45383febf13ff00407af3af027fc8ed
+a5ff00d753ff00a09af45f8b3ff229c1ff005f89ff00a03d79d7813fe476d2ff00eba9ff00d04d182ff7197cff0020c6ff00bf47e5f99f4057cc777ff1f93ffd
+746fe75f4e57cc777ff1f93ffd746fe75964dbcfe5fa9b673b43e7fa1ef1a2df2699f0f2cefa4194b7b05908f5c2e715e0d737335e5d4b7370e649a562eec7a9
+27ad7afea4ccbf0610af5fb1423f02cb9af1bae8cb60af527d6f639b339bb53874b5cf71f0af82b45b7f0fdacb73a7c37373710a492bdc20720b0ce067a633da
+bcdbc7da15be81e25682d1765b4d12cd1a649d992411cfb83f9d652ddeb8a8a12e3510a06000ef8c541709a95d387b85bb99c0c069033103d39ad2861ea53aae
+a4aa5d3e8655f114ea5254e34ecd753d2be13df7dab4cd474999d8aa10e8b9e8ac086c7e23f5ae47c79a159787b5e8acec15c42d6eb210edb8e4b30fe82b6fe1
+4453c3e25bb1245222359b1cb290321d3fc4d56f8b1ff23641ff005e69ff00a13d654fddc7c945e8d5cdaa7bd808ca4b54ec47f0f3c31a6f891f511a82cade40
+8f66c7dbf7b767f90af57d0bc3da7f876d64b7d3d1d5247dec5db712718eb5c0fc1eff0059acfd21ff00d9ebd4ebcfccaacfdbca17d34d3e48f472ca50f611a9
+6d75d7e6cf9efc6bff00239eabff005dcff215e9bf0aff00e4506ffafa7fe4b5e65e35ff0091cf55ff00aee7f90af4df857ff22837fd7d3ff25aeec77fb947e5
+f91c180ff7d97cff003380f890813c737c47f12c64ff00df0a3fa53bc0de0e8fc51713cb753b47696e543aa7de727b67b0e3ad1f12ff00e477bbff00723ffd00
+5755f083fe3c755ffae91ff235a54ab2a781528bd6cbf433a74a3531ee335a5dfea6778f3c11a5e83a1c57da70951c4c11c3bee04107f5c815cbf8218af8d34a
+20e0f9d8fd0d7a77c52ff9138ffd7c27f5af30f057fc8e7a57fd771fc8d2c254954c1c9cdddebf90f174e14f19150565a7e67b6f882df5abbb316fa34d6b0349
+959669f76e55c7f0800f3f5ac1f0efc37d3346963babb737b7687702eb88d4fb2fafb9aed68af0a388a9087245d933dd961e9ce6a72576b6f20a28a2b137136a
+ff00747e5452d1401f38f897fe46ad63febfa6ff00d0cd7a5fc33f106989a02e9935dc70ddc4eedb2521770273904f5fe75c6eb9e13d7eefc41a95cc1a4dd345
+35d4b2236deaa5c907f2aad7fe04f10d85b4570da7c92c6e818887e76424742a39e3d7a57d355546bd18d394d2dba9f2f45d7a15a556306f7e8ceb3e29788ece
+e6d2df48b49d267f304d3346c18280080b91df9ce3d87ad711e14d3df53f14e9b6e89bc79eaf20edb14ee6fd01a6d9785f5dd426115b695744fabc65147d59b0
+07e75ec1e09f0747e18b479667f32fee140948c6100e76aff53df02b3a956960f0fece0eeffad4d69d2ab8dc47b49ab2feb4317e2e83fd8ba79ec2e0ff00e826
+b8af87640f1e6999ff00a6bffa29ebd5fc6fe1e97c49e1f36b6ee16e22904d103c062011b49ed904fe38af149f43d6f4cbb0b269f790ce872acb1b75f5561d7e
+a2a3012854c2ba37b3d57de5e3e13a78a55ad75a3fb8f54f8b0a4f84a120702f109ffbe5ebcc7c23751d978b74c9e660b189c0663d0678c9fcebd3f46d3afbc4
+ff000ee4d37594b98aeb2ca92dc06de483b91ce79239c7d05798ea9e12d774890adce9d314070258977a1fc474fc706ab02e0a9cb0f296b76bfe189c729ba90c
+4c63a593f4f53dfef6fadb4eb396eeee658a088659d8f02be699dc4971248b9c339233ee6b4acbc3daeead22c56da7dd4b8e01652aabff00026c01f9d5fd43c0
+7af58ea16f66b66d70f3a06468b9507037027a0c138c9e2b4c251a5856e2e69b7fa19e32b55c5a5250692f9ee7a9e9ba78d63e19db5802333d804527a06dbc7e
+a057841041208208e083dabe83f06e957da2f86adac350789a58cb1023c9da092704f73c9e9f4ed9ae5bc6ff000f24d4ae5f54d1957ed321ccd6e4850e7fbca4
+f00fae7afd7af260b170a55a7093d1bd19d78dc24ead184e2b54b54757e12d62df59f0e59cd0caaf2c712473af747030723f0e3dab4aff0051b3d2ed1aeafae2
+38215eace71f80f53ec2be799f49d674ab8225b2bcb69471bb630fc88ebf854f67e1cf106b53660d3eee6623fd6480a8ff00be9b03f5a73cb293939fb4b47fae
+b714333aaa2a1ecef2feba58f7cd2755b4d6b4e8afec9f7c32671918208ea08ec6bc93e2c7fc8d907fd79a7fe84f5de7813c2d75e19d3e6177721e5b821da14f
+bb1903d7b9f5edfceb96f891e1ed5f55f12457161a7cd7110b5542e83233b98e3f5158e0fd9d3c5be597bbaea6f8df6b5308b9a3ef69a0ef83dfeb359fa43ffb
+3d7a9d79dfc2fd1752d21f543a859cb6de688b679831bb1bf3fcc57a2573e61252c4c9a77dbf247465d171c3454959ebf9b3e7bf1aff00c8e7aaff00d773fc85
+7a6fc2bff9141bfebe9ff92d715e2bf0aebb7be2ad46e6db4bb89619262c8eabc118aeff00e1d69b79a5f861adefadde09bed0edb1c60e081cd7a18da907838a
+4d5f4fc8f3b054e71c64a4d3b6bf99e71f12ff00e477bbff00723ffd005755f083fe3c755ffae91ff23595e3df0d6b5a978b6e6e6cf4e9e78192301d07070a01
+ae8be18e8fa869169a8aea16925bb492214120c6400734ebd483c028a6af65fa050a7358f7269daeff0052c7c52ff9138ffd7c27f5af30f057fc8e7a57fd771f
+c8d7acfc43d3af354f0b9b7b1b779e6f3d1b620c9c0cf35e7de14f0aebb65e2ad3ae6e74bb88a18e605dd9780306960aa4161249b57d7f21e369ce58c8c9276d
+3f33db28a28af08f7428a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a
+0028a28a0028a28a0028a28a00ffd9
+}}}\cell \pard\plain \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\fs24\cgrid {\row }\trowd\trgaph0\trql\trrh-41\clvertalt\clbrdrt\brdrs\brdrw14\brdrcf17 \cltxlrtb\cellx6942\clvertalt\cltxlrtb\cellx9240\intbl\cell \intbl\cell \pard \nowidctlpar
+\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\pard\plain \sa808\sl-20\slmult0\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \fs24\cgrid {
+\par }\pard\pard \li72\nowidctlpar\tqr\tx4745\aspalpha\aspnum\nocwrap\adjustright \f10\expnd-2\expndtw-10\b\cgrid {1.2\tab }{\expnd2\expndtw14\cgrid Indirect quantifiable benefits}{\f11\fs6\expnd4\expndtw24\cgrid 
+\par }\pard \qj\li72\ri72\sb108\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \f0\fs22\expnd0\expndtw1\b0\cgrid {Although these are not the primary reasons given when putting forward a case for BI project, they can}{\f11\fs6\cgrid  }{be quantified and a
+ssigned a \'a3 value. They are often outside the scope of the current organisational}{\f11\fs6\cgrid  }{\expnd0\expndtw2\cgrid process and may require new processes to realise them. They may rely on examples from reference}{\f11\fs6\expnd0\expndtw2\cgrid 
+ }{\expnd0\expndtw-1\cgrid sites or individual analysis to draw out the benefits. Examples include:}{\f11\fs6\expnd0\expndtw-1\cgrid 
+\par }\ql\ri0\sb144\nowidctlpar\adjustright \f10\fs19\expnd0\expndtw0\b\cgrid {Departmental:}{\f11\fs6\cgrid 
+\par }{\pntext\pard\plain \f6\fs22\cgrid \'b7\tab}\pard \li360\sl213\slmult1\nowidctlpar\jclisttab\tx720{\*\pn\pnlvlblt\ilvl0\pnrnot0\pnf6\pnfs22\pnulnone\pnstart1\pnhang\pnsp360{\pntxtb \'b7\tab}}\ls5\aspalpha\aspnum\nocwrap\adjustright \f0\fs22\b0
+\cgrid {Ability to benchmark against industry standards}{\f11\fs6\cgrid 
+\par }\sl211\slmult1\nowidctlpar\adjustright \expnd0\expndtw-2\cgrid {Ability to meet own information needs}{\f11\fs6\cgrid 
+\par }\sl204\slmult1\nowidctlpar\adjustright \expnd0\expndtw2\cgrid {Improved process adherence}{\f11\fs6\cgrid 
+\par }\pard \fi-360\li1440\ri72\sl206\slmult1\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \f23\fs26\expnd0\expndtw-2\cgrid {o }{\f0\fs22\cgrid e.g. a BI project at a utility company identified \'a356 million worth of spend that was not}{\f11\fs6
+\cgrid  }{\f0\fs22\expnd0\expndtw0\cgrid managed through the central procurement function}{\f11\fs6\expnd0\expndtw0\cgrid 
+\par }\fi0\li72\ri0\sl201\slmult1\nowidctlpar\adjustright \f10\fs19\expnd0\expndtw0\b\cgrid {IT Related:}{\f11\fs6\cgrid 
+\par }{\pntext\pard\plain \f6\fs22\cgrid \'b7\tab}\pard \li360\sl213\slmult1\nowidctlpar\jclisttab\tx720{\*\pn\pnlvlblt\ilvl0\pnrnot0\pnf6\pnfs22\pnulnone\pnstart1\pnhang\pnsp360{\pntxtb \'b7\tab}}\ls5\aspalpha\aspnum\nocwrap\adjustright \f0\fs22\b0
+\cgrid {Better service for customers (i.e. the business) - faster report development turnarounds}{\f11\fs6\cgrid 
+\par }\sl201\slmult1\nowidctlpar\adjustright \expnd0\expndtw-1\cgrid {Alignment to long term IS strategy}{\f11\fs6\cgrid 
+\par }\pard \li72\sb216\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \f10\fs19\expnd0\expndtw2\b\cgrid {Organisational:}{\f11\fs6\cgrid 
+\par }{\pntext\pard\plain \f6\fs22\cgrid \'b7\tab}\pard \li360\sl206\slmult1\nowidctlpar\jclisttab\tx720{\*\pn\pnlvlblt\ilvl0\pnrnot0\pnf6\pnfs22\pnulnone\pnstart1\pnhang\pnsp360{\pntxtb \'b7\tab}}\ls5\aspalpha\aspnum\nocwrap\adjustright \f0\fs22\expnd0
+\expndtw0\b0\cgrid {A similar company saw improved customer service resulting in better sales}{\f11\fs6\cgrid 
+\par }\sl211\slmult1\nowidctlpar\adjustright \expnd0\expndtw1\cgrid {Reduced audit cost information is managed and access is controlled}{\f11\fs6\cgrid 
+\par }\pard\plain\sect\sectd\stextflow0\marglsxn1339\margrsxn1279\margbsxn10448\linex0\sectdefaultcl\trowd\trgaph0\trql\trrh-723\clvertalb\clbrdrb\brdrs\brdrw14\brdrcf17 \cltxlrtb\cellx6942\clvertalt\cltxlrtb\cellx9240\pard\plain \qr\ri2384\sb396
+\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\f10\fs19\expnd0\expndtw1\b\cgrid {Building the case for BI projects \'97 Tony Harper}{\f11\fs6\cgrid \cell }\pard\plain \qr\li136\sb18\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\fs24
+\cgrid {{\*\shppict{\pict{\*\picprop\shplid1030{\sp{\sn shapeType}{\sv 75}}{\sp{\sn fFlipH}{\sv 0}}{\sp{\sn fFlipV}{\sv 0}}{\sp{\sn pibName}{\sv _Pic4}}{\sp{\sn pibFlags}{\sv 1}}{\sp{\sn fillColor}{\sv 268435473}}{\sp{\sn fFilled}{\sv 0}}{\sp{\sn fLine}{
+\sv 0}}}\picscalex100\picscaley100\piccropl0\piccropr0\piccropt0\piccropb0\picw3809\pich1149\picwgoal2160\pichgoal652\jpegblip\bliptag1716839885{\*\blipuid 6654e5cd72ac4c0eae202af5234c3cf5}
+ffd8ffe000104a46494600010101009600960000ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720
+222c231c1c2837292c30313434341f27393d38323c2e333432ffdb0043010909090c0b0c180d0d1832211c213232323232323232323232323232323232323232
+323232323232323232323232323232323232323232323232323232323232ffc0001108004400e103012200021101031101ffc4001f0000010501010101010100
+000000000000000102030405060708090a0bffc400b5100002010303020403050504040000017d01020300041105122131410613516107227114328191a10823
+42b1c11552d1f02433627282090a161718191a25262728292a3435363738393a434445464748494a535455565758595a636465666768696a737475767778797a
+838485868788898a92939495969798999aa2a3a4a5a6a7a8a9aab2b3b4b5b6b7b8b9bac2c3c4c5c6c7c8c9cad2d3d4d5d6d7d8d9dae1e2e3e4e5e6e7e8e9eaf1
+f2f3f4f5f6f7f8f9faffc4001f0100030101010101010101010000000000000102030405060708090a0bffc400b5110002010204040304070504040001027700
+0102031104052131061241510761711322328108144291a1b1c109233352f0156272d10a162434e125f11718191a262728292a35363738393a43444546474849
+4a535455565758595a636465666768696a737475767778797a82838485868788898a92939495969798999aa2a3a4a5a6a7a8a9aab2b3b4b5b6b7b8b9bac2c3c4
+c5c6c7c8c9cad2d3d4d5d6d7d8d9dae2e3e4e5e6e7e8e9eaf2f3f4f5f6f7f8f9faffda000c03010002110311003f00f7da2bcf35cf8a7069d7b716569a6cb2cd
+048d13b4ce154329c1c019c8c8f6aea7c27accdaff00872db51b848d2694b8658c10a30e40c649ec057454c2d5a705526ac99cf4f154aa5474e0eed1b5451457
+39d01456078a3c5769e1682092e609a669cb0458c0c718ce493c75ae6bc3df11eebc41e29b4d396c21b7b69b7e4972efc2330e781dbd2ba2185ab3a6ea25a2fd
+0e69e2e942a2a6dfbcff0053d128a28ae73a428a28a0028a28a0028a28a0028a2b27c41e22b1f0dd80babd663b8ed8e3419676c6703fc6aa3194da8c55d9339c
+6117293b235a8af1dbaf8b5ac493136b67670c5d95c33b7e2723f956f784be23dd6b7aac3a6de69cbe6cb9c4b6e480b81924a9cf1ef9aec9e5d5e10e76b6f338
+e19961e73504f7f23d128ae2fc41f1234ed0f517b04b69aea788e25da42aafb64f535d0e83aed9f88b4c5beb2de23dc5195c619587507f315cf3c3d58414e51d
+19d10c4529cdd38cb5469d1451589b0514556d42dbedba6dd5ae76f9d0bc79f4c823fad35bea27b6859a2bcd7c3bf11e2b080e99e225963b9b53e519954b6ec1
+c7cc3ae47af7a3c67f10ed1b4a5b5d06f0bcd3ff00ac9914af969e8323a9fd2bb3ea15fda725be7d0e3fafd0f67cf7f97536fc41f10f4ad0ee3ecb1ab5edc8fb
+c90b0da87d0b7afb0cd6e6877ba8ea362b777f651d9f9a03470872cea3fdac8183ed5e25e06b45bef1a69b1b80cab2194eeff654b7f302be80abc750a787b538
+abbddb33c0d7a988bd493b2d920a28a2bcf3d13e71f12ffc8d5ac7fd7f4dff00a19af60f869ff223da7fbf27fe866bc7fc4bff002356b1ff005fd37fe866b62c
+3c7ba8e8fe1db6d2b4c4485e32ecf3b00c4e589c00781d7be6be9b154275f0f1843cbf23e630988850c44e73db5fccf76a2bc2ad3e24f89ada60f25e25ca6798
+e589707f1500feb5ea7e13f175a78a6d1da3430dd438f361639c67b83dc75af1b1180ad423cd2d5791ed61f1f46bcb963a3f339af8bca0e93a6b7713b0fcd7ff
+00ad5c67c3aff91f34dffb6bff00a29ebb5f8bdff206d3ff00ebe0ff00e835c57c3aff0091f34dff00b6bffa29ebd4c2ff00c8be5e92fd4f2b15ff002308fac7
+f43dea8ac0f17f88dbc31a32df25b0b867944414bed00904e7a1f4e95c4681f1075ad73c57616929820b596421e38a3ea3693c9393f962bc8a583ab529ba8b65
+fa1ec55c652a551537bbfd4f56a28af20d57e2aeacd34b0d8dadbdb2ab15ded991b8fc87e95387c2d4c436a1d0ac462a9e1d273ea7afd1599e1dbb9efbc39a75
+ddcbef9e6b74776c0192473c0e2b13c5de3bb5f0d38b48a2fb4dfb2eed9bb0a83b6e3fd3f954c284e753d9c55d953af0853f69276475d45785cff12fc4f34a5d
+2f228173f72381081ff7d027f5ad8d1be2c5ec3208f58b64b88bfe7a4236b8fc3a1fd2bb259562231be8ce38e6b8794adaa3d72bc6fe2cddc927892dad493e54
+36c1957dd98e4fe83f2af5a8efe09f4d17f6eeb2c2d1798854f0c319af05f16f8897c4fabc77eb6a6db6c2222864df9c12739c0f5fd2ab2aa52759cada22335a
+b154396fab367e1c7866c3c437b7b2ea286586d553116e2a18b6ee491cf1b7f5af50d1bc27a46837b3dd69f6e6379942905cb051ed9e467fa0af22f06f8c17c2
+7f6ddd626ebed3e5f49766ddbbbd8e7ef7e95e9fe11f18bf8ae4b9dba69b68a0033219b7e58f418da3d0d6b98c313cf297d8d3afe9ea6596cf0dc918e9cfaf4d
+7eff004380f17f8275b6f12de5cda5949756f7321955e3e719e4823b60d777f0f7c3f75a0e80eb7aa52e2e25f31a3ce760c00071df8ae7fc51f12eff004bd5ee
+f4db2b2b75303ec32cac5b3ee00c63f5ae97c05acdf6bbe1e7bcbf944937da1d010a140000c0c0fad4e265897855ed1251d3d7c8bc3470cb14fd9b6e5afa2ee7
+5145795f89be24eb161aadde9b6d676f6ed04853cc7cc8c7d08e806460f43535b7c544b6f0e5b9b889aef563b8483ee28c1386381dc6381fa5737f6757e5524b
+73a7fb470fcce2dec7a7515e1d2fc4ef12c936f49ede25ff009e690823f5c9fd6bbaf05f8f57c4531b0bd8520be0bb94a1f96503ae01e87da8ad9757a50e77aa
+f2151cc68559f22d1f9995f10bc0d2dd4eface9513492bff00c7c40bd4f1f7947f31f8fad7949041c1e0d7d455f3ff008e6ee0bcf18ea125b0411ab84ca01862
+a0063c75e41af472bc54ea7eea5b25bfe879d9ae1614ff007b1ddbdbf539f8e478a4592376475390ca7047e35ebdf0ff00c70faab2e91a9bafda953f73331e66
+c7507fdac7e7553c15f0f6d67d21eeb5eb32f25c60c51976568d7d4e08e4ff008545e20f876da295d6740965636ac2636ee72c029ce54ff43f9f6aac4d7c3621
+ba32dfa3e97270d87c4e1d2ad1dbaaeb63d4a8ac2ff84a6cff00e79cbf9515e1fb1a9d8f77db53ee7877897fe46ad63febfa6ffd0cd76de02f03697ac691fda9
+a9879f7bb2a4218aa8038c923935c4f897fe46ad63febfa6ff00d0cd7af7c32ff912adff00ebac9ffa157bf8ea93a7858b83b6df91f3f81a50a98a929abeff00
+99c67c43f0659e8305bea1a623476cefe5491162db5b048209e71c1fd2b9cf086a52e97e2ad3e78df6abccb14b9e85188073fcfea057a97c51c7fc21ad9ff9f8
+8f1fad78b5beefb4c5b3ef6f18fae6ab033957c33551df744e3a11a18a4e9ab6ccf58f8bbff206d3ff00ebe0ff00e835c57c3aff0091f34dff00b6bffa29ebb5
+f8bbff00206d3bfebe0ffe835c57c3aff91f34dffb6bff00a29eb1c2ff00b84bd25fa9b62bfe4611f58fe877ff00167fe45383febf13ff00407af3af027fc8ed
+a5ff00d753ff00a09af45f8b3ff229c1ff005f89ff00a03d79d7813fe476d2ff00eba9ff00d04d182ff7197cff0020c6ff00bf47e5f99f4057cc777ff1f93ffd
+746fe75f4e57cc777ff1f93ffd746fe75964dbcfe5fa9b673b43e7fa1ef1a2df2699f0f2cefa4194b7b05908f5c2e715e0d737335e5d4b7370e649a562eec7a9
+27ad7afea4ccbf0610af5fb1423f02cb9af1bae8cb60af527d6f639b339bb53874b5cf71f0af82b45b7f0fdacb73a7c37373710a492bdc20720b0ce067a633da
+bcdbc7da15be81e25682d1765b4d12cd1a649d992411cfb83f9d652ddeb8a8a12e3510a06000ef8c541709a95d387b85bb99c0c069033103d39ad2861ea53aae
+a4aa5d3e8655f114ea5254e34ecd753d2be13df7dab4cd474999d8aa10e8b9e8ac086c7e23f5ae47c79a159787b5e8acec15c42d6eb210edb8e4b30fe82b6fe1
+4453c3e25bb1245222359b1cb290321d3fc4d56f8b1ff23641ff005e69ff00a13d654fddc7c945e8d5cdaa7bd808ca4b54ec47f0f3c31a6f891f511a82cade40
+8f66c7dbf7b767f90af57d0bc3da7f876d64b7d3d1d5247dec5db712718eb5c0fc1eff0059acfd21ff00d9ebd4ebcfccaacfdbca17d34d3e48f472ca50f611a9
+6d75d7e6cf9efc6bff00239eabff005dcff215e9bf0aff00e4506ffafa7fe4b5e65e35ff0091cf55ff00aee7f90af4df857ff22837fd7d3ff25aeec77fb947e5
+f91c180ff7d97cff003380f890813c737c47f12c64ff00df0a3fa53bc0de0e8fc51713cb753b47696e543aa7de727b67b0e3ad1f12ff00e477bbff00723ffd00
+5755f083fe3c755ffae91ff235a54ab2a781528bd6cbf433a74a3531ee335a5dfea6778f3c11a5e83a1c57da70951c4c11c3bee04107f5c815cbf8218af8d34a
+20e0f9d8fd0d7a77c52ff9138ffd7c27f5af30f057fc8e7a57fd771fc8d2c254954c1c9cdddebf90f174e14f19150565a7e67b6f882df5abbb316fa34d6b0349
+959669f76e55c7f0800f3f5ac1f0efc37d3346963babb737b7687702eb88d4fb2fafb9aed68af0a388a9087245d933dd961e9ce6a72576b6f20a28a2b137136a
+ff00747e5452d1401f38f897fe46ad63febfa6ff00d0cd7a5fc33f106989a02e9935dc70ddc4eedb2521770273904f5fe75c6eb9e13d7eefc41a95cc1a4dd345
+35d4b2236deaa5c907f2aad7fe04f10d85b4570da7c92c6e818887e76424742a39e3d7a57d355546bd18d394d2dba9f2f45d7a15a556306f7e8ceb3e29788ece
+e6d2df48b49d267f304d3346c18280080b91df9ce3d87ad711e14d3df53f14e9b6e89bc79eaf20edb14ee6fd01a6d9785f5dd426115b695744fabc65147d59b0
+07e75ec1e09f0747e18b479667f32fee140948c6100e76aff53df02b3a956960f0fece0eeffad4d69d2ab8dc47b49ab2feb4317e2e83fd8ba79ec2e0ff00e826
+b8af87640f1e6999ff00a6bffa29ebd5fc6fe1e97c49e1f36b6ee16e22904d103c062011b49ed904fe38af149f43d6f4cbb0b269f790ce872acb1b75f5561d7e
+a2a3012854c2ba37b3d57de5e3e13a78a55ad75a3fb8f54f8b0a4f84a120702f109ffbe5ebcc7c23751d978b74c9e660b189c0663d0678c9fcebd3f46d3afbc4
+ff000ee4d37594b98aeb2ca92dc06de483b91ce79239c7d05798ea9e12d774890adce9d314070258977a1fc474fc706ab02e0a9cb0f296b76bfe189c729ba90c
+4c63a593f4f53dfef6fadb4eb396eeee658a088659d8f02be699dc4971248b9c339233ee6b4acbc3daeead22c56da7dd4b8e01652aabff00026c01f9d5fd43c0
+7af58ea16f66b66d70f3a06468b9507037027a0c138c9e2b4c251a5856e2e69b7fa19e32b55c5a5250692f9ee7a9e9ba78d63e19db5802333d804527a06dbc7e
+a057841041208208e083dabe83f06e957da2f86adac350789a58cb1023c9da092704f73c9e9f4ed9ae5bc6ff000f24d4ae5f54d1957ed321ccd6e4850e7fbca4
+f00fae7afd7af260b170a55a7093d1bd19d78dc24ead184e2b54b54757e12d62df59f0e59cd0caaf2c712473af747030723f0e3dab4aff0051b3d2ed1aeafae2
+38215eace71f80f53ec2be799f49d674ab8225b2bcb69471bb630fc88ebf854f67e1cf106b53660d3eee6623fd6480a8ff00be9b03f5a73cb293939fb4b47fae
+b714333aaa2a1ecef2feba58f7cd2755b4d6b4e8afec9f7c32671918208ea08ec6bc93e2c7fc8d907fd79a7fe84f5de7813c2d75e19d3e6177721e5b821da14f
+bb1903d7b9f5edfceb96f891e1ed5f55f12457161a7cd7110b5542e83233b98e3f5158e0fd9d3c5be597bbaea6f8df6b5308b9a3ef69a0ef83dfeb359fa43ffb
+3d7a9d79dfc2fd1752d21f543a859cb6de688b679831bb1bf3fcc57a2573e61252c4c9a77dbf247465d171c3454959ebf9b3e7bf1aff00c8e7aaff00d773fc85
+7a6fc2bff9141bfebe9ff92d715e2bf0aebb7be2ad46e6db4bb89619262c8eabc118aeff00e1d69b79a5f861adefadde09bed0edb1c60e081cd7a18da907838a
+4d5f4fc8f3b054e71c64a4d3b6bf99e71f12ff00e477bbff00723ffd005755f083fe3c755ffae91ff23595e3df0d6b5a978b6e6e6cf4e9e78192301d07070a01
+ae8be18e8fa869169a8aea16925bb492214120c6400734ebd483c028a6af65fa050a7358f7269daeff0052c7c52ff9138ffd7c27f5af30f057fc8e7a57fd771f
+c8d7acfc43d3af354f0b9b7b1b779e6f3d1b620c9c0cf35e7de14f0aebb65e2ad3ae6e74bb88a18e605dd9780306960aa4161249b57d7f21e369ce58c8c9276d
+3f33db28a28af08f7428a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a
+0028a28a0028a28a0028a28a00ffd9
+}}}\cell \pard\plain \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\fs24\cgrid {\row }\trowd\trgaph0\trql\trrh-41\clvertalt\clbrdrt\brdrs\brdrw14\brdrcf17 \cltxlrtb\cellx6942\clvertalt\cltxlrtb\cellx9240\intbl\cell \intbl\cell \pard \nowidctlpar
+\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\pard\plain \sa808\sl-20\slmult0\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \fs24\cgrid {
+\par }\pard\pard \li72\nowidctlpar\tqr\tx3996\aspalpha\aspnum\nocwrap\adjustright \f10\b\cgrid {1.3\tab }{\expnd1\expndtw8\cgrid Unqu antifi able benefits}{\f11\fs6\expnd1\expndtw8\cgrid 
+\par }\pard \li72\sb108\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \f0\fs22\b0\cgrid {These are difficult to define before a project and harder to assign a \'a3 value to. Examples include:}{\f11\fs6\cgrid 
+\par }\li648\ri6120\sb144\nowidctlpar\adjustright \expnd-1\expndtw-5\cgrid {Better alignment to strategy}{\f11\fs6\cgrid  }{\expnd0\expndtw0\cgrid One version of the truth}{\f11\fs6\expnd0\expndtw0\cgrid 
+\par }\ri0\sb72\nowidctlpar\adjustright \expnd0\expndtw-2\cgrid {Improved communication}{\f11\fs6\cgrid 
+\par }\qc\li0\sb0\nowidctlpar\adjustright \expnd0\expndtw0\cgrid {Shorter budget / planning cycle}{\f11\fs6\cgrid \line }{\expnd0\expndtw-2\cgrid Improved organisational insight}{\f11\fs6\expnd0\expndtw-2\cgrid 
+\par }\qj\li72\ri72\sb144\sl216\slmult1\nowidctlpar\adjustright \expnd0\expndtw-2\cgrid {To identify how these can deliver benefits, speak to business analysts who have completed their own}{\f11\fs6\cgrid  }{\expnd0\expndtw-1\cgrid modelling, or senior ma
+nagers who understand how the organisation is running. They may offer ideas}{\f11\fs6\expnd0\expndtw-1\cgrid  }{\expnd0\expndtw0\cgrid which help your case.}{\f11\fs6\expnd0\expndtw0\cgrid 
+\par }\sb180\sl240\slmult1\nowidctlpar\adjustright \expnd0\expndtw2\cgrid {To build a complete case think of the ways in which the organisation can benefit. Use the above}{\f11\fs6\cgrid  }{\expnd0\expndtw-2\cgrid framework to structure them and keeping a
+sking `so what?' until you can extract the value. You should}{\f11\fs6\expnd0\expndtw-2\cgrid  }{\expnd0\expndtw0\cgrid claim a very small percentage of this value as a benefit as anything too large will look unrealistic.}{\f11\fs6\expnd0\expndtw0\cgrid 
+\par }\pard\plain\sect\sectd\stextflow0\marglsxn1000\margrsxn778\margbsxn1328\linex0\sectdefaultcl\trowd\trgaph0\trql\trrh-723\clvertalb\clbrdrb\brdrs\brdrw14\brdrcf18 \cltxlrtb\cellx6940\clvertalt\cltxlrtb\cellx10080\pard\plain \qr\ri2384\sb396
+\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\f10\fs19\expnd0\expndtw3\b\cgrid {Building the case for BI projects - Tony Harper}{\f11\fs6\cgrid \cell }\pard\plain \li121\ri844\sb18\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\fs24
+\cgrid {{\*\shppict{\pict{\*\picprop\shplid1031{\sp{\sn shapeType}{\sv 75}}{\sp{\sn fFlipH}{\sv 0}}{\sp{\sn fFlipV}{\sv 0}}{\sp{\sn pibName}{\sv _Pic5}}{\sp{\sn pibFlags}{\sv 1}}{\sp{\sn fillColor}{\sv 268435473}}{\sp{\sn fFilled}{\sv 0}}{\sp{\sn fLine}{
+\sv 0}}}\picscalex100\picscaley100\piccropl0\piccropr0\piccropt0\piccropb0\picw3809\pich1149\picwgoal2160\pichgoal652\jpegblip\bliptag1167152341{\*\blipuid 459154d54ed345ef9dcf62daddbb7c33}
+ffd8ffe000104a46494600010101009600960000ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720
+222c231c1c2837292c30313434341f27393d38323c2e333432ffdb0043010909090c0b0c180d0d1832211c213232323232323232323232323232323232323232
+323232323232323232323232323232323232323232323232323232323232ffc0001108004400e103012200021101031101ffc4001f0000010501010101010100
+000000000000000102030405060708090a0bffc400b5100002010303020403050504040000017d01020300041105122131410613516107227114328191a10823
+42b1c11552d1f02433627282090a161718191a25262728292a3435363738393a434445464748494a535455565758595a636465666768696a737475767778797a
+838485868788898a92939495969798999aa2a3a4a5a6a7a8a9aab2b3b4b5b6b7b8b9bac2c3c4c5c6c7c8c9cad2d3d4d5d6d7d8d9dae1e2e3e4e5e6e7e8e9eaf1
+f2f3f4f5f6f7f8f9faffc4001f0100030101010101010101010000000000000102030405060708090a0bffc400b5110002010204040304070504040001027700
+0102031104052131061241510761711322328108144291a1b1c109233352f0156272d10a162434e125f11718191a262728292a35363738393a43444546474849
+4a535455565758595a636465666768696a737475767778797a82838485868788898a92939495969798999aa2a3a4a5a6a7a8a9aab2b3b4b5b6b7b8b9bac2c3c4
+c5c6c7c8c9cad2d3d4d5d6d7d8d9dae2e3e4e5e6e7e8e9eaf2f3f4f5f6f7f8f9faffda000c03010002110311003f00f7da2bcf35cf8a7069d7b716569a6cb2cd
+048d13b4ce154329c1c019c8c8f6aea7c27accdaff00872db51b848d2694b8658c10a30e40c649ec057454c2d5a705526ac99cf4f154aa5474e0eed1b5451457
+39d01456078a3c5769e1682092e609a669cb0458c0c718ce493c75ae6bc3df11eebc41e29b4d396c21b7b69b7e4972efc2330e781dbd2ba2185ab3a6ea25a2fd
+0e69e2e942a2a6dfbcff0053d128a28ae73a428a28a0028a28a0028a28a0028a2b27c41e22b1f0dd80babd663b8ed8e3419676c6703fc6aa3194da8c55d9339c
+6117293b235a8af1dbaf8b5ac493136b67670c5d95c33b7e2723f956f784be23dd6b7aac3a6de69cbe6cb9c4b6e480b81924a9cf1ef9aec9e5d5e10e76b6f338
+e19961e73504f7f23d128ae2fc41f1234ed0f517b04b69aea788e25da42aafb64f535d0e83aed9f88b4c5beb2de23dc5195c619587507f315cf3c3d58414e51d
+19d10c4529cdd38cb5469d1451589b0514556d42dbedba6dd5ae76f9d0bc79f4c823fad35bea27b6859a2bcd7c3bf11e2b080e99e225963b9b53e519954b6ec1
+c7cc3ae47af7a3c67f10ed1b4a5b5d06f0bcd3ff00ac9914af969e8323a9fd2bb3ea15fda725be7d0e3fafd0f67cf7f97536fc41f10f4ad0ee3ecb1ab5edc8fb
+c90b0da87d0b7afb0cd6e6877ba8ea362b777f651d9f9a03470872cea3fdac8183ed5e25e06b45bef1a69b1b80cab2194eeff654b7f302be80abc750a787b538
+abbddb33c0d7a988bd493b2d920a28a2bcf3d13e71f12ffc8d5ac7fd7f4dff00a19af60f869ff223da7fbf27fe866bc7fc4bff002356b1ff005fd37fe866b62c
+3c7ba8e8fe1db6d2b4c4485e32ecf3b00c4e589c00781d7be6be9b154275f0f1843cbf23e630988850c44e73db5fccf76a2bc2ad3e24f89ada60f25e25ca6798
+e589707f1500feb5ea7e13f175a78a6d1da3430dd438f361639c67b83dc75af1b1180ad423cd2d5791ed61f1f46bcb963a3f339af8bca0e93a6b7713b0fcd7ff
+00ad5c67c3aff91f34dffb6bff00a29ebb5f8bdff206d3ff00ebe0ff00e835c57c3aff0091f34dff00b6bffa29ebd4c2ff00c8be5e92fd4f2b15ff002308fac7
+f43dea8ac0f17f88dbc31a32df25b0b867944414bed00904e7a1f4e95c4681f1075ad73c57616929820b596421e38a3ea3693c9393f962bc8a583ab529ba8b65
+fa1ec55c652a551537bbfd4f56a28af20d57e2aeacd34b0d8dadbdb2ab15ded991b8fc87e95387c2d4c436a1d0ac462a9e1d273ea7afd1599e1dbb9efbc39a75
+ddcbef9e6b74776c0192473c0e2b13c5de3bb5f0d38b48a2fb4dfb2eed9bb0a83b6e3fd3f954c284e753d9c55d953af0853f69276475d45785cff12fc4f34a5d
+2f228173f72381081ff7d027f5ad8d1be2c5ec3208f58b64b88bfe7a4236b8fc3a1fd2bb259562231be8ce38e6b8794adaa3d72bc6fe2cddc927892dad493e54
+36c1957dd98e4fe83f2af5a8efe09f4d17f6eeb2c2d1798854f0c319af05f16f8897c4fabc77eb6a6db6c2222864df9c12739c0f5fd2ab2aa52759cada22335a
+b154396fab367e1c7866c3c437b7b2ea286586d553116e2a18b6ee491cf1b7f5af50d1bc27a46837b3dd69f6e6379942905cb051ed9e467fa0af22f06f8c17c2
+7f6ddd626ebed3e5f49766ddbbbd8e7ef7e95e9fe11f18bf8ae4b9dba69b68a0033219b7e58f418da3d0d6b98c313cf297d8d3afe9ea6596cf0dc918e9cfaf4d
+7eff004380f17f8275b6f12de5cda5949756f7321955e3e719e4823b60d777f0f7c3f75a0e80eb7aa52e2e25f31a3ce760c00071df8ae7fc51f12eff004bd5ee
+f4db2b2b75303ec32cac5b3ee00c63f5ae97c05acdf6bbe1e7bcbf944937da1d010a140000c0c0fad4e265897855ed1251d3d7c8bc3470cb14fd9b6e5afa2ee7
+5145795f89be24eb161aadde9b6d676f6ed04853cc7cc8c7d08e806460f43535b7c544b6f0e5b9b889aef563b8483ee28c1386381dc6381fa5737f6757e5524b
+73a7fb470fcce2dec7a7515e1d2fc4ef12c936f49ede25ff009e690823f5c9fd6bbaf05f8f57c4531b0bd8520be0bb94a1f96503ae01e87da8ad9757a50e77aa
+f2151cc68559f22d1f9995f10bc0d2dd4eface9513492bff00c7c40bd4f1f7947f31f8fad7949041c1e0d7d455f3ff008e6ee0bcf18ea125b0411ab84ca01862
+a0063c75e41af472bc54ea7eea5b25bfe879d9ae1614ff007b1ddbdbf539f8e478a4592376475390ca7047e35ebdf0ff00c70faab2e91a9bafda953f73331e66
+c7507fdac7e7553c15f0f6d67d21eeb5eb32f25c60c51976568d7d4e08e4ff008545e20f876da295d6740965636ac2636ee72c029ce54ff43f9f6aac4d7c3621
+ba32dfa3e97270d87c4e1d2ad1dbaaeb63d4a8ac2ff84a6cff00e79cbf9515e1fb1a9d8f77db53ee7877897fe46ad63febfa6ffd0cd76de02f03697ac691fda9
+a9879f7bb2a4218aa8038c923935c4f897fe46ad63febfa6ff00d0cd7af7c32ff912adff00ebac9ffa157bf8ea93a7858b83b6df91f3f81a50a98a929abeff00
+99c67c43f0659e8305bea1a623476cefe5491162db5b048209e71c1fd2b9cf086a52e97e2ad3e78df6abccb14b9e85188073fcfea057a97c51c7fc21ad9ff9f8
+8f1fad78b5beefb4c5b3ef6f18fae6ab033957c33551df744e3a11a18a4e9ab6ccf58f8bbff206d3ff00ebe0ff00e835c57c3aff0091f34dff00b6bffa29ebb5
+f8bbff00206d3bfebe0ffe835c57c3aff91f34dffb6bff00a29eb1c2ff00b84bd25fa9b62bfe4611f58fe877ff00167fe45383febf13ff00407af3af027fc8ed
+a5ff00d753ff00a09af45f8b3ff229c1ff005f89ff00a03d79d7813fe476d2ff00eba9ff00d04d182ff7197cff0020c6ff00bf47e5f99f4057cc777ff1f93ffd
+746fe75f4e57cc777ff1f93ffd746fe75964dbcfe5fa9b673b43e7fa1ef1a2df2699f0f2cefa4194b7b05908f5c2e715e0d737335e5d4b7370e649a562eec7a9
+27ad7afea4ccbf0610af5fb1423f02cb9af1bae8cb60af527d6f639b339bb53874b5cf71f0af82b45b7f0fdacb73a7c37373710a492bdc20720b0ce067a633da
+bcdbc7da15be81e25682d1765b4d12cd1a649d992411cfb83f9d652ddeb8a8a12e3510a06000ef8c541709a95d387b85bb99c0c069033103d39ad2861ea53aae
+a4aa5d3e8655f114ea5254e34ecd753d2be13df7dab4cd474999d8aa10e8b9e8ac086c7e23f5ae47c79a159787b5e8acec15c42d6eb210edb8e4b30fe82b6fe1
+4453c3e25bb1245222359b1cb290321d3fc4d56f8b1ff23641ff005e69ff00a13d654fddc7c945e8d5cdaa7bd808ca4b54ec47f0f3c31a6f891f511a82cade40
+8f66c7dbf7b767f90af57d0bc3da7f876d64b7d3d1d5247dec5db712718eb5c0fc1eff0059acfd21ff00d9ebd4ebcfccaacfdbca17d34d3e48f472ca50f611a9
+6d75d7e6cf9efc6bff00239eabff005dcff215e9bf0aff00e4506ffafa7fe4b5e65e35ff0091cf55ff00aee7f90af4df857ff22837fd7d3ff25aeec77fb947e5
+f91c180ff7d97cff003380f890813c737c47f12c64ff00df0a3fa53bc0de0e8fc51713cb753b47696e543aa7de727b67b0e3ad1f12ff00e477bbff00723ffd00
+5755f083fe3c755ffae91ff235a54ab2a781528bd6cbf433a74a3531ee335a5dfea6778f3c11a5e83a1c57da70951c4c11c3bee04107f5c815cbf8218af8d34a
+20e0f9d8fd0d7a77c52ff9138ffd7c27f5af30f057fc8e7a57fd771fc8d2c254954c1c9cdddebf90f174e14f19150565a7e67b6f882df5abbb316fa34d6b0349
+959669f76e55c7f0800f3f5ac1f0efc37d3346963babb737b7687702eb88d4fb2fafb9aed68af0a388a9087245d933dd961e9ce6a72576b6f20a28a2b137136a
+ff00747e5452d1401f38f897fe46ad63febfa6ff00d0cd7a5fc33f106989a02e9935dc70ddc4eedb2521770273904f5fe75c6eb9e13d7eefc41a95cc1a4dd345
+35d4b2236deaa5c907f2aad7fe04f10d85b4570da7c92c6e818887e76424742a39e3d7a57d355546bd18d394d2dba9f2f45d7a15a556306f7e8ceb3e29788ece
+e6d2df48b49d267f304d3346c18280080b91df9ce3d87ad711e14d3df53f14e9b6e89bc79eaf20edb14ee6fd01a6d9785f5dd426115b695744fabc65147d59b0
+07e75ec1e09f0747e18b479667f32fee140948c6100e76aff53df02b3a956960f0fece0eeffad4d69d2ab8dc47b49ab2feb4317e2e83fd8ba79ec2e0ff00e826
+b8af87640f1e6999ff00a6bffa29ebd5fc6fe1e97c49e1f36b6ee16e22904d103c062011b49ed904fe38af149f43d6f4cbb0b269f790ce872acb1b75f5561d7e
+a2a3012854c2ba37b3d57de5e3e13a78a55ad75a3fb8f54f8b0a4f84a120702f109ffbe5ebcc7c23751d978b74c9e660b189c0663d0678c9fcebd3f46d3afbc4
+ff000ee4d37594b98aeb2ca92dc06de483b91ce79239c7d05798ea9e12d774890adce9d314070258977a1fc474fc706ab02e0a9cb0f296b76bfe189c729ba90c
+4c63a593f4f53dfef6fadb4eb396eeee658a088659d8f02be699dc4971248b9c339233ee6b4acbc3daeead22c56da7dd4b8e01652aabff00026c01f9d5fd43c0
+7af58ea16f66b66d70f3a06468b9507037027a0c138c9e2b4c251a5856e2e69b7fa19e32b55c5a5250692f9ee7a9e9ba78d63e19db5802333d804527a06dbc7e
+a057841041208208e083dabe83f06e957da2f86adac350789a58cb1023c9da092704f73c9e9f4ed9ae5bc6ff000f24d4ae5f54d1957ed321ccd6e4850e7fbca4
+f00fae7afd7af260b170a55a7093d1bd19d78dc24ead184e2b54b54757e12d62df59f0e59cd0caaf2c712473af747030723f0e3dab4aff0051b3d2ed1aeafae2
+38215eace71f80f53ec2be799f49d674ab8225b2bcb69471bb630fc88ebf854f67e1cf106b53660d3eee6623fd6480a8ff00be9b03f5a73cb293939fb4b47fae
+b714333aaa2a1ecef2feba58f7cd2755b4d6b4e8afec9f7c32671918208ea08ec6bc93e2c7fc8d907fd79a7fe84f5de7813c2d75e19d3e6177721e5b821da14f
+bb1903d7b9f5edfceb96f891e1ed5f55f12457161a7cd7110b5542e83233b98e3f5158e0fd9d3c5be597bbaea6f8df6b5308b9a3ef69a0ef83dfeb359fa43ffb
+3d7a9d79dfc2fd1752d21f543a859cb6de688b679831bb1bf3fcc57a2573e61252c4c9a77dbf247465d171c3454959ebf9b3e7bf1aff00c8e7aaff00d773fc85
+7a6fc2bff9141bfebe9ff92d715e2bf0aebb7be2ad46e6db4bb89619262c8eabc118aeff00e1d69b79a5f861adefadde09bed0edb1c60e081cd7a18da907838a
+4d5f4fc8f3b054e71c64a4d3b6bf99e71f12ff00e477bbff00723ffd005755f083fe3c755ffae91ff23595e3df0d6b5a978b6e6e6cf4e9e78192301d07070a01
+ae8be18e8fa869169a8aea16925bb492214120c6400734ebd483c028a6af65fa050a7358f7269daeff0052c7c52ff9138ffd7c27f5af30f057fc8e7a57fd771f
+c8d7acfc43d3af354f0b9b7b1b779e6f3d1b620c9c0cf35e7de14f0aebb65e2ad3ae6e74bb88a18e605dd9780306960aa4161249b57d7f21e369ce58c8c9276d
+3f33db28a28af08f7428a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a
+0028a28a0028a28a0028a28a00ffd9
+}}}\cell \pard\plain \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\fs24\cgrid {\row }\trowd\trgaph0\trql\trrh-41\clvertalt\clbrdrt\brdrs\brdrw14\brdrcf18 \cltxlrtb\cellx6940\clvertalt\cltxlrtb\cellx10080\intbl\cell \intbl\cell \pard \nowidctlpar
+\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\pard\plain \sa808\sl-20\slmult0\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \fs24\cgrid {
+\par }\pard\pard \li72\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \f10\expnd4\expndtw22\b\cgrid {1.4 5 Steps to exposing the true benefits of a BI project:}{\f11\fs6\cgrid 
+\par }{\pntext\pard\plain \fs22\cgrid 1.\tab}\pard \li504\sb72\sl199\slmult1\nowidctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\pnf0\pnfs22\pnulnone\pndec\pnstart1\pnhang\pnsp216{\pntxta .}}\ls6\aspalpha\aspnum\nocwrap\adjustright \f0\fs22\expnd0\expndtw0
+\b0\cgrid {Start with the benefit}{\f11\fs6\cgrid 
+\par }\sb0\sl240\slmult1\nowidctlpar\adjustright \expnd0\expndtw2\cgrid {Continue to as "so what?" until a value appears}{\f11\fs6\cgrid 
+\par }\sl216\slmult1\nowidctlpar\adjustright {The percentage represents the saving that can be attributed to the project}{\f11\fs6\cgrid 
+\par }\sl240\slmult1\nowidctlpar\adjustright {Complete the calculation}{\f11\fs6\cgrid 
+\par }\sb36\sl189\slmult1\nowidctlpar\adjustright \expnd0\expndtw4\cgrid {Record the benefit}{\f11\fs6\cgrid 
+\par }\pard \li72\ri936\sb144\sl216\slmult1\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright {The table below shows how even the most intangible of benefits can be assigned a \'a3 value thus}{\f11\fs6\cgrid  }{\expnd0\expndtw2\cgrid adding weight to a busi
+ness case.}{\f11\fs6\expnd0\expndtw2\cgrid 
+\par }\pard\plain \li82\ri163\sb9\sl-20\slmult0\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \fs24\cgrid {
+\par }\trowd\trgaph0\trql\trleft82\trrh-370\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat18\clshdng10000\cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb
+\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat18\clshdng10000\cltxlrtb\cellx7316\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat18\clshdng10000\cltxlrtb\cellx8016\clvertalt\clbrdrt\brdrs
+\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat18\clshdng10000\cltxlrtb\cellx8621\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat18\clshdng10000\cltxlrtb
+\cellx9269\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat18\clshdng10000\cltxlrtb\cellx9917\pard \qc\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\fs11\cf8\cgrid {Benefit}{\f11\fs6
+\cgrid \cell }\pard \qr\ri294\nowidctlpar\tx2259\tqr\tx4728\aspalpha\aspnum\nocwrap\adjustright \intbl\expnd-1\expndtw-6\cgrid {So What?\tab Assumption\tab }{\expnd0\expndtw-2\cgrid Calculation Explaination}{\f11\fs6\expnd0\expndtw-2\cgrid \cell }\pard 
+\qc\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\expnd0\expndtw0\cgrid {%age Claimed}{\f11\fs6\cgrid \cell }\intbl{ROI}{\f11\fs6\cgrid \line }{year 1}{\f11\fs6\cgrid \cell }\intbl{ROI}{\f11\fs6\cgrid \line }{year 3}{\f11\fs6\cgrid \cell }\intbl{
+ROI}{\f11\fs6\cgrid \line }{year 5}{\f11\fs6\cgrid \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82\trrh-259\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr
+\brdrs\brdrw29 \cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat19\clshdng10000\cltxlrtb\cellx7316\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs
+\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8016\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8621\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 
+\clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9269\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9917\pard \li24\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\f10\fs10\expnd0\expndtw-1
+\b\cf0\cgrid {Direct quantifiable benefits}{\f11\fs6\cgrid \cell }\li19\nowidctlpar\adjustright \intbl\cf1\cgrid {The percentage allocation should be 100% for benefits in this section.}{\f11\fs6\cgrid \cell }\li0\nowidctlpar\adjustright \intbl\f0\fs24
+\expnd0\expndtw0\b0\cf0\cgrid {\cell \cell \cell \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82\trrh-283\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs
+\brdrw29 \cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx3951\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 
+\cltxlrtb\cellx5631\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx7316\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb
+\cellx8016\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8621\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9269
+\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9917\pard \li24\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\fs11\cgrid {Month end process automated.}{\f11\fs6\cgrid \cell }
+\li0\ri36\nowidctlpar\adjustright \intbl\expnd0\expndtw-3\cgrid {It takes 3 people 10 days to complete}{\f11\fs6\cgrid  }{\expnd0\expndtw0\cgrid month end pack.}{\f11\fs6\expnd0\expndtw0\cgrid \cell }\ri0\nowidctlpar\adjustright \intbl\fs24\expnd0
+\expndtw0\cgrid {\cell \cell \cell \cell \cell \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82\trrh-413\trkeep\clvmgf\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 
+\cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx3951\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb
+\cellx5631\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx7316\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8016
+\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8621\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9269\clvertalc
+\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9917\pard \li24\sb360\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\fs11\cgrid {Cost savings from more efficient access to data.}{\f11\fs6
+\cgrid \cell }\li0\ri72\sb0\nowidctlpar\adjustright \intbl\expnd0\expndtw-2\cgrid {2 of the temps used to assemble the}{\f11\fs6\cgrid  }{\expnd0\expndtw0\cgrid month end pack can go.}{\f11\fs6\expnd0\expndtw0\cgrid \cell }\ri144\nowidctlpar\adjustright 
+\intbl\expnd0\expndtw-4\cgrid {1 temp still required to run the new}{\f11\fs6\cgrid  }{\expnd0\expndtw0\cgrid process.}{\f11\fs6\expnd0\expndtw0\cgrid \cell }\ri252\nowidctlpar\adjustright \intbl\expnd0\expndtw-3\cgrid {\'a3200 per day FI clerk. 10 days 
+/}{\f11\fs6\cgrid  }{\expnd0\expndtw0\cgrid month.}{\f11\fs6\expnd0\expndtw0\cgrid 
+\par }\ri0\nowidctlpar\adjustright \intbl\expnd0\expndtw-1\cgrid {2X\'a3200X10X12= \'a348,000}{\f11\fs6\cgrid \cell }\qc\nowidctlpar\adjustright \intbl\expnd0\expndtw0\cgrid {100%}{\f11\fs6\cgrid \cell }\qr\ri19\nowidctlpar\adjustright \intbl{\'a348,000}{
+\f11\fs6\cgrid \cell }\intbl\f29\fs10\cgrid {\'a3144,000}{\f11\fs6\cgrid \cell }\ri24\nowidctlpar\adjustright \intbl{\'a3240,000}{\f11\fs6\cgrid \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82
+\trrh-278\trkeep\clvmrg\clvertalt\clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx3951\clvertalt
+\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx5631\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx7316\clvertalt\clbrdrt
+\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8016\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8621\clvertalt\clbrdrt\brdrs
+\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9269\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9917\pard \nowidctlpar\aspalpha\aspnum
+\nocwrap\adjustright \intbl{\cell }\pard \ri252\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\f0\fs11\expnd0\expndtw-3\cgrid {The managers will be able to run}{\f11\fs6\cgrid  }{\expnd0\expndtw-1\cgrid their own reports.}{\f11\fs6\expnd0
+\expndtw-1\cgrid \cell }\ri0\nowidctlpar\adjustright \intbl\fs24\expnd0\expndtw0\cgrid {\cell \cell \cell \cell \cell \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82\trrh-283\clvertalt\clbrdrt\brdrs
+\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx3951\clvertalt\clbrdrt\brdrs\brdrw29 
+\clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx5631\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx7316\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl
+\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8016\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8621\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs
+\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9269\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9917\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright 
+\intbl{\cell }\ri432\nowidctlpar\adjustright \intbl\fs11\expnd-1\expndtw-5\cgrid {0.5 FTE currently supporting}{\f11\fs6\cgrid  }{\expnd0\expndtw1\cgrid management reports.}{\f11\fs6\expnd0\expndtw1\cgrid \cell }\li19\ri0\nowidctlpar\adjustright \intbl
+\expnd0\expndtw0\cgrid {1 FTE cost \'a345,000 / year}{\f11\fs6\cgrid \cell }\intbl{\'a345,000 X 0.5 = \'a322,500}{\f11\fs6\cgrid \cell }\qc\li0\nowidctlpar\adjustright \intbl{100%}{\f11\fs6\cgrid \cell }\qr\ri19\nowidctlpar\adjustright \intbl{\'a322,500}{
+\f11\fs6\cgrid \cell }\intbl\f29\fs10\cgrid {\'a367,500}{\f11\fs6\cgrid \cell }\ri24\nowidctlpar\adjustright \intbl{\'a3112,500}{\f11\fs6\cgrid \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82
+\trrh-188\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 
+\clcfpat7\clshdng10000\cltxlrtb\cellx3951\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx5631\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs
+\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx7316\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx8016\clvertalc\clbrdrt\brdrs\brdrw29 
+\clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx8621\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx9269
+\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx9917\pard \li24\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\f10\expnd0\expndtw-1\b\cf1\cgrid {Total direc
+t quantifiable benefits}{\f11\fs6\cgrid \cell }\li0\nowidctlpar\adjustright \intbl\f0\fs24\expnd0\expndtw0\b0\cf0\cgrid {\cell \cell \cell \cell }\qr\ri19\nowidctlpar\adjustright \intbl\fs11\cf1\cgrid {\'a370,500}{\f11\fs6\cgrid \cell }\intbl{\'a370,500}{
+\f11\fs6\cgrid \cell }\ri24\nowidctlpar\adjustright \intbl{\'a370,500}{\f11\fs6\cgrid \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82\trrh-432\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 
+\clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat19\clshdng10000\cltxlrtb\cellx7316\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl
+\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8016\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8621\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs
+\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9269\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9917\pard \li24\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright 
+\intbl\f10\fs10\expnd0\expndtw-1\b\cf0\cgrid {Indirect quantifiable benefits}{\f11\fs6\cgrid \cell }\li0\ri72\sl264\slmult1\nowidctlpar\adjustright \intbl\expnd0\expndtw-2\cf1\cgrid {The percentage allocation should be between 10% and 100% for benefits in
+ this section depending on the}{\f11\fs6\cgrid  }{benefit.}{\f11\fs6\cgrid \cell }\ri0\sl240\slmult1\nowidctlpar\adjustright \intbl\f0\fs24\expnd0\expndtw0\b0\cf0\cgrid {\cell \cell \cell \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright 
+\intbl{\row }\trowd\trgaph0\trql\trleft82\trrh-417\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 
+\clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx3951\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx5631\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr
+\brdrs\brdrw29 \cltxlrtb\cellx7316\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8016\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs
+\brdrw29 \cltxlrtb\cellx8621\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9269\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 
+\cltxlrtb\cellx9917\pard \li24\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\fs11\expnd0\expndtw-1\cgrid {Ability to Benchmark against industry standards.}{\f11\fs6\cgrid \cell }\li0\ri36\nowidctlpar\adjustright \intbl\expnd0\expndtw0\cgrid {We w
+ill be able to see how our}{\f11\fs6\cgrid  }{\expnd0\expndtw1\cgrid departments perform against the rest}{\f11\fs6\expnd0\expndtw1\cgrid  }{\expnd0\expndtw-2\cgrid of the industry.}{\f11\fs6\expnd0\expndtw-2\cgrid \cell }\ri0\nowidctlpar\adjustright 
+\intbl\fs24\cgrid {\cell \cell \cell \cell \cell \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82\trrh-279\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs
+\brdrw29 \cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx3951\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 
+\cltxlrtb\cellx5631\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx7316\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb
+\cellx8016\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8621\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9269
+\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9917\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\cell }\ri144\nowidctlpar\adjustright \intbl\fs11\expnd0\expndtw-3
+\cgrid {We will know if our staff turnover is}{\f11\fs6\cgrid  }{\expnd0\expndtw-2\cgrid high for the industry.}{\f11\fs6\expnd0\expndtw-2\cgrid \cell }\ri0\nowidctlpar\adjustright \intbl\fs24\expnd0\expndtw0\cgrid {\cell \cell \cell \cell \cell \cell }
+\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82\trrh-187\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs
+\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx3951\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx5631\clvertalt\clbrdrt\brdrs\brdrw29 
+\clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx7316\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8016\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl
+\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8621\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9269\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs
+\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9917\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\cell }\li19\nowidctlpar\adjustright \intbl\fs11\expnd0\expndtw-1\cgrid {Focus on improving retention.}{\f11\fs6\cgrid 
+\cell }\li0\nowidctlpar\adjustright \intbl\fs24\expnd0\expndtw0\cgrid {\cell \cell \cell \cell \cell \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82\trrh-672\trkeep\clvmgf\clvertalt\clbrdrt\brdrs
+\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx3951\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 
+\clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx5631\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx7316\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb
+\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8016\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8621\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs
+\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9269\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9917\pard \li24\sb648\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\fs11
+\cgrid {Able to meet own information needs.}{\f11\fs6\cgrid \cell }\li0\ri108\sb0\nowidctlpar\adjustright \intbl\expnd0\expndtw-3\cgrid {Reduced hire costs. Currently costs}{\f11\fs6\cgrid  }{\expnd0\expndtw0\cgrid around \'a37,000 to find 1 person.}{\f11
+\fs6\expnd0\expndtw0\cgrid \cell }\ri72\nowidctlpar\adjustright \intbl\expnd0\expndtw-2\cgrid {We retain 5 people who would have}{\f11\fs6\cgrid  }{left.}{\f11\fs6\cgrid \cell }\li19\ri0\nowidctlpar\adjustright \intbl\expnd0\expndtw0\cgrid {\'a37,000 x 5 
+= \'a335,000}{\f11\fs6\cgrid \cell }\qc\li0\nowidctlpar\adjustright \intbl{10%}{\f11\fs6\cgrid \cell }\qr\ri19\nowidctlpar\adjustright \intbl{\'a33,500}{\f11\fs6\cgrid \cell }\intbl\f29\fs10\cgrid {\'a310,500}{\f11\fs6\cgrid \cell }\ri24\nowidctlpar
+\adjustright \intbl{\'a317,500}{\f11\fs6\cgrid \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82\trrh-417\trkeep\clvmrg\clvertalt\clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 
+\cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx3951\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb
+\cellx5631\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx7316\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8016
+\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8621\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9269\clvertalt
+\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9917\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\cell }\pard \ri72\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\f0\fs11
+\expnd0\expndtw-2\cgrid {20 Managers typically wait 3 months}{\f11\fs6\cgrid  }{\expnd0\expndtw0\cgrid fora report to be delivered by IS.}{\f11\fs6\expnd0\expndtw0\cgrid \cell }\ri0\nowidctlpar\adjustright \intbl\fs24\expnd0\expndtw0\cgrid {\cell \cell 
+\cell \cell \cell \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82\trrh-279\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx2266
+\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx3951\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx5631\clvertalt
+\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx7316\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8016\clvertalt\clbrdrt
+\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8621\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9269\clvertalt\clbrdrt\brdrs
+\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9917\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\cell }\ri36\nowidctlpar\adjustright \intbl\fs11\expnd-1\expndtw-5\cgrid {During that time they 
+create their own}{\f11\fs6\cgrid  }{\expnd0\expndtw-2\cgrid information solution.}{\f11\fs6\expnd0\expndtw-2\cgrid \cell }\ri0\nowidctlpar\adjustright \intbl\fs24\expnd0\expndtw0\cgrid {\cell \cell \cell \cell \cell \cell }\pard \nowidctlpar\aspalpha
+\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82\trrh-413\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 
+\clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx3951\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx5631\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb
+\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx7316\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8016\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs
+\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8621\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9269\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 
+\clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9917\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\cell }\li19\nowidctlpar\adjustright \intbl\fs11\cgrid {It takes them 3 each days to do this.}{\f11\fs6\cgrid \cell }\li0\ri36\nowidctlpar\adjustright 
+\intbl\expnd0\expndtw-2\cgrid {It costs \'a3100,000 /year fora manger.}{\f11\fs6\cgrid  }{\expnd0\expndtw0\cgrid There 200 working days.}{\f11\fs6\expnd0\expndtw0\cgrid \cell }\ri72\nowidctlpar\adjustright \intbl\expnd0\expndtw-3\cgrid {20 x (100,000 / 20
+0 x 3) = \'a330,000 x}{\f11\fs6\cgrid  }{\expnd0\expndtw0\cgrid 10%= \'a33000}{\f11\fs6\expnd0\expndtw0\cgrid \cell }\qc\ri0\nowidctlpar\adjustright \intbl\expnd0\expndtw0\cgrid {10%}{\f11\fs6\cgrid \cell }\qr\ri19\nowidctlpar\adjustright \intbl{\'a33,00
+0}{\f11\fs6\cgrid \cell }\intbl\f29\fs10\cgrid {\'a39,000}{\f11\fs6\cgrid \cell }\ri24\nowidctlpar\adjustright \intbl{\'a315,000}{\f11\fs6\cgrid \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82
+\trrh-417\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx3951
+\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx5631\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx7316\clvertalt
+\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8016\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8621\clvertalt\clbrdrt
+\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9269\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9917\pard \li24\nowidctlpar
+\aspalpha\aspnum\nocwrap\adjustright \intbl\f0\fs11\cgrid {Delivers a landscape for future projects.}{\f11\fs6\cgrid \cell }\li0\ri216\nowidctlpar\adjustright \intbl{We won't need to run tender}{\f11\fs6\cgrid  }{\expnd0\expndtw-4\cgrid processes for hard
+ware / OS and}{\f11\fs6\expnd0\expndtw-4\cgrid  }{software.}{\f11\fs6\cgrid \cell }\ri0\nowidctlpar\adjustright \intbl\fs24\cgrid {\cell \cell \cell \cell \cell \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql
+\trleft82\trrh-279\trkeep\clvmgf\clvertalb\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat20\clshdng10000\cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 
+\cltxlrtb\cellx3951\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx5631\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb
+\cellx7316\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8016\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8621
+\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9269\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9917\pard \li24
+\sb252\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\f10\fs10\expnd0\expndtw-1\b\cf1\cgrid {Total indirect quntifiable benefits}{\f11\fs6\cgrid \cell }\li0\ri216\sb0\nowidctlpar\adjustright \intbl\f0\fs11\expnd0\expndtw-3\b0\cf0\cgrid {These typi
+cally take 1 FTE for 20}{\f11\fs6\cgrid  }{\expnd0\expndtw0\cgrid days.\cell }\ri144\nowidctlpar\adjustright \intbl{1FTE costs \'a3600 / day. Assume 2}{\f11\fs6\cgrid  }{\expnd0\expndtw0\cgrid projects /year.\cell }\li19\ri0\sl-112\slmult0\nowidctlpar
+\adjustright \intbl\expnd0\expndtw0\cgrid {20 x \'a3600 x 2 =}{\f11\fs6\cgrid 
+\par }\sb36\sl240\slmult1\nowidctlpar\adjustright \intbl{\'a324,000 x 10% = \'a32,400}{\f11\fs6\cgrid \cell }\qc\li0\sb0\nowidctlpar\adjustright \intbl{10%\cell }\qr\ri19\nowidctlpar\adjustright \intbl{\'a32,400\cell }\intbl\f29\fs10\cgrid {\'a37,200
+\cell }\ri24\nowidctlpar\adjustright \intbl{\'a312,000}{\f11\fs6\cgrid \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82\trrh-192\trkeep\clvmrg\clvertalb\clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 
+\clbrdrr\brdrs\brdrw29 \clcfpat20\clshdng10000\cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx3951\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs
+\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx5631\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx7316\clvertalt
+\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx8016\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7
+\clshdng10000\cltxlrtb\cellx8621\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx9269\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 
+\clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx9917\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\f0\fs24\cgrid {\cell \cell \cell \cell }\qr\ri19\nowidctlpar
+\adjustright \intbl\fs11\cf1\cgrid {\'a38,900}{\f11\fs6\cgrid \cell }\intbl{\'a38,900}{\f11\fs6\cgrid \cell }\ri24\nowidctlpar\adjustright \intbl{\'a38,900}{\f11\fs6\cgrid \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd
+\trgaph0\trql\trleft82\trrh-408\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 
+\clcfpat19\clshdng10000\cltxlrtb\cellx7316\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8016\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr
+\brdrs\brdrw29 \cltxlrtb\cellx8621\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9269\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs
+\brdrw29 \cltxlrtb\cellx9917\pard \li24\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\f10\fs10\expnd0\expndtw-1\b\cf0\cgrid {Unquantifiable benefits}{\f11\fs6\cgrid \cell }\li0\ri72\sl276\slmult1\nowidctlpar\adjustright \intbl\expnd0\expndtw-2
+\cf1\cgrid {To be credible claim a small amount of a large known and established number. To do this the percentage}{\f11\fs6\cgrid  }{\expnd0\expndtw0\cgrid allocation should be below 1%.}{\f11\fs6\expnd0\expndtw0\cgrid \cell }\ri0\sl240\slmult1
+\nowidctlpar\adjustright \intbl\f0\fs24\expnd0\expndtw0\b0\cf0\cgrid {\cell \cell \cell \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82\trrh-552\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs
+\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx3951\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 
+\clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx5631\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx7316\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb
+\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8016\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8621\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs
+\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9269\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9917\pard \li24\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\fs11\cgrid {Impr
+oved customer service.}{\f11\fs6\cgrid \cell }\qj\li0\ri180\nowidctlpar\adjustright \intbl\expnd0\expndtw-3\cgrid {Typically we make \'a3200,000 profit}{\f11\fs6\cgrid  }{\expnd0\expndtw-2\cgrid per customer each year. If costs}{\f11\fs6\expnd0\expndtw-2
+\cgrid  }{\expnd0\expndtw0\cgrid \'a350,000 to acquire a customer.}{\f11\fs6\expnd0\expndtw0\cgrid \cell }\ql\ri0\nowidctlpar\adjustright \intbl\fs24\expnd0\expndtw0\cgrid {\cell \cell \cell \cell \cell \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap
+\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82\trrh-412\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs
+\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx3951\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx5631\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 
+\clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx7316\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8016\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr
+\brdrs\brdrw29 \cltxlrtb\cellx8621\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9269\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs
+\brdrw29 \cltxlrtb\cellx9917\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\cell }\li19\nowidctlpar\adjustright \intbl\fs11\cgrid {Our customers churn rate is 10%}{\f11\fs6\cgrid \cell }\li0\ri144\nowidctlpar\adjustright \intbl\expnd0
+\expndtw-1\cgrid {we retain 1 customer because of}{\f11\fs6\cgrid  }{improved service from this project}{\f11\fs6\cgrid \cell }\li19\ri0\nowidctlpar\adjustright \intbl\expnd0\expndtw0\cgrid {\'a3250000 x 1% = \'a32500}{\f11\fs6\cgrid \cell }\qc\li0
+\nowidctlpar\adjustright \intbl{1%}{\f11\fs6\cgrid \cell }\qr\ri19\nowidctlpar\adjustright \intbl{\'a32,500}{\f11\fs6\cgrid \cell }\intbl\f29\fs10\cgrid {\'a37,500}{\f11\fs6\cgrid \cell }\ri24\nowidctlpar\adjustright \intbl{\'a312,500}{\f11\fs6\cgrid 
+\cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82\trrh-418\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx2266\clvertalt\clbrdrt
+\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx3951\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx5631\clvertalt\clbrdrt\brdrs
+\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx7316\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8016\clvertalt\clbrdrt\brdrs\brdrw29 
+\clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8621\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9269\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl
+\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9917\pard \li24\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\f0\fs11\expnd0\expndtw-1\cgrid {One version of the truth.}{\f11\fs6\cgrid \cell }\li0\ri180\nowidctlpar
+\adjustright \intbl\expnd0\expndtw-2\cgrid {Our managers spend 10% of their}{\f11\fs6\cgrid  }{\expnd0\expndtw0\cgrid time reconciling spreadsheets.}{\f11\fs6\expnd0\expndtw0\cgrid \cell }\ri0\nowidctlpar\adjustright \intbl\fs24\expnd0\expndtw0\cgrid {
+\cell \cell \cell \cell \cell \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82\trrh-278\trkeep\clvmgf\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx2266
+\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx3951\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx5631\clvertalt
+\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx7316\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8016\clvertalc\clbrdrt
+\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8621\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9269\clvertalc\clbrdrt\brdrs
+\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9917\pard \li24\sb252\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\fs11\expnd0\expndtw-1\cgrid {Improved customer insight.}{\f11\fs6\cgrid \cell }\li0
+\ri252\sb0\nowidctlpar\adjustright \intbl\expnd0\expndtw-3\cgrid {Our managers cost \'a33.5 million /}{\f11\fs6\cgrid  }{\expnd0\expndtw0\cgrid year.}{\f11\fs6\expnd0\expndtw0\cgrid \cell }\ri0\nowidctlpar\adjustright \intbl\fs24\expnd0\expndtw0\cgrid {
+\cell }\ri72\nowidctlpar\adjustright \intbl\fs11\expnd0\expndtw-1\cgrid {10% of \'a33.5million = \'a3350,000 x 1%}{\f11\fs6\cgrid  }{\expnd0\expndtw0\cgrid = \'a33,500}{\f11\fs6\expnd0\expndtw0\cgrid \cell }\qc\ri0\nowidctlpar\adjustright \intbl\expnd0
+\expndtw0\cgrid {1%}{\f11\fs6\cgrid \cell }\qr\ri19\nowidctlpar\adjustright \intbl{\'a33,500}{\f11\fs6\cgrid \cell }\intbl\f29\fs10\cgrid {\'a310,500}{\f11\fs6\cgrid \cell }\ri24\nowidctlpar\adjustright \intbl{\'a317,500}{\f11\fs6\cgrid \cell }\pard 
+\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82\trrh-279\trkeep\clvmrg\clvertalt\clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl
+\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx3951\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx5631\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs
+\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx7316\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8016\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 
+\clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8621\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9269\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb
+\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9917\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\cell }\pard \li19\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\f0\fs11\expnd0\expndtw-1\cgrid {We find 1 insight into our cus
+tomers.}{\f11\fs6\cgrid \cell }\li0\nowidctlpar\adjustright \intbl\fs24\expnd0\expndtw0\cgrid {\cell \cell \cell \cell \cell \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82\trrh-283\clvertalt\clbrdrt
+\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx3951\clvertalt\clbrdrt\brdrs
+\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx5631\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx7316\clvertalt\clbrdrt\brdrs\brdrw29 
+\clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8016\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8621\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl
+\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9269\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9917\pard \nowidctlpar\aspalpha\aspnum\nocwrap
+\adjustright \intbl{\cell }\ri252\nowidctlpar\adjustright \intbl\fs11\expnd-1\expndtw-5\cgrid {This allows us to sell them a new}{\f11\fs6\cgrid  }{\expnd0\expndtw0\cgrid product.}{\f11\fs6\expnd0\expndtw0\cgrid \cell }\ri0\nowidctlpar\adjustright \intbl
+\fs24\expnd0\expndtw0\cgrid {\cell \cell \cell \cell \cell \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82\trrh-485\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 
+\clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx3951\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr
+\brdrs\brdrw29 \cltxlrtb\cellx5631\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx7316\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs
+\brdrw29 \cltxlrtb\cellx8016\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx8621\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 
+\cltxlrtb\cellx9269\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \cltxlrtb\cellx9917\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\cell }\ri144\nowidctlpar\adjustright \intbl\fs11
+\expnd0\expndtw-3\cgrid {On average we make \'a320,000 per}{\f11\fs6\cgrid  }{\expnd0\expndtw0\cgrid product per year.}{\f11\fs6\expnd0\expndtw0\cgrid \cell }\ri0\nowidctlpar\adjustright \intbl\fs24\expnd0\expndtw0\cgrid {\cell }\li19\nowidctlpar
+\adjustright \intbl\fs11\cgrid {\'a320,000 x 0.5 =}{\f11\fs6\cgrid \cell }\qc\li0\nowidctlpar\adjustright \intbl{0.50%}{\f11\fs6\cgrid \cell }\qr\ri19\nowidctlpar\adjustright \intbl{\'a31,250}{\f11\fs6\cgrid \cell }\intbl\f29\fs10\cgrid {\'a33,750}{\f11
+\fs6\cgrid \cell }\ri24\nowidctlpar\adjustright \intbl{\'a36,250}{\f11\fs6\cgrid \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82\trrh-192\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 
+\clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx3951\clvertalt\clbrdrt\brdrs
+\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx5631\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb
+\cellx7316\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx8016\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 
+\clcfpat7\clshdng10000\cltxlrtb\cellx8621\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx9269\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs
+\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx9917\pard \li24\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\f0\fs11\expnd0\expndtw-1\cf1\cgrid {Unquantifiable benefits}{\f11\fs6\cgrid \cell }\li0\nowidctlpar\adjustright 
+\intbl\fs24\expnd0\expndtw0\cf0\cgrid {\cell \cell \cell \cell }\qr\ri19\nowidctlpar\adjustright \intbl\fs11\cf1\cgrid {\'a37,250}{\f11\fs6\cgrid \cell }\intbl\f29\fs10\expnd0\expndtw-2\charscalex110\cgrid {\'a321,750}{\f11\fs6\charscalex100\cgrid \cell }
+\ri24\nowidctlpar\adjustright \intbl\expnd0\expndtw-4\cgrid {\'a336,250}{\f11\fs6\charscalex100\cgrid \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql\trleft82\trrh-278\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl
+\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx3951\clvertalt
+\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx5631\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7
+\clshdng10000\cltxlrtb\cellx7316\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx8016\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 
+\clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx8621\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx9269\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs
+\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx9917\pard \li24\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\f0\fs11\expnd0\expndtw-1\charscalex100\cgrid {Additional benefits identified by this proces
+s}{\f11\fs6\cgrid \cell }\li0\nowidctlpar\adjustright \intbl\fs24\expnd0\expndtw0\cf0\cgrid {\cell \cell \cell \cell }\qr\ri19\nowidctlpar\adjustright \intbl\fs11\cf1\cgrid {\'a316,150}{\f11\fs6\cgrid \cell }\intbl\f29\fs10\expnd0\expndtw-2\charscalex110
+\cgrid {\'a348,450}{\f11\fs6\charscalex100\cgrid \cell }\ri24\nowidctlpar\adjustright \intbl\expnd0\expndtw-4\cgrid {\'a380,750}{\f11\fs6\charscalex100\cgrid \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\trowd\trgaph0\trql
+\trleft82\trrh-202\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx2266\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs
+\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx3951\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx5631\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 
+\clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx7316\clvertalt\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx8016\clvertalc\clbrdrt\brdrs
+\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx8621\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb
+\cellx9269\clvertalc\clbrdrt\brdrs\brdrw29 \clbrdrl\brdrs\brdrw29 \clbrdrb\brdrs\brdrw29 \clbrdrr\brdrs\brdrw29 \clcfpat7\clshdng10000\cltxlrtb\cellx9917\pard \li24\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\f0\fs11\expnd0\expndtw0
+\charscalex100\cgrid {Total project benefit}{\f11\fs6\cgrid \cell }\li0\nowidctlpar\adjustright \intbl\fs24\cf0\cgrid {\cell \cell \cell \cell }\qr\ri19\nowidctlpar\adjustright \intbl\fs11\cf1\cgrid {\'a386,650}{\f11\fs6\cgrid \cell }\intbl\f29\fs10
+\expnd0\expndtw-4\charscalex110\cgrid {\'a3259,950}{\f11\fs6\charscalex100\cgrid \cell }\ri24\nowidctlpar\adjustright \intbl{\'a3433,250}{\f11\fs6\charscalex100\cgrid \cell }\pard \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\pard\plain 
+\li82\ri163\sa369\sl-20\slmult0\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \fs24\cgrid {
+\par }\pard\pard \li72\ri936\sl218\slmult1\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \fs22\expnd0\expndtw-1\cgrid {By analysing the benefits we have illustrated how an additional \'a316K worth of benefits can be derived.}{\f11\fs6\cgrid  }{\expnd0
+\expndtw0\cgrid This could be enough to secure funding.}{\f11\fs6\expnd0\expndtw0\cgrid 
+\par }\pard\plain\sect\sectd\stextflow0\marglsxn1338\margrsxn1280\margbsxn10288\linex0\sectdefaultcl\trowd\trgaph0\trql\trrh-723\clvertalb\clbrdrb\brdrs\brdrw14\brdrcf17 \cltxlrtb\cellx6942\clvertalt\cltxlrtb\cellx9240\pard\plain \qr\ri2384\sb396
+\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\f10\fs19\expnd0\expndtw1\b\cgrid {Building the case for BI projects \'97 Tony Harper}{\f11\fs6\cgrid \cell }\pard\plain \qr\li136\sb18\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\fs24
+\cgrid {{\*\shppict{\pict{\*\picprop\shplid1032{\sp{\sn shapeType}{\sv 75}}{\sp{\sn fFlipH}{\sv 0}}{\sp{\sn fFlipV}{\sv 0}}{\sp{\sn pibName}{\sv _Pic6}}{\sp{\sn pibFlags}{\sv 1}}{\sp{\sn fillColor}{\sv 268435473}}{\sp{\sn fFilled}{\sv 0}}{\sp{\sn fLine}{
+\sv 0}}}\picscalex100\picscaley100\piccropl0\piccropr0\piccropt0\piccropb0\picw3809\pich1149\picwgoal2160\pichgoal652\jpegblip\bliptag1269020343{\*\blipuid 4ba3b6b7cbae40bc932757cb891330bc}
+ffd8ffe000104a46494600010101009600960000ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720
+222c231c1c2837292c30313434341f27393d38323c2e333432ffdb0043010909090c0b0c180d0d1832211c213232323232323232323232323232323232323232
+323232323232323232323232323232323232323232323232323232323232ffc0001108004400e103012200021101031101ffc4001f0000010501010101010100
+000000000000000102030405060708090a0bffc400b5100002010303020403050504040000017d01020300041105122131410613516107227114328191a10823
+42b1c11552d1f02433627282090a161718191a25262728292a3435363738393a434445464748494a535455565758595a636465666768696a737475767778797a
+838485868788898a92939495969798999aa2a3a4a5a6a7a8a9aab2b3b4b5b6b7b8b9bac2c3c4c5c6c7c8c9cad2d3d4d5d6d7d8d9dae1e2e3e4e5e6e7e8e9eaf1
+f2f3f4f5f6f7f8f9faffc4001f0100030101010101010101010000000000000102030405060708090a0bffc400b5110002010204040304070504040001027700
+0102031104052131061241510761711322328108144291a1b1c109233352f0156272d10a162434e125f11718191a262728292a35363738393a43444546474849
+4a535455565758595a636465666768696a737475767778797a82838485868788898a92939495969798999aa2a3a4a5a6a7a8a9aab2b3b4b5b6b7b8b9bac2c3c4
+c5c6c7c8c9cad2d3d4d5d6d7d8d9dae2e3e4e5e6e7e8e9eaf2f3f4f5f6f7f8f9faffda000c03010002110311003f00f7da2bcf35cf8a7069d7b716569a6cb2cd
+048d13b4ce154329c1c019c8c8f6aea7c27accdaff00872db51b848d2694b8658c10a30e40c649ec057454c2d5a705526ac99cf4f154aa5474e0eed1b5451457
+39d01456078a3c5769e1682092e609a669cb0458c0c718ce493c75ae6bc3df11eebc41e29b4d396c21b7b69b7e4972efc2330e781dbd2ba2185ab3a6ea25a2fd
+0e69e2e942a2a6dfbcff0053d128a28ae73a428a28a0028a28a0028a28a0028a2b27c41e22b1f0dd80babd663b8ed8e3419676c6703fc6aa3194da8c55d9339c
+6117293b235a8af1dbaf8b5ac493136b67670c5d95c33b7e2723f956f784be23dd6b7aac3a6de69cbe6cb9c4b6e480b81924a9cf1ef9aec9e5d5e10e76b6f338
+e19961e73504f7f23d128ae2fc41f1234ed0f517b04b69aea788e25da42aafb64f535d0e83aed9f88b4c5beb2de23dc5195c619587507f315cf3c3d58414e51d
+19d10c4529cdd38cb5469d1451589b0514556d42dbedba6dd5ae76f9d0bc79f4c823fad35bea27b6859a2bcd7c3bf11e2b080e99e225963b9b53e519954b6ec1
+c7cc3ae47af7a3c67f10ed1b4a5b5d06f0bcd3ff00ac9914af969e8323a9fd2bb3ea15fda725be7d0e3fafd0f67cf7f97536fc41f10f4ad0ee3ecb1ab5edc8fb
+c90b0da87d0b7afb0cd6e6877ba8ea362b777f651d9f9a03470872cea3fdac8183ed5e25e06b45bef1a69b1b80cab2194eeff654b7f302be80abc750a787b538
+abbddb33c0d7a988bd493b2d920a28a2bcf3d13e71f12ffc8d5ac7fd7f4dff00a19af60f869ff223da7fbf27fe866bc7fc4bff002356b1ff005fd37fe866b62c
+3c7ba8e8fe1db6d2b4c4485e32ecf3b00c4e589c00781d7be6be9b154275f0f1843cbf23e630988850c44e73db5fccf76a2bc2ad3e24f89ada60f25e25ca6798
+e589707f1500feb5ea7e13f175a78a6d1da3430dd438f361639c67b83dc75af1b1180ad423cd2d5791ed61f1f46bcb963a3f339af8bca0e93a6b7713b0fcd7ff
+00ad5c67c3aff91f34dffb6bff00a29ebb5f8bdff206d3ff00ebe0ff00e835c57c3aff0091f34dff00b6bffa29ebd4c2ff00c8be5e92fd4f2b15ff002308fac7
+f43dea8ac0f17f88dbc31a32df25b0b867944414bed00904e7a1f4e95c4681f1075ad73c57616929820b596421e38a3ea3693c9393f962bc8a583ab529ba8b65
+fa1ec55c652a551537bbfd4f56a28af20d57e2aeacd34b0d8dadbdb2ab15ded991b8fc87e95387c2d4c436a1d0ac462a9e1d273ea7afd1599e1dbb9efbc39a75
+ddcbef9e6b74776c0192473c0e2b13c5de3bb5f0d38b48a2fb4dfb2eed9bb0a83b6e3fd3f954c284e753d9c55d953af0853f69276475d45785cff12fc4f34a5d
+2f228173f72381081ff7d027f5ad8d1be2c5ec3208f58b64b88bfe7a4236b8fc3a1fd2bb259562231be8ce38e6b8794adaa3d72bc6fe2cddc927892dad493e54
+36c1957dd98e4fe83f2af5a8efe09f4d17f6eeb2c2d1798854f0c319af05f16f8897c4fabc77eb6a6db6c2222864df9c12739c0f5fd2ab2aa52759cada22335a
+b154396fab367e1c7866c3c437b7b2ea286586d553116e2a18b6ee491cf1b7f5af50d1bc27a46837b3dd69f6e6379942905cb051ed9e467fa0af22f06f8c17c2
+7f6ddd626ebed3e5f49766ddbbbd8e7ef7e95e9fe11f18bf8ae4b9dba69b68a0033219b7e58f418da3d0d6b98c313cf297d8d3afe9ea6596cf0dc918e9cfaf4d
+7eff004380f17f8275b6f12de5cda5949756f7321955e3e719e4823b60d777f0f7c3f75a0e80eb7aa52e2e25f31a3ce760c00071df8ae7fc51f12eff004bd5ee
+f4db2b2b75303ec32cac5b3ee00c63f5ae97c05acdf6bbe1e7bcbf944937da1d010a140000c0c0fad4e265897855ed1251d3d7c8bc3470cb14fd9b6e5afa2ee7
+5145795f89be24eb161aadde9b6d676f6ed04853cc7cc8c7d08e806460f43535b7c544b6f0e5b9b889aef563b8483ee28c1386381dc6381fa5737f6757e5524b
+73a7fb470fcce2dec7a7515e1d2fc4ef12c936f49ede25ff009e690823f5c9fd6bbaf05f8f57c4531b0bd8520be0bb94a1f96503ae01e87da8ad9757a50e77aa
+f2151cc68559f22d1f9995f10bc0d2dd4eface9513492bff00c7c40bd4f1f7947f31f8fad7949041c1e0d7d455f3ff008e6ee0bcf18ea125b0411ab84ca01862
+a0063c75e41af472bc54ea7eea5b25bfe879d9ae1614ff007b1ddbdbf539f8e478a4592376475390ca7047e35ebdf0ff00c70faab2e91a9bafda953f73331e66
+c7507fdac7e7553c15f0f6d67d21eeb5eb32f25c60c51976568d7d4e08e4ff008545e20f876da295d6740965636ac2636ee72c029ce54ff43f9f6aac4d7c3621
+ba32dfa3e97270d87c4e1d2ad1dbaaeb63d4a8ac2ff84a6cff00e79cbf9515e1fb1a9d8f77db53ee7877897fe46ad63febfa6ffd0cd76de02f03697ac691fda9
+a9879f7bb2a4218aa8038c923935c4f897fe46ad63febfa6ff00d0cd7af7c32ff912adff00ebac9ffa157bf8ea93a7858b83b6df91f3f81a50a98a929abeff00
+99c67c43f0659e8305bea1a623476cefe5491162db5b048209e71c1fd2b9cf086a52e97e2ad3e78df6abccb14b9e85188073fcfea057a97c51c7fc21ad9ff9f8
+8f1fad78b5beefb4c5b3ef6f18fae6ab033957c33551df744e3a11a18a4e9ab6ccf58f8bbff206d3ff00ebe0ff00e835c57c3aff0091f34dff00b6bffa29ebb5
+f8bbff00206d3bfebe0ffe835c57c3aff91f34dffb6bff00a29eb1c2ff00b84bd25fa9b62bfe4611f58fe877ff00167fe45383febf13ff00407af3af027fc8ed
+a5ff00d753ff00a09af45f8b3ff229c1ff005f89ff00a03d79d7813fe476d2ff00eba9ff00d04d182ff7197cff0020c6ff00bf47e5f99f4057cc777ff1f93ffd
+746fe75f4e57cc777ff1f93ffd746fe75964dbcfe5fa9b673b43e7fa1ef1a2df2699f0f2cefa4194b7b05908f5c2e715e0d737335e5d4b7370e649a562eec7a9
+27ad7afea4ccbf0610af5fb1423f02cb9af1bae8cb60af527d6f639b339bb53874b5cf71f0af82b45b7f0fdacb73a7c37373710a492bdc20720b0ce067a633da
+bcdbc7da15be81e25682d1765b4d12cd1a649d992411cfb83f9d652ddeb8a8a12e3510a06000ef8c541709a95d387b85bb99c0c069033103d39ad2861ea53aae
+a4aa5d3e8655f114ea5254e34ecd753d2be13df7dab4cd474999d8aa10e8b9e8ac086c7e23f5ae47c79a159787b5e8acec15c42d6eb210edb8e4b30fe82b6fe1
+4453c3e25bb1245222359b1cb290321d3fc4d56f8b1ff23641ff005e69ff00a13d654fddc7c945e8d5cdaa7bd808ca4b54ec47f0f3c31a6f891f511a82cade40
+8f66c7dbf7b767f90af57d0bc3da7f876d64b7d3d1d5247dec5db712718eb5c0fc1eff0059acfd21ff00d9ebd4ebcfccaacfdbca17d34d3e48f472ca50f611a9
+6d75d7e6cf9efc6bff00239eabff005dcff215e9bf0aff00e4506ffafa7fe4b5e65e35ff0091cf55ff00aee7f90af4df857ff22837fd7d3ff25aeec77fb947e5
+f91c180ff7d97cff003380f890813c737c47f12c64ff00df0a3fa53bc0de0e8fc51713cb753b47696e543aa7de727b67b0e3ad1f12ff00e477bbff00723ffd00
+5755f083fe3c755ffae91ff235a54ab2a781528bd6cbf433a74a3531ee335a5dfea6778f3c11a5e83a1c57da70951c4c11c3bee04107f5c815cbf8218af8d34a
+20e0f9d8fd0d7a77c52ff9138ffd7c27f5af30f057fc8e7a57fd771fc8d2c254954c1c9cdddebf90f174e14f19150565a7e67b6f882df5abbb316fa34d6b0349
+959669f76e55c7f0800f3f5ac1f0efc37d3346963babb737b7687702eb88d4fb2fafb9aed68af0a388a9087245d933dd961e9ce6a72576b6f20a28a2b137136a
+ff00747e5452d1401f38f897fe46ad63febfa6ff00d0cd7a5fc33f106989a02e9935dc70ddc4eedb2521770273904f5fe75c6eb9e13d7eefc41a95cc1a4dd345
+35d4b2236deaa5c907f2aad7fe04f10d85b4570da7c92c6e818887e76424742a39e3d7a57d355546bd18d394d2dba9f2f45d7a15a556306f7e8ceb3e29788ece
+e6d2df48b49d267f304d3346c18280080b91df9ce3d87ad711e14d3df53f14e9b6e89bc79eaf20edb14ee6fd01a6d9785f5dd426115b695744fabc65147d59b0
+07e75ec1e09f0747e18b479667f32fee140948c6100e76aff53df02b3a956960f0fece0eeffad4d69d2ab8dc47b49ab2feb4317e2e83fd8ba79ec2e0ff00e826
+b8af87640f1e6999ff00a6bffa29ebd5fc6fe1e97c49e1f36b6ee16e22904d103c062011b49ed904fe38af149f43d6f4cbb0b269f790ce872acb1b75f5561d7e
+a2a3012854c2ba37b3d57de5e3e13a78a55ad75a3fb8f54f8b0a4f84a120702f109ffbe5ebcc7c23751d978b74c9e660b189c0663d0678c9fcebd3f46d3afbc4
+ff000ee4d37594b98aeb2ca92dc06de483b91ce79239c7d05798ea9e12d774890adce9d314070258977a1fc474fc706ab02e0a9cb0f296b76bfe189c729ba90c
+4c63a593f4f53dfef6fadb4eb396eeee658a088659d8f02be699dc4971248b9c339233ee6b4acbc3daeead22c56da7dd4b8e01652aabff00026c01f9d5fd43c0
+7af58ea16f66b66d70f3a06468b9507037027a0c138c9e2b4c251a5856e2e69b7fa19e32b55c5a5250692f9ee7a9e9ba78d63e19db5802333d804527a06dbc7e
+a057841041208208e083dabe83f06e957da2f86adac350789a58cb1023c9da092704f73c9e9f4ed9ae5bc6ff000f24d4ae5f54d1957ed321ccd6e4850e7fbca4
+f00fae7afd7af260b170a55a7093d1bd19d78dc24ead184e2b54b54757e12d62df59f0e59cd0caaf2c712473af747030723f0e3dab4aff0051b3d2ed1aeafae2
+38215eace71f80f53ec2be799f49d674ab8225b2bcb69471bb630fc88ebf854f67e1cf106b53660d3eee6623fd6480a8ff00be9b03f5a73cb293939fb4b47fae
+b714333aaa2a1ecef2feba58f7cd2755b4d6b4e8afec9f7c32671918208ea08ec6bc93e2c7fc8d907fd79a7fe84f5de7813c2d75e19d3e6177721e5b821da14f
+bb1903d7b9f5edfceb96f891e1ed5f55f12457161a7cd7110b5542e83233b98e3f5158e0fd9d3c5be597bbaea6f8df6b5308b9a3ef69a0ef83dfeb359fa43ffb
+3d7a9d79dfc2fd1752d21f543a859cb6de688b679831bb1bf3fcc57a2573e61252c4c9a77dbf247465d171c3454959ebf9b3e7bf1aff00c8e7aaff00d773fc85
+7a6fc2bff9141bfebe9ff92d715e2bf0aebb7be2ad46e6db4bb89619262c8eabc118aeff00e1d69b79a5f861adefadde09bed0edb1c60e081cd7a18da907838a
+4d5f4fc8f3b054e71c64a4d3b6bf99e71f12ff00e477bbff00723ffd005755f083fe3c755ffae91ff23595e3df0d6b5a978b6e6e6cf4e9e78192301d07070a01
+ae8be18e8fa869169a8aea16925bb492214120c6400734ebd483c028a6af65fa050a7358f7269daeff0052c7c52ff9138ffd7c27f5af30f057fc8e7a57fd771f
+c8d7acfc43d3af354f0b9b7b1b779e6f3d1b620c9c0cf35e7de14f0aebb65e2ad3ae6e74bb88a18e605dd9780306960aa4161249b57d7f21e369ce58c8c9276d
+3f33db28a28af08f7428a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a0028a28a
+0028a28a0028a28a0028a28a00ffd9
+}}}\cell \pard\plain \nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \intbl\fs24\cgrid {\row }\trowd\trgaph0\trql\trrh-22\clvertalt\clbrdrt\brdrs\brdrw14\brdrcf17 \cltxlrtb\cellx6942\clvertalt\cltxlrtb\cellx9240\intbl\cell \intbl\cell \pard \nowidctlpar
+\aspalpha\aspnum\nocwrap\adjustright \intbl{\row }\pard\plain \sa304\sl-20\slmult0\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \fs24\cgrid {
+\par }\pard\pard \li72\nowidctlpar\aspalpha\aspnum\nocwrap\adjustright \f10\fs19\expnd0\expndtw3\b\cgrid {Real world example from a large utilities company}{\f11\fs6\cgrid 
+\par }\qj\ri72\sb144\nowidctlpar\adjustright \f0\fs22\expnd0\expndtw0\b0\cgrid {The purchasing director suspected there were issues with the procurement process. They justified the}{\f11\fs6\cgrid  }{\expnd0\expndtw3\cgrid project solely on the cost savin
+g of having external consultants assemble their monthly reporting}{\f11\fs6\expnd0\expndtw3\cgrid  }{packs. However, it was only after the go-live that the true level of global spend was identified. An}{\f11\fs6\cgrid  }{\expnd0\expndtw-1\cgrid additional
+ \'a328K could have gone in their \'a3100K benefits case. This is how:}{\f11\fs6\expnd0\expndtw-1\cgrid 
+\par }\ql\li792\sb180\nowidctlpar\adjustright \expnd1\expndtw6\cgrid {\'a356 million worth of expenditure was identified that wasn't managed through central}{\f11\fs6\cgrid  }{\expnd0\expndtw-4\cgrid procurement \'97 so what?}{\f11\fs6\expnd0\expndtw-4
+\cgrid 
+\par }\sb0\sl216\slmult1\nowidctlpar\adjustright \expnd0\expndtw3\cgrid {The central procurement team will now target an additional 5% of spending that will get}{\f11\fs6\cgrid  }{\expnd0\expndtw1\cgrid managed through central procurement - so what?}{\f11
+\fs6\expnd0\expndtw1\cgrid 
+\par }\ri0\sl240\slmult1\nowidctlpar\adjustright \expnd0\expndtw-1\cgrid {Procurement is targeted at saving 10% on list prices \'97 so what?}{\f11\fs6\cgrid 
+\par }\ri72\nowidctlpar\adjustright {5% of \'a356 million is \'a3280,000. Multiplied by the 10% that procurement was saving comes to}{\f11\fs6\cgrid  }{\expnd0\expndtw0\cgrid \'a328000. This is the benefit of identifying rogue spend.}{\f11\fs6\expnd0
+\expndtw0\cgrid 
+\par }\qj\li72\sb540\nowidctlpar\adjustright \cf21\cgrid {If you need help or guidance in building a BI business case please contact Bluefin. Our Client Partners}{\f11\fs6\cgrid  }{\expnd0\expndtw2\cgrid and senior consultants have a wealth of experience 
+in building and delivering business cases which}{\f11\fs6\expnd0\expndtw2\cgrid  }{\expnd0\expndtw0\cgrid add real value.}{\f11\fs6\expnd0\expndtw0\cgrid 
+\par }\pard\plain}

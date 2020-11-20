@@ -4408,11 +4408,16 @@ Process01:
                             GoTo NextFolder : LL = 1676
                         End If : LL = 1681
                         LL = 1686
+
                         RetentionCode = DBARCH.GetDirRetentionCode(ParentDir, CurrUserGuidID) : LL = 1691
                         If RetentionCode.Length > 0 Then : LL = 1696
                             RetentionYears = DBARCH.getRetentionPeriod(RetentionCode) : LL = 1701
+                            rightNow = Now.AddYears(RetentionYears)
+                            RetentionExpirationDate = rightNow.ToString
                         Else : LL = 1706
                             RetentionYears = Val(DBARCH.getSystemParm("RETENTION YEARS")) : LL = 1711
+                            rightNow = Now.AddYears(RetentionYears)
+                            RetentionExpirationDate = rightNow.ToString
                         End If : LL = 1716
                         LL = 1721
                         DBARCH.getDirectoryParms(a, ParentDir, CurrUserGuidID) : LL = 1726
@@ -4711,32 +4716,20 @@ Process01:
                                 GoTo NextFile
                             End If
 
-                            Dim FileHash As String = ENC.GenerateSHA512HashFromFile(file_FullName) : LL = 2661
-                            Dim xlen As Integer = FileHash.Length
-                            If FileHash.Length < 10 Then
+                            Dim ImageHash As String = ENC.GenerateSHA512HashFromFile(file_FullName) : LL = 2661
+                            Dim xlen As Integer = ImageHash.Length
+                            If ImageHash.Length < 10 Then
                                 LOG.WriteToArchiveLog("ERROR HASH: Skipping : " + file_FullName)
                                 GoTo NextFile
                             End If
 
-                            If FileHash.Contains("0x0x") Then
+                            If ImageHash.Contains("0x0x") Then
                                 LOG.WriteToArchiveLog("ERROR HASH: Skipping : " + file_FullName)
-                                FileHash.Replace("0x0x", "0x")
+                                ImageHash.Replace("0x0x", "0x")
                             End If
 
-                            'Changed the below line to NOT recalculate the same has but just set
-                            'ImageHash = to FileHash
-                            'Dim ImageHash As String = ENC.GenerateSHA512HashFromFile(file_FullName) : LL = 2666
-                            Dim ImageHash As String = FileHash
-                            Dim NbrFilesFoundInRepo As Integer = 0
-                            NbrFilesFoundInRepo = DBARCH.getCountDataSourceFiles(file_FullName, FileHash) : LL = 2671
-
-                            'If Not IsNothing(FilesToBeUploaded) Then
-                            '    NbrFilesFoundInRepo = FilesToBeUploaded.Count
-                            'Else
-                            '    NbrFilesFoundInRepo = DBARCH.getCountDataSourceFiles(file_FullName, FileHash) : LL = 2671
-                            'End If
-
-                            If FileHash.Length < 10 Then
+                            NbrFilesFoundInRepo = DBARCH.getCountDataSourceFiles(file_FullName, ImageHash) : LL = 2671
+                            If ImageHash.Length < 10 Then
                                 LOG.WriteToArchiveLog("ERROR ArchiveContent HASH failed: " + file_FullName)
                                 If UseDirectoryListener.Equals(1) And Not gTempDisableDirListener Then
                                     Dim bUpdt = DBLocal.setListenerfileProcessed(file_FullName)
@@ -4754,7 +4747,7 @@ Process01:
                                 'LOG.WriteToArchiveLog("REMOVE LATER 06 - Processing File: <" + CurrFQN + ">")
                                 frmNotify.BackColor = Color.LightSalmon : LL = 2686
                                 '************************************************************************************************************************
-                                Dim ExistingSourceGuid As String = DBARCH.getContentGuid(file_name, FileHash) : LL = 2691
+                                Dim ExistingSourceGuid As String = DBARCH.getContentGuid(file_name, ImageHash) : LL = 2691
                                 DBARCH.saveContentOwner(ExistingSourceGuid, CurrUserGuidID, "C", FOLDER_FQN, gMachineID, gNetworkID) : LL = 2696
                                 'LOG.WriteToArchiveLog("REMOVE LATER 910: saveContentOwner : <" + file_FullName + ">")
                                 '************************************************************************************************************************
@@ -4911,7 +4904,7 @@ Process01:
                             LL = 3481
                             Dim StoredExternally As String = "N" : LL = 3486
                             LL = 3491
-                            'NbrFilesFoundInRepo = DBARCH.getCountDataSourceFiles(file_Name, FileHash)	:	LL = 	3496
+                            'NbrFilesFoundInRepo = DBARCH.getCountDataSourceFiles(file_Name, ImageHash)	:	LL = 	3496
                             'If (NbrFilesFoundInRepo = 0) Then	:	LL = 	3501
                             '    DBARCH.saveContentOwner(SourceGuid, CurrUserGuidID, "C", FOLDER_FQN, gMachineID, gNetworkID)	:	LL = 	3506
                             'End If	:	LL = 	3511
@@ -4928,10 +4921,10 @@ Process01:
                             '** FILE ALREADY EXISTS IN THE REPOSITORY
                             Dim ListOfGuids As New List(Of String)
                             ListOfGuids = DBARCH.ckFileExistInRepo(MachineID, file_FullName)
-                            If ListOfGuids.Count > 1 Then
+                            If ListOfGuids.Count >= 1 Then
                                 For Each SourceGuid In ListOfGuids
                                     Try
-                                        bSuccessExecution = DBARCH.UpdateSouceImage(SourceGuid, file_FullName)
+                                        bSuccessExecution = DBARCH.UpdateSouceImage(SourceGuid, file_FullName, RetentionYears, RetentionExpirationDate)
                                         If bSuccessExecution Then
                                             LOG.WriteToArchiveLog("NOTICE UpdateSouceImage Z4: Updated ImageHash: " + file_FullName)
                                         Else
@@ -4989,57 +4982,27 @@ Process01:
                                 Application.DoEvents() : LL = 3761
                                 LL = 3766
                                 If Val(file_Length) > 1000000000 Then : LL = 3771
-                                    'frmNotify.lblFileSpec.Text = "Huge File:" + BytesLoading.ToString + Units : LL = 3776
                                     frmNotify.lblPdgPages.Text = "Huge File:" + BytesLoading.ToString + Units : LL = 3776
                                     Application.DoEvents() : LL = 3781
                                     DisplayActivity = True : LL = 3786
-                                    'WDM Commented out the below Oct 6, 2020
-                                    'If ActivityThread Is Nothing Then : LL = 3791
-                                    '    frmPercent.TopLevel = True : LL = 3796
-                                    '    ActivityThread = New Thread(AddressOf ActivateProgressBar) : LL = 3801
-                                    '    ActivityThread.Priority = ThreadPriority.Lowest : LL = 3806
-                                    '    ActivityThread.IsBackground = True : LL = 3811
-                                    '    ActivityThread.Start() : LL = 3816
-                                    'End If : LL = 3821
                                     gfile_Length = Val(file_Length) : LL = 3826
                                 ElseIf Val(file_Length) > 3000000 Then : LL = 3831
                                     gfile_Length = Val(file_Length) : LL = 3836
-                                    'frmNotify.lblFileSpec.Text = "Large File:" + BytesLoading.ToString + Units : LL = 3841
                                     frmNotify.lblPdgPages.Text = "Large File:" + BytesLoading.ToString + Units
                                     Application.DoEvents() : LL = 3846
                                     DisplayActivity = True : LL = 3851
-                                    'WDM Commented out the below Oct 6, 2020
-                                    'If ActivityThread Is Nothing Then : LL = 3856
-                                    '    frmPercent.TopLevel = True : LL = 3861
-                                    '    ActivityThread = New Thread(AddressOf ActivateProgressBar) : LL = 3866
-                                    '    ActivityThread.Priority = ThreadPriority.Lowest : LL = 3871
-                                    '    ActivityThread.IsBackground = True : LL = 3876
-                                    '    ActivityThread.Start() : LL = 3881
-                                    'End If : LL = 3886
                                 End If : LL = 3891
                                 LL = 3896
                                 StepTimer = Now : LL = 3901
                                 LOG.WriteToTimerLog("ArchiveContent-01", "Insert Content", "START") : LL = 3906
-                                'file_FullName = UTIL.RemoveSingleQuotes(file_FullName)	:	LL = 	3911
-                                'file_Name = UTIL.RemoveSingleQuotes(file_Name)	:	LL = 	3916
                                 LL = 3921
-                                'DOCS.setSourceguid(SourceGuid) : LL = 3926
-                                'DOCS.setFqn(file_FullName) : LL = 3931
-                                'DOCS.setSourcename(file_name) : LL = 3936
-                                'DOCS.setSourcetypecode(file_Extension) : LL = 3941
-                                'DOCS.setLastaccessdate(file_LastAccessTime) : LL = 3946
-                                'DOCS.setCreatedate(file_CreationTime) : LL = 3951
-                                'DOCS.setCreationdate(file_CreationTime) : LL = 3956
-                                'DOCS.setLastwritetime(file_LastWriteTime) : LL = 3961
-                                'DOCS.setDatasourceowneruserid(CurrUserGuidID) : LL = 3966
-                                'DOCS.setVersionnbr("0") : LL = 3971
-                                LL = 3976
+                                '**************************************************************************************************
                                 '******************************* INSERT INTITAL CONTENT DATA **************************************
-                                'LOG.WriteToArchiveLog("REMOVE LATER 10 - Processing File: <" + SourceGuid + ">")
-                                bSuccessExecution = DOCS.Insert(SourceGuid, FileHash) : LL = 3981
+                                bSuccessExecution = DOCS.Insert(SourceGuid, ImageHash, RetentionYears, RetentionExpirationDate) : LL = 3981
+                                '**************************************************************************************************
                                 '**************************************************************************************************
                                 If Not bSuccessExecution Then
-                                    LOG.WriteToArchiveLog("ERROR Completion 12x: " + SourceGuid + " / " + FileHash)
+                                    LOG.WriteToArchiveLog("ERROR Completion 12x: " + SourceGuid + " / " + ImageHash)
                                 End If
                                 LOG.WriteToTimerLog("ArchiveContent-01", "Insert Content: " + file_FullName, "STOP", StepTimer) : LL = 3986
                                 LL = 3991
@@ -5061,10 +5024,11 @@ Process01:
                                     LOG.WriteToTimerLog("**** ArchiveContent-01", "UpdateSourceImageInRepo", "START")
                                     '******************************************************************************************************************************************************************************************************************************	:	LL = 	4101                                   
                                     'SB.Text = "UPLOADING NOW"
-                                    bSuccessExecution = DBARCH.UpdateSourceImageInRepo(OriginalFileName, UIDcurr, MachineIDcurr, SourceGuid, file_LastAccessTime, file_CreationTime, file_LastWriteTime, LastVerNbr, file_FullName, RetentionCode, isPublic, FileHash) : LL = 4121
+                                    bSuccessExecution = DBARCH.UpdateSourceImageInRepo(OriginalFileName, UIDcurr, MachineIDcurr, SourceGuid, file_LastAccessTime, file_CreationTime, file_LastWriteTime, LastVerNbr, file_FullName, RetentionCode, isPublic, ImageHash) : LL = 4121
                                     'SB.Text = ""
                                     '******************************************************************************************************************************************************************************************************************************	:	LL = 	4101
                                     If bSuccessExecution Then
+                                        Dim SG As String = SourceGuid
                                         DBLocal.updateFileArchiveInfoLastArchiveDate(file_FullName)
                                         Dim bUpdt = DBLocal.setListenerfileProcessed(file_FullName)
                                         If Not bUpdt Then
@@ -11868,7 +11832,6 @@ GoodLogin:
                     tDict.Add("WebPagePublishDate", "")
                     tDict.Add("SapData", "")
                     tDict.Add("RowID", "")
-
                     myFile = Nothing
 
                     Dim RowID As String = DBARCH.ckContentExists(tDict("SourceName"), tDict("ImageHash"))

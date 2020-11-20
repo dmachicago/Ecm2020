@@ -9296,13 +9296,13 @@ ProcessOneFileOnly:
                                                 file_FullName,
                                                 RetentionCode,
                                                 isPublic,
-                                                FileHash)
+                                                filehash)
                             'bSuccessExecution = DBARCH.UpdateSouceImage(MachineID, file_FullName, FileHash)
                             If Not bSuccessExecution Then
+                                setRetentionDate(SourceGuid, RetentionCode, OriginalFileType)
                                 LOG.WriteToArchiveLog("ERROR UpdateSouceImage 0X1: Failed to update ImageHash: " + file_FullName)
                             End If
                         Next
-
                     End If
 
                     If (iDatasourceCnt = 0) Then
@@ -9329,6 +9329,7 @@ ProcessOneFileOnly:
                         '****************************************************************************************************************************************************************
                         '****************************************************************************************************************************************************************
                         If BB Then
+                            setRetentionDate(SourceGuid, RetentionCode, OriginalFileType)
                             LOG.WriteToDBUpdatesLog("UPDATED/ADDED FILE: " + SourceGuid + " : " + file_FullName)
                         Else
                             LOG.WriteToDBUpdatesLog("ERROR FAILED- FILE: " + SourceGuid + " : " + file_FullName)
@@ -9369,6 +9370,7 @@ ProcessOneFileOnly:
                                 Dim SS As String = ""
                                 AppendOcrText(SourceGuid, OcrText)
                             End If
+
 
                             UpdateDocFqn(SourceGuid, file_FullName)
                             UpdateDocSize(SourceGuid, file_Length)
@@ -11337,7 +11339,7 @@ NextFolder:
                         DOCS.setDatasourceowneruserid(gCurrUserGuidID)
                         DOCS.setVersionnbr("0")
 
-                        bSuccessExecution = DOCS.Insert(SourceGuid, ImageHash)
+                        bSuccessExecution = DOCS.Insert(SourceGuid, ImageHash, RetentionYears, RetentionExpirationDate)
 
                         If bSuccessExecution Then
                             LOG.WriteToListenLog("ArchiveSingleFile : FILE added to repo 100: " + file_FullName)
