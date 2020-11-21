@@ -27293,6 +27293,8 @@ NextOne:
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
+        Dim versionNumber As String = Application.ProductVersion.ToString
+
         Dim RowGuid As String = tDict("RowGuid")
         Dim SourceGuid As String = tDict("SourceGuid")
         Dim CreateDate As String = tDict("CreateDate")
@@ -27300,7 +27302,8 @@ NextOne:
         'Dim SourceImage As String = tDict("SourceImage")
         Dim SourceTypeCode As String = tDict("SourceTypeCode")
         Dim FQN As String = tDict("FQN")
-        Dim VersionNbr As String = tDict("VersionNbr")
+        'Dim VersionNbr As String = tDict("VersionNbr")
+        Dim VersionNbr As String = versionNumber
         Dim LastAccessDate As String = tDict("LastAccessDate")
         Dim FileLength As String = tDict("FileLength")
         Dim LastWriteTime As String = tDict("LastWriteTime")

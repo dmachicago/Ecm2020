@@ -9088,6 +9088,7 @@ GetNextParentFolder:
 
         If xDebug Then LOG.WriteToArchiveLog("clsArchiver:ArchiveContent 100")
 
+        Dim versionNumber As String = Application.ProductVersion.ToString
         Dim AttachmentCode As String = ""
         Dim ImageHash As String = ENC.GenerateSHA512HashFromFile(FQN)
 
