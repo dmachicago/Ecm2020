@@ -27429,7 +27429,7 @@ NextOne:
         'Dim RetentionExpirationDate As DateTime = Now
         Dim RowCreationDate As DateTime = Now
         Dim RowGuid As String = Guid.NewGuid.ToString
-        Dim RowGuid2 As String = Guid.NewGuid.ToString
+        'Dim RowGuid2 As String = Guid.NewGuid.ToString
         'Dim RowID As Integer = 0
         Dim RowLastModDate As DateTime = Now
         Dim RssLinkFlg As Boolean = True
@@ -27618,7 +27618,6 @@ NextOne:
                         RetentionExpirationDate,
                         RowCreationDate,
                         RowGuid,
-                        RowGuid2,
                         RowLastModDate,
                         RssLinkFlg,
                         RssLinkGuid,
@@ -27707,7 +27706,6 @@ NextOne:
                         @RetentionExpirationDate,
                         @RowCreationDate,
                         @RowGuid,
-                        @RowGuid2,
                         @RowLastModDate,
                         @RssLinkFlg,
                         @RssLinkGuid,
@@ -27805,7 +27803,7 @@ NextOne:
                     command.Parameters.AddWithValue("@RetentionExpirationDate", RetentionExpirationDate)
                     command.Parameters.AddWithValue("@RowCreationDate", RowCreationDate)
                     command.Parameters.AddWithValue("@RowGuid", RowGuid)
-                    command.Parameters.AddWithValue("@RowGuid2", RowGuid2)
+                    'command.Parameters.AddWithValue("@RowGuid2", Guid.NewGuid.ToString)
                     'command.Parameters.AddWithValue("@RowID", RowID)
                     command.Parameters.AddWithValue("@RowLastModDate", RowLastModDate)
                     command.Parameters.AddWithValue("@RssLinkFlg", RssLinkFlg)
@@ -27836,7 +27834,13 @@ NextOne:
                     command.ExecuteNonQuery()
                 End Using
             End Using
-            B = True
+            Try
+                Dim B1 As Boolean = ApplySourceTypeCode(Environment.MachineName, UserID, FI.Name, FI.Extension, SourceGuid)
+            Catch ex As Exception
+                LOG.WriteToArchiveLog("clsDatabaseARCH : InsertNewContent failed to insert ProcessAS : 300 : " + ex.Message)
+                LOG.WriteToFailedLoadLog("clsDatabaseARCH : InsertNewContent : 300 Failed To insert ProcessAS : " + Environment.NewLine + FQN + Environment.NewLine + ex.Message)
+            End Try
+
         Catch ex As Exception
             B = False
             LOG.WriteToArchiveLog("clsDatabaseARCH : InsertNewContent : 100 : ", ex)

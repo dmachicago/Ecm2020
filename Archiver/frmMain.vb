@@ -393,6 +393,17 @@ Public Class frmMain : Implements IDisposable
                     End If
                     Dim xArg As String = Arg.ToString : LL = 68
                     LL = 69
+                    'Sub InventoryDirectoryToolStripMenuItem1_Click()
+                    If gMasterTypeExecution.ToUpper.Equals("FINV") Then
+                        gRunMinimized = True
+                        gContentArchiving = True
+                        gAutoExecContentComplete = False
+                        gRunUnattended = True
+                        InventoryDirectoryToolStripMenuItem1_Click(Nothing, Nothing)
+                        LoginForm1.Close()
+                        Me.Close()
+                        Application.Exit()
+                    End If
                     If Mid(xArg, 1, 1).Equals("U") Then
                         ArgsPassedIn = True
                         'Execute archive and close app : LL = 71

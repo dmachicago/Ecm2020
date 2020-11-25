@@ -10819,7 +10819,7 @@ NextFolder:
         'Dim RetentionExpirationDate As DateTime = Now
         Dim RowCreationDate As DateTime = Now
         Dim RowGuid As String = Guid.NewGuid.ToString
-        Dim RowGuid2 As String = Guid.NewGuid.ToString
+        'Dim RowGuid2 As String = Guid.NewGuid.ToString
         Dim RowID As Integer = 0
         Dim RowLastModDate As DateTime = Now
         Dim RssLinkFlg As Boolean = True
@@ -10944,7 +10944,7 @@ NextFolder:
         RowData.Add("SourceImageOrigin", SourceImageOrigin.ToString)
         RowData.Add("RecTimeStamp", RecTimeStamp.ToString)
         'RowData.Add("SourceImage", SourceImage.ToString)
-        RowData.Add("RowGuid2", Guid.NewGuid.ToString)
+        'RowData.Add("RowGuid2", Guid.NewGuid.ToString)
 
         Dim Successful As Boolean = True
 
@@ -11070,6 +11070,12 @@ NextFile:
                 tFqn = UTIL.RemoveSingleQuotes(tFqn)
                 S = ""      '" update DirectoryListenerFiles set Archived =  1 where DirGuid = '" + DirGuid + "' and MachineID = '" + MachineID + "' and sourceFile = '" + FQN + "' "
                 DBLocal.MarkListenersProcessed(FQN)
+                'Try
+                '    Dim B1 As Boolean = arch.ApplySourceTypeCode(Environment.MachineName, UserID, FI.Name, FI.Extension, SourceGuid)
+                'Catch ex As Exception
+                '    LOG.WriteToArchiveLog("clsDatabaseARCH : InsertNewContent failed to insert ProcessAS : 300 : " + ex.Message)
+                '    LOG.WriteToFailedLoadLog("clsDatabaseARCH : InsertNewContent : 300 Failed To insert ProcessAS : " + Environment.NewLine + FQN + Environment.NewLine + ex.Message)
+                'End Try
             End If
             Application.DoEvents()
 
