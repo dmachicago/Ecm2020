@@ -205,8 +205,8 @@ Partial Class frmMain
         Me.LIstWindowsLogsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CheckLogsForListenerInfoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SQLiteUtiltiiesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ReInventoryAllFilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReinventoryFilesOnlyNewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReInventoryAllFilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ResetSQLiteArchivesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GetOutlookEMailIDsToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ResetZIPFilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -215,6 +215,7 @@ Partial Class frmMain
         Me.BackupSQLiteDBToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.RestoreSQLiteDBToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.SQToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProcessMissingFilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReOCRToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EstimateNumberOfFilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
@@ -2313,7 +2314,7 @@ Partial Class frmMain
         '
         'RepositoryUtilitiesToolStripMenuItem
         '
-        Me.RepositoryUtilitiesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClearRestoreQueueToolStripMenuItem1, Me.CompareDirToRepositoryToolStripMenuItem1, Me.InventoryDirectoryToolStripMenuItem1, Me.ValidateDirectoryFilesToolStripMenuItem, Me.ReapplyALLDBUpdatesToolStripMenuItem, Me.ValidateRetentionDatesToolStripMenuItem})
+        Me.RepositoryUtilitiesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InventoryDirectoryToolStripMenuItem1, Me.ClearRestoreQueueToolStripMenuItem1, Me.CompareDirToRepositoryToolStripMenuItem1, Me.ValidateDirectoryFilesToolStripMenuItem, Me.ReapplyALLDBUpdatesToolStripMenuItem, Me.ValidateRetentionDatesToolStripMenuItem})
         Me.RepositoryUtilitiesToolStripMenuItem.Name = "RepositoryUtilitiesToolStripMenuItem"
         Me.RepositoryUtilitiesToolStripMenuItem.Size = New System.Drawing.Size(254, 26)
         Me.RepositoryUtilitiesToolStripMenuItem.Text = "Repository Utilities"
@@ -2334,7 +2335,7 @@ Partial Class frmMain
         '
         Me.InventoryDirectoryToolStripMenuItem1.Name = "InventoryDirectoryToolStripMenuItem1"
         Me.InventoryDirectoryToolStripMenuItem1.Size = New System.Drawing.Size(264, 26)
-        Me.InventoryDirectoryToolStripMenuItem1.Text = "Inventory Directory"
+        Me.InventoryDirectoryToolStripMenuItem1.Text = "CHECK FOR MISSING FILES"
         '
         'ValidateDirectoryFilesToolStripMenuItem
         '
@@ -2426,22 +2427,22 @@ Partial Class frmMain
         '
         'SQLiteUtiltiiesToolStripMenuItem
         '
-        Me.SQLiteUtiltiiesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReinventoryFilesOnlyNewToolStripMenuItem, Me.ReInventoryAllFilesToolStripMenuItem, Me.ResetSQLiteArchivesToolStripMenuItem, Me.GetOutlookEMailIDsToolStripMenuItem1, Me.ResetZIPFilesToolStripMenuItem, Me.ResetEmailIdentifierCodesToolStripMenuItem, Me.RebuildSQLiteDBToolStripMenuItem1, Me.BackupSQLiteDBToolStripMenuItem1, Me.RestoreSQLiteDBToolStripMenuItem1, Me.SQToolStripMenuItem})
+        Me.SQLiteUtiltiiesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReinventoryFilesOnlyNewToolStripMenuItem, Me.ReInventoryAllFilesToolStripMenuItem, Me.ResetSQLiteArchivesToolStripMenuItem, Me.GetOutlookEMailIDsToolStripMenuItem1, Me.ResetZIPFilesToolStripMenuItem, Me.ResetEmailIdentifierCodesToolStripMenuItem, Me.RebuildSQLiteDBToolStripMenuItem1, Me.BackupSQLiteDBToolStripMenuItem1, Me.RestoreSQLiteDBToolStripMenuItem1, Me.SQToolStripMenuItem, Me.ProcessMissingFilesToolStripMenuItem})
         Me.SQLiteUtiltiiesToolStripMenuItem.Name = "SQLiteUtiltiiesToolStripMenuItem"
         Me.SQLiteUtiltiiesToolStripMenuItem.Size = New System.Drawing.Size(254, 26)
         Me.SQLiteUtiltiiesToolStripMenuItem.Text = "SQLite Utiltiies"
-        '
-        'ReInventoryAllFilesToolStripMenuItem
-        '
-        Me.ReInventoryAllFilesToolStripMenuItem.Name = "ReInventoryAllFilesToolStripMenuItem"
-        Me.ReInventoryAllFilesToolStripMenuItem.Size = New System.Drawing.Size(310, 26)
-        Me.ReInventoryAllFilesToolStripMenuItem.Text = "ReInventory All Files (ALL Files)"
         '
         'ReinventoryFilesOnlyNewToolStripMenuItem
         '
         Me.ReinventoryFilesOnlyNewToolStripMenuItem.Name = "ReinventoryFilesOnlyNewToolStripMenuItem"
         Me.ReinventoryFilesOnlyNewToolStripMenuItem.Size = New System.Drawing.Size(310, 26)
         Me.ReinventoryFilesOnlyNewToolStripMenuItem.Text = "Reinventory Files ( New Files Only)"
+        '
+        'ReInventoryAllFilesToolStripMenuItem
+        '
+        Me.ReInventoryAllFilesToolStripMenuItem.Name = "ReInventoryAllFilesToolStripMenuItem"
+        Me.ReInventoryAllFilesToolStripMenuItem.Size = New System.Drawing.Size(310, 26)
+        Me.ReInventoryAllFilesToolStripMenuItem.Text = "ReInventory All Files (ALL Files)"
         '
         'ResetSQLiteArchivesToolStripMenuItem
         '
@@ -2490,6 +2491,12 @@ Partial Class frmMain
         Me.SQToolStripMenuItem.Name = "SQToolStripMenuItem"
         Me.SQToolStripMenuItem.Size = New System.Drawing.Size(310, 26)
         Me.SQToolStripMenuItem.Text = "SQLite Mgt Screen"
+        '
+        'ProcessMissingFilesToolStripMenuItem
+        '
+        Me.ProcessMissingFilesToolStripMenuItem.Name = "ProcessMissingFilesToolStripMenuItem"
+        Me.ProcessMissingFilesToolStripMenuItem.Size = New System.Drawing.Size(310, 26)
+        Me.ProcessMissingFilesToolStripMenuItem.Text = "Process Missing Files"
         '
         'ReOCRToolStripMenuItem
         '
@@ -4303,4 +4310,5 @@ Partial Class frmMain
     Friend WithEvents TestSyncSelectedFoldersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator8 As ToolStripSeparator
     Friend WithEvents ReinventoryFilesOnlyNewToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ProcessMissingFilesToolStripMenuItem As ToolStripMenuItem
 End Class

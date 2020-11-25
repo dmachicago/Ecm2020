@@ -7469,7 +7469,7 @@ StartOver:
 
             Dim fExt As String = DMA.getFileExtension(FQN)
             If File.Exists(FQN) Then
-                ARCH.ArchiveSingleFile(UIDcurr, MachineName, DirName, FQN, DirGuid, Successful)
+                ARCH.ArchiveSingleFile(UIDcurr, FQN)
                 If Successful Then
                     DBLocal.MarkListenersProcessed(FQN)
                 End If
@@ -13278,7 +13278,8 @@ NEXTONE:
     End Sub
 
     Private Sub InventoryDirectoryToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles InventoryDirectoryToolStripMenuItem1.Click
-        Dim targetDirectory As String = ""
+
+        Dim skipped As Integer = 0
         Dim txtFilesArray As String() = Nothing
         Dim ListOfExt As ArrayList = Nothing
         Dim dir As String = ""
@@ -13287,51 +13288,108 @@ NEXTONE:
         Dim filename As String = ""
         Dim found As Integer = 0
         Dim missing As Integer = 0
-
-        If (FolderBrowserDialog1.ShowDialog() = DialogResult.OK) Then
-            targetDirectory = FolderBrowserDialog1.SelectedPath
-        End If
-
-        ListOfExt = DBARCH.GetIncludedFiletypes(targetDirectory)
-        If ListOfExt.Count.Equals(0) Then
-            ListOfExt = DBARCH.GetIncludedFiletypes("")
-        End If
-
-        Cursor = Cursors.WaitCursor
-        txtFilesArray = Directory.GetFiles(targetDirectory, "*.*", SearchOption.AllDirectories)
-        Cursor = Cursors.Default
-
-        Console.WriteLine("txtFilesArray: " + txtFilesArray.Count.ToString)
+        Dim DICT_WhereAS As New Dictionary(Of String, String)
         Dim icnt As Integer = 0
         Dim I As Integer = 0
         Dim bProcess As Boolean = False
-        For Each fqn In txtFilesArray
-            bProcess = True
-            If ListOfExt.Count > 0 Then
-                I = fqn.LastIndexOf(".")
-                If I > 0 Then
-                    ext = fqn.Substring(I + 1).ToUpper
-                    If ListOfExt.Contains(ext) Then
-                        bProcess = True
-                    Else
-                        bProcess = False
-                    End If
-                End If
-            End If
-            icnt += 1
-            If bProcess Then
-                lblNotice.Text = icnt.ToString("N0") + " of " + txtFilesArray.Count.ToString("N0")
-                lblNotice.Refresh()
-                B = DBARCH.ckFQNExists(fqn)
-                LOG.WriteToInventoryLog(B, fqn)
-                If B Then
-                    found += 1
-                Else
-                    missing += 1
-                End If
-                SB2.Text = "Found: " + found.ToString + " : Missing: " + missing.ToString
+        Dim iTotal As Integer = 0
+
+        Dim ActiveDIRS As New List(Of String)
+        Dim DICT_DirSub As New Dictionary(Of String, String)
+        DICT_DirSub = DBARCH.GetDirectoryDICT(gCurrLoginID)
+
+        ActiveDIRS = DBARCH.GetDirectories(gCurrLoginID)
+        For Each DirName As String In ActiveDIRS
+            Dim WClause As String = DBARCH.fetchWhereInClause(DirName)
+            If Not DICT_WhereAS.Keys.Contains(DirName) Then
+                DICT_WhereAS.Add(DirName, WClause)
             End If
         Next
+
+
+        Dim FRM As New frmNotify
+        FRM.Show()
+
+        Cursor = Cursors.WaitCursor
+
+        Dim ExistingFiles As New List(Of String)
+
+        For Each targetDirectory As String In ActiveDIRS
+            If Directory.Exists(targetDirectory) Then
+
+                icnt = 0
+                FRM.Title = targetDirectory
+
+                Dim DoSub As String = DICT_DirSub(targetDirectory).ToUpper
+                Try
+                    If DoSub.Equals("Y") Then
+                        txtFilesArray = Directory.GetFiles(targetDirectory, "*.*", SearchOption.AllDirectories)
+                    Else
+                        txtFilesArray = Directory.GetFiles(targetDirectory, "*.*", SearchOption.TopDirectoryOnly)
+                    End If
+                Catch ex As Exception
+                    LOG.WriteToArchiveLog("ERROR processging " + targetDirectory + vbCrLf + ex.Message)
+                    GoTo NEXTDIR
+                End Try
+
+                ExistingFiles = DBARCH.getExistingFiles(targetDirectory, DoSub, Environment.MachineName, gCurrLoginID)
+
+                iTotal = txtFilesArray.Length
+                FRM.Label1.Text = "Files to Evaluate: " + iTotal.ToString
+                Application.DoEvents()
+                Dim WhereInExts As String = DICT_WhereAS(targetDirectory)
+                WhereInExts = WhereInExts.Replace("'", "")
+                For Each fqn In txtFilesArray
+                    Try
+                        FRM.Title = targetDirectory
+                        icnt += 1
+                        bProcess = True
+                        ext = Path.GetExtension(fqn).ToLower + ","
+                        If ExistingFiles.Contains(fqn.ToLower) Then
+                            found += 1
+                            FRM.lblFileSpec.Text = "Exists: " + found.ToString + " : Added: " + missing.ToString + " : Skipped: " + skipped.ToString
+                            GoTo NEXTFILE
+                        ElseIf fqn.Contains(".git") Then
+                            Console.Write("*")
+                            skipped += 1
+                        ElseIf fqn.Contains("\git") Then
+                            Console.Write("*")
+                            skipped += 1
+                        ElseIf fqn.Contains(ext.Length <= 1) Then
+                            Console.Write("*")
+                            skipped += 1
+                        ElseIf fqn.Equals(",") Then
+                            Console.Write("*")
+                            skipped += 1
+                        ElseIf WhereInExts.Contains(ext) Then
+                            FRM.lblPdgPages.Text = icnt.ToString("N0") + " of " + txtFilesArray.Count.ToString("N0")
+                            missing += 1
+                            FRM.lblDetail.Text = Path.GetFileName(fqn)
+                            FRM.Refresh()
+                            Application.DoEvents()
+                            Dim bSuccess As Boolean = ARCH.ArchiveSingleFile(gCurrLoginID, fqn)
+                            If bSuccess Then
+                                LOG.WriteToArchiveLog("FILE MISSING: added " + fqn)
+                            Else
+                                LOG.WriteToArchiveLog("FILE MISSING: FAILED TO ADD " + fqn)
+                            End If
+                        End If
+                    Catch ex As Exception
+                        LOG.WriteToArchiveLog("ERROR 22X1: " + ex.Message)
+                    End Try
+NEXTFILE:
+                    FRM.lblFileSpec.Text = "Scanned: " + icnt.ToString + " : Exists: " + found.ToString + " : Added: " + missing.ToString + " : Skipped: " + skipped.ToString
+                    Application.DoEvents()
+                Next
+            End If
+NEXTDIR:
+        Next
+
+        FRM.Close()
+        FRM.Dispose()
+        Cursor = Cursors.Default
+
+        LOG.WriteToArchiveLog("FROM INVENTORY: Exists: " + found.ToString + " : Added: " + missing.ToString + " : Skipped: " + skipped.ToString)
 
         MessageBox.Show("Inventory complete...")
 
@@ -14232,6 +14290,15 @@ SkipIT:
 
     Private Sub ReinventoryFilesOnlyNewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReinventoryFilesOnlyNewToolStripMenuItem.Click
         InventoryRepoDirectories(True)
+    End Sub
+
+    Private Sub ProcessMissingFilesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProcessMissingFilesToolStripMenuItem.Click
+        Dim FQN As String = ""
+
+        DBLocal.getFileInventory()
+
+        ARCH.ArchiveSingleFile(gCurrLoginID, FQN)
+
     End Sub
 End Class
 

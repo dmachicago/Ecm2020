@@ -636,9 +636,6 @@ Public Class clsArchiver
         End If
         LL = 484
         rightNow = rightNow.AddYears(RetentionYears)
-        LL = 485
-
-        LL = 486
         Dim RetentionExpirationDate As String = rightNow.ToString
         LL = 487
 
@@ -4381,7 +4378,7 @@ LabelSkipThisEmail:
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
-         Thread.BeginCriticalRegion()
+        Thread.BeginCriticalRegion()
 
         Dim bInstalled As Boolean = True
 
@@ -4394,7 +4391,7 @@ LabelSkipThisEmail:
             bInstalled = False
         End Try
         If bInstalled = False Then
-             Thread.EndCriticalRegion()
+            Thread.EndCriticalRegion()
             Return
         End If
 
@@ -4786,7 +4783,7 @@ SkipContact:
         'frmReconMain.PB1.Value = 0
         'frmReconMain.SB.Text = "Complete, " + I.ToString + " contacts processed."
         LOG.WriteToArchiveLog("INFO: Contact archive Complete, " + I.ToString + " contacts processed.")
-         Thread.EndCriticalRegion()
+        Thread.EndCriticalRegion()
 
     End Sub
 
@@ -10753,797 +10750,372 @@ NextFolder:
 
     End Function
 
-    Sub ArchiveSingleFile(ByVal UID As String, ByVal MachineID As String, ByVal DirName As String, ByVal FQN As String, ByVal DirGuid As String, ByRef Successful As Boolean)
-        If gTraceFunctionCalls.Equals(1) Then
-            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
-        End If
+    Function ArchiveSingleFile(ByVal UID As String, ByVal FQN As String) As Boolean
 
-        Dim RetentionCode As String = "Retain 10"
-        Dim isPublic As String = "N"
-
-        Successful = True
-
-        FQN = FQN.Replace("''", "'")
-
-        Dim bExists As Boolean = False
-        If File.Exists(FQN) Then
-            bExists = True
-        End If
+        Dim B As Boolean = True
 
         Dim DOCS As New clsDataSource_V2
-        Dim PROC As New clsProcess
+        Dim bSuccess As Boolean = True
+        Dim RowData As New Dictionary(Of String, String)
 
-        Dim NbrFilesInDir As Integer = 0
+        Dim BPS As Double = 0
+        Dim CompressedSize As Integer = 0
+        Dim ContainedWithin As String = ""
+        Dim CRC As String = ""
+        Dim CreateDate As DateTime = Now
+        Dim CreationDate As DateTime = Now
+        Dim DataSourceOwnerUserID As String = ""
+        Dim DataVerified As Boolean = True
+        Dim Description As String = ""
+        Dim FileAttached As Boolean = True
+        Dim FileDirectory As String = ""
+        Dim FileDirectoryName As String = ""
+        Dim FileLength As Integer = 0
+        Dim FqnHASH As String = ""
+        Dim GraphicContainsText As Char = ""
+        Dim HashFile As String = ""
+        Dim HashName As String = ""
+        Dim HiveActive As Boolean = True
+        Dim HiveConnectionName As String = ""
+        Dim Imagehash As String = ""
+        Dim ImageHiddenText As String = ""
+        Dim ImageLen As Integer = 0
+        Dim isAvailable As Char = ""
+        Dim isContainedWithinZipFile As Char = ""
+        Dim isGraphic As Char = ""
+        Dim isMaster As Char = ""
+        Dim isPerm As Char = ""
+        Dim isPublic As Char = ""
+        Dim IsPublicPreviousState As Char = ""
+        Dim isWebPage As Char = ""
+        Dim IsZipFile As Boolean = False
+        Dim KeyWords As String = ""
+        Dim LastAccessDate As DateTime = Now
+        Dim LastWriteTime As DateTime = Now
+        Dim MachineID As String = ""
+        Dim Notes As String = ""
+        Dim OcrPending As Char = ""
+        Dim OcrPerformed As Char = ""
+        Dim OcrSuccessful As Char = ""
+        Dim OcrText As String = ""
+        Dim OriginalFileType As String = ""
+        Dim OriginalSize As Integer = 0
+        Dim PageURL As String = ""
+        Dim ParentGuid As String = ""
+        Dim PdfImages As Integer = 0
+        Dim PdfIsSearchable As Char = ""
+        Dim PdfOcrRequired As Char = ""
+        Dim PdfOcrSuccess As Char = ""
+        Dim PdfOcrTextExtracted As Char = ""
+        Dim PdfPages As Integer = 0
+        Dim RecHash As String = ""
+        Dim RecLen As Decimal = 0
+        Dim RecTimeStamp As DateTime = Now
+        Dim RepoName As String = ""
+        Dim RepoSvrName As String = ""
+        Dim RequireOcr As Boolean = True
+        Dim RetentionCode As String = ""
+        Dim RetentionDate As DateTime = Now
+        'Dim RetentionExpirationDate As DateTime = Now
+        Dim RowCreationDate As DateTime = Now
+        Dim RowGuid As String = Guid.NewGuid.ToString
+        Dim RowGuid2 As String = Guid.NewGuid.ToString
+        Dim RowID As Integer = 0
+        Dim RowLastModDate As DateTime = Now
+        Dim RssLinkFlg As Boolean = True
+        Dim RssLinkGuid As String = ""
+        Dim SapData As Boolean = True
+        Dim SharePoint As Boolean = True
+        Dim SharePointDoc As Boolean = True
+        Dim SharePointList As Boolean = True
+        Dim SharePointListItem As Boolean = True
+        Dim SourceGuid As String = Guid.NewGuid.ToString
+        Dim SourceImage As Byte() = Nothing
+        Dim SourceImageOrigin As String = ""
+        Dim SourceName As String = ""
+        Dim SourceTypeCode As String = ""
+        Dim StructuredData As Boolean = True
+        Dim TransmitTime As Decimal = 0
+        Dim txEndTime As DateTime = Now
+        Dim txStartTime As DateTime = Now
+        Dim txTotalTime As Decimal = 0
+        Dim URLHash As String = ""
+        Dim UserID As String = ""
+        Dim VersionNbr As Integer = 0
+        Dim WebPagePublishDate As String = ""
+        Dim ZipFileFQN As String = ""
+        Dim ZipFileGuid As String = Guid.NewGuid.ToString
 
-        Dim LastVerNbr As Integer = 0
-        Dim NextVersionNbr As Integer = 0
+        Dim FI As New FileInfo(FQN)
 
-        If isArchiveDisabled("CONTENT") = True Then
-            DOCS = Nothing
-            PROC = Nothing
-            Return
+        RowData.Add("RowGuid", RowGuid)
+        RowData.Add("SourceGuid", SourceGuid)
+        RowData.Add("CreateDate", FI.CreationTime.ToString)
+        RowData.Add("SourceName", FI.Name)
+        RowData.Add("SourceTypeCode", "")
+        RowData.Add("FQN", FQN.ToString)
+        RowData.Add("VersionNbr", VersionNbr.ToString)
+        RowData.Add("LastAccessDate", FI.LastAccessTime.ToLongDateString)
+        RowData.Add("FileLength", FI.Length)
+        RowData.Add("LastWriteTime", FI.LastWriteTime.ToString)
+        RowData.Add("UserID", gCurrLoginID)
+        RowData.Add("DataSourceOwnerUserID", gCurrLoginID)
+        RowData.Add("isPublic", isPublic.ToString)
+        RowData.Add("FileDirectory", FI.DirectoryName)
+        RowData.Add("OriginalFileType", FI.Extension)
+        'RowData.Add("RetentionExpirationDate", RetentionExpirationDate.ToString)
+        RowData.Add("IsPublicPreviousState", IsPublicPreviousState.ToString)
+        RowData.Add("isAvailable", isAvailable.ToString)
+        RowData.Add("isContainedWithinZipFile", isContainedWithinZipFile.ToString)
+        RowData.Add("IsZipFile", IsZipFile.ToString)
+        RowData.Add("DataVerified", DataVerified.ToString)
+
+        If FI.Extension.ToLower.Equals(".zip") Then
+            RowData.Add("ZipFileGuid", Guid.NewGuid.ToString)
+            RowData.Add("ZipFileFQN", FI.FullName)
+        Else
+            RowData.Add("ZipFileGuid", "")
+            RowData.Add("ZipFileFQN", "")
         End If
 
-        Dim PrevParentDir As String = ""
+        Dim crchash As String = ENC.GenerateSHA512HashFromFile(FI.FullName)
 
-        PROC.getCurrentApplications()
+        RowData.Add("Description", Description.ToString)
+        RowData.Add("KeyWords", KeyWords.ToString)
+        RowData.Add("Notes", Notes.ToString)
+        RowData.Add("isPerm", isPerm.ToString)
+        RowData.Add("isMaster", isMaster.ToString)
+        RowData.Add("CreationDate", FI.CreationTime.ToString)
+        RowData.Add("OcrPerformed", OcrPerformed.ToString)
+        RowData.Add("isGraphic", isGraphic.ToString)
+        RowData.Add("GraphicContainsText", GraphicContainsText.ToString)
+        RowData.Add("OcrText", OcrText.ToString)
+        RowData.Add("ImageHiddenText", ImageHiddenText.ToString)
+        RowData.Add("isWebPage", isWebPage.ToString)
+        RowData.Add("ParentGuid", ParentGuid.ToString)
+        RowData.Add("RetentionCode", RetentionCode.ToString)
+        RowData.Add("MachineID", Environment.MachineName)
+        RowData.Add("CRC", ENC.GenerateSHA256HashFromFile(FI.FullName))
+        RowData.Add("SharePoint", SharePoint.ToString)
+        RowData.Add("SharePointDoc", SharePointDoc.ToString)
+        RowData.Add("SharePointList", SharePointList.ToString)
+        RowData.Add("SharePointListItem", SharePointListItem.ToString)
+        RowData.Add("StructuredData", StructuredData.ToString)
+        RowData.Add("HiveConnectionName", HiveConnectionName.ToString)
+        RowData.Add("HiveActive", HiveActive.ToString)
+        RowData.Add("RepoSvrName", RepoSvrName.ToString)
+        RowData.Add("RowCreationDate", Now.ToLongDateString)
+        RowData.Add("RowLastModDate", Now.ToLongDateString)
+        RowData.Add("ContainedWithin", ContainedWithin.ToString)
+        RowData.Add("RecLen", RecLen.ToString)
+        RowData.Add("RecHash", RecHash.ToString)
+        RowData.Add("OriginalSize", FI.Length.ToString)
+        RowData.Add("CompressedSize", CompressedSize.ToString)
+        RowData.Add("txStartTime", Now.ToLongDateString)
+        RowData.Add("txEndTime", txEndTime.ToString)
+        RowData.Add("txTotalTime", Now.ToLongDateString)
+        RowData.Add("TransmitTime", TransmitTime.ToString)
+        RowData.Add("FileAttached", FileAttached.ToString)
+        RowData.Add("BPS", BPS.ToString)
+        RowData.Add("RepoName", RepoName.ToString)
+        RowData.Add("HashFile", HashFile.ToString)
+        RowData.Add("HashName", ENC.SHA512SqlServerHash(FI.FullName.ToLower))
+        RowData.Add("OcrSuccessful", OcrSuccessful.ToString)
+        RowData.Add("OcrPending", OcrPending.ToString)
+        RowData.Add("PdfIsSearchable", PdfIsSearchable.ToString)
+        RowData.Add("PdfOcrRequired", PdfOcrRequired.ToString)
+        RowData.Add("PdfOcrSuccess", PdfOcrSuccess.ToString)
+        RowData.Add("PdfOcrTextExtracted", PdfOcrTextExtracted.ToString)
+        RowData.Add("PdfPages", PdfPages.ToString)
+        RowData.Add("PdfImages", PdfImages.ToString)
+        RowData.Add("RequireOcr", RequireOcr.ToString)
+        RowData.Add("RssLinkFlg", RssLinkFlg.ToString)
+        RowData.Add("RssLinkGuid", RssLinkGuid.ToString)
+        RowData.Add("PageURL", PageURL.ToString)
+        RowData.Add("RetentionDate", RetentionDate.ToString)
+        RowData.Add("URLHash", URLHash.ToString)
+        RowData.Add("WebPagePublishDate", WebPagePublishDate.ToString)
+        RowData.Add("SapData", SapData.ToString)
+        'RowData.Add("RowID", RowID.ToString)
+        RowData.Add("Imagehash", ENC.GenerateSHA256HashFromFile(FI.FullName))
+        RowData.Add("ImageLen", FI.Length.ToString)
+        RowData.Add("FileDirectoryName", FI.DirectoryName)
+        RowData.Add("FqnHASH", FqnHASH.ToString)
+        RowData.Add("SourceImageOrigin", SourceImageOrigin.ToString)
+        RowData.Add("RecTimeStamp", RecTimeStamp.ToString)
+        'RowData.Add("SourceImage", SourceImage.ToString)
+        RowData.Add("RowGuid2", Guid.NewGuid.ToString)
 
-        If ddebug Then LOG.WriteToListenLog("ArchiveSingleFile : ArchiveContent :8000 : trace log.")
+        Dim Successful As Boolean = True
 
-        Dim RetentionYears As Integer = Val(getSystemParm("RETENTION YEARS"))
-
-        Dim rightNow As Date = Now.AddYears(RetentionYears)
+        RetentionCode = getRetentionCode(gCurrLoginID, FI.DirectoryName)
+        Dim RetentionYears As Integer = getRetentionPeriod(RetentionCode)
+        Dim rightNow As Date = Now
+        If RetentionYears = 0 Then
+            RetentionYears = Val(getSystemParm("RETENTION YEARS"))
+        End If
+        rightNow = rightNow.AddYears(RetentionYears)
         Dim RetentionExpirationDate As String = rightNow.ToString
-        Dim EmailFQN As String = ""
-        ZipFiles.Clear()
-        Dim a(0) As String
 
-        'Dim ActiveFolders(0)
-        Dim ActiveFolders As New List(Of String)
-        Dim FolderName As String = ""
-        Dim DeleteFile As Boolean = False
-        Dim OcrDirectory = ""
-        Dim ListOfDisabledDirs As New List(Of String)
-        '********************************************************************
+        bSuccessExecution = DOCS.Insert(SourceGuid, Imagehash, RetentionYears, RetentionExpirationDate)
 
-        Dim TemporaryDirName As String = DirName
-        LOG.WriteToArchiveLog("Info: ArchiveSingleFile 01 - " & DirName + ":" & gCurrUserGuidID & ":" & TemporaryDirName)
-
-        Dim AD_set As Boolean = setContentArchiveFileFolder(gCurrUserGuidID, ActiveFolders, TemporaryDirName)
-
-        Dim S As String = ""
-        S = S + " SELECT count(*) "
-        S = S + " FROM  Directory "
-        S = S + " WHERE Directory.UserID = '" + gCurrUserGuidID + "' and (AdminDisabled = 0 or AdminDisabled is null) and FQN = '" + DirName + "' "
-
-        Dim icnt As Integer = iCount(S)
-
-        Do While AD_set = False
-            If InStr(TemporaryDirName, "\") > 0 Then
-                TemporaryDirName = ReduceDirByOne(TemporaryDirName)
-                AD_set = setContentArchiveFileFolder(gCurrUserGuidID, ActiveFolders, TemporaryDirName)
-            Else
-                Exit Do
-            End If
-        Loop
-        'log.WriteToArchiveLog("Info: ArchiveSingleFile 05 - " & TemporaryDirName)
-        If AD_set = False Then
-            LOG.WriteToArchiveLog("NOTIFICATION - ArchiveSingleFile 001: Did not find file '" + DirName + " / " + FQN + "', skipping.")
-            If bExists = False Then
-                Return
-            Else
-                'Dim FOLDER_FQN as string  = FolderParms(0)
-                'Dim FOLDER_IncludeSubDirs  = FolderParms(1)
-                'Dim FOLDER_DBID  = FolderParms(2)
-                'Dim FOLDER_VersionFiles  = FolderParms(3)
-                'Dim DisableDir  = FolderParms(4)
-                'OcrDirectory = FolderParms(5)
-                'Dim ParentDir = FolderParms(6)
-                'Dim skipArchiveBit = FolderParms(7)
-                Dim TempStr As String = ""
-                TempStr += DirName + "|"
-                TempStr += "N" + "|"
-                TempStr += "ECMREPO" + "|"
-                TempStr += "N" + "|"
-                TempStr += "N" + "|"
-                TempStr += "Y" + "|"
-                TempStr += DirName + "|"
-                TempStr += "FALSE" + "|"
-                TempStr += "FALSE"
-                ActiveFolders.Add(TempStr)
-            End If
-        End If
-
-        If ActiveFolders.Count = 0 Then
+        If bSuccessExecution Then
+            LOG.WriteToListenLog("ArchiveSingleFile : FILE added to repo 100: " + FI.FullName)
             Successful = True
-            LOG.WriteToListenLog("ArchiveSingleFile : ActiveFolders was ZERO.")
-            GoTo SKIPOUT
-        End If
-        If Not ActiveFolders.Contains(DirName) Then
-            ActiveFolders.Add(DirName)
-        End If
-        getDisabledDirectories(ListOfDisabledDirs)
-        '********************************************************************
+            saveContentOwner(SourceGuid, gCurrUserGuidID, "C", FI.DirectoryName, MachineID, gNetworkID)
 
-        Dim cFolder As String = ""
-        Dim pFolder As String = "XXX"
-        Dim DirFiles As New List(Of String)
-        Dim ArchiveMsg As String = ""
+            'Dim WC  = DOCS.wc_UKI_Documents(SourceGuid)
+            'DOCS.ImageUpdt_SourceImage(WC, fi.fullname)
+            '****************************************************************************************************************************************************************************************************************
+            bSuccessExecution = UpdateSourceImageInRepo(FI.FullName, UID, MachineID, SourceGuid, FI.LastWriteTime, FI.CreationTime, FI.LastWriteTime, 0, FI.FullName, RetentionCode, isPublic, crchash)
+            '****************************************************************************************************************************************************************************************************************
+            If Not bSuccessExecution Then
+                Dim MySql As String = "Delete from DataSource where SourceGuid = '" + SourceGuid + "'"
+                ExecuteSqlNewConn(90214, MySql)
+                LOG.WriteToErrorLog("Unrecoverable Error - removed file '" + FI.FullName + "' from the repository.")
 
-        If ddebug Then LOG.WriteToListenLog("ArchiveSingleFile : ArchiveContent :8001 : trace log.")
+                Dim DisplayMsg As String = "A source file failed to load. Review ERROR log." + vbCrLf + FI.FullName
+                frmHelp.MsgToDisplay = DisplayMsg
+                frmHelp.CallingScreenName = "ECM Archive"
+                frmHelp.CaptionName = "Fatal Load Error"
+                frmHelp.Timer1.Interval = 10000
+                frmHelp.Show()
+            Else
+                Dim DBARCH As New clsDatabaseARCH
+                SourceImage = IO.File.ReadAllBytes(FI.FullName)
+                Dim bGood As Boolean = DBARCH.UpdateSourceImage(SourceGuid, SourceImage)
+                If bGood Then
+                    LOG.WriteToListenLog("** Added source Image for :" + FI.FullName)
+                Else
+                    LOG.WriteToListenLog("ERROR: failed to add source Image for :" + FI.FullName)
+                End If
+                SourceImage = Nothing
+                Successful = True
+                DBARCH = Nothing
+            End If
 
-        FilesBackedUp = 0
-        FilesSkipped = 0
-        Dim LibraryList As New List(Of String)
+            If bSuccessExecution Then
+                FilesBackedUp += 1
+                FullyQualifiedName = UTIL.RemoveSingleQuotes(FI.FullName)
+                UpdateDocCrc(SourceGuid, crchash)
+                Dim bIsImageFile As Boolean = isImageFile(FI.FullName)
+                UpdateCurrArchiveStats(FI.FullName, FI.Extension)
+            Else
+                FilesSkipped += 1
+                LOG.WriteToArchiveLog("ERROR FAILED TO LOAD: " + FI.FullName)
+            End If
 
-        For i As Integer = 0 To ActiveFolders.Count - 1
+            If bSuccessExecution Then
+                Successful = True
+                Application.DoEvents()
+                UpdateDocFqn(SourceGuid, FI.FullName)
+                UpdateDocSize(SourceGuid, FI.Length)
+                UpdateDocDir(SourceGuid, FI.FullName)
+                UpdateDocOriginalFileType(SourceGuid, OriginalFileType)
+                UpdateZipFileIndicator(SourceGuid, IsZipFile)
+                Application.DoEvents()
+                If ddebug Then LOG.WriteToListenLog("ArchiveSingleFile : AddSourceToRepo :Success: 8015")
+                If Not IsZipFile Then
+                    'Dim TheFileIsArchived As Boolean = True
+                    'DMA.setFileArchiveAttributeSet(fi.fullname , TheFileIsArchived)
+                    DMA.setArchiveBitOff(FI.FullName)
+                End If
 
-            'If gTerminateImmediately Then
-            '    Return
-            'End If
+                'delFileParms(SourceGuid )
 
+                UpdateDocCrc(SourceGuid, crchash)
+
+                '** Removed Attribution Classification by WDM 9/10/2009
+                UpdateSrcAttrib(SourceGuid, "CRC", crchash, OriginalFileType)
+                UpdateSrcAttrib(SourceGuid, "FILENAME", FI.FullName, OriginalFileType)
+                UpdateSrcAttrib(SourceGuid, "CreateDate", FI.CreationTime, OriginalFileType)
+                UpdateSrcAttrib(SourceGuid, "FILESIZE", FI.Length, OriginalFileType)
+                UpdateSrcAttrib(SourceGuid, "ChangeDate", FI.LastWriteTime, OriginalFileType)
+                UpdateSrcAttrib(SourceGuid, "WriteDate", FI.LastWriteTime, OriginalFileType)
+
+                If (LCase(FI.Extension).Equals(".mp3") Or LCase(FI.Extension).Equals(".wma") Or LCase(FI.Extension).Equals("wma")) Then
+                    MP3.getRecordingMetaData(FI.FullName, SourceGuid, FI.Extension)
+                    Application.DoEvents()
+                ElseIf (LCase(FI.Extension).Equals(".tiff") Or LCase(FI.Extension).Equals(".jpg")) Then
+                    '** This functionality will be added at a later time
+                    'KAT.getXMPdata(fi.fullname)
+                    Application.DoEvents()
+                ElseIf (LCase(FI.Extension).Equals(".png") Or LCase(FI.Extension).Equals(".gif")) Then
+                    '** This functionality will be added at a later time
+                    'KAT.getXMPdata(fi.fullname)
+                    Application.DoEvents()
+                    'ElseIf LCase(fi.Extension).Equals(".wav") Then
+                    '    MP3.getRecordingMetaData(fi.fullname, SourceGuid, fi.Extension)
+                ElseIf LCase(FI.Extension).Equals(".wma") Then
+                    MP3.getRecordingMetaData(FI.FullName, SourceGuid, FI.Extension)
+                ElseIf LCase(FI.Extension).Equals(".tif") Then
+                    '** This functionality will be added at a later time
+                    'KAT.getXMPdata(fi.fullname)
+                    Application.DoEvents()
+                End If
+                Application.DoEvents()
+                If (LCase(FI.Extension).Equals(".doc") Or LCase(FI.Extension).Equals(".docx")) Then
+                    GetWordDocMetadata(FI.FullName, SourceGuid, OriginalFileType)
+                    GC.Collect()
+                End If
+                If (FI.Extension.Equals(".xls") Or FI.Extension.Equals(".xlsx") Or FI.Extension.Equals(".xlsm")) Then
+                    GetExcelMetaData(FI.FullName, SourceGuid, OriginalFileType)
+                    GC.Collect()
+                End If
+            End If
+NextFile:
+            If Successful = True Then
+                FQN = UTIL.RemoveSingleQuotes(FI.FullName)
+                Dim tFqn As String = FI.FullName
+                tFqn = UTIL.RemoveSingleQuotes(tFqn)
+                S = ""      '" update DirectoryListenerFiles set Archived =  1 where DirGuid = '" + DirGuid + "' and MachineID = '" + MachineID + "' and sourceFile = '" + FQN + "' "
+                DBLocal.MarkListenersProcessed(FQN)
+            End If
             Application.DoEvents()
 
-            Dim FolderParmStr As String = ActiveFolders(i).ToString.Trim
-            Dim FolderParms() As String = FolderParmStr.Split("|")
+            FullyQualifiedName = UTIL.RemoveSingleQuotes(FI.FullName)
 
-            If FolderParms.Count < 3 Then
-                LOG.WriteToListenLog("ArchiveSingleFile : FolderParms.Count < 3 .")
-                GoTo NextFolder
-            End If
-
-            Dim FOLDER_FQN As String = FolderParms(0)
-
-            Dim bDisabled As Boolean = ckFolderDisabled(gCurrUserGuidID, FOLDER_FQN)
-
-            If bDisabled Then
-                LOG.WriteToArchiveLog("Notice: Folder " + FOLDER_FQN + " disabled.")
-                GoTo NextFolder
-            End If
-
-            Console.WriteLine("Archiving : " + FOLDER_FQN)
-            If InStr(FOLDER_FQN, "%userid%", CompareMethod.Text) Then
-                Dim S1 As String = ""
-                Dim S2 As String = ""
-                Dim iLoc As Integer = InStr(FOLDER_FQN, "%userid%", CompareMethod.Text)
-                S1 = Mid(FOLDER_FQN, 1, iLoc - 1)
-                S2 = Mid(FOLDER_FQN, iLoc + Len("%userid%"))
-                Dim UserName As String = System.Environment.UserName
-                FOLDER_FQN = S1 + UserName + S2
-            End If
-
-            If ListOfDisabledDirs.Contains(FOLDER_FQN) Then
-                LOG.WriteToListenLog("NOTICE: Folder '" + FOLDER_FQN + "' is disabled from archive, skipping.")
-                Successful = True
-                FQN = UTIL.RemoveSingleQuotes(FQN)
-                S = "update [DirectoryListenerFiles] set Archived = 1 where sourcefile = '" + FQN + "' and MachineName = '" + MachineID + "'"
-                Dim B As Boolean = ExecuteSqlNewConn(90202, S)
-
-                GoTo NextFolder
-            End If
-
-            If ddebug Then LOG.WriteToListenLog("ArchiveSingleFile : ArchiveContent :8002 :FOLDER_FQN : " + FOLDER_FQN)
-
-            'Dim FOLDER_FQN as string  = FolderParms(0)
-            'Dim FOLDER_IncludeSubDirs  = FolderParms(1)
-            'Dim FOLDER_DBID  = FolderParms(2)
-            'Dim FOLDER_VersionFiles  = FolderParms(3)
-            'Dim DisableDir  = FolderParms(4)
-            'OcrDirectory = FolderParms(5)
-            'Dim ParentDir = FolderParms(6)
-            'Dim skipArchiveBit = FolderParms(7)
-
-            Dim FOLDER_IncludeSubDirs As String = FolderParms(1)
-            Dim FOLDER_DBID As String = FolderParms(2)
-            Dim FOLDER_VersionFiles As String = FolderParms(3)
-            Dim DisableDir As String = FolderParms(4)
-            OcrDirectory = FolderParms(5)
-            Dim ParentDir As String = FolderParms(6)
-            Dim skipArchiveBit As String = FolderParms(7)
-            Dim ckSkipIfArchived As Boolean = False
-
-            If skipArchiveBit.ToUpper.Equals("TRUE") Then
-                ckSkipIfArchived = True
-            Else
-                ckSkipIfArchived = False
-            End If
-
-            ckSkipIfArchived = False
-
-            FOLDER_FQN = UTIL.ReplaceSingleQuotes(FOLDER_FQN)
-
-            If (Directory.Exists(FOLDER_FQN)) Then
-                If ddebug Then LOG.WriteToListenLog("ArchiveSingleFile : ArchiveContent :8003 :FOLDER Exists: " + FOLDER_FQN)
-                If ddebug Then LOG.WriteToListenLog("Archive Folder: " + FOLDER_FQN)
-            Else
-                If ddebug Then LOG.WriteToListenLog("WARNING - ArchiveSingleFile : ArchiveContent :8004 :FOLDER DOES NOT Exist: " + FOLDER_FQN)
-                If ddebug Then LOG.WriteToListenLog("WARNING - Archive Folder FOUND MISSING: " + FOLDER_FQN)
-                FQN = UTIL.RemoveSingleQuotes(FQN)
-                S = "update [DirectoryListenerFiles] set Archived = 1 where sourcefile = '" + FQN + "' and MachineName = '" + MachineID + "'"
-                Dim B As Boolean = ExecuteSqlNewConn(90203, S)
-
-                GoTo NextFolder
-            End If
-            If (DisableDir.Equals("Y")) Then
-                LOG.WriteToListenLog("WARNIGN - ArchiveSingleFile : Directory Archive Disabled: " + FOLDER_FQN + " skipped file " + FQN)
-                FQN = UTIL.RemoveSingleQuotes(FQN)
-                S = "update [DirectoryListenerFiles] set Archived = 1 where sourcefile = '" + FQN + "' and MachineName = '" + MachineID + "'"
-                Dim B As Boolean = ExecuteSqlNewConn(90204, S)
-
-                GoTo NextFolder
-            End If
-
-            If InStr(FOLDER_FQN, "'") > 0 Then
-                Console.WriteLine("Single Quote found")
-            End If
-
-            '******************************************************************************
-            If PrevParentDir <> ParentDir Then
-                IncludedTypes = GetAllIncludedFiletypes(ParentDir, FOLDER_IncludeSubDirs)
-                ExcludedTypes = GetAllExcludedFiletypes(ParentDir, FOLDER_IncludeSubDirs)
-            End If
-            If IncludedTypes.Count = 0 Then
-                GoTo NextFolder
-            End If
-            '******************************************************************************
-            PrevParentDir = ParentDir
-            If ddebug Then LOG.WriteToListenLog("ArchiveSingleFile : ArchiveContent :8005 : Trace: " + FOLDER_FQN)
-            Dim bChanged As Boolean = False
-
-            If FOLDER_FQN <> pFolder Then
-
-                Dim ParentDirForLib As String = ""
-                Dim bLikToLib As Boolean = False
-                bLikToLib = isDirInLibrary(FOLDER_FQN, ParentDirForLib)
-
-                If ddebug Then LOG.WriteToListenLog("ArchiveSingleFile : ArchiveContent :8006 : Folder Changed: " + FOLDER_FQN + ", " + pFolder)
-                FolderName = FOLDER_FQN
-                If ddebug Then Debug.Print("Processing Folder: " + FolderName)
-                If ddebug Then LOG.WriteToListenLog("Archiving Folder: " + FolderName)
-
-                Application.DoEvents()
-                '** Verify that the DIR still exists
-                If Not Directory.Exists(FolderName) Then
-                    LOG.WriteToListenLog("ArchiveSingleFile : Directory does not exist: " + FOLDER_FQN)
-                    FQN = UTIL.RemoveSingleQuotes(FQN)
-                    S = "update [DirectoryListenerFiles] set Archived = 1 where sourcefile = '" + FQN + "' and MachineName = '" + MachineID + "'"
-                    Dim B As Boolean = ExecuteSqlNewConn(90205, S)
-
-                    GoTo NextFolder
-                End If
-
-                If bLikToLib Then
-                    GetDirectoryLibraries(ParentDirForLib, LibraryList)
-                Else
-                    GetDirectoryLibraries(FOLDER_FQN, LibraryList)
-                End If
-
-                RetentionCode = GetDirRetentionCode(ParentDir, gCurrUserGuidID)
-                If RetentionCode.Length > 0 Then
-                    RetentionYears = getRetentionPeriod(RetentionCode)
-                Else
-                    RetentionYears = Val(getSystemParm("RETENTION YEARS"))
-                End If
-
-                getDirectoryParms(a, ParentDir, gCurrUserGuidID)
-
-                Dim IncludeSubDirs As String = a(0)
-                Dim VersionFiles As String = a(1)
-                Dim ckMetaData As String = a(2)
-                OcrDirectory = a(3)
-                RetentionCode = a(4)
-
-                '*****************************************************************************
-                '** Get all of the files in this folder
-                '*****************************************************************************
-                Try
-                    If ddebug Then LOG.WriteToListenLog("Starting File capture")
-                    DirFiles.Clear()
-                    If ddebug Then LOG.WriteToListenLog("Starting File capture: Init Dirfiles")
-                    '*******************************************************************************************************************
-                    If InStr(FQN, ":") > 0 Then
-                        DirFiles.Add(FQN)
-                    Else
-                        DirFiles.Add(DirName + "\" + FQN)
-                    End If
-
-                    'NbrFilesInDir = DMA.getFilesInDir(FOLDER_FQN , DirFiles , IncludedTypes, ExcludedTypes, ckSkipIfArchived)
-                    NbrFilesInDir = 1
-                    '*******************************************************************************************************************
-                    If ddebug Then LOG.WriteToListenLog("Starting File capture: Loaded files")
-                    If NbrFilesInDir = 0 Then
-                        If ddebug Then LOG.WriteToListenLog("Archive Folder HAD NO FILES: " + FOLDER_FQN)
-                        FQN = UTIL.RemoveSingleQuotes(FQN)
-                        S = "update [DirectoryListenerFiles] set Archived = 1 where sourcefile = '" + FQN + "' and MachineName = '" + MachineID + "'"
-                        Dim B As Boolean = ExecuteSqlNewConn(90206, S)
-
-                        GoTo NextFolder
-                    End If
-                    If ddebug Then LOG.WriteToListenLog("Starting File capture: start ckFilesNeedUpdate")
-                    '*******************************
-                    '** WDM 2/21/2010  ckFilesNeedUpdate(DirFiles , ckSkipIfArchived)
-                    '*******************************
-                    If ddebug Then LOG.WriteToListenLog("Starting File capture: end ckFilesNeedUpdate")
-                Catch ex As Exception
-                    LOG.WriteToListenLog("ERROR Archive Folder Acquisition Failure : " + FOLDER_FQN)
-
-                    GoTo NextFolder
-                End Try
-
-                '** Process all of the files
-                For K As Integer = 0 To DirFiles.Count - 1
-
-                    If gTerminateImmediately Then
-                        DOCS = Nothing
-                        PROC = Nothing
-                        Return
-                    End If
-
-                    Application.DoEvents()
-                    If DirFiles(K) = Nothing Then
-                        LOG.WriteToListenLog("ArchiveSingleFile : DirFiles(K) = Nothing " + FOLDER_FQN)
-                        GoTo NextFile
-                    End If
-
-                    Dim fileDetail As IO.FileInfo
-
-                    Dim SourceGuid As String = ""
-                    'Dim FileAttributes () = DirFiles(K).Split("|")
-                    Dim OriginalFileName As String = ""
-                    Dim file_FullName As String = ""
-                    Dim BBB As Boolean = True
-
-                    SourceGuid = getGuid()
-                    file_FullName = DirFiles(0)
-
-                    If File.Exists(file_FullName) Then
-                        BBB = True
-                        Dim FI As New FileInfo(file_FullName)
-                        OriginalFileName = FI.Name
-                        FI = Nothing
-                        GC.Collect()
-                    Else
-                        BBB = False
-                    End If
-                    GC.Collect()
-                    If BBB = False Then
-                        LOG.WriteToListenLog("ArchiveSingleFile :BBB file does not exist: " + file_FullName)
-                        Successful = True
-                        FQN = UTIL.RemoveSingleQuotes(FQN)
-                        S = "update [DirectoryListenerFiles] set Archived = 1 where sourcefile = '" + FQN + "' and MachineName = '" + MachineID + "'"
-                        Dim B As Boolean = ExecuteSqlNewConn(90207, S)
-
-                        GoTo NextFile
-                    End If
-
-                    Dim file_SourceName As String = DMA.getFileName(file_FullName)
-                    If ddebug Then Debug.Print("    File: " + file_SourceName)
-
-                    fileDetail = My.Computer.FileSystem.GetFileInfo(file_FullName)
-
-                    Dim file_Length As String = fileDetail.Length.ToString
-                    If gMaxSize > 0 Then
-                        If Val(file_Length) > gMaxSize Then
-                            LOG.WriteToListenLog("Notice: file '" + file_FullName + "' exceed the allowed file upload size, skipped.")
-                            FQN = UTIL.RemoveSingleQuotes(FQN)
-                            S = "update [DirectoryListenerFiles] set Archived = 1 where sourcefile = '" + FQN + "' and MachineName = '" + MachineID + "'"
-                            Dim B As Boolean = ExecuteSqlNewConn(90208, S)
-
-                            GoTo NextFile
-                        End If
-                    End If
-
-                    file_FullName = UTIL.RemoveSingleQuotes(file_FullName)
-                    file_SourceName = UTIL.RemoveSingleQuotes(file_SourceName)
-
-                    Try
-                        'FrmMDIMain.SB4.Text = file_SourceName
-                    Catch ex As Exception
-
-                    End Try
-
-                    Dim file_DirName As String = fileDetail.Directory.ToString
-                    Dim file_SourceTypeCode As String = fileDetail.Extension
-
-                    If file_SourceTypeCode.Trim.Length = 0 Then
-                        file_SourceTypeCode = ".UKN"
-                    End If
-
-                    Dim CrcHash As String = ENC.GenerateSHA512HashFromFile(file_FullName)
-                    Dim ImageHash As String = ENC.GenerateSHA512HashFromFile(file_FullName)
-
-                    '** If version files is NO and already in REPO, skip it right here
-                    If UCase(FOLDER_VersionFiles).Equals("N") Then
-                        Dim bFileAlreadyExist As Boolean = ckDocumentExists(file_SourceName, MachineID, CrcHash)
-                        If bFileAlreadyExist = True Then
-                            LOG.WriteToListenLog("ArchiveSingleFile :If version files is NO and already in REPO, skip it right here: " + file_FullName)
-                            FQN = UTIL.RemoveSingleQuotes(FQN)
-                            S = "update [DirectoryListenerFiles] set Archived = 1 where sourcefile = '" + FQN + "' and MachineName = '" + MachineID + "'"
-                            Dim B As Boolean = ExecuteSqlNewConn(90209, S)
-
-                            GoTo NextFile
-                        End If
-                    End If
-
-                    If file_SourceTypeCode.Equals(".msg") Then
-                        LOG.WriteToListenLog("NOTICE: Content Archive File : " + file_FullName + " was found to be a message file, moved file.")
-                        Dim DisplayMsg As String = "A message file was encounted in a backup directory." + vbCrLf
-                        DisplayMsg = DisplayMsg + "It has been moved to the EMAIL Working directory." + vbCrLf
-                        DisplayMsg = DisplayMsg + "To archive a MSG file, it should be imported into outlook." + vbCrLf
-                        DisplayMsg = DisplayMsg + "This file has ALSO been added to the CONTENT repository." + vbCrLf
-
-                        If gRunUnattended = False Then
-                            frmHelp.MsgToDisplay = DisplayMsg
-                            frmHelp.CallingScreenName = "ECM Archive"
-                            frmHelp.CaptionName = "MSG File Encounted in Content Archive"
-                            frmHelp.Timer1.Interval = 10000
-                            frmHelp.Show()
-                        End If
-
-                        If gRunUnattended = True Then
-                            LOG.WriteToListenLog("WARNING: ArchiveContent 100: " + vbCrLf + DisplayMsg)
-                        End If
-
-                        Dim EmailWorkingDirectory As String = getWorkingDirectory(gCurrUserGuidID, "EMAIL WORKING DIRECTORY")
-
-                        EmailWorkingDirectory = UTIL.RemoveSingleQuotes(EmailWorkingDirectory)
-                        file_SourceName = UTIL.RemoveSingleQuotes(file_SourceName)
-                        EmailFQN = EmailWorkingDirectory + "\" + file_SourceName.Trim
-
-                        file_FullName = UTIL.RemoveSingleQuotes(file_FullName)
-                        If File.Exists(EmailFQN) Then
-                            Dim tMsg As String = "Email Encountered, already in EMAIL WORKING DIRECTORY: " + EmailFQN
-                            LOG.WriteToListenLog(tMsg)
-                            xTrace(965, "ArchiveContent", tMsg)
-                            'FilesSkipped += 1
-                        Else
-                            File.Copy(file_FullName, EmailFQN)
-                            Dim tMsg As String = "Email File Encountered, moved to EMAIL WORKING DIRECTORY and entered into repository: " + EmailFQN
-                            xTrace(966, "ArchiveContent", tMsg)
-                            'FilesSkipped += 1
-                        End If
-                        GC.Collect()
-                    End If
-
-                    Dim file_LastAccessDate As String = fileDetail.LastAccessTime
-                    Dim file_CreateDate As String = fileDetail.CreationTime
-                    Dim file_LastWriteTime As String = fileDetail.LastWriteTime
-                    Dim OriginalFileType As String = file_SourceTypeCode
-
-                    fileDetail = Nothing
-
-                    If LCase(file_SourceTypeCode).Equals(".exe") Then
-                        Debug.Print(file_FullName)
-                    End If
-
-                    Dim isZipFile As Boolean = ZF.isZipFile(file_FullName)
-                    If isZipFile = True Then
-                        Dim ExistingParentZipGuid As String = GetGuidByFqn(file_FullName, 0)
-                        Dim StackLevel As Integer = 0
-                        Dim ListOfFiles As New Dictionary(Of String, Integer)
-                        If ExistingParentZipGuid.Length > 0 Then
-                            DBLocal.addZipFile(file_FullName, ExistingParentZipGuid, False)
-                            ZF.UploadZipFile(gCurrUserGuidID, gMachineID, file_FullName, ExistingParentZipGuid, True, False, RetentionCode, isPublic, StackLevel, ListOfFiles)
-                        Else
-                            DBLocal.addZipFile(file_FullName, SourceGuid, False)
-                            ZF.UploadZipFile(gCurrUserGuidID, gMachineID, file_FullName, SourceGuid, True, False, RetentionCode, isPublic, StackLevel, ListOfFiles)
-                        End If
-                        ListOfFiles = Nothing
-                        GC.Collect()
-                    End If
-
-                    Application.DoEvents()
-
-                    If Not isZipFile Then
-                        Dim bExt As Boolean = DMA.isExtExcluded(file_SourceTypeCode, ExcludedTypes)
-                        If bExt Then
-                            FilesSkipped += 1
-                            LOG.WriteToListenLog("ArchiveSingleFile : file excluded: " + file_FullName)
-                            FQN = UTIL.RemoveSingleQuotes(FQN)
-                            S = "update [DirectoryListenerFiles] set Archived = 1 where sourcefile = '" + FQN + "' and MachineName = '" + MachineID + "'"
-                            Dim B As Boolean = ExecuteSqlNewConn(90210, S)
-
-                            GoTo NextFile
-                        End If
-                        '** See if the STAR is in the INCLUDE list, if so, all files are included
-                        bExt = DMA.isExtIncluded(file_SourceTypeCode, ExcludedTypes)
-                        If bExt Then
-                            FilesSkipped += 1
-                            LOG.WriteToListenLog("ArchiveSingleFile : file excluded #2: " + file_FullName)
-                            FQN = UTIL.RemoveSingleQuotes(FQN)
-                            S = "update [DirectoryListenerFiles] set Archived = 1 where sourcefile = '" + FQN + "' and MachineName = '" + MachineID + "'"
-                            Dim B As Boolean = ExecuteSqlNewConn(90211, S)
-
-                            GoTo NextFile
-                        End If
-                    End If
-
-                    Dim bcnt As Integer = iGetRowCount("SourceType", "where SourceTypeCode = '" + file_SourceTypeCode + "'")
-                    Dim SubstituteFileType As String = getProcessFileAsExt(file_SourceTypeCode)
-
-                    If bcnt = 0 And SubstituteFileType = Nothing Then
-
-                        If SubstituteFileType = Nothing Then
-                            Dim MSG As String = "The file type '" + file_SourceTypeCode + "' is undefined." + vbCrLf + "DO YOU WISH TO AUTOMATICALLY DEFINE IT?" + vbCrLf + "This will allow content to be archived, but not searched."
-                            'Dim dlgRes As DialogResult = MessageBox.Show(MSG, "Filetype Undefined", MessageBoxButtons.YesNo)
-
-                            If ddebug Then LOG.WriteToListenLog(MSG)
-
-                            UNASGND.setApplied("0")
-                            UNASGND.setFiletype(file_SourceTypeCode)
-                            Dim xCnt As Integer = UNASGND.cnt_PK_AFTU(file_SourceTypeCode)
-                            If xCnt = 0 Then
-                                UNASGND.Insert()
-                            End If
-
-                            Dim ST As New clsSOURCETYPE
-                            ST.setSourcetypecode(file_SourceTypeCode)
-                            ST.setSourcetypedesc("NO SEARCH - AUTO ADDED by Pgm")
-                            ST.setIndexable("0")
-                            ST.setStoreexternal(0)
-                            ST.Insert()
-                        Else
-                            file_SourceTypeCode = SubstituteFileType
-                        End If
-                    ElseIf SubstituteFileType.Trim.Length > 0 Then
-                        file_SourceTypeCode = SubstituteFileType
-                    End If
-
-                    EmailFQN = UTIL.RemoveSingleQuotes(EmailFQN)
-                    file_FullName = UTIL.RemoveSingleQuotes(file_FullName)
-
-                    Dim StoredExternally As String = "N"
-
-                    icnt = 0
-
-                    Application.DoEvents()
-
-                    '***********************************************************************'
-                    '** New file
-                    '***********************************************************************'
-                    Dim bSuccessExecution As Boolean = False
-                    Dim AttachmentCode As String = "C"
-                    Dim ContentTypeCode As String = "C"
-                    LOG.WriteToListenLog("File : " + file_FullName + " was found to be NEW and not in the repository.")
-
-                    'Me.SB.Text = "Loading: " + file_SourceName
-                    Application.DoEvents()
-                    LastVerNbr = 0
-                    'WDMXX This is where Duplicate Content is identified.
-                    icnt = getCountDataSourceFiles(file_SourceName, CrcHash)
-                    If icnt > 0 Then
-                        '** The file is not in the repository, add it.
-                        LOG.WriteToListenLog("Warning File : " + file_FullName + " was found to be NEW and WAS ACTUALLY in the repository, skipped it.")
-                        FilesSkipped += 1
-                        FQN = UTIL.RemoveSingleQuotes(FQN)
-                        S = "update [DirectoryListenerFiles] set Archived = 1 where sourcefile = '" + FQN + "' and MachineName = '" + MachineID + "'"
-                        Dim B As Boolean = ExecuteSqlNewConn(90213, S)
-                        Dim tguid As String = getContentGuid(FQN, CrcHash)
-                        Dim FileDirectory As String = Path.GetDirectoryName(FQN)
-                        bSuccessExecution = saveContentOwner(tguid, gCurrLoginID, ContentTypeCode, FileDirectory, gMachineID, gNetworkID)
-                        GoTo NextFile
-                    End If
-
-                    If icnt = 0 Then
-
-                        'file_FullName = UTIL.RemoveSingleQuotes(file_FullName)
-                        'file_SourceName = UTIL.RemoveSingleQuotes(file_SourceName)
-
-                        DOCS.setSourceguid(SourceGuid)
-                        DOCS.setFqn(file_FullName)
-                        DOCS.setSourcename(file_SourceName)
-                        DOCS.setSourcetypecode(file_SourceTypeCode)
-                        DOCS.setLastaccessdate(file_LastAccessDate)
-                        DOCS.setCreatedate(file_CreateDate)
-                        DOCS.setCreationdate(file_CreateDate)
-                        DOCS.setLastwritetime(file_LastWriteTime)
-                        DOCS.setDatasourceowneruserid(gCurrUserGuidID)
-                        DOCS.setVersionnbr("0")
-
-                        bSuccessExecution = DOCS.Insert(SourceGuid, ImageHash, RetentionYears, RetentionExpirationDate)
-
-                        If bSuccessExecution Then
-                            LOG.WriteToListenLog("ArchiveSingleFile : FILE added to repo 100: " + file_FullName)
-                            Successful = True
-                            saveContentOwner(SourceGuid, gCurrUserGuidID, "C", FOLDER_FQN, MachineID, gNetworkID)
-
-                            'Dim WC  = DOCS.wc_UKI_Documents(SourceGuid)
-                            'DOCS.ImageUpdt_SourceImage(WC, file_FullName)
-                            '****************************************************************************************************************************************************************************************************************
-                            bSuccessExecution = UpdateSourceImageInRepo(file_FullName, UID, MachineID, SourceGuid, file_LastAccessDate, file_CreateDate, file_LastWriteTime, LastVerNbr, file_FullName, RetentionCode, isPublic, CrcHash)
-                            '****************************************************************************************************************************************************************************************************************
-
-                            If Not bSuccessExecution Then
-                                Dim MySql As String = "Delete from DataSource where SourceGuid = '" + SourceGuid + "'"
-                                ExecuteSqlNewConn(90214, MySql)
-                                LOG.WriteToErrorLog("Unrecoverable Error - removed file '" + file_FullName + "' from the repository.")
-
-                                Dim DisplayMsg As String = "A source file failed to load. Review ERROR log." + vbCrLf + file_FullName
-                                frmHelp.MsgToDisplay = DisplayMsg
-                                frmHelp.CallingScreenName = "ECM Archive"
-                                frmHelp.CaptionName = "Fatal Load Error"
-                                frmHelp.Timer1.Interval = 10000
-                                frmHelp.Show()
-
-                            End If
-                        Else
-                            LOG.WriteToListenLog("Error 22.345.23a - Failed to add source:" + file_FullName)
-                            Successful = False
-                        End If
-
-                        file_FullName = UTIL.RemoveSingleQuotes(file_FullName)
-                        file_SourceName = UTIL.RemoveSingleQuotes(file_SourceName)
-                    End If
-
-                    If bSuccessExecution Then
-                        FilesBackedUp += 1
-
-                        file_FullName = UTIL.RemoveSingleQuotes(file_FullName)
-                        file_SourceName = UTIL.RemoveSingleQuotes(file_SourceName)
-
-                        UpdateDocCrc(SourceGuid, CrcHash)
-
-                        Dim bIsImageFile As Boolean = isImageFile(file_FullName)
-
-                        UpdateCurrArchiveStats(file_FullName, file_SourceTypeCode)
-                    Else
-                        FilesSkipped += 1
-                        If ddebug Then LOG.WriteToListenLog("ERROR File : " + file_FullName + " was found to be NEW and was NOT ADDED to the repository.")
-                        If ddebug Then LOG.WriteToListenLog("ERROR File : " + file_FullName + " was found to be NEW and was NOT ADDED to the repository.")
-                        Debug.Print("FAILED TO LOAD: " + file_FullName)
-                        If ddebug Then LOG.WriteToListenLog("ArchiveSingleFile : AddSourceToRepo :FAILED TO LOAD: 8013a: " + file_SourceName)
-                    End If
-
-                    If bSuccessExecution Then
-                        Successful = True
-                        Application.DoEvents()
-                        UpdateDocFqn(SourceGuid, file_FullName)
-                        UpdateDocSize(SourceGuid, file_Length)
-                        UpdateDocDir(SourceGuid, file_FullName)
-                        UpdateDocOriginalFileType(SourceGuid, OriginalFileType)
-                        UpdateZipFileIndicator(SourceGuid, isZipFile)
-                        Application.DoEvents()
-                        If ddebug Then LOG.WriteToListenLog("ArchiveSingleFile : AddSourceToRepo :Success: 8015")
-                        If Not isZipFile Then
-                            'Dim TheFileIsArchived As Boolean = True
-                            'DMA.setFileArchiveAttributeSet(file_FullName , TheFileIsArchived)
-                            DMA.setArchiveBitOff(file_FullName)
-                        End If
-
-                        'delFileParms(SourceGuid )
-
-                        UpdateDocCrc(SourceGuid, CrcHash)
-
-                        '** Removed Attribution Classification by WDM 9/10/2009
-                        UpdateSrcAttrib(SourceGuid, "CRC", CrcHash, OriginalFileType)
-                        UpdateSrcAttrib(SourceGuid, "FILENAME", file_SourceName, OriginalFileType)
-                        UpdateSrcAttrib(SourceGuid, "CreateDate", file_CreateDate, OriginalFileType)
-                        UpdateSrcAttrib(SourceGuid, "FILESIZE", file_Length, OriginalFileType)
-                        UpdateSrcAttrib(SourceGuid, "ChangeDate", file_LastAccessDate, OriginalFileType)
-                        UpdateSrcAttrib(SourceGuid, "WriteDate", file_LastWriteTime, OriginalFileType)
-
-                        'AddMachineSource(file_FullName, SourceGuid)
-
-                        If Val(file_Length) > 1000000000 Then
-                            Try
-                                'FrmMDIMain.SB4.Text = "Extreme File: " + file_Length  + " bytes - standby"
-                            Catch ex As Exception
-
-                            End Try
-                        ElseIf Val(file_Length) > 2000000 Then
-                            Try
-                                'FrmMDIMain.SB4.Text = "Large File: " + file_Length  + " bytes"
-                            Catch ex As Exception
-                            End Try
-                        End If
-                        If (LCase(file_SourceTypeCode).Equals(".mp3") Or LCase(file_SourceTypeCode).Equals(".wma") Or LCase(file_SourceTypeCode).Equals("wma")) Then
-                            MP3.getRecordingMetaData(file_FullName, SourceGuid, file_SourceTypeCode)
-                            Application.DoEvents()
-                        ElseIf (LCase(file_SourceTypeCode).Equals(".tiff") Or LCase(file_SourceTypeCode).Equals(".jpg")) Then
-                            '** This functionality will be added at a later time
-                            'KAT.getXMPdata(file_FullName)
-                            Application.DoEvents()
-                        ElseIf (LCase(file_SourceTypeCode).Equals(".png") Or LCase(file_SourceTypeCode).Equals(".gif")) Then
-                            '** This functionality will be added at a later time
-                            'KAT.getXMPdata(file_FullName)
-                            Application.DoEvents()
-                            'ElseIf LCase(file_SourceTypeCode).Equals(".wav") Then
-                            '    MP3.getRecordingMetaData(file_FullName, SourceGuid, file_SourceTypeCode)
-                        ElseIf LCase(file_SourceTypeCode).Equals(".wma") Then
-                            MP3.getRecordingMetaData(file_FullName, SourceGuid, file_SourceTypeCode)
-                        ElseIf LCase(file_SourceTypeCode).Equals(".tif") Then
-                            '** This functionality will be added at a later time
-                            'KAT.getXMPdata(file_FullName)
-                            Application.DoEvents()
-                        End If
-                        Application.DoEvents()
-                        If (LCase(file_SourceTypeCode).Equals(".doc") _
-                                Or LCase(file_SourceTypeCode).Equals(".docx")) _
-                                And ckMetaData.Equals("Y") Then
-                            GetWordDocMetadata(file_FullName, SourceGuid, OriginalFileType)
-                            GC.Collect()
-                        End If
-                        If (file_SourceTypeCode.Equals(".xls") _
-                                    Or file_SourceTypeCode.Equals(".xlsx") _
-                                    Or file_SourceTypeCode.Equals(".xlsm")) _
-                                    And ckMetaData.Equals("Y") Then
-                            GetExcelMetaData(file_FullName, SourceGuid, OriginalFileType)
-                            GC.Collect()
-                        End If
-                    End If
-
-NextFile:
-                    If Successful = True Then
-                        FQN = UTIL.RemoveSingleQuotes(FQN)
-                        DirName = UTIL.RemoveSingleQuotes(DirName)
-                        Dim tFqn As String = DirName + "\" + FQN
-                        tFqn = UTIL.RemoveSingleQuotes(tFqn)
-                        S = ""      '" update DirectoryListenerFiles set Archived =  1 where DirGuid = '" + DirGuid + "' and MachineID = '" + MachineID + "' and sourceFile = '" + FQN + "' "
-                        'S = "update [DirectoryListenerFiles] set Archived = 1 where sourcefile = '" + FQN + "' and MachineID = '" + MachineID + "'"
-                        DBLocal.MarkListenersProcessed(FQN)
-                        'Dim B As Boolean = ExecuteSqlNewConn(90217,S)
-                        'If Not B Then
-                        '    LOG.WriteToListenLog("ERROR: ArchiveSingleFile: failed to archive: " + DirName + " \ " + FQN)
-                        'End If
-                    End If
-                    Application.DoEvents()
-
-                    file_FullName = UTIL.RemoveSingleQuotes(file_FullName)
-                    file_SourceName = UTIL.RemoveSingleQuotes(file_SourceName)
-
-                    If gTerminateImmediately Then
-                        DOCS = Nothing
-                        PROC = Nothing
-                        Return
-                    End If
-
-                    If ckSkipIfArchived = True And Not file_SourceName Is Nothing Then
-                        DMA.setArchiveBitOff(file_FullName)
-                    End If
-
-                    If Successful = True Then
-                        LOG.WriteToListenLog("SUCCCESS: ArchiveSingleFile: 01 " + DirName + " \ " + FQN)
-                        FQN = UTIL.RemoveSingleQuotes(FQN)
-                        DirName = UTIL.RemoveSingleQuotes(DirName)
-                        Dim tFqn As String = DirName + "\" + FQN
-                        tFqn = UTIL.RemoveSingleQuotes(tFqn)
-                        S = ""         ' " update DirectoryListenerFiles set Archived =  1 where DirGuid = '" + DirGuid + "' and MachineID = '" + MachineID + "' and sourceFile = '" + FQN + "' "
-                        S = "update [DirectoryListenerFiles] set Archived = 1 where sourcefile = '" + FQN + "' and MachineName = '" + MachineID + "'"
-                        Dim B As Boolean = ExecuteSqlNewConn(90218, S)
-                        If Not B Then
-                            LOG.WriteToListenLog("ERROR: ArchiveSingleFile: failed to archive: " + DirName + " \ " + FQN)
-                        End If
-                    End If
-
-                Next
-            Else
-                If ddebug Then Debug.Print("Duplicate Folder: " + FolderName)
-                If ddebug Then LOG.WriteToListenLog("ArchiveSingleFile : AddSourceToRepo :Success: 8034")
-            End If
-NextFolder:
-            pFolder = FolderName
             If gTerminateImmediately Then
                 DOCS = Nothing
                 PROC = Nothing
-                Return
+                Return False
             End If
+
             If Successful = True Then
-                LOG.WriteToListenLog("SUCCCESS: ArchiveSingleFile: 02 " + DirName + " \ " + FQN)
-                FQN = UTIL.RemoveSingleQuotes(FQN)
-                DirName = UTIL.RemoveSingleQuotes(DirName)
-                Dim tFqn As String = DirName + "\" + FQN
+                LOG.WriteToListenLog("SUCCCESS: ArchiveSingleFile: 01 " + FI.DirectoryName + " \ " + FQN)
+                Dim tFqn As String = FI.FullName
                 tFqn = UTIL.RemoveSingleQuotes(tFqn)
-                S = ""             ' " update DirectoryListenerFiles set Archived =  1 where DirGuid = '" + DirGuid + "' and MachineID = '" + MachineID + "' and sourceFile = '" + FQN + "' "
-                S = "update [DirectoryListenerFiles] set Archived = 1 where sourcefile = '" + FQN + "' and MachineName = '" + MachineID + "'"
-                Dim B As Boolean = ExecuteSqlNewConn(90219, S)
+                S = ""         ' " update DirectoryListenerFiles set Archived =  1 where DirGuid = '" + DirGuid + "' and MachineID = '" + MachineID + "' and sourceFile = '" + FQN + "' "
+                S = "update [DirectoryListenerFiles] set Archived = 1 where sourcefile = '" + FI.FullName + "' and MachineName = '" + MachineID + "'"
+                B = ExecuteSqlNewConn(90218, S)
                 If Not B Then
-                    LOG.WriteToListenLog("ERROR: ArchiveSingleFile: failed to archive: " + DirName + " \ " + FQN)
+                    LOG.WriteToListenLog("ERROR: ArchiveSingleFile: failed to archive: " + FI.DirectoryName + " \ " + FQN)
                 End If
             End If
-        Next
+        Else
+            If ddebug Then Debug.Print("Duplicate Folder: " + FI.DirectoryName)
+            If ddebug Then LOG.WriteToListenLog("ArchiveSingleFile : AddSourceToRepo :Success: 8034")
+        End If
+NextFolder:
 
-        PROC.getProcessesToKill()
-        PROC.KillOrphanProcesses()
+        If gTerminateImmediately Then
+            DOCS = Nothing
+            PROC = Nothing
+            Return False
+        End If
+        If B = True Then
+            LOG.WriteToListenLog("SUCCCESS: ArchiveSingleFile: 02 " + FI.DirectoryName + " \ " + FQN)
+            FQN = UTIL.RemoveSingleQuotes(FQN)
+            Dim tFqn As String = FI.DirectoryName + "\" + FQN
+            tFqn = UTIL.RemoveSingleQuotes(tFqn)
+            S = ""             ' " update DirectoryListenerFiles set Archived =  1 where DirGuid = '" + DirGuid + "' and MachineID = '" + MachineID + "' and sourceFile = '" + FQN + "' "
+            S = "update [DirectoryListenerFiles] set Archived = 1 where sourcefile = '" + FQN + "' and MachineName = '" + MachineID + "'"
+            B = ExecuteSqlNewConn(90219, S)
+            If Not B Then
+                LOG.WriteToListenLog("ERROR: ArchiveSingleFile: failed to archive: " + FI.DirectoryName + "\" + FQN)
+            End If
+        End If
+
 
         DOCS = Nothing
         PROC = Nothing
@@ -11552,11 +11124,12 @@ SKIPOUT:
         '    Dim S  = " update DirectoryListenerFiles set Archived =  1 where DirGuid = '" + DirGuid + "' and MachineID = '" + MachineID + "' and sourceFile = '" + FQN + "' "
         '    Dim B As Boolean = ExecuteSqlNewConn(90220,S)
         '    If Not B Then
-        '        LOG.WriteToListenLog("ERROR: ArchiveSingleFile: failed to archive: " + DirName + " \ " + FQN)
+        '        LOG.WriteToListenLog("ERROR: ArchiveSingleFile: failed to archive: " + fi.DirectoryName + " \ " + FQN)
         '    End If
         'End If
+        Return True
         frmNotify.lblPdgPages.Text = "*"
-    End Sub
+    End Function
 
     Function isDirInLibrary(ByVal DirFQN As String, ByRef ParentDirLibName As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then

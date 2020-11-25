@@ -26,46 +26,62 @@ Partial Class frmNotify
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblFileSpec = New System.Windows.Forms.Label()
         Me.lblPdgPages = New System.Windows.Forms.Label()
+        Me.lblDetail = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 9)
+        Me.Label1.Location = New System.Drawing.Point(16, 11)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(59, 13)
+        Me.Label1.Size = New System.Drawing.Size(75, 17)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "CONTENT"
         '
         'lblFileSpec
         '
         Me.lblFileSpec.AutoSize = True
-        Me.lblFileSpec.Location = New System.Drawing.Point(12, 58)
+        Me.lblFileSpec.Location = New System.Drawing.Point(16, 71)
+        Me.lblFileSpec.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblFileSpec.Name = "lblFileSpec"
-        Me.lblFileSpec.Size = New System.Drawing.Size(26, 13)
+        Me.lblFileSpec.Size = New System.Drawing.Size(34, 17)
         Me.lblFileSpec.TabIndex = 1
         Me.lblFileSpec.Text = "File:"
         '
         'lblPdgPages
         '
         Me.lblPdgPages.AutoSize = True
-        Me.lblPdgPages.Location = New System.Drawing.Point(12, 33)
+        Me.lblPdgPages.Location = New System.Drawing.Point(16, 41)
+        Me.lblPdgPages.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblPdgPages.Name = "lblPdgPages"
-        Me.lblPdgPages.Size = New System.Drawing.Size(40, 13)
+        Me.lblPdgPages.Size = New System.Drawing.Size(52, 17)
         Me.lblPdgPages.TabIndex = 2
         Me.lblPdgPages.Text = "Pages:"
         '
+        'lblDetail
+        '
+        Me.lblDetail.AutoSize = True
+        Me.lblDetail.Location = New System.Drawing.Point(16, 97)
+        Me.lblDetail.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblDetail.Name = "lblDetail"
+        Me.lblDetail.Size = New System.Drawing.Size(38, 17)
+        Me.lblDetail.TabIndex = 3
+        Me.lblDetail.Text = "Msg:"
+        '
         'frmNotify
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(706, 80)
+        Me.ClientSize = New System.Drawing.Size(941, 123)
+        Me.Controls.Add(Me.lblDetail)
         Me.Controls.Add(Me.lblPdgPages)
         Me.Controls.Add(Me.lblFileSpec)
         Me.Controls.Add(Me.Label1)
         Me.DoubleBuffered = True
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MaximizeBox = False
         Me.Name = "frmNotify"
         Me.Text = "Notice           (frmNotify)"
@@ -76,4 +92,5 @@ Partial Class frmNotify
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents lblFileSpec As System.Windows.Forms.Label
     Friend WithEvents lblPdgPages As System.Windows.Forms.Label
+    Friend WithEvents lblDetail As Label
 End Class

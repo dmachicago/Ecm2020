@@ -23,7 +23,7 @@ IF @LANG='VB'
 BEGIN
 SELECT ' DIM '+column_name+' as '+CASE data_type
                                     WHEN 'float'
-                                    THEN 'float = 0 '
+                                    THEN 'double = 0 '
                                     WHEN 'int'
                                     THEN 'integer = 0 '
                                     WHEN 'nvarchar'
@@ -41,7 +41,7 @@ SELECT ' DIM '+column_name+' as '+CASE data_type
                                     WHEN 'datetime'
                                     THEN 'datetime = now'
                                     WHEN 'varbinary'
-                                    THEN 'binary() = nothing'
+                                    THEN 'byte() = nothing'
                                     WHEN 'uniqueidentifier'
                                     THEN 'string = ""'
                                     ELSE data_type
@@ -56,7 +56,7 @@ IF @LANG='C#'
 BEGIN
 SELECT CASE data_type
          WHEN 'float'
-         THEN 'float'
+         THEN 'double'
          WHEN 'int'
          THEN 'integer'
          WHEN 'nvarchar'
@@ -74,7 +74,7 @@ SELECT CASE data_type
          WHEN 'datetime'
          THEN 'datetime'
          WHEN 'varbinary'
-         THEN 'binary('+CASE
+         THEN 'byte('+CASE
                           WHEN CHARACTER_MAXIMUM_LENGTH<1
                                OR CHARACTER_MAXIMUM_LENGTH IS NULL
                           THEN ')'

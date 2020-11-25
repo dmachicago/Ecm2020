@@ -148,6 +148,47 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    Public Function getExistingFiles(TgtDir As String, ScanSubDir As String, MachineID As String, UserID As String) As List(Of String)
+
+        Dim L As New List(Of String)
+        Dim S As String = ""
+        Dim fqn As String = ""
+        Dim hash As String = ""
+
+        If ScanSubDir.ToUpper.Equals("Y") Then
+            S = "Select distinct FQN from DataSource where FileDirectory like '" + TgtDir + "%' and UserID = '" + UserID + "' "
+        Else
+            S = "Select distinct FQN from DataSource where FileDirectory = '" + TgtDir + "'  and UserID = '" + UserID + "' "
+        End If
+
+        Try
+            Dim CS As String = getRepoConnStr()
+            Dim CONN As New SqlConnection(CS)
+            CONN.Open()
+            Using CONN
+                Dim command As New SqlCommand(S, CONN)
+                Using command
+                    Using RSD As SqlDataReader = command.ExecuteReader()
+                        If RSD.HasRows Then
+                            Do While RSD.Read()
+                                fqn = RSD.GetValue(0).ToString.ToLower
+                                L.Add(fqn)
+                            Loop
+                        End If
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("getExisting Files ERROR: " + ex.Message)
+            LOG.WriteToArchiveLog("getExisting Files ERROR: " + ex.Message)
+        End Try
+
+
+
+        Return L
+
+    End Function
+
     Public Function getDSFQN(TOPN As String, PASSEDfqn As String) As Dictionary(Of String, String)
 
         Dim L As New Dictionary(Of String, String)
@@ -6969,7 +7010,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return B
     End Function
 
-    Function UpdateSourceImage(SourceGuid As String, SourceImage As Byte()) As Boolean
+    Public Function UpdateSourceImage(SourceGuid As String, SourceImage As Byte()) As Boolean
 
         Dim B As Boolean = True
         Dim CMD As New SqlCommand
@@ -7069,7 +7110,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Dim TrackUploads As String = System.Configuration.ConfigurationManager.AppSettings("TrackUploads")
 
         Dim LL As Integer = 0
-        Dim B As Boolean = False
+        Dim B As Boolean = True
         Dim bLogUploads As Boolean = True
 
         Dim OriginalSize As Integer = 0
@@ -7162,9 +7203,6 @@ Public Class clsDatabaseARCH : Implements IDisposable
             'Dim ProxyArchive As New SVCCLCArchive.Service1Client
 
             MachineID = Environment.MachineName
-            B = True
-
-            LL = 16
 
             '************************************************************************************************************************************************************************************************
             Dim BBX As Boolean = InsertSourceImage(gCurrUserGuidID, Environment.MachineName, SourceName, SourceGuid, UploadFQN, "DataSource", RetentionCode, isPublic, FileHash, FileDirectory, False)
@@ -7183,6 +7221,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
             GC.Collect()
             GC.WaitForPendingFinalizers()
             LL = 24
+            B = True
         Catch ex As Exception
             bError = True
             Dim FI As New FileInfo(UploadFQN)
@@ -17842,6 +17881,34 @@ REDO:
         GC.Collect()
 
     End Sub
+
+    Function getRetentionCode(ByVal UserID As String, DirName As String) As String
+
+        DirName = DirName.Replace("''", "'")
+        DirName = DirName.Replace("'", "''")
+
+        Dim RetentionCode As String = ""
+        Dim S As String = "select top 1 RetentionCode from Directory where FQN = '" + DirName + "' and UserID = '" + UserID + "' "
+        Dim rsData As SqlDataReader = Nothing
+        Dim rPeriod As Integer = 10
+        Try
+            Dim CS As String = getRepoConnStr() : Dim CONN As New SqlConnection(CS) : CONN.Open() : Dim command As New SqlCommand(S, CONN) : rsData = command.ExecuteReader()
+            If rsData.HasRows Then
+                rsData.Read()
+                RetentionCode = rsData.GetString(0)
+            End If
+        Catch ex As Exception
+            rPeriod = 10
+            LOG.WriteToArchiveLog("clsDatabaseARCH:getSqlInstanceIdentifier Error 100: ", ex)
+        End Try
+
+        If Not rsData.IsClosed Then
+            rsData.Close()
+        End If
+        rsData = Nothing
+        GC.Collect()
+        Return RetentionCode
+    End Function
 
     Function getRetentionPeriod(ByVal RetentionCode As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
