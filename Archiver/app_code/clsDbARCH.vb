@@ -27355,273 +27355,387 @@ NextOne:
         Return True
 
     End Function
-    Function insertNewContent(tDict As Dictionary(Of String, String), SourceImage As Byte(), SourceImageOrigin As String) As Boolean
+
+    Public Function insertNewContent(FQN As String) As Boolean
+
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         Dim versionNumber As String = Application.ProductVersion.ToString
+        Dim B As Boolean = True
 
-        Dim RowGuid As String = tDict("RowGuid")
-        Dim SourceGuid As String = tDict("SourceGuid")
-        Dim CreateDate As String = tDict("CreateDate")
-        Dim SourceName As String = tDict("SourceName")
-        'Dim SourceImage As String = tDict("SourceImage")
-        Dim SourceTypeCode As String = tDict("SourceTypeCode")
-        Dim FQN As String = tDict("FQN")
-        'Dim VersionNbr As String = tDict("VersionNbr")
-        Dim VersionNbr As String = versionNumber
-        Dim LastAccessDate As String = tDict("LastAccessDate")
-        Dim FileLength As String = tDict("FileLength")
-        Dim LastWriteTime As String = tDict("LastWriteTime")
-        Dim UserID As String = tDict("UserID")
-        Dim DataSourceOwnerUserID As String = tDict("DataSourceOwnerUserID")
-        Dim isPublic As String = tDict("isPublic")
-        Dim FileDirectory As String = tDict("FileDirectory")
-        Dim OriginalFileType As String = tDict("OriginalFileType")
-        Dim RetentionExpirationDate As String = tDict("RetentionExpirationDate")
-        Dim IsPublicPreviousState As String = tDict("IsPublicPreviousState")
-        Dim isAvailable As String = tDict("isAvailable")
-        Dim isContainedWithinZipFile As String = tDict("isContainedWithinZipFile")
-        Dim IsZipFile As String = tDict("IsZipFile")
-        Dim DataVerified As String = tDict("DataVerified")
-        Dim ZipFileGuid As String = tDict("ZipFileGuid")
-        Dim ZipFileFQN As String = tDict("ZipFileFQN")
-        Dim Description As String = tDict("Description")
-        Dim KeyWords As String = tDict("KeyWords")
-        Dim Notes As String = tDict("Notes")
-        Dim isPerm As String = tDict("isPerm")
-        Dim isMaster As String = tDict("isMaster")
-        Dim CreationDate As String = tDict("CreationDate")
-        Dim OcrPerformed As String = tDict("OcrPerformed")
-        Dim isGraphic As String = tDict("isGraphic")
-        Dim GraphicContainsText As String = tDict("GraphicContainsText")
-        Dim OcrText As String = tDict("OcrText")
-        Dim ImageHiddenText As String = tDict("ImageHiddenText")
-        Dim isWebPage As String = tDict("isWebPage")
-        Dim ParentGuid As String = tDict("ParentGuid")
-        Dim RetentionCode As String = tDict("RetentionCode")
-        Dim MachineID As String = tDict("MachineID")
-        Dim CRC As String = tDict("CRC")
-        Dim ImageHash As String = tDict("ImageHash")
-        Dim SharePoint As String = tDict("SharePoint")
-        Dim SharePointDoc As String = tDict("SharePointDoc")
-        Dim SharePointList As String = tDict("SharePointList")
-        Dim SharePointListItem As String = tDict("SharePointListItem")
-        Dim StructuredData As String = tDict("StructuredData")
-        Dim HiveConnectionName As String = tDict("HiveConnectionName")
-        Dim HiveActive As String = tDict("HiveActive")
-        Dim RepoSvrName As String = tDict("RepoSvrName")
-        Dim RowCreationDate As String = tDict("RowCreationDate")
-        Dim RowLastModDate As String = tDict("RowLastModDate")
-        Dim ContainedWithin As String = tDict("ContainedWithin")
-        Dim RecLen As String = tDict("RecLen")
-        Dim RecHash As String = tDict("RecHash")
-        Dim OriginalSize As String = tDict("OriginalSize")
-        Dim CompressedSize As String = tDict("CompressedSize")
-        Dim txStartTime As String = tDict("txStartTime")
-        Dim txEndTime As String = tDict("txEndTime")
-        Dim txTotalTime As String = tDict("txTotalTime")
-        Dim TransmitTime As String = tDict("TransmitTime")
-        Dim FileAttached As String = tDict("FileAttached")
-        Dim BPS As String = tDict("BPS")
-        Dim RepoName As String = tDict("RepoName")
-        Dim HashFile As String = tDict("HashFile")
-        Dim HashName As String = tDict("HashName")
-        Dim OcrSuccessful As String = tDict("OcrSuccessful")
-        Dim OcrPending As String = tDict("OcrPending")
-        Dim PdfIsSearchable As String = tDict("PdfIsSearchable")
-        Dim PdfOcrRequired As String = tDict("PdfOcrRequired")
-        Dim PdfOcrSuccess As String = tDict("PdfOcrSuccess")
-        Dim PdfOcrTextExtracted As String = tDict("PdfOcrTextExtracted")
-        Dim PdfPages As String = tDict("PdfPages")
-        Dim PdfImages As String = tDict("PdfImages")
-        Dim RequireOcr As String = tDict("RequireOcr")
-        Dim RssLinkFlg As String = tDict("RssLinkFlg")
-        Dim RssLinkGuid As String = tDict("RssLinkGuid")
-        Dim PageURL As String = tDict("PageURL")
-        Dim RetentionDate As String = tDict("RetentionDate")
-        Dim URLHash As String = tDict("URLHash")
-        Dim WebPagePublishDate As String = tDict("WebPagePublishDate")
-        Dim SapData As String = tDict("SapData")
-        'Dim RowID As String = tDict("RowID")
+        Dim DOCS As New clsDataSource_V2
+        Dim bSuccess As Boolean = True
+
+        Dim BPS As Double = 0
+        Dim CompressedSize As Integer = 0
+        Dim ContainedWithin As String = ""
+        Dim CRC As String = ""
+        Dim CreateDate As DateTime = Now
+        Dim CreationDate As DateTime = Now
+        Dim DataSourceOwnerUserID As String = ""
+        Dim DataVerified As Boolean = True
+        Dim Description As String = ""
+        Dim FileAttached As Boolean = True
+        Dim FileDirectory As String = ""
+        Dim FileDirectoryName As String = ""
+        Dim FileLength As Integer = 0
+        Dim FqnHASH As String = ENC.SHA512SqlServerHash(FQN)
+        Dim GraphicContainsText As Char = ""
+        Dim HashFile As String = ""
+        Dim HashName As String = ""
+        Dim HiveActive As Boolean = True
+        Dim HiveConnectionName As String = ""
+        Dim Imagehash As String = ""
+        Dim ImageHiddenText As String = ""
+        Dim ImageLen As Integer = 0
+        Dim isAvailable As Char = ""
+        Dim isContainedWithinZipFile As Char = ""
+        Dim isGraphic As Char = ""
+        Dim isMaster As Char = ""
+        Dim isPerm As Char = ""
+        Dim isPublic As Char = ""
+        Dim IsPublicPreviousState As Char = ""
+        Dim isWebPage As Char = ""
+        Dim IsZipFile As String = "N"
+        Dim KeyWords As String = ""
+        Dim LastAccessDate As DateTime = Now
+        Dim LastWriteTime As DateTime = Now
+        Dim MachineID As String = ""
+        Dim Notes As String = ""
+        Dim OcrPending As Char = ""
+        Dim OcrPerformed As Char = ""
+        Dim OcrSuccessful As Char = ""
+        Dim OcrText As String = ""
+        Dim OriginalFileType As String = ""
+        Dim OriginalSize As Integer = 0
+        Dim PageURL As String = ""
+        Dim ParentGuid As String = ""
+        Dim PdfImages As Integer = 0
+        Dim PdfIsSearchable As Char = ""
+        Dim PdfOcrRequired As Char = ""
+        Dim PdfOcrSuccess As Char = ""
+        Dim PdfOcrTextExtracted As Char = ""
+        Dim PdfPages As Integer = 0
+        Dim RecHash As String = ""
+        Dim RecLen As Decimal = 0
+        Dim RecTimeStamp As DateTime = Now
+        Dim RepoName As String = ""
+        Dim RepoSvrName As String = ""
+        Dim RequireOcr As Boolean = True
+        Dim RetentionCode As String = ""
+        Dim RetentionDate As DateTime = Now
+        'Dim RetentionExpirationDate As DateTime = Now
+        Dim RowCreationDate As DateTime = Now
+        Dim RowGuid As String = Guid.NewGuid.ToString
+        Dim RowGuid2 As String = Guid.NewGuid.ToString
+        'Dim RowID As Integer = 0
+        Dim RowLastModDate As DateTime = Now
+        Dim RssLinkFlg As Boolean = True
+        Dim RssLinkGuid As String = ""
+        Dim SapData As Boolean = True
+        Dim SharePoint As Boolean = True
+        Dim SharePointDoc As Boolean = True
+        Dim SharePointList As Boolean = True
+        Dim SharePointListItem As Boolean = True
+        Dim SourceGuid As String = Guid.NewGuid.ToString
+        Dim SourceImageOrigin As String = ""
+        Dim SourceName As String = ""
+        Dim SourceTypeCode As String = ""
+        Dim StructuredData As Boolean = True
+        Dim TransmitTime As Decimal = 0
+        Dim txEndTime As DateTime = Now
+        Dim txStartTime As DateTime = Now
+        Dim txTotalTime As Decimal = 0
+        Dim URLHash As String = ""
+        Dim UserID As String = ""
+        Dim VersionNbr As Integer = 0
+        Dim WebPagePublishDate As String = ""
+        Dim ZipFileFQN As String = ""
+        Dim ZipFileGuid As String = Guid.NewGuid.ToString
+
+        Dim FI As New FileInfo(FQN)
+        Dim Successful As Boolean = True
+
+        If FI.Extension.ToLower.Equals(".zip") Then
+            ZipFileGuid = Guid.NewGuid.ToString
+            ZipFileFQN = FI.FullName
+            IsZipFile = "Y"
+        Else
+            ZipFileGuid = ""
+            ZipFileFQN = ""
+            IsZipFile = "N"
+        End If
+
+        Dim crchash As String = ENC.GenerateSHA512HashFromFile(FI.FullName)
+        CRC = crchash
+        Imagehash = crchash
+
+        HashName = "SHA512"
+
+        RetentionCode = getRetentionCode(gCurrLoginID, FI.DirectoryName)
+        Dim RetentionYears As Integer = getRetentionPeriod(RetentionCode)
+
+        Dim rightNow As Date = Now
+        If RetentionYears = 0 Then
+            RetentionYears = Val(getSystemParm("RETENTION YEARS"))
+        End If
+        rightNow = rightNow.AddYears(RetentionYears)
+        Dim RetentionExpirationDate As String = rightNow.ToString
 
         If Convert.ToDateTime(RetentionDate) <= Now Then
             Dim NewDate As DateTime = DateAdd("yyyy", 10, Now)
             RetentionDate = NewDate.ToString
         End If
 
-        Dim B As Boolean = True
+        Dim SourceImage As Byte() = IO.File.ReadAllBytes(FI.FullName)
+
+        If SourceImage.Length.Equals(0) Then
+            LOG.WriteToArchiveLog("clsDatabaseARCH : InsertNewContent : 90 : " + FQN + " appears to have ZERO content.")
+            LOG.WriteToFailedLoadLog("clsDatabaseARCH : InsertNewContent : 90 " + FQN + " appears to have ZERO content.")
+            Return False
+        End If
+
+        Dim CheckLen As Boolean = False
+        If CheckLen Then
+
+            If SourceGuid.Length > 50 Then Console.WriteLine("ERROR: SourceGuid")
+            If SourceName.Length > 1000 Then Console.WriteLine("ERROR: SourceName")
+            If SourceTypeCode.Length > 50 Then Console.WriteLine("ERROR: SourceTypeCode")
+            If FQN.Length > 2000 Then Console.WriteLine("ERROR: FQN")
+            If UserID.Length > 50 Then Console.WriteLine("ERROR: UserID")
+            If DataSourceOwnerUserID.Length > 50 Then Console.WriteLine("ERROR: DataSourceOwnerUserID")
+            'If isPublic.length > 1 Then CONSOLE.WRITELINE("ERROR: isPublic")
+            If FileDirectory.Length > 1000 Then Console.WriteLine("ERROR: FileDirectory")
+            If OriginalFileType.Length > 50 Then Console.WriteLine("ERROR: OriginalFileType")
+            'If IsPublicPreviousState.length > 1 Then CONSOLE.WRITELINE("ERROR: IsPublicPreviousState")
+            'If isAvailable.length > 1 Then CONSOLE.WRITELINE("ERROR: isAvailable")
+            'If isContainedWithinZipFile.length > 1 Then CONSOLE.WRITELINE("ERROR: isContainedWithinZipFile")
+            If IsZipFile.Length > 1 Then Console.WriteLine("ERROR: IsZipFile")
+            If ZipFileGuid.Length > 50 Then Console.WriteLine("ERROR: ZipFileGuid")
+            If ZipFileFQN.Length > 712 Then Console.WriteLine("ERROR: ZipFileFQN")
+            If Description.Length > -1 Then Console.WriteLine("ERROR: Description")
+            If KeyWords.Length > 2000 Then Console.WriteLine("ERROR: KeyWords")
+            If Notes.Length > 2000 Then Console.WriteLine("ERROR: Notes")
+            'If isPerm.length > 1 Then CONSOLE.WRITELINE("ERROR: isPerm")
+            'If isMaster.length > 1 Then CONSOLE.WRITELINE("ERROR: isMaster")
+            'If OcrPerformed.length > 1 Then CONSOLE.WRITELINE("ERROR: OcrPerformed")
+            'If isGraphic.length > 1 Then CONSOLE.WRITELINE("ERROR: isGraphic")
+            'If GraphicContainsText.length > 1 Then CONSOLE.WRITELINE("ERROR: GraphicContainsText")
+            'If OcrText.Length > -1 Then Console.WriteLine("ERROR: OcrText")
+            'If ImageHiddenText.Length > -1 Then Console.WriteLine("ERROR: ImageHiddenText")
+            'If isWebPage > 1 Then CONSOLE.WRITELINE("ERROR: isWebPage")
+            If ParentGuid.Length > 50 Then Console.WriteLine("ERROR: ParentGuid")
+            If RetentionCode.Length > 50 Then Console.WriteLine("ERROR: RetentionCode")
+            If MachineID.Length > 80 Then Console.WriteLine("ERROR: MachineID")
+            If CRC.Length > 250 Then Console.WriteLine("ERROR: CRC")
+            If HiveConnectionName.Length > 50 Then Console.WriteLine("ERROR: HiveConnectionName")
+            If RepoSvrName.Length > 254 Then Console.WriteLine("ERROR: RepoSvrName")
+            If ContainedWithin.Length > 50 Then Console.WriteLine("ERROR: ContainedWithin")
+            If RecHash.Length > 250 Then Console.WriteLine("ERROR: RecHash")
+            If RepoName.Length > 50 Then Console.WriteLine("ERROR: RepoName")
+            If HashFile.Length > 150 Then Console.WriteLine("ERROR: HashFile")
+            If HashName.Length > 50 Then Console.WriteLine("ERROR: HashName")
+            'If OcrSuccessful.length > 1 Then CONSOLE.WRITELINE("ERROR: OcrSuccessful")
+            'If OcrPending.length > 1 Then CONSOLE.WRITELINE("ERROR: OcrPending")
+            'If PdfIsSearchable.length > 1 Then CONSOLE.WRITELINE("ERROR: PdfIsSearchable")
+            'If PdfOcrRequired.length > 1 Then CONSOLE.WRITELINE("ERROR: PdfOcrRequired")
+            'If PdfOcrSuccess.length > 1 Then CONSOLE.WRITELINE("ERROR: PdfOcrSuccess")
+            'If PdfOcrTextExtracted.length > 1 Then CONSOLE.WRITELINE("ERROR: PdfOcrTextExtracted")
+            If RssLinkGuid.Length > 50 Then Console.WriteLine("ERROR: RssLinkGuid")
+            If PageURL.Length > 4000 Then Console.WriteLine("ERROR: PageURL")
+            If URLHash.Length > 50 Then Console.WriteLine("ERROR: URLHash")
+            If WebPagePublishDate.Length > 50 Then Console.WriteLine("ERROR: WebPagePublishDate")
+            If Imagehash.Length > 250 Then Console.WriteLine("ERROR: Imagehash")
+            If FileDirectoryName.Length > 1000 Then Console.WriteLine("ERROR: FileDirectoryName")
+            If FqnHASH.Length > 150 Then Console.WriteLine("ERROR: FqnHASH")
+            If SourceImageOrigin.Length > 10 Then Console.WriteLine("ERROR: SourceImageOrigin")
+
+            Console.WriteLine(FQN)
+        End If
+
         Dim TSQL As String = "INSERT INTO DataSource ( 
-                        RowGuid,
-                        SourceGuid,
-                        CreateDate,
-                        SourceName,
-                        SourceImage,
-                        SourceTypeCode,
-                        FQN,
-                        VersionNbr,
-                        LastAccessDate,
-                        FileLength,
-                        LastWriteTime,
-                        UserID,
-                        DataSourceOwnerUserID,
-                        isPublic,
-                        FileDirectory,
-                        OriginalFileType,
-                        RetentionExpirationDate,
-                        IsPublicPreviousState,
-                        isAvailable,
-                        isContainedWithinZipFile,
-                        IsZipFile,
-                        DataVerified,
-                        ZipFileGuid,
-                        ZipFileFQN,
-                        Description,
-                        KeyWords,
-                        Notes,
-                        isPerm,
-                        isMaster,
-                        CreationDate,
-                        OcrPerformed,
-                        isGraphic,
-                        GraphicContainsText,
-                        OcrText,
-                        ImageHiddenText,
-                        isWebPage,
-                        ParentGuid,
-                        RetentionCode,
-                        MachineID,
-                        CRC,
-                        ImageHash,
-                        SharePoint,
-                        SharePointDoc,
-                        SharePointList,
-                        SharePointListItem,
-                        StructuredData,
-                        HiveConnectionName,
-                        HiveActive,
-                        RepoSvrName,
-                        RowCreationDate,
-                        RowLastModDate,
-                        ContainedWithin,
-                        RecLen,
-                        RecHash,
-                        OriginalSize,
-                        CompressedSize,
-                        txStartTime,
-                        txEndTime,
-                        txTotalTime,
-                        TransmitTime,
-                        FileAttached,
                         BPS,
-                        RepoName,
+                        CompressedSize,
+                        ContainedWithin,
+                        CRC,
+                        CreateDate,
+                        CreationDate,
+                        DataSourceOwnerUserID,
+                        DataVerified,
+                        Description,
+                        FileAttached,
+                        FileDirectory,
+                        FileDirectoryName,
+                        FileLength,
+                        FQN,
+                        FqnHASH,
+                        GraphicContainsText,
                         HashFile,
                         HashName,
-                        OcrSuccessful,
+                        HiveActive,
+                        HiveConnectionName,
+                        Imagehash,
+                        ImageHiddenText,
+                        ImageLen,
+                        isAvailable,
+                        isContainedWithinZipFile,
+                        isGraphic,
+                        isMaster,
+                        isPerm,
+                        isPublic,
+                        IsPublicPreviousState,
+                        isWebPage,
+                        IsZipFile,
+                        KeyWords,
+                        LastAccessDate,
+                        LastWriteTime,
+                        MachineID,
+                        Notes,
                         OcrPending,
+                        OcrPerformed,
+                        OcrSuccessful,
+                        OcrText,
+                        OriginalFileType,
+                        OriginalSize,
+                        PageURL,
+                        ParentGuid,
+                        PdfImages,
                         PdfIsSearchable,
                         PdfOcrRequired,
                         PdfOcrSuccess,
                         PdfOcrTextExtracted,
                         PdfPages,
-                        PdfImages,
+                        RecHash,
+                        RecLen,
+                        RecTimeStamp,
+                        RepoName,
+                        RepoSvrName,
                         RequireOcr,
+                        RetentionCode,
+                        RetentionDate,
+                        RetentionExpirationDate,
+                        RowCreationDate,
+                        RowGuid,
+                        RowGuid2,
+                        RowLastModDate,
                         RssLinkFlg,
                         RssLinkGuid,
-                        PageURL,
-                        RetentionDate,
-                        URLHash,
-                        WebPagePublishDate,
                         SapData,
-                        SourceImageOrigin
+                        SharePoint,
+                        SharePointDoc,
+                        SharePointList,
+                        SharePointListItem,
+                        SourceGuid,
+                        SourceImage,
+                        SourceImageOrigin,
+                        SourceName,
+                        SourceTypeCode,
+                        StructuredData,
+                        TransmitTime,
+                        txEndTime,
+                        txStartTime,
+                        txTotalTime,
+                        URLHash,
+                        UserID,
+                        VersionNbr,
+                        WebPagePublishDate,
+                        ZipFileFQN,
+                        ZipFileGuid
                         ) 
                         VALUES (
-                        @RowGuid,
-                        @SourceGuid,
-                        @CreateDate,
-                        @SourceName,
-                        @SourceImage,
-                        @SourceTypeCode,
-                        @FQN,
-                        @VersionNbr,
-                        @LastAccessDate,
-                        @FileLength,
-                        @LastWriteTime,
-                        @UserID,
-                        @DataSourceOwnerUserID,
-                        @isPublic,
-                        @FileDirectory,
-                        @OriginalFileType,
-                        @RetentionExpirationDate,
-                        @IsPublicPreviousState,
-                        @isAvailable,
-                        @isContainedWithinZipFile,
-                        @IsZipFile,
-                        @DataVerified,
-                        @ZipFileGuid,
-                        @ZipFileFQN,
-                        @Description,
-                        @KeyWords,
-                        @Notes,
-                        @isPerm,
-                        @isMaster,
-                        @CreationDate,
-                        @OcrPerformed,
-                        @isGraphic,
-                        @GraphicContainsText,
-                        @OcrText,
-                        @ImageHiddenText,
-                        @isWebPage,
-                        @ParentGuid,
-                        @RetentionCode,
-                        @MachineID,
-                        @CRC,
-                        @ImageHash,
-                        @SharePoint,
-                        @SharePointDoc,
-                        @SharePointList,
-                        @SharePointListItem,
-                        @StructuredData,
-                        @HiveConnectionName,
-                        @HiveActive,
-                        @RepoSvrName,
-                        @RowCreationDate,
-                        @RowLastModDate,
-                        @ContainedWithin,
-                        @RecLen,
-                        @RecHash,
-                        @OriginalSize,
-                        @CompressedSize,
-                        @txStartTime,
-                        @txEndTime,
-                        @txTotalTime,
-                        @TransmitTime,
-                        @FileAttached,
                         @BPS,
-                        @RepoName,
+                        @CompressedSize,
+                        @ContainedWithin,
+                        @CRC,
+                        @CreateDate,
+                        @CreationDate,
+                        @DataSourceOwnerUserID,
+                        @DataVerified,
+                        @Description,
+                        @FileAttached,
+                        @FileDirectory,
+                        @FileDirectoryName,
+                        @FileLength,
+                        @FQN,
+                        @FqnHASH,
+                        @GraphicContainsText,
                         @HashFile,
                         @HashName,
-                        @OcrSuccessful,
+                        @HiveActive,
+                        @HiveConnectionName,
+                        @Imagehash,
+                        @ImageHiddenText,
+                        @ImageLen,
+                        @isAvailable,
+                        @isContainedWithinZipFile,
+                        @isGraphic,
+                        @isMaster,
+                        @isPerm,
+                        @isPublic,
+                        @IsPublicPreviousState,
+                        @isWebPage,
+                        @IsZipFile,
+                        @KeyWords,
+                        @LastAccessDate,
+                        @LastWriteTime,
+                        @MachineID,
+                        @Notes,
                         @OcrPending,
+                        @OcrPerformed,
+                        @OcrSuccessful,
+                        @OcrText,
+                        @OriginalFileType,
+                        @OriginalSize,
+                        @PageURL,
+                        @ParentGuid,
+                        @PdfImages,
                         @PdfIsSearchable,
                         @PdfOcrRequired,
                         @PdfOcrSuccess,
                         @PdfOcrTextExtracted,
                         @PdfPages,
-                        @PdfImages,
+                        @RecHash,
+                        @RecLen,
+                        @RecTimeStamp,
+                        @RepoName,
+                        @RepoSvrName,
                         @RequireOcr,
+                        @RetentionCode,
+                        @RetentionDate,
+                        @RetentionExpirationDate,
+                        @RowCreationDate,
+                        @RowGuid,
+                        @RowGuid2,
+                        @RowLastModDate,
                         @RssLinkFlg,
                         @RssLinkGuid,
-                        @PageURL,
-                        @RetentionDate,
-                        @URLHash,
-                        @WebPagePublishDate,
                         @SapData,
-                        @SourceImageOrigin
+                        @SharePoint,
+                        @SharePointDoc,
+                        @SharePointList,
+                        @SharePointListItem,
+                        @SourceGuid,
+                        @SourceImage,
+                        @SourceImageOrigin,
+                        @SourceName,
+                        @SourceTypeCode,
+                        @StructuredData,
+                        @TransmitTime,
+                        @txEndTime,
+                        @txStartTime,
+                        @txTotalTime,
+                        @URLHash,
+                        @UserID,
+                        @VersionNbr,
+                        @WebPagePublishDate,
+                        @ZipFileFQN,
+                        @ZipFileGuid
                         )"
 
         Try
+            txEndTime = Now
             CloseConn()
             CkConn()
 
@@ -27629,103 +27743,104 @@ NextOne:
                 Using command As New SqlCommand(TSQL, connection)
                     command.CommandType = CommandType.Text
                     '**************************************************************************
-                    command.Parameters.AddWithValue("@RowGuid", RowGuid)
-                    command.Parameters.AddWithValue("@SourceGuid", SourceGuid)
-                    command.Parameters.AddWithValue("@CreateDate", CreateDate)
-                    command.Parameters.AddWithValue("@SourceName", SourceName)
-                    command.Parameters.AddWithValue("@SourceImage", SourceImage)
-                    command.Parameters.AddWithValue("@SourceTypeCode", SourceTypeCode)
-                    command.Parameters.AddWithValue("@FQN", FQN)
-                    command.Parameters.AddWithValue("@VersionNbr", VersionNbr)
-                    command.Parameters.AddWithValue("@LastAccessDate", LastAccessDate)
-                    command.Parameters.AddWithValue("@FileLength", FileLength)
-                    command.Parameters.AddWithValue("@LastWriteTime", LastWriteTime)
-                    command.Parameters.AddWithValue("@UserID", UserID)
-                    command.Parameters.AddWithValue("@DataSourceOwnerUserID", DataSourceOwnerUserID)
-                    command.Parameters.AddWithValue("@isPublic", isPublic)
-                    command.Parameters.AddWithValue("@FileDirectory", FileDirectory)
-                    command.Parameters.AddWithValue("@OriginalFileType", OriginalFileType)
-                    command.Parameters.AddWithValue("@RetentionExpirationDate", RetentionExpirationDate)
-                    command.Parameters.AddWithValue("@IsPublicPreviousState", IsPublicPreviousState)
-                    command.Parameters.AddWithValue("@isAvailable", isAvailable)
-                    command.Parameters.AddWithValue("@isContainedWithinZipFile", isContainedWithinZipFile)
-                    command.Parameters.AddWithValue("@IsZipFile", IsZipFile)
-                    command.Parameters.AddWithValue("@DataVerified", DataVerified)
-                    command.Parameters.AddWithValue("@ZipFileGuid", ZipFileGuid)
-                    command.Parameters.AddWithValue("@ZipFileFQN", ZipFileFQN)
-                    command.Parameters.AddWithValue("@Description", Description)
-                    command.Parameters.AddWithValue("@KeyWords", KeyWords)
-                    command.Parameters.AddWithValue("@Notes", Notes)
-                    command.Parameters.AddWithValue("@isPerm", isPerm)
-                    command.Parameters.AddWithValue("@isMaster", isMaster)
-                    command.Parameters.AddWithValue("@CreationDate", CreationDate)
-                    command.Parameters.AddWithValue("@OcrPerformed", OcrPerformed)
-                    command.Parameters.AddWithValue("@isGraphic", isGraphic)
-                    command.Parameters.AddWithValue("@GraphicContainsText", GraphicContainsText)
-                    command.Parameters.AddWithValue("@OcrText", OcrText)
-                    command.Parameters.AddWithValue("@ImageHiddenText", ImageHiddenText)
-                    command.Parameters.AddWithValue("@isWebPage", isWebPage)
-                    command.Parameters.AddWithValue("@ParentGuid", ParentGuid)
-                    command.Parameters.AddWithValue("@RetentionCode", RetentionCode)
-                    command.Parameters.AddWithValue("@MachineID", MachineID)
-                    command.Parameters.AddWithValue("@CRC", CRC)
-                    command.Parameters.AddWithValue("@ImageHash", ImageHash)
-                    command.Parameters.AddWithValue("@SharePoint", SharePoint)
-                    command.Parameters.AddWithValue("@SharePointDoc", SharePointDoc)
-                    command.Parameters.AddWithValue("@SharePointList", SharePointList)
-                    command.Parameters.AddWithValue("@SharePointListItem", SharePointListItem)
-                    command.Parameters.AddWithValue("@StructuredData", StructuredData)
-                    command.Parameters.AddWithValue("@HiveConnectionName", HiveConnectionName)
-                    command.Parameters.AddWithValue("@HiveActive", HiveActive)
-                    command.Parameters.AddWithValue("@RepoSvrName", RepoSvrName)
-                    command.Parameters.AddWithValue("@RowCreationDate", RowCreationDate)
-                    command.Parameters.AddWithValue("@RowLastModDate", RowLastModDate)
-                    command.Parameters.AddWithValue("@ContainedWithin", ContainedWithin)
-                    command.Parameters.AddWithValue("@RecLen", RecLen)
-                    command.Parameters.AddWithValue("@RecHash", RecHash)
-                    command.Parameters.AddWithValue("@OriginalSize", OriginalSize)
-                    command.Parameters.AddWithValue("@CompressedSize", CompressedSize)
-                    command.Parameters.AddWithValue("@txStartTime", txStartTime)
-                    command.Parameters.AddWithValue("@txEndTime", txEndTime)
-                    command.Parameters.AddWithValue("@txTotalTime", txTotalTime)
-                    command.Parameters.AddWithValue("@TransmitTime", TransmitTime)
-                    command.Parameters.AddWithValue("@FileAttached", FileAttached)
                     command.Parameters.AddWithValue("@BPS", BPS)
-                    command.Parameters.AddWithValue("@RepoName", RepoName)
+                    command.Parameters.AddWithValue("@CompressedSize", CompressedSize)
+                    command.Parameters.AddWithValue("@ContainedWithin", ContainedWithin)
+                    command.Parameters.AddWithValue("@CRC", CRC)
+                    command.Parameters.AddWithValue("@CreateDate", CreateDate)
+                    command.Parameters.AddWithValue("@CreationDate", CreationDate)
+                    command.Parameters.AddWithValue("@DataSourceOwnerUserID", DataSourceOwnerUserID)
+                    command.Parameters.AddWithValue("@DataVerified", DataVerified)
+                    command.Parameters.AddWithValue("@Description", Description)
+                    command.Parameters.AddWithValue("@FileAttached", FileAttached)
+                    command.Parameters.AddWithValue("@FileDirectory", FileDirectory)
+                    command.Parameters.AddWithValue("@FileDirectoryName", FileDirectoryName)
+                    command.Parameters.AddWithValue("@FileLength", FileLength)
+                    command.Parameters.AddWithValue("@FQN", FQN)
+                    command.Parameters.AddWithValue("@FqnHASH", FqnHASH)
+                    command.Parameters.AddWithValue("@GraphicContainsText", GraphicContainsText)
                     command.Parameters.AddWithValue("@HashFile", HashFile)
                     command.Parameters.AddWithValue("@HashName", HashName)
-                    command.Parameters.AddWithValue("@OcrSuccessful", OcrSuccessful)
+                    command.Parameters.AddWithValue("@HiveActive", HiveActive)
+                    command.Parameters.AddWithValue("@HiveConnectionName", HiveConnectionName)
+                    command.Parameters.AddWithValue("@Imagehash", Imagehash)
+                    command.Parameters.AddWithValue("@ImageHiddenText", ImageHiddenText)
+                    command.Parameters.AddWithValue("@ImageLen", ImageLen)
+                    command.Parameters.AddWithValue("@isAvailable", isAvailable)
+                    command.Parameters.AddWithValue("@isContainedWithinZipFile", isContainedWithinZipFile)
+                    command.Parameters.AddWithValue("@isGraphic", isGraphic)
+                    command.Parameters.AddWithValue("@isMaster", isMaster)
+                    command.Parameters.AddWithValue("@isPerm", isPerm)
+                    command.Parameters.AddWithValue("@isPublic", isPublic)
+                    command.Parameters.AddWithValue("@IsPublicPreviousState", IsPublicPreviousState)
+                    command.Parameters.AddWithValue("@isWebPage", isWebPage)
+                    command.Parameters.AddWithValue("@IsZipFile", IsZipFile)
+                    command.Parameters.AddWithValue("@KeyWords", KeyWords)
+                    command.Parameters.AddWithValue("@LastAccessDate", LastAccessDate)
+                    command.Parameters.AddWithValue("@LastWriteTime", LastWriteTime)
+                    command.Parameters.AddWithValue("@MachineID", MachineID)
+                    command.Parameters.AddWithValue("@Notes", Notes)
                     command.Parameters.AddWithValue("@OcrPending", OcrPending)
+                    command.Parameters.AddWithValue("@OcrPerformed", OcrPerformed)
+                    command.Parameters.AddWithValue("@OcrSuccessful", OcrSuccessful)
+                    command.Parameters.AddWithValue("@OcrText", OcrText)
+                    command.Parameters.AddWithValue("@OriginalFileType", OriginalFileType)
+                    command.Parameters.AddWithValue("@OriginalSize", OriginalSize)
+                    command.Parameters.AddWithValue("@PageURL", PageURL)
+                    command.Parameters.AddWithValue("@ParentGuid", ParentGuid)
+                    command.Parameters.AddWithValue("@PdfImages", PdfImages)
                     command.Parameters.AddWithValue("@PdfIsSearchable", PdfIsSearchable)
                     command.Parameters.AddWithValue("@PdfOcrRequired", PdfOcrRequired)
                     command.Parameters.AddWithValue("@PdfOcrSuccess", PdfOcrSuccess)
                     command.Parameters.AddWithValue("@PdfOcrTextExtracted", PdfOcrTextExtracted)
                     command.Parameters.AddWithValue("@PdfPages", PdfPages)
-                    command.Parameters.AddWithValue("@PdfImages", PdfImages)
+                    command.Parameters.AddWithValue("@RecHash", RecHash)
+                    command.Parameters.AddWithValue("@RecLen", RecLen)
+                    command.Parameters.AddWithValue("@RecTimeStamp", RecTimeStamp)
+                    command.Parameters.AddWithValue("@RepoName", RepoName)
+                    command.Parameters.AddWithValue("@RepoSvrName", RepoSvrName)
                     command.Parameters.AddWithValue("@RequireOcr", RequireOcr)
+                    command.Parameters.AddWithValue("@RetentionCode", RetentionCode)
+                    command.Parameters.AddWithValue("@RetentionDate", RetentionDate)
+                    command.Parameters.AddWithValue("@RetentionExpirationDate", RetentionExpirationDate)
+                    command.Parameters.AddWithValue("@RowCreationDate", RowCreationDate)
+                    command.Parameters.AddWithValue("@RowGuid", RowGuid)
+                    command.Parameters.AddWithValue("@RowGuid2", RowGuid2)
+                    'command.Parameters.AddWithValue("@RowID", RowID)
+                    command.Parameters.AddWithValue("@RowLastModDate", RowLastModDate)
                     command.Parameters.AddWithValue("@RssLinkFlg", RssLinkFlg)
                     command.Parameters.AddWithValue("@RssLinkGuid", RssLinkGuid)
-                    command.Parameters.AddWithValue("@PageURL", PageURL)
-                    command.Parameters.AddWithValue("@RetentionDate", RetentionDate)
-                    command.Parameters.AddWithValue("@URLHash", URLHash)
-                    command.Parameters.AddWithValue("@WebPagePublishDate", WebPagePublishDate)
                     command.Parameters.AddWithValue("@SapData", SapData)
+                    command.Parameters.AddWithValue("@SharePoint", SharePoint)
+                    command.Parameters.AddWithValue("@SharePointDoc", SharePointDoc)
+                    command.Parameters.AddWithValue("@SharePointList", SharePointList)
+                    command.Parameters.AddWithValue("@SharePointListItem", SharePointListItem)
+                    command.Parameters.AddWithValue("@SourceGuid", SourceGuid)
+                    command.Parameters.AddWithValue("@SourceImage", SourceImage)
                     command.Parameters.AddWithValue("@SourceImageOrigin", SourceImageOrigin)
+                    command.Parameters.AddWithValue("@SourceName", SourceName)
+                    command.Parameters.AddWithValue("@SourceTypeCode", SourceTypeCode)
+                    command.Parameters.AddWithValue("@StructuredData", StructuredData)
+                    command.Parameters.AddWithValue("@TransmitTime", TransmitTime)
+                    command.Parameters.AddWithValue("@txEndTime", txEndTime)
+                    command.Parameters.AddWithValue("@txStartTime", txStartTime)
+                    command.Parameters.AddWithValue("@txTotalTime", txTotalTime)
+                    command.Parameters.AddWithValue("@URLHash", URLHash)
+                    command.Parameters.AddWithValue("@UserID", UserID)
+                    command.Parameters.AddWithValue("@VersionNbr", VersionNbr)
+                    command.Parameters.AddWithValue("@WebPagePublishDate", WebPagePublishDate)
+                    command.Parameters.AddWithValue("@ZipFileFQN", ZipFileFQN)
+                    command.Parameters.AddWithValue("@ZipFileGuid", ZipFileGuid)
                     '**************************************************************************
                     connection.Open()
                     command.ExecuteNonQuery()
-                    connection.Close()
-                    connection.Dispose()
-                    command.Dispose()
                 End Using
             End Using
             B = True
         Catch ex As Exception
-            'Session("ErrorLocation") tbl= 'Session("ErrorLocation") + " : " , ex
-            Console.WriteLine(ex.Message)
-            ' xTrace(3084, "insertNewContent", "Failed: " + ex.ToString)
             B = False
-            LOG.WriteToArchiveLog("clsDatabaseARCH : SP_ApplyUpdate : 100 : ", ex)
+            LOG.WriteToArchiveLog("clsDatabaseARCH : InsertNewContent : 100 : ", ex)
+            LOG.WriteToFailedLoadLog("clsDatabaseARCH : InsertNewContent : 100 Failed To Load : " + Environment.NewLine + FQN + Environment.NewLine + ex.Message)
         End Try
 
         Return B

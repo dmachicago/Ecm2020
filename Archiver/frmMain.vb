@@ -11681,6 +11681,7 @@ GoodLogin:
     End Function
 
     Private Sub SelectedFilesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectedFilesToolStripMenuItem.Click
+
         OpenFileDialog1.Multiselect = True
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11837,7 +11838,9 @@ GoodLogin:
                     Dim RowID As String = DBARCH.ckContentExists(tDict("SourceName"), tDict("ImageHash"))
 
                     If RowID.Length.Equals(0) Then
-                        Dim b As Boolean = DBARCH.insertNewContent(tDict, FileBytes, "FILE")
+                        'Dim b As Boolean = DBARCH.insertNewContent(tDict, FileBytes, "FILE")
+                        Dim b As Boolean = DBARCH.insertNewContent(myFile.FullName)
+
                         If b Then
                             SB.Text = ("Inserted: " + FQN)
                             SB.Refresh()
@@ -13279,6 +13282,9 @@ NEXTONE:
 
     Private Sub InventoryDirectoryToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles InventoryDirectoryToolStripMenuItem1.Click
 
+        Dim InventoryReloadMethod As Integer = 2
+        InventoryReloadMethod = System.Configuration.ConfigurationManager.AppSettings("InventoryReloadMethod")
+
         Dim skipped As Integer = 0
         Dim txtFilesArray As String() = Nothing
         Dim ListOfExt As ArrayList = Nothing
@@ -13288,6 +13294,7 @@ NEXTONE:
         Dim filename As String = ""
         Dim found As Integer = 0
         Dim missing As Integer = 0
+        Dim failed As Integer = 0
         Dim DICT_WhereAS As New Dictionary(Of String, String)
         Dim icnt As Integer = 0
         Dim I As Integer = 0
@@ -13349,6 +13356,10 @@ NEXTONE:
                             found += 1
                             FRM.lblFileSpec.Text = "Exists: " + found.ToString + " : Added: " + missing.ToString + " : Skipped: " + skipped.ToString
                             GoTo NEXTFILE
+                        ElseIf Not fqn.Contains(".") Then
+                            LOG.WriteToFailedLoadLog(fqn)
+                            skipped += 1
+                            GoTo NEXTFILE
                         ElseIf fqn.Contains(".git") Then
                             Console.Write("*")
                             skipped += 1
@@ -13367,18 +13378,27 @@ NEXTONE:
                             FRM.lblDetail.Text = Path.GetFileName(fqn)
                             FRM.Refresh()
                             Application.DoEvents()
-                            Dim bSuccess As Boolean = ARCH.ArchiveSingleFile(gCurrLoginID, fqn)
+
+                            Dim bSuccess As Boolean = True
+
+                            If InventoryReloadMethod = 1 Then
+                                bSuccess = ARCH.ArchiveSingleFile(gCurrLoginID, fqn)
+                            Else
+                                bSuccess = ARCH.insertNewContent(fqn)
+                            End If
+
                             If bSuccess Then
                                 LOG.WriteToArchiveLog("FILE MISSING: added " + fqn)
                             Else
                                 LOG.WriteToArchiveLog("FILE MISSING: FAILED TO ADD " + fqn)
+                                failed += 1
                             End If
                         End If
                     Catch ex As Exception
                         LOG.WriteToArchiveLog("ERROR 22X1: " + ex.Message)
                     End Try
 NEXTFILE:
-                    FRM.lblFileSpec.Text = "Scanned: " + icnt.ToString + " : Exists: " + found.ToString + " : Added: " + missing.ToString + " : Skipped: " + skipped.ToString
+                    FRM.lblFileSpec.Text = "Scanned: " + icnt.ToString + " : Exists: " + found.ToString + " : Added: " + missing.ToString + " : Skipped: " + skipped.ToString + " : failed: " + failed.ToString
                     Application.DoEvents()
                 Next
             End If

@@ -845,6 +845,7 @@ GetNextLine:
             If ddebug Then Console.WriteLine("clsDma : WriteToArchiveLog : 688 : " + ex.Message)
         End Try
     End Sub
+
     Public Function getArchiveLogPath() As String
         Dim cpath As String = ""
         Try
@@ -901,6 +902,35 @@ GetNextLine:
 
             Dim tFQN As String = cPath + "\ECMLibrary.Archive.Log." + SerialNo + "txt"
             ' Create an instance of StreamWriter to write text to a file.
+            Using sw As StreamWriter = New StreamWriter(tFQN, True)
+                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+            End Using
+        Catch ex As Exception
+            If ddebug Then Console.WriteLine("clsDma : WriteToArchiveLog : 688 : " + ex.Message)
+        End Try
+    End Sub
+
+    Public Sub WriteToFailedLoadLog(ByVal Msg As String)
+
+        Try
+            Dim cPath As String = getTempEnvironDir()
+
+            If Directory.Exists(LoggingPath) Then
+                cPath = LoggingPath
+            Else
+                Try
+                    cPath = LoggingPath
+                    Directory.CreateDirectory(cPath)
+                Catch ex As Exception
+                    cPath = getTempEnvironDir()
+                End Try
+            End If
+
+            Dim M As String = Now.Month.ToString.Trim
+            Dim D As String = Now.Day.ToString.Trim
+            Dim Y As String = Now.Year.ToString.Trim
+            Dim SerialNo As String = M + "." + D + "." + Y + "."
+            Dim tFQN As String = cPath + "\FAILED_TO_LOAD.Log." + SerialNo + "txt"
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
             End Using
