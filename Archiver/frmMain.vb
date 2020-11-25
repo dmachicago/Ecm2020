@@ -12588,27 +12588,29 @@ NEXTONE:
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
-        GraphicDict.Add("JPG")
-        GraphicDict.Add("PNG")
-        GraphicDict.Add("GIF")
-        GraphicDict.Add("WEBP")
-        GraphicDict.Add("TIFF")
-        GraphicDict.Add("PSD")
-        GraphicDict.Add("RAW")
-        GraphicDict.Add("BMP")
-        GraphicDict.Add("HEIF")
-        GraphicDict.Add("INDD")
-        GraphicDict.Add("JPEG 2000")
-        GraphicDict.Add("SVG")
-        GraphicDict.Add("AI")
-        GraphicDict.Add("EPS")
-        'GraphicDict.Add("PDF")
-        GraphicDict.Add("JPG")
-        GraphicDict.Add("JPEG")
-        GraphicDict.Add("JPE")
-        GraphicDict.Add("JIF")
-        GraphicDict.Add("JFIF")
-        GraphicDict.Add("JFI")
+        GraphicDict.Add(".JPG")
+        GraphicDict.Add(".PNG")
+        GraphicDict.Add(".GIF")
+        GraphicDict.Add(".WEBP")
+        GraphicDict.Add(".TIFF")
+        GraphicDict.Add(".TIF")
+        GraphicDict.Add(".PSD")
+        GraphicDict.Add(".RAW")
+        GraphicDict.Add(".BMP")
+        GraphicDict.Add(".HEIF")
+        GraphicDict.Add(".INDD")
+        GraphicDict.Add(".JPEG 2000")
+        GraphicDict.Add(".SVG")
+        GraphicDict.Add(".AI")
+        GraphicDict.Add(".EPS")
+        'GraphicDict.Add(".PDF")
+        GraphicDict.Add(".JPG")
+        GraphicDict.Add(".JPEG")
+        GraphicDict.Add(".JPE")
+        GraphicDict.Add(".JIF")
+        GraphicDict.Add(".JFIF")
+        GraphicDict.Add(".JFI")
+
     End Sub
 
     Private Sub populateZipExtensions()
@@ -13353,8 +13355,10 @@ NEXTONE:
                 ExistingFiles = DBARCH.getExistingFiles(targetDirectory, DoSub, Environment.MachineName, gCurrLoginID)
 
                 iTotal = txtFilesArray.Length
-                FRM.Label1.Text = "Files to Evaluate: " + iTotal.ToString
+
+                FRM.Label1.Text = "Files to Evaluate for : <" + targetDirectory + "> : " + iTotal.ToString
                 Application.DoEvents()
+
                 Dim WhereInExts As String = DICT_WhereAS(targetDirectory)
                 WhereInExts = WhereInExts.Replace("'", "")
                 For Each fqn In txtFilesArray
@@ -13386,7 +13390,10 @@ NEXTONE:
                         ElseIf WhereInExts.Contains(ext) Then
                             FRM.lblPdgPages.Text = icnt.ToString("N0") + " of " + txtFilesArray.Count.ToString("N0")
                             missing += 1
-                            FRM.lblDetail.Text = Path.GetFileName(fqn)
+                            Dim FI As New FileInfo(fqn)
+                            Dim flen As Long = FI.Length
+                            FI = Nothing
+                            FRM.lblDetail.Text = Path.GetFileName(fqn) + " : " + Format(flen, "Standard")
                             FRM.Refresh()
                             Application.DoEvents()
 
@@ -14330,6 +14337,40 @@ SkipIT:
 
         ARCH.ArchiveSingleFile(gCurrLoginID, FQN)
 
+    End Sub
+
+    Private Sub PickAndLoadADocumentToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PickAndLoadADocumentToolStripMenuItem.Click
+
+        OpenFileDialog1.ShowDialog()
+
+        Dim FQN As String = OpenFileDialog1.FileName
+        Dim LOF As String = ""
+        Dim b As Boolean = DBARCH.insertNewContent(FQN)
+        If b Then
+            Dim Files As List(Of String) = DBARCH.ckFileExistInRepo(Environment.MachineName, FQN)
+            If Files.Count > 0 Then
+                For Each str As String In Files
+                    LOF += str + vbCrLf
+                Next
+                Clipboard.Clear()
+                Clipboard.SetText(LOF)
+                MessageBox.Show("File: <" + FQN + ">, successfully loaded..." + vbCrLf + LOF + vbCrLf + vbCrLf + "Guids are in the clipboard.")
+            Else
+                MessageBox.Show("File: <" + FQN + ">, Appeared to load successfully, but it did not ..." + vbCrLf + LOF)
+            End If
+        Else
+            MessageBox.Show("File: <" + FQN + ">, FAILED TO load...")
+        End If
+
+
+    End Sub
+
+    Private Sub gbEmail_Enter(sender As Object, e As EventArgs) Handles gbEmail.Enter
+
+    End Sub
+
+    Private Sub FilesAreRetrievedFromDirectoryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FilesAreRetrievedFromDirectoryToolStripMenuItem.Click
+        frmLoadTest.Show()
     End Sub
 End Class
 

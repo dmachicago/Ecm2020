@@ -187,9 +187,10 @@ Partial Class frmMain
         Me.TasksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UtilityToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RepositoryUtilitiesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InventoryDirectoryToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PickAndLoadADocumentToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClearRestoreQueueToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.CompareDirToRepositoryToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.InventoryDirectoryToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ValidateDirectoryFilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReapplyALLDBUpdatesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ValidateRetentionDatesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -380,6 +381,8 @@ Partial Class frmMain
         Me.lblNotice = New System.Windows.Forms.Label()
         Me.ThreadValidateSourceName = New System.ComponentModel.BackgroundWorker()
         Me.ThreadSetNameHash = New System.ComponentModel.BackgroundWorker()
+        Me.ValidationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FilesAreRetrievedFromDirectoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.gbEmail.SuspendLayout()
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbFiletypes.SuspendLayout()
@@ -2307,17 +2310,29 @@ Partial Class frmMain
         '
         'UtilityToolStripMenuItem
         '
-        Me.UtilityToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RepositoryUtilitiesToolStripMenuItem, Me.LastArchiveDateToolStripMenuItem, Me.ListenerUtilitiesToolStripMenuItem, Me.SQLiteUtiltiiesToolStripMenuItem, Me.ReOCRToolStripMenuItem, Me.RetentionManagementToolStripMenuItem, Me.FileNamesToolStripMenuItem, Me.OpenSQLHelpScreenToolStripMenuItem, Me.EncryptStringToolStripMenuItem, Me.OpenLicenseFormToolStripMenuItem, Me.FulltextLogAnalysisToolStripMenuItem, Me.UpdateAvailableIFiltersToolStripMenuItem, Me.ValidateRepoContentsToolStripMenuItem})
+        Me.UtilityToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RepositoryUtilitiesToolStripMenuItem, Me.LastArchiveDateToolStripMenuItem, Me.ListenerUtilitiesToolStripMenuItem, Me.SQLiteUtiltiiesToolStripMenuItem, Me.ReOCRToolStripMenuItem, Me.RetentionManagementToolStripMenuItem, Me.FileNamesToolStripMenuItem, Me.ValidationToolStripMenuItem, Me.OpenSQLHelpScreenToolStripMenuItem, Me.EncryptStringToolStripMenuItem, Me.OpenLicenseFormToolStripMenuItem, Me.FulltextLogAnalysisToolStripMenuItem, Me.UpdateAvailableIFiltersToolStripMenuItem, Me.ValidateRepoContentsToolStripMenuItem})
         Me.UtilityToolStripMenuItem.Name = "UtilityToolStripMenuItem"
         Me.UtilityToolStripMenuItem.Size = New System.Drawing.Size(276, 26)
         Me.UtilityToolStripMenuItem.Text = "Utility"
         '
         'RepositoryUtilitiesToolStripMenuItem
         '
-        Me.RepositoryUtilitiesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InventoryDirectoryToolStripMenuItem1, Me.ClearRestoreQueueToolStripMenuItem1, Me.CompareDirToRepositoryToolStripMenuItem1, Me.ValidateDirectoryFilesToolStripMenuItem, Me.ReapplyALLDBUpdatesToolStripMenuItem, Me.ValidateRetentionDatesToolStripMenuItem})
+        Me.RepositoryUtilitiesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InventoryDirectoryToolStripMenuItem1, Me.PickAndLoadADocumentToolStripMenuItem, Me.ClearRestoreQueueToolStripMenuItem1, Me.CompareDirToRepositoryToolStripMenuItem1, Me.ValidateDirectoryFilesToolStripMenuItem, Me.ReapplyALLDBUpdatesToolStripMenuItem, Me.ValidateRetentionDatesToolStripMenuItem})
         Me.RepositoryUtilitiesToolStripMenuItem.Name = "RepositoryUtilitiesToolStripMenuItem"
         Me.RepositoryUtilitiesToolStripMenuItem.Size = New System.Drawing.Size(254, 26)
         Me.RepositoryUtilitiesToolStripMenuItem.Text = "Repository Utilities"
+        '
+        'InventoryDirectoryToolStripMenuItem1
+        '
+        Me.InventoryDirectoryToolStripMenuItem1.Name = "InventoryDirectoryToolStripMenuItem1"
+        Me.InventoryDirectoryToolStripMenuItem1.Size = New System.Drawing.Size(264, 26)
+        Me.InventoryDirectoryToolStripMenuItem1.Text = "CHECK FOR MISSING FILES"
+        '
+        'PickAndLoadADocumentToolStripMenuItem
+        '
+        Me.PickAndLoadADocumentToolStripMenuItem.Name = "PickAndLoadADocumentToolStripMenuItem"
+        Me.PickAndLoadADocumentToolStripMenuItem.Size = New System.Drawing.Size(264, 26)
+        Me.PickAndLoadADocumentToolStripMenuItem.Text = "Pick and Load a Document"
         '
         'ClearRestoreQueueToolStripMenuItem1
         '
@@ -2330,12 +2345,6 @@ Partial Class frmMain
         Me.CompareDirToRepositoryToolStripMenuItem1.Name = "CompareDirToRepositoryToolStripMenuItem1"
         Me.CompareDirToRepositoryToolStripMenuItem1.Size = New System.Drawing.Size(264, 26)
         Me.CompareDirToRepositoryToolStripMenuItem1.Text = "Compare Dir To Repository"
-        '
-        'InventoryDirectoryToolStripMenuItem1
-        '
-        Me.InventoryDirectoryToolStripMenuItem1.Name = "InventoryDirectoryToolStripMenuItem1"
-        Me.InventoryDirectoryToolStripMenuItem1.Size = New System.Drawing.Size(264, 26)
-        Me.InventoryDirectoryToolStripMenuItem1.Text = "CHECK FOR MISSING FILES"
         '
         'ValidateDirectoryFilesToolStripMenuItem
         '
@@ -3878,6 +3887,19 @@ Partial Class frmMain
         'ThreadSetNameHash
         '
         '
+        'ValidationToolStripMenuItem
+        '
+        Me.ValidationToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FilesAreRetrievedFromDirectoryToolStripMenuItem})
+        Me.ValidationToolStripMenuItem.Name = "ValidationToolStripMenuItem"
+        Me.ValidationToolStripMenuItem.Size = New System.Drawing.Size(254, 26)
+        Me.ValidationToolStripMenuItem.Text = "Validation"
+        '
+        'FilesAreRetrievedFromDirectoryToolStripMenuItem
+        '
+        Me.FilesAreRetrievedFromDirectoryToolStripMenuItem.Name = "FilesAreRetrievedFromDirectoryToolStripMenuItem"
+        Me.FilesAreRetrievedFromDirectoryToolStripMenuItem.Size = New System.Drawing.Size(302, 26)
+        Me.FilesAreRetrievedFromDirectoryToolStripMenuItem.Text = "Files are retrieved from Directory"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -4311,4 +4333,7 @@ Partial Class frmMain
     Friend WithEvents ToolStripSeparator8 As ToolStripSeparator
     Friend WithEvents ReinventoryFilesOnlyNewToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProcessMissingFilesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PickAndLoadADocumentToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ValidationToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FilesAreRetrievedFromDirectoryToolStripMenuItem As ToolStripMenuItem
 End Class

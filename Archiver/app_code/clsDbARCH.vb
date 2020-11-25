@@ -27491,6 +27491,11 @@ NextOne:
 
         Dim SourceImage As Byte() = IO.File.ReadAllBytes(FI.FullName)
 
+        Dim GraphicTypes As List(Of String) = getListOf("select lower(GraphicFileTypeExt) from GraphicFileType")
+        If GraphicTypes.Contains(FI.Extension.ToLower) Then
+            OcrPending = "Y"
+        End If
+
         If SourceImage.Length.Equals(0) Then
             LOG.WriteToArchiveLog("clsDatabaseARCH : InsertNewContent : 90 : " + FQN + " appears to have ZERO content.")
             LOG.WriteToFailedLoadLog("clsDatabaseARCH : InsertNewContent : 90 " + FQN + " appears to have ZERO content.")
@@ -27753,7 +27758,7 @@ NextOne:
                     command.Parameters.AddWithValue("@FileAttached", FileAttached)
                     command.Parameters.AddWithValue("@FileDirectory", FileDirectory)
                     command.Parameters.AddWithValue("@FileDirectoryName", FileDirectoryName)
-                    command.Parameters.AddWithValue("@FileLength", FileLength)
+                    command.Parameters.AddWithValue("@FileLength", FI.Length)
                     command.Parameters.AddWithValue("@FQN", FQN)
                     command.Parameters.AddWithValue("@FqnHASH", FqnHASH)
                     command.Parameters.AddWithValue("@GraphicContainsText", GraphicContainsText)
@@ -27763,7 +27768,7 @@ NextOne:
                     command.Parameters.AddWithValue("@HiveConnectionName", HiveConnectionName)
                     command.Parameters.AddWithValue("@Imagehash", Imagehash)
                     command.Parameters.AddWithValue("@ImageHiddenText", ImageHiddenText)
-                    command.Parameters.AddWithValue("@ImageLen", ImageLen)
+                    command.Parameters.AddWithValue("@ImageLen", FI.Length)
                     command.Parameters.AddWithValue("@isAvailable", isAvailable)
                     command.Parameters.AddWithValue("@isContainedWithinZipFile", isContainedWithinZipFile)
                     command.Parameters.AddWithValue("@isGraphic", isGraphic)
@@ -27824,7 +27829,7 @@ NextOne:
                     command.Parameters.AddWithValue("@txStartTime", txStartTime)
                     command.Parameters.AddWithValue("@txTotalTime", txTotalTime)
                     command.Parameters.AddWithValue("@URLHash", URLHash)
-                    command.Parameters.AddWithValue("@UserID", UserID)
+                    command.Parameters.AddWithValue("@UserID", gCurrLoginID)
                     command.Parameters.AddWithValue("@VersionNbr", VersionNbr)
                     command.Parameters.AddWithValue("@WebPagePublishDate", WebPagePublishDate)
                     command.Parameters.AddWithValue("@ZipFileFQN", ZipFileFQN)
