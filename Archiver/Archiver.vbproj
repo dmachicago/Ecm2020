@@ -787,6 +787,9 @@
     <Content Include="DBUpdates\SetGraphicTypes.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="DBUpdates\spBuildLoadProfile.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="DBUpdates\sp_SetRetentionDates.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

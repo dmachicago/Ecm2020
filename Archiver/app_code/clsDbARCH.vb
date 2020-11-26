@@ -27494,6 +27494,8 @@ NextOne:
         Dim GraphicTypes As List(Of String) = getListOf("select lower(GraphicFileTypeExt) from GraphicFileType")
         If GraphicTypes.Contains(FI.Extension.ToLower) Then
             OcrPending = "Y"
+        Else
+            OcrPending = "N"
         End If
 
         If SourceImage.Length.Equals(0) Then
@@ -27788,7 +27790,7 @@ NextOne:
                     command.Parameters.AddWithValue("@OcrSuccessful", OcrSuccessful)
                     command.Parameters.AddWithValue("@OcrText", OcrText)
                     command.Parameters.AddWithValue("@OriginalFileType", OriginalFileType)
-                    command.Parameters.AddWithValue("@OriginalSize", OriginalSize)
+                    command.Parameters.AddWithValue("@OriginalSize", FI.Length)
                     command.Parameters.AddWithValue("@PageURL", PageURL)
                     command.Parameters.AddWithValue("@ParentGuid", ParentGuid)
                     command.Parameters.AddWithValue("@PdfImages", PdfImages)
