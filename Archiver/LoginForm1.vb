@@ -155,9 +155,9 @@ Public Class LoginForm1
                 If tpw.ToUpper.Equals("PASSWORD") Then
                     If LoginID.ToUpper.Equals("ADMIN") Then
                         Dim Msg As String = ""
-                        Msg = "It appears that this may be the first time into the system." + vbCrLf
-                        Msg += "As an ADMIN, you will be required to change your " + vbCrLf + "current password of 'password' and," + vbCrLf
-                        Msg += "any users will have to be added to the system if they" + vbCrLf + "are allowed to access ECM Library." + vbCrLf + vbCrLf
+                        Msg = "It appears that this may be the first time into the system." + Environment.NewLine
+                        Msg += "As an ADMIN, you will be required to change your " + Environment.NewLine + "current password of 'password' and," + Environment.NewLine
+                        Msg += "any users will have to be added to the system if they" + Environment.NewLine + "are allowed to access ECM Library." + Environment.NewLine + Environment.NewLine
                         Msg += "Thank you for using ECM Library."
                         MessageBox.Show(Msg)
                     End If

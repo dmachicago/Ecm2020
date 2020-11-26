@@ -58,8 +58,8 @@ Public Class clsScheduler
             objProcess.Dispose()
             frmMain.SB.Text = "Command success."
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR ECMArchiver ShellandWait 100 - " + ex.Message + vbCrLf + "Could not start process " & ProcessPath)
-            LOG.WriteToArchiveLog("ERROR: Stack Trace:" + vbCrLf + ex.StackTrace)
+            LOG.WriteToArchiveLog("ERROR ECMArchiver ShellandWait 100 - " + ex.Message + Environment.NewLine + "Could not start process " & ProcessPath)
+            LOG.WriteToArchiveLog("ERROR: Stack Trace:" + Environment.NewLine + ex.StackTrace)
         End Try
     End Sub
 

@@ -218,18 +218,18 @@ Public Class clsEMAILFOLDER
 
         Dim SelectedForArchive As String = getSelectedforarchive()
 
-        s = s + " update EmailFolder set " + vbCrLf
-        s = s + "UserID = '" + getUserid() + "'" + ", " + vbCrLf
-        s = s + "FolderName = '" + getFoldername() + "'" + ", " + vbCrLf
-        s = s + "ParentFolderName = '" + getParentfoldername() + "'" + ", " + vbCrLf
-        s = s + "FolderID = '" + getFolderid() + "'" + ", " + vbCrLf
-        s = s + "ParentFolderID = '" + getParentfolderid() + "'" + ", " + vbCrLf
+        s = s + " update EmailFolder set " + Environment.NewLine
+        s = s + "UserID = '" + getUserid() + "'" + ", " + Environment.NewLine
+        s = s + "FolderName = '" + getFoldername() + "'" + ", " + Environment.NewLine
+        s = s + "ParentFolderName = '" + getParentfoldername() + "'" + ", " + Environment.NewLine
+        s = s + "FolderID = '" + getFolderid() + "'" + ", " + Environment.NewLine
+        s = s + "ParentFolderID = '" + getParentfolderid() + "'" + ", " + Environment.NewLine
         If SelectedForArchive.Equals("Y") Or SelectedForArchive.Equals("N") Then
-            s = s + "SelectedForArchive = '" + getSelectedforarchive() + "'" + ", " + vbCrLf
+            s = s + "SelectedForArchive = '" + getSelectedforarchive() + "'" + ", " + Environment.NewLine
         End If
-        s = s + "StoreID = '" + getStoreid() + "'" + vbCrLf
-        WhereClause = " " + WhereClause + vbCrLf
-        s = s + WhereClause + vbCrLf
+        s = s + "StoreID = '" + getStoreid() + "'" + Environment.NewLine
+        WhereClause = " " + WhereClause + Environment.NewLine
+        s = s + WhereClause + Environment.NewLine
         If gClipBoardActive = True Then Clipboard.Clear()
         If gClipBoardActive = True Then Clipboard.SetText(s)
         Return DBARCH.ExecuteSqlNewConn(s, False)

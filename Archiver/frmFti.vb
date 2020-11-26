@@ -126,7 +126,7 @@ Public Class frmFti
                 Return ""
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR getSourceKey 00 : " + ex.Message + vbCrLf + line)
+            LOG.WriteToArchiveLog("ERROR getSourceKey 00 : " + ex.Message + Environment.NewLine + line)
         End Try
 
         Return SourceKey
@@ -169,7 +169,7 @@ Public Class frmFti
                 ErrMsg = ErrMsg.Trim()
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("Error 00 getErrorMsg: " + ex.Message + vbCrLf + line)
+            LOG.WriteToArchiveLog("Error 00 getErrorMsg: " + ex.Message + Environment.NewLine + line)
         End Try
 
         Return ErrMsg
@@ -189,7 +189,7 @@ Public Class frmFti
                 ErrTbl = ""
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("Error 00 getErrorTbl: " + ex.Message + vbCrLf + line)
+            LOG.WriteToArchiveLog("Error 00 getErrorTbl: " + ex.Message + Environment.NewLine + line)
         End Try
 
         Return ErrTbl
@@ -377,7 +377,7 @@ Public Class frmFti
                             CMD.ExecuteNonQuery()
 
                         Catch ex As Exception
-                            LOG.WriteToArchiveLog("ERROR: applyERRDeails 04 - " + ex.Message + vbCrLf + MySql)
+                            LOG.WriteToArchiveLog("ERROR: applyERRDeails 04 - " + ex.Message + Environment.NewLine + MySql)
                             bConnSet = False
                         End Try
                     Next
@@ -443,7 +443,7 @@ Public Class frmFti
                             B = True
                         Catch ex As Exception
                             B = False
-                            LOG.WriteToArchiveLog("ERROR: applyFTIDetails 00 - " + ex.Message + vbCrLf + MySql)
+                            LOG.WriteToArchiveLog("ERROR: applyFTIDetails 00 - " + ex.Message + Environment.NewLine + MySql)
                         End Try
                     Next
                 End Using
@@ -494,7 +494,7 @@ Public Class frmFti
                     B = True
                 Catch ex As Exception
                     B = False
-                    LOG.WriteToArchiveLog("ERROR: saveFtiSourceGuid 00 - " + ex.Message + vbCrLf + MySql)
+                    LOG.WriteToArchiveLog("ERROR: saveFtiSourceGuid 00 - " + ex.Message + Environment.NewLine + MySql)
                 Finally
                     CMD.Dispose()
                     GC.Collect()
@@ -527,7 +527,7 @@ Public Class frmFti
                     CMD.CommandText = "Delete from KeyTable"
                     CMD.ExecuteNonQuery()
                 Catch ex As Exception
-                    LOG.WriteToArchiveLog("ERROR: saveFtiErr 04 - " + ex.Message + vbCrLf + MySql)
+                    LOG.WriteToArchiveLog("ERROR: saveFtiErr 04 - " + ex.Message + Environment.NewLine + MySql)
                     bConnSet = False
                 Finally
                     CMD.Dispose()
@@ -628,7 +628,7 @@ Public Class frmFti
                         MySql = ""
                     End If
                 Catch ex As Exception
-                    LOG.WriteToArchiveLog("ERROR: saveFtiErr 04 - " + ex.Message + vbCrLf + MySql)
+                    LOG.WriteToArchiveLog("ERROR: saveFtiErr 04 - " + ex.Message + Environment.NewLine + MySql)
                     bConnSet = False
                 Finally
                     CMD.Dispose()
@@ -742,7 +742,7 @@ Public Class frmFti
                 bSQLiteCOnnected = True
             Catch ex As Exception
                 Dim LG As New clsLogging
-                LG.WriteToArchiveLog("ERROR LOCALDB SetDBConn: " + ex.Message + vbCrLf + cs)
+                LG.WriteToArchiveLog("ERROR LOCALDB SetDBConn: " + ex.Message + Environment.NewLine + cs)
                 LG = Nothing
                 bb = False
                 bSQLiteCOnnected = False

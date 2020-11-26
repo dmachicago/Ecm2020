@@ -364,9 +364,9 @@ Public Class clsDataGrid
             II = ds.Tables(SourceTable).Rows.Count
             DVG.DataSource = ds.Tables(SourceTable)
         Catch ex As Exception
-            'messagebox.show("Search Error 96165.4b: " + ex.Message + vbCrLf + MySql)
+            'messagebox.show("Search Error 96165.4b: " + ex.Message + environment.NewLine + MySql)
             II = -1
-            LOG.WriteToArchiveLog("clsDataGrid : PopulateGrid : 96165.4b : " + ex.Message + vbCrLf + MySql)
+            LOG.WriteToArchiveLog("clsDataGrid : PopulateGrid : 96165.4b : " + ex.Message + Environment.NewLine + MySql)
         End Try
         Return II
     End Function

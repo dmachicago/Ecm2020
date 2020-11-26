@@ -142,7 +142,7 @@ Public Class frmAttachmentCode
                     S = "update RunParms set ParmValue = '" + ParmValue + "' where UserID = '" + UID + "' and Parm = '" + Parm + "' "
                     Dim b As Boolean = DBARCH.ExecuteSqlNewConn(90000, S)
                     If Not b Then
-                        LOG.WriteToArchiveLog("ERROR: 22.11.341 - Could not update user parm." + vbCrLf + S)
+                        LOG.WriteToArchiveLog("ERROR: 22.11.341 - Could not update user parm." + Environment.NewLine + S)
                         MessageBox.Show("Failed to update user parm.")
                     End If
                 Next
@@ -151,7 +151,7 @@ Public Class frmAttachmentCode
             End If
             da.Update(DS, TBL)
         Catch ex As Exception
-            MessageBox.Show(ex.Message + vbCrLf + S)
+            MessageBox.Show(ex.Message + Environment.NewLine + S)
         End Try
     End Sub
 

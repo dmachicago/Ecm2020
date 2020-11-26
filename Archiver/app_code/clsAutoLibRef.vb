@@ -310,14 +310,14 @@ Public Class clsAutoLibRef
                                 'FrmMDIMain.SB.Text = "E-Ref# " + II.ToString : LL = 40
                             End If : LL = 41
                         Catch ex As Exception
-                            LOG.WriteToArchiveLog("WARNING: ProcessDirToEmails: " + Itemtitle + " did not load." + vbCrLf + "LL = " + LL.ToString)
+                            LOG.WriteToArchiveLog("WARNING: ProcessDirToEmails: " + Itemtitle + " did not load." + Environment.NewLine + "LL = " + LL.ToString)
                         End Try : LL = 43
                         LL = 44
                         Application.DoEvents() : LL = 45
                     Loop : LL = 46
                 End If : LL = 47
             Catch ex As Exception
-                LOG.WriteToArchiveLog("WARNING: ProcessDirToEmails: 100 " + ex.Message + vbCrLf + "LL = " + LL.ToString)
+                LOG.WriteToArchiveLog("WARNING: ProcessDirToEmails: 100 " + ex.Message + Environment.NewLine + "LL = " + LL.ToString)
             Finally : LL = 49
                 rsColInfo.Close() : LL = 50
                 rsColInfo = Nothing : LL = 51
@@ -348,13 +348,13 @@ Public Class clsAutoLibRef
                         'Dim B As Boolean = DBARCH.ExecuteSqlSameConn(MySql, CN) : LL =  74
                         Dim B As Boolean = DBARCH.ExecuteSqlTx(MySql) : LL = 75
                         If Not B Then
-                            LOG.WriteToArchiveLog("ERROR ProcessDirToEmails - 200 Connection not opened: " + MySql + vbCrLf + "LL = " + LL.ToString)
+                            LOG.WriteToArchiveLog("ERROR ProcessDirToEmails - 200 Connection not opened: " + MySql + Environment.NewLine + "LL = " + LL.ToString)
                         End If : LL = 77
                     Catch ex As Exception
-                        LOG.WriteToArchiveLog("WARNING: ProcessDirToEmails: 200 " + ex.Message + vbCrLf + "LL = " + LL.ToString)
+                        LOG.WriteToArchiveLog("WARNING: ProcessDirToEmails: 200 " + ex.Message + Environment.NewLine + "LL = " + LL.ToString)
                     End Try : LL = 79
                 Next : LL = 80
-                : LL = 81
+                LL = 81
                 'If Not CN Is Nothing Then : LL =  82
                 '    If CN.State = ConnectionState.Open Then : LL =  83
                 '        CN.Close() : LL =  84
@@ -363,7 +363,7 @@ Public Class clsAutoLibRef
                 'End If : LL =  87
             End If : LL = 88
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: ProcessDirToEmails: 220 " + ex.Message + vbCrLf + "LL = " + LL.ToString)
+            LOG.WriteToArchiveLog("ERROR: ProcessDirToEmails: 220 " + ex.Message + Environment.NewLine + "LL = " + LL.ToString)
         End Try
 
         GC.Collect() : LL = 89

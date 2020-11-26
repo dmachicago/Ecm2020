@@ -353,7 +353,7 @@ Module modGlobals
             Return NewName
         Catch ex As Exception
             Dim LOG As New clsLogging
-            LOG.WriteToArchiveLog("ERROR: Directory name issue - '" + tgtDir + "'." + vbCrLf + ex.Message)
+            LOG.WriteToArchiveLog("ERROR: Directory name issue - '" + tgtDir + "'." + Environment.NewLine + ex.Message)
             LOG = Nothing
         End Try
         Return tgtDir

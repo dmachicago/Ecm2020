@@ -67,7 +67,7 @@ Public Class clsGlobalEntity
                 Dim B As Boolean = ExecSql(S)
 
                 If B = False Then
-                    LOG.WriteToArchiveLog("ERROR AddEntity - Table name  '" + TableName + "' - " + vbCrLf + S)
+                    LOG.WriteToArchiveLog("ERROR AddEntity - Table name  '" + TableName + "' - " + Environment.NewLine + S)
                     NewGuid = Nothing
                 End If
 
@@ -93,7 +93,7 @@ Public Class clsGlobalEntity
         GuidID = Nothing
 
         HashCode = KEY.getMD5HashX(FQN)
-Dim S AS String  = "" 
+        Dim S As String = ""
 
         Try
             S = " Select "
@@ -112,7 +112,7 @@ Dim S AS String  = ""
             ElseIf TableName.Equals("GlobalEmail") Then
                 S = S + " FROM [GlobalEmail] "
             Else
-                log.WriteToArchiveLog("ERROR EntityExists - incorrect table name supplied '" + TableName + "'.")
+                LOG.WriteToArchiveLog("ERROR EntityExists - incorrect table name supplied '" + TableName + "'.")
                 Return Nothing
             End If
 
@@ -151,7 +151,7 @@ Dim S AS String  = ""
                     Loop
                 End If
             Catch ex As Exception
-                log.WriteToArchiveLog("ItemExists : 1300 : " + ex.Message)
+                LOG.WriteToArchiveLog("ItemExists : 1300 : " + ex.Message)
                 GuidID = Nothing
             Finally
                 command.Dispose()
@@ -164,7 +164,7 @@ Dim S AS String  = ""
                 GC.Collect()
             End Try
         Catch ex As Exception
-            log.WriteToArchiveLog("ItemExists : 1301 : " + ex.Message)
+            LOG.WriteToArchiveLog("ItemExists : 1301 : " + ex.Message)
             GuidID = Nothing
         End Try
 
@@ -174,7 +174,7 @@ Dim S AS String  = ""
 
 
     Public Sub setConnStr()
-Dim S AS String  = "" 
+        Dim S As String = ""
         SyncLock Me
             Try
                 'If ddebug Then log.WriteToArchiveLog("010 - gUserConnectionStringConfirmedGood is being initiated.")
@@ -220,7 +220,7 @@ Dim S AS String  = ""
             Catch ex As Exception
                 'If ddebug Then log.WriteToArchiveLog("1004 - gUserConnectionStringConfirmedGood.")
                 S = System.Configuration.ConfigurationManager.AppSettings("ECMREPO")
-                log.WriteToArchiveLog("1005 - gUserConnectionStringConfirmedGood: " + S)
+                LOG.WriteToArchiveLog("1005 - gUserConnectionStringConfirmedGood: " + S)
             End Try
 
             Dim bUseConfig As Boolean = True
@@ -252,8 +252,8 @@ SKIPOUT:
             Catch ex As Exception
                 rc = False
                 If InStr(ex.Message, "The DELETE statement conflicted with the REFERENCE", CompareMethod.Text) > 0 Then
-                    If gRunUnattended = False Then messagebox.show("It appears this user has DATA within the repository associated to them and cannot be deleted." + vbCrLf + vbCrLf + ex.Message)
-                    log.WriteToArchiveLog("It appears this user has DATA within the repository associated to them and cannot be deleted." + vbCrLf + vbCrLf + ex.Message)
+                    If gRunUnattended = False Then MessageBox.Show("It appears this user has DATA within the repository associated to them and cannot be deleted." + Environment.NewLine + Environment.NewLine + ex.Message)
+                    LOG.WriteToArchiveLog("It appears this user has DATA within the repository associated to them and cannot be deleted." + Environment.NewLine + Environment.NewLine + ex.Message)
                 ElseIf InStr(ex.Message, "HelpText", CompareMethod.Text) > 0 Then
                     BB = True
                 ElseIf InStr(ex.Message, "duplicate key row", CompareMethod.Text) > 0 Then
@@ -265,7 +265,7 @@ SKIPOUT:
                 Else
                     BB = False
                     LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 79442a1p1: " + ex.Message)
-                    LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 7442a1p2: " + vbCrLf + sql + vbCrLf)
+                    LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 7442a1p2: " + Environment.NewLine + sql + Environment.NewLine)
                 End If
 
             End Try

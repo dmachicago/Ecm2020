@@ -231,7 +231,7 @@ Public Class clsDbLocal : Implements IDisposable
                 End If
             Loop
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR getAllowedExtension: Level = " + Level.ToString + vbCrLf + ex.Message)
+            LOG.WriteToArchiveLog("ERROR getAllowedExtension: Level = " + Level.ToString + Environment.NewLine + ex.Message)
         End Try
 
         Return WC
@@ -441,7 +441,7 @@ Public Class clsDbLocal : Implements IDisposable
                                         End If
                                     Else
                                         Dim xmsg As String = ""
-                                        xmsg = "NOTICE: Looking for extension <" + ext + "> And did Not find it." + vbCrLf
+                                        xmsg = "NOTICE: Looking for extension <" + ext + "> And did Not find it." + Environment.NewLine
                                     End If
                                 End If
                             Catch ex As Exception
@@ -460,7 +460,7 @@ Public Class clsDbLocal : Implements IDisposable
 
         FRM.Close()
         FRM.Dispose()
-        'LOG.WriteToArchiveLog("REMOVE LATER 3010A: getListenerfiles FilesToProcess: " + FilesToProcess.Count.ToString + vbCrLf + SQL)
+        'LOG.WriteToArchiveLog("REMOVE LATER 3010A: getListenerfiles FilesToProcess: " + FilesToProcess.Count.ToString + environment.NewLine + SQL)
         Return FilesToProcess
     End Function
 
@@ -489,7 +489,7 @@ Public Class clsDbLocal : Implements IDisposable
                 End If
             End If
         Catch ex As Exception
-            System.Console.WriteLine("Path: " + path + vbCrLf + ex.Message)
+            System.Console.WriteLine("Path: " + path + Environment.NewLine + ex.Message)
         End Try
     End Sub
 
@@ -544,7 +544,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.ExecuteNonQuery()
             bConnSet = True
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setListenerfileProcessed 04 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setListenerfileProcessed 04 - " + ex.Message + Environment.NewLine + S)
             bConnSet = False
         Finally
             CMD.Dispose()
@@ -573,7 +573,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.ExecuteNonQuery()
             B = True
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setListenerfileProcessed 04 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setListenerfileProcessed 04 - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -614,7 +614,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/removeListenerfileProcessed 8 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/removeListenerfileProcessed 8 - " + ex.Message + Environment.NewLine + S)
             b = False
         Finally
             CMD.Dispose()
@@ -642,7 +642,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setListenerfileProcessed 04 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setListenerfileProcessed 04 - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -801,7 +801,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
             rs.Dispose()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR XX1: clsDbLocal/GetDirID - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR XX1: clsDbLocal/GetDirID - " + ex.Message + Environment.NewLine + S)
             DirID = -1
         Finally
             CMD.Dispose()
@@ -858,7 +858,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
             rs.Dispose()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR XX2: clsDbLocal/GetDirID - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR XX2: clsDbLocal/GetDirID - " + ex.Message + Environment.NewLine + S)
             DirID = -1
         Finally
 
@@ -919,7 +919,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.ExecuteNonQuery()
 
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addDir - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addDir - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -957,7 +957,7 @@ Public Class clsDbLocal : Implements IDisposable
                         CMD.CommandText = S
                         CMD.ExecuteNonQuery()
                     Catch ex As Exception
-                        LOG.WriteToArchiveLog("ERROR 01: clsDbLocal/resetExtension 01 - " + ex.Message + vbCrLf + S)
+                        LOG.WriteToArchiveLog("ERROR 01: clsDbLocal/resetExtension 01 - " + ex.Message + Environment.NewLine + S)
                         B = False
                     End Try
                 End Using
@@ -1013,7 +1013,7 @@ Public Class clsDbLocal : Implements IDisposable
                     CMD.ExecuteNonQuery()
                 Next
             Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR: clsDbLocal/addExtension - " + ex.Message + vbCrLf + S)
+                LOG.WriteToArchiveLog("ERROR: clsDbLocal/addExtension - " + ex.Message + Environment.NewLine + S)
                 B = False
             End Try
         End Using
@@ -1048,7 +1048,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@DirName", DirName)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/delDir - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/delDir - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -1102,7 +1102,7 @@ Public Class clsDbLocal : Implements IDisposable
                 End Using
             End Using
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR cbLocalDB/GetFileID: " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR cbLocalDB/GetFileID: " + ex.Message + Environment.NewLine + S)
         End Try
 
         Return FileID
@@ -1148,7 +1148,7 @@ Public Class clsDbLocal : Implements IDisposable
                 'CMD.Parameters.AddWithValue("FileHash", FileHash)
                 CMD.ExecuteNonQuery()
             Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR 20x: clsDbLocal/addFile - " + ex.Message + vbCrLf + S)
+                LOG.WriteToArchiveLog("ERROR 20x: clsDbLocal/addFile - " + ex.Message + Environment.NewLine + S)
                 B = False
             Finally
                 CMD.Dispose()
@@ -1216,7 +1216,7 @@ Public Class clsDbLocal : Implements IDisposable
                     End Try
                 Next
             Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR 20x: clsDbLocal/addDirectory - " + ex.Message + vbCrLf + S)
+                LOG.WriteToArchiveLog("ERROR 20x: clsDbLocal/addDirectory - " + ex.Message + Environment.NewLine + S)
                 B = False
             Finally
                 CMD.Dispose()
@@ -1284,7 +1284,7 @@ Public Class clsDbLocal : Implements IDisposable
                     End Try
                 Next
             Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR 20x: clsDbLocal/addFile - " + ex.Message + vbCrLf + S)
+                LOG.WriteToArchiveLog("ERROR 20x: clsDbLocal/addFile - " + ex.Message + Environment.NewLine + S)
                 B = False
             Finally
                 CMD.Dispose()
@@ -1362,7 +1362,7 @@ Public Class clsDbLocal : Implements IDisposable
                             DirID = DictDirID(DName)
                             FileID = DictFileID(FName)
                         Catch ex As Exception
-                            LOG.WriteToArchiveLog("ERROR addInventory 12X: DID not find either the Dir '" + DName + "' or the File '" + FName + "' in the SQLite DB, skipping and not adding to inventory." + vbCrLf + ex.Message)
+                            LOG.WriteToArchiveLog("ERROR addInventory 12X: DID not find either the Dir '" + DName + "' or the File '" + FName + "' in the SQLite DB, skipping and not adding to inventory." + Environment.NewLine + ex.Message)
                             DirID = 0
                             FileID = 0
                         End Try
@@ -1386,7 +1386,7 @@ Public Class clsDbLocal : Implements IDisposable
                 Next
 
             Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR 20x: clsDbLocal/addFile - " + ex.Message + vbCrLf + S)
+                LOG.WriteToArchiveLog("ERROR 20x: clsDbLocal/addFile - " + ex.Message + Environment.NewLine + S)
                 B = False
             Finally
                 CMD.Dispose()
@@ -1429,7 +1429,7 @@ Public Class clsDbLocal : Implements IDisposable
                 'CMD.Parameters.AddWithValue("@RowID", "null")
                 CMD.ExecuteNonQuery()
             Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR: clsDbLocal/addContact - " + ex.Message + vbCrLf + S)
+                LOG.WriteToArchiveLog("ERROR: clsDbLocal/addContact - " + ex.Message + Environment.NewLine + S)
                 B = False
             Finally
                 GC.Collect()
@@ -1533,7 +1533,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/delFile - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/delFile - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -1623,7 +1623,7 @@ Public Class clsDbLocal : Implements IDisposable
         S += "" + NeedsArchive.ToString + ", "
         S += "'" + FileHash + "') "
 
-        ''LOG.WriteToArchiveLog("REMOVE after debug  SQL: " + vbCrLf + S)
+        ''LOG.WriteToArchiveLog("REMOVE after debug  SQL: " + environment.NewLine + S)
 
         'Dim cn As New SqlCeConnection(InvCS)
         If Not setSLConn() Then
@@ -1637,7 +1637,7 @@ Public Class clsDbLocal : Implements IDisposable
             B = True
         Catch ex As Exception
             LOG.WriteToArchiveLog("ERROR 1A: clsDbLocal/addInventoryForce - " + ex.Message)
-            LOG.WriteToArchiveLog("ERROR 1A: clsDbLocal/addInventoryForce SQL: " + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR 1A: clsDbLocal/addInventoryForce SQL: " + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -1833,7 +1833,7 @@ Public Class clsDbLocal : Implements IDisposable
 
         setSLConn()
 
-        LOG.WriteToArchiveLog("NOTICE: Executing SQL: " + vbCrLf + S)
+        LOG.WriteToArchiveLog("NOTICE: Executing SQL: " + Environment.NewLine + S)
 
         'Dim cn As New SqlCeConnection(InvCS)
         If Not setSLConn() Then
@@ -1845,7 +1845,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            MessageBox.Show("ERROR 1A: clsDbLocal/ApplySQL: " + ex.Message + vbCrLf + S)
+            MessageBox.Show("ERROR 1A: clsDbLocal/ApplySQL: " + ex.Message + Environment.NewLine + S)
             LOG.WriteToArchiveLog("ERROR 1A: clsDbLocal/ApplySQL: " + ex.Message)
             LOG.WriteToArchiveLog("ERROR 1A: clsDbLocal/ApplySQL: " + S)
             B = False
@@ -1903,7 +1903,7 @@ Public Class clsDbLocal : Implements IDisposable
             'CMD.Parameters.AddWithValue("@FileHash", FileHash)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addInventory - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addInventory - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -1950,7 +1950,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@FileID", FileID)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/delInventory - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/delInventory - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -2005,7 +2005,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
             rs.Dispose()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/InventoryExists - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/InventoryExists - " + ex.Message + Environment.NewLine + S)
             CRC = ""
         Finally
             'If cn IsNot Nothing Then
@@ -2065,7 +2065,7 @@ Public Class clsDbLocal : Implements IDisposable
                 B = False
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/InventoryExists - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/InventoryExists - " + ex.Message + Environment.NewLine + S)
             FileID = -1
         Finally
             'If cn IsNot Nothing Then
@@ -2146,7 +2146,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@FileID", FileID)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setInventoryArchive 04 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setInventoryArchive 04 - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -2198,7 +2198,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@FileID", FileID)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setInventoryArchive 104 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setInventoryArchive 104 - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -2246,7 +2246,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Dispose()
             B = True
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR UpdateFileArchiveInfo 00: " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR UpdateFileArchiveInfo 00: " + ex.Message + Environment.NewLine + S)
             B = False
         End Try
         Return B
@@ -2282,8 +2282,8 @@ Public Class clsDbLocal : Implements IDisposable
             rs.Dispose()
 
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/InventoryExists - " + ex.Message + vbCrLf + S)
-            LOG.WriteToArchiveLog("ERROR 923A getFileArchiveInfo : " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/InventoryExists - " + ex.Message + Environment.NewLine + S)
+            LOG.WriteToArchiveLog("ERROR 923A getFileArchiveInfo : " + ex.Message + Environment.NewLine + S)
         End Try
 
         Return I
@@ -2324,8 +2324,8 @@ Public Class clsDbLocal : Implements IDisposable
                 CMD.Dispose()
                 B = True
             Catch ex As Exception
-                LOG.WriteToDirFileLog("ERROR addFileArchiveInfo 00: " + ex.Message + vbCrLf + S)
-                LOG.WriteToArchiveLog("ERROR addFileArchiveInfo 00: " + ex.Message + vbCrLf + S)
+                LOG.WriteToDirFileLog("ERROR addFileArchiveInfo 00: " + ex.Message + Environment.NewLine + S)
+                LOG.WriteToArchiveLog("ERROR addFileArchiveInfo 00: " + ex.Message + Environment.NewLine + S)
                 B = False
             End Try
         Catch ex As Exception
@@ -2405,8 +2405,8 @@ Public Class clsDbLocal : Implements IDisposable
                 rs.Dispose()
 
             Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR: clsDbLocal/InventoryExists - " + ex.Message + vbCrLf + S)
-                LOG.WriteToArchiveLog("ERROR 923A getFileArchiveInfo : " + ex.Message + vbCrLf + S)
+                LOG.WriteToArchiveLog("ERROR: clsDbLocal/InventoryExists - " + ex.Message + Environment.NewLine + S)
+                LOG.WriteToArchiveLog("ERROR 923A getFileArchiveInfo : " + ex.Message + Environment.NewLine + S)
             End Try
         Catch ex As Exception
             LOG.WriteToArchiveLog("ERROR 923b getFileArchiveInfo : " + ex.Message)
@@ -2486,8 +2486,8 @@ Public Class clsDbLocal : Implements IDisposable
                 rs.Dispose()
 
             Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR: clsDbLocal/InventoryExists - " + ex.Message + vbCrLf + S)
-                LOG.WriteToArchiveLog("ERROR 923A getFileArchiveInfo : " + ex.Message + vbCrLf + S)
+                LOG.WriteToArchiveLog("ERROR: clsDbLocal/InventoryExists - " + ex.Message + Environment.NewLine + S)
+                LOG.WriteToArchiveLog("ERROR 923A getFileArchiveInfo : " + ex.Message + Environment.NewLine + S)
             End Try
         Catch ex As Exception
             LOG.WriteToArchiveLog("ERROR 923b getFileArchiveInfo : " + ex.Message)
@@ -2620,7 +2620,7 @@ Public Class clsDbLocal : Implements IDisposable
                 B = False
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/InventoryExists - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/InventoryExists - " + ex.Message + Environment.NewLine + S)
             FileID = -1
         Finally
             'If cn IsNot Nothing Then
@@ -2651,7 +2651,7 @@ Public Class clsDbLocal : Implements IDisposable
             Try
                 CMD.ExecuteNonQuery()
             Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR: clsDbLocal/truncateDirs 104 - " + ex.Message + vbCrLf + S)
+                LOG.WriteToArchiveLog("ERROR: clsDbLocal/truncateDirs 104 - " + ex.Message + Environment.NewLine + S)
             Finally
                 GC.Collect()
             End Try
@@ -2670,7 +2670,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/truncateContacts 104 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/truncateContacts 104 - " + ex.Message + Environment.NewLine + S)
         Finally
             CMD.Dispose()
             GC.Collect()
@@ -2690,7 +2690,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/truncateContacts 104 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/truncateContacts 104 - " + ex.Message + Environment.NewLine + S)
         Finally
             CMD.Dispose()
             GC.Collect()
@@ -2710,7 +2710,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/truncateExchange 104 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/truncateExchange 104 - " + ex.Message + Environment.NewLine + S)
         Finally
             CMD.Dispose()
             'If cn IsNot Nothing Then
@@ -2736,7 +2736,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/truncateOutlook 104 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/truncateOutlook 104 - " + ex.Message + Environment.NewLine + S)
         Finally
             CMD.Dispose()
             'If cn IsNot Nothing Then
@@ -2763,7 +2763,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/truncateFiles 104 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/truncateFiles 104 - " + ex.Message + Environment.NewLine + S)
         Finally
             CMD.Dispose()
             'If cn IsNot Nothing Then
@@ -2789,7 +2789,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/truncateInventory 104 - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/truncateInventory 104 - " + ex.Message + Environment.NewLine + S)
         Finally
             CMD.Dispose()
             GC.Collect()
@@ -2842,7 +2842,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
             rs.Dispose()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/BackupDirTbl - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/BackupDirTbl - " + ex.Message + Environment.NewLine + S)
         Finally
             fOut.Close()
             fOut.Dispose()
@@ -2962,7 +2962,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
             rs.Dispose()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/BackupOutlookTbl - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/BackupOutlookTbl - " + ex.Message + Environment.NewLine + S)
         Finally
             fOut.Close()
             fOut.Dispose()
@@ -3026,7 +3026,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
             rs.Dispose()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/BackupOutlookTbl - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/BackupOutlookTbl - " + ex.Message + Environment.NewLine + S)
         Finally
             fOut.Close()
             fOut.Dispose()
@@ -3071,7 +3071,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@RowID", "null")
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addOutlook - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addOutlook - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3106,7 +3106,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@RowID", "null")
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addExchange - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addExchange - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3159,7 +3159,7 @@ Public Class clsDbLocal : Implements IDisposable
                 B = False
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/OutlookExists - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/OutlookExists - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             'If cn IsNot Nothing Then
@@ -3221,7 +3221,7 @@ Public Class clsDbLocal : Implements IDisposable
                 B = False
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/OutlookExists - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/OutlookExists - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             'If cn IsNot Nothing Then
@@ -3262,7 +3262,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@sKey", sKey)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/MarkExchangeFound - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/MarkExchangeFound - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3302,7 +3302,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@sKey", sKey)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/MarkOutlookFound - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/MarkOutlookFound - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3343,7 +3343,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@sKey", sKey)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/delOutlook - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/delOutlook - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3384,7 +3384,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@sKey", sKey)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/delExchange - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/delExchange - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3422,7 +3422,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/delOutlookMissing - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/delOutlookMissing - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3461,7 +3461,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/delExchangeMissing - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/delExchangeMissing - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3499,7 +3499,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setOutlookMissing - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setOutlookMissing - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3536,7 +3536,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setExchangeMissing - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setExchangeMissing - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3579,7 +3579,7 @@ Public Class clsDbLocal : Implements IDisposable
             'CMD.Parameters.AddWithValue("@sKey", sKey)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("WARNING: clsDbLocal/setOutlookKeyFound - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("WARNING: clsDbLocal/setOutlookKeyFound - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3612,7 +3612,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@sKey", sKey)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setExchangeKeyFound - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setExchangeKeyFound - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3666,7 +3666,7 @@ Public Class clsDbLocal : Implements IDisposable
                 End Using
             End Using
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/BackupDirTbl - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/BackupDirTbl - " + ex.Message + Environment.NewLine + S)
         Finally
 
         End Try
@@ -3698,7 +3698,7 @@ Public Class clsDbLocal : Implements IDisposable
                 CMD.Parameters.AddWithValue("@FQN", FQN)
                 CMD.ExecuteNonQuery()
             Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR: clsDbLocal/addListener - " + ex.Message + vbCrLf + S)
+                LOG.WriteToArchiveLog("ERROR: clsDbLocal/addListener - " + ex.Message + Environment.NewLine + S)
                 B = False
             End Try
         End Using
@@ -3725,7 +3725,7 @@ Public Class clsDbLocal : Implements IDisposable
             'CMD.Parameters.AddWithValue("@FQN", FQN)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addListener - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addListener - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3757,7 +3757,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@FQN", FQN)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addListener - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addListener - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3788,7 +3788,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@FQN", FQN)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addListener - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/addListener - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -3838,7 +3838,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
             rs.Dispose()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/getListenerFiles - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/getListenerFiles - " + ex.Message + Environment.NewLine + S)
         End Try
         GC.Collect()
         GC.WaitForPendingFinalizers()
@@ -3884,7 +3884,7 @@ Public Class clsDbLocal : Implements IDisposable
                 B = False
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/ActiveListenerFiles - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/ActiveListenerFiles - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             'If cn IsNot Nothing Then
@@ -3952,7 +3952,7 @@ Public Class clsDbLocal : Implements IDisposable
         Catch ex As Exception
             If InStr(ex.Message, "duplicate value cannot") > 0 Then
             Else
-                LOG.WriteToArchiveLog("ERROR 100H: clsDbLocal/addZipFile - " + ex.Message + vbCrLf + S)
+                LOG.WriteToArchiveLog("ERROR 100H: clsDbLocal/addZipFile - " + ex.Message + Environment.NewLine + S)
             End If
             B = False
         Finally
@@ -3994,7 +3994,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@FileName", FileName)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setZipFileProcessed - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setZipFileProcessed - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -4030,7 +4030,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@FileName", FileName)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setZipNbrOfFiles - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setZipNbrOfFiles - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -4067,7 +4067,7 @@ Public Class clsDbLocal : Implements IDisposable
             CMD.Parameters.AddWithValue("@FileName", FileName)
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setZipInWork - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/setZipInWork - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -4110,7 +4110,7 @@ Public Class clsDbLocal : Implements IDisposable
                     Try
                         CMD.ExecuteNonQuery()
                     Catch ex As Exception
-                        LOG.WriteToArchiveLog("ERROR 00: clsDbLocal/cleanZipFiles - " + ex.Message + vbCrLf + S)
+                        LOG.WriteToArchiveLog("ERROR 00: clsDbLocal/cleanZipFiles - " + ex.Message + Environment.NewLine + S)
                         B = False
                     Finally
                         GC.Collect()
@@ -4120,7 +4120,7 @@ Public Class clsDbLocal : Implements IDisposable
             End Using
             B = True
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR 01: clsDbLocal/cleanZipFiles - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR 01: clsDbLocal/cleanZipFiles - " + ex.Message + Environment.NewLine + S)
             B = False
         End Try
 
@@ -4152,7 +4152,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/zeroizeZipFiles - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/zeroizeZipFiles - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -4203,7 +4203,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
             rs.Dispose()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/getZipFiles - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/getZipFiles - " + ex.Message + Environment.NewLine + S)
         Finally
             'If SQLiteCONN IsNot Nothing Then
             '    If SQLiteCONN.State = ConnectionState.Open Then
@@ -4265,7 +4265,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
             rs.Dispose()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/BackupOutlookTbl - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/BackupOutlookTbl - " + ex.Message + Environment.NewLine + S)
         Finally
             If SQLiteCONN IsNot Nothing Then
                 If SQLiteCONN.State = ConnectionState.Open Then
@@ -4297,7 +4297,7 @@ Public Class clsDbLocal : Implements IDisposable
                 'bSQLiteCOnnected = True
             Catch ex As Exception
                 bb = False
-                LOG.WriteToArchiveLog("ERROR setListenerConn: CS=" + cs + vbCrLf + ex.Message)
+                LOG.WriteToArchiveLog("ERROR setListenerConn: CS=" + cs + Environment.NewLine + ex.Message)
             End Try
         End If
 
@@ -4331,7 +4331,7 @@ Public Class clsDbLocal : Implements IDisposable
                 bSQLiteCOnnected = True
             Catch ex As Exception
                 Dim LG As New clsLogging
-                LG.WriteToArchiveLog("ERROR LOCALDB setSLConn: " + ex.Message + vbCrLf + cs)
+                LG.WriteToArchiveLog("ERROR LOCALDB setSLConn: " + ex.Message + Environment.NewLine + cs)
                 LG = Nothing
                 bb = False
                 bSQLiteCOnnected = False
@@ -4352,7 +4352,7 @@ Public Class clsDbLocal : Implements IDisposable
             NewConn.Open()
         Catch ex As Exception
             Dim LG As New clsLogging
-            LG.WriteToArchiveLog("ERROR LOCALDB getSLConn: " + ex.Message + vbCrLf + cs)
+            LG.WriteToArchiveLog("ERROR LOCALDB getSLConn: " + ex.Message + Environment.NewLine + cs)
             LG = Nothing
             NewConn = Nothing
         End Try
@@ -4445,7 +4445,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
             rs.Dispose()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/getUseLastArchiveDateActive - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/getUseLastArchiveDateActive - " + ex.Message + Environment.NewLine + S)
         Finally
             If SQLiteCONN IsNot Nothing Then
                 If SQLiteCONN.State = ConnectionState.Open Then
@@ -4469,7 +4469,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/zeroizeZipFiles - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/zeroizeZipFiles - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -4492,7 +4492,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/zeroizeZipFiles - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/zeroizeZipFiles - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -4530,7 +4530,7 @@ Public Class clsDbLocal : Implements IDisposable
             End If
             rs.Dispose()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/BackupOutlookTbl - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/BackupOutlookTbl - " + ex.Message + Environment.NewLine + S)
         Finally
             If SQLiteCONN IsNot Nothing Then
                 If SQLiteCONN.State = ConnectionState.Open Then
@@ -4558,7 +4558,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/InitUseLastArchiveDateActive - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/InitUseLastArchiveDateActive - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -4579,7 +4579,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/ZeroizeLastArchiveDate - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/ZeroizeLastArchiveDate - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -4612,7 +4612,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/InitUseLastArchiveDateActive - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/InitUseLastArchiveDateActive - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()
@@ -4637,7 +4637,7 @@ Public Class clsDbLocal : Implements IDisposable
         Try
             CMD.ExecuteNonQuery()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsDbLocal/zeroizeZipFiles - " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDbLocal/zeroizeZipFiles - " + ex.Message + Environment.NewLine + S)
             B = False
         Finally
             CMD.Dispose()

@@ -3320,8 +3320,8 @@ LabelSkipThisEmail:
                         Console.WriteLine("Warning - file not found LL = " + LL.ToString)
                     Else
                         Dim tMsg As String = ""
-                        tMsg = "ERROR: " + ArchiveMsg + " SKIPPED - " + ex.Message + " LL = " + LL.ToString + vbCrLf
-                        tMsg += "ERROR: Subj:" + Subject + " SKIPPED - " + ex.Message + " LL = " + LL.ToString + vbCrLf
+                        tMsg = "ERROR: " + ArchiveMsg + " SKIPPED - " + ex.Message + " LL = " + LL.ToString + environment.NewLine
+                        tMsg += "ERROR: Subj:" + Subject + " SKIPPED - " + ex.Message + " LL = " + LL.ToString + environment.NewLine
                         tMsg += "clsArchiver : ArchiveEmailsInFolder: 99999 - item#" + i.ToString + " : " + ex.Message + "Message Type: " + oItems.Item(i).MessageClass.ToString + " LL = " + LL.ToString
                         LOG.WriteToArchiveLog(tMsg)
                     End If
@@ -3681,7 +3681,7 @@ LabelSkipThisEmail2:
                                         EM.setSourcetypecode("EML") : LL = 235
                                     Else : LL = 236
                                         '** It failed again, SKIP IT. :LL =  237
-                                        LOG.WriteToArchiveLog("ERROR 299: Failed to add email" + CurrMailFolderID_ServerName + vbCrLf + EmailFQN) : LL = 238
+                                        LOG.WriteToArchiveLog("ERROR 299: Failed to add email" + CurrMailFolderID_ServerName + environment.NewLine + EmailFQN) : LL = 238
                                         GoTo LabelSkipThisEmail : LL = 239
                                     End If : LL = 240
                                 End If : LL = 241
@@ -3696,7 +3696,7 @@ LabelSkipThisEmail2:
                         Dim sSql As String = "Update EMAIL set EmailIdentifier = '" + EmailIdentifier + "' where EmailGuid = '" + EmailGuid + "'" : LL = 249
                         Dim bbExec As Boolean = ExecuteSqlNewConn(sSql, False) : LL = 250
                         If Not bbExec Then : LL = 251
-                            LOG.WriteToArchiveLog("ERROR: 1234.99xx: " + EmailFQN + vbCrLf + sSql) : LL = 252
+                            LOG.WriteToArchiveLog("ERROR: 1234.99xx: " + EmailFQN + environment.NewLine + sSql) : LL = 252
                         End If : LL = 253
 
                         'LibraryName , ByVal isPublic As Boolean :LL =  255
@@ -4161,7 +4161,7 @@ LabelSkipThisEmail:
                         MySql = MySql + " and UserID = '" + gCurrUserGuidID + "'"
                         Dim bSuccess As Boolean = ExecuteSqlNewConn(MySql, False)
                         If Not bSuccess Then
-                            If xDebug Then LOG.WriteToArchiveLog("Update failed:" + vbCrLf + MySql)
+                            If xDebug Then LOG.WriteToArchiveLog("Update failed:" + environment.NewLine + MySql)
                         End If
                     Else
                         MySql = ""
@@ -4177,13 +4177,13 @@ LabelSkipThisEmail:
                         MySql = MySql + " 1)"
                         Dim bSuccess As Boolean = ExecuteSqlNewConn(MySql, False)
                         If Not bSuccess Then
-                            If xDebug Then LOG.WriteToArchiveLog("Insert failed:" + vbCrLf + MySql)
+                            If xDebug Then LOG.WriteToArchiveLog("Insert failed:" + environment.NewLine + MySql)
                         End If
                     End If
 
                     Application.DoEvents()
                 Catch ex As Exception
-                    If xDebug Then LOG.WriteToArchiveLog("Error: " + vbCrLf + ex.Message)
+                    If xDebug Then LOG.WriteToArchiveLog("Error: " + environment.NewLine + ex.Message)
                     If xDebug Then LOG.WriteToArchiveLog("Skipping Message# " + i.ToString)
                 End Try
             Next
@@ -4387,7 +4387,7 @@ LabelSkipThisEmail:
             bInstalled = True
             oAppTest = Nothing
         Catch E As Exception
-            LOG.WriteToArchiveLog("NOTICE: OUTLOOK does not appear to be installed - skipping archive." + vbCrLf + E.Message)
+            LOG.WriteToArchiveLog("NOTICE: OUTLOOK does not appear to be installed - skipping archive." + environment.NewLine + E.Message)
             bInstalled = False
         End Try
         If bInstalled = False Then
@@ -4854,7 +4854,7 @@ SkipContact:
                         MySql = MySql + " and UserID = '" + gCurrUserGuidID + "'"
                         Dim bSuccess As Boolean = ExecuteSqlNewConn(MySql, False)
                         If Not bSuccess Then
-                            If xDebug Then LOG.WriteToArchiveLog("Update failed:" + vbCrLf + MySql)
+                            If xDebug Then LOG.WriteToArchiveLog("Update failed:" + environment.NewLine + MySql)
                         End If
                     Else
                         MySql = MySql + " INSERT INTO  [ContactFrom]"
@@ -4869,7 +4869,7 @@ SkipContact:
                         MySql = MySql + " 1)"
                         Dim bSuccess As Boolean = ExecuteSqlNewConn(MySql, False)
                         If Not bSuccess Then
-                            If xDebug Then LOG.WriteToArchiveLog("Insert failed:" + vbCrLf + MySql)
+                            If xDebug Then LOG.WriteToArchiveLog("Insert failed:" + environment.NewLine + MySql)
                         End If
                     End If
                 End If
@@ -5767,7 +5767,7 @@ Dim StoreName AS String  = ""
                                 kk = 110
                             Catch ex As Exception
                                 LOG.WriteToArchiveLog("ERROR: getOutlookFolderNames 100b kk =: " + kk.ToString)
-                                LOG.WriteToArchiveLog("ERROR: getOutlookFolderNames 100b: " + ex.Message + vbCrLf + vbCrLf + ex.StackTrace)
+                                LOG.WriteToArchiveLog("ERROR: getOutlookFolderNames 100b: " + ex.Message + environment.NewLine + environment.NewLine + ex.StackTrace)
                                 LOG.WriteToArchiveLog("ERROR: getOutlookFolderNames 100b: tFolderName  = " + tFolderName + " : " + "oParentFolder.Name = " + oParentFolder.Name)
                             End Try
                         Else
@@ -5987,8 +5987,8 @@ SkipThisNonEmailFolder:
                 CB.Items.Add(MF.Name) : L = 16
             Next : L = 17
         Catch ex As Exception
-            LOG.WriteToArchiveLog("getOutlookParentFolderNames 100: L = " + L.ToString + vbCrLf + "Failed to get the Outlook Containers." + ex.Message)
-            MessageBox.Show("getOutlookParentFolderNames 100: L = " + L.ToString + vbCrLf + "Failed to get the Outlook Containers." + ex.Message)
+            LOG.WriteToArchiveLog("getOutlookParentFolderNames 100: L = " + L.ToString + environment.NewLine + "Failed to get the Outlook Containers." + ex.Message)
+            MessageBox.Show("getOutlookParentFolderNames 100: L = " + L.ToString + environment.NewLine + "Failed to get the Outlook Containers." + ex.Message)
             B = False
         End Try
 
@@ -6940,12 +6940,12 @@ Err_Handler:
                     End If
                 Next
             Catch ex As Exception
-                LOG.WriteToArchiveLog("AddOutlookContact: 110.11 - " + vbCrLf + ex.Message)
-                LOG.WriteToArchiveLog("AddOutlookContact: 110.11 - " + vbCrLf + ex.StackTrace)
+                LOG.WriteToArchiveLog("AddOutlookContact: 110.11 - " + environment.NewLine + ex.Message)
+                LOG.WriteToArchiveLog("AddOutlookContact: 110.11 - " + environment.NewLine + ex.StackTrace)
             End Try
         Catch ex As Exception
-            LOG.WriteToArchiveLog("AddOutlookContact: 110.12 - " + vbCrLf + ex.Message)
-            LOG.WriteToArchiveLog("AddOutlookContact: 110.12 - " + vbCrLf + ex.StackTrace)
+            LOG.WriteToArchiveLog("AddOutlookContact: 110.12 - " + environment.NewLine + ex.Message)
+            LOG.WriteToArchiveLog("AddOutlookContact: 110.12 - " + environment.NewLine + ex.StackTrace)
         End Try
 
         If Not olFolder Is Nothing Then
@@ -7751,9 +7751,9 @@ Err_Handler:
                     L = 28
                 Catch ex As Exception
                     Dim Msg As String = "ERROR:ArchiveEmailFolders 100.876.5:  Check to see the folders are defined properly. (Deactivate and reactivate). "
-                    Msg = Msg + "   Check to see the folders are defined properly. (Deactivate and reactivate)." + vbCrLf
-                    Msg = Msg + "   There is a problem with TopFolder:'" + TopFolder + "'." + vbCrLf
-                    Msg = Msg + "        SubFolderName:'" + SubFolderName + "'." + vbCrLf
+                    Msg = Msg + "   Check to see the folders are defined properly. (Deactivate and reactivate)." + environment.NewLine
+                    Msg = Msg + "   There is a problem with TopFolder:'" + TopFolder + "'." + environment.NewLine
+                    Msg = Msg + "        SubFolderName:'" + SubFolderName + "'." + environment.NewLine
                     Msg = Msg + "   Message: " + ex.Message
                     'frmHelp.MsgToDisplay  = Msg
                     'frmHelp.CallingScreenName  = "Archive Email Folders"
@@ -7831,9 +7831,9 @@ SKIPTHISONE:
             Try
                 oParentFolder = oMAPI.GetFolderFromID(MailboxName)
             Catch ex As Exception
-                'messagebox.show("ERROR 3421.45.a: could not open '" + MailboxName  + "' " + vbCrLf + ex.Message)
-                LOG.WriteToArchiveLog("ERROR 3421.45.a: could not open '" + MailboxName + "' " + vbCrLf + ex.Message)
-                LOG.WriteToArchiveLog("ERROR 3421.45.a:" + vbCrLf + ex.StackTrace)
+                'messagebox.show("ERROR 3421.45.a: could not open '" + MailboxName  + "' " + environment.NewLine + ex.Message)
+                LOG.WriteToArchiveLog("ERROR 3421.45.a: could not open '" + MailboxName + "' " + environment.NewLine + ex.Message)
+                LOG.WriteToArchiveLog("ERROR 3421.45.a:" + environment.NewLine + ex.StackTrace)
                 frmNotify2.Close()
                 Return
             End Try
@@ -7961,7 +7961,7 @@ GetNextParentFolder:
             GC.Collect()
         Catch ex As Exception
             LOG.WriteToArchiveLog("Error processing '" + TopFolder + "' 653.21b: " + ex.Message)
-            LOG.WriteToArchiveLog("Error processing 653.21b: " + vbCrLf + ex.StackTrace)
+            LOG.WriteToArchiveLog("Error processing 653.21b: " + environment.NewLine + ex.StackTrace)
             'messagebox.show("Error processing '" + TopFolder  + "' 653.21b: " + ex.Message)
         End Try
 
@@ -8581,7 +8581,7 @@ GetNextParentFolder:
         End If
 
         If Not File.Exists(RssFQN) Then
-            MessageBox.Show("RSS Feed could not be processed: " + vbCrLf + RssFQN)
+            MessageBox.Show("RSS Feed could not be processed: " + environment.NewLine + RssFQN)
             Return
         End If
 
@@ -8958,7 +8958,7 @@ GetNextParentFolder:
         End If
 
         If Not File.Exists(WebPageFQN) Then
-            MessageBox.Show("WEB Page could not be found: " + vbCrLf + WebPageFQN)
+            MessageBox.Show("WEB Page could not be found: " + environment.NewLine + WebPageFQN)
             Return ""
         End If
 
@@ -9356,7 +9356,7 @@ ProcessOneFileOnly:
                             Dim bApplied As Boolean = Exec_spUpdateLongNameHash(SourceGuid, file_FullName)
                             If Not bApplied Then
                                 LOG.WriteToArchiveLog("ERROR 12Q1: (Exec_spUpdateLongNameHash) : Failed to update the long file names cross references: ")
-                                LOG.WriteToArchiveLog("HOW TO TEST in Sql Server: " + vbCrLf + "    exec spUpdateLongNameHash '" + file_FullName + "', '" + SourceGuid + "' ")
+                                LOG.WriteToArchiveLog("HOW TO TEST in Sql Server: " + environment.NewLine + "    exec spUpdateLongNameHash '" + file_FullName + "', '" + SourceGuid + "' ")
                             End If
 
                             Dim VersionNbr As String = "0"
@@ -9408,7 +9408,7 @@ ProcessOneFileOnly:
                         Dim bApplied As Boolean = Exec_spUpdateLongNameHash(SourceGuid, file_FullName)
                         If Not bApplied Then
                             LOG.WriteToArchiveLog("ERROR QX221: (Exec_spUpdateLongNameHash) : Failed to update the long file names cross references: ")
-                            LOG.WriteToArchiveLog("HOW TO TEST in Sql Server: " + vbCrLf + "    exec spUpdateLongNameHash '" + file_FullName + "', '" + SourceGuid + "' ")
+                            LOG.WriteToArchiveLog("HOW TO TEST in Sql Server: " + environment.NewLine + "    exec spUpdateLongNameHash '" + file_FullName + "', '" + SourceGuid + "' ")
                         End If
 
                     End If
@@ -9819,7 +9819,7 @@ NextFolder:
         If bcnt = 0 And SubstituteFileType = "" Then
 
             If SubstituteFileType = Nothing Then
-                Dim MSG As String = "The file type '" + file_SourceTypeCode + "' is undefined." + vbCrLf + "DO YOU WISH TO AUTOMATICALLY DEFINE IT?" + vbCrLf + "This will allow content to be archived, but not searched."
+                Dim MSG As String = "The file type '" + file_SourceTypeCode + "' is undefined." + environment.NewLine + "DO YOU WISH TO AUTOMATICALLY DEFINE IT?" + environment.NewLine + "This will allow content to be archived, but not searched."
                 'Dim dlgRes As DialogResult = MessageBox.Show(MSG, "Filetype Undefined", MessageBoxButtons.YesNo)
 
                 UNASGND.setApplied("0")
@@ -10057,10 +10057,10 @@ NextFolder:
                     If file_SourceTypeCode.Equals(".msg") Then
                         LOG.WriteToArchiveLog("File : " + file_FullName + " was found to be a message file, skipped file.")
 
-                        Dim DisplayMsg As String = "A message file was encounted in a backup directory." + vbCrLf
-                        DisplayMsg = DisplayMsg + "It has been moved to the EMAIL Working directory." + vbCrLf
-                        DisplayMsg = DisplayMsg + "To archive a MSG file, it must be imported into outlook." + vbCrLf
-                        DisplayMsg = DisplayMsg + "This file has not been added to the CONTENT repository." + vbCrLf
+                        Dim DisplayMsg As String = "A message file was encounted in a backup directory." + environment.NewLine
+                        DisplayMsg = DisplayMsg + "It has been moved to the EMAIL Working directory." + environment.NewLine
+                        DisplayMsg = DisplayMsg + "To archive a MSG file, it must be imported into outlook." + environment.NewLine
+                        DisplayMsg = DisplayMsg + "This file has not been added to the CONTENT repository." + environment.NewLine
 
                         frmHelp.MsgToDisplay = DisplayMsg
                         frmHelp.CallingScreenName = "ECM Archive"
@@ -10141,7 +10141,7 @@ NextFolder:
 
                     If bcnt = 0 And SubstituteFileType = "" Then
                         If SubstituteFileType = Nothing Then
-                            Dim MSG As String = "The file type '" + file_SourceTypeCode + "' is undefined." + vbCrLf + "DO YOU WISH TO AUTOMATICALLY DEFINE IT?" + vbCrLf + "This will allow content to be archived, but not searched."
+                            Dim MSG As String = "The file type '" + file_SourceTypeCode + "' is undefined." + environment.NewLine + "DO YOU WISH TO AUTOMATICALLY DEFINE IT?" + environment.NewLine + "This will allow content to be archived, but not searched."
                             'Dim dlgRes As DialogResult = MessageBox.Show(MSG, "Filetype Undefined", MessageBoxButtons.YesNo)
 
                             If xDebug Then LOG.WriteToArchiveLog(MSG)
@@ -10517,7 +10517,7 @@ NextFolder:
                             End If
                         End If
                     Catch ex As Exception
-                        LOG.WriteToArchiveLog("NOTICE:OutlookFolderNames 005x: Item #" + i.ToString + vbCrLf + ex.Message)
+                        LOG.WriteToArchiveLog("NOTICE:OutlookFolderNames 005x: Item #" + i.ToString + environment.NewLine + ex.Message)
                     End Try
                 Next i
             Else
@@ -10974,7 +10974,7 @@ NextFolder:
                 ExecuteSqlNewConn(90214, MySql)
                 LOG.WriteToErrorLog("Unrecoverable Error - removed file '" + FI.FullName + "' from the repository.")
 
-                Dim DisplayMsg As String = "A source file failed to load. Review ERROR log." + vbCrLf + FI.FullName
+                Dim DisplayMsg As String = "A source file failed to load. Review ERROR log." + environment.NewLine + FI.FullName
                 frmHelp.MsgToDisplay = DisplayMsg
                 frmHelp.CallingScreenName = "ECM Archive"
                 frmHelp.CaptionName = "Fatal Load Error"
@@ -11464,10 +11464,10 @@ SKIPOUT:
         End If
 
         ' Display the various pieces of information about the channel:
-        RssText = RssText & "Title: " & rssChannel.GetString("title") & vbCrLf
-        RssText = RssText & "Link: " & rssChannel.GetString("link") & vbCrLf
+        RssText = RssText & "Title: " & rssChannel.GetString("title") & environment.NewLine
+        RssText = RssText & "Link: " & rssChannel.GetString("link") & environment.NewLine
         RssText = RssText & "Description: " _
-             & rssChannel.GetString("description") & vbCrLf
+             & rssChannel.GetString("description") & environment.NewLine
 
         ' For each item in the channel, display the title, link, publish date, and categories
         ' assigned to the post.

@@ -209,24 +209,24 @@ Public Class clsLICENSE
     Public Function Insert() As Boolean
         Dim b As Boolean = False
         Dim s As String = ""
-        s = s + " INSERT INTO License(" + vbCrLf
-        s = s + "Agreement," + vbCrLf
-        s = s + "VersionNbr," + vbCrLf
-        s = s + "ActivationDate," + vbCrLf
-        s = s + "InstallDate," + vbCrLf
-        s = s + "CustomerID," + vbCrLf
-        s = s + "CustomerName," + vbCrLf
-        s = s + "XrtNxr1," + vbCrLf
-        s = s + "SqlServerInstanceName," + vbCrLf
-        s = s + "SqlServerMachineName) values (" + vbCrLf
-        s = s + "'" + Agreement + "'" + "," + vbCrLf
-        s = s + VersionNbr + "," + vbCrLf
-        s = s + "'" + ActivationDate + "'" + "," + vbCrLf
-        s = s + "'" + InstallDate + "'" + "," + vbCrLf
-        s = s + "'" + CustomerID + "'" + "," + vbCrLf
-        s = s + "'" + CustomerName + "'" + "," + vbCrLf
-        s = s + "'" + XrtNxr1 + "'" + "," + vbCrLf
-        s = s + "'" + SqlServerInstanceNameX + "'" + "," + vbCrLf
+        s = s + " INSERT INTO License(" + Environment.NewLine
+        s = s + "Agreement," + Environment.NewLine
+        s = s + "VersionNbr," + Environment.NewLine
+        s = s + "ActivationDate," + Environment.NewLine
+        s = s + "InstallDate," + Environment.NewLine
+        s = s + "CustomerID," + Environment.NewLine
+        s = s + "CustomerName," + Environment.NewLine
+        s = s + "XrtNxr1," + Environment.NewLine
+        s = s + "SqlServerInstanceName," + Environment.NewLine
+        s = s + "SqlServerMachineName) values (" + Environment.NewLine
+        s = s + "'" + Agreement + "'" + "," + Environment.NewLine
+        s = s + VersionNbr + "," + Environment.NewLine
+        s = s + "'" + ActivationDate + "'" + "," + Environment.NewLine
+        s = s + "'" + InstallDate + "'" + "," + Environment.NewLine
+        s = s + "'" + CustomerID + "'" + "," + Environment.NewLine
+        s = s + "'" + CustomerName + "'" + "," + Environment.NewLine
+        s = s + "'" + XrtNxr1 + "'" + "," + Environment.NewLine
+        s = s + "'" + SqlServerInstanceNameX + "'" + "," + Environment.NewLine
         s = s + "'" + SqlServerMachineName + "'" + ")"
         Return DBARCH.ExecuteSqlNewConn(s, False)
 

@@ -116,7 +116,7 @@ Public Class clsDBUpdate
                                 End If
                             End If
                         Else
-                            LOG.WriteToArchiveLog("ERROR: DB Update FAILED from " + FQN + vbCrLf + MySql)
+                            LOG.WriteToArchiveLog("ERROR: DB Update FAILED from " + FQN + Environment.NewLine + MySql)
                         End If
                         MySql = ""
                     Else
@@ -144,7 +144,7 @@ Public Class clsDBUpdate
                         End If
                     End If
                 Else
-                    LOG.WriteToArchiveLog("ERROR: DB Update FAILED from " + FQN + vbCrLf + MySql)
+                    LOG.WriteToArchiveLog("ERROR: DB Update FAILED from " + FQN + Environment.NewLine + MySql)
                 End If
             End If
 

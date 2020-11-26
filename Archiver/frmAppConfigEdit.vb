@@ -62,16 +62,16 @@ Public Class frmAppConfigEdit
         Dim SR As New IO.StreamReader(fName)
 Dim FullText AS String  = "" 
         Do While Not SR.EndOfStream
-Dim S AS String  = SR.ReadLine 
-            FullText  = FullText  + S  + vbCrLf
+Dim S AS String  = SR.ReadLine
+            FullText = FullText + S + Environment.NewLine
         Loop
         SR.Close()
-        Return FullText 
+        Return FullText
     End Function
-    Sub WriteFile(ByVal FQN AS String , ByVal sText AS String )
+    Sub WriteFile(ByVal FQN As String, ByVal sText As String)
 
         Dim SW As New IO.StreamWriter(FQN)
-Dim S AS String  = sText.Trim 
+        Dim S As String = sText.Trim
 
         If S.Length > 0 Then
             SW.WriteLine(S)
@@ -214,16 +214,16 @@ Dim S AS String  = sText.Trim
                 Dim CS As String = MasterConnstr
 
                 InsertSql = ""
-                InsertSql = InsertSql + "INSERT INTO [Repository] ([ConnectionName],[ConnectionData])" + vbCrLf
-                InsertSql = InsertSql + "VALUES" + vbCrLf
-                InsertSql = InsertSql + "('" + ProfileName + "'" + vbCrLf
-                InsertSql = InsertSql + ",'" + S + "')" + vbCrLf
+                InsertSql = InsertSql + "INSERT INTO [Repository] ([ConnectionName],[ConnectionData])" + Environment.NewLine
+                InsertSql = InsertSql + "VALUES" + Environment.NewLine
+                InsertSql = InsertSql + "('" + ProfileName + "'" + Environment.NewLine
+                InsertSql = InsertSql + ",'" + S + "')" + Environment.NewLine
             Else
                 InsertSql = ""
-                InsertSql = InsertSql + "INSERT INTO [Repository] ([ConnectionName],[ConnectionDataThesaurus])" + vbCrLf
-                InsertSql = InsertSql + "VALUES" + vbCrLf
-                InsertSql = InsertSql + "('" + ProfileName + "'" + vbCrLf
-                InsertSql = InsertSql + ",'" + S + "')" + vbCrLf
+                InsertSql = InsertSql + "INSERT INTO [Repository] ([ConnectionName],[ConnectionDataThesaurus])" + Environment.NewLine
+                InsertSql = InsertSql + "VALUES" + Environment.NewLine
+                InsertSql = InsertSql + "('" + ProfileName + "'" + Environment.NewLine
+                InsertSql = InsertSql + ",'" + S + "')" + Environment.NewLine
             End If
 
         Else
@@ -262,13 +262,13 @@ Dim S AS String  = sText.Trim
 
         Dim GlobalFileDirectory As String = txtGlobalFileDirectory.Text.Trim
         Dim ProfileName As String = cbSavedDefinitions.Text
-        Dim S As String = GetScreenParms
+        Dim S As String = GetScreenParms()
 
         If Not Directory.Exists(GlobalFileDirectory) Then
             Try
                 Directory.CreateDirectory(GlobalFileDirectory)
             Catch ex As Exception
-                MessageBox.Show("ERROR: Failed to create directory, choose another or contact an administrator, aborting setup." + vbCrLf + ex.Message)
+                MessageBox.Show("ERROR: Failed to create directory, choose another or contact an administrator, aborting setup." + Environment.NewLine + ex.Message)
                 Return
             End Try
         End If
@@ -300,7 +300,7 @@ Dim S AS String  = sText.Trim
             Return strContents
         Catch Ex As Exception
             B = False
-            MessageBox.Show("ERROR: could not read global configuration file:" + vbCrLf + Ex.Message)
+            MessageBox.Show("ERROR: could not read global configuration file:" + Environment.NewLine + Ex.Message)
         End Try
         Return B
     End Function
@@ -317,7 +317,7 @@ Dim S AS String  = sText.Trim
             objReader.Close()
             bAns = True
         Catch Ex As Exception
-            MessageBox.Show("ERROR: did not save global configuration file:" + vbCrLf + Ex.Message)
+            MessageBox.Show("ERROR: did not save global configuration file:" + Environment.NewLine + Ex.Message)
         End Try
         Return bAns
     End Function
@@ -405,7 +405,7 @@ Dim S AS String  = sText.Trim
         txtMstr.Text = MasterConnstr
     End Sub
 
-    Function BuildConnstr() as string
+    Function BuildConnstr() As String
         Dim S As String = ""
 
         If Not ckWindowsAuthentication.Checked Then
@@ -443,7 +443,7 @@ Dim S AS String  = sText.Trim
                     BB = True
                 Catch ex As Exception
                     rc = False
-                    MessageBox.Show("ERROR SQL Execution: " + vbCrLf + vbCrLf + sql + vbCrLf + vbCrLf + ex.Message)
+                    MessageBox.Show("ERROR SQL Execution: " + Environment.NewLine + Environment.NewLine + sql + Environment.NewLine + Environment.NewLine + ex.Message)
                 End Try
             End Using
         Catch ex As Exception

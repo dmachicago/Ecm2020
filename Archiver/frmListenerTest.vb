@@ -108,7 +108,7 @@ Public Class FrmListenerTest
             End Using
 
         Catch ex As Exception
-            MessageBox.Show("Could not store data into file " & FQN & vbCrLf + ex.Message & ". Program terminating.", "Error", MessageBoxButtons.OK)
+            MessageBox.Show("Could not store data into file " & FQN & Environment.NewLine + ex.Message & ". Program terminating.", "Error", MessageBoxButtons.OK)
         End Try
 
     End Sub

@@ -505,8 +505,8 @@ Public Class clsEmailFunctions
             ' Save the email bundle without attachments.
             bundle2.SaveXml("bundle.xml")
         Catch ex As System.Exception
-            LOG.WriteToArchiveLog("ERROR- clsEmailFuncitons:EmailCopyAndSave " + vbCrLf + ex.Message)
-            LOG.WriteToArchiveLog("ERROR- clsEmailFuncitons:EmailCopyAndSave " + vbCrLf + ex.StackTrace)
+            LOG.WriteToArchiveLog("ERROR- clsEmailFuncitons:EmailCopyAndSave " + environment.NewLine + ex.Message)
+            LOG.WriteToArchiveLog("ERROR- clsEmailFuncitons:EmailCopyAndSave " + environment.NewLine + ex.StackTrace)
         End Try
     End Sub
 
@@ -646,10 +646,10 @@ Public Class clsEmailFunctions
             If NumDaysOld > DaysToHold Then
                 Dim success As Boolean = mailman.DeleteEmail(email)
                 If (success <> True) Then
-                    Dim Msg As String = "Subject: " + Subject + vbCrLf
-                    Msg += "FromName: " + FromName + vbCrLf
-                    Msg += "FromAddress: " + FromAddress + vbCrLf
-                    LOG.WriteToArchiveLog("ERROR ApplyEmailBundle: Failed to delete email:" + vbCrLf + Msg)
+                    Dim Msg As String = "Subject: " + Subject + environment.NewLine
+                    Msg += "FromName: " + FromName + environment.NewLine
+                    Msg += "FromAddress: " + FromAddress + environment.NewLine
+                    LOG.WriteToArchiveLog("ERROR ApplyEmailBundle: Failed to delete email:" + environment.NewLine + Msg)
                 End If
             End If
 
@@ -933,10 +933,10 @@ NextRec:
             If NbrDaysOld > DaysToHold Then
                 Dim success As Boolean = imap.SetMailFlag(email, "Deleted", 1)
                 If (success <> True) Then
-                    Dim Msg As String = "Subject: " + Subject + vbCrLf
-                    Msg += "FromName: " + FromName + vbCrLf
-                    Msg += "FromAddress: " + FromAddress + vbCrLf
-                    LOG.WriteToArchiveLog("ERROR getIMapEmail: Failed to delete email:" + vbCrLf + Msg)
+                    Dim Msg As String = "Subject: " + Subject + environment.NewLine
+                    Msg += "FromName: " + FromName + environment.NewLine
+                    Msg += "FromAddress: " + FromAddress + environment.NewLine
+                    LOG.WriteToArchiveLog("ERROR getIMapEmail: Failed to delete email:" + environment.NewLine + Msg)
                 End If
             End If
 
@@ -1594,13 +1594,13 @@ REDO:
                         LL = 214
                         If (success <> True) Then
                             LL = 215
-                            Dim Msg As String = "Subject: " + Subject + vbCrLf
+                            Dim Msg As String = "Subject: " + Subject + environment.NewLine
                             LL = 216
-                            Msg += "FromName: " + FromName + vbCrLf
+                            Msg += "FromName: " + FromName + environment.NewLine
                             LL = 217
-                            Msg += "FromAddress: " + FromAddress + vbCrLf
+                            Msg += "FromAddress: " + FromAddress + environment.NewLine
                             LL = 218
-                            LOG.WriteToArchiveLog("ERROR getIMapEmail: Failed to delete email:" + vbCrLf + Msg)
+                            LOG.WriteToArchiveLog("ERROR getIMapEmail: Failed to delete email:" + environment.NewLine + Msg)
                             LL = 219
                         End If
                         LL = 220
@@ -1700,13 +1700,13 @@ REDO:
                             LL = 269
                             If (success <> True) Then
                                 LL = 270
-                                Dim Msg As String = "Subject: " + Subject + vbCrLf
+                                Dim Msg As String = "Subject: " + Subject + environment.NewLine
                                 LL = 271
-                                Msg += "FromName: " + FromName + vbCrLf
+                                Msg += "FromName: " + FromName + environment.NewLine
                                 LL = 272
-                                Msg += "FromAddress: " + FromAddress + vbCrLf
+                                Msg += "FromAddress: " + FromAddress + environment.NewLine
                                 LL = 273
-                                LOG.WriteToArchiveLog("ERROR getIMapEmail: Failed to delete email:" + vbCrLf + Msg)
+                                LOG.WriteToArchiveLog("ERROR getIMapEmail: Failed to delete email:" + environment.NewLine + Msg)
                                 LL = 274
                             End If
                             LL = 275
@@ -2048,10 +2048,10 @@ ENDIT:
                 If NbrDaysOld > DaysToRetain Then
                     Dim success As Boolean = imap.SetMailFlag(email, "Deleted", 1)
                     If (success <> True) Then
-                        Dim Msg As String = "Subject: " + Subject + vbCrLf
-                        Msg += "FromName: " + FromName + vbCrLf
-                        Msg += "FromAddress: " + FromAddress + vbCrLf
-                        LOG.WriteToArchiveLog("ERROR getIMapEmail: Failed to delete email:" + vbCrLf + Msg)
+                        Dim Msg As String = "Subject: " + Subject + environment.NewLine
+                        Msg += "FromName: " + FromName + environment.NewLine
+                        Msg += "FromAddress: " + FromAddress + environment.NewLine
+                        LOG.WriteToArchiveLog("ERROR getIMapEmail: Failed to delete email:" + environment.NewLine + Msg)
                     End If
                 End If
 
@@ -2373,11 +2373,11 @@ NextRec:
             objNS = Nothing
             LL = 17
         Catch ex2 As System.Exception
-            LOG.WriteToArchiveLog("ERROR FATAL:convertEmlToMsg 100: LL = " + LL.ToString + vbCrLf + ex2.Message + vbCrLf + ":" + EmlFQN + vbCrLf + ":" + EmlToMsgFQN)
+            LOG.WriteToArchiveLog("ERROR FATAL:convertEmlToMsg 100: LL = " + LL.ToString + environment.NewLine + ex2.Message + environment.NewLine + ":" + EmlFQN + environment.NewLine + ":" + EmlToMsgFQN)
             EmlToMsgFQN = ""
         End Try
 
-        LOG.WriteToArchiveLog("NOTICE:convertEmlToMsg 200: LL = " + LL.ToString + vbCrLf + ":" + EmlFQN + vbCrLf + ":'" + EmlToMsgFQN + "'.")
+        LOG.WriteToArchiveLog("NOTICE:convertEmlToMsg 200: LL = " + LL.ToString + environment.NewLine + ":" + EmlFQN + environment.NewLine + ":'" + EmlToMsgFQN + "'.")
 
         If File.Exists(EmlToMsgFQN) Then
             LOG.WriteToArchiveLog("NOTICE:convertEmlToMsg 400: EXISTS.")
@@ -2457,11 +2457,11 @@ NextRec:
             objNS = Nothing
             LL = 17
         Catch ex2 As System.Exception
-            LOG.WriteToArchiveLog("ERROR FATAL:ConvertNTEF 100: LL = " + LL.ToString + vbCrLf + ex2.Message + vbCrLf + ":" + TnefFQN + vbCrLf + ":" + NtefToMSG)
+            LOG.WriteToArchiveLog("ERROR FATAL:ConvertNTEF 100: LL = " + LL.ToString + environment.NewLine + ex2.Message + environment.NewLine + ":" + TnefFQN + environment.NewLine + ":" + NtefToMSG)
             NtefToMSG = ""
         End Try
 
-        LOG.WriteToArchiveLog("NOTICE:ConvertNTEF 200: LL = " + LL.ToString + vbCrLf + ":" + TnefFQN + vbCrLf + ":'" + NtefToMSG + "'.")
+        LOG.WriteToArchiveLog("NOTICE:ConvertNTEF 200: LL = " + LL.ToString + environment.NewLine + ":" + TnefFQN + environment.NewLine + ":'" + NtefToMSG + "'.")
 
         If File.Exists(NtefToMSG) Then
             LOG.WriteToArchiveLog("NOTICE:ConvertNTEF 400: EXISTS as " + NtefToMSG)
@@ -2756,7 +2756,7 @@ NextRec:
 SKIPMSGFILE:
             deleteThisFile = True
         Catch ex As System.Exception
-            LOG.WriteToArchiveLog("NOTICE: LoadMsgFile LL = " + LL.ToString + vbCrLf + ex.Message)
+            LOG.WriteToArchiveLog("NOTICE: LoadMsgFile LL = " + LL.ToString + environment.NewLine + ex.Message)
             deleteThisFile = False
         Finally
             If deleteThisFile = True Then
@@ -3711,7 +3711,7 @@ LabelSkipThisEmail:
             Dim retentionYears As Integer = getRetentionPeriod(RetentionCode) : LL = 93
             Dim BB As Boolean = EM.SaveEml(EmailFQN) : LL = 94
             If BB = False Then : LL = 95
-                LOG.WriteToArchiveLog("ERROR: 001a ArchiveEmbeddedEmailMessage - failed to save EML File." + vbCrLf + EmailFQN) : LL = 96
+                LOG.WriteToArchiveLog("ERROR: 001a ArchiveEmbeddedEmailMessage - failed to save EML File." + environment.NewLine + EmailFQN) : LL = 96
                 Return : LL = 97
             End If : LL = 98
             If bEmlToMSG = True Then : LL = 99
@@ -3914,7 +3914,7 @@ SKIPTOHERE:
             iCnt = mailman.GetMailboxCount
             Return iCnt
         Catch ex As System.Exception
-            MessageBox.Show(mailman.LastErrorText + vbCrLf + vbCrLf + ex.Message)
+            MessageBox.Show(mailman.LastErrorText + environment.NewLine + environment.NewLine + ex.Message)
         End Try
 
         GC.Collect()
@@ -3959,7 +3959,7 @@ SKIPTOHERE:
         Try
             iCnt = mailman.GetMailboxCount
         Catch ex As System.Exception
-            MessageBox.Show(mailman.LastErrorText + vbCrLf + vbCrLf + ex.Message)
+            MessageBox.Show(mailman.LastErrorText + environment.NewLine + environment.NewLine + ex.Message)
         End Try
 
         GC.Collect()
@@ -4441,7 +4441,7 @@ NextBox:
                 Dim FQN As String = File
                 Dim bAddedMsg As Boolean = LoadMsgFile(UID, FQN, ServerName, CurrMailFolder, LibraryName, RetentionCode, DefaultSubject, Body, AttachedFiles, bWinMail, ParentGuid, DaysToHold)
                 If Not bAddedMsg Then
-                    LOG.WriteToArchiveLog("ERROR: ApplyPendingEmail - 500 : Failed to add embedded MSG file: " + vbCrLf + ServerName + vbCrLf + " : " + CurrMailFolder)
+                    LOG.WriteToArchiveLog("ERROR: ApplyPendingEmail - 500 : Failed to add embedded MSG file: " + environment.NewLine + ServerName + environment.NewLine + " : " + CurrMailFolder)
                 Else
                     FilesToDelete.Add(FQN)
                 End If
@@ -5011,13 +5011,13 @@ NextBox:
                             LL = 193
                             If (Not success) Then
                                 LL = 194
-                                Dim Msg As String = "Subject: " + Subject + vbCrLf
+                                Dim Msg As String = "Subject: " + Subject + environment.NewLine
                                 LL = 195
-                                Msg += "FromName: " + FromName + vbCrLf
+                                Msg += "FromName: " + FromName + environment.NewLine
                                 LL = 196
-                                Msg += "FromAddress: " + FromAddress + vbCrLf
+                                Msg += "FromAddress: " + FromAddress + environment.NewLine
                                 LL = 197
-                                LOG.WriteToArchiveLog("ERROR ApplyEmailBundleV2: Failed to delete email:" + vbCrLf + Msg)
+                                LOG.WriteToArchiveLog("ERROR ApplyEmailBundleV2: Failed to delete email:" + environment.NewLine + Msg)
                                 LL = 198
                             End If
                             LL = 199
@@ -5463,7 +5463,7 @@ ENDITALL:
             Dim retentionYears As Integer = DBARCH.getRetentionPeriod(RetentionCode) : LL = 93
             Dim BB As Boolean = EM.SaveEml(EmailFQN) : LL = 94
             If BB = False Then : LL = 95
-                LOG.WriteToArchiveLog("ERROR: 001a ArchiveEmbeddedEmailMessage - failed to save EML File." + vbCrLf + EmailFQN) : LL = 96
+                LOG.WriteToArchiveLog("ERROR: 001a ArchiveEmbeddedEmailMessage - failed to save EML File." + environment.NewLine + EmailFQN) : LL = 96
                 Return : LL = 97
             End If : LL = 98
             If bEmlToMSG = True Then : LL = 99
@@ -5561,7 +5561,7 @@ SKIPTOHERE:
                 BlankCnt += 1
             ElseIf CH.Equals(Chr(34)) Then
                 BlankCnt += 1
-            ElseIf CH.Equals(vbCrLf) Then
+            ElseIf CH.Equals(environment.NewLine) Then
                 BlankCnt += 1
             ElseIf CH.Equals(vbCr) Then
                 BlankCnt += 1
@@ -5902,13 +5902,13 @@ REDO:
                             LL = 226
                             If (Success <> True) Then
                                 LL = 227
-                                Dim Msg As String = "Subject: " + Subject + vbCrLf
+                                Dim Msg As String = "Subject: " + Subject + environment.NewLine
                                 LL = 228
-                                Msg += "FromName: " + FromName + vbCrLf
+                                Msg += "FromName: " + FromName + environment.NewLine
                                 LL = 229
-                                Msg += "FromAddress: " + FromAddress + vbCrLf
+                                Msg += "FromAddress: " + FromAddress + environment.NewLine
                                 LL = 230
-                                LOG.WriteToArchiveLog("ERROR: getIMapEmail: Failed to delete email from server:" + vbCrLf + Msg)
+                                LOG.WriteToArchiveLog("ERROR: getIMapEmail: Failed to delete email from server:" + environment.NewLine + Msg)
                                 LL = 231
                             End If
                             LL = 232
@@ -6004,13 +6004,13 @@ REDO:
                                 LL = 280
                                 If (Success <> True) Then
                                     LL = 281
-                                    Dim Msg As String = "Subject: " + Subject + vbCrLf
+                                    Dim Msg As String = "Subject: " + Subject + environment.NewLine
                                     LL = 282
-                                    Msg += "FromName: " + FromName + vbCrLf
+                                    Msg += "FromName: " + FromName + environment.NewLine
                                     LL = 283
-                                    Msg += "FromAddress: " + FromAddress + vbCrLf
+                                    Msg += "FromAddress: " + FromAddress + environment.NewLine
                                     LL = 284
-                                    LOG.WriteToArchiveLog("ERROR getIMapEmail: Failed to delete email:" + vbCrLf + Msg)
+                                    LOG.WriteToArchiveLog("ERROR getIMapEmail: Failed to delete email:" + environment.NewLine + Msg)
                                     LL = 285
                                 End If
                                 LL = 286
@@ -6655,13 +6655,13 @@ REDO:
                         LL = 214
                         If (success <> True) Then
                             LL = 215
-                            Dim Msg As String = "Subject: " + Subject + vbCrLf
+                            Dim Msg As String = "Subject: " + Subject + environment.NewLine
                             LL = 216
-                            Msg += "FromName: " + FromName + vbCrLf
+                            Msg += "FromName: " + FromName + environment.NewLine
                             LL = 217
-                            Msg += "FromAddress: " + FromAddress + vbCrLf
+                            Msg += "FromAddress: " + FromAddress + environment.NewLine
                             LL = 218
-                            LOG.WriteToArchiveLog("ERROR getIMapEmail: Failed to delete email:" + vbCrLf + Msg)
+                            LOG.WriteToArchiveLog("ERROR getIMapEmail: Failed to delete email:" + environment.NewLine + Msg)
                             LL = 219
                         End If
                         LL = 220
@@ -6762,13 +6762,13 @@ REDO:
                             LL = 269
                             If (success <> True) Then
                                 LL = 270
-                                Dim Msg As String = "Subject: " + Subject + vbCrLf
+                                Dim Msg As String = "Subject: " + Subject + environment.NewLine
                                 LL = 271
-                                Msg += "FromName: " + FromName + vbCrLf
+                                Msg += "FromName: " + FromName + environment.NewLine
                                 LL = 272
-                                Msg += "FromAddress: " + FromAddress + vbCrLf
+                                Msg += "FromAddress: " + FromAddress + environment.NewLine
                                 LL = 273
-                                LOG.WriteToArchiveLog("ERROR getIMapEmail: Failed to delete email:" + vbCrLf + Msg)
+                                LOG.WriteToArchiveLog("ERROR getIMapEmail: Failed to delete email:" + environment.NewLine + Msg)
                                 LL = 274
                             End If
                             LL = 275
@@ -7225,10 +7225,10 @@ REDO:
                 If NbrDaysOld >= DaysToHold Then
                     Success = imap.SetMailFlag(email, "Deleted", 1)
                     If (Success <> True) Then
-                        Dim Msg As String = "Subject: " + Subject + vbCrLf
-                        Msg += "FromName: " + FromName + vbCrLf
-                        Msg += "FromAddress: " + FromAddress + vbCrLf
-                        LOG.WriteToArchiveLog("ERROR: getIMapEmail: Failed to delete email from server:" + vbCrLf + Msg)
+                        Dim Msg As String = "Subject: " + Subject + environment.NewLine
+                        Msg += "FromName: " + FromName + environment.NewLine
+                        Msg += "FromAddress: " + FromAddress + environment.NewLine
+                        LOG.WriteToArchiveLog("ERROR: getIMapEmail: Failed to delete email from server:" + environment.NewLine + Msg)
                     End If
                 End If
 
@@ -7278,10 +7278,10 @@ REDO:
                     If DaysOld > DaysToHold Then
                         Success = imap.SetMailFlag(email, "Deleted", 1)
                         If (Success <> True) Then
-                            Dim Msg As String = "Subject: " + Subject + vbCrLf
-                            Msg += "FromName: " + FromName + vbCrLf
-                            Msg += "FromAddress: " + FromAddress + vbCrLf
-                            LOG.WriteToArchiveLog("ERROR getIMapEmail: Failed to delete email:" + vbCrLf + Msg)
+                            Dim Msg As String = "Subject: " + Subject + environment.NewLine
+                            Msg += "FromName: " + FromName + environment.NewLine
+                            Msg += "FromAddress: " + FromAddress + environment.NewLine
+                            LOG.WriteToArchiveLog("ERROR getIMapEmail: Failed to delete email:" + environment.NewLine + Msg)
                         End If
                     End If
                     GoTo NextRec
@@ -7559,10 +7559,10 @@ ENDIT:
                 If NbrDaysOld >= DaysToHold Then
                     success = imap.SetMailFlag(email, "Deleted", 1)
                     If (success <> True) Then
-                        Dim Msg As String = "Subject: " + Subject + vbCrLf
-                        Msg += "FromName: " + FromName + vbCrLf
-                        Msg += "FromAddress: " + FromAddress + vbCrLf
-                        LOG.WriteToArchiveLog("ERROR getIMapEmail: Failed to delete email:" + vbCrLf + Msg)
+                        Dim Msg As String = "Subject: " + Subject + environment.NewLine
+                        Msg += "FromName: " + FromName + environment.NewLine
+                        Msg += "FromAddress: " + FromAddress + environment.NewLine
+                        LOG.WriteToArchiveLog("ERROR getIMapEmail: Failed to delete email:" + environment.NewLine + Msg)
                     End If
                 End If
 
@@ -7610,10 +7610,10 @@ ENDIT:
                     If DaysOld > DaysToHold Then
                         success = imap.SetMailFlag(email, "Deleted", 1)
                         If (success <> True) Then
-                            Dim Msg As String = "Subject: " + Subject + vbCrLf
-                            Msg += "FromName: " + FromName + vbCrLf
-                            Msg += "FromAddress: " + FromAddress + vbCrLf
-                            LOG.WriteToArchiveLog("ERROR getIMapEmail: Failed to delete email:" + vbCrLf + Msg)
+                            Dim Msg As String = "Subject: " + Subject + environment.NewLine
+                            Msg += "FromName: " + FromName + environment.NewLine
+                            Msg += "FromAddress: " + FromAddress + environment.NewLine
+                            LOG.WriteToArchiveLog("ERROR getIMapEmail: Failed to delete email:" + environment.NewLine + Msg)
                         End If
                     End If
                     GoTo NextRec

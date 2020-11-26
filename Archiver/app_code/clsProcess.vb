@@ -101,11 +101,11 @@ Dim ProcessName AS String  = ""
                 KillProcess(ProcessID)
             Next
         Catch ex As Exception
-            log.WriteToArchiveLog("Warning 64.23.a: clsProcess:KillOrphanProcesses - tried to kill suspected orphan process and failed." + vbCrLf + ex.Message)
+            LOG.WriteToArchiveLog("Warning 64.23.a: clsProcess:KillOrphanProcesses - tried to kill suspected orphan process and failed." + Environment.NewLine + ex.Message)
         End Try
 
     End Sub
-    Sub AddProcess(ByVal ID As Integer, ByVal pName AS String , ByVal bKeepProcess As Boolean)
+    Sub AddProcess(ByVal ID As Integer, ByVal pName As String, ByVal bKeepProcess As Boolean)
         Try
             Dim B As Boolean = False
             If bKeepProcess = True Then
@@ -120,7 +120,7 @@ Dim ProcessName AS String  = ""
                 End If
             End If
         Catch ex As Exception
-            log.WriteToArchiveLog("Warning 64.23.a: clsProcess:AddProcess - tried to record running process and failed." + vbCrLf + ex.Message)
+            LOG.WriteToArchiveLog("Warning 64.23.a: clsProcess:AddProcess - tried to record running process and failed." + Environment.NewLine + ex.Message)
         End Try
 
     End Sub
@@ -136,8 +136,8 @@ Dim ProcessName AS String  = ""
         Next
     End Sub
 
-    Function isProcessRunning(ByVal ProcessName AS String ) As Boolean
-Dim tgtProcess AS String  = "" 
+    Function isProcessRunning(ByVal ProcessName As String) As Boolean
+        Dim tgtProcess As String = ""
         For Each p As Process In Process.GetProcesses
             tgtProcess = p.ProcessName.ToUpper
             If tgtProcess.Equals(ProcessName.ToUpper) Then
@@ -146,8 +146,8 @@ Dim tgtProcess AS String  = ""
         Next
         Return False
     End Function
-    Sub KillProcess(ByVal ProcessName AS String )
-        Dim pProcess() As Process = System.Diagnostics.Process.GetProcessesByName(ProcessName )
+    Sub KillProcess(ByVal ProcessName As String)
+        Dim pProcess() As Process = System.Diagnostics.Process.GetProcessesByName(ProcessName)
         For Each p As Process In pProcess
             p.Kill()
         Next
@@ -160,27 +160,27 @@ Dim tgtProcess AS String  = ""
                 pProcess.Kill()
                 Return True
             Catch ex As Exception
-                log.WriteToArchiveLog("Warning 0181.44 - Failed to drop process: " + Handle.ToString)
+                LOG.WriteToArchiveLog("Warning 0181.44 - Failed to drop process: " + Handle.ToString)
                 Return False
             End Try
         End If
         Return False
     End Function
-    Sub StartProcessFromFilefqnAndWait(ByVal fqn AS String )
+    Sub StartProcessFromFilefqnAndWait(ByVal fqn As String)
         'Dim objProcess As System.Diagnostics.Process
         Try
             Dim myProcess As Process = System.Diagnostics.Process.Start(fqn)
             ' wait until it exits
             myProcess.WaitForExit()
             ' display results
-            MessageBox.Show("Process was closed at: " & _
-               myProcess.ExitTime & "." & _
-               System.Environment.NewLine & "Exit Code: " & _
+            MessageBox.Show("Process was closed at: " &
+               myProcess.ExitTime & "." &
+               System.Environment.NewLine & "Exit Code: " &
                myProcess.ExitCode)
             myProcess.Close()
             File.Delete(fqn)
         Catch ex As Exception
-            MessageBox.Show("Could not start application for " & fqn & vbCrLf & ex.Message, "Error")
+            MessageBox.Show("Could not start application for " & fqn & Environment.NewLine & ex.Message, "Error")
             LOG.WriteToArchiveLog("clsProcess : StartProcessFromFilefqnAndWait : 9 : " + ex.Message)
             LOG.WriteToArchiveLog("DELETE FAILURE 03|" + fqn)
         End Try

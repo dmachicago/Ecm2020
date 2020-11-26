@@ -95,7 +95,7 @@ Dim MySql AS String  = ""
                     S = S + " and [UserID] = '" + UID + "'"
                     Dim BB As Boolean = DBARCH.ExecuteSqlNewConn(S, False)
                     If Not BB Then
-                        MessageBox.Show("Error 243.1: Delete failed - " + vbCrLf + S)
+                        MessageBox.Show("Error 243.1: Delete failed - " + Environment.NewLine + S)
                     End If
                 End If
             End If
@@ -135,7 +135,7 @@ Dim MySql AS String  = ""
 
                     Dim BB As Boolean = EF.Insert()
                     If Not BB Then
-                        MessageBox.Show("Error 243.1: Insert failed - " + vbCrLf + S)
+                        MessageBox.Show("Error 243.1: Insert failed - " + Environment.NewLine + S)
                     End If
                 End If
             End If
@@ -233,7 +233,7 @@ Dim MySql AS String  = ""
             MySql = MySql + " UserID = '" + gCurrUserGuidID + "'"
             Dim bSuccess As Boolean = DBARCH.ExecuteSqlNewConn(MySql, False)
             If Not bSuccess Then
-                Debug.Print("Update failed:" + vbCrLf + MySql)
+                Debug.Print("Update failed:" + Environment.NewLine + MySql)
             End If
             ARCH.ProcessOutlookFolderNames(FileDirectory, TopFolder, LB)
             'ARCH.GetActiveEmailSenders(gCurrUserGuidID, MailboxName )
@@ -259,7 +259,7 @@ Dim MySql AS String  = ""
             MySql = MySql + " UserID = '" + gCurrUserGuidID + "'"
             Dim bSuccess As Boolean = DBARCH.ExecuteSqlNewConn(MySql, False)
             If Not bSuccess Then
-                Debug.Print("Update failed:" + vbCrLf + MySql)
+                Debug.Print("Update failed:" + Environment.NewLine + MySql)
             End If
 
             ARCH.RetrieveContactEmailInfo(dgEmailSenders, gCurrUserGuidID)

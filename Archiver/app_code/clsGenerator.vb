@@ -11,16 +11,16 @@ Public Class clsGenerator
 
     Function genDocPagingByRowHeader() As String
 
-        Dim S As String = " WITH xContent AS (" + vbCrLf
+        Dim S As String = " WITH xContent AS (" + Environment.NewLine
         Return S
 
     End Function
     Function genDocPagingByRowFooter(ByVal StartNbr As Integer, ByVal EndNbr As Integer) As String
 
         Dim S As String = ""
-        S = S + " )" + vbCrLf
-        S = S + " SELECT * FROM xContent" + vbCrLf
-        S = S + " WHERE ROWID BETWEEN " + StartNbr.ToString + " AND " + EndNbr.ToString + vbCrLf
+        S = S + " )" + Environment.NewLine
+        S = S + " SELECT * FROM xContent" + Environment.NewLine
+        S = S + " WHERE ROWID BETWEEN " + StartNbr.ToString + " AND " + EndNbr.ToString + Environment.NewLine
         Return S
 
     End Function
@@ -33,11 +33,11 @@ Public Class clsGenerator
             Return String.Empty
         End If
 
-        MetaDataValue  = FixSingleQuote(MetaDataValue )
+        MetaDataValue = FixSingleQuote(MetaDataValue)
 
-Dim S AS String  = "" 
-Dim CH AS String  = "" 
-Dim WhereClause AS String  = ""
+        Dim S As String = ""
+        Dim CH As String = ""
+        Dim WhereClause As String = ""
         'Dim MetaDataType  = DBARCH.getAttributeDataType(MetaDataName )
         'Dim QuotesNeeded As Boolean = DBARCH.QuotesRequired(MetaDataType )
 
@@ -68,9 +68,9 @@ Dim WhereClause AS String  = ""
         Dim S As String = ""
         If ckLimitTodays Then
             If Mandatory Then
-                S = " AND (LastWriteTime >= GETDATE() - " + DaysOld + " OR CreateDate >= GETDATE() - " + DaysOld.ToString + ")" + vbCrLf
+                S = " AND (LastWriteTime >= GETDATE() - " + DaysOld + " OR CreateDate >= GETDATE() - " + DaysOld.ToString + ")" + Environment.NewLine
             Else
-                S = " OR (LastWriteTime >= GETDATE() - " + DaysOld + " OR CreateDate >= GETDATE() - " + DaysOld.ToString + ")" + vbCrLf
+                S = " OR (LastWriteTime >= GETDATE() - " + DaysOld + " OR CreateDate >= GETDATE() - " + DaysOld.ToString + ")" + Environment.NewLine
             End If
         End If
         Return S
@@ -85,12 +85,12 @@ Dim WhereClause AS String  = ""
         Return S
     End Function
 
-    Function DocSearchCreateDate(ByVal ckDate As Boolean, _
-                           ByVal DATECODE As String, _
-                           ByVal Mandatory As Boolean, _
-                           ByVal bReceived As Boolean, _
-                           ByVal bCreated As Boolean, _
-                           ByVal Startdate As Date, _
+    Function DocSearchCreateDate(ByVal ckDate As Boolean,
+                           ByVal DATECODE As String,
+                           ByVal Mandatory As Boolean,
+                           ByVal bReceived As Boolean,
+                           ByVal bCreated As Boolean,
+                           ByVal Startdate As Date,
                            ByVal EndDate As Date) As String
 
         If Not ckDate Then
@@ -106,35 +106,35 @@ Dim WhereClause AS String  = ""
                 Else
                     S += " OR "
                 End If
-                S += " (CreateDate > '" + CDate(Startdate).ToString + "')" + vbCrLf
+                S += " (CreateDate > '" + CDate(Startdate).ToString + "')" + Environment.NewLine
             Case "BEFORE"
                 If Mandatory = True Then
                     S += " AND "
                 Else
                     S += " OR "
                 End If
-                S += " (CreateDate < '" + CDate(Startdate).ToString + "')" + vbCrLf
+                S += " (CreateDate < '" + CDate(Startdate).ToString + "')" + Environment.NewLine
             Case "BETWEEN"
                 If Mandatory = True Then
                     S += " AND "
                 Else
                     S += " OR "
                 End If
-                S += " (CreateDate >= '" + CDate(Startdate).ToString + "' AND CreateDate <= '" + CDate(EndDate).ToString + "')" + vbCrLf
+                S += " (CreateDate >= '" + CDate(Startdate).ToString + "' AND CreateDate <= '" + CDate(EndDate).ToString + "')" + Environment.NewLine
             Case "NOT BETWEEN"
                 If Mandatory = True Then
                     S += " AND "
                 Else
                     S += " OR "
                 End If
-                S += " (CreateDate <= '" + CDate(Startdate).ToString + "' AND CreateDate >= '" + CDate(EndDate).ToString + "')" + vbCrLf
+                S += " (CreateDate <= '" + CDate(Startdate).ToString + "' AND CreateDate >= '" + CDate(EndDate).ToString + "')" + Environment.NewLine
             Case "ON"
                 If Mandatory = True Then
                     S += " AND "
                 Else
                     S += " OR "
                 End If
-                S += " (CreateDate = '" + CDate(Startdate).ToString + "')" + vbCrLf
+                S += " (CreateDate = '" + CDate(Startdate).ToString + "')" + Environment.NewLine
             Case Else
                 S = String.Empty
         End Select
@@ -143,12 +143,12 @@ Dim WhereClause AS String  = ""
 
     End Function
 
-    Function DocSearchDateLastWriteTime(ByVal ckDate As Boolean, _
-                           ByVal DATECODE As String, _
-                           ByVal Mandatory As Boolean, _
-                           ByVal bReceived As Boolean, _
-                           ByVal bCreated As Boolean, _
-                           ByVal Startdate As Date, _
+    Function DocSearchDateLastWriteTime(ByVal ckDate As Boolean,
+                           ByVal DATECODE As String,
+                           ByVal Mandatory As Boolean,
+                           ByVal bReceived As Boolean,
+                           ByVal bCreated As Boolean,
+                           ByVal Startdate As Date,
                            ByVal EndDate As Date) As String
 
         If Not ckDate Then
@@ -164,35 +164,35 @@ Dim WhereClause AS String  = ""
                 Else
                     S += " OR "
                 End If
-                S += " (LastWriteTime > '" + CDate(Startdate).ToString + "')" + vbCrLf
+                S += " (LastWriteTime > '" + CDate(Startdate).ToString + "')" + Environment.NewLine
             Case "BEFORE"
                 If Mandatory = True Then
                     S += " AND "
                 Else
                     S += " OR "
                 End If
-                S += " (LastWriteTime < '" + CDate(Startdate).ToString + "')" + vbCrLf
+                S += " (LastWriteTime < '" + CDate(Startdate).ToString + "')" + Environment.NewLine
             Case "BETWEEN"
                 If Mandatory = True Then
                     S += " AND "
                 Else
                     S += " OR "
                 End If
-                S += " (LastWriteTime >= '" + CDate(Startdate).ToString + "' AND LastWriteTime <= '" + CDate(EndDate).ToString + "')" + vbCrLf
+                S += " (LastWriteTime >= '" + CDate(Startdate).ToString + "' AND LastWriteTime <= '" + CDate(EndDate).ToString + "')" + Environment.NewLine
             Case "NOT BETWEEN"
                 If Mandatory = True Then
                     S += " AND "
                 Else
                     S += " OR "
                 End If
-                S += " (LastWriteTime <= '" + CDate(Startdate).ToString + "' AND LastWriteTime >= '" + CDate(EndDate).ToString + "')" + vbCrLf
+                S += " (LastWriteTime <= '" + CDate(Startdate).ToString + "' AND LastWriteTime >= '" + CDate(EndDate).ToString + "')" + Environment.NewLine
             Case "ON"
                 If Mandatory = True Then
                     S += " AND "
                 Else
                     S += " OR "
                 End If
-                S += " (LastWriteTime = '" + CDate(Startdate).ToString + "')" + vbCrLf
+                S += " (LastWriteTime = '" + CDate(Startdate).ToString + "')" + Environment.NewLine
             Case Else
                 S = String.Empty
         End Select
@@ -225,7 +225,7 @@ Dim WhereClause AS String  = ""
         End If
 
         Dim S As String = String.Empty
-        S += " and KEY_TBL.RANK >= " + MinWeight + vbCrLf
+        S += " and KEY_TBL.RANK >= " + MinWeight + Environment.NewLine
 
         Return S
     End Function
@@ -271,19 +271,19 @@ Dim WhereClause AS String  = ""
         Dim S As String = ""
 
         If ckWeighted = True Then
-            S = S + "Select " + vbCrLf
-            S += vbTab + " KEY_TBL.RANK, DS.SourceName 	" + vbCrLf
-            S += vbTab + ",DS.CreateDate " + vbCrLf
-            S += vbTab + ",DS.VersionNbr 	" + vbCrLf
-            S += vbTab + ",DS.LastAccessDate " + vbCrLf
-            S += vbTab + ",DS.FileLength " + vbCrLf
-            S += vbTab + ",DS.LastWriteTime " + vbCrLf
-            S += vbTab + ",DS.OriginalFileType 		" + vbCrLf
-            S += vbTab + ",DS.isPublic " + vbCrLf
-            S += vbTab + ",DS.FQN " + vbCrLf
-            S += vbTab + ",DS.SourceGuid " + vbCrLf
-            S += vbTab + ",DS.DataSourceOwnerUserID, DS.FileDirectory, DS.RetentionExpirationDate, DS.isMaster, DS.StructuredData, DS.RepoSvrName " + vbCrLf
-            S += "FROM DataSource as DS " + vbCrLf
+            S = S + "Select " + Environment.NewLine
+            S += vbTab + " KEY_TBL.RANK, DS.SourceName 	" + Environment.NewLine
+            S += vbTab + ",DS.CreateDate " + Environment.NewLine
+            S += vbTab + ",DS.VersionNbr 	" + Environment.NewLine
+            S += vbTab + ",DS.LastAccessDate " + Environment.NewLine
+            S += vbTab + ",DS.FileLength " + Environment.NewLine
+            S += vbTab + ",DS.LastWriteTime " + Environment.NewLine
+            S += vbTab + ",DS.OriginalFileType 		" + Environment.NewLine
+            S += vbTab + ",DS.isPublic " + Environment.NewLine
+            S += vbTab + ",DS.FQN " + Environment.NewLine
+            S += vbTab + ",DS.SourceGuid " + Environment.NewLine
+            S += vbTab + ",DS.DataSourceOwnerUserID, DS.FileDirectory, DS.RetentionExpirationDate, DS.isMaster, DS.StructuredData, DS.RepoSvrName " + Environment.NewLine
+            S += "FROM DataSource as DS " + Environment.NewLine
 
             S += genIsAbout(ckWeighted, ckBusiness, searchCriteria.Trim, False)
 
@@ -292,19 +292,19 @@ Dim WhereClause AS String  = ""
             'End If
 
         Else
-            S = S + "Select " + vbCrLf
-            S += vbTab + "[SourceName] 	" + vbCrLf
-            S += vbTab + ",[CreateDate] " + vbCrLf
-            S += vbTab + ",[VersionNbr] 	" + vbCrLf
-            S += vbTab + ",[LastAccessDate] " + vbCrLf
-            S += vbTab + ",[FileLength] " + vbCrLf
-            S += vbTab + ",[LastWriteTime] " + vbCrLf
-            S += vbTab + ",[OriginalFileType] 		" + vbCrLf
-            S += vbTab + ",[isPublic] " + vbCrLf
-            S += vbTab + ",[FQN] " + vbCrLf
-            S += vbTab + ",[SourceGuid] " + vbCrLf
-            S += vbTab + ",[DataSourceOwnerUserID], FileDirectory, RetentionExpirationDate, isMaster, StructuredData, RepoSvrName " + vbCrLf
-            S += "FROM DataSource " + vbCrLf
+            S = S + "Select " + Environment.NewLine
+            S += vbTab + "[SourceName] 	" + Environment.NewLine
+            S += vbTab + ",[CreateDate] " + Environment.NewLine
+            S += vbTab + ",[VersionNbr] 	" + Environment.NewLine
+            S += vbTab + ",[LastAccessDate] " + Environment.NewLine
+            S += vbTab + ",[FileLength] " + Environment.NewLine
+            S += vbTab + ",[LastWriteTime] " + Environment.NewLine
+            S += vbTab + ",[OriginalFileType] 		" + Environment.NewLine
+            S += vbTab + ",[isPublic] " + Environment.NewLine
+            S += vbTab + ",[FQN] " + Environment.NewLine
+            S += vbTab + ",[SourceGuid] " + Environment.NewLine
+            S += vbTab + ",[DataSourceOwnerUserID], FileDirectory, RetentionExpirationDate, isMaster, StructuredData, RepoSvrName " + Environment.NewLine
+            S += "FROM DataSource " + Environment.NewLine
             'If bSaveToClipBoard Then
             'Clipboard.SetText(s)
             'End If
@@ -320,25 +320,25 @@ Dim WhereClause AS String  = ""
         Dim S As String = ""
 
         If ckWeighted = True Then
-            S = S + "Select " + vbCrLf
+            S = S + "Select " + Environment.NewLine
             S += vbTab + "KEY_TBL.RANK ("
-            S += vbTab + ",DS.SourceName" + vbCrLf
-            S += vbTab + ",DS.CreateDate " + vbCrLf
-            S += vbTab + ",DS.VersionNbr 	" + vbCrLf
-            S += vbTab + ",DS.LastAccessDate " + vbCrLf
-            S += vbTab + ",DS.FileLength " + vbCrLf
-            S += vbTab + ",DS.LastWriteTime " + vbCrLf
-            S += vbTab + ",DS.OriginalFileType 		" + vbCrLf
-            S += vbTab + ",DS.isPublic " + vbCrLf
-            S += vbTab + ",DS.FQN " + vbCrLf
-            S += vbTab + ",DS.SourceGuid " + vbCrLf
+            S += vbTab + ",DS.SourceName" + Environment.NewLine
+            S += vbTab + ",DS.CreateDate " + Environment.NewLine
+            S += vbTab + ",DS.VersionNbr 	" + Environment.NewLine
+            S += vbTab + ",DS.LastAccessDate " + Environment.NewLine
+            S += vbTab + ",DS.FileLength " + Environment.NewLine
+            S += vbTab + ",DS.LastWriteTime " + Environment.NewLine
+            S += vbTab + ",DS.OriginalFileType 		" + Environment.NewLine
+            S += vbTab + ",DS.isPublic " + Environment.NewLine
+            S += vbTab + ",DS.FQN " + Environment.NewLine
+            S += vbTab + ",DS.SourceGuid " + Environment.NewLine
             S += vbTab + ",DS.DataSourceOwnerUserID, "
             S += vbTab + ",DS.FileDirectory "
             S += vbTab + ",DS.RetentionExpirationDate "
             S += vbTab + ",DS.isMaster "
-            S += vbTab + ",DS.StructuredData" + vbCrLf
-            S += vbTab + ",ROW_NUMBER() OVER (ORDER BY SourceName ASC) AS ROWID, RepoSvrName  )" + vbCrLf
-            S += "FROM DataSource as DS " + vbCrLf
+            S += vbTab + ",DS.StructuredData" + Environment.NewLine
+            S += vbTab + ",ROW_NUMBER() OVER (ORDER BY SourceName ASC) AS ROWID, RepoSvrName  )" + Environment.NewLine
+            S += "FROM DataSource as DS " + Environment.NewLine
 
             S += genIsAbout(ckWeighted, ckBusiness, searchCriteria.Trim, False)
 
@@ -347,24 +347,24 @@ Dim WhereClause AS String  = ""
             'End If
 
         Else
-            S = S + "Select " + vbCrLf
-            S += vbTab + "[SourceName] 	" + vbCrLf
-            S += vbTab + ",[CreateDate] " + vbCrLf
-            S += vbTab + ",[VersionNbr] 	" + vbCrLf
-            S += vbTab + ",[LastAccessDate] " + vbCrLf
-            S += vbTab + ",[FileLength] " + vbCrLf
-            S += vbTab + ",[LastWriteTime] " + vbCrLf
-            S += vbTab + ",[OriginalFileType] 		" + vbCrLf
-            S += vbTab + ",[isPublic] " + vbCrLf
-            S += vbTab + ",[FQN] " + vbCrLf
-            S += vbTab + ",[SourceGuid] " + vbCrLf
+            S = S + "Select " + Environment.NewLine
+            S += vbTab + "[SourceName] 	" + Environment.NewLine
+            S += vbTab + ",[CreateDate] " + Environment.NewLine
+            S += vbTab + ",[VersionNbr] 	" + Environment.NewLine
+            S += vbTab + ",[LastAccessDate] " + Environment.NewLine
+            S += vbTab + ",[FileLength] " + Environment.NewLine
+            S += vbTab + ",[LastWriteTime] " + Environment.NewLine
+            S += vbTab + ",[OriginalFileType] 		" + Environment.NewLine
+            S += vbTab + ",[isPublic] " + Environment.NewLine
+            S += vbTab + ",[FQN] " + Environment.NewLine
+            S += vbTab + ",[SourceGuid] " + Environment.NewLine
             S += vbTab + ",[DataSourceOwnerUserID]"
             S += vbTab + ", FileDirectory"
             S += vbTab + ", RetentionExpirationDate"
             S += vbTab + ", isMaster"
-            S += vbTab + ", StructuredData " + vbCrLf
-            S += vbTab + ",ROW_NUMBER() OVER (ORDER BY SourceName ASC) AS ROWID, RepoSvrName  " + vbCrLf
-            S += "FROM DataSource " + vbCrLf
+            S += vbTab + ", StructuredData " + Environment.NewLine
+            S += vbTab + ",ROW_NUMBER() OVER (ORDER BY SourceName ASC) AS ROWID, RepoSvrName  " + Environment.NewLine
+            S += "FROM DataSource " + Environment.NewLine
             'If bSaveToClipBoard Then
             'Clipboard.SetText(s)
             'End If
@@ -374,19 +374,19 @@ Dim WhereClause AS String  = ""
 
     End Function
 
-    Function genIsAbout(ByVal ckWeighted As Boolean, ByVal useFreetext As Boolean, ByVal SearchText AS String , ByVal isEmailSearch As Boolean) As String
+    Function genIsAbout(ByVal ckWeighted As Boolean, ByVal useFreetext As Boolean, ByVal SearchText As String, ByVal isEmailSearch As Boolean) As String
         If ckWeighted = False Then
             Return ""
         End If
-Dim isAboutClause AS String  = "" 
-Dim SearchStr AS String  = SearchText  
-Dim CorrectedSearchClause AS String  = CleanIsAboutSearchText(SearchText ) 
-        CorrectedSearchClause  = CorrectedSearchClause .Trim
-        If CorrectedSearchClause .Length > 2 Then
-Dim C AS String  = Mid(CorrectedSearchClause , CorrectedSearchClause .Length, 1) 
+        Dim isAboutClause As String = ""
+        Dim SearchStr As String = SearchText
+        Dim CorrectedSearchClause As String = CleanIsAboutSearchText(SearchText)
+        CorrectedSearchClause = CorrectedSearchClause.Trim
+        If CorrectedSearchClause.Length > 2 Then
+            Dim C As String = Mid(CorrectedSearchClause, CorrectedSearchClause.Length, 1)
             If C.Equals(",") Then
-                CorrectedSearchClause  = Mid(CorrectedSearchClause , 1, CorrectedSearchClause .Length - 1)
-                CorrectedSearchClause  = CorrectedSearchClause .Trim
+                CorrectedSearchClause = Mid(CorrectedSearchClause, 1, CorrectedSearchClause.Length - 1)
+                CorrectedSearchClause = CorrectedSearchClause.Trim
             End If
         End If
         If isEmailSearch = True Then
@@ -394,42 +394,42 @@ Dim C AS String  = Mid(CorrectedSearchClause , CorrectedSearchClause .Length, 1)
                 'INNER JOIN FREETEXTTABLE(dataSource, *,
                 '    'ISABOUT ("dale miller", "susan miller", jessica )' ) AS KEY_TBL
                 '    ON DS.SourceGuid = KEY_TBL.[KEY]
-                isAboutClause  += "INNER JOIN FREETEXTTABLE(EMAIL, *, " + vbCrLf
-                isAboutClause  += "     'ISABOUT ("
-                isAboutClause  += CorrectedSearchClause 
-                isAboutClause  += ")' ) as KEY_TBL" + vbCrLf
-                isAboutClause  += "          ON DS.EmailGuid = KEY_TBL.[KEY]" + vbCrLf
+                isAboutClause += "INNER JOIN FREETEXTTABLE(EMAIL, *, " + Environment.NewLine
+                isAboutClause += "     'ISABOUT ("
+                isAboutClause += CorrectedSearchClause
+                isAboutClause += ")' ) as KEY_TBL" + Environment.NewLine
+                isAboutClause += "          ON DS.EmailGuid = KEY_TBL.[KEY]" + Environment.NewLine
             Else
                 '    INNER JOIN CONTAINSTABLE(dataSource, *,
                 '    'ISABOUT ("dale miller", 
                 '"susan miller", jessica )' ) AS KEY_TBL
                 '    ON DS.SourceGuid = KEY_TBL.[KEY]
-                isAboutClause  += "INNER JOIN CONTAINSTABLE(EMAIL, *, " + vbCrLf
-                isAboutClause  += "     'ISABOUT ("
-                isAboutClause  += CorrectedSearchClause 
-                isAboutClause  += ")' ) as KEY_TBL" + vbCrLf
-                isAboutClause  += "          ON DS.EmailGuid = KEY_TBL.[KEY]" + vbCrLf
+                isAboutClause += "INNER JOIN CONTAINSTABLE(EMAIL, *, " + Environment.NewLine
+                isAboutClause += "     'ISABOUT ("
+                isAboutClause += CorrectedSearchClause
+                isAboutClause += ")' ) as KEY_TBL" + Environment.NewLine
+                isAboutClause += "          ON DS.EmailGuid = KEY_TBL.[KEY]" + Environment.NewLine
             End If
         Else
             If useFreetext = True Then
                 'INNER JOIN FREETEXTTABLE(dataSource, *,
                 '    'ISABOUT ("dale miller", "susan miller", jessica )' ) AS KEY_TBL
                 '    ON DS.SourceGuid = KEY_TBL.[KEY]
-                isAboutClause  += "INNER JOIN FREETEXTTABLE(dataSource, SourceImage, " + vbCrLf
-                isAboutClause  += "     'ISABOUT ("
-                isAboutClause  += CorrectedSearchClause 
-                isAboutClause  += ")' ) as KEY_TBL" + vbCrLf
-                isAboutClause  += "          ON DS.SourceGuid = KEY_TBL.[KEY]" + vbCrLf
+                isAboutClause += "INNER JOIN FREETEXTTABLE(dataSource, SourceImage, " + Environment.NewLine
+                isAboutClause += "     'ISABOUT ("
+                isAboutClause += CorrectedSearchClause
+                isAboutClause += ")' ) as KEY_TBL" + Environment.NewLine
+                isAboutClause += "          ON DS.SourceGuid = KEY_TBL.[KEY]" + Environment.NewLine
             Else
                 '    INNER JOIN CONTAINSTABLE(dataSource, *,
                 '    'ISABOUT ("dale miller", 
                 '"susan miller", jessica )' ) AS KEY_TBL
                 '    ON DS.SourceGuid = KEY_TBL.[KEY]
-                isAboutClause  += "INNER JOIN CONTAINSTABLE(dataSource, *, " + vbCrLf
-                isAboutClause  += "     'ISABOUT ("
-                isAboutClause  += CorrectedSearchClause 
-                isAboutClause  += ")' ) as KEY_TBL" + vbCrLf
-                isAboutClause  += "          ON DS.SourceGuid = KEY_TBL.[KEY]" + vbCrLf
+                isAboutClause += "INNER JOIN CONTAINSTABLE(dataSource, *, " + Environment.NewLine
+                isAboutClause += "     'ISABOUT ("
+                isAboutClause += CorrectedSearchClause
+                isAboutClause += ")' ) as KEY_TBL" + Environment.NewLine
+                isAboutClause += "          ON DS.SourceGuid = KEY_TBL.[KEY]" + Environment.NewLine
             End If
         End If
 
@@ -439,12 +439,12 @@ Dim C AS String  = Mid(CorrectedSearchClause , CorrectedSearchClause .Length, 1)
 
     End Function
 
-    Function CleanIsAboutSearchText(ByVal SearchText AS String ) As String
+    Function CleanIsAboutSearchText(ByVal SearchText As String) As String
         Dim I As Integer = 0
         Dim A As New ArrayList
         Dim CH As String = ""
-Dim Token AS String  = "" 
-Dim S AS String  = "" 
+        Dim Token As String = ""
+        Dim S As String = ""
         Dim SkipNextToken As Boolean = False
         For I = 1 To SearchText.Trim.Length
 REEVAL:
@@ -524,8 +524,8 @@ REEVAL:
                 Token = ""
             ElseIf CH.Equals("+") Then
                 '** Skip the blank spaces
-Dim NextChar AS String  = getNextChar(SearchText , I) 
-                If NextChar  = "-" Then
+                Dim NextChar As String = getNextChar(SearchText, I)
+                If NextChar = "-" Then
                     '** We skip the next token in the stmt
                     SkipNextToken = True
                     A.Add("~")
@@ -542,8 +542,8 @@ Dim NextChar AS String  = getNextChar(SearchText , I)
                 Token += ""
             ElseIf CH.Equals("-") Then
                 '** Skip the blank spaces
-Dim NextChar AS String  = getNextChar(SearchText , I) 
-                If NextChar  = "+" Then
+                Dim NextChar As String = getNextChar(SearchText, I)
+                If NextChar = "+" Then
                     '** We skip the next token in the stmt
                     SkipNextToken = True
                     A.Add("~")
@@ -562,8 +562,8 @@ Dim NextChar AS String  = getNextChar(SearchText , I)
         S = ""
         Dim skipNextWord As Boolean = False
         For I = 0 To A.Count - 1
-Dim tWord AS String  = A(I) 
-            tWord  = UCase(tWord )
+            Dim tWord As String = A(I)
+            tWord = UCase(tWord)
             If tWord.Equals("~") Then
                 '** we skip the next word period
                 skipNextWord = True
@@ -588,8 +588,8 @@ Dim tWord AS String  = A(I)
         Return S
     End Function
 
-    Function getNextChar(ByVal S AS String , ByVal i As Integer) As String
-Dim CH AS String  = "" 
+    Function getNextChar(ByVal S As String, ByVal i As Integer) As String
+        Dim CH As String = ""
         If S.Trim.Length > (i + 1) Then
             i += 1
             CH = Mid(S, i, 1)
@@ -632,9 +632,9 @@ Dim CH AS String  = ""
             S += " OR "
         End If
 
-        S = S + " (AllRecipients like '" + FixSingleQuote(Name) + "' or " + vbCrLf
-        S = S + "      CC like '" + FixSingleQuote(Name) + "' or " + vbCrLf
-        S = S + "      BCC like '" + FixSingleQuote(Name) + "') " + vbCrLf
+        S = S + " (AllRecipients like '" + FixSingleQuote(Name) + "' or " + Environment.NewLine
+        S = S + "      CC like '" + FixSingleQuote(Name) + "' or " + Environment.NewLine
+        S = S + "      BCC like '" + FixSingleQuote(Name) + "') " + Environment.NewLine
 
         Return S
     End Function
@@ -672,8 +672,8 @@ Dim CH AS String  = ""
             S += " OR "
         End If
 
-        S = S + " (CC like '" + FixSingleQuote(Name) + "' or " + vbCrLf
-        S = S + " BCC like '" + FixSingleQuote(Name) + "')  " + vbCrLf
+        S = S + " (CC like '" + FixSingleQuote(Name) + "' or " + Environment.NewLine
+        S = S + " BCC like '" + FixSingleQuote(Name) + "')  " + Environment.NewLine
 
         Return S
     End Function
@@ -693,7 +693,7 @@ Dim CH AS String  = ""
             S += " OR "
         End If
 
-        S = S + " (SUBJECT Like '" + Name + "') " + vbCrLf
+        S = S + " (SUBJECT Like '" + Name + "') " + Environment.NewLine
 
         Return S
     End Function
@@ -713,7 +713,7 @@ Dim CH AS String  = ""
             S += " OR "
         End If
 
-        S = S + " (OriginalFolder LIKE '" + FixSingleQuote(Name) + "') " + vbCrLf
+        S = S + " (OriginalFolder LIKE '" + FixSingleQuote(Name) + "') " + Environment.NewLine
 
         Return S
     End Function
@@ -733,7 +733,7 @@ Dim CH AS String  = ""
             S += " OR "
         End If
 
-        S = S + " (ReceivedByName like '" + FixSingleQuote(Name) + "') " + vbCrLf
+        S = S + " (ReceivedByName like '" + FixSingleQuote(Name) + "') " + Environment.NewLine
 
         Return S
     End Function
@@ -759,7 +759,7 @@ Dim CH AS String  = ""
             S += " OR "
         End If
 
-        S = S + " (SenderName like '" + FixSingleQuote(Name) + "') " + vbCrLf
+        S = S + " (SenderName like '" + FixSingleQuote(Name) + "') " + Environment.NewLine
 
         Return S
     End Function
@@ -779,8 +779,8 @@ Dim CH AS String  = ""
             S += " OR "
         End If
 
-        S = S + " ( SentTO like '" + FixSingleQuote(EmailAddr) + "' or" + vbCrLf
-        S = S + " AllRecipients like '" + FixSingleQuote(EmailAddr) + "') " + vbCrLf
+        S = S + " ( SentTO like '" + FixSingleQuote(EmailAddr) + "' or" + Environment.NewLine
+        S = S + " AllRecipients like '" + FixSingleQuote(EmailAddr) + "') " + Environment.NewLine
 
         Return S
     End Function
@@ -800,18 +800,18 @@ Dim CH AS String  = ""
             S += " OR "
         End If
 
-        S = S + " (SenderEmailAddress like '" + FixSingleQuote(EmailAddr) + "') " + vbCrLf
+        S = S + " (SenderEmailAddress like '" + FixSingleQuote(EmailAddr) + "') " + Environment.NewLine
 
         Return S
     End Function
 
-    Function EmailSearchDateLimits(ByVal ckDate As Boolean, _
-                           ByVal DATECODE As String, _
-                           ByVal Mandatory As Boolean, _
-                           ByVal bSent As Boolean, _
-                           ByVal bReceived As Boolean, _
-                           ByVal bCreated As Boolean, _
-                           ByVal Startdate As Date, _
+    Function EmailSearchDateLimits(ByVal ckDate As Boolean,
+                           ByVal DATECODE As String,
+                           ByVal Mandatory As Boolean,
+                           ByVal bSent As Boolean,
+                           ByVal bReceived As Boolean,
+                           ByVal bCreated As Boolean,
+                           ByVal Startdate As Date,
                            ByVal EndDate As Date) As String
 
         If Not ckDate Then
@@ -828,7 +828,7 @@ Dim CH AS String  = ""
                     Else
                         S += " OR "
                     End If
-                    S += " (SentOn > '" + CDate(Startdate).ToString + "')" + vbCrLf
+                    S += " (SentOn > '" + CDate(Startdate).ToString + "')" + Environment.NewLine
                 End If
                 If bReceived Then   'ReceivedTime
                     If Mandatory = True Then
@@ -836,7 +836,7 @@ Dim CH AS String  = ""
                     Else
                         S += " OR "
                     End If
-                    S += " (ReceivedTime > '" + CDate(Startdate).ToString + "')" + vbCrLf
+                    S += " (ReceivedTime > '" + CDate(Startdate).ToString + "')" + Environment.NewLine
                 End If
                 If bCreated Then    'CreateDate
                     If Mandatory = True Then
@@ -844,7 +844,7 @@ Dim CH AS String  = ""
                     Else
                         S += " OR "
                     End If
-                    S += " (CreateDate > '" + CDate(Startdate).ToString + "')" + vbCrLf
+                    S += " (CreateDate > '" + CDate(Startdate).ToString + "')" + Environment.NewLine
                 End If
             Case "BEFORE"
                 If bSent Then       'SentOn
@@ -853,7 +853,7 @@ Dim CH AS String  = ""
                     Else
                         S += " OR "
                     End If
-                    S += " (SentOn < '" + CDate(Startdate).ToString + "')" + vbCrLf
+                    S += " (SentOn < '" + CDate(Startdate).ToString + "')" + Environment.NewLine
                 End If
                 If bReceived Then   'ReceivedTime
                     If Mandatory = True Then
@@ -861,7 +861,7 @@ Dim CH AS String  = ""
                     Else
                         S += " OR "
                     End If
-                    S += " (ReceivedTime < '" + CDate(Startdate).ToString + "')" + vbCrLf
+                    S += " (ReceivedTime < '" + CDate(Startdate).ToString + "')" + Environment.NewLine
                 End If
                 If bCreated Then    'CreateDate
                     If Mandatory = True Then
@@ -869,7 +869,7 @@ Dim CH AS String  = ""
                     Else
                         S += " OR "
                     End If
-                    S += " (CreateDate < '" + CDate(Startdate).ToString + "')" + vbCrLf
+                    S += " (CreateDate < '" + CDate(Startdate).ToString + "')" + Environment.NewLine
                 End If
             Case "BETWEEN"
                 If bSent Then       'SentOn
@@ -878,7 +878,7 @@ Dim CH AS String  = ""
                     Else
                         S += " OR "
                     End If
-                    S += " (SentOn >= '" + CDate(Startdate).ToString + "' AND SentOn <= '" + CDate(EndDate).ToString + "')" + vbCrLf
+                    S += " (SentOn >= '" + CDate(Startdate).ToString + "' AND SentOn <= '" + CDate(EndDate).ToString + "')" + Environment.NewLine
                 End If
                 If bReceived Then   'ReceivedTime
                     If Mandatory = True Then
@@ -886,7 +886,7 @@ Dim CH AS String  = ""
                     Else
                         S += " OR "
                     End If
-                    S += " (ReceivedTime >= '" + CDate(Startdate).ToString + "' AND ReceivedTime <= '" + CDate(EndDate).ToString + "')" + vbCrLf
+                    S += " (ReceivedTime >= '" + CDate(Startdate).ToString + "' AND ReceivedTime <= '" + CDate(EndDate).ToString + "')" + Environment.NewLine
                 End If
                 If bCreated Then    'CreateDate
                     If Mandatory = True Then
@@ -894,7 +894,7 @@ Dim CH AS String  = ""
                     Else
                         S += " OR "
                     End If
-                    S += " (CreateDate >= '" + CDate(Startdate).ToString + "' AND CreateDate <= '" + CDate(EndDate).ToString + "')" + vbCrLf
+                    S += " (CreateDate >= '" + CDate(Startdate).ToString + "' AND CreateDate <= '" + CDate(EndDate).ToString + "')" + Environment.NewLine
                 End If
             Case "NOT BETWEEN"
                 If bSent Then       'SentOn
@@ -903,7 +903,7 @@ Dim CH AS String  = ""
                     Else
                         S += " OR "
                     End If
-                    S += " (SentOn <= '" + CDate(Startdate).ToString + "' AND SentOn >= '" + CDate(EndDate).ToString + "')" + vbCrLf
+                    S += " (SentOn <= '" + CDate(Startdate).ToString + "' AND SentOn >= '" + CDate(EndDate).ToString + "')" + Environment.NewLine
                 End If
                 If bReceived Then   'ReceivedTime
                     If Mandatory = True Then
@@ -911,7 +911,7 @@ Dim CH AS String  = ""
                     Else
                         S += " OR "
                     End If
-                    S += " (ReceivedTime <= '" + CDate(Startdate).ToString + "' AND ReceivedTime >= '" + CDate(EndDate).ToString + "')" + vbCrLf
+                    S += " (ReceivedTime <= '" + CDate(Startdate).ToString + "' AND ReceivedTime >= '" + CDate(EndDate).ToString + "')" + Environment.NewLine
                 End If
                 If bCreated Then    'CreateDate
                     If Mandatory = True Then
@@ -919,7 +919,7 @@ Dim CH AS String  = ""
                     Else
                         S += " OR "
                     End If
-                    S += " (CreateDate <= '" + CDate(Startdate).ToString + "' AND CreateDate >= '" + CDate(EndDate).ToString + "')" + vbCrLf
+                    S += " (CreateDate <= '" + CDate(Startdate).ToString + "' AND CreateDate >= '" + CDate(EndDate).ToString + "')" + Environment.NewLine
                 End If
             Case "ON"
                 If bSent Then       'SentOn
@@ -928,7 +928,7 @@ Dim CH AS String  = ""
                     Else
                         S += " OR "
                     End If
-                    S += " (SentOn = '" + CDate(Startdate).ToString + "')" + vbCrLf
+                    S += " (SentOn = '" + CDate(Startdate).ToString + "')" + Environment.NewLine
                 End If
                 If bReceived Then   'ReceivedTime
                     If Mandatory = True Then
@@ -936,7 +936,7 @@ Dim CH AS String  = ""
                     Else
                         S += " OR "
                     End If
-                    S += " (ReceivedTime = '" + CDate(Startdate).ToString + "')" + vbCrLf
+                    S += " (ReceivedTime = '" + CDate(Startdate).ToString + "')" + Environment.NewLine
                 End If
                 If bCreated Then    'CreateDate
                     If Mandatory = True Then
@@ -944,7 +944,7 @@ Dim CH AS String  = ""
                     Else
                         S += " OR "
                     End If
-                    S += " (CreateDate = '" + CDate(Startdate).ToString + "')" + vbCrLf
+                    S += " (CreateDate = '" + CDate(Startdate).ToString + "')" + Environment.NewLine
                 End If
             Case Else
                 S = String.Empty
@@ -958,17 +958,17 @@ Dim CH AS String  = ""
 
         ContainsClause = FixSingleQuote(ContainsClause)
 
-        S = S + " SELECT     Email.SentOn, Email.ShortSubj, Email.SenderEmailAddress, Email.SenderName, Email.SentTO, SUBSTRING(Email.Body, 1, 100) AS Body, Email.CC, Email.Bcc, " + vbCrLf
-        S = S + "                       Email.CreationTime, Email.AllRecipients, Email.ReceivedByName, Email.ReceivedTime, Email.MsgSize, Email.SUBJECT, Email.OriginalFolder, Email.EmailGuid, " + vbCrLf
-        S = S + "                       Email.RetentionExpirationDate, Email.isPublic, Email.ConvertEmlToMSG, Email.UserID, Email.NbrAttachments, Email.SourceTypeCode, 'N' AS FoundInAttachment," + vbCrLf
-        S = S + "                       EmailAttachment.RowID" + vbCrLf
-        S = S + " FROM         Email FULL OUTER JOIN" + vbCrLf
-        S = S + "                       EmailAttachment ON Email.EmailGuid = EmailAttachment.EmailGuid" + vbCrLf
-        S = S + " WHERE" + vbCrLf
-        S = S + " (" + vbCrLf
-        S = S + " CONTAINS(Email.*, '" + ContainsClause + "') OR" + vbCrLf
-        S = S + " CONTAINS(EmailAttachment.*, '" + ContainsClause + "') " + vbCrLf
-        S = S + " ) " + vbCrLf
+        S = S + " SELECT     Email.SentOn, Email.ShortSubj, Email.SenderEmailAddress, Email.SenderName, Email.SentTO, SUBSTRING(Email.Body, 1, 100) AS Body, Email.CC, Email.Bcc, " + Environment.NewLine
+        S = S + "                       Email.CreationTime, Email.AllRecipients, Email.ReceivedByName, Email.ReceivedTime, Email.MsgSize, Email.SUBJECT, Email.OriginalFolder, Email.EmailGuid, " + Environment.NewLine
+        S = S + "                       Email.RetentionExpirationDate, Email.isPublic, Email.ConvertEmlToMSG, Email.UserID, Email.NbrAttachments, Email.SourceTypeCode, 'N' AS FoundInAttachment," + Environment.NewLine
+        S = S + "                       EmailAttachment.RowID" + Environment.NewLine
+        S = S + " FROM         Email FULL OUTER JOIN" + Environment.NewLine
+        S = S + "                       EmailAttachment ON Email.EmailGuid = EmailAttachment.EmailGuid" + Environment.NewLine
+        S = S + " WHERE" + Environment.NewLine
+        S = S + " (" + Environment.NewLine
+        S = S + " CONTAINS(Email.*, '" + ContainsClause + "') OR" + Environment.NewLine
+        S = S + " CONTAINS(EmailAttachment.*, '" + ContainsClause + "') " + Environment.NewLine
+        S = S + " ) " + Environment.NewLine
 
         Return S
 
@@ -978,24 +978,24 @@ Dim CH AS String  = ""
 
         Dim S As String = ""
 
-        S = S + " SELECT     Email.SentOn, Email.ShortSubj, Email.SenderEmailAddress, Email.SenderName, Email.SentTO, SUBSTRING(Email.Body, 1, 100) AS Body, Email.CC, Email.Bcc, " + vbCrLf
-        S = S + "                       Email.CreationTime, Email.AllRecipients, Email.ReceivedByName, Email.ReceivedTime, Email.MsgSize, Email.SUBJECT, Email.OriginalFolder, Email.EmailGuid, " + vbCrLf
-        S = S + "                       Email.RetentionExpirationDate, Email.isPublic, Email.ConvertEmlToMSG, Email.UserID, Email.NbrAttachments, Email.SourceTypeCode, 'N' AS FoundInAttachment," + vbCrLf
-        S = S + "                       EmailAttachment.RowID" + vbCrLf
-        S = S + " FROM         Email FULL OUTER JOIN" + vbCrLf
-        S = S + "                       EmailAttachment ON Email.EmailGuid = EmailAttachment.EmailGuid" + vbCrLf
-        S = S + " WHERE" + vbCrLf
+        S = S + " SELECT     Email.SentOn, Email.ShortSubj, Email.SenderEmailAddress, Email.SenderName, Email.SentTO, SUBSTRING(Email.Body, 1, 100) AS Body, Email.CC, Email.Bcc, " + Environment.NewLine
+        S = S + "                       Email.CreationTime, Email.AllRecipients, Email.ReceivedByName, Email.ReceivedTime, Email.MsgSize, Email.SUBJECT, Email.OriginalFolder, Email.EmailGuid, " + Environment.NewLine
+        S = S + "                       Email.RetentionExpirationDate, Email.isPublic, Email.ConvertEmlToMSG, Email.UserID, Email.NbrAttachments, Email.SourceTypeCode, 'N' AS FoundInAttachment," + Environment.NewLine
+        S = S + "                       EmailAttachment.RowID" + Environment.NewLine
+        S = S + " FROM         Email FULL OUTER JOIN" + Environment.NewLine
+        S = S + "                       EmailAttachment ON Email.EmailGuid = EmailAttachment.EmailGuid" + Environment.NewLine
+        S = S + " WHERE" + Environment.NewLine
 
         Return S
 
     End Function
 
     Sub genNewEmailQuery(ByRef GeneratedSql As String)
-Dim a AS String () = GeneratedSql.Split(vbCrLf) 
-Dim S AS String  = "" 
+        Dim a As String() = GeneratedSql.Split(Environment.NewLine)
+        Dim S As String = ""
         Dim bNextWhereStmt As Boolean = False
         Dim bGenNewSql As Boolean = False
-Dim NewSql AS String  = "" 
+        Dim NewSql As String = ""
         Dim StdQueryCols As String = Me.genStdEmailQqueryCols
         Dim doNotAppend As Boolean = False
         Dim bContainsTable As Boolean = False
@@ -1030,12 +1030,12 @@ Dim NewSql AS String  = ""
 
             If InStr(S, "CONTAINS", CompareMethod.Text) > 0 Then
                 If Left(S, "CONTAINS".Length).ToUpper.Equals("CONTAINS") Then
-Dim TempStr AS String  = RemoveSpaces(S) 
-                    TempStr  = TempStr .ToUpper
+                    Dim TempStr As String = RemoveSpaces(S)
+                    TempStr = TempStr.ToUpper
                     If InStr(TempStr, "CONTAINS(*", CompareMethod.Text) > 0 Then
                         Dim k As Integer = InStr(S, "*")
-Dim S1 AS String  = "" 
-Dim S2 AS String  = "" 
+                        Dim S1 As String = ""
+                        Dim S2 As String = ""
                         S1 = Mid(S, 1, k - 1)
                         S2 = Mid(S, k + 1)
                         S = S1 + "Email.*" + S2
@@ -1053,12 +1053,12 @@ Dim S2 AS String  = ""
             End If
 
             If bGenNewSql = True And doNotAppend = False And a(i).Trim.Length > 0 Then
-                NewSql  = NewSql  + vbCrLf + a(i)
+                NewSql = NewSql + Environment.NewLine + a(i)
             End If
 
         Next
 
-        NewSql  = StdQueryCols + vbCrLf + NewSql 
+        NewSql = StdQueryCols + Environment.NewLine + NewSql
         GeneratedSql = NewSql
 
         'Clipboard.Clear()
@@ -1067,11 +1067,11 @@ Dim S2 AS String  = ""
     End Sub
 
     Sub genNewEmailAttachmentQuery(ByRef GeneratedSql As String)
-Dim a AS String () = GeneratedSql.Split(vbCrLf) 
-Dim S AS String  = "" 
+        Dim a As String() = GeneratedSql.Split(Environment.NewLine)
+        Dim S As String = ""
         Dim bNextWhereStmt As Boolean = False
         Dim bGenNewSql As Boolean = False
-Dim NewSql AS String  = "" 
+        Dim NewSql As String = ""
         Dim StdQueryCols As String = genStdEmailAttachmentQqueryCols()
         Dim doNotAppend As Boolean = False
 
@@ -1095,13 +1095,13 @@ Dim NewSql AS String  = ""
             End If
 
             If InStr(S, "CONTAINS(body", CompareMethod.Text) > 0 Then
-Dim TempStr AS String  = RemoveSpaces(S) 
+                Dim TempStr As String = RemoveSpaces(S)
                 Dim k As Integer = InStr(S, "CONTAINS(body", CompareMethod.Text)
                 k = InStr(k + 1, S, "(", CompareMethod.Text)
                 Dim L As Integer = InStr(k + 1, S, ",")
-Dim S1 AS String  = "" 
-Dim S2 AS String  = "" 
-Dim tPart AS String  = Mid(S, k, L - k + 1) 
+                Dim S1 As String = ""
+                Dim S2 As String = ""
+                Dim tPart As String = Mid(S, k, L - k + 1)
                 S1 = Mid(S, 1, k)
                 S2 = Mid(S, L)
                 S = S1 + "Attachment" + S2
@@ -1134,12 +1134,12 @@ Dim tPart AS String  = Mid(S, k, L - k + 1)
             End If
 
             If bGenNewSql = True And doNotAppend = False And a(i).Trim.Length > 0 Then
-                NewSql  = NewSql  + vbCrLf + a(i)
+                NewSql = NewSql + Environment.NewLine + a(i)
             End If
 
         Next
 
-        NewSql  = StdQueryCols + vbCrLf + NewSql 
+        NewSql = StdQueryCols + Environment.NewLine + NewSql
         GeneratedSql = NewSql
 
         'Clipboard.Clear()
@@ -1148,11 +1148,11 @@ Dim tPart AS String  = Mid(S, k, L - k + 1)
     End Sub
 
     Sub genNewDocQuery(ByRef GeneratedSql As String)
-Dim a AS String () = GeneratedSql.Split(vbCrLf) 
-Dim S AS String  = "" 
+        Dim a As String() = GeneratedSql.Split(Environment.NewLine)
+        Dim S As String = ""
         Dim bNextWhereStmt As Boolean = False
         Dim bGenNewSql As Boolean = False
-Dim NewSql AS String  = "" 
+        Dim NewSql As String = ""
         Dim StdQueryCols As String = genStdDocQueryCols()
         Dim doNotAppend As Boolean = False
 
@@ -1182,12 +1182,12 @@ Dim NewSql AS String  = ""
 
             If InStr(S, "CONTAINS", CompareMethod.Text) > 0 Then
                 If Left(S, "CONTAINS".Length).ToUpper.Equals("CONTAINS") Then
-Dim TempStr AS String  = RemoveSpaces(S) 
-                    TempStr  = TempStr .ToUpper
+                    Dim TempStr As String = RemoveSpaces(S)
+                    TempStr = TempStr.ToUpper
                     If InStr(TempStr, "CONTAINS(*", CompareMethod.Text) > 0 Then
                         Dim k As Integer = InStr(S, "*")
-Dim S1 AS String  = "" 
-Dim S2 AS String  = "" 
+                        Dim S1 As String = ""
+                        Dim S2 As String = ""
                         S1 = Mid(S, 1, k - 1)
                         S2 = Mid(S, k + 1)
                         S = S1 + "DataSource.*" + S2
@@ -1205,13 +1205,13 @@ Dim S2 AS String  = ""
             End If
 
             If bGenNewSql = True And doNotAppend = False And a(i).Trim.Length > 0 Then
-                NewSql  = NewSql  + vbCrLf + a(i)
+                NewSql = NewSql + Environment.NewLine + a(i)
             End If
 
         Next
 
-        NewSql  = StdQueryCols + vbCrLf + NewSql 
-        GeneratedSql = NewSql 
+        NewSql = StdQueryCols + Environment.NewLine + NewSql
+        GeneratedSql = NewSql
 
         'Clipboard.Clear()
         'Clipboard.SetText(GeneratedSql)
@@ -1223,37 +1223,37 @@ Dim S2 AS String  = ""
         Dim S As String = ""
         Dim Prefix As String = ""
         If TopRows > 0 Then
-            S = S + "Select top " + TopRows.ToString + " " + vbCrLf
+            S = S + "Select top " + TopRows.ToString + " " + Environment.NewLine
         Else
-            S = S + "Select " + vbCrLf
+            S = S + "Select " + Environment.NewLine
         End If
 
         If UseWeights = True Then
-            S = S + vbTab + "KEY_TBL.RANK as Weight, " + vbCrLf
+            S = S + vbTab + "KEY_TBL.RANK as Weight, " + Environment.NewLine
             Prefix = "DS."
         Else
-            S = S + vbTab + "null as Weight, " + vbCrLf
+            S = S + vbTab + "null as Weight, " + Environment.NewLine
             Prefix = ""
         End If
 
-        S = S + vbTab + "Email.ShortSubj as ContentTitle, " + vbCrLf
-        S = S + vbTab + "(select COUNT(*) from EmailAttachment where EmailAttachment.EmailGuid = Email.EmailGuid) as NbrOfAttachments, " + vbCrLf
-        S = S + vbTab + "Email.SenderEmailAddress AS ContentAuthor, " + vbCrLf
-        S = S + vbTab + "Email.SourceTypeCode as  ContentExt, " + vbCrLf
-        S = S + vbTab + "Email.CreationTime AS CreateDate, " + vbCrLf
-        S = S + vbTab + "Email.ShortSubj as  FileName, " + vbCrLf
-        S = S + vbTab + "Email.AllRecipients, " + vbCrLf
-        S = S + vbTab + "Email.EmailGuid as ContentGuid, " + vbCrLf
-        S = S + vbTab + "Email.MsgSize  as FileSize, " + vbCrLf
-        S = S + vbTab + "Email.SenderEmailAddress AS FromEmailAddress, " + vbCrLf
-        'S = S + vbTab + "Users.UserLoginID, " + vbCrLf
-        S = S + "(Select UserLoginID from Users where email.UserID = Users.UserID) as UserLoginUD, " + vbCrLf
-        S = S + vbTab + "Email.USERID, " + vbCrLf
-        S = S + vbTab + "null as RowID, " + vbCrLf
-        S = S + vbTab + "'EMAIL' AS Classification, " + vbCrLf
-        S = S + vbTab + "null as isZipFileEntry, " + vbCrLf
-        S = S + vbTab + "null as OcrText, " + vbCrLf
-        S = S + vbTab + "email.ispublic " + vbCrLf
+        S = S + vbTab + "Email.ShortSubj as ContentTitle, " + Environment.NewLine
+        S = S + vbTab + "(select COUNT(*) from EmailAttachment where EmailAttachment.EmailGuid = Email.EmailGuid) as NbrOfAttachments, " + Environment.NewLine
+        S = S + vbTab + "Email.SenderEmailAddress AS ContentAuthor, " + Environment.NewLine
+        S = S + vbTab + "Email.SourceTypeCode as  ContentExt, " + Environment.NewLine
+        S = S + vbTab + "Email.CreationTime AS CreateDate, " + Environment.NewLine
+        S = S + vbTab + "Email.ShortSubj as  FileName, " + Environment.NewLine
+        S = S + vbTab + "Email.AllRecipients, " + Environment.NewLine
+        S = S + vbTab + "Email.EmailGuid as ContentGuid, " + Environment.NewLine
+        S = S + vbTab + "Email.MsgSize  as FileSize, " + Environment.NewLine
+        S = S + vbTab + "Email.SenderEmailAddress AS FromEmailAddress, " + Environment.NewLine
+        'S = S + vbTab + "Users.UserLoginID, " + environment.NewLine
+        S = S + "(Select UserLoginID from Users where email.UserID = Users.UserID) as UserLoginUD, " + Environment.NewLine
+        S = S + vbTab + "Email.USERID, " + Environment.NewLine
+        S = S + vbTab + "null as RowID, " + Environment.NewLine
+        S = S + vbTab + "'EMAIL' AS Classification, " + Environment.NewLine
+        S = S + vbTab + "null as isZipFileEntry, " + Environment.NewLine
+        S = S + vbTab + "null as OcrText, " + Environment.NewLine
+        S = S + vbTab + "email.ispublic " + Environment.NewLine
 
         If UseWeights = True Then
             S = S + vbTab + "FROM Email as DS "
@@ -1268,43 +1268,43 @@ Dim S2 AS String  = ""
 
     Function genStdEmailAttachmentQqueryCols() As String
 
-Dim Prefix AS String  = "DS." 
+        Dim Prefix As String = "DS."
         Dim S As String = ""
         If TopRows > 0 Then
-            S = S + "Select top " + TopRows.ToString + " " + vbCrLf
+            S = S + "Select top " + TopRows.ToString + " " + Environment.NewLine
         Else
-            S = S + "Select " + vbCrLf
+            S = S + "Select " + Environment.NewLine
         End If
 
         If UseWeights = True Then
-            S = S + vbTab + "KEY_TBL.RANK as Weight, " + vbCrLf
+            S = S + vbTab + "KEY_TBL.RANK as Weight, " + Environment.NewLine
         Else
-            S = S + vbTab + "null as Weight, " + vbCrLf
+            S = S + vbTab + "null as Weight, " + Environment.NewLine
         End If
 
-        S = S + vbTab + "EmailAttachment.AttachmentName as ContentTitle, " + vbCrLf
-        S = S + vbTab + "null as NbrOfAttachments, " + vbCrLf
-        S = S + vbTab + "(select SenderEmailAddress from EMAIL where EmailAttachment.EmailGuid = EMAIL.EmailGuid) as ContentAuthor, " + vbCrLf
-        S = S + vbTab + "EmailAttachment.AttachmentCode as ContentExt, " + vbCrLf
-        S = S + vbTab + "(select CreationTime from EMAIL where EmailAttachment.EmailGuid = EMAIL.EmailGuid) as CreateDate, " + vbCrLf
-        S = S + vbTab + "EmailAttachment.AttachmentName as FileName, " + vbCrLf
-        S = S + vbTab + "null as AllRecipients, " + vbCrLf
-        S = S + vbTab + "EmailAttachment.EmailGuid as ContentGuid, " + vbCrLf
-        S = S + vbTab + "DATALENGTH(EmailAttachment.Attachment) as FileSize, " + vbCrLf
-        S = S + vbTab + "(select SenderEmailAddress  from EMAIL where EmailAttachment.EmailGuid = EMAIL.EmailGuid) as FromEmailAddress, " + vbCrLf
-        S = S + vbTab + "(Select UserLoginID from Users where EmailAttachment.UserID = Users.UserID) as UserLoginUD, " + vbCrLf
-        S = S + vbTab + "EmailAttachment.UserID, " + vbCrLf
-        S = S + vbTab + "EmailAttachment.RowID, " + vbCrLf
-        S = S + vbTab + "'Attachment' as Classification, " + vbCrLf
-        S = S + vbTab + "EmailAttachment.isZipFileEntry, " + vbCrLf
-        S = S + vbTab + "EmailAttachment.OcrText, " + vbCrLf
+        S = S + vbTab + "EmailAttachment.AttachmentName as ContentTitle, " + Environment.NewLine
+        S = S + vbTab + "null as NbrOfAttachments, " + Environment.NewLine
+        S = S + vbTab + "(select SenderEmailAddress from EMAIL where EmailAttachment.EmailGuid = EMAIL.EmailGuid) as ContentAuthor, " + Environment.NewLine
+        S = S + vbTab + "EmailAttachment.AttachmentCode as ContentExt, " + Environment.NewLine
+        S = S + vbTab + "(select CreationTime from EMAIL where EmailAttachment.EmailGuid = EMAIL.EmailGuid) as CreateDate, " + Environment.NewLine
+        S = S + vbTab + "EmailAttachment.AttachmentName as FileName, " + Environment.NewLine
+        S = S + vbTab + "null as AllRecipients, " + Environment.NewLine
+        S = S + vbTab + "EmailAttachment.EmailGuid as ContentGuid, " + Environment.NewLine
+        S = S + vbTab + "DATALENGTH(EmailAttachment.Attachment) as FileSize, " + Environment.NewLine
+        S = S + vbTab + "(select SenderEmailAddress  from EMAIL where EmailAttachment.EmailGuid = EMAIL.EmailGuid) as FromEmailAddress, " + Environment.NewLine
+        S = S + vbTab + "(Select UserLoginID from Users where EmailAttachment.UserID = Users.UserID) as UserLoginUD, " + Environment.NewLine
+        S = S + vbTab + "EmailAttachment.UserID, " + Environment.NewLine
+        S = S + vbTab + "EmailAttachment.RowID, " + Environment.NewLine
+        S = S + vbTab + "'Attachment' as Classification, " + Environment.NewLine
+        S = S + vbTab + "EmailAttachment.isZipFileEntry, " + Environment.NewLine
+        S = S + vbTab + "EmailAttachment.OcrText, " + Environment.NewLine
         S = S + vbTab + "EmailAttachment.isPublic "
 
         If UseWeights = True Then
-            S = S + vbTab + "FROM EmailAttachment as DS " + vbCrLf
+            S = S + vbTab + "FROM EmailAttachment as DS " + Environment.NewLine
             S = ReplacePrefix(Prefix, "EmailAttachment.", S)
         Else
-            S = S + vbTab + "FROM EmailAttachment " + vbCrLf
+            S = S + vbTab + "FROM EmailAttachment " + Environment.NewLine
         End If
 
         Return S
@@ -1312,39 +1312,39 @@ Dim Prefix AS String  = "DS."
 
     Function genStdDocQueryCols() As String
 
-Dim Prefix AS String  = "DS." 
+        Dim Prefix As String = "DS."
         Dim S As String = ""
         If TopRows > 0 Then
-            S = S + "Select top " + TopRows.ToString + " " + vbCrLf
+            S = S + "Select top " + TopRows.ToString + " " + Environment.NewLine
         Else
-            S = S + "Select " + vbCrLf
+            S = S + "Select " + Environment.NewLine
         End If
 
         If UseWeights = True Then
-            S = S + vbTab + "KEY_TBL.RANK as Weight, " + vbCrLf
+            S = S + vbTab + "KEY_TBL.RANK as Weight, " + Environment.NewLine
         Else
-            S = S + vbTab + "null as Weight, " + vbCrLf
+            S = S + vbTab + "null as Weight, " + Environment.NewLine
         End If
 
 
-        S = S + vbTab + "DataSource.SourceName as ContentTitle, " + vbCrLf
-        S = S + vbTab + "null as NbrOfAttachments, " + vbCrLf
-        S = S + vbTab + "null as ContentAuthor, " + vbCrLf
-        S = S + vbTab + "DataSource.OriginalFileType as ContentExt, " + vbCrLf
-        S = S + vbTab + "DataSource.CreateDate, " + vbCrLf
-        S = S + vbTab + "DataSource.FQN as FileName, " + vbCrLf
-        S = S + vbTab + "null as AllRecipients, " + vbCrLf
-        S = S + vbTab + "DataSource.SourceGuid as ContentGuid, " + vbCrLf
-        S = S + vbTab + "DataSource.FileLength  as FileSize, " + vbCrLf
-        S = S + vbTab + "null as FromEmailAddress, " + vbCrLf
-        'S = S + vbTab + "Users.UserLoginID, " + vbCrLf
-        S = S + "(Select UserLoginID from Users where DataSource.DataSourceOwnerUserID = Users.UserID) as UserLoginUD, " + vbCrLf
-        S = S + vbTab + "DataSource.DataSourceOwnerUserID as UserID, " + vbCrLf
-        S = S + vbTab + "null as RowID, " + vbCrLf
-        S = S + vbTab + "'Content' as Classification, " + vbCrLf
-        S = S + vbTab + "DataSource.isZipFileEntry, " + vbCrLf
-        S = S + vbTab + "null as OcrText, " + vbCrLf
-        S = S + vbTab + "DataSource.isPublic, DataSource.RepoSvrName  " + vbCrLf
+        S = S + vbTab + "DataSource.SourceName as ContentTitle, " + Environment.NewLine
+        S = S + vbTab + "null as NbrOfAttachments, " + Environment.NewLine
+        S = S + vbTab + "null as ContentAuthor, " + Environment.NewLine
+        S = S + vbTab + "DataSource.OriginalFileType as ContentExt, " + Environment.NewLine
+        S = S + vbTab + "DataSource.CreateDate, " + Environment.NewLine
+        S = S + vbTab + "DataSource.FQN as FileName, " + Environment.NewLine
+        S = S + vbTab + "null as AllRecipients, " + Environment.NewLine
+        S = S + vbTab + "DataSource.SourceGuid as ContentGuid, " + Environment.NewLine
+        S = S + vbTab + "DataSource.FileLength  as FileSize, " + Environment.NewLine
+        S = S + vbTab + "null as FromEmailAddress, " + Environment.NewLine
+        'S = S + vbTab + "Users.UserLoginID, " + environment.NewLine
+        S = S + "(Select UserLoginID from Users where DataSource.DataSourceOwnerUserID = Users.UserID) as UserLoginUD, " + Environment.NewLine
+        S = S + vbTab + "DataSource.DataSourceOwnerUserID as UserID, " + Environment.NewLine
+        S = S + vbTab + "null as RowID, " + Environment.NewLine
+        S = S + vbTab + "'Content' as Classification, " + Environment.NewLine
+        S = S + vbTab + "DataSource.isZipFileEntry, " + Environment.NewLine
+        S = S + vbTab + "null as OcrText, " + Environment.NewLine
+        S = S + vbTab + "DataSource.isPublic, DataSource.RepoSvrName  " + Environment.NewLine
 
         If UseWeights = True Then
             S = S + vbTab + "FROM DataSource as DS "
@@ -1355,26 +1355,26 @@ Dim Prefix AS String  = "DS."
 
         Return S
     End Function
-    Function RemoveSpaces(ByVal sText AS String ) As String
-Dim A AS String () = Split(sText, " + vbcrlf ") 
-Dim S AS String  = "" 
+    Function RemoveSpaces(ByVal sText As String) As String
+        Dim A As String() = Split(sText, " + environment.NewLine ")
+        Dim S As String = ""
         For i As Integer = 0 To UBound(A)
             S = S + A(i)
         Next
         Return S
     End Function
 
-    Function ReplacePrefix(ByVal NewPrefix AS String , ByVal PrefixToReplace AS String , ByVal tgtStr AS String ) As String
-Dim NewStr AS String  = "" 
+    Function ReplacePrefix(ByVal NewPrefix As String, ByVal PrefixToReplace As String, ByVal tgtStr As String) As String
+        Dim NewStr As String = ""
         Dim I As Integer = 0
         Dim J As Integer = 0
-Dim S AS String  = tgtStr 
-Dim S1 AS String  = "" 
-Dim S2 AS String  = "" 
+        Dim S As String = tgtStr
+        Dim S1 As String = ""
+        Dim S2 As String = ""
 
-        Do While InStr(S, PrefixToReplace , CompareMethod.Text) > 0
-            I = InStr(S, PrefixToReplace , CompareMethod.Text)
-            J = InStr(S, PrefixToReplace , CompareMethod.Text) + PrefixToReplace .Length
+        Do While InStr(S, PrefixToReplace, CompareMethod.Text) > 0
+            I = InStr(S, PrefixToReplace, CompareMethod.Text)
+            J = InStr(S, PrefixToReplace, CompareMethod.Text) + PrefixToReplace.Length
             S1 = Mid(S, 1, I - 1)
             S2 = Mid(S, J)
             S = S1 + NewPrefix + S2
@@ -1385,12 +1385,12 @@ Dim S2 AS String  = ""
 
     End Function
 
-    Sub ReplaceStar(ByRef tVal AS String )
-Dim CH AS String  = "" 
+    Sub ReplaceStar(ByRef tVal As String)
+        Dim CH As String = ""
         If InStr(tVal, "*") = 0 Then
             Return
         End If
-        If tVal .Length > 0 Then
+        If tVal.Length > 0 Then
             If tVal.Length > 1 Then
                 CH = Mid(tVal, 1, 1)
                 If CH.Equals("*") Then
@@ -1404,32 +1404,32 @@ Dim CH AS String  = ""
         End If
     End Sub
 
-    Public Function FixSingleQuote(ByVal tVal AS String ) As String
+    Public Function FixSingleQuote(ByVal tVal As String) As String
 
-        If InStr(tVal , "''") > 0 Then
-            Return (tVal )
+        If InStr(tVal, "''") > 0 Then
+            Return (tVal)
         End If
-        If InStr(tVal , "'") = 0 Then
-            Return (tVal )
+        If InStr(tVal, "'") = 0 Then
+            Return (tVal)
         End If
 
-Dim SS AS String  = tVal  
+        Dim SS As String = tVal
         tVal = SS
         Try
             Dim i As Integer = Len(tVal)
             Dim ch As String = ""
-Dim NewStr AS String  = "" 
-Dim S1 AS String  = "" 
-Dim S2 AS String  = "" 
-Dim A AS String () 
-Dim PrevCH AS String  = "@" 
+            Dim NewStr As String = ""
+            Dim S1 As String = ""
+            Dim S2 As String = ""
+            Dim A As String()
+            Dim PrevCH As String = "@"
             i = InStr(1, tVal, "'")
             Do While InStr(1, tVal, "'") > 0
                 i = InStr(1, tVal, "'")
                 S1 = Mid(tVal, 1, i)
                 Mid(S1, S1.Length, 1) = Chr(254)
                 S2 = Chr(254) + Mid(tVal, i + 1)
-                tVal  = S1 + S2
+                tVal = S1 + S2
             Loop
 
             For i = 1 To Len(tVal)
@@ -1439,27 +1439,27 @@ Dim PrevCH AS String  = "@"
                 End If
             Next
         Catch ex As Exception
-            WriteToLog("ERROR: FixSingleQuote - " + ex.Message + vbCrLf + ex.StackTrace)
+            WriteToLog("ERROR: FixSingleQuote - " + ex.Message + Environment.NewLine + ex.StackTrace)
         End Try
 
         Return tVal
     End Function
 
-    Public Sub WriteToLog(ByVal Msg AS String )
+    Public Sub WriteToLog(ByVal Msg As String)
         Try
             Dim cPath As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
-Dim TempFolder AS String  = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) 
-Dim M AS String  = Now.Month.ToString.Trim 
-Dim D AS String  = Now.Day.ToString.Trim 
-Dim Y AS String  = Now.Year.ToString.Trim 
+            Dim TempFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
+            Dim M As String = Now.Month.ToString.Trim
+            Dim D As String = Now.Day.ToString.Trim
+            Dim Y As String = Now.Year.ToString.Trim
 
-Dim SerialNo AS String  = M + "." + D + "." + Y + "." 
+            Dim SerialNo As String = M + "." + D + "." + Y + "."
 
-Dim tFQN AS String  = TempFolder  + "\ECMLibrary.Generator.Log." + SerialNo  + "txt" 
+            Dim tFQN As String = TempFolder + "\ECMLibrary.Generator.Log." + SerialNo + "txt"
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
             'If gRunUnattended = True Then
@@ -1472,7 +1472,7 @@ Dim tFQN AS String  = TempFolder  + "\ECMLibrary.Generator.Log." + SerialNo  + "
         End Try
     End Sub
 
-    Function buildContainsSyntax(ByVal SearchCriteria AS String , ByRef ThesaurusWords As ArrayList) As String
+    Function buildContainsSyntax(ByVal SearchCriteria As String, ByRef ThesaurusWords As ArrayList) As String
         '** Get all the OR'SearchCriteria and build a search term then
         '** get all the AND'SearchCriteria and build a search term then
         '** Apply any NEAR'SearchCriteria to the mess.
@@ -1497,8 +1497,8 @@ Dim tFQN AS String  = TempFolder  + "\ECMLibrary.Generator.Log." + SerialNo  + "
         Dim A As New ArrayList
         Dim I As Integer = 0
         Dim J As Integer = 0
-Dim Ch AS String  = "" 
-Dim tWord AS String  = "" 
+        Dim Ch As String = ""
+        Dim tWord As String = ""
         Dim WordCnt As Integer = 0
         Dim isOr As Boolean = False
         Dim isAnd As Boolean = False
@@ -1508,7 +1508,7 @@ Dim tWord AS String  = ""
         Dim Delimiters As String = " ,:"
         Dim DQ As String = Chr(34)
         Dim FirstEntry As Boolean = True
-Dim QuotedString AS String  = "" 
+        Dim QuotedString As String = ""
         Dim OrNeeded As Boolean = False
         Dim AndNeeded As Boolean = False
 
@@ -1526,7 +1526,7 @@ StartNextWord:
                 If Ch.Equals("~") Or Ch.Equals("^") Or Ch.Equals("^") Or Ch.Equals("#") Then
                     '** DO nothing - it belongs here
                 Else
-                    If isDelimiter(Ch ) Then
+                    If isDelimiter(Ch) Then
                         SkipTokens(SearchCriteria, I, J)
                         I = J
                         GoTo StartNextWord
@@ -1537,13 +1537,13 @@ StartNextWord:
             End If
 TokenAlreadyAcquired:
             If Ch = Chr(34) Then
-                QuotedString  = ""
+                QuotedString = ""
                 J = 0
-                GetQuotedString(SearchCriteria, I, J, QuotedString )
-                If QuotedString .Equals(Chr(34) + Chr(34)) Then
+                GetQuotedString(SearchCriteria, I, J, QuotedString)
+                If QuotedString.Equals(Chr(34) + Chr(34)) Then
                     If ddebug Then Console.WriteLine("Skipping null double quotes.")
                 Else
-                    A.Add(QuotedString )
+                    A.Add(QuotedString)
                 End If
 
                 OrNeeded = True
@@ -1570,10 +1570,10 @@ TokenAlreadyAcquired:
                 Dim SubstituteString As String = "FORMSOF (INFLECTIONAL, " + Chr(34) + "@" + Chr(34) + ")"
                 I += 1
 
-Dim ReturnedDelimiter AS String  = "" 
+                Dim ReturnedDelimiter As String = ""
 
-                tWord = getNextToken(SearchCriteria, I, ReturnedDelimiter )
-Dim C AS String  = Mid(SearchCriteria, I, 1) 
+                tWord = getNextToken(SearchCriteria, I, ReturnedDelimiter)
+                Dim C As String = Mid(SearchCriteria, I, 1)
                 SubIn(SubstituteString, "@", tWord)
                 tWord = SubstituteString
                 SubIn(tWord, Chr(34) + Chr(34), Chr(34))
@@ -1592,8 +1592,8 @@ Dim C AS String  = Mid(SearchCriteria, I, 1)
                 '** One term using the AND operator will be built for each inflectional term provided.
                 Dim SubstituteString As String = "FORMSOF (THESAURUS, " + Chr(34) + "@" + Chr(34) + ")"
                 I += 1
-Dim ReturnedDelimiter AS String  = "" 
-                tWord = getNextToken(SearchCriteria, I, ReturnedDelimiter )
+                Dim ReturnedDelimiter As String = ""
+                tWord = getNextToken(SearchCriteria, I, ReturnedDelimiter)
                 SubIn(SubstituteString, "@", tWord)
                 tWord = SubstituteString
                 SubIn(tWord, Chr(34) + Chr(34), Chr(34))
@@ -1614,8 +1614,8 @@ Dim ReturnedDelimiter AS String  = ""
                 '** One term using the AND operator will be built for each inflectional term provided.
                 Dim SubstituteString As String = "FORMSOF (THESAURUS, " + Chr(34) + "@" + Chr(34) + ")"
                 I += 1
-Dim ReturnedDelimiter AS String  = "" 
-                tWord = getNextToken(SearchCriteria, I, ReturnedDelimiter )
+                Dim ReturnedDelimiter As String = ""
+                tWord = getNextToken(SearchCriteria, I, ReturnedDelimiter)
                 If Not ThesaurusWords.Contains(tWord) Then
                     ThesaurusWords.Add(tWord)
                 End If
@@ -1650,8 +1650,8 @@ Dim ReturnedDelimiter AS String  = ""
                 tWord = ""
                 I = I - 1
             Else
-Dim ReturnedDelimiter AS String  = "" 
-                tWord = getNextToken(SearchCriteria, I, ReturnedDelimiter )
+                Dim ReturnedDelimiter As String = ""
+                tWord = getNextToken(SearchCriteria, I, ReturnedDelimiter)
                 If ddebug Then Console.WriteLine(tWord)
                 A.Add(tWord)
                 If UCase(tWord).Equals("OR") Then
@@ -1687,17 +1687,17 @@ NextWord:
 
         Dim XX As Integer = A.Count
         For XX = A.Count() - 1 To 0 Step -1
-            tWord  = A(XX).trim
+            tWord = A(XX).trim
             If Me.isKeyWord(tWord) Then
                 A.RemoveAt(XX)
             Else
                 Exit For
             End If
         Next
-Dim Stmt AS String  = "" 
+        Dim Stmt As String = ""
         For I = 0 To A.Count - 1
             If I = A.Count - 1 Then
-                tWord  = A(I).trim
+                tWord = A(I).trim
                 If Me.isKeyWord(tWord) Then
                     If ddebug Then Console.WriteLine("Do nothing")
                 Else
@@ -1715,25 +1715,25 @@ Dim Stmt AS String  = ""
 
     End Function
 
-    Sub GetQuotedString(ByVal tstr AS String , ByRef i As Integer, ByRef j As Integer, ByRef QuotedString AS String )
+    Sub GetQuotedString(ByVal tstr As String, ByRef i As Integer, ByRef j As Integer, ByRef QuotedString As String)
         Dim X As Integer = tstr.Trim.Length
-Dim Q AS String  = Chr(34) 
+        Dim Q As String = Chr(34)
         Dim CH As String = ""
-Dim Alphabet AS String  = " |+-^" 
-Dim S AS String  = "" 
-        QuotedString  = Q
+        Dim Alphabet As String = " |+-^"
+        Dim S As String = ""
+        QuotedString = Q
         i += 1
         CH = Mid(tstr, i, 1)
         Do While CH <> Chr(34) And i <= tstr.Length
-            QuotedString  = QuotedString  + CH
+            QuotedString = QuotedString + CH
             i += 1
             CH = Mid(tstr, i, 1)
         Loop
-        QuotedString  = QuotedString  + Q
+        QuotedString = QuotedString + Q
     End Sub
 
-    Function isNotDelimiter(ByVal CH AS String ) As Boolean
-Dim Alphabet AS String  = " |+-^" 
+    Function isNotDelimiter(ByVal CH As String) As Boolean
+        Dim Alphabet As String = " |+-^"
         If InStr(1, Alphabet, CH) = 0 Then
             Return True
         Else
@@ -1741,8 +1741,8 @@ Dim Alphabet AS String  = " |+-^"
         End If
     End Function
 
-    Function isDelimiter(ByVal CH AS String ) As Boolean
-Dim Alphabet AS String  = " |+-^" 
+    Function isDelimiter(ByVal CH As String) As Boolean
+        Dim Alphabet As String = " |+-^"
         If InStr(1, Alphabet, CH) > 0 Then
             Return True
         Else
@@ -1750,12 +1750,12 @@ Dim Alphabet AS String  = " |+-^"
         End If
     End Function
 
-    Sub SkipTokens(ByVal tstr AS String , ByVal i As Integer, ByRef j As Integer)
+    Sub SkipTokens(ByVal tstr As String, ByVal i As Integer, ByRef j As Integer)
         Dim X As Integer = tstr.Trim.Length
-Dim Q AS String  = Chr(34) 
+        Dim Q As String = Chr(34)
         Dim CH As String = ""
-Dim Alphabet AS String  = " |+-^" 
-Dim S AS String  = "" 
+        Dim Alphabet As String = " |+-^"
+        Dim S As String = ""
         For j = i + 1 To X
             CH = Mid(tstr, j, 1)
             If InStr(1, Alphabet, CH) = 0 Then
@@ -1765,11 +1765,11 @@ Dim S AS String  = ""
         Next
     End Sub
 
-    Function getNextToken(ByVal S AS String , ByRef I As Integer, ByRef ReturnedDelimiter AS String ) As String
+    Function getNextToken(ByVal S As String, ByRef I As Integer, ByRef ReturnedDelimiter As String) As String
         Dim Delimiters As String = " ,:+-^|()"
         S = S.Trim
-Dim Token AS String  = "" 
-Dim CH AS String  = "" 
+        Dim Token As String = ""
+        Dim CH As String = ""
         CH = Mid(S, I, 1)
         Dim KK As Integer = S.Length
 
@@ -1784,31 +1784,31 @@ Dim CH AS String  = ""
 
 
         If CH = Chr(34) Then
-            Token  = ""
-            Token  += Chr(34)
+            Token = ""
+            Token += Chr(34)
             I += 1
             CH = Mid(S, I, 1)
             KK = S.Length
             Do Until (CH = Chr(34) And I <= KK)
-                Token  += CH
+                Token += CH
                 I += 1
                 CH = Mid(S, I, 1)
                 If I > S.Length Then
                     Exit Do
                 End If
             Loop
-            Token  += Chr(34)
+            Token += Chr(34)
             'WDM May need to put back I += 1
         Else
-            Token  = CH
+            Token = CH
             I += 1
             CH = Mid(S, I, 1)
             KK = S.Length
             Do Until (InStr(Delimiters, CH) > 0 And I <= KK)
-                Token  += CH
+                Token += CH
                 I += 1
                 CH = Mid(S, I, 1)
-                ReturnedDelimiter  = CH
+                ReturnedDelimiter = CH
                 If I > S.Length Then
                     Exit Do
                 End If
@@ -1818,37 +1818,37 @@ Dim CH AS String  = ""
         Return Token
     End Function
 
-    Sub SubIn(ByRef ParentString AS String , ByVal WhatToChange AS String , ByVal ChangeCharsToThis AS String )
+    Sub SubIn(ByRef ParentString As String, ByVal WhatToChange As String, ByVal ChangeCharsToThis As String)
         Dim I As Integer = 0
         Dim J As Integer = 0
         Dim M As Integer = 0
         Dim N As Integer = 0
-Dim S1 AS String  = "" 
-Dim S2 AS String  = "" 
+        Dim S1 As String = ""
+        Dim S2 As String = ""
 
 
-        M = WhatToChange .Length
-        N = ChangeCharsToThis .Length
+        M = WhatToChange.Length
+        N = ChangeCharsToThis.Length
 
 
         Do While InStr(ParentString, WhatToChange, CompareMethod.Text) > 0
             I = InStr(ParentString, WhatToChange, CompareMethod.Text)
             S1 = Mid(ParentString, 1, I - 1)
             S2 = Mid(ParentString, I + M)
-Dim NewLine AS String  = S1 + ChangeCharsToThis + S2 
+            Dim NewLine As String = S1 + ChangeCharsToThis + S2
             ParentString = NewLine
         Loop
     End Sub
-    Sub SkipToNextToken(ByVal S AS String , ByRef I As Integer)
+    Sub SkipToNextToken(ByVal S As String, ByRef I As Integer)
         Dim Delimiters As String = " ,:+-^|"
         S = S.Trim
-Dim Token AS String  = "" 
-Dim CH AS String  = "" 
+        Dim Token As String = ""
+        Dim CH As String = ""
         CH = Mid(S, I, 1)
         Dim KK As Integer = S.Length
 
 
-        Token  = ""
+        Token = ""
         I += 1
         CH = Mid(S, I, 1)
         KK = S.Length
@@ -1871,7 +1871,7 @@ Dim CH AS String  = ""
             Return
         End If
         Do Until (InStr(Delimiters, CH) = 0 And I <= KK)
-            Token  += CH
+            Token += CH
             I += 1
             CH = Mid(S, I, 1)
             Debug.Print(Token)
@@ -1881,8 +1881,8 @@ Dim CH AS String  = ""
         Loop
     End Sub
 
-    Function isSyntaxChar(ByVal CH AS String ) As Boolean
-Dim Alphabet AS String  = "#|+-^~" 
+    Function isSyntaxChar(ByVal CH As String) As Boolean
+        Dim Alphabet As String = "#|+-^~"
         If InStr(1, Alphabet, CH) > 0 Then
             Return True
         Else
@@ -1890,13 +1890,13 @@ Dim Alphabet AS String  = "#|+-^~"
         End If
     End Function
 
-    Function getTheRestOfTheToken(ByVal S AS String , ByRef I As Integer) As String
+    Function getTheRestOfTheToken(ByVal S As String, ByRef I As Integer) As String
         'We are sitting at the next character in the token, so go back to the beginning
         I = I - 1
         Dim Delimiters As String = " ,:+-^|"
         S = S.Trim
-Dim Token AS String  = "" 
-Dim CH AS String  = "" 
+        Dim Token As String = ""
+        Dim CH As String = ""
         CH = Mid(S, I, 1)
         Dim KK As Integer = S.Length
 
@@ -1911,28 +1911,28 @@ Dim CH AS String  = ""
 
 
         If CH = Chr(34) Then
-            Token  = ""
-            Token  += Chr(34)
+            Token = ""
+            Token += Chr(34)
             I += 1
             CH = Mid(S, I, 1)
             KK = S.Length
             Do Until (CH = Chr(34) And I <= KK)
-                Token  += CH
+                Token += CH
                 I += 1
                 CH = Mid(S, I, 1)
                 If I > S.Length Then
                     Exit Do
                 End If
             Loop
-            Token  += Chr(34)
+            Token += Chr(34)
             I += 1
         Else
-            Token  = CH
+            Token = CH
             I += 1
             CH = Mid(S, I, 1)
             KK = S.Length
             Do Until (InStr(Delimiters, CH) > 0 And I <= KK)
-                Token  += CH
+                Token += CH
                 I += 1
                 CH = Mid(S, I, 1)
                 If I > S.Length Then
@@ -1944,7 +1944,7 @@ Dim CH AS String  = ""
         Return Token
     End Function
 
-    Function isKeyWord(ByVal KW AS String ) As Boolean
+    Function isKeyWord(ByVal KW As String) As Boolean
         Dim B As Boolean = False
         KW = UCase(KW)
         Select Case KW
@@ -1973,50 +1973,50 @@ Dim CH AS String  = ""
 
         If SearchCode.Equals("E") Or SearchCode.Equals("EMAIL") Then
             If bGlobalSearcher = True Then
-                S = S + Chr(9) + "/* This is where the library search would go - you have global rights, think about it.*/" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-                S = S + Chr(9) + " AND (UserID IS NOT NULL)" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
+                S = S + Chr(9) + "/* This is where the library search would go - you have global rights, think about it.*/" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+                S = S + Chr(9) + " AND (UserID IS NOT NULL)" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
                 Return S
             Else
-                S = S + " AND (UserID = '" + CurrUserID + "'" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-                S = S + Chr(9) + " or isPublic = 'Y'" + " /*KEEP*/" + vbCrLf
+                S = S + " AND (UserID = '" + CurrUserID + "'" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+                S = S + Chr(9) + " or isPublic = 'Y'" + " /*KEEP*/" + Environment.NewLine
             End If
         End If
         If SearchCode.Equals("S") Or SearchCode.Equals("EMAIL") Then
             If bGlobalSearcher = True Then
-                S = S + Chr(9) + "/* This is where the library search would go - you have global rights, think about it.*/" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-                S = S + Chr(9) + " AND (DataSourceOwnerUserID IS NOT NULL)" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
+                S = S + Chr(9) + "/* This is where the library search would go - you have global rights, think about it.*/" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+                S = S + Chr(9) + " AND (DataSourceOwnerUserID IS NOT NULL)" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
                 Return S
             Else
-                S = S + " AND (DataSourceOwnerUserID = '" + CurrUserID + "'" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-                S = S + Chr(9) + " or isPublic = 'Y'" + " /*KEEP*/" + vbCrLf
+                S = S + " AND (DataSourceOwnerUserID = '" + CurrUserID + "'" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+                S = S + Chr(9) + " or isPublic = 'Y'" + " /*KEEP*/" + Environment.NewLine
             End If
         End If
 
-        S = S + Chr(9) + Chr(9) + " /* GENID:" + LocationID + "*/" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
+        S = S + Chr(9) + Chr(9) + " /* GENID:" + LocationID + "*/" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
         If SearchCode.Equals("E") Or SearchCode.Equals("EMAIL") Then
-            S = S + Chr(9) + Chr(9) + " or EmailGuid in (" + " /*KEEP*/" + vbCrLf
+            S = S + Chr(9) + Chr(9) + " or EmailGuid in (" + " /*KEEP*/" + Environment.NewLine
         Else
-            S = S + Chr(9) + Chr(9) + " or SourceGuid in (" + " /*KEEP*/" + vbCrLf
+            S = S + Chr(9) + Chr(9) + " or SourceGuid in (" + " /*KEEP*/" + Environment.NewLine
         End If
 
-        S = S + Chr(9) + " SELECT LibraryItems.SourceGuid" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-        S = S + Chr(9) + " FROM   LibraryItems INNER JOIN" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-        S = S + Chr(9) + "        Library ON LibraryItems.LibraryName = Library.LibraryName INNER JOIN" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-        S = S + Chr(9) + "        LibraryUsers ON Library.LibraryName = LibraryUsers.LibraryName INNER JOIN" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-        S = S + Chr(9) + "        GroupLibraryAccess ON Library.LibraryName = GroupLibraryAccess.LibraryName INNER JOIN" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-        S = S + Chr(9) + "        GroupUsers ON GroupLibraryAccess.GroupName = GroupUsers.GroupName" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-        S = S + Chr(9) + " where " + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-        S = S + Chr(9) + "        libraryusers.userid ='" + CurrUserID + "' " + Chr(9) + Chr(9) + " /*KEEP*/   /*ID55*/" + vbCrLf
+        S = S + Chr(9) + " SELECT LibraryItems.SourceGuid" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + Chr(9) + " FROM   LibraryItems INNER JOIN" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + Chr(9) + "        Library ON LibraryItems.LibraryName = Library.LibraryName INNER JOIN" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + Chr(9) + "        LibraryUsers ON Library.LibraryName = LibraryUsers.LibraryName INNER JOIN" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + Chr(9) + "        GroupLibraryAccess ON Library.LibraryName = GroupLibraryAccess.LibraryName INNER JOIN" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + Chr(9) + "        GroupUsers ON GroupLibraryAccess.GroupName = GroupUsers.GroupName" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + Chr(9) + " where " + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + Chr(9) + "        libraryusers.userid ='" + CurrUserID + "' " + Chr(9) + Chr(9) + " /*KEEP*/   /*ID55*/" + Environment.NewLine
 
-        S = S + Chr(9) + "UNION " + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-        S = S + Chr(9) + "Select LI.SourceGuid" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-        S = S + Chr(9) + "FROM         LibraryItems AS LI INNER JOIN" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-        S = S + Chr(9) + "             LibraryUsers AS LU ON LI.LibraryName = LU.LibraryName" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-        S = S + Chr(9) + "WHERE     (LU.UserID = '" + CurrUserID + "')" + Chr(9) + Chr(9) + " /*KEEP*/   /*ID56*/" + vbCrLf
+        S = S + Chr(9) + "UNION " + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + Chr(9) + "Select LI.SourceGuid" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + Chr(9) + "FROM         LibraryItems AS LI INNER JOIN" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + Chr(9) + "             LibraryUsers AS LU ON LI.LibraryName = LU.LibraryName" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + Chr(9) + "WHERE     (LU.UserID = '" + CurrUserID + "')" + Chr(9) + Chr(9) + " /*KEEP*/   /*ID56*/" + Environment.NewLine
 
-        S = S + Chr(9) + "))" + " /*KEEP*/" + vbCrLf
+        S = S + Chr(9) + "))" + " /*KEEP*/" + Environment.NewLine
 
-        S = S + Chr(9) + " /* GLOBAL Searcher = " + bGlobalSearcher.ToString + "  */" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
+        S = S + Chr(9) + " /* GLOBAL Searcher = " + bGlobalSearcher.ToString + "  */" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
 
         Return S
 
@@ -2025,32 +2025,32 @@ Dim CH AS String  = ""
     Public Function genLibrarySearch(ByVal CurrUserID As String, ByVal GlobalSearcher As Boolean, ByVal LibraryName As String, ByVal LocationID As String) As String
 
         Dim S As String = ""
-        'S = S + " SELECT GroupUsers.GroupName, Library.LibraryName, LibraryUsers.UserID, LibraryItems.SourceGuid" + chr(9) + chr(9) + " /*KEEP*/" + vbCrLf
-        S = S + " /* GENID:" + LocationID + " *KEEP*/" + vbCrLf
-        S = S + " SELECT LibraryItems.SourceGuid" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-        S = S + Chr(9) + " FROM   LibraryItems INNER JOIN" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-        S = S + Chr(9) + "        Library ON LibraryItems.LibraryName = Library.LibraryName INNER JOIN" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-        S = S + Chr(9) + "        LibraryUsers ON Library.LibraryName = LibraryUsers.LibraryName INNER JOIN" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-        S = S + Chr(9) + "        GroupLibraryAccess ON Library.LibraryName = GroupLibraryAccess.LibraryName INNER JOIN" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-        S = S + Chr(9) + "        GroupUsers ON GroupLibraryAccess.GroupName = GroupUsers.GroupName" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-        S = S + Chr(9) + " where " + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-        S = S + Chr(9) + "        Library.LibraryName ='" + LibraryName + "' " + Chr(9) + Chr(9) + " /*KEEP*/   /*ID57*/" + vbCrLf
+        'S = S + " SELECT GroupUsers.GroupName, Library.LibraryName, LibraryUsers.UserID, LibraryItems.SourceGuid" + chr(9) + chr(9) + " /*KEEP*/" + environment.NewLine
+        S = S + " /* GENID:" + LocationID + " *KEEP*/" + Environment.NewLine
+        S = S + " SELECT LibraryItems.SourceGuid" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + Chr(9) + " FROM   LibraryItems INNER JOIN" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + Chr(9) + "        Library ON LibraryItems.LibraryName = Library.LibraryName INNER JOIN" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + Chr(9) + "        LibraryUsers ON Library.LibraryName = LibraryUsers.LibraryName INNER JOIN" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + Chr(9) + "        GroupLibraryAccess ON Library.LibraryName = GroupLibraryAccess.LibraryName INNER JOIN" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + Chr(9) + "        GroupUsers ON GroupLibraryAccess.GroupName = GroupUsers.GroupName" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + Chr(9) + " where " + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + Chr(9) + "        Library.LibraryName ='" + LibraryName + "' " + Chr(9) + Chr(9) + " /*KEEP*/   /*ID57*/" + Environment.NewLine
 
         If GlobalSearcher = False Then
-            S = S + Chr(9) + " AND    libraryusers.userid ='" + CurrUserID + "' " + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
+            S = S + Chr(9) + " AND    libraryusers.userid ='" + CurrUserID + "' " + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
         End If
-        S = S + Chr(9) + "        /* GLOBAL Searcher = " + GlobalSearcher.ToString + "  */" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
+        S = S + Chr(9) + "        /* GLOBAL Searcher = " + GlobalSearcher.ToString + "  */" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
 
-        S = S + Chr(9) + "UNION " + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
+        S = S + Chr(9) + "UNION " + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
 
-        S = S + Chr(9) + "Select LI.SourceGuid" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-        S = S + Chr(9) + "FROM   LibraryItems AS LI INNER JOIN" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-        S = S + Chr(9) + "       LibraryUsers AS LU ON LI.LibraryName = LU.LibraryName" + Chr(9) + Chr(9) + " /*KEEP*/   /*ID58*/" + vbCrLf
+        S = S + Chr(9) + "Select LI.SourceGuid" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + Chr(9) + "FROM   LibraryItems AS LI INNER JOIN" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + Chr(9) + "       LibraryUsers AS LU ON LI.LibraryName = LU.LibraryName" + Chr(9) + Chr(9) + " /*KEEP*/   /*ID58*/" + Environment.NewLine
         If GlobalSearcher = False Then
-            S = S + Chr(9) + "WHERE     LI.LibraryName = '" + LibraryName + "'" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
-            S = S + Chr(9) + "    AND LU.UserID = '" + CurrUserID + "'" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
+            S = S + Chr(9) + "WHERE     LI.LibraryName = '" + LibraryName + "'" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
+            S = S + Chr(9) + "    AND LU.UserID = '" + CurrUserID + "'" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
         Else
-            S = S + Chr(9) + "WHERE     LI.LibraryName = '" + LibraryName + "'" + Chr(9) + Chr(9) + " /*KEEP*/" + vbCrLf
+            S = S + Chr(9) + "WHERE     LI.LibraryName = '" + LibraryName + "'" + Chr(9) + Chr(9) + " /*KEEP*/" + Environment.NewLine
         End If
 
         Return S

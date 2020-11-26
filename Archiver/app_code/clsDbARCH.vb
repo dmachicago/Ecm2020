@@ -112,7 +112,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
             'Next
 
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR getDataSet 01: " + ex.Message + vbCrLf + MySql)
+            LOG.WriteToArchiveLog("ERROR getDataSet 01: " + ex.Message + environment.NewLine + MySql)
         End Try
 
         Return ds
@@ -807,10 +807,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
 
         Dim S As String = ""
-        S = S + " select table_name, column_name, data_type, character_maximum_length  " + vbCrLf
-        S = S + " from INFORMATION_SCHEMA.COLUMNS " + vbCrLf
-        S = S + " where table_name = '" + TableName + "' " + vbCrLf
-        S = S + " order by table_name, column_name" + vbCrLf
+        S = S + " select table_name, column_name, data_type, character_maximum_length  " + environment.NewLine
+        S = S + " from INFORMATION_SCHEMA.COLUMNS " + environment.NewLine
+        S = S + " where table_name = '" + TableName + "' " + environment.NewLine
+        S = S + " order by table_name, column_name" + environment.NewLine
 
         Dim b As Boolean = True
         Dim i As Integer = 0
@@ -1061,7 +1061,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
                     LOG.WriteToArchiveLog("ERROR From '" + From + " ' clsDatabaseARCH : ckDbConnection : 23b: ", ex)
                     b = False
                     Dim ShowBox As Boolean = False
-                    If ShowBox And gRunUnattended = False Then MessageBox.Show("The database connection failed at error marker 2301.2334.1 : " + vbCrLf + ex.Message)
+                    If ShowBox And gRunUnattended = False Then MessageBox.Show("The database connection failed at error marker 2301.2334.1 : " + environment.NewLine + ex.Message)
                 End Try
             Else
                 b = True
@@ -3380,7 +3380,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
                     rsDataQry = command.ExecuteReader()
                 Catch ex As Exception
                     LOG.WriteToArchiveLog("clsDatabaseARCH : SqlQry : 1319 : ", ex)
-                    LOG.WriteToArchiveLog("clsDatabaseARCH : SqlQry : 1319 Server too Busy : " + vbCrLf + sql)
+                    LOG.WriteToArchiveLog("clsDatabaseARCH : SqlQry : 1319 Server too Busy : " + environment.NewLine + sql)
                 End Try
 
                 command.Dispose()
@@ -3447,7 +3447,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Catch ex As Exception
             ''Session("ActiveError") = True
             ''Session("ErrMsg") = ex.Message
-            ''Session("ErrStack") = ex.StackTrace + vbCrLf + vbCrLf + sql
+            ''Session("ErrStack") = ex.StackTrace + environment.NewLine + environment.NewLine + sql
             ' xTrace(18001, "clsDataBase:SqlQry" + ex.Message)
             ' xTrace(19002, "clsDataBase:SqlQry", ex.StackTrace)
             ' xTrace(13003, "clsDataBase:SqlQry", sql)
@@ -3488,7 +3488,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Catch ex As Exception
             ''Session("ActiveError") = True
             ''Session("ErrMsg") = ex.Message
-            ''Session("ErrStack") = ex.StackTrace + vbCrLf + vbCrLf + sql
+            ''Session("ErrStack") = ex.StackTrace + environment.NewLine + environment.NewLine + sql
             ' xTrace(10301, "clsDataBase:SqlQry" + ex.Message)
             ' xTrace(10042, "clsDataBase:SqlQry", ex.StackTrace)
             ' xTrace(10035, "clsDataBase:SqlQry", sql)
@@ -3564,7 +3564,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Catch ex As Exception
             ''Session("ActiveError") = True
             ''Session("ErrMsg") = ex.Message
-            ''Session("ErrStack") = ex.StackTrace + vbCrLf + vbCrLf + sql
+            ''Session("ErrStack") = ex.StackTrace + environment.NewLine + environment.NewLine + sql
             ' xTrace(104501, "clsDataBase:SqlQryRemoteConn" + ex.Message)
             ' xTrace(106502, "clsDataBase:SqlQryRemoteConn", ex.StackTrace)
             ' xTrace(107503, "clsDataBase:SqlQryRemoteConn", QrySql)
@@ -3602,7 +3602,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Catch ex As Exception
             ''Session("ActiveError") = True
             ''Session("ErrMsg") = ex.Message
-            ''Session("ErrStack") = ex.StackTrace + vbCrLf + vbCrLf + sql
+            ''Session("ErrStack") = ex.StackTrace + environment.NewLine + environment.NewLine + sql
             ' xTrace(80401, "clsDataBase:SqlQry" + ex.Message)
             ' xTrace(80052, "clsDataBase:SqlQry", ex.StackTrace)
             ' xTrace(80036, "clsDataBase:SqlQry", sql)
@@ -3697,7 +3697,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
                 'Dim debug As Boolean = False
                 'If debug Then
-                '    Console.WriteLine("Successful execution: " + vbCrLf + sql)
+                '    Console.WriteLine("Successful execution: " + environment.NewLine + sql)
                 'End If
                 rc = True
             Catch ex As Exception
@@ -3705,7 +3705,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
                 ''Session("ActiveError") = True
                 ''Session("ErrMsg") = "SQL Error check table PgmTrace: " , ex
-                ''Session("ErrStack") = "Stack Trace: " + vbCrLf + vbCrLf + ex.StackTrace
+                ''Session("ErrStack") = "Stack Trace: " + environment.NewLine + environment.NewLine + ex.StackTrace
                 LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlTx : 1412.1 : ", ex)
                 ' xTrace(1991, "ExecuteSql: ", "-----------------------")
                 ' xTrace(1992, "ExecuteSql: ", ex.Message.ToString)
@@ -3758,8 +3758,8 @@ Public Class clsDatabaseARCH : Implements IDisposable
                 rc = False
 
                 ''Session("ActiveError") = True
-                ''Session("ErrMsg") = "ExecuteNoTx SQL: " + vbCrLf + sql + vbCrLf + vbCrLf + ex.Message
-                ''Session("ErrStack") = "Stack Trace: " + vbCrLf + vbCrLf + ex.StackTrace
+                ''Session("ErrMsg") = "ExecuteNoTx SQL: " + environment.NewLine + sql + environment.NewLine + environment.NewLine + ex.Message
+                ''Session("ErrStack") = "Stack Trace: " + environment.NewLine + environment.NewLine + ex.StackTrace
 
                 ' xTrace(87, "ExecuteSqlNoTx: ", "-----------------------")
                 ' xTrace(134360, "ExecuteSqlNoTx: ", ex.Message.ToString)
@@ -3809,13 +3809,13 @@ Public Class clsDatabaseARCH : Implements IDisposable
             Catch ex As Exception
                 rc = False
                 If InStr(ex.Message, "The DELETE statement conflicted with the REFERENCE", CompareMethod.Text) > 0 Then
-                    MessageBox.Show("It appears this user has DATA within the repository associated to them and cannot be deleted." + vbCrLf + vbCrLf + ex.Message)
+                    MessageBox.Show("It appears this user has DATA within the repository associated to them and cannot be deleted." + environment.NewLine + environment.NewLine + ex.Message)
                 ElseIf InStr(ex.Message, "duplicate key row", CompareMethod.Text) > 0 Then
                     LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSql : 1442.a : ", ex)
                     LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSql : 1442.a : " + sql)
                     Return True
                 Else
-                    'messagebox.show("Execute SQL: " + ex.message + vbCrLf + "Please review the trace log." + vbCrLf + sql)
+                    'messagebox.show("Execute SQL: " + ex.message + environment.NewLine + "Please review the trace log." + environment.NewLine + sql)
                     If ddebug Then Clipboard.SetText(sql)
                 End If
 
@@ -3823,7 +3823,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
                 '' xTrace(39901, "ExecuteSqlNoTx: ", ex.StackTrace.ToString)
                 '' xTrace(39901, "ExecuteSqlNoTx: ", Mid(sql, 1, 2000))
                 LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSql : 1442.x : ", ex)
-                LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSql : 1442.x : " + vbCrLf + sql + vbCrLf)
+                LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSql : 1442.x : " + environment.NewLine + sql + environment.NewLine)
 
             End Try
         End Using
@@ -3873,18 +3873,18 @@ Public Class clsDatabaseARCH : Implements IDisposable
             MySql = ""
 
             MachineGuid = getGuid()
-            MySql += "INSERT INTO [MachineRegistered]" + vbCrLf
-            MySql += "(" + vbCrLf
-            MySql += "[MachineGuid]" + vbCrLf
-            MySql += ",[MachineName]" + vbCrLf
-            MySql += ",[NetWorkName]" + vbCrLf
-            MySql += ")" + vbCrLf
-            MySql += "VALUES " + vbCrLf
-            MySql += "(" + vbCrLf
-            MySql += "'" + MachineGuid + "'," + vbCrLf
-            MySql += "'" + MachineName + "'," + vbCrLf
-            MySql += "'" + NetWorkName + "'" + vbCrLf
-            MySql += ")" + vbCrLf
+            MySql += "INSERT INTO [MachineRegistered]" + environment.NewLine
+            MySql += "(" + environment.NewLine
+            MySql += "[MachineGuid]" + environment.NewLine
+            MySql += ",[MachineName]" + environment.NewLine
+            MySql += ",[NetWorkName]" + environment.NewLine
+            MySql += ")" + environment.NewLine
+            MySql += "VALUES " + environment.NewLine
+            MySql += "(" + environment.NewLine
+            MySql += "'" + MachineGuid + "'," + environment.NewLine
+            MySql += "'" + MachineName + "'," + environment.NewLine
+            MySql += "'" + NetWorkName + "'" + environment.NewLine
+            MySql += ")" + environment.NewLine
 
             Dim B As Boolean = ExecuteSqlNewConn(90104, MySql)
 
@@ -3945,8 +3945,8 @@ Public Class clsDatabaseARCH : Implements IDisposable
                                 Application.DoEvents()
                             End If
                             If InStr(ex.Message, "The DELETE statement conflicted with the REFERENCE", CompareMethod.Text) > 0 Then
-                                ' If gRunUnattended = False Then MessageBox.Show("It appears this user has DATA within the repository associated to them and cannot be deleted." + vbCrLf + vbCrLf + ex.Message)
-                                LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 1464c0 It appears this user has DATA within the repository associated to them and cannot be deleted." + vbCrLf + vbCrLf + ex.Message)
+                                ' If gRunUnattended = False Then MessageBox.Show("It appears this user has DATA within the repository associated to them and cannot be deleted." + environment.NewLine + environment.NewLine + ex.Message)
+                                LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 1464c0 It appears this user has DATA within the repository associated to them and cannot be deleted." + environment.NewLine + environment.NewLine + ex.Message)
                                 BB = False
                             ElseIf InStr(ex.Message, "HelpText", CompareMethod.Text) > 0 Then
                                 BB = True
@@ -3967,7 +3967,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
                             Else
                                 BB = False
                                 LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 9448a2x.1: ", ex)
-                                LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 9448a2x.2: " + vbCrLf + sql + vbCrLf)
+                                LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 9448a2x.2: " + environment.NewLine + sql + environment.NewLine)
                             End If
                         End Try
                     End Using
@@ -4002,8 +4002,8 @@ Public Class clsDatabaseARCH : Implements IDisposable
                 rc = False
 
                 If InStr(ex.Message, "The DELETE statement conflicted with the REFERENCE", CompareMethod.Text) > 0 Then
-                    ' If gRunUnattended = False Then MessageBox.Show("It appears this user has DATA within the repository associated to them and cannot be deleted." + vbCrLf + vbCrLf + ex.Message)
-                    LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 1464c0 It appears this user has DATA within the repository associated to them and cannot be deleted." + vbCrLf + vbCrLf + ex.Message)
+                    ' If gRunUnattended = False Then MessageBox.Show("It appears this user has DATA within the repository associated to them and cannot be deleted." + environment.NewLine + environment.NewLine + ex.Message)
+                    LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 1464c0 It appears this user has DATA within the repository associated to them and cannot be deleted." + environment.NewLine + environment.NewLine + ex.Message)
                     BB = False
                 ElseIf InStr(ex.Message, "HelpText", CompareMethod.Text) > 0 Then
                     BB = True
@@ -4023,14 +4023,14 @@ Public Class clsDatabaseARCH : Implements IDisposable
                     LOG.WriteToArchiveLog("Notification - clsDatabaseARCH : ExecuteSqlNewConn : 1466c3 : " + sql)
                     BB = True
                 Else
-                    'messagebox.show("Execute SQL: " + ex.message + vbCrLf + "Please review the trace log." + vbCrLf + sql)
+                    'messagebox.show("Execute SQL: " + ex.message + environment.NewLine + "Please review the trace log." + environment.NewLine + sql)
                     If ddebug Then Clipboard.SetText(sql)
                     BB = False
                     ' xTrace(1998134, "ExecuteSqlNoTx: ", ex.Message.ToString)
                     ' xTrace(2998134, "ExecuteSqlNoTx: ", ex.StackTrace.ToString)
                     ' xTrace(3998134, "ExecuteSqlNoTx: ", Mid(sql, 1, 2000))
                     LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 9442a2x.1: ", ex)
-                    LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 9442a2x.2: " + vbCrLf + sql + vbCrLf)
+                    LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 9442a2x.2: " + environment.NewLine + sql + environment.NewLine)
                 End If
             End Try
         End Using
@@ -4085,8 +4085,8 @@ Public Class clsDatabaseARCH : Implements IDisposable
                         RC = False
 
                         If InStr(ex.Message, "The DELETE statement conflicted with the REFERENCE", CompareMethod.Text) > 0 Then
-                            ' If gRunUnattended = False Then MessageBox.Show("It appears this user has DATA within the repository associated to them and cannot be deleted." + vbCrLf + vbCrLf + ex.Message)
-                            LOG.WriteToArchiveLog("It appears this user has DATA within the repository associated to them and cannot be deleted." + vbCrLf + vbCrLf + ex.Message)
+                            ' If gRunUnattended = False Then MessageBox.Show("It appears this user has DATA within the repository associated to them and cannot be deleted." + environment.NewLine + environment.NewLine + ex.Message)
+                            LOG.WriteToArchiveLog("It appears this user has DATA within the repository associated to them and cannot be deleted." + environment.NewLine + environment.NewLine + ex.Message)
                         ElseIf InStr(ex.Message, "HelpText", CompareMethod.Text) > 0 Then
                             BB = True
                         ElseIf InStr(ex.Message, "duplicate key row", CompareMethod.Text) > 0 Then
@@ -4109,14 +4109,14 @@ Public Class clsDatabaseARCH : Implements IDisposable
                             ' xTrace(29981647, "ExecuteSqlNoTx: ", ex.StackTrace.ToString)
                             ' xTrace(39981647, "ExecuteSqlNoTx: ", Mid(sql, 1, 2000))
                             LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 9442a1p1: " + loc.ToString + " : ", ex)
-                            LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 9442a1p2: " + vbCrLf + sql + vbCrLf)
+                            LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 9442a1p2: " + environment.NewLine + sql + environment.NewLine)
                         End If
 
                     End Try
                 End Using
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 2166a3x.2: " + vbCrLf + sql + vbCrLf)
+            LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 2166a3x.2: " + environment.NewLine + sql + environment.NewLine)
         Finally
             If conn.State = ConnectionState.Open Then
                 conn.Close()
@@ -4235,13 +4235,13 @@ Public Class clsDatabaseARCH : Implements IDisposable
                 Catch ex As Exception
                     rc = False
                     If InStr(ex.Message, "The DELETE statement conflicted with the REFERENCE", CompareMethod.Text) > 0 Then
-                        ' If gRunUnattended = False Then MessageBox.Show("It appears this user has DATA within the repository associated to them and cannot be deleted." + vbCrLf + vbCrLf + ex.Message)
-                        LOG.WriteToArchiveLog("It appears this user has DATA within the repository associated to them and cannot be deleted." + vbCrLf + vbCrLf + ex.Message)
+                        ' If gRunUnattended = False Then MessageBox.Show("It appears this user has DATA within the repository associated to them and cannot be deleted." + environment.NewLine + environment.NewLine + ex.Message)
+                        LOG.WriteToArchiveLog("It appears this user has DATA within the repository associated to them and cannot be deleted." + environment.NewLine + environment.NewLine + ex.Message)
                     ElseIf InStr(ex.Message, "duplicate key row", CompareMethod.Text) > 0 Then
                         LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 1464 : ", ex)
                         Return True
                     Else
-                        'messagebox.show("Execute SQL: " + ex.message + vbCrLf + "Please review the trace log." + vbCrLf + sql)
+                        'messagebox.show("Execute SQL: " + ex.message + environment.NewLine + "Please review the trace log." + environment.NewLine + sql)
                         If ddebug Then Clipboard.SetText(sql)
                     End If
                     ' xTrace(2343111, "ExecuteSqlNoTx: ", "-----------------------")
@@ -4380,7 +4380,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
                 'transaction.Commit()
                 'Dim debug As Boolean = False
                 'If debug Then
-                '    Console.WriteLine("Successful execution: " + vbCrLf + sql)
+                '    Console.WriteLine("Successful execution: " + environment.NewLine + sql)
                 'End If
                 rc = True
             Catch ex As Exception
@@ -4391,7 +4391,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
                 ''Session("ActiveError") = True
                 ''Session("ErrMsg") = "ExecuteSqlNoAudit - SQL Error check table PgmTrace: " , ex
-                ''Session("ErrStack") = "Stack Trace: " + vbCrLf + vbCrLf + ex.StackTrace
+                ''Session("ErrStack") = "Stack Trace: " + environment.NewLine + environment.NewLine + ex.StackTrace
 
                 ' xTrace(23435460, "ExecuteSql: ", "-----------------------")
                 ' xTrace(23435461, "ExecuteSql: ", ex.Message.ToString)
@@ -5391,7 +5391,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
             End If
             rsData.Close()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: " + ex.Message + vbCrLf + s)
+            LOG.WriteToArchiveLog("ERROR: " + ex.Message + environment.NewLine + s)
         End Try
 
         Return b
@@ -5486,12 +5486,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Dim S2 As String = ""
         S = S.Trim
         Dim NewSql As String = ""
-        Dim A As String() = S.Split(CChar(vbCrLf))
+        Dim A As String() = S.Split(CChar(environment.NewLine))
         For I = 0 To UBound(A)
             If InStr(A(I), "and KEY_TBL.RANK", CompareMethod.Text) > 0 Then
                 'Console.WriteLine(A(I))
             Else
-                NewSql = NewSql + A(I) + vbCrLf
+                NewSql = NewSql + A(I) + environment.NewLine
             End If
             S = NewSql
         Next
@@ -5758,7 +5758,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
             LOG.WriteToDBUpdatesLog("NOTICE Successfully updated SourceImage for <" + FQN + ">")
             b = True
         Catch ex As Exception
-            LOG.WriteToArchiveLog("FATAL ERROR :UpdateSouceImage 22.345.22 - Failed to add source image." + vbCrLf + MySql + Environment.NewLine + ex.Message)
+            LOG.WriteToArchiveLog("FATAL ERROR :UpdateSouceImage 22.345.22 - Failed to add source image." + environment.NewLine + MySql + Environment.NewLine + ex.Message)
             b = False
         End Try
         Return b
@@ -5817,8 +5817,8 @@ Public Class clsDatabaseARCH : Implements IDisposable
                 End Using
                 B = True
             Catch ex As Exception
-                LOG.WriteToDBUpdatesLog("ERROR 44x: UpdateSouceImage 01: " + ex.Message + vbCrLf + MySql)
-                LOG.WriteToArchiveLog("ERROR 44x: UpdateSouceImage 01: " + ex.Message + vbCrLf + MySql)
+                LOG.WriteToDBUpdatesLog("ERROR 44x: UpdateSouceImage 01: " + ex.Message + environment.NewLine + MySql)
+                LOG.WriteToArchiveLog("ERROR 44x: UpdateSouceImage 01: " + ex.Message + environment.NewLine + MySql)
                 B = False
             End Try
 
@@ -5855,11 +5855,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
                         'rsData.Read()
                         'If rsData.HasRows Then
                         Do While rsData.Read()
-                                SourceGuid = rsData.GetValue(0).ToString
-                                ListOfGuids.Add(SourceGuid)
-                                rsData.Read()
-                                BFound = True
-                            Loop
+                            SourceGuid = rsData.GetValue(0).ToString
+                            ListOfGuids.Add(SourceGuid)
+                            rsData.Read()
+                            BFound = True
+                        Loop
                         'End If
                     End Using
                 End Using
@@ -6464,7 +6464,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
             ' xTrace(12315, "UpdateEmailMsg: LL=" + LL.ToString, ex.Message)
             If ddebug Then Debug.Print(ex.Message)
             B = False
-            LOG.WriteToArchiveLog("clsDatabaseARCH : UpdateEmailMsg : 2404 : LL = " + LL.ToString + " : " + ex.Message + vbCrLf + " : " + FQN + vbCrLf + " : " + EmailGUID)
+            LOG.WriteToArchiveLog("clsDatabaseARCH : UpdateEmailMsg : 2404 : LL = " + LL.ToString + " : " + ex.Message + environment.NewLine + " : " + FQN + environment.NewLine + " : " + EmailGUID)
             LOG.WriteToUploadLog("clsDatabaseARCH ERROR: UpdateEmailMsg : OriginalSize = " + OriginalSize.ToString + " : CompressedSize =" + CompressedSize.ToString)
         End Try
         Return B
@@ -6474,7 +6474,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
         Dim bExtendTime As Boolean = False
         If AttachmentBinary.Length > 4000000000 Then
-            LOG.WriteToArchiveLog("Notification : AddSourceToRepo : 661b : Loading extremely large file: " + AttachmentName + vbCrLf + "File Length: " + AttachmentBinary.Length.ToString)
+            LOG.WriteToArchiveLog("Notification : AddSourceToRepo : 661b : Loading extremely large file: " + AttachmentName + environment.NewLine + "File Length: " + AttachmentBinary.Length.ToString)
         End If
 
         Dim InsertConnStr As String = getRepoConnStr()
@@ -6510,7 +6510,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Dim InsertConnStr As String = getRepoConnStr()
         Dim B As Boolean = False
         Dim SpCMD As String = "exec spUpdateLongNameHash '" + FQN + "', '" + SourceGuid + "' "
-        'SpCMD += vbCrLf + "select * from DataSourceFQN where fqn = '" + FQN + "' "
+        'SpCMD += environment.NewLine + "select * from DataSourceFQN where fqn = '" + FQN + "' "
         'Clipboard.Clear()
         'Clipboard.SetText(SpCMD)
         Try
@@ -6907,19 +6907,19 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Try
             LastWriteTime = CDate(sLastWriteTime)
         Catch ex0 As Exception
-            LOG.WriteToDBUpdatesLog("ERROR: AddSourceToRepo 100 - LastWriteTime: " + ex0.Message + vbCrLf + sLastWriteTime)
+            LOG.WriteToDBUpdatesLog("ERROR: AddSourceToRepo 100 - LastWriteTime: " + ex0.Message + environment.NewLine + sLastWriteTime)
         End Try
 
         Try
             LastAccessDate = CDate(sLastAccessDate)
         Catch ex1 As Exception
-            LOG.WriteToDBUpdatesLog("ERROR: AddSourceToRepo 101 - LastAccessDate: " + ex1.Message + vbCrLf + sLastAccessDate)
+            LOG.WriteToDBUpdatesLog("ERROR: AddSourceToRepo 101 - LastAccessDate: " + ex1.Message + environment.NewLine + sLastAccessDate)
         End Try
 
         Try
             CreateDate = CDate(sCreateDate)
         Catch ex2 As Exception
-            LOG.WriteToDBUpdatesLog("ERROR: AddSourceToRepo 102 - CreateDate: " + ex2.Message + vbCrLf + sCreateDate)
+            LOG.WriteToDBUpdatesLog("ERROR: AddSourceToRepo 102 - CreateDate: " + ex2.Message + environment.NewLine + sCreateDate)
         End Try
 
         Dim fExt As String = SourceTypeCode
@@ -6930,7 +6930,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
         B = ckDocumentExists(SourceName, FileHash)
         If B = True Then
             saveContentOwner(SourceGuid, gCurrUserGuidID, "C", FolderName, gMachineID, gNetworkID)
-            LOG.WriteToDBUpdatesLog("Info: clsDatabaseARCH : AddSourceToRepo: file exists, did not update or overwrite." + vbCrLf + UploadFQN)
+            LOG.WriteToDBUpdatesLog("Info: clsDatabaseARCH : AddSourceToRepo: file exists, did not update or overwrite." + environment.NewLine + UploadFQN)
             Return True
         Else
             Console.WriteLine("No Exists: " + SourceName)
@@ -6960,10 +6960,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
             Return False
         End If
         If SourceImage.Length > 500000000 Then
-            LOG.WriteToDBUpdatesLog("Notification : AddSourceToRepo : 661b : Loading large file: " + UploadFQN + vbCrLf + "File Length: " + SourceImage.Length.ToString)
+            LOG.WriteToDBUpdatesLog("Notification : AddSourceToRepo : 661b : Loading large file: " + UploadFQN + environment.NewLine + "File Length: " + SourceImage.Length.ToString)
         End If
         If SourceImage.Length > 1000000000 Then
-            LOG.WriteToDBUpdatesLog("Notification : AddSourceToRepo : 661b : Loading extremely large file: " + UploadFQN + vbCrLf + "File Length: " + SourceImage.Length.ToString)
+            LOG.WriteToDBUpdatesLog("Notification : AddSourceToRepo : 661b : Loading extremely large file: " + UploadFQN + environment.NewLine + "File Length: " + SourceImage.Length.ToString)
         End If
 
         Try
@@ -6990,7 +6990,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
             '********************************************************************************
 
             If Not B Then
-                LOG.WriteToDBUpdatesLog("ERROR Load Failed for: " + UploadFQN + vbCrLf + ReturnMsg)
+                LOG.WriteToDBUpdatesLog("ERROR Load Failed for: " + UploadFQN + environment.NewLine + ReturnMsg)
             Else
                 LOG.WriteToDBUpdatesLog("Notice Load successful for: " + UploadFQN)
                 saveContentOwner(SourceGuid, gCurrUserGuidID, "C", FolderName, gMachineID, gNetworkID)
@@ -7005,7 +7005,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
             GC.WaitForPendingFinalizers()
         Catch ex As Exception
             B = False
-            LOG.WriteToDBUpdatesLog("clsDatabaseARCH : AddSourceToRepo : 2495b : " + UploadFQN + vbCrLf + ex.Message)
+            LOG.WriteToDBUpdatesLog("clsDatabaseARCH : AddSourceToRepo : 2495b : " + UploadFQN + environment.NewLine + ex.Message)
         End Try
         Return B
     End Function
@@ -7042,8 +7042,8 @@ Public Class clsDatabaseARCH : Implements IDisposable
                 End Using
                 B = True
             Catch ex As Exception
-                LOG.WriteToDBUpdatesLog("ERROR 22x: UpdateSourceImage 01: " + ex.Message + vbCrLf + MySql)
-                LOG.WriteToArchiveLog("ERROR 22x: UpdateSourceImage 01: " + ex.Message + vbCrLf + MySql)
+                LOG.WriteToDBUpdatesLog("ERROR 22x: UpdateSourceImage 01: " + ex.Message + environment.NewLine + MySql)
+                LOG.WriteToArchiveLog("ERROR 22x: UpdateSourceImage 01: " + ex.Message + environment.NewLine + MySql)
                 B = False
             End Try
         Catch ex As Exception
@@ -7155,12 +7155,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
             End If
             LL = 7
             If AttachmentBinary.Length > 4000000000 Then
-                LOG.WriteToArchiveLog("Notification : AddSourceToRepo : 661b : Loading extremely large file: " + UploadFQN + vbCrLf + "File Length: " + AttachmentBinary.Length.ToString)
+                LOG.WriteToArchiveLog("Notification : AddSourceToRepo : 661b : Loading extremely large file: " + UploadFQN + environment.NewLine + "File Length: " + AttachmentBinary.Length.ToString)
             End If
             If AttachmentBinary.Length > 1000000000 Then
-                LOG.WriteToArchiveLog("Notification : AddSourceToRepo : 661b : Loading HUGE large file: " + UploadFQN + vbCrLf + "File Length: " + AttachmentBinary.Length.ToString)
+                LOG.WriteToArchiveLog("Notification : AddSourceToRepo : 661b : Loading HUGE large file: " + UploadFQN + environment.NewLine + "File Length: " + AttachmentBinary.Length.ToString)
                 frmNotifyMessage.Show()
-                gNotifyMsg = "Notification : 661 : Loading HUGE large file: " + UploadFQN + vbCrLf + "File Length: " + AttachmentBinary.Length.ToString + vbCrLf + "Over a network, this can take hours."
+                gNotifyMsg = "Notification : 661 : Loading HUGE large file: " + UploadFQN + environment.NewLine + "File Length: " + AttachmentBinary.Length.ToString + environment.NewLine + "Over a network, this can take hours."
             End If
             LL = 8
 
@@ -7229,7 +7229,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
             FI = Nothing
 
             B = False
-            LOG.WriteToArchiveLog("Unrecoverable Error - clsDatabaseARCH : UpdateSourcefile : 2517a LL= '" + LL.ToString + "' : SourceGuid = '" + SourceGuid + "' : Size = " + fSIze.ToString + vbCrLf + ex.Message)
+            LOG.WriteToArchiveLog("Unrecoverable Error - clsDatabaseARCH : UpdateSourcefile : 2517a LL= '" + LL.ToString + "' : SourceGuid = '" + SourceGuid + "' : Size = " + fSIze.ToString + environment.NewLine + ex.Message)
             LOG.WriteToArchiveLog("ERROR         UpdateSourcefile : 2517a : " + UploadFQN)
             If ex.InnerException IsNot Nothing Then
                 LOG.WriteToArchiveLog("ERROR         UpdateSourcefile : 2517a.1 : " + ex.InnerException.ToString)
@@ -7705,9 +7705,9 @@ Public Class clsDatabaseARCH : Implements IDisposable
         'S = "Select count(*) FROM [User] where UserLoginID = '" + UserLogin + "' "
         S = "Select count(*) FROM [Users] where UserID = '" + UserLogin + "' "
 
-        'MessageBox.Show("REMOVE THIS: checking for user at: " + ConnStr + vbCrLf + S)
+        'MessageBox.Show("REMOVE THIS: checking for user at: " + ConnStr + environment.NewLine + S)
         'Clipboard.Clear()
-        'Clipboard.SetText("REMOVE THIS: checking for user at: " + ConnStr + vbCrLf + S)
+        'Clipboard.SetText("REMOVE THIS: checking for user at: " + ConnStr + environment.NewLine + S)
 
         Using Conn
             If Conn.State = ConnectionState.Closed Then
@@ -8231,9 +8231,9 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
 
         s = " SELECT [UserID]"
-            s = s + " ,[ExtCode]"
-            s = s + " ,[FQN]"
-            s = s + " FROM IncludedFiles "
+        s = s + " ,[ExtCode]"
+        s = s + " ,[FQN]"
+        s = s + " FROM IncludedFiles "
         s = s + " where Userid = '" + UserID + "' "
         s = s + " and FQN = '" + DirName + "'"
 
@@ -8314,7 +8314,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
                                 TDict(PrevDir) = WC
                             End If
                         Else
-                                WC += ExtCode.ToLower + ","
+                            WC += ExtCode.ToLower + ","
                         End If
                         iCnt += 1
                         PrevDir = CurrDir
@@ -8711,21 +8711,21 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
         S = ""
         If ShowDisabled = True Then
-            S = "Select    distinct [FQN], ckDisableDir " + vbCrLf
-            S = S + "             FROM [Directory] " + vbCrLf
-            S = S + " where [UserID] = '" + gCurrUserGuidID + "' " + vbCrLf
-            S = S + " and (QuickRefEntry = 0  or QuickRefEntry is null) and ckDisableDir = 'Y'" + vbCrLf
-            S = S + " or isSysDefault = 1" + vbCrLf
-            S = S + " group by FQN, ckDisableDir " + vbCrLf
-            S = S + " order by fqn " + vbCrLf
+            S = "Select    distinct [FQN], ckDisableDir " + environment.NewLine
+            S = S + "             FROM [Directory] " + environment.NewLine
+            S = S + " where [UserID] = '" + gCurrUserGuidID + "' " + environment.NewLine
+            S = S + " and (QuickRefEntry = 0  or QuickRefEntry is null) and ckDisableDir = 'Y'" + environment.NewLine
+            S = S + " or isSysDefault = 1" + environment.NewLine
+            S = S + " group by FQN, ckDisableDir " + environment.NewLine
+            S = S + " order by fqn " + environment.NewLine
         Else
-            S = "Select    distinct [FQN], ckDisableDir " + vbCrLf
-            S = S + "             FROM [Directory] " + vbCrLf
-            S = S + " where [UserID] = '" + gCurrUserGuidID + "' " + vbCrLf
-            S = S + " and (QuickRefEntry = 0  or QuickRefEntry is null) and ckDisableDir <> 'Y'  " + vbCrLf
-            '** S = S + " or isSysDefault = 1" + vbCrLf
-            S = S + " group by FQN, ckDisableDir " + vbCrLf
-            S = S + " order by fqn " + vbCrLf
+            S = "Select    distinct [FQN], ckDisableDir " + environment.NewLine
+            S = S + "             FROM [Directory] " + environment.NewLine
+            S = S + " where [UserID] = '" + gCurrUserGuidID + "' " + environment.NewLine
+            S = S + " and (QuickRefEntry = 0  or QuickRefEntry is null) and ckDisableDir <> 'Y'  " + environment.NewLine
+            '** S = S + " or isSysDefault = 1" + environment.NewLine
+            S = S + " group by FQN, ckDisableDir " + environment.NewLine
+            S = S + " order by fqn " + environment.NewLine
         End If
 
         'Clipboard.Clear()
@@ -8776,10 +8776,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Dim S As String = ""
         S = ""
 
-        S = "Select [FQN], IncludeSubDirs " + vbCrLf
-        S = S + "  FROM [Directory] " + vbCrLf
-        S = S + "  where [UserID] = '" + UserID + "' " + vbCrLf
-        S = S + "  order by fqn " + vbCrLf
+        S = "Select [FQN], IncludeSubDirs " + environment.NewLine
+        S = S + "  FROM [Directory] " + environment.NewLine
+        S = S + "  where [UserID] = '" + UserID + "' " + environment.NewLine
+        S = S + "  order by fqn " + environment.NewLine
 
         Dim ConnStr As String = getRepoConnStr()
         Dim Conn As New SqlConnection(ConnStr)
@@ -8819,10 +8819,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Dim S As String = ""
         S = ""
 
-        S = "Select    distinct [FQN] " + vbCrLf
-        S = S + "             FROM [Directory] " + vbCrLf
-        S = S + " where [UserID] = '" + UserID + "' " + vbCrLf
-        S = S + " order by fqn " + vbCrLf
+        S = "Select    distinct [FQN] " + environment.NewLine
+        S = S + "             FROM [Directory] " + environment.NewLine
+        S = S + " where [UserID] = '" + UserID + "' " + environment.NewLine
+        S = S + " order by fqn " + environment.NewLine
 
         Dim ConnStr As String = getRepoConnStr()
         Dim Conn As New SqlConnection(ConnStr)
@@ -10311,7 +10311,7 @@ SkipThisOne:
         If BB = False Then
             FileName = "No file name supplied for this content."
         Else
-            FileName = vbCrLf + FileName
+            FileName = environment.NewLine + FileName
         End If
         Return FileName
     End Function
@@ -11414,17 +11414,17 @@ REDO:
         Try
             Dim rsData As SqlDataReader = Nothing
             Dim S As String = ""
-            S = S + " SELECT [UserID]" + vbCrLf
-            S = S + " ,[IncludeSubDirs]" + vbCrLf
-            S = S + " ,[FQN]" + vbCrLf
-            S = S + " ,[DB_ID]" + vbCrLf
-            S = S + " ,[VersionFiles]" + vbCrLf
-            S = S + " ,[ckMetaData] " + vbCrLf
-            S = S + " ,OcrDirectory " + vbCrLf
-            S = S + " ,RetentionCode" + vbCrLf
-            S = S + " ,OcrPdf" + vbCrLf
-            S = S + " ,ckPublic" + vbCrLf
-            S = S + " FROM [Directory]" + vbCrLf
+            S = S + " SELECT [UserID]" + environment.NewLine
+            S = S + " ,[IncludeSubDirs]" + environment.NewLine
+            S = S + " ,[FQN]" + environment.NewLine
+            S = S + " ,[DB_ID]" + environment.NewLine
+            S = S + " ,[VersionFiles]" + environment.NewLine
+            S = S + " ,[ckMetaData] " + environment.NewLine
+            S = S + " ,OcrDirectory " + environment.NewLine
+            S = S + " ,RetentionCode" + environment.NewLine
+            S = S + " ,OcrPdf" + environment.NewLine
+            S = S + " ,ckPublic" + environment.NewLine
+            S = S + " FROM [Directory]" + environment.NewLine
             S = S + " where fqn = '" + CurrFqn + "' and Userid = '" + UserID + "'"
 
             Dim CS As String = getRepoConnStr()
@@ -12073,7 +12073,7 @@ REDO:
 
         '*******************************************************
         S = "update [Directory] set [ckPublic] = '" + sFlag + "', ckDisableDir = '" + DisableDir + "' where Userid = '" + UID + "' and [FQN] = '" + FQN + "'"
-        SS = SS + vbCrLf + vbCrLf + S
+        SS = SS + environment.NewLine + environment.NewLine + S
         B = ExecuteSqlNewConn(S, False)
         If Not B Then
             ' xTrace(93925, "clsDataBase:SetDocumentPublicFlag", "Failed to set public flag in DIRECTORY table.")
@@ -12083,7 +12083,7 @@ REDO:
         End If
 
         S = "update [Directory] set [ckPublic] = '" + sFlag + "', ckDisableDir = '" + DisableDir + "' where Userid = '" + UID + "' and [FQN] = '" + FQN + "'"
-        SS = SS + vbCrLf + vbCrLf + S
+        SS = SS + environment.NewLine + environment.NewLine + S
         B = ExecuteSqlNewConn(S, False)
         If Not B Then
             ' xTrace(93925, "clsDataBase:SetDocumentPublicFlag", "Failed to set public flag in DIRECTORY table.")
@@ -12093,7 +12093,7 @@ REDO:
         End If
 
         S = "update [Directory] set [OcrDirectory] = '" + OcrDirectory + "' where Userid = '" + UID + "' and [FQN] = '" + FQN + "'"
-        SS = SS + vbCrLf + vbCrLf + S
+        SS = SS + environment.NewLine + environment.NewLine + S
         B = ExecuteSqlNewConn(S, False)
         If Not B Then
             ' xTrace(93925, "clsDataBase:SetDocumentPublicFlag", "Failed to set public flag in DIRECTORY table.")
@@ -12105,7 +12105,7 @@ REDO:
         '*******************************************************
         S = "update [SubDir] set ckPublic = '" + sFlag + "', ckDisableDir = '" + DisableDir + "' where Userid = '" + UID + "' "
         S = S + " and ([FQN] = '" + FQN + "' or [SUBFQN] = '" + FQN + "')"
-        SS = SS + vbCrLf + vbCrLf + S
+        SS = SS + environment.NewLine + environment.NewLine + S
         B = ExecuteSqlNewConn(S, False)
         If Not B Then
             ' xTrace(93926, "clsDataBase:SetDocumentPublicFlag", "Failed to set public flag in SUBDIR table.")
@@ -12116,7 +12116,7 @@ REDO:
 
         S = "update [SubDir] set ckPublic = '" + sFlag + "', ckDisableDir = '" + DisableDir + "' where Userid = '" + UID + "' "
         S = S + " and ([FQN] = '" + FQN + "' or [SUBFQN] = '" + FQN + "')"
-        SS = SS + vbCrLf + vbCrLf + S
+        SS = SS + environment.NewLine + environment.NewLine + S
         B = ExecuteSqlNewConn(S, False)
         If Not B Then
             ' xTrace(93926, "clsDataBase:SetDocumentPublicFlag", "Failed to set public flag in SUBDIR table.")
@@ -12128,7 +12128,7 @@ REDO:
         S = "update [DataSource] set [isPublic] = '" + sFlag + "'"
         S = S + " where FileDirectory = '" + FQN + "'"
         S = S + " and DataSourceOwnerUserID = '" + UID + "'"
-        SS = SS + vbCrLf + vbCrLf + S
+        SS = SS + environment.NewLine + environment.NewLine + S
         B = ExecuteSqlNewConn(S, False)
         If Not B Then
             ' xTrace(93926, "clsDataBase:SetDocumentPublicFlag", "Failed to set public flag in DataSource table.")
@@ -12140,7 +12140,7 @@ REDO:
         S = "update [DataSource] set [isPublic] = '" + sFlag + "'"
         S = S + " where FileDirectory = '" + FQN + "'"
         S = S + " and DataSourceOwnerUserID = '" + UID + "'"
-        SS = SS + vbCrLf + vbCrLf + S
+        SS = SS + environment.NewLine + environment.NewLine + S
         B = ExecuteSqlNewConn(S, False)
         If Not B Then
             ' xTrace(93926, "clsDataBase:SetDocumentPublicFlag", "Failed to set public flag in DataSource table.")
@@ -12443,7 +12443,7 @@ REDO:
                 ' If gRunUnattended = False Then MessageBox.Show("No restore: ", ex)
                 If ddebug Then Debug.Print(ex.Message)
                 ' xTrace(CInt(58342.15), "clsDataBase:imageDataReadFromDbWriteToFile" + ex.Message)
-                LOG.WriteToArchiveLog("clsDatabaseARCH : writeImageSourceDataFromDbWriteToFile : 4749 : " + ex.Message + vbCrLf + ex.StackTrace)
+                LOG.WriteToArchiveLog("clsDatabaseARCH : writeImageSourceDataFromDbWriteToFile : 4749 : " + ex.Message + environment.NewLine + ex.StackTrace)
             End Try
 
             MyCB = Nothing
@@ -13486,7 +13486,7 @@ REDO:
                 End If
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR clsDatabaseARCH:getWorkingDirectory 100 - " + ex.Message + vbCrLf + ex.StackTrace)
+            LOG.WriteToArchiveLog("ERROR clsDatabaseARCH:getWorkingDirectory 100 - " + ex.Message + environment.NewLine + ex.StackTrace)
         End Try
 
         Return ColVAl
@@ -14049,11 +14049,11 @@ REDO:
 
                     'Dim debug As Boolean = True
                     'If debug Then
-                    '    Console.WriteLine("Successful execution: " + vbCrLf + S )
+                    '    Console.WriteLine("Successful execution: " + environment.NewLine + S )
                     'End If
                     rc = CStr(True)
                 Catch ex As Exception
-                    rc = "SaveErrMsg" + vbCrLf + ex.Message + vbCrLf + vbCrLf + ex.StackTrace
+                    rc = "SaveErrMsg" + environment.NewLine + ex.Message + environment.NewLine + environment.NewLine + ex.StackTrace
                     LOG.WriteToArchiveLog("clsDatabaseARCH : SaveErrMsg : 5325 : ", ex)
                 End Try
                 If CN.State = Data.ConnectionState.Open Then
@@ -14067,7 +14067,7 @@ REDO:
                 End If
             End Using
         Catch ex As Exception
-            rc = "SaveErrMsg" + vbCrLf + ex.Message + vbCrLf + vbCrLf + ex.StackTrace
+            rc = "SaveErrMsg" + environment.NewLine + ex.Message + environment.NewLine + environment.NewLine + ex.StackTrace
             LOG.WriteToArchiveLog("clsDatabaseARCH : SaveErrMsg : 5336 : ", ex)
         End Try
 
@@ -14168,9 +14168,9 @@ REDO:
                 Dim CS As String = getRepoConnStr() : Dim CONN As New SqlConnection(CS) : CONN.Open() : Dim command As New SqlCommand(S, CONN) : RSData = command.ExecuteReader()
                 If RSData.HasRows Then
                     Do While RSData.Read
-                        Dim AttributeValue As String = RSData.GetValue(0).ToString + " ... " + vbCrLf
-                        Dim AttributeName As String = RSData.GetValue(1).ToString + " ... " + vbCrLf
-                        Msg += AttributeName + ":" + AttributeValue + vbCrLf
+                        Dim AttributeValue As String = RSData.GetValue(0).ToString + " ... " + environment.NewLine
+                        Dim AttributeName As String = RSData.GetValue(1).ToString + " ... " + environment.NewLine
+                        Msg += AttributeName + ":" + AttributeValue + environment.NewLine
                     Loop
                 End If
 
@@ -15334,10 +15334,10 @@ REDO:
             rsData = Nothing
         Catch ex As Exception
             LOG.WriteToArchiveLog("ERROR: LicenseExists - ", ex)
-            Dim Msg As String = "License validation error:" + vbCrLf
-            Msg += "A license could not be found for the product." + vbCrLf
-            Msg += ex.Message + vbCrLf
-            Msg += CS + vbCrLf + vbCrLf
+            Dim Msg As String = "License validation error:" + environment.NewLine
+            Msg += "A license could not be found for the product." + environment.NewLine
+            Msg += ex.Message + environment.NewLine
+            Msg += CS + environment.NewLine + environment.NewLine
             Msg += "This message is on the clipboard if needed for debug."
             MessageBox.Show(Msg)
             Clipboard.Clear()
@@ -16218,8 +16218,8 @@ REDO:
 
             BodyText = BodyText.Replace("'", "`")
 
-            Dim S As String = "update Email " + vbCrLf
-            S += "set Body = '" + BodyText + "'" + vbCrLf
+            Dim S As String = "update Email " + environment.NewLine
+            S += "set Body = '" + BodyText + "'" + environment.NewLine
             S += " where EmailGuid = '" + EmailGuid + "'"
             Dim b As Boolean = ExecuteSqlNewConn(90107, S)
 
@@ -16238,7 +16238,7 @@ REDO:
         'S = S + " WHERE NbrAttachments Is NULL "
         Dim B As Boolean = Me.ExecuteSqlNewConn(S, False)
         If Not B Then
-            LOG.WriteToArchiveLog("NOTICE: Failed to update the Attachment counts for Emails." + vbCrLf + S)
+            LOG.WriteToArchiveLog("NOTICE: Failed to update the Attachment counts for Emails." + environment.NewLine + S)
         End If
     End Sub
 
@@ -16723,7 +16723,7 @@ REDO:
                 Do While RSData.Read()
                     Dim S1 As String = RSData.GetValue(0).ToString
                     Dim S2 As String = RSData.GetValue(1).ToString
-                    Msg = Msg + S1 + " : " + S2 + vbCrLf
+                    Msg = Msg + S1 + " : " + S2 + environment.NewLine
                 Loop
             End If
             RSData.Close()
@@ -16974,7 +16974,7 @@ REDO:
                     MessageBox.Show("Failed to add the required ADMIN account. Add the account manually to allow login.")
                     Return False
                 Else
-                    MessageBox.Show("The ADMIN account has been created, you will have to login under ADMIN using the password 'password' to continue." + vbCrLf + "You must change the password or security will be compromised.")
+                    MessageBox.Show("The ADMIN account has been created, you will have to login under ADMIN using the password 'password' to continue." + environment.NewLine + "You must change the password or security will be compromised.")
                     Return False
                 End If
             End If
@@ -17526,7 +17526,7 @@ REDO:
         Try
             B = ExecuteSqlNewConn(S, False)
             If Not B Then
-                LOG.WriteToArchiveLog("ERROR 100 - clsDatabaseARCH:ZeroizeGlobalSearch: Failed to seroize global search - " + vbCrLf + S)
+                LOG.WriteToArchiveLog("ERROR 100 - clsDatabaseARCH:ZeroizeGlobalSearch: Failed to seroize global search - " + environment.NewLine + S)
             End If
         Catch ex As Exception
             LOG.WriteToArchiveLog("ERROR 200 - clsDatabaseARCH:ZeroizeGlobalSearch: ", ex)
@@ -18531,7 +18531,7 @@ REDO:
             'End If
         Catch ex As Exception
             LOG.WriteToArchiveLog("ERROR: clsDatabaseARCH : GetMaxVersionNbr 100 - ", ex)
-            LOG.WriteToArchiveLog("ERROR: clsDatabaseARCH : GetMaxVersionNbr 100 - SQL: " + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: clsDatabaseARCH : GetMaxVersionNbr 100 - SQL: " + environment.NewLine + S)
         End Try
 
         Return cnt
@@ -18724,7 +18724,7 @@ NxtRec:
             End If
         Catch ex As Exception
             bNeedsUpdating = True
-            LOG.WriteToArchiveLog("ERROR 001 clsDatabaseARCH:ckSourceNeedsUpdate - " + S + vbCrLf + ex.Message)
+            LOG.WriteToArchiveLog("ERROR 001 clsDatabaseARCH:ckSourceNeedsUpdate - " + S + environment.NewLine + ex.Message)
         End Try
 
         Return bNeedsUpdating
@@ -18859,14 +18859,14 @@ NxtRec:
                 S = S + "Select [LibraryName] FROM [Library] order by [LibraryName]"
             Else
                 S = ""
-                S = S + "Select distinct LibraryName from GroupLibraryAccess " + vbCrLf
-                S = S + " where GroupName in " + vbCrLf
-                S = S + " (select distinct GroupName from GroupUsers where UserID = '" + gCurrUserGuidID + "')" + vbCrLf
-                S = S + "             union " + vbCrLf
-                S = S + " select distinct LibraryName from LibraryUsers where UserID = '" + gCurrUserGuidID + "'" + vbCrLf
-                S = S + " and LibraryName in (select LibraryName from Library)" + vbCrLf
-                S = S + "             union " + vbCrLf
-                S = S + " select LibraryName from Library where UserID = '" + gCurrUserGuidID + "'" + vbCrLf
+                S = S + "Select distinct LibraryName from GroupLibraryAccess " + environment.NewLine
+                S = S + " where GroupName in " + environment.NewLine
+                S = S + " (select distinct GroupName from GroupUsers where UserID = '" + gCurrUserGuidID + "')" + environment.NewLine
+                S = S + "             union " + environment.NewLine
+                S = S + " select distinct LibraryName from LibraryUsers where UserID = '" + gCurrUserGuidID + "'" + environment.NewLine
+                S = S + " and LibraryName in (select LibraryName from Library)" + environment.NewLine
+                S = S + "             union " + environment.NewLine
+                S = S + " select LibraryName from Library where UserID = '" + gCurrUserGuidID + "'" + environment.NewLine
             End If
 
             Dim RSData As SqlDataReader = Nothing
@@ -19329,7 +19329,7 @@ NxtRec:
             dsSharePoint = Nothing
         Catch ex As Exception
             B = False
-            LOG.WriteToArchiveLog("SysParmExists: 100 - " + ex.Message + vbCrLf + ConnStr + vbCrLf)
+            LOG.WriteToArchiveLog("SysParmExists: 100 - " + ex.Message + environment.NewLine + ConnStr + environment.NewLine)
         End Try
 
         Return B
@@ -19905,23 +19905,23 @@ NxtRec:
             Return False
         End If
         Try
-            S += " if not exists (select ContainerGuid from [ContentContainer] where [ContentUserRowGuid] = '" + ContentUserRowGuid.ToString + "' and [ContainerGuid] = '" + ContainerGuid.ToString + "')" + vbCrLf
-            S += " begin " + vbCrLf
-            S += " INSERT INTO [ContentContainer]" + vbCrLf
-            S += " ([ContentUserRowGuid]" + vbCrLf
-            S += " ,[ContainerGuid])" + vbCrLf
-            S += " VALUES " + vbCrLf
-            S += " ('" + ContentUserRowGuid.ToString + "'" + vbCrLf
-            S += " ,'" + ContainerGuid.ToString + "')" + vbCrLf
-            S += " END" + vbCrLf
+            S += " if not exists (select ContainerGuid from [ContentContainer] where [ContentUserRowGuid] = '" + ContentUserRowGuid.ToString + "' and [ContainerGuid] = '" + ContainerGuid.ToString + "')" + environment.NewLine
+            S += " begin " + environment.NewLine
+            S += " INSERT INTO [ContentContainer]" + environment.NewLine
+            S += " ([ContentUserRowGuid]" + environment.NewLine
+            S += " ,[ContainerGuid])" + environment.NewLine
+            S += " VALUES " + environment.NewLine
+            S += " ('" + ContentUserRowGuid.ToString + "'" + environment.NewLine
+            S += " ,'" + ContainerGuid.ToString + "')" + environment.NewLine
+            S += " END" + environment.NewLine
 
             B = ExecuteSqlNewConn(90141, S)
 
             If Not B Then
-                LOG.WriteToArchiveLog("ERROR SaveContentContainer 77342.B - Failed to insert content container: " + vbCrLf + S)
+                LOG.WriteToArchiveLog("ERROR SaveContentContainer 77342.B - Failed to insert content container: " + environment.NewLine + S)
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR SaveContentContainer 77342.C - Failed to insert content container: " + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR SaveContentContainer 77342.C - Failed to insert content container: " + environment.NewLine + S)
         End Try
 
 
@@ -19973,7 +19973,7 @@ NxtRec:
                     S = "INSERT INTO [ContentUser] ([ContentGuid] ,[UserID], ContentTypeCode, NbrOccurances) VALUES ('" + ContentGuid + "' ,'" + UserID + "' ,'" + ContentTypeCode + "', 1)"
                     Dim B As Boolean = ExecuteSqlNewConn(90142, S)
                     If Not B Then
-                        ' xTrace(88652, "saveContentOwner", "ERROR: AddContentOwner - " + vbCrLf + S)
+                        ' xTrace(88652, "saveContentOwner", "ERROR: AddContentOwner - " + environment.NewLine + S)
                         LOG.WriteToArchiveLog("ERROR: AddContentOwner 00 - " + S)
                     Else
                         saveMachine(MachineGuid, ContentGuid, UserID)
@@ -19986,7 +19986,7 @@ NxtRec:
                     S = "update [ContentUser] set nbrOccurances = nbrOccurances + 1, LastAdded = getdate() where ContentGuid = '" + ContentGuid + "' and UserID = '" + UserID + "'"
                     Dim B As Boolean = ExecuteSqlNewConn(90142, S)
                     If Not B Then
-                        ' xTrace(88652, "saveContentOwner", "ERROR: AddContentOwner 01 - " + vbCrLf + S)
+                        ' xTrace(88652, "saveContentOwner", "ERROR: AddContentOwner 01 - " + environment.NewLine + S)
                         LOG.WriteToArchiveLog("ERROR: AddContentOwner - " + S)
                     Else
                         saveMachine(MachineGuid, ContentGuid, UserID)
@@ -20021,18 +20021,18 @@ NxtRec:
 
         Dim MySql As String = ""
 
-        MySql += "  if NOT exists (Select MachineName from Machine " + vbCrLf
-        MySql += "      where MachineName = '" + MachineName + "' " + vbCrLf
-        MySql += "      and SourceGuid = '" + SourceGuid + "' " + vbCrLf
-        MySql += "      and UserID = '" + UserID + "')" + vbCrLf
-        MySql += "  Begin " + vbCrLf
-        MySql += "      INSERT INTO [Machine] (SourceGuid, MachineName, UserID) VALUES ('" + SourceGuid + "','" + MachineName + "', '" + UserID + "' )" + vbCrLf
-        MySql += "  End" + vbCrLf
+        MySql += "  if NOT exists (Select MachineName from Machine " + environment.NewLine
+        MySql += "      where MachineName = '" + MachineName + "' " + environment.NewLine
+        MySql += "      and SourceGuid = '" + SourceGuid + "' " + environment.NewLine
+        MySql += "      and UserID = '" + UserID + "')" + environment.NewLine
+        MySql += "  Begin " + environment.NewLine
+        MySql += "      INSERT INTO [Machine] (SourceGuid, MachineName, UserID) VALUES ('" + SourceGuid + "','" + MachineName + "', '" + UserID + "' )" + environment.NewLine
+        MySql += "  End" + environment.NewLine
 
         Dim BB As Boolean = ExecuteSqlNewConn(90143, MySql)
 
         If Not BB Then
-            ' xTrace(334561, "SaveMachine", "ERRROR 77623.11 - Failed to add Machine: " + vbCrLf + MySql)
+            ' xTrace(334561, "SaveMachine", "ERRROR 77623.11 - Failed to add Machine: " + environment.NewLine + MySql)
             LOG.WriteToArchiveLog("ERRROR 77623.11 - Failed to add Machine.")
         End If
 
@@ -20203,7 +20203,7 @@ NxtRec:
                     oKey.Close()
                 End If
             Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR ckRunAtStartUp 102.22.1 - Failed to set start up parameter." + vbCrLf + ex.Message)
+                LOG.WriteToArchiveLog("ERROR ckRunAtStartUp 102.22.1 - Failed to set start up parameter." + environment.NewLine + ex.Message)
             End Try
         End If
     End Sub
@@ -20217,7 +20217,7 @@ NxtRec:
             S = "Insert into MachineRegistered (MachineName,CreateDate,LastUpdate) values ('" + MachineName + "', '" + Now.ToString + "', '" + Now.ToString + "')"
             B = ExecuteSqlNewConn(90145, S)
             If Not B Then
-                LOG.WriteToArchiveLog("ERROR RegisterMachineToDB 100 - Failed to add machine ID." + vbCrLf + S)
+                LOG.WriteToArchiveLog("ERROR RegisterMachineToDB 100 - Failed to add machine ID." + environment.NewLine + S)
             End If
         End If
 
@@ -20306,7 +20306,7 @@ NxtRec:
             CONN.Close()
         End If
         CONN.Dispose()
-        'log.WriteToArchiveLog("*** FOLDER NOTICE getFolderNameById ID 001z - : " + id + vbCrLf + S)
+        'log.WriteToArchiveLog("*** FOLDER NOTICE getFolderNameById ID 001z - : " + id + environment.NewLine + S)
         Return id
     End Function
 
@@ -20642,7 +20642,7 @@ NextRec:
             Try
                 File.Delete(TempFQN)
             Catch ex As Exception
-                LOG.WriteToArchiveLog("Warning: could not delete " + TempFQN + "." + vbCrLf + ex.Message)
+                LOG.WriteToArchiveLog("Warning: could not delete " + TempFQN + "." + environment.NewLine + ex.Message)
             End Try
         End If
         F = Nothing
@@ -20665,10 +20665,10 @@ NextRec:
                 Body = RSData.GetValue(2).ToString
                 OriginalFileType = RSData.GetValue(3).ToString
 
-                If InStr(SourceName, vbCrLf) > 0 Or InStr(SourceName, vbCr) > 0 Or InStr(SourceName, vbLf) > 0 Then
+                If InStr(SourceName, environment.NewLine) > 0 Or InStr(SourceName, vbCr) > 0 Or InStr(SourceName, vbLf) > 0 Then
                     SourceName = UTIL.RemoveCrLF(SourceName)
                 End If
-                If InStr(Body, vbCrLf) > 0 Or InStr(Body, vbCr) > 0 Or InStr(Body, vbLf) > 0 Then
+                If InStr(Body, environment.NewLine) > 0 Or InStr(Body, vbCr) > 0 Or InStr(Body, vbLf) > 0 Then
                     Body = UTIL.RemoveCrLF(Body)
                 End If
 
@@ -21185,22 +21185,22 @@ SkipRec01:
                     HoursAvail = RSData.GetValue(4).ToString
 
                     If HelpName.Trim.Length > 0 Then
-                        HelpInfo = HelpInfo + "Contact - " + HelpName + vbCrLf
+                        HelpInfo = HelpInfo + "Contact - " + HelpName + environment.NewLine
                     End If
                     If HelpName.Trim.Length > 0 Then
-                        HelpInfo = HelpInfo + "Email - " + HelpEmailAddr + vbCrLf
+                        HelpInfo = HelpInfo + "Email - " + HelpEmailAddr + environment.NewLine
                     End If
                     If HelpName.Trim.Length > 0 Then
-                        HelpInfo = HelpInfo + "Phone - " + HelpPhone + vbCrLf
+                        HelpInfo = HelpInfo + "Phone - " + HelpPhone + environment.NewLine
                     End If
                     If HelpName.Trim.Length > 0 Then
-                        HelpInfo = HelpInfo + "Help Area - " + AreaOfFocus + vbCrLf
+                        HelpInfo = HelpInfo + "Help Area - " + AreaOfFocus + environment.NewLine
                     End If
                     If HelpName.Trim.Length > 0 Then
-                        HelpInfo = HelpInfo + "Hours - " + HoursAvail + vbCrLf
+                        HelpInfo = HelpInfo + "Hours - " + HoursAvail + environment.NewLine
                     End If
 
-                    HelpInfo += vbCrLf
+                    HelpInfo += environment.NewLine
 
                 Loop
             End If
@@ -21301,7 +21301,7 @@ SkipRec01:
 
         Dim B As Boolean = ExecuteSqlNewConn(S, False)
         If B = False Then
-            LOG.WriteToArchiveLog("ERROR: UpdateVersionInfo - 100 : failed to update version info. " + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: UpdateVersionInfo - 100 : failed to update version info. " + environment.NewLine + S)
         End If
 
     End Sub
@@ -21330,7 +21330,7 @@ SkipRec01:
                 Do While RSData.Read()
                     VerInfo += RSData.GetValue(0).ToString
                     'VerInfo  += " : " + RSData.GetValue(1).ToString
-                    'VerInfo  += " : " + RSData.GetValue(2).ToString + vbCrLf
+                    'VerInfo  += " : " + RSData.GetValue(2).ToString + environment.NewLine
                 Loop
             Else
                 VerInfo = "No version info exists on " + Product
@@ -21339,7 +21339,7 @@ SkipRec01:
 
         Dim B As Boolean = ExecuteSqlNewConn(S, False)
         If B = False Then
-            LOG.WriteToArchiveLog("ERROR: UpdateVersionInfo - 100 : failed to update version info. " + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR: UpdateVersionInfo - 100 : failed to update version info. " + environment.NewLine + S)
         End If
 
         Return VerInfo
@@ -21752,7 +21752,7 @@ P1:
                 End Try
             End Try
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: getModifiedFiles 200 Listener Files could not be processed for = " + tFQN + vbCrLf + ex.Message)
+            LOG.WriteToArchiveLog("ERROR: getModifiedFiles 200 Listener Files could not be processed for = " + tFQN + environment.NewLine + ex.Message)
         End Try
         ''FrmMDIMain.ListenerStatus.Text = "."
     End Sub
@@ -22522,7 +22522,7 @@ P1:
                 Loop
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("Error: clsDatabaseARCH:getListOf Error 100: " + ex.Message + vbCrLf + MySql)
+            LOG.WriteToArchiveLog("Error: clsDatabaseARCH:getListOf Error 100: " + ex.Message + environment.NewLine + MySql)
         End Try
 
         If Not rsData.IsClosed Then
@@ -22561,7 +22561,7 @@ P1:
                 End Using
             End Using
         Catch ex As Exception
-            LOG.WriteToArchiveLog("Error: clsDatabaseARCH:getFileExt Error 100: " + ex.Message + vbCrLf + MySQl)
+            LOG.WriteToArchiveLog("Error: clsDatabaseARCH:getFileExt Error 100: " + ex.Message + environment.NewLine + MySQl)
         End Try
 
         GC.Collect()
@@ -22703,7 +22703,7 @@ P1:
                                 CMD.CommandText = MySql
                                 CMD.ExecuteNonQuery()
                             Catch ex As Exception
-                                LOG.WriteToArchiveLog("ERROR 22x: updateDBUpdateLastwrite: " + ex.Message + vbCrLf + MySql)
+                                LOG.WriteToArchiveLog("ERROR 22x: updateDBUpdateLastwrite: " + ex.Message + environment.NewLine + MySql)
                                 B = False
                             End Try
                         Next
@@ -22923,9 +22923,9 @@ P1:
     Sub cleanUpLibraryItems()
 
         Dim S As String = ""
-        S = S + " delete from LibraryItems where " + vbCrLf
-        S = S + " SourceGuid not in (select emailguid as TgtGuid from Email" + vbCrLf
-        S = S + " union " + vbCrLf
+        S = S + " delete from LibraryItems where " + environment.NewLine
+        S = S + " SourceGuid not in (select emailguid as TgtGuid from Email" + environment.NewLine
+        S = S + " union " + environment.NewLine
         S = S + " select sourceguid as TgtGuid from DataSource)"
 
         Dim B As Boolean = ExecuteSqlNewConn(90169, S)
@@ -23088,22 +23088,22 @@ P1:
 
             If iCnt = 0 Then
                 S = ""
-                S = S + " INSERT INTO [LibraryItems]" + vbCrLf
-                S = S + " ([SourceGuid]" + vbCrLf
-                S = S + " ,[ItemTitle]" + vbCrLf
-                S = S + " ,[ItemType]" + vbCrLf
-                S = S + " ,[LibraryItemGuid]" + vbCrLf
-                S = S + " ,[DataSourceOwnerUserID]" + vbCrLf
-                S = S + " ,[LibraryOwnerUserID]" + vbCrLf
-                S = S + " ,[LibraryName]" + vbCrLf
-                S = S + " ,[AddedByUserGuidId])" + vbCrLf
-                S = S + "      VALUES( " + vbCrLf
-                S = S + " ('" + SourceGuid + "'" + vbCrLf
-                S = S + " ,'" + SourceName + "'" + vbCrLf
-                S = S + " ,'" + OriginalFileType + "'" + vbCrLf
-                S = S + " ,'" + Guid.NewGuid.ToString + "'" + vbCrLf
-                S = S + " ,'" + DataSourceOwnerUserID + "'" + vbCrLf
-                S = S + " ,'" + LibraryName + "'" + vbCrLf
+                S = S + " INSERT INTO [LibraryItems]" + environment.NewLine
+                S = S + " ([SourceGuid]" + environment.NewLine
+                S = S + " ,[ItemTitle]" + environment.NewLine
+                S = S + " ,[ItemType]" + environment.NewLine
+                S = S + " ,[LibraryItemGuid]" + environment.NewLine
+                S = S + " ,[DataSourceOwnerUserID]" + environment.NewLine
+                S = S + " ,[LibraryOwnerUserID]" + environment.NewLine
+                S = S + " ,[LibraryName]" + environment.NewLine
+                S = S + " ,[AddedByUserGuidId])" + environment.NewLine
+                S = S + "      VALUES( " + environment.NewLine
+                S = S + " ('" + SourceGuid + "'" + environment.NewLine
+                S = S + " ,'" + SourceName + "'" + environment.NewLine
+                S = S + " ,'" + OriginalFileType + "'" + environment.NewLine
+                S = S + " ,'" + Guid.NewGuid.ToString + "'" + environment.NewLine
+                S = S + " ,'" + DataSourceOwnerUserID + "'" + environment.NewLine
+                S = S + " ,'" + LibraryName + "'" + environment.NewLine
                 S = S + " ,'" + gCurrUserGuidID + "')"
 
                 Dim B As Boolean = ExecuteSqlNewConn(90175, S)
@@ -23142,13 +23142,13 @@ NextRow:
 
         Dim TGuid As String = Guid.NewGuid.ToString
         S = ""
-        S = S + " Select DISTINCT" + vbCrLf
-        S = S + " LibEmail.LibraryName , email.emailGuid, " + vbCrLf
-        S = S + " email.SourceTypeCode, Library.UserID, Email.ShortSubj, " + vbCrLf
-        S = S + " Email.UserID" + vbCrLf
-        S = S + " FROM         LibEmail INNER JOIN" + vbCrLf
-        S = S + " Email ON LibEmail.FolderName = Email.OriginalFolder" + vbCrLf
-        S = S + " INNER Join " + vbCrLf
+        S = S + " Select DISTINCT" + environment.NewLine
+        S = S + " LibEmail.LibraryName , email.emailGuid, " + environment.NewLine
+        S = S + " email.SourceTypeCode, Library.UserID, Email.ShortSubj, " + environment.NewLine
+        S = S + " Email.UserID" + environment.NewLine
+        S = S + " FROM         LibEmail INNER JOIN" + environment.NewLine
+        S = S + " Email ON LibEmail.FolderName = Email.OriginalFolder" + environment.NewLine
+        S = S + " INNER Join " + environment.NewLine
         S = S + " Library ON LibEmail.UserID = Library.UserID"
 
         Clipboard.Clear()
@@ -23240,22 +23240,22 @@ NextRow:
 
             If iCnt = 0 Then
                 S = ""
-                S = S + " INSERT INTO [LibraryItems]" + vbCrLf
-                S = S + " ([SourceGuid]" + vbCrLf
-                S = S + " ,[ItemTitle]" + vbCrLf
-                S = S + " ,[ItemType]" + vbCrLf
-                S = S + " ,[LibraryItemGuid]" + vbCrLf
-                S = S + " ,[DataSourceOwnerUserID]" + vbCrLf
-                S = S + " ,[LibraryOwnerUserID]" + vbCrLf
-                S = S + " ,[LibraryName]" + vbCrLf
-                S = S + " ,[AddedByUserGuidId])" + vbCrLf
-                S = S + "      VALUES( " + vbCrLf
-                S = S + " ('" + SourceGuid + "'" + vbCrLf
-                S = S + " ,'" + SourceName + "'" + vbCrLf
-                S = S + " ,'" + OriginalFileType + "'" + vbCrLf
-                S = S + " ,'" + Guid.NewGuid.ToString + "'" + vbCrLf
-                S = S + " ,'" + DataSourceOwnerUserID + "'" + vbCrLf
-                S = S + " ,'" + LibraryName + "'" + vbCrLf
+                S = S + " INSERT INTO [LibraryItems]" + environment.NewLine
+                S = S + " ([SourceGuid]" + environment.NewLine
+                S = S + " ,[ItemTitle]" + environment.NewLine
+                S = S + " ,[ItemType]" + environment.NewLine
+                S = S + " ,[LibraryItemGuid]" + environment.NewLine
+                S = S + " ,[DataSourceOwnerUserID]" + environment.NewLine
+                S = S + " ,[LibraryOwnerUserID]" + environment.NewLine
+                S = S + " ,[LibraryName]" + environment.NewLine
+                S = S + " ,[AddedByUserGuidId])" + environment.NewLine
+                S = S + "      VALUES( " + environment.NewLine
+                S = S + " ('" + SourceGuid + "'" + environment.NewLine
+                S = S + " ,'" + SourceName + "'" + environment.NewLine
+                S = S + " ,'" + OriginalFileType + "'" + environment.NewLine
+                S = S + " ,'" + Guid.NewGuid.ToString + "'" + environment.NewLine
+                S = S + " ,'" + DataSourceOwnerUserID + "'" + environment.NewLine
+                S = S + " ,'" + LibraryName + "'" + environment.NewLine
                 S = S + " ,'" + gCurrUserGuidID + "')"
 
                 Dim B As Boolean = ExecuteSqlNewConn(90176, S)
@@ -23477,26 +23477,26 @@ NextRow:
                     'iSql = iSql + ",'" + LibraryName + "')"
 
                     iSql = ""
-                    iSql += "INSERT INTO [LibraryUsers]" + vbCrLf
-                    iSql += "           ([ReadOnly]" + vbCrLf
-                    iSql += "           ,[CreateAccess]" + vbCrLf
-                    iSql += "           ,[UpdateAccess]" + vbCrLf
-                    iSql += "           ,[DeleteAccess]" + vbCrLf
-                    iSql += "           ,[UserID]" + vbCrLf
-                    iSql += "           ,[LibraryOwnerUserID]" + vbCrLf
-                    iSql += "           ,[LibraryName]" + vbCrLf
-                    iSql += "           ,[NotAddedAsGroupMember]" + vbCrLf
-                    iSql += "           ,[GroupUser])" + vbCrLf
-                    iSql += "     VALUES" + vbCrLf
-                    iSql += "           (0" + vbCrLf
-                    iSql += "           ,1" + vbCrLf
-                    iSql += "           ,1" + vbCrLf
-                    iSql += "           ,0" + vbCrLf
-                    iSql += "           ,'" + GroupUserGuid + "'" + vbCrLf
-                    iSql += "           ,'" + GroupOwnerUserIDGuid + "'" + vbCrLf
-                    iSql += "           ,'" + LibraryName + "'" + vbCrLf
-                    iSql += "           ,0" + vbCrLf
-                    iSql += "           ,1)" + vbCrLf
+                    iSql += "INSERT INTO [LibraryUsers]" + environment.NewLine
+                    iSql += "           ([ReadOnly]" + environment.NewLine
+                    iSql += "           ,[CreateAccess]" + environment.NewLine
+                    iSql += "           ,[UpdateAccess]" + environment.NewLine
+                    iSql += "           ,[DeleteAccess]" + environment.NewLine
+                    iSql += "           ,[UserID]" + environment.NewLine
+                    iSql += "           ,[LibraryOwnerUserID]" + environment.NewLine
+                    iSql += "           ,[LibraryName]" + environment.NewLine
+                    iSql += "           ,[NotAddedAsGroupMember]" + environment.NewLine
+                    iSql += "           ,[GroupUser])" + environment.NewLine
+                    iSql += "     VALUES" + environment.NewLine
+                    iSql += "           (0" + environment.NewLine
+                    iSql += "           ,1" + environment.NewLine
+                    iSql += "           ,1" + environment.NewLine
+                    iSql += "           ,0" + environment.NewLine
+                    iSql += "           ,'" + GroupUserGuid + "'" + environment.NewLine
+                    iSql += "           ,'" + GroupOwnerUserIDGuid + "'" + environment.NewLine
+                    iSql += "           ,'" + LibraryName + "'" + environment.NewLine
+                    iSql += "           ,0" + environment.NewLine
+                    iSql += "           ,1)" + environment.NewLine
 
                     insertExecutionList.Add(iSql)
 
@@ -23529,9 +23529,9 @@ NextRow:
             Dim B As Boolean = True
             B = ExecuteSqlNewConn(90178, tSql)
             If Not B Then
-                LOG.WriteToArchiveLog("ERROR: Failed to ADD library user. " + vbCrLf + tSql)
+                LOG.WriteToArchiveLog("ERROR: Failed to ADD library user. " + environment.NewLine + tSql)
             Else
-                LOG.WriteToArchiveLog("NOTICE: ADDED library user. " + vbCrLf + tSql)
+                LOG.WriteToArchiveLog("NOTICE: ADDED library user. " + environment.NewLine + tSql)
             End If
         Next
 
@@ -23544,12 +23544,12 @@ NextRow:
 
         Dim S As String = ""
 
-        S += " SELECT     GroupLibraryAccess.GroupName, GroupLibraryAccess.LibraryName, GroupUsers.UserID AS Userid" + vbCrLf
-        S += " FROM       GroupLibraryAccess INNER JOIN" + vbCrLf
-        S += "            GroupUsers ON GroupLibraryAccess.GroupName = GroupUsers.GroupName" + vbCrLf
-        S += " WHERE      GroupLibraryAccess.GroupName = '" + GroupName + "'" + vbCrLf
-        S += " AND        LibraryName = '" + LibraryName + "'" + vbCrLf
-        S += " order by   GroupLibraryAccess.GroupName, GroupLibraryAccess.LibraryName" + vbCrLf
+        S += " SELECT     GroupLibraryAccess.GroupName, GroupLibraryAccess.LibraryName, GroupUsers.UserID AS Userid" + environment.NewLine
+        S += " FROM       GroupLibraryAccess INNER JOIN" + environment.NewLine
+        S += "            GroupUsers ON GroupLibraryAccess.GroupName = GroupUsers.GroupName" + environment.NewLine
+        S += " WHERE      GroupLibraryAccess.GroupName = '" + GroupName + "'" + environment.NewLine
+        S += " AND        LibraryName = '" + LibraryName + "'" + environment.NewLine
+        S += " order by   GroupLibraryAccess.GroupName, GroupLibraryAccess.LibraryName" + environment.NewLine
 
         Dim Userid As String = ""
         Dim RSData As SqlDataReader = Nothing
@@ -23591,12 +23591,12 @@ NextRow:
 
         Dim S As String = ""
 
-        S += " SELECT     GroupLibraryAccess.GroupName, GroupLibraryAccess.LibraryName, GroupUsers.UserID AS Userid" + vbCrLf
-        S += " FROM         GroupLibraryAccess INNER JOIN" + vbCrLf
-        S += "                       GroupUsers ON GroupLibraryAccess.GroupName = GroupUsers.GroupName" + vbCrLf
-        S += " WHERE     (GroupLibraryAccess.GroupName = '" + GroupName + "') " + vbCrLf
-        S += "     AND (GroupLibraryAccess.LibraryName = '" + LibraryName + "') " + vbCrLf
-        S += "     AND (GroupUsers.UserID = '" + GroupUserID + "')" + vbCrLf
+        S += " SELECT     GroupLibraryAccess.GroupName, GroupLibraryAccess.LibraryName, GroupUsers.UserID AS Userid" + environment.NewLine
+        S += " FROM         GroupLibraryAccess INNER JOIN" + environment.NewLine
+        S += "                       GroupUsers ON GroupLibraryAccess.GroupName = GroupUsers.GroupName" + environment.NewLine
+        S += " WHERE     (GroupLibraryAccess.GroupName = '" + GroupName + "') " + environment.NewLine
+        S += "     AND (GroupLibraryAccess.LibraryName = '" + LibraryName + "') " + environment.NewLine
+        S += "     AND (GroupUsers.UserID = '" + GroupUserID + "')" + environment.NewLine
 
         Clipboard.Clear()
         Clipboard.SetText(S)
@@ -23711,9 +23711,9 @@ NextRow:
         TriggerName = "trig<XX>_Update"
         TriggerName = TriggerName.Replace("<XX>", TblName.Trim)
         S = ""
-        S = S + " IF EXISTS (SELECT * FROM sys.triggers" + vbCrLf
-        S = S + "     WHERE name = '<XX>')" + vbCrLf
-        S = S + " DROP TRIGGER <XX>" + vbCrLf
+        S = S + " IF EXISTS (SELECT * FROM sys.triggers" + environment.NewLine
+        S = S + "     WHERE name = '<XX>')" + environment.NewLine
+        S = S + " DROP TRIGGER <XX>" + environment.NewLine
         S = S.Replace("<XX>", TriggerName.Trim)
         B = ExecuteSqlNewConn(90181, S)
         If Not B Then
@@ -23724,24 +23724,24 @@ NextRow:
         Clipboard.SetText(S)
 
         S = ""
-        S = S + "CREATE TRIGGER trig<XX>_Update" + vbCrLf
-        S = S + "   ON <XX>" + vbCrLf
-        S = S + "         AFTER Update " + vbCrLf
-        S = S + "   AS" + vbCrLf
-        S = S + "         BEGIN " + vbCrLf
-        S = S + "         UPDATE <XX> " + vbCrLf
-        S = S + "   SET RowLastModDate = GETDATE(), [RepoSvrName] = @@SERVERNAME" + vbCrLf
-        S = S + "         FROM inserted " + vbCrLf
+        S = S + "CREATE TRIGGER trig<XX>_Update" + environment.NewLine
+        S = S + "   ON <XX>" + environment.NewLine
+        S = S + "         AFTER Update " + environment.NewLine
+        S = S + "   AS" + environment.NewLine
+        S = S + "         BEGIN " + environment.NewLine
+        S = S + "         UPDATE <XX> " + environment.NewLine
+        S = S + "   SET RowLastModDate = GETDATE(), [RepoSvrName] = @@SERVERNAME" + environment.NewLine
+        S = S + "         FROM inserted " + environment.NewLine
         S = S + "   WHERE "
         For i As Integer = 0 To Keys.Count - 1
             If i = 0 Then
-                S = S + "     <XX>" + "." + Keys(i) + " = inserted." + Keys(i) + vbCrLf
+                S = S + "     <XX>" + "." + Keys(i) + " = inserted." + Keys(i) + environment.NewLine
             Else
-                S = S + "     and <XX>" + "." + Keys(i) + " = inserted." + Keys(i) + vbCrLf
+                S = S + "     and <XX>" + "." + Keys(i) + " = inserted." + Keys(i) + environment.NewLine
             End If
         Next
         S = S.Replace("<XX>", TblName.Trim)
-        S = S + " End" + vbCrLf
+        S = S + " End" + environment.NewLine
 
         Clipboard.Clear()
         Clipboard.SetText(S)
@@ -23754,9 +23754,9 @@ NextRow:
         TriggerName = "<XX>_INS"
         TriggerName = TriggerName.Replace("<XX>", TblName.Trim)
         S = ""
-        S = S + " IF EXISTS (SELECT * FROM sys.triggers" + vbCrLf
-        S = S + "     WHERE name = '<XX>')" + vbCrLf
-        S = S + " DROP TRIGGER <XX>" + vbCrLf
+        S = S + " IF EXISTS (SELECT * FROM sys.triggers" + environment.NewLine
+        S = S + "     WHERE name = '<XX>')" + environment.NewLine
+        S = S + " DROP TRIGGER <XX>" + environment.NewLine
         S = S.Replace("<XX>", TriggerName.Trim)
 
         Clipboard.Clear()
@@ -23768,25 +23768,25 @@ NextRow:
         End If
 
         S = ""
-        S = S + " Create TRIGGER <XX>_INS" + vbCrLf
-        S = S + "   ON dbo.<XX>" + vbCrLf
-        S = S + "   FOR UPDATE " + vbCrLf
-        S = S + " AS" + vbCrLf
-        S = S + "   IF ( @@ROWCOUNT = 0 )" + vbCrLf
-        S = S + "                 Return" + vbCrLf
-        S = S + "   IF TRIGGER_NESTLEVEL() > 1" + vbCrLf
-        S = S + "                 Return" + vbCrLf
-        S = S + "   UPDATE <XX>" + vbCrLf
-        S = S + "   SET RowLastModDate = getdate(),  RowCreationDate = getdate(), [RepoSvrName] = @@SERVERNAME" + vbCrLf
-        S = S + "   FROM <XX> t" + vbCrLf
-        S = S + "   JOIN inserted i" + vbCrLf
-        'S = S + "   ON t.ArchiveID = i.ArchiveID" + vbCrLf
-        S = S + "   ON " + vbCrLf
+        S = S + " Create TRIGGER <XX>_INS" + environment.NewLine
+        S = S + "   ON dbo.<XX>" + environment.NewLine
+        S = S + "   FOR UPDATE " + environment.NewLine
+        S = S + " AS" + environment.NewLine
+        S = S + "   IF ( @@ROWCOUNT = 0 )" + environment.NewLine
+        S = S + "                 Return" + environment.NewLine
+        S = S + "   IF TRIGGER_NESTLEVEL() > 1" + environment.NewLine
+        S = S + "                 Return" + environment.NewLine
+        S = S + "   UPDATE <XX>" + environment.NewLine
+        S = S + "   SET RowLastModDate = getdate(),  RowCreationDate = getdate(), [RepoSvrName] = @@SERVERNAME" + environment.NewLine
+        S = S + "   FROM <XX> t" + environment.NewLine
+        S = S + "   JOIN inserted i" + environment.NewLine
+        'S = S + "   ON t.ArchiveID = i.ArchiveID" + environment.NewLine
+        S = S + "   ON " + environment.NewLine
         For i As Integer = 0 To Keys.Count - 1
             If i = 0 Then
-                S = S + "     t" + "." + Keys(i) + " = i." + Keys(i) + vbCrLf
+                S = S + "     t" + "." + Keys(i) + " = i." + Keys(i) + environment.NewLine
             Else
-                S = S + "     and t" + "." + Keys(i) + " = i." + Keys(i) + vbCrLf
+                S = S + "     and t" + "." + Keys(i) + " = i." + Keys(i) + environment.NewLine
             End If
         Next
         S = S.Replace("<XX>", TblName.Trim)
@@ -23977,7 +23977,7 @@ NextRow:
             S = "delete from LibraryUsers where (SingleUser is null or SingleUser = 0) and GroupCnt = 0 "
             b = ExecuteSqlNewConn(90187, S)
             If Not b Then
-                LOG.WriteToArchiveLog("ERROR XX1: Failed to delete NULL LibraryUsers." + vbCrLf + S)
+                LOG.WriteToArchiveLog("ERROR XX1: Failed to delete NULL LibraryUsers." + environment.NewLine + S)
             End If
         End If
         'FrmMDIMain.SB4.Text = "Complete."
@@ -23997,7 +23997,7 @@ NextRow:
         If RSData.HasRows Then
             Do While RSData.Read()
                 LibName = RSData.GetValue(0).ToString
-                ListOfLibs += LibName + vbCrLf
+                ListOfLibs += LibName + environment.NewLine
             Loop
         Else
             ListOfLibs += "None"
@@ -24315,7 +24315,7 @@ NextOne:
                     Application.DoEvents()
                 End If
             Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR 100 - EmailHashRowsApply: " + ex.Message + vbCrLf + UpdateSql)
+                LOG.WriteToArchiveLog("ERROR 100 - EmailHashRowsApply: " + ex.Message + environment.NewLine + UpdateSql)
                 B = False
             End Try
         Next
@@ -24447,7 +24447,7 @@ NextOne:
                     Application.DoEvents()
                 End If
             Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR 100 - EmailHashRowsApply: " + ex.Message + vbCrLf + UpdateSql)
+                LOG.WriteToArchiveLog("ERROR 100 - EmailHashRowsApply: " + ex.Message + environment.NewLine + UpdateSql)
                 B = False
             End Try
         Next
@@ -24479,7 +24479,7 @@ NextOne:
                 LOG.WriteToArchiveLog("ERROR: ContentHashRowsApply - 100 " + UpdateSql)
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: ContentHashRowsApply - 200 " + ex.Message + vbCrLf + UpdateSql)
+            LOG.WriteToArchiveLog("ERROR: ContentHashRowsApply - 200 " + ex.Message + environment.NewLine + UpdateSql)
             B = False
         End Try
 
@@ -24509,7 +24509,7 @@ NextOne:
                 LOG.WriteToArchiveLog("ERROR: EmailHashRowsApply - 100 " + UpdateSql)
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: EmailHashRowsApply - 200 " + ex.Message + vbCrLf + UpdateSql)
+            LOG.WriteToArchiveLog("ERROR: EmailHashRowsApply - 200 " + ex.Message + environment.NewLine + UpdateSql)
             B = False
         End Try
 
@@ -24883,7 +24883,7 @@ NextOne:
     'SKIPX01:
     '                        Next
 
-    ' Catch ex As Exception LOG.WriteToArchiveLog("ERROR PDFXTRACT 100 - " + FQN + vbCrLf +
+    ' Catch ex As Exception LOG.WriteToArchiveLog("ERROR PDFXTRACT 100 - " + FQN + environment.NewLine +
     ' ex.Message) End Try End If
 
     ' Dim PdfContent As String = PDF.ExtractText(FQN )
@@ -24891,7 +24891,7 @@ NextOne:
     ' If PdfContent.Trim.Length > 0 Then AppendOcrText(SourceGuid , PdfContent) End If
 
     ' End If Catch ex As Exception LOG.WriteToArchiveLog("ERROR: PDFXTRACT 100 - " + ex.message +
-    ' vbCrLf + FQN) Finally PDF = Nothing PdfImages = Nothing GC.Collect() End Try
+    ' environment.NewLine + FQN) Finally PDF = Nothing PdfImages = Nothing GC.Collect() End Try
 
     ' System.Windows.Forms.Application.DoEvents()
 
@@ -25023,16 +25023,16 @@ NextOne:
         Dim b As Boolean = False
         Dim s As String = ""
 
-        s = s + " IF not Exists (Select SourceTypeCode from SourceType where SourceTypeCode = '" + SourceTypeCode + "') " + vbCrLf
-        s = s + " INSERT INTO SourceType(" + vbCrLf
-        s = s + "SourceTypeCode," + vbCrLf
-        s = s + "StoreExternal," + vbCrLf
-        s = s + "SourceTypeDesc," + vbCrLf
-        s = s + "Indexable) values (" + vbCrLf
-        s = s + "'" + SourceTypeCode + "'" + "," + vbCrLf
-        s = s & bStoreExternal & "," + vbCrLf
-        s = s + "'" + SourceTypeDesc + "'" + "," + vbCrLf
-        s = s & bIndexable & ")" + vbCrLf
+        s = s + " IF not Exists (Select SourceTypeCode from SourceType where SourceTypeCode = '" + SourceTypeCode + "') " + environment.NewLine
+        s = s + " INSERT INTO SourceType(" + environment.NewLine
+        s = s + "SourceTypeCode," + environment.NewLine
+        s = s + "StoreExternal," + environment.NewLine
+        s = s + "SourceTypeDesc," + environment.NewLine
+        s = s + "Indexable) values (" + environment.NewLine
+        s = s + "'" + SourceTypeCode + "'" + "," + environment.NewLine
+        s = s & bStoreExternal & "," + environment.NewLine
+        s = s + "'" + SourceTypeDesc + "'" + "," + environment.NewLine
+        s = s & bIndexable & ")" + environment.NewLine
 
         b = ExecuteSqlNewConn(s, False)
         If Not b Then
@@ -25240,7 +25240,7 @@ NextOne:
         Dim bApplied As Boolean = Exec_spUpdateLongNameHash(FileGuid, FQN)
         If Not bApplied Then
             LOG.WriteToArchiveLog("ERROR HA12X: (Exec_spUpdateLongNameHash) : Failed to update the long file names cross references: ")
-            LOG.WriteToArchiveLog("HOW TO TEST in Sql Server: " + vbCrLf + "    exec spUpdateLongNameHash '" + FQN + "', '" + FileGuid + "' ")
+            LOG.WriteToArchiveLog("HOW TO TEST in Sql Server: " + environment.NewLine + "    exec spUpdateLongNameHash '" + FQN + "', '" + FileGuid + "' ")
         End If
 
         Dim BX As Boolean = InsertBinaryData(RepositoryTable, FQN, SourceHash, FileGuid)
@@ -25383,25 +25383,25 @@ NextOne:
             Dim Msg As String = ""
             If RC Then
                 LL = 46
-                Msg = "Successful Upload: " + TransmissionType + vbCrLf
-                Msg += "   Original Size: " + OriginalSize.ToString + vbCrLf
-                Msg += "   Compressed Size: " + CompressedSize.ToString + vbCrLf
-                Msg += "   Compress Time: " + (totalCompressSecs / 1000).ToString + " sec" + vbCrLf
-                Msg += "   Transmit Time: " + (totalTransmitSecs / 1000).ToString + " sec" + vbCrLf
-                Msg += "   BPS: " + (CompressedSize / (totalTransmitSecs / 100)).ToString + vbCrLf
-                Msg += "   File: " + FQN + vbCrLf
+                Msg = "Successful Upload: " + TransmissionType + environment.NewLine
+                Msg += "   Original Size: " + OriginalSize.ToString + environment.NewLine
+                Msg += "   Compressed Size: " + CompressedSize.ToString + environment.NewLine
+                Msg += "   Compress Time: " + (totalCompressSecs / 1000).ToString + " sec" + environment.NewLine
+                Msg += "   Transmit Time: " + (totalTransmitSecs / 1000).ToString + " sec" + environment.NewLine
+                Msg += "   BPS: " + (CompressedSize / (totalTransmitSecs / 100)).ToString + environment.NewLine
+                Msg += "   File: " + FQN + environment.NewLine
                 LOG.WriteToArchiveLog(Msg)
                 ' xTrace(663341, "SUCCESS: SaveUploadStats", Msg)
                 LL = 47
             Else
                 LL = 48
-                Msg = "Failed Upload: " + TransmissionType + vbCrLf
-                Msg += "   Original Size: " + OriginalSize.ToString + vbCrLf
-                Msg += "   Compressed Size: " + CompressedSize.ToString + vbCrLf
-                Msg += "   Compress Time: " + (totalCompressSecs / 1000).ToString + " sec" + vbCrLf
-                Msg += "   Transmit Time: " + (totalTransmitSecs / 1000).ToString + " sec" + vbCrLf
-                Msg += "   BPS: " + (CompressedSize / (totalTransmitSecs / 1000)).ToString + vbCrLf
-                Msg += "   File: " + FQN + vbCrLf
+                Msg = "Failed Upload: " + TransmissionType + environment.NewLine
+                Msg += "   Original Size: " + OriginalSize.ToString + environment.NewLine
+                Msg += "   Compressed Size: " + CompressedSize.ToString + environment.NewLine
+                Msg += "   Compress Time: " + (totalCompressSecs / 1000).ToString + " sec" + environment.NewLine
+                Msg += "   Transmit Time: " + (totalTransmitSecs / 1000).ToString + " sec" + environment.NewLine
+                Msg += "   BPS: " + (CompressedSize / (totalTransmitSecs / 1000)).ToString + environment.NewLine
+                Msg += "   File: " + FQN + environment.NewLine
                 LOG.WriteToArchiveLog(Msg)
                 ' xTrace(663342, "FAILED: SaveUploadStats", Msg)
                 LL = 49
@@ -25427,7 +25427,7 @@ NextOne:
             End If
         Catch ex As Exception
             bSuccess = False
-            LOG.WriteToArchiveLog("ERROR - InsertSourceImage: LL = " + LL.ToString + vbCrLf + ex.Message.ToString)
+            LOG.WriteToArchiveLog("ERROR - InsertSourceImage: LL = " + LL.ToString + environment.NewLine + ex.Message.ToString)
         End Try
         Return bSuccess
     End Function
@@ -25755,12 +25755,12 @@ NextOne:
             InsertContentUserRecord(ContentTypeCode, ContentGuid, UserID, I)
 
             Dim MySql As String = ""
-            MySql += " if NOT exists (Select userID from Machine " + vbCrLf
-            MySql += " where MachineGuid = '" + MachineGuid + "' " + vbCrLf
-            MySql += " and ContentGuid = '" + ContentGuid + "')" + vbCrLf
-            MySql += " Begin " + vbCrLf
-            MySql += " INSERT INTO [Machine] ([UserID],[ContentGuid],[ContentTypeCode],[MachineGuid]) VALUES ('" + UserID + "','" + ContentGuid + "','" + ContentTypeCode + "','" + MachineGuid + "')" + vbCrLf
-            MySql += " End" + vbCrLf
+            MySql += " if NOT exists (Select userID from Machine " + environment.NewLine
+            MySql += " where MachineGuid = '" + MachineGuid + "' " + environment.NewLine
+            MySql += " and ContentGuid = '" + ContentGuid + "')" + environment.NewLine
+            MySql += " Begin " + environment.NewLine
+            MySql += " INSERT INTO [Machine] ([UserID],[ContentGuid],[ContentTypeCode],[MachineGuid]) VALUES ('" + UserID + "','" + ContentGuid + "','" + ContentTypeCode + "','" + MachineGuid + "')" + environment.NewLine
+            MySql += " End" + environment.NewLine
 
             Dim BB As Boolean = ExecuteSqlNewConn(90249, MySql)
 
@@ -25773,7 +25773,7 @@ NextOne:
                                             UserID As String) As Integer
 
         Dim s As String = ""
-        s = s + " Select count(*) from [ContentUser]" + vbCrLf
+        s = s + " Select count(*) from [ContentUser]" + environment.NewLine
         s = s + " where ContentGuid = '" + ContentGuid + "' and UserID = '" + UserID + "' "
 
         Dim i As Integer = iCount(s)
@@ -25797,15 +25797,15 @@ NextOne:
         Dim NewID As String = Guid.NewGuid.ToString
         Dim s As String = ""
 
-        s = s + " INSERT INTO [ContentUser]" + vbCrLf
-        s = s + " ([ContentTypeCode]" + vbCrLf
-        s = s + " ,[ContentGuid]" + vbCrLf
-        s = s + " ,[UserID]" + vbCrLf
-        s = s + " ,[NbrOccurances])" + vbCrLf
-        s = s + " VALUES " + vbCrLf
-        s = s + " ('" + ContentTypeCode + "'" + vbCrLf
-        s = s + " ,'" + ContentGuid + "'" + vbCrLf
-        s = s + " ,'" + UserID + "'" + vbCrLf
+        s = s + " INSERT INTO [ContentUser]" + environment.NewLine
+        s = s + " ([ContentTypeCode]" + environment.NewLine
+        s = s + " ,[ContentGuid]" + environment.NewLine
+        s = s + " ,[UserID]" + environment.NewLine
+        s = s + " ,[NbrOccurances])" + environment.NewLine
+        s = s + " VALUES " + environment.NewLine
+        s = s + " ('" + ContentTypeCode + "'" + environment.NewLine
+        s = s + " ,'" + ContentGuid + "'" + environment.NewLine
+        s = s + " ,'" + UserID + "'" + environment.NewLine
         s = s + " ," + NbrOccurances.ToString + " )"
 
         Dim BB As Boolean = ExecuteSqlNewConn(90250, s)
@@ -26126,12 +26126,12 @@ NextOne:
         MySql += "[WebUrl], "
         MySql += "[UserID], "
         MySql += "[RetentionCode] "
-        MySql += " From [WebScreen]" & vbCrLf
+        MySql += " From [WebScreen]" & environment.NewLine
 
         If WhereClause IsNot Nothing Then
             MySql += WhereClause
         End If
-        MySql += " order by [WebScreen]" & vbCrLf
+        MySql += " order by [WebScreen]" & environment.NewLine
 
         Dim ConnStr As String = getRepoConnStr()
         Dim CONN As New SqlConnection(ConnStr)
@@ -26266,7 +26266,7 @@ NextOne:
         MySql += "[Depth], "
         MySql += "[Width], "
         MySql += "[RetentionCode] "
-        MySql += " From [WebSite]" & vbCrLf
+        MySql += " From [WebSite]" & environment.NewLine
 
         If WhereClause IsNot Nothing Then
             MySql += WhereClause
@@ -26625,24 +26625,24 @@ NextOne:
 
         sGuid = Guid.NewGuid.ToString()
 
-        S += " INSERT INTO [EmailAttachment]" + vbCrLf
-        S += " ( " + vbCrLf
-        S += "  [RowGuid]" + vbCrLf
-        S += " ,[AttachmentName]" + vbCrLf
-        S += " ,[EmailGuid]" + vbCrLf
-        S += " ,[AttachmentCode]" + vbCrLf
-        S += " ,[AttachmentType]" + vbCrLf
-        S += " ,[UserID]" + vbCrLf
-        S += " ,[CRC]" + vbCrLf
-        S += " )" + vbCrLf
-        S += " VALUES " + vbCrLf
-        S += " ('" + sGuid + "'" + vbCrLf
-        S += " ,'" + AttachmentName + "'" + vbCrLf
-        S += " ,'" + EmailGuid + "'" + vbCrLf
-        S += " ,'" + AttachmentCode + "'" + vbCrLf
-        S += " ,'" + AttachmentType + "'" + vbCrLf
-        S += " ,'" + UserID + "'" + vbCrLf
-        S += " , convert(nvarchar(100), " + CRC + ")" + vbCrLf
+        S += " INSERT INTO [EmailAttachment]" + environment.NewLine
+        S += " ( " + environment.NewLine
+        S += "  [RowGuid]" + environment.NewLine
+        S += " ,[AttachmentName]" + environment.NewLine
+        S += " ,[EmailGuid]" + environment.NewLine
+        S += " ,[AttachmentCode]" + environment.NewLine
+        S += " ,[AttachmentType]" + environment.NewLine
+        S += " ,[UserID]" + environment.NewLine
+        S += " ,[CRC]" + environment.NewLine
+        S += " )" + environment.NewLine
+        S += " VALUES " + environment.NewLine
+        S += " ('" + sGuid + "'" + environment.NewLine
+        S += " ,'" + AttachmentName + "'" + environment.NewLine
+        S += " ,'" + EmailGuid + "'" + environment.NewLine
+        S += " ,'" + AttachmentCode + "'" + environment.NewLine
+        S += " ,'" + AttachmentType + "'" + environment.NewLine
+        S += " ,'" + UserID + "'" + environment.NewLine
+        S += " , convert(nvarchar(100), " + CRC + ")" + environment.NewLine
 
         Dim cs As String = setConnStr()
         Dim B As Boolean = True
@@ -26841,7 +26841,7 @@ NextOne:
             LL = 19
         Catch ex As Exception
             bLoadFileToDB = False
-            ErrMsg = "ERROR - InsertImageToRepoTable: " + FileName + vbCrLf + ex.Message.ToString
+            ErrMsg = "ERROR - InsertImageToRepoTable: " + FileName + environment.NewLine + ex.Message.ToString
         Finally
             oFileStream.Close()
             oFileStream.Dispose()
@@ -27092,7 +27092,7 @@ NextOne:
                 bLoadFileToDB = True
             End If
         Catch ex As Exception
-            ErrMsg = "ERROR - UploadBufferedAppend: " + FileName + vbCrLf + ex.Message.ToString
+            ErrMsg = "ERROR - UploadBufferedAppend: " + FileName + environment.NewLine + ex.Message.ToString
         Finally
             oFileStream.Close()
             oFileStream.Dispose()
@@ -27356,7 +27356,7 @@ NextOne:
 
     End Function
 
-    Public Function insertNewContent(FQN As String) As Boolean
+    Public Function insertSingleFILE(FQN As String) As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -27365,7 +27365,6 @@ NextOne:
         Dim versionNumber As String = Application.ProductVersion.ToString
         Dim B As Boolean = True
 
-        Dim DOCS As New clsDataSource_V2
         Dim bSuccess As Boolean = True
 
         Dim BPS As Double = 0
@@ -27494,8 +27493,12 @@ NextOne:
         Dim GraphicTypes As List(Of String) = getListOf("select lower(GraphicFileTypeExt) from GraphicFileType")
         If GraphicTypes.Contains(FI.Extension.ToLower) Then
             OcrPending = "Y"
+            OcrPerformed = "N"
+            RequireOcr = "Y"
         Else
             OcrPending = "N"
+            OcrPerformed = "N"
+            RequireOcr = "N"
         End If
 
         If SourceImage.Length.Equals(0) Then
@@ -27506,7 +27509,6 @@ NextOne:
 
         Dim CheckLen As Boolean = False
         If CheckLen Then
-
             If SourceGuid.Length > 50 Then Console.WriteLine("ERROR: SourceGuid")
             If SourceName.Length > 1000 Then Console.WriteLine("ERROR: SourceName")
             If SourceTypeCode.Length > 50 Then Console.WriteLine("ERROR: SourceTypeCode")
@@ -27558,7 +27560,6 @@ NextOne:
             If FileDirectoryName.Length > 1000 Then Console.WriteLine("ERROR: FileDirectoryName")
             If FqnHASH.Length > 150 Then Console.WriteLine("ERROR: FqnHASH")
             If SourceImageOrigin.Length > 10 Then Console.WriteLine("ERROR: SourceImageOrigin")
-
             Console.WriteLine(FQN)
         End If
 
@@ -27857,6 +27858,156 @@ NextOne:
         Return B
     End Function
 
+    Public Function updateSingleFILE(SourceGuid As String, FQN As String) As Boolean
+
+        If gTraceFunctionCalls.Equals(1) Then
+            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+        End If
+
+        Dim FI As New FileInfo(FQN)
+
+        If FI.Length.Equals(0) Then
+            LOG.WriteToArchiveLog("clsDatabaseARCH : updateSingelFile : 90 : " + FQN + " appears to have ZERO content.")
+            LOG.WriteToFailedLoadLog("clsDatabaseARCH : updateSingelFile : 90 " + FQN + " appears to have ZERO content.")
+            Return False
+        End If
+
+        Dim versionNumber As String = Application.ProductVersion.ToString
+        Dim B As Boolean = True
+
+        Dim bSuccess As Boolean = True
+
+        Dim FileLength As Integer = 0
+        Dim LastAccessDate As DateTime = FI.LastAccessTime
+        Dim LastWriteTime As DateTime = FI.LastWriteTime
+        Dim MachineID As String = Environment.MachineName
+        Dim OcrPending As Char = ""
+        Dim RecTimeStamp As DateTime = Now
+        Dim RetentionDate As DateTime = Now
+        Dim RowLastModDate As DateTime = Now
+        Dim txEndTime As DateTime = Now
+        Dim txStartTime As DateTime = Now
+        Dim Successful As Boolean = True
+
+        If FI.Extension.ToLower.Equals(".zip") Then
+            ZipFileGuid = Guid.NewGuid.ToString
+            ZipFileFQN = FI.FullName
+            IsZipFile = "Y"
+        Else
+            ZipFileGuid = ""
+            ZipFileFQN = ""
+            IsZipFile = "N"
+        End If
+
+        Dim crchash As String = ENC.GenerateSHA512HashFromFile(FI.FullName)
+        CRC = crchash
+        Imagehash = crchash
+
+        HashName = "SHA512"
+
+        RetentionCode = getRetentionCode(gCurrLoginID, FI.DirectoryName)
+        Dim RetentionYears As Integer = getRetentionPeriod(RetentionCode)
+        Dim RequireOcr As String = ""
+        Dim rightNow As Date = Now
+        If RetentionYears = 0 Then
+            RetentionYears = Val(getSystemParm("RETENTION YEARS"))
+        End If
+        rightNow = rightNow.AddYears(RetentionYears)
+        Dim RetentionExpirationDate As String = rightNow.ToString
+
+        If Convert.ToDateTime(RetentionDate) <= Now Then
+            Dim NewDate As DateTime = DateAdd("yyyy", 10, Now)
+            RetentionDate = NewDate.ToString
+        End If
+
+        Dim SourceImage As Byte() = IO.File.ReadAllBytes(FI.FullName)
+
+        Dim GraphicTypes As List(Of String) = getListOf("select lower(GraphicFileTypeExt) from GraphicFileType")
+        If GraphicTypes.Contains(FI.Extension.ToLower) Then
+            OcrPending = "Y"
+            OcrPerformed = "N"
+            RequireOcr = "Y"
+        Else
+            OcrPending = "N"
+            OcrPerformed = "N"
+            RequireOcr = "N"
+        End If
+
+
+        Dim TSQL As String = "UPDATE DataSource set 
+                        CRC = @CRC,
+                        FileLength = @FileLength,
+                        Imagehash = @Imagehash,
+                        ImageLen = @ImageLen,
+                        LastAccessDate = @LastAccessDate,
+                        LastWriteTime = @LastWriteTime,
+                        OcrPending = @OcrPending,
+                        OcrPerformed = @OcrPerformed,
+                        RecHash = @RecHash,
+                        RecLen = @RecLen,
+                        RecTimeStamp = @RecTimeStamp,
+                        RequireOcr = @RequireOcr,
+                        RetentionCode = @RetentionCode,
+                        RetentionDate = @RetentionDate,
+                        RetentionExpirationDate = @RetentionExpirationDate,
+                        RowLastModDate = @RowLastModDate,
+                        SourceImage = @SourceImage,
+                        SourceTypeCode = @SourceTypeCode,
+                        txEndTime = @txEndTime,
+                        txStartTime = @txStartTime,
+                        UserID = @UserID
+                        Where SourceGuid = @SourceGuid"
+
+        Try
+            txEndTime = Now
+            CloseConn()
+            CkConn()
+
+            Using connection As New SqlConnection(getRepoConnStr())
+                Using command As New SqlCommand(TSQL, connection)
+                    command.CommandType = CommandType.Text
+                    '**************************************************************************
+                    command.Parameters.AddWithValue("@CRC", CRC)
+                    command.Parameters.AddWithValue("@FileLength", FI.Length)
+                    command.Parameters.AddWithValue("@Imagehash", Imagehash)
+                    command.Parameters.AddWithValue("@ImageLen", FI.Length)
+                    command.Parameters.AddWithValue("@LastAccessDate", LastAccessDate)
+                    command.Parameters.AddWithValue("@LastWriteTime", LastWriteTime)
+                    command.Parameters.AddWithValue("@OcrPending", OcrPending)
+                    command.Parameters.AddWithValue("@OcrPerformed", OcrPerformed)
+                    command.Parameters.AddWithValue("@RecHash", CRC)
+                    command.Parameters.AddWithValue("@RecLen", FI.Length)
+                    command.Parameters.AddWithValue("@RecTimeStamp", RecTimeStamp)
+                    command.Parameters.AddWithValue("@RequireOcr", RequireOcr)
+                    command.Parameters.AddWithValue("@RetentionCode", RetentionCode)
+                    command.Parameters.AddWithValue("@RetentionDate", RetentionDate)
+                    command.Parameters.AddWithValue("@RetentionExpirationDate", RetentionExpirationDate)
+                    command.Parameters.AddWithValue("@RowLastModDate", RowLastModDate)
+                    command.Parameters.AddWithValue("@SourceImage", SourceImage)
+                    command.Parameters.AddWithValue("@txEndTime", txEndTime)
+                    command.Parameters.AddWithValue("@txStartTime", txStartTime)
+                    command.Parameters.AddWithValue("@UserID", gCurrLoginID)
+                    '**************************************************************************
+                    connection.Open()
+                    command.ExecuteNonQuery()
+                End Using
+            End Using
+            Try
+                Dim B1 As Boolean = ApplySourceTypeCode(Environment.MachineName, gCurrLoginID, FI.Name, FI.Extension, SourceGuid)
+            Catch ex As Exception
+                LOG.WriteToArchiveLog("clsDatabaseARCH : updateSingelFile failed to insert ProcessAS : 300 : " + ex.Message)
+                LOG.WriteToFailedLoadLog("clsDatabaseARCH : updateSingelFile : 300 Failed To insert ProcessAS : " + Environment.NewLine + FQN + Environment.NewLine + ex.Message)
+            End Try
+
+        Catch ex As Exception
+            B = False
+            LOG.WriteToArchiveLog("clsDatabaseARCH : updateSingelFile : 100 : ", ex)
+            LOG.WriteToFailedLoadLog("clsDatabaseARCH : updateSingelFile : 100 Failed To Load : " + Environment.NewLine + FQN + Environment.NewLine + ex.Message)
+        End Try
+
+        Return B
+    End Function
+
     Function updateExistingContent(tDict As Dictionary(Of String, String), RowID As String, SourceImage As Byte()) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -27930,7 +28081,7 @@ NextOne:
         Catch ex As Exception
             'Session("ErrorLocation") tbl= 'Session("ErrorLocation") + " : " , ex
             Console.WriteLine(ex.Message)
-            ' xTrace(3084, "insertNewContent", "Failed: " + ex.ToString)
+            ' xTrace(3084, "insertSingleFILE", "Failed: " + ex.ToString)
             B = False
             LOG.WriteToArchiveLog("clsDatabaseARCH : SP_ApplyUpdate : 100 : ", ex)
         End Try
@@ -28181,14 +28332,14 @@ NextOne:
                     LL = 130
                     B = UpdateDataSourceFileInfo(FQN, TgtGuid, FileLength, FileHash)
                 Catch ex As Exception
-                    LOG.WriteToArchiveLog("ERROR 22 InsertBinaryData: LL=" + LL.ToString + vbCrLf + ex.Message)
+                    LOG.WriteToArchiveLog("ERROR 22 InsertBinaryData: LL=" + LL.ToString + environment.NewLine + ex.Message)
                 End Try
 
 
             End Try
         Catch ex As Exception
             B = False
-            LOG.WriteToArchiveLog("ERROR 00 InsertBinaryData: LL=" + LL.ToString + vbCrLf + ex.Message)
+            LOG.WriteToArchiveLog("ERROR 00 InsertBinaryData: LL=" + LL.ToString + environment.NewLine + ex.Message)
         End Try
 
 
@@ -28245,7 +28396,7 @@ NextOne:
                 Try
                     CMD.ExecuteNonQuery()
                 Catch ex As Exception
-                    LOG.WriteToArchiveLog("ERROR 22x1: insertDBUpdate: " + ex.Message + vbCrLf + MySql)
+                    LOG.WriteToArchiveLog("ERROR 22x1: insertDBUpdate: " + ex.Message + environment.NewLine + MySql)
                     B = False
                 End Try
             End Using
@@ -28290,7 +28441,7 @@ NextOne:
                 Try
                     CMD.ExecuteNonQuery()
                 Catch ex As Exception
-                    LOG.WriteToArchiveLog("ERROR 22x: updateDBUpdateLastwrite: " + ex.Message + vbCrLf + MySql)
+                    LOG.WriteToArchiveLog("ERROR 22x: updateDBUpdateLastwrite: " + ex.Message + environment.NewLine + MySql)
                     B = False
                 End Try
             End Using
@@ -28322,7 +28473,7 @@ NextOne:
                 Try
                     CMD.ExecuteNonQuery()
                 Catch ex As Exception
-                    LOG.WriteToArchiveLog("ERROR 22x: ReapplyDBUpdate: " + ex.Message + vbCrLf + MySql)
+                    LOG.WriteToArchiveLog("ERROR 22x: ReapplyDBUpdate: " + ex.Message + environment.NewLine + MySql)
                     B = False
                 End Try
             End Using
@@ -28361,7 +28512,7 @@ NextOne:
                 End Using
             End Using
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR 01A ckUpdateTbl: LL=" + LL.ToString + vbCrLf + connString + vbCrLf + ex.Message)
+            LOG.WriteToArchiveLog("ERROR 01A ckUpdateTbl: LL=" + LL.ToString + environment.NewLine + connString + environment.NewLine + ex.Message)
             B = False
         End Try
 
@@ -28430,7 +28581,7 @@ NextOne:
                         CMD.ExecuteNonQuery()
                         LL = 170
                     Catch ex As Exception
-                        LOG.WriteToArchiveLog("ERROR 22x: updateDBUpdateLastwrite: " + ex.Message + vbCrLf + MySql)
+                        LOG.WriteToArchiveLog("ERROR 22x: updateDBUpdateLastwrite: " + ex.Message + environment.NewLine + MySql)
                         B = False
                     End Try
                     LL = 180
@@ -28439,7 +28590,7 @@ NextOne:
             End Using
             LL = 200
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR 01A ckUpdateTbl: LL=" + LL.ToString + vbCrLf + connString + vbCrLf + ex.Message)
+            LOG.WriteToArchiveLog("ERROR 01A ckUpdateTbl: LL=" + LL.ToString + environment.NewLine + connString + environment.NewLine + ex.Message)
             B = False
         End Try
 

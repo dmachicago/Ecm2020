@@ -74,7 +74,7 @@ Public Class frmRetentionMgt
 
         Catch ex As Exception
             MsgBox("Search Error 165.4x: " + ex.Message)
-            LOG.WriteToSqlLog("Search Error 165.4: " + ex.Message + vbCrLf + MySql)
+            LOG.WriteToSqlLog("Search Error 165.4: " + ex.Message + Environment.NewLine + MySql)
         End Try
 
 
@@ -89,38 +89,38 @@ Public Class frmRetentionMgt
 
         If rbEmails.Checked = True Then
             S = S + " SELECT "
-            S = S + " [SentOn] " + vbCrLf
-            S = S + " ,[ShortSubj]" + vbCrLf
-            S = S + " ,[SenderEmailAddress]" + vbCrLf
-            S = S + " ,[SenderName]" + vbCrLf
-            S = S + " ,[SentTO]" + vbCrLf
-            S = S + " ,[Body] " + vbCrLf
-            S = S + " ,[CC] " + vbCrLf
-            S = S + " ,[Bcc] " + vbCrLf
-            S = S + " ,[CreationTime]" + vbCrLf
-            S = S + " ,[AllRecipients]" + vbCrLf
-            S = S + " ,[ReceivedByName]" + vbCrLf
-            S = S + " ,[ReceivedTime] " + vbCrLf
-            S = S + " ,[MsgSize]" + vbCrLf
-            S = S + " ,[SUBJECT]" + vbCrLf
-            S = S + " ,[OriginalFolder] " + vbCrLf
-            S = S + " ,[EmailGuid], RetentionExpirationDate, isPublic, UserID " + vbCrLf
-            S = S + " FROM EMAIL " + vbCrLf
+            S = S + " [SentOn] " + Environment.NewLine
+            S = S + " ,[ShortSubj]" + Environment.NewLine
+            S = S + " ,[SenderEmailAddress]" + Environment.NewLine
+            S = S + " ,[SenderName]" + Environment.NewLine
+            S = S + " ,[SentTO]" + Environment.NewLine
+            S = S + " ,[Body] " + Environment.NewLine
+            S = S + " ,[CC] " + Environment.NewLine
+            S = S + " ,[Bcc] " + Environment.NewLine
+            S = S + " ,[CreationTime]" + Environment.NewLine
+            S = S + " ,[AllRecipients]" + Environment.NewLine
+            S = S + " ,[ReceivedByName]" + Environment.NewLine
+            S = S + " ,[ReceivedTime] " + Environment.NewLine
+            S = S + " ,[MsgSize]" + Environment.NewLine
+            S = S + " ,[SUBJECT]" + Environment.NewLine
+            S = S + " ,[OriginalFolder] " + Environment.NewLine
+            S = S + " ,[EmailGuid], RetentionExpirationDate, isPublic, UserID " + Environment.NewLine
+            S = S + " FROM EMAIL " + Environment.NewLine
         Else
             S = ""
-            S = S + "Select " + vbCrLf
-            S += vbTab + "[SourceName] 	" + vbCrLf
-            S += vbTab + ",[CreateDate] " + vbCrLf
-            S += vbTab + ",[VersionNbr] 	" + vbCrLf
-            S += vbTab + ",[LastAccessDate] " + vbCrLf
-            S += vbTab + ",[FileLength] " + vbCrLf
-            S += vbTab + ",[LastWriteTime] " + vbCrLf
-            S += vbTab + ",[OriginalFileType] 		" + vbCrLf
-            S += vbTab + ",[isPublic] " + vbCrLf
-            S += vbTab + ",[FQN] " + vbCrLf
-            S += vbTab + ",[SourceGuid] " + vbCrLf
-            S += vbTab + ",[DataSourceOwnerUserID], FileDirectory, RetentionExpirationDate, isMaster " + vbCrLf
-            S += "FROM DataSource " + vbCrLf
+            S = S + "Select " + Environment.NewLine
+            S += vbTab + "[SourceName] 	" + Environment.NewLine
+            S += vbTab + ",[CreateDate] " + Environment.NewLine
+            S += vbTab + ",[VersionNbr] 	" + Environment.NewLine
+            S += vbTab + ",[LastAccessDate] " + Environment.NewLine
+            S += vbTab + ",[FileLength] " + Environment.NewLine
+            S += vbTab + ",[LastWriteTime] " + Environment.NewLine
+            S += vbTab + ",[OriginalFileType] 		" + Environment.NewLine
+            S += vbTab + ",[isPublic] " + Environment.NewLine
+            S += vbTab + ",[FQN] " + Environment.NewLine
+            S += vbTab + ",[SourceGuid] " + Environment.NewLine
+            S += vbTab + ",[DataSourceOwnerUserID], FileDirectory, RetentionExpirationDate, isMaster " + Environment.NewLine
+            S += "FROM DataSource " + Environment.NewLine
         End If
 
         If Unit.Equals("Months") Then
@@ -149,38 +149,38 @@ Public Class frmRetentionMgt
 
         If rbEmails.Checked = True Then
             S = S + " SELECT "
-            S = S + " [SentOn] " + vbCrLf
-            S = S + " ,[ShortSubj]" + vbCrLf
-            S = S + " ,[SenderEmailAddress]" + vbCrLf
-            S = S + " ,[SenderName]" + vbCrLf
-            S = S + " ,[SentTO]" + vbCrLf
-            S = S + " ,[Body] " + vbCrLf
-            S = S + " ,[CC] " + vbCrLf
-            S = S + " ,[Bcc] " + vbCrLf
-            S = S + " ,[CreationTime]" + vbCrLf
-            S = S + " ,[AllRecipients]" + vbCrLf
-            S = S + " ,[ReceivedByName]" + vbCrLf
-            S = S + " ,[ReceivedTime] " + vbCrLf
-            S = S + " ,[MsgSize]" + vbCrLf
-            S = S + " ,[SUBJECT]" + vbCrLf
-            S = S + " ,[OriginalFolder] " + vbCrLf
-            S = S + " ,[EmailGuid], RetentionExpirationDate, isPublic, UserID " + vbCrLf
-            S = S + " FROM EMAIL " + vbCrLf
+            S = S + " [SentOn] " + Environment.NewLine
+            S = S + " ,[ShortSubj]" + Environment.NewLine
+            S = S + " ,[SenderEmailAddress]" + Environment.NewLine
+            S = S + " ,[SenderName]" + Environment.NewLine
+            S = S + " ,[SentTO]" + Environment.NewLine
+            S = S + " ,[Body] " + Environment.NewLine
+            S = S + " ,[CC] " + Environment.NewLine
+            S = S + " ,[Bcc] " + Environment.NewLine
+            S = S + " ,[CreationTime]" + Environment.NewLine
+            S = S + " ,[AllRecipients]" + Environment.NewLine
+            S = S + " ,[ReceivedByName]" + Environment.NewLine
+            S = S + " ,[ReceivedTime] " + Environment.NewLine
+            S = S + " ,[MsgSize]" + Environment.NewLine
+            S = S + " ,[SUBJECT]" + Environment.NewLine
+            S = S + " ,[OriginalFolder] " + Environment.NewLine
+            S = S + " ,[EmailGuid], RetentionExpirationDate, isPublic, UserID " + Environment.NewLine
+            S = S + " FROM EMAIL " + Environment.NewLine
         Else
             S = ""
-            S = S + "Select " + vbCrLf
-            S += vbTab + "[SourceName] 	" + vbCrLf
-            S += vbTab + ",[CreateDate] " + vbCrLf
-            S += vbTab + ",[VersionNbr] 	" + vbCrLf
-            S += vbTab + ",[LastAccessDate] " + vbCrLf
-            S += vbTab + ",[FileLength] " + vbCrLf
-            S += vbTab + ",[LastWriteTime] " + vbCrLf
-            S += vbTab + ",[OriginalFileType] 		" + vbCrLf
-            S += vbTab + ",[isPublic] " + vbCrLf
-            S += vbTab + ",[FQN] " + vbCrLf
-            S += vbTab + ",[SourceGuid] " + vbCrLf
-            S += vbTab + ",[DataSourceOwnerUserID], FileDirectory, RetentionExpirationDate, isMaster " + vbCrLf
-            S += "FROM DataSource " + vbCrLf
+            S = S + "Select " + Environment.NewLine
+            S += vbTab + "[SourceName] 	" + Environment.NewLine
+            S += vbTab + ",[CreateDate] " + Environment.NewLine
+            S += vbTab + ",[VersionNbr] 	" + Environment.NewLine
+            S += vbTab + ",[LastAccessDate] " + Environment.NewLine
+            S += vbTab + ",[FileLength] " + Environment.NewLine
+            S += vbTab + ",[LastWriteTime] " + Environment.NewLine
+            S += vbTab + ",[OriginalFileType] 		" + Environment.NewLine
+            S += vbTab + ",[isPublic] " + Environment.NewLine
+            S += vbTab + ",[FQN] " + Environment.NewLine
+            S += vbTab + ",[SourceGuid] " + Environment.NewLine
+            S += vbTab + ",[DataSourceOwnerUserID], FileDirectory, RetentionExpirationDate, isMaster " + Environment.NewLine
+            S += "FROM DataSource " + Environment.NewLine
         End If
 
         If Unit.Equals("Months") Then
@@ -212,38 +212,38 @@ Public Class frmRetentionMgt
 
         If rbEmails.Checked = True Then
             S = S + " SELECT "
-            S = S + " [SentOn] " + vbCrLf
-            S = S + " ,[ShortSubj]" + vbCrLf
-            S = S + " ,[SenderEmailAddress]" + vbCrLf
-            S = S + " ,[SenderName]" + vbCrLf
-            S = S + " ,[SentTO]" + vbCrLf
-            S = S + " ,[Body] " + vbCrLf
-            S = S + " ,[CC] " + vbCrLf
-            S = S + " ,[Bcc] " + vbCrLf
-            S = S + " ,[CreationTime]" + vbCrLf
-            S = S + " ,[AllRecipients]" + vbCrLf
-            S = S + " ,[ReceivedByName]" + vbCrLf
-            S = S + " ,[ReceivedTime] " + vbCrLf
-            S = S + " ,[MsgSize]" + vbCrLf
-            S = S + " ,[SUBJECT]" + vbCrLf
-            S = S + " ,[OriginalFolder] " + vbCrLf
-            S = S + " ,[EmailGuid], RetentionExpirationDate, isPublic, UserID " + vbCrLf
-            S = S + " FROM EMAIL " + vbCrLf
+            S = S + " [SentOn] " + Environment.NewLine
+            S = S + " ,[ShortSubj]" + Environment.NewLine
+            S = S + " ,[SenderEmailAddress]" + Environment.NewLine
+            S = S + " ,[SenderName]" + Environment.NewLine
+            S = S + " ,[SentTO]" + Environment.NewLine
+            S = S + " ,[Body] " + Environment.NewLine
+            S = S + " ,[CC] " + Environment.NewLine
+            S = S + " ,[Bcc] " + Environment.NewLine
+            S = S + " ,[CreationTime]" + Environment.NewLine
+            S = S + " ,[AllRecipients]" + Environment.NewLine
+            S = S + " ,[ReceivedByName]" + Environment.NewLine
+            S = S + " ,[ReceivedTime] " + Environment.NewLine
+            S = S + " ,[MsgSize]" + Environment.NewLine
+            S = S + " ,[SUBJECT]" + Environment.NewLine
+            S = S + " ,[OriginalFolder] " + Environment.NewLine
+            S = S + " ,[EmailGuid], RetentionExpirationDate, isPublic, UserID " + Environment.NewLine
+            S = S + " FROM EMAIL " + Environment.NewLine
         Else
             S = ""
-            S = S + "Select " + vbCrLf
-            S += vbTab + "[SourceName] 	" + vbCrLf
-            S += vbTab + ",[CreateDate] " + vbCrLf
-            S += vbTab + ",[VersionNbr] 	" + vbCrLf
-            S += vbTab + ",[LastAccessDate] " + vbCrLf
-            S += vbTab + ",[FileLength] " + vbCrLf
-            S += vbTab + ",[LastWriteTime] " + vbCrLf
-            S += vbTab + ",[OriginalFileType] 		" + vbCrLf
-            S += vbTab + ",[isPublic] " + vbCrLf
-            S += vbTab + ",[FQN] " + vbCrLf
-            S += vbTab + ",[SourceGuid] " + vbCrLf
-            S += vbTab + ",[DataSourceOwnerUserID], FileDirectory, RetentionExpirationDate, isMaster " + vbCrLf
-            S += "FROM DataSource " + vbCrLf
+            S = S + "Select " + Environment.NewLine
+            S += vbTab + "[SourceName] 	" + Environment.NewLine
+            S += vbTab + ",[CreateDate] " + Environment.NewLine
+            S += vbTab + ",[VersionNbr] 	" + Environment.NewLine
+            S += vbTab + ",[LastAccessDate] " + Environment.NewLine
+            S += vbTab + ",[FileLength] " + Environment.NewLine
+            S += vbTab + ",[LastWriteTime] " + Environment.NewLine
+            S += vbTab + ",[OriginalFileType] 		" + Environment.NewLine
+            S += vbTab + ",[isPublic] " + Environment.NewLine
+            S += vbTab + ",[FQN] " + Environment.NewLine
+            S += vbTab + ",[SourceGuid] " + Environment.NewLine
+            S += vbTab + ",[DataSourceOwnerUserID], FileDirectory, RetentionExpirationDate, isMaster " + Environment.NewLine
+            S += "FROM DataSource " + Environment.NewLine
         End If
 
         Dim WC As String = " where RetentionExpirationDate <= '" + CDate(Now.ToString) + "'"
@@ -399,41 +399,41 @@ Public Class frmRetentionMgt
 
         If rbEmails.Checked = True Then
             S = S + " SELECT "
-            S = S + " [SentOn] " + vbCrLf
-            S = S + " ,[ShortSubj]" + vbCrLf
-            S = S + " ,[SenderEmailAddress]" + vbCrLf
-            S = S + " ,[SenderName]" + vbCrLf
-            S = S + " ,[SentTO]" + vbCrLf
-            S = S + " ,[Body] " + vbCrLf
-            S = S + " ,[CC] " + vbCrLf
-            S = S + " ,[Bcc] " + vbCrLf
-            S = S + " ,[CreationTime]" + vbCrLf
-            S = S + " ,[AllRecipients]" + vbCrLf
-            S = S + " ,[ReceivedByName]" + vbCrLf
-            S = S + " ,[ReceivedTime] " + vbCrLf
-            S = S + " ,[MsgSize]" + vbCrLf
-            S = S + " ,[SUBJECT]" + vbCrLf
-            S = S + " ,[OriginalFolder] " + vbCrLf
-            S = S + " ,[EmailGuid], RetentionExpirationDate, isPublic, UserID " + vbCrLf
-            S = S + " FROM EMAIL " + vbCrLf
+            S = S + " [SentOn] " + Environment.NewLine
+            S = S + " ,[ShortSubj]" + Environment.NewLine
+            S = S + " ,[SenderEmailAddress]" + Environment.NewLine
+            S = S + " ,[SenderName]" + Environment.NewLine
+            S = S + " ,[SentTO]" + Environment.NewLine
+            S = S + " ,[Body] " + Environment.NewLine
+            S = S + " ,[CC] " + Environment.NewLine
+            S = S + " ,[Bcc] " + Environment.NewLine
+            S = S + " ,[CreationTime]" + Environment.NewLine
+            S = S + " ,[AllRecipients]" + Environment.NewLine
+            S = S + " ,[ReceivedByName]" + Environment.NewLine
+            S = S + " ,[ReceivedTime] " + Environment.NewLine
+            S = S + " ,[MsgSize]" + Environment.NewLine
+            S = S + " ,[SUBJECT]" + Environment.NewLine
+            S = S + " ,[OriginalFolder] " + Environment.NewLine
+            S = S + " ,[EmailGuid], RetentionExpirationDate, isPublic, UserID " + Environment.NewLine
+            S = S + " FROM EMAIL " + Environment.NewLine
 
             WC = " where EmailGuid in (select [ContentGuid] from [RetentionTemp] where [TypeContent] = 'EMAIL' and [UserID] = '" + gCurrUserGuidID + "')"
 
         Else
             S = ""
-            S = S + "Select " + vbCrLf
-            S += vbTab + "[SourceName] 	" + vbCrLf
-            S += vbTab + ",[CreateDate] " + vbCrLf
-            S += vbTab + ",[VersionNbr] 	" + vbCrLf
-            S += vbTab + ",[LastAccessDate] " + vbCrLf
-            S += vbTab + ",[FileLength] " + vbCrLf
-            S += vbTab + ",[LastWriteTime] " + vbCrLf
-            S += vbTab + ",[OriginalFileType] 		" + vbCrLf
-            S += vbTab + ",[isPublic] " + vbCrLf
-            S += vbTab + ",[FQN] " + vbCrLf
-            S += vbTab + ",[SourceGuid] " + vbCrLf
-            S += vbTab + ",[DataSourceOwnerUserID], FileDirectory, RetentionExpirationDate, isMaster " + vbCrLf
-            S += "FROM DataSource " + vbCrLf
+            S = S + "Select " + Environment.NewLine
+            S += vbTab + "[SourceName] 	" + Environment.NewLine
+            S += vbTab + ",[CreateDate] " + Environment.NewLine
+            S += vbTab + ",[VersionNbr] 	" + Environment.NewLine
+            S += vbTab + ",[LastAccessDate] " + Environment.NewLine
+            S += vbTab + ",[FileLength] " + Environment.NewLine
+            S += vbTab + ",[LastWriteTime] " + Environment.NewLine
+            S += vbTab + ",[OriginalFileType] 		" + Environment.NewLine
+            S += vbTab + ",[isPublic] " + Environment.NewLine
+            S += vbTab + ",[FQN] " + Environment.NewLine
+            S += vbTab + ",[SourceGuid] " + Environment.NewLine
+            S += vbTab + ",[DataSourceOwnerUserID], FileDirectory, RetentionExpirationDate, isMaster " + Environment.NewLine
+            S += "FROM DataSource " + Environment.NewLine
 
             WC = " where SourceGuid in (select [ContentGuid] from [RetentionTemp] where [TypeContent] = 'CONTENT' and [UserID] = '" + gCurrUserGuidID + "')"
 

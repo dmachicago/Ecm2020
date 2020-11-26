@@ -1827,11 +1827,11 @@ Public Class clsValidateCodes
                 Dim InsertSql As String = "INSERT INTO LoadProfile (ProfileName,ProfileDesc) VALUES ('" + ProfileName + "','" + ProfileName + "')"
                 Dim B As Boolean = DBARCH.ExecuteSqlNewConn(90605, InsertSql)
                 If Not B Then
-                    LOG.WriteToArchiveLog("ERROR: LoadProfile 100a - " + vbCrLf + InsertSql)
+                    LOG.WriteToArchiveLog("ERROR: LoadProfile 100a - " + Environment.NewLine + InsertSql)
                 End If
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: LoadProfile 100 - " + ex.Message + vbCrLf + ProfileName)
+            LOG.WriteToArchiveLog("ERROR: LoadProfile 100 - " + ex.Message + Environment.NewLine + ProfileName)
         End Try
 
 
@@ -1855,13 +1855,13 @@ Public Class clsValidateCodes
                     B = DBARCH.ExecuteSqlNewConn(90607, InsertSql)
 
                     If Not B Then
-                        LOG.WriteToArchiveLog("ERROR: LoadProfileItems 100a - " + vbCrLf + InsertSql)
+                        LOG.WriteToArchiveLog("ERROR: LoadProfileItems 100a - " + Environment.NewLine + InsertSql)
                     End If
 
                 End If
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: LoadProfileItems 100 - " + ex.Message + vbCrLf + ProfileName + " : " + SourceTypeCode)
+            LOG.WriteToArchiveLog("ERROR: LoadProfileItems 100 - " + ex.Message + Environment.NewLine + ProfileName + " : " + SourceTypeCode)
         End Try
 
 
@@ -1958,7 +1958,7 @@ Public Class clsValidateCodes
         B = DBARCH.ExecuteSqlNewConn(S, False)
         If Not B Then
             LOG.WriteToArchiveLog("ERROR 62952.14: Failed to add " + AttributeName + " to list.")
-            LOG.WriteToArchiveLog("ERROR 62952.14: Sql Statement " + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR 62952.14: Sql Statement " + Environment.NewLine + S)
         End If
 
     End Sub

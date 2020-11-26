@@ -343,7 +343,7 @@ Public Class clsZipFiles
             If bcnt = 0 Then
                 Dim SubstituteFileType$ = DBARCH.getProcessFileAsExt(file_SourceTypeCode$)
                 If SubstituteFileType$ = Nothing Then
-                    Dim MSG$ = "The file type '" + file_SourceTypeCode$ + "' is undefined." + vbCrLf + "DO YOU WISH TO AUTOMATICALLY DEFINE IT?" + vbCrLf + "This will allow content to be archived, but not searched."
+                    Dim MSG$ = "The file type '" + file_SourceTypeCode$ + "' is undefined." + Environment.NewLine + "DO YOU WISH TO AUTOMATICALLY DEFINE IT?" + Environment.NewLine + "This will allow content to be archived, but not searched."
                     'Dim dlgRes As DialogResult = 'MessageBox.Show(MSG, "Filetype Undefined", MessageBoxButtons.YesNo)
 
                     UNASGND.setApplied("0")

@@ -81,7 +81,7 @@ Public Class clsLogging
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -108,8 +108,8 @@ Public Class clsLogging
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + "___________________________________________________________________________________" + vbCrLf)
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + "___________________________________________________________________________________" + Environment.NewLine)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -126,7 +126,7 @@ Public Class clsLogging
             'Dim cpath  = getEnvVarSpecialFolderApplicationData()
             'Dim tFQN  = cpath  + "\ECMLibrary.SQL.Application.Log.txt"
             Using sw As StreamWriter = New StreamWriter(tFqn, True)
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -148,7 +148,7 @@ Public Class clsLogging
             End If
             Dim tFQN As String = cPath + "\ECMLibrary.Archive.SQL.Statements.txt"
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -170,7 +170,7 @@ Public Class clsLogging
             End If
             Dim tFQN As String = FQN
             Using sw As StreamWriter = New StreamWriter(tFQN, False)
-                sw.WriteLine(FileText + vbCrLf)
+                sw.WriteLine(FileText + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -230,7 +230,7 @@ Public Class clsLogging
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
             If gRunUnattended = True Then
@@ -268,7 +268,7 @@ Public Class clsLogging
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
             If gRunUnattended = True Then
@@ -298,7 +298,7 @@ Public Class clsLogging
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + TypeRec + Chr(254) + RecGuid + Chr(254) + RecIdentifier + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + TypeRec + Chr(254) + RecGuid + Chr(254) + RecIdentifier + Environment.NewLine)
                 sw.Close()
             End Using
             If gRunUnattended = True Then
@@ -328,7 +328,7 @@ Public Class clsLogging
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + TypeRec + Chr(254) + RecGuid + Chr(254) + RecIdentifier + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + TypeRec + Chr(254) + RecGuid + Chr(254) + RecIdentifier + Environment.NewLine)
                 sw.Close()
             End Using
             If gRunUnattended = True Then
@@ -483,7 +483,7 @@ GetNextLine:
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
             If gRunUnattended = True Then
@@ -523,7 +523,7 @@ GetNextLine:
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
             If gRunUnattended = True Then
@@ -559,7 +559,7 @@ GetNextLine:
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -592,7 +592,7 @@ GetNextLine:
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -625,7 +625,7 @@ GetNextLine:
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -648,7 +648,7 @@ GetNextLine:
             End If
             Dim tFQN As String = cPath + "\ListenerFilesLog.ECM"
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -680,7 +680,7 @@ GetNextLine:
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -724,7 +724,7 @@ GetNextLine:
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -770,7 +770,7 @@ GetNextLine:
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -802,7 +802,7 @@ GetNextLine:
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -838,7 +838,7 @@ GetNextLine:
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -863,9 +863,9 @@ GetNextLine:
                 Dim wi As WindowsIdentity = System.Security.Principal.WindowsIdentity.GetCurrent()
                 Dim userIdentity As String = wi.Name
                 Dim AuthenticationType As String = wi.AuthenticationType
-                errmsg = errmsg + vbCrLf + "userIdentity: " + userIdentity
-                errmsg = errmsg + vbCrLf + "AuthenticationType: " + AuthenticationType
-                errmsg = errmsg + vbCrLf + "IsAuthenticated: " + wi.IsAuthenticated.ToString
+                errmsg = errmsg + Environment.NewLine + "userIdentity: " + userIdentity
+                errmsg = errmsg + Environment.NewLine + "AuthenticationType: " + AuthenticationType
+                errmsg = errmsg + Environment.NewLine + "IsAuthenticated: " + wi.IsAuthenticated.ToString
                 wi.Dispose()
             End If
 
@@ -903,7 +903,7 @@ GetNextLine:
             Dim tFQN As String = cPath + "\ECMLibrary.Archive.Log." + SerialNo + "txt"
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
             End Using
         Catch ex As Exception
             If ddebug Then Console.WriteLine("clsDma : WriteToArchiveLog : 688 : " + ex.Message)
@@ -932,7 +932,7 @@ GetNextLine:
             Dim SerialNo As String = M + "." + D + "." + Y + "."
             Dim tFQN As String = cPath + "\FAILED_TO_LOAD.Log." + SerialNo + "txt"
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
             End Using
         Catch ex As Exception
             If ddebug Then Console.WriteLine("clsDma : WriteToArchiveLog : 688 : " + ex.Message)
@@ -964,7 +964,7 @@ GetNextLine:
             Dim tFQN As String = cPath + "\ECMLibrary.SQLite.Log." + SerialNo + "txt"
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
             End Using
         Catch ex As Exception
             If ddebug Then Console.WriteLine("clsDma : WriteToArchiveLog : 688 : " + ex.Message)
@@ -998,7 +998,7 @@ GetNextLine:
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 sw.WriteLine("-- " + Now.ToString)
-                sw.WriteLine(Msg + vbCrLf)
+                sw.WriteLine(Msg + Environment.NewLine)
             End Using
         Catch ex As Exception
             If ddebug Then Console.WriteLine("clsDma : WriteToArchiveLog : 688 : " + ex.Message)
@@ -1102,7 +1102,7 @@ GetNextLine:
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -1179,7 +1179,7 @@ GetNextLine:
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -1215,7 +1215,7 @@ GetNextLine:
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -1269,7 +1269,7 @@ GetNextLine:
                 Try
                     Kill(FQN)
                 Catch ex As Exception
-                    MessageBox.Show("Delete Notice: " + FQN + vbCrLf + ex.Message)
+                    MessageBox.Show("Delete Notice: " + FQN + Environment.NewLine + ex.Message)
                 End Try
             Next
 
@@ -1335,7 +1335,7 @@ GetNextLine:
                 Try
                     Kill(FQN)
                 Catch ex As Exception
-                    MessageBox.Show("Delete Notice: " + FQN + vbCrLf + ex.Message)
+                    MessageBox.Show("Delete Notice: " + FQN + Environment.NewLine + ex.Message)
                 End Try
             Next
 
@@ -1401,7 +1401,7 @@ GetNextLine:
     Public Sub WriteToTempFile(ByVal FQN As String, ByVal Msg As String)
         Try
             Using sw As StreamWriter = New StreamWriter(FQN, True)
-                sw.WriteLine(Msg + vbCrLf)
+                sw.WriteLine(Msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -1467,7 +1467,7 @@ GetNextLine:
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
             If gRunUnattended = True Then

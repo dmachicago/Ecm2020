@@ -411,10 +411,10 @@ Dim msg AS String  = "This will DELETE the selected archive schedule, are you su
         End If
 
         If bChecks = False Then
-            Dim xmsg As String = "INFO: Good job, you have tried to add a schedule without defining what to archive." + vbCrLf
-            xmsg += "On the bottom left side of the screen you will see four check boxes. " + vbCrLf
-            xmsg += "Until you pick at least one, you will see this message - you decide. " + vbCrLf
-            log.WriteToArchiveLog(xmsg)
+            Dim xmsg As String = "INFO: Good job, you have tried to add a schedule without defining what to archive." + Environment.NewLine
+            xmsg += "On the bottom left side of the screen you will see four check boxes. " + Environment.NewLine
+            xmsg += "Until you pick at least one, you will see this message - you decide. " + Environment.NewLine
+            LOG.WriteToArchiveLog(xmsg)
             messagebox.show(xmsg)
         End If
     End Sub

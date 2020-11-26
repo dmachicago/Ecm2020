@@ -44,12 +44,12 @@ Public Class frmLicense
         Dim CustomerID As String = txtCompanyID.Text.Trim
         bApplied = False
         If CustomerID.Length = 0 Then
-            MessageBox.Show("Customer ID required: " + vbCrLf + "If you do not know your Customer ID, " + vbCrLf + "please contact ECM Support or your ECM administrator.")
+            MessageBox.Show("Customer ID required: " + Environment.NewLine + "If you do not know your Customer ID, " + Environment.NewLine + "please contact ECM Support or your ECM administrator.")
             Return
         End If
         Dim SelectedServer As String = txtServers.Text.Trim
         If SelectedServer.Length = 0 Then
-            MessageBox.Show("Please select the Server to which this license applies." + vbCrLf + "The server name and must match that contained within the license.")
+            MessageBox.Show("Please select the Server to which this license applies." + Environment.NewLine + "The server name and must match that contained within the license.")
             Return
         End If
         Dim FQN As String = txtFqn.Text
@@ -69,12 +69,12 @@ Public Class frmLicense
         Dim CustomerID As String = txtCompanyID.Text.Trim
         bApplied = False
         If CustomerID.Length = 0 Then
-            MessageBox.Show("Customer ID required: " + vbCrLf + "If you do not know your Customer ID, " + vbCrLf + "please contact ECM Support or your ECM administrator.")
+            MessageBox.Show("Customer ID required: " + Environment.NewLine + "If you do not know your Customer ID, " + Environment.NewLine + "please contact ECM Support or your ECM administrator.")
             Return
         End If
         Dim SelectedServer As String = txtServers.Text.Trim
         If SelectedServer.Length = 0 Then
-            MessageBox.Show("Please select the Server to which this license applies." + vbCrLf + "The server name and must match that contained within the license.")
+            MessageBox.Show("Please select the Server to which this license applies." + Environment.NewLine + "The server name and must match that contained within the license.")
             Return
         End If
         Dim bCustIdGood = RS.ckCompanyID(CustomerID)
@@ -214,7 +214,7 @@ Public Class frmLicense
             SB.Text = "License data ready to apply."
             LL = 10
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: frmLicense:GetGridData 100 - LL = " + LL.ToString + vbCrLf + ex.Message)
+            LOG.WriteToArchiveLog("ERROR: frmLicense:GetGridData 100 - LL = " + LL.ToString + Environment.NewLine + ex.Message)
         End Try
 
     End Sub
@@ -243,12 +243,12 @@ Public Class frmLicense
         End If
         Dim CustomerID As String = txtCompanyID.Text.Trim
         If CustomerID.Length = 0 Then
-            MessageBox.Show("Customer ID required: " + vbCrLf + "If you do not know your Customer ID, " + vbCrLf + "please contact ECM Support or your ECM administrator.")
+            MessageBox.Show("Customer ID required: " + Environment.NewLine + "If you do not know your Customer ID, " + Environment.NewLine + "please contact ECM Support or your ECM administrator.")
             Return
         End If
         Dim SelectedServer As String = txtServers.Text.Trim
         If SelectedServer.Length = 0 Then
-            MessageBox.Show("Please select the Server to which this license applies." + vbCrLf + "The server name and must match that contained within the license.")
+            MessageBox.Show("Please select the Server to which this license applies." + Environment.NewLine + "The server name and must match that contained within the license.")
             Return
         End If
         Dim bCustIdGood = RS.ckCompanyID(CustomerID)
@@ -260,8 +260,8 @@ Public Class frmLicense
         Dim BBB As Boolean = RS.getLicenseServerName(CustomerID, ServerName, SqlInstanceName)
 
         If xMachineID.Equals("ECMNEWXX") Then
-            Dim msg As String = "This is a new license and can be applied to the currently attached repository." + vbCrLf
-            msg = msg + " Do you wish to apply the license to server '" + CurrServerName + "' ?" + vbCrLf
+            Dim msg As String = "This is a new license and can be applied to the currently attached repository." + Environment.NewLine
+            msg = msg + " Do you wish to apply the license to server '" + CurrServerName + "' ?" + Environment.NewLine
             Dim dlgRes As DialogResult = MessageBox.Show(msg, "License Installation", MessageBoxButtons.YesNo)
             If dlgRes = Windows.Forms.DialogResult.No Then
                 Return
@@ -420,8 +420,8 @@ Public Class frmLicense
 
     Private Sub btnShowCurrentDB_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnShowCurrentDB.Click
         Dim tMsg As String = ""
-        tMsg += "User   Conn Str: " + My.Settings("UserDefaultConnString") + vbCrLf
-        tMsg += "Config Conn Str: " + System.Configuration.ConfigurationManager.AppSettings("ECMREPO") + vbCrLf
+        tMsg += "User   Conn Str: " + My.Settings("UserDefaultConnString") + Environment.NewLine
+        tMsg += "Config Conn Str: " + System.Configuration.ConfigurationManager.AppSettings("ECMREPO") + Environment.NewLine
         MessageBox.Show(tMsg)
     End Sub
 

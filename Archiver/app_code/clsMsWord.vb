@@ -45,7 +45,7 @@ Public Class clsMsWord
                 Debug.Print(oProp.Value)
             Next
         Catch ex As Exception
-            MessageBox.Show("Error 8273.1 : Could not open document '" + FQN + "'" + vbCrLf + ex.Message)
+            MessageBox.Show("Error 8273.1 : Could not open document '" + FQN + "'" + Environment.NewLine + ex.Message)
             LOG.WriteToArchiveLog("clsMsWord : getMetaData : 17 : " + ex.Message)
         End Try
     End Sub
@@ -87,9 +87,9 @@ Public Class clsMsWord
             'Make the application invisible
             oWord.Visible = False
         Catch ex As Exception
-            If ddebug Then Debug.Print("Error 23977.1 : ABORT - Document Issue: '" + FQN + "'" + vbCrLf + ex.Message)
-            DBARCH.xTrace(23977, SS, "Error 23977 : Could not process WORD document '" + FQN + "'" + vbCrLf + ex.Message)
-            LOG.WriteToArchiveLog("clsMsWord : initWordDocMetaData : 32 : " + ex.Message + vbCrLf + FQN)
+            If ddebug Then Debug.Print("Error 23977.1 : ABORT - Document Issue: '" + FQN + "'" + Environment.NewLine + ex.Message)
+            DBARCH.xTrace(23977, SS, "Error 23977 : Could not process WORD document '" + FQN + "'" + Environment.NewLine + ex.Message)
+            LOG.WriteToArchiveLog("clsMsWord : initWordDocMetaData : 32 : " + ex.Message + Environment.NewLine + FQN)
             Return
         End Try
 
@@ -157,7 +157,7 @@ Public Class clsMsWord
 
 
         Catch ex As Exception
-            If ddebug Then Debug.Print("Error 8273.1 : Could not open document '" + FQN + "'" + vbCrLf + ex.Message)
+            If ddebug Then Debug.Print("Error 8273.1 : Could not open document '" + FQN + "'" + Environment.NewLine + ex.Message)
             DBARCH.xTrace(23947, "InitWordDocMetaData", "ABORT - Document Issue: Could not open document '" + FQN + "' : " + ex.Message.ToString)
         Finally
             Try
@@ -184,7 +184,7 @@ Public Class clsMsWord
 
 
     End Sub
-    Public Sub initExcelMetaData(ByVal FQN AS String , ByVal DocGuid AS String , ByVal OriginalFileType AS String )
+    Public Sub initExcelMetaData(ByVal FQN As String, ByVal DocGuid As String, ByVal OriginalFileType As String)
         'Open the workbook\
 
         If Office2007 = 0 Then
@@ -252,7 +252,7 @@ Public Class clsMsWord
                     'If ddebug Then
 
                     'End If
-                    Console.WriteLine("NOTICE 23988.1 : ABORT - Document Issue: '" + FQN + "'" + vbCrLf + ex.Message)
+                    Console.WriteLine("NOTICE 23988.1 : ABORT - Document Issue: '" + FQN + "'" + Environment.NewLine + ex.Message)
                     'Return
                 End Try
 
@@ -261,7 +261,7 @@ Public Class clsMsWord
                 oBuiltInProps = Nothing
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("NOTIFICATION: clsMsWord : initExcelMetaData : 94 -No metadata available- : LL = " + LL.ToString + " : " + FQN + " :ErrMsg- " + ex.Message + vbCrLf + FQN)
+            LOG.WriteToArchiveLog("NOTIFICATION: clsMsWord : initExcelMetaData : 94 -No metadata available- : LL = " + LL.ToString + " : " + FQN + " :ErrMsg- " + ex.Message + Environment.NewLine + FQN)
         Finally
             oExcelApp.Application.Quit()
             oExcelApp.Quit()

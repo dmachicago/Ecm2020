@@ -496,52 +496,52 @@ Public Class clsDataSource_V2
         s = s + "GraphicContainsText,"
         s = s + "OcrText,"
         s = s + "ImageHiddenText,"
-        s = s + "isWebPage, CRC, ImageHash) values " + vbCrLf + " ("
-        s = s + "'" + RowGuid + "'" + "," + vbCrLf
-        s = s + "'" + SourceGuid + "'" + "," + vbCrLf
-        s = s + "'" + CreateDate + "'" + "," + vbCrLf
-        s = s + "'" + SourceName + "'" + "," + vbCrLf
+        s = s + "isWebPage, CRC, ImageHash) values " + Environment.NewLine + " ("
+        s = s + "'" + RowGuid + "'" + "," + Environment.NewLine
+        s = s + "'" + SourceGuid + "'" + "," + Environment.NewLine
+        s = s + "'" + CreateDate + "'" + "," + Environment.NewLine
+        s = s + "'" + SourceName + "'" + "," + Environment.NewLine
         'SourceImage
-        s = s + "null" + "," + vbCrLf
-        s = s + "'" + SourceTypeCode + "'" + "," + vbCrLf
-        s = s + "'" + FQN + "'" + "," + vbCrLf
-        s = s + VersionNbr + "," + vbCrLf
-        s = s + "'" + LastAccessDate + "'" + "," + vbCrLf
-        s = s + "-1" + "," + vbCrLf
-        s = s + "'" + LastWriteTime + "'" + "," + vbCrLf
-        s = s + "'" + UserID + "'" + "," + vbCrLf
-        s = s + "'" + DataSourceOwnerUserID + "'" + "," + vbCrLf
-        s = s + "'" + isPublic + "'" + "," + vbCrLf
-        s = s + "'" + FileDirectory + "'" + "," + vbCrLf
-        s = s + "'" + OriginalFileType + "'" + "," + vbCrLf
-        s = s + "'" + RetentionExpirationDate + "'" + "," + vbCrLf
-        s = s + "'" + IsPublicPreviousState + "'" + "," + vbCrLf
-        s = s + "'" + isAvailable + "'" + "," + vbCrLf
-        s = s + "'" + isContainedWithinZipFile + "'" + "," + vbCrLf
-        s = s + "'" + IsZipFile + "'" + "," + vbCrLf
+        s = s + "null" + "," + Environment.NewLine
+        s = s + "'" + SourceTypeCode + "'" + "," + Environment.NewLine
+        s = s + "'" + FQN + "'" + "," + Environment.NewLine
+        s = s + VersionNbr + "," + Environment.NewLine
+        s = s + "'" + LastAccessDate + "'" + "," + Environment.NewLine
+        s = s + "-1" + "," + Environment.NewLine
+        s = s + "'" + LastWriteTime + "'" + "," + Environment.NewLine
+        s = s + "'" + UserID + "'" + "," + Environment.NewLine
+        s = s + "'" + DataSourceOwnerUserID + "'" + "," + Environment.NewLine
+        s = s + "'" + isPublic + "'" + "," + Environment.NewLine
+        s = s + "'" + FileDirectory + "'" + "," + Environment.NewLine
+        s = s + "'" + OriginalFileType + "'" + "," + Environment.NewLine
+        s = s + "'" + RetentionExpirationDate + "'" + "," + Environment.NewLine
+        s = s + "'" + IsPublicPreviousState + "'" + "," + Environment.NewLine
+        s = s + "'" + isAvailable + "'" + "," + Environment.NewLine
+        s = s + "'" + isContainedWithinZipFile + "'" + "," + Environment.NewLine
+        s = s + "'" + IsZipFile + "'" + "," + Environment.NewLine
         'DataVerified 
-        s = s + "null" + "," + vbCrLf
-        s = s + "'" + ZipFileGuid + "'" + "," + vbCrLf
-        s = s + "'" + ZipFileFQN + "'" + "," + vbCrLf
-        s = s + "'" + Description + "'" + "," + vbCrLf
-        s = s + "'" + KeyWords + "'" + "," + vbCrLf
-        s = s + "'" + Notes + "'" + "," + vbCrLf
-        s = s + "'" + isPerm + "'" + "," + vbCrLf
-        s = s + "'" + isMaster + "'" + "," + vbCrLf
-        s = s + "'" + CreationDate + "'" + "," + vbCrLf
-        s = s + "'" + OcrPerformed + "'" + "," + vbCrLf
-        s = s + "'" + isGraphic + "'" + "," + vbCrLf
-        s = s + "'" + GraphicContainsText + "'" + "," + vbCrLf
-        s = s + "'" + OcrText + "'" + "," + vbCrLf
-        s = s + "'" + ImageHiddenText + "'" + "," + vbCrLf
-        s = s + "'" + isWebPage + "'" + "," + vbCrLf
-        s = s + "'" + FileHash + "'" + "," + vbCrLf
+        s = s + "null" + "," + Environment.NewLine
+        s = s + "'" + ZipFileGuid + "'" + "," + Environment.NewLine
+        s = s + "'" + ZipFileFQN + "'" + "," + Environment.NewLine
+        s = s + "'" + Description + "'" + "," + Environment.NewLine
+        s = s + "'" + KeyWords + "'" + "," + Environment.NewLine
+        s = s + "'" + Notes + "'" + "," + Environment.NewLine
+        s = s + "'" + isPerm + "'" + "," + Environment.NewLine
+        s = s + "'" + isMaster + "'" + "," + Environment.NewLine
+        s = s + "'" + CreationDate + "'" + "," + Environment.NewLine
+        s = s + "'" + OcrPerformed + "'" + "," + Environment.NewLine
+        s = s + "'" + isGraphic + "'" + "," + Environment.NewLine
+        s = s + "'" + GraphicContainsText + "'" + "," + Environment.NewLine
+        s = s + "'" + OcrText + "'" + "," + Environment.NewLine
+        s = s + "'" + ImageHiddenText + "'" + "," + Environment.NewLine
+        s = s + "'" + isWebPage + "'" + "," + Environment.NewLine
+        s = s + "'" + FileHash + "'" + "," + Environment.NewLine
         s = s + "'" + FileHash + "'" + ")"
         Dim BB As Boolean = False
         BB = DBARCH.ExecuteSqlNewConn(s, False)
 
         If Not BB Then
-            LOG.WriteToArchiveLog("ERROR clsDataSource_V2 00 Insert: " + vbCrLf + s)
+            LOG.WriteToArchiveLog("ERROR clsDataSource_V2 00 Insert: " + Environment.NewLine + s)
         End If
 
         Dim DoNotProcess As Boolean = True
@@ -549,7 +549,7 @@ Public Class clsDataSource_V2
             s = "Update DataSource set CRC = '" + FileHash + "',ImageHash = '" + FileHash + "'  where SourceGuid = '" + RowGuid + "'"
             BB = DBARCH.ExecuteSqlNewConn(s, False)
             If Not BB Then
-                LOG.WriteToArchiveLog("ERROR clsDataSource_V2 01 Insert: " + vbCrLf + s)
+                LOG.WriteToArchiveLog("ERROR clsDataSource_V2 01 Insert: " + Environment.NewLine + s)
             End If
         End If
 
@@ -946,7 +946,7 @@ Public Class clsDataSource_V2
             b = True
         Catch ex As Exception
             Console.WriteLine(command.CommandText)
-            LOG.WriteToArchiveLog("Error 22.345.22 - Failed to add source image." + vbCrLf + command.CommandText)
+            LOG.WriteToArchiveLog("Error 22.345.22 - Failed to add source image." + Environment.NewLine + command.CommandText)
             b = False
         End Try
         Return b

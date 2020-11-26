@@ -207,7 +207,7 @@ Public Class clsQuickInventory
                                                 End If
                                                 LL = 13
                                             Catch ex As Exception
-                                                LOG.WriteToArchiveLog("ERROR ProcessDirectory 100: LL=" + LL.ToString + vbCrLf + FQN + vbCrLf + ex.Message)
+                                                LOG.WriteToArchiveLog("ERROR ProcessDirectory 100: LL=" + LL.ToString + Environment.NewLine + FQN + Environment.NewLine + ex.Message)
                                             End Try
                                         Else
                                             LL = 14
@@ -221,7 +221,7 @@ Public Class clsQuickInventory
                                 End If
                                 LL = 18
                             Catch ex As Exception
-                                LOG.WriteToArchiveLog("ERROR ProcessDirectory 11: LL=" + LL.ToString + vbCrLf + FQN + vbCrLf + ex.Message)
+                                LOG.WriteToArchiveLog("ERROR ProcessDirectory 11: LL=" + LL.ToString + Environment.NewLine + FQN + Environment.NewLine + ex.Message)
                             End Try
                             LL = 19
                             di = Nothing
@@ -231,12 +231,12 @@ Public Class clsQuickInventory
                         LOG.WriteToArchiveLog("Notice 01: skipping systems directory: LL=" + LL.ToString + " : " + CurrDir + "/System Volume Information")
                     End If
                 Catch ex As Exception
-                    LOG.WriteToArchiveLog("ERROR ProcessDirectory 22X1: LL=" + LL.ToString + " : " + "DIRNAME: " + CurrDir + vbCrLf + ex.Message)
+                    LOG.WriteToArchiveLog("ERROR ProcessDirectory 22X1: LL=" + LL.ToString + " : " + "DIRNAME: " + CurrDir + Environment.NewLine + ex.Message)
                 End Try
             Next
         Catch ex As Exception
 
-            LOG.WriteToArchiveLog("ERROR Processdirectory 00: LL=" + LL.ToString + "Recurse <" + Recurse + ">" + vbCrLf + "DIRNAME: <" + DirName + ">" + vbCrLf + "FQN: <" + FQN + ">" + vbCrLf + ex.Message)
+            LOG.WriteToArchiveLog("ERROR Processdirectory 00: LL=" + LL.ToString + "Recurse <" + Recurse + ">" + Environment.NewLine + "DIRNAME: <" + DirName + ">" + Environment.NewLine + "FQN: <" + FQN + ">" + Environment.NewLine + ex.Message)
         End Try
 
         watch.Stop()

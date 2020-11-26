@@ -81,7 +81,7 @@ Public Class clsSql
 
         GeneratedSQL = ""
         '**WDM Removed 7/12/2009 GeneratedSQL  = genHeader()
-        GeneratedSQL += vbCrLf
+        GeneratedSQL += Environment.NewLine
 
 
         If getCountOnly Then
@@ -93,7 +93,7 @@ Public Class clsSql
                 GeneratedSQL += genIsAbout(ckWeighted, ckBusiness, SearchString, False)
             End If
 
-            GeneratedSQL += " WHERE " + vbCrLf
+            GeneratedSQL += " WHERE " + Environment.NewLine
 
             'genDocWhereClause(WhereClause )
             Dim ContainsClause As String = ""
@@ -111,12 +111,12 @@ Public Class clsSql
             UserSql = genAdminContentSql(isAdmin, ckLimitToLib, LibraryName)
             '***********************************************************************
             If ContainsClause.Length Then
-                GeneratedSQL = GeneratedSQL + vbCrLf + ContainsClause
+                GeneratedSQL = GeneratedSQL + Environment.NewLine + ContainsClause
                 If bSaveToClipBoard Then SetToClipBoard(GeneratedSQL)
             End If
 
             If bCopyToClipboard Then
-                Dim tClip As String = "/* Part2 */ " + vbCrLf
+                Dim tClip As String = "/* Part2 */ " + Environment.NewLine
                 tClip += GeneratedSQL
                 If bSaveToClipBoard Then SetToClipBoard(tClip)
                 Debug.Print(tClip)
@@ -124,7 +124,7 @@ Public Class clsSql
 
 
             If UserSql.Length > 0 Then
-                GeneratedSQL += vbCrLf + UserSql
+                GeneratedSQL += Environment.NewLine + UserSql
             End If
         End If
 
@@ -132,25 +132,25 @@ Public Class clsSql
         If getCountOnly Then
         Else
             If ckWeighted = True Then
-                GeneratedSQL = GeneratedSQL + " and KEY_TBL.RANK >= " + MinRating.ToString + vbCrLf
-                '**WDM 6/1/2009 GeneratedSQL  = GeneratedSQL  + " /* and KEY_TBL.RANK >= " + MinRating.ToString + " */" + vbCrLf
+                GeneratedSQL = GeneratedSQL + " and KEY_TBL.RANK >= " + MinRating.ToString + Environment.NewLine
+                '**WDM 6/1/2009 GeneratedSQL  = GeneratedSQL  + " /* and KEY_TBL.RANK >= " + MinRating.ToString + " */" + environment.NewLine
                 If bSaveToClipBoard Then SetToClipBoard(GeneratedSQL)
             Else
             End If
 
 
             If ckWeighted Then
-                'GeneratedSQL  += vbCrLf + " or isPublic = 'Y' "
-                GeneratedSQL += vbCrLf + " ORDER BY KEY_TBL.RANK DESC "
+                'GeneratedSQL  += environment.NewLine + " or isPublic = 'Y' "
+                GeneratedSQL += Environment.NewLine + " ORDER BY KEY_TBL.RANK DESC "
             Else
-                'GeneratedSQL  += vbCrLf + " or isPublic = 'Y' "
-                GeneratedSQL += vbCrLf + " order by [SourceName] "
+                'GeneratedSQL  += environment.NewLine + " or isPublic = 'Y' "
+                GeneratedSQL += Environment.NewLine + " order by [SourceName] "
             End If
         End If
 
 
         If bCopyToClipboard Then
-            Dim tClip As String = "/* Final */ " + vbCrLf
+            Dim tClip As String = "/* Final */ " + Environment.NewLine
             tClip += GeneratedSQL
             If bSaveToClipBoard Then SetToClipBoard(tClip)
             If bSaveToClipBoard Then LOG.WriteToArchiveLog(tClip)
@@ -284,7 +284,7 @@ Public Class clsSql
         End If
 
 
-        GeneratedSQL = GeneratedSQL + " WHERE " + vbCrLf
+        GeneratedSQL = GeneratedSQL + " WHERE " + Environment.NewLine
         If bSaveToClipBoard Then SetToClipBoard(GeneratedSQL)
 
 
@@ -292,21 +292,21 @@ Public Class clsSql
         ContainsClause = genContainsClause(txtSearch, ckBusiness, ckWeighted, True, ckLimitToExisting, ThesaurusList, txtThesaurus, cbThesaurusText, "EMAIL")
 
         If ContainsClause.Length > 0 Then
-            GeneratedSQL = GeneratedSQL + vbCrLf + ContainsClause
+            GeneratedSQL = GeneratedSQL + Environment.NewLine + ContainsClause
             If bSaveToClipBoard Then SetToClipBoard(GeneratedSQL)
         End If
 
 
         If bCopyToClipboard Then
-            Dim tClip As String = "/* WhereClause  */ " + vbCrLf
+            Dim tClip As String = "/* WhereClause  */ " + Environment.NewLine
             tClip += WhereClause
             If bSaveToClipBoard Then SetToClipBoard(tClip)
             Debug.Print(tClip)
         End If
 
-        EmailSql = GeneratedSQL + vbCrLf
+        EmailSql = GeneratedSQL + Environment.NewLine
         If bCopyToClipboard Then
-            Dim tClip As String = "/* ContainsClause */ " + vbCrLf
+            Dim tClip As String = "/* ContainsClause */ " + Environment.NewLine
             tClip += EmailSql
             If bSaveToClipBoard Then SetToClipBoard(tClip)
             Debug.Print(tClip)
@@ -315,24 +315,24 @@ Public Class clsSql
 
         If ContainsClause.Trim.Length > 0 Then
 
-            EmailSql = GeneratedSQL + vbCrLf
-            EmailSql += " " + vbCrLf + WhereClause + vbCrLf
+            EmailSql = GeneratedSQL + Environment.NewLine
+            EmailSql += " " + Environment.NewLine + WhereClause + Environment.NewLine
 
             If bSaveToClipBoard Then SetToClipBoard(EmailSql)
 
             If getCountOnly Then
                 EmailSql += UserSql
             Else
-                EmailSql += vbCrLf + UserSql
+                EmailSql += Environment.NewLine + UserSql
 
                 If ckWeighted = True Then
-                    'EmailSql += " and KEY_TBL.RANK >= " + MinRating.ToString + vbCrLf
-                    'EmailSql += vbCrLf + " ORDER BY KEY_TBL.RANK DESC "
+                    'EmailSql += " and KEY_TBL.RANK >= " + MinRating.ToString + environment.NewLine
+                    'EmailSql += environment.NewLine + " ORDER BY KEY_TBL.RANK DESC "
 
-                    '**WDM 6/1/2008 EmailSql += " /* and KEY_TBL.RANK >= " + MinRating.ToString + " */" + vbCrLf
-                    EmailSql += "    and KEY_TBL.RANK >= " + MinRating.ToString + vbCrLf
+                    '**WDM 6/1/2008 EmailSql += " /* and KEY_TBL.RANK >= " + MinRating.ToString + " */" + environment.NewLine
+                    EmailSql += "    and KEY_TBL.RANK >= " + MinRating.ToString + Environment.NewLine
 
-                    Dim IncludeEmailAttachmentsQry As String = EmailSql + vbCrLf
+                    Dim IncludeEmailAttachmentsQry As String = EmailSql + Environment.NewLine
                     'If ckIncludeAttachments.Checked Then
                     Dim ckIncludeAttachments As Boolean = True
 
@@ -346,20 +346,20 @@ Public Class clsSql
                         '** ECM EmailAttachmentSearchList
                         If gMasterContentOnly = True Then
                         Else
-                            'IncludeEmailAttachmentsQry  = vbCrLf + " OR " + "([EmailGuid] in (select EmailGuid from EmailAttachmentSearchList where UserID = '" + gCurrUserGuidID + "'))" + vbCrLf
+                            'IncludeEmailAttachmentsQry  = environment.NewLine + " OR " + "([EmailGuid] in (select EmailGuid from EmailAttachmentSearchList where UserID = '" + gCurrUserGuidID + "'))" + environment.NewLine
                         End If
 
-                        'EmailSql = EmailSql + vbCrLf + IncludeEmailAttachmentsQry  + vbCrLf
+                        'EmailSql = EmailSql + environment.NewLine + IncludeEmailAttachmentsQry  + environment.NewLine
                         EmailSql = EmailSql + genUseExistingRecordsOnly(UseExistingRecordsOnly, "EmailGuid")
 
                         'Clipboard.Clear()
                         'Clipboard.SetText(EmailSql)
                     End If
-                    'EmailSql += vbCrLf + " or isPublic = 'Y' "
-                    EmailSql += vbCrLf + " ORDER BY KEY_TBL.RANK DESC " + vbCrLf
+                    'EmailSql += environment.NewLine + " or isPublic = 'Y' "
+                    EmailSql += Environment.NewLine + " ORDER BY KEY_TBL.RANK DESC " + Environment.NewLine
 
                 Else
-                    Dim IncludeEmailAttachmentsQry As String = EmailSql + vbCrLf
+                    Dim IncludeEmailAttachmentsQry As String = EmailSql + Environment.NewLine
                     'If ckIncludeAttachments.Checked Then
                     Dim ckIncludeAttachments As Boolean = True
                     IncludeEmailAttachmentsSearch(ckIncludeAttachments, ckWeighted, ckBusiness, txtSearch, ckLimitToExisting, txtThesaurus, cbThesaurusText, LibraryName, bIncludeAllLibs)
@@ -367,21 +367,21 @@ Public Class clsSql
                     '    '** ECM EmailAttachmentSearchList
                     '    If gMasterContentOnly = True Then
                     '    Else
-                    '        IncludeEmailAttachmentsQry  = vbCrLf + " OR " + "([EmailGuid] in (select EmailGuid from EmailAttachmentSearchList where UserID = '" + gCurrUserGuidID + "'))" + vbCrLf
+                    '        IncludeEmailAttachmentsQry  = environment.NewLine + " OR " + "([EmailGuid] in (select EmailGuid from EmailAttachmentSearchList where UserID = '" + gCurrUserGuidID + "'))" + environment.NewLine
                     '    End If
 
-                    '    EmailSql = EmailSql + vbCrLf + IncludeEmailAttachmentsQry  + vbCrLf
+                    '    EmailSql = EmailSql + environment.NewLine + IncludeEmailAttachmentsQry  + environment.NewLine
                     '    EmailSql = EmailSql + genUseExistingRecordsOnly(UseExistingRecordsOnly, "EmailGuid")
                     'End If
-                    'EmailSql += vbCrLf + " or isPublic = 'Y' "
-                    EmailSql += vbCrLf + " order by [ShortSubj] "
+                    'EmailSql += environment.NewLine + " or isPublic = 'Y' "
+                    EmailSql += Environment.NewLine + " order by [ShortSubj] "
                 End If
             End If
         Else
             EmailSql = ""
         End If
         If bCopyToClipboard Then
-            Dim tClip As String = "/* Final */ " + vbCrLf
+            Dim tClip As String = "/* Final */ " + Environment.NewLine
             tClip += EmailSql
             If bSaveToClipBoard Then SetToClipBoard(tClip)
             'Debug.Print(tClip)
@@ -957,7 +957,7 @@ NextWord:
             If InStr(tWord, Chr(34)) = 0 Then
                 tWord = Chr(34) + tWord + Chr(34)
             End If
-            ListOfPhrases = ListOfPhrases + Chr(9) + tWord + " or " + vbCrLf
+            ListOfPhrases = ListOfPhrases + Chr(9) + tWord + " or " + Environment.NewLine
         Next
         If ListOfPhrases = Nothing Then
             Return ""
@@ -1086,8 +1086,8 @@ NextWord:
                         If txtThesaurus.Trim.Length > 0 Then
                             Dim ExpandedWordList As String = PopulateThesaurusList(ThesaurusList, ThesaurusWords, txtThesaurus, cbThesaurusText)
                             If ExpandedWordList.Trim.Length > 0 Then
-                                WhereClause += vbCrLf + Chr(9) + cbThesaurusText + " FREETEXT ((Body, SUBJECT, KeyWords, Description), '" + ExpandedWordList
-                                WhereClause += "')" + vbCrLf + "/* 0A1 */ " + vbCrLf
+                                WhereClause += Environment.NewLine + Chr(9) + cbThesaurusText + " FREETEXT ((Body, SUBJECT, KeyWords, Description), '" + ExpandedWordList
+                                WhereClause += "')" + Environment.NewLine + "/* 0A1 */ " + Environment.NewLine
                                 rParens += 1
                             End If
                         End If
@@ -1097,19 +1097,19 @@ NextWord:
                             WhereClause += " or FREETEXT ((Body, SUBJECT, KeyWords, Description), '"
                             S = InputSearchString
                             WhereClause += buildContainsSyntax(S, ThesaurusWords)
-                            WhereClause += "') " + vbCrLf + " /* 00 */ " + vbCrLf
+                            WhereClause += "') " + Environment.NewLine + " /* 00 */ " + Environment.NewLine
                             rParens += 1
                         End If
 
                         If txtThesaurus.Trim.Length > 0 Then
                             Dim ExpandedWordList As String = PopulateThesaurusList(ThesaurusList, ThesaurusWords, txtThesaurus, cbThesaurusText)
                             If ExpandedWordList.Trim.Length > 0 Then
-                                WhereClause += vbCrLf + Chr(9) + " OR FREETEXT ((Body, SUBJECT, KeyWords, Description), '" + ExpandedWordList
+                                WhereClause += Environment.NewLine + Chr(9) + " OR FREETEXT ((Body, SUBJECT, KeyWords, Description), '" + ExpandedWordList
                                 WhereClause += "') "
                                 rParens += 1
                             End If
                         End If
-                        WhereClause += ")" + vbCrLf + "  /* #2 */" + vbCrLf
+                        WhereClause += ")" + Environment.NewLine + "  /* #2 */" + Environment.NewLine
                     End If
                 Else
                     'Processing a weighted set of documents
@@ -1118,16 +1118,16 @@ NextWord:
                         WhereClause += " ( CONTAINS(BODY, '"
                         S = InputSearchString
                         WhereClause += buildContainsSyntax(S, ThesaurusWords)
-                        WhereClause += "')   /*YY00a*/ " + vbCrLf
+                        WhereClause += "')   /*YY00a*/ " + Environment.NewLine
 
                         lParens = lParens + 1
 
                         If txtThesaurus.Trim.Length > 0 Then
                             Dim ExpandedWordList As String = PopulateThesaurusList(ThesaurusList, ThesaurusWords, txtThesaurus, cbThesaurusText)
                             If ExpandedWordList.Trim.Length > 0 Then
-                                WhereClause = WhereClause + vbCrLf
-                                WhereClause += vbCrLf + Chr(9) + cbThesaurusText + " (CONTAINS (body, '" + ExpandedWordList
-                                WhereClause += "')   /*YY00*/" + vbCrLf
+                                WhereClause = WhereClause + Environment.NewLine
+                                WhereClause += Environment.NewLine + Chr(9) + cbThesaurusText + " (CONTAINS (body, '" + ExpandedWordList
+                                WhereClause += "')   /*YY00*/" + Environment.NewLine
                                 lParens = lParens + 1
                             End If
                         End If
@@ -1135,23 +1135,23 @@ NextWord:
                         WhereClause += " or CONTAINS(SUBJECT, '"
                         S = InputSearchString
                         WhereClause += buildContainsSyntax(S, ThesaurusWords)
-                        WhereClause += "')   /*XX01*/" + vbCrLf
+                        WhereClause += "')   /*XX01*/" + Environment.NewLine
 
                         If txtThesaurus.Trim.Length > 0 Then
                             Dim ExpandedWordList As String = PopulateThesaurusList(ThesaurusList, ThesaurusWords, txtThesaurus, cbThesaurusText)
                             If ExpandedWordList.Trim.Length > 0 Then
-                                WhereClause = WhereClause + vbCrLf
-                                WhereClause += vbCrLf + Chr(9) + cbThesaurusText + " (CONTAINS (subject, '" + getThesaurusWords(ThesaurusList, ThesaurusWords)
-                                WhereClause += "')   /*YY01*/" + vbCrLf
+                                WhereClause = WhereClause + Environment.NewLine
+                                WhereClause += Environment.NewLine + Chr(9) + cbThesaurusText + " (CONTAINS (subject, '" + getThesaurusWords(ThesaurusList, ThesaurusWords)
+                                WhereClause += "')   /*YY01*/" + Environment.NewLine
                                 lParens = lParens + 1
                             End If
                         End If
                         If lParens = 1 Then
-                            WhereClause += ")     /*XX02a*/" + vbCrLf
+                            WhereClause += ")     /*XX02a*/" + Environment.NewLine
                         ElseIf lParens = 2 Then
-                            WhereClause += "))     /*XX02b*/" + vbCrLf
+                            WhereClause += "))     /*XX02b*/" + Environment.NewLine
                         ElseIf lParens = 3 Then
-                            WhereClause += ")))     /*XX02c*/" + vbCrLf
+                            WhereClause += ")))     /*XX02c*/" + Environment.NewLine
                         End If
                     End If
                 End If
@@ -1171,10 +1171,10 @@ NextWord:
                         If txtThesaurus.Trim.Length > 0 Then
                             Dim ExpandedWordList As String = PopulateThesaurusList(ThesaurusList, ThesaurusWords, txtThesaurus, cbThesaurusText)
                             If ExpandedWordList.Trim.Length > 0 Then
-                                'WhereClause += vbCrLf + Chr(9) + cbThesaurusText  + " freetext (SourceImage, '" + ExpandedWordList 
-                                'WhereClause += vbCrLf + Chr(9) + cbThesaurusText  + " freetext (DataSource.*, '" + ExpandedWordList 
-                                WhereClause += vbCrLf + Chr(9) + cbThesaurusText + " freetext ((Description, KeyWords, Notes, SourceImage, SourceName), '" + ExpandedWordList
-                                WhereClause += "')" + vbCrLf + "/* 0A2 */ " + vbCrLf
+                                'WhereClause += environment.NewLine + Chr(9) + cbThesaurusText  + " freetext (SourceImage, '" + ExpandedWordList 
+                                'WhereClause += environment.NewLine + Chr(9) + cbThesaurusText  + " freetext (DataSource.*, '" + ExpandedWordList 
+                                WhereClause += Environment.NewLine + Chr(9) + cbThesaurusText + " freetext ((Description, KeyWords, Notes, SourceImage, SourceName), '" + ExpandedWordList
+                                WhereClause += "')" + Environment.NewLine + "/* 0A2 */ " + Environment.NewLine
                                 rParens += 1
                             End If
                         End If
@@ -1189,8 +1189,8 @@ NextWord:
                         If txtThesaurus.Trim.Length > 0 Then
                             Dim ExpandedWordList As String = PopulateThesaurusList(ThesaurusList, ThesaurusWords, txtThesaurus, cbThesaurusText)
                             If ExpandedWordList.Trim.Length > 0 Then
-                                WhereClause += vbCrLf + Chr(9) + cbThesaurusText + " CONTAINS (SourceImage, '" + ExpandedWordList
-                                WhereClause += "')" + vbCrLf + "/* 0A3 */ " + vbCrLf
+                                WhereClause += Environment.NewLine + Chr(9) + cbThesaurusText + " CONTAINS (SourceImage, '" + ExpandedWordList
+                                WhereClause += "')" + Environment.NewLine + "/* 0A3 */ " + Environment.NewLine
                                 rParens += 1
                             End If
                         End If
@@ -1213,13 +1213,13 @@ NextWord:
                     WhereClause += " FREETEXT ((Body, SUBJECT, KeyWords, Description), '"
                     S = InputSearchString
                     WhereClause += buildContainsSyntax(S, ThesaurusWords)
-                    WhereClause += "')" + vbCrLf
+                    WhereClause += "')" + Environment.NewLine
 
                     If txtThesaurus.Trim.Length > 0 Then
                         Dim ExpandedWordList As String = PopulateThesaurusList(ThesaurusList, ThesaurusWords, txtThesaurus, cbThesaurusText)
                         If ExpandedWordList.Trim.Length > 0 Then
-                            WhereClause += vbCrLf + Chr(9) + cbThesaurusText + " FREETEXT ((Body, SUBJECT, KeyWords, Description), '" + ExpandedWordList
-                            WhereClause += "')" + vbCrLf + "/* 0A4 */ " + vbCrLf
+                            WhereClause += Environment.NewLine + Chr(9) + cbThesaurusText + " FREETEXT ((Body, SUBJECT, KeyWords, Description), '" + ExpandedWordList
+                            WhereClause += "')" + Environment.NewLine + "/* 0A4 */ " + Environment.NewLine
                             rParens += 1
                         End If
                     End If
@@ -1235,12 +1235,12 @@ NextWord:
                     If txtThesaurus.Trim.Length > 0 Then
                         Dim ExpandedWordList As String = PopulateThesaurusList(ThesaurusList, ThesaurusWords, txtThesaurus, cbThesaurusText)
                         If ExpandedWordList.Trim.Length > 0 Then
-                            WhereClause += vbCrLf + Chr(9) + cbThesaurusText + " CONTAINS (*, '" + ExpandedWordList
-                            WhereClause += "')" + vbCrLf + "/* 0A5 */ " + vbCrLf
+                            WhereClause += Environment.NewLine + Chr(9) + cbThesaurusText + " CONTAINS (*, '" + ExpandedWordList
+                            WhereClause += "')" + Environment.NewLine + "/* 0A5 */ " + Environment.NewLine
                             rParens += 1
                         End If
                     End If
-                    'WhereClause += ")" + vbCrLf + "/* 9A */ " + vbCrLf
+                    'WhereClause += ")" + environment.NewLine + "/* 9A */ " + environment.NewLine
                 End If
             End If
         End If
@@ -1445,42 +1445,42 @@ REEVAL:
                 'INNER JOIN FREETEXTTABLE(dataSource, *,
                 '    'ISABOUT ("dale miller", "susan miller", jessica )' ) AS KEY_TBL
                 '    ON DS.SourceGuid = KEY_TBL.[KEY]
-                isAboutClause += "INNER JOIN FREETEXTTABLE(EMAIL, *, " + vbCrLf
+                isAboutClause += "INNER JOIN FREETEXTTABLE(EMAIL, *, " + Environment.NewLine
                 isAboutClause += "     'ISABOUT ("
                 isAboutClause += CorrectedSearchClause
-                isAboutClause += ")' ) as KEY_TBL" + vbCrLf
-                isAboutClause += "          ON DS.EmailGuid = KEY_TBL.[KEY]" + vbCrLf
+                isAboutClause += ")' ) as KEY_TBL" + Environment.NewLine
+                isAboutClause += "          ON DS.EmailGuid = KEY_TBL.[KEY]" + Environment.NewLine
             Else
                 '    INNER JOIN CONTAINSTABLE(dataSource, *,
                 '    'ISABOUT ("dale miller", 
                 '"susan miller", jessica )' ) AS KEY_TBL
                 '    ON DS.SourceGuid = KEY_TBL.[KEY]
-                isAboutClause += "INNER JOIN CONTAINSTABLE(EMAIL, *, " + vbCrLf
+                isAboutClause += "INNER JOIN CONTAINSTABLE(EMAIL, *, " + Environment.NewLine
                 isAboutClause += "     'ISABOUT ("
                 isAboutClause += CorrectedSearchClause
-                isAboutClause += ")' ) as KEY_TBL" + vbCrLf
-                isAboutClause += "          ON DS.EmailGuid = KEY_TBL.[KEY]" + vbCrLf
+                isAboutClause += ")' ) as KEY_TBL" + Environment.NewLine
+                isAboutClause += "          ON DS.EmailGuid = KEY_TBL.[KEY]" + Environment.NewLine
             End If
         Else
             If useFreetext = True Then
                 'INNER JOIN FREETEXTTABLE(dataSource, *,
                 '    'ISABOUT ("dale miller", "susan miller", jessica )' ) AS KEY_TBL
                 '    ON DS.SourceGuid = KEY_TBL.[KEY]
-                isAboutClause += "INNER JOIN FREETEXTTABLE(dataSource, SourceImage, " + vbCrLf
+                isAboutClause += "INNER JOIN FREETEXTTABLE(dataSource, SourceImage, " + Environment.NewLine
                 isAboutClause += "     'ISABOUT ("
                 isAboutClause += CorrectedSearchClause
-                isAboutClause += ")' ) as KEY_TBL" + vbCrLf
-                isAboutClause += "          ON DS.SourceGuid = KEY_TBL.[KEY]" + vbCrLf
+                isAboutClause += ")' ) as KEY_TBL" + Environment.NewLine
+                isAboutClause += "          ON DS.SourceGuid = KEY_TBL.[KEY]" + Environment.NewLine
             Else
                 '    INNER JOIN CONTAINSTABLE(dataSource, *,
                 '    'ISABOUT ("dale miller", 
                 '"susan miller", jessica )' ) AS KEY_TBL
                 '    ON DS.SourceGuid = KEY_TBL.[KEY]
-                isAboutClause += "INNER JOIN CONTAINSTABLE(dataSource, *, " + vbCrLf
+                isAboutClause += "INNER JOIN CONTAINSTABLE(dataSource, *, " + Environment.NewLine
                 isAboutClause += "     'ISABOUT ("
                 isAboutClause += CorrectedSearchClause
-                isAboutClause += ")' ) as KEY_TBL" + vbCrLf
-                isAboutClause += "          ON DS.SourceGuid = KEY_TBL.[KEY]" + vbCrLf
+                isAboutClause += ")' ) as KEY_TBL" + Environment.NewLine
+                isAboutClause += "          ON DS.SourceGuid = KEY_TBL.[KEY]" + Environment.NewLine
             End If
         End If
 
@@ -1529,12 +1529,12 @@ REEVAL:
         If DBARCH.isAdmin(gCurrUserGuidID) Or DBARCH.isGlobalSearcher(gCurrUserGuidID) = True Then
             '** ECM WhereClause
             If ckLimitToLib = True Then
-                'UserSql = UserSql + " AND SourceGuid in (SELECT [SourceGuid] FROM [LibraryItems] where LibraryName = '" + LibraryName  + "')" + vbCrLf
-                '** DO NOT PUT vbcrlf at the end of the below lines. That will cause problems in inserting PAGING.
+                'UserSql = UserSql + " AND SourceGuid in (SELECT [SourceGuid] FROM [LibraryItems] where LibraryName = '" + LibraryName  + "')" + environment.NewLine
+                '** DO NOT PUT environment.NewLine at the end of the below lines. That will cause problems in inserting PAGING.
                 UserSql = UserSql + " AND SourceGuid in (" + GEN.genLibrarySearch(gCurrUserGuidID, True, LibraryName, "Gen@13") + ")"
             Else
                 If gMyContentOnly = True Then
-                    UserSql = UserSql + " and ( DataSourceOwnerUserID = '" + gCurrUserGuidID + "') " + vbCrLf
+                    UserSql = UserSql + " and ( DataSourceOwnerUserID = '" + gCurrUserGuidID + "') " + Environment.NewLine
                 Else
                     Dim gSearcher As Boolean = False
                     If DBARCH.isAdmin(gCurrUserGuidID) = True Or DBARCH.isGlobalSearcher(gCurrUserGuidID) = True Then
@@ -1544,16 +1544,16 @@ REEVAL:
                     UserSql = UserSql + IncludeLibsSql
                 End If
                 If gMasterContentOnly = True Then
-                    UserSql = UserSql + " and ( isMaster = 'Y' )       /*KEEP*/" + vbCrLf
+                    UserSql = UserSql + " and ( isMaster = 'Y' )       /*KEEP*/" + Environment.NewLine
                 End If
             End If
 
             ''** Removed by WDM 7/12/2008
-            'UserSql = UserSql + " OR" + vbCrLf
-            'UserSql = UserSql + " DataSourceOwnerUserID in (select distinct UserID from LibraryUsers " + vbCrLf
-            'UserSql = UserSql + "             where(LibraryName)" + vbCrLf
-            'UserSql = UserSql + " in (Select LibraryName from LibrariesContainingUser))" + vbCrLf
-            'UserSql = UserSql + " )" + vbCrLf
+            'UserSql = UserSql + " OR" + environment.NewLine
+            'UserSql = UserSql + " DataSourceOwnerUserID in (select distinct UserID from LibraryUsers " + environment.NewLine
+            'UserSql = UserSql + "             where(LibraryName)" + environment.NewLine
+            'UserSql = UserSql + " in (Select LibraryName from LibrariesContainingUser))" + environment.NewLine
+            'UserSql = UserSql + " )" + environment.NewLine
         Else
             If ckLimitToLib = True Then
                 Dim gSearcher As Boolean = False
@@ -1563,10 +1563,10 @@ REEVAL:
                 UserSql = " AND SourceGuid in (" + GEN.genLibrarySearch(gCurrUserGuidID, gSearcher, LibraryName, "Gen@01") + ")"
 
             Else
-                'UserSql = UserSql + " and ( DataSourceOwnerUserID is not null OR isPublic = 'Y' )" + vbCrLf
+                'UserSql = UserSql + " and ( DataSourceOwnerUserID is not null OR isPublic = 'Y' )" + environment.NewLine
                 '** ECM WhereClause
                 If gMyContentOnly = True Then
-                    UserSql = UserSql + " and ( DataSourceOwnerUserID = '" + gCurrUserGuidID + "') " + vbCrLf
+                    UserSql = UserSql + " and ( DataSourceOwnerUserID = '" + gCurrUserGuidID + "') " + Environment.NewLine
                 Else
                     Dim gSearcher As Boolean = False
                     If DBARCH.isAdmin(gCurrUserGuidID) = True Or DBARCH.isGlobalSearcher(gCurrUserGuidID) = True Then
@@ -1577,17 +1577,17 @@ REEVAL:
                 End If
 
                 If gMasterContentOnly = True Then
-                    UserSql = UserSql + " and ( isMaster = 'Y' )      /*KEEP*/" + vbCrLf
+                    UserSql = UserSql + " and ( isMaster = 'Y' )      /*KEEP*/" + Environment.NewLine
                 End If
 
             End If
 
-            'UserSql = UserSql + " OR isPublic = 'Y' " + vbCrLf    '** WDM Add 7/9/2009
+            'UserSql = UserSql + " OR isPublic = 'Y' " + environment.NewLine    '** WDM Add 7/9/2009
             '''** Removed by WDM 7/12/2008
-            'UserSql = UserSql + " OR DataSourceOwnerUserID in (select distinct UserID from LibraryUsers " + vbCrLf
-            'UserSql = UserSql + "             where(LibraryName)" + vbCrLf
-            'UserSql = UserSql + " in (Select LibraryName from LibrariesContainingUser))" + vbCrLf
-            'UserSql = UserSql + " )" + vbCrLf
+            'UserSql = UserSql + " OR DataSourceOwnerUserID in (select distinct UserID from LibraryUsers " + environment.NewLine
+            'UserSql = UserSql + "             where(LibraryName)" + environment.NewLine
+            'UserSql = UserSql + " in (Select LibraryName from LibrariesContainingUser))" + environment.NewLine
+            'UserSql = UserSql + " )" + environment.NewLine
         End If
         Return UserSql
     End Function
@@ -1597,7 +1597,7 @@ REEVAL:
         If DBARCH.isAdmin(gCurrUserGuidID) Or DBARCH.isGlobalSearcher(gCurrUserGuidID) = True Then
             '** ECM WhereClause
             If ckLimitToLib = True Then
-                '** DO NOT PUT vbcrlf at the end of the below lines. That will cause problems in inserting PAGING.
+                '** DO NOT PUT environment.NewLine at the end of the below lines. That will cause problems in inserting PAGING.
                 Dim gSearcher As Boolean = False
                 If DBARCH.isAdmin(gCurrUserGuidID) = True Or DBARCH.isGlobalSearcher(gCurrUserGuidID) = True Then
                     gSearcher = True
@@ -1606,7 +1606,7 @@ REEVAL:
 
             Else
                 If gMyContentOnly = True Then
-                    UserSql = UserSql + " and ( UserID = '" + gCurrUserGuidID + "') " + vbCrLf
+                    UserSql = UserSql + " and ( UserID = '" + gCurrUserGuidID + "') " + Environment.NewLine
                 Else
                     Dim gSearcher As Boolean = False
                     If DBARCH.isAdmin(gCurrUserGuidID) = True Or DBARCH.isGlobalSearcher(gCurrUserGuidID) = True Then
@@ -1616,16 +1616,16 @@ REEVAL:
                     UserSql = UserSql + IncludeLibsSql
                 End If
                 If gMasterContentOnly = True Then
-                    UserSql = UserSql + " and ( isMaster = 'Y' )     /*KEEP*/" + vbCrLf
+                    UserSql = UserSql + " and ( isMaster = 'Y' )     /*KEEP*/" + Environment.NewLine
                 End If
             End If
-            'UserSql = UserSql + " OR" + vbCrLf
-            ''UserSql = UserSql + " UserID in (select distinct UserID from LibraryUsers " + vbCrLf
+            'UserSql = UserSql + " OR" + environment.NewLine
+            ''UserSql = UserSql + " UserID in (select distinct UserID from LibraryUsers " + environment.NewLine
             '''** Removed by WDM 7/12/2008
-            'UserSql = UserSql + " '" + gCurrUserGuidID + "' in (select distinct UserID from LibraryUsers " + vbCrLf
-            'UserSql = UserSql + "             where(LibraryName)" + vbCrLf
-            'UserSql = UserSql + " in (Select LibraryName from LibrariesContainingUser))" + vbCrLf
-            'UserSql = UserSql + " )" + vbCrLf
+            'UserSql = UserSql + " '" + gCurrUserGuidID + "' in (select distinct UserID from LibraryUsers " + environment.NewLine
+            'UserSql = UserSql + "             where(LibraryName)" + environment.NewLine
+            'UserSql = UserSql + " in (Select LibraryName from LibrariesContainingUser))" + environment.NewLine
+            'UserSql = UserSql + " )" + environment.NewLine
         Else
             If ckLimitToLib = True Then
                 Dim gSearcher As Boolean = False
@@ -1636,7 +1636,7 @@ REEVAL:
             Else
                 '** ECM WhereClause
                 If gMyContentOnly = True Then
-                    UserSql = UserSql + " and ( UserID = '" + gCurrUserGuidID + "') " + vbCrLf
+                    UserSql = UserSql + " and ( UserID = '" + gCurrUserGuidID + "') " + Environment.NewLine
                 Else
                     Dim gSearcher As Boolean = False
                     If DBARCH.isAdmin(gCurrUserGuidID) = True Or DBARCH.isGlobalSearcher(gCurrUserGuidID) = True Then
@@ -1647,16 +1647,16 @@ REEVAL:
                 End If
 
                 If gMasterContentOnly = True Then
-                    UserSql = UserSql + " and ( isMaster = 'Y' )      /*KEEP*/" + vbCrLf
+                    UserSql = UserSql + " and ( isMaster = 'Y' )      /*KEEP*/" + Environment.NewLine
                 End If
 
             End If
             ''** Removed by WDM 7/12/2008
-            'UserSql = UserSql + " OR isPublic = 'Y' " + vbCrLf
-            'UserSql = UserSql + " OR '" + gCurrUserGuidID + "' in (select distinct UserID from LibraryUsers " + vbCrLf
-            'UserSql = UserSql + "             where(LibraryName)" + vbCrLf
-            'UserSql = UserSql + " in (Select LibraryName from LibrariesContainingUser))" + vbCrLf
-            'UserSql = UserSql + " )" + vbCrLf
+            'UserSql = UserSql + " OR isPublic = 'Y' " + environment.NewLine
+            'UserSql = UserSql + " OR '" + gCurrUserGuidID + "' in (select distinct UserID from LibraryUsers " + environment.NewLine
+            'UserSql = UserSql + "             where(LibraryName)" + environment.NewLine
+            'UserSql = UserSql + " in (Select LibraryName from LibrariesContainingUser))" + environment.NewLine
+            'UserSql = UserSql + " )" + environment.NewLine
         End If
         Return UserSql
     End Function
@@ -1672,18 +1672,18 @@ REEVAL:
                     DocsSql = " SELECT "
                 End If
             End If
-            DocsSql += vbTab + " KEY_TBL.RANK, DS.SourceName 	" + vbCrLf
-            DocsSql += vbTab + ",DS.CreateDate " + vbCrLf
-            DocsSql += vbTab + ",DS.VersionNbr 	" + vbCrLf
-            DocsSql += vbTab + ",DS.LastAccessDate " + vbCrLf
-            DocsSql += vbTab + ",DS.FileLength " + vbCrLf
-            DocsSql += vbTab + ",DS.LastWriteTime " + vbCrLf
-            DocsSql += vbTab + ",DS.OriginalFileType 		" + vbCrLf
-            DocsSql += vbTab + ",DS.isPublic " + vbCrLf
-            DocsSql += vbTab + ",DS.FQN " + vbCrLf
-            DocsSql += vbTab + ",DS.SourceGuid " + vbCrLf
-            DocsSql += vbTab + ",DS.DataSourceOwnerUserID, DS.FileDirectory, DS.RetentionExpirationDate, DS.isMaster, DS.StructuredData, DS.RepoSvrName " + vbCrLf
-            DocsSql += "FROM DataSource as DS " + vbCrLf
+            DocsSql += vbTab + " KEY_TBL.RANK, DS.SourceName 	" + Environment.NewLine
+            DocsSql += vbTab + ",DS.CreateDate " + Environment.NewLine
+            DocsSql += vbTab + ",DS.VersionNbr 	" + Environment.NewLine
+            DocsSql += vbTab + ",DS.LastAccessDate " + Environment.NewLine
+            DocsSql += vbTab + ",DS.FileLength " + Environment.NewLine
+            DocsSql += vbTab + ",DS.LastWriteTime " + Environment.NewLine
+            DocsSql += vbTab + ",DS.OriginalFileType 		" + Environment.NewLine
+            DocsSql += vbTab + ",DS.isPublic " + Environment.NewLine
+            DocsSql += vbTab + ",DS.FQN " + Environment.NewLine
+            DocsSql += vbTab + ",DS.SourceGuid " + Environment.NewLine
+            DocsSql += vbTab + ",DS.DataSourceOwnerUserID, DS.FileDirectory, DS.RetentionExpirationDate, DS.isMaster, DS.StructuredData, DS.RepoSvrName " + Environment.NewLine
+            DocsSql += "FROM DataSource as DS " + Environment.NewLine
 
 
         Else
@@ -1694,18 +1694,18 @@ REEVAL:
                     DocsSql = " SELECT "
                 End If
             End If
-            DocsSql += vbTab + "[SourceName] 	" + vbCrLf
-            DocsSql += vbTab + ",[CreateDate] " + vbCrLf
-            DocsSql += vbTab + ",[VersionNbr] 	" + vbCrLf
-            DocsSql += vbTab + ",[LastAccessDate] " + vbCrLf
-            DocsSql += vbTab + ",[FileLength] " + vbCrLf
-            DocsSql += vbTab + ",[LastWriteTime] " + vbCrLf
-            DocsSql += vbTab + ",[SourceTypeCode] 		" + vbCrLf
-            DocsSql += vbTab + ",[isPublic] " + vbCrLf
-            DocsSql += vbTab + ",[FQN] " + vbCrLf
-            DocsSql += vbTab + ",[SourceGuid] " + vbCrLf
-            DocsSql += vbTab + ",[DataSourceOwnerUserID], FileDirectory, StructuredData, RepoSvrName " + vbCrLf
-            DocsSql += "FROM DataSource " + vbCrLf
+            DocsSql += vbTab + "[SourceName] 	" + Environment.NewLine
+            DocsSql += vbTab + ",[CreateDate] " + Environment.NewLine
+            DocsSql += vbTab + ",[VersionNbr] 	" + Environment.NewLine
+            DocsSql += vbTab + ",[LastAccessDate] " + Environment.NewLine
+            DocsSql += vbTab + ",[FileLength] " + Environment.NewLine
+            DocsSql += vbTab + ",[LastWriteTime] " + Environment.NewLine
+            DocsSql += vbTab + ",[SourceTypeCode] 		" + Environment.NewLine
+            DocsSql += vbTab + ",[isPublic] " + Environment.NewLine
+            DocsSql += vbTab + ",[FQN] " + Environment.NewLine
+            DocsSql += vbTab + ",[SourceGuid] " + Environment.NewLine
+            DocsSql += vbTab + ",[DataSourceOwnerUserID], FileDirectory, StructuredData, RepoSvrName " + Environment.NewLine
+            DocsSql += "FROM DataSource " + Environment.NewLine
         End If
 
 
@@ -1720,14 +1720,14 @@ REEVAL:
         Dim S As String = ""
         If ckWeighted = True Then
             If PaginateData = True Then
-                S = S + " SELECT     Email.SentOn, Email.ShortSubj, Email.SenderEmailAddress, Email.SenderName, Email.SentTO, SUBSTRING(Email.Body, 1, 100) AS Body, Email.CC, Email.Bcc, " + vbCrLf
-                S = S + "                       Email.CreationTime, Email.AllRecipients, Email.ReceivedByName, Email.ReceivedTime, Email.MsgSize, Email.SUBJECT, Email.OriginalFolder, Email.EmailGuid, " + vbCrLf
-                S = S + "                       Email.RetentionExpirationDate, Email.isPublic,  ' ' as ConvertEmailToMsg, Email.UserID, Email.NbrAttachments, Email.SourceTypeCode, 'Y' AS FoundInAttachment, " + vbCrLf
-                S = S + "                       CONVERT(varchar, EmailAttachment.RowID) AS RID, EmailAttachment.RepoSvrName, 9999999 as RowID  " + vbCrLf
-                S = S + " FROM         Email INNER JOIN" + vbCrLf
-                S = S + "                       EmailAttachmentSearchList ON Email.EmailGuid = EmailAttachmentSearchList.EmailGuid INNER JOIN" + vbCrLf
-                S = S + "                       EmailAttachment ON EmailAttachmentSearchList.EmailGuid = EmailAttachment.EmailGuid AND EmailAttachmentSearchList.RowID = EmailAttachment.RowID" + vbCrLf
-                S = S + " WHERE     (EmailAttachmentSearchList.UserID = '" + gCurrUserGuidID + "')" + vbCrLf
+                S = S + " SELECT     Email.SentOn, Email.ShortSubj, Email.SenderEmailAddress, Email.SenderName, Email.SentTO, SUBSTRING(Email.Body, 1, 100) AS Body, Email.CC, Email.Bcc, " + Environment.NewLine
+                S = S + "                       Email.CreationTime, Email.AllRecipients, Email.ReceivedByName, Email.ReceivedTime, Email.MsgSize, Email.SUBJECT, Email.OriginalFolder, Email.EmailGuid, " + Environment.NewLine
+                S = S + "                       Email.RetentionExpirationDate, Email.isPublic,  ' ' as ConvertEmailToMsg, Email.UserID, Email.NbrAttachments, Email.SourceTypeCode, 'Y' AS FoundInAttachment, " + Environment.NewLine
+                S = S + "                       CONVERT(varchar, EmailAttachment.RowID) AS RID, EmailAttachment.RepoSvrName, 9999999 as RowID  " + Environment.NewLine
+                S = S + " FROM         Email INNER JOIN" + Environment.NewLine
+                S = S + "                       EmailAttachmentSearchList ON Email.EmailGuid = EmailAttachmentSearchList.EmailGuid INNER JOIN" + Environment.NewLine
+                S = S + "                       EmailAttachment ON EmailAttachmentSearchList.EmailGuid = EmailAttachment.EmailGuid AND EmailAttachmentSearchList.RowID = EmailAttachment.RowID" + Environment.NewLine
+                S = S + " WHERE     (EmailAttachmentSearchList.UserID = '" + gCurrUserGuidID + "')" + Environment.NewLine
             Else
                 S = "Select     EmailAttachmentSearchList.Weight AS RANK, Email.SentOn, Email.ShortSubj, Email.SenderEmailAddress, Email.SenderName, Email.SentTO, "
                 S = S + "                       SUBSTRING(Email.Body, 1, 100) AS Body, Email.CC, Email.Bcc, Email.CreationTime, Email.AllRecipients, Email.ReceivedByName, Email.ReceivedTime, "
@@ -1740,23 +1740,23 @@ REEVAL:
             End If
         Else
             If PaginateData = True Then
-                S = S + " SELECT     Email.SentOn, Email.ShortSubj, Email.SenderEmailAddress, Email.SenderName, Email.SentTO, SUBSTRING(Email.Body, 1, 100) AS Body, Email.CC, Email.Bcc, " + vbCrLf
-                S = S + "                       Email.CreationTime, Email.AllRecipients, Email.ReceivedByName, Email.ReceivedTime, Email.MsgSize, Email.SUBJECT, Email.OriginalFolder, Email.EmailGuid, " + vbCrLf
-                S = S + "                       Email.RetentionExpirationDate, Email.isPublic,  ' ' as ConvertEmailToMsg, Email.UserID, Email.NbrAttachments, Email.SourceTypeCode, 'Y' AS FoundInAttachment, " + vbCrLf
-                S = S + "                       CONVERT(varchar, EmailAttachment.RowID) AS RID, EmailAttachment.RepoSvrName, 9999999 as RowID  " + vbCrLf
-                S = S + " FROM         Email INNER JOIN" + vbCrLf
-                S = S + "                       EmailAttachmentSearchList ON Email.EmailGuid = EmailAttachmentSearchList.EmailGuid INNER JOIN" + vbCrLf
-                S = S + "                       EmailAttachment ON EmailAttachmentSearchList.EmailGuid = EmailAttachment.EmailGuid AND EmailAttachmentSearchList.RowID = EmailAttachment.RowID" + vbCrLf
-                S = S + " WHERE     (EmailAttachmentSearchList.UserID = '" + gCurrUserGuidID + "')" + vbCrLf
+                S = S + " SELECT     Email.SentOn, Email.ShortSubj, Email.SenderEmailAddress, Email.SenderName, Email.SentTO, SUBSTRING(Email.Body, 1, 100) AS Body, Email.CC, Email.Bcc, " + Environment.NewLine
+                S = S + "                       Email.CreationTime, Email.AllRecipients, Email.ReceivedByName, Email.ReceivedTime, Email.MsgSize, Email.SUBJECT, Email.OriginalFolder, Email.EmailGuid, " + Environment.NewLine
+                S = S + "                       Email.RetentionExpirationDate, Email.isPublic,  ' ' as ConvertEmailToMsg, Email.UserID, Email.NbrAttachments, Email.SourceTypeCode, 'Y' AS FoundInAttachment, " + Environment.NewLine
+                S = S + "                       CONVERT(varchar, EmailAttachment.RowID) AS RID, EmailAttachment.RepoSvrName, 9999999 as RowID  " + Environment.NewLine
+                S = S + " FROM         Email INNER JOIN" + Environment.NewLine
+                S = S + "                       EmailAttachmentSearchList ON Email.EmailGuid = EmailAttachmentSearchList.EmailGuid INNER JOIN" + Environment.NewLine
+                S = S + "                       EmailAttachment ON EmailAttachmentSearchList.EmailGuid = EmailAttachment.EmailGuid AND EmailAttachmentSearchList.RowID = EmailAttachment.RowID" + Environment.NewLine
+                S = S + " WHERE     (EmailAttachmentSearchList.UserID = '" + gCurrUserGuidID + "')" + Environment.NewLine
             Else
-                S = S + " SELECT     Email.SentOn, Email.ShortSubj, Email.SenderEmailAddress, Email.SenderName, Email.SentTO, SUBSTRING(Email.Body, 1, 100) AS Body, Email.CC, Email.Bcc, " + vbCrLf
-                S = S + "                       Email.CreationTime, Email.AllRecipients, Email.ReceivedByName, Email.ReceivedTime, Email.MsgSize, Email.SUBJECT, Email.OriginalFolder, Email.EmailGuid, " + vbCrLf
-                S = S + "                       Email.RetentionExpirationDate, Email.isPublic,  ' ' as ConvertEmailToMsg, Email.UserID, Email.NbrAttachments, Email.SourceTypeCode, 'Y' AS FoundInAttachment, " + vbCrLf
-                S = S + "                       CONVERT(varchar, EmailAttachment.RowID) AS RID, EmailAttachment.RepoSvrName  " + vbCrLf
-                S = S + " FROM         Email INNER JOIN" + vbCrLf
-                S = S + "                       EmailAttachmentSearchList ON Email.EmailGuid = EmailAttachmentSearchList.EmailGuid INNER JOIN" + vbCrLf
-                S = S + "                       EmailAttachment ON EmailAttachmentSearchList.EmailGuid = EmailAttachment.EmailGuid AND EmailAttachmentSearchList.RowID = EmailAttachment.RowID" + vbCrLf
-                S = S + " WHERE     (EmailAttachmentSearchList.UserID = '" + gCurrUserGuidID + "')" + vbCrLf
+                S = S + " SELECT     Email.SentOn, Email.ShortSubj, Email.SenderEmailAddress, Email.SenderName, Email.SentTO, SUBSTRING(Email.Body, 1, 100) AS Body, Email.CC, Email.Bcc, " + Environment.NewLine
+                S = S + "                       Email.CreationTime, Email.AllRecipients, Email.ReceivedByName, Email.ReceivedTime, Email.MsgSize, Email.SUBJECT, Email.OriginalFolder, Email.EmailGuid, " + Environment.NewLine
+                S = S + "                       Email.RetentionExpirationDate, Email.isPublic,  ' ' as ConvertEmailToMsg, Email.UserID, Email.NbrAttachments, Email.SourceTypeCode, 'Y' AS FoundInAttachment, " + Environment.NewLine
+                S = S + "                       CONVERT(varchar, EmailAttachment.RowID) AS RID, EmailAttachment.RepoSvrName  " + Environment.NewLine
+                S = S + " FROM         Email INNER JOIN" + Environment.NewLine
+                S = S + "                       EmailAttachmentSearchList ON Email.EmailGuid = EmailAttachmentSearchList.EmailGuid INNER JOIN" + Environment.NewLine
+                S = S + "                       EmailAttachment ON EmailAttachmentSearchList.EmailGuid = EmailAttachment.EmailGuid AND EmailAttachmentSearchList.RowID = EmailAttachment.RowID" + Environment.NewLine
+                S = S + " WHERE     (EmailAttachmentSearchList.UserID = '" + gCurrUserGuidID + "')" + Environment.NewLine
             End If
 
         End If
@@ -1798,23 +1798,23 @@ REEVAL:
                     GenSql = " SELECT "
                 End If
             End If
-            GenSql = GenSql + "  KEY_TBL.RANK, DS.SentOn " + vbCrLf
-            GenSql = GenSql + " ,DS.ShortSubj" + vbCrLf
-            GenSql = GenSql + " ,DS.SenderEmailAddress" + vbCrLf
-            GenSql = GenSql + " ,DS.SenderName" + vbCrLf
-            GenSql = GenSql + " ,DS.SentTO" + vbCrLf
-            GenSql = GenSql + " ,substring(DS.Body,1,100) as Body" + vbCrLf
-            GenSql = GenSql + " ,DS.CC " + vbCrLf
-            GenSql = GenSql + " ,DS.Bcc " + vbCrLf
-            GenSql = GenSql + " ,DS.CreationTime" + vbCrLf
-            GenSql = GenSql + " ,DS.AllRecipients" + vbCrLf
-            GenSql = GenSql + " ,DS.ReceivedByName" + vbCrLf
-            GenSql = GenSql + " ,DS.ReceivedTime " + vbCrLf
-            GenSql = GenSql + " ,DS.MsgSize" + vbCrLf
-            GenSql = GenSql + " ,DS.SUBJECT" + vbCrLf
-            GenSql = GenSql + " ,DS.OriginalFolder " + vbCrLf
-            GenSql = GenSql + " ,DS.EmailGuid, DS.RetentionExpirationDate, DS.isPublic, DS.ConvertEmlToMSG, DS.UserID, DS.NbrAttachments, DS.SourceTypeCode, 'N' as FoundInAttachment, ' ' as RID, RepoSvrName  " + vbCrLf
-            GenSql = GenSql + " FROM EMAIL AS DS " + vbCrLf
+            GenSql = GenSql + "  KEY_TBL.RANK, DS.SentOn " + Environment.NewLine
+            GenSql = GenSql + " ,DS.ShortSubj" + Environment.NewLine
+            GenSql = GenSql + " ,DS.SenderEmailAddress" + Environment.NewLine
+            GenSql = GenSql + " ,DS.SenderName" + Environment.NewLine
+            GenSql = GenSql + " ,DS.SentTO" + Environment.NewLine
+            GenSql = GenSql + " ,substring(DS.Body,1,100) as Body" + Environment.NewLine
+            GenSql = GenSql + " ,DS.CC " + Environment.NewLine
+            GenSql = GenSql + " ,DS.Bcc " + Environment.NewLine
+            GenSql = GenSql + " ,DS.CreationTime" + Environment.NewLine
+            GenSql = GenSql + " ,DS.AllRecipients" + Environment.NewLine
+            GenSql = GenSql + " ,DS.ReceivedByName" + Environment.NewLine
+            GenSql = GenSql + " ,DS.ReceivedTime " + Environment.NewLine
+            GenSql = GenSql + " ,DS.MsgSize" + Environment.NewLine
+            GenSql = GenSql + " ,DS.SUBJECT" + Environment.NewLine
+            GenSql = GenSql + " ,DS.OriginalFolder " + Environment.NewLine
+            GenSql = GenSql + " ,DS.EmailGuid, DS.RetentionExpirationDate, DS.isPublic, DS.ConvertEmlToMSG, DS.UserID, DS.NbrAttachments, DS.SourceTypeCode, 'N' as FoundInAttachment, ' ' as RID, RepoSvrName  " + Environment.NewLine
+            GenSql = GenSql + " FROM EMAIL AS DS " + Environment.NewLine
             GenSql += genIsAbout(ckWeighted, ckBusiness, SearchText, True)
         Else
             If gMaxRecordsToFetch.Length > 0 Then
@@ -1825,26 +1825,26 @@ REEVAL:
                 End If
             End If
 
-            GenSql = GenSql + " [SentOn] " + vbCrLf
-            GenSql = GenSql + " ,[ShortSubj]" + vbCrLf
-            GenSql = GenSql + " ,[SenderEmailAddress]" + vbCrLf
-            GenSql = GenSql + " ,[SenderName]" + vbCrLf
-            GenSql = GenSql + " ,[SentTO]" + vbCrLf
-            GenSql = GenSql + " ,substring(Body,1,100) as Body " + vbCrLf
-            GenSql = GenSql + " ,[CC] " + vbCrLf
-            GenSql = GenSql + " ,[Bcc] " + vbCrLf
-            GenSql = GenSql + " ,[CreationTime]" + vbCrLf
-            GenSql = GenSql + " ,[AllRecipients]" + vbCrLf
-            GenSql = GenSql + " ,[ReceivedByName]" + vbCrLf
-            GenSql = GenSql + " ,[ReceivedTime] " + vbCrLf
-            GenSql = GenSql + " ,[MsgSize]" + vbCrLf
-            GenSql = GenSql + " ,[SUBJECT]" + vbCrLf
-            GenSql = GenSql + " ,[OriginalFolder] " + vbCrLf
-            GenSql = GenSql + " ,[EmailGuid], RetentionExpirationDate, isPublic, ConvertEmlToMSG, UserID, NbrAttachments, SourceTypeCode, 'N' as FoundInAttachment, ' ' as RID, RepoSvrName   " + vbCrLf
-            GenSql = GenSql + " FROM EMAIL " + vbCrLf
+            GenSql = GenSql + " [SentOn] " + Environment.NewLine
+            GenSql = GenSql + " ,[ShortSubj]" + Environment.NewLine
+            GenSql = GenSql + " ,[SenderEmailAddress]" + Environment.NewLine
+            GenSql = GenSql + " ,[SenderName]" + Environment.NewLine
+            GenSql = GenSql + " ,[SentTO]" + Environment.NewLine
+            GenSql = GenSql + " ,substring(Body,1,100) as Body " + Environment.NewLine
+            GenSql = GenSql + " ,[CC] " + Environment.NewLine
+            GenSql = GenSql + " ,[Bcc] " + Environment.NewLine
+            GenSql = GenSql + " ,[CreationTime]" + Environment.NewLine
+            GenSql = GenSql + " ,[AllRecipients]" + Environment.NewLine
+            GenSql = GenSql + " ,[ReceivedByName]" + Environment.NewLine
+            GenSql = GenSql + " ,[ReceivedTime] " + Environment.NewLine
+            GenSql = GenSql + " ,[MsgSize]" + Environment.NewLine
+            GenSql = GenSql + " ,[SUBJECT]" + Environment.NewLine
+            GenSql = GenSql + " ,[OriginalFolder] " + Environment.NewLine
+            GenSql = GenSql + " ,[EmailGuid], RetentionExpirationDate, isPublic, ConvertEmlToMSG, UserID, NbrAttachments, SourceTypeCode, 'N' as FoundInAttachment, ' ' as RID, RepoSvrName   " + Environment.NewLine
+            GenSql = GenSql + " FROM EMAIL " + Environment.NewLine
         End If
 
-        GenSql = GenSql + " WHERE " + vbCrLf
+        GenSql = GenSql + " WHERE " + Environment.NewLine
 
         Return GenSql
     End Function
@@ -1860,23 +1860,23 @@ REEVAL:
                     SearchSql = " SELECT "
                 End If
             End If
-            SearchSql = SearchSql + "  KEY_TBL.RANK, DS.SentOn " + vbCrLf
-            SearchSql = SearchSql + " ,DS.ShortSubj" + vbCrLf
-            SearchSql = SearchSql + " ,DS.SenderEmailAddress" + vbCrLf
-            SearchSql = SearchSql + " ,DS.SenderName" + vbCrLf
-            SearchSql = SearchSql + " ,DS.SentTO" + vbCrLf
-            SearchSql = SearchSql + " ,DS.Body " + vbCrLf
-            SearchSql = SearchSql + " ,DS.CC " + vbCrLf
-            SearchSql = SearchSql + " ,DS.Bcc " + vbCrLf
-            SearchSql = SearchSql + " ,DS.CreationTime" + vbCrLf
-            SearchSql = SearchSql + " ,DS.AllRecipients" + vbCrLf
-            SearchSql = SearchSql + " ,DS.ReceivedByName" + vbCrLf
-            SearchSql = SearchSql + " ,DS.ReceivedTime " + vbCrLf
-            SearchSql = SearchSql + " ,DS.MsgSize" + vbCrLf
-            SearchSql = SearchSql + " ,DS.SUBJECT" + vbCrLf
-            SearchSql = SearchSql + " ,DS.OriginalFolder " + vbCrLf
-            SearchSql = SearchSql + " ,DS.EmailGuid, DS.RetentionExpirationDate, DS.isPublic, DS.UserID, DS.SourceTypeCode, DS.NbrAttachments , ' ' as RID, RepoSvrName  " + vbCrLf
-            SearchSql = SearchSql + " FROM EMAIL AS DS " + vbCrLf
+            SearchSql = SearchSql + "  KEY_TBL.RANK, DS.SentOn " + Environment.NewLine
+            SearchSql = SearchSql + " ,DS.ShortSubj" + Environment.NewLine
+            SearchSql = SearchSql + " ,DS.SenderEmailAddress" + Environment.NewLine
+            SearchSql = SearchSql + " ,DS.SenderName" + Environment.NewLine
+            SearchSql = SearchSql + " ,DS.SentTO" + Environment.NewLine
+            SearchSql = SearchSql + " ,DS.Body " + Environment.NewLine
+            SearchSql = SearchSql + " ,DS.CC " + Environment.NewLine
+            SearchSql = SearchSql + " ,DS.Bcc " + Environment.NewLine
+            SearchSql = SearchSql + " ,DS.CreationTime" + Environment.NewLine
+            SearchSql = SearchSql + " ,DS.AllRecipients" + Environment.NewLine
+            SearchSql = SearchSql + " ,DS.ReceivedByName" + Environment.NewLine
+            SearchSql = SearchSql + " ,DS.ReceivedTime " + Environment.NewLine
+            SearchSql = SearchSql + " ,DS.MsgSize" + Environment.NewLine
+            SearchSql = SearchSql + " ,DS.SUBJECT" + Environment.NewLine
+            SearchSql = SearchSql + " ,DS.OriginalFolder " + Environment.NewLine
+            SearchSql = SearchSql + " ,DS.EmailGuid, DS.RetentionExpirationDate, DS.isPublic, DS.UserID, DS.SourceTypeCode, DS.NbrAttachments , ' ' as RID, RepoSvrName  " + Environment.NewLine
+            SearchSql = SearchSql + " FROM EMAIL AS DS " + Environment.NewLine
             SearchSql += genIsAbout(ckWeighted, ckBusiness, SearchText, True)
         Else
             If gMaxRecordsToFetch.Length > 0 Then
@@ -1886,63 +1886,63 @@ REEVAL:
                     SearchSql = " SELECT "
                 End If
             End If
-            SearchSql = SearchSql + " [SentOn] " + vbCrLf
-            SearchSql = SearchSql + " ,[ShortSubj]" + vbCrLf
-            SearchSql = SearchSql + " ,[SenderEmailAddress]" + vbCrLf
-            SearchSql = SearchSql + " ,[SenderName]" + vbCrLf
-            SearchSql = SearchSql + " ,[SentTO]" + vbCrLf
-            SearchSql = SearchSql + " ,[Body] " + vbCrLf
-            SearchSql = SearchSql + " ,[CC] " + vbCrLf
-            SearchSql = SearchSql + " ,[Bcc] " + vbCrLf
-            SearchSql = SearchSql + " ,[CreationTime]" + vbCrLf
-            SearchSql = SearchSql + " ,[AllRecipients]" + vbCrLf
-            SearchSql = SearchSql + " ,[ReceivedByName]" + vbCrLf
-            SearchSql = SearchSql + " ,[ReceivedTime] " + vbCrLf
-            SearchSql = SearchSql + " ,[MsgSize]" + vbCrLf
-            SearchSql = SearchSql + " ,[SUBJECT]" + vbCrLf
-            SearchSql = SearchSql + " ,[OriginalFolder] " + vbCrLf
-            SearchSql = SearchSql + " ,[EmailGuid], RetentionExpirationDate, isPublic, UserID, SourceTypeCode, NbrAttachments, ' ' as RID, RepoSvrName " + vbCrLf
-            SearchSql = SearchSql + " FROM EMAIL " + vbCrLf
+            SearchSql = SearchSql + " [SentOn] " + Environment.NewLine
+            SearchSql = SearchSql + " ,[ShortSubj]" + Environment.NewLine
+            SearchSql = SearchSql + " ,[SenderEmailAddress]" + Environment.NewLine
+            SearchSql = SearchSql + " ,[SenderName]" + Environment.NewLine
+            SearchSql = SearchSql + " ,[SentTO]" + Environment.NewLine
+            SearchSql = SearchSql + " ,[Body] " + Environment.NewLine
+            SearchSql = SearchSql + " ,[CC] " + Environment.NewLine
+            SearchSql = SearchSql + " ,[Bcc] " + Environment.NewLine
+            SearchSql = SearchSql + " ,[CreationTime]" + Environment.NewLine
+            SearchSql = SearchSql + " ,[AllRecipients]" + Environment.NewLine
+            SearchSql = SearchSql + " ,[ReceivedByName]" + Environment.NewLine
+            SearchSql = SearchSql + " ,[ReceivedTime] " + Environment.NewLine
+            SearchSql = SearchSql + " ,[MsgSize]" + Environment.NewLine
+            SearchSql = SearchSql + " ,[SUBJECT]" + Environment.NewLine
+            SearchSql = SearchSql + " ,[OriginalFolder] " + Environment.NewLine
+            SearchSql = SearchSql + " ,[EmailGuid], RetentionExpirationDate, isPublic, UserID, SourceTypeCode, NbrAttachments, ' ' as RID, RepoSvrName " + Environment.NewLine
+            SearchSql = SearchSql + " FROM EMAIL " + Environment.NewLine
         End If
         Return SearchSql
     End Function
     Function xgenHeader() As String
-        Dim DocsSql As String = "WITH LibrariesContainingUser (LibraryName) AS" + vbCrLf
-        DocsSql += " (" + vbCrLf
-        DocsSql += "    select LibraryName from LibraryUsers L1 where userid = '" + gCurrUserGuidID + "' " + vbCrLf
-        DocsSql += " )" + vbCrLf
+        Dim DocsSql As String = "WITH LibrariesContainingUser (LibraryName) AS" + Environment.NewLine
+        DocsSql += " (" + Environment.NewLine
+        DocsSql += "    select LibraryName from LibraryUsers L1 where userid = '" + gCurrUserGuidID + "' " + Environment.NewLine
+        DocsSql += " )" + Environment.NewLine
         Return DocsSql
     End Function
     Function genContenCountSql() As String
-        Dim DocsSql As String = "Select count(*) " + vbCrLf
-        DocsSql += "FROM DataSource " + vbCrLf
+        Dim DocsSql As String = "Select count(*) " + Environment.NewLine
+        DocsSql += "FROM DataSource " + Environment.NewLine
         Return DocsSql
     End Function
     Function genEmailCountSql() As String
-        Dim DocsSql As String = "Select count(*) " + vbCrLf
-        DocsSql += "FROM [email] " + vbCrLf
+        Dim DocsSql As String = "Select count(*) " + Environment.NewLine
+        DocsSql += "FROM [email] " + Environment.NewLine
         Return DocsSql
     End Function
     Public Function genUseExistingRecordsOnly(ByVal bUseExisting As Boolean, ByVal GuidColName As String) As String
         If bUseExisting = False Then
             Return ""
         End If
-        Dim DocsSql As String = " and " + GuidColName + " in (SELECT [DocGuid] FROM ActiveSearchGuids where  UserID = '" + gCurrUserGuidID + "')" + vbCrLf
+        Dim DocsSql As String = " and " + GuidColName + " in (SELECT [DocGuid] FROM ActiveSearchGuids where  UserID = '" + gCurrUserGuidID + "')" + Environment.NewLine
         Return DocsSql
     End Function
     Function genSelectEmailCounts(ByVal ckWeighted As Boolean) As String
         Dim SearchSql As String = ""
         If ckWeighted = True Then
             SearchSql = SearchSql + " SELECT count(*) "
-            'SearchSql = SearchSql + "  KEY_TBL.RANK, DS.SentOn " + vbCrLf
-            SearchSql = SearchSql + " FROM EMAIL AS DS " + vbCrLf
+            'SearchSql = SearchSql + "  KEY_TBL.RANK, DS.SentOn " + environment.NewLine
+            SearchSql = SearchSql + " FROM EMAIL AS DS " + Environment.NewLine
         Else
             SearchSql = SearchSql + " SELECT count(*) "
-            SearchSql = SearchSql + " FROM EMAIL " + vbCrLf
+            SearchSql = SearchSql + " FROM EMAIL " + Environment.NewLine
         End If
 
 
-        SearchSql = SearchSql + " WHERE " + vbCrLf
+        SearchSql = SearchSql + " WHERE " + Environment.NewLine
 
 
         Return SearchSql
@@ -1978,9 +1978,9 @@ REEVAL:
                 isAdmin = DBARCH.isAdmin(gCurrUserGuidID)
 
                 If Not DBARCH.isAdmin(gCurrUserGuidID) And DBARCH.isGlobalSearcher(gCurrUserGuidID) = False Then
-                    EmailContentWhereClause = EmailContentWhereClause + vbCrLf + " And DataSourceOwnerUserID = '" + gCurrUserGuidID + "' "
+                    EmailContentWhereClause = EmailContentWhereClause + Environment.NewLine + " And DataSourceOwnerUserID = '" + gCurrUserGuidID + "' "
                 Else
-                    EmailContentWhereClause = EmailContentWhereClause + vbCrLf + " And DataSourceOwnerUserID IS NOT null "
+                    EmailContentWhereClause = EmailContentWhereClause + Environment.NewLine + " And DataSourceOwnerUserID IS NOT null "
                 End If
                 If ddebug Then Console.WriteLine(EmailContentWhereClause)
                 insertSql = EmailContentWhereClause
@@ -1993,12 +1993,12 @@ REEVAL:
                     '    LibraryName = UTIL.RemoveSingleQuotes(LibraryName)
                     '    insertSql = insertSql + genSingleLibrarySelect(EmailContentWhereClause , LibraryName )
                     'ElseIf bIncludeAllLibs = True Then
-                    '    insertSql = insertSql + vbCrLf + Chr(9) + genAllLibrariesSelect(EmailContentWhereClause )
+                    '    insertSql = insertSql + environment.NewLine + Chr(9) + genAllLibrariesSelect(EmailContentWhereClause )
                     '    'Else
                     '    '    If isAdmin Then
-                    '    '        insertSql = insertSql + vbCrLf + genAttachmentSearchSQLAdmin(EmailContentWhereClause )
+                    '    '        insertSql = insertSql + environment.NewLine + genAttachmentSearchSQLAdmin(EmailContentWhereClause )
                     '    '    Else
-                    '    '        insertSql = insertSql + vbCrLf + genAttachmentSearchSQLUser(EmailContentWhereClause )
+                    '    '        insertSql = insertSql + environment.NewLine + genAttachmentSearchSQLUser(EmailContentWhereClause )
                     '    '    End If
                     'End If
                 Else
@@ -2009,12 +2009,12 @@ REEVAL:
                     '    LibraryName = UTIL.RemoveSingleQuotes(LibraryName)
                     '    insertSql = insertSql + genSingleLibrarySelect(EmailContentWhereClause , LibraryName )
                     'ElseIf bIncludeAllLibs = True Then
-                    '    insertSql = insertSql + vbCrLf + Chr(9) + genAllLibrariesSelect(EmailContentWhereClause )
+                    '    insertSql = insertSql + environment.NewLine + Chr(9) + genAllLibrariesSelect(EmailContentWhereClause )
                     '    'Else
                     '    '    If isAdmin Then
-                    '    '        insertSql = insertSql + vbCrLf + genAttachmentSearchSQLAdmin(EmailContentWhereClause )
+                    '    '        insertSql = insertSql + environment.NewLine + genAttachmentSearchSQLAdmin(EmailContentWhereClause )
                     '    '    Else
-                    '    '        insertSql = insertSql + vbCrLf + genAttachmentSearchSQLUser(EmailContentWhereClause )
+                    '    '        insertSql = insertSql + environment.NewLine + genAttachmentSearchSQLUser(EmailContentWhereClause )
                     '    '    End If
                     'End If
 
@@ -2022,7 +2022,7 @@ REEVAL:
 
                 If Not DBARCH.isAdmin(gCurrUserGuidID) And DBARCH.isGlobalSearcher(gCurrUserGuidID) = False Then
                     '** If not an ADMIN, then limit to USER content only
-                    insertSql = insertSql + vbCrLf + " AND UserID = '" + gCurrUserGuidID + "' "
+                    insertSql = insertSql + Environment.NewLine + " AND UserID = '" + gCurrUserGuidID + "' "
                 End If
 
                 If gClipBoardActive = True Then Clipboard.Clear()
@@ -2063,7 +2063,7 @@ REEVAL:
                     GetSubContainsClauseWeighted(SearchText, insertSql, False, MinWeight)
                 End If
 
-                LOG.WriteToAttachmentSearchyLog("EmailAttachmentsSearch Weighted: " + insertSql + vbCrLf + vbCrLf)
+                LOG.WriteToAttachmentSearchyLog("EmailAttachmentsSearch Weighted: " + insertSql + Environment.NewLine + Environment.NewLine)
 
                 Clipboard.Clear()
                 Clipboard.SetText(insertSql)
@@ -2100,17 +2100,17 @@ REEVAL:
 
             'CorrectedSearchClause  = UTIL.RemoveOcrProblemChars(CorrectedSearchClause )
 
-            S = "insert EmailAttachmentSearchList ([EmailGuid], [UserID], Weight, RowID) " + vbCrLf
+            S = "insert EmailAttachmentSearchList ([EmailGuid], [UserID], Weight, RowID) " + Environment.NewLine
 
-            S = S + "   SELECT [EmailGuid] ,[UserID], KEY_TBL.RANK, RowID " + vbCrLf
-            S = S + "   FROM EmailAttachment " + vbCrLf
-            S = S + "      INNER JOIN CONTAINSTABLE(EmailAttachment,attachment, 'ISABOUT (" + CorrectedSearchClause + ")' ) as KEY_TBL" + vbCrLf
-            S = S + "        ON rowid = KEY_TBL.[KEY]" + vbCrLf
-            S = S + "   WHERE " + vbCrLf
+            S = S + "   SELECT [EmailGuid] ,[UserID], KEY_TBL.RANK, RowID " + Environment.NewLine
+            S = S + "   FROM EmailAttachment " + Environment.NewLine
+            S = S + "      INNER JOIN CONTAINSTABLE(EmailAttachment,attachment, 'ISABOUT (" + CorrectedSearchClause + ")' ) as KEY_TBL" + Environment.NewLine
+            S = S + "        ON rowid = KEY_TBL.[KEY]" + Environment.NewLine
+            S = S + "   WHERE " + Environment.NewLine
 
             If isFreetext = False Then
                 ContainsClause = ContainsClause + " and ((UserID is not null) and UserID = '" + gCurrUserGuidID + "' and KEY_TBL.RANK > " + MinWeight.ToString + " or isPublic = 'Y')"
-                ContainsClause = S + ContainsClause + vbCrLf
+                ContainsClause = S + ContainsClause + Environment.NewLine
                 If gClipBoardActive = True Then Clipboard.Clear()
                 If gClipBoardActive = True Then Clipboard.SetText(ContainsClause)
                 Return
@@ -2133,7 +2133,7 @@ REEVAL:
                 S = ContainsClause
             End If
 
-            ContainsClause = S + S + vbCrLf
+            ContainsClause = S + S + Environment.NewLine
             If gClipBoardActive = True Then Clipboard.Clear()
             If gClipBoardActive = True Then Clipboard.SetText(ContainsClause)
         Catch ex As Exception
@@ -2607,20 +2607,20 @@ GetNextChar:
                 Dim EOL As String = ""
                 Select Case LCase(tWord)
                     Case "select"
-                        EOL = vbCrLf
+                        EOL = Environment.NewLine
                     Case "from"
-                        EOL = vbCrLf
+                        EOL = Environment.NewLine
                     Case "where"
-                        EOL = vbCrLf
+                        EOL = Environment.NewLine
                     Case "order"
-                        EOL = vbCrLf
+                        EOL = Environment.NewLine
                     Case "and"
-                        EOL = vbCrLf
+                        EOL = Environment.NewLine
                     Case "or"
-                        EOL = vbCrLf
+                        EOL = Environment.NewLine
                 End Select
                 If InStr(tWord, ",") > 0 Then
-                    EOL = vbCrLf + vbTab
+                    EOL = Environment.NewLine + vbTab
                 End If
                 If InStr(tWord, "not", CompareMethod.Text) > 0 Then
                     Dim x# = 1
@@ -2645,15 +2645,15 @@ GetNextChar:
             B = DBARCH.ExecuteSqlNewConn(90301, S)
             If B Then
                 S = ""
-                S = S + " INSERT INTO TempUserLibItems (SourceGuid, Userid)" + vbCrLf
-                S = S + " select distinct SourceGuid, '" + gCurrUserGuidID + "' from LibraryItems" + vbCrLf
-                S = S + " where LibraryName in (" + vbCrLf
-                S = S + " select distinct LibraryName from GroupLibraryAccess " + vbCrLf
-                S = S + " where GroupName in " + vbCrLf
-                S = S + " (select distinct GroupName from GroupUsers where UserID = '" + gCurrUserGuidID + "')" + vbCrLf
-                S = S + " union " + vbCrLf
+                S = S + " INSERT INTO TempUserLibItems (SourceGuid, Userid)" + Environment.NewLine
+                S = S + " select distinct SourceGuid, '" + gCurrUserGuidID + "' from LibraryItems" + Environment.NewLine
+                S = S + " where LibraryName in (" + Environment.NewLine
+                S = S + " select distinct LibraryName from GroupLibraryAccess " + Environment.NewLine
+                S = S + " where GroupName in " + Environment.NewLine
+                S = S + " (select distinct GroupName from GroupUsers where UserID = '" + gCurrUserGuidID + "')" + Environment.NewLine
+                S = S + " union " + Environment.NewLine
                 S = S + " select distinct LibraryName from LibraryUsers where UserID = '" + gCurrUserGuidID + "'"
-                S = S + " )" + vbCrLf
+                S = S + " )" + Environment.NewLine
                 B = DBARCH.ExecuteSqlNewConn(90302, S)
 
                 If gClipBoardActive = True Then Clipboard.Clear()
@@ -2662,7 +2662,7 @@ GetNextChar:
             End If
         Catch ex As Exception
             B = False
-            LOG.WriteToArchiveLog("ERROR genIsInLibrariesSql: " + ex.Message + vbCrLf + S)
+            LOG.WriteToArchiveLog("ERROR genIsInLibrariesSql: " + ex.Message + Environment.NewLine + S)
         End Try
 
         Return B
@@ -2672,13 +2672,13 @@ GetNextChar:
     Function genAllLibrariesSql() As String
 
         Dim S As String = ""
-        S = S + " select distinct SourceGuid, '" + gCurrUserGuidID + "' from LibraryItems" + vbCrLf
-        S = S + "  where LibraryName in (" + vbCrLf
-        S = S + "  select distinct LibraryName from GroupLibraryAccess " + vbCrLf
+        S = S + " select distinct SourceGuid, '" + gCurrUserGuidID + "' from LibraryItems" + Environment.NewLine
+        S = S + "  where LibraryName in (" + Environment.NewLine
+        S = S + "  select distinct LibraryName from GroupLibraryAccess " + Environment.NewLine
         S = S + "  where GroupName in "
-        S = S + "  (select distinct GroupName from GroupUsers where UserID = 'wmiller')" + vbCrLf
-        S = S + "  union " + vbCrLf
-        S = S + "  select distinct LibraryName from LibraryUsers where UserID = 'wmiller' )" + vbCrLf
+        S = S + "  (select distinct GroupName from GroupUsers where UserID = 'wmiller')" + Environment.NewLine
+        S = S + "  union " + Environment.NewLine
+        S = S + "  select distinct LibraryName from LibraryUsers where UserID = 'wmiller' )" + Environment.NewLine
         Return S
 
     End Function
@@ -2688,7 +2688,7 @@ GetNextChar:
         Dim WeightedSearch As Boolean = False
         Dim L As New List(Of String)
 
-        Dim A As String() = SqlQuery.Split(vbCrLf)
+        Dim A As String() = SqlQuery.Split(Environment.NewLine)
         Dim S As String = SqlQuery
         Dim xContentAdded As Boolean = False
         Dim ContainsUnion As Boolean = False
@@ -2717,13 +2717,13 @@ GetNextChar:
             End If
 
             If InStr(S, "/*") > 0 And InStr(S, "*/") > 0 Then
-                L.Add(Chr(9) + S + vbCrLf)
+                L.Add(Chr(9) + S + Environment.NewLine)
                 GoTo NEXTLINE
             End If
 
             If InStr(S, "EmailAttachmentSearchList", CompareMethod.Text) > 0 Then
                 'Console.WriteLine("Here xx0011")
-                L.Add(Chr(9) + S + vbCrLf)
+                L.Add(Chr(9) + S + Environment.NewLine)
                 GoTo NEXTLINE
             End If
             'SELECT TOP 1000  KEY_TBL.RANK
@@ -2734,7 +2734,7 @@ GetNextChar:
             End If
             If InStr(S, "ORDER BY KEY_TBL.RANK DESC", CompareMethod.Text) > 0 Then
                 WeightedSearch = True
-                S = Chr(9) + "/* " + S + " */" + vbCrLf + Chr(9) + "/* above commented out by Pagination Module */"
+                S = Chr(9) + "/* " + S + " */" + Environment.NewLine + Chr(9) + "/* above commented out by Pagination Module */"
             End If
             If InStr(S, "/*KEPP*/", CompareMethod.Text) > 0 Then
                 ContainsLimitToLibrary = True
@@ -2743,7 +2743,7 @@ GetNextChar:
             End If
             If ContainsLimitToLibrary = True Then
                 S = Chr(9) + S
-                L.Add(Chr(9) + S + vbCrLf)
+                L.Add(Chr(9) + S + Environment.NewLine)
             ElseIf ContainsUnion = False And InStr(S, "select", CompareMethod.Text) > 0 _
                 And InStr(S, "*", CompareMethod.Text) = 0 _
                 And InStr(S, "FROM [LibraryItems]", CompareMethod.Text) = 0 _
@@ -2751,59 +2751,59 @@ GetNextChar:
                 Then
                 If S.Length >= "select".Length Then
                     If InStr(S, "or EmailGuid in (SELECT   distinct  LibraryItems.SourceGuid", CompareMethod.Text) > 0 Then
-                        L.Add(S + vbCrLf)
+                        L.Add(S + Environment.NewLine)
                         Console.WriteLine("XX2 Do nothing here.")
                     ElseIf InStr(S, "or SourceGuid in (SELECT   distinct  LibraryItems.SourceGuid", CompareMethod.Text) > 0 Then
-                        L.Add(S + vbCrLf)
+                        L.Add(S + Environment.NewLine)
                         Console.WriteLine("XX3 Do nothing here.")
                     ElseIf Mid(S, 1, 6).ToUpper.Equals("SELECT") Then
-                        L.Add("WITH xContent AS" + vbCrLf)
-                        L.Add("(" + vbCrLf)
-                        L.Add(S + vbCrLf)
+                        L.Add("WITH xContent AS" + Environment.NewLine)
+                        L.Add("(" + Environment.NewLine)
+                        L.Add(S + Environment.NewLine)
                         xContentAdded = False
                     End If
                 End If
             ElseIf InStr(S, "FROM datasource", CompareMethod.Text) > 0 Or InStr(S, "FROM DataSource", CompareMethod.Text) > 0 Then
                 If WeightedSearch = True Then
-                    L.Add(Chr(9) + ",ROW_NUMBER() OVER (ORDER BY Rank DESC) AS ROWID" + vbCrLf)
+                    L.Add(Chr(9) + ",ROW_NUMBER() OVER (ORDER BY Rank DESC) AS ROWID" + Environment.NewLine)
                 Else
-                    L.Add(Chr(9) + ",ROW_NUMBER() OVER (ORDER BY SourceName ASC) AS ROWID" + vbCrLf)
+                    L.Add(Chr(9) + ",ROW_NUMBER() OVER (ORDER BY SourceName ASC) AS ROWID" + Environment.NewLine)
                 End If
 
-                L.Add(S + vbCrLf)
+                L.Add(S + Environment.NewLine)
             ElseIf InStr(S, "FROM EMAIL", CompareMethod.Text) > 0 Then
                 If WeightedSearch = True Then
-                    L.Add(Chr(9) + ",ROW_NUMBER() OVER (ORDER BY Rank DESC) AS ROWID" + vbCrLf)
+                    L.Add(Chr(9) + ",ROW_NUMBER() OVER (ORDER BY Rank DESC) AS ROWID" + Environment.NewLine)
                 Else
-                    L.Add(Chr(9) + ",ROW_NUMBER() OVER (ORDER BY SentOn ASC) AS ROWID" + vbCrLf)
+                    L.Add(Chr(9) + ",ROW_NUMBER() OVER (ORDER BY SentOn ASC) AS ROWID" + Environment.NewLine)
                 End If
 
-                L.Add(S + vbCrLf)
+                L.Add(S + Environment.NewLine)
             ElseIf ContainsUnion = False And InStr(Chr(9) + S, "order by", CompareMethod.Text) > 0 Then
                 'If WeightedSearch = False Then
                 S = "--" + S
                 'End If
 
-                L.Add(S + vbCrLf)
-                L.Add(")" + vbCrLf)
-                L.Add("Select * " + vbCrLf)
-                L.Add("FROM xContent" + vbCrLf)
-                L.Add("WHERE ROWID BETWEEN " + StartPageNo.ToString + " AND " + EndPageNo.ToString + vbCrLf)
+                L.Add(S + Environment.NewLine)
+                L.Add(")" + Environment.NewLine)
+                L.Add("Select * " + Environment.NewLine)
+                L.Add("FROM xContent" + Environment.NewLine)
+                L.Add("WHERE ROWID BETWEEN " + StartPageNo.ToString + " AND " + EndPageNo.ToString + Environment.NewLine)
                 WeightedSearch = False
                 xContentAdded = True
             ElseIf ContainsUnion = True And InStr(Chr(9) + S, "order by [SourceName]", CompareMethod.Text) > 0 Then
                 'If WeightedSearch = False Then
                 S = "--" + S
             Else
-                L.Add(Chr(9) + S + vbCrLf)
+                L.Add(Chr(9) + S + Environment.NewLine)
             End If
 NEXTLINE:
         Next
         If xContentAdded = False Then
-            L.Add(")" + vbCrLf)
-            L.Add("Select * " + vbCrLf)
-            L.Add("FROM xContent" + vbCrLf)
-            L.Add("WHERE ROWID BETWEEN " + StartPageNo.ToString + " AND " + EndPageNo.ToString + vbCrLf)
+            L.Add(")" + Environment.NewLine)
+            L.Add("Select * " + Environment.NewLine)
+            L.Add("FROM xContent" + Environment.NewLine)
+            L.Add("WHERE ROWID BETWEEN " + StartPageNo.ToString + " AND " + EndPageNo.ToString + Environment.NewLine)
         End If
         '** Rebuild the statement
         Dim II As Integer = 0
@@ -2811,8 +2811,8 @@ NEXTLINE:
         For Each S In L
             II += 1
             If gClipBoardActive Then Console.WriteLine(II.ToString + ": " + S)
-            If InStr(S, vbCrLf) = 0 Then
-                S = S + vbCrLf
+            If InStr(S, Environment.NewLine) = 0 Then
+                S = S + Environment.NewLine
             End If
             SqlQuery += S
         Next
@@ -2836,7 +2836,7 @@ NEXTLINE:
 
         Dim S = ""
 
-        S += " select EmailGuid from EmailAttachment where " + EmailContainsClause + vbCrLf + " and UserID = '" + gCurrUserGuidID + "'"
+        S += " select EmailGuid from EmailAttachment where " + EmailContainsClause + Environment.NewLine + " and UserID = '" + gCurrUserGuidID + "'"
 
         Return S
     End Function
@@ -2845,10 +2845,10 @@ NEXTLINE:
 
         Dim AllLibSql As String = ""
 
-        AllLibSql += " SELECT distinct SourceGuid FROM [LibraryItems] where LibraryName in " + vbCrLf
-        AllLibSql += " (" + vbCrLf
-        AllLibSql += " select distinct LibraryName from LibraryUsers where UserID = '" + gCurrUserGuidID + "'" + vbCrLf
-        AllLibSql += " )" + vbCrLf
+        AllLibSql += " SELECT distinct SourceGuid FROM [LibraryItems] where LibraryName in " + Environment.NewLine
+        AllLibSql += " (" + Environment.NewLine
+        AllLibSql += " select distinct LibraryName from LibraryUsers where UserID = '" + gCurrUserGuidID + "'" + Environment.NewLine
+        AllLibSql += " )" + Environment.NewLine
 
 
         Dim S As String = ""
@@ -2860,7 +2860,7 @@ NEXTLINE:
         Dim S As String = ""
 
         'S = S + " and EmailGuid in (SELECT [SourceGuid] FROM [LibraryItems] where LibraryName = '" + LibraryName  + "')"
-        '** DO NOT PUT vbcrlf at the end of the below lines. That will cause problems in inserting PAGING.
+        '** DO NOT PUT environment.NewLine at the end of the below lines. That will cause problems in inserting PAGING.
         Dim gSearcher As Boolean = False
         If DBARCH.isAdmin(gCurrUserGuidID) = True Or DBARCH.isGlobalSearcher(gCurrUserGuidID) = True Then
             gSearcher = True
@@ -2880,7 +2880,7 @@ NEXTLINE:
         S = "delete from EmailAttachmentSearchList where UserID = '" + gCurrUserGuidID + "' "
         Dim B As Boolean = DBARCH.ExecuteSqlNewConn(90303, S)
         If B = False Then
-            log.WriteToArchiveLog("Notice: Failed to delete user records from EmailAttachmentSearchList.")
+            LOG.WriteToArchiveLog("Notice: Failed to delete user records from EmailAttachmentSearchList.")
         End If
 
         Try
@@ -2890,10 +2890,10 @@ NEXTLINE:
             'FROM         EmailAttachment
             'WHERE     CONTAINS(*, ' alaska')
 
-            tSql = "insert EmailAttachmentSearchList ([UserID],[EmailGuid], RowID) " + vbCrLf
-            tSql = tSql + " select '" + gCurrUserGuidID + "',[EmailGuid], RowID  " + vbCrLf
-            tSql = tSql + "FROM EmailAttachment " + vbCrLf
-            tSql = tSql + "where " + vbCrLf
+            tSql = "insert EmailAttachmentSearchList ([UserID],[EmailGuid], RowID) " + Environment.NewLine
+            tSql = tSql + " select '" + gCurrUserGuidID + "',[EmailGuid], RowID  " + Environment.NewLine
+            tSql = tSql + "FROM EmailAttachment " + Environment.NewLine
+            tSql = tSql + "where " + Environment.NewLine
             S = ContainsClause
             I = 0
             I = InStr(S, "(")
@@ -2911,7 +2911,7 @@ NEXTLINE:
                 S = "contains(*" + S
             End If
 
-            ContainsClause = tSql + S + vbCrLf
+            ContainsClause = tSql + S + Environment.NewLine
         Catch ex As Exception
             Console.WriteLine(ex.Message)
         End Try

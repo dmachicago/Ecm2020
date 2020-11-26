@@ -38,7 +38,7 @@ Public Class frmSqlite
             CMD.ExecuteNonQuery()
             MessageBox.Show("SUCCESSFUL EXecution")
         Catch ex As Exception
-            Dim msg As String = "ERROR: clsDbLocal/addInventory - " + vbCrLf + S + vbCrLf + ex.Message
+            Dim msg As String = "ERROR: clsDbLocal/addInventory - " + Environment.NewLine + S + Environment.NewLine + ex.Message
             MessageBox.Show(msg)
             B = False
         Finally

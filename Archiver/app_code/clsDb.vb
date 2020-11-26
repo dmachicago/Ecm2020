@@ -47,14 +47,14 @@ Public Class clsDb
                     rc = False
 
                     If InStr(ex.Message, "The DELETE statement conflicted with the REFERENCE", CompareMethod.Text) > 0 Then
-                        MessageBox.Show("It appears this user has DATA within the repository associated to them and cannot be deleted." + vbCrLf + vbCrLf + ex.Message)
+                        MessageBox.Show("It appears this user has DATA within the repository associated to them and cannot be deleted." + Environment.NewLine + Environment.NewLine + ex.Message)
                     ElseIf InStr(ex.Message, "duplicate key row", CompareMethod.Text) > 0 Then
                         'log.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 1464 : " + ex.Message)
                         'log.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 1408 : " + ex.Message)
                         'log.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 1411 : " + ex.Message)
                         Return True
                     Else
-                        'messagebox.show("Execute SQL: " + ex.Message + vbCrLf + "Please review the trace log." + vbCrLf + sql)
+                        'messagebox.show("Execute SQL: " + ex.Message + environment.NewLine + "Please review the trace log." + environment.NewLine + sql)
                         If ddebug Then Clipboard.SetText(sql)
                     End If
                     'xTrace(0, "ExecuteSqlNoTx: ", "-----------------------")
@@ -90,7 +90,7 @@ Public Class clsDb
         Try
             rsDataQry = command.ExecuteReader()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("clsDB : SqlQry : 1319db : " + ex.Message.ToString + vbCrLf + sql)
+            LOG.WriteToArchiveLog("clsDB : SqlQry : 1319db : " + ex.Message.ToString + Environment.NewLine + sql)
         End Try
         command.Dispose()
         command = Nothing
@@ -130,7 +130,7 @@ Public Class clsDb
             DefaultThesaurus = ""
             MessageBox.Show("Check the sql error log")
             LOG.WriteToArchiveLog("ERROR clsDB : getDefaultThesaurus : 100a : " + EcmLibConnectionString)
-            LOG.WriteToArchiveLog("clsDB : getDefaultThesaurus : 100b : " + ex.Message + vbCrLf + s)
+            LOG.WriteToArchiveLog("clsDB : getDefaultThesaurus : 100b : " + ex.Message + Environment.NewLine + s)
             DefaultThesaurus = "Roget"
         End Try
         If Not EcmConn.State = ConnectionState.Closed Then
@@ -262,7 +262,7 @@ Public Class clsDb
                 S = getThesaurusConnectionString()
                 TrexConnection.Open()
             Catch ex As Exception
-                LOG.WriteToArchiveLog("clsDatabaseARCH : CkConn : 348.2 : " + ex.Message + vbCrLf + S)
+                LOG.WriteToArchiveLog("clsDatabaseARCH : CkConn : 348.2 : " + ex.Message + Environment.NewLine + S)
             End Try
         End If
     End Sub
@@ -356,7 +356,7 @@ Public Class clsDb
                 TID = rsData.GetValue(0).ToString
             Else
                 MessageBox.Show("Did not find the Thesaurus listed in the DBARCH - aborting: " + ThesaurusName + ", so the query will continue without a thesaurus.")
-                LOG.WriteToArchiveLog("clsDatabaseARCH : getThesaurusID : ERROR 3963 : " + vbCrLf + S)
+                LOG.WriteToArchiveLog("clsDatabaseARCH : getThesaurusID : ERROR 3963 : " + Environment.NewLine + S)
             End If
         Catch ex As Exception
             'xTrace(12330, "clsDataBase:GetRowByKey", ex.Message)
@@ -727,7 +727,7 @@ RETRY1:
             End If
         Catch ex As Exception
             If ddebug Then Debug.Print("Error 2194.23: " + ex.Message)
-            LOG.WriteToArchiveLog("clsDB : PopulateComboBox : 1000 : " + ex.Message + vbCrLf + S + vbCrLf + ConnStr)
+            LOG.WriteToArchiveLog("clsDB : PopulateComboBox : 1000 : " + ex.Message + Environment.NewLine + S + Environment.NewLine + ConnStr)
             If InStr(ex.Message, "XX", CompareMethod.Text) And TryAgain = False Then
                 My.Settings("UserThesaurusConnString") = "?"
                 LOG.WriteToArchiveLog("clsDB : PopulateComboBox : 1000a : try again using APP Config.")

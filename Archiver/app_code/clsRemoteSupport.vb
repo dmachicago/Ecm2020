@@ -86,8 +86,8 @@ Public Class clsRemoteSupport
             End If
             Return iCnt
         Catch ex As Exception
-            'messagebox.show("getCountRemoteTable: Connection to remote server failed:" + vbCrLf + ex.Message)
-            LOG.WriteToArchiveLog("getCountRemoteTable: Connection to remote server failed:" + vbCrLf + ex.Message)
+            'messagebox.show("getCountRemoteTable: Connection to remote server failed:" + environment.NewLine + ex.Message)
+            LOG.WriteToArchiveLog("getCountRemoteTable: Connection to remote server failed:" + Environment.NewLine + ex.Message)
         End Try
         Return -1
     End Function
@@ -114,8 +114,8 @@ Public Class clsRemoteSupport
             End If
             Return CDate(LastUpdate)
         Catch ex As Exception
-            MessageBox.Show("getRemoteRowLastupdate: Connection to remote server failed:" + vbCrLf + ex.Message)
-            LOG.WriteToArchiveLog("getRemoteRowLastupdate: Connection to remote server failed:" + vbCrLf + ex.Message)
+            MessageBox.Show("getRemoteRowLastupdate: Connection to remote server failed:" + Environment.NewLine + ex.Message)
+            LOG.WriteToArchiveLog("getRemoteRowLastupdate: Connection to remote server failed:" + Environment.NewLine + ex.Message)
         End Try
 
         Return Nothing
@@ -148,8 +148,8 @@ Public Class clsRemoteSupport
             End If
             B = True
         Catch ex As Exception
-            MessageBox.Show("Connection to remote server failed:" + vbCrLf + ex.Message)
-            LOG.WriteToArchiveLog("Connection to remote server failed:" + vbCrLf + ex.Message)
+            MessageBox.Show("Connection to remote server failed:" + Environment.NewLine + ex.Message)
+            LOG.WriteToArchiveLog("Connection to remote server failed:" + Environment.NewLine + ex.Message)
             B = False
         End Try
 
@@ -235,8 +235,8 @@ Public Class clsRemoteSupport
                 rsColInfo = Nothing
             End If
         Catch ex As Exception
-            MessageBox.Show("ckLookupTblNeedsUpdate: Error:" + vbCrLf + ex.Message)
-            LOG.WriteToArchiveLog("ckLookupTblNeedsUpdate: Error:" + vbCrLf + ex.Message)
+            MessageBox.Show("ckLookupTblNeedsUpdate: Error:" + Environment.NewLine + ex.Message)
+            LOG.WriteToArchiveLog("ckLookupTblNeedsUpdate: Error:" + Environment.NewLine + ex.Message)
         End Try
 
         NbrHelpRecs = iCnt
@@ -682,15 +682,15 @@ Public Class clsRemoteSupport
             If B Then
                 '** Update the help
                 Dim UpdateSql As String = ""
-                UpdateSql = UpdateSql + " UPDATE [HelpText]" + vbCrLf
-                UpdateSql = UpdateSql + " SET " + vbCrLf
-                UpdateSql = UpdateSql + "  [HelpText] = '" + HelpText + "' " + vbCrLf
-                UpdateSql = UpdateSql + " ,[DisplayHelpText] = " + DisplayHelpText + vbCrLf
-                UpdateSql = UpdateSql + " ,[WidgetText] = '" + WidgetText + "' " + vbCrLf
-                UpdateSql = UpdateSql + " ,[LastUpdate] = '" + LastUpdate + "'" + vbCrLf
-                UpdateSql = UpdateSql + " ,[UpdatedBy] = '" + NowUser + "'" + vbCrLf
-                UpdateSql = UpdateSql + " WHERE " + vbCrLf
-                UpdateSql = UpdateSql + " ScreenName = '" + ScreenName + "' " + vbCrLf
+                UpdateSql = UpdateSql + " UPDATE [HelpText]" + Environment.NewLine
+                UpdateSql = UpdateSql + " SET " + Environment.NewLine
+                UpdateSql = UpdateSql + "  [HelpText] = '" + HelpText + "' " + Environment.NewLine
+                UpdateSql = UpdateSql + " ,[DisplayHelpText] = " + DisplayHelpText + Environment.NewLine
+                UpdateSql = UpdateSql + " ,[WidgetText] = '" + WidgetText + "' " + Environment.NewLine
+                UpdateSql = UpdateSql + " ,[LastUpdate] = '" + LastUpdate + "'" + Environment.NewLine
+                UpdateSql = UpdateSql + " ,[UpdatedBy] = '" + NowUser + "'" + Environment.NewLine
+                UpdateSql = UpdateSql + " WHERE " + Environment.NewLine
+                UpdateSql = UpdateSql + " ScreenName = '" + ScreenName + "' " + Environment.NewLine
                 UpdateSql = UpdateSql + " and WidgetName = '" + WidgetName + "' "
 
                 BB = DBARCH.ExecuteSqlNewConn(UpdateSql, False)
@@ -836,7 +836,7 @@ Public Class clsRemoteSupport
             GC.WaitForFullGCApproach()
             Return ClientLicenseServer
         Catch ex As Exception
-            LOG.WriteToArchiveLog("getClientLicenseServer: Failed to retrieve Server ID:" + vbCrLf + ex.Message)
+            LOG.WriteToArchiveLog("getClientLicenseServer: Failed to retrieve Server ID:" + Environment.NewLine + ex.Message)
         End Try
 
         Return ClientLicenseServer
@@ -878,7 +878,7 @@ Public Class clsRemoteSupport
             End If
             Return ClientLicenseServer
         Catch ex As Exception
-            LOG.WriteToArchiveLog("getClientLicenseServer: Failed to retrieve Server ID:" + vbCrLf + ex.Message)
+            LOG.WriteToArchiveLog("getClientLicenseServer: Failed to retrieve Server ID:" + Environment.NewLine + ex.Message)
         End Try
 
         Return ClientLicenseServer
@@ -894,7 +894,7 @@ Public Class clsRemoteSupport
             GC.Collect()
             GC.WaitForFullGCApproach()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("setClientLicenseServer: Failed to set Server ID:" + vbCrLf + ex.Message)
+            LOG.WriteToArchiveLog("setClientLicenseServer: Failed to set Server ID:" + Environment.NewLine + ex.Message)
         End Try
         Return B
         Return ClientLicenseServer
@@ -1009,7 +1009,7 @@ Public Class clsRemoteSupport
             LOG.WriteToArchiveLog("getClientLicenses: Retrieve Server license:" + Now.ToString)
             B = True
         Catch ex As Exception
-            LOG.WriteToArchiveLog("getClientLicenses: Failed to retrieve Server data:" + vbCrLf + ex.Message)
+            LOG.WriteToArchiveLog("getClientLicenses: Failed to retrieve Server data:" + Environment.NewLine + ex.Message)
             B = False
         End Try
 
@@ -1042,7 +1042,7 @@ Public Class clsRemoteSupport
             GC.Collect()
             GC.WaitForFullGCApproach()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("setClientLicenseServer: Failed to set Server ID:" + vbCrLf + ex.Message)
+            LOG.WriteToArchiveLog("setClientLicenseServer: Failed to set Server ID:" + Environment.NewLine + ex.Message)
         End Try
         Return B
     End Function
@@ -1069,7 +1069,7 @@ Public Class clsRemoteSupport
             GC.WaitForFullGCApproach()
             Return ServerLicense
         Catch ex As Exception
-            LOG.WriteToArchiveLog("getClientLicenseServer: Failed to retrieve Server ID:" + vbCrLf + ex.Message)
+            LOG.WriteToArchiveLog("getClientLicenseServer: Failed to retrieve Server ID:" + Environment.NewLine + ex.Message)
         End Try
 
         Return ServerLicense
@@ -1104,7 +1104,7 @@ Public Class clsRemoteSupport
             Return True
         Catch ex As Exception
             B = False
-            LOG.WriteToArchiveLog("getClientLicenseServer: Failed to retrieve Server ID:" + vbCrLf + ex.Message)
+            LOG.WriteToArchiveLog("getClientLicenseServer: Failed to retrieve Server ID:" + Environment.NewLine + ex.Message)
         End Try
 
         Return B
@@ -1129,7 +1129,7 @@ Public Class clsRemoteSupport
     '        GC.Collect()
     '        GC.WaitForFullGCApproach()
     '    Catch ex As Exception
-    '        log.WriteToArchiveLog("setClientLicenseServer: Failed to set Server ID:" + vbCrLf + ex.Message)
+    '        log.WriteToArchiveLog("setClientLicenseServer: Failed to set Server ID:" + environment.NewLine + ex.Message)
     '    End Try
     '    Return B
     'End Function

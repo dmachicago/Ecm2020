@@ -70,8 +70,8 @@ Public Class clsDirListener
                 rc = False
 
                 If InStr(ex.Message, "The DELETE statement conflicted with the REFERENCE", CompareMethod.Text) > 0 Then
-                    If gRunUnattended = False Then MessageBox.Show("It appears this user has DATA within the repository associated to them and cannot be deleted." + vbCrLf + vbCrLf + ex.Message)
-                    LOG.WriteToArchiveLog("It appears this user has DATA within the repository associated to them and cannot be deleted." + vbCrLf + vbCrLf + ex.Message)
+                    If gRunUnattended = False Then MessageBox.Show("It appears this user has DATA within the repository associated to them and cannot be deleted." + Environment.NewLine + Environment.NewLine + ex.Message)
+                    LOG.WriteToArchiveLog("It appears this user has DATA within the repository associated to them and cannot be deleted." + Environment.NewLine + Environment.NewLine + ex.Message)
                 ElseIf InStr(ex.Message, "HelpText", CompareMethod.Text) > 0 Then
                     BB = True
                 ElseIf InStr(ex.Message, "duplicate key row", CompareMethod.Text) > 0 Then
@@ -87,14 +87,14 @@ Public Class clsDirListener
                     'log.WriteToArchiveLog("clsDirListener : ExecuteSqlNewConn : 1464c3 : " + sql)
                     BB = True
                 Else
-                    'messagebox.show("Execute SQL: " + ex.Message + vbCrLf + "Please review the trace log." + vbCrLf + sql)
+                    'messagebox.show("Execute SQL: " + ex.Message + environment.NewLine + "Please review the trace log." + environment.NewLine + sql)
                     BB = False
                     xTrace(885121, "ExecuteSqlNewConn 10: ", ex.Message.ToString)
                     xTrace(885122, "ExecuteSqlNewConn 10: ", ex.StackTrace.ToString)
                     xTrace(885123, "ExecuteSqlNewConn 10: ", Mid(sql, 1, 2000))
                     LOG.WriteToArchiveLog("clsDirListener : ExecuteSqlNewConn : 89442a1p1: " + ex.Message)
                     LOG.WriteToArchiveLog("clsDirListener : ExecuteSqlNewConn : 8442a1p1: " + ex.StackTrace)
-                    LOG.WriteToArchiveLog("clsDirListener : ExecuteSqlNewConn : 8442a1p2: " + vbCrLf + sql + vbCrLf)
+                    LOG.WriteToArchiveLog("clsDirListener : ExecuteSqlNewConn : 8442a1p2: " + Environment.NewLine + sql + Environment.NewLine)
                 End If
 
             End Try
@@ -187,7 +187,7 @@ Public Class clsDirListener
                 rsDataQry = command.ExecuteReader()
             Catch ex As Exception
                 LOG.WriteToArchiveLog("clsDatabaseARCH : SqlQry : 1319 : " + ex.Message)
-                LOG.WriteToArchiveLog("clsDatabaseARCH : SqlQry : 1319 Server too Busy : " + vbCrLf + sql)
+                LOG.WriteToArchiveLog("clsDatabaseARCH : SqlQry : 1319 Server too Busy : " + Environment.NewLine + sql)
             End Try
 
             command.Dispose()
@@ -268,7 +268,7 @@ Public Class clsDirListener
             'Set this property to true to start watching
             watchfolder.EnableRaisingEvents = True
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ATTENTION: Listener NOT started for: " + _Directory + vbCrLf + ex.Message + vbCrLf + ex.StackTrace.ToString)
+            LOG.WriteToArchiveLog("ATTENTION: Listener NOT started for: " + _Directory + Environment.NewLine + ex.Message + Environment.NewLine + ex.StackTrace.ToString)
         End Try
 
     End Sub

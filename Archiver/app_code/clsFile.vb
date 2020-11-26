@@ -43,10 +43,10 @@ Public Class clsFile
                 Dim br As System.IO.BinaryReader = New System.IO.BinaryReader(fs)
                 Dim bArray() As Byte = br.ReadBytes(Convert.ToInt32(br.BaseStream.Length))
                 br.Close()
-                LOG.WriteToArchiveLog("clsFile : FileToByte : 11a : " + ex.Message + vbCrLf + " - " + fileName)
+                LOG.WriteToArchiveLog("clsFile : FileToByte : 11a : " + ex.Message + Environment.NewLine + " - " + fileName)
                 Return (bArray)
             Catch ex2 As Exception
-                LOG.WriteToArchiveLog("clsFile : FileToByte : 11b : " + ex2.Message + vbCrLf + " - " + fileName)
+                LOG.WriteToArchiveLog("clsFile : FileToByte : 11b : " + ex2.Message + Environment.NewLine + " - " + fileName)
                 Return Nothing
             End Try
         End Try

@@ -960,441 +960,441 @@ Public Class clsCONTACTSARCHIVE
     Public Function Insert() As Boolean
         Dim b As Boolean = False
         Dim s As String = ""
-        s = s + " INSERT INTO ContactsArchive(" + vbCrLf
-        s = s + "Email1Address," + vbCrLf
-        s = s + "FullName," + vbCrLf
-        s = s + "UserID," + vbCrLf
-        s = s + "Account," + vbCrLf
-        s = s + "Anniversary," + vbCrLf
-        s = s + "Application," + vbCrLf
-        s = s + "AssistantName," + vbCrLf
-        s = s + "AssistantTelephoneNumber," + vbCrLf
-        s = s + "BillingInformation," + vbCrLf
-        s = s + "Birthday," + vbCrLf
-        s = s + "Business2TelephoneNumber," + vbCrLf
-        s = s + "BusinessAddress," + vbCrLf
-        s = s + "BusinessAddressCity," + vbCrLf
-        s = s + "BusinessAddressCountry," + vbCrLf
-        s = s + "BusinessAddressPostalCode," + vbCrLf
-        s = s + "BusinessAddressPostOfficeBox," + vbCrLf
-        s = s + "BusinessAddressState," + vbCrLf
-        s = s + "BusinessAddressStreet," + vbCrLf
-        s = s + "BusinessCardType," + vbCrLf
-        s = s + "BusinessFaxNumber," + vbCrLf
-        s = s + "BusinessHomePage," + vbCrLf
-        s = s + "BusinessTelephoneNumber," + vbCrLf
-        s = s + "CallbackTelephoneNumber," + vbCrLf
-        s = s + "CarTelephoneNumber," + vbCrLf
-        s = s + "Categories," + vbCrLf
-        s = s + "Children," + vbCrLf
-        s = s + "xClass," + vbCrLf
-        s = s + "Companies," + vbCrLf
-        s = s + "CompanyName," + vbCrLf
-        s = s + "ComputerNetworkName," + vbCrLf
-        s = s + "Conflicts," + vbCrLf
-        s = s + "ConversationTopic," + vbCrLf
-        s = s + "CreationTime," + vbCrLf
-        s = s + "CustomerID," + vbCrLf
-        s = s + "Department," + vbCrLf
-        s = s + "Email1AddressType," + vbCrLf
-        s = s + "Email1DisplayName," + vbCrLf
-        s = s + "Email1EntryID," + vbCrLf
-        s = s + "Email2Address," + vbCrLf
-        s = s + "Email2AddressType," + vbCrLf
-        s = s + "Email2DisplayName," + vbCrLf
-        s = s + "Email2EntryID," + vbCrLf
-        s = s + "Email3Address," + vbCrLf
-        s = s + "Email3AddressType," + vbCrLf
-        s = s + "Email3DisplayName," + vbCrLf
-        s = s + "Email3EntryID," + vbCrLf
-        s = s + "FileAs," + vbCrLf
-        s = s + "FirstName," + vbCrLf
-        s = s + "FTPSite," + vbCrLf
-        s = s + "Gender," + vbCrLf
-        s = s + "GovernmentIDNumber," + vbCrLf
-        s = s + "Hobby," + vbCrLf
-        s = s + "Home2TelephoneNumber," + vbCrLf
-        s = s + "HomeAddress," + vbCrLf
-        s = s + "HomeAddressCountry," + vbCrLf
-        s = s + "HomeAddressPostalCode," + vbCrLf
-        s = s + "HomeAddressPostOfficeBox," + vbCrLf
-        s = s + "HomeAddressState," + vbCrLf
-        s = s + "HomeAddressStreet," + vbCrLf
-        s = s + "HomeFaxNumber," + vbCrLf
-        s = s + "HomeTelephoneNumber," + vbCrLf
-        s = s + "IMAddress," + vbCrLf
-        s = s + "Importance," + vbCrLf
-        s = s + "Initials," + vbCrLf
-        s = s + "InternetFreeBusyAddress," + vbCrLf
-        s = s + "JobTitle," + vbCrLf
-        s = s + "Journal," + vbCrLf
-        s = s + "Language," + vbCrLf
-        s = s + "LastModificationTime," + vbCrLf
-        s = s + "LastName," + vbCrLf
-        s = s + "LastNameAndFirstName," + vbCrLf
-        s = s + "MailingAddress," + vbCrLf
-        s = s + "MailingAddressCity," + vbCrLf
-        s = s + "MailingAddressCountry," + vbCrLf
-        s = s + "MailingAddressPostalCode," + vbCrLf
-        s = s + "MailingAddressPostOfficeBox," + vbCrLf
-        s = s + "MailingAddressState," + vbCrLf
-        s = s + "MailingAddressStreet," + vbCrLf
-        s = s + "ManagerName," + vbCrLf
-        s = s + "MiddleName," + vbCrLf
-        s = s + "Mileage," + vbCrLf
-        s = s + "MobileTelephoneNumber," + vbCrLf
-        s = s + "NetMeetingAlias," + vbCrLf
-        s = s + "NetMeetingServer," + vbCrLf
-        s = s + "NickName," + vbCrLf
-        s = s + "Title," + vbCrLf
-        s = s + "Body," + vbCrLf
-        s = s + "OfficeLocation," + vbCrLf
+        s = s + " INSERT INTO ContactsArchive(" + Environment.NewLine
+        s = s + "Email1Address," + Environment.NewLine
+        s = s + "FullName," + Environment.NewLine
+        s = s + "UserID," + Environment.NewLine
+        s = s + "Account," + Environment.NewLine
+        s = s + "Anniversary," + Environment.NewLine
+        s = s + "Application," + Environment.NewLine
+        s = s + "AssistantName," + Environment.NewLine
+        s = s + "AssistantTelephoneNumber," + Environment.NewLine
+        s = s + "BillingInformation," + Environment.NewLine
+        s = s + "Birthday," + Environment.NewLine
+        s = s + "Business2TelephoneNumber," + Environment.NewLine
+        s = s + "BusinessAddress," + Environment.NewLine
+        s = s + "BusinessAddressCity," + Environment.NewLine
+        s = s + "BusinessAddressCountry," + Environment.NewLine
+        s = s + "BusinessAddressPostalCode," + Environment.NewLine
+        s = s + "BusinessAddressPostOfficeBox," + Environment.NewLine
+        s = s + "BusinessAddressState," + Environment.NewLine
+        s = s + "BusinessAddressStreet," + Environment.NewLine
+        s = s + "BusinessCardType," + Environment.NewLine
+        s = s + "BusinessFaxNumber," + Environment.NewLine
+        s = s + "BusinessHomePage," + Environment.NewLine
+        s = s + "BusinessTelephoneNumber," + Environment.NewLine
+        s = s + "CallbackTelephoneNumber," + Environment.NewLine
+        s = s + "CarTelephoneNumber," + Environment.NewLine
+        s = s + "Categories," + Environment.NewLine
+        s = s + "Children," + Environment.NewLine
+        s = s + "xClass," + Environment.NewLine
+        s = s + "Companies," + Environment.NewLine
+        s = s + "CompanyName," + Environment.NewLine
+        s = s + "ComputerNetworkName," + Environment.NewLine
+        s = s + "Conflicts," + Environment.NewLine
+        s = s + "ConversationTopic," + Environment.NewLine
+        s = s + "CreationTime," + Environment.NewLine
+        s = s + "CustomerID," + Environment.NewLine
+        s = s + "Department," + Environment.NewLine
+        s = s + "Email1AddressType," + Environment.NewLine
+        s = s + "Email1DisplayName," + Environment.NewLine
+        s = s + "Email1EntryID," + Environment.NewLine
+        s = s + "Email2Address," + Environment.NewLine
+        s = s + "Email2AddressType," + Environment.NewLine
+        s = s + "Email2DisplayName," + Environment.NewLine
+        s = s + "Email2EntryID," + Environment.NewLine
+        s = s + "Email3Address," + Environment.NewLine
+        s = s + "Email3AddressType," + Environment.NewLine
+        s = s + "Email3DisplayName," + Environment.NewLine
+        s = s + "Email3EntryID," + Environment.NewLine
+        s = s + "FileAs," + Environment.NewLine
+        s = s + "FirstName," + Environment.NewLine
+        s = s + "FTPSite," + Environment.NewLine
+        s = s + "Gender," + Environment.NewLine
+        s = s + "GovernmentIDNumber," + Environment.NewLine
+        s = s + "Hobby," + Environment.NewLine
+        s = s + "Home2TelephoneNumber," + Environment.NewLine
+        s = s + "HomeAddress," + Environment.NewLine
+        s = s + "HomeAddressCountry," + Environment.NewLine
+        s = s + "HomeAddressPostalCode," + Environment.NewLine
+        s = s + "HomeAddressPostOfficeBox," + Environment.NewLine
+        s = s + "HomeAddressState," + Environment.NewLine
+        s = s + "HomeAddressStreet," + Environment.NewLine
+        s = s + "HomeFaxNumber," + Environment.NewLine
+        s = s + "HomeTelephoneNumber," + Environment.NewLine
+        s = s + "IMAddress," + Environment.NewLine
+        s = s + "Importance," + Environment.NewLine
+        s = s + "Initials," + Environment.NewLine
+        s = s + "InternetFreeBusyAddress," + Environment.NewLine
+        s = s + "JobTitle," + Environment.NewLine
+        s = s + "Journal," + Environment.NewLine
+        s = s + "Language," + Environment.NewLine
+        s = s + "LastModificationTime," + Environment.NewLine
+        s = s + "LastName," + Environment.NewLine
+        s = s + "LastNameAndFirstName," + Environment.NewLine
+        s = s + "MailingAddress," + Environment.NewLine
+        s = s + "MailingAddressCity," + Environment.NewLine
+        s = s + "MailingAddressCountry," + Environment.NewLine
+        s = s + "MailingAddressPostalCode," + Environment.NewLine
+        s = s + "MailingAddressPostOfficeBox," + Environment.NewLine
+        s = s + "MailingAddressState," + Environment.NewLine
+        s = s + "MailingAddressStreet," + Environment.NewLine
+        s = s + "ManagerName," + Environment.NewLine
+        s = s + "MiddleName," + Environment.NewLine
+        s = s + "Mileage," + Environment.NewLine
+        s = s + "MobileTelephoneNumber," + Environment.NewLine
+        s = s + "NetMeetingAlias," + Environment.NewLine
+        s = s + "NetMeetingServer," + Environment.NewLine
+        s = s + "NickName," + Environment.NewLine
+        s = s + "Title," + Environment.NewLine
+        s = s + "Body," + Environment.NewLine
+        s = s + "OfficeLocation," + Environment.NewLine
         s = s + "Subject) values ("
-        s = s + "'" + Email1Address.ToString + "'" + "," + vbCrLf
-        s = s + "'" + FullName.ToString + "'" + "," + vbCrLf
-        s = s + "'" + UserID.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Email1Address.ToString + "'" + "," + Environment.NewLine
+        s = s + "'" + FullName.ToString + "'" + "," + Environment.NewLine
+        s = s + "'" + UserID.ToString + "'" + "," + Environment.NewLine
         If Account = Nothing Then
             Account = " "
         End If
-        s = s + "'" + Account.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Account.ToString + "'" + "," + Environment.NewLine
         If Anniversary = Nothing Then
             Anniversary = " "
         End If
-        s = s + "'" + Anniversary.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Anniversary.ToString + "'" + "," + Environment.NewLine
         If Application = Nothing Then
             Application = " "
         End If
-        s = s + "'" + Application.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Application.ToString + "'" + "," + Environment.NewLine
         If AssistantName = Nothing Then
             AssistantName = " "
         End If
-        s = s + "'" + AssistantName.ToString + "'" + "," + vbCrLf
+        s = s + "'" + AssistantName.ToString + "'" + "," + Environment.NewLine
         If AssistantTelephoneNumber = Nothing Then
             AssistantTelephoneNumber = " "
         End If
-        s = s + "'" + AssistantTelephoneNumber.ToString + "'" + "," + vbCrLf
+        s = s + "'" + AssistantTelephoneNumber.ToString + "'" + "," + Environment.NewLine
         If BillingInformation = Nothing Then
             BillingInformation = " "
         End If
-        s = s + "'" + BillingInformation.ToString + "'" + "," + vbCrLf
+        s = s + "'" + BillingInformation.ToString + "'" + "," + Environment.NewLine
         If Birthday = Nothing Then
             Birthday = " "
         End If
-        s = s + "'" + Birthday.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Birthday.ToString + "'" + "," + Environment.NewLine
         If Business2TelephoneNumber = Nothing Then
             Business2TelephoneNumber = " "
         End If
-        s = s + "'" + Business2TelephoneNumber.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Business2TelephoneNumber.ToString + "'" + "," + Environment.NewLine
         If BusinessAddress = Nothing Then
             BusinessAddress = " "
         End If
-        s = s + "'" + BusinessAddress.ToString + "'" + "," + vbCrLf
+        s = s + "'" + BusinessAddress.ToString + "'" + "," + Environment.NewLine
         If BusinessAddressCity = Nothing Then
             BusinessAddressCity = " "
         End If
-        s = s + "'" + BusinessAddressCity.ToString + "'" + "," + vbCrLf
+        s = s + "'" + BusinessAddressCity.ToString + "'" + "," + Environment.NewLine
         If BusinessAddressCountry = Nothing Then
             BusinessAddressCountry = " "
         End If
-        s = s + "'" + BusinessAddressCountry.ToString + "'" + "," + vbCrLf
+        s = s + "'" + BusinessAddressCountry.ToString + "'" + "," + Environment.NewLine
         If BusinessAddressPostalCode = Nothing Then
             BusinessAddressPostalCode = " "
         End If
-        s = s + "'" + BusinessAddressPostalCode.ToString + "'" + "," + vbCrLf
+        s = s + "'" + BusinessAddressPostalCode.ToString + "'" + "," + Environment.NewLine
         If BusinessAddressPostOfficeBox = Nothing Then
             BusinessAddressPostOfficeBox = " "
         End If
-        s = s + "'" + BusinessAddressPostOfficeBox.ToString + "'" + "," + vbCrLf
+        s = s + "'" + BusinessAddressPostOfficeBox.ToString + "'" + "," + Environment.NewLine
         If BusinessAddressState = Nothing Then
             BusinessAddressState = " "
         End If
-        s = s + "'" + BusinessAddressState.ToString + "'" + "," + vbCrLf
+        s = s + "'" + BusinessAddressState.ToString + "'" + "," + Environment.NewLine
         If BusinessAddressStreet = Nothing Then
             BusinessAddressStreet = " "
         End If
-        s = s + "'" + BusinessAddressStreet.ToString + "'" + "," + vbCrLf
+        s = s + "'" + BusinessAddressStreet.ToString + "'" + "," + Environment.NewLine
         If BusinessCardType = Nothing Then
             BusinessCardType = " "
         End If
-        s = s + "'" + BusinessCardType.ToString + "'" + "," + vbCrLf
+        s = s + "'" + BusinessCardType.ToString + "'" + "," + Environment.NewLine
         If BusinessFaxNumber = Nothing Then
             BusinessFaxNumber = " "
         End If
-        s = s + "'" + BusinessFaxNumber.ToString + "'" + "," + vbCrLf
+        s = s + "'" + BusinessFaxNumber.ToString + "'" + "," + Environment.NewLine
         If BusinessHomePage = Nothing Then
             BusinessHomePage = " "
         End If
-        s = s + "'" + BusinessHomePage.ToString + "'" + "," + vbCrLf
+        s = s + "'" + BusinessHomePage.ToString + "'" + "," + Environment.NewLine
         If BusinessTelephoneNumber = Nothing Then
             BusinessTelephoneNumber = " "
         End If
-        s = s + "'" + BusinessTelephoneNumber.ToString + "'" + "," + vbCrLf
+        s = s + "'" + BusinessTelephoneNumber.ToString + "'" + "," + Environment.NewLine
         If CallbackTelephoneNumber = Nothing Then
             CallbackTelephoneNumber = " "
         End If
-        s = s + "'" + CallbackTelephoneNumber.ToString + "'" + "," + vbCrLf
+        s = s + "'" + CallbackTelephoneNumber.ToString + "'" + "," + Environment.NewLine
         If CarTelephoneNumber = Nothing Then
             CarTelephoneNumber = " "
         End If
-        s = s + "'" + CarTelephoneNumber.ToString + "'" + "," + vbCrLf
+        s = s + "'" + CarTelephoneNumber.ToString + "'" + "," + Environment.NewLine
         If Categories = Nothing Then
             Categories = " "
         End If
-        s = s + "'" + Categories.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Categories.ToString + "'" + "," + Environment.NewLine
         If Children = Nothing Then
             Children = " "
         End If
-        s = s + "'" + Children.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Children.ToString + "'" + "," + Environment.NewLine
         If xClass = Nothing Then
             xClass = " "
         End If
-        s = s + "'" + xClass.ToString + "'" + "," + vbCrLf
+        s = s + "'" + xClass.ToString + "'" + "," + Environment.NewLine
         If Companies = Nothing Then
             Companies = " "
         End If
-        s = s + "'" + Companies.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Companies.ToString + "'" + "," + Environment.NewLine
         If CompanyName = Nothing Then
             CompanyName = " "
         End If
-        s = s + "'" + CompanyName.ToString + "'" + "," + vbCrLf
+        s = s + "'" + CompanyName.ToString + "'" + "," + Environment.NewLine
         If ComputerNetworkName = Nothing Then
             ComputerNetworkName = " "
         End If
-        s = s + "'" + ComputerNetworkName.ToString + "'" + "," + vbCrLf
+        s = s + "'" + ComputerNetworkName.ToString + "'" + "," + Environment.NewLine
         If Conflicts = Nothing Then
             Conflicts = " "
         End If
-        s = s + "'" + Conflicts.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Conflicts.ToString + "'" + "," + Environment.NewLine
         If ConversationTopic = Nothing Then
             ConversationTopic = " "
         End If
-        s = s + "'" + ConversationTopic.ToString + "'" + "," + vbCrLf
+        s = s + "'" + ConversationTopic.ToString + "'" + "," + Environment.NewLine
         If CreationTime = Nothing Then
             CreationTime = " "
         End If
-        s = s + "'" + CreationTime.ToString + "'" + "," + vbCrLf
+        s = s + "'" + CreationTime.ToString + "'" + "," + Environment.NewLine
         'Debug.Print(s.Length.ToString)
         If CustomerID = Nothing Then
             CustomerID = " "
         End If
-        s = s + "'" + CustomerID.ToString + "'" + "," + vbCrLf
+        s = s + "'" + CustomerID.ToString + "'" + "," + Environment.NewLine
         If Department = Nothing Then
             Department = " "
         End If
-        s = s + "'" + Department.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Department.ToString + "'" + "," + Environment.NewLine
         If Email1AddressType = Nothing Then
             Email1AddressType = " "
         End If
-        s = s + "'" + Email1AddressType.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Email1AddressType.ToString + "'" + "," + Environment.NewLine
         If Email1DisplayName = Nothing Then
             Email1DisplayName = " "
         End If
-        s = s + "'" + Email1DisplayName.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Email1DisplayName.ToString + "'" + "," + Environment.NewLine
         If Email1EntryID = Nothing Then
             Email1EntryID = " "
         End If
-        s = s + "'" + Email1EntryID.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Email1EntryID.ToString + "'" + "," + Environment.NewLine
         If Email2Address = Nothing Then
             Email2Address = " "
         End If
-        s = s + "'" + Email2Address.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Email2Address.ToString + "'" + "," + Environment.NewLine
         If Email2AddressType = Nothing Then
             Email2AddressType = " "
         End If
-        s = s + "'" + Email2AddressType.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Email2AddressType.ToString + "'" + "," + Environment.NewLine
         'Debug.Print(s.Length.ToString)
         If Email2DisplayName = Nothing Then
             Email2DisplayName = " "
         End If
-        s = s + "'" + Email2DisplayName.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Email2DisplayName.ToString + "'" + "," + Environment.NewLine
         If Email2EntryID = Nothing Then
             Email2EntryID = " "
         End If
-        s = s + "'" + Email2EntryID.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Email2EntryID.ToString + "'" + "," + Environment.NewLine
         If Email3Address = Nothing Then
             Email3Address = " "
         End If
-        s = s + "'" + Email3Address.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Email3Address.ToString + "'" + "," + Environment.NewLine
         If Email3AddressType = Nothing Then
             Email3AddressType = " "
         End If
-        s = s + "'" + Email3AddressType.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Email3AddressType.ToString + "'" + "," + Environment.NewLine
         If Email3DisplayName = Nothing Then
             Email3DisplayName = " "
         End If
-        s = s + "'" + Email3DisplayName.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Email3DisplayName.ToString + "'" + "," + Environment.NewLine
         If Email3EntryID = Nothing Then
             Email3EntryID = " "
         End If
-        s = s + "'" + Email3EntryID.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Email3EntryID.ToString + "'" + "," + Environment.NewLine
         If FileAs = Nothing Then
             FileAs = " "
         End If
-        s = s + "'" + FileAs.ToString + "'" + "," + vbCrLf
+        s = s + "'" + FileAs.ToString + "'" + "," + Environment.NewLine
         If FirstName = Nothing Then
             FirstName = " "
         End If
-        s = s + "'" + FirstName.ToString + "'" + "," + vbCrLf
+        s = s + "'" + FirstName.ToString + "'" + "," + Environment.NewLine
         If FTPSite = Nothing Then
             FTPSite = " "
         End If
-        s = s + "'" + FTPSite.ToString + "'" + "," + vbCrLf
+        s = s + "'" + FTPSite.ToString + "'" + "," + Environment.NewLine
         If Gender = Nothing Then
             Gender = " "
         End If
-        s = s + "'" + Gender.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Gender.ToString + "'" + "," + Environment.NewLine
         If GovernmentIDNumber = Nothing Then
             GovernmentIDNumber = " "
         End If
-        s = s + "'" + GovernmentIDNumber.ToString + "'" + "," + vbCrLf
+        s = s + "'" + GovernmentIDNumber.ToString + "'" + "," + Environment.NewLine
         If Hobby = Nothing Then
             Hobby = " "
         End If
-        s = s + "'" + Hobby.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Hobby.ToString + "'" + "," + Environment.NewLine
         If Home2TelephoneNumber = Nothing Then
             Home2TelephoneNumber = " "
         End If
-        s = s + "'" + Home2TelephoneNumber.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Home2TelephoneNumber.ToString + "'" + "," + Environment.NewLine
         If HomeAddress = Nothing Then
             HomeAddress = " "
         End If
-        s = s + "'" + HomeAddress.ToString + "'" + "," + vbCrLf
+        s = s + "'" + HomeAddress.ToString + "'" + "," + Environment.NewLine
         If HomeAddressCountry = Nothing Then
             HomeAddressCountry = " "
         End If
-        s = s + "'" + HomeAddressCountry.ToString + "'" + "," + vbCrLf
+        s = s + "'" + HomeAddressCountry.ToString + "'" + "," + Environment.NewLine
         If HomeAddressPostalCode = Nothing Then
             HomeAddressPostalCode = " "
         End If
-        s = s + "'" + HomeAddressPostalCode.ToString + "'" + "," + vbCrLf
+        s = s + "'" + HomeAddressPostalCode.ToString + "'" + "," + Environment.NewLine
         If HomeAddressPostOfficeBox = Nothing Then
             HomeAddressPostOfficeBox = " "
         End If
-        s = s + "'" + HomeAddressPostOfficeBox.ToString + "'" + "," + vbCrLf
+        s = s + "'" + HomeAddressPostOfficeBox.ToString + "'" + "," + Environment.NewLine
         If HomeAddressState = Nothing Then
             HomeAddressState = " "
         End If
-        s = s + "'" + HomeAddressState.ToString + "'" + "," + vbCrLf
+        s = s + "'" + HomeAddressState.ToString + "'" + "," + Environment.NewLine
         If HomeAddressStreet = Nothing Then
             HomeAddressStreet = " "
         End If
-        s = s + "'" + HomeAddressStreet.ToString + "'" + "," + vbCrLf
+        s = s + "'" + HomeAddressStreet.ToString + "'" + "," + Environment.NewLine
         If HomeFaxNumber = Nothing Then
             HomeFaxNumber = " "
         End If
-        s = s + "'" + HomeFaxNumber.ToString + "'" + "," + vbCrLf
+        s = s + "'" + HomeFaxNumber.ToString + "'" + "," + Environment.NewLine
         If HomeTelephoneNumber = Nothing Then
             HomeTelephoneNumber = " "
         End If
-        s = s + "'" + HomeTelephoneNumber.ToString + "'" + "," + vbCrLf
+        s = s + "'" + HomeTelephoneNumber.ToString + "'" + "," + Environment.NewLine
         If IMAddress = Nothing Then
             IMAddress = " "
         End If
-        s = s + "'" + IMAddress.ToString + "'" + "," + vbCrLf
+        s = s + "'" + IMAddress.ToString + "'" + "," + Environment.NewLine
         If Importance = Nothing Then
             Importance = " "
         End If
-        s = s + "'" + Importance.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Importance.ToString + "'" + "," + Environment.NewLine
         If Initials = Nothing Then
             Initials = " "
         End If
-        s = s + "'" + Initials.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Initials.ToString + "'" + "," + Environment.NewLine
         If InternetFreeBusyAddress = Nothing Then
             InternetFreeBusyAddress = " "
         End If
-        s = s + "'" + InternetFreeBusyAddress.ToString + "'" + "," + vbCrLf
+        s = s + "'" + InternetFreeBusyAddress.ToString + "'" + "," + Environment.NewLine
         If JobTitle = Nothing Then
             JobTitle = " "
         End If
-        s = s + "'" + JobTitle.ToString + "'" + "," + vbCrLf
+        s = s + "'" + JobTitle.ToString + "'" + "," + Environment.NewLine
         If Journal = Nothing Then
             Journal = " "
         End If
-        s = s + "'" + Journal.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Journal.ToString + "'" + "," + Environment.NewLine
         If Language = Nothing Then
             Language = " "
         End If
-        s = s + "'" + Language.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Language.ToString + "'" + "," + Environment.NewLine
         If LastModificationTime = Nothing Then
             LastModificationTime = " "
         End If
-        s = s + "'" + LastModificationTime.ToString + "'" + "," + vbCrLf
+        s = s + "'" + LastModificationTime.ToString + "'" + "," + Environment.NewLine
         If LastName = Nothing Then
             LastName = " "
         End If
-        s = s + "'" + LastName.ToString + "'" + "," + vbCrLf
+        s = s + "'" + LastName.ToString + "'" + "," + Environment.NewLine
         If LastNameAndFirstName = Nothing Then
             LastNameAndFirstName = " "
         End If
-        s = s + "'" + LastNameAndFirstName.ToString + "'" + "," + vbCrLf
+        s = s + "'" + LastNameAndFirstName.ToString + "'" + "," + Environment.NewLine
         If MailingAddress = Nothing Then
             MailingAddress = " "
         End If
-        s = s + "'" + MailingAddress.ToString + "'" + "," + vbCrLf
+        s = s + "'" + MailingAddress.ToString + "'" + "," + Environment.NewLine
         If MailingAddressCity = Nothing Then
             MailingAddressCity = " "
         End If
-        s = s + "'" + MailingAddressCity.ToString + "'" + "," + vbCrLf
+        s = s + "'" + MailingAddressCity.ToString + "'" + "," + Environment.NewLine
         If MailingAddressCountry = Nothing Then
             MailingAddressCountry = " "
         End If
-        s = s + "'" + MailingAddressCountry.ToString + "'" + "," + vbCrLf
+        s = s + "'" + MailingAddressCountry.ToString + "'" + "," + Environment.NewLine
         If MailingAddressPostalCode = Nothing Then
             MailingAddressPostalCode = " "
         End If
-        s = s + "'" + MailingAddressPostalCode.ToString + "'" + "," + vbCrLf
+        s = s + "'" + MailingAddressPostalCode.ToString + "'" + "," + Environment.NewLine
         If MailingAddressPostOfficeBox = Nothing Then
             MailingAddressPostOfficeBox = " "
         End If
-        s = s + "'" + MailingAddressPostOfficeBox.ToString + "'" + "," + vbCrLf
+        s = s + "'" + MailingAddressPostOfficeBox.ToString + "'" + "," + Environment.NewLine
         If MailingAddressState = Nothing Then
             MailingAddressState = " "
         End If
-        s = s + "'" + MailingAddressState.ToString + "'" + "," + vbCrLf
+        s = s + "'" + MailingAddressState.ToString + "'" + "," + Environment.NewLine
         If MailingAddressStreet = Nothing Then
             MailingAddressStreet = " "
         End If
-        s = s + "'" + MailingAddressStreet.ToString + "'" + "," + vbCrLf
+        s = s + "'" + MailingAddressStreet.ToString + "'" + "," + Environment.NewLine
         If ManagerName = Nothing Then
             ManagerName = " "
         End If
-        s = s + "'" + ManagerName.ToString + "'" + "," + vbCrLf
+        s = s + "'" + ManagerName.ToString + "'" + "," + Environment.NewLine
         If MiddleName = Nothing Then
             MiddleName = " "
         End If
-        s = s + "'" + MiddleName.ToString + "'" + "," + vbCrLf
+        s = s + "'" + MiddleName.ToString + "'" + "," + Environment.NewLine
         If Mileage = Nothing Then
             Mileage = " "
         End If
-        s = s + "'" + Mileage.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Mileage.ToString + "'" + "," + Environment.NewLine
         If MobileTelephoneNumber = Nothing Then
             MobileTelephoneNumber = " "
         End If
-        s = s + "'" + MobileTelephoneNumber.ToString + "'" + "," + vbCrLf
+        s = s + "'" + MobileTelephoneNumber.ToString + "'" + "," + Environment.NewLine
         If NetMeetingAlias = Nothing Then
             NetMeetingAlias = " "
         End If
-        s = s + "'" + NetMeetingAlias.ToString + "'" + "," + vbCrLf
+        s = s + "'" + NetMeetingAlias.ToString + "'" + "," + Environment.NewLine
         If NetMeetingServer = Nothing Then
             NetMeetingServer = " "
         End If
-        s = s + "'" + NetMeetingServer.ToString + "'" + "," + vbCrLf
+        s = s + "'" + NetMeetingServer.ToString + "'" + "," + Environment.NewLine
         If NickName = Nothing Then
             NickName = " "
         End If
-        s = s + "'" + NickName.ToString + "'" + "," + vbCrLf
+        s = s + "'" + NickName.ToString + "'" + "," + Environment.NewLine
         If Title = Nothing Then
             Title = " "
         End If
-        s = s + "'" + Title.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Title.ToString + "'" + "," + Environment.NewLine
         If Body = Nothing Then
             Body = " "
         End If
-        s = s + "'" + Body.ToString + "'" + "," + vbCrLf
+        s = s + "'" + Body.ToString + "'" + "," + Environment.NewLine
         If OfficeLocation = Nothing Then
             OfficeLocation = " "
         End If
-        s = s + "'" + OfficeLocation.ToString + "'" + "," + vbCrLf
+        s = s + "'" + OfficeLocation.ToString + "'" + "," + Environment.NewLine
         If Subject = Nothing Then
             Subject = " "
         End If

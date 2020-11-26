@@ -57,25 +57,25 @@ Public Class clsListener
             End If
 
         Else
-            S = S + " INSERT INTO [DirectoryListener]" + vbCrLf
-            S = S + "            ([UserID]" + vbCrLf
-            S = S + "            ,[AdminDisabled]" + vbCrLf
-            S = S + "            ,[ListenerLoaded]" + vbCrLf
-            S = S + "            ,[ListenerActive]" + vbCrLf
-            S = S + "            ,[ListenerPaused]" + vbCrLf
-            S = S + "            ,[ListenDirectory]" + vbCrLf
-            S = S + "            ,[ListenSubDirectory]" + vbCrLf
-            S = S + "            ,[DirGuid]" + vbCrLf
+            S = S + " INSERT INTO [DirectoryListener]" + Environment.NewLine
+            S = S + "            ([UserID]" + Environment.NewLine
+            S = S + "            ,[AdminDisabled]" + Environment.NewLine
+            S = S + "            ,[ListenerLoaded]" + Environment.NewLine
+            S = S + "            ,[ListenerActive]" + Environment.NewLine
+            S = S + "            ,[ListenerPaused]" + Environment.NewLine
+            S = S + "            ,[ListenDirectory]" + Environment.NewLine
+            S = S + "            ,[ListenSubDirectory]" + Environment.NewLine
+            S = S + "            ,[DirGuid]" + Environment.NewLine
             S = S + "            ,[MachineName])"
             S = S + "      VALUES"
-            S = S + "            ('" + gCurrUserGuidID + "'" + vbCrLf
-            S = S + "            ," & Val(AdminDisabled) & vbCrLf
-            S = S + "            ," & Val(ListenerLoaded) & vbCrLf
-            S = S + "            ," & Val(ListenerActive) & vbCrLf
-            S = S + "            ," & Val(ListenerPaused) & vbCrLf
-            S = S + "            ," & Val(ListenDirectory) & vbCrLf
-            S = S + "            ," & Val(ListenSubDirectory) & vbCrLf
-            S = S + "            ,'" & tGuid.ToString & "'" + vbCrLf
+            S = S + "            ('" + gCurrUserGuidID + "'" + Environment.NewLine
+            S = S + "            ," & Val(AdminDisabled) & Environment.NewLine
+            S = S + "            ," & Val(ListenerLoaded) & Environment.NewLine
+            S = S + "            ," & Val(ListenerActive) & Environment.NewLine
+            S = S + "            ," & Val(ListenerPaused) & Environment.NewLine
+            S = S + "            ," & Val(ListenDirectory) & Environment.NewLine
+            S = S + "            ," & Val(ListenSubDirectory) & Environment.NewLine
+            S = S + "            ,'" & tGuid.ToString & "'" + Environment.NewLine
             S = S + "            ,'" + MachineName + "')"
 
             B = ExecuteSqlNewConn(S, False)

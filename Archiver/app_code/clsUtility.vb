@@ -265,7 +265,7 @@ Public Class clsUtility
                 BlankCnt += 1
             ElseIf CH.Equals(Chr(34)) Then
                 BlankCnt += 1
-            ElseIf CH.Equals(vbCrLf) Then
+            ElseIf CH.Equals(environment.NewLine) Then
                 BlankCnt += 1
             ElseIf CH.Equals(vbCr) Then
                 BlankCnt += 1
@@ -592,7 +592,7 @@ Public Class clsUtility
                 End If
             Next
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: clsUtility:RemoveBadChars - " + ex.Message + vbCrLf + ex.StackTrace)
+            LOG.WriteToArchiveLog("ERROR: clsUtility:RemoveBadChars - " + ex.Message + environment.NewLine + ex.StackTrace)
         End Try
 
         Return tVal.Trim
@@ -988,14 +988,14 @@ Public Class clsUtility
         Dim B As Boolean = True
         Dim bApplied As Boolean = False
         If CustomerID.Length = 0 Then
-            MessageBox.Show("Customer ID required: " + vbCrLf + "If you do not know your Customer ID, " + vbCrLf + "please contact ECM Support or your ECM administrator.")
+            MessageBox.Show("Customer ID required: " + environment.NewLine + "If you do not know your Customer ID, " + environment.NewLine + "please contact ECM Support or your ECM administrator.")
             Return ""
         End If
 
         Try
             Dim SelectedServer As String = ServerName
             If SelectedServer.Length = 0 Then
-                MessageBox.Show("Please select the Server to which this license applies." + vbCrLf + "The server name and must match that contained within the license.")
+                MessageBox.Show("Please select the Server to which this license applies." + environment.NewLine + "The server name and must match that contained within the license.")
                 Return False
             End If
             Dim FQN As String = LicenseDirectory + "\" + "EcmLicense." + ServerName + ".txt"
@@ -1019,7 +1019,7 @@ Public Class clsUtility
             objReader.Close()
             'Return strContents
         Catch Ex As Exception
-            MessageBox.Show("Failed to load License file: " + vbCrLf + Ex.Message)
+            MessageBox.Show("Failed to load License file: " + environment.NewLine + Ex.Message)
             'LogThis("clsDatabaseARCH : LoadLicenseFile : 5914 : " + Ex.Message)
             Return ""
         End Try
@@ -1474,7 +1474,7 @@ Public Class clsUtility
         For i As Integer = 1 To MyQry.Length
             Dim CH As String = ""
             CH = Mid(MyQry, i, 1)
-            If CH.Equals(vbCrLf) Then
+            If CH.Equals(environment.NewLine) Then
                 Mid(MyQry, i, 1) = " "
             End If
         Next
@@ -1508,16 +1508,16 @@ Public Class clsUtility
             Token = A(i)
             If Token.Length > 0 Then
                 If Token.ToUpper.Equals("FROM") Then
-                    MyQry = vbCrLf + vbTab + MyQry
+                    MyQry = environment.NewLine + vbTab + MyQry
                 End If
                 If Token.ToUpper.Equals("WHERE") Then
-                    MyQry = vbCrLf + vbTab + MyQry
+                    MyQry = environment.NewLine + vbTab + MyQry
                 End If
                 If Token.ToUpper.Equals("AND") Then
-                    MyQry = vbCrLf + vbTab + MyQry
+                    MyQry = environment.NewLine + vbTab + MyQry
                 End If
                 If Token.ToUpper.Equals("OR") Then
-                    MyQry = vbCrLf + vbTab + MyQry
+                    MyQry = environment.NewLine + vbTab + MyQry
                 End If
                 PrevToken = Token
             End If
@@ -1537,7 +1537,7 @@ Public Class clsUtility
         Dim tempSql As String = ""
         Dim tStr As String = ""
         Dim OrderByClause As String = ""
-        Dim A() As String = tSql.Split(vbCrLf)
+        Dim A() As String = tSql.Split(environment.NewLine)
         For I As Integer = 0 To UBound(A) - 1
             tStr = A(I).Trim
             If InStr(tStr, "order by", CompareMethod.Text) > 0 Then
@@ -1557,7 +1557,7 @@ Public Class clsUtility
             End If
         Next
 
-        ModifiedList.Add("UNION ALL" + vbCrLf)
+        ModifiedList.Add("UNION ALL" + environment.NewLine)
 
         For I As Integer = 0 To ModifiedList.Count - 1
             Console.WriteLine(ModifiedList(I))
@@ -1598,12 +1598,12 @@ Public Class clsUtility
             End If
         Next
 
-        ModifiedList.Add(OrderByClause + vbCrLf)
+        ModifiedList.Add(OrderByClause + environment.NewLine)
 
         tempSql = ""
 
         For I As Integer = 0 To ModifiedList.Count - 1
-            tempSql += ModifiedList(I) + vbCrLf
+            tempSql += ModifiedList(I) + environment.NewLine
             Console.WriteLine(ModifiedList(I))
         Next
 
@@ -1753,7 +1753,7 @@ Public Class clsUtility
             xDate = sDay + "/" + sMonth + "/" + sYear + " " + sTimeOfDay : LL = 12
         Catch ex As Exception
             xDate = "01/01/1800 01:01:01"
-            LOG.WriteToArchiveLog("ERRROR date: ConvertDate 100: LL= " + LL.ToString + ", error on converting date '" + tDate.ToString + "'." + vbCrLf + ex.Message)
+            LOG.WriteToArchiveLog("ERRROR date: ConvertDate 100: LL= " + LL.ToString + ", error on converting date '" + tDate.ToString + "'." + environment.NewLine + ex.Message)
         End Try
 
         Return xDate
@@ -1831,7 +1831,7 @@ Public Class clsUtility
         F = Nothing
 
         Using sw As StreamWriter = New StreamWriter(BatchFileName, False)
-            sw.WriteLine("CD " + DirToInventory + vbCrLf)
+            sw.WriteLine("CD " + DirToInventory + environment.NewLine)
             sw.WriteLine(DirStmt)
             sw.Close()
         End Using
@@ -1870,7 +1870,7 @@ Public Class clsUtility
                 Next
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR GetFiles 01A: Path <" + Path + ">" + vbCrLf + ex.Message)
+            LOG.WriteToArchiveLog("ERROR GetFiles 01A: Path <" + Path + ">" + environment.NewLine + ex.Message)
         End Try
 
         Return (files)
@@ -2111,7 +2111,7 @@ Public Class clsUtility
                 End If
                 LL = 240
             Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR: GetFilesToArchive: LL=" + LL.ToString + vbCrLf + ex.Message + vbCrLf + "DIRECTORY:" + FOLDER_FQN + vbCrLf + "File: " + File_Name)
+                LOG.WriteToArchiveLog("ERROR: GetFilesToArchive: LL=" + LL.ToString + environment.NewLine + ex.Message + environment.NewLine + "DIRECTORY:" + FOLDER_FQN + environment.NewLine + "File: " + File_Name)
                 LL = 250
             End Try
             LL = 260
@@ -2262,8 +2262,8 @@ SkipIT:
             Try
                 Directory.CreateDirectory(tPath)
             Catch ex As Exception
-                MessageBox.Show("Fatal ERROR: Failed to create the required directory, please ensure you have the required authority." + vbCrLf + ex.Message)
-                Return "Fatal ERROR: Failed to create the required directory, please ensure you have the required authority." + vbCrLf + ex.Message
+                MessageBox.Show("Fatal ERROR: Failed to create the required directory, please ensure you have the required authority." + environment.NewLine + ex.Message)
+                Return "Fatal ERROR: Failed to create the required directory, please ensure you have the required authority." + environment.NewLine + ex.Message
                 B = False
             End Try
         End If
@@ -2295,7 +2295,7 @@ SkipIT:
                 Catch Ex As Exception
                     ImpersonationSet = False
                     Login = ""
-                    MessageBox.Show("ERROR: Could not process Impersonation - 100x: " + vbCrLf + Ex.Message)
+                    MessageBox.Show("ERROR: Could not process Impersonation - 100x: " + environment.NewLine + Ex.Message)
                 End Try
             Else
                 ImpersonationSet = False
@@ -2333,7 +2333,7 @@ SkipIT:
         Try
             Return System.IO.Directory.GetFiles(strPath, "*.*", IO.SearchOption.AllDirectories).Length
         Catch ex As Exception
-            MessageBox.Show("Error From GetFileCountSubdir Function" + vbCrLf + ex.Message)
+            MessageBox.Show("Error From GetFileCountSubdir Function" + environment.NewLine + ex.Message)
         End Try
     End Function
 

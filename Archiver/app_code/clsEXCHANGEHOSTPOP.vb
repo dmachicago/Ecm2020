@@ -251,7 +251,7 @@ Public Class clsEXCHANGEHOSTPOP
         Else
             s = s + "0) "
         End If
-        'log.WriteToArchiveLog("INFO: " + vbCrLf + s)
+        'log.WriteToArchiveLog("INFO: " + environment.NewLine + s)
         Return DBARCH.ExecuteSql(s, ConnStr, False)
 
     End Function

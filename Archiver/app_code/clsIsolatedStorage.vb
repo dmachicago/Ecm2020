@@ -37,7 +37,7 @@ Public Class clsIsolatedStorage
 
         Dim FQN As String = System.IO.Path.Combine(dirPersist, "Persist.dat")
         Dim Buffer() As Byte
-        Dim tgtLine As String = tKey + "|" + tData + vbCrLf
+        Dim tgtLine As String = tKey + "|" + tData + Environment.NewLine
 
         Try
             If Not Directory.Exists(dirPersist) Then
@@ -60,7 +60,7 @@ Public Class clsIsolatedStorage
         'Dim isoStore As IsolatedStorageFile
         'isoStore = IsolatedStorageFile.GetUserStoreForApplication
         Dim Buffer() As Byte
-        Dim tgtLine As String = tKey + "|" + tData + vbCrLf
+        Dim tgtLine As String = tKey + "|" + tData + Environment.NewLine
         Try
             'Using store = IsolatedStorageFile.GetUserStoreForApplication()
             If Not Directory.Exists(dirPersist) Then
@@ -224,7 +224,7 @@ Public Class clsIsolatedStorage
             Dim writer As StreamWriter = Nothing
             ' Assign the writer to the store and the file TestStore.
             writer = New StreamWriter(New IsolatedStorageFileStream(FQN, FileMode.Create, isoStore))
-            writer.WriteLine(tgtLine + vbCrLf)
+            writer.WriteLine(tgtLine + Environment.NewLine)
             writer.Close()
             writer.Dispose()
             writer = Nothing

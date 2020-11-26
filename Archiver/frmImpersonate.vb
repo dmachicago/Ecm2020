@@ -24,7 +24,7 @@ Public Class frmImpersonate
             Return
         End If
 
-Dim msg AS String  = "This sets the defined user as the default login for this machine.  " + vbCrLf + " There is the possibility that this offers security risks." + vbCrLf + " In assigning this user, you and your organization accept all the potential risks." 
+        Dim msg As String = "This sets the defined user as the default login for this machine.  " + Environment.NewLine + " There is the possibility that this offers security risks." + Environment.NewLine + " In assigning this user, you and your organization accept all the potential risks."
         Dim dlgRes As DialogResult = MessageBox.Show(msg, "Set Default Login", MessageBoxButtons.YesNo)
         If dlgRes = Windows.Forms.DialogResult.No Then
             Return
@@ -42,16 +42,16 @@ Dim msg AS String  = "This sets the defined user as the default login for this m
             objWriter.Write(txtUserID.Text)
             objWriter.Close()
             objWriter.Dispose()
-            messagebox.show("Success: user ID " + txtUserID.Text + " will be used as the default login for this machine.")
+            MessageBox.Show("Success: user ID " + txtUserID.Text + " will be used as the default login for this machine.")
         Catch ex As Exception
-            messagebox.show("Fatal ERROR: Failed to create the file, please ensure you have the required authority." + vbCrLf + ex.Message)
+            MessageBox.Show("Fatal ERROR: Failed to create the file, please ensure you have the required authority." + Environment.NewLine + ex.Message)
             Return
         End Try
 
     End Sub
 
     Private Sub btnRemoveAssignment_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRemoveAssignment.Click
-Dim msg AS String  = "This removes the default impersonation for this machine - Are you sure.  " 
+        Dim msg As String = "This removes the default impersonation for this machine - Are you sure.  "
         Dim dlgRes As DialogResult = MessageBox.Show(msg, "Remove Impersonation", MessageBoxButtons.YesNo)
         If dlgRes = Windows.Forms.DialogResult.No Then
             Return
@@ -68,10 +68,10 @@ Dim msg AS String  = "This removes the default impersonation for this machine - 
         Try
             File.Delete(FQN)
             LOG.WriteToDeleteLog("DELETE FAILURE 01|" + FQN)
-            MessageBox.show("Success: impersonation removed.")
+            MessageBox.Show("Success: impersonation removed.")
         Catch ex As Exception
 
-            messagebox.show("Fatal ERROR: Failed to remove impersonation." + vbCrLf + ex.Message)
+            MessageBox.Show("Fatal ERROR: Failed to remove impersonation." + Environment.NewLine + ex.Message)
             Return
         End Try
     End Sub

@@ -72,46 +72,46 @@ Public Class clsLicenseMgt
 
                 If ShowLicRules = True Then
                     Dim Msg As String = ""
-                    Msg = Msg + "License Type:" + cbLicenseType + vbCrLf
-                    Msg = Msg + "State: " + cbState + vbCrLf
-                    'Msg = Msg + " ckToClipboard : " + ckToClipboard  + vbCrLf
-                    'Msg = Msg + " ckToEmail : " + ckToEmail  + vbCrLf
-                    'Msg = Msg + " ckToFile : " + ckToFile  + vbCrLf
-                    Msg = Msg + "License Expires: " + dtExpire + vbCrLf
-                    Msg = Msg + "Maint Expires  : " + dtMaintExpire + vbCrLf
-                    'Msg = Msg + " EndOfLicense: " + EndOfLicense  + vbCrLf
-                    'Msg = Msg + " rbNbrOfSeats: " + rbNbrOfSeats  + vbCrLf
-                    'Msg = Msg + " rbNbrOfUsers: " + rbNbrOfUsers  + vbCrLf
-                    'Msg = Msg + " rbSimultaneousUsers: " + rbSimultaneousUsers  + vbCrLf
-                    'Msg = Msg + " rbStandardLicense: " + rbStandardLicense  + vbCrLf
-                    Msg = Msg + "City: " + txtCity + vbCrLf
-                    'Msg = Msg + " txtCompanyResetID: " + txtCompanyResetID  + vbCrLf
-                    Msg = Msg + "Contact Email: " + txtContactEmail + vbCrLf
-                    Msg = Msg + "Contact Name: " + txtContactName + vbCrLf
-                    Msg = Msg + "Contact Phone: " + txtContactPhone + vbCrLf
-                    Msg = Msg + "Cust Addr: " + txtCustAddr + vbCrLf
-                    Msg = Msg + "Cust Country: " + txtCustCountry + vbCrLf
-                    Msg = Msg + "Cust ID: " + txtCustID + vbCrLf
-                    Msg = Msg + "Cust Name: " + txtCustName + vbCrLf
-                    Msg = Msg + "License Gen Date: " + txtLicenGenDate + vbCrLf
+                    Msg = Msg + "License Type:" + cbLicenseType + Environment.NewLine
+                    Msg = Msg + "State: " + cbState + Environment.NewLine
+                    'Msg = Msg + " ckToClipboard : " + ckToClipboard  + environment.NewLine
+                    'Msg = Msg + " ckToEmail : " + ckToEmail  + environment.NewLine
+                    'Msg = Msg + " ckToFile : " + ckToFile  + environment.NewLine
+                    Msg = Msg + "License Expires: " + dtExpire + Environment.NewLine
+                    Msg = Msg + "Maint Expires  : " + dtMaintExpire + Environment.NewLine
+                    'Msg = Msg + " EndOfLicense: " + EndOfLicense  + environment.NewLine
+                    'Msg = Msg + " rbNbrOfSeats: " + rbNbrOfSeats  + environment.NewLine
+                    'Msg = Msg + " rbNbrOfUsers: " + rbNbrOfUsers  + environment.NewLine
+                    'Msg = Msg + " rbSimultaneousUsers: " + rbSimultaneousUsers  + environment.NewLine
+                    'Msg = Msg + " rbStandardLicense: " + rbStandardLicense  + environment.NewLine
+                    Msg = Msg + "City: " + txtCity + Environment.NewLine
+                    'Msg = Msg + " txtCompanyResetID: " + txtCompanyResetID  + environment.NewLine
+                    Msg = Msg + "Contact Email: " + txtContactEmail + Environment.NewLine
+                    Msg = Msg + "Contact Name: " + txtContactName + Environment.NewLine
+                    Msg = Msg + "Contact Phone: " + txtContactPhone + Environment.NewLine
+                    Msg = Msg + "Cust Addr: " + txtCustAddr + Environment.NewLine
+                    Msg = Msg + "Cust Country: " + txtCustCountry + Environment.NewLine
+                    Msg = Msg + "Cust ID: " + txtCustID + Environment.NewLine
+                    Msg = Msg + "Cust Name: " + txtCustName + Environment.NewLine
+                    Msg = Msg + "License Gen Date: " + txtLicenGenDate + Environment.NewLine
                     'Dim txtMstrPw  = getEncryptedValue("txtMstrPw", LicList)
-                    Msg = Msg + "Nbr Seats: " + txtNbrSeats + vbCrLf
-                    Msg = Msg + "Nbr Siml Seats: " + txtNbrSimlSeats + vbCrLf
-                    Msg = Msg + "Version Nbr: " + txtVersionNbr + vbCrLf
-                    Msg = Msg + "Type License: " + cbLicenseType + vbCrLf
-                    Msg = Msg + "SDK: " + Sdk + vbCrLf
-                    Msg = Msg + "Lease: " + Lease + vbCrLf
+                    Msg = Msg + "Nbr Seats: " + txtNbrSeats + Environment.NewLine
+                    Msg = Msg + "Nbr Siml Seats: " + txtNbrSimlSeats + Environment.NewLine
+                    Msg = Msg + "Version Nbr: " + txtVersionNbr + Environment.NewLine
+                    Msg = Msg + "Type License: " + cbLicenseType + Environment.NewLine
+                    Msg = Msg + "SDK: " + Sdk + Environment.NewLine
+                    Msg = Msg + "Lease: " + Lease + Environment.NewLine
                     If MaxClients.Equals("0") Then
                         MaxClients = "Unlimited"
                     End If
-                    Msg = Msg + "MaxClients: " + MaxClients + vbCrLf
+                    Msg = Msg + "MaxClients: " + MaxClients + Environment.NewLine
                     'MaxClients
                     MessageBox.Show(Msg)
                 End If
 
             End If
         Catch ex As Exception
-            MessageBox.Show("Error 53.25.1: failed to Parse License." + vbCrLf + vbCrLf + ex.Message)
+            MessageBox.Show("Error 53.25.1: failed to Parse License." + Environment.NewLine + Environment.NewLine + ex.Message)
             B = False
             LOG.WriteToArchiveLog("clsLicenseMgt : ParseLic : 24 : " + ex.Message)
         End Try
@@ -169,38 +169,38 @@ Public Class clsLicenseMgt
                 If ShowLicRules = True Then
                     Dim Msg As String = ""
 
-                    Msg = Msg + "State: " + cbState + vbCrLf
-                    'Msg = Msg + " ckToClipboard : " + ckToClipboard  + vbCrLf
-                    'Msg = Msg + " ckToEmail : " + ckToEmail  + vbCrLf
-                    'Msg = Msg + " ckToFile : " + ckToFile  + vbCrLf
-                    Msg = Msg + "License Expires: " + dtExpire + vbCrLf
-                    Msg = Msg + "Maint Expires  : " + dtMaintExpire + vbCrLf
-                    'Msg = Msg + " EndOfLicense: " + EndOfLicense  + vbCrLf
-                    'Msg = Msg + " rbNbrOfSeats: " + rbNbrOfSeats  + vbCrLf
-                    'Msg = Msg + " rbNbrOfUsers: " + rbNbrOfUsers  + vbCrLf
-                    'Msg = Msg + " rbSimultaneousUsers: " + rbSimultaneousUsers  + vbCrLf
-                    'Msg = Msg + " rbStandardLicense: " + rbStandardLicense  + vbCrLf
-                    Msg = Msg + "City: " + txtCity + vbCrLf
-                    'Msg = Msg + " txtCompanyResetID: " + txtCompanyResetID  + vbCrLf
-                    Msg = Msg + "Contact Email: " + txtContactEmail + vbCrLf
-                    Msg = Msg + "Contact Name: " + txtContactName + vbCrLf
-                    Msg = Msg + "Contact Phone: " + txtContactPhone + vbCrLf
-                    Msg = Msg + "Cust Addr: " + txtCustAddr + vbCrLf
-                    Msg = Msg + "Cust Country: " + txtCustCountry + vbCrLf
-                    Msg = Msg + "Cust ID: " + txtCustID + vbCrLf
-                    Msg = Msg + "Cust Name: " + txtCustName + vbCrLf
-                    Msg = Msg + "License Gen Date: " + txtLicenGenDate + vbCrLf
+                    Msg = Msg + "State: " + cbState + Environment.NewLine
+                    'Msg = Msg + " ckToClipboard : " + ckToClipboard  + environment.NewLine
+                    'Msg = Msg + " ckToEmail : " + ckToEmail  + environment.NewLine
+                    'Msg = Msg + " ckToFile : " + ckToFile  + environment.NewLine
+                    Msg = Msg + "License Expires: " + dtExpire + Environment.NewLine
+                    Msg = Msg + "Maint Expires  : " + dtMaintExpire + Environment.NewLine
+                    'Msg = Msg + " EndOfLicense: " + EndOfLicense  + environment.NewLine
+                    'Msg = Msg + " rbNbrOfSeats: " + rbNbrOfSeats  + environment.NewLine
+                    'Msg = Msg + " rbNbrOfUsers: " + rbNbrOfUsers  + environment.NewLine
+                    'Msg = Msg + " rbSimultaneousUsers: " + rbSimultaneousUsers  + environment.NewLine
+                    'Msg = Msg + " rbStandardLicense: " + rbStandardLicense  + environment.NewLine
+                    Msg = Msg + "City: " + txtCity + Environment.NewLine
+                    'Msg = Msg + " txtCompanyResetID: " + txtCompanyResetID  + environment.NewLine
+                    Msg = Msg + "Contact Email: " + txtContactEmail + Environment.NewLine
+                    Msg = Msg + "Contact Name: " + txtContactName + Environment.NewLine
+                    Msg = Msg + "Contact Phone: " + txtContactPhone + Environment.NewLine
+                    Msg = Msg + "Cust Addr: " + txtCustAddr + Environment.NewLine
+                    Msg = Msg + "Cust Country: " + txtCustCountry + Environment.NewLine
+                    Msg = Msg + "Cust ID: " + txtCustID + Environment.NewLine
+                    Msg = Msg + "Cust Name: " + txtCustName + Environment.NewLine
+                    Msg = Msg + "License Gen Date: " + txtLicenGenDate + Environment.NewLine
                     'Dim txtMstrPw  = getEncryptedValue("txtMstrPw", LicList)
-                    Msg = Msg + "Nbr Seats: " + txtNbrSeats + vbCrLf
-                    Msg = Msg + "Nbr Siml Seats: " + txtNbrSimlSeats + vbCrLf
-                    Msg = Msg + "Version Nbr: " + txtVersionNbr + vbCrLf
-                    'Msg = Msg + "Zip: " + txtZip  + vbCrLf
+                    Msg = Msg + "Nbr Seats: " + txtNbrSeats + Environment.NewLine
+                    Msg = Msg + "Nbr Siml Seats: " + txtNbrSimlSeats + Environment.NewLine
+                    Msg = Msg + "Version Nbr: " + txtVersionNbr + Environment.NewLine
+                    'Msg = Msg + "Zip: " + txtZip  + environment.NewLine
                     CoName = txtCustName
                 End If
 
             End If
         Catch ex As Exception
-            MessageBox.Show("Error 53.25.1: failed to Parse License." + vbCrLf + vbCrLf + ex.Message)
+            MessageBox.Show("Error 53.25.1: failed to Parse License." + Environment.NewLine + Environment.NewLine + ex.Message)
             CoName = ""
             LOG.WriteToArchiveLog("clsLicenseMgt : ParseLic : 24 : " + ex.Message)
         End Try
@@ -258,38 +258,38 @@ Public Class clsLicenseMgt
                 If ShowLicRules = True Then
                     Dim Msg As String = ""
 
-                    Msg = Msg + "State: " + cbState + vbCrLf
-                    'Msg = Msg + " ckToClipboard : " + ckToClipboard  + vbCrLf
-                    'Msg = Msg + " ckToEmail : " + ckToEmail  + vbCrLf
-                    'Msg = Msg + " ckToFile : " + ckToFile  + vbCrLf
-                    Msg = Msg + "License Expires: " + dtExpire + vbCrLf
-                    Msg = Msg + "Maint Expires  : " + dtMaintExpire + vbCrLf
-                    'Msg = Msg + " EndOfLicense: " + EndOfLicense  + vbCrLf
-                    'Msg = Msg + " rbNbrOfSeats: " + rbNbrOfSeats  + vbCrLf
-                    'Msg = Msg + " rbNbrOfUsers: " + rbNbrOfUsers  + vbCrLf
-                    'Msg = Msg + " rbSimultaneousUsers: " + rbSimultaneousUsers  + vbCrLf
-                    'Msg = Msg + " rbStandardLicense: " + rbStandardLicense  + vbCrLf
-                    Msg = Msg + "City: " + txtCity + vbCrLf
-                    'Msg = Msg + " txtCompanyResetID: " + txtCompanyResetID  + vbCrLf
-                    Msg = Msg + "Contact Email: " + txtContactEmail + vbCrLf
-                    Msg = Msg + "Contact Name: " + txtContactName + vbCrLf
-                    Msg = Msg + "Contact Phone: " + txtContactPhone + vbCrLf
-                    Msg = Msg + "Cust Addr: " + txtCustAddr + vbCrLf
-                    Msg = Msg + "Cust Country: " + txtCustCountry + vbCrLf
-                    Msg = Msg + "Cust ID: " + txtCustID + vbCrLf
-                    Msg = Msg + "Cust Name: " + txtCustName + vbCrLf
-                    Msg = Msg + "License Gen Date: " + txtLicenGenDate + vbCrLf
+                    Msg = Msg + "State: " + cbState + Environment.NewLine
+                    'Msg = Msg + " ckToClipboard : " + ckToClipboard  + environment.NewLine
+                    'Msg = Msg + " ckToEmail : " + ckToEmail  + environment.NewLine
+                    'Msg = Msg + " ckToFile : " + ckToFile  + environment.NewLine
+                    Msg = Msg + "License Expires: " + dtExpire + Environment.NewLine
+                    Msg = Msg + "Maint Expires  : " + dtMaintExpire + Environment.NewLine
+                    'Msg = Msg + " EndOfLicense: " + EndOfLicense  + environment.NewLine
+                    'Msg = Msg + " rbNbrOfSeats: " + rbNbrOfSeats  + environment.NewLine
+                    'Msg = Msg + " rbNbrOfUsers: " + rbNbrOfUsers  + environment.NewLine
+                    'Msg = Msg + " rbSimultaneousUsers: " + rbSimultaneousUsers  + environment.NewLine
+                    'Msg = Msg + " rbStandardLicense: " + rbStandardLicense  + environment.NewLine
+                    Msg = Msg + "City: " + txtCity + Environment.NewLine
+                    'Msg = Msg + " txtCompanyResetID: " + txtCompanyResetID  + environment.NewLine
+                    Msg = Msg + "Contact Email: " + txtContactEmail + Environment.NewLine
+                    Msg = Msg + "Contact Name: " + txtContactName + Environment.NewLine
+                    Msg = Msg + "Contact Phone: " + txtContactPhone + Environment.NewLine
+                    Msg = Msg + "Cust Addr: " + txtCustAddr + Environment.NewLine
+                    Msg = Msg + "Cust Country: " + txtCustCountry + Environment.NewLine
+                    Msg = Msg + "Cust ID: " + txtCustID + Environment.NewLine
+                    Msg = Msg + "Cust Name: " + txtCustName + Environment.NewLine
+                    Msg = Msg + "License Gen Date: " + txtLicenGenDate + Environment.NewLine
                     'Dim txtMstrPw  = getEncryptedValue("txtMstrPw", LicList)
-                    Msg = Msg + "Nbr Seats: " + txtNbrSeats + vbCrLf
-                    Msg = Msg + "Nbr Siml Seats: " + txtNbrSimlSeats + vbCrLf
-                    Msg = Msg + "Version Nbr: " + txtVersionNbr + vbCrLf
-                    'Msg = Msg + "Zip: " + txtZip  + vbCrLf
+                    Msg = Msg + "Nbr Seats: " + txtNbrSeats + Environment.NewLine
+                    Msg = Msg + "Nbr Siml Seats: " + txtNbrSimlSeats + Environment.NewLine
+                    Msg = Msg + "Version Nbr: " + txtVersionNbr + Environment.NewLine
+                    'Msg = Msg + "Zip: " + txtZip  + environment.NewLine
                     CustID = txtCustID
                 End If
 
             End If
         Catch ex As Exception
-            MessageBox.Show("Error 53.25.1: failed to Parse License." + vbCrLf + vbCrLf + ex.Message)
+            MessageBox.Show("Error 53.25.1: failed to Parse License." + Environment.NewLine + Environment.NewLine + ex.Message)
             CustID = ""
             LOG.WriteToArchiveLog("clsLicenseMgt : ParseLic : 24 : " + ex.Message)
         End Try
@@ -308,7 +308,7 @@ Public Class clsLicenseMgt
                 tVal = "Roaming"
             End If
         Catch ex As Exception
-            MessageBox.Show("Error 53.25.1b: - LicenseType - failed to Parse License." + vbCrLf + vbCrLf + ex.Message)
+            MessageBox.Show("Error 53.25.1b: - LicenseType - failed to Parse License." + Environment.NewLine + Environment.NewLine + ex.Message)
             LOG.WriteToArchiveLog("clsLicenseMgt : LicenseType : 24 : " + ex.Message)
         End Try
         Return tVal
@@ -331,7 +331,7 @@ Public Class clsLicenseMgt
                 B = False
             End If
         Catch ex As Exception
-            MessageBox.Show("Error 53.25.21a: SdkLicenseExists - failed to Parse License." + vbCrLf + vbCrLf + ex.Message)
+            MessageBox.Show("Error 53.25.21a: SdkLicenseExists - failed to Parse License." + Environment.NewLine + Environment.NewLine + ex.Message)
             B = False
             LOG.WriteToArchiveLog("clsLicenseMgt : SdkLicenseExists : 24 : " + ex.Message)
         End Try
@@ -367,9 +367,9 @@ Public Class clsLicenseMgt
             End If
             ix = 8
         Catch ex As Exception
-            MessageBox.Show("Error 53.25.11a: isLease - failed to Parse License.  IX=" + ix.ToString + vbCrLf + vbCrLf + ex.Message + vbCrLf + "Customer Name: " + gCustomerName + vbCrLf + "Customer ID: " + gCustomerID + vbCrLf + "Step# " + ix.ToString)
+            MessageBox.Show("Error 53.25.11a: isLease - failed to Parse License.  IX=" + ix.ToString + Environment.NewLine + Environment.NewLine + ex.Message + Environment.NewLine + "Customer Name: " + gCustomerName + Environment.NewLine + "Customer ID: " + gCustomerID + Environment.NewLine + "Step# " + ix.ToString)
             B = False
-            LOG.WriteToTraceLog("clsLicenseMgt : isLease : 24  IX = " + ix.ToString + vbCrLf + ex.Message)
+            LOG.WriteToTraceLog("clsLicenseMgt : isLease : 24  IX = " + ix.ToString + Environment.NewLine + ex.Message)
         End Try
         Return B
     End Function
@@ -389,7 +389,7 @@ Public Class clsLicenseMgt
                 I = 0
             End If
         Catch ex As Exception
-            MessageBox.Show("Error 53.25.01a: isLease - failed to Parse License." + vbCrLf + vbCrLf + ex.Message)
+            MessageBox.Show("Error 53.25.01a: isLease - failed to Parse License." + Environment.NewLine + Environment.NewLine + ex.Message)
             I = 0
             LOG.WriteToArchiveLog("clsLicenseMgt : isLease : 24 : " + ex.Message)
         End Try
@@ -412,9 +412,9 @@ Public Class clsLicenseMgt
             tVal = getEncryptedValue(tKey, LicList, dDebug)
             ll = 4
         Catch ex As Exception
-            MessageBox.Show("Error 53.25.1: failed to Parse License. LL=" + ll.ToString + vbCrLf + vbCrLf + ex.Message)
+            MessageBox.Show("Error 53.25.1: failed to Parse License. LL=" + ll.ToString + Environment.NewLine + Environment.NewLine + ex.Message)
             B = False
-            LOG.WriteToTraceLog("clsLicenseMgt : ParseLic : 24 : LL=" + ll.ToString + vbCrLf + ex.Message)
+            LOG.WriteToTraceLog("clsLicenseMgt : ParseLic : 24 : LL=" + ll.ToString + Environment.NewLine + ex.Message)
         End Try
         Return tVal
     End Function
@@ -432,7 +432,7 @@ Public Class clsLicenseMgt
                 tVal = ""
             End If
         Catch ex As Exception
-            LOG.WriteToTraceLog("getEncryptedValue 20: " + "LL=" + ll.ToString + vbCrLf + ex.Message)
+            LOG.WriteToTraceLog("getEncryptedValue 20: " + "LL=" + ll.ToString + Environment.NewLine + ex.Message)
         End Try
 
 
@@ -531,7 +531,7 @@ Public Class clsLicenseMgt
                     gValidated = True
                     Return ""
                 Else
-                    LicenseMessage += "We are very sorry to inform you, but your license could not be validated." + vbCrLf + " Please contact ECM Library support or your administrator."
+                    LicenseMessage += "We are very sorry to inform you, but your license could not be validated." + Environment.NewLine + " Please contact ECM Library support or your administrator."
                     LOG.WriteToArchiveLog("FrmMDIMain : 1002 We are very sorry to inform you, but your maintenance agreement has expired.")
                     gValidated = False
                     Return LicenseMessage
