@@ -98,6 +98,8 @@ Public Class clsQuickInventory
         Next
 
         list.AddRange(Directory.GetFiles(sourceFolder, filter))
+        Return list
+
     End Function
 
     Function ProcessDirectory(DirName As String, Recurse As String, WhereIN As String) As Integer
