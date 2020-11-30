@@ -4493,13 +4493,16 @@ Process01:
                             Dim iInventory As Integer = 0 : LL = 2001
                             '***********************************************************************************************************************
                             If UseDirectoryListener.Equals(1) And Not gTempDisableDirListener Then
+                                LOG.WriteToArchiveLog("DIRECTORY LISTENER IS ACTIVATED and BEING USED")
                                 FilesToArchive = DBLocal.getListenerfiles()
                                 FilesToArchiveID = DBLocal.getListenerfilesID()
                             ElseIf Not IsNothing(FilesToBeUploaded) Then
+                                LOG.WriteToArchiveLog("DIRECTORY LISTENER IS NOT ACTIVATED and NOT BEING USED")
                                 If FilesToBeUploaded.Count > 0 Then
                                     FilesToArchive = FilesToBeUploaded
                                 End If
                             Else
+                                LOG.WriteToArchiveLog("*** DIRECTORY FOLDER_FQN being parsed for files to upload...")
                                 UTIL.GetFilesToArchive(iInventory, ckArchiveBit, bSubDirFlg, FOLDER_FQN, FilterList, FilesToArchive, IncludedTypes, ExcludedTypes) : LL = 2006
                             End If
                             If FilesToArchive.Count.Equals(0) Then
@@ -14341,28 +14344,36 @@ SkipIT:
 
     Private Sub PickAndLoadADocumentToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PickAndLoadADocumentToolStripMenuItem.Click
 
+        OpenFileDialog1.Multiselect = True
         OpenFileDialog1.ShowDialog()
+        Dim SourceGuids As String = ""
+        Dim FQN As String = ""
+        Dim bGoodLoad As Boolean = False
+        Dim LOF As String = "("
 
-        Dim FQN As String = OpenFileDialog1.FileName
-        Dim LOF As String = ""
-        Dim b As Boolean = DBARCH.insertSingleFILE(FQN)
-        If b Then
-            Dim Files As List(Of String) = DBARCH.ckFileExistInRepo(Environment.MachineName, FQN)
-            If Files.Count > 0 Then
-                For Each str As String In Files
-                    LOF += str + environment.NewLine
-                Next
-                Clipboard.Clear()
-                Clipboard.SetText(LOF)
-                MessageBox.Show("File: <" + FQN + ">, successfully loaded..." + environment.NewLine + LOF + environment.NewLine + environment.NewLine + "Guids are in the clipboard.")
+        For Each FQN In OpenFileDialog1.FileNames
+
+            Dim b As Boolean = DBARCH.insertSingleFILE(FQN)
+            If b Then
+                Dim Files As List(Of String) = DBARCH.ckFileExistInRepo(Environment.MachineName, FQN)
+                If Files.Count > 0 Then
+                    For Each str As String In Files
+                        LOF += "'" + str + "'," + Environment.NewLine
+                    Next
+                    bGoodLoad = True
+                Else
+                    MessageBox.Show("File: <" + FQN + ">, Appeared to load successfully, but it did not ..." + Environment.NewLine + LOF)
+                End If
             Else
-                MessageBox.Show("File: <" + FQN + ">, Appeared to load successfully, but it did not ..." + environment.NewLine + LOF)
+                MessageBox.Show("File: <" + FQN + ">, FAILED TO load...")
             End If
-        Else
-            MessageBox.Show("File: <" + FQN + ">, FAILED TO load...")
+        Next
+        If bGoodLoad Then
+            LOF = "select * from DataSource where SourceGuid in " + vbCrLf + LOF.Substring(0, LOF.Length - 2) + ")"
+            Clipboard.Clear()
+            Clipboard.SetText(LOF)
+            MessageBox.Show("File: <" + FQN + ">, successfully loaded..." + Environment.NewLine + LOF + Environment.NewLine + Environment.NewLine + "Guids are in the clipboard.")
         End If
-
-
     End Sub
 
     Private Sub gbEmail_Enter(sender As Object, e As EventArgs) Handles gbEmail.Enter

@@ -1945,6 +1945,8 @@ Public Class clsUtility
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
+        Dim ListAllFilesToBeProcessed As Integer = System.Configuration.ConfigurationManager.AppSettings("ListAllFilesToBeProcessed")
+
         Dim WhereIN As String = gWhereInDict(DirToInventory)
 
         FilesToArchive.Clear()
@@ -1975,6 +1977,14 @@ Public Class clsUtility
             Files = GetFiles(DirToInventory, FilterList, "N")
         End If
 
+        If ListAllFilesToBeProcessed.Equals(1) Then
+            LOG.WriteToArchiveLog("*********  FILES TO BE PROCESS IN DIRCTORY " + DirToInventory + " *********")
+            For Each FINFO2 As FileInfo In Files
+                LOG.WriteToArchiveLog("  " + FINFO2.FullName)
+            Next
+        End If
+
+
         Dim LL As Integer = 0
 
         Dim LastWriteTime As DateTime = Nothing
@@ -2001,6 +2011,9 @@ Public Class clsUtility
                     If LastWriteTime < gLastArchiveDate Then
                         frmNotify.lblFileSpec.Text = "#Files: " + iCnt.ToString
                         frmNotify.Refresh()
+                        If ListAllFilesToBeProcessed.Equals(1) Then
+                            LOG.WriteToArchiveLog("XX Skipped LastWriteTime < gLastArchiveDate : " + fi.FullName)
+                        End If
                         GoTo SkipIT
                     End If
                 End If
@@ -2047,7 +2060,7 @@ Public Class clsUtility
                 LL = 90
                 EXT = fi.Extension.Trim
                 If EXT.Length < 2 Then
-                    LOG.WriteToArchiveLog("WARNING: <" + fi.FullName + "> bad or no extension found, skipped.")
+                    LOG.WriteToArchiveLog("XX SKipping: <" + fi.FullName + "> bad or no extension found, skipped.")
                     GoTo SkipIT
                 End If
                 LL = 100
@@ -2077,11 +2090,17 @@ Public Class clsUtility
                 If IncludedTypes.Count > 0 Then
                     If Not IncludedTypes.Contains(EXT) Then
                         NeedsUpdate = False
+                        If ListAllFilesToBeProcessed.Equals(1) Then
+                            LOG.WriteToArchiveLog("XX Skipped EXT not found : " + fi.FullName)
+                        End If
                     End If
                 End If
                 LL = 160
                 If ExcludedTypes.Count > 0 Then
                     If ExcludedTypes.Contains(EXT) Then
+                        If ListAllFilesToBeProcessed.Equals(1) Then
+                            LOG.WriteToArchiveLog("XX Skipped EXT excluded : " + fi.FullName)
+                        End If
                         NeedsUpdate = False
                     End If
                 End If
