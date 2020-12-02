@@ -8506,13 +8506,14 @@ GoodLogin:
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
-        Dim DirToInventory As String = "C:\dev"
+        Dim DirToInventory As String = "C:\temp"
         Dim ListOfFiles As String = ""
         Dim ckArchiveBit As Boolean = True
         Dim IncludeSubDirs As Boolean = True
         Dim FileExt As New List(Of String) From {
             ".DOC",
             ".XLS",
+            ".txt",
             ".VB"
         }
 
