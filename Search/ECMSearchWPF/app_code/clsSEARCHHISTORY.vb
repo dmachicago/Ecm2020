@@ -1,3 +1,16 @@
+' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 07-16-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 07-16-2020
+' ***********************************************************************
+' <copyright file="clsSEARCHHISTORY.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
 Imports Microsoft.VisualBasic
 Imports System.Configuration
 Imports System
@@ -5,31 +18,79 @@ Imports System
 Imports System.Collections
 Imports System.IO
 Imports ECMEncryption
- 
+
+''' <summary>
+''' Class clsSEARCHHISTORY.
+''' </summary>
 Public Class clsSEARCHHISTORY
 
-    
+
     'Dim proxy As New SVCSearch.Service1Client
     '** DIM the selected table columns 
     'Dim DB As New clsDatabase
 
     'Dim EP As New clsEndPoint
+    ''' <summary>
+    ''' The dma
+    ''' </summary>
     Dim DMA As New clsDma
+    ''' <summary>
+    ''' The utility
+    ''' </summary>
     Dim UTIL As New clsUtility
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Dim LOG As New clsLogMain
+    ''' <summary>
+    ''' The en c2
+    ''' </summary>
     Dim ENC2 As New ECMEncrypt()
 
+    ''' <summary>
+    ''' The search SQL
+    ''' </summary>
     Dim SearchSql As String = ""
+    ''' <summary>
+    ''' The search date
+    ''' </summary>
     Dim SearchDate As String = ""
+    ''' <summary>
+    ''' The user identifier
+    ''' </summary>
     Dim UserID As String = ""
+    ''' <summary>
+    ''' The row identifier
+    ''' </summary>
     Dim RowID As String = ""
+    ''' <summary>
+    ''' The returned rows
+    ''' </summary>
     Dim ReturnedRows As String = ""
+    ''' <summary>
+    ''' The start time
+    ''' </summary>
     Dim StartTime As String = ""
+    ''' <summary>
+    ''' The end time
+    ''' </summary>
     Dim EndTime As String = ""
+    ''' <summary>
+    ''' The called from
+    ''' </summary>
     Dim CalledFrom As String = ""
+    ''' <summary>
+    ''' The type search
+    ''' </summary>
     Dim TypeSearch As String = ""
 
+    ''' <summary>
+    ''' The g secure identifier
+    ''' </summary>
     Dim gSecureID As String
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="clsSEARCHHISTORY"/> class.
+    ''' </summary>
     Sub New()
         gSecureID = gSecureID
         'AddHandler ProxySearch.ExecuteSqlNewConnSecureCompleted, AddressOf gLogSQL
@@ -38,21 +99,37 @@ Public Class clsSEARCHHISTORY
     End Sub
 
     '** Generate the SET methods 
+    ''' <summary>
+    ''' Sets the searchsql.
+    ''' </summary>
+    ''' <param name="val">The value.</param>
     Public Sub setSearchsql(ByRef val As String)
         val = UTIL.RemoveSingleQuotes(val)
         SearchSql = val
     End Sub
 
+    ''' <summary>
+    ''' Sets the searchdate.
+    ''' </summary>
+    ''' <param name="val">The value.</param>
     Public Sub setSearchdate(ByRef val As String)
         val = UTIL.RemoveSingleQuotes(val)
         SearchDate = val
     End Sub
 
+    ''' <summary>
+    ''' Sets the userid.
+    ''' </summary>
+    ''' <param name="val">The value.</param>
     Public Sub setUserid(ByRef val As String)
         val = UTIL.RemoveSingleQuotes(val)
         UserID = val
     End Sub
 
+    ''' <summary>
+    ''' Sets the returnedrows.
+    ''' </summary>
+    ''' <param name="val">The value.</param>
     Public Sub setReturnedrows(ByRef val As String)
         If Len(val) = 0 Then
             val = "null"
@@ -61,21 +138,37 @@ Public Class clsSEARCHHISTORY
         ReturnedRows = val
     End Sub
 
+    ''' <summary>
+    ''' Sets the starttime.
+    ''' </summary>
+    ''' <param name="val">The value.</param>
     Public Sub setStarttime(ByRef val As String)
         val = UTIL.RemoveSingleQuotes(val)
         StartTime = val
     End Sub
 
+    ''' <summary>
+    ''' Sets the endtime.
+    ''' </summary>
+    ''' <param name="val">The value.</param>
     Public Sub setEndtime(ByRef val As String)
         val = UTIL.RemoveSingleQuotes(val)
         EndTime = val
     End Sub
 
+    ''' <summary>
+    ''' Sets the calledfrom.
+    ''' </summary>
+    ''' <param name="val">The value.</param>
     Public Sub setCalledfrom(ByRef val As String)
         val = UTIL.RemoveSingleQuotes(val)
         CalledFrom = val
     End Sub
 
+    ''' <summary>
+    ''' Sets the typesearch.
+    ''' </summary>
+    ''' <param name="val">The value.</param>
     Public Sub setTypesearch(ByRef val As String)
         val = UTIL.RemoveSingleQuotes(val)
         TypeSearch = val
@@ -84,14 +177,26 @@ Public Class clsSEARCHHISTORY
 
 
     '** Generate the GET methods 
+    ''' <summary>
+    ''' Gets the searchsql.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getSearchsql() As String
         Return UTIL.RemoveSingleQuotes(SearchSql)
     End Function
 
+    ''' <summary>
+    ''' Gets the searchdate.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getSearchdate() As String
         Return UTIL.RemoveSingleQuotes(SearchDate)
     End Function
 
+    ''' <summary>
+    ''' Gets the userid.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getUserid() As String
         Return UTIL.RemoveSingleQuotes(UserID)
     End Function
@@ -107,6 +212,10 @@ Public Class clsSEARCHHISTORY
     '    Return RowID
     'End Function
 
+    ''' <summary>
+    ''' Gets the returnedrows.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getReturnedrows() As String
         If Len(ReturnedRows) = 0 Then
             ReturnedRows = "null"
@@ -114,18 +223,34 @@ Public Class clsSEARCHHISTORY
         Return ReturnedRows
     End Function
 
+    ''' <summary>
+    ''' Gets the starttime.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getStarttime() As String
         Return UTIL.RemoveSingleQuotes(StartTime)
     End Function
 
+    ''' <summary>
+    ''' Gets the endtime.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getEndtime() As String
         Return UTIL.RemoveSingleQuotes(EndTime)
     End Function
 
+    ''' <summary>
+    ''' Gets the calledfrom.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getCalledfrom() As String
         Return UTIL.RemoveSingleQuotes(CalledFrom)
     End Function
 
+    ''' <summary>
+    ''' Gets the typesearch.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getTypesearch() As String
         Return UTIL.RemoveSingleQuotes(TypeSearch)
     End Function
@@ -140,12 +265,21 @@ Public Class clsSEARCHHISTORY
 
 
     '** Generate the Validation method 
+    ''' <summary>
+    ''' Validates the data.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ValidateData() As Boolean
         Return True
     End Function
 
 
     '** Generate the INSERT method 
+    ''' <summary>
+    ''' Inserts the specified search SQL.
+    ''' </summary>
+    ''' <param name="SearchSql">The search SQL.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function Insert(ByVal SearchSql As String) As Boolean
         Dim b As Boolean = False
         Dim s As String = ""
@@ -195,6 +329,11 @@ Public Class clsSEARCHHISTORY
 
 
     '** Generate the UPDATE method 
+    ''' <summary>
+    ''' Updates the specified where clause.
+    ''' </summary>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function Update(ByVal WhereClause As String) As Boolean
         Dim b As Boolean = False
         Dim s As String = ""
@@ -268,6 +407,11 @@ Public Class clsSEARCHHISTORY
 
 
     '** Generate the DELETE method 
+    ''' <summary>
+    ''' Deletes the specified where clause.
+    ''' </summary>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function Delete(ByVal WhereClause As String) As Boolean
         Dim b As Boolean = False
         Dim s As String = ""
@@ -290,6 +434,10 @@ Public Class clsSEARCHHISTORY
     End Function
 
     '** Generate the Zeroize Table method 
+    ''' <summary>
+    ''' Zeroizes this instance.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function Zeroize() As Boolean
         Dim b As Boolean = False
         Dim s As String = ""
@@ -345,6 +493,9 @@ Public Class clsSEARCHHISTORY
 
     ''** Generate the SET methods 
 
+    ''' <summary>
+    ''' Allows an object to try to free resources and perform other cleanup operations before it is reclaimed by garbage collection.
+    ''' </summary>
     Protected Overrides Sub Finalize()
         Try
 
@@ -357,6 +508,9 @@ Public Class clsSEARCHHISTORY
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Sets the xx search SVC end point.
+    ''' </summary>
     Private Sub setXXSearchSvcEndPoint()
 
         If (SearchEndPoint.Length = 0) Then

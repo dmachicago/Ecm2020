@@ -1,31 +1,98 @@
-﻿Imports System.Text
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 07-16-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 07-16-2020
+' ***********************************************************************
+' <copyright file="frmSearchAsst.xaml.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+Imports System.Text
 Imports System.IO
 Imports System.IO.IsolatedStorage
 Imports System.Configuration
 
+''' <summary>
+''' Class frmSearchAsst.
+''' Implements the <see cref="System.Windows.Window" />
+''' Implements the <see cref="System.Windows.Markup.IComponentConnector" />
+''' </summary>
+''' <seealso cref="System.Windows.Window" />
+''' <seealso cref="System.Windows.Markup.IComponentConnector" />
 Public Class frmSearchAsst
 
+    ''' <summary>
+    ''' Gets or sets the generated search.
+    ''' </summary>
+    ''' <value>The generated search.</value>
     Public Property GeneratedSearch As String = ""
+    ''' <summary>
+    ''' The common
+    ''' </summary>
     Dim COMMON As New clsCommonFunctions
     'Dim GVAR As App = App.Current
+    ''' <summary>
+    ''' The user identifier
+    ''' </summary>
     Dim UserID As String = ""
 
     'Dim proxy As New SVCSearch.Service1Client
     'Dim EP As New clsEndPoint
 
+    ''' <summary>
+    ''' The iso
+    ''' </summary>
     Dim ISO As New clsIsolatedStorage
+    ''' <summary>
+    ''' The temporary iso dir
+    ''' </summary>
     Dim tempIsoDir As String = ISO.getTempDir
+    ''' <summary>
+    ''' The generated search text
+    ''' </summary>
     Dim GeneratedSearchText As String = ""
+    ''' <summary>
+    ''' The thesaurus connection string
+    ''' </summary>
     Dim ThesaurusConnectionString As String = ""
 
+    ''' <summary>
+    ''' The thesaurus words
+    ''' </summary>
     Dim ThesaurusWords As New System.Collections.ObjectModel.ObservableCollection(Of String)
+    ''' <summary>
+    ''' The expanded words
+    ''' </summary>
     Dim ExpandedWords As New System.Collections.ObjectModel.ObservableCollection(Of String)
+    ''' <summary>
+    ''' The object expanded words
+    ''' </summary>
     Dim ObjExpandedWords As Object = Nothing
+    ''' <summary>
+    ''' The gen and view
+    ''' </summary>
     Dim GenAndView As Boolean = False
+    ''' <summary>
+    ''' The search criteria
+    ''' </summary>
     Public SearchCriteria As String = ""
+    ''' <summary>
+    ''' The g secure identifier
+    ''' </summary>
     Dim gSecureID As String = -1
+    ''' <summary>
+    ''' The user unique identifier identifier
+    ''' </summary>
     Dim UserGuidID As String = ""
 
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="frmSearchAsst"/> class.
+    ''' </summary>
+    ''' <param name="iSecureID">The i secure identifier.</param>
     Public Sub New(ByVal iSecureID As Integer)
         InitializeComponent()
         'EP.setSearchSvcEndPoint(proxy)
@@ -142,17 +209,30 @@ Public Class frmSearchAsst
         cbDateRange.SelectedItem = "OFF"
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the OKButton control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub OKButton_Click(ByVal sender As Object, ByVal e As RoutedEventArgs) Handles OKButton.Click
         GenerateSearchCriteria()
         Me.DialogResult = True
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the CancelButton control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub CancelButton_Click(ByVal sender As Object, ByVal e As RoutedEventArgs) Handles CancelButton.Click
         Me.DialogResult = False
         GeneratedSearch = ""
         Me.Close()
     End Sub
 
+    ''' <summary>
+    ''' Generates the search criteria.
+    ''' </summary>
     Sub GenerateSearchCriteria()
 
         If cbSelectedThesauri.Items.Count = 0 Then
@@ -589,6 +669,10 @@ Public Class frmSearchAsst
         Dim B As Boolean = False
 
     End Sub
+    ''' <summary>
+    ''' Clients the user parm insert update completed.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub client_UserParmInsertUpdateCompleted(RC As Boolean)
         If RC Then
         Else
@@ -596,6 +680,11 @@ Public Class frmSearchAsst
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnExpInflection control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnExpInflection_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnExpInflection.Click
         'SELECT * FROM sys.dm_fts_parser ('FORMSOF(INFLECTIONAL,run) or FORMSOF(INFLECTIONAL,deep)', 1033, 0, 0)
         If txtInflection.Text.Trim.Length = 0 Then
@@ -635,6 +724,11 @@ Public Class frmSearchAsst
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the expand inflection terms.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
     Sub client_ExpandInflectionTerms(RC As Boolean, RetMsg As String)
         If RC Then
             If RC Then
@@ -648,6 +742,11 @@ Public Class frmSearchAsst
         'RemoveHandler ProxySearch.ExpandInflectionTermsCompleted, AddressOf client_ExpandInflectionTerms
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnExpandThesaurus control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnExpandThesaurus_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnExpandThesaurus.Click
         'SELECT * FROM sys.dm_fts_parser ('FORMSOF(INFLECTIONAL,run) or FORMSOF(INFLECTIONAL,deep)', 1033, 0, 0)
         If txtMsThesuarus.Text.Trim.Length = 0 Then
@@ -700,6 +799,11 @@ Public Class frmSearchAsst
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnExpand control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnExpand_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnExpand.Click
         Dim Words$ = ""
         Dim tgtPhrases$ = txtEcmThesaurus.Text
@@ -739,11 +843,19 @@ Public Class frmSearchAsst
             SB2.Text = ex.Message
         End Try
     End Sub
+    ''' <summary>
+    ''' Gets the thesaurus identifier.
+    ''' </summary>
+    ''' <param name="ThesaurusName">Name of the thesaurus.</param>
     Sub getThesaurusID(ByVal ThesaurusName As String)
 
         Dim SS As String = ProxySearch.getThesaurusID(gSecureID, ThesaurusName)
         client_getThesaurusID(SS)
     End Sub
+    ''' <summary>
+    ''' Clients the get thesaurus identifier.
+    ''' </summary>
+    ''' <param name="SS">The ss.</param>
     Sub client_getThesaurusID(SS As String)
         Dim TID As String = ""
         Dim B As Boolean = False
@@ -774,6 +886,11 @@ Public Class frmSearchAsst
         'RemoveHandler ProxySearch.getThesaurusIDCompleted, AddressOf client_getThesaurusID
     End Sub
 
+    ''' <summary>
+    ''' Clients the get synonyms.
+    ''' </summary>
+    ''' <param name="str">The string.</param>
+    ''' <param name="ObjExpandedWords">The object expanded words.</param>
     Sub client_getSynonyms(str As String, ObjExpandedWords As String())
 
         If ObjExpandedWords.Count > 0 Then
@@ -799,6 +916,10 @@ Public Class frmSearchAsst
 
         End If
     End Sub
+    ''' <summary>
+    ''' Validates the first word.
+    ''' </summary>
+    ''' <param name="ReformattedSearchString">The reformatted search string.</param>
     Sub ValidateFirstWord(ByRef ReformattedSearchString As String)
         Dim S As String = ReformattedSearchString$.Trim
 
@@ -816,6 +937,11 @@ Public Class frmSearchAsst
         ReformattedSearchString$ = S
 
     End Sub
+    ''' <summary>
+    ''' Determines whether [is key word] [the specified kw].
+    ''' </summary>
+    ''' <param name="KW">The kw.</param>
+    ''' <returns><c>true</c> if [is key word] [the specified kw]; otherwise, <c>false</c>.</returns>
     Function isKeyWord(ByVal KW As String) As Boolean
         Dim B As Boolean = False
         KW = UCase(KW)
@@ -832,6 +958,11 @@ Public Class frmSearchAsst
         Return B
     End Function
 
+    ''' <summary>
+    ''' Handles the Click event of the btnAddThesauri control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnAddThesauri_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnAddThesauri.Click
         Dim I As Integer = 0
         For I = 0 To cbSelectedThesauri.Items.Count - 1
@@ -845,6 +976,9 @@ Public Class frmSearchAsst
         cbSelectedThesauri.Text = cbAvailThesauri.Text
     End Sub
 
+    ''' <summary>
+    ''' Saves the curr fields.
+    ''' </summary>
     Sub SaveCurrFields()
 
         ISO.ZeroizeTempFile("AssistParms.dat")
@@ -886,6 +1020,10 @@ Public Class frmSearchAsst
         WriteToAssistFile(S)
 
     End Sub
+    ''' <summary>
+    ''' Populates the curr fields.
+    ''' </summary>
+    ''' <param name="msg">The MSG.</param>
     Sub PopulateCurrFields(ByVal msg As String)
         Dim A$(0)
         A = msg.Split(ChrW(254))
@@ -944,6 +1082,10 @@ Public Class frmSearchAsst
         txtEcmThesaurus.Text = S
 
     End Sub
+    ''' <summary>
+    ''' Writes to assist file.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub WriteToAssistFile(ByVal Msg As String)
         Try
             Dim cPath As String = tempIsoDir
@@ -957,6 +1099,10 @@ Public Class frmSearchAsst
             Console.WriteLine("frmSearchAssist : WriteToAssistFile : 688 : " + ex.Message)
         End Try
     End Sub
+    ''' <summary>
+    ''' xes the read assist file.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub xReadAssistFile(ByRef Msg As String)
         Try
             Dim cPath As String = tempIsoDir
@@ -969,9 +1115,18 @@ Public Class frmSearchAsst
             Console.WriteLine("frmSearchAssist : WriteToAssistFile : 688 : " + ex.Message)
         End Try
     End Sub
+    ''' <summary>
+    ''' Removes the double quotes.
+    ''' </summary>
+    ''' <param name="TgtStr">The TGT string.</param>
     Sub RemoveDoubleQuotes(ByVal TgtStr As String)
         TgtStr = TgtStr.Replace(ChrW(34), " ")
     End Sub
+    ''' <summary>
+    ''' Removes the key words.
+    ''' </summary>
+    ''' <param name="aList">a list.</param>
+    ''' <param name="CorrectedText">The corrected text.</param>
     Sub RemoveKeyWords(ByVal aList() As String, ByRef CorrectedText As String)
         CorrectedText = ""
         Dim I As Integer = 0
@@ -996,6 +1151,11 @@ Public Class frmSearchAsst
 
         Next
     End Sub
+    ''' <summary>
+    ''' Splits the near words.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <returns>Array.</returns>
     Private Function SplitNearWords(ByVal S As String) As Array
 
         Dim A As New List(Of String)
@@ -1045,6 +1205,9 @@ Public Class frmSearchAsst
 
     End Function
 
+    ''' <summary>
+    ''' Sets the calendar widgets.
+    ''' </summary>
     Sub SetCalendarWidgets()
         If cbDateRange.Text.ToUpper.Equals("OFF") Then
             dtStart.Visibility = Windows.Visibility.Collapsed
@@ -1078,16 +1241,31 @@ Public Class frmSearchAsst
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnGen control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnGen_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnGen.Click
         GenAndView = True
         GenerateSearchCriteria()
         GenAndView = False
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the Button2 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs)
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnRemoveThesauri control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnRemoveThesauri_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnRemoveThesauri.Click
         Dim I As Integer = 0
         Dim name1$ = cbSelectedThesauri.Items(I).ToString
@@ -1100,6 +1278,9 @@ Public Class frmSearchAsst
         Next
     End Sub
 
+    ''' <summary>
+    ''' Allows an object to try to free resources and perform other cleanup operations before it is reclaimed by garbage collection.
+    ''' </summary>
     Protected Overrides Sub Finalize()
         Try
 
@@ -1115,10 +1296,18 @@ Public Class frmSearchAsst
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unloaded event of the ChildWindow control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ChildWindow_Unloaded(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles MyBase.Unloaded
         'Application.Current.RootVisual.SetValue(Control.IsEnabledProperty, True)
     End Sub
 
+    ''' <summary>
+    ''' Adds the dictionary items.
+    ''' </summary>
     Sub AddDictItems()
 
         UpdateSearchDict("asst.txtAllOfTheseWords", txtAllOfTheseWords.Text.Trim)
@@ -1143,6 +1332,11 @@ Public Class frmSearchAsst
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the search dictionary.
+    ''' </summary>
+    ''' <param name="tKey">The t key.</param>
+    ''' <param name="tValue">The t value.</param>
     Sub UpdateSearchDict(ByVal tKey As String, ByVal tValue As String)
         'If Not formLoaded Then
         '    Return
@@ -1161,78 +1355,173 @@ Public Class frmSearchAsst
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the txtAllOfTheseWords control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub txtAllOfTheseWords_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles txtAllOfTheseWords.TextChanged
         'GenerateSearchCriteria()
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the txtExactPhrase control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub txtExactPhrase_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles txtExactPhrase.TextChanged
         'GenerateSearchCriteria()
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the txtAnyOfThese control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub txtAnyOfThese_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles txtAnyOfThese.TextChanged
         'GenerateSearchCriteria()
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the txtNear control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub txtNear_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles txtNear.TextChanged
         'GenerateSearchCriteria()
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the txtNoneOfThese control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub txtNoneOfThese_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles txtNoneOfThese.TextChanged
         'GenerateSearchCriteria()
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the txtInflection control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub txtInflection_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles txtInflection.TextChanged
         'GenerateSearchCriteria()
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the txtMsThesuarus control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub txtMsThesuarus_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles txtMsThesuarus.TextChanged
         'GenerateSearchCriteria()
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the txtEcmThesaurus control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub txtEcmThesaurus_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles txtEcmThesaurus.TextChanged
         'GenerateSearchCriteria()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Checked event of the ckPhrase control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckPhrase_Checked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckPhrase.Checked
         'GenerateSearchCriteria()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unchecked event of the ckPhrase control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckPhrase_Unchecked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckPhrase.Unchecked
         'GenerateSearchCriteria()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Checked event of the ckNear control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckNear_Checked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckNear.Checked
         'GenerateSearchCriteria()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unchecked event of the ckNear control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckNear_Unchecked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckNear.Unchecked
         'GenerateSearchCriteria()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Checked event of the ckNone control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckNone_Checked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckNone.Checked
         'GenerateSearchCriteria()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unloaded event of the ckNone control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckNone_Unloaded(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckNone.Unloaded
         'GenerateSearchCriteria()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Checked event of the ckInflection control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckInflection_Checked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckInflection.Checked
         'GenerateSearchCriteria()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unchecked event of the ckInflection control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckInflection_Unchecked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckInflection.Unchecked
         'GenerateSearchCriteria()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Checked event of the ckClassonomy control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckClassonomy_Checked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckClassonomy.Checked
         'GenerateSearchCriteria()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unchecked event of the ckClassonomy control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckClassonomy_Unchecked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckClassonomy.Unchecked
         'GenerateSearchCriteria()
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectionChanged event of the cbDateRange control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub cbDateRange_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles cbDateRange.SelectionChanged
         SetCalendarWidgets()
     End Sub

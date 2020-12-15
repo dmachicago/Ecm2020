@@ -1,3 +1,16 @@
+' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 07-16-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 07-16-2020
+' ***********************************************************************
+' <copyright file="clsLIBEMAIL.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
 Imports Microsoft.VisualBasic
 Imports System.Configuration
 Imports System
@@ -7,24 +20,51 @@ Imports System.IO
 Imports ECMEncryption
 
 
+''' <summary>
+''' Class clsLIBEMAIL.
+''' </summary>
 Public Class clsLIBEMAIL
 
 
     'Dim proxy As New SVCSearch.Service1Client
     'Dim EP As New clsEndPoint
+    ''' <summary>
+    ''' The en c2
+    ''' </summary>
     Dim ENC2 As New ECMEncrypt()
     '** DIM the selected table columns 
     'Dim DB As New clsDatabase
     'Dim DMA As New clsDma
     'Dim UTIL As New clsUtility
 
+    ''' <summary>
+    ''' The email folder entry identifier
+    ''' </summary>
     Dim EmailFolderEntryID As String = ""
+    ''' <summary>
+    ''' The user identifier
+    ''' </summary>
     Dim UserID As String = ""
+    ''' <summary>
+    ''' The library name
+    ''' </summary>
     Dim LibraryName As String = ""
+    ''' <summary>
+    ''' The folder name
+    ''' </summary>
     Dim FolderName As String = ""
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Dim LOG As New clsLogMain
 
+    ''' <summary>
+    ''' The g secure identifier
+    ''' </summary>
     Dim gSecureID As String = -1
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="clsLIBEMAIL"/> class.
+    ''' </summary>
     Sub New()
 
         gSecureID = _SecureID
@@ -34,6 +74,10 @@ Public Class clsLIBEMAIL
     End Sub
 
     '** Generate the SET methods 
+    ''' <summary>
+    ''' Sets the emailfolderentryid.
+    ''' </summary>
+    ''' <param name="val">The value.</param>
     Public Sub setEmailfolderentryid(ByRef val As String)
         If Len(val) = 0 Then
             MessageBox.Show("SET: clsLIBEMAIL - Field 'Emailfolderentryid' cannot be NULL.")
@@ -45,6 +89,10 @@ Public Class clsLIBEMAIL
     End Sub
 
 
+    ''' <summary>
+    ''' Sets the userid.
+    ''' </summary>
+    ''' <param name="val">The value.</param>
     Public Sub setUserid(ByRef val As String)
         If Len(val) = 0 Then
             MessageBox.Show("SET: clsLIBEMAIL - Field 'Userid' cannot be NULL.")
@@ -56,6 +104,10 @@ Public Class clsLIBEMAIL
     End Sub
 
 
+    ''' <summary>
+    ''' Sets the libraryname.
+    ''' </summary>
+    ''' <param name="val">The value.</param>
     Public Sub setLibraryname(ByRef val As String)
         If Len(val) = 0 Then
             MessageBox.Show("SET: clsLIBEMAIL - Field 'Libraryname' cannot be NULL.")
@@ -67,6 +119,10 @@ Public Class clsLIBEMAIL
     End Sub
 
 
+    ''' <summary>
+    ''' Sets the foldername.
+    ''' </summary>
+    ''' <param name="val">The value.</param>
     Public Sub setFoldername(ByRef val As String)
         val = val.Replace("''", "'")
         val = val.Replace("'", "''")
@@ -75,6 +131,10 @@ Public Class clsLIBEMAIL
 
 
     '** Generate the GET methods 
+    ''' <summary>
+    ''' Gets the emailfolderentryid.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getEmailfolderentryid() As String
         If Len(EmailFolderEntryID) = 0 Then
             MessageBox.Show("GET: Field 'Emailfolderentryid' cannot be NULL.")
@@ -84,6 +144,10 @@ Public Class clsLIBEMAIL
     End Function
 
 
+    ''' <summary>
+    ''' Gets the userid.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getUserid() As String
         If Len(UserID) = 0 Then
             MessageBox.Show("GET: Field 'Userid' cannot be NULL.")
@@ -93,6 +157,10 @@ Public Class clsLIBEMAIL
     End Function
 
 
+    ''' <summary>
+    ''' Gets the libraryname.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getLibraryname() As String
         If Len(LibraryName) = 0 Then
             MessageBox.Show("GET: Field 'Libraryname' cannot be NULL.")
@@ -102,11 +170,19 @@ Public Class clsLIBEMAIL
     End Function
 
 
+    ''' <summary>
+    ''' Gets the foldername.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getFoldername() As String
         Return FolderName.Replace("''", "'")
     End Function
 
     '** Generate the Required Fields Validation method 
+    ''' <summary>
+    ''' Validates the req data.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ValidateReqData() As Boolean
         If EmailFolderEntryID.Length = 0 Then Return False
         If UserID.Length = 0 Then Return False
@@ -118,6 +194,10 @@ Public Class clsLIBEMAIL
 
 
     '** Generate the Validation method 
+    ''' <summary>
+    ''' Validates the data.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ValidateData() As Boolean
         If EmailFolderEntryID.Length = 0 Then Return False
         If UserID.Length = 0 Then Return False
@@ -129,6 +209,10 @@ Public Class clsLIBEMAIL
 
 
     '** Generate the INSERT method 
+    ''' <summary>
+    ''' Inserts this instance.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function Insert() As Boolean
         Dim b As Boolean = False
         Dim s As String = ""
@@ -152,6 +236,11 @@ Public Class clsLIBEMAIL
 
 
     '** Generate the UPDATE method 
+    ''' <summary>
+    ''' Updates the specified where clause.
+    ''' </summary>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function Update(ByVal WhereClause As String) As Boolean
         Dim b As Boolean = False
         Dim s As String = ""
@@ -216,6 +305,11 @@ Public Class clsLIBEMAIL
 
 
     '** Generate the DELETE method 
+    ''' <summary>
+    ''' Deletes the specified where clause.
+    ''' </summary>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function Delete(ByVal WhereClause As String) As Boolean
         Dim b As Boolean = False
         Dim s As String = ""
@@ -242,6 +336,10 @@ Public Class clsLIBEMAIL
 
 
     '** Generate the Zeroize Table method 
+    ''' <summary>
+    ''' Zeroizes this instance.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function Zeroize() As Boolean
         Dim b As Boolean = False
         Dim s As String = ""
@@ -346,6 +444,9 @@ Public Class clsLIBEMAIL
     'End Function     '** wc_PK99
 
 
+    ''' <summary>
+    ''' Sets the xx search SVC end point.
+    ''' </summary>
     Private Sub setXXSearchSvcEndPoint()
 
         If (SearchEndPoint.Length = 0) Then

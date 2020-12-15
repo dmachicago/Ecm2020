@@ -124,7 +124,6 @@
     <ApplicationDefinition Include="Application.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <Compile Include="app_code\Class1.vb" />
     <Compile Include="app_code\grid.vb" />
     <Compile Include="clsDatabase.vb" />
     <Compile Include="clsDatasetMgt.vb" />

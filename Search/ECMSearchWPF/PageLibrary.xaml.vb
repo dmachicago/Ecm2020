@@ -1,29 +1,97 @@
-﻿Imports System.Data
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 07-16-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 07-16-2020
+' ***********************************************************************
+' <copyright file="PageLibrary.xaml.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+Imports System.Data
 Imports System.Web.Script.Serialization
 Imports ECMEncryption
 
+''' <summary>
+''' Class PageLibrary.
+''' Implements the <see cref="System.Windows.Window" />
+''' Implements the <see cref="System.Windows.Markup.IComponentConnector" />
+''' </summary>
+''' <seealso cref="System.Windows.Window" />
+''' <seealso cref="System.Windows.Markup.IComponentConnector" />
 Public Class PageLibrary
     'Inherits Page
 
+    ''' <summary>
+    ''' The enc
+    ''' </summary>
     Dim ENC As New ECMEncrypt
+    ''' <summary>
+    ''' The common
+    ''' </summary>
     Dim COMMON As New clsCommonFunctions
+    ''' <summary>
+    ''' The utility
+    ''' </summary>
     Dim UTIL As New clsUtility
+    ''' <summary>
+    ''' The hive
+    ''' </summary>
     Dim HIVE As New clsHive
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Dim LOG As New clsLogMain
+    ''' <summary>
+    ''' The lu
+    ''' </summary>
     Dim LU As New clsLIBRARYUSERS
+    ''' <summary>
+    ''' The DSMGT
+    ''' </summary>
     Dim DSMGT As clsDatasetMgt = New clsDatasetMgt()
+    ''' <summary>
+    ''' The xlog
+    ''' </summary>
     Dim XLOG As clsLoggingExtended = New clsLoggingExtended
 
+    ''' <summary>
+    ''' The g secure identifier
+    ''' </summary>
     Dim gSecureID As String = -1
+    ''' <summary>
+    ''' The b populate libraries
+    ''' </summary>
     Dim bPopulateLibraries As Boolean = False
+    ''' <summary>
+    ''' The library name
+    ''' </summary>
     Dim LibraryName As String = ""
+    ''' <summary>
+    ''' The is public
+    ''' </summary>
     Dim isPublic As String = ""
+    ''' <summary>
+    ''' The ListBox items
+    ''' </summary>
     Dim ListBoxItems As New System.Collections.ObjectModel.ObservableCollection(Of String)
 
+    ''' <summary>
+    ''' The user identifier
+    ''' </summary>
     Dim UserID As String = ""
+    ''' <summary>
+    ''' The form loaded
+    ''' </summary>
     Dim FormLoaded As Boolean = False
 
 
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="PageLibrary"/> class.
+    ''' </summary>
     Public Sub New()
         InitializeComponent()
 
@@ -45,6 +113,11 @@ Public Class PageLibrary
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnDelete control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnDelete.Click
         If gDebug Then XLOG.WriteTraceLog("PageLib  Trace 02")
         bPopulateLibraries = True
@@ -120,6 +193,9 @@ Public Class PageLibrary
 
     End Sub
 
+    ''' <summary>
+    ''' Cleans up library items.
+    ''' </summary>
     Public Sub cleanUpLibraryItems()
         If gDebug Then XLOG.WriteTraceLog("PageLib  Trace 03")
         PB.IsIndeterminate = True
@@ -191,6 +267,11 @@ Public Class PageLibrary
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the execute SQL new connection 3 34 42.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="S">The s.</param>
     Sub client_ExecuteSqlNewConn_3_34_42(RC As Boolean, S As String)
         If gDebug Then XLOG.WriteTraceLog("PageLib  Trace 04")
         PB.IsIndeterminate = False
@@ -203,6 +284,11 @@ Public Class PageLibrary
         'RemoveHandler ProxySearch.ExecuteSqlNewConnSecureCompleted, AddressOf client_ExecuteSqlNewConn_3_34_42
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the BtnAdd control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub BtnAdd_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles BtnAdd.Click
 
         'gCurrLoginid = gCurrLoginid
@@ -219,6 +305,9 @@ Public Class PageLibrary
         PopulateLibraryGrid()
     End Sub
 
+    ''' <summary>
+    ''' Adds the library.
+    ''' </summary>
     Sub AddLibrary()
         If gDebug Then XLOG.WriteTraceLog("PageLib  Trace 06")
         PB.IsIndeterminate = True
@@ -235,6 +324,10 @@ Public Class PageLibrary
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the i count library.
+    ''' </summary>
+    ''' <param name="I">The i.</param>
     Sub client_iCountLibrary(I As Integer)
         If gDebug Then XLOG.WriteTraceLog("PageLib  Trace 07")
         PB.IsIndeterminate = False
@@ -319,6 +412,11 @@ Public Class PageLibrary
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the execute SQL new connection 58 42 742.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="S">The s.</param>
     Sub client_ExecuteSqlNewConn_58_42_742(RC As Boolean, S As String)
         If gDebug Then XLOG.WriteTraceLog("PageLib  Trace 08")
         PB.IsIndeterminate = False
@@ -337,6 +435,9 @@ Public Class PageLibrary
         'RemoveHandler ProxySearch.ExecuteSqlNewConnSecureCompleted, AddressOf client_ExecuteSqlNewConn_58_42_742
     End Sub
 
+    ''' <summary>
+    ''' Updates the hive names.
+    ''' </summary>
     Sub UpdateHiveNames()
         If gDebug Then XLOG.WriteTraceLog("PageLib  Trace 09")
         HIVE.updateHiveRepoName("Library")
@@ -353,6 +454,9 @@ Public Class PageLibrary
 
     End Sub
 
+    ''' <summary>
+    ''' Populates the library grid.
+    ''' </summary>
     Sub PopulateLibraryGrid()
         If gDebug Then XLOG.WriteTraceLog("PageLib  Trace 10")
         PB.IsIndeterminate = True
@@ -379,6 +483,10 @@ Public Class PageLibrary
         'client_PopulateGrid(ObjListOfRows)
     End Sub
 
+    ''' <summary>
+    ''' Clients the populate grid.
+    ''' </summary>
+    ''' <param name="ObjListOfRows">The object list of rows.</param>
     Sub client_PopulateGrid(ObjListOfRows As Object)
         If gDebug Then XLOG.WriteTraceLog("PageLib  Trace 11")
         Dim ListOfRows As New System.Collections.ObjectModel.ObservableCollection(Of DS_VLibraryStats)
@@ -412,6 +520,11 @@ Public Class PageLibrary
         dgLibrary.IsEnabled = True
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlHome control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlHome_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlHome.Click
         If gDebug Then XLOG.WriteTraceLog("PageLib  Trace 11")
         'Dim NextPage As New MainPage()
@@ -419,24 +532,44 @@ Public Class PageLibrary
         Me.Close()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlLibMgt control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlLibMgt_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlLibMgt.Click
         If gDebug Then XLOG.WriteTraceLog("PageLib  Trace 12")
         Dim NextPage As New PageLibraryMgt
         NextPage.Show()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlLibUsers control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlLibUsers_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlLibUsers.Click
         If gDebug Then XLOG.WriteTraceLog("PageLib  Trace 13")
         Dim NextPage As New PageGrantContentToUsers
         NextPage.Show()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlGroups control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlGroups_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlGroups.Click
         If gDebug Then XLOG.WriteTraceLog("PageLib  Trace 14")
         Dim NextPage As New PageGroup
         NextPage.Show()
     End Sub
 
+    ''' <summary>
+    ''' Handles the ScrollChanged event of the dt control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="ScrollChangedEventArgs"/> instance containing the event data.</param>
     Private Sub dt_ScrollChanged(sender As Object, e As ScrollChangedEventArgs)
         If gDebug Then XLOG.WriteTraceLog("PageLib  Trace 15")
         If (e.VerticalChange <> 0) Then
@@ -460,6 +593,11 @@ Public Class PageLibrary
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Checked event of the ckIsPublic control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckIsPublic_Checked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckIsPublic.Checked
         If gDebug Then XLOG.WriteTraceLog("PageLib  Trace 16")
         If Not FormLoaded Then
@@ -489,6 +627,11 @@ Public Class PageLibrary
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the execute SQL new connection 1 43 344.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="S">The s.</param>
     Sub client_ExecuteSqlNewConn_1_43_344(RC As Boolean, S As String)
         If gDebug Then XLOG.WriteTraceLog("PageLib  Trace 17")
         PB.IsIndeterminate = False
@@ -501,6 +644,11 @@ Public Class PageLibrary
         'RemoveHandler ProxySearch.ExecuteSqlNewConnSecureCompleted, AddressOf client_ExecuteSqlNewConn_1_43_344
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unchecked event of the ckIsPublic control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckIsPublic_Unchecked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckIsPublic.Unchecked
         If gDebug Then XLOG.WriteTraceLog("PageLib  Trace 18")
         If Not FormLoaded Then
@@ -520,6 +668,11 @@ Public Class PageLibrary
         ProxySearch.ExecuteSqlNewConnSecure(_SecureID, S, gCurrLoginID, ContractID)
     End Sub
 
+    ''' <summary>
+    ''' Clients the execute SQL new connection 3 5 577.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="S">The s.</param>
     Sub client_ExecuteSqlNewConn_3_5_577(RC As Boolean, S As String)
         If gDebug Then XLOG.WriteTraceLog("PageLib  Trace 19")
         PB.IsIndeterminate = False
@@ -531,6 +684,11 @@ Public Class PageLibrary
         'RemoveHandler ProxySearch.ExecuteSqlNewConnSecureCompleted, AddressOf client_ExecuteSqlNewConn_3_5_577
     End Sub
 
+    ''' <summary>
+    ''' gs the log SQL.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="S">The s.</param>
     Sub gLogSQL(RC As Boolean, S As String)
         If gDebug Then XLOG.WriteTraceLog("PageLib  Trace 20")
         PB.IsIndeterminate = False
@@ -543,6 +701,9 @@ Public Class PageLibrary
     End Sub
 
 
+    ''' <summary>
+    ''' Allows an object to try to free resources and perform other cleanup operations before it is reclaimed by garbage collection.
+    ''' </summary>
     Protected Overrides Sub Finalize()
         If gDebug Then XLOG.WriteTraceLog("PageLib  Trace 21")
         Try
@@ -553,16 +714,31 @@ Public Class PageLibrary
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlRefreshLibs control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlRefreshLibs_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlRefreshLibs.Click
         If gDebug Then XLOG.WriteTraceLog("PageLib  Trace 22")
         PopulateLibraryGrid()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unloaded event of the Page control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub Page_Unloaded(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles MyBase.Unloaded
         'Application.Current.RootVisual.SetValue(Control.IsEnabledProperty, True)
         If gDebug Then XLOG.WriteTraceLog("PageLib  Trace 23")
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectionChanged event of the DgLibrary control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub DgLibrary_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles dgLibrary.SelectionChanged
         For Each col As DataGridColumn In dgLibrary.Columns
             Console.WriteLine(col.Header)

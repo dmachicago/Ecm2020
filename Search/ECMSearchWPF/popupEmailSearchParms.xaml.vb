@@ -1,6 +1,24 @@
-﻿'Imports C1
-'Imports C1.Silverlight
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 06-28-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 06-28-2020
+' ***********************************************************************
+' <copyright file="popupEmailSearchParms.xaml.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************ht
 
+''' <summary>
+''' Class popupEmailSearchParms.
+''' Implements the <see cref="System.Windows.Window" />
+''' Implements the <see cref="System.Windows.Markup.IComponentConnector" />
+''' </summary>
+''' <seealso cref="System.Windows.Window" />
+''' <seealso cref="System.Windows.Markup.IComponentConnector" />
 Partial Public Class popupEmailSearchParms
     'Inherits ChildWindow
 
@@ -8,20 +26,57 @@ Partial Public Class popupEmailSearchParms
     'Dim EP As New clsEndPoint
 
     'Dim GVAR As App = App.Current
+    ''' <summary>
+    ''' The common
+    ''' </summary>
     Dim COMMON As New clsCommonFunctions
+    ''' <summary>
+    ''' The userid
+    ''' </summary>
     Dim Userid As String
 
+    ''' <summary>
+    ''' The utility
+    ''' </summary>
     Dim UTIL As New clsUtility
+    ''' <summary>
+    ''' The iso
+    ''' </summary>
     Dim ISO As New clsIsolatedStorage
+    ''' <summary>
+    ''' The current combo
+    ''' </summary>
     Dim CurrentCombo As String = ""
+    ''' <summary>
+    ''' The combo items
+    ''' </summary>
     Dim ComboItems() As String = Nothing
     'Dim DICT As New Dictionary(Of String, String)
+    ''' <summary>
+    ''' The b my emails
+    ''' </summary>
     Dim bMyEmails As Boolean = False
+    ''' <summary>
+    ''' The user unique identifier identifier
+    ''' </summary>
     Dim UserGuidID As String = ""
+    ''' <summary>
+    ''' The text filter
+    ''' </summary>
     Dim txtFilter As String = ""
+    ''' <summary>
+    ''' The form loaded
+    ''' </summary>
     Dim formLoaded As Boolean = False
-    Dim gSecureID As string = -1
+    ''' <summary>
+    ''' The g secure identifier
+    ''' </summary>
+    Dim gSecureID As String = -1
 
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="popupEmailSearchParms"/> class.
+    ''' </summary>
+    ''' <param name="iSecureID">The i secure identifier.</param>
     Public Sub New(ByVal iSecureID As Integer)
         InitializeComponent()
 
@@ -107,6 +162,11 @@ Partial Public Class popupEmailSearchParms
         formLoaded = True
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the OKButton control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub OKButton_Click(ByVal sender As Object, ByVal e As RoutedEventArgs) Handles OKButton.Click
 
         'ISO.SaveDetailSearchParms("EMAIL", dictMasterSearch)
@@ -116,6 +176,11 @@ Partial Public Class popupEmailSearchParms
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the CancelButton control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub CancelButton_Click(ByVal sender As Object, ByVal e As RoutedEventArgs) Handles CancelButton.Click
         'ISO.DeleteDetailSearchParms("EMAIL")
         'For Each sKey As String In dictMasterSearch.Keys
@@ -126,6 +191,11 @@ Partial Public Class popupEmailSearchParms
         Me.DialogResult = False
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnReset control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnReset_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnReset.Click
         cbDateSelection.SelectedItem = Nothing
         cbDateSelection.SelectedItem = "OFF"
@@ -152,6 +222,11 @@ Partial Public Class popupEmailSearchParms
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the search dictionary.
+    ''' </summary>
+    ''' <param name="tKey">The t key.</param>
+    ''' <param name="tValue">The t value.</param>
     Sub UpdateSearchDict(ByVal tKey As String, ByVal tValue As String)
         If Not formLoaded Then
             Return
@@ -165,8 +240,13 @@ Partial Public Class popupEmailSearchParms
         End If
     End Sub
 
-    
 
+
+    ''' <summary>
+    ''' Handles the SelectedDatesChanged event of the calStart control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub calStart_SelectedDatesChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.SelectionChangedEventArgs) Handles calStart.SelectedDatesChanged
         If Not formLoaded Then
             Return
@@ -181,6 +261,11 @@ Partial Public Class popupEmailSearchParms
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectedDatesChanged event of the calEnd control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub calEnd_SelectedDatesChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.SelectionChangedEventArgs) Handles calEnd.SelectedDatesChanged
         If Not formLoaded Then
             Return
@@ -195,6 +280,11 @@ Partial Public Class popupEmailSearchParms
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the txtEnd control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub txtEnd_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles dtMailDateEnd.TextChanged
         If Not formLoaded Then
             Return
@@ -202,6 +292,11 @@ Partial Public Class popupEmailSearchParms
         UpdateSearchDict("email.dtMailDateEnd", dtMailDateEnd.Text.Trim)
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the txtStart control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub txtStart_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles dtMailDateStart.TextChanged
         If Not formLoaded Then
             Return
@@ -209,6 +304,11 @@ Partial Public Class popupEmailSearchParms
         UpdateSearchDict("email.dtMailDateStart", dtMailDateStart.Text.Trim)
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectionChanged event of the cbFromName control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub cbFromName_SelectionChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.SelectionChangedEventArgs)
         If Not formLoaded Then
             Return
@@ -216,6 +316,11 @@ Partial Public Class popupEmailSearchParms
         UpdateSearchDict("email.cbFromName", cbFromName.SelectedItem.ToString)
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the txtSubject control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub txtSubject_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles txtSubject.TextChanged
         If Not formLoaded Then
             Return
@@ -223,6 +328,11 @@ Partial Public Class popupEmailSearchParms
         UpdateSearchDict("email.txtSubject", txtSubject.Text.Trim)
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the txtCCPhrase control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub txtCCPhrase_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles txtCCPhrase.TextChanged
         If Not formLoaded Then
             Return
@@ -230,6 +340,9 @@ Partial Public Class popupEmailSearchParms
         UpdateSearchDict("email.txtCCPhrase", txtCCPhrase.Text.Trim)
     End Sub
 
+    ''' <summary>
+    ''' Pops the cb from addr.
+    ''' </summary>
     Sub Pop_cbFromAddr()
 
         txtFilter = txtcbFromAddr.Text.Trim
@@ -254,6 +367,9 @@ Partial Public Class popupEmailSearchParms
 
     End Sub
 
+    ''' <summary>
+    ''' Pops the cb to addr.
+    ''' </summary>
     Sub Pop_cbToAddr()
 
         txtFilter = txtcbToAddr.Text.Trim
@@ -262,7 +378,7 @@ Partial Public Class popupEmailSearchParms
 
         Recpt = UTIL.RemoveSingleQuotes(Filter)
 
-        Dim S as string = ""
+        Dim S As String = ""
         If bMyEmails Then
             If Filter.Trim.Length = 0 Then
                 S = "Select     distinct Recipients.Recipient"
@@ -298,12 +414,15 @@ Partial Public Class popupEmailSearchParms
         End If
         PopulateComboBox("cbToAddr", "Recipient", S)
     End Sub
+    ''' <summary>
+    ''' Pops the name of the cb from.
+    ''' </summary>
     Sub Pop_cbFromName()
 
         txtFilter = txtcbFromName.Text.Trim
         Dim Filter As String = UTIL.RemoveSingleQuotes(txtcbFromName.Text.Trim)
 
-        Dim S as string = ""
+        Dim S As String = ""
         If bMyEmails Then
             If Filter.Length = 0 Then
                 S = "Select distinct [SenderName] FROM [Email] where SenderName IS NOT NULL and UserID = '" + UserGuidID + "' order by [SenderName]"
@@ -321,6 +440,9 @@ Partial Public Class popupEmailSearchParms
         PopulateComboBox("cbFromName", "SenderName", S)
 
     End Sub
+    ''' <summary>
+    ''' Pops the name of the cb to.
+    ''' </summary>
     Sub Pop_cbToName()
 
         txtFilter = txtcbToName.Text.Trim
@@ -329,7 +451,7 @@ Partial Public Class popupEmailSearchParms
         Dim ReceivedByName As String = Filter
         ReceivedByName = UTIL.RemoveSingleQuotes(Filter)
 
-        Dim S as string = ""
+        Dim S As String = ""
         If bMyEmails Then
             If Filter.Length = 0 Then
                 S = "Select distinct [ReceivedByName] FROM [Email] where ReceivedByName IS NOT NULL AND UserID = '" + UserGuidID + "' order by [ReceivedByName]"
@@ -346,6 +468,9 @@ Partial Public Class popupEmailSearchParms
         PopulateComboBox("cbToName", "ReceivedByName", S)
 
     End Sub
+    ''' <summary>
+    ''' Pops the cb folder filter.
+    ''' </summary>
     Sub Pop_cbFolderFilter()
 
         txtFilter = txtcbFolderFilter.Text.Trim
@@ -353,7 +478,7 @@ Partial Public Class popupEmailSearchParms
 
         Dim FolderName As String = Filter
 
-        Dim S as string = ""
+        Dim S As String = ""
         If bMyEmails Then
             If Filter.Trim.Length = 0 Then
                 S = "Select distinct OriginalFolder FROM [Email] where OriginalFolder IS NOT NULL and UserID = '" + UserGuidID + "' order by OriginalFolder"
@@ -372,6 +497,9 @@ Partial Public Class popupEmailSearchParms
         PopulateComboBox("cbFolderFilter", "OriginalFolder", S)
 
     End Sub
+    ''' <summary>
+    ''' Pops the cb c caddr.
+    ''' </summary>
     Sub Pop_cbCCaddr()
 
         txtFilter = txtcbCCaddr.Text.Trim
@@ -423,6 +551,12 @@ Partial Public Class popupEmailSearchParms
 
     End Sub
 
+    ''' <summary>
+    ''' Populates the ComboBox.
+    ''' </summary>
+    ''' <param name="ComboName">Name of the combo.</param>
+    ''' <param name="TblColName">Name of the table col.</param>
+    ''' <param name="MySql">My SQL.</param>
     Sub PopulateComboBox(ByVal ComboName As String, ByVal TblColName As String, ByVal MySql As String)
 
         PB.Visibility = Windows.Visibility.Visible
@@ -436,6 +570,10 @@ Partial Public Class popupEmailSearchParms
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the populate ComboBox.
+    ''' </summary>
+    ''' <param name="CB">The cb.</param>
     Sub client_PopulateComboBox(CB As String())
 
         If CB.Count > 0 Then
@@ -480,10 +618,20 @@ Partial Public Class popupEmailSearchParms
     End Sub
 
 
+    ''' <summary>
+    ''' Handles the LostFocus event of the cbFromAddr control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub cbFromAddr_LostFocus(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs)
         UpdateSearchDict("email.cbFromAddr", cbFromAddr.SelectedItem.ToString)
     End Sub
 
+    ''' <summary>
+    ''' Handles the 1 event of the cbFromName_SelectionChanged control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub cbFromName_SelectionChanged_1(sender As Object, e As SelectionChangedEventArgs) Handles cbFromName.SelectionChanged
         If Not formLoaded Then
             Return
@@ -493,12 +641,22 @@ Partial Public Class popupEmailSearchParms
     End Sub
 
 
+    ''' <summary>
+    ''' Handles the KeyDown event of the cbToAddr control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Input.KeyEventArgs"/> instance containing the event data.</param>
     Private Sub cbToAddr_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Input.KeyEventArgs) Handles cbToAddr.KeyDown
         If cbToAddr.SelectedItem IsNot Nothing Then
             UpdateSearchDict("email.cbToAddr", cbToAddr.SelectedItem.ToString)
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnSearchFrom control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnSearchFrom_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnSearchFrom.Click
 
         If txtcbFromAddr.Text.Trim.Length = 0 Then
@@ -520,6 +678,11 @@ Partial Public Class popupEmailSearchParms
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the Button1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles Button1.Click
         If txtcbToAddr.Text.Trim.Length = 0 Then
             MessageBox.Show("You must supply a name, returning.")
@@ -539,6 +702,11 @@ Partial Public Class popupEmailSearchParms
         Pop_cbToAddr()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the Button3 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles Button3.Click
         If txtcbFromName.Text.Trim.Length = 0 Then
             MessageBox.Show("You must supply a name, returning.")
@@ -558,6 +726,11 @@ Partial Public Class popupEmailSearchParms
         Pop_cbFromName()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the Button4 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles Button4.Click
         If txtcbToName.Text.Trim.Length = 0 Then
             MessageBox.Show("You must supply a name, returning.")
@@ -576,6 +749,11 @@ Partial Public Class popupEmailSearchParms
         Pop_cbToName()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the Button5 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles Button5.Click
         If txtcbFolderFilter.Text.Trim.Length = 0 Then
             MessageBox.Show("You must supply a name, returning.")
@@ -594,6 +772,11 @@ Partial Public Class popupEmailSearchParms
         Pop_cbFolderFilter()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the Button6 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles Button6.Click
         If txtcbCCaddr.Text.Trim.Length = 0 Then
             MessageBox.Show("You must supply a name, returning.")
@@ -612,6 +795,11 @@ Partial Public Class popupEmailSearchParms
         Pop_cbCCaddr()
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the txtcbFromAddr control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub txtcbFromAddr_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles txtcbFromAddr.TextChanged
         UpdateSearchDict("email.cbFromAddr", txtcbFromAddr.Text)
         If txtcbFromAddr.Text.Length > 0 Then
@@ -623,6 +811,11 @@ Partial Public Class popupEmailSearchParms
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the txtcbToAddr control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub txtcbToAddr_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles txtcbToAddr.TextChanged
         UpdateSearchDict("email.cbToAddr", txtcbToAddr.Text)
         If txtcbToAddr.Text.Length > 0 Then
@@ -634,6 +827,11 @@ Partial Public Class popupEmailSearchParms
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the txtcbFromName control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub txtcbFromName_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles txtcbFromName.TextChanged
         UpdateSearchDict("email.cbFromName", txtcbFromName.Text)
         If txtcbFromName.Text.Length > 0 Then
@@ -645,6 +843,11 @@ Partial Public Class popupEmailSearchParms
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the txtcbToName control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub txtcbToName_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles txtcbToName.TextChanged
         UpdateSearchDict("email.cbToName", txtcbToName.Text)
         If txtcbToName.Text.Length > 0 Then
@@ -656,6 +859,11 @@ Partial Public Class popupEmailSearchParms
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the txtcbFolderFilter control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub txtcbFolderFilter_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles txtcbFolderFilter.TextChanged
         UpdateSearchDict("email.cbFolderFilter", txtcbFolderFilter.Text)
         If txtcbFolderFilter.Text.Length > 0 Then
@@ -667,6 +875,11 @@ Partial Public Class popupEmailSearchParms
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the txtcbCCaddr control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub txtcbCCaddr_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles txtcbCCaddr.TextChanged
         UpdateSearchDict("email.cbCCaddr", txtcbCCaddr.Text)
         If txtcbCCaddr.Text.Length > 0 Then
@@ -694,6 +907,9 @@ Partial Public Class popupEmailSearchParms
     '   DateChanged
     'End Sub
 
+    ''' <summary>
+    ''' Dates the changed.
+    ''' </summary>
     Sub DateChanged()
         Dim sDateFilter As String = cbDateSelection.Text
         If sDateFilter IsNot Nothing Then
@@ -747,14 +963,29 @@ Partial Public Class popupEmailSearchParms
         SB.Text = "Date Filter changed to : " + sDateFilter
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectedItemChanged event of the cbToAddr control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub cbToAddr_SelectedItemChanged(ByVal sender As System.Object, ByVal e As SelectionChangedEventArgs) Handles cbToAddr.SelectionChanged
         txtcbToAddr.Text = cbToAddr.Text
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectedIndexChanged event of the cbDateSelection control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub cbDateSelection_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As SelectionChangedEventArgs) Handles cbDateSelection.SelectionChanged
         DateChanged()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnAutoFill control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnAutoFill_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnAutoFill.Click
 
         cbDateSelection.SelectedItem = "Between"
@@ -772,6 +1003,11 @@ Partial Public Class popupEmailSearchParms
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the 1 event of the cbFromAddr_SelectionChanged control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub cbFromAddr_SelectionChanged_1(sender As Object, e As SelectionChangedEventArgs) Handles cbFromAddr.SelectionChanged
         txtcbFromAddr.Text = cbFromAddr.Text
         txtcbFromName.Text = cbFromName.SelectedItem.ToString
@@ -785,6 +1021,11 @@ Partial Public Class popupEmailSearchParms
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the 1 event of the cbToAddr_SelectionChanged control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub cbToAddr_SelectionChanged_1(sender As Object, e As SelectionChangedEventArgs) Handles cbToAddr.SelectionChanged
         If Not formLoaded Then
             Return
@@ -796,6 +1037,11 @@ Partial Public Class popupEmailSearchParms
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the 1 event of the cbCCaddr_SelectionChanged control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub cbCCaddr_SelectionChanged_1(sender As Object, e As SelectionChangedEventArgs) Handles cbCCaddr.SelectionChanged
         If Not formLoaded Then
             Return
@@ -803,6 +1049,11 @@ Partial Public Class popupEmailSearchParms
         UpdateSearchDict("email.cbCCaddr", cbCCaddr.SelectedItem.ToString)
     End Sub
 
+    ''' <summary>
+    ''' Handles the 1 event of the cbFolderFilter_SelectionChanged control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub cbFolderFilter_SelectionChanged_1(sender As Object, e As SelectionChangedEventArgs) Handles cbFolderFilter.SelectionChanged
         If Not formLoaded Then
             Return
@@ -815,6 +1066,11 @@ Partial Public Class popupEmailSearchParms
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the 1 event of the cbToName_SelectionChanged control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub cbToName_SelectionChanged_1(sender As Object, e As SelectionChangedEventArgs) Handles cbToName.SelectionChanged
         If Not formLoaded Then
             Return
@@ -827,6 +1083,11 @@ Partial Public Class popupEmailSearchParms
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the 1 event of the cbDateSelection_SelectionChanged control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub cbDateSelection_SelectionChanged_1(sender As Object, e As SelectionChangedEventArgs) Handles cbDateSelection.SelectionChanged
         If Not formLoaded Then
             Return

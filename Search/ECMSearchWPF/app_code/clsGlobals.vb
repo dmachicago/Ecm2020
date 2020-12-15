@@ -1,29 +1,67 @@
-﻿'Imports System.Runtime.InteropServices.Automation
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 06-28-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 06-28-2020
+' ***********************************************************************
+' <copyright file="clsGlobals.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************on
 Imports System.Threading
 
+''' <summary>
+''' Class clsGlobals.
+''' </summary>
 Public Class clsGlobals
+    ''' <summary>
+    ''' The lt
+    ''' </summary>
     Dim LT As String = ""
 
     'Dim proxy As New SVCSearch.Service1Client
+    ''' <summary>
+    ''' The TGT end point
+    ''' </summary>
     Dim TgtEndPoint = ""
 
+    ''' <summary>
+    ''' The g secure identifier
+    ''' </summary>
     Public gSecureID As String = -1
 
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="clsGlobals"/> class.
+    ''' </summary>
     Sub New()
         gSecureID = _SecureID
     End Sub
 
+    ''' <summary>
+    ''' Gets the user variables.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
     Sub getUserVariables(ByVal UserID As String)
 
         getUserGuidID(UserID)
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the system variables.
+    ''' </summary>
+    ''' <param name="iSecureID">The i secure identifier.</param>
     Sub getSystemVariables(ByVal iSecureID As Integer)
         gSecureID = _SecureID
         getLicense()
     End Sub
 
+    ''' <summary>
+    ''' Gets the license.
+    ''' </summary>
     Public Sub getLicense()
 
         Dim RC As Boolean = False
@@ -35,6 +73,10 @@ Public Class clsGlobals
         StepGetLicense(S)
     End Sub
 
+    ''' <summary>
+    ''' Steps the get license.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
     Sub StepGetLicense(S As String)
         If S.Length > 0 Then
             gEncLicense = S
@@ -48,6 +90,10 @@ Public Class clsGlobals
         ProxySearch.ParseLicDictionary(gSecureID, gEncLicense, gLicenseItems)
         StepParseLicDictionary(gLicenseItems)
     End Sub
+    ''' <summary>
+    ''' Steps the parse lic dictionary.
+    ''' </summary>
+    ''' <param name="tDict">The t dictionary.</param>
     Sub StepParseLicDictionary(tDict As Dictionary(Of String, String))
         If tDict.Keys.Count > 0 Then
             gLicenseItems = tDict
@@ -80,6 +126,9 @@ Public Class clsGlobals
         LicenseType()
 
     End Sub
+    ''' <summary>
+    ''' Gets the name of the attached machine.
+    ''' </summary>
     Public Sub getAttachedMachineName()
         If _SecureID > 0 Then
             'AddHandler ProxySearch.getAttachedMachineNameCompleted, AddressOf client_getAttachedMachineName
@@ -88,6 +137,10 @@ Public Class clsGlobals
             client_getAttachedMachineName(S)
         End If
     End Sub
+    ''' <summary>
+    ''' Clients the name of the get attached machine.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
     Sub client_getAttachedMachineName(S As String)
         If S.Length > 0 Then
             gAttachedMachineName = S
@@ -99,6 +152,9 @@ Public Class clsGlobals
         ''RemoveHandler ProxySearch.getAttachedMachineNameCompleted, AddressOf client_getAttachedMachineName
     End Sub
 
+    ''' <summary>
+    ''' Licenses the type.
+    ''' </summary>
     Public Sub LicenseType()
 
         Dim RC As Boolean = False
@@ -108,10 +164,17 @@ Public Class clsGlobals
         ''EP.setSearchSvcEndPoint(proxy)
         Dim I As Integer = ProxySearch.getMaxClients(gSecureID, RC, RetMsg)
     End Sub
+    ''' <summary>
+    ''' Steps the type of the license.
+    ''' </summary>
+    ''' <param name="I">The i.</param>
     Sub step_LicenseType(I As Integer)
         gLicenseType = I
     End Sub
 
+    ''' <summary>
+    ''' Gets the maximum clients.
+    ''' </summary>
     Public Sub getMaxClients()
 
         Dim RC As Boolean = False
@@ -131,6 +194,9 @@ Public Class clsGlobals
     '    'RemoveHandler ProxySearch.getMaxClientsCompleted, AddressOf step_getMaxClients
     'End Sub
 
+    ''' <summary>
+    ''' Gets the NBR of registered users.
+    ''' </summary>
     Public Sub getNbrOfRegisteredUsers()
 
         'AddHandler ProxySearch.GetNbrUsersCompleted, AddressOf step_CurrNbrOfUsers
@@ -148,6 +214,9 @@ Public Class clsGlobals
     '    'RemoveHandler ProxySearch.GetNbrUsersCompleted, AddressOf step_CurrNbrOfUsers
     'End Sub
 
+    ''' <summary>
+    ''' Sets the date formats.
+    ''' </summary>
     Sub SetDateFormats()
 
         'Dim dateString, format As String
@@ -179,6 +248,10 @@ Public Class clsGlobals
         Next
 
     End Sub
+    ''' <summary>
+    ''' Gets the user unique identifier identifier.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
     Public Sub getUserGuidID(ByVal UserID As String)
 
         'AddHandler ProxySearch.getUserGuidIDCompleted, AddressOf step_getUserGuidID
@@ -186,6 +259,10 @@ Public Class clsGlobals
         Dim S As String = ProxySearch.getUserGuidID(gSecureID, UserID)
         step_getUserGuidID(S)
     End Sub
+    ''' <summary>
+    ''' Steps the get user unique identifier identifier.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
     Sub step_getUserGuidID(S As String)
 
         If S.Length > 0 Then
@@ -202,6 +279,9 @@ Public Class clsGlobals
 
     End Sub
 
+    ''' <summary>
+    ''' Processes the dates.
+    ''' </summary>
     Public Sub ProcessDates()
 
         'AddHandler ProxySearch.ProcessDatesCompleted, AddressOf step_ProcessDates
@@ -209,10 +289,17 @@ Public Class clsGlobals
         Dim tDict As Dictionary(Of String, Date) = New Dictionary(Of String, Date)()
         tDict = ProxySearch.ProcessDates(gSecureID)
     End Sub
+    ''' <summary>
+    ''' Steps the process dates.
+    ''' </summary>
+    ''' <param name="tDict">The t dictionary.</param>
     Sub step_ProcessDates(tDict As Dictionary(Of String, Date))
         gProcessDates = tDict
     End Sub
 
+    ''' <summary>
+    ''' Gets the SQL server version.
+    ''' </summary>
     Public Sub getSqlServerVersion()
 
         'AddHandler ProxySearch.getSqlServerVersionCompleted, AddressOf step_getSqlServerVersion
@@ -230,6 +317,9 @@ Public Class clsGlobals
     '    'RemoveHandler ProxySearch.getSqlServerVersionCompleted, AddressOf step_getSqlServerVersion
     'End Sub
 
+    ''' <summary>
+    ''' Gets the NBR machine all.
+    ''' </summary>
     Public Sub GetNbrMachineAll()
 
         'AddHandler ProxySearch.GetNbrMachineAllCompleted, AddressOf step_GetNbrMachineAll
@@ -237,6 +327,10 @@ Public Class clsGlobals
         Dim II As Integer = ProxySearch.GetNbrMachineAll(gSecureID)
         step_GetNbrMachineAll(II)
     End Sub
+    ''' <summary>
+    ''' Steps the get NBR machine all.
+    ''' </summary>
+    ''' <param name="II">The ii.</param>
     Sub step_GetNbrMachineAll(II As Integer)
         If II > 0 Then
             gNumberOfRegisterdMachines = II
@@ -247,6 +341,11 @@ Public Class clsGlobals
         ''RemoveHandler ProxySearch.GetNbrMachineAllCompleted, AddressOf step_GetNbrMachineAll
     End Sub
 
+    ''' <summary>
+    ''' Gets the NBR machine.
+    ''' </summary>
+    ''' <param name="gSecureID">The g secure identifier.</param>
+    ''' <param name="MachineName">Name of the machine.</param>
     Public Sub GetNbrMachine(ByRef gSecureID As String, ByVal MachineName As String)
 
         'AddHandler ProxySearch.GetNbrMachineCompleted, AddressOf step_GetNbrMachine
@@ -271,7 +370,6 @@ Public Class clsGlobals
     ''' </summary>
     ''' <param name="ServerValText">sets the value gServerValText</param>
     ''' <param name="InstanceValText">sets the value gInstanceValText</param>
-    ''' <remarks></remarks>
     Public Sub isLicenseValid(ByRef ServerValText As String, ByRef InstanceValText As String)
 
         Dim RC As Boolean = False
@@ -282,6 +380,12 @@ Public Class clsGlobals
         Dim BB As Boolean = ProxySearch.isLicenseLocatedOnAssignedMachine(gSecureID, ServerValText, InstanceValText, RC, RetMsg)
         step_isLicenseValid(BB, ServerValText, InstanceValText)
     End Sub
+    ''' <summary>
+    ''' Steps the is license valid.
+    ''' </summary>
+    ''' <param name="BB">if set to <c>true</c> [bb].</param>
+    ''' <param name="ServerValText">The server value text.</param>
+    ''' <param name="InstanceValText">The instance value text.</param>
     Sub step_isLicenseValid(BB As Boolean, ServerValText As String, InstanceValText As String)
         If BB Then
             gServerValText = ServerValText
@@ -294,6 +398,9 @@ Public Class clsGlobals
         ''RemoveHandler ProxySearch.isLicenseLocatedOnAssignedMachineCompleted, AddressOf step_isLicenseValid
     End Sub
 
+    ''' <summary>
+    ''' Gets the license vars.
+    ''' </summary>
     Sub getLicenseVars()
         Dim LOG As New clsLogMain
         Dim UTIL As New clsUtility
@@ -320,12 +427,18 @@ Public Class clsGlobals
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Gets the global variables.
+    ''' </summary>
     Sub getGlobalVariables()
 
         Step1gv()  'set the logged in user ID
 
     End Sub
 
+    ''' <summary>
+    ''' Step1gvs this instance.
+    ''' </summary>
     Sub Step1gv()
 
         'AddHandler ProxySearch.getUserGuidIDCompleted, AddressOf Step1
@@ -333,6 +446,10 @@ Public Class clsGlobals
         Dim S As String = ProxySearch.getUserGuidID(gSecureID, gCurrLoginID)
         Step1(S)
     End Sub
+    ''' <summary>
+    ''' Step1s the specified s.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
     Sub Step1(S As String)
         If S.Length > 0 Then
             gCurrUserGuidID = S
@@ -344,6 +461,9 @@ Public Class clsGlobals
         ''RemoveHandler ProxySearch.getUserGuidIDCompleted, AddressOf Step1
         Step2gv()
     End Sub
+    ''' <summary>
+    ''' Step2gvs this instance.
+    ''' </summary>
     Public Sub Step2gv()
 
         'AddHandler ProxySearch.getDBSIZEMBCompleted, AddressOf Step2
@@ -351,6 +471,10 @@ Public Class clsGlobals
         Dim D As Double = ProxySearch.getDBSIZEMB(gSecureID)
         Step2(D)
     End Sub
+    ''' <summary>
+    ''' Step2s the specified d.
+    ''' </summary>
+    ''' <param name="D">The d.</param>
     Sub Step2(D As Double)
         gCurrDbSize = D
         ''RemoveHandler ProxySearch.getDBSIZEMBCompleted, AddressOf Step2
@@ -360,8 +484,7 @@ Public Class clsGlobals
     ''' Because of Silverlight's limited ability to process with speed and it's inability to process ASYNC calls, all existing
     ''' runtime parameters are loaded at once into a global/static dictionary and then called as needed.
     ''' </summary>
-    ''' <param name="Userid"></param>
-    ''' <remarks></remarks>
+    ''' <param name="Userid">The userid.</param>
     Sub loadUserParms(ByVal Userid As String)
 
         'AddHandler ProxySearch.getUserParmsCompleted, AddressOf client_getUserParms
@@ -374,6 +497,11 @@ Public Class clsGlobals
     '    gUserParms = e.UserParms
 
     'End Sub
+    ''' <summary>
+    ''' Gets the user parameter.
+    ''' </summary>
+    ''' <param name="tKey">The t key.</param>
+    ''' <returns>System.String.</returns>
     Function getUserParameter(ByVal tKey As String) As String
         Dim S As String = ""
         If gUserParms.ContainsKey(tKey) Then
@@ -386,17 +514,28 @@ Public Class clsGlobals
     ''' <summary>
     ''' There are many instances when a user runtime parameter will be added or modified. This will add or modify a user execution parameter.
     ''' </summary>
-    ''' <param name="Userid"></param>
-    ''' <remarks></remarks>
+    ''' <param name="Userid">The userid.</param>
     Sub saveAllUserParm(ByVal Userid As String)
         For Each tKey As String In gUserParms.Keys
             Dim tVal As String = gUserParms.Item(tKey)
             saveUserParmToDb(gCurrUserGuidID, tKey, tVal)
         Next
     End Sub
+    ''' <summary>
+    ''' Saves the single user parm.
+    ''' </summary>
+    ''' <param name="Userid">The userid.</param>
+    ''' <param name="tKey">The t key.</param>
+    ''' <param name="tVal">The t value.</param>
     Sub saveSingleUserParm(ByVal Userid As String, ByVal tKey As String, ByVal tVal As String)
         saveUserParmToDb(gCurrUserGuidID, tKey, tVal)
     End Sub
+    ''' <summary>
+    ''' Saves the user parm to database.
+    ''' </summary>
+    ''' <param name="Userid">The userid.</param>
+    ''' <param name="tKey">The t key.</param>
+    ''' <param name="tValue">The t value.</param>
     Sub saveUserParmToDb(ByVal Userid As String, ByVal tKey As String, ByVal tValue As String)
 
         'AddHandler ProxySearch.SaveRunParmCompleted, AddressOf client_saveUserParmToDb
@@ -405,6 +544,12 @@ Public Class clsGlobals
         client_saveUserParmToDb(BB, tKey, tValue)
     End Sub
 
+    ''' <summary>
+    ''' Clients the save user parm to database.
+    ''' </summary>
+    ''' <param name="BB">if set to <c>true</c> [bb].</param>
+    ''' <param name="tKey">The t key.</param>
+    ''' <param name="tValue">The t value.</param>
     Sub client_saveUserParmToDb(BB As Boolean, tKey As String, tValue As String)
         Dim LOG As New clsLogMain
         Dim UTIL As New clsUtility
@@ -427,6 +572,10 @@ Public Class clsGlobals
     End Sub
 
     '*********************************************************************************
+    ''' <summary>
+    ''' Updates the ip.
+    ''' </summary>
+    ''' <param name="iCode">The i code.</param>
     Sub updateIp(ByVal iCode As Integer)
         Dim RC As Boolean = False
 
@@ -435,6 +584,10 @@ Public Class clsGlobals
         ProxySearch.updateIp(gSecureID, gMachineID, gIpAddr, 0, RC)
         client_updateIp(RC)
     End Sub
+    ''' <summary>
+    ''' Clients the update ip.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub client_updateIp(RC As Boolean)
         Dim LOG As New clsLogMain
         Dim UTIL As New clsUtility
@@ -451,6 +604,9 @@ Public Class clsGlobals
         ''RemoveHandler ProxySearch.updateIpCompleted, AddressOf client_updateIp
     End Sub
     '***********************************************************************
+    ''' <summary>
+    ''' Gets the local machine ip addr.
+    ''' </summary>
     Public Sub getLocalMachineIpAddr()
 
         If gLocalMachineIP = "" Then
@@ -470,6 +626,9 @@ Public Class clsGlobals
     'End Sub
     '***********************************************************************
 
+    ''' <summary>
+    ''' Allows an object to try to free resources and perform other cleanup operations before it is reclaimed by garbage collection.
+    ''' </summary>
     Protected Overrides Sub Finalize()
         Try
         Finally
@@ -479,6 +638,9 @@ Public Class clsGlobals
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Sets the xx search SVC end point.
+    ''' </summary>
     Private Sub setXXSearchSvcEndPoint()
 
         Dim CurrEndPoint As String = ProxySearch.Endpoint.Address.ToString

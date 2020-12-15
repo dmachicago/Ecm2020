@@ -1,4 +1,17 @@
-﻿
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 07-16-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 07-16-2020
+' ***********************************************************************
+' <copyright file="frmInit.xaml.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+
 Imports System.IO.IsolatedStorage
 Imports System.Threading
 Imports System.Windows
@@ -11,59 +24,162 @@ Imports System.ServiceModel.EndpointAddress
 Imports ECMEncryption
 Imports System.Data.SqlClient
 
+''' <summary>
+''' Class EcmInitPage.
+''' Implements the <see cref="System.Windows.Controls.Page" />
+''' Implements the <see cref="System.Windows.Markup.IComponentConnector" />
+''' </summary>
+''' <seealso cref="System.Windows.Controls.Page" />
+''' <seealso cref="System.Windows.Markup.IComponentConnector" />
 Class EcmInitPage
 
 
     'Dim SLConn As SQLiteConnection = New SQLiteConnection("Data Source=SDB\EcmSL.db;Version=3;New=True;")
     'Dim EP As New clsEndPoint
+    ''' <summary>
+    ''' The database
+    ''' </summary>
     Dim DB As New clsDatabase
 
+    ''' <summary>
+    ''' The b populate combo busy
+    ''' </summary>
     Dim bPopulateComboBusy As Boolean = False
+    ''' <summary>
+    ''' The curr proxy search endpoint
+    ''' </summary>
     Dim CurrProxySearchEndpoint As String = ""
 
+    ''' <summary>
+    ''' The curr gateway
+    ''' </summary>
     Dim currGateway As String = ""
 
+    ''' <summary>
+    ''' The enc
+    ''' </summary>
     Dim ENC As New ECMEncrypt()
+    ''' <summary>
+    ''' The iso
+    ''' </summary>
     Dim ISO As New clsIsolatedStorage
+    ''' <summary>
+    ''' The parm name
+    ''' </summary>
     Dim ParmName As String = ""
+    ''' <summary>
+    ''' The curr session unique identifier
+    ''' </summary>
     Dim CurrSessionGuid As Guid = Guid.NewGuid
+    ''' <summary>
+    ''' The login identifier
+    ''' </summary>
     Dim LoginID As String = ""
+    ''' <summary>
+    ''' The company identifier
+    ''' </summary>
     Dim CompanyID As String = ""
+    ''' <summary>
+    ''' The repo identifier
+    ''' </summary>
     Dim RepoID As String = ""
+    ''' <summary>
+    ''' The user pw
+    ''' </summary>
     Dim UserPW As String = ""
 
+    ''' <summary>
+    ''' The SVCFS endpoint
+    ''' </summary>
     Dim SVCFS_Endpoint = ""
+    ''' <summary>
+    ''' The SVC gateway endpoint
+    ''' </summary>
     Dim SVCGateway_Endpoint = ""
+    ''' <summary>
+    ''' The SVCCLC archive endpoint
+    ''' </summary>
     Dim SVCCLCArchive_Endpoint = ""
+    ''' <summary>
+    ''' The SVC search endpoint
+    ''' </summary>
     Dim SVCSearch_Endpoint = ""
+    ''' <summary>
+    ''' The sv CCLC download endpoint
+    ''' </summary>
     Dim SVCclcDownload_Endpoint = ""
 
+    ''' <summary>
+    ''' The b attached
+    ''' </summary>
     Dim bAttached As Boolean = False
+    ''' <summary>
+    ''' The s secure cs
+    ''' </summary>
     Dim sSecureCS As String = ""
 
+    ''' <summary>
+    ''' The initialize proxy
+    ''' </summary>
     Dim InitProxy As New SVCSearch.Service1Client
     'Dim ProxyGateway As New SVCGateway.Service1Client
 
+    ''' <summary>
+    ''' The gv
+    ''' </summary>
     Dim GV As New clsGlobals
+    ''' <summary>
+    ''' The common
+    ''' </summary>
     Dim COMMON As New clsCommonFunctions
 
+    ''' <summary>
+    ''' The i attempts
+    ''' </summary>
     Dim iAttempts As Integer = 1
     'Dim UTIL As New clsUtility
     'Dim LOG As New clsLogMain
     'Dim DMA As New clsDma
 
+    ''' <summary>
+    ''' The curr NBR of users
+    ''' </summary>
     Dim CurrNbrOfUsers As Integer = 0
+    ''' <summary>
+    ''' The curr NBR of machine
+    ''' </summary>
     Dim CurrNbrOfMachine As Integer = 0
 
+    ''' <summary>
+    ''' The i exists
+    ''' </summary>
     Dim iExists As Integer = -1
+    ''' <summary>
+    ''' The b license exists
+    ''' </summary>
     Dim bLicenseExists As Boolean = False
+    ''' <summary>
+    ''' The ip
+    ''' </summary>
     Dim IP As String = ""
+    ''' <summary>
+    ''' The maint expire
+    ''' </summary>
     Dim MaintExpire As Date
 
+    ''' <summary>
+    ''' The list of repo is
+    ''' </summary>
     Dim ListOfRepoIS As New List(Of String)
 
+    ''' <summary>
+    ''' The local debug on
+    ''' </summary>
     Dim LocalDebugON As Boolean = False
 
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="EcmInitPage"/> class.
+    ''' </summary>
     Public Sub New()
 
         InitializeComponent()
@@ -106,6 +222,9 @@ Class EcmInitPage
     End Sub
 
 
+    ''' <summary>
+    ''' Gets the secure identifier.
+    ''' </summary>
     Sub getSecureID()
 
         Dim sid As Integer = ProxySearch.xGetXrtID(gCUSTID, gSVRNAME, gDBNAME, gINSTANCENAME)
@@ -113,6 +232,9 @@ Class EcmInitPage
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the name of the server instance.
+    ''' </summary>
     Sub getServerInstanceName()
         If Not bAttached Then
             Return
@@ -125,6 +247,10 @@ Class EcmInitPage
         client_getServerInstanceName(S)
     End Sub
 
+    ''' <summary>
+    ''' Clients the name of the get server instance.
+    ''' </summary>
+    ''' <param name="s">The s.</param>
     Sub client_getServerInstanceName(s As String)
         If s.Length > 0 Then
             gServerInstanceName = s
@@ -134,6 +260,9 @@ Class EcmInitPage
         End If
         getServerMachineName()
     End Sub
+    ''' <summary>
+    ''' Gets the name of the server machine.
+    ''' </summary>
     Sub getServerMachineName()
         If Not bAttached Then
             Return
@@ -144,6 +273,10 @@ Class EcmInitPage
         Dim S As String = ProxySearch.getServerMachineName(gSecureID)
         client_getServerMachineName(S)
     End Sub
+    ''' <summary>
+    ''' Clients the name of the get server machine.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
     Sub client_getServerMachineName(S As String)
         If S.Length > 0 Then
             gServerMachineName = S
@@ -155,6 +288,9 @@ Class EcmInitPage
         getUserGuidID()
     End Sub
 
+    ''' <summary>
+    ''' Gets the user unique identifier identifier.
+    ''' </summary>
     Sub getUserGuidID()
         If Not bAttached Then
             Return
@@ -165,6 +301,10 @@ Class EcmInitPage
         Dim S As String = ProxySearch.getUserGuidID(gSecureID, gCurrLoginID)
         client_getUserGuidID(S)
     End Sub
+    ''' <summary>
+    ''' Clients the get user unique identifier identifier.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
     Sub client_getUserGuidID(S As String)
         If S.Length > 0 Then
             gCurrUserGuidID = S
@@ -184,6 +324,9 @@ Class EcmInitPage
 
     End Sub
 
+    ''' <summary>
+    ''' Loads the system run time parameters.
+    ''' </summary>
     Sub LoadSystemRunTimeParameters()
         If Not bAttached Then
             Return
@@ -194,6 +337,10 @@ Class EcmInitPage
         client_LoadSystemParameters(gSystemParms)
 
     End Sub
+    ''' <summary>
+    ''' Clients the load system parameters.
+    ''' </summary>
+    ''' <param name="tDict">The t dictionary.</param>
     Sub client_LoadSystemParameters(tDict As Dictionary(Of String, String))
         If tDict.Keys.Count > 0 Then
             'MessageBox.Show("Step-D 0001 GOOD")
@@ -221,6 +368,9 @@ Class EcmInitPage
         ''RemoveHandler ProxySearch.getSystemParmCompleted, AddressOf client_LoadSystemParameters
 
     End Sub
+    ''' <summary>
+    ''' Sets the pagination.
+    ''' </summary>
     Sub SetPagination()
         If Not bAttached Then
             Return
@@ -241,6 +391,11 @@ Class EcmInitPage
     '    'RemoveHandler ProxySearch.getUserParmCompleted, AddressOf client_SetPagination
     'End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnSubmit control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnSubmit_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnSubmit.Click
         'getSessionID()
         Image01.Visibility = Visibility.Visible
@@ -342,6 +497,10 @@ Class EcmInitPage
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the get customer logo title.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
     Sub client_getCustomerLogoTitle(S As String)
 
         If S.Length > 0 Then
@@ -368,6 +527,9 @@ Class EcmInitPage
     End Sub
 
 
+    ''' <summary>
+    ''' Makes the synchronous call to contract identifier.
+    ''' </summary>
     Private Sub MakeSynchronousCallToContractID()
 
         Try
@@ -380,6 +542,11 @@ Class EcmInitPage
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Clients the validate login.
+    ''' </summary>
+    ''' <param name="bb">if set to <c>true</c> [bb].</param>
+    ''' <param name="UserGuidID">The user unique identifier identifier.</param>
     Sub client_validateLogin(bb As Boolean, UserGuidID As String)
 
         If bb Then
@@ -440,6 +607,10 @@ Class EcmInitPage
         PB.IsIndeterminate = False
 
     End Sub
+    ''' <summary>
+    ''' Clients the get contract identifier.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
     Sub client_getContractID(S As String)
 
         If S.Length > 0 Then
@@ -453,6 +624,10 @@ Class EcmInitPage
         ''RemoveHandler ProxySearch.getContractIDCompleted, AddressOf client_getContractID
 
     End Sub
+    ''' <summary>
+    ''' Initializes the application.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Private Function InitApplication() As Boolean
 
         If Not bAttached Then
@@ -679,6 +854,9 @@ ContinueTheExe:
 
     End Function
 
+    ''' <summary>
+    ''' Sets the defaults.
+    ''' </summary>
     Sub SetDefaults()
         If Not bAttached Then
             Return
@@ -722,6 +900,9 @@ ContinueTheExe:
 
     End Sub
 
+    ''' <summary>
+    ''' Logs the into system.
+    ''' </summary>
     Sub LogIntoSystem()
         If Not bAttached Then
             Return
@@ -758,6 +939,9 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Instantiates the global vars.
+    ''' </summary>
     Sub instantiateGlobalVars()
         If Not bAttached Then
             Return
@@ -792,6 +976,9 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Initializes the server attach.
+    ''' </summary>
     Public Sub InitServerAttach()
         If Not bAttached Then
             Return
@@ -816,6 +1003,10 @@ GoodLogin:
         'ProxySearch.GetXrtTest(DateTime.Now)
 
     End Sub
+    ''' <summary>
+    ''' Steps the get XRT test.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
     Sub StepGetXrtTest(S As String)
         If S.Length > 0 Then
             Console.WriteLine(S)
@@ -826,6 +1017,10 @@ GoodLogin:
 
         ''RemoveHandler ProxySearch.GetXrtTestCompleted, AddressOf StepGetXrtTest
     End Sub
+    ''' <summary>
+    ''' Step0s the get license.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
     Sub Step0GetLicense(S As String)
 
         If S.Length > 0 Then
@@ -869,11 +1064,19 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Loads the license parameters.
+    ''' </summary>
     Sub LoadLicenseParameters()
         'MessageBox.Show("Step-E  NULL GOOD")
     End Sub
 
 
+    ''' <summary>
+    ''' Handles the Checked event of the ckRememberMe control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckRememberMe_Checked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckRememberMe.Checked
         If txtLoginID.Text.Trim.Length = 0 Then
             MessageBox.Show("You must supply a login ID first, returning.")
@@ -884,6 +1087,11 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unchecked event of the ckRememberMe control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckRememberMe_Unchecked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckRememberMe.Unchecked
         Try
             RemovePersist()
@@ -894,16 +1102,30 @@ GoodLogin:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Handles the KeyDown event of the PasswordBox1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Input.KeyEventArgs"/> instance containing the event data.</param>
     Private Sub PasswordBox1_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Input.KeyEventArgs) Handles PasswordBox1.KeyDown
         If e.Key = Key.Enter Then
             btnSubmit_Click(Nothing, Nothing)
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the txtLoginID control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub txtLoginID_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles txtLoginID.TextChanged
         lblCurrUserGuidID.Content = txtLoginID.Text
     End Sub
 
+    ''' <summary>
+    ''' Clients the set session company identifier.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub client_setSessionCompanyID(RC As Boolean)
 
         If Not RC Then
@@ -915,6 +1137,10 @@ GoodLogin:
     End Sub
 
 
+    ''' <summary>
+    ''' Clients the get XRT test.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
     Sub client_GetXrtTest(S As String)
         Console.WriteLine(S)
         ''RemoveHandler ProxySearch.validateAttachSecureLoginCompleted, AddressOf client_validateAttachSecureLogin
@@ -922,6 +1148,9 @@ GoodLogin:
 
 
 
+    ''' <summary>
+    ''' Saves the static vars.
+    ''' </summary>
     Sub SaveStaticVars()
         If gSecureID >= 0 Then
             _SecureID = gSecureID
@@ -953,6 +1182,11 @@ GoodLogin:
 
 
 
+    ''' <summary>
+    ''' Saves the active parm.
+    ''' </summary>
+    ''' <param name="ParmName">Name of the parm.</param>
+    ''' <param name="ParmVal">The parm value.</param>
     Sub SaveActiveParm(ByVal ParmName As String, ByVal ParmVal As String)
         If Not bAttached Then
             Return
@@ -964,6 +1198,10 @@ GoodLogin:
         client_ActiveSession(BB)
     End Sub
 
+    ''' <summary>
+    ''' Clients the active session.
+    ''' </summary>
+    ''' <param name="BB">if set to <c>true</c> [bb].</param>
     Sub client_ActiveSession(BB As Boolean)
         If BB Then
             If BB Then
@@ -976,9 +1214,15 @@ GoodLogin:
         ''RemoveHandler ProxySearch.ActiveSessionCompleted, AddressOf client_ActiveSession
     End Sub
 
+    ''' <summary>
+    ''' Removes the persist.
+    ''' </summary>
     Sub RemovePersist()
         ISO.PersistDataInit("NA", "NA")
     End Sub
+    ''' <summary>
+    ''' Resets the persist.
+    ''' </summary>
     Sub ResetPersist()
         'ISO.PersistDataInit("CurrSessionGuid", CurrSessionGuid.ToString)
         txtLoginID.Text = ""
@@ -990,6 +1234,9 @@ GoodLogin:
         ISO.PersistDataSave("UserPW", TPW)
         ISO.PersistDataSave("EOD", "***")
     End Sub
+    ''' <summary>
+    ''' Saves the persist.
+    ''' </summary>
     Sub SavePersist()
         ISO.PersistDataInit("CurrSessionGuid", CurrSessionGuid.ToString)
         ISO.PersistDataSave("LoginID", txtLoginID.Text)
@@ -1001,6 +1248,9 @@ GoodLogin:
 
         ISO.PersistDataSave("EOD", "***")
     End Sub
+    ''' <summary>
+    ''' Gets the persit data.
+    ''' </summary>
     Sub getPersitData()
 
         Dim SID As String = ISO.PersistDataRead("SecureID")
@@ -1027,12 +1277,22 @@ GoodLogin:
         Me.Resources.Add("CurrSessionGuid", CurrSessionGuid.ToString)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlHelp control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlHelp_Click(sender As Object, e As RoutedEventArgs) Handles hlHelp.Click
         'Launch Default Braowser to specified URL
         Dim webAddress As String = "http://www.ecmlibrary.com/help"
         System.Diagnostics.Process.Start(webAddress)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlLogPath control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlLogPath_Click(sender As Object, e As RoutedEventArgs) Handles hlLogPath.Click
         'AddHandler ProxySearch.GetLogPathCompleted, AddressOf client_GetLogPath
         'EP.setSearchSvcEndPoint(proxy)
@@ -1040,6 +1300,10 @@ GoodLogin:
         ProxySearch.GetLogPath(S)
         client_GetLogPath(S)
     End Sub
+    ''' <summary>
+    ''' Clients the get log path.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
     Sub client_GetLogPath(S As String)
         If S.Length > 0 Then
             Dim LogPath As String = S
@@ -1056,6 +1320,11 @@ GoodLogin:
         ''RemoveHandler ProxySearch.GetLogPathCompleted, AddressOf client_GetLogPath
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unloaded event of the Page control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub Page_Unloaded(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles MyBase.Unloaded
 
         ''RemoveHandler ProxySearch.validateLoginCompleted, AddressOf client_validateLogin
@@ -1066,24 +1335,48 @@ GoodLogin:
     End Sub
 
 
+    ''' <summary>
+    ''' Handles the MouseEnter event of the txtLoginID control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
     Private Sub txtLoginID_MouseEnter(sender As Object, e As MouseEventArgs) Handles txtLoginID.MouseEnter
         lblEndpoint.Content = ProxySearch.Endpoint.Address.ToString
     End Sub
 
 
+    ''' <summary>
+    ''' Handles the Checked event of the ckShowDetails control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckShowDetails_Checked(sender As Object, e As RoutedEventArgs) Handles ckShowDetails.Checked
         spDetails.Visibility = Windows.Visibility.Visible
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unchecked event of the ckShowDetails control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckShowDetails_Unchecked(sender As Object, e As RoutedEventArgs) Handles ckShowDetails.Unchecked
         spDetails.Visibility = Windows.Visibility.Collapsed
     End Sub
 
+    ''' <summary>
+    ''' Handles the MouseLeftButtonDown event of the Label4 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="MouseButtonEventArgs"/> instance containing the event data.</param>
     Private Sub Label4_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles Label4.MouseLeftButtonDown
         Dim webAddress As String = "http://www.DmaChicago.com"
         System.Diagnostics.Process.Start(webAddress)
     End Sub
 
+    ''' <summary>
+    ''' Cks the attach.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Private Function ckAttach() As Boolean
         Dim bAttach As Boolean = True
 
@@ -1098,6 +1391,11 @@ GoodLogin:
 
     End Function
 
+    ''' <summary>
+    ''' Handles the Click event of the btnCkConn control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnCkConn_Click(sender As Object, e As RoutedEventArgs) Handles btnCkConn.Click
         Try
             MessageBox.Show(InitProxy.TestConnection())
@@ -1108,6 +1406,11 @@ GoodLogin:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the BtnCkDbConn control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub BtnCkDbConn_Click(sender As Object, e As RoutedEventArgs) Handles btnCkDbConn.Click
 
         Dim CS As String = gFetchCS()
@@ -1116,9 +1419,9 @@ GoodLogin:
 
         Try
             Dim S As String = "select count(*) from License"
-            Dim CN As New SqlConnection(cs)
+            Dim CN As New SqlConnection(CS)
             Dim RSData As SqlDataReader = Nothing
-            Dim CONN As New SqlConnection(cs)
+            Dim CONN As New SqlConnection(CS)
 
             CONN.Open()
             Dim command As New SqlCommand(S, CONN)
@@ -1143,6 +1446,11 @@ GoodLogin:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the BtnCkIISConn control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub BtnCkIISConn_Click(sender As Object, e As RoutedEventArgs) Handles btnCkIISConn.Click
         Try
             MessageBox.Show(InitProxy.TestIISConnection())

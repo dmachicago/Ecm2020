@@ -1,22 +1,66 @@
-﻿Imports ECMEncryption
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 07-16-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 07-16-2020
+' ***********************************************************************
+' <copyright file="popupAlerts.xaml.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+Imports ECMEncryption
+''' <summary>
+''' Class popupAlerts.
+''' Implements the <see cref="System.Windows.Window" />
+''' Implements the <see cref="System.Windows.Markup.IComponentConnector" />
+''' </summary>
+''' <seealso cref="System.Windows.Window" />
+''' <seealso cref="System.Windows.Markup.IComponentConnector" />
 Partial Public Class popupAlerts
 
     'Dim GVAR As App = App.Current
+    ''' <summary>
+    ''' The utility
+    ''' </summary>
     Dim UTIL As New clsUtility
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Dim LOG As New clsLogMain
+    ''' <summary>
+    ''' The SMS
+    ''' </summary>
     Dim SMS As New clsSMS
     'Dim EP As New clsEndPoint
+    ''' <summary>
+    ''' The en c2
+    ''' </summary>
     Dim ENC2 As New ECMEncrypt()
 
     'Dim proxy As New SVCSearch.Service1Client
     'Dim ListOfAlerts As New System.Collections.ObjectModel.ObservableCollection(Of String)
     'Dim ListOfContacts As New System.Collections.ObjectModel.ObservableCollection(Of String)
 
+    ''' <summary>
+    ''' The list of alerts
+    ''' </summary>
     Dim ListOfAlerts() As String = Nothing
+    ''' <summary>
+    ''' The list of contacts
+    ''' </summary>
     Dim ListOfContacts() As String = Nothing
 
+    ''' <summary>
+    ''' The current object
+    ''' </summary>
     Dim CurrentObject As String = ""
 
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="popupAlerts"/> class.
+    ''' </summary>
     Public Sub New()
         InitializeComponent()
 
@@ -29,14 +73,27 @@ Partial Public Class popupAlerts
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the OKButton control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub OKButton_Click(ByVal sender As Object, ByVal e As RoutedEventArgs) Handles OKButton.Click
         Me.DialogResult = True
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the CancelButton control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub CancelButton_Click(ByVal sender As Object, ByVal e As RoutedEventArgs) Handles CancelButton.Click
         Me.DialogResult = False
     End Sub
 
+    ''' <summary>
+    ''' Saves the notify.
+    ''' </summary>
     Sub SaveNotify()
 
         Dim ContactEmail As String = txtEmail.Text.Trim
@@ -66,6 +123,9 @@ Partial Public Class popupAlerts
 
     End Sub
 
+    ''' <summary>
+    ''' Deletes the notify.
+    ''' </summary>
     Sub deleteNotify()
 
         Dim ContactEmail As String = txtEmail.Text.Trim
@@ -88,6 +148,9 @@ Partial Public Class popupAlerts
 
     End Sub
 
+    ''' <summary>
+    ''' Saves the alert.
+    ''' </summary>
     Sub SaveAlert()
 
         Dim AlertWord As String = txtAlertWord.Text
@@ -119,6 +182,9 @@ Partial Public Class popupAlerts
         gLogSQL(BB, ENC2.AES256EncryptString(s))
     End Sub
 
+    ''' <summary>
+    ''' Deletes the alert.
+    ''' </summary>
     Sub DeleteAlert()
 
         Dim AlertWord As String = txtAlertWord.Text
@@ -136,6 +202,10 @@ Partial Public Class popupAlerts
         Dim BB As Boolean = ProxySearch.ExecuteSqlNewConn1(_SecureID, s, _UserID, ContractID)
         client_ExecuteDelete(BB)
     End Sub
+    ''' <summary>
+    ''' Clients the execute delete.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub client_ExecuteDelete(RC As Boolean)
         Dim LL As Integer = 0
 
@@ -148,6 +218,9 @@ Partial Public Class popupAlerts
         'RemoveHandler ProxySearch.ExecuteSqlNewConn1Completed, AddressOf ApplySearchResults
     End Sub
 
+    ''' <summary>
+    ''' Populates the alert combo.
+    ''' </summary>
     Sub populateAlertCombo()
         Dim S As String = ""
         Dim RC As Boolean = False
@@ -160,7 +233,7 @@ Partial Public Class popupAlerts
         Dim strListOfItems As String = ""
         'AddHandler ProxySearch.getListOfStringsCompleted, AddressOf client_PopulateAlertCombo
         'EP.setSearchSvcEndPoint(proxy)
-        S = ENC2.AES256EncryptString(s)
+        S = ENC2.AES256EncryptString(S)
         Dim BB As Boolean = ProxySearch.getListOfStrings(_SecureID, strListOfItems, S, RC, RetMsg)
         'Dim strListOfItems As String = ""
         ListOfAlerts = strListOfItems.Split("|")
@@ -168,6 +241,12 @@ Partial Public Class popupAlerts
         client_PopulateAlertCombo(RC, ListOfAlerts, RetMsg)
 
     End Sub
+    ''' <summary>
+    ''' Clients the populate alert combo.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="ListOfItems">The list of items.</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
     Sub client_PopulateAlertCombo(RC As Boolean, ListOfItems As String(), RetMsg As String)
 
         If RC Then
@@ -182,6 +261,9 @@ Partial Public Class popupAlerts
         'RemoveHandler ProxySearch.getListOfStringsCompleted, AddressOf client_PopulateAlertCombo
     End Sub
 
+    ''' <summary>
+    ''' Populates the notification combo.
+    ''' </summary>
     Sub populateNotificationCombo()
         Dim S As String = ""
         Dim RC As Boolean = False
@@ -193,11 +275,17 @@ Partial Public Class popupAlerts
 
         'AddHandler ProxySearch.getListOfStrings01Completed, AddressOf client_PopulateNotificationCombo
         'EP.setSearchSvcEndPoint(proxy)
-        S = ENC2.AES256EncryptString(s)
+        S = ENC2.AES256EncryptString(S)
         Dim ObjListOfRows As Object = ProxySearch.getListOfStrings01(_SecureID, S, RC, RetMsg, _UserID, ContractID)
         client_PopulateNotificationCombo(RC, RetMsg, ObjListOfRows)
 
     End Sub
+    ''' <summary>
+    ''' Clients the populate notification combo.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
+    ''' <param name="ObjListOfRows">The object list of rows.</param>
     Sub client_PopulateNotificationCombo(RC As Boolean, RetMsg As String, ObjListOfRows As Object)
 
         Dim ListOfRows As New System.Collections.ObjectModel.ObservableCollection(Of SVCSearch.DS_ListOfStrings02)
@@ -222,14 +310,29 @@ Partial Public Class popupAlerts
 
         'RemoveHandler ProxySearch.getListOfStrings01Completed, AddressOf client_PopulateNotificationCombo
     End Sub
+    ''' <summary>
+    ''' Handles the Click event of the btnSave control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnSave.Click
         SaveAlert()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnDelete control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnDelete.Click
         DeleteAlert()
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectionChanged event of the lbAlertContact control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub lbAlertContact_SelectionChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.SelectionChangedEventArgs) Handles lbAlertContact.SelectionChanged
         Dim I As Integer = lbAlertContact.SelectedIndex
 
@@ -246,6 +349,11 @@ Partial Public Class popupAlerts
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectionChanged event of the lbAlerts control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub lbAlerts_SelectionChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.SelectionChangedEventArgs) Handles lbAlerts.SelectionChanged
         Dim I As Integer = lbAlerts.SelectedIndex
 
@@ -261,6 +369,11 @@ Partial Public Class popupAlerts
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the Button1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles Button1.Click
 
         If txtEmail.Text.Trim.Length = 0 Then
@@ -275,6 +388,11 @@ Partial Public Class popupAlerts
         SaveNotify()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the Button2 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles Button2.Click
         deleteNotify()
     End Sub

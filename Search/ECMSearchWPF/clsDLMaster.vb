@@ -1,10 +1,32 @@
-﻿Imports System.Data
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 07-16-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 07-16-2020
+' ***********************************************************************
+' <copyright file="clsDLMaster.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+Imports System.Data
 Imports System.Data.SqlClient
 Imports System.IO
 Imports Microsoft.Office.Interop
 
+''' <summary>
+''' Class clsDLMaster.
+''' </summary>
 Public Class clsDLMaster
 
+    ''' <summary>
+    ''' Downs the load selected items.
+    ''' </summary>
+    ''' <param name="dgContent">Content of the dg.</param>
+    ''' <param name="DGEmail">The dg email.</param>
+    ''' <returns>System.String.</returns>
     Function DownLoadSelectedItems(dgContent As DataGrid, DGEmail As DataGrid) As String
         Dim msg As String = ""
         If dgContent.SelectedItems.Count > 0 Then
@@ -16,6 +38,11 @@ Public Class clsDLMaster
         Return msg
     End Function
 
+    ''' <summary>
+    ''' Downs the content of the load selected.
+    ''' </summary>
+    ''' <param name="DG">The dg.</param>
+    ''' <returns>System.String.</returns>
     Function DownLoadSelectedContent(DG As DataGrid) As String
 
         Dim msg As String = ""
@@ -43,6 +70,11 @@ Public Class clsDLMaster
 
     End Function
 
+    ''' <summary>
+    ''' Downs the load selected email.
+    ''' </summary>
+    ''' <param name="DG">The dg.</param>
+    ''' <returns>System.String.</returns>
     Function DownLoadSelectedEmail(DG As DataGrid) As String
 
         Dim msg As String = ""
@@ -70,6 +102,11 @@ Public Class clsDLMaster
 
     End Function
 
+    ''' <summary>
+    ''' Downloads the content.
+    ''' </summary>
+    ''' <param name="ListOfGuids">The list of guids.</param>
+    ''' <returns>System.String.</returns>
     Function DownloadContent(ListOfGuids As List(Of String)) As String
 
         Dim msg As String = "* "
@@ -110,6 +147,10 @@ Public Class clsDLMaster
         Return msg
     End Function
 
+    ''' <summary>
+    ''' Displays the email.
+    ''' </summary>
+    ''' <param name="tDict">The t dictionary.</param>
     Sub displayEmail(tDict As Dictionary(Of String, String))
         Dim oApp As Microsoft.Office.Interop.Outlook.Application
         Dim oEmail As Outlook.MailItem
@@ -135,6 +176,11 @@ Public Class clsDLMaster
         oApp = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Downloads the email.
+    ''' </summary>
+    ''' <param name="ListOfGuids">The list of guids.</param>
+    ''' <returns>System.String.</returns>
     Function DownloadEmail(ListOfGuids As List(Of String)) As String
 
         Dim msg As String = "DOWNLOADED EMAILS: " + Environment.NewLine
@@ -207,6 +253,11 @@ Public Class clsDLMaster
         Return msg
     End Function
 
+    ''' <summary>
+    ''' Filenames the is ok.
+    ''' </summary>
+    ''' <param name="fileName">Name of the file.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function FilenameIsOK(ByVal fileName As String) As Boolean
         Return Not (Path.GetFileName(fileName).Intersect(Path.GetInvalidFileNameChars()).Any() OrElse Path.GetDirectoryName(fileName).Intersect(Path.GetInvalidPathChars()).Any())
     End Function

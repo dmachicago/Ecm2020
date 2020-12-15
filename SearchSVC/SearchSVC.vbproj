@@ -13,7 +13,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>EcmCloudWcf.Web</RootNamespace>
     <AssemblyName>EcmCloudWcf.Web</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <MyType>Custom</MyType>
     <SilverlightApplicationList>
     </SilverlightApplicationList>
@@ -45,8 +45,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\</OutputPath>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile>EcmCloudWcf.Web.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
     <PackageAsSingleFile>false</PackageAsSingleFile>
     <DesktopBuildPackageLocation>..\..\..\..\PrePublishedWebSites\Ecm2012\Cloud\Search</DesktopBuildPackageLocation>
@@ -60,8 +59,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\</OutputPath>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile>EcmCloudWcf.Web.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>

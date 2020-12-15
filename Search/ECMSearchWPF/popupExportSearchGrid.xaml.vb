@@ -1,6 +1,16 @@
-﻿'Imports C1.Silverlight.FlexGrid
-'Imports C1.Silverlight.Pdf
-'Imports C1.Silverlight.PdfViewer
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 06-28-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 06-28-2020
+' ***********************************************************************
+' <copyright file="popupExportSearchGrid.xaml.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************er
 Imports System.IO.IsolatedStorage
 Imports System.IO
 Imports Microsoft.Win32
@@ -13,13 +23,30 @@ Imports System.Text
 Imports System.Net
 Imports System.Reflection
 
+''' <summary>
+''' Class popupExportSearchGrid.
+''' Implements the <see cref="System.Windows.Window" />
+''' Implements the <see cref="System.Windows.Markup.IComponentConnector" />
+''' </summary>
+''' <seealso cref="System.Windows.Window" />
+''' <seealso cref="System.Windows.Markup.IComponentConnector" />
 Partial Public Class popupExportSearchGrid
-    
+
+    ''' <summary>
+    ''' The iso
+    ''' </summary>
     Dim ISO As New clsIsolatedStorage
 
+    ''' <summary>
+    ''' The user identifier
+    ''' </summary>
     Dim _UserID As String
     'Dim GVAR As App = App.Current
 
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="popupExportSearchGrid"/> class.
+    ''' </summary>
+    ''' <param name="_dgGrid">The dg grid.</param>
     Public Sub New(ByVal _dgGrid As DataGrid)
         InitializeComponent()
 
@@ -28,18 +55,38 @@ Partial Public Class popupExportSearchGrid
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the OKButton control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub OKButton_Click(ByVal sender As Object, ByVal e As RoutedEventArgs) Handles OKButton.Click
         Me.DialogResult = True
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the CancelButton control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub CancelButton_Click(ByVal sender As Object, ByVal e As RoutedEventArgs) Handles CancelButton.Click
         Me.DialogResult = False
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unloaded event of the ChildWindow control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ChildWindow_Unloaded(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles MyBase.Unloaded
         Console.WriteLine("Unloaded")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnGraphic control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnGraphic_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnGraphic.Click
         Dim fSave As New Microsoft.Win32.SaveFileDialog
         fSave.ShowDialog()
@@ -58,6 +105,11 @@ Partial Public Class popupExportSearchGrid
         GC.Collect()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnExcel control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnExcel_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnExcel.Click
         Dim fSave As New Microsoft.Win32.SaveFileDialog
         fSave.ShowDialog()
@@ -77,6 +129,11 @@ Partial Public Class popupExportSearchGrid
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnHtml control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnHtml_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnHtml.Click
         Dim fSave As New Microsoft.Win32.SaveFileDialog
         fSave.Filter = "HTML Format (.html)| *.html"
@@ -92,6 +149,11 @@ Partial Public Class popupExportSearchGrid
         GC.Collect()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnText control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnText_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnText.Click
         Dim fSave As New Microsoft.Win32.SaveFileDialog
         fSave.Filter = "Text Format (.txt)| *.txt"
@@ -108,7 +170,12 @@ Partial Public Class popupExportSearchGrid
 
     End Sub
 
-   
+
+    ''' <summary>
+    ''' Copies the stream.
+    ''' </summary>
+    ''' <param name="memStream">The memory stream.</param>
+    ''' <param name="saveStream">The save stream.</param>
     Private Sub CopyStream(ByVal memStream As MemoryStream, ByVal saveStream As Stream)
         Try
             Const bufferSize As Integer = 1024 * 100
@@ -128,10 +195,15 @@ Partial Public Class popupExportSearchGrid
             Console.WriteLine("ERROR CopyStream 001x: " + ex.Message)
             'MessageBox.Show("ERROR CopyStream 001x: " + ex.Message)
         End Try
-        
+
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnPdf control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnPdf_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnPdf.Click
         Dim fSave As New Microsoft.Win32.SaveFileDialog
         fSave.Filter = "PDF (.pdf)| *.pdf"
@@ -211,7 +283,7 @@ Partial Public Class popupExportSearchGrid
         NewLine = TypeGrid + " Search List " + Now.ToString
         CB.LineTo(5, 50)
         CB.Stroke()
-        C1.Append(NewLine)        
+        C1.Append(NewLine)
 
         NewLine = "__________________________________________________________________"
         C1.Append(NewLine)
@@ -281,18 +353,27 @@ Partial Public Class popupExportSearchGrid
 
         Using isoStream As IsolatedStorageFileStream = New IsolatedStorageFileStream(FQN, FileMode.CreateNew, isoStore)
             Using writer As StreamWriter = New StreamWriter(isoStream)
-                writer.WriteLine(doc)                
+                writer.WriteLine(doc)
             End Using
         End Using
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnOpenFile control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnOpenFile_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnOpenFile.Click
 
         'PdfViewer.Visibility = Visibility.Collapsed
 
     End Sub
 
+    ''' <summary>
+    ''' Generates the HTML file.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
     Protected Sub generateHtmlFile(FQN As String)
         dgGrid.SelectAllCells()
         dgGrid.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader
@@ -309,8 +390,12 @@ Partial Public Class popupExportSearchGrid
         file.Close()
     End Sub
 
+    ''' <summary>
+    ''' Generates the CSV file.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
     Protected Sub generateCsvFile(FQN As String)
-         dgGrid.SelectAllCells()
+        dgGrid.SelectAllCells()
         dgGrid.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader
 
         ApplicationCommands.Copy.Execute(Nothing, dgGrid)
@@ -324,6 +409,10 @@ Partial Public Class popupExportSearchGrid
         file.WriteLine(result)
         file.Close()
     End Sub
+    ''' <summary>
+    ''' Generates the text file.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
     Protected Sub generateTextFile(FQN As String)
         dgGrid.SelectAllCells()
         dgGrid.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader
@@ -339,6 +428,10 @@ Partial Public Class popupExportSearchGrid
         file.WriteLine(result)
         file.Close()
     End Sub
+    ''' <summary>
+    ''' Generates the tiff file.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
     Protected Sub generateTiffFile(FQN As String)
         dgGrid.SelectAllCells()
         dgGrid.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader
@@ -356,6 +449,11 @@ Partial Public Class popupExportSearchGrid
         file.Close()
     End Sub
 
+    ''' <summary>
+    ''' Starts the process from isolated storage.
+    ''' </summary>
+    ''' <param name="isolatedFilePath">The isolated file path.</param>
+    ''' <exception cref="FileNotFoundException"></exception>
     Public Sub StartProcessFromIsolatedStorage(isolatedFilePath As String)
         'System.IO.IsolatedStorage.IsolatedStorageFile isolatedStorageFile = System.IO.IsolatedStorage.IsolatedStorageFile.GetUserStoreForAssembly();
         Dim isolatedStorageFile As System.IO.IsolatedStorage.IsolatedStorageFile = System.IO.IsolatedStorage.IsolatedStorageFile.GetUserStoreForDomain()

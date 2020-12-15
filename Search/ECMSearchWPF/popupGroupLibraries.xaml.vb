@@ -1,30 +1,90 @@
-﻿Imports ECMEncryption
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 07-16-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 07-16-2020
+' ***********************************************************************
+' <copyright file="popupGroupLibraries.xaml.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+Imports ECMEncryption
 
+''' <summary>
+''' Class popupGroupLibraries.
+''' Implements the <see cref="System.Windows.Window" />
+''' Implements the <see cref="System.Windows.Markup.IComponentConnector" />
+''' </summary>
+''' <seealso cref="System.Windows.Window" />
+''' <seealso cref="System.Windows.Markup.IComponentConnector" />
 Public Class popupGroupLibraries
     'Inherits ChildWindow
 
     'Dim GVAR As App = App.Current
+    ''' <summary>
+    ''' The common
+    ''' </summary>
     Dim COMMON As New clsCommonFunctions
 
     'Dim EP As New clsEndPoint
+    ''' <summary>
+    ''' The utility
+    ''' </summary>
     Dim UTIL As New clsUtility
 
     'Dim proxy As New SVCSearch.Service1Client
+    ''' <summary>
+    ''' The userid
+    ''' </summary>
     Dim Userid As String
 
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Dim LOG As New clsLoggingExtended
+    ''' <summary>
+    ''' The en c2
+    ''' </summary>
     Dim ENC2 As New ECMEncrypt()
 
+    ''' <summary>
+    ''' The list of assigned users
+    ''' </summary>
     Dim ListOfAssignedUsers As New ArrayList()
+    ''' <summary>
+    ''' The object list of assigned users
+    ''' </summary>
     Dim ObjListOfAssignedUsers As Object = Nothing
+    ''' <summary>
+    ''' The group name
+    ''' </summary>
     Dim GroupName As String = ""
 
+    ''' <summary>
+    ''' The group owner user identifier
+    ''' </summary>
     Dim GroupOwnerUserID As String = ""
+    ''' <summary>
+    ''' The library owner user identifier
+    ''' </summary>
     Dim LibOwnerUserID As String = ""
+    ''' <summary>
+    ''' The curr library name
+    ''' </summary>
     Dim CurrLibName As String = ""
 
+    ''' <summary>
+    ''' The b group library access insert
+    ''' </summary>
     Dim bGroupLibraryAccessInsert As Boolean = False
 
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="popupGroupLibraries"/> class.
+    ''' </summary>
+    ''' <param name="_GrpName">Name of the GRP.</param>
     Public Sub New(ByVal _GrpName As String)
         InitializeComponent()
         'EP.setSearchSvcEndPoint(proxy)
@@ -55,6 +115,10 @@ Public Class popupGroupLibraries
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the name of the get group owner unique identifier by group.
+    ''' </summary>
+    ''' <param name="SS">The ss.</param>
     Sub client_getGroupOwnerGuidByGroupName(SS As String)
         If SS.Length > 0 Then
             GroupOwnerUserID = SS
@@ -65,14 +129,28 @@ Public Class popupGroupLibraries
         'RemoveHandler ProxySearch.getGroupOwnerGuidByGroupNameCompleted, AddressOf client_getGroupOwnerGuidByGroupName
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the OKButton control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub OKButton_Click(ByVal sender As Object, ByVal e As RoutedEventArgs) Handles OKButton.Click
         Me.DialogResult = True
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the CancelButton control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub CancelButton_Click(ByVal sender As Object, ByVal e As RoutedEventArgs) Handles CancelButton.Click
         Me.DialogResult = False
     End Sub
 
+    ''' <summary>
+    ''' Clients the name of the get library owner by.
+    ''' </summary>
+    ''' <param name="SS">The ss.</param>
     Sub client_GetLibOwnerByName(SS As String)
         CurrLibName = cbLibrary.Text
         If SS.Length > 0 Then
@@ -102,6 +180,11 @@ Public Class popupGroupLibraries
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnAddGroupToLibrary control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnAddGroupToLibrary_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnAddGroupToLibrary.Click
 
         ListOfAssignedUsers.Clear()
@@ -122,6 +205,10 @@ Public Class popupGroupLibraries
 
     End Sub
 
+    ''' <summary>
+    ''' Groups the library access insert.
+    ''' </summary>
+    ''' <param name="LibraryName">Name of the library.</param>
     Sub GroupLibraryAccessInsert(ByVal LibraryName As String)
         bGroupLibraryAccessInsert = True
         Dim s As String = ""
@@ -145,6 +232,11 @@ Public Class popupGroupLibraries
         gLogSQL(BB, ENC2.AES256EncryptString(s))
     End Sub
 
+    ''' <summary>
+    ''' gs the log SQL.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="S">The s.</param>
     Sub gLogSQL(RC As Boolean, S As String)
 
         Dim RetMsg As String = ""
@@ -166,6 +258,11 @@ Public Class popupGroupLibraries
         'RemoveHandler ProxySearch.ExecuteSqlNewConnSecureCompleted, AddressOf gLogSQL
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnRemoveGroupFromLibrary control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnRemoveGroupFromLibrary_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnRemoveGroupFromLibrary.Click
         ListOfAssignedUsers.Clear()
 
@@ -198,6 +295,11 @@ Public Class popupGroupLibraries
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the delete group library access.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="S">The s.</param>
     Sub client_DeleteGroupLibraryAccess(RC As Boolean, S As String)
         ListOfAssignedUsers.Clear()
         If RC Then
@@ -216,6 +318,11 @@ Public Class popupGroupLibraries
         'RemoveHandler ProxySearch.ExecuteSqlNewConnSecureCompleted, AddressOf client_DeleteGroupLibraryAccess
     End Sub
 
+    ''' <summary>
+    ''' Clients the get group users.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
     Sub client_getGroupUsers(RC As Boolean, RetMsg As String)
         ListOfAssignedUsers.Clear()
 
@@ -235,6 +342,10 @@ Public Class popupGroupLibraries
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the add library group user.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub client_AddLibraryGroupUser(RC As Boolean)
         Dim RetMsg As String = ""
         If RC Then
@@ -249,6 +360,10 @@ Public Class popupGroupLibraries
         'RemoveHandler ProxySearch.AddLibraryGroupUserCompleted, AddressOf client_AddLibraryGroupUser
     End Sub
 
+    ''' <summary>
+    ''' Clients the reset library users count.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub client_ResetLibraryUsersCount(RC As Boolean)
         Dim SSID As Integer = 0
         Dim RetMsg As String = ""
@@ -260,6 +375,9 @@ Public Class popupGroupLibraries
         'RemoveHandler ProxySearch.ResetLibraryUsersCountCompleted, AddressOf client_ResetLibraryUsersCount
     End Sub
 
+    ''' <summary>
+    ''' Populates the library ListBox.
+    ''' </summary>
     Sub PopulateLibraryListBox()
 
         Dim RC As Boolean = True
@@ -286,6 +404,12 @@ Public Class popupGroupLibraries
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the populate library ListBox.
+    ''' </summary>
+    ''' <param name="ObjListOfRows">The object list of rows.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="retmsg">The retmsg.</param>
     Sub client_PopulateLibraryListBox(ObjListOfRows As Object, RC As Boolean, retmsg As String)
 
         Dim ListOfRows As New System.Collections.ObjectModel.ObservableCollection(Of SVCSearch.DS_ListOfStrings02)
@@ -307,6 +431,9 @@ Public Class popupGroupLibraries
         'RemoveHandler ProxySearch.getListOfStringsCompleted, AddressOf client_PopulateLibraryComboBox
     End Sub
 
+    ''' <summary>
+    ''' Populates the library ComboBox.
+    ''' </summary>
     Sub PopulateLibraryComboBox()
 
         Dim RC As Boolean = True
@@ -331,6 +458,12 @@ Public Class popupGroupLibraries
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the populate library ComboBox.
+    ''' </summary>
+    ''' <param name="ObjListOfItems">The object list of items.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
     Sub client_PopulateLibraryComboBox(ObjListOfItems As String(), RC As Boolean, RetMsg As String)
 
         cbLibrary.Items.Clear()
@@ -346,6 +479,11 @@ Public Class popupGroupLibraries
         'RemoveHandler ProxySearch.getListOfStringsCompleted, AddressOf client_PopulateLibraryComboBox
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectionChanged event of the lbAssignedLibs control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub lbAssignedLibs_SelectionChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.SelectionChangedEventArgs) Handles lbAssignedLibs.SelectionChanged
 
         CurrLibName = lbAssignedLibs.SelectedValue
@@ -353,10 +491,20 @@ Public Class popupGroupLibraries
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnRefresh control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnRefresh_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnRefresh.Click
         PopulateLibraryComboBox()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unloaded event of the popupGroupLibraries control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub popupGroupLibraries_Unloaded(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles MyBase.Unloaded
         ''Application.Current.RootVisual.SetValue(Control.IsEnabledProperty, True)
     End Sub

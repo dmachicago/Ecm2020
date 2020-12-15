@@ -1,3 +1,16 @@
+' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 07-16-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 07-16-2020
+' ***********************************************************************
+' <copyright file="clsSql.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
 Imports System.Configuration
 Imports System
 'Imports System.Data.SqlClient
@@ -8,39 +21,117 @@ Imports System.IO
 Imports System.Threading
 Imports ECMEncryption
 
+''' <summary>
+''' Class clsSql.
+''' </summary>
 Public Class clsSql
     'Dim DB As New clsDatabase
 
 
 
+    ''' <summary>
+    ''' The proxy2
+    ''' </summary>
     Dim proxy2 As New SVCSearch.Service1Client
+    ''' <summary>
+    ''' The proxy3
+    ''' </summary>
     Dim proxy3 As New SVCSearch.Service1Client
 
+    ''' <summary>
+    ''' The dma
+    ''' </summary>
     Dim DMA As New clsDma
+    ''' <summary>
+    ''' The gen
+    ''' </summary>
     Dim GEN As New clsGenerator
+    ''' <summary>
+    ''' The en c2
+    ''' </summary>
     Dim ENC2 As New ECMEncrypt()
+    ''' <summary>
+    ''' The utility
+    ''' </summary>
     Dim UTIL As New clsUtility
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Dim LOG As New clsLogMain
 
+    ''' <summary>
+    ''' The expanded words
+    ''' </summary>
     Dim ExpandedWords As New List(Of String)
+    ''' <summary>
+    ''' The list of phrases
+    ''' </summary>
     Dim ListOfPhrases As String = ""
+    ''' <summary>
+    ''' The b running SQL
+    ''' </summary>
     Dim bRunningSql As Boolean = False
+    ''' <summary>
+    ''' The getting thesaurus words
+    ''' </summary>
     Dim gettingThesaurusWords As Boolean = False
+    ''' <summary>
+    ''' The b save to clip board
+    ''' </summary>
     Dim bSaveToClipBoard As Boolean = True
 
+    ''' <summary>
+    ''' The text search
+    ''' </summary>
     Dim txtSearch$ = Nothing
+    ''' <summary>
+    ''' The get count only
+    ''' </summary>
     Dim getCountOnly As Boolean = Nothing
+    ''' <summary>
+    ''' The use existing records only
+    ''' </summary>
     Dim UseExistingRecordsOnly As Boolean = Nothing
+    ''' <summary>
+    ''' The ck weighted
+    ''' </summary>
     Dim ckWeighted As Boolean = Nothing
+    ''' <summary>
+    ''' The generated SQL
+    ''' </summary>
     Dim GeneratedSQL As String = Nothing
+    ''' <summary>
+    ''' The is admin
+    ''' </summary>
     Dim isAdmin As Boolean = Nothing
+    ''' <summary>
+    ''' The ck business
+    ''' </summary>
     Dim ckBusiness As Boolean = Nothing
+    ''' <summary>
+    ''' The is inflectional term
+    ''' </summary>
     Dim isInflectionalTerm As Boolean = False
+    ''' <summary>
+    ''' The inflectional token
+    ''' </summary>
     Dim InflectionalToken As Boolean = False
+    ''' <summary>
+    ''' The thesaurus list
+    ''' </summary>
     Dim ThesaurusList As New List(Of String)
+    ''' <summary>
+    ''' The thesaurus words
+    ''' </summary>
     Dim ThesaurusWords As New List(Of String)
 
+    ''' <summary>
+    ''' The g secure identifier
+    ''' </summary>
     Dim gSecureID As String = -1
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="clsSql"/> class.
+    ''' </summary>
     Sub New()
 
         gSecureID = _SecureID
@@ -54,6 +145,10 @@ Public Class clsSql
 
     End Sub
 
+    ''' <summary>
+    ''' Gets or sets the p inflectional token.
+    ''' </summary>
+    ''' <value>The p inflectional token.</value>
     Property pInflectionalToken() As String
         Get
             Return InflectionalToken
@@ -62,6 +157,10 @@ Public Class clsSql
             InflectionalToken = tVal
         End Set
     End Property
+    ''' <summary>
+    ''' Gets or sets a value indicating whether [b inflectional term].
+    ''' </summary>
+    ''' <value><c>true</c> if [b inflectional term]; otherwise, <c>false</c>.</value>
     Property bInflectionalTerm() As Boolean
         Get
             Return isInflectionalTerm
@@ -71,6 +170,16 @@ Public Class clsSql
         End Set
     End Property
 
+    ''' <summary>
+    ''' Gens the document search SQL.
+    ''' </summary>
+    ''' <param name="SearchString">The search string.</param>
+    ''' <param name="ckLimitToExisting">if set to <c>true</c> [ck limit to existing].</param>
+    ''' <param name="txtThesaurus">The text thesaurus.</param>
+    ''' <param name="cbThesaurusText">The cb thesaurus text.</param>
+    ''' <param name="ckLimitToLib">if set to <c>true</c> [ck limit to library].</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <returns>System.String.</returns>
     Function GenDocSearchSql(ByVal SearchString As String, ByVal ckLimitToExisting As Boolean, ByVal txtThesaurus As String, ByVal cbThesaurusText As String, ByVal ckLimitToLib As Boolean, ByVal LibraryName As String) As String
         Dim WhereClause$ = ""
         Dim bCopyToClipboard As Boolean = True
@@ -172,6 +281,10 @@ Public Class clsSql
     End Function
 
 
+    ''' <summary>
+    ''' Gets or sets the p generated SQL.
+    ''' </summary>
+    ''' <value>The p generated SQL.</value>
     Property pGeneratedSQL() As String
         Get
             Return GeneratedSQL
@@ -180,6 +293,10 @@ Public Class clsSql
             GeneratedSQL = tVal
         End Set
     End Property
+    ''' <summary>
+    ''' Gets or sets a value indicating whether [p ck business].
+    ''' </summary>
+    ''' <value><c>true</c> if [p ck business]; otherwise, <c>false</c>.</value>
     Property pCkBusiness() As Boolean
         Get
             Return ckBusiness
@@ -188,6 +305,10 @@ Public Class clsSql
             ckBusiness = tVal
         End Set
     End Property
+    ''' <summary>
+    ''' Gets or sets a value indicating whether [p is admin].
+    ''' </summary>
+    ''' <value><c>true</c> if [p is admin]; otherwise, <c>false</c>.</value>
     Property pIsAdmin() As Boolean
         Get
             Return isAdmin
@@ -196,6 +317,10 @@ Public Class clsSql
             isAdmin = tVal
         End Set
     End Property
+    ''' <summary>
+    ''' Gets or sets a value indicating whether [p ck weighted].
+    ''' </summary>
+    ''' <value><c>true</c> if [p ck weighted]; otherwise, <c>false</c>.</value>
     Property pCkWeighted() As Boolean
         Get
             Return ckWeighted
@@ -204,6 +329,10 @@ Public Class clsSql
             ckWeighted = tVal
         End Set
     End Property
+    ''' <summary>
+    ''' Gets or sets a value indicating whether [p use existing records only].
+    ''' </summary>
+    ''' <value><c>true</c> if [p use existing records only]; otherwise, <c>false</c>.</value>
     Property pUseExistingRecordsOnly() As Boolean
         Get
             Return UseExistingRecordsOnly
@@ -212,6 +341,10 @@ Public Class clsSql
             UseExistingRecordsOnly = tVal
         End Set
     End Property
+    ''' <summary>
+    ''' Gets or sets a value indicating whether [p get count only].
+    ''' </summary>
+    ''' <value><c>true</c> if [p get count only]; otherwise, <c>false</c>.</value>
     Property pGetCountOnly() As Boolean
         Get
             Return getCountOnly
@@ -220,6 +353,10 @@ Public Class clsSql
             getCountOnly = tVal
         End Set
     End Property
+    ''' <summary>
+    ''' Gets or sets the p text search.
+    ''' </summary>
+    ''' <value>The p text search.</value>
     Property pTxtSearch() As String
         Get
             Return txtSearch$
@@ -230,6 +367,23 @@ Public Class clsSql
     End Property
 
 
+    ''' <summary>
+    ''' Gens the email generated SQL.
+    ''' </summary>
+    ''' <param name="ckLimitToExisting">if set to <c>true</c> [ck limit to existing].</param>
+    ''' <param name="txtThesaurus">The text thesaurus.</param>
+    ''' <param name="cbThesaurusText">The cb thesaurus text.</param>
+    ''' <param name="ckWeighted">if set to <c>true</c> [ck weighted].</param>
+    ''' <param name="ckBusiness">if set to <c>true</c> [ck business].</param>
+    ''' <param name="txtSearch">The text search.</param>
+    ''' <param name="ckLimitToLib">if set to <c>true</c> [ck limit to library].</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <param name="MinWeight">The minimum weight.</param>
+    ''' <param name="bIncludeAllLibs">if set to <c>true</c> [b include all libs].</param>
+    ''' <param name="getCountOnly">if set to <c>true</c> [get count only].</param>
+    ''' <param name="UseExistingRecordsOnly">if set to <c>true</c> [use existing records only].</param>
+    ''' <param name="GeneratedSQL">The generated SQL.</param>
+    ''' <returns>System.String.</returns>
     Function GenEmailGeneratedSQL(ByVal ckLimitToExisting As Boolean,
                                   ByVal txtThesaurus As String,
                                   ByVal cbThesaurusText As String,
@@ -399,6 +553,12 @@ Public Class clsSql
 
         Return EmailSql
     End Function
+    ''' <summary>
+    ''' Subs the in.
+    ''' </summary>
+    ''' <param name="ParentString">The parent string.</param>
+    ''' <param name="WhatToChange">The what to change.</param>
+    ''' <param name="ChangeCharsToThis">The change chars to this.</param>
     Sub SubIn(ByRef ParentString As String, ByVal WhatToChange As String, ByVal ChangeCharsToThis As String)
         Dim I As Integer = 0
         Dim J As Integer = 0
@@ -420,6 +580,11 @@ Public Class clsSql
             ParentString = NewLine
         Loop
     End Sub
+    ''' <summary>
+    ''' Skips to next token.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <param name="I">The i.</param>
     Sub SkipToNextToken(ByVal S As String, ByRef I As Integer)
         Dim Delimiters As String = " ,:+-^|"
         S = S.Trim
@@ -463,6 +628,13 @@ Public Class clsSql
 
 
     End Sub
+    ''' <summary>
+    ''' Gets the next token.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <param name="I">The i.</param>
+    ''' <param name="ReturnedDelimiter">The returned delimiter.</param>
+    ''' <returns>System.String.</returns>
     Function getNextToken(ByVal S As String, ByRef I As Integer, ByRef ReturnedDelimiter As String) As String
         Dim Delimiters As String = " ,:+-^|()"
         S = S.Trim
@@ -515,6 +687,12 @@ Public Class clsSql
         End If
         Return Token
     End Function
+    ''' <summary>
+    ''' Gets the rest of the token.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <param name="I">The i.</param>
+    ''' <returns>System.String.</returns>
     Function getTheRestOfTheToken(ByVal S As String, ByRef I As Integer) As String
         'We are sitting at the next character in the token, so go back to the beginning
         I = I - 1
@@ -568,6 +746,12 @@ Public Class clsSql
         End If
         Return Token
     End Function
+    ''' <summary>
+    ''' Gets the token.
+    ''' </summary>
+    ''' <param name="I">The i.</param>
+    ''' <param name="k">The k.</param>
+    ''' <param name="tStr">The t string.</param>
     Sub GetToken(ByVal I As Integer, ByRef k As Integer, ByVal tStr As String)
         Dim X As Integer = tStr.Trim.Length
         Dim CH As String = ""
@@ -579,6 +763,11 @@ Public Class clsSql
             End If
         Next
     End Sub
+    ''' <summary>
+    ''' Determines whether [is key word] [the specified kw].
+    ''' </summary>
+    ''' <param name="KW">The kw.</param>
+    ''' <returns><c>true</c> if [is key word] [the specified kw]; otherwise, <c>false</c>.</returns>
     Function isKeyWord(ByVal KW As String) As Boolean
         Dim B As Boolean = False
         KW = UCase(KW)
@@ -594,6 +783,11 @@ Public Class clsSql
         End Select
         Return B
     End Function
+    ''' <summary>
+    ''' Translates the delimiter.
+    ''' </summary>
+    ''' <param name="CH">The ch.</param>
+    ''' <param name="Translateddel">The translateddel.</param>
     Sub TranslateDelimiter(ByVal CH As String, ByRef Translateddel As String)
         Translateddel$ = ""
         Select Case CH
@@ -605,6 +799,13 @@ Public Class clsSql
                 Translateddel$ = "Or"
         End Select
     End Sub
+    ''' <summary>
+    ''' Gets the quoted string.
+    ''' </summary>
+    ''' <param name="tstr">The TSTR.</param>
+    ''' <param name="i">The i.</param>
+    ''' <param name="j">The j.</param>
+    ''' <param name="QuotedString">The quoted string.</param>
     Sub GetQuotedString(ByVal tstr As String, ByRef i As Integer, ByRef j As Integer, ByRef QuotedString As String)
         Dim X As Integer = tstr.Trim.Length
         Dim Q$ = ChrW(34)
@@ -621,6 +822,12 @@ Public Class clsSql
         Loop
         QuotedString$ = QuotedString$ + Q
     End Sub
+    ''' <summary>
+    ''' Skips the tokens.
+    ''' </summary>
+    ''' <param name="tstr">The TSTR.</param>
+    ''' <param name="i">The i.</param>
+    ''' <param name="j">The j.</param>
     Sub SkipTokens(ByVal tstr As String, ByVal i As Integer, ByRef j As Integer)
         Dim X As Integer = tstr.Trim.Length
         Dim Q$ = ChrW(34)
@@ -635,6 +842,11 @@ Public Class clsSql
             End If
         Next
     End Sub
+    ''' <summary>
+    ''' Determines whether [is not delimiter] [the specified ch].
+    ''' </summary>
+    ''' <param name="CH">The ch.</param>
+    ''' <returns><c>true</c> if [is not delimiter] [the specified ch]; otherwise, <c>false</c>.</returns>
     Function isNotDelimiter(ByVal CH As String) As Boolean
         Dim Alphabet$ = " |+-^"
         If InStr(1, Alphabet, CH) = 0 Then
@@ -643,6 +855,11 @@ Public Class clsSql
             Return False
         End If
     End Function
+    ''' <summary>
+    ''' Determines whether the specified ch is delimiter.
+    ''' </summary>
+    ''' <param name="CH">The ch.</param>
+    ''' <returns><c>true</c> if the specified ch is delimiter; otherwise, <c>false</c>.</returns>
     Function isDelimiter(ByVal CH As String) As Boolean
         Dim Alphabet$ = " |+-^"
         If InStr(1, Alphabet, CH) > 0 Then
@@ -651,6 +868,11 @@ Public Class clsSql
             Return False
         End If
     End Function
+    ''' <summary>
+    ''' Determines whether [is syntax character] [the specified ch].
+    ''' </summary>
+    ''' <param name="CH">The ch.</param>
+    ''' <returns><c>true</c> if [is syntax character] [the specified ch]; otherwise, <c>false</c>.</returns>
     Function isSyntaxChar(ByVal CH As String) As Boolean
         Dim Alphabet$ = "#|+-^~"
         If InStr(1, Alphabet, CH) > 0 Then
@@ -659,6 +881,12 @@ Public Class clsSql
             Return False
         End If
     End Function
+    ''' <summary>
+    ''' Builds the contains syntax.
+    ''' </summary>
+    ''' <param name="SearchCriteria">The search criteria.</param>
+    ''' <param name="ThesaurusWords">The thesaurus words.</param>
+    ''' <returns>System.String.</returns>
     Function buildContainsSyntax(ByVal SearchCriteria As String, ByRef ThesaurusWords As List(Of String)) As String
         '** Get all the OR'SearchCriteria and build a search term then
         '** get all the AND'SearchCriteria and build a search term then
@@ -902,6 +1130,11 @@ NextWord:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the thesaurus words.
+    ''' </summary>
+    ''' <param name="ThesaurusList">The thesaurus list.</param>
+    ''' <param name="ThesaurusWords">The thesaurus words.</param>
     Sub getThesaurusWords(ByVal ThesaurusList As List(Of String), ByRef ThesaurusWords As List(Of String))
         gettingThesaurusWords = True
         Dim AllWords$ = ""
@@ -947,6 +1180,10 @@ NextWord:
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the get thesaurus identifier.
+    ''' </summary>
+    ''' <param name="SS">The ss.</param>
     Sub client_getThesaurusID(SS As String)
 
         ExpandedWords.Clear()
@@ -971,6 +1208,10 @@ NextWord:
         'RemoveHandler ProxySearch.getThesaurusIDCompleted, AddressOf client_getThesaurusID
     End Sub
 
+    ''' <summary>
+    ''' Clients the get synonyms.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
     Sub client_getSynonyms(S As String)
         Dim words() As String = Nothing
         ExpandedWords.Clear()
@@ -998,6 +1239,11 @@ NextWord:
             ExpandedWords.Clear()
         End If
     End Sub
+    ''' <summary>
+    ''' Validates the contains list.
+    ''' </summary>
+    ''' <param name="ContainsList">The contains list.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ValidateContainsList(ByRef ContainsList As String) As Boolean
         ContainsList$ = ContainsList$.Trim
         If ContainsList.Trim.Length = 0 Then
@@ -1024,6 +1270,14 @@ NextWord:
         End If
         Return b
     End Function
+    ''' <summary>
+    ''' Populates the thesaurus list.
+    ''' </summary>
+    ''' <param name="ThesaurusList">The thesaurus list.</param>
+    ''' <param name="ThesaurusWords">The thesaurus words.</param>
+    ''' <param name="txtThesaurus">The text thesaurus.</param>
+    ''' <param name="cbThesaurusText">The cb thesaurus text.</param>
+    ''' <returns>System.String.</returns>
     Function PopulateThesaurusList(ByVal ThesaurusList As List(Of String), ByRef ThesaurusWords As List(Of String), ByVal txtThesaurus As String, ByVal cbThesaurusText As String) As String
 
         Dim A1$(0)
@@ -1055,6 +1309,19 @@ NextWord:
         Return ExpandedWords$
 
     End Function
+    ''' <summary>
+    ''' Gens the contains clause.
+    ''' </summary>
+    ''' <param name="InputSearchString">The input search string.</param>
+    ''' <param name="useFreetext">if set to <c>true</c> [use freetext].</param>
+    ''' <param name="ckWeighted">if set to <c>true</c> [ck weighted].</param>
+    ''' <param name="isEmail">if set to <c>true</c> [is email].</param>
+    ''' <param name="LimitToCurrRecs">if set to <c>true</c> [limit to curr recs].</param>
+    ''' <param name="ThesaurusList">The thesaurus list.</param>
+    ''' <param name="txtThesaurus">The text thesaurus.</param>
+    ''' <param name="cbThesaurusText">The cb thesaurus text.</param>
+    ''' <param name="calledBy">The called by.</param>
+    ''' <returns>System.String.</returns>
     Function genContainsClause(ByVal InputSearchString As String,
                                ByVal useFreetext As Boolean,
                                ByVal ckWeighted As Boolean,
@@ -1287,6 +1554,12 @@ NextWord:
         ThesaurusWords = Nothing
         Return WhereClause$
     End Function
+    ''' <summary>
+    ''' Gets the next character.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <param name="i">The i.</param>
+    ''' <returns>System.String.</returns>
     Function getNextChar(ByVal S As String, ByVal i As Integer) As String
         Dim CH$ = ""
 
@@ -1307,6 +1580,11 @@ NextWord:
 
         Return CH
     End Function
+    ''' <summary>
+    ''' Cleans the is about search text.
+    ''' </summary>
+    ''' <param name="SearchText">The search text.</param>
+    ''' <returns>System.String.</returns>
     Function CleanIsAboutSearchText(ByVal SearchText As String) As String
         Dim I As Integer = 0
         Dim A As New List(Of String)
@@ -1464,6 +1742,14 @@ REEVAL:
 
     End Function
 
+    ''' <summary>
+    ''' Gens the is about.
+    ''' </summary>
+    ''' <param name="ckWeighted">if set to <c>true</c> [ck weighted].</param>
+    ''' <param name="useFreetext">if set to <c>true</c> [use freetext].</param>
+    ''' <param name="SearchText">The search text.</param>
+    ''' <param name="isEmailSearch">if set to <c>true</c> [is email search].</param>
+    ''' <returns>System.String.</returns>
     Function genIsAbout(ByVal ckWeighted As Boolean, ByVal useFreetext As Boolean, ByVal SearchText As String, ByVal isEmailSearch As Boolean) As String
         If ckWeighted = False Then
             Return ""
@@ -1528,6 +1814,10 @@ REEVAL:
 
 
     End Function
+    ''' <summary>
+    ''' Gets all tables SQL.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getAllTablesSql() As String
         Dim S As String = "Select * from sysobjects where xtype = 'U'"
         Return S
@@ -1554,6 +1844,13 @@ REEVAL:
     '    End Try
     '    Return rsData
     'End Function
+    ''' <summary>
+    ''' Gens the admin content SQL.
+    ''' </summary>
+    ''' <param name="isAdmin">if set to <c>true</c> [is admin].</param>
+    ''' <param name="ckLimitToLib">if set to <c>true</c> [ck limit to library].</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <returns>System.String.</returns>
     Function genAdminContentSql(ByVal isAdmin As Boolean, ByVal ckLimitToLib As Boolean, ByVal LibraryName As String) As String
         Dim UserSql$ = ""
         LibraryName$ = UTIL.RemoveSingleQuotes(LibraryName)
@@ -1622,6 +1919,13 @@ REEVAL:
         End If
         Return UserSql
     End Function
+    ''' <summary>
+    ''' Gens the admin email SQL.
+    ''' </summary>
+    ''' <param name="isAdmin">if set to <c>true</c> [is admin].</param>
+    ''' <param name="ckLimitToLib">if set to <c>true</c> [ck limit to library].</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <returns>System.String.</returns>
     Function genAdminEmailSql(ByVal isAdmin As Boolean, ByVal ckLimitToLib As Boolean, ByVal LibraryName As String) As String
         Dim UserSql$ = ""
         If gIsAdmin Or gIsGlobalSearcher Then
@@ -1690,6 +1994,11 @@ REEVAL:
         End If
         Return UserSql
     End Function
+    ''' <summary>
+    ''' Gets the content table cols.
+    ''' </summary>
+    ''' <param name="ckWeighted">if set to <c>true</c> [ck weighted].</param>
+    ''' <returns>System.String.</returns>
     Function getContentTblCols(ByVal ckWeighted As Boolean) As String
         Dim DocsSql$ = ""
 
@@ -1743,6 +2052,13 @@ REEVAL:
     End Function
 
 
+    ''' <summary>
+    ''' Gets the email table cols main search.
+    ''' </summary>
+    ''' <param name="ckWeighted">if set to <c>true</c> [ck weighted].</param>
+    ''' <param name="ckBusiness">if set to <c>true</c> [ck business].</param>
+    ''' <param name="SearchText">The search text.</param>
+    ''' <returns>System.String.</returns>
     Function getEmailTblColsMainSearch(ByVal ckWeighted As Boolean, ByVal ckBusiness As Boolean, ByVal SearchText As String) As String
         Dim GenSql$ = ""
 
@@ -1805,6 +2121,13 @@ REEVAL:
 
         Return GenSql$
     End Function
+    ''' <summary>
+    ''' Gets the email table cols.
+    ''' </summary>
+    ''' <param name="ckWeighted">if set to <c>true</c> [ck weighted].</param>
+    ''' <param name="ckBusiness">if set to <c>true</c> [ck business].</param>
+    ''' <param name="SearchText">The search text.</param>
+    ''' <returns>System.String.</returns>
     Function getEmailTblCols(ByVal ckWeighted As Boolean, ByVal ckBusiness As Boolean, ByVal SearchText As String) As String
         Dim SearchSql = ""
 
@@ -1863,6 +2186,10 @@ REEVAL:
         End If
         Return SearchSql
     End Function
+    ''' <summary>
+    ''' Xgens the header.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function xgenHeader() As String
         Dim DocsSql$ = "WITH LibrariesContainingUser (LibraryName) AS" + vbCrLf
         DocsSql += " (" + vbCrLf
@@ -1870,16 +2197,30 @@ REEVAL:
         DocsSql += " )" + vbCrLf
         Return DocsSql
     End Function
+    ''' <summary>
+    ''' Gens the conten count SQL.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function genContenCountSql() As String
         Dim DocsSql$ = "Select count(*) " + vbCrLf
         DocsSql += "FROM DataSource " + vbCrLf
         Return DocsSql
     End Function
+    ''' <summary>
+    ''' Gens the email count SQL.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function genEmailCountSql() As String
         Dim DocsSql$ = "Select count(*) " + vbCrLf
         DocsSql += "FROM [email] " + vbCrLf
         Return DocsSql
     End Function
+    ''' <summary>
+    ''' Gens the use existing records only.
+    ''' </summary>
+    ''' <param name="bUseExisting">if set to <c>true</c> [b use existing].</param>
+    ''' <param name="GuidColName">Name of the unique identifier col.</param>
+    ''' <returns>System.String.</returns>
     Public Function genUseExistingRecordsOnly(ByVal bUseExisting As Boolean, ByVal GuidColName As String) As String
         If bUseExisting = False Then
             Return ""
@@ -1887,6 +2228,11 @@ REEVAL:
         Dim DocsSql$ = " and " + GuidColName$ + " in (SELECT [DocGuid] FROM ActiveSearchGuids where  UserID = '" + gCurrUserGuidID + "')" + vbCrLf
         Return DocsSql
     End Function
+    ''' <summary>
+    ''' Gens the select email counts.
+    ''' </summary>
+    ''' <param name="ckWeighted">if set to <c>true</c> [ck weighted].</param>
+    ''' <returns>System.String.</returns>
     Function genSelectEmailCounts(ByVal ckWeighted As Boolean) As String
         Dim SearchSql$ = ""
         If ckWeighted = True Then
@@ -1905,6 +2251,18 @@ REEVAL:
         Return SearchSql
     End Function
 
+    ''' <summary>
+    ''' Includes the email attachments search.
+    ''' </summary>
+    ''' <param name="ckIncludeAttachments">if set to <c>true</c> [ck include attachments].</param>
+    ''' <param name="ckWeighted">if set to <c>true</c> [ck weighted].</param>
+    ''' <param name="ckBusiness">if set to <c>true</c> [ck business].</param>
+    ''' <param name="SearchText">The search text.</param>
+    ''' <param name="ckLimitToExisting">if set to <c>true</c> [ck limit to existing].</param>
+    ''' <param name="txtThesaurus">The text thesaurus.</param>
+    ''' <param name="cbThesaurusText">The cb thesaurus text.</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <param name="bIncludeAllLibs">if set to <c>true</c> [b include all libs].</param>
     Sub IncludeEmailAttachmentsSearch(ByVal ckIncludeAttachments As Boolean,
                                       ByVal ckWeighted As Boolean,
                                       ByVal ckBusiness As Boolean,
@@ -1976,6 +2334,17 @@ REEVAL:
             End If
         End If
     End Sub
+    ''' <summary>
+    ''' Includes the email attachments search weighted.
+    ''' </summary>
+    ''' <param name="ckIncludeAttachments">if set to <c>true</c> [ck include attachments].</param>
+    ''' <param name="ckWeighted">if set to <c>true</c> [ck weighted].</param>
+    ''' <param name="ckBusiness">if set to <c>true</c> [ck business].</param>
+    ''' <param name="SearchText">The search text.</param>
+    ''' <param name="ckLimitToExisting">if set to <c>true</c> [ck limit to existing].</param>
+    ''' <param name="txtThesaurus">The text thesaurus.</param>
+    ''' <param name="cbThesaurusText">The cb thesaurus text.</param>
+    ''' <param name="MinWeight">The minimum weight.</param>
     Sub IncludeEmailAttachmentsSearchWeighted(ByVal ckIncludeAttachments As Boolean, ByVal ckWeighted As Boolean, ByVal ckBusiness As Boolean, ByVal SearchText As String, ByVal ckLimitToExisting As Boolean, ByVal txtThesaurus As String, ByVal cbThesaurusText As String, ByVal MinWeight As Integer)
         If ckIncludeAttachments Then
             Dim SS As String = "delete FROM [EmailAttachmentSearchList] where [UserID] = '" + gCurrUserGuidID + "'"
@@ -2024,6 +2393,13 @@ REEVAL:
 
 
 
+    ''' <summary>
+    ''' Gets the sub contains clause weighted.
+    ''' </summary>
+    ''' <param name="SearchText">The search text.</param>
+    ''' <param name="ContainsClause">The contains clause.</param>
+    ''' <param name="isFreetext">if set to <c>true</c> [is freetext].</param>
+    ''' <param name="MinWeight">The minimum weight.</param>
     Sub GetSubContainsClauseWeighted(ByVal SearchText As String, ByRef ContainsClause As String, ByVal isFreetext As Boolean, ByVal MinWeight As Integer)
         Dim S As String = ""
 
@@ -2081,6 +2457,11 @@ REEVAL:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Parses the search string.
+    ''' </summary>
+    ''' <param name="A">a.</param>
+    ''' <param name="S">The s.</param>
     Sub ParseSearchString(ByRef A As List(Of String), ByVal S As String)
         Dim I As Integer = 0
         Dim J As Integer = 0
@@ -2200,6 +2581,11 @@ reeval:
             P1 = T1
         Next
     End Sub
+    ''' <summary>
+    ''' Rebuilds the string.
+    ''' </summary>
+    ''' <param name="A">a.</param>
+    ''' <param name="S">The s.</param>
     Sub RebuildString(ByVal A As List(Of String), ByRef S As String)
 
         Dim I As Integer = 0
@@ -2350,6 +2736,11 @@ ProcessNextToken:
 
         S$ = S$.Trim
     End Sub
+    ''' <summary>
+    ''' Counts the double quotes.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function CountDoubleQuotes(ByVal S As String) As Boolean
         S$ = S$.Trim
         If S.Trim.Length = 0 Then
@@ -2373,6 +2764,12 @@ ProcessNextToken:
             Return False
         End If
     End Function
+    ''' <summary>
+    ''' Pres the process search.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <param name="bFullTextSearch">if set to <c>true</c> [b full text search].</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function PreProcessSearch(ByRef S As String, ByVal bFullTextSearch As Boolean) As Boolean
         'S = S.Trim        
         Dim B As Boolean = True
@@ -2482,6 +2879,10 @@ GetNextChar:
         Return B
 
     End Function
+    ''' <summary>
+    ''' Validates the not clauses.
+    ''' </summary>
+    ''' <param name="SqlText">The SQL text.</param>
     Public Sub ValidateNotClauses(ByRef SqlText As String)
         If SqlText.Trim.Length = 0 Then
             Return
@@ -2581,6 +2982,10 @@ GetNextChar:
             End Try
         Next
     End Sub
+    ''' <summary>
+    ''' Gens the is in libraries SQL.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function genIsInLibrariesSql() As Boolean
 
         Dim B As Boolean = False
@@ -2603,6 +3008,10 @@ GetNextChar:
 
     End Function
 
+    ''' <summary>
+    ''' Gens all libraries SQL.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function genAllLibrariesSql() As String
 
         Dim S As String = ""
@@ -2618,6 +3027,13 @@ GetNextChar:
 
     End Function
 
+    ''' <summary>
+    ''' Adds the paging.
+    ''' </summary>
+    ''' <param name="StartPageNo">The start page no.</param>
+    ''' <param name="EndPageNo">The end page no.</param>
+    ''' <param name="SqlQuery">The SQL query.</param>
+    ''' <param name="bIncludeLibraryFilesInSearch">if set to <c>true</c> [b include library files in search].</param>
     Sub AddPaging(ByVal StartPageNo As Integer, ByVal EndPageNo As Integer, ByRef SqlQuery As String, ByVal bIncludeLibraryFilesInSearch As Boolean)
 
         Dim WeightedSearch As Boolean = False
@@ -2750,6 +3166,11 @@ NEXTLINE:
 
     End Sub
 
+    ''' <summary>
+    ''' Gens the attachment search SQL admin.
+    ''' </summary>
+    ''' <param name="EmailContainsClause">The email contains clause.</param>
+    ''' <returns>System.String.</returns>
     Function genAttachmentSearchSQLAdmin(ByVal EmailContainsClause As String) As String
 
         Dim S = ""
@@ -2759,6 +3180,11 @@ NEXTLINE:
         Return S
     End Function
 
+    ''' <summary>
+    ''' Gens the attachment search SQL user.
+    ''' </summary>
+    ''' <param name="EmailContainsClause">The email contains clause.</param>
+    ''' <returns>System.String.</returns>
     Function genAttachmentSearchSQLUser(ByVal EmailContainsClause As String) As String
 
         Dim S = ""
@@ -2768,6 +3194,11 @@ NEXTLINE:
         Return S
     End Function
 
+    ''' <summary>
+    ''' Gens all libraries select.
+    ''' </summary>
+    ''' <param name="EmailContainsClause">The email contains clause.</param>
+    ''' <returns>System.String.</returns>
     Function genAllLibrariesSelect(ByVal EmailContainsClause As String) As String
 
         Dim AllLibSql$ = ""
@@ -2783,6 +3214,12 @@ NEXTLINE:
 
         Return S
     End Function
+    ''' <summary>
+    ''' Gens the single library select.
+    ''' </summary>
+    ''' <param name="EmailContainsClause">The email contains clause.</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <returns>System.String.</returns>
     Function genSingleLibrarySelect(ByVal EmailContainsClause As String, ByVal LibraryName As String) As String
         Dim S As String = ""
 
@@ -2798,6 +3235,11 @@ NEXTLINE:
         Return S
     End Function
 
+    ''' <summary>
+    ''' Searches the email attachments.
+    ''' </summary>
+    ''' <param name="ContainsClause">The contains clause.</param>
+    ''' <param name="isFreetext">if set to <c>true</c> [is freetext].</param>
     Sub SearchEmailAttachments(ByRef ContainsClause As String, ByVal isFreetext As Boolean)
 
         Dim tSql$ = ""
@@ -2846,6 +3288,11 @@ NEXTLINE:
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the execute SQL new conn2.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="SS">The ss.</param>
     Sub client_ExecuteSqlNewConn2(RC As Boolean, SS As String)
         If RC Then
             Dim S As String = ""
@@ -2869,6 +3316,9 @@ NEXTLINE:
             LOG.WriteToSqlLog("ERROR clsSql 100: " + SS)
         End If
     End Sub
+    ''' <summary>
+    ''' Allows an object to try to free resources and perform other cleanup operations before it is reclaimed by garbage collection.
+    ''' </summary>
     Protected Overrides Sub Finalize()
         Try
         Finally
@@ -2878,6 +3328,9 @@ NEXTLINE:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Sets the xx search SVC end point.
+    ''' </summary>
     Private Sub setXXSearchSvcEndPoint()
 
         If (SearchEndPoint.Length = 0) Then

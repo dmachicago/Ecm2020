@@ -1,0 +1,2475 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"[]>
+<html>
+  <head><link rel="shortcut icon" href="../favicon.ico" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="save" content="history" />
+    <title>InsertSourcefile Method </title>
+    <link rel="stylesheet" type="text/css" href="../styles/lightweight.css" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <link rel="stylesheet" type="text/css" href="../styles/lw-code.css" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <script type="text/javascript" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" src="../scripts/languageSelector.js"> </script>
+    <meta name="container" content="EcmCloudWcf.Web" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <meta name="file" content="M-EcmCloudWcf.Web.clsDatabaseSVR.InsertSourcefile" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <meta name="guid" content="M-EcmCloudWcf.Web.clsDatabaseSVR.InsertSourcefile" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <xml xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+      <MSHelp:Attr Name="AssetID" Value="M:EcmCloudWcf.Web.clsDatabaseSVR.InsertSourcefile(System.Int32@,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32)" />
+      <MSHelp:TOCTitle Title="InsertSourcefile Method " />
+      <MSHelp:RLTitle Title="clsDatabaseSVR.InsertSourcefile Method  (EcmCloudWcf.Web)" />
+      <MSHelp:Keyword Index="A" Term="M:EcmCloudWcf.Web.clsDatabaseSVR.InsertSourcefile(System.Int32@,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32)" />
+      <MSHelp:Keyword Index="A" Term="frlrfEcmCloudWcfWebclsDatabaseSVRClassInsertSourcefileTopic" />
+      <MSHelp:Keyword Index="K" Term="InsertSourcefile method" />
+      <MSHelp:Keyword Index="K" Term="clsDatabaseSVR.InsertSourcefile method" />
+      <MSHelp:Keyword Index="F" Term="EcmCloudWcf.Web.clsDatabaseSVR.InsertSourcefile" />
+      <MSHelp:Attr Name="APIType" Value="Managed" />
+      <MSHelp:Attr Name="APILocation" Value="SearchSVC.dll" />
+      <MSHelp:Attr Name="APIName" Value="EcmCloudWcf.Web.clsDatabaseSVR.InsertSourcefile" />
+      <MSHelp:Attr Name="DevLang" Value="CSharp" />
+      <MSHelp:Attr Name="DevLang" Value="VB" />
+      <MSHelp:Attr Name="Locale" Value="en-us" />
+      <MSHelp:Attr Name="TopicType" Value="kbSyntax" />
+      <MSHelp:Attr Name="TopicType" Value="apiref" />
+      <MSHelp:Attr Name="AssemblyVersion" Value="" />
+    </xml>
+  <link rel="stylesheet" href="../TOC.css"><script type="text/javascript" src="../TOC.js"></script></head>
+  <body onload="javascript: Initialize();" onresize="javascript: ResizeTree();">
+            <div id="TOCDiv" class="TOCDiv" style="width: 310px; float: left; position: relative; ">
+
+            <div id="divSearchOpts" class="SearchOpts" style="height: 95px; display: none;">
+                <div class="SearchOptsInner">
+                    <img class="TOCLink" onclick="javascript: ShowHideSearch(false);" src="../Close.png" height="24" width="24" alt="Hide Search" title="Hide Search" style="float: right;" />
+                    <span class="Title">Keyword(s) to search:</span>
+                </div>
+                <div class="SearchOptsInner">
+                    <input id="txtSearchText" type="text" style="width: 95.5%;" onkeypress="javascript: return OnSearchTextKeyPress(event);" />
+                </div>
+                <div class="SearchOptsInner">
+                    <input id="chkSortByTitle" type="checkbox" />&nbsp;Sort results by title
+                    <input type="button" value="Search" onclick="javascript: return PerformSearch();" style="float: right;" />
+                </div>
+            </div>
+
+            <div id="divIndexOpts" class="IndexOpts" style="height: 28px; display: none;">
+                <img class="TOCLink" onclick="javascript: ShowHideIndex(false);"
+                     src="../Close.png" height="24" width="24" alt="Hide Keyword Index" title="Hide Keyword Index" style="float: right;" />
+                <span class="Title">Keyword Index</span>
+            </div>
+
+            <div id="divNavOpts" class="NavOpts" style="height: 28px;">
+                <!--<img class="TOCLink" onclick="javascript: SyncTOC();" src="../SyncTOC.png"
+                     height="24" width="24" alt="Sync to TOC" title="Sync to TOC" />-->
+                <img class="TOCLink" onclick="javascript: ExpandOrCollapseAll(true);"
+                     src="../ExpandAll.png" height="24" width="24" alt="Expand all" title="Expand all" />
+                <img class="TOCLink" onclick="javascript: ExpandOrCollapseAll(false);"
+                     src="../CollapseAll.png" height="24" width="24" alt="Collapse all" title="Collapse all" />
+                <!--<img class="TOCLink" onclick="javascript: alert('Please make sure to use either Index.aspx or Index.php to enable the Keyword Index feature.');"
+                     src="../Index.png" height="24" width="24" alt="Keyword Index" title="Keyword Index" />-->
+                <img class="TOCLink" onclick="javascript: ShowHideSearch(true);"
+                     src="../Search.png" height="24" width="24" alt="Search" title="Search" />
+                <img class="TOCLink" onclick="javascript: ShowDirectLink();"
+                     src="../Link.png" height="24" width="24" alt="Get direct link to the displayed topic" title="Get direct link to the displayed topic" />
+                <a href="#" onclick="javascript: window.history.go(-1); return false;">
+                    <img class="TOCLink" style="float: right;"
+                         src="../Back.png" height="24" width="24" alt="Previous page" title="Previous page" />
+                </a>
+            </div>
+
+            <div class="Tree" id="divSearchResults" style="display: none;"
+                 onselectstart="javascript: return false;">
+            </div>
+
+            <div class="Tree" id="divIndexResults" style="display: none;"
+                 onselectstart="javascript: return false;">
+            </div>
+
+            <div class="Tree" id="divTree" onselectstart="javascript: return false;">
+              <div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="N-EcmCloudWcf.Web.htm" target="_self">EcmCloudWcf.Web Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web._ECM_SecureLoginDataSet.htm" target="_self">_ECM_SecureLoginDataSet Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsACTIVESEARCHGUIDS.htm" target="_self">clsACTIVESEARCHGUIDS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsARCHIVEHIST.htm" target="_self">clsARCHIVEHIST Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsARCHIVEHISTCONTENTTYPE.htm" target="_self">clsARCHIVEHISTCONTENTTYPE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsATTACHMENTTYPE.htm" target="_self">clsATTACHMENTTYPE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsCdf.htm" target="_self">clsCdf Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsDatabaseSVR.htm" target="_self">clsDatabaseSVR Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="AllMembers.T-EcmCloudWcf.Web.clsDatabaseSVR.htm" target="_self">clsDatabaseSVR Members</a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.-ctor.htm" target="_self">clsDatabaseSVR Constructor </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Fields.T-EcmCloudWcf.Web.clsDatabaseSVR.htm" target="_self">clsDatabaseSVR Fields</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Methods.T-EcmCloudWcf.Web.clsDatabaseSVR.htm" target="_self">clsDatabaseSVR Methods</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ActivateArchiveFolder.htm" target="_self">ActivateArchiveFolder Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ActiveSession.htm" target="_self">ActiveSession Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ActiveSessionGetVal.htm" target="_self">ActiveSessionGetVal Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddArchiveDir.htm" target="_self">AddArchiveDir Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.addContentHashKey.htm" target="_self">addContentHashKey Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddContentOwner.htm" target="_self">AddContentOwner Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddDefaultRetentionCode.htm" target="_self">AddDefaultRetentionCode Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.addDocSourceDescription.htm" target="_self">addDocSourceDescription Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.addDocSourceError.htm" target="_self">addDocSourceError Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.addDocSourceKeyWords.htm" target="_self">addDocSourceKeyWords Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.addEmailHashKey.htm" target="_self">addEmailHashKey Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddExcludedFiletypes.htm" target="_self">AddExcludedFiletypes Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddFileExt.htm" target="_self">AddFileExt Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddGroupLibraryAccess.htm" target="_self">AddGroupLibraryAccess Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddGroupUser.htm" target="_self">AddGroupUser Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddHashedDirName.htm" target="_self">AddHashedDirName Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddHashedFileName.htm" target="_self">AddHashedFileName Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.addImageUsingDataset.htm" target="_self">addImageUsingDataset Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddIncludedFiletypes.htm" target="_self">AddIncludedFiletypes Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.addJsonData.htm" target="_self">addJsonData Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddLibraryDirectory.htm" target="_self">AddLibraryDirectory Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddLibraryEmail.htm" target="_self">AddLibraryEmail Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddLibraryGroupUser.htm" target="_self">AddLibraryGroupUser Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddLibraryItems.htm" target="_self">AddLibraryItems Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddLookupData.htm" target="_self">AddLookupData Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddMachineSource.htm" target="_self">AddMachineSource Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddMissingCrc.htm" target="_self">AddMissingCrc Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddNulls.htm" target="_self">AddNulls Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddNullsToUpdate.htm" target="_self">AddNullsToUpdate Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddProfileFileTypes.htm" target="_self">AddProfileFileTypes Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddPstFolder.htm" target="_self">AddPstFolder Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddSecondarySOURCETYPE.htm" target="_self">AddSecondarySOURCETYPE Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddStdTriggers.htm" target="_self">AddStdTriggers Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.AddSysMsg.htm" target="_self">AddSysMsg Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddToSL.htm" target="_self">AddToSL Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddUploadFileData.htm" target="_self">AddUploadFileData Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AddUserGroup.htm" target="_self">AddUserGroup Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.adminExist.htm" target="_self">adminExist Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AlertSearch.htm" target="_self">AlertSearch Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AppendEmailOcrText.htm" target="_self">AppendEmailOcrText Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AppendImageHiddenText.htm" target="_self">AppendImageHiddenText Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AppendOcrText.htm" target="_self">AppendOcrText Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ApplyCC.htm" target="_self">ApplyCC Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ApplySqlStmt.htm" target="_self">ApplySqlStmt Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ArchiveDirExists.htm" target="_self">ArchiveDirExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ArchiveEmail.htm" target="_self">ArchiveEmail Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AttributeExists.htm" target="_self">AttributeExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.Audit.htm" target="_self">Audit Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.AuditInsert.htm" target="_self">AuditInsert Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.bFileNameExists.htm" target="_self">bFileNameExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.bIdenticalFile.htm" target="_self">bIdenticalFile Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.BlankOutSingleQuotes.htm" target="_self">BlankOutSingleQuotes Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.BuildAllCCs.htm" target="_self">BuildAllCCs Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.BuildAllMissingData.htm" target="_self">BuildAllMissingData Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.BuildAllRecips.htm" target="_self">BuildAllRecips Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ChangeUserContentPublic.htm" target="_self">ChangeUserContentPublic Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ChangeUserPassword.htm" target="_self">ChangeUserPassword Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ChangeUserPasswordAdmin.htm" target="_self">ChangeUserPasswordAdmin Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckAdminUser.htm" target="_self">ckAdminUser Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckArchChildEmailFolder.htm" target="_self">ckArchChildEmailFolder Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckArchEmailFolder.htm" target="_self">ckArchEmailFolder Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.ckAttributeExists.htm" target="_self">ckAttributeExists Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckAuthority.htm" target="_self">ckAuthority Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckBackupFolder.htm" target="_self">ckBackupFolder Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.CkColData.htm" target="_self">CkColData Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckContentFlags.htm" target="_self">ckContentFlags Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckContentGuidExists.htm" target="_self">ckContentGuidExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckDatasourceExists.htm" target="_self">ckDatasourceExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckDbConnection.htm" target="_self">ckDbConnection Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckDbUpdate.htm" target="_self">ckDbUpdate Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckDirectoryExists.htm" target="_self">ckDirectoryExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckDocExistByFqn.htm" target="_self">ckDocExistByFqn Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.ckDocumentExists.htm" target="_self">ckDocumentExists Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckEmailGuidExists.htm" target="_self">ckEmailGuidExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckExcelColName.htm" target="_self">ckExcelColName Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckExtExists.htm" target="_self">ckExtExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckFileExtExists.htm" target="_self">ckFileExtExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckFilesNeedUpdate.htm" target="_self">ckFilesNeedUpdate Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckFldLen.htm" target="_self">ckFldLen Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckFolderDisabled.htm" target="_self">ckFolderDisabled Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckFolderExists.htm" target="_self">ckFolderExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckMasterAlreadyDefined.htm" target="_self">ckMasterAlreadyDefined Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckMasterExists.htm" target="_self">ckMasterExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckMissingWorkingDirs.htm" target="_self">ckMissingWorkingDirs Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckModuleAuth.htm" target="_self">ckModuleAuth Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckNull.htm" target="_self">ckNull Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckParmsFolderExists.htm" target="_self">ckParmsFolderExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckProcessAsExists.htm" target="_self">ckProcessAsExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckRunParmExists.htm" target="_self">ckRunParmExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckSiteFacility.htm" target="_self">ckSiteFacility Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckSourceNeedsUpdate.htm" target="_self">ckSourceNeedsUpdate Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckUrlExists.htm" target="_self">ckUrlExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckUserExists.htm" target="_self">ckUserExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckUserInfoData.htm" target="_self">ckUserInfoData Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckUserLoginExists.htm" target="_self">ckUserLoginExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckUserStartUpParameter.htm" target="_self">ckUserStartUpParameter Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ckWorkingDirExists.htm" target="_self">ckWorkingDirExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.CleanLog.htm" target="_self">CleanLog Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.CleanOutOldListenerFiles.htm" target="_self">CleanOutOldListenerFiles Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.CleanText.htm" target="_self">CleanText Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.CleanUpEmailFolders.htm" target="_self">CleanUpEmailFolders Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.cleanUpLibraryItems.htm" target="_self">cleanUpLibraryItems Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.closeGlobalConection.htm" target="_self">closeGlobalConection Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.cntMachine.htm" target="_self">cntMachine Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.Compress.htm" target="_self">Compress Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.concatEmailBody.htm" target="_self">concatEmailBody Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ContentAddHash.htm" target="_self">ContentAddHash Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ContentHashRows.htm" target="_self">ContentHashRows Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ContentHashRowsApply.htm" target="_self">ContentHashRowsApply Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ContentOwnerExists.htm" target="_self">ContentOwnerExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.countGroupsUserBelongsTo.htm" target="_self">countGroupsUserBelongsTo Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.CountQuickRefItems.htm" target="_self">CountQuickRefItems Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.CountUserEntries.htm" target="_self">CountUserEntries Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.CreateNewWorkingDir.htm" target="_self">CreateNewWorkingDir Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DBCkConn.htm" target="_self">DBCkConn Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DBckContentOwnership.htm" target="_self">DBckContentOwnership Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DBCloseConn.htm" target="_self">DBCloseConn Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.DBCreateDataReader.htm" target="_self">DBCreateDataReader Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DBExecuteEncryptedSql.htm" target="_self">DBExecuteEncryptedSql Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.DBExecuteSql.htm" target="_self">DBExecuteSql Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DBExecuteSqlByConn.htm" target="_self">DBExecuteSqlByConn Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DBFixSingleQuotes.htm" target="_self">DBFixSingleQuotes Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DBgetGuid.htm" target="_self">DBgetGuid Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DBgetOwnerGuid.htm" target="_self">DBgetOwnerGuid Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DBGetSkipWords.htm" target="_self">DBGetSkipWords Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DBisAdmin.htm" target="_self">DBisAdmin Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DBisGlobalSearcher.htm" target="_self">DBisGlobalSearcher Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DBisSuperAdmin.htm" target="_self">DBisSuperAdmin Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DBLogMessage.htm" target="_self">DBLogMessage Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DBResetConn.htm" target="_self">DBResetConn Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DBSaveErrMsg.htm" target="_self">DBSaveErrMsg Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.DBTrace.htm" target="_self">DBTrace Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DbWriteToFile.htm" target="_self">DbWriteToFile Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.deActivateArchiveFolder.htm" target="_self">deActivateArchiveFolder Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.Decompress.htm" target="_self">Decompress Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DefineFileExt.htm" target="_self">DefineFileExt Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DeleteContent.htm" target="_self">DeleteContent Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DeleteDataSourceAndAttrs.htm" target="_self">DeleteDataSourceAndAttrs Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DeleteDocumentByGuid.htm" target="_self">DeleteDocumentByGuid Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DeleteDocumentByName.htm" target="_self">DeleteDocumentByName Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DeleteEmailArchiveFolder.htm" target="_self">DeleteEmailArchiveFolder Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DeleteEmailByGuid.htm" target="_self">DeleteEmailByGuid Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DeleteGroupUsers.htm" target="_self">DeleteGroupUsers Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.DeleteLibraryGroupUser.htm" target="_self">DeleteLibraryGroupUser Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DeleteMarkedImageCopyFiles.htm" target="_self">DeleteMarkedImageCopyFiles Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DeleteSourceByGuid.htm" target="_self">DeleteSourceByGuid Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DeleteTableUser.htm" target="_self">DeleteTableUser Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DeleteUser.htm" target="_self">DeleteUser Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.delFileParms.htm" target="_self">delFileParms Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.delSecondarySOURCETYPE.htm" target="_self">delSecondarySOURCETYPE Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.delSubDirs.htm" target="_self">delSubDirs Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.DownLoadDocument.htm" target="_self">DownLoadDocument Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.EmailAddHash.htm" target="_self">EmailAddHash Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.EmailExists.htm" target="_self">EmailExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.EmailHashRows.htm" target="_self">EmailHashRows Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.EmailHashRowsApply.htm" target="_self">EmailHashRowsApply Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ExchangeEmailExists.htm" target="_self">ExchangeEmailExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ExecCountSQL.htm" target="_self">ExecCountSQL Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ExecSP.htm" target="_self">ExecSP Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ExecuteSearchContent.htm" target="_self">ExecuteSearchContent Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ExecuteSearchDT.htm" target="_self">ExecuteSearchDT Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ExecuteSearchEmail.htm" target="_self">ExecuteSearchEmail Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ExecuteSearchJson.htm" target="_self">ExecuteSearchJson Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ExecuteSqlLookupTable.htm" target="_self">ExecuteSqlLookupTable Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ExecuteSqlNoAudit.htm" target="_self">ExecuteSqlNoAudit Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ExecuteSqlNoTx.htm" target="_self">ExecuteSqlNoTx Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ExecuteSqlStack.htm" target="_self">ExecuteSqlStack Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ExecuteSqlTx.htm" target="_self">ExecuteSqlTx Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ExpandInflectionTerms.htm" target="_self">ExpandInflectionTerms Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.FillSortedList.htm" target="_self">FillSortedList Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.FindAllIndexCols.htm" target="_self">FindAllIndexCols Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.FindAllTableIndexes.htm" target="_self">FindAllTableIndexes Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.FixEmailFields.htm" target="_self">FixEmailFields Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.FixEmailKeys.htm" target="_self">FixEmailKeys Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.FixEmailRecipients.htm" target="_self">FixEmailRecipients Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.FixIdExists.htm" target="_self">FixIdExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.genAdminContentSqlXX.htm" target="_self">genAdminContentSqlXX Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.genContenCountSql.htm" target="_self">genContenCountSql Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.genEmailCountSql.htm" target="_self">genEmailCountSql Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GenerateSQL.htm" target="_self">GenerateSQL Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.genIsInLibrariesSql.htm" target="_self">genIsInLibrariesSql Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.genSingleLibrarySelect.htm" target="_self">genSingleLibrarySelect Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetActiveDatabases.htm" target="_self">GetActiveDatabases Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.GetActiveEmailFolders.htm" target="_self">GetActiveEmailFolders Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getAdminUserId.htm" target="_self">getAdminUserId Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getAllColsSql.htm" target="_self">getAllColsSql Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetAllExcludedFiletypes.htm" target="_self">GetAllExcludedFiletypes Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetAllIncludedFiletypes.htm" target="_self">GetAllIncludedFiletypes Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetAllLibrariesUserCanAccess.htm" target="_self">GetAllLibrariesUserCanAccess Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getArchEmailFolderIDByFolder.htm" target="_self">getArchEmailFolderIDByFolder Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getArchEmailFolderRetentionCode.htm" target="_self">getArchEmailFolderRetentionCode Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getArchiveFolderIds.htm" target="_self">getArchiveFolderIds Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getAttachedMachineName.htm" target="_self">getAttachedMachineName Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetAttachmentFromDB.htm" target="_self">GetAttachmentFromDB Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getAttachmentWeights.htm" target="_self">getAttachmentWeights Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getAttributeAllowedValues.htm" target="_self">getAttributeAllowedValues Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getAttributeDataType2.htm" target="_self">getAttributeDataType2 Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getAuthority.htm" target="_self">getAuthority Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getBinaryPassword.htm" target="_self">getBinaryPassword Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getCntSource.htm" target="_self">getCntSource Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getColumnDataType.htm" target="_self">getColumnDataType Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetConnection.htm" target="_self">GetConnection Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getContactID.htm" target="_self">getContactID Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetContentArchiveFileFolders.htm" target="_self">GetContentArchiveFileFolders Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getContentColumns.htm" target="_self">getContentColumns Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getContentDT.htm" target="_self">getContentDT Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetContentMetaData.htm" target="_self">GetContentMetaData Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getContentOwnerGuid.htm" target="_self">getContentOwnerGuid Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getContentTblCols.htm" target="_self">getContentTblCols Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getContractID.htm" target="_self">getContractID Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getContractIDKey.htm" target="_self">getContractIDKey Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.getCountDataSourceFiles.htm" target="_self">getCountDataSourceFiles Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getCountStoreIdByFolder.htm" target="_self">getCountStoreIdByFolder Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getCpuTime.htm" target="_self">getCpuTime Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetCurrDir.htm" target="_self">GetCurrDir Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetCurrMachineCnt.htm" target="_self">GetCurrMachineCnt Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetCurrUserCnt.htm" target="_self">GetCurrUserCnt Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getDataSourceImageLength.htm" target="_self">getDataSourceImageLength Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getDatasourceParm.htm" target="_self">getDatasourceParm Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getDbInfo.htm" target="_self">getDbInfo Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getDbSize.htm" target="_self">getDbSize Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getDBSIZEMB.htm" target="_self">getDBSIZEMB Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getDefaultScreen.htm" target="_self">getDefaultScreen Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getDefaultThesaurus.htm" target="_self">getDefaultThesaurus Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getDescription.htm" target="_self">getDescription Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getDeviceIDByVal.htm" target="_self">getDeviceIDByVal Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetDirectories.htm" target="_self">GetDirectories Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetDirectoryData.htm" target="_self">GetDirectoryData Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetDirectoryLibraries.htm" target="_self">GetDirectoryLibraries Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getDirectoryParms.htm" target="_self">getDirectoryParms Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getDirGuid.htm" target="_self">getDirGuid Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getDirListenerNameByGuid.htm" target="_self">getDirListenerNameByGuid Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getDirProfile.htm" target="_self">getDirProfile Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetDirRetentionCode.htm" target="_self">GetDirRetentionCode Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getDisabledDirectories.htm" target="_self">getDisabledDirectories Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getDocCatIdByName.htm" target="_self">getDocCatIdByName Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetDocFilename.htm" target="_self">GetDocFilename Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getDocIdByFqn.htm" target="_self">getDocIdByFqn Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getDocSize.htm" target="_self">getDocSize Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetDocTitle.htm" target="_self">GetDocTitle Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getDocumentFqnById.htm" target="_self">getDocumentFqnById Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetDsValue.htm" target="_self">GetDsValue Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetElapsedTime.htm" target="_self">GetElapsedTime Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetEmailAttachments.htm" target="_self">GetEmailAttachments Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetEmailBody.htm" target="_self">GetEmailBody Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getEmailColumns.htm" target="_self">getEmailColumns Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetEmailDBConnStr.htm" target="_self">GetEmailDBConnStr Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getEmailFileRestoreName.htm" target="_self">getEmailFileRestoreName Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetEmailFolderParms.htm" target="_self">GetEmailFolderParms Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetEmailFolders.htm" target="_self">GetEmailFolders Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getEmailRestoreFqnParms.htm" target="_self">getEmailRestoreFqnParms Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetEmailRetentionCode.htm" target="_self">GetEmailRetentionCode Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getEmailSize.htm" target="_self">getEmailSize Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetEmailSubject.htm" target="_self">GetEmailSubject Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getErrorLogs.htm" target="_self">getErrorLogs Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getExcludedEmails.htm" target="_self">getExcludedEmails Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetExcludedFiletypes.htm" target="_self">GetExcludedFiletypes Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getFilenameByGuid.htm" target="_self">getFilenameByGuid Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetFilesInZipDetail.htm" target="_self">GetFilesInZipDetail Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getFirstRetentionCode.htm" target="_self">getFirstRetentionCode Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getFolderIdByName.htm" target="_self">getFolderIdByName Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getFolderNameById.htm" target="_self">getFolderNameById Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getFormHelpData.htm" target="_self">getFormHelpData Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getFqnFromGuid.htm" target="_self">getFqnFromGuid Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getFqns.htm" target="_self">getFqns Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getGlobalSeachCnt.htm" target="_self">getGlobalSeachCnt Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getGridLayout.htm" target="_self">getGridLayout Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetGroupLibraries.htm" target="_self">GetGroupLibraries Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getGroupOwnerGuidByGroupName.htm" target="_self">getGroupOwnerGuidByGroupName Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getGroupUsers.htm" target="_self">getGroupUsers Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetGuidByFqn.htm" target="_self">GetGuidByFqn Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetGuidByURL.htm" target="_self">GetGuidByURL Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getHelpConnStr.htm" target="_self">getHelpConnStr Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getHelpEmail.htm" target="_self">getHelpEmail Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getHelpInfo.htm" target="_self">getHelpInfo Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetImageSize.htm" target="_self">GetImageSize Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetIncludedFiles.htm" target="_self">GetIncludedFiles Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetIncludedFiletypes.htm" target="_self">GetIncludedFiletypes Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getIndexedTypes.htm" target="_self">getIndexedTypes Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getJsonData.htm" target="_self">getJsonData Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.getKeyByLookupCol.htm" target="_self">getKeyByLookupCol Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getLastProjectID.htm" target="_self">getLastProjectID Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getLastSuccessfulArchiveDate.htm" target="_self">getLastSuccessfulArchiveDate Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getLastUploadID.htm" target="_self">getLastUploadID Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetLastUploadTime.htm" target="_self">GetLastUploadTime Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getLibDirs.htm" target="_self">getLibDirs Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetLibOwnerByName.htm" target="_self">GetLibOwnerByName Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getLibraryOwnerGuids.htm" target="_self">getLibraryOwnerGuids Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getLibUsers.htm" target="_self">getLibUsers Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getLicenseCount.htm" target="_self">getLicenseCount Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getLicenseDataCurrent.htm" target="_self">getLicenseDataCurrent Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetListenerFiles.htm" target="_self">GetListenerFiles Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetListOfAssignedLibraries.htm" target="_self">GetListOfAssignedLibraries Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getListOfContainingLibraries.htm" target="_self">getListOfContainingLibraries Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getListOfStrings.htm" target="_self">getListOfStrings Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getListOfStrings01.htm" target="_self">getListOfStrings01 Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getListOfStrings02.htm" target="_self">getListOfStrings02 Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getListOfStrings03.htm" target="_self">getListOfStrings03 Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getListOfStrings04.htm" target="_self">getListOfStrings04 Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getListOfStrings1.htm" target="_self">getListOfStrings1 Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getListOfStrings2.htm" target="_self">getListOfStrings2 Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getListOfStrings3.htm" target="_self">getListOfStrings3 Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getListOfStrings4.htm" target="_self">getListOfStrings4 Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getLoggedInUser.htm" target="_self">getLoggedInUser Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.GetMaxDataSourceVersionNbr.htm" target="_self">GetMaxDataSourceVersionNbr Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetMaxLicenseID.htm" target="_self">GetMaxLicenseID Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getMaxPhotoID.htm" target="_self">getMaxPhotoID Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetMaxVersionNbr.htm" target="_self">GetMaxVersionNbr Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetMetaDataCombo.htm" target="_self">GetMetaDataCombo Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getMetricPeriodIdByKey.htm" target="_self">getMetricPeriodIdByKey Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getMissingEmailVaules.htm" target="_self">getMissingEmailVaules Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getMissingVaules.htm" target="_self">getMissingVaules Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getModifiedFiles.htm" target="_self">getModifiedFiles Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getNameOfCurrentServer.htm" target="_self">getNameOfCurrentServer Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.GetNbrMachine.htm" target="_self">GetNbrMachine Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetNbrUsers.htm" target="_self">GetNbrUsers Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getNextDocID.htm" target="_self">getNextDocID Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getNextDocVersionNbr.htm" target="_self">getNextDocVersionNbr Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getNextID.htm" target="_self">getNextID Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.getNextKey.htm" target="_self">getNextKey Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getOcrText.htm" target="_self">getOcrText Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getOcrTypes.htm" target="_self">getOcrTypes Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getOneVal.htm" target="_self">getOneVal Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getParentFolderNameById.htm" target="_self">getParentFolderNameById Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetParmValue.htm" target="_self">GetParmValue Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getPdfProcessingDir.htm" target="_self">getPdfProcessingDir Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getPhotoExt.htm" target="_self">getPhotoExt Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getPhotoIDBycaption.htm" target="_self">getPhotoIDBycaption Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getPhotoImgType.htm" target="_self">getPhotoImgType Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.getPhotoTitle.htm" target="_self">getPhotoTitle Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetProcessAsList.htm" target="_self">GetProcessAsList Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getProcessFileAsExt.htm" target="_self">getProcessFileAsExt Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getProcesssAsExt.htm" target="_self">getProcesssAsExt Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetProfileDesc.htm" target="_self">GetProfileDesc Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getPw.htm" target="_self">getPw Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetQuickArchiveFileFolders.htm" target="_self">GetQuickArchiveFileFolders Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getQuickRefId.htm" target="_self">getQuickRefId Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getQuickRefIdNbr.htm" target="_self">getQuickRefIdNbr Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getQuickRowCnt.htm" target="_self">getQuickRowCnt Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getRestoreFile.htm" target="_self">getRestoreFile Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getRestoreFileCount.htm" target="_self">getRestoreFileCount Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetRetentionMgr.htm" target="_self">GetRetentionMgr Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getRetentionPeriod.htm" target="_self">getRetentionPeriod Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getRetentionPeriodMax.htm" target="_self">getRetentionPeriodMax Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getRetentionPeriodYearsMax.htm" target="_self">getRetentionPeriodYearsMax Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetRowByKey.htm" target="_self">GetRowByKey Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetRowCountSql.htm" target="_self">GetRowCountSql Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getRunParm.htm" target="_self">getRunParm Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getSAASState.htm" target="_self">getSAASState Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getSatusFlags.htm" target="_self">getSatusFlags Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getSavedValue.htm" target="_self">getSavedValue Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getScreenState.htm" target="_self">getScreenState Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getSdCols.htm" target="_self">getSdCols Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getSearchParmList.htm" target="_self">getSearchParmList Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getSearchSchedule.htm" target="_self">getSearchSchedule Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getSearchState.htm" target="_self">getSearchState Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getServerDbName.htm" target="_self">getServerDbName Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getServerIdentifier.htm" target="_self">getServerIdentifier Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getServerInstanceName.htm" target="_self">getServerInstanceName Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getServerMachineName.htm" target="_self">getServerMachineName Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getSourceCrc.htm" target="_self">getSourceCrc Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getSourceDatatypeByGuid.htm" target="_self">getSourceDatatypeByGuid Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getSourceGuidByFqn.htm" target="_self">getSourceGuidByFqn Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.getSourceLength.htm" target="_self">getSourceLength Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getSourceName.htm" target="_self">getSourceName Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getSqlAdaptor.htm" target="_self">getSqlAdaptor Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getSqlInstanceIdentifier.htm" target="_self">getSqlInstanceIdentifier Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getSqlServerVersion.htm" target="_self">getSqlServerVersion Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getSystemParm.htm" target="_self">getSystemParm Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getTableCount.htm" target="_self">getTableCount Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetTableNameFromSql.htm" target="_self">GetTableNameFromSql Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getTblColString.htm" target="_self">getTblColString Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getThesaurusConnectionString.htm" target="_self">getThesaurusConnectionString Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getThesaurusID.htm" target="_self">getThesaurusID Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetTypeSqlStmt.htm" target="_self">GetTypeSqlStmt Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getUserAuth.htm" target="_self">getUserAuth Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getUserEmailAddrByUserID.htm" target="_self">getUserEmailAddrByUserID Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetUserGroupMembership.htm" target="_self">GetUserGroupMembership Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getUserGuidID.htm" target="_self">getUserGuidID Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getUserIdByUserLoginId.htm" target="_self">getUserIdByUserLoginId Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getUserLoginByUserid.htm" target="_self">getUserLoginByUserid Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getUserNameByEmailAddr.htm" target="_self">getUserNameByEmailAddr Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getUserNameByID.htm" target="_self">getUserNameByID Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.getUserParm.htm" target="_self">getUserParm Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getUserParms.htm" target="_self">getUserParms Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getUserPW.htm" target="_self">getUserPW Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getUserType.htm" target="_self">getUserType Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getVersionInfo.htm" target="_self">getVersionInfo Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getWebMetadata.htm" target="_self">getWebMetadata Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetWhereClauseFromSql.htm" target="_self">GetWhereClauseFromSql Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getWordInflections.htm" target="_self">getWordInflections Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.getWorkingDirectory.htm" target="_self">getWorkingDirectory Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.GetXrt.htm" target="_self">GetXrt Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.hasDocumentBeenUpdated.htm" target="_self">hasDocumentBeenUpdated Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.iCount.htm" target="_self">iCount Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.iCountContent.htm" target="_self">iCountContent Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.iCountNbrEmailAttachments.htm" target="_self">iCountNbrEmailAttachments Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.iCountUserContent.htm" target="_self">iCountUserContent Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.iCountUserEmails.htm" target="_self">iCountUserEmails Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.iDataExist.htm" target="_self">iDataExist Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.iExecCountStmt.htm" target="_self">iExecCountStmt Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.iGetMaxRowNbrFromXml.htm" target="_self">iGetMaxRowNbrFromXml Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.iGetRowCount.htm" target="_self">iGetRowCount Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.IncrementNextID.htm" target="_self">IncrementNextID Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.InitializeServiceParameters.htm" target="_self">InitializeServiceParameters Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.InsertAttachmentFqn.htm" target="_self">InsertAttachmentFqn Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.InsertCoOwner.htm" target="_self">InsertCoOwner Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.InsertEmail.htm" target="_self">InsertEmail Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.InsertEmailBinary.htm" target="_self">InsertEmailBinary Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.InsertEmailMsg.htm" target="_self">InsertEmailMsg Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.InsertFileAudit.htm" target="_self">InsertFileAudit Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.InsertSourcefile.htm" target="_self">InsertSourcefile Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.InsertSrcAttrib.htm" target="_self">InsertSrcAttrib Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.inventoryContentLibraryItems.htm" target="_self">inventoryContentLibraryItems Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.inventoryEmailLibraryItems.htm" target="_self">inventoryEmailLibraryItems Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.isArchiveDisabled.htm" target="_self">isArchiveDisabled Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.isClientOnly.htm" target="_self">isClientOnly Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.isDirAdminDisabled.htm" target="_self">isDirAdminDisabled Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.isDirectoryDisabled.htm" target="_self">isDirectoryDisabled Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.isDirEnabled.htm" target="_self">isDirEnabled Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.iSelectCount.htm" target="_self">iSelectCount Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.isEmailPublic.htm" target="_self">isEmailPublic Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.isEmailStored.htm" target="_self">isEmailStored Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.isExtendedPdfProcessing.htm" target="_self">isExtendedPdfProcessing Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.isImageFile.htm" target="_self">isImageFile Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.isIndexed.htm" target="_self">isIndexed Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.isLibItemOwner.htm" target="_self">isLibItemOwner Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.isLibOwner.htm" target="_self">isLibOwner Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.isListeningOn.htm" target="_self">isListeningOn Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.isMachineRegistered.htm" target="_self">isMachineRegistered Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.isOcrd.htm" target="_self">isOcrd Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.isParentDirDisabled.htm" target="_self">isParentDirDisabled Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.isPublicAllowed.htm" target="_self">isPublicAllowed Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.isSingleInstance.htm" target="_self">isSingleInstance Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.isSourcefileOlderThanLastEntry.htm" target="_self">isSourcefileOlderThanLastEntry Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.isSubDirIncluded.htm" target="_self">isSubDirIncluded Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.isSubDirIncludedBitON.htm" target="_self">isSubDirIncludedBitON Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.isSubDirProcessed.htm" target="_self">isSubDirProcessed Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ItemExists.htm" target="_self">ItemExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.LicenseExists.htm" target="_self">LicenseExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.LicenseVersionExist.htm" target="_self">LicenseVersionExist Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.LimitToExistingRecs.htm" target="_self">LimitToExistingRecs Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.LinkRunId.htm" target="_self">LinkRunId Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.LoadAvailFileTypes.htm" target="_self">LoadAvailFileTypes Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.LoadAvailUsers.htm" target="_self">LoadAvailUsers Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.LoadColInfo.htm" target="_self">LoadColInfo Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.LoadEntryIdByFolder.htm" target="_self">LoadEntryIdByFolder Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.LoadExcludedFileTypes.htm" target="_self">LoadExcludedFileTypes Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.LoadFileTypeProfiles.htm" target="_self">LoadFileTypeProfiles Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.LoadIncludedFileTypes.htm" target="_self">LoadIncludedFileTypes Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.loadReassignHistory.htm" target="_self">loadReassignHistory Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.LoadRetentionCodes.htm" target="_self">LoadRetentionCodes Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.LoadRsFromXML.htm" target="_self">LoadRsFromXML Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.LoadUserSearchHistory.htm" target="_self">LoadUserSearchHistory Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.LogEntryNew.htm" target="_self">LogEntryNew Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.LogEntryUpdate.htm" target="_self">LogEntryUpdate Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.MarkImageCopyForDeletion.htm" target="_self">MarkImageCopyForDeletion Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.MergeEmailAttachments.htm" target="_self">MergeEmailAttachments Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.NewID.htm" target="_self">NewID Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateAllUserLibCombo.htm" target="_self">PopulateAllUserLibCombo Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateComboBox.htm" target="_self">PopulateComboBox Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateComboBoxMerge.htm" target="_self">PopulateComboBoxMerge Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateCoOwnerGrid.htm" target="_self">PopulateCoOwnerGrid Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateDgAssigned.htm" target="_self">PopulateDgAssigned Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateDgGroupUsers.htm" target="_self">PopulateDgGroupUsers Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateEmailGridWithNoWeights.htm" target="_self">PopulateEmailGridWithNoWeights Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateEmailGridWithWeights.htm" target="_self">PopulateEmailGridWithWeights Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateGroupUserGrid.htm" target="_self">PopulateGroupUserGrid Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateGroupUserLibCombo.htm" target="_self">PopulateGroupUserLibCombo Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateLibCombo.htm" target="_self">PopulateLibCombo Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateLibItemsGrid.htm" target="_self">PopulateLibItemsGrid Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateLibraryGrid.htm" target="_self">PopulateLibraryGrid Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateLibraryUsersGrid.htm" target="_self">PopulateLibraryUsersGrid Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateListBox.htm" target="_self">PopulateListBox Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateListBoxMerge.htm" target="_self">PopulateListBoxMerge Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateListBoxRemove.htm" target="_self">PopulateListBoxRemove Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateMetricPeriodSortedList.htm" target="_self">PopulateMetricPeriodSortedList Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateProjectSortedList.htm" target="_self">PopulateProjectSortedList Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateProjectTeamSortedList.htm" target="_self">PopulateProjectTeamSortedList Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateSecureLoginCB.htm" target="_self">PopulateSecureLoginCB Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateSecureLoginCB_V2.htm" target="_self">PopulateSecureLoginCB_V2 Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="about:blank" target="_self">M:EcmCloudWcf.Web.clsDatabaseSVR.populateSortedLists(System.Int32@,System.String,System.String,System.String)</a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateSortedLists.htm" target="_self">populateSortedLists Method (Int32, String, String, String)</a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateSourceGridNoWeights.htm" target="_self">PopulateSourceGridNoWeights Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateSourceGridWithWeights.htm" target="_self">PopulateSourceGridWithWeights Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateUserGrid.htm" target="_self">PopulateUserGrid Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.PopulateUserSL.htm" target="_self">PopulateUserSL Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ProcessDates.htm" target="_self">ProcessDates Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.RebuildCrossIndexFileTypes.htm" target="_self">RebuildCrossIndexFileTypes Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.RebuildCrossIndexFileTypesEmail.htm" target="_self">RebuildCrossIndexFileTypesEmail Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.RebuildFulltextCatalog.htm" target="_self">RebuildFulltextCatalog Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.RecallUserSearch.htm" target="_self">RecallUserSearch Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.RecordExists.htm" target="_self">RecordExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.RecordGrowth.htm" target="_self">RecordGrowth Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.Refactor.htm" target="_self">Refactor Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.RefactorUserid.htm" target="_self">RefactorUserid Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.RegisterArchiveFile.htm" target="_self">RegisterArchiveFile Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.RegisterEcmClient.htm" target="_self">RegisterEcmClient Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.RegisterMachineToDB.htm" target="_self">RegisterMachineToDB Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.removeExpiredAlerts.htm" target="_self">removeExpiredAlerts Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.RemoveGroupUser.htm" target="_self">RemoveGroupUser Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.RemoveLibraryDirectories.htm" target="_self">RemoveLibraryDirectories Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.RemoveLibraryEmails.htm" target="_self">RemoveLibraryEmails Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.RemoveNullEmails.htm" target="_self">RemoveNullEmails Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.RemoveNullSource.htm" target="_self">RemoveNullSource Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.removeRestoreFileByGuid.htm" target="_self">removeRestoreFileByGuid Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.removeRestoreFiles.htm" target="_self">removeRestoreFiles Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.removeTempOcrFiles.htm" target="_self">removeTempOcrFiles Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ResetLibraryUsersCount.htm" target="_self">ResetLibraryUsersCount Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.resetMissingEmailIds.htm" target="_self">resetMissingEmailIds Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.RetentionTempCountType.htm" target="_self">RetentionTempCountType Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.RetentionTempInsert.htm" target="_self">RetentionTempInsert Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.RetentionTempZeroize.htm" target="_self">RetentionTempZeroize Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.RetrieveDocument.htm" target="_self">RetrieveDocument Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.retrieveSearchHistory.htm" target="_self">retrieveSearchHistory Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.RunUnattended.htm" target="_self">RunUnattended Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SaveClickStats.htm" target="_self">SaveClickStats Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.saveGridLayout.htm" target="_self">saveGridLayout Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.saveHistory.htm" target="_self">saveHistory Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.saveLicenseCutAndPaste.htm" target="_self">saveLicenseCutAndPaste Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.saveRestoreFile.htm" target="_self">saveRestoreFile Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SaveRunParm.htm" target="_self">SaveRunParm Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.saveScreenState.htm" target="_self">saveScreenState Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.saveSearchParms.htm" target="_self">saveSearchParms Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.saveSearchParmsHistory.htm" target="_self">saveSearchParmsHistory Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.saveSearchSchedule.htm" target="_self">saveSearchSchedule Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.saveSearchState.htm" target="_self">saveSearchState Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SaveSearchStats.htm" target="_self">SaveSearchStats Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SaveSearchWords.htm" target="_self">SaveSearchWords Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SaveUser.htm" target="_self">SaveUser Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SaveUserSearch.htm" target="_self">SaveUserSearch Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.scheduleFileDownLoad.htm" target="_self">scheduleFileDownLoad Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SearchContent.htm" target="_self">SearchContent Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SearchEmails.htm" target="_self">SearchEmails Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SelCount.htm" target="_self">SelCount Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SelectOneEmailParm.htm" target="_self">SelectOneEmailParm Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.setActiveEmailFolders.htm" target="_self">setActiveEmailFolders Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SetConfigDb.htm" target="_self">SetConfigDb Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.setConnThesaurusStr.htm" target="_self">setConnThesaurusStr Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.SetDocumentPublicFlag.htm" target="_self">SetDocumentPublicFlag Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SetDocumentPublicFlagByOwnerDir.htm" target="_self">SetDocumentPublicFlagByOwnerDir Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SetDocumentToMaster.htm" target="_self">SetDocumentToMaster Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SetEmailOcrText.htm" target="_self">SetEmailOcrText Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SetEmailPublicFlag.htm" target="_self">SetEmailPublicFlag Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SetExchangeDefaultRetentionCode.htm" target="_self">SetExchangeDefaultRetentionCode Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SetFolderAsActive.htm" target="_self">SetFolderAsActive Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.setGlobalConection.htm" target="_self">setGlobalConection Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SetImageHiddenText.htm" target="_self">SetImageHiddenText Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.setMaxFileUploadSize.htm" target="_self">setMaxFileUploadSize Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SetOcrAttributesToFail.htm" target="_self">SetOcrAttributesToFail Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SetOcrAttributesToNotPerformed.htm" target="_self">SetOcrAttributesToNotPerformed Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SetOcrAttributesToPass.htm" target="_self">SetOcrAttributesToPass Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.setpW.htm" target="_self">setpW Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.setRetentionDate.htm" target="_self">setRetentionDate Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SetSAASState.htm" target="_self">SetSAASState Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.setSearchParms.htm" target="_self">setSearchParms Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.setSecureLoginParms.htm" target="_self">setSecureLoginParms Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.setServerIdentifier.htm" target="_self">setServerIdentifier Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SetSourceGlobalAccessFlags.htm" target="_self">SetSourceGlobalAccessFlags Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.setSqlInstanceIdentifier.htm" target="_self">setSqlInstanceIdentifier Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.setUploadSuccessTrue.htm" target="_self">setUploadSuccessTrue Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SetUserDefaultNotifications.htm" target="_self">SetUserDefaultNotifications Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ShowGraphicMetaDataScreen.htm" target="_self">ShowGraphicMetaDataScreen Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SP_ApplyUpdate.htm" target="_self">SP_ApplyUpdate Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.spCkNextID.htm" target="_self">spCkNextID Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.SqlQry.htm" target="_self">SqlQry Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SqlQryNewThread.htm" target="_self">SqlQryNewThread Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SqlQryRemoteConn.htm" target="_self">SqlQryRemoteConn Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.StrToByteArray.htm" target="_self">StrToByteArray Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SyncSourceOwners.htm" target="_self">SyncSourceOwners Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.SysParmExists.htm" target="_self">SysParmExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.TraceActivity.htm" target="_self">TraceActivity Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UpdateArchiveFlag.htm" target="_self">UpdateArchiveFlag Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UpdateAttachment.htm" target="_self">UpdateAttachment Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UpdateAttachmentByFQN.htm" target="_self">UpdateAttachmentByFQN Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UpdateAttachmentCounts.htm" target="_self">UpdateAttachmentCounts Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UpdateBlob.htm" target="_self">UpdateBlob Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.UpdateCurrArchiveStats.htm" target="_self">UpdateCurrArchiveStats Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UpdateDocCrc.htm" target="_self">UpdateDocCrc Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UpdateDocDir.htm" target="_self">UpdateDocDir Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UpdateDocFqn.htm" target="_self">UpdateDocFqn Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UpdateDocOriginalFileType.htm" target="_self">UpdateDocOriginalFileType Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-EcmCloudWcf.Web.clsDatabaseSVR.UpdateDocSize.htm" target="_self">UpdateDocSize Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UpdateDoNotChangeHelpText.htm" target="_self">UpdateDoNotChangeHelpText Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UpdateEmailBinary.htm" target="_self">UpdateEmailBinary Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UpdateEmailIndicator.htm" target="_self">UpdateEmailIndicator Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UpdateEmailMsg.htm" target="_self">UpdateEmailMsg Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.updateImageUsingDataset.htm" target="_self">updateImageUsingDataset Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UpdateIP.htm" target="_self">UpdateIP Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UpdateIsContainedWithinZipFile.htm" target="_self">UpdateIsContainedWithinZipFile Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UpdateMetaData.htm" target="_self">UpdateMetaData Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UpdateRemoteMachine.htm" target="_self">UpdateRemoteMachine Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.updateSourcefile.htm" target="_self">updateSourcefile Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UpdateSourceImage.htm" target="_self">UpdateSourceImage Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UpdateSourceImageCompressed.htm" target="_self">UpdateSourceImageCompressed Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UpdateUrlBinaryHtml.htm" target="_self">UpdateUrlBinaryHtml Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UpdateVersionInfo.htm" target="_self">UpdateVersionInfo Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UpdateZipFileIndicator.htm" target="_self">UpdateZipFileIndicator Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UpdateZipFileOwnerGuid.htm" target="_self">UpdateZipFileOwnerGuid Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UseEncrypted.htm" target="_self">UseEncrypted Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UserHasAuthority.htm" target="_self">UserHasAuthority Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UserParmDelete.htm" target="_self">UserParmDelete Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UserParmExists.htm" target="_self">UserParmExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UserParmInsert.htm" target="_self">UserParmInsert Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UserParmInsertUpdate.htm" target="_self">UserParmInsertUpdate Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UserParmRetrive.htm" target="_self">UserParmRetrive Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.UserParmUpdate.htm" target="_self">UserParmUpdate Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.validateAttachSecureLogin.htm" target="_self">validateAttachSecureLogin Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ValidateContentOwnership.htm" target="_self">ValidateContentOwnership Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ValidateCoOwnerByVal.htm" target="_self">ValidateCoOwnerByVal Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ValidateCoOwnerOfContent.htm" target="_self">ValidateCoOwnerOfContent Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ValidateCurrUserPW.htm" target="_self">ValidateCurrUserPW Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ValidateDeviceID.htm" target="_self">ValidateDeviceID Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ValidateExtExists.htm" target="_self">ValidateExtExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ValidateFileTypesEmail.htm" target="_self">ValidateFileTypesEmail Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.validateLogin.htm" target="_self">validateLogin Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ValidateUserByUid.htm" target="_self">ValidateUserByUid Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ValidateUserId.htm" target="_self">ValidateUserId Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.VerifyOrphanEmailData.htm" target="_self">VerifyOrphanEmailData Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.VerifyOrphanSourceData.htm" target="_self">VerifyOrphanSourceData Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.VerifyStandardTriggers.htm" target="_self">VerifyStandardTriggers Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.VerifyUserID.htm" target="_self">VerifyUserID Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.writeAttachmentFromDbWriteToFile.htm" target="_self">writeAttachmentFromDbWriteToFile Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.writeEmailFromDbToFile.htm" target="_self">writeEmailFromDbToFile Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.writeImageSourceDataFromDbWriteToFile.htm" target="_self">writeImageSourceDataFromDbWriteToFile Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.WriteXMLData.htm" target="_self">WriteXMLData Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.xckEmailExists.htm" target="_self">xckEmailExists Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.xGetContentArchiveFileFolders.htm" target="_self">xGetContentArchiveFileFolders Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.xGetXrt.htm" target="_self">xGetXrt Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.xGetXrtID.htm" target="_self">xGetXrtID Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.xInsertAttachment.htm" target="_self">xInsertAttachment Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.xUpdateAllDocCrc.htm" target="_self">xUpdateAllDocCrc Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.xxSqlQry.htm" target="_self">xxSqlQry Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ZeroizeEmailToDelete.htm" target="_self">ZeroizeEmailToDelete Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ZeroizeGlobalSearch.htm" target="_self">ZeroizeGlobalSearch Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmCloudWcf.Web.clsDatabaseSVR.ZeroTrace.htm" target="_self">ZeroTrace Method </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsDataGrid.htm" target="_self">clsDataGrid Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsDb.htm" target="_self">clsDb Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsDmaSVR.htm" target="_self">clsDmaSVR Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsEmail.htm" target="_self">clsEmail Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsFile.htm" target="_self">clsFile Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsFILESTODELETE.htm" target="_self">clsFILESTODELETE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsGeneratorSVR.htm" target="_self">clsGeneratorSVR Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsKeyGen.htm" target="_self">clsKeyGen Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsLIBRARYITEMS.htm" target="_self">clsLIBRARYITEMS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsLicenseMgt.htm" target="_self">clsLicenseMgt Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsLogging.htm" target="_self">clsLogging Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsRECIPIENTS.htm" target="_self">clsRECIPIENTS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsRemoteSupport.htm" target="_self">clsRemoteSupport Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsRestoreServer.htm" target="_self">clsRestoreServer Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsRUNPARMS.htm" target="_self">clsRUNPARMS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsSEARCHHISTORY.htm" target="_self">clsSEARCHHISTORY Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsSOURCEATTRIBUTE.htm" target="_self">clsSOURCEATTRIBUTE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsSOURCETYPE.htm" target="_self">clsSOURCETYPE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsSqlReaderStream.htm" target="_self">clsSqlReaderStream Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsSqlSVR.htm" target="_self">clsSqlSVR Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsUtilitySVR.htm" target="_self">clsUtilitySVR Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_clsUSERGRIDSTATE.htm" target="_self">DS_clsUSERGRIDSTATE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_CONTENT.htm" target="_self">DS_CONTENT Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_ContentDS.htm" target="_self">DS_ContentDS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_CoOwner.htm" target="_self">DS_CoOwner Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_DgAssigned.htm" target="_self">DS_DgAssigned Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_DgGroupUsers.htm" target="_self">DS_DgGroupUsers Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_dgGrpUsers.htm" target="_self">DS_dgGrpUsers Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_EMAIL.htm" target="_self">DS_EMAIL Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_EmailAttachments.htm" target="_self">DS_EmailAttachments Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_EmailNoWeight.htm" target="_self">DS_EmailNoWeight Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_ErrorLogs.htm" target="_self">DS_ErrorLogs Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_ImageData.htm" target="_self">DS_ImageData Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_LibItems.htm" target="_self">DS_LibItems Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_License.htm" target="_self">DS_License Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_ListOfStrings00.htm" target="_self">DS_ListOfStrings00 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_ListOfStrings01.htm" target="_self">DS_ListOfStrings01 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_ListOfStrings02.htm" target="_self">DS_ListOfStrings02 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_ListOfStrings03.htm" target="_self">DS_ListOfStrings03 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_ListOfStrings04.htm" target="_self">DS_ListOfStrings04 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_Metadata.htm" target="_self">DS_Metadata Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_RESTOREQUEUE.htm" target="_self">DS_RESTOREQUEUE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_SEARCHSCHEDULE.htm" target="_self">DS_SEARCHSCHEDULE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_SearchTerms.htm" target="_self">DS_SearchTerms Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_SYSTEMPARMS.htm" target="_self">DS_SYSTEMPARMS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_USERSCREENSTATE.htm" target="_self">DS_USERSCREENSTATE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_USERSEARCHSTATE.htm" target="_self">DS_USERSEARCHSTATE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_VLibraryStats.htm" target="_self">DS_VLibraryStats Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_VLibraryUsers.htm" target="_self">DS_VLibraryUsers Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_VUserGrid.htm" target="_self">DS_VUserGrid Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_ZipFiles.htm" target="_self">DS_ZipFiles Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.IService1.htm" target="_self">IService1 Interface</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.struct_ActiveSearchGuids.htm" target="_self">struct_ActiveSearchGuids Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.struct_ArchiveFolderId.htm" target="_self">struct_ArchiveFolderId Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.struct_Dg.htm" target="_self">struct_Dg Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.struct_LibUsers.htm" target="_self">struct_LibUsers Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.SVCSearch.htm" target="_self">SVCSearch Class</a>
+<div class="Hidden">
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="N-ECMSearchWPF.htm" target="_self">ECMSearchWPF Namespace</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="N-ECMSearchWPF.SVCSearch.htm" target="_self">ECMSearchWPF.SVCSearch Namespace</a>
+<div class="Hidden">
+</div>
+</div>
+
+            </div>
+
+        </div>
+
+        <div id="TOCSizer" class="TOCSizer" onmousedown="OnMouseDown(event)" onselectstart="javascript: return false;"></div>
+        
+        <div id ="TopicContent" name="TopicContent" class="TopicContent" style="float: none; margin-left: 312px;height: -webkit-fill-available;display:block;overflow: auto;">
+          
+          <!-- Content Starts Here -->
+          <div class="contentPlaceHolder" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+      <div class="content">
+        <div class="topicContainer">
+          <div class="topic">
+            <p class="majorTitle" />
+            <h1 class="title">clsDatabaseSVR<span class="languageSpecificText"><span class="cs">.</span><span class="vb">.</span><span class="cpp">::</span><span class="nu">.</span><span class="fs">.</span></span>InsertSourcefile Method </h1>
+            <div id="mainSection">
+              <div id="mainBody">
+                <p />
+    <b>Namespace:</b> 
+   <a href="N-EcmCloudWcf.Web.htm">EcmCloudWcf.Web</a><br />
+    <b>Assembly:</b>
+   <span sdata="assembly">SearchSVC</span> (in SearchSVC.dll)<div class="LW_CollapsibleArea_Container"><div class="LW_CollapsibleArea_TitleDiv"><h2 class="LW_CollapsibleArea_Title">Syntax</h2><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr" /></div></div><a id="syntaxSection"><!----></a><div class="CodeSnippetContainer"><div class="CodeSnippetContainerTabs"><div class="CodeSnippetContainerTabLeft"><!----></div><div class="CodeSnippetContainerTabFirst CSharpTab" id="CSharpTabId" style="background:white;border-bottom-color:white"><a href="javascript:setActiveTab('CodeSnippetContainerCode','CSharpCode','CSharpTabId');" title="C#">C#</a></div><div class="CodeSnippetContainerTab VisualBasicTab" id="VisualBasicTabId"><a href="javascript:setActiveTab('CodeSnippetContainerCode','VisualBasicCode','VisualBasicTabId');" title="Visual Basic">VB</a></div><div class="CodeSnippetContainerTab ManagedCPlusPlusTab" id="ManagedCPlusPlusTabId"><a href="javascript:setActiveTab('CodeSnippetContainerCode','ManagedCPlusPlusCode','ManagedCPlusPlusTabId');" title="Visual C++">C++</a></div><div class="CodeSnippetContainerTabRight"><!----></div></div><div class="CodeSnippetContainerCodeCollection"><div class="CodeSnippetToolBar"><div class="CodeSnippetToolBarText" /></div><div class="CodeSnippetContainerCode CSharpCode"><pre xml:space="preserve" class="libCScode"><span class="keyword">public</span> <a href="http://msdn.microsoft.com/en-us/library/system.boolean.aspx" target="_blank">bool</a> <span class="identifier">InsertSourcefile</span>(
+	<span class="keyword">ref</span> <a href="http://msdn.microsoft.com/en-us/library/system.int32.aspx" target="_blank">int</a> <span class="parameter">SecureID</span>,
+	<a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">string</a> <span class="parameter">SourceGuid</span>,
+	<a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">string</a> <span class="parameter">UploadFQN</span>,
+	<a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">string</a> <span class="parameter">SourceName</span>,
+	<a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">string</a> <span class="parameter">SourceTypeCode</span>,
+	<a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">string</a> <span class="parameter">sLastAccessDate</span>,
+	<a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">string</a> <span class="parameter">sCreateDate</span>,
+	<a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">string</a> <span class="parameter">sLastWriteTime</span>,
+	<a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">string</a> <span class="parameter">DataSourceOwnerUserID</span>,
+	<a href="http://msdn.microsoft.com/en-us/library/system.int32.aspx" target="_blank">int</a> <span class="parameter">VersionNbr</span>
+)</pre></div><div class="CodeSnippetContainerCode VisualBasicCode"><pre xml:space="preserve" class="libCScode"><span class="keyword">Public</span> <span class="keyword">Function</span> <span class="identifier">InsertSourcefile</span> ( _
+	<span class="keyword">ByRef</span> <span class="parameter">SecureID</span> <span class="keyword">As</span> <a href="http://msdn.microsoft.com/en-us/library/system.int32.aspx" target="_blank">Integer</a>, _
+	<span class="parameter">SourceGuid</span> <span class="keyword">As</span> <a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a>, _
+	<span class="parameter">UploadFQN</span> <span class="keyword">As</span> <a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a>, _
+	<span class="parameter">SourceName</span> <span class="keyword">As</span> <a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a>, _
+	<span class="parameter">SourceTypeCode</span> <span class="keyword">As</span> <a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a>, _
+	<span class="parameter">sLastAccessDate</span> <span class="keyword">As</span> <a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a>, _
+	<span class="parameter">sCreateDate</span> <span class="keyword">As</span> <a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a>, _
+	<span class="parameter">sLastWriteTime</span> <span class="keyword">As</span> <a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a>, _
+	<span class="parameter">DataSourceOwnerUserID</span> <span class="keyword">As</span> <a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a>, _
+	<span class="parameter">VersionNbr</span> <span class="keyword">As</span> <a href="http://msdn.microsoft.com/en-us/library/system.int32.aspx" target="_blank">Integer</a> _
+) <span class="keyword">As</span> <a href="http://msdn.microsoft.com/en-us/library/system.boolean.aspx" target="_blank">Boolean</a></pre></div><div class="CodeSnippetContainerCode ManagedCPlusPlusCode"><pre xml:space="preserve" class="libCScode"><span class="keyword">public</span>:
+<a href="http://msdn.microsoft.com/en-us/library/system.boolean.aspx" target="_blank">bool</a>^ <span class="identifier">InsertSourcefile</span>(
+	<a href="http://msdn.microsoft.com/en-us/library/system.int32.aspx" target="_blank">int</a>^% <span class="parameter">SecureID</span>, 
+	<a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a>^ <span class="parameter">SourceGuid</span>, 
+	<a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a>^ <span class="parameter">UploadFQN</span>, 
+	<a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a>^ <span class="parameter">SourceName</span>, 
+	<a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a>^ <span class="parameter">SourceTypeCode</span>, 
+	<a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a>^ <span class="parameter">sLastAccessDate</span>, 
+	<a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a>^ <span class="parameter">sCreateDate</span>, 
+	<a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a>^ <span class="parameter">sLastWriteTime</span>, 
+	<a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a>^ <span class="parameter">DataSourceOwnerUserID</span>, 
+	<a href="http://msdn.microsoft.com/en-us/library/system.int32.aspx" target="_blank">int</a>^ <span class="parameter">VersionNbr</span>
+)</pre></div></div></div><div id="parameters"><h4 class="subHeading">Parameters</h4><dl paramName="SecureID"><dt><span class="parameterItalic">SecureID</span></dt><dd>Type: <a href="http://msdn.microsoft.com/en-us/library/system.int32.aspx" target="_blank">Int32</a><span class="cpp">%</span><br /></dd></dl><dl paramName="SourceGuid"><dt><span class="parameterItalic">SourceGuid</span></dt><dd>Type: <a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a><br /></dd></dl><dl paramName="UploadFQN"><dt><span class="parameterItalic">UploadFQN</span></dt><dd>Type: <a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a><br /></dd></dl><dl paramName="SourceName"><dt><span class="parameterItalic">SourceName</span></dt><dd>Type: <a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a><br /></dd></dl><dl paramName="SourceTypeCode"><dt><span class="parameterItalic">SourceTypeCode</span></dt><dd>Type: <a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a><br /></dd></dl><dl paramName="sLastAccessDate"><dt><span class="parameterItalic">sLastAccessDate</span></dt><dd>Type: <a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a><br /></dd></dl><dl paramName="sCreateDate"><dt><span class="parameterItalic">sCreateDate</span></dt><dd>Type: <a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a><br /></dd></dl><dl paramName="sLastWriteTime"><dt><span class="parameterItalic">sLastWriteTime</span></dt><dd>Type: <a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a><br /></dd></dl><dl paramName="DataSourceOwnerUserID"><dt><span class="parameterItalic">DataSourceOwnerUserID</span></dt><dd>Type: <a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a><br /></dd></dl><dl paramName="VersionNbr"><dt><span class="parameterItalic">VersionNbr</span></dt><dd>Type: <a href="http://msdn.microsoft.com/en-us/library/system.int32.aspx" target="_blank">Int32</a><br /></dd></dl></div></div><div class="LW_CollapsibleArea_Container"><div class="LW_CollapsibleArea_TitleDiv"><h2 class="LW_CollapsibleArea_Title">See Also</h2><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr" /></div></div><a id="seeAlsoSection"><!----></a><div class="seeAlsoStyle"><a href="T-EcmCloudWcf.Web.clsDatabaseSVR.htm">clsDatabaseSVR Class</a></div><div class="seeAlsoStyle"><a href="N-EcmCloudWcf.Web.htm">EcmCloudWcf.Web Namespace</a></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div id="footer" class="footerContainer">
+          <div class="footerLogoContainer">
+            <div style="margin-top:5px">
+              <span class="customCopyrightFooter" />
+            </div>
+            <div style="margin-top:5px" class="copyrightFooter">
+              <a href="http://submain.com/fwlink/gd-help/generated/">Created with evaluation copy of GhostDoc Pro. Click here to purchase and remove this link.</a>
+            </div>
+            <div> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+          <!-- /Content Ends Here -->
+        </div>
+
+
+  </body>
+</html>

@@ -1849,8 +1849,8 @@ Public Class clsDatabaseSVR
     ''' LoadColInfo reads table_name, column_name, data_type, character_maximum_length from
     ''' INFORMATION_SCHEMA.COLUMNS based on the provided Table Name.
     ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     ''' <param name="TableName">The name of the table to retrieve column information about.</param>
-    ''' <remarks></remarks>
     Sub LoadColInfo(ByRef SecureID As Integer, ByVal TableName As String)
 
         Dim S As String = ""

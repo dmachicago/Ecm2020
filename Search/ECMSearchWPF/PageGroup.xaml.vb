@@ -1,34 +1,105 @@
-﻿Imports System.Data
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 07-16-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 07-16-2020
+' ***********************************************************************
+' <copyright file="PageGroup.xaml.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+Imports System.Data
 Imports System.Web.Script.Serialization
 Imports ECMEncryption
 
+''' <summary>
+''' Class PageGroup.
+''' Implements the <see cref="System.Windows.Window" />
+''' Implements the <see cref="System.Windows.Markup.IComponentConnector" />
+''' </summary>
+''' <seealso cref="System.Windows.Window" />
+''' <seealso cref="System.Windows.Markup.IComponentConnector" />
 Public Class PageGroup
 
+    ''' <summary>
+    ''' The dt
+    ''' </summary>
     Dim DT As DataTable = New DataTable("GroupUsers")
     'Dim GVAR As App = App.Current
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Dim LOG As New clsLogMain
+    ''' <summary>
+    ''' The dma
+    ''' </summary>
     Dim DMA As New clsDma
+    ''' <summary>
+    ''' The common
+    ''' </summary>
     Dim COMMON As New clsCommonFunctions
+    ''' <summary>
+    ''' The utility
+    ''' </summary>
     Dim UTIL As New clsUtility
+    ''' <summary>
+    ''' The xlog
+    ''' </summary>
     Dim XLOG As New clsLoggingExtended
 
+    ''' <summary>
+    ''' The user identifier
+    ''' </summary>
     Dim UserID As String = ""
+    ''' <summary>
+    ''' The ret MSG
+    ''' </summary>
     Dim RetMsg As String = ""
+    ''' <summary>
+    ''' The rc
+    ''' </summary>
     Dim RC As Boolean = False
 
+    ''' <summary>
+    ''' The current group name
+    ''' </summary>
     Dim CurrentGroupName As String = ""
+    ''' <summary>
+    ''' The group owner unique identifier
+    ''' </summary>
     Dim GroupOwnerGuid As String = ""
+    ''' <summary>
+    ''' The assigned users
+    ''' </summary>
     Dim AssignedUsers As New List(Of String)
 
+    ''' <summary>
+    ''' The sddebug
+    ''' </summary>
     Dim sddebug As String = System.Configuration.ConfigurationManager.AppSettings("DebugON")
+    ''' <summary>
+    ''' The ddebug
+    ''' </summary>
     Dim ddebug As Boolean = False
 
     'Dim proxy As New SVCSearch.Service1Client
+    ''' <summary>
+    ''' The SLQ dictionary
+    ''' </summary>
     Dim SlqDict As New System.Collections.Generic.Dictionary(Of Integer, String)
 
     'Dim EP As New clsEndPoint
+    ''' <summary>
+    ''' The en c2
+    ''' </summary>
     Dim ENC2 As New ECMEncrypt()
 
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="PageGroup"/> class.
+    ''' </summary>
     Public Sub New()
         InitializeComponent()
 
@@ -57,24 +128,44 @@ Public Class PageGroup
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlGroupLibs control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlGroupLibs_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlGroupLibs.Click
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 01")
         Dim cw As New popupGroupLibraries(CurrentGroupName)
         cw.Show()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlHome control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlHome_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlHome.Click
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 02")
         'Dim NextPage As New MainPage()
         Me.Close()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlLibMgt control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlLibMgt_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlLibMgt.Click
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 03")
         Dim NextPage As New PageLibrary
         NextPage.Show()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the BtnAdd control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub BtnAdd_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles BtnAdd.Click
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 04")
         DMA.ReplaceSingleTick(txtUserGroup.Text)
@@ -97,6 +188,10 @@ Public Class PageGroup
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the group icount.
+    ''' </summary>
+    ''' <param name="I">The i.</param>
     Sub client_GroupIcount(I As Integer)
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 05")
         Dim RC As Integer = 0
@@ -132,6 +227,11 @@ Public Class PageGroup
         PB.Visibility = Windows.Visibility.Hidden
     End Sub
 
+    ''' <summary>
+    ''' Clients the insert group.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="S">The s.</param>
     Sub client_InsertGroup(RC As Boolean, S As String)
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 06")
         Dim I As Integer = 0
@@ -147,6 +247,11 @@ Public Class PageGroup
         'RemoveHandler ProxySearch.ExecuteSqlNewConnSecureCompleted, AddressOf client_ExecInsertGroup
     End Sub
 
+    ''' <summary>
+    ''' Clients the execute insert group.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="S">The s.</param>
     Sub client_ExecInsertGroup(RC As Boolean, S As String)
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 07")
         PB.IsIndeterminate = False
@@ -160,6 +265,11 @@ Public Class PageGroup
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnDelete control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnDelete.Click
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 08")
         Dim B As Boolean = False
@@ -227,6 +337,11 @@ Public Class PageGroup
         Me.Cursor = Cursors.Arrow
     End Sub
 
+    ''' <summary>
+    ''' Users the group delete.
+    ''' </summary>
+    ''' <param name="GroupName">Name of the group.</param>
+    ''' <param name="GroupOwnerUserID">The group owner user identifier.</param>
     Sub UserGroupDelete(ByVal GroupName As String, ByVal GroupOwnerUserID As String)
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 09")
         Dim b As Boolean = False
@@ -241,6 +356,10 @@ Public Class PageGroup
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the execute SQL stack.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub client_ExecuteSqlStack(RC As Boolean)
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 10")
         PB.IsIndeterminate = False
@@ -265,6 +384,11 @@ Public Class PageGroup
         PopulateUserLB(lbGroups.SelectedValue)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnAddToGroup control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnAddToGroup_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnAddToGroup.Click
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 11")
 
@@ -331,6 +455,10 @@ Public Class PageGroup
         'ckBoxShowAllUsers.IsChecked = False
     End Sub
 
+    ''' <summary>
+    ''' Clients the add library group user.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub client_AddLibraryGroupUser(RC As Boolean)
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 12")
         Dim SSID As Integer = 0
@@ -347,6 +475,16 @@ Public Class PageGroup
         PopulateUserLB(lbGroups.SelectedValue)
     End Sub
 
+    ''' <summary>
+    ''' Inserts the group user.
+    ''' </summary>
+    ''' <param name="GroupName">Name of the group.</param>
+    ''' <param name="GroupOwnerUserID">The group owner user identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="FullAccess">The full access.</param>
+    ''' <param name="ReadOnlyAccess">The read only access.</param>
+    ''' <param name="DeleteAccess">The delete access.</param>
+    ''' <param name="Searchable">The searchable.</param>
     Public Sub InsertGroupUser(ByVal GroupName As String,
                                     ByVal GroupOwnerUserID As String,
                                     ByVal UserID As String,
@@ -389,6 +527,10 @@ Public Class PageGroup
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the add group user.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub client_AddGroupUser(RC As Boolean)
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 14")
         PB.IsIndeterminate = False
@@ -404,6 +546,11 @@ Public Class PageGroup
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnRemove control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnRemove_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnRemove.Click
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 15")
         AssignedUsers.Clear()
@@ -451,6 +598,10 @@ Public Class PageGroup
         client_ResetLibraryUsersCount(RC)
     End Sub
 
+    ''' <summary>
+    ''' Clients the reset library users count.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub client_ResetLibraryUsersCount(RC As Boolean)
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 16")
         PB.IsIndeterminate = False
@@ -467,6 +618,10 @@ Public Class PageGroup
         'RemoveHandler ProxySearch.ResetLibraryUsersCountCompleted, AddressOf client_ResetLibraryUsersCount
     End Sub
 
+    ''' <summary>
+    ''' Adds the owner to group.
+    ''' </summary>
+    ''' <param name="GroupName">Name of the group.</param>
     Sub AddOwnerToGroup(ByVal GroupName As String)
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 17")
         'Dim GroupName$ = txtUserGroup.Text.Trim
@@ -487,6 +642,10 @@ Public Class PageGroup
 
     End Sub
 
+    ''' <summary>
+    ''' Populates the user lb.
+    ''' </summary>
+    ''' <param name="GroupName">Name of the group.</param>
     Sub PopulateUserLB(ByVal GroupName As String)
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 18")
         If lbGroups.SelectedItems.Count <> 1 Then
@@ -522,6 +681,10 @@ Public Class PageGroup
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the populate group user grid.
+    ''' </summary>
+    ''' <param name="strDS_dgGrpUsers">The string ds dg GRP users.</param>
     Sub client_PopulateGroupUserGrid(strDS_dgGrpUsers As String)
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 19")
         Dim ListOfRows As New System.Collections.ObjectModel.ObservableCollection(Of DS_dgGrpUsers)
@@ -546,6 +709,9 @@ Public Class PageGroup
         'RemoveHandler ProxySearch.PopulateGroupUserGridCompleted, AddressOf client_PopulateGroupUserGrid
     End Sub
 
+    ''' <summary>
+    ''' Deletes the selected users.
+    ''' </summary>
     Sub DeleteSelectedUsers()
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 20")
         Dim GroupName As String = ""
@@ -572,6 +738,10 @@ Public Class PageGroup
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the delete group members by owner unique identifier.
+    ''' </summary>
+    ''' <param name="OwnerGuid">The owner unique identifier.</param>
     Sub client_DeleteGroupMembersByOwnerGuid(OwnerGuid As String)
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 21")
         'Try
@@ -617,6 +787,12 @@ SKIPIT:
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the delete group users.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="iDeleted">The i deleted.</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
     Sub client_DeleteGroupUsers(RC As Boolean, iDeleted As Integer, RetMsg As String)
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 22")
         Dim TrackingNbr As Integer = 0
@@ -642,6 +818,9 @@ SKIPIT:
         ''RemoveHandler ProxySearch.DeleteGroupUsersCompleted, AddressOf client_DeleteGroupUsers
     End Sub
 
+    ''' <summary>
+    ''' Populates the group listbox.
+    ''' </summary>
     Sub PopulateGroupListbox()
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 23 in")
         Dim RC As Boolean = True
@@ -683,6 +862,12 @@ SKIPIT:
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 23 out")
     End Sub
 
+    ''' <summary>
+    ''' Clients the repopulate group listbox.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="ListOfItems">The list of items.</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
     Sub client_RepopulateGroupListbox(RC As Boolean, ListOfItems As String(), RetMsg As String)
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 24")
         Dim SSID As Integer = 0
@@ -706,6 +891,12 @@ SKIPIT:
         PB.Visibility = Windows.Visibility.Collapsed
     End Sub
 
+    ''' <summary>
+    ''' Cks the user exists elsewhere.
+    ''' </summary>
+    ''' <param name="TcbLibraryName">Name of the TCB library.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="UserName">Name of the user.</param>
     Sub ckUserExistsElsewhere(ByVal TcbLibraryName As String, ByVal UserID As String, ByVal UserName As String)
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 25")
         Dim S As String = ""
@@ -726,6 +917,10 @@ SKIPIT:
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the user exists elsewhere count.
+    ''' </summary>
+    ''' <param name="II">The ii.</param>
     Sub client_UserExistsElsewhereCount(II As Integer)
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 26")
         If II > 0 Then
@@ -739,6 +934,11 @@ SKIPIT:
         PB.Visibility = Windows.Visibility.Collapsed
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectionChanged event of the lbGroups control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub lbGroups_SelectionChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.SelectionChangedEventArgs) Handles lbGroups.SelectionChanged
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 27")
         Try
@@ -761,6 +961,11 @@ SKIPIT:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the HyperlinkButton3 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub HyperlinkButton3_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles HyperlinkButton3.Click
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 28")
         Dim BlankGroupName As String = ""
@@ -774,6 +979,11 @@ SKIPIT:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the HyperlinkButton1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub HyperlinkButton1_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles HyperlinkButton1.Click
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 29")
         Dim RC As Boolean = True
@@ -802,11 +1012,21 @@ SKIPIT:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the HyperlinkButton2 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub HyperlinkButton2_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles HyperlinkButton2.Click
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 30")
         PopulateGroupListbox()
     End Sub
 
+    ''' <summary>
+    ''' Handles the 1 event of the HyperlinkButton4_Click control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub HyperlinkButton4_Click_1(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles HyperlinkButton4.Click
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 31")
         If lbGroups.SelectedItems.Count = 0 Then
@@ -817,6 +1037,9 @@ SKIPIT:
         PopulateUserLB(CurrentGroupName)
     End Sub
 
+    ''' <summary>
+    ''' Allows an object to try to free resources and perform other cleanup operations before it is reclaimed by garbage collection.
+    ''' </summary>
     Protected Overrides Sub Finalize()
         If ddebug Then XLOG.WriteTraceLog("PageGroup Trace 32 Final step")
         Try
@@ -843,7 +1066,18 @@ SKIPIT:
 
 End Class
 
+''' <summary>
+''' Class GroupUsers.
+''' </summary>
 Public Class GroupUsers
+    ''' <summary>
+    ''' Gets or sets the name of the user.
+    ''' </summary>
+    ''' <value>The name of the user.</value>
     Public Property UserName As String
+    ''' <summary>
+    ''' Gets or sets the user identifier.
+    ''' </summary>
+    ''' <value>The user identifier.</value>
     Public Property UserID As String
 End Class

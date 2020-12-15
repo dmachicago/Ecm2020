@@ -1,0 +1,4179 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"[]>
+<html>
+  <head><link rel="shortcut icon" href="../favicon.ico" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="save" content="history" />
+    <title>ECMSearchWPF Namespace</title>
+    <link rel="stylesheet" type="text/css" href="../styles/lightweight.css" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <link rel="stylesheet" type="text/css" href="../styles/lw-code.css" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <script type="text/javascript" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" src="../scripts/languageSelector.js"> </script>
+    <meta name="container" content="ECMSearchWPF" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <meta name="file" content="N-ECMSearchWPF" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <meta name="guid" content="N-ECMSearchWPF" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <xml xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+      <MSHelp:Attr Name="AssetID" Value="N:ECMSearchWPF" />
+      <MSHelp:TOCTitle Title="ECMSearchWPF Namespace" />
+      <MSHelp:RLTitle Title="ECMSearchWPF Namespace ()" />
+      <MSHelp:Keyword Index="A" Term="N:ECMSearchWPF" />
+      <MSHelp:Keyword Index="A" Term="frlrfECMSearchWPF" />
+      <MSHelp:Keyword Index="K" Term="ECMSearchWPF namespace" />
+      <MSHelp:Keyword Index="F" Term="ECMSearchWPF" />
+      <MSHelp:Attr Name="HelpPriority" Value="1" />
+      <MSHelp:Attr Name="DevLang" Value="CSharp" />
+      <MSHelp:Attr Name="DevLang" Value="VB" />
+      <MSHelp:Attr Name="Locale" Value="en-us" />
+      <MSHelp:Attr Name="TopicType" Value="kbSyntax" />
+      <MSHelp:Attr Name="TopicType" Value="apiref" />
+    </xml>
+  <link rel="stylesheet" href="../TOC.css"><script type="text/javascript" src="../TOC.js"></script></head>
+  <body onload="javascript: Initialize();" onresize="javascript: ResizeTree();">
+            <div id="TOCDiv" class="TOCDiv" style="width: 310px; float: left; position: relative; ">
+
+            <div id="divSearchOpts" class="SearchOpts" style="height: 95px; display: none;">
+                <div class="SearchOptsInner">
+                    <img class="TOCLink" onclick="javascript: ShowHideSearch(false);" src="../Close.png" height="24" width="24" alt="Hide Search" title="Hide Search" style="float: right;" />
+                    <span class="Title">Keyword(s) to search:</span>
+                </div>
+                <div class="SearchOptsInner">
+                    <input id="txtSearchText" type="text" style="width: 95.5%;" onkeypress="javascript: return OnSearchTextKeyPress(event);" />
+                </div>
+                <div class="SearchOptsInner">
+                    <input id="chkSortByTitle" type="checkbox" />&nbsp;Sort results by title
+                    <input type="button" value="Search" onclick="javascript: return PerformSearch();" style="float: right;" />
+                </div>
+            </div>
+
+            <div id="divIndexOpts" class="IndexOpts" style="height: 28px; display: none;">
+                <img class="TOCLink" onclick="javascript: ShowHideIndex(false);"
+                     src="../Close.png" height="24" width="24" alt="Hide Keyword Index" title="Hide Keyword Index" style="float: right;" />
+                <span class="Title">Keyword Index</span>
+            </div>
+
+            <div id="divNavOpts" class="NavOpts" style="height: 28px;">
+                <!--<img class="TOCLink" onclick="javascript: SyncTOC();" src="../SyncTOC.png"
+                     height="24" width="24" alt="Sync to TOC" title="Sync to TOC" />-->
+                <img class="TOCLink" onclick="javascript: ExpandOrCollapseAll(true);"
+                     src="../ExpandAll.png" height="24" width="24" alt="Expand all" title="Expand all" />
+                <img class="TOCLink" onclick="javascript: ExpandOrCollapseAll(false);"
+                     src="../CollapseAll.png" height="24" width="24" alt="Collapse all" title="Collapse all" />
+                <!--<img class="TOCLink" onclick="javascript: alert('Please make sure to use either Index.aspx or Index.php to enable the Keyword Index feature.');"
+                     src="../Index.png" height="24" width="24" alt="Keyword Index" title="Keyword Index" />-->
+                <img class="TOCLink" onclick="javascript: ShowHideSearch(true);"
+                     src="../Search.png" height="24" width="24" alt="Search" title="Search" />
+                <img class="TOCLink" onclick="javascript: ShowDirectLink();"
+                     src="../Link.png" height="24" width="24" alt="Get direct link to the displayed topic" title="Get direct link to the displayed topic" />
+                <a href="#" onclick="javascript: window.history.go(-1); return false;">
+                    <img class="TOCLink" style="float: right;"
+                         src="../Back.png" height="24" width="24" alt="Previous page" title="Previous page" />
+                </a>
+            </div>
+
+            <div class="Tree" id="divSearchResults" style="display: none;"
+                 onselectstart="javascript: return false;">
+            </div>
+
+            <div class="Tree" id="divIndexResults" style="display: none;"
+                 onselectstart="javascript: return false;">
+            </div>
+
+            <div class="Tree" id="divTree" onselectstart="javascript: return false;">
+              <div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="N-EcmCloudWcf.Web.htm" target="_self">EcmCloudWcf.Web Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web._ECM_SecureLoginDataSet.htm" target="_self">_ECM_SecureLoginDataSet Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsACTIVESEARCHGUIDS.htm" target="_self">clsACTIVESEARCHGUIDS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsARCHIVEHIST.htm" target="_self">clsARCHIVEHIST Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsARCHIVEHISTCONTENTTYPE.htm" target="_self">clsARCHIVEHISTCONTENTTYPE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsATTACHMENTTYPE.htm" target="_self">clsATTACHMENTTYPE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsCdf.htm" target="_self">clsCdf Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsDatabaseSVR.htm" target="_self">clsDatabaseSVR Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsDataGrid.htm" target="_self">clsDataGrid Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsDb.htm" target="_self">clsDb Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsDmaSVR.htm" target="_self">clsDmaSVR Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsEmail.htm" target="_self">clsEmail Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsFile.htm" target="_self">clsFile Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsFILESTODELETE.htm" target="_self">clsFILESTODELETE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsGeneratorSVR.htm" target="_self">clsGeneratorSVR Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsKeyGen.htm" target="_self">clsKeyGen Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsLIBRARYITEMS.htm" target="_self">clsLIBRARYITEMS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsLicenseMgt.htm" target="_self">clsLicenseMgt Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsLogging.htm" target="_self">clsLogging Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsRECIPIENTS.htm" target="_self">clsRECIPIENTS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsRemoteSupport.htm" target="_self">clsRemoteSupport Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsRestoreServer.htm" target="_self">clsRestoreServer Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsRUNPARMS.htm" target="_self">clsRUNPARMS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsSEARCHHISTORY.htm" target="_self">clsSEARCHHISTORY Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsSOURCEATTRIBUTE.htm" target="_self">clsSOURCEATTRIBUTE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsSOURCETYPE.htm" target="_self">clsSOURCETYPE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsSqlReaderStream.htm" target="_self">clsSqlReaderStream Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsSqlSVR.htm" target="_self">clsSqlSVR Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.clsUtilitySVR.htm" target="_self">clsUtilitySVR Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_clsUSERGRIDSTATE.htm" target="_self">DS_clsUSERGRIDSTATE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_CONTENT.htm" target="_self">DS_CONTENT Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_ContentDS.htm" target="_self">DS_ContentDS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_CoOwner.htm" target="_self">DS_CoOwner Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_DgAssigned.htm" target="_self">DS_DgAssigned Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_DgGroupUsers.htm" target="_self">DS_DgGroupUsers Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_dgGrpUsers.htm" target="_self">DS_dgGrpUsers Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_EMAIL.htm" target="_self">DS_EMAIL Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_EmailAttachments.htm" target="_self">DS_EmailAttachments Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_EmailNoWeight.htm" target="_self">DS_EmailNoWeight Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_ErrorLogs.htm" target="_self">DS_ErrorLogs Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_ImageData.htm" target="_self">DS_ImageData Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_LibItems.htm" target="_self">DS_LibItems Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_License.htm" target="_self">DS_License Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_ListOfStrings00.htm" target="_self">DS_ListOfStrings00 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_ListOfStrings01.htm" target="_self">DS_ListOfStrings01 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_ListOfStrings02.htm" target="_self">DS_ListOfStrings02 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_ListOfStrings03.htm" target="_self">DS_ListOfStrings03 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_ListOfStrings04.htm" target="_self">DS_ListOfStrings04 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_Metadata.htm" target="_self">DS_Metadata Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_RESTOREQUEUE.htm" target="_self">DS_RESTOREQUEUE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_SEARCHSCHEDULE.htm" target="_self">DS_SEARCHSCHEDULE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_SearchTerms.htm" target="_self">DS_SearchTerms Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_SYSTEMPARMS.htm" target="_self">DS_SYSTEMPARMS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_USERSCREENSTATE.htm" target="_self">DS_USERSCREENSTATE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_USERSEARCHSTATE.htm" target="_self">DS_USERSEARCHSTATE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_VLibraryStats.htm" target="_self">DS_VLibraryStats Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_VLibraryUsers.htm" target="_self">DS_VLibraryUsers Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_VUserGrid.htm" target="_self">DS_VUserGrid Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.DS_ZipFiles.htm" target="_self">DS_ZipFiles Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.IService1.htm" target="_self">IService1 Interface</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.struct_ActiveSearchGuids.htm" target="_self">struct_ActiveSearchGuids Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.struct_ArchiveFolderId.htm" target="_self">struct_ArchiveFolderId Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.struct_Dg.htm" target="_self">struct_Dg Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.struct_LibUsers.htm" target="_self">struct_LibUsers Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmCloudWcf.Web.SVCSearch.htm" target="_self">SVCSearch Class</a>
+<div class="Hidden">
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="N-ECMSearchWPF.htm" target="_self">ECMSearchWPF Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.Application.htm" target="_self">Application Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsCommonFunctions.htm" target="_self">clsCommonFunctions Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsCompressor.htm" target="_self">clsCompressor Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsDatabase.htm" target="_self">clsDatabase Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsDatasetMgt.htm" target="_self">clsDatasetMgt Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsDATASOURCERESTOREHISTORY.htm" target="_self">clsDATASOURCERESTOREHISTORY Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsDbDownload.htm" target="_self">clsDbDownload Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsDir.htm" target="_self">clsDir Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsDLMaster.htm" target="_self">clsDLMaster Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsDma.htm" target="_self">clsDma Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsEncryptV2.htm" target="_self">clsEncryptV2 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsExport.htm" target="_self">clsExport Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsFlexGrid.htm" target="_self">clsFlexGrid Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsGenerator.htm" target="_self">clsGenerator Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsgetUserParm.htm" target="_self">clsgetUserParm Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsGlobal.htm" target="_self">clsGlobal Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsGlobals.htm" target="_self">clsGlobals Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsGLOBALSEACHRESULTS.htm" target="_self">clsGLOBALSEACHRESULTS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsGridMgt.htm" target="_self">clsGridMgt Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsHive.htm" target="_self">clsHive Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsIsolatedStorage.htm" target="_self">clsIsolatedStorage Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsIsolation.htm" target="_self">clsIsolation Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsLIBDIRECTORY.htm" target="_self">clsLIBDIRECTORY Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsLIBEMAIL.htm" target="_self">clsLIBEMAIL Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsLIBRARYUSERS.htm" target="_self">clsLIBRARYUSERS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsLog.htm" target="_self">clsLog Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsLoggingExtended.htm" target="_self">clsLoggingExtended Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsLogMain.htm" target="_self">clsLogMain Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsLookupData.htm" target="_self">clsLookupData Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsParms.htm" target="_self">clsParms Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsPreviewContent.htm" target="_self">clsPreviewContent Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsPullDataItem.htm" target="_self">clsPullDataItem Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsRestoreClient.htm" target="_self">clsRestoreClient Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsRUNPARMS.htm" target="_self">clsRUNPARMS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsSAVEDITEMS.htm" target="_self">clsSAVEDITEMS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsSEARCHHISTORY.htm" target="_self">clsSEARCHHISTORY Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsSetGlobalVars.htm" target="_self">clsSetGlobalVars Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsSMS.htm" target="_self">clsSMS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsSql.htm" target="_self">clsSql Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsSystemParms.htm" target="_self">clsSystemParms Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsUserParms.htm" target="_self">clsUserParms Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.clsUtility.htm" target="_self">clsUtility Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_clsUSERGRIDSTATE.htm" target="_self">DS_clsUSERGRIDSTATE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_CONTENT.htm" target="_self">DS_CONTENT Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_ContentDS.htm" target="_self">DS_ContentDS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_CoOwner.htm" target="_self">DS_CoOwner Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_DgAssigned.htm" target="_self">DS_DgAssigned Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_DgGroupUsers.htm" target="_self">DS_DgGroupUsers Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_dgGrpUsers.htm" target="_self">DS_dgGrpUsers Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_EMAIL.htm" target="_self">DS_EMAIL Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_EmailAttachments.htm" target="_self">DS_EmailAttachments Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_EmailNoWeight.htm" target="_self">DS_EmailNoWeight Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_ErrorLogs.htm" target="_self">DS_ErrorLogs Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_ImageData.htm" target="_self">DS_ImageData Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_LibItems.htm" target="_self">DS_LibItems Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_License.htm" target="_self">DS_License Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_ListOfStrings01.htm" target="_self">DS_ListOfStrings01 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_ListOfStrings02.htm" target="_self">DS_ListOfStrings02 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_ListOfStrings03.htm" target="_self">DS_ListOfStrings03 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_ListOfStrings04.htm" target="_self">DS_ListOfStrings04 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_Metadata.htm" target="_self">DS_Metadata Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_RESTOREQUEUE.htm" target="_self">DS_RESTOREQUEUE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_SEARCHSCHEDULE.htm" target="_self">DS_SEARCHSCHEDULE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_SearchTerms.htm" target="_self">DS_SearchTerms Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_SYSTEMPARMS.htm" target="_self">DS_SYSTEMPARMS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_USERSCREENSTATE.htm" target="_self">DS_USERSCREENSTATE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_USERSEARCHSTATE.htm" target="_self">DS_USERSEARCHSTATE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_VLibraryStats.htm" target="_self">DS_VLibraryStats Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_VLibraryUsers.htm" target="_self">DS_VLibraryUsers Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_VUserGrid.htm" target="_self">DS_VUserGrid Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.DS_ZipFiles.htm" target="_self">DS_ZipFiles Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.EcmInitPage.htm" target="_self">EcmInitPage Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.frmContentRestore.htm" target="_self">frmContentRestore Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.frmSearchAsst.htm" target="_self">frmSearchAsst Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.grid.htm" target="_self">grid Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.GridCols.htm" target="_self">GridCols Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.GroupUsers.htm" target="_self">GroupUsers Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_ActiveSearchGuids.htm" target="_self">gv_ActiveSearchGuids Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_Archive_07202017134452007.htm" target="_self">gv_Archive_07202017134452007 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_ArchiveFrom.htm" target="_self">gv_ArchiveFrom Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_ArchiveHist.htm" target="_self">gv_ArchiveHist Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_ArchiveHistContentType.htm" target="_self">gv_ArchiveHistContentType Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_ArchiveStats.htm" target="_self">gv_ArchiveStats Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_AssignableUserParameters.htm" target="_self">gv_AssignableUserParameters Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_AttachmentType.htm" target="_self">gv_AttachmentType Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_AttributeDatatype.htm" target="_self">gv_AttributeDatatype Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_Attributes.htm" target="_self">gv_Attributes Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_AvailFileTypes.htm" target="_self">gv_AvailFileTypes Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_AvailFileTypesUndefined.htm" target="_self">gv_AvailFileTypesUndefined Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_BusinessFunctionJargon.htm" target="_self">gv_BusinessFunctionJargon Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_BusinessJargonCode.htm" target="_self">gv_BusinessJargonCode Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_CaptureItems.htm" target="_self">gv_CaptureItems Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_Contact_07202017134458008.htm" target="_self">gv_Contact_07202017134458008 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_ContactFrom.htm" target="_self">gv_ContactFrom Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_ContactsArchive.htm" target="_self">gv_ContactsArchive Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_ContainerStorage.htm" target="_self">gv_ContainerStorage Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_ConvertedDocs.htm" target="_self">gv_ConvertedDocs Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_CoOwner.htm" target="_self">gv_CoOwner Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_CorpContainer.htm" target="_self">gv_CorpContainer Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_CorpFunction.htm" target="_self">gv_CorpFunction Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_Corporation.htm" target="_self">gv_Corporation Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_Databases.htm" target="_self">gv_Databases Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_DataOwners.htm" target="_self">gv_DataOwners Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_DataSourceCheckOut.htm" target="_self">gv_DataSourceCheckOut Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_DataSourceRestoreHistory.htm" target="_self">gv_DataSourceRestoreHistory Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_DB_UpdateHist.htm" target="_self">gv_DB_UpdateHist Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_DeleteF_07202017134505007.htm" target="_self">gv_DeleteF_07202017134505007 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_DeleteFrom.htm" target="_self">gv_DeleteFrom Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_Directory.htm" target="_self">gv_Directory Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_EcmUser.htm" target="_self">gv_EcmUser Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_EmailArchParms.htm" target="_self">gv_EmailArchParms Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_EmailAttachmentSearchList.htm" target="_self">gv_EmailAttachmentSearchList Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_EmailFolder.htm" target="_self">gv_EmailFolder Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_EmailToDelete.htm" target="_self">gv_EmailToDelete Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_ExcludedFiles.htm" target="_self">gv_ExcludedFiles Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_ExcludeFrom.htm" target="_self">gv_ExcludeFrom Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_FUncSkipWords.htm" target="_self">gv_FUncSkipWords Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_FunctionProdJargon.htm" target="_self">gv_FunctionProdJargon Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_GlobalSeachResults.htm" target="_self">gv_GlobalSeachResults Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_GroupLibraryAccess.htm" target="_self">gv_GroupLibraryAccess Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_GroupUsers.htm" target="_self">gv_GroupUsers Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_HelpText.htm" target="_self">gv_HelpText Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_HelpTextUser.htm" target="_self">gv_HelpTextUser Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_IncludedFiles.htm" target="_self">gv_IncludedFiles Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_IncludeImmediate.htm" target="_self">gv_IncludeImmediate Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_InformationProduct.htm" target="_self">gv_InformationProduct Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_InformationType.htm" target="_self">gv_InformationType Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_JargonWords.htm" target="_self">gv_JargonWords Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_LibDirectory.htm" target="_self">gv_LibDirectory Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_LibEmail.htm" target="_self">gv_LibEmail Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_Library.htm" target="_self">gv_Library Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_LibraryItems.htm" target="_self">gv_LibraryItems Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_LibraryUsers.htm" target="_self">gv_LibraryUsers Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_License.htm" target="_self">gv_License Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_LoadProfile.htm" target="_self">gv_LoadProfile Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_LoadProfileItem.htm" target="_self">gv_LoadProfileItem Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_Machine.htm" target="_self">gv_Machine Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_MyTempTable.htm" target="_self">gv_MyTempTable Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_OutlookFrom.htm" target="_self">gv_OutlookFrom Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_OwnerHistory.htm" target="_self">gv_OwnerHistory Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_PgmTrace.htm" target="_self">gv_PgmTrace Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_ProcessFileAs.htm" target="_self">gv_ProcessFileAs Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_ProdCaptureItems.htm" target="_self">gv_ProdCaptureItems Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_QtyDocs.htm" target="_self">gv_QtyDocs Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_QuickDirectory.htm" target="_self">gv_QuickDirectory Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_QuickRef.htm" target="_self">gv_QuickRef Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_QuickRefItems.htm" target="_self">gv_QuickRefItems Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_Recipients.htm" target="_self">gv_Recipients Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_RepeatData.htm" target="_self">gv_RepeatData Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_RestorationHistory.htm" target="_self">gv_RestorationHistory Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_Retention.htm" target="_self">gv_Retention Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_RetentionTemp.htm" target="_self">gv_RetentionTemp Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_RunParms.htm" target="_self">gv_RunParms Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_RuntimeErrors.htm" target="_self">gv_RuntimeErrors Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_SavedItems.htm" target="_self">gv_SavedItems Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_SearchHistory.htm" target="_self">gv_SearchHistory Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_SearhParmsHistory.htm" target="_self">gv_SearhParmsHistory Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_SkipWords.htm" target="_self">gv_SkipWords Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_SourceAttribute.htm" target="_self">gv_SourceAttribute Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_SourceContainer.htm" target="_self">gv_SourceContainer Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_SourceType.htm" target="_self">gv_SourceType Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_Storage.htm" target="_self">gv_Storage Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_SubDir.htm" target="_self">gv_SubDir Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_SubLibrary.htm" target="_self">gv_SubLibrary Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_UD_Qty.htm" target="_self">gv_UD_Qty Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_upgrade_status.htm" target="_self">gv_upgrade_status Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_UserCurrParm.htm" target="_self">gv_UserCurrParm Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_UserGroup.htm" target="_self">gv_UserGroup Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_UserReassignHist.htm" target="_self">gv_UserReassignHist Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_Users.htm" target="_self">gv_Users Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_Volitility.htm" target="_self">gv_Volitility Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_WebSource.htm" target="_self">gv_WebSource Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.gv_ZippedFiles.htm" target="_self">gv_ZippedFiles Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.MainPage.htm" target="_self">MainPage Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.NumericUpDown.htm" target="_self">NumericUpDown Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.PageGrantContentToUsers.htm" target="_self">PageGrantContentToUsers Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.PageGroup.htm" target="_self">PageGroup Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.PageLibrary.htm" target="_self">PageLibrary Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.PageLibraryAssignment.htm" target="_self">PageLibraryAssignment Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.PageLibraryMgt.htm" target="_self">PageLibraryMgt Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.PageUsers.htm" target="_self">PageUsers Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.popSqlStmt.htm" target="_self">popSqlStmt Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.popupAlerts.htm" target="_self">popupAlerts Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.popupContentSearchParms.htm" target="_self">popupContentSearchParms Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.popupEmailSearchParms.htm" target="_self">popupEmailSearchParms Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.popupExportSearchGrid.htm" target="_self">popupExportSearchGrid Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.popupGroupLibraries.htm" target="_self">popupGroupLibraries Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.popupReviewSearchParms.htm" target="_self">popupReviewSearchParms Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.popupSaveSearch.htm" target="_self">popupSaveSearch Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.popupScheduelSearch.htm" target="_self">popupScheduelSearch Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.popUserPassword.htm" target="_self">popUserPassword Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.struct_ActiveSearchGuids.htm" target="_self">struct_ActiveSearchGuids Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.struct_ArchiveFolderId.htm" target="_self">struct_ArchiveFolderId Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.struct_Dg.htm" target="_self">struct_Dg Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.struct_LibUsers.htm" target="_self">struct_LibUsers Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.tempdata.htm" target="_self">tempdata Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.test.htm" target="_self">test Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.TestClass.htm" target="_self">TestClass Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.TestControl.htm" target="_self">TestControl Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.TestWindow.htm" target="_self">TestWindow Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.vExchangeHostPop.htm" target="_self">vExchangeHostPop Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.vFileDirectory.htm" target="_self">vFileDirectory Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.vLibraryStat.htm" target="_self">vLibraryStat Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.vLibraryUser.htm" target="_self">vLibraryUser Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.vMigrateUser.htm" target="_self">vMigrateUser Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.vReassignedTable.htm" target="_self">vReassignedTable Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMSearchWPF.vUserGrid.htm" target="_self">vUserGrid Class</a>
+<div class="Hidden">
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="N-ECMSearchWPF.SVCSearch.htm" target="_self">ECMSearchWPF.SVCSearch Namespace</a>
+<div class="Hidden">
+</div>
+</div>
+
+            </div>
+
+        </div>
+
+        <div id="TOCSizer" class="TOCSizer" onmousedown="OnMouseDown(event)" onselectstart="javascript: return false;"></div>
+        
+        <div id ="TopicContent" name="TopicContent" class="TopicContent" style="float: none; margin-left: 312px;height: -webkit-fill-available;display:block;overflow: auto;">
+          
+          <!-- Content Starts Here -->
+          <div class="contentPlaceHolder" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+      <div class="content">
+        <div class="topicContainer">
+          <div class="topic">
+            <p class="majorTitle" />
+            <h1 class="title">ECMSearchWPF Namespace</h1>
+            <div id="mainSection">
+              <div id="mainBody">
+                <div class="LW_CollapsibleArea_Container">
+                  <div class="LW_CollapsibleArea_TitleDiv">
+                    <h2 class="LW_CollapsibleArea_Title">Classes</h2>
+                    <div class="LW_CollapsibleArea_HrDiv">
+                      <hr class="LW_CollapsibleArea_Hr" />
+                    </div>
+                  </div>
+                  <a id="classSection">
+                    <!---->
+                  </a>
+                  <table id="typeList" class="members">
+                    <tr>
+                      <th class="iconColumn">
+           
+       </th>
+                      <th class="nameColumn">Class</th>
+                      <th class="descriptionColumn">Description</th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.Application.htm">Application</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class Application.
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.application.aspx" target="_blank">Application</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsCommonFunctions.htm">clsCommonFunctions</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsCommonFunctions.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsCompressor.htm">clsCompressor</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsCompressor.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsDatabase.htm">clsDatabase</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsDatabase.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsDatasetMgt.htm">clsDatasetMgt</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsDatasetMgt.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsDATASOURCERESTOREHISTORY.htm">clsDATASOURCERESTOREHISTORY</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsDATASOURCERESTOREHISTORY.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsDbDownload.htm">clsDbDownload</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsDbDownload.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsDir.htm">clsDir</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsDir.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsDLMaster.htm">clsDLMaster</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsDLMaster.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsDma.htm">clsDma</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsDma.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsEncryptV2.htm">clsEncryptV2</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsEncryptV2.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsExport.htm">clsExport</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsExport.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsFlexGrid.htm">clsFlexGrid</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsFlexGrid.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsGenerator.htm">clsGenerator</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsGenerator.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsgetUserParm.htm">clsgetUserParm</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsgetUserParm.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsGlobal.htm">clsGlobal</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsGlobal.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsGlobals.htm">clsGlobals</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsGlobals.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsGLOBALSEACHRESULTS.htm">clsGLOBALSEACHRESULTS</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsGLOBALSEACHRESULTS.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsGridMgt.htm">clsGridMgt</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsGridMgt.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsHive.htm">clsHive</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsHive.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsIsolatedStorage.htm">clsIsolatedStorage</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsIsolatedStorage.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsIsolation.htm">clsIsolation</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsIsolation.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsLIBDIRECTORY.htm">clsLIBDIRECTORY</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsLIBDIRECTORY.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsLIBEMAIL.htm">clsLIBEMAIL</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsLIBEMAIL.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsLIBRARYUSERS.htm">clsLIBRARYUSERS</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsLIBRARYUSERS.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsLog.htm">clsLog</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsLog.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsLoggingExtended.htm">clsLoggingExtended</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsLoggingExtended.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsLogMain.htm">clsLogMain</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsLogMain.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsLookupData.htm">clsLookupData</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsLookupData.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsParms.htm">clsParms</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsParms.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsPreviewContent.htm">clsPreviewContent</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsPreviewContent.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsPullDataItem.htm">clsPullDataItem</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsPullDataItem.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsRestoreClient.htm">clsRestoreClient</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsRestoreClient.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsRUNPARMS.htm">clsRUNPARMS</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsRUNPARMS.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsSAVEDITEMS.htm">clsSAVEDITEMS</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsSAVEDITEMS.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsSEARCHHISTORY.htm">clsSEARCHHISTORY</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsSEARCHHISTORY.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsSetGlobalVars.htm">clsSetGlobalVars</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsSetGlobalVars.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsSMS.htm">clsSMS</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsSMS.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsSql.htm">clsSql</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsSql.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsSystemParms.htm">clsSystemParms</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsSystemParms.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsUserParms.htm">clsUserParms</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsUserParms.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.clsUtility.htm">clsUtility</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class clsUtility.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_clsUSERGRIDSTATE.htm">DS_clsUSERGRIDSTATE</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_clsUSERGRIDSTATE.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_CONTENT.htm">DS_CONTENT</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_CONTENT.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_ContentDS.htm">DS_ContentDS</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_ContentDS.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_CoOwner.htm">DS_CoOwner</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_CoOwner.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_DgAssigned.htm">DS_DgAssigned</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_DgAssigned.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_DgGroupUsers.htm">DS_DgGroupUsers</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_DgGroupUsers.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_dgGrpUsers.htm">DS_dgGrpUsers</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_dgGrpUsers.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_EMAIL.htm">DS_EMAIL</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_EMAIL.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_EmailAttachments.htm">DS_EmailAttachments</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_EmailAttachments.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_EmailNoWeight.htm">DS_EmailNoWeight</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_EmailNoWeight.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_ErrorLogs.htm">DS_ErrorLogs</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_ErrorLogs.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_ImageData.htm">DS_ImageData</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_ImageData.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_LibItems.htm">DS_LibItems</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_LibItems.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_License.htm">DS_License</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_License.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_ListOfStrings01.htm">DS_ListOfStrings01</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_ListOfStrings01.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_ListOfStrings02.htm">DS_ListOfStrings02</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_ListOfStrings02.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_ListOfStrings03.htm">DS_ListOfStrings03</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_ListOfStrings03.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_ListOfStrings04.htm">DS_ListOfStrings04</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_ListOfStrings04.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_Metadata.htm">DS_Metadata</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_Metadata.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_RESTOREQUEUE.htm">DS_RESTOREQUEUE</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_RESTOREQUEUE.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_SEARCHSCHEDULE.htm">DS_SEARCHSCHEDULE</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_SEARCHSCHEDULE.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_SearchTerms.htm">DS_SearchTerms</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_SearchTerms.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_SYSTEMPARMS.htm">DS_SYSTEMPARMS</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_SYSTEMPARMS.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_USERSCREENSTATE.htm">DS_USERSCREENSTATE</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_USERSCREENSTATE.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_USERSEARCHSTATE.htm">DS_USERSEARCHSTATE</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_USERSEARCHSTATE.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_VLibraryStats.htm">DS_VLibraryStats</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_VLibraryStats.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_VLibraryUsers.htm">DS_VLibraryUsers</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_VLibraryUsers.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_VUserGrid.htm">DS_VUserGrid</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_VUserGrid.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.DS_ZipFiles.htm">DS_ZipFiles</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class DS_ZipFiles.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.EcmInitPage.htm">EcmInitPage</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class EcmInitPage.
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.controls.page.aspx" target="_blank">Page</a>
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.markup.icomponentconnector.aspx" target="_blank">IComponentConnector</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.frmContentRestore.htm">frmContentRestore</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class frmContentRestore.
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.window.aspx" target="_blank">Window</a>
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.markup.icomponentconnector.aspx" target="_blank">IComponentConnector</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.frmSearchAsst.htm">frmSearchAsst</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class frmSearchAsst.
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.window.aspx" target="_blank">Window</a>
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.markup.icomponentconnector.aspx" target="_blank">IComponentConnector</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.grid.htm">grid</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class grid. This class cannot be inherited.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.GridCols.htm">GridCols</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class GridCols.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.GroupUsers.htm">GroupUsers</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class GroupUsers.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_ActiveSearchGuids.htm">gv_ActiveSearchGuids</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_ActiveSearchGuids.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_Archive_07202017134452007.htm">gv_Archive_07202017134452007</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_Archive_07202017134452007.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_ArchiveFrom.htm">gv_ArchiveFrom</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_ArchiveFrom.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_ArchiveHist.htm">gv_ArchiveHist</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_ArchiveHist.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_ArchiveHistContentType.htm">gv_ArchiveHistContentType</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_ArchiveHistContentType.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_ArchiveStats.htm">gv_ArchiveStats</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_ArchiveStats.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_AssignableUserParameters.htm">gv_AssignableUserParameters</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_AssignableUserParameters.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_AttachmentType.htm">gv_AttachmentType</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_AttachmentType.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_AttributeDatatype.htm">gv_AttributeDatatype</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_AttributeDatatype.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_Attributes.htm">gv_Attributes</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_Attributes.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_AvailFileTypes.htm">gv_AvailFileTypes</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_AvailFileTypes.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_AvailFileTypesUndefined.htm">gv_AvailFileTypesUndefined</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_AvailFileTypesUndefined.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_BusinessFunctionJargon.htm">gv_BusinessFunctionJargon</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_BusinessFunctionJargon.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_BusinessJargonCode.htm">gv_BusinessJargonCode</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_BusinessJargonCode.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_CaptureItems.htm">gv_CaptureItems</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_CaptureItems.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_Contact_07202017134458008.htm">gv_Contact_07202017134458008</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_Contact_07202017134458008.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_ContactFrom.htm">gv_ContactFrom</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_ContactFrom.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_ContactsArchive.htm">gv_ContactsArchive</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_ContactsArchive.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_ContainerStorage.htm">gv_ContainerStorage</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_ContainerStorage.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_ConvertedDocs.htm">gv_ConvertedDocs</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_ConvertedDocs.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_CoOwner.htm">gv_CoOwner</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_CoOwner.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_CorpContainer.htm">gv_CorpContainer</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_CorpContainer.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_CorpFunction.htm">gv_CorpFunction</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_CorpFunction.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_Corporation.htm">gv_Corporation</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_Corporation.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_Databases.htm">gv_Databases</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_Databases.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_DataOwners.htm">gv_DataOwners</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_DataOwners.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_DataSourceCheckOut.htm">gv_DataSourceCheckOut</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_DataSourceCheckOut.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_DataSourceRestoreHistory.htm">gv_DataSourceRestoreHistory</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_DataSourceRestoreHistory.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_DB_UpdateHist.htm">gv_DB_UpdateHist</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_DB_UpdateHist.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_DeleteF_07202017134505007.htm">gv_DeleteF_07202017134505007</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_DeleteF_07202017134505007.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_DeleteFrom.htm">gv_DeleteFrom</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_DeleteFrom.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_Directory.htm">gv_Directory</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_Directory.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_EcmUser.htm">gv_EcmUser</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_EcmUser.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_EmailArchParms.htm">gv_EmailArchParms</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_EmailArchParms.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_EmailAttachmentSearchList.htm">gv_EmailAttachmentSearchList</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_EmailAttachmentSearchList.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_EmailFolder.htm">gv_EmailFolder</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_EmailFolder.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_EmailToDelete.htm">gv_EmailToDelete</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_EmailToDelete.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_ExcludedFiles.htm">gv_ExcludedFiles</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_ExcludedFiles.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_ExcludeFrom.htm">gv_ExcludeFrom</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_ExcludeFrom.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_FUncSkipWords.htm">gv_FUncSkipWords</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_FUncSkipWords.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_FunctionProdJargon.htm">gv_FunctionProdJargon</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_FunctionProdJargon.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_GlobalSeachResults.htm">gv_GlobalSeachResults</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_GlobalSeachResults.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_GroupLibraryAccess.htm">gv_GroupLibraryAccess</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_GroupLibraryAccess.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_GroupUsers.htm">gv_GroupUsers</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_GroupUsers.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_HelpText.htm">gv_HelpText</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_HelpText.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_HelpTextUser.htm">gv_HelpTextUser</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_HelpTextUser.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_IncludedFiles.htm">gv_IncludedFiles</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_IncludedFiles.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_IncludeImmediate.htm">gv_IncludeImmediate</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_IncludeImmediate.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_InformationProduct.htm">gv_InformationProduct</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_InformationProduct.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_InformationType.htm">gv_InformationType</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_InformationType.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_JargonWords.htm">gv_JargonWords</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_JargonWords.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_LibDirectory.htm">gv_LibDirectory</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_LibDirectory.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_LibEmail.htm">gv_LibEmail</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_LibEmail.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_Library.htm">gv_Library</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_Library.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_LibraryItems.htm">gv_LibraryItems</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_LibraryItems.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_LibraryUsers.htm">gv_LibraryUsers</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_LibraryUsers.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_License.htm">gv_License</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_License.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_LoadProfile.htm">gv_LoadProfile</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_LoadProfile.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_LoadProfileItem.htm">gv_LoadProfileItem</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_LoadProfileItem.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_Machine.htm">gv_Machine</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_Machine.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_MyTempTable.htm">gv_MyTempTable</a>
+                      </td>
+                      <td />
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_OutlookFrom.htm">gv_OutlookFrom</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_OutlookFrom.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_OwnerHistory.htm">gv_OwnerHistory</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_OwnerHistory.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_PgmTrace.htm">gv_PgmTrace</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_PgmTrace.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_ProcessFileAs.htm">gv_ProcessFileAs</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_ProcessFileAs.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_ProdCaptureItems.htm">gv_ProdCaptureItems</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_ProdCaptureItems.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_QtyDocs.htm">gv_QtyDocs</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_QtyDocs.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_QuickDirectory.htm">gv_QuickDirectory</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_QuickDirectory.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_QuickRef.htm">gv_QuickRef</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_QuickRef.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_QuickRefItems.htm">gv_QuickRefItems</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_QuickRefItems.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_Recipients.htm">gv_Recipients</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_Recipients.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_RepeatData.htm">gv_RepeatData</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_RepeatData.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_RestorationHistory.htm">gv_RestorationHistory</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_RestorationHistory.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_Retention.htm">gv_Retention</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_Retention.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_RetentionTemp.htm">gv_RetentionTemp</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_RetentionTemp.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_RunParms.htm">gv_RunParms</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_RunParms.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_RuntimeErrors.htm">gv_RuntimeErrors</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_RuntimeErrors.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_SavedItems.htm">gv_SavedItems</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_SavedItems.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_SearchHistory.htm">gv_SearchHistory</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_SearchHistory.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_SearhParmsHistory.htm">gv_SearhParmsHistory</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_SearhParmsHistory.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_SkipWords.htm">gv_SkipWords</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_SkipWords.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_SourceAttribute.htm">gv_SourceAttribute</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_SourceAttribute.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_SourceContainer.htm">gv_SourceContainer</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_SourceContainer.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_SourceType.htm">gv_SourceType</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_SourceType.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_Storage.htm">gv_Storage</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_Storage.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_SubDir.htm">gv_SubDir</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_SubDir.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_SubLibrary.htm">gv_SubLibrary</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_SubLibrary.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_UD_Qty.htm">gv_UD_Qty</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_UD_Qty.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_upgrade_status.htm">gv_upgrade_status</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_upgrade_status.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_UserCurrParm.htm">gv_UserCurrParm</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_UserCurrParm.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_UserGroup.htm">gv_UserGroup</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_UserGroup.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_UserReassignHist.htm">gv_UserReassignHist</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_UserReassignHist.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_Users.htm">gv_Users</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_Users.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_Volitility.htm">gv_Volitility</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_Volitility.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_WebSource.htm">gv_WebSource</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_WebSource.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.gv_ZippedFiles.htm">gv_ZippedFiles</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class gv_ZippedFiles.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.MainPage.htm">MainPage</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class MainPage.
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.controls.page.aspx" target="_blank">Page</a>
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.markup.icomponentconnector.aspx" target="_blank">IComponentConnector</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.NumericUpDown.htm">NumericUpDown</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class NumericUpDown.
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.controls.control.aspx" target="_blank">Control</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.PageGrantContentToUsers.htm">PageGrantContentToUsers</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class PageGrantContentToUsers.
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.window.aspx" target="_blank">Window</a>
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.markup.icomponentconnector.aspx" target="_blank">IComponentConnector</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.PageGroup.htm">PageGroup</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class PageGroup.
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.window.aspx" target="_blank">Window</a>
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.markup.icomponentconnector.aspx" target="_blank">IComponentConnector</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.PageLibrary.htm">PageLibrary</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class PageLibrary.
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.window.aspx" target="_blank">Window</a>
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.markup.icomponentconnector.aspx" target="_blank">IComponentConnector</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.PageLibraryAssignment.htm">PageLibraryAssignment</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class PageLibraryAssignment.
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.window.aspx" target="_blank">Window</a>
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.markup.icomponentconnector.aspx" target="_blank">IComponentConnector</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.PageLibraryMgt.htm">PageLibraryMgt</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class PageLibraryMgt.
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.window.aspx" target="_blank">Window</a>
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.markup.icomponentconnector.aspx" target="_blank">IComponentConnector</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.PageUsers.htm">PageUsers</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class PageUsers.
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.window.aspx" target="_blank">Window</a>
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.markup.icomponentconnector.aspx" target="_blank">IComponentConnector</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.popSqlStmt.htm">popSqlStmt</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class popSqlStmt.
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.window.aspx" target="_blank">Window</a>
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.markup.icomponentconnector.aspx" target="_blank">IComponentConnector</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.popupAlerts.htm">popupAlerts</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class popupAlerts.
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.window.aspx" target="_blank">Window</a>
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.markup.icomponentconnector.aspx" target="_blank">IComponentConnector</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.popupContentSearchParms.htm">popupContentSearchParms</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class popupContentSearchParms.
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.window.aspx" target="_blank">Window</a>
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.markup.icomponentconnector.aspx" target="_blank">IComponentConnector</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.popupEmailSearchParms.htm">popupEmailSearchParms</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class popupEmailSearchParms.
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.window.aspx" target="_blank">Window</a>
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.markup.icomponentconnector.aspx" target="_blank">IComponentConnector</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.popupExportSearchGrid.htm">popupExportSearchGrid</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class popupExportSearchGrid.
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.window.aspx" target="_blank">Window</a>
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.markup.icomponentconnector.aspx" target="_blank">IComponentConnector</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.popupGroupLibraries.htm">popupGroupLibraries</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class popupGroupLibraries.
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.window.aspx" target="_blank">Window</a>
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.markup.icomponentconnector.aspx" target="_blank">IComponentConnector</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.popupReviewSearchParms.htm">popupReviewSearchParms</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class popupReviewSearchParms.
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.window.aspx" target="_blank">Window</a>
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.markup.icomponentconnector.aspx" target="_blank">IComponentConnector</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.popupSaveSearch.htm">popupSaveSearch</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class popupSaveSearch.
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.window.aspx" target="_blank">Window</a>
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.markup.icomponentconnector.aspx" target="_blank">IComponentConnector</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.popupScheduelSearch.htm">popupScheduelSearch</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class popupScheduelSearch.
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.window.aspx" target="_blank">Window</a>
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.markup.icomponentconnector.aspx" target="_blank">IComponentConnector</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.popUserPassword.htm">popUserPassword</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class popUserPassword.
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.window.aspx" target="_blank">Window</a>
+   Implements the <a href="http://msdn.microsoft.com/en-us/library/system.windows.markup.icomponentconnector.aspx" target="_blank">IComponentConnector</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.struct_ActiveSearchGuids.htm">struct_ActiveSearchGuids</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class struct_ActiveSearchGuids.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.struct_ArchiveFolderId.htm">struct_ArchiveFolderId</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class struct_ArchiveFolderId.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.struct_Dg.htm">struct_Dg</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class struct_Dg.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.struct_LibUsers.htm">struct_LibUsers</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class struct_LibUsers.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.tempdata.htm">tempdata</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class tempdata.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.test.htm">test</a>
+                      </td>
+                      <td />
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.TestClass.htm">TestClass</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Class TestClass.
+   </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.TestControl.htm">TestControl</a>
+                      </td>
+                      <td />
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.TestWindow.htm">TestWindow</a>
+                      </td>
+                      <td />
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.vExchangeHostPop.htm">vExchangeHostPop</a>
+                      </td>
+                      <td />
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.vFileDirectory.htm">vFileDirectory</a>
+                      </td>
+                      <td />
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.vLibraryStat.htm">vLibraryStat</a>
+                      </td>
+                      <td />
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.vLibraryUser.htm">vLibraryUser</a>
+                      </td>
+                      <td />
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.vMigrateUser.htm">vMigrateUser</a>
+                      </td>
+                      <td />
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.vReassignedTable.htm">vReassignedTable</a>
+                      </td>
+                      <td />
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="../icons/pubclass.gif" alt="Public class" title="Public class" />
+                      </td>
+                      <td>
+                        <a href="T-ECMSearchWPF.vUserGrid.htm">vUserGrid</a>
+                      </td>
+                      <td />
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div id="footer" class="footerContainer">
+          <div class="footerLogoContainer">
+            <div style="margin-top:5px">
+              <span class="customCopyrightFooter" />
+            </div>
+            <div style="margin-top:5px" class="copyrightFooter">
+              <a href="http://submain.com/fwlink/gd-help/generated/">Created with evaluation copy of GhostDoc Pro. Click here to purchase and remove this link.</a>
+            </div>
+            <div> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+          <!-- /Content Ends Here -->
+        </div>
+
+
+  </body>
+</html>

@@ -1,10 +1,35 @@
-﻿Imports System.Data
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 06-28-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 06-28-2020
+' ***********************************************************************
+' <copyright file="clsPullDatasource.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+Imports System.Data
 Imports System.Data.SqlClient
 
+''' <summary>
+''' Class clsPullDataItem.
+''' </summary>
 Public Class clsPullDataItem
 
+    ''' <summary>
+    ''' The database
+    ''' </summary>
     Dim DB As New clsDatabase
 
+    ''' <summary>
+    ''' Pulls the email item.
+    ''' </summary>
+    ''' <param name="ColumnName">Name of the column.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function PullEmailItem(ColumnName As String, EmailGuid As String) As String
         Dim MySql As String = "select " + ColumnName + " from Email where SourceGuid = '" + EmailGuid + "'"
         Dim tval As String = ""
@@ -42,6 +67,12 @@ Public Class clsPullDataItem
         Return tval
     End Function
 
+    ''' <summary>
+    ''' Pulls the datasource item.
+    ''' </summary>
+    ''' <param name="ColumnName">Name of the column.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function PullDatasourceItem(ColumnName As String, SourceGuid As String) As String
 
         Dim MySql As String = "select " + ColumnName + " from DataSource where SourceGuid = '" + SourceGuid + "'"

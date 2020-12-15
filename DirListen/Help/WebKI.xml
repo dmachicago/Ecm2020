@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title=".CS field" Url="html/F-DirListen.DirListener.CS.htm" />
+  <HelpKINode Title=".FileSystemWatcher_Changed method" Url="html/M-DirListen.DirListener.FileSystemWatcher_Changed.htm" />
+  <HelpKINode Title=".FileSystemWatcher_Created method" Url="html/M-DirListen.DirListener.FileSystemWatcher_Created.htm" />
+  <HelpKINode Title=".FileSystemWatcher_Deleted method" Url="html/M-DirListen.DirListener.FileSystemWatcher_Deleted.htm" />
+  <HelpKINode Title=".FileSystemWatcher_Renamed method" Url="html/M-DirListen.DirListener.FileSystemWatcher_Renamed.htm" />
+  <HelpKINode Title=".GetConsoleWindow method" Url="html/M-DirListen.DirListener.GetConsoleWindow.htm" />
+  <HelpKINode Title=".GetDirsToMoniotor method" Url="html/M-DirListen.DirListener.GetDirsToMoniotor.htm" />
+  <HelpKINode Title=".GetPath method" Url="html/M-DirListen.DirListener.GetPath.htm" />
+  <HelpKINode Title=".HideConsoleWindow field" Url="html/F-DirListen.DirListener.HideConsoleWindow.htm" />
+  <HelpKINode Title=".LL field" Url="html/F-DirListen.DirListener.LL.htm" />
+  <HelpKINode Title=".Main method" Url="html/M-DirListen.DirListener.Main.htm" />
+  <HelpKINode Title=".MonitorDirectory method" Url="html/M-DirListen.DirListener.MonitorDirectory.htm" />
+  <HelpKINode Title=".periodTimeSpan field" Url="html/F-DirListen.DirListener.periodTimeSpan.htm" />
+  <HelpKINode Title=".RunAsService field" Url="html/F-DirListen.DirListener.RunAsService.htm" />
+  <HelpKINode Title=".SetListenerConn method" Url="html/M-DirListen.DirListener.SetListenerConn.htm" />
+  <HelpKINode Title=".ShowWindow method" Url="html/M-DirListen.DirListener.ShowWindow.htm" />
+  <HelpKINode Title=".startTimeSpan field" Url="html/F-DirListen.DirListener.startTimeSpan.htm" />
+  <HelpKINode Title=".SW_HIDE field" Url="html/F-DirListen.DirListener.SW_HIDE.htm" />
+  <HelpKINode Title=".SW_SHOW field" Url="html/F-DirListen.DirListener.SW_SHOW.htm" />
+  <HelpKINode Title="AddSQLiteDB method" Url="html/M-ArchiveListener.UTIL.AddSQLiteDB.htm" />
+  <HelpKINode Title="AddSQLiteFile method" Url="html/M-ArchiveListener.UTIL.AddSQLiteFile.htm" />
+  <HelpKINode Title="ArchiveListener namespace" Url="html/N-ArchiveListener.htm" />
+  <HelpKINode Title="ArchiveListener.UTIL class">
+    <HelpKINode Title="UTIL Class" Url="html/T-ArchiveListener.UTIL.htm" />
+    <HelpKINode Title="UTIL Members" Url="html/AllMembers.T-ArchiveListener.UTIL.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CS field">
+    <HelpKINode Title="CS Field" Url="html/F-DirListen.DirListener.CS.htm" />
+    <HelpKINode Title="CS Field" Url="html/F-ArchiveListener.UTIL.CS.htm" />
+  </HelpKINode>
+  <HelpKINode Title="FileSystemWatcher_Changed method" Url="html/M-DirListen.DirListener.FileSystemWatcher_Changed.htm" />
+  <HelpKINode Title="FileSystemWatcher_Created method" Url="html/M-DirListen.DirListener.FileSystemWatcher_Created.htm" />
+  <HelpKINode Title="FileSystemWatcher_Deleted method" Url="html/M-DirListen.DirListener.FileSystemWatcher_Deleted.htm" />
+  <HelpKINode Title="FileSystemWatcher_Renamed method" Url="html/M-DirListen.DirListener.FileSystemWatcher_Renamed.htm" />
+  <HelpKINode Title="fqn field" Url="html/F-ArchiveListener.UTIL.fqn.htm" />
+  <HelpKINode Title="GetConsoleWindow method" Url="html/M-DirListen.DirListener.GetConsoleWindow.htm" />
+  <HelpKINode Title="GetDirsToMoniotor method" Url="html/M-DirListen.DirListener.GetDirsToMoniotor.htm" />
+  <HelpKINode Title="GetPath method" Url="html/M-DirListen.DirListener.GetPath.htm" />
+  <HelpKINode Title="HideConsoleWindow field" Url="html/F-DirListen.DirListener.HideConsoleWindow.htm" />
+  <HelpKINode Title="LL field">
+    <HelpKINode Title="LL Field" Url="html/F-ArchiveListener.UTIL.LL.htm" />
+    <HelpKINode Title="LL Field" Url="html/F-DirListen.DirListener.LL.htm" />
+  </HelpKINode>
+  <HelpKINode Title="LogDir field" Url="html/F-ArchiveListener.UTIL.LogDir.htm" />
+  <HelpKINode Title="LogError method" Url="html/M-ArchiveListener.UTIL.LogError.htm" />
+  <HelpKINode Title="LogID field" Url="html/F-ArchiveListener.UTIL.LogID.htm" />
+  <HelpKINode Title="LogMsg method" Url="html/M-ArchiveListener.UTIL.LogMsg.htm" />
+  <HelpKINode Title="LogPATH field" Url="html/F-ArchiveListener.UTIL.LogPATH.htm" />
+  <HelpKINode Title="LogStartUp method" Url="html/M-ArchiveListener.UTIL.LogStartUp.htm" />
+  <HelpKINode Title="Main method" Url="html/M-DirListen.DirListener.Main.htm" />
+  <HelpKINode Title="MonitorDirectory method" Url="html/M-DirListen.DirListener.MonitorDirectory.htm" />
+  <HelpKINode Title="periodTimeSpan field" Url="html/F-DirListen.DirListener.periodTimeSpan.htm" />
+  <HelpKINode Title="ReadSetting method" Url="html/M-ArchiveListener.UTIL.ReadSetting.htm" />
+  <HelpKINode Title="RunAsService field" Url="html/F-DirListen.DirListener.RunAsService.htm" />
+  <HelpKINode Title="SetListenerConn method" Url="html/M-DirListen.DirListener.SetListenerConn.htm" />
+  <HelpKINode Title="ShowWindow method" Url="html/M-DirListen.DirListener.ShowWindow.htm" />
+  <HelpKINode Title="SQLiteListenerDB field" Url="html/F-ArchiveListener.UTIL.SQLiteListenerDB.htm" />
+  <HelpKINode Title="startTimeSpan field" Url="html/F-DirListen.DirListener.startTimeSpan.htm" />
+  <HelpKINode Title="SW_HIDE field" Url="html/F-DirListen.DirListener.SW_HIDE.htm" />
+  <HelpKINode Title="SW_SHOW field" Url="html/F-DirListen.DirListener.SW_SHOW.htm" />
+  <HelpKINode Title="ToLongTimeString method" Url="html/M-ArchiveListener.UTIL.ToLongTimeString.htm" />
+  <HelpKINode Title="UTIL class">
+    <HelpKINode Title="UTIL Class" Url="html/T-ArchiveListener.UTIL.htm" />
+    <HelpKINode Title="UTIL Members" Url="html/AllMembers.T-ArchiveListener.UTIL.htm" />
+    <HelpKINode Title="about UTIL class" Url="html/T-ArchiveListener.UTIL.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-ArchiveListener.UTIL.htm" />
+    <HelpKINode Title="fields" Url="html/Fields.T-ArchiveListener.UTIL.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-ArchiveListener.UTIL.htm" />
+  </HelpKINode>
+  <HelpKINode Title="UTIL.AddSQLiteDB method" Url="html/M-ArchiveListener.UTIL.AddSQLiteDB.htm" />
+  <HelpKINode Title="UTIL.AddSQLiteFile method" Url="html/M-ArchiveListener.UTIL.AddSQLiteFile.htm" />
+  <HelpKINode Title="UTIL.CS field" Url="html/F-ArchiveListener.UTIL.CS.htm" />
+  <HelpKINode Title="UTIL.fqn field" Url="html/F-ArchiveListener.UTIL.fqn.htm" />
+  <HelpKINode Title="UTIL.LL field" Url="html/F-ArchiveListener.UTIL.LL.htm" />
+  <HelpKINode Title="UTIL.LogDir field" Url="html/F-ArchiveListener.UTIL.LogDir.htm" />
+  <HelpKINode Title="UTIL.LogError method" Url="html/M-ArchiveListener.UTIL.LogError.htm" />
+  <HelpKINode Title="UTIL.LogID field" Url="html/F-ArchiveListener.UTIL.LogID.htm" />
+  <HelpKINode Title="UTIL.LogMsg method" Url="html/M-ArchiveListener.UTIL.LogMsg.htm" />
+  <HelpKINode Title="UTIL.LogPATH field" Url="html/F-ArchiveListener.UTIL.LogPATH.htm" />
+  <HelpKINode Title="UTIL.LogStartUp method" Url="html/M-ArchiveListener.UTIL.LogStartUp.htm" />
+  <HelpKINode Title="UTIL.ReadSetting method" Url="html/M-ArchiveListener.UTIL.ReadSetting.htm" />
+  <HelpKINode Title="UTIL.SQLiteListenerDB field" Url="html/F-ArchiveListener.UTIL.SQLiteListenerDB.htm" />
+  <HelpKINode Title="UTIL.ToLongTimeString method" Url="html/M-ArchiveListener.UTIL.ToLongTimeString.htm" />
+</HelpKI>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Id="b3079a1c-4398-4f68-9fd6-7107c35b37ab" Title="ArchiveListener Namespace" Url="html/N-ArchiveListener.htm">
+    <HelpTOCNode Id="c760042f-8419-4d70-b1b3-f70e8e79ba85" Title="UTIL Class" Url="html/T-ArchiveListener.UTIL.htm">
+      <HelpTOCNode Title="UTIL Members" Url="html/AllMembers.T-ArchiveListener.UTIL.htm" />
+      <HelpTOCNode Id="48feaf4e-21ff-4da1-8ab2-cd71bf9bd2e3" Title="UTIL Fields" Url="html/Fields.T-ArchiveListener.UTIL.htm">
+        <HelpTOCNode Title="CS Field" Url="html/F-ArchiveListener.UTIL.CS.htm" />
+        <HelpTOCNode Title="fqn Field" Url="html/F-ArchiveListener.UTIL.fqn.htm" />
+        <HelpTOCNode Title="LL Field" Url="html/F-ArchiveListener.UTIL.LL.htm" />
+        <HelpTOCNode Title="LogDir Field" Url="html/F-ArchiveListener.UTIL.LogDir.htm" />
+        <HelpTOCNode Title="LogID Field" Url="html/F-ArchiveListener.UTIL.LogID.htm" />
+        <HelpTOCNode Title="LogPATH Field" Url="html/F-ArchiveListener.UTIL.LogPATH.htm" />
+        <HelpTOCNode Title="SQLiteListenerDB Field" Url="html/F-ArchiveListener.UTIL.SQLiteListenerDB.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="f8de1bad-46a8-46c5-b810-770e347fb622" Title="UTIL Methods" Url="html/Methods.T-ArchiveListener.UTIL.htm">
+        <HelpTOCNode Title="AddSQLiteDB Method " Url="html/M-ArchiveListener.UTIL.AddSQLiteDB.htm" />
+        <HelpTOCNode Title="AddSQLiteFile Method " Url="html/M-ArchiveListener.UTIL.AddSQLiteFile.htm" />
+        <HelpTOCNode Title="LogError Method " Url="html/M-ArchiveListener.UTIL.LogError.htm" />
+        <HelpTOCNode Title="LogMsg Method " Url="html/M-ArchiveListener.UTIL.LogMsg.htm" />
+        <HelpTOCNode Title="LogStartUp Method " Url="html/M-ArchiveListener.UTIL.LogStartUp.htm" />
+        <HelpTOCNode Title="ReadSetting Method " Url="html/M-ArchiveListener.UTIL.ReadSetting.htm" />
+        <HelpTOCNode Title="ToLongTimeString Method " Url="html/M-ArchiveListener.UTIL.ToLongTimeString.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>

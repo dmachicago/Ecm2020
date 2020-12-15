@@ -1,45 +1,149 @@
-﻿Imports System.Data
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 07-16-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 07-16-2020
+' ***********************************************************************
+' <copyright file="PageLibraryMgt.xaml.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+Imports System.Data
 Imports System.Web.Script.Serialization
 Imports ECMEncryption
+''' <summary>
+''' Class PageLibraryMgt.
+''' Implements the <see cref="System.Windows.Window" />
+''' Implements the <see cref="System.Windows.Markup.IComponentConnector" />
+''' </summary>
+''' <seealso cref="System.Windows.Window" />
+''' <seealso cref="System.Windows.Markup.IComponentConnector" />
 Public Class PageLibraryMgt
     'Inherits Page
 
+    ''' <summary>
+    ''' The delete counter
+    ''' </summary>
     Dim DelCounter As Integer = 0
+    ''' <summary>
+    ''' The delete count
+    ''' </summary>
     Dim DelCount As Integer = 0
 
+    ''' <summary>
+    ''' The utility
+    ''' </summary>
     Dim UTIL As New clsUtility
+    ''' <summary>
+    ''' The dma
+    ''' </summary>
     Dim DMA As New clsDma
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Dim LOG As New clsLogMain
+    ''' <summary>
+    ''' The iso
+    ''' </summary>
     Dim ISO As New clsIsolatedStorage
+    ''' <summary>
+    ''' The common
+    ''' </summary>
     Dim COMMON As New clsCommonFunctions
+    ''' <summary>
+    ''' The drhist
+    ''' </summary>
     Dim DRHIST As New clsDATASOURCERESTOREHISTORY
     'Dim EP As New clsEndPoint
+    ''' <summary>
+    ''' The en c2
+    ''' </summary>
     Dim ENC2 As New ECMEncrypt()
+    ''' <summary>
+    ''' The xlog
+    ''' </summary>
     Dim XLOG As New clsLoggingExtended
+    ''' <summary>
+    ''' The DSMGT
+    ''' </summary>
     Dim DSMGT As clsDatasetMgt = New clsDatasetMgt()
 
+    ''' <summary>
+    ''' The b populate group users
+    ''' </summary>
     Dim bPopulateGroupUsers As Boolean = False
+    ''' <summary>
+    ''' The b populate assigned users
+    ''' </summary>
     Dim bPopulateAssignedUsers As Boolean = False
+    ''' <summary>
+    ''' The b populate library items
+    ''' </summary>
     Dim bPopulateLibItems As Boolean = False
+    ''' <summary>
+    ''' The b delete group access
+    ''' </summary>
     Dim bDeleteGroupAccess As Boolean = False
+    ''' <summary>
+    ''' The curr selected library name
+    ''' </summary>
     Dim CurrSelectedLibName As String = ""
 
+    ''' <summary>
+    ''' The i total to process
+    ''' </summary>
     Dim iTotalToProcess As Integer = 0
+    ''' <summary>
+    ''' The i total processed
+    ''' </summary>
     Dim iTotalProcessed As Integer = 0
 
     'Dim GVAR As App = App.Current
+    ''' <summary>
+    ''' The user identifier
+    ''' </summary>
     Dim UserID As String = ""
+    ''' <summary>
+    ''' The is admin
+    ''' </summary>
     Dim isAdmin As Boolean = False
     'Dim ListOfItems As New System.Collections.ObjectModel.ObservableCollection(Of String)
+    ''' <summary>
+    ''' The list of items
+    ''' </summary>
     Dim ListOfItems() As String = Nothing
+    ''' <summary>
+    ''' The rc
+    ''' </summary>
     Dim RC As Boolean = False
+    ''' <summary>
+    ''' The ret MSG
+    ''' </summary>
     Dim RetMsg As String = ""
+    ''' <summary>
+    ''' The form loaded
+    ''' </summary>
     Dim FormLoaded As Boolean = False
+    ''' <summary>
+    ''' The library name
+    ''' </summary>
     Dim LibraryName As String = ""
+    ''' <summary>
+    ''' The sddebug
+    ''' </summary>
     Dim sddebug As String = System.Configuration.ConfigurationManager.AppSettings("DebugON")
+    ''' <summary>
+    ''' The ddebug
+    ''' </summary>
     Dim ddebug As Boolean = False
     'Dim proxy As New SVCSearch.Service1Client
 
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="PageLibraryMgt"/> class.
+    ''' </summary>
     Public Sub New()
         InitializeComponent()
 
@@ -63,10 +167,20 @@ Public Class PageLibraryMgt
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlHome control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlHome_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlHome.Click
         Me.Close()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hyperlinkButton1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hyperlinkButton1_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hyperlinkButton1.Click
         Dim NextPage As New PageLibrary
         NextPage.Show()
@@ -74,16 +188,30 @@ Public Class PageLibraryMgt
 
 
 
+    ''' <summary>
+    ''' Handles the Click event of the hlLibUsers control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlLibUsers_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlLibUsers.Click
         Dim NextPage As New PageGrantContentToUsers
         NextPage.Show()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlNewGroup control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlNewGroup_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlNewGroup.Click
         Dim NextPage As New PageGroup
         NextPage.Show()
     End Sub
 
+    ''' <summary>
+    ''' Populates the group user library combo.
+    ''' </summary>
+    ''' <param name="GroupName">Name of the group.</param>
     Sub PopulateGroupUserLibCombo(ByVal GroupName As String)
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt - PopulateGroupUserLibCombo 300: ")
         Dim S As String = ""
@@ -103,6 +231,12 @@ Public Class PageLibraryMgt
             SB.Text = "ERROR 33.44.1 - " + ex.Message + " / " + S
         End Try
     End Sub
+    ''' <summary>
+    ''' Clients the populate group user library combo4.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="strListOfItems">The string list of items.</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
     Sub client_PopulateGroupUserLibCombo4(RC As Boolean, strListOfItems As String, RetMsg As String)
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt - client_PopulateGroupUserLibCombo4 300: ")
         PB.IsIndeterminate = False
@@ -122,6 +256,9 @@ Public Class PageLibraryMgt
         'RemoveHandler ProxySearch.getListOfStrings4Completed, AddressOf client_PopulateGroupUserLibCombo4
     End Sub
 
+    ''' <summary>
+    ''' Populates the library ComboBox.
+    ''' </summary>
     Sub PopulateLibraryComboBox()
 
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt:PopulateLibraryComboBox - ERROR client_PopulateLibraryCombo 500: ")
@@ -154,6 +291,12 @@ Public Class PageLibraryMgt
 
         client_PopulateLibraryCombo2(BB, ListOfItems, RetMsg)
     End Sub
+    ''' <summary>
+    ''' Clients the populate library combo2.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="ListOfItems">The list of items.</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
     Sub client_PopulateLibraryCombo2(RC As Boolean, ListOfItems As String(), RetMsg As String)
 
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt:client_PopulateLibraryCombo2 - ERROR client_PopulateLibraryCombo 501: ")
@@ -173,6 +316,9 @@ Public Class PageLibraryMgt
         'RemoveHandler ProxySearch.getListOfStrings2Completed, AddressOf client_PopulateLibraryCombo2
         FormLoaded = True
     End Sub
+    ''' <summary>
+    ''' Populates the group combo.
+    ''' </summary>
     Sub PopulateGroupCombo()
 
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt:PopulateGroupCombo - ERROR client_PopulateLibraryCombo 503: " + RetMsg)
@@ -220,6 +366,11 @@ Public Class PageLibraryMgt
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the populate group combo1.
+    ''' </summary>
+    ''' <param name="ListOfItems">The list of items.</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
     Sub client_PopulateGroupCombo1(ListOfItems As String(), RetMsg As String)
 
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt:client_PopulateGroupCombo1 - ERROR client_PopulateLibraryCombo 504: " + RetMsg)
@@ -239,6 +390,9 @@ Public Class PageLibraryMgt
         'RemoveHandler ProxySearch.getListOfStrings1Completed, AddressOf client_PopulateGroupCombo1
     End Sub
 
+    ''' <summary>
+    ''' Previews the file.
+    ''' </summary>
     Sub PreviewFile()
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt:client_PopulateGroupCombo1 - ERROR client_PopulateLibraryCombo 505: ")
         Dim BytesToRestore As Double = 0
@@ -335,6 +489,10 @@ Public Class PageLibraryMgt
 
     End Sub
 
+    ''' <summary>
+    ''' Populates the library items grid.
+    ''' </summary>
+    ''' <param name="LibraryName">Name of the library.</param>
     Sub PopulateLibItemsGrid(ByVal LibraryName As String)
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt:PopulateLibItemsGrid - PLM 99")
         If FormLoaded = False Then
@@ -348,6 +506,10 @@ Public Class PageLibraryMgt
         client_PopulateLibItemsGrid(ObjListOfRows)
 
     End Sub
+    ''' <summary>
+    ''' Clients the populate library items grid.
+    ''' </summary>
+    ''' <param name="ObjListOfRows">The object list of rows.</param>
     Sub client_PopulateLibItemsGrid(ObjListOfRows As String)
         PB.IsIndeterminate = False
         PB.Visibility = Windows.Visibility.Collapsed
@@ -386,6 +548,10 @@ Public Class PageLibraryMgt
         'RemoveHandler ProxySearch.PopulateLibItemsGridCompleted, AddressOf client_PopulateLibItemsGrid
     End Sub
 
+    ''' <summary>
+    ''' Populates the library groups grid.
+    ''' </summary>
+    ''' <param name="LibraryName">Name of the library.</param>
     Sub PopulateLibraryGroupsGrid(ByVal LibraryName As String)
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt:PopulateLibraryGroupsGrid 600: ")
         If FormLoaded = False Then
@@ -396,6 +562,10 @@ Public Class PageLibraryMgt
         PopulateDgAssigned(LibraryName)
     End Sub
 
+    ''' <summary>
+    ''' Populates the group user grid.
+    ''' </summary>
+    ''' <param name="GroupName">Name of the group.</param>
     Sub PopulateGroupUserGrid(ByVal GroupName As String)
         If FormLoaded = False Then
             Return
@@ -408,6 +578,10 @@ Public Class PageLibraryMgt
         Dim ObjListOfRows As String = ProxySearch.PopulateGroupUserGrid(_SecureID, GroupName)
         client_PopulateGroupUserGrid(ObjListOfRows)
     End Sub
+    ''' <summary>
+    ''' Clients the populate group user grid.
+    ''' </summary>
+    ''' <param name="ObjListOfRows">The object list of rows.</param>
     Sub client_PopulateGroupUserGrid(ObjListOfRows As String)
 
         If ObjListOfRows.Length <= 3 Then
@@ -449,6 +623,9 @@ Public Class PageLibraryMgt
         PB.IsIndeterminate = False
     End Sub
 
+    ''' <summary>
+    ''' Removes the selected library items.
+    ''' </summary>
     Sub RemoveSelectedLibraryItems()
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt:RemoveSelectedLibraryItems 601: ")
         Me.Cursor = Cursors.Wait
@@ -493,6 +670,9 @@ Public Class PageLibraryMgt
         Me.Cursor = Cursors.Arrow
     End Sub
 
+    ''' <summary>
+    ''' Restores the files.
+    ''' </summary>
     Sub RestoreFiles()
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt:RestoreFiles 601: ")
         Dim BytesToRestore As Double = 0
@@ -595,6 +775,12 @@ Public Class PageLibraryMgt
         MessageBox.Show("Restore request posted for " + iCnt.ToString + " files / Total Bytes: " + BytesToRestore.ToString)
 
     End Sub
+    ''' <summary>
+    ''' Saves the restore history.
+    ''' </summary>
+    ''' <param name="setTypecontentcode">The set typecontentcode.</param>
+    ''' <param name="OwnerID">The owner identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
     Sub SaveRestoreHistory(ByVal setTypecontentcode As String, ByVal OwnerID As String, ByVal SourceGuid As String)
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt:SaveRestoreHistory 601: ")
         DRHIST.setRestoreuserid(_UserID)
@@ -611,17 +797,32 @@ Public Class PageLibraryMgt
     End Sub
 
 
+    ''' <summary>
+    ''' Handles the Click event of the btnRemoveItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnRemoveItem_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnRemoveItem.Click
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt:btnRemoveItem_Click 601: ")
         RemoveSelectedLibraryItems()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnRestore control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnRestore_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnRestore.Click
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt:btnRestore_Click 601: ")
         RestoreFiles()
     End Sub
 
 
+    ''' <summary>
+    ''' Handles the SelectionChanged event of the dgAssigned control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub dgAssigned_SelectionChanged(ByVal sender As System.Object, ByVal e As SelectionChangedEventArgs) Handles dgAssigned.SelectionChanged
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt:dgAssigned_SelectionChanged 601: ")
         Dim GroupName As String = grid.GetCellValueAsString(dgAssigned, dgAssigned.SelectedIndex, "GroupName")
@@ -631,6 +832,10 @@ Public Class PageLibraryMgt
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the add library group user.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub client_AddLibraryGroupUser(RC As Boolean)
 
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt:client_AddLibraryGroupUser 601: ")
@@ -655,6 +860,10 @@ Public Class PageLibraryMgt
         'RemoveHandler ProxySearch.AddLibraryGroupUserCompleted, AddressOf client_AddLibraryGroupUser
     End Sub
 
+    ''' <summary>
+    ''' Populates the dg assigned.
+    ''' </summary>
+    ''' <param name="LibraryName">Name of the library.</param>
     Sub PopulateDgAssigned(ByVal LibraryName As String)
         'gCurrLoginID = gCurrLoginID
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt:PopulateDgAssigned 601: ")
@@ -667,6 +876,10 @@ Public Class PageLibraryMgt
         Dim json As String = ProxySearch.PopulateDgAssigned(_SecureID, LibraryName, gCurrLoginID)
         client_PopulateDgAssigned(json)
     End Sub
+    ''' <summary>
+    ''' Clients the populate dg assigned.
+    ''' </summary>
+    ''' <param name="json">The json.</param>
     Sub client_PopulateDgAssigned(json As String)
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt:client_PopulateDgAssigned - client_PopulateDgAssigned 300: ")
         Dim L As Integer = 0
@@ -705,6 +918,9 @@ Public Class PageLibraryMgt
         PB.Visibility = Visibility.Hidden
     End Sub
 
+    ''' <summary>
+    ''' Sets the data source restore history parms.
+    ''' </summary>
     Sub setDataSourceRestoreHistoryParms()
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt:setDataSourceRestoreHistoryParms 300: ")
         Dim S As String = ""
@@ -819,6 +1035,10 @@ Public Class PageLibraryMgt
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the reset library users count.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub client_ResetLibraryUsersCount(RC As Boolean)
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt:client_ResetLibraryUsersCount 300: ")
         PB.IsIndeterminate = False
@@ -833,6 +1053,10 @@ Public Class PageLibraryMgt
         End If
 
     End Sub
+    ''' <summary>
+    ''' Clients the delete library group user.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub client_DeleteLibraryGroupUser(RC As Boolean)
 
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt: client_DeleteLibraryGroupUser 101")
@@ -848,6 +1072,11 @@ Public Class PageLibraryMgt
         End If
     End Sub
 
+    ''' <summary>
+    ''' gs the log SQL.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="S">The s.</param>
     Sub gLogSQL(RC As Boolean, S As String)
 
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt: gLogSQL 101")
@@ -888,6 +1117,9 @@ Public Class PageLibraryMgt
     End Sub
 
 
+    ''' <summary>
+    ''' Allows an object to try to free resources and perform other cleanup operations before it is reclaimed by garbage collection.
+    ''' </summary>
     Protected Overrides Sub Finalize()
         Try
             If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt: Finalize 101")
@@ -905,6 +1137,11 @@ Public Class PageLibraryMgt
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlRefreshGRps control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlRefreshGRps_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlRefreshGRps.Click
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt: hlRefreshGRps_Click 101")
         PopulateDgAssigned(cbLibrary.Text)
@@ -912,6 +1149,11 @@ Public Class PageLibraryMgt
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlRemoveGroup control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlRemoveGroup_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlRemoveGroup.Click
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt: hlRemoveGroup_Click 101")
         Me.Cursor = Cursors.Wait
@@ -966,6 +1208,11 @@ Public Class PageLibraryMgt
         SB.Text = "Removal complete."
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlAssignGroup control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlAssignGroup_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlAssignGroup.Click
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt: hlAssignGroup_Click 101")
         Dim GroupName As String = cbGroups.SelectedItem
@@ -978,6 +1225,10 @@ Public Class PageLibraryMgt
         client_AddGroupLibraryAccess(RC)
 
     End Sub
+    ''' <summary>
+    ''' Clients the add group library access.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub client_AddGroupLibraryAccess(RC As Boolean)
 
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt: client_AddGroupLibraryAccess 101")
@@ -1000,6 +1251,9 @@ Public Class PageLibraryMgt
     End Sub
 
 
+    ''' <summary>
+    ''' Populates the selected library items.
+    ''' </summary>
     Sub PopulateSelectedLibraryItems()
         If FormLoaded = False Then
             Return
@@ -1031,10 +1285,20 @@ Public Class PageLibraryMgt
         PB.Visibility = Visibility.Hidden
     End Sub
 
+    ''' <summary>
+    ''' Handles the MouseEnter event of the dgLibItems control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Input.MouseEventArgs"/> instance containing the event data.</param>
     Private Sub dgLibItems_MouseEnter(ByVal sender As System.Object, ByVal e As System.Windows.Input.MouseEventArgs) Handles dgLibItems.MouseEnter
         SB.Text = "Current library: " + cbLibrary.Text + ", contains " + Me.dgLibItems.Items.Count.ToString + " items."
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlValidate control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlValidate_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlValidate.Click
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt: hlValidate_Click 101")
         Dim S As String = ""
@@ -1054,10 +1318,20 @@ Public Class PageLibraryMgt
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Checked event of the ckMyGroupOnly control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckMyGroupOnly_Checked(sender As Object, e As RoutedEventArgs) Handles ckMyGroupOnly.Checked
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the MouseDoubleClick event of the dgLibItems control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="MouseButtonEventArgs"/> instance containing the event data.</param>
     Private Sub dgLibItems_MouseDoubleClick(sender As Object, e As MouseButtonEventArgs) Handles dgLibItems.MouseDoubleClick
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt: dgLibItems_MouseDoubleClick 101")
         Dim TempDir As String = System.IO.Path.GetTempPath
@@ -1076,11 +1350,21 @@ Public Class PageLibraryMgt
         PB.Value = 0
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectionChanged event of the cbLibrary control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub cbLibrary_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles cbLibrary.SelectionChanged
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt: cbLibrary_SelectionChanged 101")
         PopulateSelectedLibraryItems()
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectionChanged event of the cbGroups control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub cbGroups_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles cbGroups.SelectionChanged
         If FormLoaded = False Then
             Return

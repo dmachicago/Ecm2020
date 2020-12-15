@@ -1,38 +1,117 @@
-﻿'** Xixed the 'RemoveHandler ProxySearch.ExecuteSqlNewConnSecureCompleted, AddressOf client_changeOwnership
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 07-16-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 07-16-2020
+' ***********************************************************************
+' <copyright file="PageLibraryAssignment.xaml.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************ip
 Imports ECMEncryption
+''' <summary>
+''' Class PageLibraryAssignment.
+''' Implements the <see cref="System.Windows.Window" />
+''' Implements the <see cref="System.Windows.Markup.IComponentConnector" />
+''' </summary>
+''' <seealso cref="System.Windows.Window" />
+''' <seealso cref="System.Windows.Markup.IComponentConnector" />
 Public Class PageLibraryAssignment
 
 
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Dim LOG As New clsLoggingExtended
+    ''' <summary>
+    ''' The email library
+    ''' </summary>
     Dim EmailLib As New clsLIBEMAIL
+    ''' <summary>
+    ''' The content library
+    ''' </summary>
     Dim ContentLib As New clsLIBDIRECTORY
+    ''' <summary>
+    ''' The utility
+    ''' </summary>
     Dim UTIL As New clsUtility
+    ''' <summary>
+    ''' The common
+    ''' </summary>
     Dim COMMON As New clsCommonFunctions
     'Dim EP As New clsEndPoint
+    ''' <summary>
+    ''' The en c2
+    ''' </summary>
     Dim ENC2 As New ECMEncrypt()
 
+    ''' <summary>
+    ''' The curr library name
+    ''' </summary>
     Dim CurrLibName As String = ""
+    ''' <summary>
+    ''' The curr assign library name
+    ''' </summary>
     Dim CurrAssignLibName As String = ""
+    ''' <summary>
+    ''' The curr user unique identifier identifier
+    ''' </summary>
     Dim CurrUserGuidID As String = ""
 
     'Dim GVAR As App = App.Current
+    ''' <summary>
+    ''' The user identifier
+    ''' </summary>
     Dim UserID As String = ""
     'Dim ListOfLibs As System.Collections.ObjectModel.ObservableCollection(Of String)
+    ''' <summary>
+    ''' The list of libs
+    ''' </summary>
     Dim ListOfLibs() As String = Nothing
     'Dim ListOfAssignedLibs As System.Collections.ObjectModel.ObservableCollection(Of String)
+    ''' <summary>
+    ''' The list of assigned libs
+    ''' </summary>
     Dim ListOfAssignedLibs() As String = Nothing
 
+    ''' <summary>
+    ''' The folder name
+    ''' </summary>
     Public FolderName As String = ""
+    ''' <summary>
+    ''' The folder identifier
+    ''' </summary>
     Dim FolderID As String = ""
+    ''' <summary>
+    ''' The TGT library name
+    ''' </summary>
     Dim tgtLibName As String = ""
+    ''' <summary>
+    ''' The type library
+    ''' </summary>
     Dim TypeLibrary As String = ""
+    ''' <summary>
+    ''' The is email
+    ''' </summary>
     Dim isEmail As Boolean = False
 
+    ''' <summary>
+    ''' The rc
+    ''' </summary>
     Dim RC As Boolean = False
+    ''' <summary>
+    ''' The ret MSG
+    ''' </summary>
     Dim RetMsg As String = ""
 
     'Dim proxy As New SVCSearch.Service1Client
 
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="PageLibraryAssignment"/> class.
+    ''' </summary>
     Public Sub New()
         InitializeComponent()
         'EP.setSearchSvcEndPoint(proxy)
@@ -48,6 +127,10 @@ Public Class PageLibraryAssignment
 
     End Sub
 
+    ''' <summary>
+    ''' Sets the type library.
+    ''' </summary>
+    ''' <param name="LibType">Type of the library.</param>
     Public Sub setTypeLibrary(ByVal LibType As String)
         TypeLibrary = LibType
         If TypeLibrary.ToUpper.Equals("EMAIL") Then
@@ -58,28 +141,53 @@ Public Class PageLibraryAssignment
             isEmail = False
         End If
     End Sub
+    ''' <summary>
+    ''' Sets the name of the library.
+    ''' </summary>
+    ''' <param name="LibName">Name of the library.</param>
     Public Sub setLibraryName(ByVal LibName As String)
         tgtLibName = LibName
         lbLibrary.SelectedItem = tgtLibName
     End Sub
+    ''' <summary>
+    ''' Sets the folder identifier.
+    ''' </summary>
+    ''' <param name="MailFolderID">The mail folder identifier.</param>
     Public Sub setFolderID(ByVal MailFolderID As String)
         FolderID = MailFolderID$
     End Sub
+    ''' <summary>
+    ''' Sets the name of the folder.
+    ''' </summary>
+    ''' <param name="tFolderName">Name of the t folder.</param>
     Public Sub setFolderName(ByVal tFolderName As String)
         txtFolderName.Text = tFolderName$.Trim
         FolderName$ = tFolderName$.Trim
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlHome control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlHome_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlHome.Click
         Dim NextPage As New MainPage()
         'NextPage.show
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hyperlinkButton1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hyperlinkButton1_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hyperlinkButton1.Click
         Dim NextPage As New PageLibrary
-        NextPage.show
+        NextPage.Show()
     End Sub
 
+    ''' <summary>
+    ''' Populates the library combo.
+    ''' </summary>
     Sub PopulateLibraryCombo()
 
         _UserID = _UserGuid
@@ -107,6 +215,11 @@ Public Class PageLibraryAssignment
         End Try
 
     End Sub
+    ''' <summary>
+    ''' Clients the populate library combo.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="ListOfLibs">The list of libs.</param>
     Sub client_PopulateLibraryCombo(RC As Boolean, ListOfLibs As String())
         PB.IsIndeterminate = False
         PB.Visibility = Windows.Visibility.Collapsed
@@ -123,6 +236,9 @@ Public Class PageLibraryAssignment
         'RemoveHandler ProxySearch.getListOfStringsCompleted, AddressOf client_PopulateLibraryCombo
     End Sub
 
+    ''' <summary>
+    ''' Populates the assigned library combo.
+    ''' </summary>
     Public Sub PopulateAssignedLibraryCombo()
         Dim S As String = ""
         lbAssignedLibs.Items.Clear()
@@ -152,6 +268,11 @@ Public Class PageLibraryAssignment
         client_PopulateAssignedLibraryCombo(BB, ListOfAssignedLibs)
 
     End Sub
+    ''' <summary>
+    ''' Clients the populate assigned library combo.
+    ''' </summary>
+    ''' <param name="BB">if set to <c>true</c> [bb].</param>
+    ''' <param name="ListOfLibs">The list of libs.</param>
     Sub client_PopulateAssignedLibraryCombo(BB As Boolean, ListOfLibs As String())
         PB.IsIndeterminate = False
         PB.Visibility = Windows.Visibility.Collapsed
@@ -183,6 +304,9 @@ Public Class PageLibraryAssignment
     '    End If
     'End Sub
 
+    ''' <summary>
+    ''' Assigns the library.
+    ''' </summary>
     Sub AssignLibrary()
 
         _UserID = _UserGuid
@@ -252,6 +376,10 @@ Public Class PageLibraryAssignment
         SB.Text = "Library assignment complete."
     End Sub
 
+    ''' <summary>
+    ''' Clients the add library email.
+    ''' </summary>
+    ''' <param name="RecordsAdded">The records added.</param>
     Sub client_AddLibraryEmail(RecordsAdded As Integer)
         PB.IsIndeterminate = False
         PB.Visibility = Windows.Visibility.Collapsed
@@ -266,6 +394,9 @@ Public Class PageLibraryAssignment
         'RemoveHandler ProxySearch.AddLibraryEmailCompleted, AddressOf client_AddLibraryEmail
     End Sub
 
+    ''' <summary>
+    ''' Removes the library.
+    ''' </summary>
     Sub RemoveLibrary()
 
         _UserID = _UserGuid
@@ -342,6 +473,11 @@ Public Class PageLibraryAssignment
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the remove library directories.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
     Sub client_RemoveLibraryDirectories(RC As Boolean, RetMsg As String)
         PB.IsIndeterminate = False
         PB.Visibility = Windows.Visibility.Collapsed
@@ -357,15 +493,30 @@ Public Class PageLibraryAssignment
         'RemoveHandler ProxySearch.RemoveLibraryDirectoriesCompleted, AddressOf client_RemoveLibraryDirectories
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectionChanged event of the lbLibrary control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub lbLibrary_SelectionChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.SelectionChangedEventArgs) Handles lbLibrary.SelectionChanged
         Dim I As Integer = lbLibrary.SelectedIndex
         CurrLibName = lbLibrary.SelectedItem(I)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnAssign control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnAssign_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnAssign.Click
         AssignLibrary()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnRemove control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnRemove_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnRemove.Click
 
         If lbAssignedLibs.SelectedItems.Count <> 1 Then
@@ -376,10 +527,20 @@ Public Class PageLibraryAssignment
         RemoveLibrary()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unloaded event of the PageLibraryAssignment control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub PageLibraryAssignment_Unloaded(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs)
         'Application.Current.RootVisual.SetValue(Control.IsEnabledProperty, True)
     End Sub
 
+    ''' <summary>
+    ''' Handles the 1 event of the PageLibraryAssignment_Unloaded control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub PageLibraryAssignment_Unloaded_1(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles MyBase.Unloaded
         'Application.Current.RootVisual.SetValue(Control.IsEnabledProperty, True)
     End Sub

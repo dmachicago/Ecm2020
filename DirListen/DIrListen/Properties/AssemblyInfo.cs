@@ -1,4 +1,17 @@
-﻿using System.Reflection;
+﻿// ***********************************************************************
+// Assembly         : DIrListen
+// Author           : wdale
+// Created          : 10-13-2020
+//
+// Last Modified By : wdale
+// Last Modified On : 10-15-2020
+// ***********************************************************************
+// <copyright file="AssemblyInfo.cs" company="ECM">
+//     Copyright ©  2020 DMA, Ltd
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 

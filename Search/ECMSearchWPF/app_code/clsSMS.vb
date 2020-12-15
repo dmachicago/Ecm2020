@@ -1,5 +1,25 @@
-﻿Public Class clsSMS
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 06-28-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 06-28-2020
+' ***********************************************************************
+' <copyright file="clsSMS.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+''' <summary>
+''' Class clsSMS.
+''' </summary>
+Public Class clsSMS
 
+    ''' <summary>
+    ''' Loads the carriers.
+    ''' </summary>
+    ''' <param name="cbCarrier">The cb carrier.</param>
     Sub LoadCarriers(ByRef cbCarrier As ComboBox)
         cbCarrier.Items.Clear()
         cbCarrier.Items.Add("@itelemigcelular.com.br")

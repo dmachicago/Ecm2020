@@ -1,32 +1,118 @@
-﻿Imports System.Web.Script.Serialization
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 07-16-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 07-16-2020
+' ***********************************************************************
+' <copyright file="PageUsers.xaml.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+Imports System.Web.Script.Serialization
 Imports ECMEncryption
+''' <summary>
+''' Class PageUsers.
+''' Implements the <see cref="System.Windows.Window" />
+''' Implements the <see cref="System.Windows.Markup.IComponentConnector" />
+''' </summary>
+''' <seealso cref="System.Windows.Window" />
+''' <seealso cref="System.Windows.Markup.IComponentConnector" />
 Public Class PageUsers
     'Inherits Page
 
+    ''' <summary>
+    ''' The grid gols
+    ''' </summary>
     Dim GridGols As Dictionary(Of String, Integer) = New Dictionary(Of String, Integer)
+    ''' <summary>
+    ''' The row vals
+    ''' </summary>
     Dim RowVals As Dictionary(Of String, String) = New Dictionary(Of String, String)
 
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Dim LOG As New clsLogMain
+    ''' <summary>
+    ''' The en c2
+    ''' </summary>
     Dim ENC2 As New ECMEncrypt()
+    ''' <summary>
+    ''' The g secure identifier
+    ''' </summary>
     Dim gSecureID As String
+    ''' <summary>
+    ''' The user identifier
+    ''' </summary>
     Dim UserID As String = ""
+    ''' <summary>
+    ''' The common
+    ''' </summary>
     Dim COMMON As New clsCommonFunctions
 
+    ''' <summary>
+    ''' The curr selected user unique identifier
+    ''' </summary>
     Dim CurrSelectedUserGuid As String = ""
+    ''' <summary>
+    ''' The selected user identifier
+    ''' </summary>
     Dim SelectedUserID As String = ""
+    ''' <summary>
+    ''' The selected user name
+    ''' </summary>
     Dim SelectedUserName As String = ""
+    ''' <summary>
+    ''' The selected email address
+    ''' </summary>
     Dim SelectedEmailAddress As String = ""
+    ''' <summary>
+    ''' The selected user password
+    ''' </summary>
     Dim SelectedUserPassword As String = ""
+    ''' <summary>
+    ''' The selected admin
+    ''' </summary>
     Dim SelectedAdmin As String = ""
+    ''' <summary>
+    ''' The selected is active
+    ''' </summary>
     Dim SelectedIsActive As String = ""
+    ''' <summary>
+    ''' The formloaded
+    ''' </summary>
     Dim Formloaded As Boolean = False
+    ''' <summary>
+    ''' The selected co user identifier
+    ''' </summary>
     Dim SelectedCOUserID As String = ""
+    ''' <summary>
+    ''' The selected co user name
+    ''' </summary>
     Dim SelectedCOUserName As String = ""
+    ''' <summary>
+    ''' The co owner row identifier
+    ''' </summary>
     Dim CoOwnerRowID As String = ""
+    ''' <summary>
+    ''' The currently selected user grid row
+    ''' </summary>
     Dim CurrentlySelectedUserGridRow As Integer = 0
+    ''' <summary>
+    ''' The b help loaded
+    ''' </summary>
     Dim bHelpLoaded As Boolean = False
+    ''' <summary>
+    ''' The b grid loaded
+    ''' </summary>
     Dim bGridLoaded As Boolean = False
 
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="PageUsers"/> class.
+    ''' </summary>
     Public Sub New()
         InitializeComponent()
         Console.WriteLine("PU Trace 00")
@@ -71,6 +157,9 @@ Public Class PageUsers
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the selected row data.
+    ''' </summary>
     Sub GetSelectedRowData()
         Console.WriteLine("PU Trace 01")
         Try
@@ -168,12 +257,20 @@ Public Class PageUsers
             SB.Text = ex.Message
         End Try
     End Sub
+    ''' <summary>
+    ''' Sets the col order.
+    ''' </summary>
     Private Sub setColOrder()
         Console.WriteLine("PU Trace 02")
         ReorderDgContentCols("UserLoginID", 0)
         ReorderDgContentCols("UserName", 1)
         ReorderDgContentCols("isActive", 2)
     End Sub
+    ''' <summary>
+    ''' Reorders the dg content cols.
+    ''' </summary>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <param name="ColDisplayOrder">The col display order.</param>
     Private Sub ReorderDgContentCols(ByVal ColName As String, ByVal ColDisplayOrder As Integer)
         Console.WriteLine("PU Trace 03")
         Try
@@ -187,12 +284,22 @@ Public Class PageUsers
         End Try
 
     End Sub
+    ''' <summary>
+    ''' Handles the Click event of the hlHome control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlHome_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlHome.Click
         Console.WriteLine("PU Trace 04")
         Dim NextPage As New MainPage()
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the ScrollChanged event of the dt control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="ScrollChangedEventArgs"/> instance containing the event data.</param>
     Private Sub dt_ScrollChanged(sender As Object, e As ScrollChangedEventArgs)
         Console.WriteLine("PU Trace 05")
         If (e.VerticalChange <> 0) Then
@@ -202,6 +309,11 @@ Public Class PageUsers
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnRemoveCoowner control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnRemoveCoowner_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnRemoveCoowner.Click
         Console.WriteLine("PU Trace 05")
         Formloaded = False
@@ -227,6 +339,11 @@ Public Class PageUsers
         gLogSQL(BB, ENC2.AES256EncryptString(S))
 
     End Sub
+    ''' <summary>
+    ''' Clients the remove coowner.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="S">The s.</param>
     Sub client_RemoveCoowner(RC As Boolean, S As String)
         Console.WriteLine("PU Trace 06")
         PB.IsIndeterminate = False
@@ -241,6 +358,11 @@ Public Class PageUsers
         'RemoveHandler ProxySearch.ExecuteSqlNewConnSecureCompleted, AddressOf client_RemoveCoowner
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnRefactor control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnRefactor_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnRefactor.Click
         Console.WriteLine("PU Trace 07")
         If Not _isAdmin Then
@@ -264,6 +386,10 @@ Public Class PageUsers
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the insert co owner.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub client_InsertCoOwner(RC As Boolean)
         Console.WriteLine("PU Trace 08")
         PB.IsIndeterminate = False
@@ -277,6 +403,11 @@ Public Class PageUsers
         End If
         'RemoveHandler ProxySearch.InsertCoOwnerCompleted, AddressOf client_InsertCoOwner
     End Sub
+    ''' <summary>
+    ''' Handles the Click event of the btnMakePublic control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnMakePublic_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnMakePublic.Click
         Console.WriteLine("PU Trace 09")
         If Not _isAdmin Then
@@ -324,6 +455,11 @@ Public Class PageUsers
         SB.Text = "All Content converted to public."
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnAdd control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnAdd.Click
         Console.WriteLine("PU Trace 10")
         If txtPassword.Password.Length = 0 Then
@@ -414,6 +550,11 @@ Public Class PageUsers
         Formloaded = True
     End Sub
 
+    ''' <summary>
+    ''' Clients the save user.
+    ''' </summary>
+    ''' <param name="rc">if set to <c>true</c> [rc].</param>
+    ''' <param name="retmsg">The retmsg.</param>
     Sub client_SaveUser(rc As Boolean, retmsg As String)
         Console.WriteLine("PU Trace 11")
         PB.IsIndeterminate = False
@@ -429,6 +570,11 @@ Public Class PageUsers
         End If
         'RemoveHandler ProxySearch.SaveUSerCompleted, AddressOf client_SaveUser
     End Sub
+    ''' <summary>
+    ''' Handles the Click event of the btnUpdate control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnUpdate_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnUpdate.Click
         Console.WriteLine("PU Trace 11")
         Formloaded = False
@@ -515,6 +661,11 @@ Public Class PageUsers
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnDelete control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnDelete.Click
         Console.WriteLine("PU Trace 12")
 
@@ -549,6 +700,11 @@ Public Class PageUsers
 
         Formloaded = True
     End Sub
+    ''' <summary>
+    ''' Clients the delete user.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
     Sub client_DeleteUser(RC As Boolean, RetMsg As String)
         Console.WriteLine("PU Trace 13")
 
@@ -574,12 +730,18 @@ Public Class PageUsers
         'RemoveHandler ProxySearch.DeleteUserCompleted, AddressOf client_DeleteUser
     End Sub
 
+    ''' <summary>
+    ''' Refreshes the user grid.
+    ''' </summary>
     Sub RefreshUserGrid()
         Console.WriteLine("PU Trace 14")
 
         PopulateUserGrid()
     End Sub
 
+    ''' <summary>
+    ''' Populates the user grid.
+    ''' </summary>
     Sub PopulateUserGrid()
         Console.WriteLine("PU Trace 15")
         bGridLoaded = False
@@ -610,6 +772,10 @@ Public Class PageUsers
         End Try
         'client_PopulateUserGrid(ObjListOfRows)
     End Sub
+    ''' <summary>
+    ''' Clients the populate user grid.
+    ''' </summary>
+    ''' <param name="ObjListOfRows">The object list of rows.</param>
     Sub client_PopulateUserGrid(ObjListOfRows As Object)
         Console.WriteLine("PU Trace 16")
 
@@ -629,6 +795,10 @@ Public Class PageUsers
         'RemoveHandler ProxySearch.PopulateUserGridCompleted, AddressOf client_PopulateUserGrid
         bGridLoaded = True
     End Sub
+    ''' <summary>
+    ''' Populates the co owner grid.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
     Sub PopulateCoOwnerGrid(ByVal UID As String)
         Console.WriteLine("PU Trace 17")
 
@@ -642,6 +812,10 @@ Public Class PageUsers
         client_PopulateCoOwnerGrid(ObjListOfRows)
 
     End Sub
+    ''' <summary>
+    ''' Clients the populate co owner grid.
+    ''' </summary>
+    ''' <param name="ObjListOfRows">The object list of rows.</param>
     Sub client_PopulateCoOwnerGrid(ObjListOfRows As String)
         Console.WriteLine("PU Trace 18")
 
@@ -664,6 +838,11 @@ Public Class PageUsers
         'RemoveHandler ProxySearch.PopulateCoOwnerGridCompleted, AddressOf client_PopulateCoOwnerGrid
     End Sub
 
+    ''' <summary>
+    ''' Clients the change ownership.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="S">The s.</param>
     Sub client_changeOwnership(RC As Boolean, S As String)
         Console.WriteLine("PU Trace 19")
 
@@ -675,6 +854,9 @@ Public Class PageUsers
         End If
 
     End Sub
+    ''' <summary>
+    ''' Gets the selected co owner row data.
+    ''' </summary>
     Sub GetSelectedCoOwnerRowData()
         Console.WriteLine("PU Trace 20")
 
@@ -688,6 +870,9 @@ Public Class PageUsers
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Refactors this instance.
+    ''' </summary>
     Sub Refactor()
         Console.WriteLine("PU Trace 21")
         Dim iRow As Integer = Me.dgUsers.SelectedItems.Count
@@ -739,6 +924,11 @@ Public Class PageUsers
         client_Refactor(RC, RetMsg)
 
     End Sub
+    ''' <summary>
+    ''' Clients the refactor.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
     Sub client_Refactor(RC As Boolean, RetMsg As String)
         Console.WriteLine("PU Trace 22")
 
@@ -755,16 +945,29 @@ Public Class PageUsers
         'RemoveHandler ProxySearch.ExecuteSqlNewConnSecureCompleted, AddressOf client_ExecuteSqlNewConn_27_20_524
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlRefreshCoOwner control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlRefreshCoOwner_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlRefreshCoOwner.Click
         Console.WriteLine("PU Trace 23")
         PopulateCoOwnerGrid(CurrSelectedUserGuid)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlRefreshUsers control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlRefreshUsers_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlRefreshUsers.Click
         Console.WriteLine("PU Trace 24")
         RefreshUserGrid()
     End Sub
 
+    ''' <summary>
+    ''' Pops the user combo.
+    ''' </summary>
     Sub PopUserCombo()
         Console.WriteLine("PU Trace 25")
 
@@ -790,6 +993,12 @@ Public Class PageUsers
         GC.Collect()
 
     End Sub
+    ''' <summary>
+    ''' Clients the cb new owner.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="ListOfUsers">The list of users.</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
     Sub client_cbNewOwner(RC As Boolean, ListOfUsers As String(), RetMsg As String)
         Console.WriteLine("PU Trace 26")
 
@@ -814,6 +1023,9 @@ Public Class PageUsers
     End Sub
 
 
+    ''' <summary>
+    ''' Allows an object to try to free resources and perform other cleanup operations before it is reclaimed by garbage collection.
+    ''' </summary>
     Protected Overrides Sub Finalize()
         Console.WriteLine("PU Trace 27")
 
@@ -835,6 +1047,11 @@ Public Class PageUsers
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnAddCowner1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnAddCowner1_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnAddCowner1.Click
         Console.WriteLine("PU Trace 28")
 
@@ -850,6 +1067,11 @@ Public Class PageUsers
         client_InsertCoOwner(BB)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnPrivate control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnPrivate_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnPrivate.Click
         Console.WriteLine("PU Trace 29")
         If Not _isAdmin Then
@@ -894,6 +1116,11 @@ Public Class PageUsers
         ProxySearch.ChangeUserContentPublic(_SecureID, CurrSelectedUserGuid, "N", RC, RetMsg)
         client_ChangeUserContentPublic(RC, RetMsg)
     End Sub
+    ''' <summary>
+    ''' Clients the change user content public.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
     Sub client_ChangeUserContentPublic(RC As Boolean, RetMsg As String)
         Console.WriteLine("PU Trace 30")
 
@@ -913,6 +1140,11 @@ Public Class PageUsers
         'RemoveHandler ProxySearch.ChangeUserContentPublicCompleted, AddressOf client_ChangeUserContentPublic
     End Sub
 
+    ''' <summary>
+    ''' Handles the Checked event of the ckClientOnly control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckClientOnly_Checked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckClientOnly.Checked
         Console.WriteLine("PU Trace 31")
         If Not bGridLoaded Then
@@ -934,6 +1166,11 @@ Public Class PageUsers
         SB.Text = "Set to Client only"
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unchecked event of the ckClientOnly control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckClientOnly_Unchecked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckClientOnly.Unchecked
         Console.WriteLine("PU Trace 32")
         If Not bGridLoaded Then
@@ -951,6 +1188,11 @@ Public Class PageUsers
         SB.Text = "Set NOT Client only"
     End Sub
 
+    ''' <summary>
+    ''' Handles the 1 event of the ckActive_Unchecked control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckActive_Unchecked_1(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckActive.Unchecked
         Console.WriteLine("PU Trace 33")
         If Not bGridLoaded Then
@@ -968,6 +1210,11 @@ Public Class PageUsers
         SB.Text = "Set to INACTIVE"
     End Sub
 
+    ''' <summary>
+    ''' Handles the 1 event of the ckActive_Checked control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckActive_Checked_1(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckActive.Checked
         Console.WriteLine("PU Trace 34")
         If Not bGridLoaded Then
@@ -990,11 +1237,21 @@ Public Class PageUsers
         SB.Text = "Set to ACTIVE"
     End Sub
 
+    ''' <summary>
+    ''' Handles the CoOwnerChanged event of the dt control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub dt_CoOwnerChanged(sender As Object, e As SelectionChangedEventArgs) Handles dgCoOwner.SelectionChanged
         Console.WriteLine("PU Trace 35")
         GetSelectedCoOwnerRowData()
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectionChanged event of the DgUsers control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub DgUsers_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles dgUsers.SelectionChanged
         Dim idx As Integer = 0
         Dim SelRow As DataGridRow = GetSelectedRow(dgUsers)
@@ -1081,6 +1338,11 @@ Public Class PageUsers
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Loaded event of the LayoutRoot control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub LayoutRoot_Loaded(sender As Object, e As RoutedEventArgs) Handles LayoutRoot.Loaded
         HideGridColumn(dgUsers, "ExtensionData")
         If Not cbUserType.Items.Contains("Super Administrator") Then

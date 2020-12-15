@@ -10733,63 +10733,128 @@ Namespace SVCSearch
         
         <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public RetMsg As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="ExecuteSearchJsonResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="ExecuteSearchJsonResponse"/> class.
+        ''' </summary>
+        ''' <param name="ExecuteSearchJsonResult">The execute search json result.</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
         Public Sub New(ByVal ExecuteSearchJsonResult As String, ByVal RetMsg As String)
             MyBase.New
             Me.ExecuteSearchJsonResult = ExecuteSearchJsonResult
             Me.RetMsg = RetMsg
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ExecuteSearchDT", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class ExecuteSearchDTRequest.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ExecuteSearchDT", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class ExecuteSearchDTRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The search type
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SearchType As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The curr search count
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public currSearchCnt As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The b gen SQL
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public bGenSql As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The email gen SQL
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public EmailGenSql As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The search parms json
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public SearchParmsJson As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+
+        ''' <summary>
+        ''' The content gen SQL
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>
         Public ContentGenSql As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+
+        ''' <summary>
+        ''' The string list o email rows
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>
         Public strListOEmailRows As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
+
+        ''' <summary>
+        ''' The string list of content rows
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>
         Public strListOfContentRows As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
+
+        ''' <summary>
+        ''' The b first email search submit
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>
         Public bFirstEmailSearchSubmit As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>  _
+
+        ''' <summary>
+        ''' The b first content search submit
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>
         Public bFirstContentSearchSubmit As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=10)>  _
+
+        ''' <summary>
+        ''' The email row count
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=10)>
         Public EmailRowCnt As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=11)>  _
+
+        ''' <summary>
+        ''' The content row count
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=11)>
         Public ContentRowCnt As Integer
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="ExecuteSearchDTRequest"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="ExecuteSearchDTRequest"/> class.
+        ''' </summary>
+        ''' <param name="SearchType">Type of the search.</param>
+        ''' <param name="currSearchCnt">The curr search count.</param>
+        ''' <param name="bGenSql">if set to <c>true</c> [b gen SQL].</param>
+        ''' <param name="EmailGenSql">The email gen SQL.</param>
+        ''' <param name="SearchParmsJson">The search parms json.</param>
+        ''' <param name="ContentGenSql">The content gen SQL.</param>
+        ''' <param name="strListOEmailRows">The string list o email rows.</param>
+        ''' <param name="strListOfContentRows">The string list of content rows.</param>
+        ''' <param name="bFirstEmailSearchSubmit">if set to <c>true</c> [b first email search submit].</param>
+        ''' <param name="bFirstContentSearchSubmit">if set to <c>true</c> [b first content search submit].</param>
+        ''' <param name="EmailRowCnt">The email row count.</param>
+        ''' <param name="ContentRowCnt">The content row count.</param>
         Public Sub New(ByVal SearchType As String, ByVal currSearchCnt As Integer, ByVal bGenSql As Boolean, ByVal EmailGenSql As String, ByVal SearchParmsJson As String, ByVal ContentGenSql As String, ByVal strListOEmailRows As String, ByVal strListOfContentRows As String, ByVal bFirstEmailSearchSubmit As Boolean, ByVal bFirstContentSearchSubmit As Boolean, ByVal EmailRowCnt As Integer, ByVal ContentRowCnt As Integer)
             MyBase.New
             Me.SearchType = SearchType
@@ -10806,46 +10871,95 @@ Namespace SVCSearch
             Me.ContentRowCnt = ContentRowCnt
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ExecuteSearchDTResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class ExecuteSearchDTResponse.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ExecuteSearchDTResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class ExecuteSearchDTResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The execute search dt result
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public ExecuteSearchDTResult As System.Data.DataSet
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The curr search count
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public currSearchCnt As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The email gen SQL
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public EmailGenSql As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The content gen SQL
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public ContentGenSql As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The string list o email rows
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public strListOEmailRows As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+
+        ''' <summary>
+        ''' The string list of content rows
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>
         Public strListOfContentRows As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+
+        ''' <summary>
+        ''' The b first email search submit
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>
         Public bFirstEmailSearchSubmit As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
+
+        ''' <summary>
+        ''' The b first content search submit
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>
         Public bFirstContentSearchSubmit As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
+
+        ''' <summary>
+        ''' The email row count
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>
         Public EmailRowCnt As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>  _
+
+        ''' <summary>
+        ''' The content row count
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>
         Public ContentRowCnt As Integer
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="ExecuteSearchDTResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="ExecuteSearchDTResponse"/> class.
+        ''' </summary>
+        ''' <param name="ExecuteSearchDTResult">The execute search dt result.</param>
+        ''' <param name="currSearchCnt">The curr search count.</param>
+        ''' <param name="EmailGenSql">The email gen SQL.</param>
+        ''' <param name="ContentGenSql">The content gen SQL.</param>
+        ''' <param name="strListOEmailRows">The string list o email rows.</param>
+        ''' <param name="strListOfContentRows">The string list of content rows.</param>
+        ''' <param name="bFirstEmailSearchSubmit">if set to <c>true</c> [b first email search submit].</param>
+        ''' <param name="bFirstContentSearchSubmit">if set to <c>true</c> [b first content search submit].</param>
+        ''' <param name="EmailRowCnt">The email row count.</param>
+        ''' <param name="ContentRowCnt">The content row count.</param>
         Public Sub New(ByVal ExecuteSearchDTResult As System.Data.DataSet, ByVal currSearchCnt As Integer, ByVal EmailGenSql As String, ByVal ContentGenSql As String, ByVal strListOEmailRows As String, ByVal strListOfContentRows As String, ByVal bFirstEmailSearchSubmit As Boolean, ByVal bFirstContentSearchSubmit As Boolean, ByVal EmailRowCnt As Integer, ByVal ContentRowCnt As Integer)
             MyBase.New
             Me.ExecuteSearchDTResult = ExecuteSearchDTResult
@@ -10860,25 +10974,46 @@ Namespace SVCSearch
             Me.ContentRowCnt = ContentRowCnt
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="GetFilesInZipDetail", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class GetFilesInZipDetailRequest.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="GetFilesInZipDetail", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class GetFilesInZipDetailRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The parent unique identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public ParentGuid As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public RC As Boolean
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="GetFilesInZipDetailRequest"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="GetFilesInZipDetailRequest"/> class.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="ParentGuid">The parent unique identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
         Public Sub New(ByVal SecureID As Integer, ByVal ParentGuid As String, ByVal RC As Boolean)
             MyBase.New
             Me.SecureID = SecureID
@@ -10886,25 +11021,46 @@ Namespace SVCSearch
             Me.RC = RC
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="GetFilesInZipDetailResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class GetFilesInZipDetailResponse.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="GetFilesInZipDetailResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class GetFilesInZipDetailResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The get files in zip detail result
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public GetFilesInZipDetailResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public RC As Boolean
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="GetFilesInZipDetailResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="GetFilesInZipDetailResponse"/> class.
+        ''' </summary>
+        ''' <param name="GetFilesInZipDetailResult">The get files in zip detail result.</param>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
         Public Sub New(ByVal GetFilesInZipDetailResult As String, ByVal SecureID As Integer, ByVal RC As Boolean)
             MyBase.New
             Me.GetFilesInZipDetailResult = GetFilesInZipDetailResult
@@ -10912,43 +11068,88 @@ Namespace SVCSearch
             Me.RC = RC
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="AddGroupLibraryAccess", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class AddGroupLibraryAccessRequest.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="AddGroupLibraryAccess", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class AddGroupLibraryAccessRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The user identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The library name
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public LibraryName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The group name
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public GroupName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The group owner user identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public GroupOwnerUserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>
         Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+
+        ''' <summary>
+        ''' The curr user identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>
         Public CurrUserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
+
+        ''' <summary>
+        ''' The session identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>
         Public SessionID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
+
+        ''' <summary>
+        ''' The control section
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>
         Public ControlSection As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="AddGroupLibraryAccessRequest"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="AddGroupLibraryAccessRequest"/> class.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="LibraryName">Name of the library.</param>
+        ''' <param name="GroupName">Name of the group.</param>
+        ''' <param name="GroupOwnerUserID">The group owner user identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="CurrUserID">The curr user identifier.</param>
+        ''' <param name="SessionID">The session identifier.</param>
+        ''' <param name="ControlSection">The control section.</param>
         Public Sub New(ByVal SecureID As Integer, ByVal UserID As String, ByVal LibraryName As String, ByVal GroupName As String, ByVal GroupOwnerUserID As String, ByVal RC As Boolean, ByVal CurrUserID As String, ByVal SessionID As String, ByVal ControlSection As String)
             MyBase.New
             Me.SecureID = SecureID
@@ -10962,43 +11163,77 @@ Namespace SVCSearch
             Me.ControlSection = ControlSection
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="AddGroupLibraryAccessResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class AddGroupLibraryAccessResponse.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="AddGroupLibraryAccessResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class AddGroupLibraryAccessResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public RC As Boolean
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="AddGroupLibraryAccessResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="AddGroupLibraryAccessResponse"/> class.
+        ''' </summary>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
         Public Sub New(ByVal RC As Boolean)
             MyBase.New
             Me.RC = RC
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="DBExecuteEncryptedSql", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class DBExecuteEncryptedSqlRequest.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="DBExecuteEncryptedSql", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class DBExecuteEncryptedSqlRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' My SQL
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public MySql As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The ekey
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public EKEY As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="DBExecuteEncryptedSqlRequest"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="DBExecuteEncryptedSqlRequest"/> class.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="MySql">My SQL.</param>
+        ''' <param name="EKEY">The ekey.</param>
         Public Sub New(ByVal SecureID As Integer, ByVal MySql As String, ByVal EKEY As String)
             MyBase.New
             Me.SecureID = SecureID
@@ -11006,25 +11241,46 @@ Namespace SVCSearch
             Me.EKEY = EKEY
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="DBExecuteEncryptedSqlResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class DBExecuteEncryptedSqlResponse.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="DBExecuteEncryptedSqlResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class DBExecuteEncryptedSqlResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The database execute encrypted SQL result
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public DBExecuteEncryptedSqlResult As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' My SQL
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public MySql As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="DBExecuteEncryptedSqlResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="DBExecuteEncryptedSqlResponse"/> class.
+        ''' </summary>
+        ''' <param name="DBExecuteEncryptedSqlResult">if set to <c>true</c> [database execute encrypted SQL result].</param>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="MySql">My SQL.</param>
         Public Sub New(ByVal DBExecuteEncryptedSqlResult As Boolean, ByVal SecureID As Integer, ByVal MySql As String)
             MyBase.New
             Me.DBExecuteEncryptedSqlResult = DBExecuteEncryptedSqlResult
@@ -11032,46 +11288,95 @@ Namespace SVCSearch
             Me.MySql = MySql
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="validateAttachSecureLogin", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class validateAttachSecureLoginRequest.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="validateAttachSecureLogin", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class validateAttachSecureLoginRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The company identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public CompanyID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The repo identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public RepoID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The user login
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public UserLogin As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The pw
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public PW As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>
         Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>
         Public RetMsg As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
+
+        ''' <summary>
+        ''' The gate way end point
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>
         Public GateWayEndPoint As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
+
+        ''' <summary>
+        ''' The download endpoint
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>
         Public DownloadEndpoint As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>  _
+
+        ''' <summary>
+        ''' The enccs
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>
         Public ENCCS As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="validateAttachSecureLoginRequest"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="validateAttachSecureLoginRequest"/> class.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="CompanyID">The company identifier.</param>
+        ''' <param name="RepoID">The repo identifier.</param>
+        ''' <param name="UserLogin">The user login.</param>
+        ''' <param name="PW">The pw.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <param name="GateWayEndPoint">The gate way end point.</param>
+        ''' <param name="DownloadEndpoint">The download endpoint.</param>
+        ''' <param name="ENCCS">The enccs.</param>
         Public Sub New(ByVal SecureID As Integer, ByVal CompanyID As String, ByVal RepoID As String, ByVal UserLogin As String, ByVal PW As String, ByVal RC As Boolean, ByVal RetMsg As String, ByVal GateWayEndPoint As String, ByVal DownloadEndpoint As String, ByVal ENCCS As String)
             MyBase.New
             Me.SecureID = SecureID
@@ -11086,37 +11391,74 @@ Namespace SVCSearch
             Me.ENCCS = ENCCS
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="validateAttachSecureLoginResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class validateAttachSecureLoginResponse.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="validateAttachSecureLoginResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class validateAttachSecureLoginResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The validate attach secure login result
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public validateAttachSecureLoginResult As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public RetMsg As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The gate way end point
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public GateWayEndPoint As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+
+        ''' <summary>
+        ''' The download endpoint
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>
         Public DownloadEndpoint As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+
+        ''' <summary>
+        ''' The enccs
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>
         Public ENCCS As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="validateAttachSecureLoginResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="validateAttachSecureLoginResponse"/> class.
+        ''' </summary>
+        ''' <param name="validateAttachSecureLoginResult">if set to <c>true</c> [validate attach secure login result].</param>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <param name="GateWayEndPoint">The gate way end point.</param>
+        ''' <param name="DownloadEndpoint">The download endpoint.</param>
+        ''' <param name="ENCCS">The enccs.</param>
         Public Sub New(ByVal validateAttachSecureLoginResult As Boolean, ByVal SecureID As Integer, ByVal RC As Boolean, ByVal RetMsg As String, ByVal GateWayEndPoint As String, ByVal DownloadEndpoint As String, ByVal ENCCS As String)
             MyBase.New
             Me.validateAttachSecureLoginResult = validateAttachSecureLoginResult
@@ -11128,43 +11470,88 @@ Namespace SVCSearch
             Me.ENCCS = ENCCS
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ckContentFlags", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class ckContentFlagsRequest.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ckContentFlags", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class ckContentFlagsRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The source unique identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SourceGuid As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The sd
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public SD As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The sp
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public SP As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The sap
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public SAP As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+
+        ''' <summary>
+        ''' The b master
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>
         Public bMaster As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+
+        ''' <summary>
+        ''' The RSS
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>
         Public RSS As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
+
+        ''' <summary>
+        ''' The web
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>
         Public WEB As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
+
+        ''' <summary>
+        ''' The b public
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>
         Public bPublic As Boolean
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="ckContentFlagsRequest"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="ckContentFlagsRequest"/> class.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SourceGuid">The source unique identifier.</param>
+        ''' <param name="SD">if set to <c>true</c> [sd].</param>
+        ''' <param name="SP">if set to <c>true</c> [sp].</param>
+        ''' <param name="SAP">if set to <c>true</c> [sap].</param>
+        ''' <param name="bMaster">if set to <c>true</c> [b master].</param>
+        ''' <param name="RSS">if set to <c>true</c> [RSS].</param>
+        ''' <param name="WEB">if set to <c>true</c> [web].</param>
+        ''' <param name="bPublic">if set to <c>true</c> [b public].</param>
         Public Sub New(ByVal SecureID As Integer, ByVal SourceGuid As String, ByVal SD As Boolean, ByVal SP As Boolean, ByVal SAP As Boolean, ByVal bMaster As Boolean, ByVal RSS As Boolean, ByVal WEB As Boolean, ByVal bPublic As Boolean)
             MyBase.New
             Me.SecureID = SecureID
@@ -11178,37 +11565,74 @@ Namespace SVCSearch
             Me.bPublic = bPublic
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ckContentFlagsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class ckContentFlagsResponse.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ckContentFlagsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class ckContentFlagsResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The sd
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SD As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The sp
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SP As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The sap
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public SAP As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The b master
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public bMaster As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The RSS
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public RSS As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+
+        ''' <summary>
+        ''' The web
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>
         Public WEB As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+
+        ''' <summary>
+        ''' The b public
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>
         Public bPublic As Boolean
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="ckContentFlagsResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="ckContentFlagsResponse"/> class.
+        ''' </summary>
+        ''' <param name="SD">if set to <c>true</c> [sd].</param>
+        ''' <param name="SP">if set to <c>true</c> [sp].</param>
+        ''' <param name="SAP">if set to <c>true</c> [sap].</param>
+        ''' <param name="bMaster">if set to <c>true</c> [b master].</param>
+        ''' <param name="RSS">if set to <c>true</c> [RSS].</param>
+        ''' <param name="WEB">if set to <c>true</c> [web].</param>
+        ''' <param name="bPublic">if set to <c>true</c> [b public].</param>
         Public Sub New(ByVal SD As Boolean, ByVal SP As Boolean, ByVal SAP As Boolean, ByVal bMaster As Boolean, ByVal RSS As Boolean, ByVal WEB As Boolean, ByVal bPublic As Boolean)
             MyBase.New
             Me.SD = SD
@@ -11220,31 +11644,60 @@ Namespace SVCSearch
             Me.bPublic = bPublic
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ExecuteSqlStack", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class ExecuteSqlStackRequest.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ExecuteSqlStack", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class ExecuteSqlStackRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The SQL stack
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SqlStack As System.Collections.Generic.Dictionary(Of Integer, String)
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The user identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The session identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public SessionID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The control section
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public ControlSection As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="ExecuteSqlStackRequest"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="ExecuteSqlStackRequest"/> class.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SqlStack">The SQL stack.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="SessionID">The session identifier.</param>
+        ''' <param name="ControlSection">The control section.</param>
         Public Sub New(ByVal SecureID As Integer, ByVal SqlStack As System.Collections.Generic.Dictionary(Of Integer, String), ByVal UserID As String, ByVal SessionID As String, ByVal ControlSection As String)
             MyBase.New
             Me.SecureID = SecureID
@@ -11254,25 +11707,46 @@ Namespace SVCSearch
             Me.ControlSection = ControlSection
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ExecuteSqlStackResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class ExecuteSqlStackResponse.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ExecuteSqlStackResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class ExecuteSqlStackResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The execute SQL stack result
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public ExecuteSqlStackResult As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The SQL stack
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public SqlStack As System.Collections.Generic.Dictionary(Of Integer, String)
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="ExecuteSqlStackResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="ExecuteSqlStackResponse"/> class.
+        ''' </summary>
+        ''' <param name="ExecuteSqlStackResult">if set to <c>true</c> [execute SQL stack result].</param>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SqlStack">The SQL stack.</param>
         Public Sub New(ByVal ExecuteSqlStackResult As Boolean, ByVal SecureID As Integer, ByVal SqlStack As System.Collections.Generic.Dictionary(Of Integer, String))
             MyBase.New
             Me.ExecuteSqlStackResult = ExecuteSqlStackResult
@@ -11280,28 +11754,53 @@ Namespace SVCSearch
             Me.SqlStack = SqlStack
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="RecallUserSearch", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class RecallUserSearchRequest.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="RecallUserSearch", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class RecallUserSearchRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The search name
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SearchName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The uid
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public UID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The string searches
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public strSearches As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="RecallUserSearchRequest"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="RecallUserSearchRequest"/> class.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SearchName">Name of the search.</param>
+        ''' <param name="UID">The uid.</param>
+        ''' <param name="strSearches">The string searches.</param>
         Public Sub New(ByVal SecureID As Integer, ByVal SearchName As String, ByVal UID As String, ByVal strSearches As String)
             MyBase.New
             Me.SecureID = SecureID
@@ -11310,47 +11809,85 @@ Namespace SVCSearch
             Me.strSearches = strSearches
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="RecallUserSearchResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class RecallUserSearchResponse.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="RecallUserSearchResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class RecallUserSearchResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The recall user search result
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public RecallUserSearchResult As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The string searches
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public strSearches As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="RecallUserSearchResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="RecallUserSearchResponse"/> class.
+        ''' </summary>
+        ''' <param name="RecallUserSearchResult">if set to <c>true</c> [recall user search result].</param>
+        ''' <param name="strSearches">The string searches.</param>
         Public Sub New(ByVal RecallUserSearchResult As Boolean, ByVal strSearches As String)
             MyBase.New
             Me.RecallUserSearchResult = RecallUserSearchResult
             Me.strSearches = strSearches
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="removeRestoreFiles", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class removeRestoreFilesRequest.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="removeRestoreFiles", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class removeRestoreFilesRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The user identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The machine identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public MachineID As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="removeRestoreFilesRequest"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="removeRestoreFilesRequest"/> class.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="MachineID">The machine identifier.</param>
         Public Sub New(ByVal SecureID As Integer, ByVal UserID As String, ByVal MachineID As String)
             MyBase.New
             Me.SecureID = SecureID
@@ -11358,25 +11895,46 @@ Namespace SVCSearch
             Me.MachineID = MachineID
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="removeRestoreFilesResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class removeRestoreFilesResponse.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="removeRestoreFilesResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class removeRestoreFilesResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The remove restore files result
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public removeRestoreFilesResult As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The user identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The machine identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public MachineID As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="removeRestoreFilesResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="removeRestoreFilesResponse"/> class.
+        ''' </summary>
+        ''' <param name="removeRestoreFilesResult">if set to <c>true</c> [remove restore files result].</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="MachineID">The machine identifier.</param>
         Public Sub New(ByVal removeRestoreFilesResult As Boolean, ByVal UserID As String, ByVal MachineID As String)
             MyBase.New
             Me.removeRestoreFilesResult = removeRestoreFilesResult
@@ -11384,28 +11942,53 @@ Namespace SVCSearch
             Me.MachineID = MachineID
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getRestoreFileCount", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class getRestoreFileCountRequest.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getRestoreFileCount", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class getRestoreFileCountRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The user identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The machine identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public MachineID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The preview
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public Preview As Boolean
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getRestoreFileCountRequest"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getRestoreFileCountRequest"/> class.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="MachineID">The machine identifier.</param>
+        ''' <param name="Preview">if set to <c>true</c> [preview].</param>
         Public Sub New(ByVal SecureID As Integer, ByVal UserID As String, ByVal MachineID As String, ByVal Preview As Boolean)
             MyBase.New
             Me.SecureID = SecureID
@@ -11414,28 +11997,53 @@ Namespace SVCSearch
             Me.Preview = Preview
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getRestoreFileCountResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class getRestoreFileCountResponse.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getRestoreFileCountResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class getRestoreFileCountResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The get restore file count result
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public getRestoreFileCountResult As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The user identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The machine identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public MachineID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The preview
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public Preview As Boolean
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getRestoreFileCountResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getRestoreFileCountResponse"/> class.
+        ''' </summary>
+        ''' <param name="getRestoreFileCountResult">The get restore file count result.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="MachineID">The machine identifier.</param>
+        ''' <param name="Preview">if set to <c>true</c> [preview].</param>
         Public Sub New(ByVal getRestoreFileCountResult As Integer, ByVal UserID As String, ByVal MachineID As String, ByVal Preview As Boolean)
             MyBase.New
             Me.getRestoreFileCountResult = getRestoreFileCountResult
@@ -11444,43 +12052,88 @@ Namespace SVCSearch
             Me.Preview = Preview
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="saveRestoreFile", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class saveRestoreFileRequest.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="saveRestoreFile", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class saveRestoreFileRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The TGT table
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public tgtTable As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The content unique identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public ContentGuid As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The preview
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public Preview As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The restore
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public Restore As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+
+        ''' <summary>
+        ''' The user identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>
         Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+
+        ''' <summary>
+        ''' The machine identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>
         Public MachineID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>
         Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>
         Public RetMsg As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="saveRestoreFileRequest"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="saveRestoreFileRequest"/> class.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="tgtTable">The TGT table.</param>
+        ''' <param name="ContentGuid">The content unique identifier.</param>
+        ''' <param name="Preview">if set to <c>true</c> [preview].</param>
+        ''' <param name="Restore">if set to <c>true</c> [restore].</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="MachineID">The machine identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
         Public Sub New(ByVal SecureID As Integer, ByVal tgtTable As String, ByVal ContentGuid As String, ByVal Preview As Boolean, ByVal Restore As Boolean, ByVal UserID As String, ByVal MachineID As String, ByVal RC As Boolean, ByVal RetMsg As String)
             MyBase.New
             Me.SecureID = SecureID
@@ -11494,31 +12147,60 @@ Namespace SVCSearch
             Me.RetMsg = RetMsg
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="saveRestoreFileResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class saveRestoreFileResponse.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="saveRestoreFileResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class saveRestoreFileResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The save restore file result
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public saveRestoreFileResult As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The content unique identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public ContentGuid As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The user identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The machine identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public MachineID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public RC As Boolean
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="saveRestoreFileResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="saveRestoreFileResponse"/> class.
+        ''' </summary>
+        ''' <param name="saveRestoreFileResult">if set to <c>true</c> [save restore file result].</param>
+        ''' <param name="ContentGuid">The content unique identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="MachineID">The machine identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
         Public Sub New(ByVal saveRestoreFileResult As Boolean, ByVal ContentGuid As String, ByVal UserID As String, ByVal MachineID As String, ByVal RC As Boolean)
             MyBase.New
             Me.saveRestoreFileResult = saveRestoreFileResult
@@ -11528,52 +12210,109 @@ Namespace SVCSearch
             Me.RC = RC
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="GenEmailAttachmentsSQL", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class GenEmailAttachmentsSQLRequest.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="GenEmailAttachmentsSQL", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class GenEmailAttachmentsSQLRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The user identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The search parms
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SearchParms() As SVCSearch.DS_SearchTerms
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The input search string
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public InputSearchString As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The use freetext
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public useFreetext As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+
+        ''' <summary>
+        ''' The ck weighted
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>
         Public ckWeighted As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+
+        ''' <summary>
+        ''' The is email
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>
         Public isEmail As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
+
+        ''' <summary>
+        ''' The limit to curr recs
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>
         Public LimitToCurrRecs As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
+
+        ''' <summary>
+        ''' The thesaurus list
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>
         Public ThesaurusList() As Object
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>  _
+
+        ''' <summary>
+        ''' The text thesaurus
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>
         Public txtThesaurus As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=10)>  _
+
+        ''' <summary>
+        ''' The cb thesaurus text
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=10)>
         Public cbThesaurusText As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=11)>  _
+
+        ''' <summary>
+        ''' The called by
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=11)>
         Public calledBy As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="GenEmailAttachmentsSQLRequest"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="GenEmailAttachmentsSQLRequest"/> class.
+        ''' </summary>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="SearchParms">The search parms.</param>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="InputSearchString">The input search string.</param>
+        ''' <param name="useFreetext">if set to <c>true</c> [use freetext].</param>
+        ''' <param name="ckWeighted">if set to <c>true</c> [ck weighted].</param>
+        ''' <param name="isEmail">if set to <c>true</c> [is email].</param>
+        ''' <param name="LimitToCurrRecs">if set to <c>true</c> [limit to curr recs].</param>
+        ''' <param name="ThesaurusList">The thesaurus list.</param>
+        ''' <param name="txtThesaurus">The text thesaurus.</param>
+        ''' <param name="cbThesaurusText">The cb thesaurus text.</param>
+        ''' <param name="calledBy">The called by.</param>
         Public Sub New(ByVal UserID As String, ByVal SearchParms() As SVCSearch.DS_SearchTerms, ByVal SecureID As Integer, ByVal InputSearchString As String, ByVal useFreetext As Boolean, ByVal ckWeighted As Boolean, ByVal isEmail As Boolean, ByVal LimitToCurrRecs As Boolean, ByVal ThesaurusList() As Object, ByVal txtThesaurus As String, ByVal cbThesaurusText As String, ByVal calledBy As String)
             MyBase.New
             Me.UserID = UserID
@@ -11590,47 +12329,85 @@ Namespace SVCSearch
             Me.calledBy = calledBy
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="GenEmailAttachmentsSQLResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class GenEmailAttachmentsSQLResponse.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="GenEmailAttachmentsSQLResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class GenEmailAttachmentsSQLResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The gen email attachments SQL result
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public GenEmailAttachmentsSQLResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SecureID As Integer
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="GenEmailAttachmentsSQLResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="GenEmailAttachmentsSQLResponse"/> class.
+        ''' </summary>
+        ''' <param name="GenEmailAttachmentsSQLResult">The gen email attachments SQL result.</param>
+        ''' <param name="SecureID">The secure identifier.</param>
         Public Sub New(ByVal GenEmailAttachmentsSQLResult As String, ByVal SecureID As Integer)
             MyBase.New
             Me.GenEmailAttachmentsSQLResult = GenEmailAttachmentsSQLResult
             Me.SecureID = SecureID
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="GenEmailGeneratedSQL", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class GenEmailGeneratedSQLRequest.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="GenEmailGeneratedSQL", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class GenEmailGeneratedSQLRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The user identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The search parms
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SearchParms() As SVCSearch.DS_SearchTerms
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public SecureID As Integer
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="GenEmailGeneratedSQLRequest"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="GenEmailGeneratedSQLRequest"/> class.
+        ''' </summary>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="SearchParms">The search parms.</param>
+        ''' <param name="SecureID">The secure identifier.</param>
         Public Sub New(ByVal UserID As String, ByVal SearchParms() As SVCSearch.DS_SearchTerms, ByVal SecureID As Integer)
             MyBase.New
             Me.UserID = UserID
@@ -11638,71 +12415,141 @@ Namespace SVCSearch
             Me.SecureID = SecureID
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="GenEmailGeneratedSQLResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class GenEmailGeneratedSQLResponse.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="GenEmailGeneratedSQLResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class GenEmailGeneratedSQLResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The gen email generated SQL result
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public GenEmailGeneratedSQLResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SecureID As Integer
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="GenEmailGeneratedSQLResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="GenEmailGeneratedSQLResponse"/> class.
+        ''' </summary>
+        ''' <param name="GenEmailGeneratedSQLResult">The gen email generated SQL result.</param>
+        ''' <param name="SecureID">The secure identifier.</param>
         Public Sub New(ByVal GenEmailGeneratedSQLResult As String, ByVal SecureID As Integer)
             MyBase.New
             Me.GenEmailGeneratedSQLResult = GenEmailGeneratedSQLResult
             Me.SecureID = SecureID
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="GenContentSearchSQL", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class GenContentSearchSQLRequest.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="GenContentSearchSQL", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class GenContentSearchSQLRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The user identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The search parms
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SearchParms() As SVCSearch.DS_SearchTerms
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The uid
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public UID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The search string
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public SearchString As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+
+        ''' <summary>
+        ''' The ck limit to existing
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>
         Public ckLimitToExisting As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+
+        ''' <summary>
+        ''' The text thesaurus
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>
         Public txtThesaurus As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
+
+        ''' <summary>
+        ''' The cb thesaurus text
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>
         Public cbThesaurusText As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
+
+        ''' <summary>
+        ''' The ck limit to library
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>
         Public ckLimitToLib As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>  _
+
+        ''' <summary>
+        ''' The library name
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>
         Public LibraryName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=10)>  _
+
+        ''' <summary>
+        ''' The ck weighted
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=10)>
         Public ckWeighted As Boolean
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="GenContentSearchSQLRequest"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="GenContentSearchSQLRequest"/> class.
+        ''' </summary>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="SearchParms">The search parms.</param>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UID">The uid.</param>
+        ''' <param name="SearchString">The search string.</param>
+        ''' <param name="ckLimitToExisting">if set to <c>true</c> [ck limit to existing].</param>
+        ''' <param name="txtThesaurus">The text thesaurus.</param>
+        ''' <param name="cbThesaurusText">The cb thesaurus text.</param>
+        ''' <param name="ckLimitToLib">if set to <c>true</c> [ck limit to library].</param>
+        ''' <param name="LibraryName">Name of the library.</param>
+        ''' <param name="ckWeighted">if set to <c>true</c> [ck weighted].</param>
         Public Sub New(ByVal UserID As String, ByVal SearchParms() As SVCSearch.DS_SearchTerms, ByVal SecureID As Integer, ByVal UID As String, ByVal SearchString As String, ByVal ckLimitToExisting As Boolean, ByVal txtThesaurus As String, ByVal cbThesaurusText As String, ByVal ckLimitToLib As Boolean, ByVal LibraryName As String, ByVal ckWeighted As Boolean)
             MyBase.New
             Me.UserID = UserID
@@ -11718,53 +12565,99 @@ Namespace SVCSearch
             Me.ckWeighted = ckWeighted
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="GenContentSearchSQLResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class GenContentSearchSQLResponse.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="GenContentSearchSQLResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class GenContentSearchSQLResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The gen content search SQL result
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public GenContentSearchSQLResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SecureID As Integer
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="GenContentSearchSQLResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="GenContentSearchSQLResponse"/> class.
+        ''' </summary>
+        ''' <param name="GenContentSearchSQLResult">The gen content search SQL result.</param>
+        ''' <param name="SecureID">The secure identifier.</param>
         Public Sub New(ByVal GenContentSearchSQLResult As String, ByVal SecureID As Integer)
             MyBase.New
             Me.GenContentSearchSQLResult = GenContentSearchSQLResult
             Me.SecureID = SecureID
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ChangeUserContentPublic", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class ChangeUserContentPublicRequest.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ChangeUserContentPublic", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class ChangeUserContentPublicRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The service identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public ServiceID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The curr selected user unique identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public CurrSelectedUserGuid As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The is public
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public isPublic As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public RetMsg As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="ChangeUserContentPublicRequest"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="ChangeUserContentPublicRequest"/> class.
+        ''' </summary>
+        ''' <param name="ServiceID">The service identifier.</param>
+        ''' <param name="CurrSelectedUserGuid">The curr selected user unique identifier.</param>
+        ''' <param name="isPublic">The is public.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
         Public Sub New(ByVal ServiceID As Integer, ByVal CurrSelectedUserGuid As String, ByVal isPublic As String, ByVal RC As Boolean, ByVal RetMsg As String)
             MyBase.New
             Me.ServiceID = ServiceID
@@ -11774,53 +12667,99 @@ Namespace SVCSearch
             Me.RetMsg = RetMsg
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ChangeUserContentPublicResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class ChangeUserContentPublicResponse.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ChangeUserContentPublicResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class ChangeUserContentPublicResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public RetMsg As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="ChangeUserContentPublicResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="ChangeUserContentPublicResponse"/> class.
+        ''' </summary>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
         Public Sub New(ByVal RC As Boolean, ByVal RetMsg As String)
             MyBase.New
             Me.RC = RC
             Me.RetMsg = RetMsg
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="Refactor", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class RefactorRequest.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="Refactor", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class RefactorRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' Creates new ownerid.
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public NewOwnerID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The old owner identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public OldOwnerID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public RetMsg As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="RefactorRequest"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="RefactorRequest"/> class.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="NewOwnerID">Creates new ownerid.</param>
+        ''' <param name="OldOwnerID">The old owner identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
         Public Sub New(ByVal SecureID As Integer, ByVal NewOwnerID As String, ByVal OldOwnerID As String, ByVal RC As Boolean, ByVal RetMsg As String)
             MyBase.New
             Me.SecureID = SecureID
@@ -11830,56 +12769,106 @@ Namespace SVCSearch
             Me.RetMsg = RetMsg
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="RefactorResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class RefactorResponse.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="RefactorResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class RefactorResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public RetMsg As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="RefactorResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="RefactorResponse"/> class.
+        ''' </summary>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
         Public Sub New(ByVal RC As Boolean, ByVal RetMsg As String)
             MyBase.New
             Me.RC = RC
             Me.RetMsg = RetMsg
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getSAASState", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class getSAASStateRequest.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getSAASState", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class getSAASStateRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The user identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The dir name
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public DirName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The full path
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public FullPath As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public RetMsg As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>
         Public RC As Boolean
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getSAASStateRequest"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getSAASStateRequest"/> class.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="DirName">Name of the dir.</param>
+        ''' <param name="FullPath">The full path.</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
         Public Sub New(ByVal SecureID As Integer, ByVal UserID As String, ByVal DirName As String, ByVal FullPath As String, ByVal RetMsg As String, ByVal RC As Boolean)
             MyBase.New
             Me.SecureID = SecureID
@@ -11890,25 +12879,46 @@ Namespace SVCSearch
             Me.RC = RC
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getSAASStateResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class getSAASStateResponse.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getSAASStateResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class getSAASStateResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The get saas state result
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public getSAASStateResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public RetMsg As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public RC As Boolean
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getSAASStateResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getSAASStateResponse"/> class.
+        ''' </summary>
+        ''' <param name="getSAASStateResult">The get saas state result.</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
         Public Sub New(ByVal getSAASStateResult As String, ByVal RetMsg As String, ByVal RC As Boolean)
             MyBase.New
             Me.getSAASStateResult = getSAASStateResult
@@ -11916,34 +12926,67 @@ Namespace SVCSearch
             Me.RC = RC
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getListOfStrings01", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class getListOfStrings01Request.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getListOfStrings01", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class getListOfStrings01Request
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' My SQL
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public MySql As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public RetMsg As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The user identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public UserId As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+
+        ''' <summary>
+        ''' The session identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>
         Public SessionID As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getListOfStrings01Request"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getListOfStrings01Request"/> class.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="MySql">My SQL.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <param name="UserId">The user identifier.</param>
+        ''' <param name="SessionID">The session identifier.</param>
         Public Sub New(ByVal SecureID As Integer, ByVal MySql As String, ByVal RC As Boolean, ByVal RetMsg As String, ByVal UserId As String, ByVal SessionID As String)
             MyBase.New
             Me.SecureID = SecureID
@@ -11954,28 +12997,53 @@ Namespace SVCSearch
             Me.SessionID = SessionID
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getListOfStrings01Response", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class getListOfStrings01Response.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getListOfStrings01Response", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class getListOfStrings01Response
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The get list of strings01 result
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public getListOfStrings01Result As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public RetMsg As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getListOfStrings01Response"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getListOfStrings01Response"/> class.
+        ''' </summary>
+        ''' <param name="getListOfStrings01Result">The get list of strings01 result.</param>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
         Public Sub New(ByVal getListOfStrings01Result As String, ByVal SecureID As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
             MyBase.New
             Me.getListOfStrings01Result = getListOfStrings01Result
@@ -11984,34 +13052,67 @@ Namespace SVCSearch
             Me.RetMsg = RetMsg
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getListOfStrings02", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class getListOfStrings02Request.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getListOfStrings02", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class getListOfStrings02Request
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' My SQL
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public MySql As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public RetMsg As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The user identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public UserId As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+
+        ''' <summary>
+        ''' The session identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>
         Public SessionID As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getListOfStrings02Request"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getListOfStrings02Request"/> class.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="MySql">My SQL.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <param name="UserId">The user identifier.</param>
+        ''' <param name="SessionID">The session identifier.</param>
         Public Sub New(ByVal SecureID As Integer, ByVal MySql As String, ByVal RC As Boolean, ByVal RetMsg As String, ByVal UserId As String, ByVal SessionID As String)
             MyBase.New
             Me.SecureID = SecureID
@@ -12022,28 +13123,53 @@ Namespace SVCSearch
             Me.SessionID = SessionID
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getListOfStrings02Response", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class getListOfStrings02Response.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getListOfStrings02Response", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class getListOfStrings02Response
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The get list of strings02 result
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public getListOfStrings02Result() As SVCSearch.DS_ListOfStrings02
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public RetMsg As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getListOfStrings02Response"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getListOfStrings02Response"/> class.
+        ''' </summary>
+        ''' <param name="getListOfStrings02Result">The get list of strings02 result.</param>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
         Public Sub New(ByVal getListOfStrings02Result() As SVCSearch.DS_ListOfStrings02, ByVal SecureID As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
             MyBase.New
             Me.getListOfStrings02Result = getListOfStrings02Result
@@ -12052,34 +13178,67 @@ Namespace SVCSearch
             Me.RetMsg = RetMsg
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getListOfStrings03", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class getListOfStrings03Request.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getListOfStrings03", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class getListOfStrings03Request
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' My SQL
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public MySql As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public RetMsg As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The user identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public UserId As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+
+        ''' <summary>
+        ''' The session identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>
         Public SessionID As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getListOfStrings03Request"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getListOfStrings03Request"/> class.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="MySql">My SQL.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <param name="UserId">The user identifier.</param>
+        ''' <param name="SessionID">The session identifier.</param>
         Public Sub New(ByVal SecureID As Integer, ByVal MySql As String, ByVal RC As Boolean, ByVal RetMsg As String, ByVal UserId As String, ByVal SessionID As String)
             MyBase.New
             Me.SecureID = SecureID
@@ -12090,28 +13249,53 @@ Namespace SVCSearch
             Me.SessionID = SessionID
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getListOfStrings03Response", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class getListOfStrings03Response.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getListOfStrings03Response", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class getListOfStrings03Response
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The get list of strings03 result
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public getListOfStrings03Result() As SVCSearch.DS_ListOfStrings03
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public RetMsg As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getListOfStrings03Response"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getListOfStrings03Response"/> class.
+        ''' </summary>
+        ''' <param name="getListOfStrings03Result">The get list of strings03 result.</param>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
         Public Sub New(ByVal getListOfStrings03Result() As SVCSearch.DS_ListOfStrings03, ByVal SecureID As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
             MyBase.New
             Me.getListOfStrings03Result = getListOfStrings03Result
@@ -12120,34 +13304,67 @@ Namespace SVCSearch
             Me.RetMsg = RetMsg
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getListOfStrings04", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class getListOfStrings04Request.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getListOfStrings04", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class getListOfStrings04Request
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' My SQL
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public MySql As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public RetMsg As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The user identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public UserId As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+
+        ''' <summary>
+        ''' The session identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>
         Public SessionID As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getListOfStrings04Request"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getListOfStrings04Request"/> class.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="MySql">My SQL.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <param name="UserId">The user identifier.</param>
+        ''' <param name="SessionID">The session identifier.</param>
         Public Sub New(ByVal SecureID As Integer, ByVal MySql As String, ByVal RC As Boolean, ByVal RetMsg As String, ByVal UserId As String, ByVal SessionID As String)
             MyBase.New
             Me.SecureID = SecureID
@@ -12158,28 +13375,53 @@ Namespace SVCSearch
             Me.SessionID = SessionID
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getListOfStrings04Response", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class getListOfStrings04Response.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getListOfStrings04Response", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class getListOfStrings04Response
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The get list of strings04 result
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public getListOfStrings04Result() As SVCSearch.DS_ListOfStrings04
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public RetMsg As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getListOfStrings04Response"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getListOfStrings04Response"/> class.
+        ''' </summary>
+        ''' <param name="getListOfStrings04Result">The get list of strings04 result.</param>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
         Public Sub New(ByVal getListOfStrings04Result() As SVCSearch.DS_ListOfStrings04, ByVal SecureID As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
             MyBase.New
             Me.getListOfStrings04Result = getListOfStrings04Result
@@ -12188,25 +13430,46 @@ Namespace SVCSearch
             Me.RetMsg = RetMsg
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateLibraryUsersGrid", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class PopulateLibraryUsersGridRequest.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateLibraryUsersGrid", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class PopulateLibraryUsersGridRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The library name
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public LibraryName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The ck library users only
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public ckLibUsersOnly As Boolean
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="PopulateLibraryUsersGridRequest"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="PopulateLibraryUsersGridRequest"/> class.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="LibraryName">Name of the library.</param>
+        ''' <param name="ckLibUsersOnly">if set to <c>true</c> [ck library users only].</param>
         Public Sub New(ByVal SecureID As Integer, ByVal LibraryName As String, ByVal ckLibUsersOnly As Boolean)
             MyBase.New
             Me.SecureID = SecureID
@@ -12214,91 +13477,163 @@ Namespace SVCSearch
             Me.ckLibUsersOnly = ckLibUsersOnly
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateLibraryUsersGridResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class PopulateLibraryUsersGridResponse.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateLibraryUsersGridResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class PopulateLibraryUsersGridResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The populate library users grid result
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public PopulateLibraryUsersGridResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SecureID As Integer
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="PopulateLibraryUsersGridResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="PopulateLibraryUsersGridResponse"/> class.
+        ''' </summary>
+        ''' <param name="PopulateLibraryUsersGridResult">The populate library users grid result.</param>
+        ''' <param name="SecureID">The secure identifier.</param>
         Public Sub New(ByVal PopulateLibraryUsersGridResult As String, ByVal SecureID As Integer)
             MyBase.New
             Me.PopulateLibraryUsersGridResult = PopulateLibraryUsersGridResult
             Me.SecureID = SecureID
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getUserAuth", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class getUserAuthRequest.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getUserAuth", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class getUserAuthRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The userid
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public Userid As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getUserAuthRequest"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getUserAuthRequest"/> class.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="Userid">The userid.</param>
         Public Sub New(ByVal SecureID As Integer, ByVal Userid As String)
             MyBase.New
             Me.SecureID = SecureID
             Me.Userid = Userid
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getUserAuthResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class getUserAuthResponse.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getUserAuthResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class getUserAuthResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The get user authentication result
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public getUserAuthResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SecureID As Integer
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getUserAuthResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getUserAuthResponse"/> class.
+        ''' </summary>
+        ''' <param name="getUserAuthResult">The get user authentication result.</param>
+        ''' <param name="SecureID">The secure identifier.</param>
         Public Sub New(ByVal getUserAuthResult As String, ByVal SecureID As Integer)
             MyBase.New
             Me.getUserAuthResult = getUserAuthResult
             Me.SecureID = SecureID
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="DeleteUser", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class DeleteUserRequest.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="DeleteUser", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class DeleteUserRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The selected user unique identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SelectedUserGuid As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public RetMsg As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="DeleteUserRequest"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="DeleteUserRequest"/> class.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SelectedUserGuid">The selected user unique identifier.</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
         Public Sub New(ByVal SecureID As Integer, ByVal SelectedUserGuid As String, ByVal RetMsg As String)
             MyBase.New
             Me.SecureID = SecureID
@@ -12306,25 +13641,46 @@ Namespace SVCSearch
             Me.RetMsg = RetMsg
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="DeleteUserResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class DeleteUserResponse.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="DeleteUserResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class DeleteUserResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The delete user result
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public DeleteUserResult As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public RetMsg As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="DeleteUserResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="DeleteUserResponse"/> class.
+        ''' </summary>
+        ''' <param name="DeleteUserResult">if set to <c>true</c> [delete user result].</param>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
         Public Sub New(ByVal DeleteUserResult As Boolean, ByVal SecureID As Integer, ByVal RetMsg As String)
             MyBase.New
             Me.DeleteUserResult = DeleteUserResult
@@ -12332,88 +13688,169 @@ Namespace SVCSearch
             Me.RetMsg = RetMsg
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="SaveUSer", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class SaveUSerRequest.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="SaveUSer", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class SaveUSerRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The user identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The user name
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public UserName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The email address
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public EmailAddress As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The user password
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public UserPassword As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+
+        ''' <summary>
+        ''' The admin
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>
         Public Admin As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+
+        ''' <summary>
+        ''' The is active
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>
         Public isActive As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
+
+        ''' <summary>
+        ''' The user login identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>
         Public UserLoginID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
+
+        ''' <summary>
+        ''' The client only
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>
         Public ClientOnly As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>  _
+
+        ''' <summary>
+        ''' The hive connection name
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>
         Public HiveConnectionName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=10)>  _
+
+        ''' <summary>
+        ''' The hive active
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=10)>
         Public HiveActive As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=11)>  _
+
+        ''' <summary>
+        ''' The repo SVR name
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=11)>
         Public RepoSvrName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=12)>  _
+
+        ''' <summary>
+        ''' The row creation date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=12)>
         Public RowCreationDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=13)>  _
+
+        ''' <summary>
+        ''' The row last mod date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=13)>
         Public RowLastModDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=14)>  _
+
+        ''' <summary>
+        ''' The active unique identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=14)>
         Public ActiveGuid As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=15)>  _
+
+        ''' <summary>
+        ''' The repo name
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=15)>
         Public RepoName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=16)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=16)>
         Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=17)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=17)>
         Public RetMsg As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="SaveUSerRequest"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
-        Public Sub New( _
-                    ByVal SecureID As Integer,  _
-                    ByVal UserID As String,  _
-                    ByVal UserName As String,  _
-                    ByVal EmailAddress As String,  _
-                    ByVal UserPassword As String,  _
-                    ByVal Admin As String,  _
-                    ByVal isActive As String,  _
-                    ByVal UserLoginID As String,  _
-                    ByVal ClientOnly As Boolean,  _
-                    ByVal HiveConnectionName As String,  _
-                    ByVal HiveActive As Boolean,  _
-                    ByVal RepoSvrName As String,  _
-                    ByVal RowCreationDate As Date,  _
-                    ByVal RowLastModDate As Date,  _
-                    ByVal ActiveGuid As String,  _
-                    ByVal RepoName As String,  _
-                    ByVal RC As Boolean,  _
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="SaveUSerRequest"/> class.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="UserName">Name of the user.</param>
+        ''' <param name="EmailAddress">The email address.</param>
+        ''' <param name="UserPassword">The user password.</param>
+        ''' <param name="Admin">The admin.</param>
+        ''' <param name="isActive">The is active.</param>
+        ''' <param name="UserLoginID">The user login identifier.</param>
+        ''' <param name="ClientOnly">if set to <c>true</c> [client only].</param>
+        ''' <param name="HiveConnectionName">Name of the hive connection.</param>
+        ''' <param name="HiveActive">if set to <c>true</c> [hive active].</param>
+        ''' <param name="RepoSvrName">Name of the repo SVR.</param>
+        ''' <param name="RowCreationDate">The row creation date.</param>
+        ''' <param name="RowLastModDate">The row last mod date.</param>
+        ''' <param name="ActiveGuid">The active unique identifier.</param>
+        ''' <param name="RepoName">Name of the repo.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        Public Sub New(
+                    ByVal SecureID As Integer,
+                    ByVal UserID As String,
+                    ByVal UserName As String,
+                    ByVal EmailAddress As String,
+                    ByVal UserPassword As String,
+                    ByVal Admin As String,
+                    ByVal isActive As String,
+                    ByVal UserLoginID As String,
+                    ByVal ClientOnly As Boolean,
+                    ByVal HiveConnectionName As String,
+                    ByVal HiveActive As Boolean,
+                    ByVal RepoSvrName As String,
+                    ByVal RowCreationDate As Date,
+                    ByVal RowLastModDate As Date,
+                    ByVal ActiveGuid As String,
+                    ByVal RepoName As String,
+                    ByVal RC As Boolean,
                     ByVal RetMsg As String)
             MyBase.New
             Me.SecureID = SecureID
@@ -12436,88 +13873,169 @@ Namespace SVCSearch
             Me.RetMsg = RetMsg
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="SaveUSerResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class SaveUSerResponse.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="SaveUSerResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class SaveUSerResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The save u ser result
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SaveUSerResult As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The user identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The user name
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public UserName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The email address
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public EmailAddress As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The user password
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public UserPassword As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+
+        ''' <summary>
+        ''' The admin
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>
         Public Admin As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+
+        ''' <summary>
+        ''' The is active
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>
         Public isActive As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
+
+        ''' <summary>
+        ''' The user login identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>
         Public UserLoginID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
+
+        ''' <summary>
+        ''' The client only
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>
         Public ClientOnly As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>  _
+
+        ''' <summary>
+        ''' The hive connection name
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>
         Public HiveConnectionName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=10)>  _
+
+        ''' <summary>
+        ''' The hive active
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=10)>
         Public HiveActive As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=11)>  _
+
+        ''' <summary>
+        ''' The repo SVR name
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=11)>
         Public RepoSvrName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=12)>  _
+
+        ''' <summary>
+        ''' The row creation date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=12)>
         Public RowCreationDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=13)>  _
+
+        ''' <summary>
+        ''' The row last mod date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=13)>
         Public RowLastModDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=14)>  _
+
+        ''' <summary>
+        ''' The active unique identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=14)>
         Public ActiveGuid As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=15)>  _
+
+        ''' <summary>
+        ''' The repo name
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=15)>
         Public RepoName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=16)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=16)>
         Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=17)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=17)>
         Public RetMsg As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="SaveUSerResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
-        Public Sub New( _
-                    ByVal SaveUSerResult As Boolean,  _
-                    ByVal UserID As String,  _
-                    ByVal UserName As String,  _
-                    ByVal EmailAddress As String,  _
-                    ByVal UserPassword As String,  _
-                    ByVal Admin As String,  _
-                    ByVal isActive As String,  _
-                    ByVal UserLoginID As String,  _
-                    ByVal ClientOnly As Boolean,  _
-                    ByVal HiveConnectionName As String,  _
-                    ByVal HiveActive As Boolean,  _
-                    ByVal RepoSvrName As String,  _
-                    ByVal RowCreationDate As Date,  _
-                    ByVal RowLastModDate As Date,  _
-                    ByVal ActiveGuid As String,  _
-                    ByVal RepoName As String,  _
-                    ByVal RC As Boolean,  _
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="SaveUSerResponse"/> class.
+        ''' </summary>
+        ''' <param name="SaveUSerResult">if set to <c>true</c> [save u ser result].</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="UserName">Name of the user.</param>
+        ''' <param name="EmailAddress">The email address.</param>
+        ''' <param name="UserPassword">The user password.</param>
+        ''' <param name="Admin">The admin.</param>
+        ''' <param name="isActive">The is active.</param>
+        ''' <param name="UserLoginID">The user login identifier.</param>
+        ''' <param name="ClientOnly">if set to <c>true</c> [client only].</param>
+        ''' <param name="HiveConnectionName">Name of the hive connection.</param>
+        ''' <param name="HiveActive">if set to <c>true</c> [hive active].</param>
+        ''' <param name="RepoSvrName">Name of the repo SVR.</param>
+        ''' <param name="RowCreationDate">The row creation date.</param>
+        ''' <param name="RowLastModDate">The row last mod date.</param>
+        ''' <param name="ActiveGuid">The active unique identifier.</param>
+        ''' <param name="RepoName">Name of the repo.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        Public Sub New(
+                    ByVal SaveUSerResult As Boolean,
+                    ByVal UserID As String,
+                    ByVal UserName As String,
+                    ByVal EmailAddress As String,
+                    ByVal UserPassword As String,
+                    ByVal Admin As String,
+                    ByVal isActive As String,
+                    ByVal UserLoginID As String,
+                    ByVal ClientOnly As Boolean,
+                    ByVal HiveConnectionName As String,
+                    ByVal HiveActive As Boolean,
+                    ByVal RepoSvrName As String,
+                    ByVal RowCreationDate As Date,
+                    ByVal RowLastModDate As Date,
+                    ByVal ActiveGuid As String,
+                    ByVal RepoName As String,
+                    ByVal RC As Boolean,
                     ByVal RetMsg As String)
             MyBase.New
             Me.SaveUSerResult = SaveUSerResult
@@ -12540,108 +14058,209 @@ Namespace SVCSearch
             Me.RetMsg = RetMsg
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="saveSearchSchedule", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class saveSearchScheduleRequest.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="saveSearchSchedule", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class saveSearchScheduleRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The search name
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SearchName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The notification SMS
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public NotificationSMS As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The search desc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public SearchDesc As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The owner identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public OwnerID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+
+        ''' <summary>
+        ''' The search query
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>
         Public SearchQuery As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+
+        ''' <summary>
+        ''' The send to email
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>
         Public SendToEmail As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
+
+        ''' <summary>
+        ''' The schedule unit
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>
         Public ScheduleUnit As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
+
+        ''' <summary>
+        ''' The schedule hour
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>
         Public ScheduleHour As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>  _
+
+        ''' <summary>
+        ''' The schedule days of week
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>
         Public ScheduleDaysOfWeek As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=10)>  _
+
+        ''' <summary>
+        ''' The schedule days of month
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=10)>
         Public ScheduleDaysOfMonth As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=11)>  _
+
+        ''' <summary>
+        ''' The schedule month of QTR
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=11)>
         Public ScheduleMonthOfQtr As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=12)>  _
+
+        ''' <summary>
+        ''' The start to run date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=12)>
         Public StartToRunDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=13)>  _
+
+        ''' <summary>
+        ''' The end run date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=13)>
         Public EndRunDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=14)>  _
+
+        ''' <summary>
+        ''' The search parameters
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=14)>
         Public SearchParameters As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=15)>  _
+
+        ''' <summary>
+        ''' The last run date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=15)>
         Public LastRunDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=16)>  _
+
+        ''' <summary>
+        ''' The number of executions
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=16)>
         Public NumberOfExecutions As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=17)>  _
+
+        ''' <summary>
+        ''' The create date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=17)>
         Public CreateDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=18)>  _
+
+        ''' <summary>
+        ''' The last mod date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=18)>
         Public LastModDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=19)>  _
+
+        ''' <summary>
+        ''' The schedule hour interval
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=19)>
         Public ScheduleHourInterval As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=20)>  _
+
+        ''' <summary>
+        ''' The repo name
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=20)>
         Public RepoName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=21)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=21)>
         Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=22)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=22)>
         Public RetMsg As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="saveSearchScheduleRequest"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
-        Public Sub New( _
-                    ByVal SecureID As Integer,  _
-                    ByVal SearchName As String,  _
-                    ByVal NotificationSMS As String,  _
-                    ByVal SearchDesc As String,  _
-                    ByVal OwnerID As String,  _
-                    ByVal SearchQuery As String,  _
-                    ByVal SendToEmail As String,  _
-                    ByVal ScheduleUnit As String,  _
-                    ByVal ScheduleHour As String,  _
-                    ByVal ScheduleDaysOfWeek As String,  _
-                    ByVal ScheduleDaysOfMonth As String,  _
-                    ByVal ScheduleMonthOfQtr As String,  _
-                    ByVal StartToRunDate As Date,  _
-                    ByVal EndRunDate As Date,  _
-                    ByVal SearchParameters As String,  _
-                    ByVal LastRunDate As Date,  _
-                    ByVal NumberOfExecutions As Integer,  _
-                    ByVal CreateDate As Date,  _
-                    ByVal LastModDate As Date,  _
-                    ByVal ScheduleHourInterval As Integer,  _
-                    ByVal RepoName As String,  _
-                    ByVal RC As Boolean,  _
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="saveSearchScheduleRequest"/> class.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SearchName">Name of the search.</param>
+        ''' <param name="NotificationSMS">The notification SMS.</param>
+        ''' <param name="SearchDesc">The search desc.</param>
+        ''' <param name="OwnerID">The owner identifier.</param>
+        ''' <param name="SearchQuery">The search query.</param>
+        ''' <param name="SendToEmail">The send to email.</param>
+        ''' <param name="ScheduleUnit">The schedule unit.</param>
+        ''' <param name="ScheduleHour">The schedule hour.</param>
+        ''' <param name="ScheduleDaysOfWeek">The schedule days of week.</param>
+        ''' <param name="ScheduleDaysOfMonth">The schedule days of month.</param>
+        ''' <param name="ScheduleMonthOfQtr">The schedule month of QTR.</param>
+        ''' <param name="StartToRunDate">The start to run date.</param>
+        ''' <param name="EndRunDate">The end run date.</param>
+        ''' <param name="SearchParameters">The search parameters.</param>
+        ''' <param name="LastRunDate">The last run date.</param>
+        ''' <param name="NumberOfExecutions">The number of executions.</param>
+        ''' <param name="CreateDate">The create date.</param>
+        ''' <param name="LastModDate">The last mod date.</param>
+        ''' <param name="ScheduleHourInterval">The schedule hour interval.</param>
+        ''' <param name="RepoName">Name of the repo.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        Public Sub New(
+                    ByVal SecureID As Integer,
+                    ByVal SearchName As String,
+                    ByVal NotificationSMS As String,
+                    ByVal SearchDesc As String,
+                    ByVal OwnerID As String,
+                    ByVal SearchQuery As String,
+                    ByVal SendToEmail As String,
+                    ByVal ScheduleUnit As String,
+                    ByVal ScheduleHour As String,
+                    ByVal ScheduleDaysOfWeek As String,
+                    ByVal ScheduleDaysOfMonth As String,
+                    ByVal ScheduleMonthOfQtr As String,
+                    ByVal StartToRunDate As Date,
+                    ByVal EndRunDate As Date,
+                    ByVal SearchParameters As String,
+                    ByVal LastRunDate As Date,
+                    ByVal NumberOfExecutions As Integer,
+                    ByVal CreateDate As Date,
+                    ByVal LastModDate As Date,
+                    ByVal ScheduleHourInterval As Integer,
+                    ByVal RepoName As String,
+                    ByVal RC As Boolean,
                     ByVal RetMsg As String)
             MyBase.New
             Me.SecureID = SecureID
@@ -12669,108 +14288,209 @@ Namespace SVCSearch
             Me.RetMsg = RetMsg
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="saveSearchScheduleResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class saveSearchScheduleResponse.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="saveSearchScheduleResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class saveSearchScheduleResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The save search schedule result
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public saveSearchScheduleResult As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The search name
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SearchName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The notification SMS
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public NotificationSMS As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The search desc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public SearchDesc As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The owner identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public OwnerID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+
+        ''' <summary>
+        ''' The search query
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>
         Public SearchQuery As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+
+        ''' <summary>
+        ''' The send to email
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>
         Public SendToEmail As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
+
+        ''' <summary>
+        ''' The schedule unit
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>
         Public ScheduleUnit As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
+
+        ''' <summary>
+        ''' The schedule hour
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>
         Public ScheduleHour As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>  _
+
+        ''' <summary>
+        ''' The schedule days of week
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>
         Public ScheduleDaysOfWeek As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=10)>  _
+
+        ''' <summary>
+        ''' The schedule days of month
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=10)>
         Public ScheduleDaysOfMonth As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=11)>  _
+
+        ''' <summary>
+        ''' The schedule month of QTR
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=11)>
         Public ScheduleMonthOfQtr As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=12)>  _
+
+        ''' <summary>
+        ''' The start to run date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=12)>
         Public StartToRunDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=13)>  _
+
+        ''' <summary>
+        ''' The end run date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=13)>
         Public EndRunDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=14)>  _
+
+        ''' <summary>
+        ''' The search parameters
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=14)>
         Public SearchParameters As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=15)>  _
+
+        ''' <summary>
+        ''' The last run date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=15)>
         Public LastRunDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=16)>  _
+
+        ''' <summary>
+        ''' The number of executions
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=16)>
         Public NumberOfExecutions As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=17)>  _
+
+        ''' <summary>
+        ''' The create date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=17)>
         Public CreateDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=18)>  _
+
+        ''' <summary>
+        ''' The last mod date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=18)>
         Public LastModDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=19)>  _
+
+        ''' <summary>
+        ''' The schedule hour interval
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=19)>
         Public ScheduleHourInterval As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=20)>  _
+
+        ''' <summary>
+        ''' The repo name
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=20)>
         Public RepoName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=21)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=21)>
         Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=22)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=22)>
         Public RetMsg As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="saveSearchScheduleResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
-        Public Sub New( _
-                    ByVal saveSearchScheduleResult As Boolean,  _
-                    ByVal SearchName As String,  _
-                    ByVal NotificationSMS As String,  _
-                    ByVal SearchDesc As String,  _
-                    ByVal OwnerID As String,  _
-                    ByVal SearchQuery As String,  _
-                    ByVal SendToEmail As String,  _
-                    ByVal ScheduleUnit As String,  _
-                    ByVal ScheduleHour As String,  _
-                    ByVal ScheduleDaysOfWeek As String,  _
-                    ByVal ScheduleDaysOfMonth As String,  _
-                    ByVal ScheduleMonthOfQtr As String,  _
-                    ByVal StartToRunDate As Date,  _
-                    ByVal EndRunDate As Date,  _
-                    ByVal SearchParameters As String,  _
-                    ByVal LastRunDate As Date,  _
-                    ByVal NumberOfExecutions As Integer,  _
-                    ByVal CreateDate As Date,  _
-                    ByVal LastModDate As Date,  _
-                    ByVal ScheduleHourInterval As Integer,  _
-                    ByVal RepoName As String,  _
-                    ByVal RC As Boolean,  _
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="saveSearchScheduleResponse"/> class.
+        ''' </summary>
+        ''' <param name="saveSearchScheduleResult">if set to <c>true</c> [save search schedule result].</param>
+        ''' <param name="SearchName">Name of the search.</param>
+        ''' <param name="NotificationSMS">The notification SMS.</param>
+        ''' <param name="SearchDesc">The search desc.</param>
+        ''' <param name="OwnerID">The owner identifier.</param>
+        ''' <param name="SearchQuery">The search query.</param>
+        ''' <param name="SendToEmail">The send to email.</param>
+        ''' <param name="ScheduleUnit">The schedule unit.</param>
+        ''' <param name="ScheduleHour">The schedule hour.</param>
+        ''' <param name="ScheduleDaysOfWeek">The schedule days of week.</param>
+        ''' <param name="ScheduleDaysOfMonth">The schedule days of month.</param>
+        ''' <param name="ScheduleMonthOfQtr">The schedule month of QTR.</param>
+        ''' <param name="StartToRunDate">The start to run date.</param>
+        ''' <param name="EndRunDate">The end run date.</param>
+        ''' <param name="SearchParameters">The search parameters.</param>
+        ''' <param name="LastRunDate">The last run date.</param>
+        ''' <param name="NumberOfExecutions">The number of executions.</param>
+        ''' <param name="CreateDate">The create date.</param>
+        ''' <param name="LastModDate">The last mod date.</param>
+        ''' <param name="ScheduleHourInterval">The schedule hour interval.</param>
+        ''' <param name="RepoName">Name of the repo.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        Public Sub New(
+                    ByVal saveSearchScheduleResult As Boolean,
+                    ByVal SearchName As String,
+                    ByVal NotificationSMS As String,
+                    ByVal SearchDesc As String,
+                    ByVal OwnerID As String,
+                    ByVal SearchQuery As String,
+                    ByVal SendToEmail As String,
+                    ByVal ScheduleUnit As String,
+                    ByVal ScheduleHour As String,
+                    ByVal ScheduleDaysOfWeek As String,
+                    ByVal ScheduleDaysOfMonth As String,
+                    ByVal ScheduleMonthOfQtr As String,
+                    ByVal StartToRunDate As Date,
+                    ByVal EndRunDate As Date,
+                    ByVal SearchParameters As String,
+                    ByVal LastRunDate As Date,
+                    ByVal NumberOfExecutions As Integer,
+                    ByVal CreateDate As Date,
+                    ByVal LastModDate As Date,
+                    ByVal ScheduleHourInterval As Integer,
+                    ByVal RepoName As String,
+                    ByVal RC As Boolean,
                     ByVal RetMsg As String)
             MyBase.New
             Me.saveSearchScheduleResult = saveSearchScheduleResult
@@ -12798,108 +14518,209 @@ Namespace SVCSearch
             Me.RetMsg = RetMsg
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getSearchSchedule", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class getSearchScheduleRequest.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getSearchSchedule", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class getSearchScheduleRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The secure identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The search name
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SearchName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The notification SMS
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public NotificationSMS As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The search desc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public SearchDesc As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The owner identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public OwnerID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+
+        ''' <summary>
+        ''' The search query
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>
         Public SearchQuery As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+
+        ''' <summary>
+        ''' The send to email
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>
         Public SendToEmail As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
+
+        ''' <summary>
+        ''' The schedule unit
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>
         Public ScheduleUnit As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
+
+        ''' <summary>
+        ''' The schedule hour
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>
         Public ScheduleHour As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>  _
+
+        ''' <summary>
+        ''' The schedule days of week
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>
         Public ScheduleDaysOfWeek As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=10)>  _
+
+        ''' <summary>
+        ''' The schedule days of month
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=10)>
         Public ScheduleDaysOfMonth As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=11)>  _
+
+        ''' <summary>
+        ''' The schedule month of QTR
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=11)>
         Public ScheduleMonthOfQtr As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=12)>  _
+
+        ''' <summary>
+        ''' The start to run date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=12)>
         Public StartToRunDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=13)>  _
+
+        ''' <summary>
+        ''' The end run date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=13)>
         Public EndRunDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=14)>  _
+
+        ''' <summary>
+        ''' The search parameters
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=14)>
         Public SearchParameters As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=15)>  _
+
+        ''' <summary>
+        ''' The last run date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=15)>
         Public LastRunDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=16)>  _
+
+        ''' <summary>
+        ''' The number of executions
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=16)>
         Public NumberOfExecutions As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=17)>  _
+
+        ''' <summary>
+        ''' The create date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=17)>
         Public CreateDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=18)>  _
+
+        ''' <summary>
+        ''' The last mod date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=18)>
         Public LastModDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=19)>  _
+
+        ''' <summary>
+        ''' The schedule hour interval
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=19)>
         Public ScheduleHourInterval As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=20)>  _
+
+        ''' <summary>
+        ''' The repo name
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=20)>
         Public RepoName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=21)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=21)>
         Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=22)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=22)>
         Public RetMsg As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getSearchScheduleRequest"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
-        Public Sub New( _
-                    ByVal SecureID As Integer,  _
-                    ByVal SearchName As String,  _
-                    ByVal NotificationSMS As String,  _
-                    ByVal SearchDesc As String,  _
-                    ByVal OwnerID As String,  _
-                    ByVal SearchQuery As String,  _
-                    ByVal SendToEmail As String,  _
-                    ByVal ScheduleUnit As String,  _
-                    ByVal ScheduleHour As String,  _
-                    ByVal ScheduleDaysOfWeek As String,  _
-                    ByVal ScheduleDaysOfMonth As String,  _
-                    ByVal ScheduleMonthOfQtr As String,  _
-                    ByVal StartToRunDate As Date,  _
-                    ByVal EndRunDate As Date,  _
-                    ByVal SearchParameters As String,  _
-                    ByVal LastRunDate As Date,  _
-                    ByVal NumberOfExecutions As Integer,  _
-                    ByVal CreateDate As Date,  _
-                    ByVal LastModDate As Date,  _
-                    ByVal ScheduleHourInterval As Integer,  _
-                    ByVal RepoName As String,  _
-                    ByVal RC As Boolean,  _
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getSearchScheduleRequest"/> class.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SearchName">Name of the search.</param>
+        ''' <param name="NotificationSMS">The notification SMS.</param>
+        ''' <param name="SearchDesc">The search desc.</param>
+        ''' <param name="OwnerID">The owner identifier.</param>
+        ''' <param name="SearchQuery">The search query.</param>
+        ''' <param name="SendToEmail">The send to email.</param>
+        ''' <param name="ScheduleUnit">The schedule unit.</param>
+        ''' <param name="ScheduleHour">The schedule hour.</param>
+        ''' <param name="ScheduleDaysOfWeek">The schedule days of week.</param>
+        ''' <param name="ScheduleDaysOfMonth">The schedule days of month.</param>
+        ''' <param name="ScheduleMonthOfQtr">The schedule month of QTR.</param>
+        ''' <param name="StartToRunDate">The start to run date.</param>
+        ''' <param name="EndRunDate">The end run date.</param>
+        ''' <param name="SearchParameters">The search parameters.</param>
+        ''' <param name="LastRunDate">The last run date.</param>
+        ''' <param name="NumberOfExecutions">The number of executions.</param>
+        ''' <param name="CreateDate">The create date.</param>
+        ''' <param name="LastModDate">The last mod date.</param>
+        ''' <param name="ScheduleHourInterval">The schedule hour interval.</param>
+        ''' <param name="RepoName">Name of the repo.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        Public Sub New(
+                    ByVal SecureID As Integer,
+                    ByVal SearchName As String,
+                    ByVal NotificationSMS As String,
+                    ByVal SearchDesc As String,
+                    ByVal OwnerID As String,
+                    ByVal SearchQuery As String,
+                    ByVal SendToEmail As String,
+                    ByVal ScheduleUnit As String,
+                    ByVal ScheduleHour As String,
+                    ByVal ScheduleDaysOfWeek As String,
+                    ByVal ScheduleDaysOfMonth As String,
+                    ByVal ScheduleMonthOfQtr As String,
+                    ByVal StartToRunDate As Date,
+                    ByVal EndRunDate As Date,
+                    ByVal SearchParameters As String,
+                    ByVal LastRunDate As Date,
+                    ByVal NumberOfExecutions As Integer,
+                    ByVal CreateDate As Date,
+                    ByVal LastModDate As Date,
+                    ByVal ScheduleHourInterval As Integer,
+                    ByVal RepoName As String,
+                    ByVal RC As Boolean,
                     ByVal RetMsg As String)
             MyBase.New
             Me.SecureID = SecureID
@@ -12927,108 +14748,209 @@ Namespace SVCSearch
             Me.RetMsg = RetMsg
         End Sub
     End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getSearchScheduleResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+
+    ''' <summary>
+    ''' Class getSearchScheduleResponse.
+    ''' </summary>
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getSearchScheduleResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
     Partial Public Class getSearchScheduleResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+
+        ''' <summary>
+        ''' The get search schedule result
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
         Public getSearchScheduleResult As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+
+        ''' <summary>
+        ''' The search name
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
         Public SearchName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+
+        ''' <summary>
+        ''' The notification SMS
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
         Public NotificationSMS As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+
+        ''' <summary>
+        ''' The search desc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
         Public SearchDesc As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+
+        ''' <summary>
+        ''' The owner identifier
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
         Public OwnerID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+
+        ''' <summary>
+        ''' The search query
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>
         Public SearchQuery As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+
+        ''' <summary>
+        ''' The send to email
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>
         Public SendToEmail As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
+
+        ''' <summary>
+        ''' The schedule unit
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>
         Public ScheduleUnit As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
+
+        ''' <summary>
+        ''' The schedule hour
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>
         Public ScheduleHour As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>  _
+
+        ''' <summary>
+        ''' The schedule days of week
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>
         Public ScheduleDaysOfWeek As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=10)>  _
+
+        ''' <summary>
+        ''' The schedule days of month
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=10)>
         Public ScheduleDaysOfMonth As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=11)>  _
+
+        ''' <summary>
+        ''' The schedule month of QTR
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=11)>
         Public ScheduleMonthOfQtr As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=12)>  _
+
+        ''' <summary>
+        ''' The start to run date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=12)>
         Public StartToRunDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=13)>  _
+
+        ''' <summary>
+        ''' The end run date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=13)>
         Public EndRunDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=14)>  _
+
+        ''' <summary>
+        ''' The search parameters
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=14)>
         Public SearchParameters As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=15)>  _
+
+        ''' <summary>
+        ''' The last run date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=15)>
         Public LastRunDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=16)>  _
+
+        ''' <summary>
+        ''' The number of executions
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=16)>
         Public NumberOfExecutions As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=17)>  _
+
+        ''' <summary>
+        ''' The create date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=17)>
         Public CreateDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=18)>  _
+
+        ''' <summary>
+        ''' The last mod date
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=18)>
         Public LastModDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=19)>  _
+
+        ''' <summary>
+        ''' The schedule hour interval
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=19)>
         Public ScheduleHourInterval As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=20)>  _
+
+        ''' <summary>
+        ''' The repo name
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=20)>
         Public RepoName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=21)>  _
+
+        ''' <summary>
+        ''' The rc
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=21)>
         Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=22)>  _
+
+        ''' <summary>
+        ''' The ret MSG
+        ''' </summary>
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=22)>
         Public RetMsg As String
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getSearchScheduleResponse"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
-        Public Sub New( _
-                    ByVal getSearchScheduleResult As Boolean,  _
-                    ByVal SearchName As String,  _
-                    ByVal NotificationSMS As String,  _
-                    ByVal SearchDesc As String,  _
-                    ByVal OwnerID As String,  _
-                    ByVal SearchQuery As String,  _
-                    ByVal SendToEmail As String,  _
-                    ByVal ScheduleUnit As String,  _
-                    ByVal ScheduleHour As String,  _
-                    ByVal ScheduleDaysOfWeek As String,  _
-                    ByVal ScheduleDaysOfMonth As String,  _
-                    ByVal ScheduleMonthOfQtr As String,  _
-                    ByVal StartToRunDate As Date,  _
-                    ByVal EndRunDate As Date,  _
-                    ByVal SearchParameters As String,  _
-                    ByVal LastRunDate As Date,  _
-                    ByVal NumberOfExecutions As Integer,  _
-                    ByVal CreateDate As Date,  _
-                    ByVal LastModDate As Date,  _
-                    ByVal ScheduleHourInterval As Integer,  _
-                    ByVal RepoName As String,  _
-                    ByVal RC As Boolean,  _
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="getSearchScheduleResponse"/> class.
+        ''' </summary>
+        ''' <param name="getSearchScheduleResult">if set to <c>true</c> [get search schedule result].</param>
+        ''' <param name="SearchName">Name of the search.</param>
+        ''' <param name="NotificationSMS">The notification SMS.</param>
+        ''' <param name="SearchDesc">The search desc.</param>
+        ''' <param name="OwnerID">The owner identifier.</param>
+        ''' <param name="SearchQuery">The search query.</param>
+        ''' <param name="SendToEmail">The send to email.</param>
+        ''' <param name="ScheduleUnit">The schedule unit.</param>
+        ''' <param name="ScheduleHour">The schedule hour.</param>
+        ''' <param name="ScheduleDaysOfWeek">The schedule days of week.</param>
+        ''' <param name="ScheduleDaysOfMonth">The schedule days of month.</param>
+        ''' <param name="ScheduleMonthOfQtr">The schedule month of QTR.</param>
+        ''' <param name="StartToRunDate">The start to run date.</param>
+        ''' <param name="EndRunDate">The end run date.</param>
+        ''' <param name="SearchParameters">The search parameters.</param>
+        ''' <param name="LastRunDate">The last run date.</param>
+        ''' <param name="NumberOfExecutions">The number of executions.</param>
+        ''' <param name="CreateDate">The create date.</param>
+        ''' <param name="LastModDate">The last mod date.</param>
+        ''' <param name="ScheduleHourInterval">The schedule hour interval.</param>
+        ''' <param name="RepoName">Name of the repo.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        Public Sub New(
+                    ByVal getSearchScheduleResult As Boolean,
+                    ByVal SearchName As String,
+                    ByVal NotificationSMS As String,
+                    ByVal SearchDesc As String,
+                    ByVal OwnerID As String,
+                    ByVal SearchQuery As String,
+                    ByVal SendToEmail As String,
+                    ByVal ScheduleUnit As String,
+                    ByVal ScheduleHour As String,
+                    ByVal ScheduleDaysOfWeek As String,
+                    ByVal ScheduleDaysOfMonth As String,
+                    ByVal ScheduleMonthOfQtr As String,
+                    ByVal StartToRunDate As Date,
+                    ByVal EndRunDate As Date,
+                    ByVal SearchParameters As String,
+                    ByVal LastRunDate As Date,
+                    ByVal NumberOfExecutions As Integer,
+                    ByVal CreateDate As Date,
+                    ByVal LastModDate As Date,
+                    ByVal ScheduleHourInterval As Integer,
+                    ByVal RepoName As String,
+                    ByVal RC As Boolean,
                     ByVal RetMsg As String)
             MyBase.New
             Me.getSearchScheduleResult = getSearchScheduleResult
@@ -13056,43 +14978,97 @@ Namespace SVCSearch
             Me.RetMsg = RetMsg
         End Sub
     End Class
-    
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>  _
+
+    ''' <summary>
+    ''' Interface IService1Channel
+    ''' Implements the <see cref="ECMSearchWPF.SVCSearch.IService1" />
+    ''' Implements the <see cref="System.ServiceModel.IClientChannel" />
+    ''' </summary>
+    ''' <seealso cref="ECMSearchWPF.SVCSearch.IService1" />
+    ''' <seealso cref="System.ServiceModel.IClientChannel" />
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>
     Public Interface IService1Channel
         Inherits SVCSearch.IService1, System.ServiceModel.IClientChannel
     End Interface
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>  _
+
+    ''' <summary>
+    ''' Class Service1Client.
+    ''' Implements the <see cref="System.ServiceModel.ClientBase(Of ECMSearchWPF.SVCSearch.IService1)" />
+    ''' Implements the <see cref="ECMSearchWPF.SVCSearch.IService1" />
+    ''' </summary>
+    ''' <seealso cref="System.ServiceModel.ClientBase(Of ECMSearchWPF.SVCSearch.IService1)" />
+    ''' <seealso cref="ECMSearchWPF.SVCSearch.IService1" />
+    <System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>
     Partial Public Class Service1Client
         Inherits System.ServiceModel.ClientBase(Of SVCSearch.IService1)
         Implements SVCSearch.IService1
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="Service1Client"/> class.
+        ''' </summary>
         Public Sub New()
             MyBase.New
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="Service1Client"/> class.
+        ''' </summary>
+        ''' <param name="endpointConfigurationName">The name of the endpoint in the application configuration file.</param>
         Public Sub New(ByVal endpointConfigurationName As String)
             MyBase.New(endpointConfigurationName)
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="Service1Client"/> class.
+        ''' </summary>
+        ''' <param name="endpointConfigurationName">The name of the endpoint in the application configuration file.</param>
+        ''' <param name="remoteAddress">The address of the service.</param>
         Public Sub New(ByVal endpointConfigurationName As String, ByVal remoteAddress As String)
             MyBase.New(endpointConfigurationName, remoteAddress)
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="Service1Client"/> class.
+        ''' </summary>
+        ''' <param name="endpointConfigurationName">The name of the endpoint in the application configuration file.</param>
+        ''' <param name="remoteAddress">The address of the service.</param>
         Public Sub New(ByVal endpointConfigurationName As String, ByVal remoteAddress As System.ServiceModel.EndpointAddress)
             MyBase.New(endpointConfigurationName, remoteAddress)
         End Sub
-        
+
+        ''' <summary>
+        ''' Initializes a new instance of the <see cref="Service1Client"/> class.
+        ''' </summary>
+        ''' <param name="binding">The binding with which to make calls to the service.</param>
+        ''' <param name="remoteAddress">The address of the service endpoint.</param>
         Public Sub New(ByVal binding As System.ServiceModel.Channels.Binding, ByVal remoteAddress As System.ServiceModel.EndpointAddress)
             MyBase.New(binding, remoteAddress)
         End Sub
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the state of the search i service1 save search.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.saveSearchStateResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_saveSearchState(ByVal request As SVCSearch.saveSearchStateRequest) As SVCSearch.saveSearchStateResponse Implements SVCSearch.IService1.saveSearchState
             Return MyBase.Channel.saveSearchState(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Saves the state of the search.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SearchID">The search identifier.</param>
+        ''' <param name="UID">The uid.</param>
+        ''' <param name="ScreenName">Name of the screen.</param>
+        ''' <param name="DICT">The dictionary.</param>
+        ''' <param name="rMsg">The r MSG.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="HiveConnectionName">Name of the hive connection.</param>
+        ''' <param name="HiveActive">if set to <c>true</c> [hive active].</param>
+        ''' <param name="RepoSvrName">Name of the repo SVR.</param>
         Public Sub saveSearchState(ByRef SecureID As Integer, ByVal SearchID As Integer, ByVal UID As String, ByVal ScreenName As String, ByVal DICT As System.Collections.Generic.Dictionary(Of String, String), ByRef rMsg As String, ByRef RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String)
             Dim inValue As SVCSearch.saveSearchStateRequest = New SVCSearch.saveSearchStateRequest()
             inValue.SecureID = SecureID
@@ -13105,21 +15081,44 @@ Namespace SVCSearch
             inValue.HiveConnectionName = HiveConnectionName
             inValue.HiveActive = HiveActive
             inValue.RepoSvrName = RepoSvrName
-            Dim retVal As SVCSearch.saveSearchStateResponse = CType(Me,SVCSearch.IService1).saveSearchState(inValue)
+            Dim retVal As SVCSearch.saveSearchStateResponse = CType(Me, SVCSearch.IService1).saveSearchState(inValue)
             SecureID = retVal.SecureID
             rMsg = retVal.rMsg
             RC = retVal.RC
         End Sub
-        
+
+        ''' <summary>
+        ''' Saves the search state asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.saveSearchStateResponse).</returns>
         Public Function saveSearchStateAsync(ByVal request As SVCSearch.saveSearchStateRequest) As System.Threading.Tasks.Task(Of SVCSearch.saveSearchStateResponse) Implements SVCSearch.IService1.saveSearchStateAsync
             Return MyBase.Channel.saveSearchStateAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the state of the search i service1 get screen.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getScreenStateResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getScreenState(ByVal request As SVCSearch.getScreenStateRequest) As SVCSearch.getScreenStateResponse Implements SVCSearch.IService1.getScreenState
             Return MyBase.Channel.getScreenState(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the state of the screen.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UID">The uid.</param>
+        ''' <param name="ScreenName">Name of the screen.</param>
+        ''' <param name="DICT">The dictionary.</param>
+        ''' <param name="rMsg">The r MSG.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="HiveConnectionName">Name of the hive connection.</param>
+        ''' <param name="HiveActive">if set to <c>true</c> [hive active].</param>
+        ''' <param name="RepoSvrName">Name of the repo SVR.</param>
+        ''' <returns>SVCSearch.DS_USERSCREENSTATE().</returns>
         Public Function getScreenState(ByRef SecureID As Integer, ByVal UID As String, ByVal ScreenName As String, ByRef DICT As System.Collections.Generic.Dictionary(Of String, String), ByRef rMsg As String, ByRef RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String) As SVCSearch.DS_USERSCREENSTATE()
             Dim inValue As SVCSearch.getScreenStateRequest = New SVCSearch.getScreenStateRequest()
             inValue.SecureID = SecureID
@@ -13131,23 +15130,47 @@ Namespace SVCSearch
             inValue.HiveConnectionName = HiveConnectionName
             inValue.HiveActive = HiveActive
             inValue.RepoSvrName = RepoSvrName
-            Dim retVal As SVCSearch.getScreenStateResponse = CType(Me,SVCSearch.IService1).getScreenState(inValue)
+            Dim retVal As SVCSearch.getScreenStateResponse = CType(Me, SVCSearch.IService1).getScreenState(inValue)
             SecureID = retVal.SecureID
             DICT = retVal.DICT
             rMsg = retVal.rMsg
             RC = retVal.RC
             Return retVal.getScreenStateResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the screen state asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getScreenStateResponse).</returns>
         Public Function getScreenStateAsync(ByVal request As SVCSearch.getScreenStateRequest) As System.Threading.Tasks.Task(Of SVCSearch.getScreenStateResponse) Implements SVCSearch.IService1.getScreenStateAsync
             Return MyBase.Channel.getScreenStateAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get grid layout.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getGridLayoutResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getGridLayout(ByVal request As SVCSearch.getGridLayoutRequest) As SVCSearch.getGridLayoutResponse Implements SVCSearch.IService1.getGridLayout
             Return MyBase.Channel.getGridLayout(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the grid layout.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UID">The uid.</param>
+        ''' <param name="ScreenName">Name of the screen.</param>
+        ''' <param name="GridName">Name of the grid.</param>
+        ''' <param name="DICT">The dictionary.</param>
+        ''' <param name="rMsg">The r MSG.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="HiveConnectionName">Name of the hive connection.</param>
+        ''' <param name="HiveActive">if set to <c>true</c> [hive active].</param>
+        ''' <param name="RepoSvrName">Name of the repo SVR.</param>
+        ''' <returns>SVCSearch.DS_clsUSERGRIDSTATE().</returns>
         Public Function getGridLayout(ByRef SecureID As Integer, ByVal UID As String, ByVal ScreenName As String, ByVal GridName As String, ByVal DICT As System.Collections.Generic.Dictionary(Of String, String), ByRef rMsg As String, ByRef RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String) As SVCSearch.DS_clsUSERGRIDSTATE()
             Dim inValue As SVCSearch.getGridLayoutRequest = New SVCSearch.getGridLayoutRequest()
             inValue.SecureID = SecureID
@@ -13160,41 +15183,73 @@ Namespace SVCSearch
             inValue.HiveConnectionName = HiveConnectionName
             inValue.HiveActive = HiveActive
             inValue.RepoSvrName = RepoSvrName
-            Dim retVal As SVCSearch.getGridLayoutResponse = CType(Me,SVCSearch.IService1).getGridLayout(inValue)
+            Dim retVal As SVCSearch.getGridLayoutResponse = CType(Me, SVCSearch.IService1).getGridLayout(inValue)
             SecureID = retVal.SecureID
             rMsg = retVal.rMsg
             RC = retVal.RC
             Return retVal.getGridLayoutResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the grid layout asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getGridLayoutResponse).</returns>
         Public Function getGridLayoutAsync(ByVal request As SVCSearch.getGridLayoutRequest) As System.Threading.Tasks.Task(Of SVCSearch.getGridLayoutResponse) Implements SVCSearch.IService1.getGridLayoutAsync
             Return MyBase.Channel.getGridLayoutAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 save grid layout.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.saveGridLayoutResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_saveGridLayout(ByVal request As SVCSearch.saveGridLayoutRequest) As SVCSearch.saveGridLayoutResponse Implements SVCSearch.IService1.saveGridLayout
             Return MyBase.Channel.saveGridLayout(request)
         End Function
-        
-        Public Sub saveGridLayout( _
-                    ByRef SecureID As Integer,  _
-                    ByRef UserID As String,  _
-                    ByRef ScreenName As String,  _
-                    ByRef GridName As String,  _
-                    ByRef ColName As String,  _
-                    ByRef ColOrder As Integer,  _
-                    ByRef ColWidth As Integer,  _
-                    ByRef ColVisible As Boolean,  _
-                    ByRef ColReadOnly As Boolean,  _
-                    ByRef ColSortOrder As Integer,  _
-                    ByRef ColSortAsc As Boolean,  _
-                    ByRef HiveConnectionName As String,  _
-                    ByRef HiveActive As Boolean,  _
-                    ByRef RepoSvrName As String,  _
-                    ByRef RowCreationDate As Date,  _
-                    ByRef RowLastModDate As Date,  _
-                    ByRef RowNbr As Integer,  _
-                    ByRef RC As Boolean,  _
+
+        ''' <summary>
+        ''' Saves the grid layout.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="ScreenName">Name of the screen.</param>
+        ''' <param name="GridName">Name of the grid.</param>
+        ''' <param name="ColName">Name of the col.</param>
+        ''' <param name="ColOrder">The col order.</param>
+        ''' <param name="ColWidth">Width of the col.</param>
+        ''' <param name="ColVisible">if set to <c>true</c> [col visible].</param>
+        ''' <param name="ColReadOnly">if set to <c>true</c> [col read only].</param>
+        ''' <param name="ColSortOrder">The col sort order.</param>
+        ''' <param name="ColSortAsc">if set to <c>true</c> [col sort asc].</param>
+        ''' <param name="HiveConnectionName">Name of the hive connection.</param>
+        ''' <param name="HiveActive">if set to <c>true</c> [hive active].</param>
+        ''' <param name="RepoSvrName">Name of the repo SVR.</param>
+        ''' <param name="RowCreationDate">The row creation date.</param>
+        ''' <param name="RowLastModDate">The row last mod date.</param>
+        ''' <param name="RowNbr">The row NBR.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="rMsg">The r MSG.</param>
+        Public Sub saveGridLayout(
+                    ByRef SecureID As Integer,
+                    ByRef UserID As String,
+                    ByRef ScreenName As String,
+                    ByRef GridName As String,
+                    ByRef ColName As String,
+                    ByRef ColOrder As Integer,
+                    ByRef ColWidth As Integer,
+                    ByRef ColVisible As Boolean,
+                    ByRef ColReadOnly As Boolean,
+                    ByRef ColSortOrder As Integer,
+                    ByRef ColSortAsc As Boolean,
+                    ByRef HiveConnectionName As String,
+                    ByRef HiveActive As Boolean,
+                    ByRef RepoSvrName As String,
+                    ByRef RowCreationDate As Date,
+                    ByRef RowLastModDate As Date,
+                    ByRef RowNbr As Integer,
+                    ByRef RC As Boolean,
                     ByRef rMsg As String)
             Dim inValue As SVCSearch.saveGridLayoutRequest = New SVCSearch.saveGridLayoutRequest()
             inValue.SecureID = SecureID
@@ -13216,7 +15271,7 @@ Namespace SVCSearch
             inValue.RowNbr = RowNbr
             inValue.RC = RC
             inValue.rMsg = rMsg
-            Dim retVal As SVCSearch.saveGridLayoutResponse = CType(Me,SVCSearch.IService1).saveGridLayout(inValue)
+            Dim retVal As SVCSearch.saveGridLayoutResponse = CType(Me, SVCSearch.IService1).saveGridLayout(inValue)
             SecureID = retVal.SecureID
             UserID = retVal.UserID
             ScreenName = retVal.ScreenName
@@ -13237,16 +15292,38 @@ Namespace SVCSearch
             RC = retVal.RC
             rMsg = retVal.rMsg
         End Sub
-        
+
+        ''' <summary>
+        ''' Saves the grid layout asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.saveGridLayoutResponse).</returns>
         Public Function saveGridLayoutAsync(ByVal request As SVCSearch.saveGridLayoutRequest) As System.Threading.Tasks.Task(Of SVCSearch.saveGridLayoutResponse) Implements SVCSearch.IService1.saveGridLayoutAsync
             Return MyBase.Channel.saveGridLayoutAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the state of the search i service1 save screen.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.saveScreenStateResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_saveScreenState(ByVal request As SVCSearch.saveScreenStateRequest) As SVCSearch.saveScreenStateResponse Implements SVCSearch.IService1.saveScreenState
             Return MyBase.Channel.saveScreenState(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Saves the state of the screen.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UID">The uid.</param>
+        ''' <param name="ScreenName">Name of the screen.</param>
+        ''' <param name="DICT">The dictionary.</param>
+        ''' <param name="rMsg">The r MSG.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="HiveConnectionName">Name of the hive connection.</param>
+        ''' <param name="HiveActive">if set to <c>true</c> [hive active].</param>
+        ''' <param name="RepoSvrName">Name of the repo SVR.</param>
         Public Sub saveScreenState(ByRef SecureID As Integer, ByVal UID As String, ByVal ScreenName As String, ByVal DICT As System.Collections.Generic.Dictionary(Of String, String), ByRef rMsg As String, ByRef RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String)
             Dim inValue As SVCSearch.saveScreenStateRequest = New SVCSearch.saveScreenStateRequest()
             inValue.SecureID = SecureID
@@ -13258,240 +15335,449 @@ Namespace SVCSearch
             inValue.HiveConnectionName = HiveConnectionName
             inValue.HiveActive = HiveActive
             inValue.RepoSvrName = RepoSvrName
-            Dim retVal As SVCSearch.saveScreenStateResponse = CType(Me,SVCSearch.IService1).saveScreenState(inValue)
+            Dim retVal As SVCSearch.saveScreenStateResponse = CType(Me, SVCSearch.IService1).saveScreenState(inValue)
             SecureID = retVal.SecureID
             rMsg = retVal.rMsg
             RC = retVal.RC
         End Sub
-        
+
+        ''' <summary>
+        ''' Saves the screen state asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.saveScreenStateResponse).</returns>
         Public Function saveScreenStateAsync(ByVal request As SVCSearch.saveScreenStateRequest) As System.Threading.Tasks.Task(Of SVCSearch.saveScreenStateResponse) Implements SVCSearch.IService1.saveScreenStateAsync
             Return MyBase.Channel.saveScreenStateAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get user parms.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getUserParmsResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getUserParms(ByVal request As SVCSearch.getUserParmsRequest) As SVCSearch.getUserParmsResponse Implements SVCSearch.IService1.getUserParms
             Return MyBase.Channel.getUserParms(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the user parms.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="UserParms">The user parms.</param>
         Public Sub getUserParms(ByRef SecureID As Integer, ByVal UserID As String, ByRef UserParms As System.Collections.Generic.Dictionary(Of String, String))
             Dim inValue As SVCSearch.getUserParmsRequest = New SVCSearch.getUserParmsRequest()
             inValue.SecureID = SecureID
             inValue.UserID = UserID
             inValue.UserParms = UserParms
-            Dim retVal As SVCSearch.getUserParmsResponse = CType(Me,SVCSearch.IService1).getUserParms(inValue)
+            Dim retVal As SVCSearch.getUserParmsResponse = CType(Me, SVCSearch.IService1).getUserParms(inValue)
             SecureID = retVal.SecureID
             UserParms = retVal.UserParms
         End Sub
-        
+
+        ''' <summary>
+        ''' Gets the user parms asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getUserParmsResponse).</returns>
         Public Function getUserParmsAsync(ByVal request As SVCSearch.getUserParmsRequest) As System.Threading.Tasks.Task(Of SVCSearch.getUserParmsResponse) Implements SVCSearch.IService1.getUserParmsAsync
             Return MyBase.Channel.getUserParmsAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 parse lic dictionary.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.ParseLicDictionaryResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_ParseLicDictionary(ByVal request As SVCSearch.ParseLicDictionaryRequest) As SVCSearch.ParseLicDictionaryResponse Implements SVCSearch.IService1.ParseLicDictionary
             Return MyBase.Channel.ParseLicDictionary(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Parses the lic dictionary.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="S">The s.</param>
+        ''' <param name="D">The d.</param>
         Public Sub ParseLicDictionary(ByRef SecureID As Integer, ByVal S As String, ByRef D As System.Collections.Generic.Dictionary(Of String, String))
             Dim inValue As SVCSearch.ParseLicDictionaryRequest = New SVCSearch.ParseLicDictionaryRequest()
             inValue.SecureID = SecureID
             inValue.S = S
             inValue.D = D
-            Dim retVal As SVCSearch.ParseLicDictionaryResponse = CType(Me,SVCSearch.IService1).ParseLicDictionary(inValue)
+            Dim retVal As SVCSearch.ParseLicDictionaryResponse = CType(Me, SVCSearch.IService1).ParseLicDictionary(inValue)
             SecureID = retVal.SecureID
             D = retVal.D
         End Sub
-        
+
+        ''' <summary>
+        ''' Parses the lic dictionary asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.ParseLicDictionaryResponse).</returns>
         Public Function ParseLicDictionaryAsync(ByVal request As SVCSearch.ParseLicDictionaryRequest) As System.Threading.Tasks.Task(Of SVCSearch.ParseLicDictionaryResponse) Implements SVCSearch.IService1.ParseLicDictionaryAsync
             Return MyBase.Channel.ParseLicDictionaryAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the type of the search i service1 license.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.LicenseTypeResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_LicenseType(ByVal request As SVCSearch.LicenseTypeRequest) As SVCSearch.LicenseTypeResponse Implements SVCSearch.IService1.LicenseType
             Return MyBase.Channel.LicenseType(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Licenses the type.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <returns>System.String.</returns>
         Public Function LicenseType(ByVal SecureID As Integer, ByRef RC As Boolean, ByRef RetMsg As String) As String
             Dim inValue As SVCSearch.LicenseTypeRequest = New SVCSearch.LicenseTypeRequest()
             inValue.SecureID = SecureID
             inValue.RC = RC
             inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.LicenseTypeResponse = CType(Me,SVCSearch.IService1).LicenseType(inValue)
+            Dim retVal As SVCSearch.LicenseTypeResponse = CType(Me, SVCSearch.IService1).LicenseType(inValue)
             RC = retVal.RC
             RetMsg = retVal.RetMsg
             Return retVal.LicenseTypeResult
         End Function
-        
+
+        ''' <summary>
+        ''' Licenses the type asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.LicenseTypeResponse).</returns>
         Public Function LicenseTypeAsync(ByVal request As SVCSearch.LicenseTypeRequest) As System.Threading.Tasks.Task(Of SVCSearch.LicenseTypeResponse) Implements SVCSearch.IService1.LicenseTypeAsync
             Return MyBase.Channel.LicenseTypeAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get NBR users.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.GetNbrUsersResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_GetNbrUsers(ByVal request As SVCSearch.GetNbrUsersRequest) As SVCSearch.GetNbrUsersResponse Implements SVCSearch.IService1.GetNbrUsers
             Return MyBase.Channel.GetNbrUsers(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the NBR users.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <returns>System.Int32.</returns>
         Public Function GetNbrUsers(ByRef SecureID As Integer) As Integer
             Dim inValue As SVCSearch.GetNbrUsersRequest = New SVCSearch.GetNbrUsersRequest()
             inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.GetNbrUsersResponse = CType(Me,SVCSearch.IService1).GetNbrUsers(inValue)
+            Dim retVal As SVCSearch.GetNbrUsersResponse = CType(Me, SVCSearch.IService1).GetNbrUsers(inValue)
             SecureID = retVal.SecureID
             Return retVal.GetNbrUsersResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the NBR users asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.GetNbrUsersResponse).</returns>
         Public Function GetNbrUsersAsync(ByVal request As SVCSearch.GetNbrUsersRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetNbrUsersResponse) Implements SVCSearch.IService1.GetNbrUsersAsync
             Return MyBase.Channel.GetNbrUsersAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 is lease.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.isLeaseResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_isLease(ByVal request As SVCSearch.isLeaseRequest) As SVCSearch.isLeaseResponse Implements SVCSearch.IService1.isLease
             Return MyBase.Channel.isLease(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Determines whether the specified secure identifier is lease.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <returns><c>true</c> if the specified secure identifier is lease; otherwise, <c>false</c>.</returns>
         Public Function isLease(ByVal SecureID As Integer, ByRef RC As Boolean, ByRef RetMsg As String) As Boolean
             Dim inValue As SVCSearch.isLeaseRequest = New SVCSearch.isLeaseRequest()
             inValue.SecureID = SecureID
             inValue.RC = RC
             inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.isLeaseResponse = CType(Me,SVCSearch.IService1).isLease(inValue)
+            Dim retVal As SVCSearch.isLeaseResponse = CType(Me, SVCSearch.IService1).isLease(inValue)
             RC = retVal.RC
             RetMsg = retVal.RetMsg
             Return retVal.isLeaseResult
         End Function
-        
+
+        ''' <summary>
+        ''' Determines whether [is lease asynchronous] [the specified request].
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.isLeaseResponse).</returns>
         Public Function isLeaseAsync(ByVal request As SVCSearch.isLeaseRequest) As System.Threading.Tasks.Task(Of SVCSearch.isLeaseResponse) Implements SVCSearch.IService1.isLeaseAsync
             Return MyBase.Channel.isLeaseAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get maximum clients.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getMaxClientsResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getMaxClients(ByVal request As SVCSearch.getMaxClientsRequest) As SVCSearch.getMaxClientsResponse Implements SVCSearch.IService1.getMaxClients
             Return MyBase.Channel.getMaxClients(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the maximum clients.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <returns>System.Int32.</returns>
         Public Function getMaxClients(ByVal SecureID As Integer, ByRef RC As Boolean, ByRef RetMsg As String) As Integer
             Dim inValue As SVCSearch.getMaxClientsRequest = New SVCSearch.getMaxClientsRequest()
             inValue.SecureID = SecureID
             inValue.RC = RC
             inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.getMaxClientsResponse = CType(Me,SVCSearch.IService1).getMaxClients(inValue)
+            Dim retVal As SVCSearch.getMaxClientsResponse = CType(Me, SVCSearch.IService1).getMaxClients(inValue)
             RC = retVal.RC
             RetMsg = retVal.RetMsg
             Return retVal.getMaxClientsResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the maximum clients asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getMaxClientsResponse).</returns>
         Public Function getMaxClientsAsync(ByVal request As SVCSearch.getMaxClientsRequest) As System.Threading.Tasks.Task(Of SVCSearch.getMaxClientsResponse) Implements SVCSearch.IService1.getMaxClientsAsync
             Return MyBase.Channel.getMaxClientsAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the name of the search i service1 get user host.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.GetUserHostNameResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_GetUserHostName(ByVal request As SVCSearch.GetUserHostNameRequest) As SVCSearch.GetUserHostNameResponse Implements SVCSearch.IService1.GetUserHostName
             Return MyBase.Channel.GetUserHostName(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the name of the user host.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <returns>System.String.</returns>
         Public Function GetUserHostName(ByRef SecureID As Integer) As String
             Dim inValue As SVCSearch.GetUserHostNameRequest = New SVCSearch.GetUserHostNameRequest()
             inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.GetUserHostNameResponse = CType(Me,SVCSearch.IService1).GetUserHostName(inValue)
+            Dim retVal As SVCSearch.GetUserHostNameResponse = CType(Me, SVCSearch.IService1).GetUserHostName(inValue)
             SecureID = retVal.SecureID
             Return retVal.GetUserHostNameResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the user host name asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.GetUserHostNameResponse).</returns>
         Public Function GetUserHostNameAsync(ByVal request As SVCSearch.GetUserHostNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetUserHostNameResponse) Implements SVCSearch.IService1.GetUserHostNameAsync
             Return MyBase.Channel.GetUserHostNameAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get user host address.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.GetUserHostAddressResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_GetUserHostAddress(ByVal request As SVCSearch.GetUserHostAddressRequest) As SVCSearch.GetUserHostAddressResponse Implements SVCSearch.IService1.GetUserHostAddress
             Return MyBase.Channel.GetUserHostAddress(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the user host address.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <returns>System.String.</returns>
         Public Function GetUserHostAddress(ByRef SecureID As Integer) As String
             Dim inValue As SVCSearch.GetUserHostAddressRequest = New SVCSearch.GetUserHostAddressRequest()
             inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.GetUserHostAddressResponse = CType(Me,SVCSearch.IService1).GetUserHostAddress(inValue)
+            Dim retVal As SVCSearch.GetUserHostAddressResponse = CType(Me, SVCSearch.IService1).GetUserHostAddress(inValue)
             SecureID = retVal.SecureID
             Return retVal.GetUserHostAddressResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the user host address asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.GetUserHostAddressResponse).</returns>
         Public Function GetUserHostAddressAsync(ByVal request As SVCSearch.GetUserHostAddressRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetUserHostAddressResponse) Implements SVCSearch.IService1.GetUserHostAddressAsync
             Return MyBase.Channel.GetUserHostAddressAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get user unique identifier identifier.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getUserGuidIDResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getUserGuidID(ByVal request As SVCSearch.getUserGuidIDRequest) As SVCSearch.getUserGuidIDResponse Implements SVCSearch.IService1.getUserGuidID
             Return MyBase.Channel.getUserGuidID(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the user unique identifier identifier.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserLoginId">The user login identifier.</param>
+        ''' <returns>System.String.</returns>
         Public Function getUserGuidID(ByRef SecureID As Integer, ByVal UserLoginId As String) As String
             Dim inValue As SVCSearch.getUserGuidIDRequest = New SVCSearch.getUserGuidIDRequest()
             inValue.SecureID = SecureID
             inValue.UserLoginId = UserLoginId
-            Dim retVal As SVCSearch.getUserGuidIDResponse = CType(Me,SVCSearch.IService1).getUserGuidID(inValue)
+            Dim retVal As SVCSearch.getUserGuidIDResponse = CType(Me, SVCSearch.IService1).getUserGuidID(inValue)
             SecureID = retVal.SecureID
             Return retVal.getUserGuidIDResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the user unique identifier identifier asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getUserGuidIDResponse).</returns>
         Public Function getUserGuidIDAsync(ByVal request As SVCSearch.getUserGuidIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.getUserGuidIDResponse) Implements SVCSearch.IService1.getUserGuidIDAsync
             Return MyBase.Channel.getUserGuidIDAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 process dates.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.ProcessDatesResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_ProcessDates(ByVal request As SVCSearch.ProcessDatesRequest) As SVCSearch.ProcessDatesResponse Implements SVCSearch.IService1.ProcessDates
             Return MyBase.Channel.ProcessDates(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Processes the dates.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <returns>System.Collections.Generic.Dictionary(Of System.String, System.DateTime).</returns>
         Public Function ProcessDates(ByRef SecureID As Integer) As System.Collections.Generic.Dictionary(Of String, Date)
             Dim inValue As SVCSearch.ProcessDatesRequest = New SVCSearch.ProcessDatesRequest()
             inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.ProcessDatesResponse = CType(Me,SVCSearch.IService1).ProcessDates(inValue)
+            Dim retVal As SVCSearch.ProcessDatesResponse = CType(Me, SVCSearch.IService1).ProcessDates(inValue)
             SecureID = retVal.SecureID
             Return retVal.ProcessDatesResult
         End Function
-        
+
+        ''' <summary>
+        ''' Processes the dates asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.ProcessDatesResponse).</returns>
         Public Function ProcessDatesAsync(ByVal request As SVCSearch.ProcessDatesRequest) As System.Threading.Tasks.Task(Of SVCSearch.ProcessDatesResponse) Implements SVCSearch.IService1.ProcessDatesAsync
             Return MyBase.Channel.ProcessDatesAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get NBR machine all.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.GetNbrMachineAllResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_GetNbrMachineAll(ByVal request As SVCSearch.GetNbrMachineAllRequest) As SVCSearch.GetNbrMachineAllResponse Implements SVCSearch.IService1.GetNbrMachineAll
             Return MyBase.Channel.GetNbrMachineAll(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the NBR machine all.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <returns>System.Int32.</returns>
         Public Function GetNbrMachineAll(ByRef SecureID As Integer) As Integer
             Dim inValue As SVCSearch.GetNbrMachineAllRequest = New SVCSearch.GetNbrMachineAllRequest()
             inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.GetNbrMachineAllResponse = CType(Me,SVCSearch.IService1).GetNbrMachineAll(inValue)
+            Dim retVal As SVCSearch.GetNbrMachineAllResponse = CType(Me, SVCSearch.IService1).GetNbrMachineAll(inValue)
             SecureID = retVal.SecureID
             Return retVal.GetNbrMachineAllResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the NBR machine all asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.GetNbrMachineAllResponse).</returns>
         Public Function GetNbrMachineAllAsync(ByVal request As SVCSearch.GetNbrMachineAllRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetNbrMachineAllResponse) Implements SVCSearch.IService1.GetNbrMachineAllAsync
             Return MyBase.Channel.GetNbrMachineAllAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get NBR machine.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.GetNbrMachineResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_GetNbrMachine(ByVal request As SVCSearch.GetNbrMachineRequest) As SVCSearch.GetNbrMachineResponse Implements SVCSearch.IService1.GetNbrMachine
             Return MyBase.Channel.GetNbrMachine(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the NBR machine.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="MachineName">Name of the machine.</param>
+        ''' <returns>System.Int32.</returns>
         Public Function GetNbrMachine(ByRef SecureID As Integer, ByVal MachineName As String) As Integer
             Dim inValue As SVCSearch.GetNbrMachineRequest = New SVCSearch.GetNbrMachineRequest()
             inValue.SecureID = SecureID
             inValue.MachineName = MachineName
-            Dim retVal As SVCSearch.GetNbrMachineResponse = CType(Me,SVCSearch.IService1).GetNbrMachine(inValue)
+            Dim retVal As SVCSearch.GetNbrMachineResponse = CType(Me, SVCSearch.IService1).GetNbrMachine(inValue)
             SecureID = retVal.SecureID
             Return retVal.GetNbrMachineResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the NBR machine asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.GetNbrMachineResponse).</returns>
         Public Function GetNbrMachineAsync(ByVal request As SVCSearch.GetNbrMachineRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetNbrMachineResponse) Implements SVCSearch.IService1.GetNbrMachineAsync
             Return MyBase.Channel.GetNbrMachineAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 is license located on assigned machine.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.isLicenseLocatedOnAssignedMachineResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_isLicenseLocatedOnAssignedMachine(ByVal request As SVCSearch.isLicenseLocatedOnAssignedMachineRequest) As SVCSearch.isLicenseLocatedOnAssignedMachineResponse Implements SVCSearch.IService1.isLicenseLocatedOnAssignedMachine
             Return MyBase.Channel.isLicenseLocatedOnAssignedMachine(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Determines whether [is license located on assigned machine] [the specified secure identifier].
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="ServerValText">The server value text.</param>
+        ''' <param name="InstanceValText">The instance value text.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <returns><c>true</c> if [is license located on assigned machine] [the specified secure identifier]; otherwise, <c>false</c>.</returns>
         Public Function isLicenseLocatedOnAssignedMachine(ByRef SecureID As Integer, ByRef ServerValText As String, ByRef InstanceValText As String, ByRef RC As Boolean, ByRef RetMsg As String) As Boolean
             Dim inValue As SVCSearch.isLicenseLocatedOnAssignedMachineRequest = New SVCSearch.isLicenseLocatedOnAssignedMachineRequest()
             inValue.SecureID = SecureID
@@ -13499,7 +15785,7 @@ Namespace SVCSearch
             inValue.InstanceValText = InstanceValText
             inValue.RC = RC
             inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.isLicenseLocatedOnAssignedMachineResponse = CType(Me,SVCSearch.IService1).isLicenseLocatedOnAssignedMachine(inValue)
+            Dim retVal As SVCSearch.isLicenseLocatedOnAssignedMachineResponse = CType(Me, SVCSearch.IService1).isLicenseLocatedOnAssignedMachine(inValue)
             SecureID = retVal.SecureID
             ServerValText = retVal.ServerValText
             InstanceValText = retVal.InstanceValText
@@ -13507,142 +15793,270 @@ Namespace SVCSearch
             RetMsg = retVal.RetMsg
             Return retVal.isLicenseLocatedOnAssignedMachineResult
         End Function
-        
+
+        ''' <summary>
+        ''' Determines whether [is license located on assigned machine asynchronous] [the specified request].
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.isLicenseLocatedOnAssignedMachineResponse).</returns>
         Public Function isLicenseLocatedOnAssignedMachineAsync(ByVal request As SVCSearch.isLicenseLocatedOnAssignedMachineRequest) As System.Threading.Tasks.Task(Of SVCSearch.isLicenseLocatedOnAssignedMachineResponse) Implements SVCSearch.IService1.isLicenseLocatedOnAssignedMachineAsync
             Return MyBase.Channel.isLicenseLocatedOnAssignedMachineAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get XRT.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.GetXrtResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_GetXrt(ByVal request As SVCSearch.GetXrtRequest) As SVCSearch.GetXrtResponse Implements SVCSearch.IService1.GetXrt
             Return MyBase.Channel.GetXrt(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the XRT.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <returns>System.String.</returns>
         Public Function GetXrt(ByRef SecureID As Integer, ByVal RC As Boolean, ByVal RetMsg As String) As String
             Dim inValue As SVCSearch.GetXrtRequest = New SVCSearch.GetXrtRequest()
             inValue.SecureID = SecureID
             inValue.RC = RC
             inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.GetXrtResponse = CType(Me,SVCSearch.IService1).GetXrt(inValue)
+            Dim retVal As SVCSearch.GetXrtResponse = CType(Me, SVCSearch.IService1).GetXrt(inValue)
             SecureID = retVal.SecureID
             Return retVal.GetXrtResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the XRT asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.GetXrtResponse).</returns>
         Public Function GetXrtAsync(ByVal request As SVCSearch.GetXrtRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetXrtResponse) Implements SVCSearch.IService1.GetXrtAsync
             Return MyBase.Channel.GetXrtAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get SQL server version.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getSqlServerVersionResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getSqlServerVersion(ByVal request As SVCSearch.getSqlServerVersionRequest) As SVCSearch.getSqlServerVersionResponse Implements SVCSearch.IService1.getSqlServerVersion
             Return MyBase.Channel.getSqlServerVersion(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the SQL server version.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <returns>System.String.</returns>
         Public Function getSqlServerVersion(ByRef SecureID As Integer) As String
             Dim inValue As SVCSearch.getSqlServerVersionRequest = New SVCSearch.getSqlServerVersionRequest()
             inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.getSqlServerVersionResponse = CType(Me,SVCSearch.IService1).getSqlServerVersion(inValue)
+            Dim retVal As SVCSearch.getSqlServerVersionResponse = CType(Me, SVCSearch.IService1).getSqlServerVersion(inValue)
             SecureID = retVal.SecureID
             Return retVal.getSqlServerVersionResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the SQL server version asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getSqlServerVersionResponse).</returns>
         Public Function getSqlServerVersionAsync(ByVal request As SVCSearch.getSqlServerVersionRequest) As System.Threading.Tasks.Task(Of SVCSearch.getSqlServerVersionResponse) Implements SVCSearch.IService1.getSqlServerVersionAsync
             Return MyBase.Channel.getSqlServerVersionAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 record growth.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.RecordGrowthResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_RecordGrowth(ByVal request As SVCSearch.RecordGrowthRequest) As SVCSearch.RecordGrowthResponse Implements SVCSearch.IService1.RecordGrowth
             Return MyBase.Channel.RecordGrowth(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Records the growth.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
         Public Sub RecordGrowth(ByRef SecureID As Integer, ByRef RC As Boolean)
             Dim inValue As SVCSearch.RecordGrowthRequest = New SVCSearch.RecordGrowthRequest()
             inValue.SecureID = SecureID
             inValue.RC = RC
-            Dim retVal As SVCSearch.RecordGrowthResponse = CType(Me,SVCSearch.IService1).RecordGrowth(inValue)
+            Dim retVal As SVCSearch.RecordGrowthResponse = CType(Me, SVCSearch.IService1).RecordGrowth(inValue)
             SecureID = retVal.SecureID
             RC = retVal.RC
         End Sub
-        
+
+        ''' <summary>
+        ''' Records the growth asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.RecordGrowthResponse).</returns>
         Public Function RecordGrowthAsync(ByVal request As SVCSearch.RecordGrowthRequest) As System.Threading.Tasks.Task(Of SVCSearch.RecordGrowthResponse) Implements SVCSearch.IService1.RecordGrowthAsync
             Return MyBase.Channel.RecordGrowthAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 parse lic.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.ParseLicResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_ParseLic(ByVal request As SVCSearch.ParseLicRequest) As SVCSearch.ParseLicResponse Implements SVCSearch.IService1.ParseLic
             Return MyBase.Channel.ParseLic(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Parses the lic.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="LT">The lt.</param>
+        ''' <param name="tgtKey">The TGT key.</param>
+        ''' <returns>System.String.</returns>
         Public Function ParseLic(ByRef SecureID As Integer, ByVal LT As String, ByVal tgtKey As String) As String
             Dim inValue As SVCSearch.ParseLicRequest = New SVCSearch.ParseLicRequest()
             inValue.SecureID = SecureID
             inValue.LT = LT
             inValue.tgtKey = tgtKey
-            Dim retVal As SVCSearch.ParseLicResponse = CType(Me,SVCSearch.IService1).ParseLic(inValue)
+            Dim retVal As SVCSearch.ParseLicResponse = CType(Me, SVCSearch.IService1).ParseLic(inValue)
             SecureID = retVal.SecureID
             Return retVal.ParseLicResult
         End Function
-        
+
+        ''' <summary>
+        ''' Parses the lic asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.ParseLicResponse).</returns>
         Public Function ParseLicAsync(ByVal request As SVCSearch.ParseLicRequest) As System.Threading.Tasks.Task(Of SVCSearch.ParseLicResponse) Implements SVCSearch.IService1.ParseLicAsync
             Return MyBase.Channel.ParseLicAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the name of the search i service1 get loggedin user.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.GetLoggedinUserNameResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_GetLoggedinUserName(ByVal request As SVCSearch.GetLoggedinUserNameRequest) As SVCSearch.GetLoggedinUserNameResponse Implements SVCSearch.IService1.GetLoggedinUserName
             Return MyBase.Channel.GetLoggedinUserName(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the name of the loggedin user.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <returns>System.String.</returns>
         Public Function GetLoggedinUserName(ByRef SecureID As Integer) As String
             Dim inValue As SVCSearch.GetLoggedinUserNameRequest = New SVCSearch.GetLoggedinUserNameRequest()
             inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.GetLoggedinUserNameResponse = CType(Me,SVCSearch.IService1).GetLoggedinUserName(inValue)
+            Dim retVal As SVCSearch.GetLoggedinUserNameResponse = CType(Me, SVCSearch.IService1).GetLoggedinUserName(inValue)
             SecureID = retVal.SecureID
             Return retVal.GetLoggedinUserNameResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the loggedin user name asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.GetLoggedinUserNameResponse).</returns>
         Public Function GetLoggedinUserNameAsync(ByVal request As SVCSearch.GetLoggedinUserNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetLoggedinUserNameResponse) Implements SVCSearch.IService1.GetLoggedinUserNameAsync
             Return MyBase.Channel.GetLoggedinUserNameAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get dbsizemb.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getDBSIZEMBResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getDBSIZEMB(ByVal request As SVCSearch.getDBSIZEMBRequest) As SVCSearch.getDBSIZEMBResponse Implements SVCSearch.IService1.getDBSIZEMB
             Return MyBase.Channel.getDBSIZEMB(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the dbsizemb.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <returns>System.Double.</returns>
         Public Function getDBSIZEMB(ByRef SecureID As Integer) As Double
             Dim inValue As SVCSearch.getDBSIZEMBRequest = New SVCSearch.getDBSIZEMBRequest()
             inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.getDBSIZEMBResponse = CType(Me,SVCSearch.IService1).getDBSIZEMB(inValue)
+            Dim retVal As SVCSearch.getDBSIZEMBResponse = CType(Me, SVCSearch.IService1).getDBSIZEMB(inValue)
             SecureID = retVal.SecureID
             Return retVal.getDBSIZEMBResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the dbsizemb asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getDBSIZEMBResponse).</returns>
         Public Function getDBSIZEMBAsync(ByVal request As SVCSearch.getDBSIZEMBRequest) As System.Threading.Tasks.Task(Of SVCSearch.getDBSIZEMBResponse) Implements SVCSearch.IService1.getDBSIZEMBAsync
             Return MyBase.Channel.getDBSIZEMBAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 reset missing email ids.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.resetMissingEmailIdsResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_resetMissingEmailIds(ByVal request As SVCSearch.resetMissingEmailIdsRequest) As SVCSearch.resetMissingEmailIdsResponse Implements SVCSearch.IService1.resetMissingEmailIds
             Return MyBase.Channel.resetMissingEmailIds(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Resets the missing email ids.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="CurrUserGuidID">The curr user unique identifier identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
         Public Sub resetMissingEmailIds(ByRef SecureID As Integer, ByVal CurrUserGuidID As String, ByRef RC As Boolean)
             Dim inValue As SVCSearch.resetMissingEmailIdsRequest = New SVCSearch.resetMissingEmailIdsRequest()
             inValue.SecureID = SecureID
             inValue.CurrUserGuidID = CurrUserGuidID
             inValue.RC = RC
-            Dim retVal As SVCSearch.resetMissingEmailIdsResponse = CType(Me,SVCSearch.IService1).resetMissingEmailIds(inValue)
+            Dim retVal As SVCSearch.resetMissingEmailIdsResponse = CType(Me, SVCSearch.IService1).resetMissingEmailIds(inValue)
             SecureID = retVal.SecureID
             RC = retVal.RC
         End Sub
-        
+
+        ''' <summary>
+        ''' Resets the missing email ids asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.resetMissingEmailIdsResponse).</returns>
         Public Function resetMissingEmailIdsAsync(ByVal request As SVCSearch.resetMissingEmailIdsRequest) As System.Threading.Tasks.Task(Of SVCSearch.resetMissingEmailIdsResponse) Implements SVCSearch.IService1.resetMissingEmailIdsAsync
             Return MyBase.Channel.resetMissingEmailIdsAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 user parm insert update.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.UserParmInsertUpdateResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_UserParmInsertUpdate(ByVal request As SVCSearch.UserParmInsertUpdateRequest) As SVCSearch.UserParmInsertUpdateResponse Implements SVCSearch.IService1.UserParmInsertUpdate
             Return MyBase.Channel.UserParmInsertUpdate(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Users the parm insert update.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="ParmName">Name of the parm.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="ParmVal">The parm value.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
         Public Sub UserParmInsertUpdate(ByRef SecureID As Integer, ByVal ParmName As String, ByVal UserID As String, ByVal ParmVal As String, ByRef RC As Boolean)
             Dim inValue As SVCSearch.UserParmInsertUpdateRequest = New SVCSearch.UserParmInsertUpdateRequest()
             inValue.SecureID = SecureID
@@ -13650,261 +16064,489 @@ Namespace SVCSearch
             inValue.UserID = UserID
             inValue.ParmVal = ParmVal
             inValue.RC = RC
-            Dim retVal As SVCSearch.UserParmInsertUpdateResponse = CType(Me,SVCSearch.IService1).UserParmInsertUpdate(inValue)
+            Dim retVal As SVCSearch.UserParmInsertUpdateResponse = CType(Me, SVCSearch.IService1).UserParmInsertUpdate(inValue)
             SecureID = retVal.SecureID
             RC = retVal.RC
         End Sub
-        
+
+        ''' <summary>
+        ''' Users the parm insert update asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.UserParmInsertUpdateResponse).</returns>
         Public Function UserParmInsertUpdateAsync(ByVal request As SVCSearch.UserParmInsertUpdateRequest) As System.Threading.Tasks.Task(Of SVCSearch.UserParmInsertUpdateResponse) Implements SVCSearch.IService1.UserParmInsertUpdateAsync
             Return MyBase.Channel.UserParmInsertUpdateAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 validate login.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.validateLoginResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_validateLogin(ByVal request As SVCSearch.validateLoginRequest) As SVCSearch.validateLoginResponse Implements SVCSearch.IService1.validateLogin
             Return MyBase.Channel.validateLogin(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Validates the login.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserLogin">The user login.</param>
+        ''' <param name="PW">The pw.</param>
+        ''' <param name="UserGuidID">The user unique identifier identifier.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function validateLogin(ByRef SecureID As Integer, ByVal UserLogin As String, ByVal PW As String, ByRef UserGuidID As String) As Boolean
             Dim inValue As SVCSearch.validateLoginRequest = New SVCSearch.validateLoginRequest()
             inValue.SecureID = SecureID
             inValue.UserLogin = UserLogin
             inValue.PW = PW
             inValue.UserGuidID = UserGuidID
-            Dim retVal As SVCSearch.validateLoginResponse = CType(Me,SVCSearch.IService1).validateLogin(inValue)
+            Dim retVal As SVCSearch.validateLoginResponse = CType(Me, SVCSearch.IService1).validateLogin(inValue)
             SecureID = retVal.SecureID
             UserGuidID = retVal.UserGuidID
             Return retVal.validateLoginResult
         End Function
-        
+
+        ''' <summary>
+        ''' Validates the login asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.validateLoginResponse).</returns>
         Public Function validateLoginAsync(ByVal request As SVCSearch.validateLoginRequest) As System.Threading.Tasks.Task(Of SVCSearch.validateLoginResponse) Implements SVCSearch.IService1.validateLoginAsync
             Return MyBase.Channel.validateLoginAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get logged in user.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getLoggedInUserResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getLoggedInUser(ByVal request As SVCSearch.getLoggedInUserRequest) As SVCSearch.getLoggedInUserResponse Implements SVCSearch.IService1.getLoggedInUser
             Return MyBase.Channel.getLoggedInUser(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the logged in user.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <returns>System.String.</returns>
         Public Function getLoggedInUser(ByRef SecureID As Integer) As String
             Dim inValue As SVCSearch.getLoggedInUserRequest = New SVCSearch.getLoggedInUserRequest()
             inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.getLoggedInUserResponse = CType(Me,SVCSearch.IService1).getLoggedInUser(inValue)
+            Dim retVal As SVCSearch.getLoggedInUserResponse = CType(Me, SVCSearch.IService1).getLoggedInUser(inValue)
             SecureID = retVal.SecureID
             Return retVal.getLoggedInUserResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the logged in user asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getLoggedInUserResponse).</returns>
         Public Function getLoggedInUserAsync(ByVal request As SVCSearch.getLoggedInUserRequest) As System.Threading.Tasks.Task(Of SVCSearch.getLoggedInUserResponse) Implements SVCSearch.IService1.getLoggedInUserAsync
             Return MyBase.Channel.getLoggedInUserAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the name of the search i service1 get attached machine.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getAttachedMachineNameResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getAttachedMachineName(ByVal request As SVCSearch.getAttachedMachineNameRequest) As SVCSearch.getAttachedMachineNameResponse Implements SVCSearch.IService1.getAttachedMachineName
             Return MyBase.Channel.getAttachedMachineName(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the name of the attached machine.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <returns>System.String.</returns>
         Public Function getAttachedMachineName(ByRef SecureID As Integer) As String
             Dim inValue As SVCSearch.getAttachedMachineNameRequest = New SVCSearch.getAttachedMachineNameRequest()
             inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.getAttachedMachineNameResponse = CType(Me,SVCSearch.IService1).getAttachedMachineName(inValue)
+            Dim retVal As SVCSearch.getAttachedMachineNameResponse = CType(Me, SVCSearch.IService1).getAttachedMachineName(inValue)
             SecureID = retVal.SecureID
             Return retVal.getAttachedMachineNameResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the attached machine name asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getAttachedMachineNameResponse).</returns>
         Public Function getAttachedMachineNameAsync(ByVal request As SVCSearch.getAttachedMachineNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.getAttachedMachineNameResponse) Implements SVCSearch.IService1.getAttachedMachineNameAsync
             Return MyBase.Channel.getAttachedMachineNameAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the name of the search i service1 get server instance.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getServerInstanceNameResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getServerInstanceName(ByVal request As SVCSearch.getServerInstanceNameRequest) As SVCSearch.getServerInstanceNameResponse Implements SVCSearch.IService1.getServerInstanceName
             Return MyBase.Channel.getServerInstanceName(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the name of the server instance.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <returns>System.String.</returns>
         Public Function getServerInstanceName(ByRef SecureID As Integer) As String
             Dim inValue As SVCSearch.getServerInstanceNameRequest = New SVCSearch.getServerInstanceNameRequest()
             inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.getServerInstanceNameResponse = CType(Me,SVCSearch.IService1).getServerInstanceName(inValue)
+            Dim retVal As SVCSearch.getServerInstanceNameResponse = CType(Me, SVCSearch.IService1).getServerInstanceName(inValue)
             SecureID = retVal.SecureID
             Return retVal.getServerInstanceNameResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the server instance name asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getServerInstanceNameResponse).</returns>
         Public Function getServerInstanceNameAsync(ByVal request As SVCSearch.getServerInstanceNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.getServerInstanceNameResponse) Implements SVCSearch.IService1.getServerInstanceNameAsync
             Return MyBase.Channel.getServerInstanceNameAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the name of the search i service1 get server machine.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getServerMachineNameResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getServerMachineName(ByVal request As SVCSearch.getServerMachineNameRequest) As SVCSearch.getServerMachineNameResponse Implements SVCSearch.IService1.getServerMachineName
             Return MyBase.Channel.getServerMachineName(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the name of the server machine.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <returns>System.String.</returns>
         Public Function getServerMachineName(ByRef SecureID As Integer) As String
             Dim inValue As SVCSearch.getServerMachineNameRequest = New SVCSearch.getServerMachineNameRequest()
             inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.getServerMachineNameResponse = CType(Me,SVCSearch.IService1).getServerMachineName(inValue)
+            Dim retVal As SVCSearch.getServerMachineNameResponse = CType(Me, SVCSearch.IService1).getServerMachineName(inValue)
             SecureID = retVal.SecureID
             Return retVal.getServerMachineNameResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the server machine name asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getServerMachineNameResponse).</returns>
         Public Function getServerMachineNameAsync(ByVal request As SVCSearch.getServerMachineNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.getServerMachineNameResponse) Implements SVCSearch.IService1.getServerMachineNameAsync
             Return MyBase.Channel.getServerMachineNameAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get system parm.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getSystemParmResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getSystemParm(ByVal request As SVCSearch.getSystemParmRequest) As SVCSearch.getSystemParmResponse Implements SVCSearch.IService1.getSystemParm
             Return MyBase.Channel.getSystemParm(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the system parm.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SystemParms">The system parms.</param>
         Public Sub getSystemParm(ByRef SecureID As Integer, ByRef SystemParms As System.Collections.Generic.Dictionary(Of String, String))
             Dim inValue As SVCSearch.getSystemParmRequest = New SVCSearch.getSystemParmRequest()
             inValue.SecureID = SecureID
             inValue.SystemParms = SystemParms
-            Dim retVal As SVCSearch.getSystemParmResponse = CType(Me,SVCSearch.IService1).getSystemParm(inValue)
+            Dim retVal As SVCSearch.getSystemParmResponse = CType(Me, SVCSearch.IService1).getSystemParm(inValue)
             SecureID = retVal.SecureID
             SystemParms = retVal.SystemParms
         End Sub
-        
+
+        ''' <summary>
+        ''' Gets the system parm asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getSystemParmResponse).</returns>
         Public Function getSystemParmAsync(ByVal request As SVCSearch.getSystemParmRequest) As System.Threading.Tasks.Task(Of SVCSearch.getSystemParmResponse) Implements SVCSearch.IService1.getSystemParmAsync
             Return MyBase.Channel.getSystemParmAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get synonyms.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getSynonymsResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getSynonyms(ByVal request As SVCSearch.getSynonymsRequest) As SVCSearch.getSynonymsResponse Implements SVCSearch.IService1.getSynonyms
             Return MyBase.Channel.getSynonyms(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the synonyms.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="ThesaurusID">The thesaurus identifier.</param>
+        ''' <param name="Token">The token.</param>
+        ''' <param name="lbSynonyms">The lb synonyms.</param>
+        ''' <returns>System.String.</returns>
         Public Function getSynonyms(ByRef SecureID As Integer, ByVal ThesaurusID As String, ByVal Token As String, ByRef lbSynonyms As String) As String
             Dim inValue As SVCSearch.getSynonymsRequest = New SVCSearch.getSynonymsRequest()
             inValue.SecureID = SecureID
             inValue.ThesaurusID = ThesaurusID
             inValue.Token = Token
             inValue.lbSynonyms = lbSynonyms
-            Dim retVal As SVCSearch.getSynonymsResponse = CType(Me,SVCSearch.IService1).getSynonyms(inValue)
+            Dim retVal As SVCSearch.getSynonymsResponse = CType(Me, SVCSearch.IService1).getSynonyms(inValue)
             SecureID = retVal.SecureID
             lbSynonyms = retVal.lbSynonyms
             Return retVal.getSynonymsResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the synonyms asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getSynonymsResponse).</returns>
         Public Function getSynonymsAsync(ByVal request As SVCSearch.getSynonymsRequest) As System.Threading.Tasks.Task(Of SVCSearch.getSynonymsResponse) Implements SVCSearch.IService1.getSynonymsAsync
             Return MyBase.Channel.getSynonymsAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get thesaurus identifier.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getThesaurusIDResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getThesaurusID(ByVal request As SVCSearch.getThesaurusIDRequest) As SVCSearch.getThesaurusIDResponse Implements SVCSearch.IService1.getThesaurusID
             Return MyBase.Channel.getThesaurusID(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the thesaurus identifier.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="ThesaurusName">Name of the thesaurus.</param>
+        ''' <returns>System.String.</returns>
         Public Function getThesaurusID(ByRef SecureID As Integer, ByVal ThesaurusName As String) As String
             Dim inValue As SVCSearch.getThesaurusIDRequest = New SVCSearch.getThesaurusIDRequest()
             inValue.SecureID = SecureID
             inValue.ThesaurusName = ThesaurusName
-            Dim retVal As SVCSearch.getThesaurusIDResponse = CType(Me,SVCSearch.IService1).getThesaurusID(inValue)
+            Dim retVal As SVCSearch.getThesaurusIDResponse = CType(Me, SVCSearch.IService1).getThesaurusID(inValue)
             SecureID = retVal.SecureID
             Return retVal.getThesaurusIDResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the thesaurus identifier asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getThesaurusIDResponse).</returns>
         Public Function getThesaurusIDAsync(ByVal request As SVCSearch.getThesaurusIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.getThesaurusIDResponse) Implements SVCSearch.IService1.getThesaurusIDAsync
             Return MyBase.Channel.getThesaurusIDAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the content of the search i service1 i count.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.iCountContentResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_iCountContent(ByVal request As SVCSearch.iCountContentRequest) As SVCSearch.iCountContentResponse Implements SVCSearch.IService1.iCountContent
             Return MyBase.Channel.iCountContent(request)
         End Function
-        
+
+        ''' <summary>
+        ''' is the content of the count.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="S">The s.</param>
+        ''' <returns>System.Int32.</returns>
         Public Function iCountContent(ByRef SecureID As Integer, ByVal S As String) As Integer
             Dim inValue As SVCSearch.iCountContentRequest = New SVCSearch.iCountContentRequest()
             inValue.SecureID = SecureID
             inValue.S = S
-            Dim retVal As SVCSearch.iCountContentResponse = CType(Me,SVCSearch.IService1).iCountContent(inValue)
+            Dim retVal As SVCSearch.iCountContentResponse = CType(Me, SVCSearch.IService1).iCountContent(inValue)
             SecureID = retVal.SecureID
             Return retVal.iCountContentResult
         End Function
-        
+
+        ''' <summary>
+        ''' is the count content asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.iCountContentResponse).</returns>
         Public Function iCountContentAsync(ByVal request As SVCSearch.iCountContentRequest) As System.Threading.Tasks.Task(Of SVCSearch.iCountContentResponse) Implements SVCSearch.IService1.iCountContentAsync
             Return MyBase.Channel.iCountContentAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get datasource parm.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getDatasourceParmResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getDatasourceParm(ByVal request As SVCSearch.getDatasourceParmRequest) As SVCSearch.getDatasourceParmResponse Implements SVCSearch.IService1.getDatasourceParm
             Return MyBase.Channel.getDatasourceParm(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the datasource parm.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="AttributeName">Name of the attribute.</param>
+        ''' <param name="SourceGuid">The source unique identifier.</param>
+        ''' <returns>System.String.</returns>
         Public Function getDatasourceParm(ByRef SecureID As Integer, ByVal AttributeName As String, ByVal SourceGuid As String) As String
             Dim inValue As SVCSearch.getDatasourceParmRequest = New SVCSearch.getDatasourceParmRequest()
             inValue.SecureID = SecureID
             inValue.AttributeName = AttributeName
             inValue.SourceGuid = SourceGuid
-            Dim retVal As SVCSearch.getDatasourceParmResponse = CType(Me,SVCSearch.IService1).getDatasourceParm(inValue)
+            Dim retVal As SVCSearch.getDatasourceParmResponse = CType(Me, SVCSearch.IService1).getDatasourceParm(inValue)
             SecureID = retVal.SecureID
             Return retVal.getDatasourceParmResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the datasource parm asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getDatasourceParmResponse).</returns>
         Public Function getDatasourceParmAsync(ByVal request As SVCSearch.getDatasourceParmRequest) As System.Threading.Tasks.Task(Of SVCSearch.getDatasourceParmResponse) Implements SVCSearch.IService1.getDatasourceParmAsync
             Return MyBase.Channel.getDatasourceParmAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 save run parm.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.SaveRunParmResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_SaveRunParm(ByVal request As SVCSearch.SaveRunParmRequest) As SVCSearch.SaveRunParmResponse Implements SVCSearch.IService1.SaveRunParm
             Return MyBase.Channel.SaveRunParm(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Saves the run parm.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="ParmID">The parm identifier.</param>
+        ''' <param name="ParmVal">The parm value.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function SaveRunParm(ByRef SecureID As Integer, ByVal UserID As String, ByRef ParmID As String, ByRef ParmVal As String) As Boolean
             Dim inValue As SVCSearch.SaveRunParmRequest = New SVCSearch.SaveRunParmRequest()
             inValue.SecureID = SecureID
             inValue.UserID = UserID
             inValue.ParmID = ParmID
             inValue.ParmVal = ParmVal
-            Dim retVal As SVCSearch.SaveRunParmResponse = CType(Me,SVCSearch.IService1).SaveRunParm(inValue)
+            Dim retVal As SVCSearch.SaveRunParmResponse = CType(Me, SVCSearch.IService1).SaveRunParm(inValue)
             SecureID = retVal.SecureID
             ParmID = retVal.ParmID
             ParmVal = retVal.ParmVal
             Return retVal.SaveRunParmResult
         End Function
-        
+
+        ''' <summary>
+        ''' Saves the run parm asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.SaveRunParmResponse).</returns>
         Public Function SaveRunParmAsync(ByVal request As SVCSearch.SaveRunParmRequest) As System.Threading.Tasks.Task(Of SVCSearch.SaveRunParmResponse) Implements SVCSearch.IService1.SaveRunParmAsync
             Return MyBase.Channel.SaveRunParmAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 i get row count.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.iGetRowCountResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_iGetRowCount(ByVal request As SVCSearch.iGetRowCountRequest) As SVCSearch.iGetRowCountResponse Implements SVCSearch.IService1.iGetRowCount
             Return MyBase.Channel.iGetRowCount(request)
         End Function
-        
+
+        ''' <summary>
+        ''' is the get row count.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="TBL">The table.</param>
+        ''' <param name="WhereClause">The where clause.</param>
+        ''' <returns>System.Int32.</returns>
         Public Function iGetRowCount(ByRef SecureID As Integer, ByVal TBL As String, ByVal WhereClause As String) As Integer
             Dim inValue As SVCSearch.iGetRowCountRequest = New SVCSearch.iGetRowCountRequest()
             inValue.SecureID = SecureID
             inValue.TBL = TBL
             inValue.WhereClause = WhereClause
-            Dim retVal As SVCSearch.iGetRowCountResponse = CType(Me,SVCSearch.IService1).iGetRowCount(inValue)
+            Dim retVal As SVCSearch.iGetRowCountResponse = CType(Me, SVCSearch.IService1).iGetRowCount(inValue)
             SecureID = retVal.SecureID
             Return retVal.iGetRowCountResult
         End Function
-        
+
+        ''' <summary>
+        ''' is the get row count asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.iGetRowCountResponse).</returns>
         Public Function iGetRowCountAsync(ByVal request As SVCSearch.iGetRowCountRequest) As System.Threading.Tasks.Task(Of SVCSearch.iGetRowCountResponse) Implements SVCSearch.IService1.iGetRowCountAsync
             Return MyBase.Channel.iGetRowCountAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 zeroize global search.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.ZeroizeGlobalSearchResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_ZeroizeGlobalSearch(ByVal request As SVCSearch.ZeroizeGlobalSearchRequest) As SVCSearch.ZeroizeGlobalSearchResponse Implements SVCSearch.IService1.ZeroizeGlobalSearch
             Return MyBase.Channel.ZeroizeGlobalSearch(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Zeroizes the global search.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function ZeroizeGlobalSearch(ByRef SecureID As Integer) As Boolean
             Dim inValue As SVCSearch.ZeroizeGlobalSearchRequest = New SVCSearch.ZeroizeGlobalSearchRequest()
             inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.ZeroizeGlobalSearchResponse = CType(Me,SVCSearch.IService1).ZeroizeGlobalSearch(inValue)
+            Dim retVal As SVCSearch.ZeroizeGlobalSearchResponse = CType(Me, SVCSearch.IService1).ZeroizeGlobalSearch(inValue)
             SecureID = retVal.SecureID
             Return retVal.ZeroizeGlobalSearchResult
         End Function
-        
+
+        ''' <summary>
+        ''' Zeroizes the global search asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.ZeroizeGlobalSearchResponse).</returns>
         Public Function ZeroizeGlobalSearchAsync(ByVal request As SVCSearch.ZeroizeGlobalSearchRequest) As System.Threading.Tasks.Task(Of SVCSearch.ZeroizeGlobalSearchResponse) Implements SVCSearch.IService1.ZeroizeGlobalSearchAsync
             Return MyBase.Channel.ZeroizeGlobalSearchAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 update ip.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.updateIpResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_updateIp(ByVal request As SVCSearch.updateIpRequest) As SVCSearch.updateIpResponse Implements SVCSearch.IService1.updateIp
             Return MyBase.Channel.updateIp(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Updates the ip.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="HostName">Name of the host.</param>
+        ''' <param name="IP">The ip.</param>
+        ''' <param name="checkCode">The check code.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
         Public Sub updateIp(ByRef SecureID As Integer, ByVal HostName As String, ByVal IP As String, ByVal checkCode As Integer, ByRef RC As Boolean)
             Dim inValue As SVCSearch.updateIpRequest = New SVCSearch.updateIpRequest()
             inValue.SecureID = SecureID
@@ -13912,20 +16554,41 @@ Namespace SVCSearch
             inValue.IP = IP
             inValue.checkCode = checkCode
             inValue.RC = RC
-            Dim retVal As SVCSearch.updateIpResponse = CType(Me,SVCSearch.IService1).updateIp(inValue)
+            Dim retVal As SVCSearch.updateIpResponse = CType(Me, SVCSearch.IService1).updateIp(inValue)
             SecureID = retVal.SecureID
             RC = retVal.RC
         End Sub
-        
+
+        ''' <summary>
+        ''' Updates the ip asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.updateIpResponse).</returns>
         Public Function updateIpAsync(ByVal request As SVCSearch.updateIpRequest) As System.Threading.Tasks.Task(Of SVCSearch.updateIpResponse) Implements SVCSearch.IService1.updateIpAsync
             Return MyBase.Channel.updateIpAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 populate source grid with weights.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.PopulateSourceGridWithWeightsResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_PopulateSourceGridWithWeights(ByVal request As SVCSearch.PopulateSourceGridWithWeightsRequest) As SVCSearch.PopulateSourceGridWithWeightsResponse Implements SVCSearch.IService1.PopulateSourceGridWithWeights
             Return MyBase.Channel.PopulateSourceGridWithWeights(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the source grid with weights.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="StartingRow">The starting row.</param>
+        ''' <param name="EndingRow">The ending row.</param>
+        ''' <param name="CallerName">Name of the caller.</param>
+        ''' <param name="MySql">My SQL.</param>
+        ''' <param name="bNewRows">if set to <c>true</c> [b new rows].</param>
+        ''' <param name="SourceRowCnt">The source row count.</param>
+        ''' <returns>SVCSearch.DS_CONTENT().</returns>
         Public Function PopulateSourceGridWithWeights(ByRef SecureID As Integer, ByVal StartingRow As Integer, ByVal EndingRow As Integer, ByVal CallerName As String, ByVal MySql As String, ByRef bNewRows As Boolean, ByRef SourceRowCnt As Integer) As SVCSearch.DS_CONTENT()
             Dim inValue As SVCSearch.PopulateSourceGridWithWeightsRequest = New SVCSearch.PopulateSourceGridWithWeightsRequest()
             inValue.SecureID = SecureID
@@ -13935,22 +16598,43 @@ Namespace SVCSearch
             inValue.MySql = MySql
             inValue.bNewRows = bNewRows
             inValue.SourceRowCnt = SourceRowCnt
-            Dim retVal As SVCSearch.PopulateSourceGridWithWeightsResponse = CType(Me,SVCSearch.IService1).PopulateSourceGridWithWeights(inValue)
+            Dim retVal As SVCSearch.PopulateSourceGridWithWeightsResponse = CType(Me, SVCSearch.IService1).PopulateSourceGridWithWeights(inValue)
             SecureID = retVal.SecureID
             bNewRows = retVal.bNewRows
             SourceRowCnt = retVal.SourceRowCnt
             Return retVal.PopulateSourceGridWithWeightsResult
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the source grid with weights asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.PopulateSourceGridWithWeightsResponse).</returns>
         Public Function PopulateSourceGridWithWeightsAsync(ByVal request As SVCSearch.PopulateSourceGridWithWeightsRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateSourceGridWithWeightsResponse) Implements SVCSearch.IService1.PopulateSourceGridWithWeightsAsync
             Return MyBase.Channel.PopulateSourceGridWithWeightsAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 populate source grid no weights.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.PopulateSourceGridNoWeightsResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_PopulateSourceGridNoWeights(ByVal request As SVCSearch.PopulateSourceGridNoWeightsRequest) As SVCSearch.PopulateSourceGridNoWeightsResponse Implements SVCSearch.IService1.PopulateSourceGridNoWeights
             Return MyBase.Channel.PopulateSourceGridNoWeights(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the source grid no weights.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="StartingRow">The starting row.</param>
+        ''' <param name="EndingRow">The ending row.</param>
+        ''' <param name="CallerName">Name of the caller.</param>
+        ''' <param name="MySql">My SQL.</param>
+        ''' <param name="bNewRows">if set to <c>true</c> [b new rows].</param>
+        ''' <param name="SourceRowCnt">The source row count.</param>
+        ''' <returns>SVCSearch.DS_CONTENT().</returns>
         Public Function PopulateSourceGridNoWeights(ByRef SecureID As Integer, ByVal StartingRow As Integer, ByVal EndingRow As Integer, ByVal CallerName As String, ByVal MySql As String, ByRef bNewRows As Boolean, ByRef SourceRowCnt As Integer) As SVCSearch.DS_CONTENT()
             Dim inValue As SVCSearch.PopulateSourceGridNoWeightsRequest = New SVCSearch.PopulateSourceGridNoWeightsRequest()
             inValue.SecureID = SecureID
@@ -13960,22 +16644,45 @@ Namespace SVCSearch
             inValue.MySql = MySql
             inValue.bNewRows = bNewRows
             inValue.SourceRowCnt = SourceRowCnt
-            Dim retVal As SVCSearch.PopulateSourceGridNoWeightsResponse = CType(Me,SVCSearch.IService1).PopulateSourceGridNoWeights(inValue)
+            Dim retVal As SVCSearch.PopulateSourceGridNoWeightsResponse = CType(Me, SVCSearch.IService1).PopulateSourceGridNoWeights(inValue)
             SecureID = retVal.SecureID
             bNewRows = retVal.bNewRows
             SourceRowCnt = retVal.SourceRowCnt
             Return retVal.PopulateSourceGridNoWeightsResult
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the source grid no weights asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.PopulateSourceGridNoWeightsResponse).</returns>
         Public Function PopulateSourceGridNoWeightsAsync(ByVal request As SVCSearch.PopulateSourceGridNoWeightsRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateSourceGridNoWeightsResponse) Implements SVCSearch.IService1.PopulateSourceGridNoWeightsAsync
             Return MyBase.Channel.PopulateSourceGridNoWeightsAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 populate email grid with no weights.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.PopulateEmailGridWithNoWeightsResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_PopulateEmailGridWithNoWeights(ByVal request As SVCSearch.PopulateEmailGridWithNoWeightsRequest) As SVCSearch.PopulateEmailGridWithNoWeightsResponse Implements SVCSearch.IService1.PopulateEmailGridWithNoWeights
             Return MyBase.Channel.PopulateEmailGridWithNoWeights(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the email grid with no weights.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UID">The uid.</param>
+        ''' <param name="CallerName">Name of the caller.</param>
+        ''' <param name="MySql">My SQL.</param>
+        ''' <param name="nbrWeightMin">The NBR weight minimum.</param>
+        ''' <param name="StartingRow">The starting row.</param>
+        ''' <param name="EndingRow">The ending row.</param>
+        ''' <param name="bNewRows">if set to <c>true</c> [b new rows].</param>
+        ''' <param name="EmailRowCnt">The email row count.</param>
+        ''' <returns>SVCSearch.DS_EMAIL().</returns>
         Public Function PopulateEmailGridWithNoWeights(ByRef SecureID As Integer, ByVal UID As String, ByVal CallerName As String, ByVal MySql As String, ByVal nbrWeightMin As String, ByVal StartingRow As Integer, ByVal EndingRow As Integer, ByRef bNewRows As Boolean, ByRef EmailRowCnt As Integer) As SVCSearch.DS_EMAIL()
             Dim inValue As SVCSearch.PopulateEmailGridWithNoWeightsRequest = New SVCSearch.PopulateEmailGridWithNoWeightsRequest()
             inValue.SecureID = SecureID
@@ -13987,22 +16694,45 @@ Namespace SVCSearch
             inValue.EndingRow = EndingRow
             inValue.bNewRows = bNewRows
             inValue.EmailRowCnt = EmailRowCnt
-            Dim retVal As SVCSearch.PopulateEmailGridWithNoWeightsResponse = CType(Me,SVCSearch.IService1).PopulateEmailGridWithNoWeights(inValue)
+            Dim retVal As SVCSearch.PopulateEmailGridWithNoWeightsResponse = CType(Me, SVCSearch.IService1).PopulateEmailGridWithNoWeights(inValue)
             SecureID = retVal.SecureID
             bNewRows = retVal.bNewRows
             EmailRowCnt = retVal.EmailRowCnt
             Return retVal.PopulateEmailGridWithNoWeightsResult
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the email grid with no weights asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.PopulateEmailGridWithNoWeightsResponse).</returns>
         Public Function PopulateEmailGridWithNoWeightsAsync(ByVal request As SVCSearch.PopulateEmailGridWithNoWeightsRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateEmailGridWithNoWeightsResponse) Implements SVCSearch.IService1.PopulateEmailGridWithNoWeightsAsync
             Return MyBase.Channel.PopulateEmailGridWithNoWeightsAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 populate email grid with weights.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.PopulateEmailGridWithWeightsResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_PopulateEmailGridWithWeights(ByVal request As SVCSearch.PopulateEmailGridWithWeightsRequest) As SVCSearch.PopulateEmailGridWithWeightsResponse Implements SVCSearch.IService1.PopulateEmailGridWithWeights
             Return MyBase.Channel.PopulateEmailGridWithWeights(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the email grid with weights.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="Userid">The userid.</param>
+        ''' <param name="CallerName">Name of the caller.</param>
+        ''' <param name="MySql">My SQL.</param>
+        ''' <param name="nbrWeightMin">The NBR weight minimum.</param>
+        ''' <param name="StartingRow">The starting row.</param>
+        ''' <param name="EndingRow">The ending row.</param>
+        ''' <param name="bNewRows">if set to <c>true</c> [b new rows].</param>
+        ''' <param name="EmailRowCnt">The email row count.</param>
+        ''' <returns>SVCSearch.DS_EMAIL().</returns>
         Public Function PopulateEmailGridWithWeights(ByRef SecureID As Integer, ByVal Userid As String, ByVal CallerName As String, ByVal MySql As String, ByVal nbrWeightMin As String, ByVal StartingRow As Integer, ByVal EndingRow As Integer, ByRef bNewRows As Boolean, ByRef EmailRowCnt As Integer) As SVCSearch.DS_EMAIL()
             Dim inValue As SVCSearch.PopulateEmailGridWithWeightsRequest = New SVCSearch.PopulateEmailGridWithWeightsRequest()
             inValue.SecureID = SecureID
@@ -14014,22 +16744,41 @@ Namespace SVCSearch
             inValue.EndingRow = EndingRow
             inValue.bNewRows = bNewRows
             inValue.EmailRowCnt = EmailRowCnt
-            Dim retVal As SVCSearch.PopulateEmailGridWithWeightsResponse = CType(Me,SVCSearch.IService1).PopulateEmailGridWithWeights(inValue)
+            Dim retVal As SVCSearch.PopulateEmailGridWithWeightsResponse = CType(Me, SVCSearch.IService1).PopulateEmailGridWithWeights(inValue)
             SecureID = retVal.SecureID
             bNewRows = retVal.bNewRows
             EmailRowCnt = retVal.EmailRowCnt
             Return retVal.PopulateEmailGridWithWeightsResult
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the email grid with weights asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.PopulateEmailGridWithWeightsResponse).</returns>
         Public Function PopulateEmailGridWithWeightsAsync(ByVal request As SVCSearch.PopulateEmailGridWithWeightsRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateEmailGridWithWeightsResponse) Implements SVCSearch.IService1.PopulateEmailGridWithWeightsAsync
             Return MyBase.Channel.PopulateEmailGridWithWeightsAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 load user search history.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.LoadUserSearchHistoryResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_LoadUserSearchHistory(ByVal request As SVCSearch.LoadUserSearchHistoryRequest) As SVCSearch.LoadUserSearchHistoryResponse Implements SVCSearch.IService1.LoadUserSearchHistory
             Return MyBase.Channel.LoadUserSearchHistory(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Loads the user search history.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="MaxNbrSearches">The maximum NBR searches.</param>
+        ''' <param name="Uid">The uid.</param>
+        ''' <param name="Screen">The screen.</param>
+        ''' <param name="SearchHistoryArrayList">The search history array list.</param>
+        ''' <param name="NbrReturned">The NBR returned.</param>
         Public Sub LoadUserSearchHistory(ByRef SecureID As Integer, ByVal MaxNbrSearches As Integer, ByVal Uid As String, ByVal Screen As String, ByRef SearchHistoryArrayList() As String, ByRef NbrReturned As Integer)
             Dim inValue As SVCSearch.LoadUserSearchHistoryRequest = New SVCSearch.LoadUserSearchHistoryRequest()
             inValue.SecureID = SecureID
@@ -14038,316 +16787,587 @@ Namespace SVCSearch
             inValue.Screen = Screen
             inValue.SearchHistoryArrayList = SearchHistoryArrayList
             inValue.NbrReturned = NbrReturned
-            Dim retVal As SVCSearch.LoadUserSearchHistoryResponse = CType(Me,SVCSearch.IService1).LoadUserSearchHistory(inValue)
+            Dim retVal As SVCSearch.LoadUserSearchHistoryResponse = CType(Me, SVCSearch.IService1).LoadUserSearchHistory(inValue)
             SecureID = retVal.SecureID
             SearchHistoryArrayList = retVal.SearchHistoryArrayList
             NbrReturned = retVal.NbrReturned
         End Sub
-        
+
+        ''' <summary>
+        ''' Loads the user search history asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.LoadUserSearchHistoryResponse).</returns>
         Public Function LoadUserSearchHistoryAsync(ByVal request As SVCSearch.LoadUserSearchHistoryRequest) As System.Threading.Tasks.Task(Of SVCSearch.LoadUserSearchHistoryResponse) Implements SVCSearch.IService1.LoadUserSearchHistoryAsync
             Return MyBase.Channel.LoadUserSearchHistoryAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get attachment weights.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getAttachmentWeightsResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getAttachmentWeights(ByVal request As SVCSearch.getAttachmentWeightsRequest) As SVCSearch.getAttachmentWeightsResponse Implements SVCSearch.IService1.getAttachmentWeights
             Return MyBase.Channel.getAttachmentWeights(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the attachment weights.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SL">The sl.</param>
+        ''' <param name="UserID">The user identifier.</param>
         Public Sub getAttachmentWeights(ByRef SecureID As Integer, ByRef SL As System.Collections.Generic.Dictionary(Of String, Integer), ByVal UserID As String)
             Dim inValue As SVCSearch.getAttachmentWeightsRequest = New SVCSearch.getAttachmentWeightsRequest()
             inValue.SecureID = SecureID
             inValue.SL = SL
             inValue.UserID = UserID
-            Dim retVal As SVCSearch.getAttachmentWeightsResponse = CType(Me,SVCSearch.IService1).getAttachmentWeights(inValue)
+            Dim retVal As SVCSearch.getAttachmentWeightsResponse = CType(Me, SVCSearch.IService1).getAttachmentWeights(inValue)
             SecureID = retVal.SecureID
             SL = retVal.SL
         End Sub
-        
+
+        ''' <summary>
+        ''' Gets the attachment weights asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getAttachmentWeightsResponse).</returns>
         Public Function getAttachmentWeightsAsync(ByVal request As SVCSearch.getAttachmentWeightsRequest) As System.Threading.Tasks.Task(Of SVCSearch.getAttachmentWeightsResponse) Implements SVCSearch.IService1.getAttachmentWeightsAsync
             Return MyBase.Channel.getAttachmentWeightsAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 execute SQL new conn1.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.ExecuteSqlNewConn1Response.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_ExecuteSqlNewConn1(ByVal request As SVCSearch.ExecuteSqlNewConn1Request) As SVCSearch.ExecuteSqlNewConn1Response Implements SVCSearch.IService1.ExecuteSqlNewConn1
             Return MyBase.Channel.ExecuteSqlNewConn1(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Executes the SQL new conn1.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="EncryptedMySql">The encrypted my SQL.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="ContractID">The contract identifier.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function ExecuteSqlNewConn1(ByRef SecureID As Integer, ByRef EncryptedMySql As String, ByVal UserID As String, ByVal ContractID As String) As Boolean
             Dim inValue As SVCSearch.ExecuteSqlNewConn1Request = New SVCSearch.ExecuteSqlNewConn1Request()
             inValue.SecureID = SecureID
             inValue.EncryptedMySql = EncryptedMySql
             inValue.UserID = UserID
             inValue.ContractID = ContractID
-            Dim retVal As SVCSearch.ExecuteSqlNewConn1Response = CType(Me,SVCSearch.IService1).ExecuteSqlNewConn1(inValue)
+            Dim retVal As SVCSearch.ExecuteSqlNewConn1Response = CType(Me, SVCSearch.IService1).ExecuteSqlNewConn1(inValue)
             SecureID = retVal.SecureID
             EncryptedMySql = retVal.EncryptedMySql
             Return retVal.ExecuteSqlNewConn1Result
         End Function
-        
+
+        ''' <summary>
+        ''' Executes the SQL new conn1 asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConn1Response).</returns>
         Public Function ExecuteSqlNewConn1Async(ByVal request As SVCSearch.ExecuteSqlNewConn1Request) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConn1Response) Implements SVCSearch.IService1.ExecuteSqlNewConn1Async
             Return MyBase.Channel.ExecuteSqlNewConn1Async(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 execute SQL new conn2.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.ExecuteSqlNewConn2Response.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_ExecuteSqlNewConn2(ByVal request As SVCSearch.ExecuteSqlNewConn2Request) As SVCSearch.ExecuteSqlNewConn2Response Implements SVCSearch.IService1.ExecuteSqlNewConn2
             Return MyBase.Channel.ExecuteSqlNewConn2(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Executes the SQL new conn2.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="EncryptedMySql">The encrypted my SQL.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="ContractID">The contract identifier.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function ExecuteSqlNewConn2(ByRef SecureID As Integer, ByRef EncryptedMySql As String, ByVal UserID As String, ByVal ContractID As String) As Boolean
             Dim inValue As SVCSearch.ExecuteSqlNewConn2Request = New SVCSearch.ExecuteSqlNewConn2Request()
             inValue.SecureID = SecureID
             inValue.EncryptedMySql = EncryptedMySql
             inValue.UserID = UserID
             inValue.ContractID = ContractID
-            Dim retVal As SVCSearch.ExecuteSqlNewConn2Response = CType(Me,SVCSearch.IService1).ExecuteSqlNewConn2(inValue)
+            Dim retVal As SVCSearch.ExecuteSqlNewConn2Response = CType(Me, SVCSearch.IService1).ExecuteSqlNewConn2(inValue)
             SecureID = retVal.SecureID
             EncryptedMySql = retVal.EncryptedMySql
             Return retVal.ExecuteSqlNewConn2Result
         End Function
-        
+
+        ''' <summary>
+        ''' Executes the SQL new conn2 asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConn2Response).</returns>
         Public Function ExecuteSqlNewConn2Async(ByVal request As SVCSearch.ExecuteSqlNewConn2Request) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConn2Response) Implements SVCSearch.IService1.ExecuteSqlNewConn2Async
             Return MyBase.Channel.ExecuteSqlNewConn2Async(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 execute SQL new conn3.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.ExecuteSqlNewConn3Response.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_ExecuteSqlNewConn3(ByVal request As SVCSearch.ExecuteSqlNewConn3Request) As SVCSearch.ExecuteSqlNewConn3Response Implements SVCSearch.IService1.ExecuteSqlNewConn3
             Return MyBase.Channel.ExecuteSqlNewConn3(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Executes the SQL new conn3.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="EncryptedMySql">The encrypted my SQL.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="ContractID">The contract identifier.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function ExecuteSqlNewConn3(ByRef SecureID As Integer, ByRef EncryptedMySql As String, ByVal UserID As String, ByVal ContractID As String) As Boolean
             Dim inValue As SVCSearch.ExecuteSqlNewConn3Request = New SVCSearch.ExecuteSqlNewConn3Request()
             inValue.SecureID = SecureID
             inValue.EncryptedMySql = EncryptedMySql
             inValue.UserID = UserID
             inValue.ContractID = ContractID
-            Dim retVal As SVCSearch.ExecuteSqlNewConn3Response = CType(Me,SVCSearch.IService1).ExecuteSqlNewConn3(inValue)
+            Dim retVal As SVCSearch.ExecuteSqlNewConn3Response = CType(Me, SVCSearch.IService1).ExecuteSqlNewConn3(inValue)
             SecureID = retVal.SecureID
             EncryptedMySql = retVal.EncryptedMySql
             Return retVal.ExecuteSqlNewConn3Result
         End Function
-        
+
+        ''' <summary>
+        ''' Executes the SQL new conn3 asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConn3Response).</returns>
         Public Function ExecuteSqlNewConn3Async(ByVal request As SVCSearch.ExecuteSqlNewConn3Request) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConn3Response) Implements SVCSearch.IService1.ExecuteSqlNewConn3Async
             Return MyBase.Channel.ExecuteSqlNewConn3Async(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 execute SQL new conn4.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.ExecuteSqlNewConn4Response.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_ExecuteSqlNewConn4(ByVal request As SVCSearch.ExecuteSqlNewConn4Request) As SVCSearch.ExecuteSqlNewConn4Response Implements SVCSearch.IService1.ExecuteSqlNewConn4
             Return MyBase.Channel.ExecuteSqlNewConn4(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Executes the SQL new conn4.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="EncryptedMySql">The encrypted my SQL.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="ContractID">The contract identifier.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function ExecuteSqlNewConn4(ByRef SecureID As Integer, ByRef EncryptedMySql As String, ByVal UserID As String, ByVal ContractID As String) As Boolean
             Dim inValue As SVCSearch.ExecuteSqlNewConn4Request = New SVCSearch.ExecuteSqlNewConn4Request()
             inValue.SecureID = SecureID
             inValue.EncryptedMySql = EncryptedMySql
             inValue.UserID = UserID
             inValue.ContractID = ContractID
-            Dim retVal As SVCSearch.ExecuteSqlNewConn4Response = CType(Me,SVCSearch.IService1).ExecuteSqlNewConn4(inValue)
+            Dim retVal As SVCSearch.ExecuteSqlNewConn4Response = CType(Me, SVCSearch.IService1).ExecuteSqlNewConn4(inValue)
             SecureID = retVal.SecureID
             EncryptedMySql = retVal.EncryptedMySql
             Return retVal.ExecuteSqlNewConn4Result
         End Function
-        
+
+        ''' <summary>
+        ''' Executes the SQL new conn4 asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConn4Response).</returns>
         Public Function ExecuteSqlNewConn4Async(ByVal request As SVCSearch.ExecuteSqlNewConn4Request) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConn4Response) Implements SVCSearch.IService1.ExecuteSqlNewConn4Async
             Return MyBase.Channel.ExecuteSqlNewConn4Async(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 execute SQL new conn5.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.ExecuteSqlNewConn5Response.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_ExecuteSqlNewConn5(ByVal request As SVCSearch.ExecuteSqlNewConn5Request) As SVCSearch.ExecuteSqlNewConn5Response Implements SVCSearch.IService1.ExecuteSqlNewConn5
             Return MyBase.Channel.ExecuteSqlNewConn5(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Executes the SQL new conn5.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="EncryptedMySql">The encrypted my SQL.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="ContractID">The contract identifier.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function ExecuteSqlNewConn5(ByRef SecureID As Integer, ByRef EncryptedMySql As String, ByVal UserID As String, ByVal ContractID As String) As Boolean
             Dim inValue As SVCSearch.ExecuteSqlNewConn5Request = New SVCSearch.ExecuteSqlNewConn5Request()
             inValue.SecureID = SecureID
             inValue.EncryptedMySql = EncryptedMySql
             inValue.UserID = UserID
             inValue.ContractID = ContractID
-            Dim retVal As SVCSearch.ExecuteSqlNewConn5Response = CType(Me,SVCSearch.IService1).ExecuteSqlNewConn5(inValue)
+            Dim retVal As SVCSearch.ExecuteSqlNewConn5Response = CType(Me, SVCSearch.IService1).ExecuteSqlNewConn5(inValue)
             SecureID = retVal.SecureID
             EncryptedMySql = retVal.EncryptedMySql
             Return retVal.ExecuteSqlNewConn5Result
         End Function
-        
+
+        ''' <summary>
+        ''' Executes the SQL new conn5 asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConn5Response).</returns>
         Public Function ExecuteSqlNewConn5Async(ByVal request As SVCSearch.ExecuteSqlNewConn5Request) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConn5Response) Implements SVCSearch.IService1.ExecuteSqlNewConn5Async
             Return MyBase.Channel.ExecuteSqlNewConn5Async(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 execute SQL new connection secure.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.ExecuteSqlNewConnSecureResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_ExecuteSqlNewConnSecure(ByVal request As SVCSearch.ExecuteSqlNewConnSecureRequest) As SVCSearch.ExecuteSqlNewConnSecureResponse Implements SVCSearch.IService1.ExecuteSqlNewConnSecure
             Return MyBase.Channel.ExecuteSqlNewConnSecure(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Executes the SQL new connection secure.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="MySql">My SQL.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="ContractID">The contract identifier.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function ExecuteSqlNewConnSecure(ByRef SecureID As Integer, ByRef MySql As String, ByVal UserID As String, ByVal ContractID As String) As Boolean
             Dim inValue As SVCSearch.ExecuteSqlNewConnSecureRequest = New SVCSearch.ExecuteSqlNewConnSecureRequest()
             inValue.SecureID = SecureID
             inValue.MySql = MySql
             inValue.UserID = UserID
             inValue.ContractID = ContractID
-            Dim retVal As SVCSearch.ExecuteSqlNewConnSecureResponse = CType(Me,SVCSearch.IService1).ExecuteSqlNewConnSecure(inValue)
+            Dim retVal As SVCSearch.ExecuteSqlNewConnSecureResponse = CType(Me, SVCSearch.IService1).ExecuteSqlNewConnSecure(inValue)
             SecureID = retVal.SecureID
             MySql = retVal.MySql
             Return retVal.ExecuteSqlNewConnSecureResult
         End Function
-        
+
+        ''' <summary>
+        ''' Executes the SQL new connection secure asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConnSecureResponse).</returns>
         Public Function ExecuteSqlNewConnSecureAsync(ByVal request As SVCSearch.ExecuteSqlNewConnSecureRequest) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConnSecureResponse) Implements SVCSearch.IService1.ExecuteSqlNewConnSecureAsync
             Return MyBase.Channel.ExecuteSqlNewConnSecureAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get parm value.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.GetParmValueResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_GetParmValue(ByVal request As SVCSearch.GetParmValueRequest) As SVCSearch.GetParmValueResponse Implements SVCSearch.IService1.GetParmValue
             Return MyBase.Channel.GetParmValue(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the parm value.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UID">The uid.</param>
+        ''' <param name="Parms">The parms.</param>
         Public Sub GetParmValue(ByRef SecureID As Integer, ByVal UID As String, ByRef Parms() As String)
             Dim inValue As SVCSearch.GetParmValueRequest = New SVCSearch.GetParmValueRequest()
             inValue.SecureID = SecureID
             inValue.UID = UID
             inValue.Parms = Parms
-            Dim retVal As SVCSearch.GetParmValueResponse = CType(Me,SVCSearch.IService1).GetParmValue(inValue)
+            Dim retVal As SVCSearch.GetParmValueResponse = CType(Me, SVCSearch.IService1).GetParmValue(inValue)
             SecureID = retVal.SecureID
             Parms = retVal.Parms
         End Sub
-        
+
+        ''' <summary>
+        ''' Gets the parm value asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.GetParmValueResponse).</returns>
         Public Function GetParmValueAsync(ByVal request As SVCSearch.GetParmValueRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetParmValueResponse) Implements SVCSearch.IService1.GetParmValueAsync
             Return MyBase.Channel.GetParmValueAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 d bis global searcher.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.DBisGlobalSearcherResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_DBisGlobalSearcher(ByVal request As SVCSearch.DBisGlobalSearcherRequest) As SVCSearch.DBisGlobalSearcherResponse Implements SVCSearch.IService1.DBisGlobalSearcher
             Return MyBase.Channel.DBisGlobalSearcher(request)
         End Function
-        
+
+        ''' <summary>
+        ''' ds the bis global searcher.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="Userid">The userid.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function DBisGlobalSearcher(ByRef SecureID As Integer, ByVal Userid As String) As Boolean
             Dim inValue As SVCSearch.DBisGlobalSearcherRequest = New SVCSearch.DBisGlobalSearcherRequest()
             inValue.SecureID = SecureID
             inValue.Userid = Userid
-            Dim retVal As SVCSearch.DBisGlobalSearcherResponse = CType(Me,SVCSearch.IService1).DBisGlobalSearcher(inValue)
+            Dim retVal As SVCSearch.DBisGlobalSearcherResponse = CType(Me, SVCSearch.IService1).DBisGlobalSearcher(inValue)
             SecureID = retVal.SecureID
             Return retVal.DBisGlobalSearcherResult
         End Function
-        
+
+        ''' <summary>
+        ''' ds the bis global searcher asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.DBisGlobalSearcherResponse).</returns>
         Public Function DBisGlobalSearcherAsync(ByVal request As SVCSearch.DBisGlobalSearcherRequest) As System.Threading.Tasks.Task(Of SVCSearch.DBisGlobalSearcherResponse) Implements SVCSearch.IService1.DBisGlobalSearcherAsync
             Return MyBase.Channel.DBisGlobalSearcherAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 d bis admin.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.DBisAdminResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_DBisAdmin(ByVal request As SVCSearch.DBisAdminRequest) As SVCSearch.DBisAdminResponse Implements SVCSearch.IService1.DBisAdmin
             Return MyBase.Channel.DBisAdmin(request)
         End Function
-        
+
+        ''' <summary>
+        ''' ds the bis admin.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="Userid">The userid.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function DBisAdmin(ByRef SecureID As Integer, ByVal Userid As String) As Boolean
             Dim inValue As SVCSearch.DBisAdminRequest = New SVCSearch.DBisAdminRequest()
             inValue.SecureID = SecureID
             inValue.Userid = Userid
-            Dim retVal As SVCSearch.DBisAdminResponse = CType(Me,SVCSearch.IService1).DBisAdmin(inValue)
+            Dim retVal As SVCSearch.DBisAdminResponse = CType(Me, SVCSearch.IService1).DBisAdmin(inValue)
             SecureID = retVal.SecureID
             Return retVal.DBisAdminResult
         End Function
-        
+
+        ''' <summary>
+        ''' ds the bis admin asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.DBisAdminResponse).</returns>
         Public Function DBisAdminAsync(ByVal request As SVCSearch.DBisAdminRequest) As System.Threading.Tasks.Task(Of SVCSearch.DBisAdminResponse) Implements SVCSearch.IService1.DBisAdminAsync
             Return MyBase.Channel.DBisAdminAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get user parm.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getUserParmResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getUserParm(ByVal request As SVCSearch.getUserParmRequest) As SVCSearch.getUserParmResponse Implements SVCSearch.IService1.getUserParm
             Return MyBase.Channel.getUserParm(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the user parm.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="sVariable">The s variable.</param>
+        ''' <param name="UserParm">The user parm.</param>
         Public Sub getUserParm(ByRef SecureID As Integer, ByRef sVariable As String, ByVal UserParm As String)
             Dim inValue As SVCSearch.getUserParmRequest = New SVCSearch.getUserParmRequest()
             inValue.SecureID = SecureID
             inValue.sVariable = sVariable
             inValue.UserParm = UserParm
-            Dim retVal As SVCSearch.getUserParmResponse = CType(Me,SVCSearch.IService1).getUserParm(inValue)
+            Dim retVal As SVCSearch.getUserParmResponse = CType(Me, SVCSearch.IService1).getUserParm(inValue)
             SecureID = retVal.SecureID
             sVariable = retVal.sVariable
         End Sub
-        
+
+        ''' <summary>
+        ''' Gets the user parm asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getUserParmResponse).</returns>
         Public Function getUserParmAsync(ByVal request As SVCSearch.getUserParmRequest) As System.Threading.Tasks.Task(Of SVCSearch.getUserParmResponse) Implements SVCSearch.IService1.getUserParmAsync
             Return MyBase.Channel.getUserParmAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 remove unwanted characters.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.RemoveUnwantedCharactersResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_RemoveUnwantedCharacters(ByVal request As SVCSearch.RemoveUnwantedCharactersRequest) As SVCSearch.RemoveUnwantedCharactersResponse Implements SVCSearch.IService1.RemoveUnwantedCharacters
             Return MyBase.Channel.RemoveUnwantedCharacters(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Removes the unwanted characters.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="tgtString">The TGT string.</param>
         Public Sub RemoveUnwantedCharacters(ByRef SecureID As Integer, ByRef tgtString As String)
             Dim inValue As SVCSearch.RemoveUnwantedCharactersRequest = New SVCSearch.RemoveUnwantedCharactersRequest()
             inValue.SecureID = SecureID
             inValue.tgtString = tgtString
-            Dim retVal As SVCSearch.RemoveUnwantedCharactersResponse = CType(Me,SVCSearch.IService1).RemoveUnwantedCharacters(inValue)
+            Dim retVal As SVCSearch.RemoveUnwantedCharactersResponse = CType(Me, SVCSearch.IService1).RemoveUnwantedCharacters(inValue)
             SecureID = retVal.SecureID
             tgtString = retVal.tgtString
         End Sub
-        
+
+        ''' <summary>
+        ''' Removes the unwanted characters asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.RemoveUnwantedCharactersResponse).</returns>
         Public Function RemoveUnwantedCharactersAsync(ByVal request As SVCSearch.RemoveUnwantedCharactersRequest) As System.Threading.Tasks.Task(Of SVCSearch.RemoveUnwantedCharactersResponse) Implements SVCSearch.IService1.RemoveUnwantedCharactersAsync
             Return MyBase.Channel.RemoveUnwantedCharactersAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get machine ip.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.GetMachineIPResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_GetMachineIP(ByVal request As SVCSearch.GetMachineIPRequest) As SVCSearch.GetMachineIPResponse Implements SVCSearch.IService1.GetMachineIP
             Return MyBase.Channel.GetMachineIP(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the machine ip.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <returns>System.String.</returns>
         Public Function GetMachineIP(ByRef SecureID As Integer) As String
             Dim inValue As SVCSearch.GetMachineIPRequest = New SVCSearch.GetMachineIPRequest()
             inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.GetMachineIPResponse = CType(Me,SVCSearch.IService1).GetMachineIP(inValue)
+            Dim retVal As SVCSearch.GetMachineIPResponse = CType(Me, SVCSearch.IService1).GetMachineIP(inValue)
             SecureID = retVal.SecureID
             Return retVal.GetMachineIPResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the machine ip asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.GetMachineIPResponse).</returns>
         Public Function GetMachineIPAsync(ByVal request As SVCSearch.GetMachineIPRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetMachineIPResponse) Implements SVCSearch.IService1.GetMachineIPAsync
             Return MyBase.Channel.GetMachineIPAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get client licenses.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getClientLicensesResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getClientLicenses(ByVal request As SVCSearch.getClientLicensesRequest) As SVCSearch.getClientLicensesResponse Implements SVCSearch.IService1.getClientLicenses
             Return MyBase.Channel.getClientLicenses(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the client licenses.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="CompanyID">The company identifier.</param>
+        ''' <param name="ErrorMessage">The error message.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <returns>SVCSearch.DS_License().</returns>
         Public Function getClientLicenses(ByRef SecureID As Integer, ByVal CompanyID As String, ByRef ErrorMessage As String, ByRef RC As Boolean) As SVCSearch.DS_License()
             Dim inValue As SVCSearch.getClientLicensesRequest = New SVCSearch.getClientLicensesRequest()
             inValue.SecureID = SecureID
             inValue.CompanyID = CompanyID
             inValue.ErrorMessage = ErrorMessage
             inValue.RC = RC
-            Dim retVal As SVCSearch.getClientLicensesResponse = CType(Me,SVCSearch.IService1).getClientLicenses(inValue)
+            Dim retVal As SVCSearch.getClientLicensesResponse = CType(Me, SVCSearch.IService1).getClientLicenses(inValue)
             SecureID = retVal.SecureID
             ErrorMessage = retVal.ErrorMessage
             RC = retVal.RC
             Return retVal.getClientLicensesResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the client licenses asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getClientLicensesResponse).</returns>
         Public Function getClientLicensesAsync(ByVal request As SVCSearch.getClientLicensesRequest) As System.Threading.Tasks.Task(Of SVCSearch.getClientLicensesResponse) Implements SVCSearch.IService1.getClientLicensesAsync
             Return MyBase.Channel.getClientLicensesAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 populate user grid.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.PopulateUserGridResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_PopulateUserGrid(ByVal request As SVCSearch.PopulateUserGridRequest) As SVCSearch.PopulateUserGridResponse Implements SVCSearch.IService1.PopulateUserGrid
             Return MyBase.Channel.PopulateUserGrid(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the user grid.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="DBisAdmin">if set to <c>true</c> [d bis admin].</param>
+        ''' <returns>SVCSearch.DS_VUserGrid().</returns>
         Public Function PopulateUserGrid(ByRef SecureID As Integer, ByVal UserID As String, ByVal DBisAdmin As Boolean) As SVCSearch.DS_VUserGrid()
             Dim inValue As SVCSearch.PopulateUserGridRequest = New SVCSearch.PopulateUserGridRequest()
             inValue.SecureID = SecureID
             inValue.UserID = UserID
             inValue.DBisAdmin = DBisAdmin
-            Dim retVal As SVCSearch.PopulateUserGridResponse = CType(Me,SVCSearch.IService1).PopulateUserGrid(inValue)
+            Dim retVal As SVCSearch.PopulateUserGridResponse = CType(Me, SVCSearch.IService1).PopulateUserGrid(inValue)
             SecureID = retVal.SecureID
             Return retVal.PopulateUserGridResult
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the user grid asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.PopulateUserGridResponse).</returns>
         Public Function PopulateUserGridAsync(ByVal request As SVCSearch.PopulateUserGridRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateUserGridResponse) Implements SVCSearch.IService1.PopulateUserGridAsync
             Return MyBase.Channel.PopulateUserGridAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get group users.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getGroupUsersResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getGroupUsers(ByVal request As SVCSearch.getGroupUsersRequest) As SVCSearch.getGroupUsersResponse Implements SVCSearch.IService1.getGroupUsers
             Return MyBase.Channel.getGroupUsers(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the group users.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="GroupName">Name of the group.</param>
+        ''' <param name="GroupList">The group list.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
         Public Sub getGroupUsers(ByRef SecureID As Integer, ByVal GroupName As String, ByRef GroupList() As Object, ByRef RC As Boolean, ByRef RetMsg As String)
             Dim inValue As SVCSearch.getGroupUsersRequest = New SVCSearch.getGroupUsersRequest()
             inValue.SecureID = SecureID
@@ -14355,41 +17375,78 @@ Namespace SVCSearch
             inValue.GroupList = GroupList
             inValue.RC = RC
             inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.getGroupUsersResponse = CType(Me,SVCSearch.IService1).getGroupUsers(inValue)
+            Dim retVal As SVCSearch.getGroupUsersResponse = CType(Me, SVCSearch.IService1).getGroupUsers(inValue)
             SecureID = retVal.SecureID
             GroupList = retVal.GroupList
             RC = retVal.RC
             RetMsg = retVal.RetMsg
         End Sub
-        
+
+        ''' <summary>
+        ''' Gets the group users asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getGroupUsersResponse).</returns>
         Public Function getGroupUsersAsync(ByVal request As SVCSearch.getGroupUsersRequest) As System.Threading.Tasks.Task(Of SVCSearch.getGroupUsersResponse) Implements SVCSearch.IService1.getGroupUsersAsync
             Return MyBase.Channel.getGroupUsersAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 populate dg group users.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.PopulateDgGroupUsersResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_PopulateDgGroupUsers(ByVal request As SVCSearch.PopulateDgGroupUsersRequest) As SVCSearch.PopulateDgGroupUsersResponse Implements SVCSearch.IService1.PopulateDgGroupUsers
             Return MyBase.Channel.PopulateDgGroupUsers(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the dg group users.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="OwnerUserGuidID">The owner user unique identifier identifier.</param>
+        ''' <param name="GroupName">Name of the group.</param>
+        ''' <returns>System.String.</returns>
         Public Function PopulateDgGroupUsers(ByRef SecureID As Integer, ByVal OwnerUserGuidID As String, ByVal GroupName As String) As String
             Dim inValue As SVCSearch.PopulateDgGroupUsersRequest = New SVCSearch.PopulateDgGroupUsersRequest()
             inValue.SecureID = SecureID
             inValue.OwnerUserGuidID = OwnerUserGuidID
             inValue.GroupName = GroupName
-            Dim retVal As SVCSearch.PopulateDgGroupUsersResponse = CType(Me,SVCSearch.IService1).PopulateDgGroupUsers(inValue)
+            Dim retVal As SVCSearch.PopulateDgGroupUsersResponse = CType(Me, SVCSearch.IService1).PopulateDgGroupUsers(inValue)
             SecureID = retVal.SecureID
             Return retVal.PopulateDgGroupUsersResult
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the dg group users asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.PopulateDgGroupUsersResponse).</returns>
         Public Function PopulateDgGroupUsersAsync(ByVal request As SVCSearch.PopulateDgGroupUsersRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateDgGroupUsersResponse) Implements SVCSearch.IService1.PopulateDgGroupUsersAsync
             Return MyBase.Channel.PopulateDgGroupUsersAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 delete group users.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.DeleteGroupUsersResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_DeleteGroupUsers(ByVal request As SVCSearch.DeleteGroupUsersRequest) As SVCSearch.DeleteGroupUsersResponse Implements SVCSearch.IService1.DeleteGroupUsers
             Return MyBase.Channel.DeleteGroupUsers(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Deletes the group users.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="CurrSelectedGroupName">Name of the curr selected group.</param>
+        ''' <param name="GroupOwnerGuid">The group owner unique identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="iDeleted">The i deleted.</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function DeleteGroupUsers(ByVal SecureID As Integer, ByVal CurrSelectedGroupName As String, ByVal GroupOwnerGuid As String, ByVal UserID As String, ByRef iDeleted As Integer, ByRef RetMsg As String) As Boolean
             Dim inValue As SVCSearch.DeleteGroupUsersRequest = New SVCSearch.DeleteGroupUsersRequest()
             inValue.SecureID = SecureID
@@ -14398,39 +17455,74 @@ Namespace SVCSearch
             inValue.UserID = UserID
             inValue.iDeleted = iDeleted
             inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.DeleteGroupUsersResponse = CType(Me,SVCSearch.IService1).DeleteGroupUsers(inValue)
+            Dim retVal As SVCSearch.DeleteGroupUsersResponse = CType(Me, SVCSearch.IService1).DeleteGroupUsers(inValue)
             iDeleted = retVal.iDeleted
             RetMsg = retVal.RetMsg
             Return retVal.DeleteGroupUsersResult
         End Function
-        
+
+        ''' <summary>
+        ''' Deletes the group users asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.DeleteGroupUsersResponse).</returns>
         Public Function DeleteGroupUsersAsync(ByVal request As SVCSearch.DeleteGroupUsersRequest) As System.Threading.Tasks.Task(Of SVCSearch.DeleteGroupUsersResponse) Implements SVCSearch.IService1.DeleteGroupUsersAsync
             Return MyBase.Channel.DeleteGroupUsersAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the name of the search i service1 get group owner unique identifier by group.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getGroupOwnerGuidByGroupNameResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getGroupOwnerGuidByGroupName(ByVal request As SVCSearch.getGroupOwnerGuidByGroupNameRequest) As SVCSearch.getGroupOwnerGuidByGroupNameResponse Implements SVCSearch.IService1.getGroupOwnerGuidByGroupName
             Return MyBase.Channel.getGroupOwnerGuidByGroupName(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the name of the group owner unique identifier by group.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="GroupName">Name of the group.</param>
+        ''' <returns>System.String.</returns>
         Public Function getGroupOwnerGuidByGroupName(ByRef SecureID As Integer, ByVal GroupName As String) As String
             Dim inValue As SVCSearch.getGroupOwnerGuidByGroupNameRequest = New SVCSearch.getGroupOwnerGuidByGroupNameRequest()
             inValue.SecureID = SecureID
             inValue.GroupName = GroupName
-            Dim retVal As SVCSearch.getGroupOwnerGuidByGroupNameResponse = CType(Me,SVCSearch.IService1).getGroupOwnerGuidByGroupName(inValue)
+            Dim retVal As SVCSearch.getGroupOwnerGuidByGroupNameResponse = CType(Me, SVCSearch.IService1).getGroupOwnerGuidByGroupName(inValue)
             SecureID = retVal.SecureID
             Return retVal.getGroupOwnerGuidByGroupNameResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the group owner unique identifier by group name asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getGroupOwnerGuidByGroupNameResponse).</returns>
         Public Function getGroupOwnerGuidByGroupNameAsync(ByVal request As SVCSearch.getGroupOwnerGuidByGroupNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.getGroupOwnerGuidByGroupNameResponse) Implements SVCSearch.IService1.getGroupOwnerGuidByGroupNameAsync
             Return MyBase.Channel.getGroupOwnerGuidByGroupNameAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 add library group user.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.AddLibraryGroupUserResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_AddLibraryGroupUser(ByVal request As SVCSearch.AddLibraryGroupUserRequest) As SVCSearch.AddLibraryGroupUserResponse Implements SVCSearch.IService1.AddLibraryGroupUser
             Return MyBase.Channel.AddLibraryGroupUser(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Adds the library group user.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="GroupName">Name of the group.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="CurrUserID">The curr user identifier.</param>
+        ''' <param name="SessionID">The session identifier.</param>
+        ''' <param name="ControlSection">The control section.</param>
         Public Sub AddLibraryGroupUser(ByRef SecureID As Integer, ByVal GroupName As String, ByRef RC As Boolean, ByVal CurrUserID As String, ByVal SessionID As String, ByVal ControlSection As String)
             Dim inValue As SVCSearch.AddLibraryGroupUserRequest = New SVCSearch.AddLibraryGroupUserRequest()
             inValue.SecureID = SecureID
@@ -14439,114 +17531,215 @@ Namespace SVCSearch
             inValue.CurrUserID = CurrUserID
             inValue.SessionID = SessionID
             inValue.ControlSection = ControlSection
-            Dim retVal As SVCSearch.AddLibraryGroupUserResponse = CType(Me,SVCSearch.IService1).AddLibraryGroupUser(inValue)
+            Dim retVal As SVCSearch.AddLibraryGroupUserResponse = CType(Me, SVCSearch.IService1).AddLibraryGroupUser(inValue)
             SecureID = retVal.SecureID
             RC = retVal.RC
         End Sub
-        
+
+        ''' <summary>
+        ''' Adds the library group user asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.AddLibraryGroupUserResponse).</returns>
         Public Function AddLibraryGroupUserAsync(ByVal request As SVCSearch.AddLibraryGroupUserRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddLibraryGroupUserResponse) Implements SVCSearch.IService1.AddLibraryGroupUserAsync
             Return MyBase.Channel.AddLibraryGroupUserAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 populate group user grid.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.PopulateGroupUserGridResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_PopulateGroupUserGrid(ByVal request As SVCSearch.PopulateGroupUserGridRequest) As SVCSearch.PopulateGroupUserGridResponse Implements SVCSearch.IService1.PopulateGroupUserGrid
             Return MyBase.Channel.PopulateGroupUserGrid(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the group user grid.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="GroupName">Name of the group.</param>
+        ''' <returns>System.String.</returns>
         Public Function PopulateGroupUserGrid(ByRef SecureID As Integer, ByVal GroupName As String) As String
             Dim inValue As SVCSearch.PopulateGroupUserGridRequest = New SVCSearch.PopulateGroupUserGridRequest()
             inValue.SecureID = SecureID
             inValue.GroupName = GroupName
-            Dim retVal As SVCSearch.PopulateGroupUserGridResponse = CType(Me,SVCSearch.IService1).PopulateGroupUserGrid(inValue)
+            Dim retVal As SVCSearch.PopulateGroupUserGridResponse = CType(Me, SVCSearch.IService1).PopulateGroupUserGrid(inValue)
             SecureID = retVal.SecureID
             Return retVal.PopulateGroupUserGridResult
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the group user grid asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.PopulateGroupUserGridResponse).</returns>
         Public Function PopulateGroupUserGridAsync(ByVal request As SVCSearch.PopulateGroupUserGridRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateGroupUserGridResponse) Implements SVCSearch.IService1.PopulateGroupUserGridAsync
             Return MyBase.Channel.PopulateGroupUserGridAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 populate library items grid.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.PopulateLibItemsGridResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_PopulateLibItemsGrid(ByVal request As SVCSearch.PopulateLibItemsGridRequest) As SVCSearch.PopulateLibItemsGridResponse Implements SVCSearch.IService1.PopulateLibItemsGrid
             Return MyBase.Channel.PopulateLibItemsGrid(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the library items grid.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="LibraryName">Name of the library.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <returns>System.String.</returns>
         Public Function PopulateLibItemsGrid(ByRef SecureID As Integer, ByVal LibraryName As String, ByVal UserID As String) As String
             Dim inValue As SVCSearch.PopulateLibItemsGridRequest = New SVCSearch.PopulateLibItemsGridRequest()
             inValue.SecureID = SecureID
             inValue.LibraryName = LibraryName
             inValue.UserID = UserID
-            Dim retVal As SVCSearch.PopulateLibItemsGridResponse = CType(Me,SVCSearch.IService1).PopulateLibItemsGrid(inValue)
+            Dim retVal As SVCSearch.PopulateLibItemsGridResponse = CType(Me, SVCSearch.IService1).PopulateLibItemsGrid(inValue)
             SecureID = retVal.SecureID
             Return retVal.PopulateLibItemsGridResult
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the library items grid asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.PopulateLibItemsGridResponse).</returns>
         Public Function PopulateLibItemsGridAsync(ByVal request As SVCSearch.PopulateLibItemsGridRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateLibItemsGridResponse) Implements SVCSearch.IService1.PopulateLibItemsGridAsync
             Return MyBase.Channel.PopulateLibItemsGridAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 populate dg assigned.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.PopulateDgAssignedResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_PopulateDgAssigned(ByVal request As SVCSearch.PopulateDgAssignedRequest) As SVCSearch.PopulateDgAssignedResponse Implements SVCSearch.IService1.PopulateDgAssigned
             Return MyBase.Channel.PopulateDgAssigned(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the dg assigned.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="LibraryName">Name of the library.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <returns>System.String.</returns>
         Public Function PopulateDgAssigned(ByRef SecureID As Integer, ByVal LibraryName As String, ByVal UserID As String) As String
             Dim inValue As SVCSearch.PopulateDgAssignedRequest = New SVCSearch.PopulateDgAssignedRequest()
             inValue.SecureID = SecureID
             inValue.LibraryName = LibraryName
             inValue.UserID = UserID
-            Dim retVal As SVCSearch.PopulateDgAssignedResponse = CType(Me,SVCSearch.IService1).PopulateDgAssigned(inValue)
+            Dim retVal As SVCSearch.PopulateDgAssignedResponse = CType(Me, SVCSearch.IService1).PopulateDgAssigned(inValue)
             SecureID = retVal.SecureID
             Return retVal.PopulateDgAssignedResult
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the dg assigned asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.PopulateDgAssignedResponse).</returns>
         Public Function PopulateDgAssignedAsync(ByVal request As SVCSearch.PopulateDgAssignedRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateDgAssignedResponse) Implements SVCSearch.IService1.PopulateDgAssignedAsync
             Return MyBase.Channel.PopulateDgAssignedAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 reset library users count.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.ResetLibraryUsersCountResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_ResetLibraryUsersCount(ByVal request As SVCSearch.ResetLibraryUsersCountRequest) As SVCSearch.ResetLibraryUsersCountResponse Implements SVCSearch.IService1.ResetLibraryUsersCount
             Return MyBase.Channel.ResetLibraryUsersCount(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Resets the library users count.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
         Public Sub ResetLibraryUsersCount(ByRef SecureID As Integer, ByRef RC As Boolean)
             Dim inValue As SVCSearch.ResetLibraryUsersCountRequest = New SVCSearch.ResetLibraryUsersCountRequest()
             inValue.SecureID = SecureID
             inValue.RC = RC
-            Dim retVal As SVCSearch.ResetLibraryUsersCountResponse = CType(Me,SVCSearch.IService1).ResetLibraryUsersCount(inValue)
+            Dim retVal As SVCSearch.ResetLibraryUsersCountResponse = CType(Me, SVCSearch.IService1).ResetLibraryUsersCount(inValue)
             SecureID = retVal.SecureID
             RC = retVal.RC
         End Sub
-        
+
+        ''' <summary>
+        ''' Resets the library users count asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.ResetLibraryUsersCountResponse).</returns>
         Public Function ResetLibraryUsersCountAsync(ByVal request As SVCSearch.ResetLibraryUsersCountRequest) As System.Threading.Tasks.Task(Of SVCSearch.ResetLibraryUsersCountResponse) Implements SVCSearch.IService1.ResetLibraryUsersCountAsync
             Return MyBase.Channel.ResetLibraryUsersCountAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 delete library group user.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.DeleteLibraryGroupUserResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_DeleteLibraryGroupUser(ByVal request As SVCSearch.DeleteLibraryGroupUserRequest) As SVCSearch.DeleteLibraryGroupUserResponse Implements SVCSearch.IService1.DeleteLibraryGroupUser
             Return MyBase.Channel.DeleteLibraryGroupUser(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Deletes the library group user.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="GroupName">Name of the group.</param>
+        ''' <param name="LibraryName">Name of the library.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
         Public Sub DeleteLibraryGroupUser(ByRef SecureID As Integer, ByVal GroupName As String, ByVal LibraryName As String, ByRef RC As Boolean)
             Dim inValue As SVCSearch.DeleteLibraryGroupUserRequest = New SVCSearch.DeleteLibraryGroupUserRequest()
             inValue.SecureID = SecureID
             inValue.GroupName = GroupName
             inValue.LibraryName = LibraryName
             inValue.RC = RC
-            Dim retVal As SVCSearch.DeleteLibraryGroupUserResponse = CType(Me,SVCSearch.IService1).DeleteLibraryGroupUser(inValue)
+            Dim retVal As SVCSearch.DeleteLibraryGroupUserResponse = CType(Me, SVCSearch.IService1).DeleteLibraryGroupUser(inValue)
             SecureID = retVal.SecureID
             RC = retVal.RC
         End Sub
-        
+
+        ''' <summary>
+        ''' Deletes the library group user asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.DeleteLibraryGroupUserResponse).</returns>
         Public Function DeleteLibraryGroupUserAsync(ByVal request As SVCSearch.DeleteLibraryGroupUserRequest) As System.Threading.Tasks.Task(Of SVCSearch.DeleteLibraryGroupUserResponse) Implements SVCSearch.IService1.DeleteLibraryGroupUserAsync
             Return MyBase.Channel.DeleteLibraryGroupUserAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 change user password.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.ChangeUserPasswordResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_ChangeUserPassword(ByVal request As SVCSearch.ChangeUserPasswordRequest) As SVCSearch.ChangeUserPasswordResponse Implements SVCSearch.IService1.ChangeUserPassword
             Return MyBase.Channel.ChangeUserPassword(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Changes the user password.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserLogin">The user login.</param>
+        ''' <param name="OldPW">The old pw.</param>
+        ''' <param name="NewPw1">Creates new pw1.</param>
+        ''' <param name="NewPw2">Creates new pw2.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function ChangeUserPassword(ByRef SecureID As Integer, ByVal UserLogin As String, ByVal OldPW As String, ByVal NewPw1 As String, ByVal NewPw2 As String) As Boolean
             Dim inValue As SVCSearch.ChangeUserPasswordRequest = New SVCSearch.ChangeUserPasswordRequest()
             inValue.SecureID = SecureID
@@ -14554,56 +17747,107 @@ Namespace SVCSearch
             inValue.OldPW = OldPW
             inValue.NewPw1 = NewPw1
             inValue.NewPw2 = NewPw2
-            Dim retVal As SVCSearch.ChangeUserPasswordResponse = CType(Me,SVCSearch.IService1).ChangeUserPassword(inValue)
+            Dim retVal As SVCSearch.ChangeUserPasswordResponse = CType(Me, SVCSearch.IService1).ChangeUserPassword(inValue)
             SecureID = retVal.SecureID
             Return retVal.ChangeUserPasswordResult
         End Function
-        
+
+        ''' <summary>
+        ''' Changes the user password asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.ChangeUserPasswordResponse).</returns>
         Public Function ChangeUserPasswordAsync(ByVal request As SVCSearch.ChangeUserPasswordRequest) As System.Threading.Tasks.Task(Of SVCSearch.ChangeUserPasswordResponse) Implements SVCSearch.IService1.ChangeUserPasswordAsync
             Return MyBase.Channel.ChangeUserPasswordAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 save click stats.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.SaveClickStatsResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_SaveClickStats(ByVal request As SVCSearch.SaveClickStatsRequest) As SVCSearch.SaveClickStatsResponse Implements SVCSearch.IService1.SaveClickStats
             Return MyBase.Channel.SaveClickStats(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Saves the click stats.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="IID">The iid.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
         Public Sub SaveClickStats(ByVal SecureID As Integer, ByVal IID As Integer, ByVal UserID As String, ByRef RC As Boolean)
             Dim inValue As SVCSearch.SaveClickStatsRequest = New SVCSearch.SaveClickStatsRequest()
             inValue.SecureID = SecureID
             inValue.IID = IID
             inValue.UserID = UserID
             inValue.RC = RC
-            Dim retVal As SVCSearch.SaveClickStatsResponse = CType(Me,SVCSearch.IService1).SaveClickStats(inValue)
+            Dim retVal As SVCSearch.SaveClickStatsResponse = CType(Me, SVCSearch.IService1).SaveClickStats(inValue)
             RC = retVal.RC
         End Sub
-        
+
+        ''' <summary>
+        ''' Saves the click stats asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.SaveClickStatsResponse).</returns>
         Public Function SaveClickStatsAsync(ByVal request As SVCSearch.SaveClickStatsRequest) As System.Threading.Tasks.Task(Of SVCSearch.SaveClickStatsResponse) Implements SVCSearch.IService1.SaveClickStatsAsync
             Return MyBase.Channel.SaveClickStatsAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 clean up library items.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.cleanUpLibraryItemsResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_cleanUpLibraryItems(ByVal request As SVCSearch.cleanUpLibraryItemsRequest) As SVCSearch.cleanUpLibraryItemsResponse Implements SVCSearch.IService1.cleanUpLibraryItems
             Return MyBase.Channel.cleanUpLibraryItems(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Cleans up library items.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
         Public Sub cleanUpLibraryItems(ByRef SecureID As Integer, ByVal UserID As String)
             Dim inValue As SVCSearch.cleanUpLibraryItemsRequest = New SVCSearch.cleanUpLibraryItemsRequest()
             inValue.SecureID = SecureID
             inValue.UserID = UserID
-            Dim retVal As SVCSearch.cleanUpLibraryItemsResponse = CType(Me,SVCSearch.IService1).cleanUpLibraryItems(inValue)
+            Dim retVal As SVCSearch.cleanUpLibraryItemsResponse = CType(Me, SVCSearch.IService1).cleanUpLibraryItems(inValue)
             SecureID = retVal.SecureID
         End Sub
-        
+
+        ''' <summary>
+        ''' Cleans up library items asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.cleanUpLibraryItemsResponse).</returns>
         Public Function cleanUpLibraryItemsAsync(ByVal request As SVCSearch.cleanUpLibraryItemsRequest) As System.Threading.Tasks.Task(Of SVCSearch.cleanUpLibraryItemsResponse) Implements SVCSearch.IService1.cleanUpLibraryItemsAsync
             Return MyBase.Channel.cleanUpLibraryItemsAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 remove library directories.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.RemoveLibraryDirectoriesResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_RemoveLibraryDirectories(ByVal request As SVCSearch.RemoveLibraryDirectoriesRequest) As SVCSearch.RemoveLibraryDirectoriesResponse Implements SVCSearch.IService1.RemoveLibraryDirectories
             Return MyBase.Channel.RemoveLibraryDirectories(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Removes the library directories.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="DirectoryName">Name of the directory.</param>
+        ''' <param name="LibraryName">Name of the library.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
         Public Sub RemoveLibraryDirectories(ByRef SecureID As Integer, ByVal UserID As String, ByVal DirectoryName As String, ByVal LibraryName As String, ByRef RC As Boolean, ByRef RetMsg As String)
             Dim inValue As SVCSearch.RemoveLibraryDirectoriesRequest = New SVCSearch.RemoveLibraryDirectoriesRequest()
             inValue.SecureID = SecureID
@@ -14612,21 +17856,40 @@ Namespace SVCSearch
             inValue.LibraryName = LibraryName
             inValue.RC = RC
             inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.RemoveLibraryDirectoriesResponse = CType(Me,SVCSearch.IService1).RemoveLibraryDirectories(inValue)
+            Dim retVal As SVCSearch.RemoveLibraryDirectoriesResponse = CType(Me, SVCSearch.IService1).RemoveLibraryDirectories(inValue)
             SecureID = retVal.SecureID
             RC = retVal.RC
             RetMsg = retVal.RetMsg
         End Sub
-        
+
+        ''' <summary>
+        ''' Removes the library directories asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.RemoveLibraryDirectoriesResponse).</returns>
         Public Function RemoveLibraryDirectoriesAsync(ByVal request As SVCSearch.RemoveLibraryDirectoriesRequest) As System.Threading.Tasks.Task(Of SVCSearch.RemoveLibraryDirectoriesResponse) Implements SVCSearch.IService1.RemoveLibraryDirectoriesAsync
             Return MyBase.Channel.RemoveLibraryDirectoriesAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 remove library emails.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.RemoveLibraryEmailsResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_RemoveLibraryEmails(ByVal request As SVCSearch.RemoveLibraryEmailsRequest) As SVCSearch.RemoveLibraryEmailsResponse Implements SVCSearch.IService1.RemoveLibraryEmails
             Return MyBase.Channel.RemoveLibraryEmails(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Removes the library emails.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="FolderName">Name of the folder.</param>
+        ''' <param name="LibraryName">Name of the library.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
         Public Sub RemoveLibraryEmails(ByRef SecureID As Integer, ByVal FolderName As String, ByVal LibraryName As String, ByVal UserID As String, ByRef RC As Boolean, ByRef RetMsg As String)
             Dim inValue As SVCSearch.RemoveLibraryEmailsRequest = New SVCSearch.RemoveLibraryEmailsRequest()
             inValue.SecureID = SecureID
@@ -14635,40 +17898,77 @@ Namespace SVCSearch
             inValue.UserID = UserID
             inValue.RC = RC
             inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.RemoveLibraryEmailsResponse = CType(Me,SVCSearch.IService1).RemoveLibraryEmails(inValue)
+            Dim retVal As SVCSearch.RemoveLibraryEmailsResponse = CType(Me, SVCSearch.IService1).RemoveLibraryEmails(inValue)
             SecureID = retVal.SecureID
             RC = retVal.RC
             RetMsg = retVal.RetMsg
         End Sub
-        
+
+        ''' <summary>
+        ''' Removes the library emails asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.RemoveLibraryEmailsResponse).</returns>
         Public Function RemoveLibraryEmailsAsync(ByVal request As SVCSearch.RemoveLibraryEmailsRequest) As System.Threading.Tasks.Task(Of SVCSearch.RemoveLibraryEmailsResponse) Implements SVCSearch.IService1.RemoveLibraryEmailsAsync
             Return MyBase.Channel.RemoveLibraryEmailsAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 add system MSG.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.AddSysMsgResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_AddSysMsg(ByVal request As SVCSearch.AddSysMsgRequest) As SVCSearch.AddSysMsgResponse Implements SVCSearch.IService1.AddSysMsg
             Return MyBase.Channel.AddSysMsg(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Adds the system MSG.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="tMsg">The t MSG.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
         Public Sub AddSysMsg(ByRef SecureID As Integer, ByVal UserID As String, ByVal tMsg As String, ByVal RC As Boolean)
             Dim inValue As SVCSearch.AddSysMsgRequest = New SVCSearch.AddSysMsgRequest()
             inValue.SecureID = SecureID
             inValue.UserID = UserID
             inValue.tMsg = tMsg
             inValue.RC = RC
-            Dim retVal As SVCSearch.AddSysMsgResponse = CType(Me,SVCSearch.IService1).AddSysMsg(inValue)
+            Dim retVal As SVCSearch.AddSysMsgResponse = CType(Me, SVCSearch.IService1).AddSysMsg(inValue)
             SecureID = retVal.SecureID
         End Sub
-        
+
+        ''' <summary>
+        ''' Adds the system MSG asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.AddSysMsgResponse).</returns>
         Public Function AddSysMsgAsync(ByVal request As SVCSearch.AddSysMsgRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddSysMsgResponse) Implements SVCSearch.IService1.AddSysMsgAsync
             Return MyBase.Channel.AddSysMsgAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 add library directory.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.AddLibraryDirectoryResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_AddLibraryDirectory(ByVal request As SVCSearch.AddLibraryDirectoryRequest) As SVCSearch.AddLibraryDirectoryResponse Implements SVCSearch.IService1.AddLibraryDirectory
             Return MyBase.Channel.AddLibraryDirectory(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Adds the library directory.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="FolderName">Name of the folder.</param>
+        ''' <param name="LibraryName">Name of the library.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="RecordsAdded">The records added.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
         Public Sub AddLibraryDirectory(ByRef SecureID As Integer, ByVal FolderName As String, ByVal LibraryName As String, ByVal UserID As String, ByRef RecordsAdded As Integer, ByRef RC As Boolean, ByRef RetMsg As String)
             Dim inValue As SVCSearch.AddLibraryDirectoryRequest = New SVCSearch.AddLibraryDirectoryRequest()
             inValue.SecureID = SecureID
@@ -14678,22 +17978,42 @@ Namespace SVCSearch
             inValue.RecordsAdded = RecordsAdded
             inValue.RC = RC
             inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.AddLibraryDirectoryResponse = CType(Me,SVCSearch.IService1).AddLibraryDirectory(inValue)
+            Dim retVal As SVCSearch.AddLibraryDirectoryResponse = CType(Me, SVCSearch.IService1).AddLibraryDirectory(inValue)
             SecureID = retVal.SecureID
             RecordsAdded = retVal.RecordsAdded
             RC = retVal.RC
             RetMsg = retVal.RetMsg
         End Sub
-        
+
+        ''' <summary>
+        ''' Adds the library directory asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.AddLibraryDirectoryResponse).</returns>
         Public Function AddLibraryDirectoryAsync(ByVal request As SVCSearch.AddLibraryDirectoryRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddLibraryDirectoryResponse) Implements SVCSearch.IService1.AddLibraryDirectoryAsync
             Return MyBase.Channel.AddLibraryDirectoryAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 add library email.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.AddLibraryEmailResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_AddLibraryEmail(ByVal request As SVCSearch.AddLibraryEmailRequest) As SVCSearch.AddLibraryEmailResponse Implements SVCSearch.IService1.AddLibraryEmail
             Return MyBase.Channel.AddLibraryEmail(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Adds the library email.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="EmailFolder">The email folder.</param>
+        ''' <param name="LibraryName">Name of the library.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="RecordsAdded">The records added.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
         Public Sub AddLibraryEmail(ByRef SecureID As Integer, ByVal EmailFolder As String, ByVal LibraryName As String, ByVal UserID As String, ByRef RecordsAdded As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
             Dim inValue As SVCSearch.AddLibraryEmailRequest = New SVCSearch.AddLibraryEmailRequest()
             inValue.SecureID = SecureID
@@ -14703,38 +18023,73 @@ Namespace SVCSearch
             inValue.RecordsAdded = RecordsAdded
             inValue.RC = RC
             inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.AddLibraryEmailResponse = CType(Me,SVCSearch.IService1).AddLibraryEmail(inValue)
+            Dim retVal As SVCSearch.AddLibraryEmailResponse = CType(Me, SVCSearch.IService1).AddLibraryEmail(inValue)
             SecureID = retVal.SecureID
             RecordsAdded = retVal.RecordsAdded
         End Sub
-        
+
+        ''' <summary>
+        ''' Adds the library email asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.AddLibraryEmailResponse).</returns>
         Public Function AddLibraryEmailAsync(ByVal request As SVCSearch.AddLibraryEmailRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddLibraryEmailResponse) Implements SVCSearch.IService1.AddLibraryEmailAsync
             Return MyBase.Channel.AddLibraryEmailAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 populate library grid.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.PopulateLibraryGridResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_PopulateLibraryGrid(ByVal request As SVCSearch.PopulateLibraryGridRequest) As SVCSearch.PopulateLibraryGridResponse Implements SVCSearch.IService1.PopulateLibraryGrid
             Return MyBase.Channel.PopulateLibraryGrid(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the library grid.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <returns>System.String.</returns>
         Public Function PopulateLibraryGrid(ByRef SecureID As Integer, ByVal UserID As String) As String
             Dim inValue As SVCSearch.PopulateLibraryGridRequest = New SVCSearch.PopulateLibraryGridRequest()
             inValue.SecureID = SecureID
             inValue.UserID = UserID
-            Dim retVal As SVCSearch.PopulateLibraryGridResponse = CType(Me,SVCSearch.IService1).PopulateLibraryGrid(inValue)
+            Dim retVal As SVCSearch.PopulateLibraryGridResponse = CType(Me, SVCSearch.IService1).PopulateLibraryGrid(inValue)
             SecureID = retVal.SecureID
             Return retVal.PopulateLibraryGridResult
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the library grid asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.PopulateLibraryGridResponse).</returns>
         Public Function PopulateLibraryGridAsync(ByVal request As SVCSearch.PopulateLibraryGridRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateLibraryGridResponse) Implements SVCSearch.IService1.PopulateLibraryGridAsync
             Return MyBase.Channel.PopulateLibraryGridAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get list of strings.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getListOfStringsResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getListOfStrings(ByVal request As SVCSearch.getListOfStringsRequest) As SVCSearch.getListOfStringsResponse Implements SVCSearch.IService1.getListOfStrings
             Return MyBase.Channel.getListOfStrings(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the list of strings.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="strListOfItems">The string list of items.</param>
+        ''' <param name="MySql">My SQL.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function getListOfStrings(ByRef SecureID As Integer, ByRef strListOfItems As String, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String) As Boolean
             Dim inValue As SVCSearch.getListOfStringsRequest = New SVCSearch.getListOfStringsRequest()
             inValue.SecureID = SecureID
@@ -14742,23 +18097,44 @@ Namespace SVCSearch
             inValue.MySql = MySql
             inValue.RC = RC
             inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.getListOfStringsResponse = CType(Me,SVCSearch.IService1).getListOfStrings(inValue)
+            Dim retVal As SVCSearch.getListOfStringsResponse = CType(Me, SVCSearch.IService1).getListOfStrings(inValue)
             SecureID = retVal.SecureID
             strListOfItems = retVal.strListOfItems
             RC = retVal.RC
             RetMsg = retVal.RetMsg
             Return retVal.getListOfStringsResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the list of strings asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getListOfStringsResponse).</returns>
         Public Function getListOfStringsAsync(ByVal request As SVCSearch.getListOfStringsRequest) As System.Threading.Tasks.Task(Of SVCSearch.getListOfStringsResponse) Implements SVCSearch.IService1.getListOfStringsAsync
             Return MyBase.Channel.getListOfStringsAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get list of strings1.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getListOfStrings1Response.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getListOfStrings1(ByVal request As SVCSearch.getListOfStrings1Request) As SVCSearch.getListOfStrings1Response Implements SVCSearch.IService1.getListOfStrings1
             Return MyBase.Channel.getListOfStrings1(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the list of strings1.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="strListOfItems">The string list of items.</param>
+        ''' <param name="MySql">My SQL.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <param name="UserId">The user identifier.</param>
+        ''' <param name="SessionID">The session identifier.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function getListOfStrings1(ByRef SecureID As Integer, ByRef strListOfItems As String, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String, ByVal UserId As String, ByVal SessionID As String) As Boolean
             Dim inValue As SVCSearch.getListOfStrings1Request = New SVCSearch.getListOfStrings1Request()
             inValue.SecureID = SecureID
@@ -14768,23 +18144,44 @@ Namespace SVCSearch
             inValue.RetMsg = RetMsg
             inValue.UserId = UserId
             inValue.SessionID = SessionID
-            Dim retVal As SVCSearch.getListOfStrings1Response = CType(Me,SVCSearch.IService1).getListOfStrings1(inValue)
+            Dim retVal As SVCSearch.getListOfStrings1Response = CType(Me, SVCSearch.IService1).getListOfStrings1(inValue)
             SecureID = retVal.SecureID
             strListOfItems = retVal.strListOfItems
             RC = retVal.RC
             RetMsg = retVal.RetMsg
             Return retVal.getListOfStrings1Result
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the list of strings1 asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings1Response).</returns>
         Public Function getListOfStrings1Async(ByVal request As SVCSearch.getListOfStrings1Request) As System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings1Response) Implements SVCSearch.IService1.getListOfStrings1Async
             Return MyBase.Channel.getListOfStrings1Async(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get list of strings2.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getListOfStrings2Response.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getListOfStrings2(ByVal request As SVCSearch.getListOfStrings2Request) As SVCSearch.getListOfStrings2Response Implements SVCSearch.IService1.getListOfStrings2
             Return MyBase.Channel.getListOfStrings2(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the list of strings2.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="strListOfItems">The string list of items.</param>
+        ''' <param name="MySql">My SQL.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <param name="UserId">The user identifier.</param>
+        ''' <param name="SessionID">The session identifier.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function getListOfStrings2(ByRef SecureID As Integer, ByRef strListOfItems As String, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String, ByVal UserId As String, ByVal SessionID As String) As Boolean
             Dim inValue As SVCSearch.getListOfStrings2Request = New SVCSearch.getListOfStrings2Request()
             inValue.SecureID = SecureID
@@ -14794,23 +18191,44 @@ Namespace SVCSearch
             inValue.RetMsg = RetMsg
             inValue.UserId = UserId
             inValue.SessionID = SessionID
-            Dim retVal As SVCSearch.getListOfStrings2Response = CType(Me,SVCSearch.IService1).getListOfStrings2(inValue)
+            Dim retVal As SVCSearch.getListOfStrings2Response = CType(Me, SVCSearch.IService1).getListOfStrings2(inValue)
             SecureID = retVal.SecureID
             strListOfItems = retVal.strListOfItems
             RC = retVal.RC
             RetMsg = retVal.RetMsg
             Return retVal.getListOfStrings2Result
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the list of strings2 asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings2Response).</returns>
         Public Function getListOfStrings2Async(ByVal request As SVCSearch.getListOfStrings2Request) As System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings2Response) Implements SVCSearch.IService1.getListOfStrings2Async
             Return MyBase.Channel.getListOfStrings2Async(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get list of strings3.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getListOfStrings3Response.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getListOfStrings3(ByVal request As SVCSearch.getListOfStrings3Request) As SVCSearch.getListOfStrings3Response Implements SVCSearch.IService1.getListOfStrings3
             Return MyBase.Channel.getListOfStrings3(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the list of strings3.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="strListOfItems">The string list of items.</param>
+        ''' <param name="MySql">My SQL.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <param name="UserId">The user identifier.</param>
+        ''' <param name="SessionID">The session identifier.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function getListOfStrings3(ByRef SecureID As Integer, ByRef strListOfItems As String, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String, ByVal UserId As String, ByVal SessionID As String) As Boolean
             Dim inValue As SVCSearch.getListOfStrings3Request = New SVCSearch.getListOfStrings3Request()
             inValue.SecureID = SecureID
@@ -14820,23 +18238,44 @@ Namespace SVCSearch
             inValue.RetMsg = RetMsg
             inValue.UserId = UserId
             inValue.SessionID = SessionID
-            Dim retVal As SVCSearch.getListOfStrings3Response = CType(Me,SVCSearch.IService1).getListOfStrings3(inValue)
+            Dim retVal As SVCSearch.getListOfStrings3Response = CType(Me, SVCSearch.IService1).getListOfStrings3(inValue)
             SecureID = retVal.SecureID
             strListOfItems = retVal.strListOfItems
             RC = retVal.RC
             RetMsg = retVal.RetMsg
             Return retVal.getListOfStrings3Result
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the list of strings3 asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings3Response).</returns>
         Public Function getListOfStrings3Async(ByVal request As SVCSearch.getListOfStrings3Request) As System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings3Response) Implements SVCSearch.IService1.getListOfStrings3Async
             Return MyBase.Channel.getListOfStrings3Async(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get list of strings4.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getListOfStrings4Response.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getListOfStrings4(ByVal request As SVCSearch.getListOfStrings4Request) As SVCSearch.getListOfStrings4Response Implements SVCSearch.IService1.getListOfStrings4
             Return MyBase.Channel.getListOfStrings4(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the list of strings4.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="strListOfItems">The string list of items.</param>
+        ''' <param name="MySql">My SQL.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <param name="UserId">The user identifier.</param>
+        ''' <param name="SessionID">The session identifier.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function getListOfStrings4(ByRef SecureID As Integer, ByVal strListOfItems As String, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String, ByVal UserId As String, ByVal SessionID As String) As Boolean
             Dim inValue As SVCSearch.getListOfStrings4Request = New SVCSearch.getListOfStrings4Request()
             inValue.SecureID = SecureID
@@ -14846,117 +18285,217 @@ Namespace SVCSearch
             inValue.RetMsg = RetMsg
             inValue.UserId = UserId
             inValue.SessionID = SessionID
-            Dim retVal As SVCSearch.getListOfStrings4Response = CType(Me,SVCSearch.IService1).getListOfStrings4(inValue)
+            Dim retVal As SVCSearch.getListOfStrings4Response = CType(Me, SVCSearch.IService1).getListOfStrings4(inValue)
             SecureID = retVal.SecureID
             RC = retVal.RC
             RetMsg = retVal.RetMsg
             Return retVal.getListOfStrings4Result
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the list of strings4 asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings4Response).</returns>
         Public Function getListOfStrings4Async(ByVal request As SVCSearch.getListOfStrings4Request) As System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings4Response) Implements SVCSearch.IService1.getListOfStrings4Async
             Return MyBase.Channel.getListOfStrings4Async(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 i count.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.iCountResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_iCount(ByVal request As SVCSearch.iCountRequest) As SVCSearch.iCountResponse Implements SVCSearch.IService1.iCount
             Return MyBase.Channel.iCount(request)
         End Function
-        
+
+        ''' <summary>
+        ''' is the count.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="S">The s.</param>
+        ''' <returns>System.Int32.</returns>
         Public Function iCount(ByRef SecureID As Integer, ByVal S As String) As Integer
             Dim inValue As SVCSearch.iCountRequest = New SVCSearch.iCountRequest()
             inValue.SecureID = SecureID
             inValue.S = S
-            Dim retVal As SVCSearch.iCountResponse = CType(Me,SVCSearch.IService1).iCount(inValue)
+            Dim retVal As SVCSearch.iCountResponse = CType(Me, SVCSearch.IService1).iCount(inValue)
             SecureID = retVal.SecureID
             Return retVal.iCountResult
         End Function
-        
+
+        ''' <summary>
+        ''' is the count asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.iCountResponse).</returns>
         Public Function iCountAsync(ByVal request As SVCSearch.iCountRequest) As System.Threading.Tasks.Task(Of SVCSearch.iCountResponse) Implements SVCSearch.IService1.iCountAsync
             Return MyBase.Channel.iCountAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get log path.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.GetLogPathResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_GetLogPath(ByVal request As SVCSearch.GetLogPathRequest) As SVCSearch.GetLogPathResponse Implements SVCSearch.IService1.GetLogPath
             Return MyBase.Channel.GetLogPath(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the log path.
+        ''' </summary>
+        ''' <param name="tPath">The t path.</param>
         Public Sub GetLogPath(ByRef tPath As String)
             Dim inValue As SVCSearch.GetLogPathRequest = New SVCSearch.GetLogPathRequest()
             inValue.tPath = tPath
-            Dim retVal As SVCSearch.GetLogPathResponse = CType(Me,SVCSearch.IService1).GetLogPath(inValue)
+            Dim retVal As SVCSearch.GetLogPathResponse = CType(Me, SVCSearch.IService1).GetLogPath(inValue)
             tPath = retVal.tPath
         End Sub
-        
+
+        ''' <summary>
+        ''' Gets the log path asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.GetLogPathResponse).</returns>
         Public Function GetLogPathAsync(ByVal request As SVCSearch.GetLogPathRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetLogPathResponse) Implements SVCSearch.IService1.GetLogPathAsync
             Return MyBase.Channel.GetLogPathAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 active session get value.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.ActiveSessionGetValResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_ActiveSessionGetVal(ByVal request As SVCSearch.ActiveSessionGetValRequest) As SVCSearch.ActiveSessionGetValResponse Implements SVCSearch.IService1.ActiveSessionGetVal
             Return MyBase.Channel.ActiveSessionGetVal(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Actives the session get value.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SessionGuid">The session unique identifier.</param>
+        ''' <param name="ParmName">Name of the parm.</param>
+        ''' <returns>System.String.</returns>
         Public Function ActiveSessionGetVal(ByRef SecureID As Integer, ByRef SessionGuid As System.Guid, ByRef ParmName As String) As String
             Dim inValue As SVCSearch.ActiveSessionGetValRequest = New SVCSearch.ActiveSessionGetValRequest()
             inValue.SecureID = SecureID
             inValue.SessionGuid = SessionGuid
             inValue.ParmName = ParmName
-            Dim retVal As SVCSearch.ActiveSessionGetValResponse = CType(Me,SVCSearch.IService1).ActiveSessionGetVal(inValue)
+            Dim retVal As SVCSearch.ActiveSessionGetValResponse = CType(Me, SVCSearch.IService1).ActiveSessionGetVal(inValue)
             SecureID = retVal.SecureID
             SessionGuid = retVal.SessionGuid
             ParmName = retVal.ParmName
             Return retVal.ActiveSessionGetValResult
         End Function
-        
+
+        ''' <summary>
+        ''' Actives the session get value asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.ActiveSessionGetValResponse).</returns>
         Public Function ActiveSessionGetValAsync(ByVal request As SVCSearch.ActiveSessionGetValRequest) As System.Threading.Tasks.Task(Of SVCSearch.ActiveSessionGetValResponse) Implements SVCSearch.IService1.ActiveSessionGetValAsync
             Return MyBase.Channel.ActiveSessionGetValAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 active session.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.ActiveSessionResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_ActiveSession(ByVal request As SVCSearch.ActiveSessionRequest) As SVCSearch.ActiveSessionResponse Implements SVCSearch.IService1.ActiveSession
             Return MyBase.Channel.ActiveSession(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Actives the session.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SessionGuid">The session unique identifier.</param>
+        ''' <param name="ParmName">Name of the parm.</param>
+        ''' <param name="ParmValue">The parm value.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function ActiveSession(ByRef SecureID As Integer, ByVal SessionGuid As System.Guid, ByVal ParmName As String, ByVal ParmValue As String) As Boolean
             Dim inValue As SVCSearch.ActiveSessionRequest = New SVCSearch.ActiveSessionRequest()
             inValue.SecureID = SecureID
             inValue.SessionGuid = SessionGuid
             inValue.ParmName = ParmName
             inValue.ParmValue = ParmValue
-            Dim retVal As SVCSearch.ActiveSessionResponse = CType(Me,SVCSearch.IService1).ActiveSession(inValue)
+            Dim retVal As SVCSearch.ActiveSessionResponse = CType(Me, SVCSearch.IService1).ActiveSession(inValue)
             SecureID = retVal.SecureID
             Return retVal.ActiveSessionResult
         End Function
-        
+
+        ''' <summary>
+        ''' Actives the session asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.ActiveSessionResponse).</returns>
         Public Function ActiveSessionAsync(ByVal request As SVCSearch.ActiveSessionRequest) As System.Threading.Tasks.Task(Of SVCSearch.ActiveSessionResponse) Implements SVCSearch.IService1.ActiveSessionAsync
             Return MyBase.Channel.ActiveSessionAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 set secure login parms.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.setSecureLoginParmsResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_setSecureLoginParms(ByVal request As SVCSearch.setSecureLoginParmsRequest) As SVCSearch.setSecureLoginParmsResponse Implements SVCSearch.IService1.setSecureLoginParms
             Return MyBase.Channel.setSecureLoginParms(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Sets the secure login parms.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="sCompanyID">The s company identifier.</param>
+        ''' <param name="sRepoID">The s repo identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
         Public Sub setSecureLoginParms(ByRef SecureID As Integer, ByVal sCompanyID As String, ByVal sRepoID As String, ByRef RC As Boolean)
             Dim inValue As SVCSearch.setSecureLoginParmsRequest = New SVCSearch.setSecureLoginParmsRequest()
             inValue.SecureID = SecureID
             inValue.sCompanyID = sCompanyID
             inValue.sRepoID = sRepoID
             inValue.RC = RC
-            Dim retVal As SVCSearch.setSecureLoginParmsResponse = CType(Me,SVCSearch.IService1).setSecureLoginParms(inValue)
+            Dim retVal As SVCSearch.setSecureLoginParmsResponse = CType(Me, SVCSearch.IService1).setSecureLoginParms(inValue)
             SecureID = retVal.SecureID
             RC = retVal.RC
         End Sub
-        
+
+        ''' <summary>
+        ''' Sets the secure login parms asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.setSecureLoginParmsResponse).</returns>
         Public Function setSecureLoginParmsAsync(ByVal request As SVCSearch.setSecureLoginParmsRequest) As System.Threading.Tasks.Task(Of SVCSearch.setSecureLoginParmsResponse) Implements SVCSearch.IService1.setSecureLoginParmsAsync
             Return MyBase.Channel.setSecureLoginParmsAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 populate secure login cb v2.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.PopulateSecureLoginCB_V2Response.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_PopulateSecureLoginCB_V2(ByVal request As SVCSearch.PopulateSecureLoginCB_V2Request) As SVCSearch.PopulateSecureLoginCB_V2Response Implements SVCSearch.IService1.PopulateSecureLoginCB_V2
             Return MyBase.Channel.PopulateSecureLoginCB_V2(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the secure login cb v2.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="AllRepos">All repos.</param>
+        ''' <param name="CompanyID">The company identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
         Public Sub PopulateSecureLoginCB_V2(ByRef SecureID As Integer, ByRef AllRepos As String, ByVal CompanyID As String, ByRef RC As Boolean, ByRef RetMsg As String)
             Dim inValue As SVCSearch.PopulateSecureLoginCB_V2Request = New SVCSearch.PopulateSecureLoginCB_V2Request()
             inValue.SecureID = SecureID
@@ -14964,22 +18503,40 @@ Namespace SVCSearch
             inValue.CompanyID = CompanyID
             inValue.RC = RC
             inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.PopulateSecureLoginCB_V2Response = CType(Me,SVCSearch.IService1).PopulateSecureLoginCB_V2(inValue)
+            Dim retVal As SVCSearch.PopulateSecureLoginCB_V2Response = CType(Me, SVCSearch.IService1).PopulateSecureLoginCB_V2(inValue)
             SecureID = retVal.SecureID
             AllRepos = retVal.AllRepos
             RC = retVal.RC
             RetMsg = retVal.RetMsg
         End Sub
-        
+
+        ''' <summary>
+        ''' Populates the secure login cb v2 asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.PopulateSecureLoginCB_V2Response).</returns>
         Public Function PopulateSecureLoginCB_V2Async(ByVal request As SVCSearch.PopulateSecureLoginCB_V2Request) As System.Threading.Tasks.Task(Of SVCSearch.PopulateSecureLoginCB_V2Response) Implements SVCSearch.IService1.PopulateSecureLoginCB_V2Async
             Return MyBase.Channel.PopulateSecureLoginCB_V2Async(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 populate secure login cb.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.PopulateSecureLoginCBResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_PopulateSecureLoginCB(ByVal request As SVCSearch.PopulateSecureLoginCBRequest) As SVCSearch.PopulateSecureLoginCBResponse Implements SVCSearch.IService1.PopulateSecureLoginCB
             Return MyBase.Channel.PopulateSecureLoginCB(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the secure login cb.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="CB">The cb.</param>
+        ''' <param name="CompanyID">The company identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
         Public Sub PopulateSecureLoginCB(ByRef SecureID As Integer, ByRef CB As String, ByVal CompanyID As String, ByRef RC As Boolean, ByRef RetMsg As String)
             Dim inValue As SVCSearch.PopulateSecureLoginCBRequest = New SVCSearch.PopulateSecureLoginCBRequest()
             inValue.SecureID = SecureID
@@ -14987,374 +18544,705 @@ Namespace SVCSearch
             inValue.CompanyID = CompanyID
             inValue.RC = RC
             inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.PopulateSecureLoginCBResponse = CType(Me,SVCSearch.IService1).PopulateSecureLoginCB(inValue)
+            Dim retVal As SVCSearch.PopulateSecureLoginCBResponse = CType(Me, SVCSearch.IService1).PopulateSecureLoginCB(inValue)
             SecureID = retVal.SecureID
             CB = retVal.CB
             RC = retVal.RC
             RetMsg = retVal.RetMsg
         End Sub
-        
+
+        ''' <summary>
+        ''' Populates the secure login cb asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.PopulateSecureLoginCBResponse).</returns>
         Public Function PopulateSecureLoginCBAsync(ByVal request As SVCSearch.PopulateSecureLoginCBRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateSecureLoginCBResponse) Implements SVCSearch.IService1.PopulateSecureLoginCBAsync
             Return MyBase.Channel.PopulateSecureLoginCBAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get login pw.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getLoginPWResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getLoginPW(ByVal request As SVCSearch.getLoginPWRequest) As SVCSearch.getLoginPWResponse Implements SVCSearch.IService1.getLoginPW
             Return MyBase.Channel.getLoginPW(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the login pw.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <returns>System.Object.</returns>
         Public Function getLoginPW(ByRef SecureID As Integer) As Object
             Dim inValue As SVCSearch.getLoginPWRequest = New SVCSearch.getLoginPWRequest()
             inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.getLoginPWResponse = CType(Me,SVCSearch.IService1).getLoginPW(inValue)
+            Dim retVal As SVCSearch.getLoginPWResponse = CType(Me, SVCSearch.IService1).getLoginPW(inValue)
             SecureID = retVal.SecureID
             Return retVal.getLoginPWResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the login pw asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getLoginPWResponse).</returns>
         Public Function getLoginPWAsync(ByVal request As SVCSearch.getLoginPWRequest) As System.Threading.Tasks.Task(Of SVCSearch.getLoginPWResponse) Implements SVCSearch.IService1.getLoginPWAsync
             Return MyBase.Channel.getLoginPWAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 set login pw.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.setLoginPWResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_setLoginPW(ByVal request As SVCSearch.setLoginPWRequest) As SVCSearch.setLoginPWResponse Implements SVCSearch.IService1.setLoginPW
             Return MyBase.Channel.setLoginPW(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Sets the login pw.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="RepoID">The repo identifier.</param>
         Public Sub setLoginPW(ByRef SecureID As Integer, ByVal RepoID As String)
             Dim inValue As SVCSearch.setLoginPWRequest = New SVCSearch.setLoginPWRequest()
             inValue.SecureID = SecureID
             inValue.RepoID = RepoID
-            Dim retVal As SVCSearch.setLoginPWResponse = CType(Me,SVCSearch.IService1).setLoginPW(inValue)
+            Dim retVal As SVCSearch.setLoginPWResponse = CType(Me, SVCSearch.IService1).setLoginPW(inValue)
             SecureID = retVal.SecureID
         End Sub
-        
+
+        ''' <summary>
+        ''' Sets the login pw asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.setLoginPWResponse).</returns>
         Public Function setLoginPWAsync(ByVal request As SVCSearch.setLoginPWRequest) As System.Threading.Tasks.Task(Of SVCSearch.setLoginPWResponse) Implements SVCSearch.IService1.setLoginPWAsync
             Return MyBase.Channel.setLoginPWAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get session enc cs.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getSessionEncCsResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getSessionEncCs(ByVal request As SVCSearch.getSessionEncCsRequest) As SVCSearch.getSessionEncCsResponse Implements SVCSearch.IService1.getSessionEncCs
             Return MyBase.Channel.getSessionEncCs(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the session enc cs.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <returns>System.Object.</returns>
         Public Function getSessionEncCs(ByRef SecureID As Integer) As Object
             Dim inValue As SVCSearch.getSessionEncCsRequest = New SVCSearch.getSessionEncCsRequest()
             inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.getSessionEncCsResponse = CType(Me,SVCSearch.IService1).getSessionEncCs(inValue)
+            Dim retVal As SVCSearch.getSessionEncCsResponse = CType(Me, SVCSearch.IService1).getSessionEncCs(inValue)
             SecureID = retVal.SecureID
             Return retVal.getSessionEncCsResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the session enc cs asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getSessionEncCsResponse).</returns>
         Public Function getSessionEncCsAsync(ByVal request As SVCSearch.getSessionEncCsRequest) As System.Threading.Tasks.Task(Of SVCSearch.getSessionEncCsResponse) Implements SVCSearch.IService1.getSessionEncCsAsync
             Return MyBase.Channel.getSessionEncCsAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 set session enc cs.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.setSessionEncCsResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_setSessionEncCs(ByVal request As SVCSearch.setSessionEncCsRequest) As SVCSearch.setSessionEncCsResponse Implements SVCSearch.IService1.setSessionEncCs
             Return MyBase.Channel.setSessionEncCs(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Sets the session enc cs.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="MySessionID">My session identifier.</param>
         Public Sub setSessionEncCs(ByRef SecureID As Integer, ByVal MySessionID As String)
             Dim inValue As SVCSearch.setSessionEncCsRequest = New SVCSearch.setSessionEncCsRequest()
             inValue.SecureID = SecureID
             inValue.MySessionID = MySessionID
-            Dim retVal As SVCSearch.setSessionEncCsResponse = CType(Me,SVCSearch.IService1).setSessionEncCs(inValue)
+            Dim retVal As SVCSearch.setSessionEncCsResponse = CType(Me, SVCSearch.IService1).setSessionEncCs(inValue)
             SecureID = retVal.SecureID
         End Sub
-        
+
+        ''' <summary>
+        ''' Sets the session enc cs asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.setSessionEncCsResponse).</returns>
         Public Function setSessionEncCsAsync(ByVal request As SVCSearch.setSessionEncCsRequest) As System.Threading.Tasks.Task(Of SVCSearch.setSessionEncCsResponse) Implements SVCSearch.IService1.setSessionEncCsAsync
             Return MyBase.Channel.setSessionEncCsAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 set session repo identifier.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.setSessionRepoIDResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_setSessionRepoID(ByVal request As SVCSearch.setSessionRepoIDRequest) As SVCSearch.setSessionRepoIDResponse Implements SVCSearch.IService1.setSessionRepoID
             Return MyBase.Channel.setSessionRepoID(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Sets the session repo identifier.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="RepoID">The repo identifier.</param>
         Public Sub setSessionRepoID(ByRef SecureID As Integer, ByVal RepoID As String)
             Dim inValue As SVCSearch.setSessionRepoIDRequest = New SVCSearch.setSessionRepoIDRequest()
             inValue.SecureID = SecureID
             inValue.RepoID = RepoID
-            Dim retVal As SVCSearch.setSessionRepoIDResponse = CType(Me,SVCSearch.IService1).setSessionRepoID(inValue)
+            Dim retVal As SVCSearch.setSessionRepoIDResponse = CType(Me, SVCSearch.IService1).setSessionRepoID(inValue)
             SecureID = retVal.SecureID
         End Sub
-        
+
+        ''' <summary>
+        ''' Sets the session repo identifier asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.setSessionRepoIDResponse).</returns>
         Public Function setSessionRepoIDAsync(ByVal request As SVCSearch.setSessionRepoIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.setSessionRepoIDResponse) Implements SVCSearch.IService1.setSessionRepoIDAsync
             Return MyBase.Channel.setSessionRepoIDAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get session repo identifier.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getSessionRepoIDResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getSessionRepoID(ByVal request As SVCSearch.getSessionRepoIDRequest) As SVCSearch.getSessionRepoIDResponse Implements SVCSearch.IService1.getSessionRepoID
             Return MyBase.Channel.getSessionRepoID(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the session repo identifier.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <returns>System.Object.</returns>
         Public Function getSessionRepoID(ByRef SecureID As Integer) As Object
             Dim inValue As SVCSearch.getSessionRepoIDRequest = New SVCSearch.getSessionRepoIDRequest()
             inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.getSessionRepoIDResponse = CType(Me,SVCSearch.IService1).getSessionRepoID(inValue)
+            Dim retVal As SVCSearch.getSessionRepoIDResponse = CType(Me, SVCSearch.IService1).getSessionRepoID(inValue)
             SecureID = retVal.SecureID
             Return retVal.getSessionRepoIDResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the session repo identifier asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getSessionRepoIDResponse).</returns>
         Public Function getSessionRepoIDAsync(ByVal request As SVCSearch.getSessionRepoIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.getSessionRepoIDResponse) Implements SVCSearch.IService1.getSessionRepoIDAsync
             Return MyBase.Channel.getSessionRepoIDAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 set session company identifier.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.setSessionCompanyIDResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_setSessionCompanyID(ByVal request As SVCSearch.setSessionCompanyIDRequest) As SVCSearch.setSessionCompanyIDResponse Implements SVCSearch.IService1.setSessionCompanyID
             Return MyBase.Channel.setSessionCompanyID(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Sets the session company identifier.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="CompanyID">The company identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
         Public Sub setSessionCompanyID(ByRef SecureID As Integer, ByVal CompanyID As String, ByRef RC As Boolean)
             Dim inValue As SVCSearch.setSessionCompanyIDRequest = New SVCSearch.setSessionCompanyIDRequest()
             inValue.SecureID = SecureID
             inValue.CompanyID = CompanyID
             inValue.RC = RC
-            Dim retVal As SVCSearch.setSessionCompanyIDResponse = CType(Me,SVCSearch.IService1).setSessionCompanyID(inValue)
+            Dim retVal As SVCSearch.setSessionCompanyIDResponse = CType(Me, SVCSearch.IService1).setSessionCompanyID(inValue)
             SecureID = retVal.SecureID
             RC = retVal.RC
         End Sub
-        
+
+        ''' <summary>
+        ''' Sets the session company identifier asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.setSessionCompanyIDResponse).</returns>
         Public Function setSessionCompanyIDAsync(ByVal request As SVCSearch.setSessionCompanyIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.setSessionCompanyIDResponse) Implements SVCSearch.IService1.setSessionCompanyIDAsync
             Return MyBase.Channel.setSessionCompanyIDAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get session company identifier.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getSessionCompanyIDResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getSessionCompanyID(ByVal request As SVCSearch.getSessionCompanyIDRequest) As SVCSearch.getSessionCompanyIDResponse Implements SVCSearch.IService1.getSessionCompanyID
             Return MyBase.Channel.getSessionCompanyID(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the session company identifier.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <returns>System.Object.</returns>
         Public Function getSessionCompanyID(ByRef SecureID As Integer) As Object
             Dim inValue As SVCSearch.getSessionCompanyIDRequest = New SVCSearch.getSessionCompanyIDRequest()
             inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.getSessionCompanyIDResponse = CType(Me,SVCSearch.IService1).getSessionCompanyID(inValue)
+            Dim retVal As SVCSearch.getSessionCompanyIDResponse = CType(Me, SVCSearch.IService1).getSessionCompanyID(inValue)
             SecureID = retVal.SecureID
             Return retVal.getSessionCompanyIDResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the session company identifier asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getSessionCompanyIDResponse).</returns>
         Public Function getSessionCompanyIDAsync(ByVal request As SVCSearch.getSessionCompanyIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.getSessionCompanyIDResponse) Implements SVCSearch.IService1.getSessionCompanyIDAsync
             Return MyBase.Channel.getSessionCompanyIDAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 set login unique identifier.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.setLoginGuidResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_setLoginGuid(ByVal request As SVCSearch.setLoginGuidRequest) As SVCSearch.setLoginGuidResponse Implements SVCSearch.IService1.setLoginGuid
             Return MyBase.Channel.setLoginGuid(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Sets the login unique identifier.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="MyLoginGuid">My login unique identifier.</param>
         Public Sub setLoginGuid(ByRef SecureID As Integer, ByVal MyLoginGuid As String)
             Dim inValue As SVCSearch.setLoginGuidRequest = New SVCSearch.setLoginGuidRequest()
             inValue.SecureID = SecureID
             inValue.MyLoginGuid = MyLoginGuid
-            Dim retVal As SVCSearch.setLoginGuidResponse = CType(Me,SVCSearch.IService1).setLoginGuid(inValue)
+            Dim retVal As SVCSearch.setLoginGuidResponse = CType(Me, SVCSearch.IService1).setLoginGuid(inValue)
             SecureID = retVal.SecureID
         End Sub
-        
+
+        ''' <summary>
+        ''' Sets the login unique identifier asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.setLoginGuidResponse).</returns>
         Public Function setLoginGuidAsync(ByVal request As SVCSearch.setLoginGuidRequest) As System.Threading.Tasks.Task(Of SVCSearch.setLoginGuidResponse) Implements SVCSearch.IService1.setLoginGuidAsync
             Return MyBase.Channel.setLoginGuidAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get login unique identifier.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getLoginGuidResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getLoginGuid(ByVal request As SVCSearch.getLoginGuidRequest) As SVCSearch.getLoginGuidResponse Implements SVCSearch.IService1.getLoginGuid
             Return MyBase.Channel.getLoginGuid(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the login unique identifier.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <returns>System.Object.</returns>
         Public Function getLoginGuid(ByRef SecureID As Integer) As Object
             Dim inValue As SVCSearch.getLoginGuidRequest = New SVCSearch.getLoginGuidRequest()
             inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.getLoginGuidResponse = CType(Me,SVCSearch.IService1).getLoginGuid(inValue)
+            Dim retVal As SVCSearch.getLoginGuidResponse = CType(Me, SVCSearch.IService1).getLoginGuid(inValue)
             SecureID = retVal.SecureID
             Return retVal.getLoginGuidResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the login unique identifier asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getLoginGuidResponse).</returns>
         Public Function getLoginGuidAsync(ByVal request As SVCSearch.getLoginGuidRequest) As System.Threading.Tasks.Task(Of SVCSearch.getLoginGuidResponse) Implements SVCSearch.IService1.getLoginGuidAsync
             Return MyBase.Channel.getLoginGuidAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get HTTP session identifier.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getHttpSessionIDResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getHttpSessionID(ByVal request As SVCSearch.getHttpSessionIDRequest) As SVCSearch.getHttpSessionIDResponse Implements SVCSearch.IService1.getHttpSessionID
             Return MyBase.Channel.getHttpSessionID(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the HTTP session identifier.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <returns>System.Object.</returns>
         Public Function getHttpSessionID(ByRef SecureID As Integer) As Object
             Dim inValue As SVCSearch.getHttpSessionIDRequest = New SVCSearch.getHttpSessionIDRequest()
             inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.getHttpSessionIDResponse = CType(Me,SVCSearch.IService1).getHttpSessionID(inValue)
+            Dim retVal As SVCSearch.getHttpSessionIDResponse = CType(Me, SVCSearch.IService1).getHttpSessionID(inValue)
             SecureID = retVal.SecureID
             Return retVal.getHttpSessionIDResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the HTTP session identifier asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getHttpSessionIDResponse).</returns>
         Public Function getHttpSessionIDAsync(ByVal request As SVCSearch.getHttpSessionIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.getHttpSessionIDResponse) Implements SVCSearch.IService1.getHttpSessionIDAsync
             Return MyBase.Channel.getHttpSessionIDAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 set session identifier.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.setSessionIDResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_setSessionID(ByVal request As SVCSearch.setSessionIDRequest) As SVCSearch.setSessionIDResponse Implements SVCSearch.IService1.setSessionID
             Return MyBase.Channel.setSessionID(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Sets the session identifier.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="MySessionID">My session identifier.</param>
         Public Sub setSessionID(ByRef SecureID As Integer, ByVal MySessionID As String)
             Dim inValue As SVCSearch.setSessionIDRequest = New SVCSearch.setSessionIDRequest()
             inValue.SecureID = SecureID
             inValue.MySessionID = MySessionID
-            Dim retVal As SVCSearch.setSessionIDResponse = CType(Me,SVCSearch.IService1).setSessionID(inValue)
+            Dim retVal As SVCSearch.setSessionIDResponse = CType(Me, SVCSearch.IService1).setSessionID(inValue)
             SecureID = retVal.SecureID
         End Sub
-        
+
+        ''' <summary>
+        ''' Sets the session identifier asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.setSessionIDResponse).</returns>
         Public Function setSessionIDAsync(ByVal request As SVCSearch.setSessionIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.setSessionIDResponse) Implements SVCSearch.IService1.setSessionIDAsync
             Return MyBase.Channel.setSessionIDAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 expand inflection terms.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.ExpandInflectionTermsResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_ExpandInflectionTerms(ByVal request As SVCSearch.ExpandInflectionTermsRequest) As SVCSearch.ExpandInflectionTermsResponse Implements SVCSearch.IService1.ExpandInflectionTerms
             Return MyBase.Channel.ExpandInflectionTerms(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Expands the inflection terms.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="S">The s.</param>
+        ''' <returns>System.String.</returns>
         Public Function ExpandInflectionTerms(ByRef SecureID As Integer, ByVal S As String) As String
             Dim inValue As SVCSearch.ExpandInflectionTermsRequest = New SVCSearch.ExpandInflectionTermsRequest()
             inValue.SecureID = SecureID
             inValue.S = S
-            Dim retVal As SVCSearch.ExpandInflectionTermsResponse = CType(Me,SVCSearch.IService1).ExpandInflectionTerms(inValue)
+            Dim retVal As SVCSearch.ExpandInflectionTermsResponse = CType(Me, SVCSearch.IService1).ExpandInflectionTerms(inValue)
             SecureID = retVal.SecureID
             Return retVal.ExpandInflectionTermsResult
         End Function
-        
+
+        ''' <summary>
+        ''' Expands the inflection terms asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.ExpandInflectionTermsResponse).</returns>
         Public Function ExpandInflectionTermsAsync(ByVal request As SVCSearch.ExpandInflectionTermsRequest) As System.Threading.Tasks.Task(Of SVCSearch.ExpandInflectionTermsResponse) Implements SVCSearch.IService1.ExpandInflectionTermsAsync
             Return MyBase.Channel.ExpandInflectionTermsAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the name of the search i service1 get server database.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getServerDatabaseNameResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getServerDatabaseName(ByVal request As SVCSearch.getServerDatabaseNameRequest) As SVCSearch.getServerDatabaseNameResponse Implements SVCSearch.IService1.getServerDatabaseName
             Return MyBase.Channel.getServerDatabaseName(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the name of the server database.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <returns>System.String.</returns>
         Public Function getServerDatabaseName(ByRef SecureID As Integer) As String
             Dim inValue As SVCSearch.getServerDatabaseNameRequest = New SVCSearch.getServerDatabaseNameRequest()
             inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.getServerDatabaseNameResponse = CType(Me,SVCSearch.IService1).getServerDatabaseName(inValue)
+            Dim retVal As SVCSearch.getServerDatabaseNameResponse = CType(Me, SVCSearch.IService1).getServerDatabaseName(inValue)
             SecureID = retVal.SecureID
             Return retVal.getServerDatabaseNameResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the server database name asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getServerDatabaseNameResponse).</returns>
         Public Function getServerDatabaseNameAsync(ByVal request As SVCSearch.getServerDatabaseNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.getServerDatabaseNameResponse) Implements SVCSearch.IService1.getServerDatabaseNameAsync
             Return MyBase.Channel.getServerDatabaseNameAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 clean log.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.CleanLogResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_CleanLog(ByVal request As SVCSearch.CleanLogRequest) As SVCSearch.CleanLogResponse Implements SVCSearch.IService1.CleanLog
             Return MyBase.Channel.CleanLog(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Cleans the log.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
         Public Sub CleanLog(ByRef SecureID As Integer)
             Dim inValue As SVCSearch.CleanLogRequest = New SVCSearch.CleanLogRequest()
             inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.CleanLogResponse = CType(Me,SVCSearch.IService1).CleanLog(inValue)
+            Dim retVal As SVCSearch.CleanLogResponse = CType(Me, SVCSearch.IService1).CleanLog(inValue)
             SecureID = retVal.SecureID
         End Sub
-        
+
+        ''' <summary>
+        ''' Cleans the log asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.CleanLogResponse).</returns>
         Public Function CleanLogAsync(ByVal request As SVCSearch.CleanLogRequest) As System.Threading.Tasks.Task(Of SVCSearch.CleanLogResponse) Implements SVCSearch.IService1.CleanLogAsync
             Return MyBase.Channel.CleanLogAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 populate ComboBox.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.PopulateComboBoxResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_PopulateComboBox(ByVal request As SVCSearch.PopulateComboBoxRequest) As SVCSearch.PopulateComboBoxResponse Implements SVCSearch.IService1.PopulateComboBox
             Return MyBase.Channel.PopulateComboBox(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the ComboBox.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="CB">The cb.</param>
+        ''' <param name="TblColName">Name of the table col.</param>
+        ''' <param name="S">The s.</param>
         Public Sub PopulateComboBox(ByRef SecureID As Integer, ByRef CB() As String, ByVal TblColName As String, ByVal S As String)
             Dim inValue As SVCSearch.PopulateComboBoxRequest = New SVCSearch.PopulateComboBoxRequest()
             inValue.SecureID = SecureID
             inValue.CB = CB
             inValue.TblColName = TblColName
             inValue.S = S
-            Dim retVal As SVCSearch.PopulateComboBoxResponse = CType(Me,SVCSearch.IService1).PopulateComboBox(inValue)
+            Dim retVal As SVCSearch.PopulateComboBoxResponse = CType(Me, SVCSearch.IService1).PopulateComboBox(inValue)
             SecureID = retVal.SecureID
             CB = retVal.CB
         End Sub
-        
+
+        ''' <summary>
+        ''' Populates the ComboBox asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.PopulateComboBoxResponse).</returns>
         Public Function PopulateComboBoxAsync(ByVal request As SVCSearch.PopulateComboBoxRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateComboBoxResponse) Implements SVCSearch.IService1.PopulateComboBoxAsync
             Return MyBase.Channel.PopulateComboBoxAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get email attachments.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.GetEmailAttachmentsResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_GetEmailAttachments(ByVal request As SVCSearch.GetEmailAttachmentsRequest) As SVCSearch.GetEmailAttachmentsResponse Implements SVCSearch.IService1.GetEmailAttachments
             Return MyBase.Channel.GetEmailAttachments(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the email attachments.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="CurrEmailGuid">The curr email unique identifier.</param>
+        ''' <returns>System.String.</returns>
         Public Function GetEmailAttachments(ByRef SecureID As Integer, ByVal CurrEmailGuid As String) As String
             Dim inValue As SVCSearch.GetEmailAttachmentsRequest = New SVCSearch.GetEmailAttachmentsRequest()
             inValue.SecureID = SecureID
             inValue.CurrEmailGuid = CurrEmailGuid
-            Dim retVal As SVCSearch.GetEmailAttachmentsResponse = CType(Me,SVCSearch.IService1).GetEmailAttachments(inValue)
+            Dim retVal As SVCSearch.GetEmailAttachmentsResponse = CType(Me, SVCSearch.IService1).GetEmailAttachments(inValue)
             SecureID = retVal.SecureID
             Return retVal.GetEmailAttachmentsResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the email attachments asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.GetEmailAttachmentsResponse).</returns>
         Public Function GetEmailAttachmentsAsync(ByVal request As SVCSearch.GetEmailAttachmentsRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetEmailAttachmentsResponse) Implements SVCSearch.IService1.GetEmailAttachmentsAsync
             Return MyBase.Channel.GetEmailAttachmentsAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 database write to file.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.DbWriteToFileResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_DbWriteToFile(ByVal request As SVCSearch.DbWriteToFileRequest) As SVCSearch.DbWriteToFileResponse Implements SVCSearch.IService1.DbWriteToFile
             Return MyBase.Channel.DbWriteToFile(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Databases the write to file.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UID">The uid.</param>
+        ''' <param name="SourceGuid">The source unique identifier.</param>
+        ''' <param name="FileName">Name of the file.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function DbWriteToFile(ByRef SecureID As Integer, ByVal UID As String, ByVal SourceGuid As String, ByRef FileName As String) As Boolean
             Dim inValue As SVCSearch.DbWriteToFileRequest = New SVCSearch.DbWriteToFileRequest()
             inValue.SecureID = SecureID
             inValue.UID = UID
             inValue.SourceGuid = SourceGuid
             inValue.FileName = FileName
-            Dim retVal As SVCSearch.DbWriteToFileResponse = CType(Me,SVCSearch.IService1).DbWriteToFile(inValue)
+            Dim retVal As SVCSearch.DbWriteToFileResponse = CType(Me, SVCSearch.IService1).DbWriteToFile(inValue)
             SecureID = retVal.SecureID
             FileName = retVal.FileName
             Return retVal.DbWriteToFileResult
         End Function
-        
+
+        ''' <summary>
+        ''' Databases the write to file asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.DbWriteToFileResponse).</returns>
         Public Function DbWriteToFileAsync(ByVal request As SVCSearch.DbWriteToFileRequest) As System.Threading.Tasks.Task(Of SVCSearch.DbWriteToFileResponse) Implements SVCSearch.IService1.DbWriteToFileAsync
             Return MyBase.Channel.DbWriteToFileAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 set session variable.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.SetSessionVariableResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_SetSessionVariable(ByVal request As SVCSearch.SetSessionVariableRequest) As SVCSearch.SetSessionVariableResponse Implements SVCSearch.IService1.SetSessionVariable
             Return MyBase.Channel.SetSessionVariable(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Sets the session variable.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="key">The key.</param>
+        ''' <param name="KeyValue">The key value.</param>
         Public Sub SetSessionVariable(ByRef SecureID As Integer, ByVal key As String, ByVal KeyValue As String)
             Dim inValue As SVCSearch.SetSessionVariableRequest = New SVCSearch.SetSessionVariableRequest()
             inValue.SecureID = SecureID
             inValue.key = key
             inValue.KeyValue = KeyValue
-            Dim retVal As SVCSearch.SetSessionVariableResponse = CType(Me,SVCSearch.IService1).SetSessionVariable(inValue)
+            Dim retVal As SVCSearch.SetSessionVariableResponse = CType(Me, SVCSearch.IService1).SetSessionVariable(inValue)
             SecureID = retVal.SecureID
         End Sub
-        
+
+        ''' <summary>
+        ''' Sets the session variable asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.SetSessionVariableResponse).</returns>
         Public Function SetSessionVariableAsync(ByVal request As SVCSearch.SetSessionVariableRequest) As System.Threading.Tasks.Task(Of SVCSearch.SetSessionVariableResponse) Implements SVCSearch.IService1.SetSessionVariableAsync
             Return MyBase.Channel.SetSessionVariableAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get session variable.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.GetSessionVariableResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_GetSessionVariable(ByVal request As SVCSearch.GetSessionVariableRequest) As SVCSearch.GetSessionVariableResponse Implements SVCSearch.IService1.GetSessionVariable
             Return MyBase.Channel.GetSessionVariable(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the session variable.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="key">The key.</param>
+        ''' <returns>System.Object.</returns>
         Public Function GetSessionVariable(ByRef SecureID As Integer, ByVal key As String) As Object
             Dim inValue As SVCSearch.GetSessionVariableRequest = New SVCSearch.GetSessionVariableRequest()
             inValue.SecureID = SecureID
             inValue.key = key
-            Dim retVal As SVCSearch.GetSessionVariableResponse = CType(Me,SVCSearch.IService1).GetSessionVariable(inValue)
+            Dim retVal As SVCSearch.GetSessionVariableResponse = CType(Me, SVCSearch.IService1).GetSessionVariable(inValue)
             SecureID = retVal.SecureID
             Return retVal.GetSessionVariableResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the session variable asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.GetSessionVariableResponse).</returns>
         Public Function GetSessionVariableAsync(ByVal request As SVCSearch.GetSessionVariableRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetSessionVariableResponse) Implements SVCSearch.IService1.GetSessionVariableAsync
             Return MyBase.Channel.GetSessionVariableAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 update source image compressed.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.UpdateSourceImageCompressedResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_UpdateSourceImageCompressed(ByVal request As SVCSearch.UpdateSourceImageCompressedRequest) As SVCSearch.UpdateSourceImageCompressedResponse Implements SVCSearch.IService1.UpdateSourceImageCompressed
             Return MyBase.Channel.UpdateSourceImageCompressed(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Updates the source image compressed.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UploadFQN">The upload FQN.</param>
+        ''' <param name="SourceGuid">The source unique identifier.</param>
+        ''' <param name="LastAccessDate">The last access date.</param>
+        ''' <param name="CreateDate">The create date.</param>
+        ''' <param name="LastWriteTime">The last write time.</param>
+        ''' <param name="VersionNbr">The version NBR.</param>
+        ''' <param name="CompressedDataBuffer">The compressed data buffer.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function UpdateSourceImageCompressed(ByRef SecureID As Integer, ByVal UploadFQN As String, ByVal SourceGuid As String, ByVal LastAccessDate As String, ByVal CreateDate As String, ByVal LastWriteTime As String, ByVal VersionNbr As Integer, ByVal CompressedDataBuffer() As Byte) As Boolean
             Dim inValue As SVCSearch.UpdateSourceImageCompressedRequest = New SVCSearch.UpdateSourceImageCompressedRequest()
             inValue.SecureID = SecureID
@@ -15365,20 +19253,40 @@ Namespace SVCSearch
             inValue.LastWriteTime = LastWriteTime
             inValue.VersionNbr = VersionNbr
             inValue.CompressedDataBuffer = CompressedDataBuffer
-            Dim retVal As SVCSearch.UpdateSourceImageCompressedResponse = CType(Me,SVCSearch.IService1).UpdateSourceImageCompressed(inValue)
+            Dim retVal As SVCSearch.UpdateSourceImageCompressedResponse = CType(Me, SVCSearch.IService1).UpdateSourceImageCompressed(inValue)
             SecureID = retVal.SecureID
             Return retVal.UpdateSourceImageCompressedResult
         End Function
-        
+
+        ''' <summary>
+        ''' Updates the source image compressed asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.UpdateSourceImageCompressedResponse).</returns>
         Public Function UpdateSourceImageCompressedAsync(ByVal request As SVCSearch.UpdateSourceImageCompressedRequest) As System.Threading.Tasks.Task(Of SVCSearch.UpdateSourceImageCompressedResponse) Implements SVCSearch.IService1.UpdateSourceImageCompressedAsync
             Return MyBase.Channel.UpdateSourceImageCompressedAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 write email from database to file.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.writeEmailFromDbToFileResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_writeEmailFromDbToFile(ByVal request As SVCSearch.writeEmailFromDbToFileRequest) As SVCSearch.writeEmailFromDbToFileResponse Implements SVCSearch.IService1.writeEmailFromDbToFile
             Return MyBase.Channel.writeEmailFromDbToFile(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Writes the email from database to file.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="EmailGuid">The email unique identifier.</param>
+        ''' <param name="SourceTypeCode">The source type code.</param>
+        ''' <param name="CompressedDataBuffer">The compressed data buffer.</param>
+        ''' <param name="OriginalSize">Size of the original.</param>
+        ''' <param name="CompressedSize">Size of the compressed.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
         Public Sub writeEmailFromDbToFile(ByRef SecureID As Integer, ByVal EmailGuid As String, ByRef SourceTypeCode As String, ByRef CompressedDataBuffer() As Byte, ByRef OriginalSize As Integer, ByRef CompressedSize As Integer, ByRef RC As Boolean)
             Dim inValue As SVCSearch.writeEmailFromDbToFileRequest = New SVCSearch.writeEmailFromDbToFileRequest()
             inValue.SecureID = SecureID
@@ -15388,7 +19296,7 @@ Namespace SVCSearch
             inValue.OriginalSize = OriginalSize
             inValue.CompressedSize = CompressedSize
             inValue.RC = RC
-            Dim retVal As SVCSearch.writeEmailFromDbToFileResponse = CType(Me,SVCSearch.IService1).writeEmailFromDbToFile(inValue)
+            Dim retVal As SVCSearch.writeEmailFromDbToFileResponse = CType(Me, SVCSearch.IService1).writeEmailFromDbToFile(inValue)
             SecureID = retVal.SecureID
             SourceTypeCode = retVal.SourceTypeCode
             CompressedDataBuffer = retVal.CompressedDataBuffer
@@ -15396,16 +19304,36 @@ Namespace SVCSearch
             CompressedSize = retVal.CompressedSize
             RC = retVal.RC
         End Sub
-        
+
+        ''' <summary>
+        ''' Writes the email from database to file asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.writeEmailFromDbToFileResponse).</returns>
         Public Function writeEmailFromDbToFileAsync(ByVal request As SVCSearch.writeEmailFromDbToFileRequest) As System.Threading.Tasks.Task(Of SVCSearch.writeEmailFromDbToFileResponse) Implements SVCSearch.IService1.writeEmailFromDbToFileAsync
             Return MyBase.Channel.writeEmailFromDbToFileAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 write attachment from database write to file.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.writeAttachmentFromDbWriteToFileResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_writeAttachmentFromDbWriteToFile(ByVal request As SVCSearch.writeAttachmentFromDbWriteToFileRequest) As SVCSearch.writeAttachmentFromDbWriteToFileResponse Implements SVCSearch.IService1.writeAttachmentFromDbWriteToFile
             Return MyBase.Channel.writeAttachmentFromDbWriteToFile(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Writes the attachment from database write to file.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="RowID">The row identifier.</param>
+        ''' <param name="FQN">The FQN.</param>
+        ''' <param name="CompressedDataBuffer">The compressed data buffer.</param>
+        ''' <param name="OriginalSize">Size of the original.</param>
+        ''' <param name="CompressedSize">Size of the compressed.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
         Public Sub writeAttachmentFromDbWriteToFile(ByRef SecureID As Integer, ByVal RowID As String, ByRef FQN As String, ByRef CompressedDataBuffer() As Byte, ByRef OriginalSize As Integer, ByRef CompressedSize As Integer, ByRef RC As Boolean)
             Dim inValue As SVCSearch.writeAttachmentFromDbWriteToFileRequest = New SVCSearch.writeAttachmentFromDbWriteToFileRequest()
             inValue.SecureID = SecureID
@@ -15415,7 +19343,7 @@ Namespace SVCSearch
             inValue.OriginalSize = OriginalSize
             inValue.CompressedSize = CompressedSize
             inValue.RC = RC
-            Dim retVal As SVCSearch.writeAttachmentFromDbWriteToFileResponse = CType(Me,SVCSearch.IService1).writeAttachmentFromDbWriteToFile(inValue)
+            Dim retVal As SVCSearch.writeAttachmentFromDbWriteToFileResponse = CType(Me, SVCSearch.IService1).writeAttachmentFromDbWriteToFile(inValue)
             SecureID = retVal.SecureID
             FQN = retVal.FQN
             CompressedDataBuffer = retVal.CompressedDataBuffer
@@ -15423,16 +19351,36 @@ Namespace SVCSearch
             CompressedSize = retVal.CompressedSize
             RC = retVal.RC
         End Sub
-        
+
+        ''' <summary>
+        ''' Writes the attachment from database write to file asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.writeAttachmentFromDbWriteToFileResponse).</returns>
         Public Function writeAttachmentFromDbWriteToFileAsync(ByVal request As SVCSearch.writeAttachmentFromDbWriteToFileRequest) As System.Threading.Tasks.Task(Of SVCSearch.writeAttachmentFromDbWriteToFileResponse) Implements SVCSearch.IService1.writeAttachmentFromDbWriteToFileAsync
             Return MyBase.Channel.writeAttachmentFromDbWriteToFileAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 write image source data from database write to file.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.writeImageSourceDataFromDbWriteToFileResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_writeImageSourceDataFromDbWriteToFile(ByVal request As SVCSearch.writeImageSourceDataFromDbWriteToFileRequest) As SVCSearch.writeImageSourceDataFromDbWriteToFileResponse Implements SVCSearch.IService1.writeImageSourceDataFromDbWriteToFile
             Return MyBase.Channel.writeImageSourceDataFromDbWriteToFile(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Writes the image source data from database write to file.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SourceGuid">The source unique identifier.</param>
+        ''' <param name="FQN">The FQN.</param>
+        ''' <param name="CompressedDataBuffer">The compressed data buffer.</param>
+        ''' <param name="OriginalSize">Size of the original.</param>
+        ''' <param name="CompressedSize">Size of the compressed.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
         Public Sub writeImageSourceDataFromDbWriteToFile(ByRef SecureID As Integer, ByVal SourceGuid As String, ByRef FQN As String, ByRef CompressedDataBuffer() As Byte, ByRef OriginalSize As Integer, ByRef CompressedSize As Integer, ByRef RC As Boolean)
             Dim inValue As SVCSearch.writeImageSourceDataFromDbWriteToFileRequest = New SVCSearch.writeImageSourceDataFromDbWriteToFileRequest()
             inValue.SecureID = SecureID
@@ -15442,7 +19390,7 @@ Namespace SVCSearch
             inValue.OriginalSize = OriginalSize
             inValue.CompressedSize = CompressedSize
             inValue.RC = RC
-            Dim retVal As SVCSearch.writeImageSourceDataFromDbWriteToFileResponse = CType(Me,SVCSearch.IService1).writeImageSourceDataFromDbWriteToFile(inValue)
+            Dim retVal As SVCSearch.writeImageSourceDataFromDbWriteToFileResponse = CType(Me, SVCSearch.IService1).writeImageSourceDataFromDbWriteToFile(inValue)
             SecureID = retVal.SecureID
             FQN = retVal.FQN
             CompressedDataBuffer = retVal.CompressedDataBuffer
@@ -15450,16 +19398,40 @@ Namespace SVCSearch
             CompressedSize = retVal.CompressedSize
             RC = retVal.RC
         End Sub
-        
+
+        ''' <summary>
+        ''' Writes the image source data from database write to file asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.writeImageSourceDataFromDbWriteToFileResponse).</returns>
         Public Function writeImageSourceDataFromDbWriteToFileAsync(ByVal request As SVCSearch.writeImageSourceDataFromDbWriteToFileRequest) As System.Threading.Tasks.Task(Of SVCSearch.writeImageSourceDataFromDbWriteToFileResponse) Implements SVCSearch.IService1.writeImageSourceDataFromDbWriteToFileAsync
             Return MyBase.Channel.writeImageSourceDataFromDbWriteToFileAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 add library items.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.AddLibraryItemsResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_AddLibraryItems(ByVal request As SVCSearch.AddLibraryItemsRequest) As SVCSearch.AddLibraryItemsResponse Implements SVCSearch.IService1.AddLibraryItems
             Return MyBase.Channel.AddLibraryItems(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Adds the library items.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SourceGuid">The source unique identifier.</param>
+        ''' <param name="ItemTitle">The item title.</param>
+        ''' <param name="ItemType">Type of the item.</param>
+        ''' <param name="LibraryItemGuid">The library item unique identifier.</param>
+        ''' <param name="DataSourceOwnerUserID">The data source owner user identifier.</param>
+        ''' <param name="LibraryOwnerUserID">The library owner user identifier.</param>
+        ''' <param name="LibraryName">Name of the library.</param>
+        ''' <param name="AddedByUserGuidId">The added by user unique identifier identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="rMsg">The r MSG.</param>
         Public Sub AddLibraryItems(ByRef SecureID As Integer, ByVal SourceGuid As String, ByVal ItemTitle As String, ByVal ItemType As String, ByVal LibraryItemGuid As String, ByVal DataSourceOwnerUserID As String, ByVal LibraryOwnerUserID As String, ByVal LibraryName As String, ByVal AddedByUserGuidId As String, ByRef RC As Boolean, ByRef rMsg As String)
             Dim inValue As SVCSearch.AddLibraryItemsRequest = New SVCSearch.AddLibraryItemsRequest()
             inValue.SecureID = SecureID
@@ -15473,85 +19445,164 @@ Namespace SVCSearch
             inValue.AddedByUserGuidId = AddedByUserGuidId
             inValue.RC = RC
             inValue.rMsg = rMsg
-            Dim retVal As SVCSearch.AddLibraryItemsResponse = CType(Me,SVCSearch.IService1).AddLibraryItems(inValue)
+            Dim retVal As SVCSearch.AddLibraryItemsResponse = CType(Me, SVCSearch.IService1).AddLibraryItems(inValue)
             SecureID = retVal.SecureID
             RC = retVal.RC
             rMsg = retVal.rMsg
         End Sub
-        
+
+        ''' <summary>
+        ''' Adds the library items asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.AddLibraryItemsResponse).</returns>
         Public Function AddLibraryItemsAsync(ByVal request As SVCSearch.AddLibraryItemsRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddLibraryItemsResponse) Implements SVCSearch.IService1.AddLibraryItemsAsync
             Return MyBase.Channel.AddLibraryItemsAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 populate group user library combo.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.PopulateGroupUserLibComboResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_PopulateGroupUserLibCombo(ByVal request As SVCSearch.PopulateGroupUserLibComboRequest) As SVCSearch.PopulateGroupUserLibComboResponse Implements SVCSearch.IService1.PopulateGroupUserLibCombo
             Return MyBase.Channel.PopulateGroupUserLibCombo(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the group user library combo.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UID">The uid.</param>
+        ''' <param name="cb">The cb.</param>
         Public Sub PopulateGroupUserLibCombo(ByRef SecureID As Integer, ByVal UID As String, ByRef cb As String)
             Dim inValue As SVCSearch.PopulateGroupUserLibComboRequest = New SVCSearch.PopulateGroupUserLibComboRequest()
             inValue.SecureID = SecureID
             inValue.UID = UID
             inValue.cb = cb
-            Dim retVal As SVCSearch.PopulateGroupUserLibComboResponse = CType(Me,SVCSearch.IService1).PopulateGroupUserLibCombo(inValue)
+            Dim retVal As SVCSearch.PopulateGroupUserLibComboResponse = CType(Me, SVCSearch.IService1).PopulateGroupUserLibCombo(inValue)
             SecureID = retVal.SecureID
             cb = retVal.cb
         End Sub
-        
+
+        ''' <summary>
+        ''' Populates the group user library combo asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.PopulateGroupUserLibComboResponse).</returns>
         Public Function PopulateGroupUserLibComboAsync(ByVal request As SVCSearch.PopulateGroupUserLibComboRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateGroupUserLibComboResponse) Implements SVCSearch.IService1.PopulateGroupUserLibComboAsync
             Return MyBase.Channel.PopulateGroupUserLibComboAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the name of the search i service1 get library owner by.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.GetLibOwnerByNameResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_GetLibOwnerByName(ByVal request As SVCSearch.GetLibOwnerByNameRequest) As SVCSearch.GetLibOwnerByNameResponse Implements SVCSearch.IService1.GetLibOwnerByName
             Return MyBase.Channel.GetLibOwnerByName(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the name of the library owner by.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="LibraryName">Name of the library.</param>
+        ''' <returns>System.String.</returns>
         Public Function GetLibOwnerByName(ByRef SecureID As Integer, ByVal LibraryName As String) As String
             Dim inValue As SVCSearch.GetLibOwnerByNameRequest = New SVCSearch.GetLibOwnerByNameRequest()
             inValue.SecureID = SecureID
             inValue.LibraryName = LibraryName
-            Dim retVal As SVCSearch.GetLibOwnerByNameResponse = CType(Me,SVCSearch.IService1).GetLibOwnerByName(inValue)
+            Dim retVal As SVCSearch.GetLibOwnerByNameResponse = CType(Me, SVCSearch.IService1).GetLibOwnerByName(inValue)
             SecureID = retVal.SecureID
             Return retVal.GetLibOwnerByNameResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the library owner by name asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.GetLibOwnerByNameResponse).</returns>
         Public Function GetLibOwnerByNameAsync(ByVal request As SVCSearch.GetLibOwnerByNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetLibOwnerByNameResponse) Implements SVCSearch.IService1.GetLibOwnerByNameAsync
             Return MyBase.Channel.GetLibOwnerByNameAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 generate SQL.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.GenerateSQLResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_GenerateSQL(ByVal request As SVCSearch.GenerateSQLRequest) As SVCSearch.GenerateSQLResponse Implements SVCSearch.IService1.GenerateSQL
             Return MyBase.Channel.GenerateSQL(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Generates the SQL.
+        ''' </summary>
+        ''' <param name="SearchParmList">The search parm list.</param>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="TypeSQL">The type SQL.</param>
+        ''' <returns>System.String.</returns>
         Public Function GenerateSQL(ByVal SearchParmList As System.Collections.Generic.Dictionary(Of String, String), ByRef SecureID As Integer, ByVal TypeSQL As String) As String
             Dim inValue As SVCSearch.GenerateSQLRequest = New SVCSearch.GenerateSQLRequest()
             inValue.SearchParmList = SearchParmList
             inValue.SecureID = SecureID
             inValue.TypeSQL = TypeSQL
-            Dim retVal As SVCSearch.GenerateSQLResponse = CType(Me,SVCSearch.IService1).GenerateSQL(inValue)
+            Dim retVal As SVCSearch.GenerateSQLResponse = CType(Me, SVCSearch.IService1).GenerateSQL(inValue)
             SecureID = retVal.SecureID
             Return retVal.GenerateSQLResult
         End Function
-        
+
+        ''' <summary>
+        ''' Generates the SQL asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.GenerateSQLResponse).</returns>
         Public Function GenerateSQLAsync(ByVal request As SVCSearch.GenerateSQLRequest) As System.Threading.Tasks.Task(Of SVCSearch.GenerateSQLResponse) Implements SVCSearch.IService1.GenerateSQLAsync
             Return MyBase.Channel.GenerateSQLAsync(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the json data.
+        ''' </summary>
+        ''' <param name="I">The i.</param>
+        ''' <returns>System.String.</returns>
         Public Function getJsonData(ByVal I As String) As String Implements SVCSearch.IService1.getJsonData
             Return MyBase.Channel.getJsonData(I)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the json data asynchronous.
+        ''' </summary>
+        ''' <param name="I">The i.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of System.String).</returns>
         Public Function getJsonDataAsync(ByVal I As String) As System.Threading.Tasks.Task(Of String) Implements SVCSearch.IService1.getJsonDataAsync
             Return MyBase.Channel.getJsonDataAsync(I)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 execute search email.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.ExecuteSearchEmailResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_ExecuteSearchEmail(ByVal request As SVCSearch.ExecuteSearchEmailRequest) As SVCSearch.ExecuteSearchEmailResponse Implements SVCSearch.IService1.ExecuteSearchEmail
             Return MyBase.Channel.ExecuteSearchEmail(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Executes the search email.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="currSearchCnt">The curr search count.</param>
+        ''' <param name="bGenSql">if set to <c>true</c> [b gen SQL].</param>
+        ''' <param name="SearchParmsJson">The search parms json.</param>
+        ''' <param name="bFirstEmailSearchSubmit">if set to <c>true</c> [b first email search submit].</param>
+        ''' <param name="EmailRowCnt">The email row count.</param>
+        ''' <returns>System.String.</returns>
         Public Function ExecuteSearchEmail(ByRef SecureID As Integer, ByRef currSearchCnt As Integer, ByVal bGenSql As Boolean, ByVal SearchParmsJson As String, ByRef bFirstEmailSearchSubmit As Boolean, ByRef EmailRowCnt As Integer) As String
             Dim inValue As SVCSearch.ExecuteSearchEmailRequest = New SVCSearch.ExecuteSearchEmailRequest()
             inValue.SecureID = SecureID
@@ -15560,23 +19611,43 @@ Namespace SVCSearch
             inValue.SearchParmsJson = SearchParmsJson
             inValue.bFirstEmailSearchSubmit = bFirstEmailSearchSubmit
             inValue.EmailRowCnt = EmailRowCnt
-            Dim retVal As SVCSearch.ExecuteSearchEmailResponse = CType(Me,SVCSearch.IService1).ExecuteSearchEmail(inValue)
+            Dim retVal As SVCSearch.ExecuteSearchEmailResponse = CType(Me, SVCSearch.IService1).ExecuteSearchEmail(inValue)
             SecureID = retVal.SecureID
             currSearchCnt = retVal.currSearchCnt
             bFirstEmailSearchSubmit = retVal.bFirstEmailSearchSubmit
             EmailRowCnt = retVal.EmailRowCnt
             Return retVal.ExecuteSearchEmailResult
         End Function
-        
+
+        ''' <summary>
+        ''' Executes the search email asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.ExecuteSearchEmailResponse).</returns>
         Public Function ExecuteSearchEmailAsync(ByVal request As SVCSearch.ExecuteSearchEmailRequest) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSearchEmailResponse) Implements SVCSearch.IService1.ExecuteSearchEmailAsync
             Return MyBase.Channel.ExecuteSearchEmailAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the content of the search i service1 execute search.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.ExecuteSearchContentResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_ExecuteSearchContent(ByVal request As SVCSearch.ExecuteSearchContentRequest) As SVCSearch.ExecuteSearchContentResponse Implements SVCSearch.IService1.ExecuteSearchContent
             Return MyBase.Channel.ExecuteSearchContent(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Executes the content of the search.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="currSearchCnt">The curr search count.</param>
+        ''' <param name="bGenSql">if set to <c>true</c> [b gen SQL].</param>
+        ''' <param name="SearchParmsJson">The search parms json.</param>
+        ''' <param name="bFirstContentSearchSubmit">if set to <c>true</c> [b first content search submit].</param>
+        ''' <param name="ContentRowCnt">The content row count.</param>
+        ''' <returns>System.String.</returns>
         Public Function ExecuteSearchContent(ByRef SecureID As Integer, ByRef currSearchCnt As Integer, ByVal bGenSql As Boolean, ByVal SearchParmsJson As String, ByRef bFirstContentSearchSubmit As Boolean, ByRef ContentRowCnt As Integer) As String
             Dim inValue As SVCSearch.ExecuteSearchContentRequest = New SVCSearch.ExecuteSearchContentRequest()
             inValue.SecureID = SecureID
@@ -15585,23 +19656,47 @@ Namespace SVCSearch
             inValue.SearchParmsJson = SearchParmsJson
             inValue.bFirstContentSearchSubmit = bFirstContentSearchSubmit
             inValue.ContentRowCnt = ContentRowCnt
-            Dim retVal As SVCSearch.ExecuteSearchContentResponse = CType(Me,SVCSearch.IService1).ExecuteSearchContent(inValue)
+            Dim retVal As SVCSearch.ExecuteSearchContentResponse = CType(Me, SVCSearch.IService1).ExecuteSearchContent(inValue)
             SecureID = retVal.SecureID
             currSearchCnt = retVal.currSearchCnt
             bFirstContentSearchSubmit = retVal.bFirstContentSearchSubmit
             ContentRowCnt = retVal.ContentRowCnt
             Return retVal.ExecuteSearchContentResult
         End Function
-        
+
+        ''' <summary>
+        ''' Executes the search content asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.ExecuteSearchContentResponse).</returns>
         Public Function ExecuteSearchContentAsync(ByVal request As SVCSearch.ExecuteSearchContentRequest) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSearchContentResponse) Implements SVCSearch.IService1.ExecuteSearchContentAsync
             Return MyBase.Channel.ExecuteSearchContentAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the state of the search i service1 get search.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getSearchStateResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getSearchState(ByVal request As SVCSearch.getSearchStateRequest) As SVCSearch.getSearchStateResponse Implements SVCSearch.IService1.getSearchState
             Return MyBase.Channel.getSearchState(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the state of the search.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SearchID">The search identifier.</param>
+        ''' <param name="UID">The uid.</param>
+        ''' <param name="ScreenName">Name of the screen.</param>
+        ''' <param name="DICT">The dictionary.</param>
+        ''' <param name="rMsg">The r MSG.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="HiveConnectionName">Name of the hive connection.</param>
+        ''' <param name="HiveActive">if set to <c>true</c> [hive active].</param>
+        ''' <param name="RepoSvrName">Name of the repo SVR.</param>
+        ''' <returns>SVCSearch.DS_USERSEARCHSTATE().</returns>
         Public Function getSearchState(ByRef SecureID As Integer, ByVal SearchID As Integer, ByVal UID As String, ByVal ScreenName As String, ByRef DICT As System.Collections.Generic.Dictionary(Of String, String), ByRef rMsg As String, ByRef RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String) As SVCSearch.DS_USERSEARCHSTATE()
             Dim inValue As SVCSearch.getSearchStateRequest = New SVCSearch.getSearchStateRequest()
             inValue.SecureID = SecureID
@@ -15614,228 +19709,479 @@ Namespace SVCSearch
             inValue.HiveConnectionName = HiveConnectionName
             inValue.HiveActive = HiveActive
             inValue.RepoSvrName = RepoSvrName
-            Dim retVal As SVCSearch.getSearchStateResponse = CType(Me,SVCSearch.IService1).getSearchState(inValue)
+            Dim retVal As SVCSearch.getSearchStateResponse = CType(Me, SVCSearch.IService1).getSearchState(inValue)
             SecureID = retVal.SecureID
             DICT = retVal.DICT
             rMsg = retVal.rMsg
             RC = retVal.RC
             Return retVal.getSearchStateResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the search state asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getSearchStateResponse).</returns>
         Public Function getSearchStateAsync(ByVal request As SVCSearch.getSearchStateRequest) As System.Threading.Tasks.Task(Of SVCSearch.getSearchStateResponse) Implements SVCSearch.IService1.getSearchStateAsync
             Return MyBase.Channel.getSearchStateAsync(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the length of the source.
+        ''' </summary>
+        ''' <param name="SourceGuid">The source unique identifier.</param>
+        ''' <param name="SourceType">Type of the source.</param>
+        ''' <returns>System.Int64.</returns>
         Public Function getSourceLength(ByVal SourceGuid As String, ByVal SourceType As String) As Long Implements SVCSearch.IService1.getSourceLength
             Return MyBase.Channel.getSourceLength(SourceGuid, SourceType)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the source length asynchronous.
+        ''' </summary>
+        ''' <param name="SourceGuid">The source unique identifier.</param>
+        ''' <param name="SourceType">Type of the source.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of System.Int64).</returns>
         Public Function getSourceLengthAsync(ByVal SourceGuid As String, ByVal SourceType As String) As System.Threading.Tasks.Task(Of Long) Implements SVCSearch.IService1.getSourceLengthAsync
             Return MyBase.Channel.getSourceLengthAsync(SourceGuid, SourceType)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the name of the source.
+        ''' </summary>
+        ''' <param name="SourceGuid">The source unique identifier.</param>
+        ''' <param name="SourceType">Type of the source.</param>
+        ''' <returns>System.String.</returns>
         Public Function getSourceName(ByVal SourceGuid As String, ByVal SourceType As String) As String Implements SVCSearch.IService1.getSourceName
             Return MyBase.Channel.getSourceName(SourceGuid, SourceType)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the source name asynchronous.
+        ''' </summary>
+        ''' <param name="SourceGuid">The source unique identifier.</param>
+        ''' <param name="SourceType">Type of the source.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of System.String).</returns>
         Public Function getSourceNameAsync(ByVal SourceGuid As String, ByVal SourceType As String) As System.Threading.Tasks.Task(Of String) Implements SVCSearch.IService1.getSourceNameAsync
             Return MyBase.Channel.getSourceNameAsync(SourceGuid, SourceType)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 down load document.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.DownLoadDocumentResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_DownLoadDocument(ByVal request As SVCSearch.DownLoadDocumentRequest) As SVCSearch.DownLoadDocumentResponse Implements SVCSearch.IService1.DownLoadDocument
             Return MyBase.Channel.DownLoadDocument(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Downs the load document.
+        ''' </summary>
+        ''' <param name="TypeImage">The type image.</param>
+        ''' <param name="SourceGuid">The source unique identifier.</param>
+        ''' <returns>System.Byte().</returns>
         Public Function DownLoadDocument(ByRef TypeImage As String, ByVal SourceGuid As String) As Byte()
             Dim inValue As SVCSearch.DownLoadDocumentRequest = New SVCSearch.DownLoadDocumentRequest()
             inValue.TypeImage = TypeImage
             inValue.SourceGuid = SourceGuid
-            Dim retVal As SVCSearch.DownLoadDocumentResponse = CType(Me,SVCSearch.IService1).DownLoadDocument(inValue)
+            Dim retVal As SVCSearch.DownLoadDocumentResponse = CType(Me, SVCSearch.IService1).DownLoadDocument(inValue)
             TypeImage = retVal.TypeImage
             Return retVal.DownLoadDocumentResult
         End Function
-        
+
+        ''' <summary>
+        ''' Downs the load document asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.DownLoadDocumentResponse).</returns>
         Public Function DownLoadDocumentAsync(ByVal request As SVCSearch.DownLoadDocumentRequest) As System.Threading.Tasks.Task(Of SVCSearch.DownLoadDocumentResponse) Implements SVCSearch.IService1.DownLoadDocumentAsync
             Return MyBase.Channel.DownLoadDocumentAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get attachment from database.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.GetAttachmentFromDBResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_GetAttachmentFromDB(ByVal request As SVCSearch.GetAttachmentFromDBRequest) As SVCSearch.GetAttachmentFromDBResponse Implements SVCSearch.IService1.GetAttachmentFromDB
             Return MyBase.Channel.GetAttachmentFromDB(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the attachment from database.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="EmailGuid">The email unique identifier.</param>
+        ''' <returns>System.Byte().</returns>
         Public Function GetAttachmentFromDB(ByRef SecureID As Integer, ByVal EmailGuid As String) As Byte()
             Dim inValue As SVCSearch.GetAttachmentFromDBRequest = New SVCSearch.GetAttachmentFromDBRequest()
             inValue.SecureID = SecureID
             inValue.EmailGuid = EmailGuid
-            Dim retVal As SVCSearch.GetAttachmentFromDBResponse = CType(Me,SVCSearch.IService1).GetAttachmentFromDB(inValue)
+            Dim retVal As SVCSearch.GetAttachmentFromDBResponse = CType(Me, SVCSearch.IService1).GetAttachmentFromDB(inValue)
             SecureID = retVal.SecureID
             Return retVal.GetAttachmentFromDBResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the attachment from database asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.GetAttachmentFromDBResponse).</returns>
         Public Function GetAttachmentFromDBAsync(ByVal request As SVCSearch.GetAttachmentFromDBRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetAttachmentFromDBResponse) Implements SVCSearch.IService1.GetAttachmentFromDBAsync
             Return MyBase.Channel.GetAttachmentFromDBAsync(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the content dt.
+        ''' </summary>
+        ''' <param name="sourceguid">The sourceguid.</param>
+        ''' <returns>System.Data.DataTable.</returns>
         Public Function getContentDT(ByVal sourceguid As String) As System.Data.DataTable Implements SVCSearch.IService1.getContentDT
             Return MyBase.Channel.getContentDT(sourceguid)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the content dt asynchronous.
+        ''' </summary>
+        ''' <param name="sourceguid">The sourceguid.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of System.Data.DataTable).</returns>
         Public Function getContentDTAsync(ByVal sourceguid As String) As System.Threading.Tasks.Task(Of System.Data.DataTable) Implements SVCSearch.IService1.getContentDTAsync
             Return MyBase.Channel.getContentDTAsync(sourceguid)
         End Function
-        
+
+        ''' <summary>
+        ''' Tests the IIS connection.
+        ''' </summary>
+        ''' <returns>System.String.</returns>
         Public Function TestIISConnection() As String Implements SVCSearch.IService1.TestIISConnection
             Return MyBase.Channel.TestIISConnection
         End Function
-        
+
+        ''' <summary>
+        ''' Tests the IIS connection asynchronous.
+        ''' </summary>
+        ''' <returns>System.Threading.Tasks.Task(Of System.String).</returns>
         Public Function TestIISConnectionAsync() As System.Threading.Tasks.Task(Of String) Implements SVCSearch.IService1.TestIISConnectionAsync
             Return MyBase.Channel.TestIISConnectionAsync
         End Function
-        
+
+        ''' <summary>
+        ''' Tests the connection.
+        ''' </summary>
+        ''' <returns>System.String.</returns>
         Public Function TestConnection() As String Implements SVCSearch.IService1.TestConnection
             Return MyBase.Channel.TestConnection
         End Function
-        
+
+        ''' <summary>
+        ''' Tests the connection asynchronous.
+        ''' </summary>
+        ''' <returns>System.Threading.Tasks.Task(Of System.String).</returns>
         Public Function TestConnectionAsync() As System.Threading.Tasks.Task(Of String) Implements SVCSearch.IService1.TestConnectionAsync
             Return MyBase.Channel.TestConnectionAsync
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the word inflections.
+        ''' </summary>
+        ''' <param name="QRY">The qry.</param>
+        ''' <param name="CS">The cs.</param>
+        ''' <returns>System.String.</returns>
         Public Function getWordInflections(ByVal QRY As String, ByVal CS As String) As String Implements SVCSearch.IService1.getWordInflections
             Return MyBase.Channel.getWordInflections(QRY, CS)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the word inflections asynchronous.
+        ''' </summary>
+        ''' <param name="QRY">The qry.</param>
+        ''' <param name="CS">The cs.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of System.String).</returns>
         Public Function getWordInflectionsAsync(ByVal QRY As String, ByVal CS As String) As System.Threading.Tasks.Task(Of String) Implements SVCSearch.IService1.getWordInflectionsAsync
             Return MyBase.Channel.getWordInflectionsAsync(QRY, CS)
         End Function
-        
+
+        ''' <summary>
+        ''' Removes the expired alerts.
+        ''' </summary>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function removeExpiredAlerts() As Boolean Implements SVCSearch.IService1.removeExpiredAlerts
             Return MyBase.Channel.removeExpiredAlerts
         End Function
-        
+
+        ''' <summary>
+        ''' Removes the expired alerts asynchronous.
+        ''' </summary>
+        ''' <returns>System.Threading.Tasks.Task(Of System.Boolean).</returns>
         Public Function removeExpiredAlertsAsync() As System.Threading.Tasks.Task(Of Boolean) Implements SVCSearch.IService1.removeExpiredAlertsAsync
             Return MyBase.Channel.removeExpiredAlertsAsync
         End Function
-        
+
+        ''' <summary>
+        ''' Changes the user password admin.
+        ''' </summary>
+        ''' <param name="AdminUserID">The admin user identifier.</param>
+        ''' <param name="UserLogin">The user login.</param>
+        ''' <param name="NewPw1">Creates new pw1.</param>
+        ''' <param name="NewPw2">Creates new pw2.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function ChangeUserPasswordAdmin(ByVal AdminUserID As String, ByVal UserLogin As String, ByVal NewPw1 As String, ByVal NewPw2 As String) As Boolean Implements SVCSearch.IService1.ChangeUserPasswordAdmin
             Return MyBase.Channel.ChangeUserPasswordAdmin(AdminUserID, UserLogin, NewPw1, NewPw2)
         End Function
-        
+
+        ''' <summary>
+        ''' Changes the user password admin asynchronous.
+        ''' </summary>
+        ''' <param name="AdminUserID">The admin user identifier.</param>
+        ''' <param name="UserLogin">The user login.</param>
+        ''' <param name="NewPw1">Creates new pw1.</param>
+        ''' <param name="NewPw2">Creates new pw2.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of System.Boolean).</returns>
         Public Function ChangeUserPasswordAdminAsync(ByVal AdminUserID As String, ByVal UserLogin As String, ByVal NewPw1 As String, ByVal NewPw2 As String) As System.Threading.Tasks.Task(Of Boolean) Implements SVCSearch.IService1.ChangeUserPasswordAdminAsync
             Return MyBase.Channel.ChangeUserPasswordAdminAsync(AdminUserID, UserLogin, NewPw1, NewPw2)
         End Function
-        
+
+        ''' <summary>
+        ''' Adds the user group.
+        ''' </summary>
+        ''' <param name="GroupName">Name of the group.</param>
+        ''' <param name="GroupOwnerUserID">The group owner user identifier.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function AddUserGroup(ByVal GroupName As String, ByVal GroupOwnerUserID As String) As Boolean Implements SVCSearch.IService1.AddUserGroup
             Return MyBase.Channel.AddUserGroup(GroupName, GroupOwnerUserID)
         End Function
-        
+
+        ''' <summary>
+        ''' Adds the user group asynchronous.
+        ''' </summary>
+        ''' <param name="GroupName">Name of the group.</param>
+        ''' <param name="GroupOwnerUserID">The group owner user identifier.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of System.Boolean).</returns>
         Public Function AddUserGroupAsync(ByVal GroupName As String, ByVal GroupOwnerUserID As String) As System.Threading.Tasks.Task(Of Boolean) Implements SVCSearch.IService1.AddUserGroupAsync
             Return MyBase.Channel.AddUserGroupAsync(GroupName, GroupOwnerUserID)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the error logs.
+        ''' </summary>
+        ''' <param name="MaxNbr">The maximum NBR.</param>
+        ''' <returns>System.String.</returns>
         Public Function getErrorLogs(ByVal MaxNbr As String) As String Implements SVCSearch.IService1.getErrorLogs
             Return MyBase.Channel.getErrorLogs(MaxNbr)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the error logs asynchronous.
+        ''' </summary>
+        ''' <param name="MaxNbr">The maximum NBR.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of System.String).</returns>
         Public Function getErrorLogsAsync(ByVal MaxNbr As String) As System.Threading.Tasks.Task(Of String) Implements SVCSearch.IService1.getErrorLogsAsync
             Return MyBase.Channel.getErrorLogsAsync(MaxNbr)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 set email public flag.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.SetEmailPublicFlagResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_SetEmailPublicFlag(ByVal request As SVCSearch.SetEmailPublicFlagRequest) As SVCSearch.SetEmailPublicFlagResponse Implements SVCSearch.IService1.SetEmailPublicFlag
             Return MyBase.Channel.SetEmailPublicFlag(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Sets the email public flag.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="EmailGuid">The email unique identifier.</param>
+        ''' <param name="isPublic">if set to <c>true</c> [is public].</param>
         Public Sub SetEmailPublicFlag(ByRef SecureID As Integer, ByVal EmailGuid As String, ByVal isPublic As Boolean)
             Dim inValue As SVCSearch.SetEmailPublicFlagRequest = New SVCSearch.SetEmailPublicFlagRequest()
             inValue.SecureID = SecureID
             inValue.EmailGuid = EmailGuid
             inValue.isPublic = isPublic
-            Dim retVal As SVCSearch.SetEmailPublicFlagResponse = CType(Me,SVCSearch.IService1).SetEmailPublicFlag(inValue)
+            Dim retVal As SVCSearch.SetEmailPublicFlagResponse = CType(Me, SVCSearch.IService1).SetEmailPublicFlag(inValue)
             SecureID = retVal.SecureID
         End Sub
-        
+
+        ''' <summary>
+        ''' Sets the email public flag asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.SetEmailPublicFlagResponse).</returns>
         Public Function SetEmailPublicFlagAsync(ByVal request As SVCSearch.SetEmailPublicFlagRequest) As System.Threading.Tasks.Task(Of SVCSearch.SetEmailPublicFlagResponse) Implements SVCSearch.IService1.SetEmailPublicFlagAsync
             Return MyBase.Channel.SetEmailPublicFlagAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 set document to master.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.SetDocumentToMasterResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_SetDocumentToMaster(ByVal request As SVCSearch.SetDocumentToMasterRequest) As SVCSearch.SetDocumentToMasterResponse Implements SVCSearch.IService1.SetDocumentToMaster
             Return MyBase.Channel.SetDocumentToMaster(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Sets the document to master.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SourceGuid">The source unique identifier.</param>
+        ''' <param name="MasterFlag">if set to <c>true</c> [master flag].</param>
         Public Sub SetDocumentToMaster(ByRef SecureID As Integer, ByVal SourceGuid As String, ByVal MasterFlag As Boolean)
             Dim inValue As SVCSearch.SetDocumentToMasterRequest = New SVCSearch.SetDocumentToMasterRequest()
             inValue.SecureID = SecureID
             inValue.SourceGuid = SourceGuid
             inValue.MasterFlag = MasterFlag
-            Dim retVal As SVCSearch.SetDocumentToMasterResponse = CType(Me,SVCSearch.IService1).SetDocumentToMaster(inValue)
+            Dim retVal As SVCSearch.SetDocumentToMasterResponse = CType(Me, SVCSearch.IService1).SetDocumentToMaster(inValue)
             SecureID = retVal.SecureID
         End Sub
-        
+
+        ''' <summary>
+        ''' Sets the document to master asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.SetDocumentToMasterResponse).</returns>
         Public Function SetDocumentToMasterAsync(ByVal request As SVCSearch.SetDocumentToMasterRequest) As System.Threading.Tasks.Task(Of SVCSearch.SetDocumentToMasterResponse) Implements SVCSearch.IService1.SetDocumentToMasterAsync
             Return MyBase.Channel.SetDocumentToMasterAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 set document public flag.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.SetDocumentPublicFlagResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_SetDocumentPublicFlag(ByVal request As SVCSearch.SetDocumentPublicFlagRequest) As SVCSearch.SetDocumentPublicFlagResponse Implements SVCSearch.IService1.SetDocumentPublicFlag
             Return MyBase.Channel.SetDocumentPublicFlag(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Sets the document public flag.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SourceGuid">The source unique identifier.</param>
+        ''' <param name="isPublic">if set to <c>true</c> [is public].</param>
         Public Sub SetDocumentPublicFlag(ByRef SecureID As Integer, ByVal SourceGuid As String, ByVal isPublic As Boolean)
             Dim inValue As SVCSearch.SetDocumentPublicFlagRequest = New SVCSearch.SetDocumentPublicFlagRequest()
             inValue.SecureID = SecureID
             inValue.SourceGuid = SourceGuid
             inValue.isPublic = isPublic
-            Dim retVal As SVCSearch.SetDocumentPublicFlagResponse = CType(Me,SVCSearch.IService1).SetDocumentPublicFlag(inValue)
+            Dim retVal As SVCSearch.SetDocumentPublicFlagResponse = CType(Me, SVCSearch.IService1).SetDocumentPublicFlag(inValue)
             SecureID = retVal.SecureID
         End Sub
-        
+
+        ''' <summary>
+        ''' Sets the document public flag asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.SetDocumentPublicFlagResponse).</returns>
         Public Function SetDocumentPublicFlagAsync(ByVal request As SVCSearch.SetDocumentPublicFlagRequest) As System.Threading.Tasks.Task(Of SVCSearch.SetDocumentPublicFlagResponse) Implements SVCSearch.IService1.SetDocumentPublicFlagAsync
             Return MyBase.Channel.SetDocumentPublicFlagAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 execute search json.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.ExecuteSearchJsonResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_ExecuteSearchJson(ByVal request As SVCSearch.ExecuteSearchJsonRequest) As SVCSearch.ExecuteSearchJsonResponse Implements SVCSearch.IService1.ExecuteSearchJson
             Return MyBase.Channel.ExecuteSearchJson(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Executes the search json.
+        ''' </summary>
+        ''' <param name="TypeSearch">The type search.</param>
+        ''' <param name="JsonSearchParms">The json search parms.</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <returns>System.String.</returns>
         Public Function ExecuteSearchJson(ByVal TypeSearch As String, ByVal JsonSearchParms As String, ByRef RetMsg As String) As String
             Dim inValue As SVCSearch.ExecuteSearchJsonRequest = New SVCSearch.ExecuteSearchJsonRequest()
             inValue.TypeSearch = TypeSearch
             inValue.JsonSearchParms = JsonSearchParms
             inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.ExecuteSearchJsonResponse = CType(Me,SVCSearch.IService1).ExecuteSearchJson(inValue)
+            Dim retVal As SVCSearch.ExecuteSearchJsonResponse = CType(Me, SVCSearch.IService1).ExecuteSearchJson(inValue)
             RetMsg = retVal.RetMsg
             Return retVal.ExecuteSearchJsonResult
         End Function
-        
+
+        ''' <summary>
+        ''' Executes the search json asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.ExecuteSearchJsonResponse).</returns>
         Public Function ExecuteSearchJsonAsync(ByVal request As SVCSearch.ExecuteSearchJsonRequest) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSearchJsonResponse) Implements SVCSearch.IService1.ExecuteSearchJsonAsync
             Return MyBase.Channel.ExecuteSearchJsonAsync(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Tests the service avail.
+        ''' </summary>
+        ''' <returns>System.String.</returns>
         Public Function testServiceAvail() As String Implements SVCSearch.IService1.testServiceAvail
             Return MyBase.Channel.testServiceAvail
         End Function
-        
+
+        ''' <summary>
+        ''' Tests the service avail asynchronous.
+        ''' </summary>
+        ''' <returns>System.Threading.Tasks.Task(Of System.String).</returns>
         Public Function testServiceAvailAsync() As System.Threading.Tasks.Task(Of String) Implements SVCSearch.IService1.testServiceAvailAsync
             Return MyBase.Channel.testServiceAvailAsync
         End Function
-        
+
+        ''' <summary>
+        ''' Generates the search SQL.
+        ''' </summary>
+        ''' <param name="TypeSearch">The type search.</param>
+        ''' <param name="SearchParmList">The search parm list.</param>
+        ''' <returns>System.String.</returns>
         Public Function GenerateSearchSQL(ByVal TypeSearch As String, ByVal SearchParmList As System.Collections.Generic.Dictionary(Of String, String)) As String Implements SVCSearch.IService1.GenerateSearchSQL
             Return MyBase.Channel.GenerateSearchSQL(TypeSearch, SearchParmList)
         End Function
-        
+
+        ''' <summary>
+        ''' Generates the search SQL asynchronous.
+        ''' </summary>
+        ''' <param name="TypeSearch">The type search.</param>
+        ''' <param name="SearchParmList">The search parm list.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of System.String).</returns>
         Public Function GenerateSearchSQLAsync(ByVal TypeSearch As String, ByVal SearchParmList As System.Collections.Generic.Dictionary(Of String, String)) As System.Threading.Tasks.Task(Of String) Implements SVCSearch.IService1.GenerateSearchSQLAsync
             Return MyBase.Channel.GenerateSearchSQLAsync(TypeSearch, SearchParmList)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 execute search dt.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.ExecuteSearchDTResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_ExecuteSearchDT(ByVal request As SVCSearch.ExecuteSearchDTRequest) As SVCSearch.ExecuteSearchDTResponse Implements SVCSearch.IService1.ExecuteSearchDT
             Return MyBase.Channel.ExecuteSearchDT(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Executes the search dt.
+        ''' </summary>
+        ''' <param name="SearchType">Type of the search.</param>
+        ''' <param name="currSearchCnt">The curr search count.</param>
+        ''' <param name="bGenSql">if set to <c>true</c> [b gen SQL].</param>
+        ''' <param name="EmailGenSql">The email gen SQL.</param>
+        ''' <param name="SearchParmsJson">The search parms json.</param>
+        ''' <param name="ContentGenSql">The content gen SQL.</param>
+        ''' <param name="strListOEmailRows">The string list o email rows.</param>
+        ''' <param name="strListOfContentRows">The string list of content rows.</param>
+        ''' <param name="bFirstEmailSearchSubmit">if set to <c>true</c> [b first email search submit].</param>
+        ''' <param name="bFirstContentSearchSubmit">if set to <c>true</c> [b first content search submit].</param>
+        ''' <param name="EmailRowCnt">The email row count.</param>
+        ''' <param name="ContentRowCnt">The content row count.</param>
+        ''' <returns>System.Data.DataSet.</returns>
         Public Function ExecuteSearchDT(ByVal SearchType As String, ByRef currSearchCnt As Integer, ByVal bGenSql As Boolean, ByRef EmailGenSql As String, ByVal SearchParmsJson As String, ByRef ContentGenSql As String, ByRef strListOEmailRows As String, ByRef strListOfContentRows As String, ByRef bFirstEmailSearchSubmit As Boolean, ByRef bFirstContentSearchSubmit As Boolean, ByRef EmailRowCnt As Integer, ByRef ContentRowCnt As Integer) As System.Data.DataSet
             Dim inValue As SVCSearch.ExecuteSearchDTRequest = New SVCSearch.ExecuteSearchDTRequest()
             inValue.SearchType = SearchType
@@ -15850,7 +20196,7 @@ Namespace SVCSearch
             inValue.bFirstContentSearchSubmit = bFirstContentSearchSubmit
             inValue.EmailRowCnt = EmailRowCnt
             inValue.ContentRowCnt = ContentRowCnt
-            Dim retVal As SVCSearch.ExecuteSearchDTResponse = CType(Me,SVCSearch.IService1).ExecuteSearchDT(inValue)
+            Dim retVal As SVCSearch.ExecuteSearchDTResponse = CType(Me, SVCSearch.IService1).ExecuteSearchDT(inValue)
             currSearchCnt = retVal.currSearchCnt
             EmailGenSql = retVal.EmailGenSql
             ContentGenSql = retVal.ContentGenSql
@@ -15862,60 +20208,135 @@ Namespace SVCSearch
             ContentRowCnt = retVal.ContentRowCnt
             Return retVal.ExecuteSearchDTResult
         End Function
-        
+
+        ''' <summary>
+        ''' Executes the search dt asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.ExecuteSearchDTResponse).</returns>
         Public Function ExecuteSearchDTAsync(ByVal request As SVCSearch.ExecuteSearchDTRequest) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSearchDTResponse) Implements SVCSearch.IService1.ExecuteSearchDTAsync
             Return MyBase.Channel.ExecuteSearchDTAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get files in zip detail.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.GetFilesInZipDetailResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_GetFilesInZipDetail(ByVal request As SVCSearch.GetFilesInZipDetailRequest) As SVCSearch.GetFilesInZipDetailResponse Implements SVCSearch.IService1.GetFilesInZipDetail
             Return MyBase.Channel.GetFilesInZipDetail(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the files in zip detail.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="ParentGuid">The parent unique identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <returns>System.String.</returns>
         Public Function GetFilesInZipDetail(ByRef SecureID As Integer, ByVal ParentGuid As String, ByRef RC As Boolean) As String
             Dim inValue As SVCSearch.GetFilesInZipDetailRequest = New SVCSearch.GetFilesInZipDetailRequest()
             inValue.SecureID = SecureID
             inValue.ParentGuid = ParentGuid
             inValue.RC = RC
-            Dim retVal As SVCSearch.GetFilesInZipDetailResponse = CType(Me,SVCSearch.IService1).GetFilesInZipDetail(inValue)
+            Dim retVal As SVCSearch.GetFilesInZipDetailResponse = CType(Me, SVCSearch.IService1).GetFilesInZipDetail(inValue)
             SecureID = retVal.SecureID
             RC = retVal.RC
             Return retVal.GetFilesInZipDetailResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the files in zip detail asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.GetFilesInZipDetailResponse).</returns>
         Public Function GetFilesInZipDetailAsync(ByVal request As SVCSearch.GetFilesInZipDetailRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetFilesInZipDetailResponse) Implements SVCSearch.IService1.GetFilesInZipDetailAsync
             Return MyBase.Channel.GetFilesInZipDetailAsync(request)
         End Function
-        
+
+        ''' <summary>
+        ''' xes the get XRT identifier.
+        ''' </summary>
+        ''' <param name="CustomerID">The customer identifier.</param>
+        ''' <param name="ServerName">Name of the server.</param>
+        ''' <param name="DBName">Name of the database.</param>
+        ''' <param name="InstanceName">Name of the instance.</param>
+        ''' <returns>System.Int32.</returns>
         Public Function xGetXrtID(ByVal CustomerID As String, ByVal ServerName As String, ByVal DBName As String, ByVal InstanceName As String) As Integer Implements SVCSearch.IService1.xGetXrtID
             Return MyBase.Channel.xGetXrtID(CustomerID, ServerName, DBName, InstanceName)
         End Function
-        
+
+        ''' <summary>
+        ''' xes the get XRT identifier asynchronous.
+        ''' </summary>
+        ''' <param name="CustomerID">The customer identifier.</param>
+        ''' <param name="ServerName">Name of the server.</param>
+        ''' <param name="DBName">Name of the database.</param>
+        ''' <param name="InstanceName">Name of the instance.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of System.Int32).</returns>
         Public Function xGetXrtIDAsync(ByVal CustomerID As String, ByVal ServerName As String, ByVal DBName As String, ByVal InstanceName As String) As System.Threading.Tasks.Task(Of Integer) Implements SVCSearch.IService1.xGetXrtIDAsync
             Return MyBase.Channel.xGetXrtIDAsync(CustomerID, ServerName, DBName, InstanceName)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the sec end point.
+        ''' </summary>
+        ''' <returns>System.String.</returns>
         Public Function getSecEndPoint() As String Implements SVCSearch.IService1.getSecEndPoint
             Return MyBase.Channel.getSecEndPoint
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the sec end point asynchronous.
+        ''' </summary>
+        ''' <returns>System.Threading.Tasks.Task(Of System.String).</returns>
         Public Function getSecEndPointAsync() As System.Threading.Tasks.Task(Of String) Implements SVCSearch.IService1.getSecEndPointAsync
             Return MyBase.Channel.getSecEndPointAsync
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the contract identifier.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <returns>System.String.</returns>
         Public Function getContractID(ByVal SecureID As Integer, ByVal UserID As String) As String Implements SVCSearch.IService1.getContractID
             Return MyBase.Channel.getContractID(SecureID, UserID)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the contract identifier asynchronous.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of System.String).</returns>
         Public Function getContractIDAsync(ByVal SecureID As Integer, ByVal UserID As String) As System.Threading.Tasks.Task(Of String) Implements SVCSearch.IService1.getContractIDAsync
             Return MyBase.Channel.getContractIDAsync(SecureID, UserID)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 add group library access.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.AddGroupLibraryAccessResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_AddGroupLibraryAccess(ByVal request As SVCSearch.AddGroupLibraryAccessRequest) As SVCSearch.AddGroupLibraryAccessResponse Implements SVCSearch.IService1.AddGroupLibraryAccess
             Return MyBase.Channel.AddGroupLibraryAccess(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Adds the group library access.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="LibraryName">Name of the library.</param>
+        ''' <param name="GroupName">Name of the group.</param>
+        ''' <param name="GroupOwnerUserID">The group owner user identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="CurrUserID">The curr user identifier.</param>
+        ''' <param name="SessionID">The session identifier.</param>
+        ''' <param name="ControlSection">The control section.</param>
         Public Sub AddGroupLibraryAccess(ByVal SecureID As Integer, ByVal UserID As String, ByVal LibraryName As String, ByVal GroupName As String, ByVal GroupOwnerUserID As String, ByRef RC As Boolean, ByVal CurrUserID As String, ByVal SessionID As String, ByVal ControlSection As String)
             Dim inValue As SVCSearch.AddGroupLibraryAccessRequest = New SVCSearch.AddGroupLibraryAccessRequest()
             inValue.SecureID = SecureID
@@ -15927,47 +20348,118 @@ Namespace SVCSearch
             inValue.CurrUserID = CurrUserID
             inValue.SessionID = SessionID
             inValue.ControlSection = ControlSection
-            Dim retVal As SVCSearch.AddGroupLibraryAccessResponse = CType(Me,SVCSearch.IService1).AddGroupLibraryAccess(inValue)
+            Dim retVal As SVCSearch.AddGroupLibraryAccessResponse = CType(Me, SVCSearch.IService1).AddGroupLibraryAccess(inValue)
             RC = retVal.RC
         End Sub
-        
+
+        ''' <summary>
+        ''' Adds the group library access asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.AddGroupLibraryAccessResponse).</returns>
         Public Function AddGroupLibraryAccessAsync(ByVal request As SVCSearch.AddGroupLibraryAccessRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddGroupLibraryAccessResponse) Implements SVCSearch.IService1.AddGroupLibraryAccessAsync
             Return MyBase.Channel.AddGroupLibraryAccessAsync(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Adds the group user.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SessionID">The session identifier.</param>
+        ''' <param name="CurrUserID">The curr user identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="FullAccess">The full access.</param>
+        ''' <param name="ReadOnlyAccess">The read only access.</param>
+        ''' <param name="DeleteAccess">The delete access.</param>
+        ''' <param name="Searchable">The searchable.</param>
+        ''' <param name="GroupOwnerUserID">The group owner user identifier.</param>
+        ''' <param name="GroupName">Name of the group.</param>
+        ''' <param name="ControlSection">The control section.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function AddGroupUser(ByVal SecureID As Integer, ByVal SessionID As String, ByVal CurrUserID As String, ByVal UserID As String, ByVal FullAccess As String, ByVal ReadOnlyAccess As String, ByVal DeleteAccess As String, ByVal Searchable As String, ByVal GroupOwnerUserID As String, ByVal GroupName As String, ByVal ControlSection As String) As Boolean Implements SVCSearch.IService1.AddGroupUser
             Return MyBase.Channel.AddGroupUser(SecureID, SessionID, CurrUserID, UserID, FullAccess, ReadOnlyAccess, DeleteAccess, Searchable, GroupOwnerUserID, GroupName, ControlSection)
         End Function
-        
+
+        ''' <summary>
+        ''' Adds the group user asynchronous.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SessionID">The session identifier.</param>
+        ''' <param name="CurrUserID">The curr user identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="FullAccess">The full access.</param>
+        ''' <param name="ReadOnlyAccess">The read only access.</param>
+        ''' <param name="DeleteAccess">The delete access.</param>
+        ''' <param name="Searchable">The searchable.</param>
+        ''' <param name="GroupOwnerUserID">The group owner user identifier.</param>
+        ''' <param name="GroupName">Name of the group.</param>
+        ''' <param name="ControlSection">The control section.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of System.Boolean).</returns>
         Public Function AddGroupUserAsync(ByVal SecureID As Integer, ByVal SessionID As String, ByVal CurrUserID As String, ByVal UserID As String, ByVal FullAccess As String, ByVal ReadOnlyAccess As String, ByVal DeleteAccess As String, ByVal Searchable As String, ByVal GroupOwnerUserID As String, ByVal GroupName As String, ByVal ControlSection As String) As System.Threading.Tasks.Task(Of Boolean) Implements SVCSearch.IService1.AddGroupUserAsync
             Return MyBase.Channel.AddGroupUserAsync(SecureID, SessionID, CurrUserID, UserID, FullAccess, ReadOnlyAccess, DeleteAccess, Searchable, GroupOwnerUserID, GroupName, ControlSection)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 database execute encrypted SQL.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.DBExecuteEncryptedSqlResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_DBExecuteEncryptedSql(ByVal request As SVCSearch.DBExecuteEncryptedSqlRequest) As SVCSearch.DBExecuteEncryptedSqlResponse Implements SVCSearch.IService1.DBExecuteEncryptedSql
             Return MyBase.Channel.DBExecuteEncryptedSql(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Databases the execute encrypted SQL.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="MySql">My SQL.</param>
+        ''' <param name="EKEY">The ekey.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function DBExecuteEncryptedSql(ByRef SecureID As Integer, ByRef MySql As String, ByVal EKEY As String) As Boolean
             Dim inValue As SVCSearch.DBExecuteEncryptedSqlRequest = New SVCSearch.DBExecuteEncryptedSqlRequest()
             inValue.SecureID = SecureID
             inValue.MySql = MySql
             inValue.EKEY = EKEY
-            Dim retVal As SVCSearch.DBExecuteEncryptedSqlResponse = CType(Me,SVCSearch.IService1).DBExecuteEncryptedSql(inValue)
+            Dim retVal As SVCSearch.DBExecuteEncryptedSqlResponse = CType(Me, SVCSearch.IService1).DBExecuteEncryptedSql(inValue)
             SecureID = retVal.SecureID
             MySql = retVal.MySql
             Return retVal.DBExecuteEncryptedSqlResult
         End Function
-        
+
+        ''' <summary>
+        ''' Databases the execute encrypted SQL asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.DBExecuteEncryptedSqlResponse).</returns>
         Public Function DBExecuteEncryptedSqlAsync(ByVal request As SVCSearch.DBExecuteEncryptedSqlRequest) As System.Threading.Tasks.Task(Of SVCSearch.DBExecuteEncryptedSqlResponse) Implements SVCSearch.IService1.DBExecuteEncryptedSqlAsync
             Return MyBase.Channel.DBExecuteEncryptedSqlAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 validate attach secure login.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.validateAttachSecureLoginResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_validateAttachSecureLogin(ByVal request As SVCSearch.validateAttachSecureLoginRequest) As SVCSearch.validateAttachSecureLoginResponse Implements SVCSearch.IService1.validateAttachSecureLogin
             Return MyBase.Channel.validateAttachSecureLogin(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Validates the attach secure login.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="CompanyID">The company identifier.</param>
+        ''' <param name="RepoID">The repo identifier.</param>
+        ''' <param name="UserLogin">The user login.</param>
+        ''' <param name="PW">The pw.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <param name="GateWayEndPoint">The gate way end point.</param>
+        ''' <param name="DownloadEndpoint">The download endpoint.</param>
+        ''' <param name="ENCCS">The enccs.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function validateAttachSecureLogin(ByRef SecureID As Integer, ByVal CompanyID As String, ByVal RepoID As String, ByVal UserLogin As String, ByVal PW As String, ByRef RC As Boolean, ByRef RetMsg As String, ByRef GateWayEndPoint As String, ByRef DownloadEndpoint As String, ByRef ENCCS As String) As Boolean
             Dim inValue As SVCSearch.validateAttachSecureLoginRequest = New SVCSearch.validateAttachSecureLoginRequest()
             inValue.SecureID = SecureID
@@ -15980,7 +20472,7 @@ Namespace SVCSearch
             inValue.GateWayEndPoint = GateWayEndPoint
             inValue.DownloadEndpoint = DownloadEndpoint
             inValue.ENCCS = ENCCS
-            Dim retVal As SVCSearch.validateAttachSecureLoginResponse = CType(Me,SVCSearch.IService1).validateAttachSecureLogin(inValue)
+            Dim retVal As SVCSearch.validateAttachSecureLoginResponse = CType(Me, SVCSearch.IService1).validateAttachSecureLogin(inValue)
             SecureID = retVal.SecureID
             RC = retVal.RC
             RetMsg = retVal.RetMsg
@@ -15989,24 +20481,56 @@ Namespace SVCSearch
             ENCCS = retVal.ENCCS
             Return retVal.validateAttachSecureLoginResult
         End Function
-        
+
+        ''' <summary>
+        ''' Validates the attach secure login asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.validateAttachSecureLoginResponse).</returns>
         Public Function validateAttachSecureLoginAsync(ByVal request As SVCSearch.validateAttachSecureLoginRequest) As System.Threading.Tasks.Task(Of SVCSearch.validateAttachSecureLoginResponse) Implements SVCSearch.IService1.validateAttachSecureLoginAsync
             Return MyBase.Channel.validateAttachSecureLoginAsync(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the XRT test.
+        ''' </summary>
+        ''' <param name="dt">The dt.</param>
+        ''' <returns>System.String.</returns>
         Public Function GetXrtTest(ByVal dt As Date) As String Implements SVCSearch.IService1.GetXrtTest
             Return MyBase.Channel.GetXrtTest(dt)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the XRT test asynchronous.
+        ''' </summary>
+        ''' <param name="dt">The dt.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of System.String).</returns>
         Public Function GetXrtTestAsync(ByVal dt As Date) As System.Threading.Tasks.Task(Of String) Implements SVCSearch.IService1.GetXrtTestAsync
             Return MyBase.Channel.GetXrtTestAsync(dt)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 ck content flags.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.ckContentFlagsResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_ckContentFlags(ByVal request As SVCSearch.ckContentFlagsRequest) As SVCSearch.ckContentFlagsResponse Implements SVCSearch.IService1.ckContentFlags
             Return MyBase.Channel.ckContentFlags(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Cks the content flags.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SourceGuid">The source unique identifier.</param>
+        ''' <param name="SD">if set to <c>true</c> [sd].</param>
+        ''' <param name="SP">if set to <c>true</c> [sp].</param>
+        ''' <param name="SAP">if set to <c>true</c> [sap].</param>
+        ''' <param name="bMaster">if set to <c>true</c> [b master].</param>
+        ''' <param name="RSS">if set to <c>true</c> [RSS].</param>
+        ''' <param name="WEB">if set to <c>true</c> [web].</param>
+        ''' <param name="bPublic">if set to <c>true</c> [b public].</param>
         Public Sub ckContentFlags(ByVal SecureID As Integer, ByVal SourceGuid As String, ByRef SD As Boolean, ByRef SP As Boolean, ByRef SAP As Boolean, ByRef bMaster As Boolean, ByRef RSS As Boolean, ByRef WEB As Boolean, ByRef bPublic As Boolean)
             Dim inValue As SVCSearch.ckContentFlagsRequest = New SVCSearch.ckContentFlagsRequest()
             inValue.SecureID = SecureID
@@ -16018,7 +20542,7 @@ Namespace SVCSearch
             inValue.RSS = RSS
             inValue.WEB = WEB
             inValue.bPublic = bPublic
-            Dim retVal As SVCSearch.ckContentFlagsResponse = CType(Me,SVCSearch.IService1).ckContentFlags(inValue)
+            Dim retVal As SVCSearch.ckContentFlagsResponse = CType(Me, SVCSearch.IService1).ckContentFlags(inValue)
             SD = retVal.SD
             SP = retVal.SP
             SAP = retVal.SAP
@@ -16027,64 +20551,131 @@ Namespace SVCSearch
             WEB = retVal.WEB
             bPublic = retVal.bPublic
         End Sub
-        
+
+        ''' <summary>
+        ''' Cks the content flags asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.ckContentFlagsResponse).</returns>
         Public Function ckContentFlagsAsync(ByVal request As SVCSearch.ckContentFlagsRequest) As System.Threading.Tasks.Task(Of SVCSearch.ckContentFlagsResponse) Implements SVCSearch.IService1.ckContentFlagsAsync
             Return MyBase.Channel.ckContentFlagsAsync(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the customer logo title.
+        ''' </summary>
+        ''' <returns>System.String.</returns>
         Public Function getCustomerLogoTitle() As String Implements SVCSearch.IService1.getCustomerLogoTitle
             Return MyBase.Channel.getCustomerLogoTitle
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the customer logo title asynchronous.
+        ''' </summary>
+        ''' <returns>System.Threading.Tasks.Task(Of System.String).</returns>
         Public Function getCustomerLogoTitleAsync() As System.Threading.Tasks.Task(Of String) Implements SVCSearch.IService1.getCustomerLogoTitleAsync
             Return MyBase.Channel.getCustomerLogoTitleAsync
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the explode email zip.
+        ''' </summary>
+        ''' <returns>System.String.</returns>
         Public Function getExplodeEmailZip() As String Implements SVCSearch.IService1.getExplodeEmailZip
             Return MyBase.Channel.getExplodeEmailZip
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the explode email zip asynchronous.
+        ''' </summary>
+        ''' <returns>System.Threading.Tasks.Task(Of System.String).</returns>
         Public Function getExplodeEmailZipAsync() As System.Threading.Tasks.Task(Of String) Implements SVCSearch.IService1.getExplodeEmailZipAsync
             Return MyBase.Channel.getExplodeEmailZipAsync
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the name of the facility.
+        ''' </summary>
+        ''' <returns>System.String.</returns>
         Public Function getFacilityName() As String Implements SVCSearch.IService1.getFacilityName
             Return MyBase.Channel.getFacilityName
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the facility name asynchronous.
+        ''' </summary>
+        ''' <returns>System.Threading.Tasks.Task(Of System.String).</returns>
         Public Function getFacilityNameAsync() As System.Threading.Tasks.Task(Of String) Implements SVCSearch.IService1.getFacilityNameAsync
             Return MyBase.Channel.getFacilityNameAsync
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the affinitydelay.
+        ''' </summary>
+        ''' <returns>System.Int32.</returns>
         Public Function getAffinitydelay() As Integer Implements SVCSearch.IService1.getAffinitydelay
             Return MyBase.Channel.getAffinitydelay
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the affinitydelay asynchronous.
+        ''' </summary>
+        ''' <returns>System.Threading.Tasks.Task(Of System.Int32).</returns>
         Public Function getAffinitydelayAsync() As System.Threading.Tasks.Task(Of Integer) Implements SVCSearch.IService1.getAffinitydelayAsync
             Return MyBase.Channel.getAffinitydelayAsync
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the CLC URL.
+        ''' </summary>
+        ''' <returns>System.String.</returns>
         Public Function getClcURL() As String Implements SVCSearch.IService1.getClcURL
             Return MyBase.Channel.getClcURL
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the CLC URL asynchronous.
+        ''' </summary>
+        ''' <returns>System.Threading.Tasks.Task(Of System.String).</returns>
         Public Function getClcURLAsync() As System.Threading.Tasks.Task(Of String) Implements SVCSearch.IService1.getClcURLAsync
             Return MyBase.Channel.getClcURLAsync
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the archiver URL.
+        ''' </summary>
+        ''' <returns>System.String.</returns>
         Public Function getArchiverURL() As String Implements SVCSearch.IService1.getArchiverURL
             Return MyBase.Channel.getArchiverURL
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the archiver URL asynchronous.
+        ''' </summary>
+        ''' <returns>System.Threading.Tasks.Task(Of System.String).</returns>
         Public Function getArchiverURLAsync() As System.Threading.Tasks.Task(Of String) Implements SVCSearch.IService1.getArchiverURLAsync
             Return MyBase.Channel.getArchiverURLAsync
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 execute SQL stack.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.ExecuteSqlStackResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_ExecuteSqlStack(ByVal request As SVCSearch.ExecuteSqlStackRequest) As SVCSearch.ExecuteSqlStackResponse Implements SVCSearch.IService1.ExecuteSqlStack
             Return MyBase.Channel.ExecuteSqlStack(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Executes the SQL stack.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SqlStack">The SQL stack.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="SessionID">The session identifier.</param>
+        ''' <param name="ControlSection">The control section.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function ExecuteSqlStack(ByRef SecureID As Integer, ByRef SqlStack As System.Collections.Generic.Dictionary(Of Integer, String), ByVal UserID As String, ByVal SessionID As String, ByVal ControlSection As String) As Boolean
             Dim inValue As SVCSearch.ExecuteSqlStackRequest = New SVCSearch.ExecuteSqlStackRequest()
             inValue.SecureID = SecureID
@@ -16092,123 +20683,271 @@ Namespace SVCSearch
             inValue.UserID = UserID
             inValue.SessionID = SessionID
             inValue.ControlSection = ControlSection
-            Dim retVal As SVCSearch.ExecuteSqlStackResponse = CType(Me,SVCSearch.IService1).ExecuteSqlStack(inValue)
+            Dim retVal As SVCSearch.ExecuteSqlStackResponse = CType(Me, SVCSearch.IService1).ExecuteSqlStack(inValue)
             SecureID = retVal.SecureID
             SqlStack = retVal.SqlStack
             Return retVal.ExecuteSqlStackResult
         End Function
-        
+
+        ''' <summary>
+        ''' Executes the SQL stack asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlStackResponse).</returns>
         Public Function ExecuteSqlStackAsync(ByVal request As SVCSearch.ExecuteSqlStackRequest) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlStackResponse) Implements SVCSearch.IService1.ExecuteSqlStackAsync
             Return MyBase.Channel.ExecuteSqlStackAsync(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the default screen.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <returns>System.String.</returns>
         Public Function getDefaultScreen(ByVal SecureID As Integer, ByVal UserID As String) As String Implements SVCSearch.IService1.getDefaultScreen
             Return MyBase.Channel.getDefaultScreen(SecureID, UserID)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the default screen asynchronous.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of System.String).</returns>
         Public Function getDefaultScreenAsync(ByVal SecureID As Integer, ByVal UserID As String) As System.Threading.Tasks.Task(Of String) Implements SVCSearch.IService1.getDefaultScreenAsync
             Return MyBase.Channel.getDefaultScreenAsync(SecureID, UserID)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 recall user search.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.RecallUserSearchResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_RecallUserSearch(ByVal request As SVCSearch.RecallUserSearchRequest) As SVCSearch.RecallUserSearchResponse Implements SVCSearch.IService1.RecallUserSearch
             Return MyBase.Channel.RecallUserSearch(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Recalls the user search.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SearchName">Name of the search.</param>
+        ''' <param name="UID">The uid.</param>
+        ''' <param name="strSearches">The string searches.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function RecallUserSearch(ByVal SecureID As Integer, ByVal SearchName As String, ByVal UID As String, ByRef strSearches As String) As Boolean
             Dim inValue As SVCSearch.RecallUserSearchRequest = New SVCSearch.RecallUserSearchRequest()
             inValue.SecureID = SecureID
             inValue.SearchName = SearchName
             inValue.UID = UID
             inValue.strSearches = strSearches
-            Dim retVal As SVCSearch.RecallUserSearchResponse = CType(Me,SVCSearch.IService1).RecallUserSearch(inValue)
+            Dim retVal As SVCSearch.RecallUserSearchResponse = CType(Me, SVCSearch.IService1).RecallUserSearch(inValue)
             strSearches = retVal.strSearches
             Return retVal.RecallUserSearchResult
         End Function
-        
+
+        ''' <summary>
+        ''' Recalls the user search asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.RecallUserSearchResponse).</returns>
         Public Function RecallUserSearchAsync(ByVal request As SVCSearch.RecallUserSearchRequest) As System.Threading.Tasks.Task(Of SVCSearch.RecallUserSearchResponse) Implements SVCSearch.IService1.RecallUserSearchAsync
             Return MyBase.Channel.RecallUserSearchAsync(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Saves the user search.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SearchName">Name of the search.</param>
+        ''' <param name="UID">The uid.</param>
+        ''' <param name="strSearches">The string searches.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function SaveUserSearch(ByVal SecureID As Integer, ByVal SearchName As String, ByVal UID As String, ByVal strSearches As String) As Boolean Implements SVCSearch.IService1.SaveUserSearch
             Return MyBase.Channel.SaveUserSearch(SecureID, SearchName, UID, strSearches)
         End Function
-        
+
+        ''' <summary>
+        ''' Saves the user search asynchronous.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SearchName">Name of the search.</param>
+        ''' <param name="UID">The uid.</param>
+        ''' <param name="strSearches">The string searches.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of System.Boolean).</returns>
         Public Function SaveUserSearchAsync(ByVal SecureID As Integer, ByVal SearchName As String, ByVal UID As String, ByVal strSearches As String) As System.Threading.Tasks.Task(Of Boolean) Implements SVCSearch.IService1.SaveUserSearchAsync
             Return MyBase.Channel.SaveUserSearchAsync(SecureID, SearchName, UID, strSearches)
         End Function
-        
+
+        ''' <summary>
+        ''' Schedules the file down load.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="ContentGuid">The content unique identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="ContentType">Type of the content.</param>
+        ''' <param name="Preview">The preview.</param>
+        ''' <param name="Restore">The restore.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function scheduleFileDownLoad(ByVal SecureID As Integer, ByVal ContentGuid As String, ByVal UserID As String, ByVal ContentType As String, ByVal Preview As Integer, ByVal Restore As Integer) As Boolean Implements SVCSearch.IService1.scheduleFileDownLoad
             Return MyBase.Channel.scheduleFileDownLoad(SecureID, ContentGuid, UserID, ContentType, Preview, Restore)
         End Function
-        
+
+        ''' <summary>
+        ''' Schedules the file down load asynchronous.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="ContentGuid">The content unique identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="ContentType">Type of the content.</param>
+        ''' <param name="Preview">The preview.</param>
+        ''' <param name="Restore">The restore.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of System.Boolean).</returns>
         Public Function scheduleFileDownLoadAsync(ByVal SecureID As Integer, ByVal ContentGuid As String, ByVal UserID As String, ByVal ContentType As String, ByVal Preview As Integer, ByVal Restore As Integer) As System.Threading.Tasks.Task(Of Boolean) Implements SVCSearch.IService1.scheduleFileDownLoadAsync
             Return MyBase.Channel.scheduleFileDownLoadAsync(SecureID, ContentGuid, UserID, ContentType, Preview, Restore)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the content meta data.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SourceGuid">The source unique identifier.</param>
+        ''' <returns>System.String.</returns>
         Public Function GetContentMetaData(ByVal SecureID As Integer, ByVal SourceGuid As String) As String Implements SVCSearch.IService1.GetContentMetaData
             Return MyBase.Channel.GetContentMetaData(SecureID, SourceGuid)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the content meta data asynchronous.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SourceGuid">The source unique identifier.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of System.String).</returns>
         Public Function GetContentMetaDataAsync(ByVal SecureID As Integer, ByVal SourceGuid As String) As System.Threading.Tasks.Task(Of String) Implements SVCSearch.IService1.GetContentMetaDataAsync
             Return MyBase.Channel.GetContentMetaDataAsync(SecureID, SourceGuid)
         End Function
-        
+
+        ''' <summary>
+        ''' Removes the restore file by unique identifier.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="RowGuid">The row unique identifier.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function removeRestoreFileByGuid(ByVal SecureID As Integer, ByVal RowGuid As String) As Boolean Implements SVCSearch.IService1.removeRestoreFileByGuid
             Return MyBase.Channel.removeRestoreFileByGuid(SecureID, RowGuid)
         End Function
-        
+
+        ''' <summary>
+        ''' Removes the restore file by unique identifier asynchronous.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="RowGuid">The row unique identifier.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of System.Boolean).</returns>
         Public Function removeRestoreFileByGuidAsync(ByVal SecureID As Integer, ByVal RowGuid As String) As System.Threading.Tasks.Task(Of Boolean) Implements SVCSearch.IService1.removeRestoreFileByGuidAsync
             Return MyBase.Channel.removeRestoreFileByGuidAsync(SecureID, RowGuid)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 remove restore files.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.removeRestoreFilesResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_removeRestoreFiles(ByVal request As SVCSearch.removeRestoreFilesRequest) As SVCSearch.removeRestoreFilesResponse Implements SVCSearch.IService1.removeRestoreFiles
             Return MyBase.Channel.removeRestoreFiles(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Removes the restore files.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="MachineID">The machine identifier.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function removeRestoreFiles(ByVal SecureID As Integer, ByRef UserID As String, ByRef MachineID As String) As Boolean
             Dim inValue As SVCSearch.removeRestoreFilesRequest = New SVCSearch.removeRestoreFilesRequest()
             inValue.SecureID = SecureID
             inValue.UserID = UserID
             inValue.MachineID = MachineID
-            Dim retVal As SVCSearch.removeRestoreFilesResponse = CType(Me,SVCSearch.IService1).removeRestoreFiles(inValue)
+            Dim retVal As SVCSearch.removeRestoreFilesResponse = CType(Me, SVCSearch.IService1).removeRestoreFiles(inValue)
             UserID = retVal.UserID
             MachineID = retVal.MachineID
             Return retVal.removeRestoreFilesResult
         End Function
-        
+
+        ''' <summary>
+        ''' Removes the restore files asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.removeRestoreFilesResponse).</returns>
         Public Function removeRestoreFilesAsync(ByVal request As SVCSearch.removeRestoreFilesRequest) As System.Threading.Tasks.Task(Of SVCSearch.removeRestoreFilesResponse) Implements SVCSearch.IService1.removeRestoreFilesAsync
             Return MyBase.Channel.removeRestoreFilesAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get restore file count.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getRestoreFileCountResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getRestoreFileCount(ByVal request As SVCSearch.getRestoreFileCountRequest) As SVCSearch.getRestoreFileCountResponse Implements SVCSearch.IService1.getRestoreFileCount
             Return MyBase.Channel.getRestoreFileCount(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the restore file count.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="MachineID">The machine identifier.</param>
+        ''' <param name="Preview">if set to <c>true</c> [preview].</param>
+        ''' <returns>System.Int32.</returns>
         Public Function getRestoreFileCount(ByVal SecureID As Integer, ByRef UserID As String, ByRef MachineID As String, ByRef Preview As Boolean) As Integer
             Dim inValue As SVCSearch.getRestoreFileCountRequest = New SVCSearch.getRestoreFileCountRequest()
             inValue.SecureID = SecureID
             inValue.UserID = UserID
             inValue.MachineID = MachineID
             inValue.Preview = Preview
-            Dim retVal As SVCSearch.getRestoreFileCountResponse = CType(Me,SVCSearch.IService1).getRestoreFileCount(inValue)
+            Dim retVal As SVCSearch.getRestoreFileCountResponse = CType(Me, SVCSearch.IService1).getRestoreFileCount(inValue)
             UserID = retVal.UserID
             MachineID = retVal.MachineID
             Preview = retVal.Preview
             Return retVal.getRestoreFileCountResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the restore file count asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getRestoreFileCountResponse).</returns>
         Public Function getRestoreFileCountAsync(ByVal request As SVCSearch.getRestoreFileCountRequest) As System.Threading.Tasks.Task(Of SVCSearch.getRestoreFileCountResponse) Implements SVCSearch.IService1.getRestoreFileCountAsync
             Return MyBase.Channel.getRestoreFileCountAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 save restore file.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.saveRestoreFileResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_saveRestoreFile(ByVal request As SVCSearch.saveRestoreFileRequest) As SVCSearch.saveRestoreFileResponse Implements SVCSearch.IService1.saveRestoreFile
             Return MyBase.Channel.saveRestoreFile(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Saves the restore file.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="tgtTable">The TGT table.</param>
+        ''' <param name="ContentGuid">The content unique identifier.</param>
+        ''' <param name="Preview">if set to <c>true</c> [preview].</param>
+        ''' <param name="Restore">if set to <c>true</c> [restore].</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="MachineID">The machine identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function saveRestoreFile(ByVal SecureID As Integer, ByVal tgtTable As String, ByRef ContentGuid As String, ByVal Preview As Boolean, ByVal Restore As Boolean, ByRef UserID As String, ByRef MachineID As String, ByRef RC As Boolean, ByVal RetMsg As String) As Boolean
             Dim inValue As SVCSearch.saveRestoreFileRequest = New SVCSearch.saveRestoreFileRequest()
             inValue.SecureID = SecureID
@@ -16220,23 +20959,49 @@ Namespace SVCSearch
             inValue.MachineID = MachineID
             inValue.RC = RC
             inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.saveRestoreFileResponse = CType(Me,SVCSearch.IService1).saveRestoreFile(inValue)
+            Dim retVal As SVCSearch.saveRestoreFileResponse = CType(Me, SVCSearch.IService1).saveRestoreFile(inValue)
             ContentGuid = retVal.ContentGuid
             UserID = retVal.UserID
             MachineID = retVal.MachineID
             RC = retVal.RC
             Return retVal.saveRestoreFileResult
         End Function
-        
+
+        ''' <summary>
+        ''' Saves the restore file asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.saveRestoreFileResponse).</returns>
         Public Function saveRestoreFileAsync(ByVal request As SVCSearch.saveRestoreFileRequest) As System.Threading.Tasks.Task(Of SVCSearch.saveRestoreFileResponse) Implements SVCSearch.IService1.saveRestoreFileAsync
             Return MyBase.Channel.saveRestoreFileAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 gen email attachments SQL.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.GenEmailAttachmentsSQLResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_GenEmailAttachmentsSQL(ByVal request As SVCSearch.GenEmailAttachmentsSQLRequest) As SVCSearch.GenEmailAttachmentsSQLResponse Implements SVCSearch.IService1.GenEmailAttachmentsSQL
             Return MyBase.Channel.GenEmailAttachmentsSQL(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gens the email attachments SQL.
+        ''' </summary>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="SearchParms">The search parms.</param>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="InputSearchString">The input search string.</param>
+        ''' <param name="useFreetext">if set to <c>true</c> [use freetext].</param>
+        ''' <param name="ckWeighted">if set to <c>true</c> [ck weighted].</param>
+        ''' <param name="isEmail">if set to <c>true</c> [is email].</param>
+        ''' <param name="LimitToCurrRecs">if set to <c>true</c> [limit to curr recs].</param>
+        ''' <param name="ThesaurusList">The thesaurus list.</param>
+        ''' <param name="txtThesaurus">The text thesaurus.</param>
+        ''' <param name="cbThesaurusText">The cb thesaurus text.</param>
+        ''' <param name="calledBy">The called by.</param>
+        ''' <returns>System.String.</returns>
         Public Function GenEmailAttachmentsSQL(ByVal UserID As String, ByVal SearchParms() As SVCSearch.DS_SearchTerms, ByRef SecureID As Integer, ByVal InputSearchString As String, ByVal useFreetext As Boolean, ByVal ckWeighted As Boolean, ByVal isEmail As Boolean, ByVal LimitToCurrRecs As Boolean, ByVal ThesaurusList() As Object, ByVal txtThesaurus As String, ByVal cbThesaurusText As String, ByVal calledBy As String) As String
             Dim inValue As SVCSearch.GenEmailAttachmentsSQLRequest = New SVCSearch.GenEmailAttachmentsSQLRequest()
             inValue.UserID = UserID
@@ -16251,39 +21016,81 @@ Namespace SVCSearch
             inValue.txtThesaurus = txtThesaurus
             inValue.cbThesaurusText = cbThesaurusText
             inValue.calledBy = calledBy
-            Dim retVal As SVCSearch.GenEmailAttachmentsSQLResponse = CType(Me,SVCSearch.IService1).GenEmailAttachmentsSQL(inValue)
+            Dim retVal As SVCSearch.GenEmailAttachmentsSQLResponse = CType(Me, SVCSearch.IService1).GenEmailAttachmentsSQL(inValue)
             SecureID = retVal.SecureID
             Return retVal.GenEmailAttachmentsSQLResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gens the email attachments SQL asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.GenEmailAttachmentsSQLResponse).</returns>
         Public Function GenEmailAttachmentsSQLAsync(ByVal request As SVCSearch.GenEmailAttachmentsSQLRequest) As System.Threading.Tasks.Task(Of SVCSearch.GenEmailAttachmentsSQLResponse) Implements SVCSearch.IService1.GenEmailAttachmentsSQLAsync
             Return MyBase.Channel.GenEmailAttachmentsSQLAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 gen email generated SQL.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.GenEmailGeneratedSQLResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_GenEmailGeneratedSQL(ByVal request As SVCSearch.GenEmailGeneratedSQLRequest) As SVCSearch.GenEmailGeneratedSQLResponse Implements SVCSearch.IService1.GenEmailGeneratedSQL
             Return MyBase.Channel.GenEmailGeneratedSQL(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gens the email generated SQL.
+        ''' </summary>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="SearchParms">The search parms.</param>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <returns>System.String.</returns>
         Public Function GenEmailGeneratedSQL(ByVal UserID As String, ByVal SearchParms() As SVCSearch.DS_SearchTerms, ByRef SecureID As Integer) As String
             Dim inValue As SVCSearch.GenEmailGeneratedSQLRequest = New SVCSearch.GenEmailGeneratedSQLRequest()
             inValue.UserID = UserID
             inValue.SearchParms = SearchParms
             inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.GenEmailGeneratedSQLResponse = CType(Me,SVCSearch.IService1).GenEmailGeneratedSQL(inValue)
+            Dim retVal As SVCSearch.GenEmailGeneratedSQLResponse = CType(Me, SVCSearch.IService1).GenEmailGeneratedSQL(inValue)
             SecureID = retVal.SecureID
             Return retVal.GenEmailGeneratedSQLResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gens the email generated SQL asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.GenEmailGeneratedSQLResponse).</returns>
         Public Function GenEmailGeneratedSQLAsync(ByVal request As SVCSearch.GenEmailGeneratedSQLRequest) As System.Threading.Tasks.Task(Of SVCSearch.GenEmailGeneratedSQLResponse) Implements SVCSearch.IService1.GenEmailGeneratedSQLAsync
             Return MyBase.Channel.GenEmailGeneratedSQLAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 gen content search SQL.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.GenContentSearchSQLResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_GenContentSearchSQL(ByVal request As SVCSearch.GenContentSearchSQLRequest) As SVCSearch.GenContentSearchSQLResponse Implements SVCSearch.IService1.GenContentSearchSQL
             Return MyBase.Channel.GenContentSearchSQL(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gens the content search SQL.
+        ''' </summary>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="SearchParms">The search parms.</param>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UID">The uid.</param>
+        ''' <param name="SearchString">The search string.</param>
+        ''' <param name="ckLimitToExisting">if set to <c>true</c> [ck limit to existing].</param>
+        ''' <param name="txtThesaurus">The text thesaurus.</param>
+        ''' <param name="cbThesaurusText">The cb thesaurus text.</param>
+        ''' <param name="ckLimitToLib">if set to <c>true</c> [ck limit to library].</param>
+        ''' <param name="LibraryName">Name of the library.</param>
+        ''' <param name="ckWeighted">if set to <c>true</c> [ck weighted].</param>
+        ''' <returns>System.String.</returns>
         Public Function GenContentSearchSQL(ByVal UserID As String, ByVal SearchParms() As SVCSearch.DS_SearchTerms, ByRef SecureID As Integer, ByVal UID As String, ByVal SearchString As String, ByVal ckLimitToExisting As Boolean, ByVal txtThesaurus As String, ByVal cbThesaurusText As String, ByVal ckLimitToLib As Boolean, ByVal LibraryName As String, ByVal ckWeighted As Boolean) As String
             Dim inValue As SVCSearch.GenContentSearchSQLRequest = New SVCSearch.GenContentSearchSQLRequest()
             inValue.UserID = UserID
@@ -16297,20 +21104,38 @@ Namespace SVCSearch
             inValue.ckLimitToLib = ckLimitToLib
             inValue.LibraryName = LibraryName
             inValue.ckWeighted = ckWeighted
-            Dim retVal As SVCSearch.GenContentSearchSQLResponse = CType(Me,SVCSearch.IService1).GenContentSearchSQL(inValue)
+            Dim retVal As SVCSearch.GenContentSearchSQLResponse = CType(Me, SVCSearch.IService1).GenContentSearchSQL(inValue)
             SecureID = retVal.SecureID
             Return retVal.GenContentSearchSQLResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gens the content search SQL asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.GenContentSearchSQLResponse).</returns>
         Public Function GenContentSearchSQLAsync(ByVal request As SVCSearch.GenContentSearchSQLRequest) As System.Threading.Tasks.Task(Of SVCSearch.GenContentSearchSQLResponse) Implements SVCSearch.IService1.GenContentSearchSQLAsync
             Return MyBase.Channel.GenContentSearchSQLAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 change user content public.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.ChangeUserContentPublicResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_ChangeUserContentPublic(ByVal request As SVCSearch.ChangeUserContentPublicRequest) As SVCSearch.ChangeUserContentPublicResponse Implements SVCSearch.IService1.ChangeUserContentPublic
             Return MyBase.Channel.ChangeUserContentPublic(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Changes the user content public.
+        ''' </summary>
+        ''' <param name="ServiceID">The service identifier.</param>
+        ''' <param name="CurrSelectedUserGuid">The curr selected user unique identifier.</param>
+        ''' <param name="isPublic">The is public.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
         Public Sub ChangeUserContentPublic(ByVal ServiceID As Integer, ByVal CurrSelectedUserGuid As String, ByVal isPublic As String, ByRef RC As Boolean, ByRef RetMsg As String)
             Dim inValue As SVCSearch.ChangeUserContentPublicRequest = New SVCSearch.ChangeUserContentPublicRequest()
             inValue.ServiceID = ServiceID
@@ -16318,20 +21143,38 @@ Namespace SVCSearch
             inValue.isPublic = isPublic
             inValue.RC = RC
             inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.ChangeUserContentPublicResponse = CType(Me,SVCSearch.IService1).ChangeUserContentPublic(inValue)
+            Dim retVal As SVCSearch.ChangeUserContentPublicResponse = CType(Me, SVCSearch.IService1).ChangeUserContentPublic(inValue)
             RC = retVal.RC
             RetMsg = retVal.RetMsg
         End Sub
-        
+
+        ''' <summary>
+        ''' Changes the user content public asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.ChangeUserContentPublicResponse).</returns>
         Public Function ChangeUserContentPublicAsync(ByVal request As SVCSearch.ChangeUserContentPublicRequest) As System.Threading.Tasks.Task(Of SVCSearch.ChangeUserContentPublicResponse) Implements SVCSearch.IService1.ChangeUserContentPublicAsync
             Return MyBase.Channel.ChangeUserContentPublicAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 refactor.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.RefactorResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_Refactor(ByVal request As SVCSearch.RefactorRequest) As SVCSearch.RefactorResponse Implements SVCSearch.IService1.Refactor
             Return MyBase.Channel.Refactor(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Refactors the specified secure identifier.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="NewOwnerID">Creates new ownerid.</param>
+        ''' <param name="OldOwnerID">The old owner identifier.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
         Public Sub Refactor(ByVal SecureID As Integer, ByVal NewOwnerID As String, ByVal OldOwnerID As String, ByRef RC As Boolean, ByRef RetMsg As String)
             Dim inValue As SVCSearch.RefactorRequest = New SVCSearch.RefactorRequest()
             inValue.SecureID = SecureID
@@ -16339,20 +21182,40 @@ Namespace SVCSearch
             inValue.OldOwnerID = OldOwnerID
             inValue.RC = RC
             inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.RefactorResponse = CType(Me,SVCSearch.IService1).Refactor(inValue)
+            Dim retVal As SVCSearch.RefactorResponse = CType(Me, SVCSearch.IService1).Refactor(inValue)
             RC = retVal.RC
             RetMsg = retVal.RetMsg
         End Sub
-        
+
+        ''' <summary>
+        ''' Refactors the asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.RefactorResponse).</returns>
         Public Function RefactorAsync(ByVal request As SVCSearch.RefactorRequest) As System.Threading.Tasks.Task(Of SVCSearch.RefactorResponse) Implements SVCSearch.IService1.RefactorAsync
             Return MyBase.Channel.RefactorAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the state of the search i service1 get saas.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getSAASStateResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getSAASState(ByVal request As SVCSearch.getSAASStateRequest) As SVCSearch.getSAASStateResponse Implements SVCSearch.IService1.getSAASState
             Return MyBase.Channel.getSAASState(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the state of the saas.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="DirName">Name of the dir.</param>
+        ''' <param name="FullPath">The full path.</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <returns>System.String.</returns>
         Public Function getSAASState(ByVal SecureID As Integer, ByVal UserID As String, ByVal DirName As String, ByVal FullPath As String, ByRef RetMsg As String, ByRef RC As Boolean) As String
             Dim inValue As SVCSearch.getSAASStateRequest = New SVCSearch.getSAASStateRequest()
             inValue.SecureID = SecureID
@@ -16361,29 +21224,65 @@ Namespace SVCSearch
             inValue.FullPath = FullPath
             inValue.RetMsg = RetMsg
             inValue.RC = RC
-            Dim retVal As SVCSearch.getSAASStateResponse = CType(Me,SVCSearch.IService1).getSAASState(inValue)
+            Dim retVal As SVCSearch.getSAASStateResponse = CType(Me, SVCSearch.IService1).getSAASState(inValue)
             RetMsg = retVal.RetMsg
             RC = retVal.RC
             Return retVal.getSAASStateResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the saas state asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getSAASStateResponse).</returns>
         Public Function getSAASStateAsync(ByVal request As SVCSearch.getSAASStateRequest) As System.Threading.Tasks.Task(Of SVCSearch.getSAASStateResponse) Implements SVCSearch.IService1.getSAASStateAsync
             Return MyBase.Channel.getSAASStateAsync(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Sets the state of the saas.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="DirName">Name of the dir.</param>
+        ''' <param name="FullPath">The full path.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function SetSAASState(ByVal SecureID As Integer, ByVal UserID As String, ByVal DirName As String, ByVal FullPath As String) As Boolean Implements SVCSearch.IService1.SetSAASState
             Return MyBase.Channel.SetSAASState(SecureID, UserID, DirName, FullPath)
         End Function
-        
+
+        ''' <summary>
+        ''' Sets the saas state asynchronous.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="DirName">Name of the dir.</param>
+        ''' <param name="FullPath">The full path.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of System.Boolean).</returns>
         Public Function SetSAASStateAsync(ByVal SecureID As Integer, ByVal UserID As String, ByVal DirName As String, ByVal FullPath As String) As System.Threading.Tasks.Task(Of Boolean) Implements SVCSearch.IService1.SetSAASStateAsync
             Return MyBase.Channel.SetSAASStateAsync(SecureID, UserID, DirName, FullPath)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get list of strings01.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getListOfStrings01Response.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getListOfStrings01(ByVal request As SVCSearch.getListOfStrings01Request) As SVCSearch.getListOfStrings01Response Implements SVCSearch.IService1.getListOfStrings01
             Return MyBase.Channel.getListOfStrings01(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the list of strings01.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="MySql">My SQL.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <param name="UserId">The user identifier.</param>
+        ''' <param name="SessionID">The session identifier.</param>
+        ''' <returns>System.String.</returns>
         Public Function getListOfStrings01(ByRef SecureID As Integer, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String, ByVal UserId As String, ByVal SessionID As String) As String
             Dim inValue As SVCSearch.getListOfStrings01Request = New SVCSearch.getListOfStrings01Request()
             inValue.SecureID = SecureID
@@ -16392,22 +21291,42 @@ Namespace SVCSearch
             inValue.RetMsg = RetMsg
             inValue.UserId = UserId
             inValue.SessionID = SessionID
-            Dim retVal As SVCSearch.getListOfStrings01Response = CType(Me,SVCSearch.IService1).getListOfStrings01(inValue)
+            Dim retVal As SVCSearch.getListOfStrings01Response = CType(Me, SVCSearch.IService1).getListOfStrings01(inValue)
             SecureID = retVal.SecureID
             RC = retVal.RC
             RetMsg = retVal.RetMsg
             Return retVal.getListOfStrings01Result
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the list of strings01 asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings01Response).</returns>
         Public Function getListOfStrings01Async(ByVal request As SVCSearch.getListOfStrings01Request) As System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings01Response) Implements SVCSearch.IService1.getListOfStrings01Async
             Return MyBase.Channel.getListOfStrings01Async(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get list of strings02.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getListOfStrings02Response.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getListOfStrings02(ByVal request As SVCSearch.getListOfStrings02Request) As SVCSearch.getListOfStrings02Response Implements SVCSearch.IService1.getListOfStrings02
             Return MyBase.Channel.getListOfStrings02(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the list of strings02.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="MySql">My SQL.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <param name="UserId">The user identifier.</param>
+        ''' <param name="SessionID">The session identifier.</param>
+        ''' <returns>SVCSearch.DS_ListOfStrings02().</returns>
         Public Function getListOfStrings02(ByRef SecureID As Integer, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String, ByVal UserId As String, ByVal SessionID As String) As SVCSearch.DS_ListOfStrings02()
             Dim inValue As SVCSearch.getListOfStrings02Request = New SVCSearch.getListOfStrings02Request()
             inValue.SecureID = SecureID
@@ -16416,22 +21335,42 @@ Namespace SVCSearch
             inValue.RetMsg = RetMsg
             inValue.UserId = UserId
             inValue.SessionID = SessionID
-            Dim retVal As SVCSearch.getListOfStrings02Response = CType(Me,SVCSearch.IService1).getListOfStrings02(inValue)
+            Dim retVal As SVCSearch.getListOfStrings02Response = CType(Me, SVCSearch.IService1).getListOfStrings02(inValue)
             SecureID = retVal.SecureID
             RC = retVal.RC
             RetMsg = retVal.RetMsg
             Return retVal.getListOfStrings02Result
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the list of strings02 asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings02Response).</returns>
         Public Function getListOfStrings02Async(ByVal request As SVCSearch.getListOfStrings02Request) As System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings02Response) Implements SVCSearch.IService1.getListOfStrings02Async
             Return MyBase.Channel.getListOfStrings02Async(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get list of strings03.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getListOfStrings03Response.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getListOfStrings03(ByVal request As SVCSearch.getListOfStrings03Request) As SVCSearch.getListOfStrings03Response Implements SVCSearch.IService1.getListOfStrings03
             Return MyBase.Channel.getListOfStrings03(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the list of strings03.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="MySql">My SQL.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <param name="UserId">The user identifier.</param>
+        ''' <param name="SessionID">The session identifier.</param>
+        ''' <returns>SVCSearch.DS_ListOfStrings03().</returns>
         Public Function getListOfStrings03(ByRef SecureID As Integer, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String, ByVal UserId As String, ByVal SessionID As String) As SVCSearch.DS_ListOfStrings03()
             Dim inValue As SVCSearch.getListOfStrings03Request = New SVCSearch.getListOfStrings03Request()
             inValue.SecureID = SecureID
@@ -16440,22 +21379,42 @@ Namespace SVCSearch
             inValue.RetMsg = RetMsg
             inValue.UserId = UserId
             inValue.SessionID = SessionID
-            Dim retVal As SVCSearch.getListOfStrings03Response = CType(Me,SVCSearch.IService1).getListOfStrings03(inValue)
+            Dim retVal As SVCSearch.getListOfStrings03Response = CType(Me, SVCSearch.IService1).getListOfStrings03(inValue)
             SecureID = retVal.SecureID
             RC = retVal.RC
             RetMsg = retVal.RetMsg
             Return retVal.getListOfStrings03Result
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the list of strings03 asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings03Response).</returns>
         Public Function getListOfStrings03Async(ByVal request As SVCSearch.getListOfStrings03Request) As System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings03Response) Implements SVCSearch.IService1.getListOfStrings03Async
             Return MyBase.Channel.getListOfStrings03Async(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get list of strings04.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getListOfStrings04Response.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getListOfStrings04(ByVal request As SVCSearch.getListOfStrings04Request) As SVCSearch.getListOfStrings04Response Implements SVCSearch.IService1.getListOfStrings04
             Return MyBase.Channel.getListOfStrings04(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the list of strings04.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="MySql">My SQL.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <param name="UserId">The user identifier.</param>
+        ''' <param name="SessionID">The session identifier.</param>
+        ''' <returns>SVCSearch.DS_ListOfStrings04().</returns>
         Public Function getListOfStrings04(ByRef SecureID As Integer, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String, ByVal UserId As String, ByVal SessionID As String) As SVCSearch.DS_ListOfStrings04()
             Dim inValue As SVCSearch.getListOfStrings04Request = New SVCSearch.getListOfStrings04Request()
             inValue.SecureID = SecureID
@@ -16464,97 +21423,179 @@ Namespace SVCSearch
             inValue.RetMsg = RetMsg
             inValue.UserId = UserId
             inValue.SessionID = SessionID
-            Dim retVal As SVCSearch.getListOfStrings04Response = CType(Me,SVCSearch.IService1).getListOfStrings04(inValue)
+            Dim retVal As SVCSearch.getListOfStrings04Response = CType(Me, SVCSearch.IService1).getListOfStrings04(inValue)
             SecureID = retVal.SecureID
             RC = retVal.RC
             RetMsg = retVal.RetMsg
             Return retVal.getListOfStrings04Result
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the list of strings04 asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings04Response).</returns>
         Public Function getListOfStrings04Async(ByVal request As SVCSearch.getListOfStrings04Request) As System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings04Response) Implements SVCSearch.IService1.getListOfStrings04Async
             Return MyBase.Channel.getListOfStrings04Async(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 populate library users grid.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.PopulateLibraryUsersGridResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_PopulateLibraryUsersGrid(ByVal request As SVCSearch.PopulateLibraryUsersGridRequest) As SVCSearch.PopulateLibraryUsersGridResponse Implements SVCSearch.IService1.PopulateLibraryUsersGrid
             Return MyBase.Channel.PopulateLibraryUsersGrid(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the library users grid.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="LibraryName">Name of the library.</param>
+        ''' <param name="ckLibUsersOnly">if set to <c>true</c> [ck library users only].</param>
+        ''' <returns>System.String.</returns>
         Public Function PopulateLibraryUsersGrid(ByRef SecureID As Integer, ByVal LibraryName As String, ByVal ckLibUsersOnly As Boolean) As String
             Dim inValue As SVCSearch.PopulateLibraryUsersGridRequest = New SVCSearch.PopulateLibraryUsersGridRequest()
             inValue.SecureID = SecureID
             inValue.LibraryName = LibraryName
             inValue.ckLibUsersOnly = ckLibUsersOnly
-            Dim retVal As SVCSearch.PopulateLibraryUsersGridResponse = CType(Me,SVCSearch.IService1).PopulateLibraryUsersGrid(inValue)
+            Dim retVal As SVCSearch.PopulateLibraryUsersGridResponse = CType(Me, SVCSearch.IService1).PopulateLibraryUsersGrid(inValue)
             SecureID = retVal.SecureID
             Return retVal.PopulateLibraryUsersGridResult
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the library users grid asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.PopulateLibraryUsersGridResponse).</returns>
         Public Function PopulateLibraryUsersGridAsync(ByVal request As SVCSearch.PopulateLibraryUsersGridRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateLibraryUsersGridResponse) Implements SVCSearch.IService1.PopulateLibraryUsersGridAsync
             Return MyBase.Channel.PopulateLibraryUsersGridAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get user authentication.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getUserAuthResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getUserAuth(ByVal request As SVCSearch.getUserAuthRequest) As SVCSearch.getUserAuthResponse Implements SVCSearch.IService1.getUserAuth
             Return MyBase.Channel.getUserAuth(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the user authentication.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="Userid">The userid.</param>
+        ''' <returns>System.String.</returns>
         Public Function getUserAuth(ByRef SecureID As Integer, ByVal Userid As String) As String
             Dim inValue As SVCSearch.getUserAuthRequest = New SVCSearch.getUserAuthRequest()
             inValue.SecureID = SecureID
             inValue.Userid = Userid
-            Dim retVal As SVCSearch.getUserAuthResponse = CType(Me,SVCSearch.IService1).getUserAuth(inValue)
+            Dim retVal As SVCSearch.getUserAuthResponse = CType(Me, SVCSearch.IService1).getUserAuth(inValue)
             SecureID = retVal.SecureID
             Return retVal.getUserAuthResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the user authentication asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getUserAuthResponse).</returns>
         Public Function getUserAuthAsync(ByVal request As SVCSearch.getUserAuthRequest) As System.Threading.Tasks.Task(Of SVCSearch.getUserAuthResponse) Implements SVCSearch.IService1.getUserAuthAsync
             Return MyBase.Channel.getUserAuthAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 delete user.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.DeleteUserResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_DeleteUser(ByVal request As SVCSearch.DeleteUserRequest) As SVCSearch.DeleteUserResponse Implements SVCSearch.IService1.DeleteUser
             Return MyBase.Channel.DeleteUser(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Deletes the user.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SelectedUserGuid">The selected user unique identifier.</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function DeleteUser(ByRef SecureID As Integer, ByVal SelectedUserGuid As String, ByRef RetMsg As String) As Boolean
             Dim inValue As SVCSearch.DeleteUserRequest = New SVCSearch.DeleteUserRequest()
             inValue.SecureID = SecureID
             inValue.SelectedUserGuid = SelectedUserGuid
             inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.DeleteUserResponse = CType(Me,SVCSearch.IService1).DeleteUser(inValue)
+            Dim retVal As SVCSearch.DeleteUserResponse = CType(Me, SVCSearch.IService1).DeleteUser(inValue)
             SecureID = retVal.SecureID
             RetMsg = retVal.RetMsg
             Return retVal.DeleteUserResult
         End Function
-        
+
+        ''' <summary>
+        ''' Deletes the user asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.DeleteUserResponse).</returns>
         Public Function DeleteUserAsync(ByVal request As SVCSearch.DeleteUserRequest) As System.Threading.Tasks.Task(Of SVCSearch.DeleteUserResponse) Implements SVCSearch.IService1.DeleteUserAsync
             Return MyBase.Channel.DeleteUserAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 save u ser.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.SaveUSerResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_SaveUSer(ByVal request As SVCSearch.SaveUSerRequest) As SVCSearch.SaveUSerResponse Implements SVCSearch.IService1.SaveUSer
             Return MyBase.Channel.SaveUSer(request)
         End Function
-        
-        Public Function SaveUSer( _
-                    ByVal SecureID As Integer,  _
-                    ByRef UserID As String,  _
-                    ByRef UserName As String,  _
-                    ByRef EmailAddress As String,  _
-                    ByRef UserPassword As String,  _
-                    ByRef Admin As String,  _
-                    ByRef isActive As String,  _
-                    ByRef UserLoginID As String,  _
-                    ByRef ClientOnly As Boolean,  _
-                    ByRef HiveConnectionName As String,  _
-                    ByRef HiveActive As Boolean,  _
-                    ByRef RepoSvrName As String,  _
-                    ByRef RowCreationDate As Date,  _
-                    ByRef RowLastModDate As Date,  _
-                    ByRef ActiveGuid As String,  _
-                    ByRef RepoName As String,  _
-                    ByRef RC As Boolean,  _
+
+        ''' <summary>
+        ''' Saves the u ser.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UserID">The user identifier.</param>
+        ''' <param name="UserName">Name of the user.</param>
+        ''' <param name="EmailAddress">The email address.</param>
+        ''' <param name="UserPassword">The user password.</param>
+        ''' <param name="Admin">The admin.</param>
+        ''' <param name="isActive">The is active.</param>
+        ''' <param name="UserLoginID">The user login identifier.</param>
+        ''' <param name="ClientOnly">if set to <c>true</c> [client only].</param>
+        ''' <param name="HiveConnectionName">Name of the hive connection.</param>
+        ''' <param name="HiveActive">if set to <c>true</c> [hive active].</param>
+        ''' <param name="RepoSvrName">Name of the repo SVR.</param>
+        ''' <param name="RowCreationDate">The row creation date.</param>
+        ''' <param name="RowLastModDate">The row last mod date.</param>
+        ''' <param name="ActiveGuid">The active unique identifier.</param>
+        ''' <param name="RepoName">Name of the repo.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        Public Function SaveUSer(
+                    ByVal SecureID As Integer,
+                    ByRef UserID As String,
+                    ByRef UserName As String,
+                    ByRef EmailAddress As String,
+                    ByRef UserPassword As String,
+                    ByRef Admin As String,
+                    ByRef isActive As String,
+                    ByRef UserLoginID As String,
+                    ByRef ClientOnly As Boolean,
+                    ByRef HiveConnectionName As String,
+                    ByRef HiveActive As Boolean,
+                    ByRef RepoSvrName As String,
+                    ByRef RowCreationDate As Date,
+                    ByRef RowLastModDate As Date,
+                    ByRef ActiveGuid As String,
+                    ByRef RepoName As String,
+                    ByRef RC As Boolean,
                     ByRef RetMsg As String) As Boolean
             Dim inValue As SVCSearch.SaveUSerRequest = New SVCSearch.SaveUSerRequest()
             inValue.SecureID = SecureID
@@ -16575,7 +21616,7 @@ Namespace SVCSearch
             inValue.RepoName = RepoName
             inValue.RC = RC
             inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.SaveUSerResponse = CType(Me,SVCSearch.IService1).SaveUSer(inValue)
+            Dim retVal As SVCSearch.SaveUSerResponse = CType(Me, SVCSearch.IService1).SaveUSer(inValue)
             UserID = retVal.UserID
             UserName = retVal.UserName
             EmailAddress = retVal.EmailAddress
@@ -16595,39 +21636,76 @@ Namespace SVCSearch
             RetMsg = retVal.RetMsg
             Return retVal.SaveUSerResult
         End Function
-        
+
+        ''' <summary>
+        ''' Saves the u ser asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.SaveUSerResponse).</returns>
         Public Function SaveUSerAsync(ByVal request As SVCSearch.SaveUSerRequest) As System.Threading.Tasks.Task(Of SVCSearch.SaveUSerResponse) Implements SVCSearch.IService1.SaveUSerAsync
             Return MyBase.Channel.SaveUSerAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 save search schedule.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.saveSearchScheduleResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_saveSearchSchedule(ByVal request As SVCSearch.saveSearchScheduleRequest) As SVCSearch.saveSearchScheduleResponse Implements SVCSearch.IService1.saveSearchSchedule
             Return MyBase.Channel.saveSearchSchedule(request)
         End Function
-        
-        Public Function saveSearchSchedule( _
-                    ByVal SecureID As Integer,  _
-                    ByRef SearchName As String,  _
-                    ByRef NotificationSMS As String,  _
-                    ByRef SearchDesc As String,  _
-                    ByRef OwnerID As String,  _
-                    ByRef SearchQuery As String,  _
-                    ByRef SendToEmail As String,  _
-                    ByRef ScheduleUnit As String,  _
-                    ByRef ScheduleHour As String,  _
-                    ByRef ScheduleDaysOfWeek As String,  _
-                    ByRef ScheduleDaysOfMonth As String,  _
-                    ByRef ScheduleMonthOfQtr As String,  _
-                    ByRef StartToRunDate As Date,  _
-                    ByRef EndRunDate As Date,  _
-                    ByRef SearchParameters As String,  _
-                    ByRef LastRunDate As Date,  _
-                    ByRef NumberOfExecutions As Integer,  _
-                    ByRef CreateDate As Date,  _
-                    ByRef LastModDate As Date,  _
-                    ByRef ScheduleHourInterval As Integer,  _
-                    ByRef RepoName As String,  _
-                    ByRef RC As Boolean,  _
+
+        ''' <summary>
+        ''' Saves the search schedule.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SearchName">Name of the search.</param>
+        ''' <param name="NotificationSMS">The notification SMS.</param>
+        ''' <param name="SearchDesc">The search desc.</param>
+        ''' <param name="OwnerID">The owner identifier.</param>
+        ''' <param name="SearchQuery">The search query.</param>
+        ''' <param name="SendToEmail">The send to email.</param>
+        ''' <param name="ScheduleUnit">The schedule unit.</param>
+        ''' <param name="ScheduleHour">The schedule hour.</param>
+        ''' <param name="ScheduleDaysOfWeek">The schedule days of week.</param>
+        ''' <param name="ScheduleDaysOfMonth">The schedule days of month.</param>
+        ''' <param name="ScheduleMonthOfQtr">The schedule month of QTR.</param>
+        ''' <param name="StartToRunDate">The start to run date.</param>
+        ''' <param name="EndRunDate">The end run date.</param>
+        ''' <param name="SearchParameters">The search parameters.</param>
+        ''' <param name="LastRunDate">The last run date.</param>
+        ''' <param name="NumberOfExecutions">The number of executions.</param>
+        ''' <param name="CreateDate">The create date.</param>
+        ''' <param name="LastModDate">The last mod date.</param>
+        ''' <param name="ScheduleHourInterval">The schedule hour interval.</param>
+        ''' <param name="RepoName">Name of the repo.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        Public Function saveSearchSchedule(
+                    ByVal SecureID As Integer,
+                    ByRef SearchName As String,
+                    ByRef NotificationSMS As String,
+                    ByRef SearchDesc As String,
+                    ByRef OwnerID As String,
+                    ByRef SearchQuery As String,
+                    ByRef SendToEmail As String,
+                    ByRef ScheduleUnit As String,
+                    ByRef ScheduleHour As String,
+                    ByRef ScheduleDaysOfWeek As String,
+                    ByRef ScheduleDaysOfMonth As String,
+                    ByRef ScheduleMonthOfQtr As String,
+                    ByRef StartToRunDate As Date,
+                    ByRef EndRunDate As Date,
+                    ByRef SearchParameters As String,
+                    ByRef LastRunDate As Date,
+                    ByRef NumberOfExecutions As Integer,
+                    ByRef CreateDate As Date,
+                    ByRef LastModDate As Date,
+                    ByRef ScheduleHourInterval As Integer,
+                    ByRef RepoName As String,
+                    ByRef RC As Boolean,
                     ByRef RetMsg As String) As Boolean
             Dim inValue As SVCSearch.saveSearchScheduleRequest = New SVCSearch.saveSearchScheduleRequest()
             inValue.SecureID = SecureID
@@ -16653,7 +21731,7 @@ Namespace SVCSearch
             inValue.RepoName = RepoName
             inValue.RC = RC
             inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.saveSearchScheduleResponse = CType(Me,SVCSearch.IService1).saveSearchSchedule(inValue)
+            Dim retVal As SVCSearch.saveSearchScheduleResponse = CType(Me, SVCSearch.IService1).saveSearchSchedule(inValue)
             SearchName = retVal.SearchName
             NotificationSMS = retVal.NotificationSMS
             SearchDesc = retVal.SearchDesc
@@ -16678,39 +21756,76 @@ Namespace SVCSearch
             RetMsg = retVal.RetMsg
             Return retVal.saveSearchScheduleResult
         End Function
-        
+
+        ''' <summary>
+        ''' Saves the search schedule asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.saveSearchScheduleResponse).</returns>
         Public Function saveSearchScheduleAsync(ByVal request As SVCSearch.saveSearchScheduleRequest) As System.Threading.Tasks.Task(Of SVCSearch.saveSearchScheduleResponse) Implements SVCSearch.IService1.saveSearchScheduleAsync
             Return MyBase.Channel.saveSearchScheduleAsync(request)
         End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+        ''' <summary>
+        ''' SVCs the search i service1 get search schedule.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>SVCSearch.getSearchScheduleResponse.</returns>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
         Function SVCSearch_IService1_getSearchSchedule(ByVal request As SVCSearch.getSearchScheduleRequest) As SVCSearch.getSearchScheduleResponse Implements SVCSearch.IService1.getSearchSchedule
             Return MyBase.Channel.getSearchSchedule(request)
         End Function
-        
-        Public Function getSearchSchedule( _
-                    ByVal SecureID As Integer,  _
-                    ByRef SearchName As String,  _
-                    ByRef NotificationSMS As String,  _
-                    ByRef SearchDesc As String,  _
-                    ByRef OwnerID As String,  _
-                    ByRef SearchQuery As String,  _
-                    ByRef SendToEmail As String,  _
-                    ByRef ScheduleUnit As String,  _
-                    ByRef ScheduleHour As String,  _
-                    ByRef ScheduleDaysOfWeek As String,  _
-                    ByRef ScheduleDaysOfMonth As String,  _
-                    ByRef ScheduleMonthOfQtr As String,  _
-                    ByRef StartToRunDate As Date,  _
-                    ByRef EndRunDate As Date,  _
-                    ByRef SearchParameters As String,  _
-                    ByRef LastRunDate As Date,  _
-                    ByRef NumberOfExecutions As Integer,  _
-                    ByRef CreateDate As Date,  _
-                    ByRef LastModDate As Date,  _
-                    ByRef ScheduleHourInterval As Integer,  _
-                    ByRef RepoName As String,  _
-                    ByRef RC As Boolean,  _
+
+        ''' <summary>
+        ''' Gets the search schedule.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="SearchName">Name of the search.</param>
+        ''' <param name="NotificationSMS">The notification SMS.</param>
+        ''' <param name="SearchDesc">The search desc.</param>
+        ''' <param name="OwnerID">The owner identifier.</param>
+        ''' <param name="SearchQuery">The search query.</param>
+        ''' <param name="SendToEmail">The send to email.</param>
+        ''' <param name="ScheduleUnit">The schedule unit.</param>
+        ''' <param name="ScheduleHour">The schedule hour.</param>
+        ''' <param name="ScheduleDaysOfWeek">The schedule days of week.</param>
+        ''' <param name="ScheduleDaysOfMonth">The schedule days of month.</param>
+        ''' <param name="ScheduleMonthOfQtr">The schedule month of QTR.</param>
+        ''' <param name="StartToRunDate">The start to run date.</param>
+        ''' <param name="EndRunDate">The end run date.</param>
+        ''' <param name="SearchParameters">The search parameters.</param>
+        ''' <param name="LastRunDate">The last run date.</param>
+        ''' <param name="NumberOfExecutions">The number of executions.</param>
+        ''' <param name="CreateDate">The create date.</param>
+        ''' <param name="LastModDate">The last mod date.</param>
+        ''' <param name="ScheduleHourInterval">The schedule hour interval.</param>
+        ''' <param name="RepoName">Name of the repo.</param>
+        ''' <param name="RC">if set to <c>true</c> [rc].</param>
+        ''' <param name="RetMsg">The ret MSG.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        Public Function getSearchSchedule(
+                    ByVal SecureID As Integer,
+                    ByRef SearchName As String,
+                    ByRef NotificationSMS As String,
+                    ByRef SearchDesc As String,
+                    ByRef OwnerID As String,
+                    ByRef SearchQuery As String,
+                    ByRef SendToEmail As String,
+                    ByRef ScheduleUnit As String,
+                    ByRef ScheduleHour As String,
+                    ByRef ScheduleDaysOfWeek As String,
+                    ByRef ScheduleDaysOfMonth As String,
+                    ByRef ScheduleMonthOfQtr As String,
+                    ByRef StartToRunDate As Date,
+                    ByRef EndRunDate As Date,
+                    ByRef SearchParameters As String,
+                    ByRef LastRunDate As Date,
+                    ByRef NumberOfExecutions As Integer,
+                    ByRef CreateDate As Date,
+                    ByRef LastModDate As Date,
+                    ByRef ScheduleHourInterval As Integer,
+                    ByRef RepoName As String,
+                    ByRef RC As Boolean,
                     ByRef RetMsg As String) As Boolean
             Dim inValue As SVCSearch.getSearchScheduleRequest = New SVCSearch.getSearchScheduleRequest()
             inValue.SecureID = SecureID
@@ -16736,7 +21851,7 @@ Namespace SVCSearch
             inValue.RepoName = RepoName
             inValue.RC = RC
             inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.getSearchScheduleResponse = CType(Me,SVCSearch.IService1).getSearchSchedule(inValue)
+            Dim retVal As SVCSearch.getSearchScheduleResponse = CType(Me, SVCSearch.IService1).getSearchSchedule(inValue)
             SearchName = retVal.SearchName
             NotificationSMS = retVal.NotificationSMS
             SearchDesc = retVal.SearchDesc
@@ -16761,23 +21876,54 @@ Namespace SVCSearch
             RetMsg = retVal.RetMsg
             Return retVal.getSearchScheduleResult
         End Function
-        
+
+        ''' <summary>
+        ''' Gets the search schedule asynchronous.
+        ''' </summary>
+        ''' <param name="request">The request.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of SVCSearch.getSearchScheduleResponse).</returns>
         Public Function getSearchScheduleAsync(ByVal request As SVCSearch.getSearchScheduleRequest) As System.Threading.Tasks.Task(Of SVCSearch.getSearchScheduleResponse) Implements SVCSearch.IService1.getSearchScheduleAsync
             Return MyBase.Channel.getSearchScheduleAsync(request)
         End Function
-        
+
+        ''' <summary>
+        ''' Inserts the co owner.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="CurrentOwner">The current owner.</param>
+        ''' <param name="CoOwner">The co owner.</param>
+        ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         Public Function InsertCoOwner(ByVal SecureID As Integer, ByVal CurrentOwner As String, ByVal CoOwner As String) As Boolean Implements SVCSearch.IService1.InsertCoOwner
             Return MyBase.Channel.InsertCoOwner(SecureID, CurrentOwner, CoOwner)
         End Function
-        
+
+        ''' <summary>
+        ''' Inserts the co owner asynchronous.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="CurrentOwner">The current owner.</param>
+        ''' <param name="CoOwner">The co owner.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of System.Boolean).</returns>
         Public Function InsertCoOwnerAsync(ByVal SecureID As Integer, ByVal CurrentOwner As String, ByVal CoOwner As String) As System.Threading.Tasks.Task(Of Boolean) Implements SVCSearch.IService1.InsertCoOwnerAsync
             Return MyBase.Channel.InsertCoOwnerAsync(SecureID, CurrentOwner, CoOwner)
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the co owner grid.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UID">The uid.</param>
+        ''' <returns>System.String.</returns>
         Public Function PopulateCoOwnerGrid(ByVal SecureID As Integer, ByVal UID As String) As String Implements SVCSearch.IService1.PopulateCoOwnerGrid
             Return MyBase.Channel.PopulateCoOwnerGrid(SecureID, UID)
         End Function
-        
+
+        ''' <summary>
+        ''' Populates the co owner grid asynchronous.
+        ''' </summary>
+        ''' <param name="SecureID">The secure identifier.</param>
+        ''' <param name="UID">The uid.</param>
+        ''' <returns>System.Threading.Tasks.Task(Of System.String).</returns>
         Public Function PopulateCoOwnerGridAsync(ByVal SecureID As Integer, ByVal UID As String) As System.Threading.Tasks.Task(Of String) Implements SVCSearch.IService1.PopulateCoOwnerGridAsync
             Return MyBase.Channel.PopulateCoOwnerGridAsync(SecureID, UID)
         End Function

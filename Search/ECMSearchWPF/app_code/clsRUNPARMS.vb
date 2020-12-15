@@ -1,3 +1,16 @@
+' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 06-28-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 06-28-2020
+' ***********************************************************************
+' <copyright file="clsRUNPARMS.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
 Imports Microsoft.VisualBasic
 Imports System.Configuration
 Imports System
@@ -7,28 +20,53 @@ Imports System.IO
 Imports ECMEncryption
 
 
+''' <summary>
+''' Class clsRUNPARMS.
+''' </summary>
 Public Class clsRUNPARMS
 
 
     '** DIM the selected table columns 
     '    Dim DB As New clsDatabase
+    ''' <summary>
+    ''' The dma
+    ''' </summary>
     Dim DMA As New clsDma
+    ''' <summary>
+    ''' The utility
+    ''' </summary>
     Dim UTIL As New clsUtility
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Dim LOG As New clsLogMain
 
 
 
+    ''' <summary>
+    ''' The parm
+    ''' </summary>
     Dim Parm As String = ""
+    ''' <summary>
+    ''' The parm value
+    ''' </summary>
     Dim ParmValue As String = ""
+    ''' <summary>
+    ''' The user identifier
+    ''' </summary>
     Dim UserID As String = ""
 
 
 
 
     '** Generate the SET methods 
+    ''' <summary>
+    ''' Sets the parm.
+    ''' </summary>
+    ''' <param name="val">The value.</param>
     Public Sub setParm(ByRef val$)
         If Len(val) = 0 Then
-            messagebox.show("SET: Field 'Parm' cannot be NULL.")
+            MessageBox.Show("SET: Field 'Parm' cannot be NULL.")
             Return
         End If
         val = UTIL.RemoveSingleQuotes(val)
@@ -36,15 +74,23 @@ Public Class clsRUNPARMS
     End Sub
 
 
+    ''' <summary>
+    ''' Sets the parmvalue.
+    ''' </summary>
+    ''' <param name="val">The value.</param>
     Public Sub setParmvalue(ByRef val$)
         val = UTIL.RemoveSingleQuotes(val)
         ParmValue = val
     End Sub
 
 
+    ''' <summary>
+    ''' Sets the userid.
+    ''' </summary>
+    ''' <param name="val">The value.</param>
     Public Sub setUserid(ByRef val$)
         If Len(val) = 0 Then
-            messagebox.show("SET: Field 'Userid' cannot be NULL.")
+            MessageBox.Show("SET: Field 'Userid' cannot be NULL.")
             Return
         End If
         val = UTIL.RemoveSingleQuotes(val)
@@ -57,23 +103,35 @@ Public Class clsRUNPARMS
 
 
     '** Generate the GET methods 
+    ''' <summary>
+    ''' Gets the parm.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getParm() As String
         If Len(Parm) = 0 Then
-            messagebox.show("GET: Field 'Parm' cannot be NULL.")
+            MessageBox.Show("GET: Field 'Parm' cannot be NULL.")
             Return ""
         End If
         Return UTIL.RemoveSingleQuotes(Parm)
     End Function
 
 
+    ''' <summary>
+    ''' Gets the parmvalue.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getParmvalue() As String
         Return UTIL.RemoveSingleQuotes(ParmValue)
     End Function
 
 
+    ''' <summary>
+    ''' Gets the userid.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getUserid() As String
         If Len(UserID) = 0 Then
-            messagebox.show("GET: Field 'Userid' cannot be NULL.")
+            MessageBox.Show("GET: Field 'Userid' cannot be NULL.")
             Return ""
         End If
         Return UTIL.RemoveSingleQuotes(UserID)
@@ -85,6 +143,10 @@ Public Class clsRUNPARMS
 
 
     '** Generate the Required Fields Validation method 
+    ''' <summary>
+    ''' Validates the req data.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ValidateReqData() As Boolean
         If Parm.Length = 0 Then Return False
         If UserID.Length = 0 Then Return False
@@ -95,6 +157,10 @@ Public Class clsRUNPARMS
 
 
     '** Generate the Validation method 
+    ''' <summary>
+    ''' Validates the data.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ValidateData() As Boolean
         If Parm.Length = 0 Then Return False
         If UserID.Length = 0 Then Return False
@@ -105,6 +171,10 @@ Public Class clsRUNPARMS
 
 
     '** Generate the INSERT method 
+    ''' <summary>
+    ''' Inserts this instance.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function Insert() As Boolean
         Dim b As Boolean = True
         Dim s As String = ""
@@ -115,7 +185,7 @@ Public Class clsRUNPARMS
         s = s + "'" + Parm + "'" + ","
         s = s + "'" + ParmValue + "'" + ","
         s = s + "'" + UserID + "'" + ")"
-        ExecuteSQL(_SecureID, S)
+        ExecuteSql(_SecureID, s)
 
         Return b
 
@@ -125,6 +195,11 @@ Public Class clsRUNPARMS
 
 
     '** Generate the UPDATE method 
+    ''' <summary>
+    ''' Updates the specified where clause.
+    ''' </summary>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function Update(ByVal WhereClause$) As Boolean
         Dim b As Boolean = True
         Dim s As String = ""
@@ -139,7 +214,7 @@ Public Class clsRUNPARMS
         s = s + "UserID = '" + getUserid() + "'"
         WhereClause = " " + WhereClause
         s = s + WhereClause
-        ExecuteSQL(_SecureID, S)
+        ExecuteSql(_SecureID, s)
         Return b
     End Function
 
@@ -184,6 +259,11 @@ Public Class clsRUNPARMS
 
 
     '** Generate the DELETE method 
+    ''' <summary>
+    ''' Deletes the specified where clause.
+    ''' </summary>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function Delete(ByVal WhereClause$) As Boolean
         Dim b As Boolean = True
         Dim s As String = ""
@@ -207,6 +287,10 @@ Public Class clsRUNPARMS
 
 
     '** Generate the Zeroize Table method 
+    ''' <summary>
+    ''' Zeroizes this instance.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function Zeroize() As Boolean
         Dim b As Boolean = True
         Dim s As String = ""
@@ -215,7 +299,7 @@ Public Class clsRUNPARMS
         s = s + " Delete from RunParms "
 
 
-        ExecuteSQL(_SecureID, S)
+        ExecuteSql(_SecureID, s)
         Return b
 
 
@@ -259,8 +343,13 @@ Public Class clsRUNPARMS
     'End Function     '** getRow_PKI8
 
 
-    ''' Build Index Where Caluses 
-    '''
+    ''' <summary>
+    ''' Wcs the pk i8.
+    ''' </summary>
+    ''' <param name="Parm">The parm.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
+    ''' Build Index Where Caluses
     Public Function wc_PKI8(ByVal Parm As String, ByVal UserID As String) As String
 
 

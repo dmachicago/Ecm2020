@@ -1,3 +1,16 @@
+' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 07-16-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 07-16-2020
+' ***********************************************************************
+' <copyright file="clsLIBRARYUSERS.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
 Imports Microsoft.VisualBasic
 Imports System.Configuration
 Imports System
@@ -7,6 +20,9 @@ Imports System.IO
 Imports ECMEncryption
 
 
+''' <summary>
+''' Class clsLIBRARYUSERS.
+''' </summary>
 Public Class clsLIBRARYUSERS
 
 
@@ -15,24 +31,58 @@ Public Class clsLIBRARYUSERS
     '** DIM the selected table columns 
     'Dim DMA As New clsDma
     'Dim UTIL As New clsUtility
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Dim LOG As New clsLogMain
     'Dim EP As New clsEndPoint
+    ''' <summary>
+    ''' The en c2
+    ''' </summary>
     Dim ENC2 As New ECMEncrypt()
     'Dim DG As New clsDataGrid
 
+    ''' <summary>
+    ''' The single user
+    ''' </summary>
     Dim SingleUser As Integer = 0
+    ''' <summary>
+    ''' The is read only
+    ''' </summary>
     Dim isReadOnly As String = ""
+    ''' <summary>
+    ''' The create access
+    ''' </summary>
     Dim CreateAccess As String = ""
+    ''' <summary>
+    ''' The update access
+    ''' </summary>
     Dim UpdateAccess As String = ""
+    ''' <summary>
+    ''' The delete access
+    ''' </summary>
     Dim DeleteAccess As String = ""
+    ''' <summary>
+    ''' The library owner user identifier
+    ''' </summary>
     Dim LibraryOwnerUserID As String = ""
+    ''' <summary>
+    ''' The library name
+    ''' </summary>
     Dim LibraryName As String = ""
+    ''' <summary>
+    ''' The user identifier
+    ''' </summary>
     Dim UserID As String = ""
 
 
 
 
     '** Generate the SET methods 
+    ''' <summary>
+    ''' Sets the readonly.
+    ''' </summary>
+    ''' <param name="val">The value.</param>
     Public Sub setReadonly(ByRef val As String)
         If Len(val) = 0 Then
             val = "null"
@@ -42,6 +92,10 @@ Public Class clsLIBRARYUSERS
     End Sub
 
 
+    ''' <summary>
+    ''' Sets the createaccess.
+    ''' </summary>
+    ''' <param name="val">The value.</param>
     Public Sub setCreateaccess(ByRef val As String)
         If Len(val) = 0 Then
             val = "null"
@@ -51,6 +105,10 @@ Public Class clsLIBRARYUSERS
     End Sub
 
 
+    ''' <summary>
+    ''' Sets the updateaccess.
+    ''' </summary>
+    ''' <param name="val">The value.</param>
     Public Sub setUpdateaccess(ByRef val As String)
         If Len(val) = 0 Then
             val = "null"
@@ -60,6 +118,10 @@ Public Class clsLIBRARYUSERS
     End Sub
 
 
+    ''' <summary>
+    ''' Sets the deleteaccess.
+    ''' </summary>
+    ''' <param name="val">The value.</param>
     Public Sub setDeleteaccess(ByRef val As String)
         If Len(val) = 0 Then
             val = "null"
@@ -69,6 +131,10 @@ Public Class clsLIBRARYUSERS
     End Sub
 
 
+    ''' <summary>
+    ''' Sets the libraryowneruserid.
+    ''' </summary>
+    ''' <param name="val">The value.</param>
     Public Sub setLibraryowneruserid(ByRef val As String)
         If Len(val) = 0 Then
             MessageBox.Show("clsLibraryUsers - SET: Field 'Libraryowneruserid' cannot be NULL.")
@@ -79,6 +145,10 @@ Public Class clsLIBRARYUSERS
     End Sub
 
 
+    ''' <summary>
+    ''' Sets the libraryname.
+    ''' </summary>
+    ''' <param name="val">The value.</param>
     Public Sub setLibraryname(ByRef val As String)
         If Len(val) = 0 Then
             MessageBox.Show("clsLibraryUsers - SET: Field 'Libraryname' cannot be NULL.")
@@ -89,6 +159,10 @@ Public Class clsLIBRARYUSERS
     End Sub
 
 
+    ''' <summary>
+    ''' Sets the userid.
+    ''' </summary>
+    ''' <param name="val">The value.</param>
     Public Sub setUserid(ByRef val As String)
         If Len(val) = 0 Then
             MessageBox.Show("clsLibraryUsers - SET: Field 'Userid' cannot be NULL.")
@@ -98,11 +172,19 @@ Public Class clsLIBRARYUSERS
         UserID = val
     End Sub
 
+    ''' <summary>
+    ''' Sets the is single user.
+    ''' </summary>
+    ''' <param name="val">The value.</param>
     Public Sub setIsSingleUser(ByRef val As Integer)
         SingleUser = val
     End Sub
 
     '** Generate the GET methods 
+    ''' <summary>
+    ''' Gets the readonly.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getReadonly() As String
         If Len(isReadOnly) = 0 Then
             isReadOnly = "null"
@@ -111,6 +193,10 @@ Public Class clsLIBRARYUSERS
     End Function
 
 
+    ''' <summary>
+    ''' Gets the createaccess.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getCreateaccess() As String
         If Len(CreateAccess) = 0 Then
             CreateAccess = "null"
@@ -119,6 +205,10 @@ Public Class clsLIBRARYUSERS
     End Function
 
 
+    ''' <summary>
+    ''' Gets the updateaccess.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getUpdateaccess() As String
         If Len(UpdateAccess) = 0 Then
             UpdateAccess = "null"
@@ -127,6 +217,10 @@ Public Class clsLIBRARYUSERS
     End Function
 
 
+    ''' <summary>
+    ''' Gets the deleteaccess.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getDeleteaccess() As String
         If Len(DeleteAccess) = 0 Then
             DeleteAccess = "null"
@@ -135,6 +229,10 @@ Public Class clsLIBRARYUSERS
     End Function
 
 
+    ''' <summary>
+    ''' Gets the libraryowneruserid.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getLibraryowneruserid() As String
         If Len(LibraryOwnerUserID) = 0 Then
             MessageBox.Show("clsLibraryUsers - GET: Field 'Libraryowneruserid' cannot be NULL.")
@@ -144,6 +242,10 @@ Public Class clsLIBRARYUSERS
     End Function
 
 
+    ''' <summary>
+    ''' Gets the libraryname.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getLibraryname() As String
         If Len(LibraryName) = 0 Then
             MessageBox.Show("clsLibraryUsers - GET: Field 'Libraryname' cannot be NULL.")
@@ -153,6 +255,10 @@ Public Class clsLIBRARYUSERS
     End Function
 
 
+    ''' <summary>
+    ''' Gets the userid.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getUserid() As String
         If Len(UserID) = 0 Then
             MessageBox.Show("clsLibraryUsers - GET: Field 'Userid' cannot be NULL.")
@@ -162,6 +268,10 @@ Public Class clsLIBRARYUSERS
     End Function
 
     '** Generate the Required Fields Validation method 
+    ''' <summary>
+    ''' Validates the req data.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ValidateReqData() As Boolean
         If LibraryOwnerUserID.Length = 0 Then Return False
         If LibraryName.Length = 0 Then Return False
@@ -170,6 +280,10 @@ Public Class clsLIBRARYUSERS
     End Function
 
     '** Generate the Validation method 
+    ''' <summary>
+    ''' Validates the data.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ValidateData() As Boolean
         If LibraryOwnerUserID.Length = 0 Then Return False
         If LibraryName.Length = 0 Then Return False
@@ -178,6 +292,12 @@ Public Class clsLIBRARYUSERS
     End Function
 
     '** Generate the INSERT method 
+    ''' <summary>
+    ''' Inserts the specified not added as group member.
+    ''' </summary>
+    ''' <param name="NotAddedAsGroupMember">The not added as group member.</param>
+    ''' <param name="SingleUser">The single user.</param>
+    ''' <param name="GroupUser">The group user.</param>
     Public Sub Insert(ByVal NotAddedAsGroupMember As Integer, ByVal SingleUser As Integer, ByVal GroupUser As Integer)
         Dim b As Boolean = False
         Dim s As String = ""
@@ -233,6 +353,13 @@ Public Class clsLIBRARYUSERS
 
 
     '** Generate the UPDATE method 
+    ''' <summary>
+    ''' Updates the specified where clause.
+    ''' </summary>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <param name="NotAddedAsGroupMember">The not added as group member.</param>
+    ''' <param name="SingleUser">The single user.</param>
+    ''' <param name="GroupUser">The group user.</param>
     Public Sub Update(ByVal WhereClause As String, ByVal NotAddedAsGroupMember As Integer, ByVal SingleUser As Integer, ByVal GroupUser As Integer)
         Dim b As Boolean = False
         Dim s As String = ""
@@ -332,6 +459,10 @@ Public Class clsLIBRARYUSERS
 
 
     '** Generate the DELETE method 
+    ''' <summary>
+    ''' Deletes the specified where clause.
+    ''' </summary>
+    ''' <param name="WhereClause">The where clause.</param>
     Public Sub Delete(ByVal WhereClause As String)
         Dim b As Boolean = False
         Dim s As String = ""
@@ -358,6 +489,9 @@ Public Class clsLIBRARYUSERS
 
 
     '** Generate the Zeroize Table method 
+    ''' <summary>
+    ''' Zeroizes this instance.
+    ''' </summary>
     Public Sub Zeroize()
         Dim b As Boolean = False
         Dim s As String = ""
@@ -410,8 +544,14 @@ Public Class clsLIBRARYUSERS
     'End Function     '** getRow_PK87
 
 
-    ''' Build Index Where Caluses 
-    '''
+    ''' <summary>
+    ''' Wcs the p K87.
+    ''' </summary>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <param name="LibraryOwnerUserID">The library owner user identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
+    ''' Build Index Where Caluses
     Public Function wc_PK87(ByVal LibraryName As String, ByVal LibraryOwnerUserID As String, ByVal UserID As String) As String
 
 
@@ -421,6 +561,9 @@ Public Class clsLIBRARYUSERS
         Return WC
     End Function     '** wc_PK87
 
+    ''' <summary>
+    ''' Allows an object to try to free resources and perform other cleanup operations before it is reclaimed by garbage collection.
+    ''' </summary>
     Protected Overrides Sub Finalize()
         Try
 
@@ -433,6 +576,9 @@ Public Class clsLIBRARYUSERS
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Sets the xx search SVC end point.
+    ''' </summary>
     Private Sub setXXSearchSvcEndPoint()
 
         If (SearchEndPoint.Length = 0) Then

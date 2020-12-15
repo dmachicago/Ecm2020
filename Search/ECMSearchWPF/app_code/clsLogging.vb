@@ -1,52 +1,124 @@
-﻿Imports System.IO
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 07-16-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 07-16-2020
+' ***********************************************************************
+' <copyright file="clsLogging.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+Imports System.IO
 Imports System.Collections
 Imports ECMEncryption
 
+''' <summary>
+''' Class clsLog.
+''' </summary>
 Public Class clsLog
 
+    ''' <summary>
+    ''' The proxy
+    ''' </summary>
     Private proxy As New SVCSearch.Service1Client
+    ''' <summary>
+    ''' The en c2
+    ''' </summary>
     Dim ENC2 As New ECMEncrypt()
+    ''' <summary>
+    ''' The g debug
+    ''' </summary>
     Private gDebug As Boolean = False
+    ''' <summary>
+    ''' The g secure identifier
+    ''' </summary>
     Private gSecureID As String = -1
 
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="clsLog"/> class.
+    ''' </summary>
     Sub New()
         gSecureID = gSecureID
     End Sub
     'Public Function getEnvApplicationExecutablePath() As String
     '    Return Application.ExecutablePath
     'End Function
+    ''' <summary>
+    ''' Gets the env variable special folder my documents.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getEnvVarSpecialFolderMyDocuments() As String
         Return Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
     End Function
+    ''' <summary>
+    ''' Gets the env variable special folder local application data.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getEnvVarSpecialFolderLocalApplicationData() As String
         Return Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
     End Function
+    ''' <summary>
+    ''' Gets the env variable special folder common application data.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getEnvVarSpecialFolderCommonApplicationData() As String
         Return Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData)
     End Function
+    ''' <summary>
+    ''' Gets the env variable special folder application data.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getEnvVarSpecialFolderApplicationData() As String
         Return Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
     End Function
+    ''' <summary>
+    ''' Gets the env variable version.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getEnvVarVersion() As String
         Return Environment.Version.ToString
     End Function
     'Public Function getEnvVarUserDomainName() As String
     '    Return Environment.UserDomainName.ToString
     'End Function
+    ''' <summary>
+    ''' Gets the env variable processor count.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getEnvVarProcessorCount() As String
         Return Environment.ProcessorCount.ToString
     End Function
+    ''' <summary>
+    ''' Gets the env variable operating system.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getEnvVarOperatingSystem() As String
         Return Environment.OSVersion.ToString()
     End Function
+    ''' <summary>
+    ''' Gets the name of the env variable machine.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getEnvVarMachineName() As String
         Return Environment.MachineName
     End Function
 
+    ''' <summary>
+    ''' Gets the env variable user identifier.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getEnvVarUserID() As String
         Return Environment.UserName
     End Function
 
+    ''' <summary>
+    ''' Writes to archive file trace log.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
+    ''' <param name="Zeroize">if set to <c>true</c> [zeroize].</param>
     Public Sub WriteToArchiveFileTraceLog(ByVal Msg As String, ByVal Zeroize As Boolean)
         Try
             'Dim cPath As String = GetCurrDir()        
@@ -76,6 +148,10 @@ Public Class clsLog
             If gDebug Then Console.WriteLine("clsDma : WriteToSqlLog : 688 : " + ex.Message)
         End Try
     End Sub
+    ''' <summary>
+    ''' Writes to save SQL.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub WriteToSaveSql(ByVal Msg As String)
         Try
             'Dim cPath As String = GetCurrDir()        
@@ -96,9 +172,18 @@ Public Class clsLog
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Gets the temporary environ dir.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function getTempEnvironDir() As String
         Return getEnvVarSpecialFolderApplicationData()
     End Function
+    ''' <summary>
+    ''' Writes to SQL apply log.
+    ''' </summary>
+    ''' <param name="tFqn">The t FQN.</param>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub WriteToSqlApplyLog(ByVal tFqn As String, ByVal Msg As String)
         Try
             'Dim cPath As String = getTempEnvironDir()
@@ -112,6 +197,10 @@ Public Class clsLog
             If gDebug Then Console.WriteLine("clsDma : WriteToSqlLog : 688 : " + ex.Message)
         End Try
     End Sub
+    ''' <summary>
+    ''' Writes to temporary SQL apply file.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub WriteToTempSqlApplyFile(ByVal Msg As String)
         Try
             Dim cPath As String = getTempEnvironDir()
@@ -125,6 +214,11 @@ Public Class clsLog
             If gDebug Then Console.WriteLine("clsDma : WriteToSqlLog : 688 : " + ex.Message)
         End Try
     End Sub
+    ''' <summary>
+    ''' Writes to new file.
+    ''' </summary>
+    ''' <param name="FileText">The file text.</param>
+    ''' <param name="FQN">The FQN.</param>
     Public Sub WriteToNewFile(ByVal FileText As String, ByVal FQN As String)
         Try
             Dim cPath As String = getTempEnvironDir()
@@ -139,6 +233,10 @@ Public Class clsLog
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Writes to ocr log.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub WriteToOcrLog(ByVal Msg As String)
         Dim LogName As String = "OCR"
         Dim Severity As String = "UKN"
@@ -152,6 +250,10 @@ Public Class clsLog
 
         WriteToLog(LogName, Msg, Severity)
     End Sub
+    ''' <summary>
+    ''' Writes to SQL log.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub WriteToSqlLog(ByVal Msg As String)
         Dim LogName As String = "SQL"
         Dim Severity As String = "UKN"
@@ -165,6 +267,12 @@ Public Class clsLog
 
         WriteToLog(LogName, Msg, Severity)
     End Sub
+    ''' <summary>
+    ''' Writes to content duplicate log.
+    ''' </summary>
+    ''' <param name="TypeRec">The type record.</param>
+    ''' <param name="RecGuid">The record unique identifier.</param>
+    ''' <param name="RecIdentifier">The record identifier.</param>
     Public Sub WriteToContentDuplicateLog(ByVal TypeRec As String, ByVal RecGuid As String, ByVal RecIdentifier As String)
         Try
             Dim cPath As String = getTempEnvironDir()
@@ -184,6 +292,12 @@ Public Class clsLog
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Writes to email duplicate log.
+    ''' </summary>
+    ''' <param name="TypeRec">The type record.</param>
+    ''' <param name="RecGuid">The record unique identifier.</param>
+    ''' <param name="RecIdentifier">The record identifier.</param>
     Public Sub WriteToEmailDuplicateLog(ByVal TypeRec As String, ByVal RecGuid As String, ByVal RecIdentifier As String)
         Try
             Dim cPath As String = getTempEnvironDir()
@@ -199,6 +313,10 @@ Public Class clsLog
             If gDebug Then Console.WriteLine("clsDma : WriteToSqlLog : 688 : " + ex.Message)
         End Try
     End Sub
+    ''' <summary>
+    ''' Loads the email dup log.
+    ''' </summary>
+    ''' <param name="L">The l.</param>
     Public Sub LoadEmailDupLog(ByRef L As Dictionary(Of String, String))
         Dim cPath As String = getTempEnvironDir()
         Dim TempFolder$ = getEnvVarSpecialFolderApplicationData()
@@ -240,6 +358,10 @@ GetNextLine:
 
     End Sub
 
+    ''' <summary>
+    ''' Loads the content dup log.
+    ''' </summary>
+    ''' <param name="L">The l.</param>
     Public Sub LoadContentDupLog(ByRef L As Dictionary(Of String, String))
         Dim cPath As String = getTempEnvironDir()
         Dim TempFolder$ = getEnvVarSpecialFolderApplicationData()
@@ -281,6 +403,10 @@ GetNextLine:
 
     End Sub
 
+    ''' <summary>
+    ''' Writes to notice log.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub WriteToNoticeLog(ByVal Msg As String)
         Dim LogName As String = "NOTICE"
         Dim Severity As String = "UKN"
@@ -295,6 +421,10 @@ GetNextLine:
         WriteToLog(LogName, Msg, Severity)
     End Sub
 
+    ''' <summary>
+    ''' Writes to PDF log.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub WriteToPDFLog(ByVal Msg As String)
         Dim LogName As String = "PDF"
         Dim Severity As String = "UKN"
@@ -309,6 +439,10 @@ GetNextLine:
         WriteToLog(LogName, Msg, Severity)
     End Sub
 
+    ''' <summary>
+    ''' Writes to install log.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub WriteToInstallLog(ByVal Msg As String)
         Dim LogName As String = "INSTALL"
         Dim Severity As String = "UKN"
@@ -323,6 +457,10 @@ GetNextLine:
         WriteToLog(LogName, Msg, Severity)
     End Sub
 
+    ''' <summary>
+    ''' Writes to listen log.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub WriteToListenLog(ByVal Msg As String)
         Dim LogName As String = "LISTENER"
         Dim Severity As String = "UKN"
@@ -336,6 +474,10 @@ GetNextLine:
 
         WriteToLog(LogName, Msg, Severity)
     End Sub
+    ''' <summary>
+    ''' Writes the files log.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub WriteFilesLog(ByVal Msg As String)
         Dim LogName As String = "FILES"
         Dim Severity As String = "UKN"
@@ -350,6 +492,10 @@ GetNextLine:
         WriteToLog(LogName, Msg, Severity)
     End Sub
 
+    ''' <summary>
+    ''' Writes to attach log.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub WriteToAttachLog(ByVal Msg As String)
         Dim LogName As String = "ATTACH"
         Dim Severity As String = "UKN"
@@ -363,6 +509,10 @@ GetNextLine:
 
         WriteToLog(LogName, Msg, Severity)
     End Sub
+    ''' <summary>
+    ''' Writes to eb execute log.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub WriteToEbExecLog(ByVal Msg As String)
         Dim LogName As String = "DBEXEC"
         Dim Severity As String = "UKN"
@@ -376,6 +526,10 @@ GetNextLine:
 
         WriteToLog(LogName, Msg, Severity)
     End Sub
+    ''' <summary>
+    ''' Writes to error log.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub WriteToErrorLog(ByVal Msg As String)
         Dim LogName As String = "SEVERE_ERR"
         Dim Severity As String = "UKN"
@@ -389,6 +543,10 @@ GetNextLine:
 
         WriteToLog(LogName, Msg, Severity)
     End Sub
+    ''' <summary>
+    ''' Writes to trace log.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub WriteToTraceLog(ByVal Msg As String)
         Dim LogName As String = "TRACE"
         Dim Severity As String = ""
@@ -403,6 +561,10 @@ GetNextLine:
         WriteToLog(LogName, Msg, Severity)
     End Sub
 
+    ''' <summary>
+    ''' Writes to crawler log.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub WriteToCrawlerLog(ByVal Msg As String)
         Dim LogName As String = "CRAWLER"
         Dim Severity As String = "UKN"
@@ -416,6 +578,10 @@ GetNextLine:
 
         WriteToLog(LogName, Msg, Severity)
     End Sub
+    ''' <summary>
+    ''' Writes to archive log.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub WriteToArchiveLog(ByVal Msg As String)
         Dim LogName As String = "Archive"
         Dim Severity As String = "UKN"
@@ -430,6 +596,10 @@ GetNextLine:
         WriteToLog(LogName, Msg, Severity)
     End Sub
 
+    ''' <summary>
+    ''' Writes to attachment searchy log.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub WriteToAttachmentSearchyLog(ByVal Msg As String)
         Dim LogName As String = "ATTACH_SEARCH"
         Dim Severity As String = "UKN"
@@ -444,6 +614,9 @@ GetNextLine:
         WriteToLog(LogName, Msg, Severity)
     End Sub
 
+    ''' <summary>
+    ''' Zeroizes the save SQL.
+    ''' </summary>
     Public Sub ZeroizeSaveSql()
         Try
             'Dim cPath As String = GetCurrDir()        
@@ -596,18 +769,33 @@ GetNextLine:
 
     'End Sub
 
+    ''' <summary>
+    ''' Gets the size of the file.
+    ''' </summary>
+    ''' <param name="MyFilePath">My file path.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function GetFileSize(ByVal MyFilePath As String) As Integer
         Dim MyFile As New FileInfo(MyFilePath)
         Dim FileSize As Integer = MyFile.Length
         MyFile = Nothing
         Return FileSize
     End Function
+    ''' <summary>
+    ''' Gets the file create date.
+    ''' </summary>
+    ''' <param name="MyFilePath">My file path.</param>
+    ''' <returns>System.DateTime.</returns>
     Public Function GetFileCreateDate(ByVal MyFilePath As String) As Date
         Dim MyFile As New FileInfo(MyFilePath)
         Dim FileDate As Date = MyFile.CreationTime
         MyFile = Nothing
         Return FileDate
     End Function
+    ''' <summary>
+    ''' Writes to temporary file.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub WriteToTempFile(ByVal FQN As String, ByVal Msg As String)
         Try
             Using sw As StreamWriter = New StreamWriter(FQN, True)
@@ -650,6 +838,10 @@ GetNextLine:
 
     'End Sub
 
+    ''' <summary>
+    ''' Writes to process log.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub WriteToProcessLog(ByVal Msg As String)
         Dim LogName As String = "PROCESS"
         Dim Severity As String = "UKN"
@@ -665,6 +857,10 @@ GetNextLine:
     End Sub
 
 
+    ''' <summary>
+    ''' Writes to file process log.
+    ''' </summary>
+    ''' <param name="MSG">The MSG.</param>
     Public Sub WriteToFileProcessLog(ByVal MSG As String)
 
         Dim LogName As String = "FILE_PROCESS"
@@ -680,6 +876,12 @@ GetNextLine:
         WriteToLog(LogName, MSG, Severity)
     End Sub
 
+    ''' <summary>
+    ''' Writes to log.
+    ''' </summary>
+    ''' <param name="LogName">Name of the log.</param>
+    ''' <param name="Msg">The MSG.</param>
+    ''' <param name="Severity">The severity.</param>
     Sub WriteToLog(ByVal LogName As String, ByVal Msg As String, ByVal Severity As String)
         If Severity.Length = 0 Then
             Severity = "ERROR"
@@ -707,6 +909,11 @@ GetNextLine:
         ExecuteLogWriteSql(gSecureID, S)
     End Sub
 
+    ''' <summary>
+    ''' Executes the log write SQL.
+    ''' </summary>
+    ''' <param name="gSecureID">The g secure identifier.</param>
+    ''' <param name="Mysql">The mysql.</param>
     Sub ExecuteLogWriteSql(ByRef gSecureID As String, ByVal Mysql As String)
 
         'AddHandler ProxySearch.ExecuteSqlNewConnSecureCompleted, AddressOf client_ExecuteLogWriteSql
@@ -729,6 +936,9 @@ GetNextLine:
     '    'RemoveHandler ProxySearch.ExecuteSqlNewConnSecureCompleted, AddressOf client_ExecuteSql
     'End Sub
 
+    ''' <summary>
+    ''' Sets the xx search SVC end point.
+    ''' </summary>
     Private Sub setXXSearchSvcEndPoint()
 
         Dim CurrEndPoint As String = ProxySearch.Endpoint.Address.ToString

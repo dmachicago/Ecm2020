@@ -1,27 +1,62 @@
-﻿'Imports Microsoft.VisualBasic
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 07-16-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 07-16-2020
+' ***********************************************************************
+' <copyright file="clsUtility.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************ic
 Imports System.Threading
 'Imports Microsoft.Win32
 Imports System.IO
 Imports System.Configuration
 
 
+''' <summary>
+''' Class clsUtility.
+''' </summary>
 Public Class clsUtility
 
-    
+
     'Dim proxy As New SVCSearch.Service1Client
 
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Dim LOG As New clsLogMain
     'Dim EP As New clsEndPoint
 
+    ''' <summary>
+    ''' The system SQL timeout
+    ''' </summary>
     Dim SystemSqlTimeout As String = "90"
 
+    ''' <summary>
+    ''' Gets the tick count.
+    ''' </summary>
+    ''' <returns>System.Int64.</returns>
     Private Declare Function GetTickCount Lib "kernel32.dll" () As Long
 
+    ''' <summary>
+    ''' The g secure identifier
+    ''' </summary>
     Dim gSecureID As String
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="clsUtility"/> class.
+    ''' </summary>
     Sub New()
         gSecureID = _SecureID
     End Sub
 
+    ''' <summary>
+    ''' Removes the blanks.
+    ''' </summary>
+    ''' <param name="tStr">The t string.</param>
     Sub RemoveBlanks(ByRef tStr As String)
         Dim S As String = tStr
         Dim NewStr$ = ""
@@ -48,6 +83,11 @@ Public Class clsUtility
         tStr = NewStr
     End Sub
 
+    ''' <summary>
+    ''' Parses the lic.
+    ''' </summary>
+    ''' <param name="tKey">The t key.</param>
+    ''' <returns>System.String.</returns>
     Public Function ParseLic(ByVal tKey As String) As String
         Dim S As String = ""
         If gLicenseItems.ContainsKey(tKey) Then
@@ -56,6 +96,11 @@ Public Class clsUtility
         Return S
     End Function
 
+    ''' <summary>
+    ''' Spaces the count.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>System.Int32.</returns>
     Function spaceCnt(ByVal FQN As String) As Integer
 
         Dim I As Integer = 0
@@ -69,6 +114,10 @@ Public Class clsUtility
         Return iCnt
 
     End Function
+    ''' <summary>
+    ''' Gets the parent image processing file.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function GetParentImageProcessingFile() As String
 
         Dim S As String = ""
@@ -86,6 +135,9 @@ Public Class clsUtility
 
     End Function
 
+    ''' <summary>
+    ''' Gets the name of the machine.
+    ''' </summary>
     Public Sub getMachineName()
         Dim S As String = ""
 
@@ -105,6 +157,11 @@ Public Class clsUtility
     '    'RemoveHandler ProxySearch.GetMachineIPCompleted, AddressOf client_GetMachineIPAddr
     'End Sub
 
+    ''' <summary>
+    ''' Gets the temporary PDF working dir.
+    ''' </summary>
+    ''' <param name="RetainFiles">if set to <c>true</c> [retain files].</param>
+    ''' <returns>System.String.</returns>
     Public Function getTempPdfWorkingDir(ByVal RetainFiles As Boolean) As String
 
         Dim TempSysDir$ = GetParentImageProcessingFile() + "ECM\OCR\Extract"
@@ -118,6 +175,10 @@ Public Class clsUtility
 
     End Function
 
+    ''' <summary>
+    ''' Gets the temporary PDF working error dir.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getTempPdfWorkingErrorDir() As String
         Dim TempSysDir$ = GetParentImageProcessingFile() + "ECM\ErrorFile"
         If Not System.IO.Directory.Exists(TempSysDir) Then
@@ -126,6 +187,9 @@ Public Class clsUtility
         Return TempSysDir$
     End Function
 
+    ''' <summary>
+    ''' Zeroizes the pda dir.
+    ''' </summary>
     Private Sub ZeroizePdaDir()
 
         Dim TempSysDir$ = GetParentImageProcessingFile() + "ECM\OCR\Extract"
@@ -144,6 +208,10 @@ Public Class clsUtility
         Next s
     End Sub
 
+    ''' <summary>
+    ''' Strips the unwanted chars.
+    ''' </summary>
+    ''' <param name="sText">The s text.</param>
     Public Sub StripUnwantedChars(ByRef sText As String)
         Dim NewText As String = ""
         For i As Integer = 1 To sText.Length
@@ -160,6 +228,10 @@ Public Class clsUtility
         sText = NewText
     End Sub
 
+    ''' <summary>
+    ''' Gets the NBR days computer running.
+    ''' </summary>
+    ''' <returns>System.Int32.</returns>
     Public Function getNbrDaysComputerRunning() As Integer
         Dim TotalDaysRunning As Integer = 0
         Try
@@ -331,6 +403,11 @@ Public Class clsUtility
     '    Return strList
     'End Function
 
+    ''' <summary>
+    ''' Removes the single quotes.
+    ''' </summary>
+    ''' <param name="tVal">The t value.</param>
+    ''' <returns>System.String.</returns>
     Public Function RemoveSingleQuotes(ByVal tVal As String) As String
 
         Dim S As String = tVal
@@ -340,6 +417,11 @@ Public Class clsUtility
 
         Return tVal
     End Function
+    ''' <summary>
+    ''' Removes the multi single quotes.
+    ''' </summary>
+    ''' <param name="tVal">The t value.</param>
+    ''' <returns>System.String.</returns>
     Public Function RemoveMultiSingleQuotes(ByVal tVal As String) As String
 
         Dim S As String = tVal
@@ -351,6 +433,11 @@ Public Class clsUtility
     End Function
 
 
+    ''' <summary>
+    ''' Removes the bad chars.
+    ''' </summary>
+    ''' <param name="tVal">The t value.</param>
+    ''' <returns>System.String.</returns>
     Public Function RemoveBadChars(ByVal tVal As String) As String
 
         Dim SS As String = tVal
@@ -371,7 +458,12 @@ Public Class clsUtility
 
         Return tVal.Trim
     End Function
-    Public Function RemoveSingleQuotesV1(ByVal tVal as string) As String
+    ''' <summary>
+    ''' Removes the single quotes v1.
+    ''' </summary>
+    ''' <param name="tVal">The t value.</param>
+    ''' <returns>System.String.</returns>
+    Public Function RemoveSingleQuotesV1(ByVal tVal As String) As String
         Dim S As String = tVal
 
 
@@ -396,6 +488,12 @@ Public Class clsUtility
     ''' to deal with. So be it. Check out this code and love it!
     ''' SHIT - am I good or what !!!
     '''
+    ''' <summary>
+    ''' Removes the single quotes.
+    ''' </summary>
+    ''' <param name="tVal">The t value.</param>
+    ''' <param name="isWeightedSearch">if set to <c>true</c> [is weighted search].</param>
+    ''' <returns>System.String.</returns>
     Public Function RemoveSingleQuotes(ByVal tVal As String, ByVal isWeightedSearch As Boolean) As String
         Dim A() As String
         Dim NewStr$ = ""
@@ -441,6 +539,11 @@ Public Class clsUtility
         Return NewStr
     End Function
 
+    ''' <summary>
+    ''' Removes the unwanted characters.
+    ''' </summary>
+    ''' <param name="tVal">The t value.</param>
+    ''' <returns>System.String.</returns>
     Public Function RemoveUnwantedCharacters(ByVal tVal As String) As String
         tVal = tVal.Trim
         Dim SS As String = tVal
@@ -456,6 +559,11 @@ Public Class clsUtility
         Return SS
     End Function
 
+    ''' <summary>
+    ''' Removes the cr lf.
+    ''' </summary>
+    ''' <param name="tVal">The t value.</param>
+    ''' <returns>System.String.</returns>
     Public Function RemoveCrLF(ByVal tVal As String) As String
         Dim SS As String = tVal
         Try
@@ -466,7 +574,12 @@ Public Class clsUtility
         Return SS
     End Function
 
-    Public Function fixSingleQuotes(ByVal tVal as string) As String
+    ''' <summary>
+    ''' Fixes the single quotes.
+    ''' </summary>
+    ''' <param name="tVal">The t value.</param>
+    ''' <returns>System.String.</returns>
+    Public Function fixSingleQuotes(ByVal tVal As String) As String
         Dim tempStr$ = ""
         Dim bLastCharIsQuote As Boolean = False
 
@@ -494,7 +607,12 @@ Public Class clsUtility
         Return tempStr
     End Function
 
-    Public Function ReplaceSingleQuotes(ByVal tStr as string) As String
+    ''' <summary>
+    ''' Replaces the single quotes.
+    ''' </summary>
+    ''' <param name="tStr">The t string.</param>
+    ''' <returns>System.String.</returns>
+    Public Function ReplaceSingleQuotes(ByVal tStr As String) As String
 
         Dim TgtStr$ = "''"
         Dim S1$ = ""
@@ -512,18 +630,33 @@ Public Class clsUtility
         Return tStr$
     End Function
 
+    ''' <summary>
+    ''' Replaces the single quotes v1.
+    ''' </summary>
+    ''' <param name="tVal">The t value.</param>
+    ''' <returns>System.String.</returns>
     Public Function ReplaceSingleQuotesV1(ByVal tVal As String) As String
         Dim S As String = tVal
         S.Replace("'", "`")
         Return S
     End Function
 
+    ''' <summary>
+    ''' Removes the commas.
+    ''' </summary>
+    ''' <param name="tVal">The t value.</param>
+    ''' <returns>System.String.</returns>
     Public Function RemoveCommas(ByVal tVal As String) As String
         Dim S As String = tVal
         S.Replace(",", "^")
         Return S
     End Function
 
+    ''' <summary>
+    ''' Removes the ocr problem chars.
+    ''' </summary>
+    ''' <param name="tVal">The t value.</param>
+    ''' <returns>System.String.</returns>
     Public Function RemoveOcrProblemChars(ByVal tVal As String) As String
         Dim S As String = tVal
         S.Replace(",", "z")
@@ -532,16 +665,25 @@ Public Class clsUtility
         S.Replace("@", "z")
         Return S
     End Function
+    ''' <summary>
+    ''' Removes the double slashes.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
     Sub RemoveDoubleSlashes(ByRef FQN As String)
         Dim S As String = FQN
         S.Replace("//", "")
         FQN = S
     End Sub
 
-    Sub setConnectionStringTimeout(ByRef ConnStr as string, byval TimeOutSecs As String)
+    ''' <summary>
+    ''' Sets the connection string timeout.
+    ''' </summary>
+    ''' <param name="ConnStr">The connection string.</param>
+    ''' <param name="TimeOutSecs">The time out secs.</param>
+    Sub setConnectionStringTimeout(ByRef ConnStr As String, ByVal TimeOutSecs As String)
 
         Dim I As Integer = 0
-        Dim S as string = ""
+        Dim S As String = ""
         Dim NewConnStr$ = ""
         S = ConnStr
         I = InStr(1, S, "Connect Timeout =", CompareMethod.Text)
@@ -561,7 +703,14 @@ Public Class clsUtility
         GC.Collect()
         ConnStr = NewConnStr$
     End Sub
-    Function setNewTimeout(ByVal tgtStr as string, byval StartingPoint As Integer, ByVal NewVal As String) As String
+    ''' <summary>
+    ''' Sets the new timeout.
+    ''' </summary>
+    ''' <param name="tgtStr">The TGT string.</param>
+    ''' <param name="StartingPoint">The starting point.</param>
+    ''' <param name="NewVal">Creates new val.</param>
+    ''' <returns>System.String.</returns>
+    Function setNewTimeout(ByVal tgtStr As String, ByVal StartingPoint As Integer, ByVal NewVal As String) As String
         Dim NextNumber$ = ""
         Dim NumberStartPos As Integer = 0
         Dim NumberEndPos As Integer = 0
@@ -592,12 +741,18 @@ Public Class clsUtility
             S2$ = Mid(tgtStr, NumberEndPos + 1)
             NewStr$ = S1 + " " + NewVal + " " + S2
         Catch ex As Exception
-            log.WriteToSqlLog("FindNextNumberInStr: " + ex.Message)
+            LOG.WriteToSqlLog("FindNextNumberInStr: " + ex.Message)
             NewStr$ = tgtStr$
         End Try
         Return NewStr$
     End Function
-    Function setNewTimeout(ByVal tgtStr as string, byval StartingPoint As Integer) As String
+    ''' <summary>
+    ''' Sets the new timeout.
+    ''' </summary>
+    ''' <param name="tgtStr">The TGT string.</param>
+    ''' <param name="StartingPoint">The starting point.</param>
+    ''' <returns>System.String.</returns>
+    Function setNewTimeout(ByVal tgtStr As String, ByVal StartingPoint As Integer) As String
         Dim NextNumber$ = ""
         Dim NumberStartPos As Integer = 0
         Dim NumberEndPos As Integer = 0
@@ -628,13 +783,18 @@ Public Class clsUtility
             S2$ = Mid(tgtStr, NumberEndPos + 1)
             NewStr$ = S1 + " " + SystemSqlTimeout$ + " " + S2
         Catch ex As Exception
-            log.WriteToSqlLog("FindNextNumberInStr: " + ex.Message)
+            LOG.WriteToSqlLog("FindNextNumberInStr: " + ex.Message)
             NewStr$ = tgtStr$
         End Try
         Return NewStr$
     End Function
 
-    Public Function getFileSuffix(ByVal FQN as string) As String
+    ''' <summary>
+    ''' Gets the file suffix.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>System.String.</returns>
+    Public Function getFileSuffix(ByVal FQN As String) As String
         Dim i As Integer = 0
         Dim ch$ = ""
         Dim suffix$ = ""
@@ -647,7 +807,13 @@ Public Class clsUtility
         Next
         Return suffix
     End Function
-    Public Function substConnectionStringServer(ByVal ConnStr as string, byval Server as string) As String
+    ''' <summary>
+    ''' Substs the connection string server.
+    ''' </summary>
+    ''' <param name="ConnStr">The connection string.</param>
+    ''' <param name="Server">The server.</param>
+    ''' <returns>System.String.</returns>
+    Public Function substConnectionStringServer(ByVal ConnStr As String, ByVal Server As String) As String
         'Data Source=XXX;Initial Catalog=ECM.Thesaurus;Integrated Security=True; Connect Timeout = 30
 
         Dim I As Integer = 0
@@ -666,7 +832,14 @@ Public Class clsUtility
         End Try
         Return NewStr
     End Function
-    Public Function getLicenseFromFile(ByVal CustomerID as string, byval ServerName as string, byval LicenseDirectory as string) As String
+    ''' <summary>
+    ''' Gets the license from file.
+    ''' </summary>
+    ''' <param name="CustomerID">The customer identifier.</param>
+    ''' <param name="ServerName">Name of the server.</param>
+    ''' <param name="LicenseDirectory">The license directory.</param>
+    ''' <returns>System.String.</returns>
+    Public Function getLicenseFromFile(ByVal CustomerID As String, ByVal ServerName As String, ByVal LicenseDirectory As String) As String
         Dim B As Boolean = True
         Dim bApplied As Boolean = False
         If CustomerID$.Length = 0 Then
@@ -692,7 +865,12 @@ Public Class clsUtility
             Return ""
         End Try
     End Function
-    Public Function LoadLicenseFile(ByVal FQN as string) As String
+    ''' <summary>
+    ''' Loads the license file.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>System.String.</returns>
+    Public Function LoadLicenseFile(ByVal FQN As String) As String
         Dim strContents As String
         Dim objReader As StreamReader
         Try
@@ -707,7 +885,12 @@ Public Class clsUtility
         End Try
         Return strContents
     End Function
-    Function ArchiveBitSet(ByVal FQN as string) As Boolean
+    ''' <summary>
+    ''' Archives the bit set.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+    Function ArchiveBitSet(ByVal FQN As String) As Boolean
 
         Dim FI As New FileInfo(FQN)
         Dim fAttr As FileAttributes
@@ -717,7 +900,11 @@ Public Class clsUtility
         Return isArchive
 
     End Function
-    Sub setArchiveBitToNoArchNeeded(ByVal FQN as string)
+    ''' <summary>
+    ''' Sets the archive bit to no arch needed.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    Sub setArchiveBitToNoArchNeeded(ByVal FQN As String)
 
         Dim FI As New FileInfo(FQN)
         Dim fAttr As FileAttributes
@@ -747,7 +934,11 @@ Public Class clsUtility
         'End Try
 
     End Sub
-    Sub setArchiveBitFasle(ByVal FQN as string)
+    ''' <summary>
+    ''' Sets the archive bit fasle.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    Sub setArchiveBitFasle(ByVal FQN As String)
 
         Dim FI As New FileInfo(FQN)
         Dim fAttr As FileAttributes
@@ -760,6 +951,11 @@ Public Class clsUtility
 
     End Sub
 
+    ''' <summary>
+    ''' Extends the size of the timeout by.
+    ''' </summary>
+    ''' <param name="ConnectionString">The connection string.</param>
+    ''' <param name="currFileSize">Size of the curr file.</param>
     Sub ExtendTimeoutBySize(ByRef ConnectionString As String, ByVal currFileSize As Double)
 
         Dim NewTimeOut As Double = 30
@@ -802,6 +998,11 @@ Public Class clsUtility
 
     End Sub
 
+    ''' <summary>
+    ''' Extends the timeout by count.
+    ''' </summary>
+    ''' <param name="ConnectionString">The connection string.</param>
+    ''' <param name="RecordCount">The record count.</param>
     Sub ExtendTimeoutByCount(ByRef ConnectionString As String, ByVal RecordCount As Double)
 
         Dim NewTimeOut As Double = 30
@@ -844,7 +1045,12 @@ Public Class clsUtility
 
     End Sub
 
-    Function HashCalc(ByVal S as string) As Double
+    ''' <summary>
+    ''' Hashes the calculate.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.Double.</returns>
+    Function HashCalc(ByVal S As String) As Double
 
         Dim AR$()
 
@@ -867,13 +1073,23 @@ Public Class clsUtility
 
     End Function
 
-    Function HashName(ByVal sName as string) As Double
+    ''' <summary>
+    ''' Hashes the name.
+    ''' </summary>
+    ''' <param name="sName">Name of the s.</param>
+    ''' <returns>System.Double.</returns>
+    Function HashName(ByVal sName As String) As Double
         Dim dHash As Double = 0
         dHash = HashCalc(sName)
         Return dHash
     End Function
 
-    Function HashFqn(ByVal FQN as string) As String
+    ''' <summary>
+    ''' Hashes the FQN.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>System.String.</returns>
+    Function HashFqn(ByVal FQN As String) As String
 
         Dim dHash As Double = 0
         dHash = HashCalc(FQN)
@@ -884,7 +1100,12 @@ Public Class clsUtility
 
     End Function
 
-    Function HashDirName(ByVal DirName as string) As String
+    ''' <summary>
+    ''' Hashes the name of the dir.
+    ''' </summary>
+    ''' <param name="DirName">Name of the dir.</param>
+    ''' <returns>System.String.</returns>
+    Function HashDirName(ByVal DirName As String) As String
 
         Dim dHash As Double = 0
         dHash = HashCalc(DirName)
@@ -895,7 +1116,12 @@ Public Class clsUtility
 
     End Function
 
-    Function HashFileName(ByVal FileName as string) As String
+    ''' <summary>
+    ''' Hashes the name of the file.
+    ''' </summary>
+    ''' <param name="FileName">Name of the file.</param>
+    ''' <returns>System.String.</returns>
+    Function HashFileName(ByVal FileName As String) As String
 
         Dim dHash As Double = 0
         dHash = HashCalc(FileName)
@@ -906,6 +1132,12 @@ Public Class clsUtility
 
     End Function
 
+    ''' <summary>
+    ''' Hashes the name of the dir file.
+    ''' </summary>
+    ''' <param name="DirName">Name of the dir.</param>
+    ''' <param name="FileName">Name of the file.</param>
+    ''' <returns>System.String.</returns>
     Function HashDirFileName(ByVal DirName As String, ByVal FileName As String) As String
 
         Dim sHash As String = HashDirName(DirName) + ":" + HashFileName(FileName)
@@ -1068,6 +1300,15 @@ Public Class clsUtility
 
     'End Sub
 
+    ''' <summary>
+    ''' Gens the email identifier.
+    ''' </summary>
+    ''' <param name="MessageSize">Size of the message.</param>
+    ''' <param name="ReceivedTime">The received time.</param>
+    ''' <param name="SenderEmailAddress">The sender email address.</param>
+    ''' <param name="Subject">The subject.</param>
+    ''' <param name="CurrentUserID">The current user identifier.</param>
+    ''' <returns>System.String.</returns>
     Function genEmailIdentifier(ByVal MessageSize As String, ByVal ReceivedTime As String, ByVal SenderEmailAddress As String, ByVal Subject As String, ByVal CurrentUserID As String) As String
         Dim EmailIdentifier As String = MessageSize + "~" + ReceivedTime + "~" + SenderEmailAddress + "~" + Mid(Subject, 1, 80) + "~" + CurrentUserID
 
@@ -1075,6 +1316,10 @@ Public Class clsUtility
         Return EmailIdentifier
     End Function
 
+    ''' <summary>
+    ''' Cks the SQL qry for double key words.
+    ''' </summary>
+    ''' <param name="MyQry">My qry.</param>
     Sub ckSqlQryForDoubleKeyWords(ByRef MyQry As String)
 
         MyQry = RemoveCrLF(MyQry)
@@ -1127,6 +1372,11 @@ Public Class clsUtility
         'Clipboard.SetText(MyQry)
     End Sub
 
+    ''' <summary>
+    ''' Adds the hive search.
+    ''' </summary>
+    ''' <param name="tSql">The t SQL.</param>
+    ''' <param name="HiveServers">The hive servers.</param>
     Sub AddHiveSearch(ByRef tSql As String, ByVal HiveServers As List(Of String))
 
         If InStr(tSql, "HIVE_", CompareMethod.Text) > 0 Then
@@ -1209,6 +1459,10 @@ Public Class clsUtility
 
     End Sub
 
+    ''' <summary>
+    ''' Strips the single quotes.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
     Sub StripSingleQuotes(ByRef S As String)
 
         If S Is Nothing Then
@@ -1220,6 +1474,10 @@ Public Class clsUtility
 
     End Sub
 
+    ''' <summary>
+    ''' Strips the semi colon.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
     Sub StripSemiColon(ByRef S As String)
 
         If S Is Nothing Then
@@ -1238,6 +1496,11 @@ Public Class clsUtility
 
     End Sub
 
+    ''' <summary>
+    ''' Files the on local computer.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function FileOnLocalComputer(ByVal FQN As String) As Boolean
 
         Dim B As Boolean = False
@@ -1266,6 +1529,11 @@ Public Class clsUtility
 
     'End Sub
 
+    ''' <summary>
+    ''' Removes the comma NBR.
+    ''' </summary>
+    ''' <param name="sNbr">The s NBR.</param>
+    ''' <returns>System.String.</returns>
     Public Function RemoveCommaNbr(ByVal sNbr As String) As String
         If InStr(sNbr, "$") = 0 And InStr(sNbr, ",") = 0 Then
             Return sNbr
@@ -1284,6 +1552,11 @@ Public Class clsUtility
         Return NewNbr
     End Function
 
+    ''' <summary>
+    ''' Converts the date.
+    ''' </summary>
+    ''' <param name="tDate">The t date.</param>
+    ''' <returns>System.String.</returns>
     Function ConvertDate(ByVal tDate As Date) As String
 
         Dim sMonth As String = ""
@@ -1314,13 +1587,18 @@ Public Class clsUtility
             xDate = sDay + "/" + sMonth + "/" + sYear + " " + sTimeOfDay : LL = 12
         Catch ex As Exception
             xDate = "01/01/1800 01:01:01"
-            log.WriteToSqlLog("ERRROR date: ConvertDate 100: LL= " + LL.ToString + ", error on converting date '" + tDate.ToString + "'." + vbCrLf + ex.Message)
+            LOG.WriteToSqlLog("ERRROR date: ConvertDate 100: LL= " + LL.ToString + ", error on converting date '" + tDate.ToString + "'." + vbCrLf + ex.Message)
         End Try
 
         Return xDate
 
     End Function
 
+    ''' <summary>
+    ''' Cks the PDF searchable.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ckPdfSearchable(ByVal FQN As String) As Boolean
 
         Dim EntireFile As String
@@ -1345,6 +1623,10 @@ Public Class clsUtility
 
     End Function
 
+    ''' <summary>
+    ''' Removes the freetext stop words.
+    ''' </summary>
+    ''' <param name="SearchPhrase">The search phrase.</param>
     Sub RemoveFreetextStopWords(ByRef SearchPhrase As String)
 
         SearchPhrase = SearchPhrase.Trim
@@ -1386,6 +1668,9 @@ Public Class clsUtility
         SearchPhrase = NewPhrase$
     End Sub
 
+    ''' <summary>
+    ''' Sets the version and server.
+    ''' </summary>
     Public Sub SetVersionAndServer()
         Try
             Dim ASSM As Reflection.Assembly = Reflection.Assembly.GetExecutingAssembly()
@@ -1394,11 +1679,11 @@ Public Class clsUtility
             'Dim S as string = " APP:" & Application.Info.Version.Major & "." & Application.Info.Version.Minor & "." & Application.Info.Version.Build & "." & Application.Info.Version.Revision & " "
         Catch ex As Exception
             Console.WriteLine(ex.Message)
-            log.WriteToSqlLog("Notice 001.z1 : SetVersionAndServer - " + ex.Message)
+            LOG.WriteToSqlLog("Notice 001.z1 : SetVersionAndServer - " + ex.Message)
         End Try
 
     End Sub
 
-  
+
 
 End Class

@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : DIrListen
+// Author           : wdale
+// Created          : 11-25-2020
+//
+// Last Modified By : wdale
+// Last Modified On : 11-25-2020
+// ***********************************************************************
+// <copyright file="DIrListener.cs" company="ECM">
+//     Copyright ©  2020 DMA, Ltd
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,37 +30,74 @@ using System.Runtime.InteropServices;
 namespace DirListen
 {
     /// <summary>
-    /// FSW will work with network drives but since this is a service you 
-    /// must make sure your service has network access, by default it won't.  
-    /// Thus you can't use a FSW in a service to monitor network drives, by 
+    /// FSW will work with network drives but since this is a service you
+    /// must make sure your service has network access, by default it won't.
+    /// Thus you can't use a FSW in a service to monitor network drives, by
     /// default.  Getting over that, also be aware that mapped drives are per
     /// user.Therefore any mapped drives you use must be created inside the
     /// service.
-    /// 
-    /// Finally note that FSW doesn't work with all network drives.  Even when 
+    /// Finally note that FSW doesn't work with all network drives.  Even when
     /// it does you are not guaranteed to get all change notifications.It
     /// depends upon the remote server.
     /// </summary>
     class DirListener
     {
-    
+
+        /// <summary>
+        /// Gets the console window.
+        /// </summary>
+        /// <returns>IntPtr.</returns>
         [DllImport("kernel32.dll")]
         static extern IntPtr GetConsoleWindow();
 
+        /// <summary>
+        /// Shows the window.
+        /// </summary>
+        /// <param name="hWnd">The h WND.</param>
+        /// <param name="nCmdShow">The n command show.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         [DllImport("user32.dll")]
         static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
+        /// <summary>
+        /// The sw hide
+        /// </summary>
         const int SW_HIDE = 0;
+        /// <summary>
+        /// The sw show
+        /// </summary>
         const int SW_SHOW = 5;
 
+        /// <summary>
+        /// The cs
+        /// </summary>
         static string CS = "";
+        /// <summary>
+        /// The run as service
+        /// </summary>
         static string RunAsService = ArchiveListener.UTIL.ReadSetting("RunAsService");
+        /// <summary>
+        /// The hide console window
+        /// </summary>
         static string HideConsoleWindow = ArchiveListener.UTIL.ReadSetting("HideConsoleWindow");
 
+        /// <summary>
+        /// The start time span
+        /// </summary>
         static TimeSpan startTimeSpan = TimeSpan.Zero;
+        /// <summary>
+        /// The period time span
+        /// </summary>
         static TimeSpan periodTimeSpan = TimeSpan.FromMinutes(5);
+        /// <summary>
+        /// The ll
+        /// </summary>
         static int LL = 0;
 
+        /// <summary>
+        /// Defines the entry point of the application.
+        /// </summary>
+        /// <param name="args">The arguments.</param>
         static void Main(string[] args)
         {
             LL = 1;
@@ -122,7 +172,11 @@ namespace DirListen
             }
             
         }
-        
+
+        /// <summary>
+        /// Sets the listener connection.
+        /// </summary>
+        /// <returns>SqliteConnection.</returns>
         static SqliteConnection SetListenerConn()
         {
             LL = 100;
@@ -142,6 +196,10 @@ namespace DirListen
             }
             return sqlite_conn;
         }
+        /// <summary>
+        /// Gets the dirs to moniotor.
+        /// </summary>
+        /// <returns>List&lt;System.String&gt;.</returns>
         static List<string> GetDirsToMoniotor()
         {
             LL = 200;
@@ -163,6 +221,10 @@ namespace DirListen
             }
 
         }
+        /// <summary>
+        /// Monitors the directory.
+        /// </summary>
+        /// <param name="dirs">The dirs.</param>
         private static void MonitorDirectory(string[] dirs)
         {
             try
@@ -215,13 +277,23 @@ namespace DirListen
                 ArchiveListener.UTIL.LogError("ERROR MonitorDirectory: " + LL.ToString() + ex.Message);
             }
         }
+        /// <summary>
+        /// Gets the path.
+        /// </summary>
+        /// <param name="sndr">The SNDR.</param>
+        /// <returns>System.String.</returns>
         private static string GetPath(object sndr) {
             string ListenerDIR = "";
             System.Reflection.PropertyInfo pi = sndr.GetType().GetProperty("Path");
             ListenerDIR = (String)(pi.GetValue(sndr, null));
             return ListenerDIR;
         }
-        
+
+        /// <summary>
+        /// Handles the Changed event of the FileSystemWatcher control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="FileSystemEventArgs"/> instance containing the event data.</param>
         private static void FileSystemWatcher_Changed(object sender, FileSystemEventArgs e)
         {
             LL = 400;
@@ -241,6 +313,11 @@ namespace DirListen
             }
             
         }
+        /// <summary>
+        /// Handles the Created event of the FileSystemWatcher control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="FileSystemEventArgs"/> instance containing the event data.</param>
         private static void FileSystemWatcher_Created(object sender, FileSystemEventArgs e)
         {
             LL = 400;
@@ -261,6 +338,11 @@ namespace DirListen
             }
         }
 
+        /// <summary>
+        /// Handles the Renamed event of the FileSystemWatcher control.
+        /// </summary>
+        /// <param name="source">The source of the event.</param>
+        /// <param name="e">The <see cref="RenamedEventArgs"/> instance containing the event data.</param>
         private static void FileSystemWatcher_Renamed(object source, RenamedEventArgs e)
         {
             // Specify what is done when a file is renamed.
@@ -282,6 +364,11 @@ namespace DirListen
             }
         }
 
+        /// <summary>
+        /// Handles the Deleted event of the FileSystemWatcher control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="FileSystemEventArgs"/> instance containing the event data.</param>
         private static void FileSystemWatcher_Deleted(object sender, FileSystemEventArgs e)
         {
             LL = 600;
@@ -301,7 +388,10 @@ namespace DirListen
                 ArchiveListener.UTIL.LogError("ERROR Delete: " + LL.ToString() + ex.Message);
             }            
         }
-        
+
+        /// <summary>
+        /// Starts the timers.
+        /// </summary>
         public static void StartTimers()
         {
             // timer to call MyMethod() every minutes 
@@ -313,6 +403,11 @@ namespace DirListen
             timer.Start();
         }
 
+        /// <summary>
+        /// Removes the expired files.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="ElapsedEventArgs"/> instance containing the event data.</param>
         public static void RemoveExpiredFiles(object sender, ElapsedEventArgs e)
         {
             LL = 800;
@@ -338,7 +433,11 @@ namespace DirListen
                 ArchiveListener.UTIL.LogError("ERROR REMOVE fiLES: " + LL.ToString() + EX.Message);
             }
         }
-        
+
+        /// <summary>
+        /// Adds the SQLite dir.
+        /// </summary>
+        /// <param name="ListenerFileName">Name of the listener file.</param>
         public static void AddSQLiteDir(string ListenerFileName)
         {
             try
@@ -366,8 +465,14 @@ namespace DirListen
         }        
     }
 
+    /// <summary>
+    /// Class ECMListenerSVC.
+    /// </summary>
     class ECMListenerSVC
     {
+        /// <summary>
+        /// Starts this instance.
+        /// </summary>
         public void Start()
         {
             try
@@ -384,6 +489,9 @@ namespace DirListen
                 }
             }
         }
+        /// <summary>
+        /// Stops this instance.
+        /// </summary>
         public void Stop()
         {
             try
@@ -402,8 +510,14 @@ namespace DirListen
         }
     }
 
+    /// <summary>
+    /// Class ConfigureService.
+    /// </summary>
     internal static class ConfigureService
     {
+        /// <summary>
+        /// Configures this instance.
+        /// </summary>
         internal static void Configure()
         {
             var appSettings = ConfigurationManager.AppSettings;

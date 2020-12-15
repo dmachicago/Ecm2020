@@ -1,13 +1,37 @@
-﻿
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 07-16-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 07-16-2020
+' ***********************************************************************
+' <copyright file="clsDatasetMgt.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+
 Imports System.Data
 Imports System.Reflection
 Imports System.Web.Script.Serialization
 
+''' <summary>
+''' Class clsDatasetMgt.
+''' </summary>
 Public Class clsDatasetMgt
 
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Dim LOG As New clsLoggingExtended
 
 
+    ''' <summary>
+    ''' Lists the class properties.
+    ''' </summary>
+    ''' <param name="TgtClass">The TGT class.</param>
+    ''' <returns>Dictionary(Of System.String, System.String).</returns>
     Public Function ListClassProperties(ByVal TgtClass As Type) As Dictionary(Of String, String)
 
         Dim dict As New Dictionary(Of String, String)
@@ -26,6 +50,11 @@ Public Class clsDatasetMgt
 
     End Function
 
+    ''' <summary>
+    ''' Lists the class properties x.
+    ''' </summary>
+    ''' <param name="ClassName">Name of the class.</param>
+    ''' <returns>List(Of System.String).</returns>
     Public Function ListClassPropertiesX(ByVal ClassName As Object) As List(Of String)
 
         Dim ObjectDetail As New List(Of String)
@@ -44,6 +73,11 @@ Public Class clsDatasetMgt
         Return ObjectDetail
     End Function
 
+    ''' <summary>
+    ''' Lists the object properties.
+    ''' </summary>
+    ''' <param name="OBJ">The object.</param>
+    ''' <returns>List(Of System.String).</returns>
     Public Function ListObjectProperties(OBJ As Object) As List(Of String)
 
         Dim pname As String = ""
@@ -62,6 +96,10 @@ Public Class clsDatasetMgt
     End Function
 
     '*********************************************************************************************************************************************************************
+    ''' <summary>
+    ''' Converts the object ds search terms.
+    ''' </summary>
+    ''' <returns>DataSet.</returns>
     Public Function ConvertObjDS_SearchTerms() As DataSet
 
         Dim B As Boolean = True
@@ -108,6 +146,15 @@ Public Class clsDatasetMgt
 
     End Function
 
+    ''' <summary>
+    ''' Adds the search term row.
+    ''' </summary>
+    ''' <param name="DT">The dt.</param>
+    ''' <param name="SearchTypeCode">The search type code.</param>
+    ''' <param name="Term">The term.</param>
+    ''' <param name="TermVal">The term value.</param>
+    ''' <param name="TermDatatype">The term datatype.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Private Function AddSearchTermRow(ByRef DT As DataTable, SearchTypeCode As String, Term As String, TermVal As String, TermDatatype As String) As Boolean
         Dim b As Boolean = True
         Dim DR As DataRow
@@ -131,6 +178,11 @@ Public Class clsDatasetMgt
 
 
     '*********************************************************************************************************************************************************************
+    ''' <summary>
+    ''' Converts the object group user grid dataset.
+    ''' </summary>
+    ''' <param name="ObjListOfRows">The object list of rows.</param>
+    ''' <returns>DataSet.</returns>
     Public Function ConvertObjGroupUserGridDataset(ObjListOfRows As Object) As DataSet
 
         Dim B As Boolean = True
@@ -167,6 +219,13 @@ Public Class clsDatasetMgt
 
     End Function
 
+    ''' <summary>
+    ''' Adds the group user grid row.
+    ''' </summary>
+    ''' <param name="DT">The dt.</param>
+    ''' <param name="GroupName">Name of the group.</param>
+    ''' <param name="GroupOwnerUserID">The group owner user identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Private Function AddGroupUserGridRow(ByRef DT As DataTable, GroupName As String, GroupOwnerUserID As String) As Boolean
         Dim b As Boolean = True
         Dim DR As DataRow
@@ -187,6 +246,11 @@ Public Class clsDatasetMgt
     '*********************************************************************************************************************************************************************
 
     '*********************************************************************************************************************************************************************
+    ''' <summary>
+    ''' Converts the object to dg assigned dataset.
+    ''' </summary>
+    ''' <param name="ObjListOfRows">The object list of rows.</param>
+    ''' <returns>DataSet.</returns>
     Public Function ConvertObjToDgAssignedDataset(ObjListOfRows As Object) As DataSet
 
         Dim B As Boolean = True
@@ -227,6 +291,13 @@ Public Class clsDatasetMgt
 
     End Function
 
+    ''' <summary>
+    ''' Adds the dg assigned row.
+    ''' </summary>
+    ''' <param name="DT">The dt.</param>
+    ''' <param name="GroupName">Name of the group.</param>
+    ''' <param name="GroupOwnerUserID">The group owner user identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Private Function AddDgAssignedRow(ByRef DT As DataTable, GroupName As String, GroupOwnerUserID As String) As Boolean
         Dim b As Boolean = True
         Dim DR As DataRow
@@ -247,6 +318,11 @@ Public Class clsDatasetMgt
 
 
     '*********************************************************************************************************************************************************************
+    ''' <summary>
+    ''' Converts the object to library dataset.
+    ''' </summary>
+    ''' <param name="ObjListOfRows">The object list of rows.</param>
+    ''' <returns>DataSet.</returns>
     Public Function ConvertObjToLibraryDataset(ObjListOfRows As Object) As DataSet
 
         Dim B As Boolean = True
@@ -297,6 +373,15 @@ Public Class clsDatasetMgt
 
     End Function
 
+    ''' <summary>
+    ''' Adds the library dt row.
+    ''' </summary>
+    ''' <param name="DT">The dt.</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <param name="isPublic">The is public.</param>
+    ''' <param name="Items">The items.</param>
+    ''' <param name="Members">The members.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Private Function AddLibraryDTRow(ByRef DT As DataTable, LibraryName As String, isPublic As String, Items As Int32, Members As Int32) As Boolean
         Dim b As Boolean = True
         Dim DR As DataRow
@@ -321,6 +406,11 @@ Public Class clsDatasetMgt
 
     '*********************************************************************************************************************************************************************
 
+    ''' <summary>
+    ''' Converts the object content to dataset.
+    ''' </summary>
+    ''' <param name="ObjListOfRows">The object list of rows.</param>
+    ''' <returns>DataSet.</returns>
     Public Function ConvertObjContentToDataset(ObjListOfRows As Object) As DataSet
 
         Dim B As Boolean = True
@@ -455,6 +545,29 @@ Public Class clsDatasetMgt
 
     End Function
 
+    ''' <summary>
+    ''' Adds the content dt row.
+    ''' </summary>
+    ''' <param name="DT">The dt.</param>
+    ''' <param name="CreateDate">The create date.</param>
+    ''' <param name="DataSourceOwnerUserID">The data source owner user identifier.</param>
+    ''' <param name="Description">The description.</param>
+    ''' <param name="FileDirectory">The file directory.</param>
+    ''' <param name="FileLength">Length of the file.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="isPublic">The is public.</param>
+    ''' <param name="isWebPage">The is web page.</param>
+    ''' <param name="LastAccessDate">The last access date.</param>
+    ''' <param name="LastWriteTime">The last write time.</param>
+    ''' <param name="RepoSvrName">Name of the repo SVR.</param>
+    ''' <param name="RetentionExpirationDate">The retention expiration date.</param>
+    ''' <param name="RssLinkFlg">if set to <c>true</c> [RSS link FLG].</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="SourceTypeCode">The source type code.</param>
+    ''' <param name="StructuredData">if set to <c>true</c> [structured data].</param>
+    ''' <param name="VersionNbr">The version NBR.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Private Function AddContentDTRow(ByRef DT As DataTable _
                                     , CreateDate As DateTime _
                                     , DataSourceOwnerUserID As String _
@@ -512,6 +625,11 @@ Public Class clsDatasetMgt
     '*********************************************************************************************************************************************************************
     '*********************************************************************************************************************************************************************
 
+    ''' <summary>
+    ''' Converts the object email to dataset.
+    ''' </summary>
+    ''' <param name="ObjListOfRows">The object list of rows.</param>
+    ''' <returns>DataSet.</returns>
     Public Function ConvertObjEmailToDataset(ObjListOfRows As Object) As DataSet
 
         Dim L As Integer = 0
@@ -661,6 +779,33 @@ Public Class clsDatasetMgt
 
     End Function
 
+    ''' <summary>
+    ''' Adds the email dt row.
+    ''' </summary>
+    ''' <param name="DT">The dt.</param>
+    ''' <param name="AllRecipients">All recipients.</param>
+    ''' <param name="Bcc">The BCC.</param>
+    ''' <param name="Body">The body.</param>
+    ''' <param name="CC">The cc.</param>
+    ''' <param name="CreationTime">The creation time.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="isPublic">The is public.</param>
+    ''' <param name="MsgSize">Size of the MSG.</param>
+    ''' <param name="NbrAttachments">The NBR attachments.</param>
+    ''' <param name="OriginalFolder">The original folder.</param>
+    ''' <param name="ReceivedByName">Name of the received by.</param>
+    ''' <param name="ReceivedTime">The received time.</param>
+    ''' <param name="RepoSvrName">Name of the repo SVR.</param>
+    ''' <param name="RetentionExpirationDate">The retention expiration date.</param>
+    ''' <param name="SenderEmailAddress">The sender email address.</param>
+    ''' <param name="SenderName">Name of the sender.</param>
+    ''' <param name="SentOn">The sent on.</param>
+    ''' <param name="SentTO">The sent to.</param>
+    ''' <param name="ShortSubj">The short subj.</param>
+    ''' <param name="SourceTypeCode">The source type code.</param>
+    ''' <param name="SUBJECT">The subject.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Private Function AddEmailDTRow(ByRef DT As DataTable _
                                    , AllRecipients As String _
                                     , Bcc As String _
@@ -725,6 +870,11 @@ Public Class clsDatasetMgt
 
     '*********************************************************************************************************************************************************************
     '*********************************************************************************************************************************************************************
+    ''' <summary>
+    ''' Converts the object to email attachment ds.
+    ''' </summary>
+    ''' <param name="ObjListOfRows">The object list of rows.</param>
+    ''' <returns>DataSet.</returns>
     Public Function ConvertObjToEmailAttachmentDS(ObjListOfRows As Object) As DataSet
 
         Dim B As Boolean = True
@@ -769,6 +919,14 @@ Public Class clsDatasetMgt
 
     End Function
 
+    ''' <summary>
+    ''' Adds the e attach dt row.
+    ''' </summary>
+    ''' <param name="DT">The dt.</param>
+    ''' <param name="AttachmentName">Name of the attachment.</param>
+    ''' <param name="RowID">The row identifier.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Private Function AddEAttachDTRow(ByRef DT As DataTable _
                                     , AttachmentName As String _
                                 , RowID As Int64 _
@@ -795,6 +953,11 @@ Public Class clsDatasetMgt
 
     '*********************************************************************************************************************************************************************
     '*********************************************************************************************************************************************************************
+    ''' <summary>
+    ''' Converts the image object ds.
+    ''' </summary>
+    ''' <param name="ObjListOfRows">The object list of rows.</param>
+    ''' <returns>DataSet.</returns>
     Public Function ConvertImageObjDS(ObjListOfRows As Object) As DataSet
 
         Dim B As Boolean = True
@@ -833,6 +996,14 @@ Public Class clsDatasetMgt
 
     End Function
 
+    ''' <summary>
+    ''' Adds the image row.
+    ''' </summary>
+    ''' <param name="DT">The dt.</param>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="FileLength">Length of the file.</param>
+    ''' <param name="SourceImage">The source image.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Private Function AddImageRow(ByRef DT As DataTable _
                                     , SourceName As String _
                                 , FileLength As Int64 _
@@ -859,8 +1030,18 @@ Public Class clsDatasetMgt
     '*********************************************************************************************************************************************************************
 End Class
 
+''' <summary>
+''' Class TestClass.
+''' </summary>
 Public Class TestClass
+    ''' <summary>
+    ''' The one
+    ''' </summary>
     Private _One As String = "1"
+    ''' <summary>
+    ''' Gets or sets the one.
+    ''' </summary>
+    ''' <value>The one.</value>
     Public Property One() As String
         Get
             Return _One
@@ -870,7 +1051,14 @@ Public Class TestClass
         End Set
     End Property
 
+    ''' <summary>
+    ''' The two
+    ''' </summary>
     Private _Two As Integer = 2
+    ''' <summary>
+    ''' Gets or sets the two.
+    ''' </summary>
+    ''' <value>The two.</value>
     Public Property Two() As Integer
         Get
             Return _Two
@@ -880,7 +1068,14 @@ Public Class TestClass
         End Set
     End Property
 
+    ''' <summary>
+    ''' The three
+    ''' </summary>
     Private _Three As Double = 3.1415927
+    ''' <summary>
+    ''' Gets or sets the three.
+    ''' </summary>
+    ''' <value>The three.</value>
     Public Property Three() As Double
         Get
             Return _Three
@@ -890,7 +1085,14 @@ Public Class TestClass
         End Set
     End Property
 
+    ''' <summary>
+    ''' The four
+    ''' </summary>
     Private _Four As Decimal = 4.4D
+    ''' <summary>
+    ''' Gets or sets the four.
+    ''' </summary>
+    ''' <value>The four.</value>
     Public Property Four() As Decimal
         Get
             Return _Four

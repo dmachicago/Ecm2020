@@ -1,7 +1,23 @@
-﻿Imports System.Data
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 07-16-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 07-16-2020
+' ***********************************************************************
+' <copyright file="globalGridMgt.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+Imports System.Data
 Imports System.IO
 Imports System.Windows.Controls.Primitives
 
+''' <summary>
+''' Class globalGridMgt.
+''' </summary>
 Module globalGridMgt
 
     ''' <summary>
@@ -10,6 +26,12 @@ Module globalGridMgt
     ''' <param name="DG">The datagrid.</param>
     ''' <param name="ColName">Name of the datagrid column.</param>
     ''' <returns>If column not found returns nothing, otherwise returns the tgt column's value as an object</returns>
+    ''' <summary>
+    ''' Gets the colvalue.
+    ''' </summary>
+    ''' <param name="DG">The dg.</param>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <returns>System.Object.</returns>
     Public Function getColvalue(DG As DataGrid, ColName As String) As Object
 
         Dim oVal As Object = Nothing
@@ -40,6 +62,11 @@ Module globalGridMgt
     ''' </summary>
     ''' <param name="DG">The dg.</param>
     ''' <param name="ColName">Name of the col.</param>
+    ''' <summary>
+    ''' Hides the grid column.
+    ''' </summary>
+    ''' <param name="DG">The dg.</param>
+    ''' <param name="ColName">Name of the col.</param>
     Public Sub HideGridColumn(DG As DataGrid, ColName As String)
 
         Dim idX As Integer = getColIdx(DG, ColName)
@@ -58,6 +85,11 @@ Module globalGridMgt
     ''' </summary>
     ''' <param name="DG">The dg.</param>
     ''' <returns>DataGridRow</returns>
+    ''' <summary>
+    ''' Gets the selected row.
+    ''' </summary>
+    ''' <param name="DG">The dg.</param>
+    ''' <returns>DataGridRow.</returns>
     Public Function GetSelectedRow(ByVal DG As DataGrid) As DataGridRow
         Return CType(DG.ItemContainerGenerator.ContainerFromItem(DG.SelectedItem), DataGridRow)
     End Function
@@ -68,6 +100,12 @@ Module globalGridMgt
     ''' <param name="DG">The dg.</param>
     ''' <param name="index">The index.</param>
     ''' <returns>DataGridRow</returns>
+    ''' <summary>
+    ''' Gets the index of the row by.
+    ''' </summary>
+    ''' <param name="DG">The dg.</param>
+    ''' <param name="index">The index.</param>
+    ''' <returns>DataGridRow.</returns>
     Public Function GetRowByIdx(ByVal DG As DataGrid, ByVal index As Integer) As DataGridRow
 
         Dim row As DataGridRow = CType(DG.ItemContainerGenerator.ContainerFromIndex(index), DataGridRow)
@@ -81,6 +119,13 @@ Module globalGridMgt
         Return row
     End Function
 
+    ''' <summary>
+    ''' Gets the cell.
+    ''' </summary>
+    ''' <param name="DG">The dg.</param>
+    ''' <param name="row">The row.</param>
+    ''' <param name="column">The column.</param>
+    ''' <returns>DataGridCell.</returns>
     Public Function GetCell(ByVal DG As DataGrid, ByVal row As DataGridRow, ByVal column As Integer) As DataGridCell
         If row IsNot Nothing Then
             Dim presenter As DataGridCellsPresenter = GetVisualChild(Of DataGridCellsPresenter)(row)
@@ -97,6 +142,12 @@ Module globalGridMgt
         Return Nothing
     End Function
 
+    ''' <summary>
+    ''' Gets the visual child.
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="parent">The parent.</param>
+    ''' <returns>T.</returns>
     Public Function GetVisualChild(Of T As Visual)(ByVal parent As Visual) As T
         Dim child As T = Nothing
         Dim numVisuals As Integer = VisualTreeHelper.GetChildrenCount(parent)
@@ -117,6 +168,12 @@ Module globalGridMgt
         Return child
     End Function
 
+    ''' <summary>
+    ''' Gets the index of the col.
+    ''' </summary>
+    ''' <param name="DG">The dg.</param>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function getColIdx(DG As DataGrid, ColName As String) As Integer
 
         Dim idx As Integer = -1
@@ -133,6 +190,12 @@ Module globalGridMgt
         Return idx
     End Function
 
+    ''' <summary>
+    ''' Gets the cell value.
+    ''' </summary>
+    ''' <param name="DG">The dg.</param>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <returns>System.String.</returns>
     Public Function getCellValue(DG As DataGrid, ColName As String) As String
 
         Dim idx As Integer = getColIdx(DG, ColName)
@@ -162,6 +225,12 @@ Module globalGridMgt
 
         Return val
     End Function
+    ''' <summary>
+    ''' Gets the string cell value.
+    ''' </summary>
+    ''' <param name="DG">The dg.</param>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <returns>System.String.</returns>
     Public Function getStringCellValue(DG As DataGrid, ColName As String) As String
 
         Dim idx As Integer = getColIdx(DG, ColName)
@@ -197,6 +266,11 @@ Module globalGridMgt
     ''' </summary>
     ''' <param name="DG">The datagrid to be processed.</param>
     ''' <returns></returns>
+    ''' <summary>
+    ''' Loops the selected rows.
+    ''' </summary>
+    ''' <param name="DG">The dg.</param>
+    ''' <returns>DataRowView.</returns>
     Public Function LoopSelectedRows(ByVal DG As DataGrid) As DataRowView
 
         Dim items = DG.SelectedItems
@@ -211,6 +285,12 @@ Module globalGridMgt
 
     End Function
 
+    ''' <summary>
+    ''' Fetches the cell.
+    ''' </summary>
+    ''' <param name="DG">The dg.</param>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <returns>System.String.</returns>
     Public Function fetchCell(DG As DataGrid, ColName As String) As String
 
         Dim items = DG.SelectedItems
@@ -230,6 +310,12 @@ Module globalGridMgt
         Return val
     End Function
 
+    ''' <summary>
+    ''' Fetches the cell value.
+    ''' </summary>
+    ''' <param name="DG">The dg.</param>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <returns>System.String.</returns>
     Public Function fetchCellValue(DG As DataGrid, ColName As String) As String
 
         Dim q As Integer = getColIdx(DG, ColName)
@@ -269,6 +355,11 @@ Module globalGridMgt
         End Try
     End Function
 
+    ''' <summary>
+    ''' Loads the cell value.
+    ''' </summary>
+    ''' <param name="DG">The dg.</param>
+    ''' <returns>Dictionary(Of System.String, System.String).</returns>
     Public Function LoadCellValue(DG As DataGrid) As Dictionary(Of String, String)
 
         Dim DV As Dictionary(Of String, String) = New Dictionary(Of String, String)
@@ -300,6 +391,10 @@ Module globalGridMgt
         Return DV
     End Function
 
+    ''' <summary>
+    ''' Writes the error log.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub WriteErrorLog(ByVal Msg As String)
         Try
             'Dim cPath As String = LOG.getTempEnvironDir()

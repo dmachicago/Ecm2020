@@ -1,5 +1,26 @@
-﻿Public Class clsEncryptV2
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 07-16-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 07-16-2020
+' ***********************************************************************
+' <copyright file="clsEncryptV2.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+''' <summary>
+''' Class clsEncryptV2.
+''' </summary>
+Public Class clsEncryptV2
 
+    ''' <summary>
+    ''' Encrypts the triple DES v2.
+    ''' </summary>
+    ''' <param name="Phrase">The phrase.</param>
+    ''' <returns>System.String.</returns>
     Function EncryptTripleDES_V2(ByVal Phrase As String) As String
         Dim S As String = ""
         Dim I As Integer = 0
@@ -28,6 +49,11 @@
 
         Return S
     End Function
+    ''' <summary>
+    ''' Reverses the specified value.
+    ''' </summary>
+    ''' <param name="value">The value.</param>
+    ''' <returns>System.String.</returns>
     Function Reverse(ByVal value As String) As String
         ' Convert to char array.
         Dim arr() As Char = value.ToCharArray()
@@ -36,6 +62,12 @@
         ' Construct new string.
         Return New String(arr)
     End Function
+    ''' <summary>
+    ''' Encrypts the triple DES v2.
+    ''' </summary>
+    ''' <param name="Phrase">The phrase.</param>
+    ''' <param name="shiftKey">The shift key.</param>
+    ''' <returns>System.String.</returns>
     Function EncryptTripleDES_V2(ByVal Phrase As String, ByVal shiftKey As String) As String
         shiftKey = ContractID
         Dim S As String = ""
@@ -74,6 +106,12 @@
 
         Return WCH
     End Function
+    ''' <summary>
+    ''' Encrypts the phrase v1.
+    ''' </summary>
+    ''' <param name="Phrase">The phrase.</param>
+    ''' <param name="shiftKey">The shift key.</param>
+    ''' <returns>System.String.</returns>
     Function EncryptPhraseV1(ByVal Phrase As String, ByVal shiftKey As String) As String
         Dim S As String = ""
         Dim I As Integer = 0
@@ -113,6 +151,12 @@
 
         Return S
     End Function
+    ''' <summary>
+    ''' Aes the S256 encrypt string.
+    ''' </summary>
+    ''' <param name="Phrase">The phrase.</param>
+    ''' <param name="shiftKey">The shift key.</param>
+    ''' <returns>System.String.</returns>
     Function AES256EncryptString(ByVal Phrase As String, ByVal shiftKey As String) As String
         shiftKey = ContractID
         Dim S As String = ""
@@ -148,6 +192,11 @@
 
         Return S
     End Function
+    ''' <summary>
+    ''' Aes the S256 encrypt string.
+    ''' </summary>
+    ''' <param name="Phrase">The phrase.</param>
+    ''' <returns>System.String.</returns>
     Function AES256EncryptString(ByVal Phrase As String) As String
         Dim S As String = ""
         Dim I As Integer = 0

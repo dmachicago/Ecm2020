@@ -1,20 +1,58 @@
-﻿Imports ECMEncryption
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 07-16-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 07-16-2020
+' ***********************************************************************
+' <copyright file="popupSaveSearch.xaml.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+Imports ECMEncryption
 
+''' <summary>
+''' Class popupSaveSearch.
+''' Implements the <see cref="System.Windows.Window" />
+''' Implements the <see cref="System.Windows.Markup.IComponentConnector" />
+''' </summary>
+''' <seealso cref="System.Windows.Window" />
+''' <seealso cref="System.Windows.Markup.IComponentConnector" />
 Public Class popupSaveSearch
 
     'Dim proxy As New SVCSearch.Service1Client
 
+    ''' <summary>
+    ''' The parms
+    ''' </summary>
     Dim PARMS As New clsParms
 
     'Dim EP As New clsEndPoint
+    ''' <summary>
+    ''' The en c2
+    ''' </summary>
     Dim ENC2 As New ECMEncrypt()
 
     'Dim GVAR As App = App.Current
+    ''' <summary>
+    ''' The PRM
+    ''' </summary>
     Dim PRM As New clsParms
 
+    ''' <summary>
+    ''' The search parms
+    ''' </summary>
     Dim SearchParms As String = ""
+    ''' <summary>
+    ''' The list of quick search
+    ''' </summary>
     Dim ListOfQuickSearch As New List(Of String)
 
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="popupSaveSearch"/> class.
+    ''' </summary>
     Public Sub New()
         'InitializeComponent()
         'EP.setSearchSvcEndPoint(proxy)
@@ -30,10 +68,20 @@ Public Class popupSaveSearch
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the CancelButton control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub CancelButton_Click(ByVal sender As Object, ByVal e As RoutedEventArgs) Handles CancelButton.Click
         ApplyRecalledSearch = False
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnSave control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnSave.Click
         Dim SearchName As String = txtSearchName.Text
         If SearchName.Trim.Length = 0 Then
@@ -46,6 +94,11 @@ Public Class popupSaveSearch
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnDelete control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnDelete.Click
 
         Dim SearchName As String = cbUserSearch.Text
@@ -70,11 +123,16 @@ Public Class popupSaveSearch
         'AddHandler ProxySearch.ExecuteSqlNewConnSecureCompleted, AddressOf gLogSQL
         'EP.setSearchSvcEndPoint(proxy)
 
-        MySql = ENC2.AES256EncryptString(Mysql)
+        MySql = ENC2.AES256EncryptString(MySql)
         Dim BB As Boolean = ProxySearch.ExecuteSqlNewConnSecure(_SecureID, MySql, _UserID, ContractID)
-        gLogSQL(BB, ENC2.AES256EncryptString(Mysql))
+        gLogSQL(BB, ENC2.AES256EncryptString(MySql))
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnRecall control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnRecall_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnRecall.Click
         Dim SearchName As String = cbUserSearch.Text
         If SearchName.Trim.Length = 0 Then
@@ -86,11 +144,20 @@ Public Class popupSaveSearch
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unloaded event of the ChildWindow control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ChildWindow_Unloaded(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles MyBase.Unloaded
         ''Application.Current.RootVisual.SetValue(Control.IsEnabledProperty, True)
         'RemoveHandler ProxySearch.SaveUserSearchCompleted, AddressOf client_SearchHistorySave
     End Sub
 
+    ''' <summary>
+    ''' Searches the save.
+    ''' </summary>
+    ''' <param name="SearchName">Name of the search.</param>
     Sub SearchSave(ByVal SearchName As String)
 
         SearchName = SearchName.Replace("'", "''")
@@ -103,6 +170,10 @@ Public Class popupSaveSearch
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the search history save.
+    ''' </summary>
+    ''' <param name="BB">if set to <c>true</c> [bb].</param>
     Sub client_SearchHistorySave(BB As Boolean)
         If BB Then
         Else
@@ -111,6 +182,10 @@ Public Class popupSaveSearch
         'RemoveHandler ProxySearch.SaveUserSearchCompleted, AddressOf client_SearchHistorySave
     End Sub
 
+    ''' <summary>
+    ''' Searches the reload.
+    ''' </summary>
+    ''' <param name="SearchName">Name of the search.</param>
     Sub SearchReload(ByVal SearchName As String)
         SearchName = SearchName.Replace("'", "''")
         Dim SearchParms As String = ""
@@ -122,6 +197,11 @@ Public Class popupSaveSearch
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the recall user search.
+    ''' </summary>
+    ''' <param name="BB">if set to <c>true</c> [bb].</param>
+    ''' <param name="StrParms">The string parms.</param>
     Sub client_RecallUserSearch(BB As Boolean, StrParms As String)
         If BB Then
 

@@ -1,7 +1,17 @@
 
-'clsDma: A set of standard utilities to perofrm repetitive tasks through a public class
-'Copyright @DMA, Limited, Chicago, IL., June 2003, all rights reserved.
-'Licensed on a use only basis for clients of DMA, Limited. 
+' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 07-16-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 07-16-2020
+' ***********************************************************************
+' <copyright file="clsDma.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************. 
 #Const Offfice2007 = 1
 #Const GetAllWidgets = 0
 
@@ -22,46 +32,120 @@ Imports System.Text
 Imports System.Threading
 Imports System.Windows.Application
 
+''' <summary>
+''' Class clsDma.
+''' </summary>
 Public Class clsDma
 
 
 
+    ''' <summary>
+    ''' The waiting for ip
+    ''' </summary>
     Dim WaitingForIP As Boolean = False
+    ''' <summary>
+    ''' The time out secs
+    ''' </summary>
     Dim TimeOutSecs As String = "89"
+    ''' <summary>
+    ''' The NBR of errors
+    ''' </summary>
     Dim NbrOfErrors As Integer = 0
 
+    ''' <summary>
+    ''' The must be less than
+    ''' </summary>
     Const MUST_BE_LESS_THAN As Integer = 100000000 '8 decimal digits
+    ''' <summary>
+    ''' The utility
+    ''' </summary>
     Dim UTIL As New clsUtility
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Dim LOG As New clsLog
+    ''' <summary>
+    ''' The ix v1
+    ''' </summary>
     Public IXV1 As Integer = 0
     'Dim DFLT As New clsDefaults
 
     'Dim owner As IWin32Window
+    ''' <summary>
+    ''' The buffersize
+    ''' </summary>
     Private Const BUFFERSIZE As Long = 65535
+    ''' <summary>
+    ''' The graphic width
+    ''' </summary>
     Dim GraphicWidth As Long = 0
+    ''' <summary>
+    ''' The graphic height
+    ''' </summary>
     Dim GraphicHeight As Long = 0
+    ''' <summary>
+    ''' The graphic depth
+    ''' </summary>
     Dim GraphicDepth As Long = 0
 
     ' image type enum
+    ''' <summary>
+    ''' URLs the download to file.
+    ''' </summary>
+    ''' <param name="pCaller">The p caller.</param>
+    ''' <param name="szURL">The sz URL.</param>
+    ''' <param name="szFileName">Name of the sz file.</param>
+    ''' <param name="dwReserved">The dw reserved.</param>
+    ''' <param name="lpfnCB">The LPFN cb.</param>
+    ''' <returns>System.Int64.</returns>
     Private Declare Function URLDownloadToFile Lib "urlmon" _
-        Alias "URLDownloadToFileA" (ByVal pCaller As Long, _
-        ByVal szURL As String, ByVal szFileName As String, _
+        Alias "URLDownloadToFileA" (ByVal pCaller As Long,
+        ByVal szURL As String, ByVal szFileName As String,
         ByVal dwReserved As Long, ByVal lpfnCB As Long) As Long
 
+    ''' <summary>
+    ''' The bb
+    ''' </summary>
     Dim bb As Boolean = False
+    ''' <summary>
+    ''' The temporary environ dir
+    ''' </summary>
     Public TempEnvironDir As String = getEnvVarTempDir()
+    ''' <summary>
+    ''' The curr host name
+    ''' </summary>
     Private CurrHostName As String = ""
+    ''' <summary>
+    ''' The machine ip
+    ''' </summary>
     Private MachineIP As String = ""
 
+    ''' <summary>
+    ''' The x
+    ''' </summary>
     Dim myIPAddress, MacAddr, x As Net.IPAddress
+    ''' <summary>
+    ''' The ret c
+    ''' </summary>
     Public RetC As Boolean
 
-    Dim gSecureID As string = -1
+    ''' <summary>
+    ''' The g secure identifier
+    ''' </summary>
+    Dim gSecureID As String = -1
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="clsDma"/> class.
+    ''' </summary>
     Sub New()
         gSecureID = _SecureID
     End Sub
 
-    Public Function ckVar2(ByRef tVal as string) As String
+    ''' <summary>
+    ''' Cks the var2.
+    ''' </summary>
+    ''' <param name="tVal">The t value.</param>
+    ''' <returns>System.String.</returns>
+    Public Function ckVar2(ByRef tVal As String) As String
         If tVal = "&nbsp;" Then
             tVal = ""
         End If
@@ -91,7 +175,13 @@ Public Class clsDma
     '    End Try
     'End Sub
 
-    Public Function DownloadWebFile(ByVal WebFqn as string, byval ToFqn as string) As Boolean
+    ''' <summary>
+    ''' Downloads the web file.
+    ''' </summary>
+    ''' <param name="WebFqn">The web FQN.</param>
+    ''' <param name="ToFqn">Converts to fqn.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+    Public Function DownloadWebFile(ByVal WebFqn As String, ByVal ToFqn As String) As Boolean
         Dim B As Boolean = False
         WebFqn$ = "http://www.vb-helper.com/vbhelper_425_64.gif"
         ToFqn$ = gTempDir + "\vbhelper_425_64.gif"
@@ -108,6 +198,9 @@ Public Class clsDma
         Return B
     End Function
 
+    ''' <summary>
+    ''' Sets the name of the host.
+    ''' </summary>
     Public Sub setHostName()
         Dim shostname As String = ""
         'shostname = Application.Current.Host.Source.Host
@@ -115,6 +208,10 @@ Public Class clsDma
         CurrHostName = shostname
     End Sub
 
+    ''' <summary>
+    ''' Gets the hostname.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getHostname() As String
         If CurrHostName = "" Then
             setHostName()
@@ -188,7 +285,12 @@ Public Class clsDma
 
     'End Sub
 
-    Function isFourPartIP(ByVal IP as string) As Boolean
+    ''' <summary>
+    ''' Determines whether [is four part ip] [the specified ip].
+    ''' </summary>
+    ''' <param name="IP">The ip.</param>
+    ''' <returns><c>true</c> if [is four part ip] [the specified ip]; otherwise, <c>false</c>.</returns>
+    Function isFourPartIP(ByVal IP As String) As Boolean
         If InStr(IP, ":") > 0 Then
             Return False
         End If
@@ -200,6 +302,10 @@ Public Class clsDma
         End If
     End Function
 
+    ''' <summary>
+    ''' Gets the env variable temporary dir.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getEnvVarTempDir() As String
 
         Dim td As String = ""
@@ -210,6 +316,11 @@ Public Class clsDma
     End Function
 
 
+    ''' <summary>
+    ''' Loads the graphic.
+    ''' </summary>
+    ''' <param name="filePath">The file path.</param>
+    ''' <returns>System.Byte().</returns>
     Public Function LoadGraphic(ByVal filePath As String) As Byte()
         Dim stream As FileStream = New FileStream(filePath, FileMode.Open, FileAccess.Read)
         Dim reader As BinaryReader = New BinaryReader(stream)
@@ -222,6 +333,11 @@ Public Class clsDma
     End Function
 
 
+    ''' <summary>
+    ''' Checks the name of the file.
+    ''' </summary>
+    ''' <param name="tVal">The t value.</param>
+    ''' <returns>System.String.</returns>
     Public Function CheckFileName(ByVal tVal As String) As String
         Dim i As Integer = Len(tVal)
         Dim j As Integer = 0
@@ -243,11 +359,17 @@ Public Class clsDma
 
     End Function
 
-    Public Function RemoveChar(ByVal tVal as string, byval CharToRemove as string) As String
+    ''' <summary>
+    ''' Removes the character.
+    ''' </summary>
+    ''' <param name="tVal">The t value.</param>
+    ''' <param name="CharToRemove">The character to remove.</param>
+    ''' <returns>System.String.</returns>
+    Public Function RemoveChar(ByVal tVal As String, ByVal CharToRemove As String) As String
 
         Dim i As Integer = Len(tVal)
         Dim A$()
-        Dim S as string = ""
+        Dim S As String = ""
         A = tVal.Split(CharToRemove)
         For i = 0 To UBound(A)
             Dim Token = A(i).ToString
@@ -263,11 +385,23 @@ Public Class clsDma
 
     End Function
 
+    ''' <summary>
+    ''' Replaces the commas.
+    ''' </summary>
+    ''' <param name="tVal">The t value.</param>
+    ''' <returns>System.String.</returns>
     Public Function ReplaceCommas(ByVal tVal As String) As String
         tVal.Replace("^", ".")
         Return tVal
     End Function
 
+    ''' <summary>
+    ''' Replaces the character.
+    ''' </summary>
+    ''' <param name="InputString">The input string.</param>
+    ''' <param name="CharToReplace">The character to replace.</param>
+    ''' <param name="ReplaceWith">The replace with.</param>
+    ''' <returns>System.String.</returns>
     Public Function ReplaceChar(ByVal InputString As String, ByVal CharToReplace As String, ByVal ReplaceWith As String) As String
         Dim S As String = InputString
         S.Replace(CharToReplace, ReplaceWith)
@@ -299,6 +433,11 @@ Public Class clsDma
 
     'End Function
 
+    ''' <summary>
+    ''' Gets the file path.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>System.String.</returns>
     Public Function GetFilePath(ByVal FQN As String) As String
 
         Dim fn$ = ""
@@ -334,6 +473,10 @@ Public Class clsDma
 
     End Function
 
+    ''' <summary>
+    ''' ts the wait.
+    ''' </summary>
+    ''' <param name="tDelay">The t delay.</param>
     Public Sub tWait(ByVal tDelay#)
         Dim start As Double = 0
         Dim finish As Double = 0
@@ -350,6 +493,10 @@ Public Class clsDma
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the help file.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getHelpFile() As String
         Dim URL As String
         URL = "WDM URL.hlp"
@@ -393,6 +540,11 @@ Public Class clsDma
     'End Function
 
     ' Modify a phone-number to the format "XXX-XXXX" or "(XXX) XXX-XXXX".
+    ''' <summary>
+    ''' xes the format phone number.
+    ''' </summary>
+    ''' <param name="text">The text.</param>
+    ''' <returns>System.String.</returns>
     Function xFormatPhoneNumber(ByVal text As String) As String
         Dim i As Long
         ' ignore empty strings
@@ -413,6 +565,10 @@ Public Class clsDma
         End If
     End Function
 
+    ''' <summary>
+    ''' Gets the ip address.
+    ''' </summary>
+    ''' <param name="myIPAddress">My ip address.</param>
     Public Sub GetIPAddress(ByRef myIPAddress As Net.IPAddress)
         'This sub will get all IP addresses, the first one should be the adapters MAC
         'address, the second one the IP Address when connected to the internet.
@@ -421,6 +577,11 @@ Public Class clsDma
 
     End Sub
 
+    ''' <summary>
+    ''' Cks the variable.
+    ''' </summary>
+    ''' <param name="sText">The s text.</param>
+    ''' <returns>System.String.</returns>
     Public Function ckVar(ByRef sText As String) As String
         Dim i As Integer = 0
         Dim j As Integer = 0
@@ -438,6 +599,13 @@ Public Class clsDma
         Return sText$
     End Function
 
+    ''' <summary>
+    ''' Replaces the occr.
+    ''' </summary>
+    ''' <param name="tStr">The t string.</param>
+    ''' <param name="TgtStr">The TGT string.</param>
+    ''' <param name="ReplacementStr">The replacement string.</param>
+    ''' <returns>System.String.</returns>
     Private Function ReplaceOccr(ByVal tStr As String, ByVal TgtStr As String, ByVal ReplacementStr As String) As String
         Dim S1$ = ""
         Dim S2$ = ""
@@ -454,14 +622,20 @@ Public Class clsDma
         Return tStr
     End Function
 
-    Public Function SaveFile(ByVal sFileName As String, _
+    ''' <summary>
+    ''' Saves the file.
+    ''' </summary>
+    ''' <param name="sFileName">Name of the s file.</param>
+    ''' <param name="bytFileByteArr">The byt file byte arr.</param>
+    ''' <returns>System.Int32.</returns>
+    Public Function SaveFile(ByVal sFileName As String,
            ByVal bytFileByteArr As Byte()) As Integer
 
         ' Saves a file with no file extension
 
         ' Get the file name and set a new path 
         ' to the local storage folder
-        Dim strFile As String = _
+        Dim strFile As String =
         System.IO.Path.GetFileNameWithoutExtension(sFileName)
 
         'Dim GL As New clsGlobals
@@ -489,6 +663,11 @@ Public Class clsDma
 
 
 
+    ''' <summary>
+    ''' Gets the type of the MIME.
+    ''' </summary>
+    ''' <param name="FileSuffix">The file suffix.</param>
+    ''' <returns>System.String.</returns>
     Function GetMimeType(ByVal FileSuffix As String) As String
         Dim MimeTypes$ = "application/andrew-inset | ez,application/mac-binhex40 | hqx,application/mac-compactpro | cpt,application/msword | doc,application/octet-stream | bin,application/octet-stream | dms,application/octet-stream | lha,application/octet-stream | lzh,application/octet-stream | exe,application/x-rar-compressed | rar,application/octet-stream | class,application/octet-stream | so,application/octet-stream | dll,application/oda | oda,application/pdf | pdf,application/postscript | ai,application/postscript | eps,application/postscript | ps,application/smil | smi,application/smil | smil,application/vnd.mif | mif,application/vnd.ms-excel | xls,application/vnd.ms-powerpoint | ppt,application/vnd.wap.wbxml | wbxml,application/vnd.wap.wmlc | wmlc,application/vnd.wap.wmlscriptc | wmlsc,application/x-bcpio | bcpio,application/x-cdlink | vcd,application/x-chess-pgn | pgn,application/x-cpio | cpio,application/x-csh | csh,application/x-director | dcr,application/x-director | dir,application/x-director | dxr,application/x-dvi | dvi,application/x-futuresplash | spl,application/x-gtar | gtar,application/x-hdf | hdf,application/x-javascript | js,application/x-koan | skp,application/x-koan | skd,application/x-koan | skt,application/x-koan | skm,application/x-latex | latex,application/x-netcdf | nc,application/x-netcdf | cdf,application/x-sh | sh,application/x-shar | shar,application/x-shockwave-flash | swf,application/x-stuffit | sit,application/x-sv4cpio | sv4cpio,application/x-sv4crc | sv4crc,application/x-tar | tar,application/x-tcl | tcl,application/x-tex | tex,application/x-texinfo | texinfo,application/x-texinfo | texi,application/x-troff | t,application/x-troff | tr,application/x-troff | roff,application/x-troff-man | man,application/x-troff-me | me,application/x-troff-ms | ms,application/x-ustar | ustar,application/x-wais-source | src,application/xhtml+xml | xhtml,application/xhtml+xml | xht,application/zip | zip,audio/basic | au,audio/basic | snd,audio/midi | mid,audio/midi | midi,audio/midi | kar,audio/mpeg | mpga,audio/mpeg | mp2,audio/mpeg | mp3,audio/x-aiff | aif,audio/x-aiff | aiff,audio/x-aiff | aifc,audio/x-mpegurl | m3u,audio/x-pn-realaudio | ram,audio/x-pn-realaudio | rm,audio/x-pn-realaudio-plugin | rpm,audio/x-realaudio | ra,audio/x-wav | wav,chemical/x-pdb | pdb,chemical/x-xyz | xyz,image/bmp | bmp,image/gif | gif,image/ief | ief,image/jpeg | jpeg,image/jpeg | jpg,image/jpeg | jpe,image/png | png,image/tiff | tiff,image/tiff | tif,image/vnd.djvu | djvu,image/vnd.djvu | djv,image/vnd.wap.wbmp | wbmp,image/x-cmu-raster | ras,image/x-portable-anymap | pnm,image/x-portable-bitmap | pbm,image/x-portable-graymap | pgm,image/x-portable-pixmap | ppm,image/x-rgb | rgb,image/x-xbitmap | xbm,image/x-xpixmap | xpm,image/x-xwindowdump | xwd,model/iges | igs,model/iges | iges,model/mesh | msh,model/mesh | mesh,model/mesh | silo,model/vrml | wrl,model/vrml | vrml,text/css | css,text/html | html,text/html | htm,text/plain | asc,text/plain | txt,text/richtext | rtx,text/rtf | rtf,text/sgml | sgml,text/sgml | sgm,text/tab-separated-values | tsv,text/vnd.wap.wml | wml,text/vnd.wap.wmlscript | wmls,text/x-setext | etx,text/xml | xsl,text/xml | xml,video/mpeg | mpeg,video/mpeg | mpg,video/mpeg | mpe,video/quicktime | qt,video/quicktime | mov,video/vnd.mpegurl | mxu,video/x-msvideo | avi,video/x-sgi-movie | movie,x-conference/x-cooltal | ice"
         Dim A$() = Split(MimeTypes, ",")
@@ -507,6 +686,11 @@ Public Class clsDma
         Return Classification$
     End Function
 
+    ''' <summary>
+    ''' Bins to hexadecimal.
+    ''' </summary>
+    ''' <param name="data">The data.</param>
+    ''' <returns>System.String.</returns>
     Private Shared Function BinToHex(ByVal data As Byte()) As String
         If Not data Is Nothing Then
             Dim sb As New System.Text.StringBuilder
@@ -519,6 +703,11 @@ Public Class clsDma
         End If
     End Function
 
+    ''' <summary>
+    ''' Hexadecimals to bin.
+    ''' </summary>
+    ''' <param name="s">The s.</param>
+    ''' <returns>System.Byte().</returns>
     Public Shared Function HexToBin(ByVal s As String) As Byte()
         Dim arraySize As Integer = CInt(s.Length / 2)
         Dim bytes(arraySize - 1) As Byte
@@ -679,6 +868,13 @@ Public Class clsDma
     '    Return I
     'End Function
 
+    ''' <summary>
+    ''' Gets the files in dir.
+    ''' </summary>
+    ''' <param name="DirName">Name of the dir.</param>
+    ''' <param name="DirFiles">The dir files.</param>
+    ''' <param name="ExactFileName">Name of the exact file.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function getFilesInDir(ByVal DirName As String, ByRef DirFiles() As String, ByVal ExactFileName As String) As Integer
 
         DirName = UTIL.RemoveSingleQuotes(DirName)
@@ -743,12 +939,20 @@ Public Class clsDma
         Return I
     End Function
 
+    ''' <summary>
+    ''' Replaces the star.
+    ''' </summary>
+    ''' <param name="tVal">The t value.</param>
     Sub ReplaceStar(ByRef tVal As String)
         If InStr(tVal, "*") = 0 Then
             Return
         End If
         tVal = tVal.Replace("*", "%")
     End Sub
+    ''' <summary>
+    ''' Replaces the single tick.
+    ''' </summary>
+    ''' <param name="tVal">The t value.</param>
     Sub ReplaceSingleTick(ByRef tVal As String)
         tVal = tVal.Trim
         Dim CH$ = ""
@@ -758,6 +962,11 @@ Public Class clsDma
         tVal = tVal.Replace("'", "`")
     End Sub
 
+    ''' <summary>
+    ''' Gets the start and stop date.
+    ''' </summary>
+    ''' <param name="StartDate">The start date.</param>
+    ''' <param name="EndDate">The end date.</param>
     Sub GetStartAndStopDate(ByRef StartDate As Date, ByRef EndDate As Date)
         '5/14/2009 12:00:00 AM' 
         Dim S1 As String = StartDate.ToString
@@ -771,6 +980,15 @@ Public Class clsDma
 
     End Sub
 
+    ''' <summary>
+    ''' Cks the qry date.
+    ''' </summary>
+    ''' <param name="StartDate">The start date.</param>
+    ''' <param name="EndDate">The end date.</param>
+    ''' <param name="Evaluator">The evaluator.</param>
+    ''' <param name="DbColName">Name of the database col.</param>
+    ''' <param name="FirstTime">if set to <c>true</c> [first time].</param>
+    ''' <returns>System.String.</returns>
     Function ckQryDate(ByVal StartDate As String, ByVal EndDate As String, ByVal Evaluator As String, ByVal DbColName As String, ByRef FirstTime As Boolean) As String
 
         '** Set to false by WDM on 3/10/2010 to allow for parens and the AND operator
@@ -832,6 +1050,10 @@ Public Class clsDma
         Return WhereClause$
     End Function
 
+    ''' <summary>
+    ''' Adds the name of the slash to dir.
+    ''' </summary>
+    ''' <param name="tDir">The t dir.</param>
     Sub AddSlashToDirName(ByRef tDir As String)
 
         If tDir$.Trim.Length = 0 Then
@@ -891,36 +1113,60 @@ Public Class clsDma
     '    Return S
     'End Function
 
+    ''' <summary>
+    ''' Gets the name of the curr os version.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function GetCurrOsVersionName() As String
         Dim S As String = ""
         S = Environment.OSVersion.ToString
         Return S
     End Function
 
+    ''' <summary>
+    ''' Gets the name of the curr environment version.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function GetCurrEnvironmentVersionName() As String
         Dim S As String = ""
         S = Environment.Version.ToString
         Return S
     End Function
 
+    ''' <summary>
+    ''' Gets the curr system directory.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function GetCurrSystemDirectory() As String
         Dim S As String = ""
         S = Environment.CurrentDirectory.ToString
         Return S
     End Function
 
+    ''' <summary>
+    ''' Gets the curr uptime.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function GetCurrUptime() As String
         Dim S As String = ""
         S = Mid((Environment.TickCount / 3600000), 1, 5) & " :Hours"
         Return S
     End Function
 
+    ''' <summary>
+    ''' Gets the name of the curr machine.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function GetCurrMachineName() As String
         Dim S As String = ""
         S = Environment.MachineName
         Return S
     End Function
 
+    ''' <summary>
+    ''' Gets the current directory.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function GetCurrentDirectory() As String
         Dim S As String = ""
         S = Environment.CurrentDirectory.ToString
@@ -1141,6 +1387,11 @@ Public Class clsDma
     '    End Try
     'End Sub
 
+    ''' <summary>
+    ''' Formats the text search.
+    ''' </summary>
+    ''' <param name="SearchString">The search string.</param>
+    ''' <returns>System.String.</returns>
     Public Function formatTextSearch(ByVal SearchString As String) As String
         If SearchString.Trim.Length = 0 Then
             Return ""
@@ -1220,6 +1471,11 @@ Public Class clsDma
         Return ReformattedSearch$
     End Function
 
+    ''' <summary>
+    ''' Cks the key word.
+    ''' </summary>
+    ''' <param name="KW">The kw.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ckKeyWord(ByVal KW As String) As Boolean
         Dim B As Boolean = False
         KW = UCase(KW)
@@ -1272,6 +1528,10 @@ Public Class clsDma
         Return B
     End Function
 
+    ''' <summary>
+    ''' Cks the first token key word.
+    ''' </summary>
+    ''' <param name="tStr">The t string.</param>
     Sub ckFirstTokenKeyWord(ByRef tStr As String)
         Try
             Dim S As String = tStr
@@ -1326,6 +1586,11 @@ Public Class clsDma
 
     'End Function
 
+    ''' <summary>
+    ''' Gets the environment dir.
+    ''' </summary>
+    ''' <param name="DirName">Name of the dir.</param>
+    ''' <returns>System.String.</returns>
     Function getEnvironmentDir(ByVal DirName As String) As String
         '        0	Desktop			C:\Documents and Settings\Charlie\Desktop
         '2	Programs		C:\Documents and Settings\Charlie\Start Menu\Programs
@@ -1679,6 +1944,10 @@ Public Class clsDma
     '    End Sub
 
 
+    ''' <summary>
+    ''' Cks the freetext search line.
+    ''' </summary>
+    ''' <param name="SearchText">The search text.</param>
     Sub ckFreetextSearchLine(ByRef SearchText As TextBox)
         Dim S As String = SearchText.Text.Trim
         Dim A() As String = S.Split(" ")
@@ -1707,6 +1976,11 @@ Public Class clsDma
         S = S.Trim
         SearchText.Text = S
     End Sub
+    ''' <summary>
+    ''' Cks the freetext remove or.
+    ''' </summary>
+    ''' <param name="SqlQuery">The SQL query.</param>
+    ''' <param name="LocatorPhrase">The locator phrase.</param>
     Sub ckFreetextRemoveOr(ByRef SqlQuery As String, ByVal LocatorPhrase As String)
         '" FREETEXT ("
         'FREETEXT (EMAIL.*
@@ -1744,9 +2018,9 @@ Public Class clsDma
             '        Mid(token, II, 1) = " "
             '    Loop
             'End If
-            token = token.Trim
-            A(I) = token
-            If UCase(token).Equals("OR") Then
+            Token = Token.Trim
+            A(I) = Token
+            If UCase(Token).Equals("OR") Then
                 A(I) = ""
             End If
         Next
@@ -1780,14 +2054,29 @@ Public Class clsDma
 
     'End Function
 
+    ''' <summary>
+    ''' Gets the file name without extension.
+    ''' </summary>
+    ''' <param name="FullPath">The full path.</param>
+    ''' <returns>System.String.</returns>
     Public Function getFileNameWithoutExtension(ByVal FullPath As String) As String
         Return System.IO.Path.GetFileNameWithoutExtension(FullPath)
     End Function
-    Public Function getDirName(ByVal FQN as string) As String
+    ''' <summary>
+    ''' Gets the name of the dir.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>System.String.</returns>
+    Public Function getDirName(ByVal FQN As String) As String
         Dim dirName As String = IO.Path.GetDirectoryName(FQN)
         Return dirName
     End Function
-    Public Function getFileName(ByVal FQN as string) As String
+    ''' <summary>
+    ''' Gets the name of the file.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>System.String.</returns>
+    Public Function getFileName(ByVal FQN As String) As String
         Try
             Dim dirName As String = IO.Path.GetFileName(FQN)
             Return dirName
@@ -1795,11 +2084,21 @@ Public Class clsDma
             Return FQN
         End Try
     End Function
-    Public Function getFullPath(ByVal FQN as string) As String
+    ''' <summary>
+    ''' Gets the full path.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>System.String.</returns>
+    Public Function getFullPath(ByVal FQN As String) As String
         Dim dirName As String = IO.Path.GetFullPath(FQN)
         Return dirName
     End Function
-    Public Function getFileExtension(ByVal FQN as string) As String
+    ''' <summary>
+    ''' Gets the file extension.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>System.String.</returns>
+    Public Function getFileExtension(ByVal FQN As String) As String
         Dim dirName As String = IO.Path.GetExtension(FQN)
         Return dirName
     End Function
@@ -1873,15 +2172,24 @@ Public Class clsDma
     '    CombineLists(List, result)
     'End Sub
 
+    ''' <summary>
+    ''' Combines the lists.
+    ''' </summary>
+    ''' <param name="ParentList">The parent list.</param>
+    ''' <param name="ChildList">The child list.</param>
     Sub CombineLists(ByRef ParentList As List(Of String), ByRef ChildList As List(Of String))
         Dim I As Integer = 0
         For I = 0 To ChildList.Count - 1
-            Dim S as string = ChildList.Item(I)
+            Dim S As String = ChildList.Item(I)
             ParentList.Add(S)
         Next
         ChildList.Clear()
     End Sub
 
+    ''' <summary>
+    ''' Fixes the file extension.
+    ''' </summary>
+    ''' <param name="Extension">The extension.</param>
     Sub FixFileExtension(ByRef Extension As String)
         Extension = Extension$.Trim
         Extension = Extension$.ToLower
@@ -1892,6 +2200,12 @@ Public Class clsDma
         Return
     End Sub
 
+    ''' <summary>
+    ''' Determines whether [is ext included] [the specified f ext].
+    ''' </summary>
+    ''' <param name="fExt">The f ext.</param>
+    ''' <param name="IncludedTypes">The included types.</param>
+    ''' <returns><c>true</c> if [is ext included] [the specified f ext]; otherwise, <c>false</c>.</returns>
     Function isExtIncluded(ByVal fExt As String, ByVal IncludedTypes As List(Of String)) As Boolean
         fExt = UCase(fExt)
         fExt = fExt.Replace(".", " ")
@@ -1907,6 +2221,12 @@ Public Class clsDma
             Return False
         End If
     End Function
+    ''' <summary>
+    ''' Determines whether [is ext excluded] [the specified f ext].
+    ''' </summary>
+    ''' <param name="fExt">The f ext.</param>
+    ''' <param name="ExcludedTypes">The excluded types.</param>
+    ''' <returns><c>true</c> if [is ext excluded] [the specified f ext]; otherwise, <c>false</c>.</returns>
     Function isExtExcluded(ByVal fExt As String, ByVal ExcludedTypes As List(Of String)) As Boolean
 
         fExt = UCase(fExt)
@@ -1925,8 +2245,13 @@ Public Class clsDma
         End If
 
     End Function
-    Function commentOutOrderBy(ByVal sTxt as string) As String
-        Dim S as string = sTxt$
+    ''' <summary>
+    ''' Comments the out order by.
+    ''' </summary>
+    ''' <param name="sTxt">The s text.</param>
+    ''' <returns>System.String.</returns>
+    Function commentOutOrderBy(ByVal sTxt As String) As String
+        Dim S As String = sTxt$
         If S.Trim.Length = 0 Then
             Return ""
         End If
@@ -1940,7 +2265,12 @@ Public Class clsDma
         Return S
     End Function
 
-    Function CreateMissingDir(ByVal DirFQN as string) As Boolean
+    ''' <summary>
+    ''' Creates the missing dir.
+    ''' </summary>
+    ''' <param name="DirFQN">The dir FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+    Function CreateMissingDir(ByVal DirFQN As String) As Boolean
 
         Dim B As Boolean = False
         If System.IO.Directory.Exists(DirFQN) Then
@@ -1959,7 +2289,12 @@ Public Class clsDma
         End Try
     End Function
 
-    Function LoadLicenseFile(ByVal FQN as string) As String
+    ''' <summary>
+    ''' Loads the license file.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>System.String.</returns>
+    Function LoadLicenseFile(ByVal FQN As String) As String
         Dim strContents As String
         Dim objReader As StreamReader
         Try
@@ -1975,25 +2310,39 @@ Public Class clsDma
         Return strContents
     End Function
 
-    Sub LogThis(ByVal MSG as string)
+    ''' <summary>
+    ''' Logs the this.
+    ''' </summary>
+    ''' <param name="MSG">The MSG.</param>
+    Sub LogThis(ByVal MSG As String)
         Dim LOG As New clsLogMain
         LOG.WriteToSqlLog(MSG)
         LOG = Nothing
     End Sub
-    Function ReadFile(ByVal fName as string) As String
+    ''' <summary>
+    ''' Reads the file.
+    ''' </summary>
+    ''' <param name="fName">Name of the f.</param>
+    ''' <returns>System.String.</returns>
+    Function ReadFile(ByVal fName As String) As String
         Dim SR As New IO.StreamReader(fName)
         Dim FullText$ = ""
         Do While Not SR.EndOfStream
-            Dim S as string = SR.ReadLine
+            Dim S As String = SR.ReadLine
             FullText$ = FullText$ + S$ + vbCrLf
         Loop
         SR.Close()
         Return FullText$
     End Function
-    Sub WriteFile(ByVal FQN as string, byval sText as string)
+    ''' <summary>
+    ''' Writes the file.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="sText">The s text.</param>
+    Sub WriteFile(ByVal FQN As String, ByVal sText As String)
         Try
             Dim SW As New IO.StreamWriter(FQN)
-            Dim S as string = sText.Trim
+            Dim S As String = sText.Trim
 
             If S.Length > 0 Then
                 SW.WriteLine(S)
@@ -2111,7 +2460,13 @@ Public Class clsDma
 
     'End Sub
 
-    Sub ApplyAppConfigChange(ByVal ServerName as string, byval ItemToModify as string, byref AppConFigBody As String)
+    ''' <summary>
+    ''' Applies the application configuration change.
+    ''' </summary>
+    ''' <param name="ServerName">Name of the server.</param>
+    ''' <param name="ItemToModify">The item to modify.</param>
+    ''' <param name="AppConFigBody">The application con fig body.</param>
+    Sub ApplyAppConfigChange(ByVal ServerName As String, ByVal ItemToModify As String, ByRef AppConFigBody As String)
 
         If ServerName$.Trim.Length = 0 Then
             Return

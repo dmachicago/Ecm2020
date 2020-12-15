@@ -1,4 +1,17 @@
-﻿Imports System.Data.SqlClient
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 06-28-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 06-28-2020
+' ***********************************************************************
+' <copyright file="clsDbDownload.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+Imports System.Data.SqlClient
 Imports System.Data.Sql
 Imports System.IO
 Imports System.Collections
@@ -7,23 +20,56 @@ Imports System.IO.Compression
 Imports ECMEncryption
 Imports System.Data
 
+''' <summary>
+''' Class clsDbDownload.
+''' </summary>
 Public Class clsDbDownload
 
+    ''' <summary>
+    ''' The database
+    ''' </summary>
     Dim DB As clsDatabase()
+    ''' <summary>
+    ''' The time out secs
+    ''' </summary>
     Dim TimeOutSecs As String = "360"
+    ''' <summary>
+    ''' The g connection string
+    ''' </summary>
     Dim gConnStr As String = ""
+    ''' <summary>
+    ''' The g connection
+    ''' </summary>
     Dim gConn As New SqlConnection
 
+    ''' <summary>
+    ''' The cs
+    ''' </summary>
     Dim CS As String = ""
 
+    ''' <summary>
+    ''' The enc
+    ''' </summary>
     Dim ENC As New ECMEncrypt
 
+    ''' <summary>
+    ''' Gets or sets the identifier.
+    ''' </summary>
+    ''' <value>The identifier.</value>
     Private Property ID As String
 
+    ''' <summary>
+    ''' Loads this instance.
+    ''' </summary>
     Sub load()
         CS = gFetchCS()
     End Sub
 
+    ''' <summary>
+    ''' Gets the file ext.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>System.String.</returns>
     Function getFileExt(ByVal FQN As String) As String
 
         FQN = FQN.ToUpper.Trim
@@ -38,6 +84,11 @@ Public Class clsDbDownload
         Next
         Return fExt
     End Function
+    ''' <summary>
+    ''' Gets the name of the file.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>System.String.</returns>
     Function getFileName(ByVal FQN As String) As String
 
         FQN = FQN.ToUpper.Trim
@@ -54,6 +105,14 @@ Public Class clsDbDownload
         Return fName
     End Function
 
+    ''' <summary>
+    ''' Gets the file parameters.
+    ''' </summary>
+    ''' <param name="TgtGuid">The TGT unique identifier.</param>
+    ''' <param name="FileName">Name of the file.</param>
+    ''' <param name="fExt">The f ext.</param>
+    ''' <param name="TgtTable">The TGT table.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Public Sub getFileParameters(ByVal TgtGuid As String, ByRef FileName As String, ByRef fExt As String, ByVal TgtTable As String, ByRef RC As Boolean)
 
         RC = True
@@ -117,6 +176,13 @@ Public Class clsDbDownload
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the preview file source unique identifier.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="RetGuids">The ret guids.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="SessionID">The session identifier.</param>
     Sub getPreviewFileSourceGuid(ByVal UserID As String, ByRef RetGuids As Dictionary(Of String, String), ByRef RC As Boolean, SessionID As String)
 
         RetGuids.Clear()
@@ -183,6 +249,13 @@ Public Class clsDbDownload
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the restore file source unique identifier.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="RetGuids">The ret guids.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="SessionID">The session identifier.</param>
     Sub getRestoreFileSourceGuid(ByVal UserID As String, ByRef RetGuids As Dictionary(Of String, String), ByRef RC As Boolean, SessionID As String)
 
         RetGuids.Clear()
@@ -243,6 +316,12 @@ Public Class clsDbDownload
 
     End Sub
 
+    ''' <summary>
+    ''' Cks the preview file to process.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <returns>System.Int32.</returns>
     Public Function ckPreviewFileToProcess(ByVal UserID As String, RC As Boolean) As Integer
 
         RC = True
@@ -291,6 +370,12 @@ Public Class clsDbDownload
         Return iCnt
 
     End Function
+    ''' <summary>
+    ''' Cks the restore files to process.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <returns>System.Int32.</returns>
     Function ckRestoreFilesToProcess(ByVal UserID As String, ByRef RC As Boolean) As Integer
 
         RC = True
@@ -340,7 +425,7 @@ Public Class clsDbDownload
 
     End Function
     ''' <summary>
-    ''' 
+    ''' Writes the image source data from database write to file.
     ''' </summary>
     ''' <param name="SourceGuid">The Source GUID to download</param>
     ''' <param name="FQN">The returned name of the selected file including the file extension.</param>
@@ -348,7 +433,7 @@ Public Class clsDbDownload
     ''' <param name="OriginalSize">the Original size fo the file</param>
     ''' <param name="CompressedSize">the Compressed size fo the file</param>
     ''' <param name="RC">True indicates success, False indicates failure</param>
-    ''' <remarks></remarks>
+    ''' <param name="rMsg">The r MSG.</param>
     Sub writeImageSourceDataFromDbWriteToFile(ByVal SourceGuid As String, ByRef FQN As String, ByRef CompressedDataBuffer() As Byte, ByRef OriginalSize As Integer, ByRef CompressedSize As Integer, ByRef RC As Boolean, ByRef rMsg As String)
 
 
@@ -443,6 +528,16 @@ Public Class clsDbDownload
 
     End Sub
 
+    ''' <summary>
+    ''' Writes the attachment from database write to file.
+    ''' </summary>
+    ''' <param name="RowID">The row identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="CompressedDataBuffer">The compressed data buffer.</param>
+    ''' <param name="OriginalSize">Size of the original.</param>
+    ''' <param name="CompressedSize">Size of the compressed.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="rMsg">The r MSG.</param>
     Sub writeAttachmentFromDbWriteToFile(ByVal RowID As String, ByRef FQN As String, ByRef CompressedDataBuffer() As Byte, ByRef OriginalSize As Integer, ByRef CompressedSize As Integer, ByRef RC As Boolean, ByRef rMsg As String)
 
         FQN = ""
@@ -504,6 +599,16 @@ Public Class clsDbDownload
 
     End Sub
 
+    ''' <summary>
+    ''' Writes the email from database to file.
+    ''' </summary>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="SourceTypeCode">The source type code.</param>
+    ''' <param name="CompressedDataBuffer">The compressed data buffer.</param>
+    ''' <param name="OriginalSize">Size of the original.</param>
+    ''' <param name="CompressedSize">Size of the compressed.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="rMsg">The r MSG.</param>
     Sub writeEmailFromDbToFile(ByVal EmailGuid As String, ByRef SourceTypeCode As String, ByRef CompressedDataBuffer() As Byte, ByRef OriginalSize As Integer, ByRef CompressedSize As Integer, ByRef RC As Boolean, ByRef rMsg As String)
 
 
@@ -569,14 +674,25 @@ Public Class clsDbDownload
 
     End Sub
 
+    ''' <summary>
+    ''' Sets the repo connection string.
+    ''' </summary>
     Public Sub setRepoConnStr()
         gConnStr = gFetchCS()
     End Sub
 
+    ''' <summary>
+    ''' Gets the repo connection string.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getRepoConnStr() As String
         Return gFetchCS()
     End Function
 
+    ''' <summary>
+    ''' Writes to SQL log.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub WriteToSqlLog(ByVal Msg As String)
         Try
             'Dim cPath As String = GetCurrDir()        
@@ -601,13 +717,26 @@ Public Class clsDbDownload
             Console.WriteLine("clsDma : WriteToSqlLog : 688 : " + ex.Message)
         End Try
     End Sub
+    ''' <summary>
+    ''' Gets the temporary environ dir.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function getTempEnvironDir() As String
         Return getEnvVarSpecialFolderApplicationData()
     End Function
+    ''' <summary>
+    ''' Gets the env variable special folder application data.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getEnvVarSpecialFolderApplicationData() As String
         Return Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
     End Function
 
+    ''' <summary>
+    ''' Sets the connection string timeout.
+    ''' </summary>
+    ''' <param name="ConnStr">The connection string.</param>
+    ''' <param name="TimeOutSecs">The time out secs.</param>
     Sub setConnectionStringTimeout(ByRef ConnStr As String, ByVal TimeOutSecs As String)
 
         Dim I As Integer = 0
@@ -633,6 +762,13 @@ Public Class clsDbDownload
         ConnStr = NewConnStr$
     End Sub
 
+    ''' <summary>
+    ''' Sets the new timeout.
+    ''' </summary>
+    ''' <param name="tgtStr">The TGT string.</param>
+    ''' <param name="StartingPoint">The starting point.</param>
+    ''' <param name="NewVal">Creates new val.</param>
+    ''' <returns>System.String.</returns>
     Function setNewTimeout(ByVal tgtStr As String, ByVal StartingPoint As Integer, ByVal NewVal As String) As String
         Dim NextNumber$ = ""
         Dim NumberStartPos As Integer = 0
@@ -670,6 +806,9 @@ Public Class clsDbDownload
         Return NewStr$
     End Function
 
+    ''' <summary>
+    ''' Cks the connection.
+    ''' </summary>
     Public Sub CkConn()
         If gConn Is Nothing Then
             Try
@@ -691,6 +830,11 @@ Public Class clsDbDownload
         End If
     End Sub
 
+    ''' <summary>
+    ''' Compresses the specified buffer to compress.
+    ''' </summary>
+    ''' <param name="BufferToCompress">The buffer to compress.</param>
+    ''' <returns>System.Byte().</returns>
     Public Shared Function Compress(ByVal BufferToCompress As Byte()) As Byte()
         Dim ms As New MemoryStream()
         Dim zip As New GZipStream(ms, CompressionMode.Compress, True)
@@ -709,6 +853,11 @@ Public Class clsDbDownload
         Return gzBuffer
     End Function
 
+    ''' <summary>
+    ''' Decompresses the specified buffer to decompress.
+    ''' </summary>
+    ''' <param name="BufferToDecompress">The buffer to decompress.</param>
+    ''' <returns>System.Byte().</returns>
     Public Shared Function Decompress(ByVal BufferToDecompress As Byte()) As Byte()
         Dim ms As New MemoryStream()
         Dim msgLength As Integer = BitConverter.ToInt32(BufferToDecompress, 0)
@@ -723,6 +872,11 @@ Public Class clsDbDownload
         Return buffer
     End Function
 
+    ''' <summary>
+    ''' Extends the size of the timeout by.
+    ''' </summary>
+    ''' <param name="ConnectionString">The connection string.</param>
+    ''' <param name="currFileSize">Size of the curr file.</param>
     Sub ExtendTimeoutBySize(ByRef ConnectionString As String, ByVal currFileSize As Double)
 
         Dim NewTimeOut As Double = 30
@@ -765,12 +919,30 @@ Public Class clsDbDownload
 
     End Sub
 
+    ''' <summary>
+    ''' Cleans the restore que.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="SessionID">The session identifier.</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function cleanRestoreQue(SecureID As Int32, SourceGuid As String, UserID As String, SessionID As String, ByRef RetMsg As String) As Boolean
         Dim MySql As String = "DELETE from RestoreQueue where ContentGuid = '" + SourceGuid + "' and UserID = '" + UserID + "'"
         Dim BX As Boolean = ExecuteSqlNewConn(99611, UserID, MySql, RetMsg, SessionID)
         Return BX
     End Function
 
+    ''' <summary>
+    ''' Executes the SQL new connection.
+    ''' </summary>
+    ''' <param name="LocationID">The location identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="MySql">My SQL.</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
+    ''' <param name="SessionID">The session identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ExecuteSqlNewConn(ByVal LocationID As Integer, ByVal UserID As String, ByVal MySql As String, ByRef RetMsg As String, SessionID As String) As Boolean
         RetMsg = ""
 

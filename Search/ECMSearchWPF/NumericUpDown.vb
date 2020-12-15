@@ -30,13 +30,21 @@
 Imports System.Windows.Controls.Primitives
 
 
+''' <summary>
+''' Class NumericUpDown.
+''' Implements the <see cref="System.Windows.Controls.Control" />
+''' </summary>
+''' <seealso cref="System.Windows.Controls.Control" />
 Public Class NumericUpDown
     Inherits System.Windows.Controls.Control
 
+    ''' <summary>
+    ''' Initializes static members of the <see cref="NumericUpDown"/> class.
+    ''' </summary>
     Shared Sub New()
         'This OverrideMetadata call tells the system that this element wants to provide a style that is different than its base class.
         'This style is defined in themes\generic.xaml
-        DefaultStyleKeyProperty.OverrideMetadata(GetType(NumericUpDown), new FrameworkPropertyMetadata(GetType(NumericUpDown)))
+        DefaultStyleKeyProperty.OverrideMetadata(GetType(NumericUpDown), New FrameworkPropertyMetadata(GetType(NumericUpDown)))
     End Sub
 
 End Class

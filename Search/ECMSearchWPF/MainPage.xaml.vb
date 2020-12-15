@@ -1,4 +1,17 @@
-﻿Imports System.Collections.ObjectModel
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 07-16-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 07-16-2020
+' ***********************************************************************
+' <copyright file="MainPage.xaml.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+Imports System.Collections.ObjectModel
 Imports System.ComponentModel
 Imports System.Data
 Imports System.Data.SqlClient
@@ -9,174 +22,517 @@ Imports System.Windows.Controls.Primitives
 Imports ECMEncryption
 Imports Microsoft.Win32
 
+''' <summary>
+''' Class MainPage.
+''' Implements the <see cref="System.Windows.Controls.Page" />
+''' Implements the <see cref="System.Windows.Markup.IComponentConnector" />
+''' </summary>
+''' <seealso cref="System.Windows.Controls.Page" />
+''' <seealso cref="System.Windows.Markup.IComponentConnector" />
 Class MainPage
 
     'Private WithEvents btnPlus As Button
     'Private WithEvents btnMinus As Button
 
+    ''' <summary>
+    ''' The dscontent
+    ''' </summary>
     Dim DSCONTENT As New DataSet
+    ''' <summary>
+    ''' The dsemail
+    ''' </summary>
     Dim DSEMAIL As New DataSet
 
+    ''' <summary>
+    ''' The content cols
+    ''' </summary>
     Dim CONTENT_COLS As New Dictionary(Of String, Integer)
+    ''' <summary>
+    ''' The email cols
+    ''' </summary>
     Dim EMAIL_COLS As New Dictionary(Of String, Integer)
 
+    ''' <summary>
+    ''' The do not show SQL
+    ''' </summary>
     Dim DoNotShowSQL As Boolean = False
+    ''' <summary>
+    ''' The enc
+    ''' </summary>
     Dim ENC As New ECMEncrypt
+    ''' <summary>
+    ''' The do not do this
+    ''' </summary>
     Dim DoNotDoThis As Boolean = False
+    ''' <summary>
+    ''' The CLC URL
+    ''' </summary>
     Dim ClcURL As String = ""
+    ''' <summary>
+    ''' The archiver URL
+    ''' </summary>
     Dim ArchiverURL As String = ""
 
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Dim LOG As New clsLogMain
+    ''' <summary>
+    ''' The dload
+    ''' </summary>
     Dim DLOAD As New clsDLMaster
+    ''' <summary>
+    ''' The DSMGT
+    ''' </summary>
     Dim DSMGT As clsDatasetMgt = New clsDatasetMgt()
 
+    ''' <summary>
+    ''' The b quick search recall
+    ''' </summary>
     Dim bQuickSearchRecall As Boolean = True
+    ''' <summary>
+    ''' The b quick search recall2
+    ''' </summary>
     Dim bQuickSearchRecall2 As Boolean = False
+    ''' <summary>
+    ''' The NBR executed searches
+    ''' </summary>
     Dim nbrExecutedSearches As Integer = 0
 
+    ''' <summary>
+    ''' The PRM
+    ''' </summary>
     Dim PRM As New clsParms
+    ''' <summary>
+    ''' The curr search count
+    ''' </summary>
     Dim currSearchCnt As Integer = 0
+    ''' <summary>
+    ''' The use iso
+    ''' </summary>
     Dim UseISO As Boolean = False
 
+    ''' <summary>
+    ''' The do not apply quick search
+    ''' </summary>
     Dim DoNotApplyQuickSearch As Boolean = False
+    ''' <summary>
+    ''' The selected grid
+    ''' </summary>
     Dim SelectedGrid As String = ""
 
+    ''' <summary>
+    ''' The do not show MSG box
+    ''' </summary>
     Dim DoNotShowMsgBox As Boolean = False
+    ''' <summary>
+    ''' The i total to process
+    ''' </summary>
     Dim iTotalToProcess As Integer = 0
+    ''' <summary>
+    ''' The i total processed
+    ''' </summary>
     Dim iTotalProcessed As Integer = 0
 
+    ''' <summary>
+    ''' The b spell check loaded
+    ''' </summary>
     Dim bSpellCheckLoaded As Boolean = False
 
     'Dim proxy As New SVCSearch.Service1Client
+    ''' <summary>
+    ''' The proxy2
+    ''' </summary>
     Dim proxy2 As New SVCSearch.Service1Client
 
     'Dim clsGVAR As App = App.Current
 
+    ''' <summary>
+    ''' The previous list of content count
+    ''' </summary>
     Dim PrevListOfContentCnt As Integer = 0
+    ''' <summary>
+    ''' The previous list of email count
+    ''' </summary>
     Dim PrevListOfEmailCnt As Integer = 0
 
+    ''' <summary>
+    ''' The b ghost fetch active
+    ''' </summary>
     Dim bGhostFetchActive As Boolean = False
+    ''' <summary>
+    ''' The button bounce
+    ''' </summary>
     Dim ButtonBounce As Integer = 0
+    ''' <summary>
+    ''' The executing search
+    ''' </summary>
     Dim ExecutingSearch As Boolean = False
 
     'Dim EP As New clsEndPoint
+    ''' <summary>
+    ''' The en c2
+    ''' </summary>
     Dim ENC2 As New ECMEncrypt()
 
+    ''' <summary>
+    ''' The d save
+    ''' </summary>
     Dim dSave As New SaveFileDialog
 
     '******** DICTIONARIES: Grid Sort and Display Order ********
+    ''' <summary>
+    ''' The dictionary email grid col display order
+    ''' </summary>
     Dim dictEmailGridColDisplayOrder As New Dictionary(Of Integer, String)
 
+    ''' <summary>
+    ''' The dictionary email grid col sort order
+    ''' </summary>
     Dim dictEmailGridColSortOrder As New Dictionary(Of Integer, String)
+    ''' <summary>
+    ''' The dictionary content grid col display order
+    ''' </summary>
     Dim dictContentGridColDisplayOrder As New Dictionary(Of Integer, String)
+    ''' <summary>
+    ''' The dictionary content grid col sort order
+    ''' </summary>
     Dim dictContentGridColSortOrder As New Dictionary(Of Integer, String)
 
+    ''' <summary>
+    ''' The dictionary screen controls
+    ''' </summary>
     Dim dictScreenControls As New Dictionary(Of String, String)
+    ''' <summary>
+    ''' The dictionary grid parms email
+    ''' </summary>
     Dim dictGridParmsEmail As New Dictionary(Of String, String)
+    ''' <summary>
+    ''' The dictionary grid parms content
+    ''' </summary>
     Dim dictGridParmsContent As New Dictionary(Of String, String)
 
 
 
+    ''' <summary>
+    ''' The list of quick search
+    ''' </summary>
     Dim ListOfQuickSearch As New List(Of String)
+    ''' <summary>
+    ''' The maximum quick search entry
+    ''' </summary>
     Dim MaxQuickSearchEntry As Integer = 50
 
+    ''' <summary>
+    ''' The dictionary guids
+    ''' </summary>
     Dim DictGuids As New Dictionary(Of String, Integer)
     '******** END OF Grid Sort and Display Order ********
 
+    ''' <summary>
+    ''' The top row
+    ''' </summary>
     Dim TopRow As Integer = 0
+    ''' <summary>
+    ''' The email trigger row
+    ''' </summary>
     Dim EmailTriggerRow As Integer = 0
+    ''' <summary>
+    ''' The content trigger row
+    ''' </summary>
     Dim ContentTriggerRow As Integer = 0
+    ''' <summary>
+    ''' The b new rows
+    ''' </summary>
     Dim bNewRows As Boolean = False
+    ''' <summary>
+    ''' The b first content search submit
+    ''' </summary>
     Dim bFirstContentSearchSubmit As Boolean = False
+    ''' <summary>
+    ''' The b first email search submit
+    ''' </summary>
     Dim bFirstEmailSearchSubmit As Boolean = False
 
+    ''' <summary>
+    ''' The email search count
+    ''' </summary>
     Dim EmailSearchCnt As Integer = 0
+    ''' <summary>
+    ''' The content search count
+    ''' </summary>
     Dim ContentSearchCnt As Integer = 0
 
+    ''' <summary>
+    ''' The previous top row
+    ''' </summary>
     Dim PrevTopRow As Integer = 0
+    ''' <summary>
+    ''' The b start new search
+    ''' </summary>
     Dim bStartNewSearch As Boolean = True
+    ''' <summary>
+    ''' The g secure identifier
+    ''' </summary>
     Dim gSecureID As String = gSecureID
+    ''' <summary>
+    ''' The parm name
+    ''' </summary>
     Dim ParmName As String = ""
+    ''' <summary>
+    ''' The curr session unique identifier
+    ''' </summary>
     Dim CurrSessionGuid As Guid = Nothing
+    ''' <summary>
+    ''' The login identifier
+    ''' </summary>
     Dim LoginID As String = ""
+    ''' <summary>
+    ''' The company identifier
+    ''' </summary>
     Dim CompanyID As String = ""
+    ''' <summary>
+    ''' The repo identifier
+    ''' </summary>
     Dim RepoID As String = ""
+    ''' <summary>
+    ''' The encrypt pw
+    ''' </summary>
     Dim EncryptPW As String = ""
 
+    ''' <summary>
+    ''' The b email row height set
+    ''' </summary>
     Dim bEmailRowHeightSet As Boolean = False
+    ''' <summary>
+    ''' The b setting email row height
+    ''' </summary>
     Dim bSettingEmailRowHeight As Boolean = False
+    ''' <summary>
+    ''' The b email scrolling
+    ''' </summary>
     Dim bEmailScrolling As Boolean = False
+    ''' <summary>
+    ''' The b content scrolling
+    ''' </summary>
     Dim bContentScrolling As Boolean = False
 
+    ''' <summary>
+    ''' The generated SQL
+    ''' </summary>
     Dim GeneratedSql As String = ""
 
+    ''' <summary>
+    ''' The start row
+    ''' </summary>
     Dim _startRow As Integer = 0
+    ''' <summary>
+    ''' The page size
+    ''' </summary>
     Dim _pageSize As Integer = 20
+    ''' <summary>
+    ''' The loading
+    ''' </summary>
     Dim _loading As Boolean = Nothing
 
+    ''' <summary>
+    ''' The previous text
+    ''' </summary>
     Dim PrevText As String = ""
+    ''' <summary>
+    ''' The iso
+    ''' </summary>
     Dim ISO As New clsIsolatedStorage
 
+    ''' <summary>
+    ''' The rid
+    ''' </summary>
     Dim RID As Integer = 0
 
+    ''' <summary>
+    ''' The file preview name
+    ''' </summary>
     Dim filePreviewName As String = ""
 
+    ''' <summary>
+    ''' The search history
+    ''' </summary>
     Dim SearchHistory As List(Of SVCSearch.DS_USERSEARCHSTATE)
 
+    ''' <summary>
+    ''' The curr attachment row identifier
+    ''' </summary>
     Dim CurrAttachmentRowID As String = ""
+    ''' <summary>
+    ''' The current document page
+    ''' </summary>
     Dim CurrentDocPage As Integer = 1
+    ''' <summary>
+    ''' The current email page
+    ''' </summary>
     Dim CurrentEmailPage As Integer = 1
 
+    ''' <summary>
+    ''' The b save searches to database
+    ''' </summary>
     Dim bSaveSearchesToDB As Boolean = False
+    ''' <summary>
+    ''' The repo table name
+    ''' </summary>
     Dim RepoTableName As String = ""
+    ''' <summary>
+    ''' The current unique identifier
+    ''' </summary>
     Dim CurrentGuid As String = ""
+    ''' <summary>
+    ''' The clip board SQL
+    ''' </summary>
     Dim ClipBoardSql As String = ""
+    ''' <summary>
+    ''' The current search identifier high
+    ''' </summary>
     Dim CurrentSearchIdHigh As Integer
+    ''' <summary>
+    ''' The list of libraries
+    ''' </summary>
     Dim ListOfLibraries As New List(Of String)
+    ''' <summary>
+    ''' The list of grid cols
+    ''' </summary>
     Dim ListOfGridCols As New List(Of String)
     'Dim ObjListOfGridCols As Object = Nothing
 
+    ''' <summary>
+    ''' The library owner unique identifier
+    ''' </summary>
     Dim LibraryOwnerGuid As String = ""
 
+    ''' <summary>
+    ''' The return MSG
+    ''' </summary>
     Dim returnMsg As String = ""
+    ''' <summary>
+    ''' The rc
+    ''' </summary>
     Dim RC As Boolean = False
 
+    ''' <summary>
+    ''' The i search count
+    ''' </summary>
     Dim iSearchCnt As Integer = 0
+    ''' <summary>
+    ''' The i maximum search count
+    ''' </summary>
     Dim iMaxSearchCnt As Integer = 0
+    ''' <summary>
+    ''' The gm
+    ''' </summary>
     Dim GM As New clsGridMgt
+    ''' <summary>
+    ''' The common
+    ''' </summary>
     Dim COMMON As New clsCommonFunctions
 
+    ''' <summary>
+    ''' The b wait to apply attachment weight
+    ''' </summary>
     Dim bWaitToApplyAttachmentWeight As Boolean = False
+    ''' <summary>
+    ''' The author
+    ''' </summary>
     Dim Author As String = ""
+    ''' <summary>
+    ''' The ts
+    ''' </summary>
     Dim TS As TimeSpan = Nothing
+    ''' <summary>
+    ''' The q start time
+    ''' </summary>
     Dim qStartTime As DateTime = Now
+    ''' <summary>
+    ''' The q end time
+    ''' </summary>
     Dim qEndTime As DateTime = Now
 
+    ''' <summary>
+    ''' The get datasource parm source unique identifier
+    ''' </summary>
     Dim getDatasourceParmSourceGuid As String = ""
+    ''' <summary>
+    ''' The get datasource parm source type code
+    ''' </summary>
     Dim getDatasourceParmSourceTypeCode As String = ""
+    ''' <summary>
+    ''' The get datasource parm source create date
+    ''' </summary>
     Dim getDatasourceParmSourceCreateDate As String
+    ''' <summary>
+    ''' The get datasource parm source allrecipiants
+    ''' </summary>
     Dim getDatasourceParmSourceAllrecipiants As String
+    ''' <summary>
+    ''' The get datasource parm source FQN
+    ''' </summary>
     Dim getDatasourceParmSourceFQN As String
+    ''' <summary>
+    ''' The get datasource parm source file length
+    ''' </summary>
     Dim getDatasourceParmSourceFileLength As String
+    ''' <summary>
+    ''' The get datasource parm source weight
+    ''' </summary>
     Dim getDatasourceParmSourceWeight As String
 
+    ''' <summary>
+    ''' The LST search history
+    ''' </summary>
     Dim lstSearchHistory As New List(Of String)
 
+    ''' <summary>
+    ''' The string author
+    ''' </summary>
     Dim strAuthor As String = ""
+    ''' <summary>
+    ''' The string title
+    ''' </summary>
     Dim strTitle As String = ""
 
+    ''' <summary>
+    ''' The do not get search history
+    ''' </summary>
     Dim DoNotGetSearchHistory As Boolean = False
 
+    ''' <summary>
+    ''' The getting author
+    ''' </summary>
     Dim gettingAuthor As Boolean = False
+    ''' <summary>
+    ''' The getting title
+    ''' </summary>
     Dim gettingTitle As Boolean = False
 
+    ''' <summary>
+    ''' The dma
+    ''' </summary>
     Dim DMA As New clsDma
+    ''' <summary>
+    ''' The utility
+    ''' </summary>
     Dim UTIL As New clsUtility
+    ''' <summary>
+    ''' The uparm
+    ''' </summary>
     Dim UPARM As New clsgetUserParm
 
     'Dim USERPARMS As New clsUserParms
+    ''' <summary>
+    ''' The gs
+    ''' </summary>
     Dim GS As New clsGLOBALSEACHRESULTS
 
+    ''' <summary>
+    ''' The sqlgen
+    ''' </summary>
     Dim SQLGEN As New clsSql
 
     'Dim PROC As New clsProcess
@@ -194,72 +550,231 @@ Class MainPage
     'Dim DRHIST As New clsDATASOURCERESTOREHISTORY
     'Dim ARCH As New clsArchiver
     'Dim ASG As New clsACTIVESEARCHGUIDS
+    ''' <summary>
+    ''' The shist
+    ''' </summary>
     Dim SHIST As New clsSEARCHHISTORY
 
+    ''' <summary>
+    ''' The automatic gen SQL
+    ''' </summary>
     Dim AutoGenSql As String = ""
+    ''' <summary>
+    ''' The NBR docs loaded
+    ''' </summary>
     Dim NbrDocsLoaded As Integer = 0
+    ''' <summary>
+    ''' The gen email SQL
+    ''' </summary>
     Dim GenEmailSql As String = ""
+    ''' <summary>
+    ''' The gen document SQL
+    ''' </summary>
     Dim GenDocSql As String = ""
+    ''' <summary>
+    ''' The currently selected email column
+    ''' </summary>
     Dim CurrentlySelectedEmailColumn As Integer = -1
+    ''' <summary>
+    ''' The currently selected content column
+    ''' </summary>
     Dim CurrentlySelectedContentColumn As Integer = -1
 
+    ''' <summary>
+    ''' The attachment weights
+    ''' </summary>
     Dim AttachmentWeights As New Dictionary(Of String, Integer)
+    ''' <summary>
+    ''' The getting get attachment weights
+    ''' </summary>
     Dim gettingGetAttachmentWeights As Boolean = False
 
+    ''' <summary>
+    ''' The minimum weight
+    ''' </summary>
     Dim MinWeight As Integer = 0
+    ''' <summary>
+    ''' The gen SQL only
+    ''' </summary>
     Dim GenSqlOnly As Boolean = False
+    ''' <summary>
+    ''' The cb SQL
+    ''' </summary>
     Dim CB_SQL As String = ""
+    ''' <summary>
+    ''' The q start
+    ''' </summary>
     Dim qStart As Date = Now
+    ''' <summary>
+    ''' The q end
+    ''' </summary>
     Dim qEnd As Date = Now
 
+    ''' <summary>
+    ''' The row changed
+    ''' </summary>
     Dim RowChanged As Boolean = False
+    ''' <summary>
+    ''' The x email qry
+    ''' </summary>
     Dim xEmailQry As String = ""
+    ''' <summary>
+    ''' The x document qry
+    ''' </summary>
     Dim xDocQry As String = ""
+    ''' <summary>
+    ''' The total emails
+    ''' </summary>
     Dim TotalEmails As Integer = 0
+    ''' <summary>
+    ''' The total docs
+    ''' </summary>
     Dim TotalDocs As Integer = 0
 
+    ''' <summary>
+    ''' The b initialize page data needed
+    ''' </summary>
     Dim bInitPageDataNeeded As Boolean = True
+    ''' <summary>
+    ''' The b use page data
+    ''' </summary>
     Dim bUsePageData As String = "0"
 
+    ''' <summary>
+    ''' The b need row count
+    ''' </summary>
     Dim bNeedRowCount As Boolean = False
+    ''' <summary>
+    ''' The b email search requested
+    ''' </summary>
     Dim bEmailSearchRequested As Boolean = False
+    ''' <summary>
+    ''' The b document search requested
+    ''' </summary>
     Dim bDocSearchRequested As Boolean = False
+    ''' <summary>
+    ''' The b nav button pushed
+    ''' </summary>
     Dim bNavButtonPushed As Boolean = False
 
+    ''' <summary>
+    ''' The total email pages
+    ''' </summary>
     Dim TotalEmailPages As Integer = 0
+    ''' <summary>
+    ''' The total email rows
+    ''' </summary>
     Dim TotalEmailRows As Integer = 0
+    ''' <summary>
+    ''' The total document pages
+    ''' </summary>
     Dim TotalDocPages As Integer = 0
+    ''' <summary>
+    ''' The total document rows
+    ''' </summary>
     Dim TotalDocRows As Integer = 0
 
+    ''' <summary>
+    ''' The email grid has focus
+    ''' </summary>
     Dim EmailGridHasFocus As Boolean = False
+    ''' <summary>
+    ''' The document grid has focus
+    ''' </summary>
     Dim DocGridHasFocus As Boolean = False
 
+    ''' <summary>
+    ''' The previous email row
+    ''' </summary>
     Dim PrevEmailRow As Integer = -1
+    ''' <summary>
+    ''' The previous content row
+    ''' </summary>
     Dim PrevContentRow As Integer = -1
+    ''' <summary>
+    ''' The currently selected grid
+    ''' </summary>
     Dim CurrentlySelectedGrid As String = ""
+    ''' <summary>
+    ''' The use fast method
+    ''' </summary>
     Dim UseFastMethod As Boolean = False
 
+    ''' <summary>
+    ''' The b grid cols retrieved
+    ''' </summary>
     Dim bGridColsRetrieved As Boolean = False
+    ''' <summary>
+    ''' The skip existing files
+    ''' </summary>
     Private SkipExistingFiles As Boolean = False
+    ''' <summary>
+    ''' The overwrite existing files
+    ''' </summary>
     Private OverwriteExistingFiles As Boolean = False
+    ''' <summary>
+    ''' The do this for all files
+    ''' </summary>
     Private doThisForAllFiles As Boolean = False
+    ''' <summary>
+    ''' The version files
+    ''' </summary>
     Private VersionFiles As Boolean = False
 
+    ''' <summary>
+    ''' The search history list
+    ''' </summary>
     Dim SearchHistoryList As New List(Of String)
+    ''' <summary>
+    ''' The search history array list
+    ''' </summary>
     Dim SearchHistoryArrayList() As String
+    ''' <summary>
+    ''' The loading history search
+    ''' </summary>
     Dim LoadingHistorySearch As Boolean = False
 
+    ''' <summary>
+    ''' The form loaded
+    ''' </summary>
     Dim FormLoaded As Boolean = False
+    ''' <summary>
+    ''' The docs SQL
+    ''' </summary>
     Dim DocsSql As String = ""
+    ''' <summary>
+    ''' The email SQL
+    ''' </summary>
     Dim EmailSql As String = ""
+    ''' <summary>
+    ''' The x wc
+    ''' </summary>
     Dim xWC As String = ""
+    ''' <summary>
+    ''' The curr user unique identifier identifier
+    ''' </summary>
     Dim CurrUserGuidID As String = gCurrLogin
+    ''' <summary>
+    ''' The curr login identifier
+    ''' </summary>
     Dim CurrLoginID As String = gCurrLogin
 
+    ''' <summary>
+    ''' The i curr row minimum
+    ''' </summary>
     Dim iCurrRowMin As Integer = 0
+    ''' <summary>
+    ''' The i curr row maximum
+    ''' </summary>
     Dim iCurrRowMax As Integer = PageRowLimit
 
+    ''' <summary>
+    ''' The e p1
+    ''' </summary>
     Dim EP1 As String = ISO.SetCLC_State2(CurrLoginID, "IDENTIFIED", CompanyID, RepoID)
+    ''' <summary>
+    ''' The e p2
+    ''' </summary>
     Dim EP2 As String = ISO.SetSAAS_State(UserGuid, "ACTIVE", CompanyID, RepoID)
 
     'Dim MD As SpellDictionary = _c1SpellChecker.MainDictionary
@@ -274,6 +789,9 @@ Class MainPage
     'splash screen that can be used for rebranding and loading all the
     'intialization parameters.
 
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="MainPage"/> class.
+    ''' </summary>
     Public Sub New()
         InitializeComponent()
 
@@ -402,6 +920,9 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Gens the search SQL.
+    ''' </summary>
     Public Sub genSearchSql()
         'GenSqlOnly = True
         'btnSubmit_Click(Nothing, Nothing)
@@ -453,6 +974,10 @@ Class MainPage
         client_ArchiverURL(SS)
     End Sub
 
+    ''' <summary>
+    ''' Clients the archiver URL.
+    ''' </summary>
+    ''' <param name="SS">The ss.</param>
     Sub client_ArchiverURL(SS As String)
         If SS.Length > 0 Then
             ArchiverURL = SS
@@ -471,6 +996,10 @@ Class MainPage
         client_ClcURL(SS)
     End Sub
 
+    ''' <summary>
+    ''' Clients the CLC URL.
+    ''' </summary>
+    ''' <param name="SS">The ss.</param>
     Sub client_ClcURL(SS As String)
         'This is the Downloader install URL
         If SS.Length > 0 Then
@@ -480,12 +1009,19 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Gets the affinity.
+    ''' </summary>
     Sub getAffinity()
         'AddHandler ProxySearch.getAffinitydelayCompleted, AddressOf client_getAffinity
         Dim II As Integer = ProxySearch.getAffinitydelay()
         client_getAffinity(II)
     End Sub
 
+    ''' <summary>
+    ''' Clients the get affinity.
+    ''' </summary>
+    ''' <param name="II">The ii.</param>
     Sub client_getAffinity(II As Integer)
         If II > 0 Then
             AffinityDelay = II
@@ -494,12 +1030,18 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Loads the system parameters.
+    ''' </summary>
     Sub LoadSystemParameters()
         'AddHandler ProxySearch.getSystemParmCompleted, AddressOf client_LoadSystemParameters
         ProxySearch.getSystemParm(gSecureID, gSystemParms)
         client_LoadSystemParameters()
     End Sub
 
+    ''' <summary>
+    ''' Clients the load system parameters.
+    ''' </summary>
     Sub client_LoadSystemParameters()
         If RC Then
             Dim tKey As String = ""
@@ -519,6 +1061,11 @@ Class MainPage
         'RemoveHandler ProxySearch.getSystemParmCompleted, AddressOf client_LoadSystemParameters
     End Sub
 
+    ''' <summary>
+    ''' Determines whether [is key word] [the specified kw].
+    ''' </summary>
+    ''' <param name="KW">The kw.</param>
+    ''' <returns><c>true</c> if [is key word] [the specified kw]; otherwise, <c>false</c>.</returns>
     Function isKeyWord(ByVal KW As String) As Boolean
         Dim B As Boolean = False
         KW = UCase(KW)
@@ -539,6 +1086,11 @@ Class MainPage
         Return B
     End Function
 
+    ''' <summary>
+    ''' Cks for near clause.
+    ''' </summary>
+    ''' <param name="sText">The s text.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function CkForNearClause(ByVal sText As String) As Boolean
 
         Dim I As Integer = 0
@@ -560,6 +1112,11 @@ Class MainPage
         Return B
     End Function
 
+    ''' <summary>
+    ''' Handles the Click event of the btnSubmit control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnSubmit_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnSubmit.Click
         If bQuickSearchRecall2 Then
             Return
@@ -635,6 +1192,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the closed event of the Handler_frmSearchAsst control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Sub Handler_frmSearchAsst_closed(ByVal sender As Object, ByVal e As EventArgs)
         Dim NewSearchCriteria As String = ""
         Dim lw As frmSearchAsst = DirectCast(sender, frmSearchAsst)
@@ -676,6 +1238,11 @@ Class MainPage
     '    MessageBox.Show("SubMenuEmail Pressed")
     'End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnReset control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnReset_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnReset.Click
         If bQuickSearchRecall2 Then
             Return
@@ -696,12 +1263,20 @@ Class MainPage
         SB.Text = ""
     End Sub
 
+    ''' <summary>
+    ''' Handles the MouseRightButtonDown event of the txtSearch control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
     Private Sub txtSearch_MouseRightButtonDown(ByVal sender As System.Object, ByVal e As System.Windows.Input.MouseButtonEventArgs)
         SB.Text = "Search Assistant"
         Dim NextPage As New frmSearchAsst(gSecureID)
         NextPage.ShowDialog()
     End Sub
 
+    ''' <summary>
+    ''' Sets the filter visibility.
+    ''' </summary>
     Sub SetFilterVisibility()
         If ckFilters.IsChecked Then
             ckLimitToLib.Visibility = Windows.Visibility.Visible
@@ -747,6 +1322,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unchecked event of the ckFilters control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckFilters_Unchecked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckFilters.Unchecked
         If bQuickSearchRecall2 Then
             Return
@@ -755,6 +1335,11 @@ Class MainPage
         UdpateSearchTerm("ALL", "ckFilters", ckFilters.IsChecked, "B")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnOpenRestoreScreen control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnOpenRestoreScreen_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnOpenRestoreScreen.Click
         If bQuickSearchRecall2 Then
             Return
@@ -774,6 +1359,9 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Cks the CLC active.
+    ''' </summary>
     Sub ckClcActive()
 
         Dim bIgnore = True
@@ -793,6 +1381,9 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Gets the attachment weights.
+    ''' </summary>
     Sub GetAttachmentWeights()
 
         gettingGetAttachmentWeights = True
@@ -805,6 +1396,9 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the get attachment weights.
+    ''' </summary>
     Sub client_getAttachmentWeights()
         If RC Then
             ApplyAttachmentWeights()
@@ -814,6 +1408,9 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Applies the attachment weights.
+    ''' </summary>
     Sub ApplyAttachmentWeights()
 
         If AttachmentWeights Is Nothing Then
@@ -853,6 +1450,10 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the attachment count.
+    ''' </summary>
+    ''' <returns>System.Int32.</returns>
     Function GetAttachmentCount() As Integer
         Dim iCnt As Integer = 0
         Try
@@ -871,6 +1472,11 @@ Class MainPage
         Return iCnt
     End Function
 
+    ''' <summary>
+    ''' Executes the search.
+    ''' </summary>
+    ''' <param name="bGenSqlOnly">if set to <c>true</c> [b gen SQL only].</param>
+    ''' <param name="CallLocation">The call location.</param>
     Sub ExecuteSearch(ByVal bGenSqlOnly As Boolean, CallLocation As String)
 
         PB.IsIndeterminate = True
@@ -1123,6 +1729,13 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the apply returned search data.
+    ''' </summary>
+    ''' <param name="gSecureID">The g secure identifier.</param>
+    ''' <param name="bFirstEmailSearchSubmit">if set to <c>true</c> [b first email search submit].</param>
+    ''' <param name="bFirstContentSearchSubmit">if set to <c>true</c> [b first content search submit].</param>
+    ''' <param name="RetDict">The ret dictionary.</param>
     Sub client_ApplyReturnedSearchData(
             gSecureID As Integer,
             bFirstEmailSearchSubmit As Boolean,
@@ -1236,6 +1849,9 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Sets the height of the email g rid row.
+    ''' </summary>
     Sub setEmailGRidRowHeight()
         If bEmailRowHeightSet = True Then
             'Return
@@ -1340,6 +1956,10 @@ Class MainPage
 
     'End Sub
 
+    ''' <summary>
+    ''' Clients the content of the i count.
+    ''' </summary>
+    ''' <param name="iCount">The i count.</param>
     Sub client_iCountContent(iCount As Integer)
         If RC Then
             TotalEmailRows = iCount
@@ -1349,6 +1969,10 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Clients the get datasource parm author.
+    ''' </summary>
+    ''' <param name="Author">The author.</param>
     Sub client_getDatasourceParmAuthor(Author As String)
 
         If Author.Trim.Length = 0 Then
@@ -1364,6 +1988,10 @@ Class MainPage
         gettingAuthor = False
     End Sub
 
+    ''' <summary>
+    ''' Clients the get datasource parm title.
+    ''' </summary>
+    ''' <param name="SS">The ss.</param>
     Sub client_getDatasourceParmTitle(SS As String)
         If SS.Length > 0 Then
             Dim Title As String = SS
@@ -1398,6 +2026,10 @@ Class MainPage
     End Sub
 
     ''** Use the new storage type found in silverlight here clsIsolatedStorage
+    ''' <summary>
+    ''' Sorts the grid.
+    ''' </summary>
+    ''' <param name="GridToSort">The grid to sort.</param>
     Sub SortGrid(ByVal GridToSort As String)
 
         Dim bEnable As Boolean = False
@@ -1445,6 +2077,9 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Saves the grid sort col.
+    ''' </summary>
     Sub saveGridSortCol()
 
         If CurrentlySelectedGrid.Equals("EMAIL") Then
@@ -1501,6 +2136,9 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Saves the grid column order.
+    ''' </summary>
     Sub saveGridColumnOrder()
         Dim ValName As String = ""
         Dim ValValue As String = ""
@@ -1518,6 +2156,9 @@ Class MainPage
         bGridColsRetrieved = False
     End Sub
 
+    ''' <summary>
+    ''' Gets the saved email grid columns display order.
+    ''' </summary>
     Sub getSavedEmailGridColumnsDisplayOrder()
         GM.getGridState(Me.Title, dgEmails.Name, CurrUserGuidID, dictEmailGridColDisplayOrder)
 
@@ -1528,6 +2169,9 @@ Class MainPage
         ReorderEmailGridCols()
     End Sub
 
+    ''' <summary>
+    ''' Gets the saved content grid columns display order.
+    ''' </summary>
     Sub getSavedContentGridColumnsDisplayOrder()
         Console.WriteLine("Trace:100")
         GM.getGridState(Me.Title, dgContent.Name, CurrUserGuidID, dictContentGridColDisplayOrder)
@@ -1541,6 +2185,11 @@ Class MainPage
 
     '*********************************************************************************
 
+    ''' <summary>
+    ''' Clients the load user search history.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="SearchHistoryArrayList">The search history array list.</param>
     Sub client_LoadUserSearchHistory(RC As Boolean, SearchHistoryArrayList As String())
         If RC Then
             DoNotGetSearchHistory = False
@@ -1552,6 +2201,9 @@ Class MainPage
 
     '*********************************************************************************
 
+    ''' <summary>
+    ''' Zeroizes the global search.
+    ''' </summary>
     Sub ZeroizeGlobalSearch()
         ''Dim proxy As New SVCSearch.Service1Client
         'AddHandler ProxySearch.ZeroizeGlobalSearchCompleted, AddressOf client_ZeroizeGlobalSearch
@@ -1560,6 +2212,10 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the zeroize global search.
+    ''' </summary>
+    ''' <param name="BB">if set to <c>true</c> [bb].</param>
     Sub client_ZeroizeGlobalSearch(BB As Boolean)
         If Not BB Then
             SB.Text = "NOTICE: Failed to zeroize global search parms."
@@ -1569,6 +2225,10 @@ Class MainPage
 
     '*********************************************************************************
 
+    ''' <summary>
+    ''' Saves the search parm parms.
+    ''' </summary>
+    ''' <param name="IndexKey">The index key.</param>
     Sub SaveSearchParmParms(ByVal IndexKey As Integer)
 
         If bSaveSearchesToDB Then
@@ -1699,6 +2359,10 @@ Class MainPage
 
 
 
+    ''' <summary>
+    ''' Saves the search.
+    ''' </summary>
+    ''' <param name="IndexKey">The index key.</param>
     Sub SaveSearch(ByVal IndexKey As Integer)
 
         If bSaveSearchesToDB Then
@@ -1828,6 +2492,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Loads the state of the selected screen.
+    ''' </summary>
+    ''' <param name="IndexKey">The index key.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function LoadSelectedScreenState(ByVal IndexKey As Integer) As Boolean
 
         Dim B As Boolean = True
@@ -1978,6 +2647,11 @@ Class MainPage
 
     End Function
 
+    ''' <summary>
+    ''' Sorts the email grid.
+    ''' </summary>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <param name="SortType">Type of the sort.</param>
     Private Sub SortEmailGrid(ByVal ColName As String, ByVal SortType As String)
 
         If ColName.Trim.Length = 0 Then
@@ -1992,6 +2666,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Sorts the content grid.
+    ''' </summary>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <param name="SortType">Type of the sort.</param>
     Private Sub SortContentGrid(ByVal ColName As String, ByVal SortType As String)
         If ColName.Trim.Length = 0 Then
             Return
@@ -2003,6 +2682,9 @@ Class MainPage
         dataView.Refresh()
     End Sub
 
+    ''' <summary>
+    ''' Gets the name of the server instance.
+    ''' </summary>
     Sub getServerInstanceName()
         ''Dim proxy As New SVCSearch.Service1Client
         'AddHandler ProxySearch.getServerInstanceNameCompleted, AddressOf client_getServerInstanceName
@@ -2019,6 +2701,9 @@ Class MainPage
     '    End If
     '    'RemoveHandler ProxySearch.getServerInstanceNameCompleted, AddressOf client_getServerInstanceName
     'End Sub
+    ''' <summary>
+    ''' Gets the name of the server machine.
+    ''' </summary>
     Sub getServerMachineName()
         ''Dim proxy As New SVCSearch.Service1Client
         'AddHandler ProxySearch.getServerMachineNameCompleted, AddressOf client_getServerMachineName
@@ -2036,6 +2721,11 @@ Class MainPage
     '    'RemoveHandler ProxySearch.getServerMachineNameCompleted, AddressOf client_getServerMachineName
     'End Sub
 
+    ''' <summary>
+    ''' Handles the MouseEnter event of the dgEmails control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Input.MouseEventArgs"/> instance containing the event data.</param>
     Private Sub dgEmails_MouseEnter(ByVal sender As System.Object, ByVal e As System.Windows.Input.MouseEventArgs) Handles dgEmails.MouseEnter
 
         lblDbInstance.Content = gServerInstanceName + " / " + gServerMachineName
@@ -2046,6 +2736,9 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the logged in user.
+    ''' </summary>
     Sub getLoggedInUser()
         ''Dim proxy As New SVCSearch.Service1Client
         'AddHandler ProxySearch.getLoggedInUserCompleted, AddressOf client_getLoggedInUser
@@ -2053,6 +2746,10 @@ Class MainPage
         client_getLoggedInUser(SS)
     End Sub
 
+    ''' <summary>
+    ''' Clients the get logged in user.
+    ''' </summary>
+    ''' <param name="SS">The ss.</param>
     Sub client_getLoggedInUser(SS As String)
         If SS.Length > 0 Then
             CurrLoginID = SS
@@ -2070,6 +2767,9 @@ Class MainPage
         'RemoveHandler ProxySearch.getLoggedInUserCompleted, AddressOf client_getLoggedInUser
     End Sub
 
+    ''' <summary>
+    ''' Gets the name of the attached machine.
+    ''' </summary>
     Sub getAttachedMachineName()
         If _SecureID > 0 Then
             'AddHandler ProxySearch.getAttachedMachineNameCompleted, AddressOf client_getAttachedMachineName
@@ -2078,6 +2778,10 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Clients the name of the get attached machine.
+    ''' </summary>
+    ''' <param name="SS">The ss.</param>
     Sub client_getAttachedMachineName(SS As String)
         If SS.Length > 0 Then
             gServerMachineName = SS
@@ -2089,18 +2793,33 @@ Class MainPage
         'RemoveHandler ProxySearch.getAttachedMachineNameCompleted, AddressOf client_getAttachedMachineName
     End Sub
 
+    ''' <summary>
+    ''' Handles the PageIndexChanged event of the dpDocuments control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub dpDocuments_PageIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         DocLowerPageNbr += PageRowLimit
         DocUpperPageNbr += PageRowLimit
         btnSubmit_Click(Nothing, Nothing)
     End Sub
 
+    ''' <summary>
+    ''' Handles the PageIndexChanged event of the dpEmails control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub dpEmails_PageIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         EmailLowerPageNbr += PageRowLimit
         EmailUpperPageNbr += PageRowLimit
         btnSubmit_Click(Nothing, Nothing)
     End Sub
 
+    ''' <summary>
+    ''' Clients the get email attachments.
+    ''' </summary>
+    ''' <param name="ObjListOfRows">The object list of rows.</param>
+    ''' <param name="DownLoadFiles">if set to <c>true</c> [down load files].</param>
     Sub client_GetEmailAttachments(ObjListOfRows As String, Optional DownLoadFiles As Boolean = False)
 
         Dim jss = New JavaScriptSerializer()
@@ -2166,6 +2885,11 @@ Class MainPage
     '    DocUpperPageNbr = PageRowLimit
     'End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnEmailPagePack control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnEmailPagePack_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnEmailPagePack.Click
         If bQuickSearchRecall2 Then
             Return
@@ -2190,6 +2914,11 @@ Class MainPage
         btnSubmit_Click(Nothing, Nothing)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnEmailPageForward control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnEmailPageForward_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnEmailPageForward.Click
         If bQuickSearchRecall2 Then
             Return
@@ -2201,6 +2930,11 @@ Class MainPage
         btnSubmit_Click(Nothing, Nothing)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnDocPagePack control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnDocPagePack_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnDocPagePack.Click
         If bQuickSearchRecall2 Then
             Return
@@ -2227,6 +2961,11 @@ Class MainPage
         btnSubmit_Click(Nothing, Nothing)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnDocPageForward control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnDocPageForward_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnDocPageForward.Click
         If bQuickSearchRecall2 Then
             Return
@@ -2238,18 +2977,38 @@ Class MainPage
         btnSubmit_Click(Nothing, Nothing)
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the SBEmailPage control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub SBEmailPage_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles SBEmailPage.TextChanged
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the SBDocPage control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub SBDocPage_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs)
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the MouseLeave event of the dgContent control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Input.MouseEventArgs"/> instance containing the event data.</param>
     Private Sub dgContent_MouseLeave(ByVal sender As System.Object, ByVal e As System.Windows.Input.MouseEventArgs)
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the LoadedRows event of the dgEmails control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub dgEmails_LoadedRows(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgEmails.Loaded
         If gDebug Then
             Console.WriteLine("-------------------- dgEmails_LoadedRows --------------------------------------")
@@ -2270,6 +3029,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the GotFocus event of the dgEmails control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub dgEmails_GotFocus(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles dgEmails.GotFocus
         If bQuickSearchRecall2 Then
             Return
@@ -2282,6 +3046,11 @@ Class MainPage
         ckClcActive()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Loaded event of the Page control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub Page_Loaded(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles MyBase.Loaded
         Console.WriteLine("Trace:00")
         If DoNotDoThis Then
@@ -2290,6 +3059,9 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Calls the preview.
+    ''' </summary>
     Sub callPreview()
 
         RepoTableName = RepoTableName.ToUpper
@@ -2367,6 +3139,10 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the get files in zip detail.
+    ''' </summary>
+    ''' <param name="strListOfRows">The string list of rows.</param>
     Sub client_GetFilesInZipDetail(strListOfRows As String)
 
         If strListOfRows Is Nothing Then
@@ -2386,6 +3162,10 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Clients the schedule file down load.
+    ''' </summary>
+    ''' <param name="BB">if set to <c>true</c> [bb].</param>
     Sub client_scheduleFileDownLoad(BB As Boolean)
         If BB Then
             If BB Then
@@ -2401,6 +3181,10 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the save restore file.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub client_saveRestoreFile(RC As Boolean)
         If RC Then
         Else
@@ -2412,6 +3196,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Saves the screen dictionary.
+    ''' </summary>
+    ''' <param name="ControlName">Name of the control.</param>
+    ''' <param name="ControlValue">The control value.</param>
     Sub SaveScreenDictionary(ByVal ControlName As String, ByVal ControlValue As String)
         If dictScreenControls.ContainsKey(ControlName) Then
             dictScreenControls.Item(ControlName) = ControlValue
@@ -2420,6 +3209,11 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Reorders the email grid cols.
+    ''' </summary>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <param name="ColDisplayOrder">The col display order.</param>
     Sub ReorderEmailGridCols(ByVal ColName As String, ByVal ColDisplayOrder As Integer)
 
         Dim col As DataGridColumn = dgEmails.Columns(ColName)
@@ -2428,6 +3222,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Saves the grid column order.
+    ''' </summary>
+    ''' <param name="DG">The dg.</param>
+    ''' <param name="DICT">The dictionary.</param>
     Sub SaveGridColumnOrder(ByVal DG As DataGrid, ByRef DICT As Dictionary(Of Integer, String))
         GM.SaveGridState(CurrUserGuidID, Me.Title, DG, DICT)
     End Sub
@@ -2435,7 +3234,6 @@ Class MainPage
     ''' <summary>
     ''' All items stored in dictScreenControls will be added to the database basd on the assigned SearchID
     ''' </summary>
-    ''' <remarks></remarks>
     Sub SaveSearchHistory()
         Dim SearchID As Integer = CurrentSearchIdHigh
         SaveSearchParmParms(SearchID)
@@ -2443,10 +3241,19 @@ Class MainPage
         client_saveSearchState(RC, returnMsg)
     End Sub
 
+    ''' <summary>
+    ''' Clients the state of the save search.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="returnMsg">The return MSG.</param>
     Sub client_saveSearchState(RC As Boolean, returnMsg As String)
         SB.Text = returnMsg
     End Sub
 
+    ''' <summary>
+    ''' Gets the search history.
+    ''' </summary>
+    ''' <param name="SearchID">The search identifier.</param>
     Sub GetSearchHistory(ByVal SearchID As Integer)
 
         Dim SaveTypeCode As String = ""
@@ -2472,6 +3279,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the state of the get search.
+    ''' </summary>
+    ''' <param name="ObjListOfRows">The object list of rows.</param>
+    ''' <param name="returnMsg">The return MSG.</param>
     Sub client_getSearchState(ObjListOfRows As Object, returnMsg As String)
 
         Dim ListOfRows As New System.Collections.ObjectModel.ObservableCollection(Of SVCSearch.DS_USERSEARCHSTATE)
@@ -2493,6 +3305,11 @@ Class MainPage
         PB.IsIndeterminate = False
     End Sub
 
+    ''' <summary>
+    ''' Reorders the grid.
+    ''' </summary>
+    ''' <param name="DG">The dg.</param>
+    ''' <param name="DICT">The dictionary.</param>
     Sub ReorderGrid(ByVal DG As DataGrid, ByVal DICT As Dictionary(Of Integer, String))
 
         For Each iKey As Integer In DICT.Keys
@@ -2504,6 +3321,10 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Saves the grid layout to database.
+    ''' </summary>
+    ''' <param name="DG">The dg.</param>
     Sub SaveGridLayoutToDB(ByVal DG As DataGrid)
 
         Dim UserID As String = CurrUserGuidID
@@ -2541,6 +3362,11 @@ Class MainPage
         Next
     End Sub
 
+    ''' <summary>
+    ''' Clients the save grid layout.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="rMsg">The r MSG.</param>
     Sub client_saveGridLayout(RC As Boolean, rMsg As String)
 
         If RC Then
@@ -2551,6 +3377,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the email grid layout.
+    ''' </summary>
+    ''' <param name="DICT">The dictionary.</param>
+    ''' <param name="DG">The dg.</param>
     Sub GetEmailGridLayout(ByRef DICT As Dictionary(Of String, String), ByRef DG As DataGrid)
 
         Dim HiveConnectionName As String = ""
@@ -2568,6 +3399,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the get email grid layout.
+    ''' </summary>
+    ''' <param name="ObjListOfRows">The object list of rows.</param>
+    ''' <param name="rMsg">The r MSG.</param>
     Sub client_getEmailGridLayout(ObjListOfRows As Object, rMsg As String)
 
         Dim Obj As SVCSearch.DS_clsUSERGRIDSTATE = New SVCSearch.DS_clsUSERGRIDSTATE()
@@ -2615,6 +3451,11 @@ Class MainPage
         SB.Text = "System Grid Parms Loaded: " & gSystemParms.Count & " and DB Connection good."
     End Sub
 
+    ''' <summary>
+    ''' Gets the content grid layout.
+    ''' </summary>
+    ''' <param name="DICT">The dictionary.</param>
+    ''' <param name="DG">The dg.</param>
     Sub GetContentGridLayout(ByRef DICT As Dictionary(Of String, String), ByRef DG As DataGrid)
         Console.WriteLine("Trace:101")
         Dim HiveConnectionName As String = ""
@@ -2630,6 +3471,10 @@ Class MainPage
         client_getContentGridLayout(ObjListOfRows)
     End Sub
 
+    ''' <summary>
+    ''' Clients the get content grid layout.
+    ''' </summary>
+    ''' <param name="ObjListOfRows">The object list of rows.</param>
     Sub client_getContentGridLayout(ObjListOfRows As Object)
         Console.WriteLine("Trace:104")
         Dim RowOfData As SVCSearch.DS_clsUSERGRIDSTATE = New SVCSearch.DS_clsUSERGRIDSTATE()
@@ -2677,6 +3522,9 @@ Class MainPage
         SB.Text = "System Grid Parms Loaded: " & gSystemParms.Count & " and DB Connection good."
     End Sub
 
+    ''' <summary>
+    ''' Populates the library ComboBox.
+    ''' </summary>
     Sub populateLibraryComboBox()
 
         System.Threading.Thread.Sleep(AffinityDelay)
@@ -2686,6 +3534,10 @@ Class MainPage
         client_PopulateGroupUserLibCombo(AvailLibs)
     End Sub
 
+    ''' <summary>
+    ''' Clients the populate group user library combo.
+    ''' </summary>
+    ''' <param name="AvailLibs">The avail libs.</param>
     Sub client_PopulateGroupUserLibCombo(AvailLibs As String)
 
         Dim Libraries() As String = AvailLibs.Split("|")
@@ -2707,6 +3559,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnLibrary control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnLibrary_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnLibrary.Click
         If bQuickSearchRecall2 Then
             Return
@@ -2722,6 +3579,12 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Adds the library items.
+    ''' </summary>
+    ''' <param name="TDG">The TDG.</param>
+    ''' <param name="AddedByUserGuidId">The added by user unique identifier identifier.</param>
+    ''' <param name="strLibraryOwnerGuid">The string library owner unique identifier.</param>
     Sub AddLibraryItems(ByVal TDG As DataGrid, ByVal AddedByUserGuidId As String, ByVal strLibraryOwnerGuid As String)
 
         COMMON.SaveClick(1002, gCurrUserGuidID)
@@ -2819,6 +3682,11 @@ Class MainPage
         MessageBox.Show("Total Items added to library: " + iTotalToProcess.ToString)
     End Sub
 
+    ''' <summary>
+    ''' Clients the add library items.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="rMsg">The r MSG.</param>
     Sub client_AddLibraryItems(RC As Boolean, rMsg As String)
         If RC Then
             If Not RC Then
@@ -2833,6 +3701,10 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the name of the get library owner by.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
     Sub client_GetLibOwnerByName(S As String)
         If S.Length > 0 Then
             LibraryOwnerGuid = S
@@ -2843,12 +3715,22 @@ Class MainPage
         'RemoveHandler ProxySearch.GetLibOwnerByNameCompleted, AddressOf client_GetLibOwnerByName
     End Sub
 
+    ''' <summary>
+    ''' Handles the KeyDown event of the txtSearch control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Input.KeyEventArgs"/> instance containing the event data.</param>
     Private Sub txtSearch_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Input.KeyEventArgs)
         If e.Key = Key.Enter Then
             btnSubmit_Click(Nothing, Nothing)
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectionChanged event of the dgContent control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub dgContent_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles dgContent.SelectionChanged
 
         CurrentlySelectedGrid = "CONTENT"
@@ -2963,6 +3845,10 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Gets the meta data.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
     Sub GetMetaData(ByVal SourceGuid As String)
         Cursor = Cursors.Wait
         Dim S As String = "Select AttributeName, AttributeValue" + Environment.NewLine
@@ -2975,6 +3861,10 @@ Class MainPage
         client_GetContentMetaData(strDS_Metadata)
     End Sub
 
+    ''' <summary>
+    ''' Clients the get content meta data.
+    ''' </summary>
+    ''' <param name="strDS_Metadata">The string ds metadata.</param>
     Sub client_GetContentMetaData(strDS_Metadata As String)
 
         Dim ListOfRows As New System.Collections.ObjectModel.ObservableCollection(Of DS_Metadata)
@@ -2997,11 +3887,21 @@ Class MainPage
         Cursor = Cursors.Arrow
     End Sub
 
+    ''' <summary>
+    ''' Handles the LoadedRows event of the dgContent control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub dgContent_LoadedRows(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgContent.Loaded
 
         getSavedContentGridColumnsDisplayOrder()
     End Sub
 
+    ''' <summary>
+    ''' Handles the DoubleClick event of the dgEmails control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
     Private Sub dgEmails_DoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Input.MouseButtonEventArgs) Handles dgEmails.MouseDoubleClick
 
         btnOpenRestoreScreen.Visibility = Windows.Visibility.Visible
@@ -3011,6 +3911,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the DoubleClick event of the dgContent control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
     Private Sub dgContent_DoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Input.MouseButtonEventArgs) Handles dgContent.MouseDoubleClick
         COMMON.SaveClick(900, gCurrUserGuidID)
         btnOpenRestoreScreen.Visibility = Windows.Visibility.Visible
@@ -3037,6 +3942,11 @@ Class MainPage
 
 
 
+    ''' <summary>
+    ''' Handles the Unchecked event of the rbEmails control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub rbEmails_Unchecked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles rbEmails.Unchecked
         Console.WriteLine("Trace:01")
         'If DoNotDoThis Then
@@ -3045,6 +3955,9 @@ Class MainPage
         TabContent.Visibility = Visibility.Visible
     End Sub
 
+    ''' <summary>
+    ''' Sets the tabs open closed.
+    ''' </summary>
     Sub setTabsOpenClosed()
         Try
             If rbAll.IsChecked Then
@@ -3081,6 +3994,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Checked event of the rbAll control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub rbAll_Checked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles rbAll.Checked
         Console.WriteLine("Trace:02")
         'If DoNotDoThis Then
@@ -3089,6 +4007,11 @@ Class MainPage
         setTabsOpenClosed()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Checked event of the rbContent control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub rbContent_Checked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs)
         Console.WriteLine("Trace:03")
         'If DoNotDoThis Then
@@ -3097,6 +4020,11 @@ Class MainPage
         TabEmail.Visibility = Visibility.Collapsed
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unchecked event of the rbContent control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub rbContent_Unchecked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs)
         TabEmail.Visibility = Visibility.Visible
         If bQuickSearchRecall2 Then
@@ -3105,6 +4033,9 @@ Class MainPage
         UdpateSearchTerm("ALL", "rbContent", rbContent.IsChecked, "B")
     End Sub
 
+    ''' <summary>
+    ''' Sets the inactive state of form.
+    ''' </summary>
     Sub SetInactiveStateOfForm()
 
         Dim iOpacity As Double = 0.25
@@ -3175,6 +4106,9 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Sets the active state of form.
+    ''' </summary>
     Sub SetActiveStateOfForm()
 
         'imageMain.Visibility = Visibility.Collapsed
@@ -3196,6 +4130,11 @@ Class MainPage
     '    End If
     'End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlScheduleSearch control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlScheduleSearch_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlScheduleSearch.Click
         If bQuickSearchRecall2 Then
             Return
@@ -3210,6 +4149,11 @@ Class MainPage
         cw.Show()
     End Sub
 
+    ''' <summary>
+    ''' Handles the KeyDown event of the dgEmails control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Input.KeyEventArgs"/> instance containing the event data.</param>
     Private Sub dgEmails_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Input.KeyEventArgs) Handles dgEmails.KeyDown
         If e.Key = Key.F9 Then
             PopulateDictMasterSearch()
@@ -3219,6 +4163,11 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Closed event of the handler_PopulateEmailSearchDetailParms control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub handler_PopulateEmailSearchDetailParms_Closed(ByVal sender As Object, ByVal e As EventArgs)
         Dim dlg As popupEmailSearchParms = DirectCast(sender, popupEmailSearchParms)
         Dim result As System.Nullable(Of Boolean) = dlg.DialogResult
@@ -3228,6 +4177,11 @@ Class MainPage
         ''RemoveHandler handler_PopulateEmailSearchDetailParms_Closed
     End Sub
 
+    ''' <summary>
+    ''' Handles the Closed event of the handler_PopulateDictMasterSearch control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub handler_PopulateDictMasterSearch_Closed(ByVal sender As Object, ByVal e As EventArgs)
         Dim dlg As popupContentSearchParms = DirectCast(sender, popupContentSearchParms)
         Dim result As System.Nullable(Of Boolean) = dlg.DialogResult
@@ -3236,6 +4190,11 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the 1 event of the txtSearch_KeyDown control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Input.KeyEventArgs"/> instance containing the event data.</param>
     Private Sub txtSearch_KeyDown_1(ByVal sender As System.Object, ByVal e As System.Windows.Input.KeyEventArgs) Handles txtSearch.KeyDown
         If e.Key = Key.F11 Then
             GenSqlOnly = True
@@ -3263,18 +4222,33 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the GotFocus event of the TabContent control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub TabContent_GotFocus(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles TabContent.GotFocus
         gSelectedGrid = "dgContent"
         COMMON.SaveClick(600, gCurrUserGuidID)
         dgAttachments.Visibility = Windows.Visibility.Collapsed
     End Sub
 
+    ''' <summary>
+    ''' Handles the GotFocus event of the TabEmail control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub TabEmail_GotFocus(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles TabEmail.GotFocus
         gSelectedGrid = "dgEmail"
         COMMON.SaveClick(700, gCurrUserGuidID)
         dgAttachments.Visibility = Windows.Visibility.Visible
     End Sub
 
+    ''' <summary>
+    ''' Handles the DoubleClick event of the dgAttachments control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
     Private Sub dgAttachments_DoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Input.MouseButtonEventArgs) Handles dgAttachments.MouseDoubleClick
 
         COMMON.SaveClick(800, gCurrUserGuidID)
@@ -3286,6 +4260,11 @@ Class MainPage
         SB.Text = "Preview Requested: " + Now.ToString
     End Sub
 
+    ''' <summary>
+    ''' Handles the MouseEnter event of the dgAttachments control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Input.MouseEventArgs"/> instance containing the event data.</param>
     Private Sub dgAttachments_MouseEnter(ByVal sender As System.Object, ByVal e As System.Windows.Input.MouseEventArgs) Handles dgAttachments.MouseEnter
         SB.Text = "Found in Attachment ?"
 
@@ -3311,6 +4290,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the MouseLeave event of the dgAttachments control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Input.MouseEventArgs"/> instance containing the event data.</param>
     Private Sub dgAttachments_MouseLeave(ByVal sender As System.Object, ByVal e As System.Windows.Input.MouseEventArgs) Handles dgAttachments.MouseLeave
         If SelectedGrid = "dgEmails" Then
             Try
@@ -3321,6 +4305,9 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Populates the dictionary master search.
+    ''' </summary>
     Sub PopulateDictMasterSearch()
         'dictMasterSearch
         Dim ScreenName = "frmQuickSearch"
@@ -3420,6 +4407,11 @@ Class MainPage
         AddDictMasterSearch(ValName, ValValue)
     End Sub
 
+    ''' <summary>
+    ''' Adds the dictionary master search.
+    ''' </summary>
+    ''' <param name="tKey">The t key.</param>
+    ''' <param name="tVal">The t value.</param>
     Sub AddDictMasterSearch(ByVal tKey As String, ByVal tVal As String)
         If dictMasterSearch.ContainsKey(tKey) Then
             dictMasterSearch.Item(tKey) = tVal
@@ -3428,6 +4420,9 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Populates the email search detail parms.
+    ''' </summary>
     Sub PopulateEmailSearchDetailParms()
         ''Dim B As Boolean = ISO.ReadDetailSearchParms("EMAIL", dictEmailSearch)
         ''If Not B Then
@@ -3450,6 +4445,9 @@ Class MainPage
         Next
     End Sub
 
+    ''' <summary>
+    ''' Populates the content search detail parms.
+    ''' </summary>
     Sub PopulateContentSearchDetailParms()
         'Dim B As Boolean = ISO.ReadDetailSearchParms("CONTENT", dictContentSearch)
         'If Not B Then
@@ -3466,6 +4464,11 @@ Class MainPage
         'End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unloaded event of the Page control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub Page_Unloaded(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles MyBase.Unloaded
 
         'SearchHistorySave()
@@ -3483,10 +4486,20 @@ Class MainPage
         COMMON.SaveClick(999991, _UserGuid)
     End Sub
 
+    ''' <summary>
+    ''' Handles the GotFocus event of the Page control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub Page_GotFocus(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles MyBase.GotFocus
         'ISO.SetCLC_State2(CurrLoginID, "IDENTIFIED")
     End Sub
 
+    ''' <summary>
+    ''' Handles the GotFocus event of the dgContent control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub dgContent_GotFocus(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles dgContent.GotFocus
         Console.WriteLine("Trace:04")
         If DoNotDoThis Then
@@ -3495,6 +4508,11 @@ Class MainPage
         ckClcActive()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Exit event of the App control.
+    ''' </summary>
+    ''' <param name="o">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub App_Exit(ByVal o As Object, ByVal e As EventArgs) Handles Me.Unloaded
         '************************************************
         ' The application is about to stop running.
@@ -3511,6 +4529,11 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the MouseEnter event of the imgDbInfo control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Input.MouseEventArgs"/> instance containing the event data.</param>
     Private Sub imgDbInfo_MouseEnter(ByVal sender As System.Object, ByVal e As System.Windows.Input.MouseEventArgs) Handles imgDbInfo.MouseEnter
         PrevText = ""
         PrevText = SB.Text
@@ -3521,6 +4544,10 @@ Class MainPage
         client_getServerDatabaseName(SS)
     End Sub
 
+    ''' <summary>
+    ''' Clients the name of the get server database.
+    ''' </summary>
+    ''' <param name="SS">The ss.</param>
     Sub client_getServerDatabaseName(SS As String)
         If SS.Length > 0 Then
             SB.Text = SS + " / " + _UserGuid
@@ -3529,10 +4556,20 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the MouseLeave event of the imgDbInfo control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Input.MouseEventArgs"/> instance containing the event data.</param>
     Private Sub imgDbInfo_MouseLeave(ByVal sender As System.Object, ByVal e As System.Windows.Input.MouseEventArgs) Handles imgDbInfo.MouseLeave
         SB.Text = PrevText
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlGenSql control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlGenSql_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlGenSql.Click
         Console.WriteLine("Trace:05")
         If DoNotDoThis Then
@@ -3546,6 +4583,9 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Shows the content search parms.
+    ''' </summary>
     Sub ShowContentSearchParms()
         Dim Msg As String = ""
         Dim sVal As String = ""
@@ -3555,6 +4595,9 @@ Class MainPage
         MessageBox.Show(Msg, "Content Search Parms", MessageBoxButton.OK)
     End Sub
 
+    ''' <summary>
+    ''' Shows the email search parms.
+    ''' </summary>
     Sub ShowEmailSearchParms()
         Dim Msg As String = ""
         Dim sVal As String = ""
@@ -3564,6 +4607,11 @@ Class MainPage
         MessageBox.Show(Msg, "Email Search Parms", MessageBoxButton.OK)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the HyperlinkButton2 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub HyperlinkButton2_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles HyperlinkButton2.Click
         Console.WriteLine("Trace:06")
         If DoNotDoThis Then
@@ -3573,6 +4621,9 @@ Class MainPage
         RunExporter()
     End Sub
 
+    ''' <summary>
+    ''' Runs the exporter.
+    ''' </summary>
     Sub RunExporter()
         If CurrentlySelectedGrid.ToUpper.Equals("CONTENT") Then
             Dim cw As New popupExportSearchGrid(dgContent)
@@ -3588,6 +4639,9 @@ Class MainPage
     '    MessageBox.Show(msg, "DOWNLOADED FILES")
     'End Sub
 
+    ''' <summary>
+    ''' Gets the static vars.
+    ''' </summary>
     Sub getStaticVars()
 
         gSecureID = _SecureID
@@ -3599,18 +4653,30 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Saves the active parm.
+    ''' </summary>
+    ''' <param name="ParmName">Name of the parm.</param>
+    ''' <param name="ParmVal">The parm value.</param>
     Sub SaveActiveParm(ByVal ParmName As String, ByVal ParmVal As String)
         'AddHandler ProxySearch.ActiveSessionCompleted, AddressOf client_ActiveSession
         Dim BB As Boolean = ProxySearch.ActiveSession(gSecureID, CurrSessionGuid, ParmName, ParmVal)
         client_ActiveSession(BB)
     End Sub
 
+    ''' <summary>
+    ''' Clients the active session.
+    ''' </summary>
+    ''' <param name="BB">if set to <c>true</c> [bb].</param>
     Sub client_ActiveSession(BB As Boolean)
         If Not BB Then
             SB.Text = "Failure to save " + ParmName
         End If
     End Sub
 
+    ''' <summary>
+    ''' Gets the global vars.
+    ''' </summary>
     Sub GetGlobalVars()
         getActiveSessionGetVal("CompanyID")
         getActiveSessionGetVal("RepoID")
@@ -3618,12 +4684,21 @@ Class MainPage
         getActiveSessionGetVal("EncryptPW")
     End Sub
 
+    ''' <summary>
+    ''' Gets the active session get value.
+    ''' </summary>
+    ''' <param name="ParmName">Name of the parm.</param>
     Sub getActiveSessionGetVal(ByVal ParmName As String)
         'AddHandler ProxySearch.ActiveSessionGetValCompleted, AddressOf client_ActiveSessionGetVal
         Dim SS As String = ProxySearch.ActiveSessionGetVal(gSecureID, CurrSessionGuid, ParmName)
         client_ActiveSessionGetVal(SS, ParmName)
     End Sub
 
+    ''' <summary>
+    ''' Clients the active session get value.
+    ''' </summary>
+    ''' <param name="SS">The ss.</param>
+    ''' <param name="ParmName">Name of the parm.</param>
     Sub client_ActiveSessionGetVal(SS As String, ParmName As String)
         Dim pVal As String = ""
         Dim pName As String = ""
@@ -3647,6 +4722,11 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the HyperlinkButton3 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub HyperlinkButton3_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles HyperlinkButton3.Click
 
         Dim msg As String = "In order to Archive content, you will need access to the Archive Application, contact your admin."
@@ -3654,6 +4734,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the ScrollPositionChanging event of the dgContent control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="ScrollChangedEventArgs"/> instance containing the event data.</param>
     Private Sub dgContent_ScrollPositionChanging(ByVal sender As System.Object, ByVal e As ScrollChangedEventArgs)
 
         If bGhostFetchActive Then
@@ -3710,6 +4795,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlFindCLC control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlFindCLC_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlFindCLC.Click
         Console.WriteLine("Trace:07")
         If DoNotDoThis Then
@@ -3720,6 +4810,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlUsers control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlUsers_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlUsers.Click
         Console.WriteLine("Trace:08")
         If DoNotDoThis Then
@@ -3732,6 +4827,11 @@ Class MainPage
         NextPage.Show()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlGroups control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlGroups_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlGroups.Click
         Console.WriteLine("Trace:09")
         If DoNotDoThis Then
@@ -3744,6 +4844,10 @@ Class MainPage
         NextPage.Show()
     End Sub
 
+    ''' <summary>
+    ''' Performs the search.
+    ''' </summary>
+    ''' <param name="bStartNewSearch">if set to <c>true</c> [b start new search].</param>
     Sub PerformSearch(ByVal bStartNewSearch As Boolean)
 
         'mainPage.Cursor = CursorType.Wait
@@ -3820,6 +4924,9 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Creates the email grid columns.
+    ''' </summary>
     Sub CreateEmailGridColumns()
         If dgEmails.Columns.Count = 0 Then
             AddEmailGridColumn("AllRecipients")
@@ -3851,12 +4958,19 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Adds the email grid column.
+    ''' </summary>
+    ''' <param name="ColName">Name of the col.</param>
     Sub AddEmailGridColumn(ByVal ColName As String)
         Dim NewCol As DataGridColumn = Nothing
         NewCol.Header = ColName
         dgEmails.Columns.Add(NewCol)
     End Sub
 
+    ''' <summary>
+    ''' Creates the content grid columns.
+    ''' </summary>
     Sub CreateContentGridColumns()
         If dgContent.Columns.Count = 0 Then
             AddContentGridColumn("CreateDate")
@@ -3880,12 +4994,24 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Adds the content grid column.
+    ''' </summary>
+    ''' <param name="ColName">Name of the col.</param>
     Sub AddContentGridColumn(ByVal ColName As String)
         Dim NewCol As DataGridColumn = Nothing
         NewCol.Header = ColName
         dgContent.Columns.Add(NewCol)
     End Sub
 
+    ''' <summary>
+    ''' Updates the state.
+    ''' </summary>
+    ''' <param name="loading">if set to <c>true</c> [loading].</param>
+    ''' <param name="EmailStartRow">The email start row.</param>
+    ''' <param name="EmailEndRow">The email end row.</param>
+    ''' <param name="ContentStartRow">The content start row.</param>
+    ''' <param name="ContentEndRow">The content end row.</param>
     Private Sub UpdateState(ByVal loading As Boolean, ByVal EmailStartRow As Integer, ByVal EmailEndRow As Integer, ByVal ContentStartRow As Integer, ByVal ContentEndRow As Integer)
         If loading Then
             'SBEmail.Text = String.Format("Retrieving rows {0} to {1}...", EmailStartRow, EmailEndRow)
@@ -3904,12 +5030,20 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the MouseEnter event of the dgContent control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Input.MouseEventArgs"/> instance containing the event data.</param>
     Private Sub dgContent_MouseEnter(ByVal sender As System.Object, ByVal e As System.Windows.Input.MouseEventArgs) Handles dgContent.MouseEnter
         'SBEmailPage.Text = "Rows:1 thru " & dgEmails.Items.Count
         'SBDocPage.Text = "Rows:1 thru " & dgContent.Items.Count
         SelectedGrid = "dgContent"
     End Sub
 
+    ''' <summary>
+    ''' Sets the authority.
+    ''' </summary>
     Sub setAuthority()
 
         'AddHandler ProxySearch.getUserAuthCompleted, AddressOf client_getUserAuth
@@ -3917,6 +5051,10 @@ Class MainPage
         client_getUserAuth(SS)
     End Sub
 
+    ''' <summary>
+    ''' Clients the get user authentication.
+    ''' </summary>
+    ''' <param name="SS">The ss.</param>
     Sub client_getUserAuth(SS As String)
 
         _isAdmin = False
@@ -3960,6 +5098,10 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the state of the set saas.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub client_SetSAASState(RC As Boolean)
         If RC Then
             SB.Text = "SAAS State Set."
@@ -3968,6 +5110,9 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Allows an object to try to free resources and perform other cleanup operations before it is reclaimed by garbage collection.
+    ''' </summary>
     Protected Overrides Sub Finalize()
         'SB.Text = "Standby, securing connection closure."
         '_c1SpellChecker.UserDictionary.SaveToIsolatedStorage("Custom.dct")
@@ -4002,6 +5147,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the ContentSearchParms event of the click control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub click_ContentSearchParms(ByVal sender As Object, ByVal e As RoutedEventArgs)
         PopulateDictMasterSearch()
         Dim cw As New popupContentSearchParms(gSecureID, dictMasterSearch)
@@ -4009,6 +5159,11 @@ Class MainPage
         cw.Show()
     End Sub
 
+    ''' <summary>
+    ''' Handles the EmailSearchParms event of the click control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub click_EmailSearchParms(ByVal sender As Object, ByVal e As RoutedEventArgs)
         PopulateDictMasterSearch()
         Dim cw As New popupEmailSearchParms(gSecureID)
@@ -4016,6 +5171,11 @@ Class MainPage
         cw.Show()
     End Sub
 
+    ''' <summary>
+    ''' Handles the EmailColDisplayOrder event of the click control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub click_EmailColDisplayOrder(ByVal sender As Object, ByVal e As RoutedEventArgs)
 
         SaveGridColumnOrder(dgEmails, dictEmailGridColDisplayOrder)
@@ -4025,6 +5185,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the ContentColDisplayOrder event of the click control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub click_ContentColDisplayOrder(ByVal sender As Object, ByVal e As RoutedEventArgs)
 
         SaveGridColumnOrder(dgContent, dictContentGridColDisplayOrder)
@@ -4034,6 +5199,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Copies the stream.
+    ''' </summary>
+    ''' <param name="loadStream">The load stream.</param>
+    ''' <param name="saveStream">The save stream.</param>
     Private Sub CopyStream(ByVal loadStream As Stream, ByVal saveStream As Stream)
         Const bufferSize As Integer = 1024 * 1024
         Dim buffer As Byte() = New Byte(bufferSize - 1) {}
@@ -4043,6 +5213,11 @@ Class MainPage
         End While
     End Sub
 
+    ''' <summary>
+    ''' Handles the EmailPrint event of the click control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub click_EmailPrint(ByVal sender As Object, ByVal e As RoutedEventArgs)
 
         RunExporter()
@@ -4050,21 +5225,41 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the EmailColSortOrder event of the click control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub click_EmailColSortOrder(ByVal sender As Object, ByVal e As RoutedEventArgs)
         SaveGridColumnOrder(dgEmails, dictEmailGridColDisplayOrder)
         'SaveGridLayoutToDB(dgEmails)
     End Sub
 
+    ''' <summary>
+    ''' Handles the ContentColSortOrder event of the click control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub click_ContentColSortOrder(ByVal sender As Object, ByVal e As RoutedEventArgs)
         SaveGridColumnOrder(dgContent, dictContentGridColDisplayOrder)
         'SaveGridLayoutToDB(dgEmails)
     End Sub
 
+    ''' <summary>
+    ''' Handles the ExportSearchResults event of the click control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub click_ExportSearchResults(ByVal sender As Object, ByVal e As RoutedEventArgs)
         RunExporter()
         GC.Collect()
     End Sub
 
+    ''' <summary>
+    ''' Handles the EmailPreview event of the click control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub click_EmailPreview(ByVal sender As Object, ByVal e As RoutedEventArgs)
         btnOpenRestoreScreen.Visibility = Windows.Visibility.Visible
 
@@ -4072,6 +5267,11 @@ Class MainPage
         SB.Text = "Preview Requested: " + Now.ToString
     End Sub
 
+    ''' <summary>
+    ''' Handles the EmailRestore event of the click control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub click_EmailRestore(ByVal sender As Object, ByVal e As RoutedEventArgs)
 
         COMMON.SaveClick(10001, gCurrUserGuidID)
@@ -4097,6 +5297,11 @@ Class MainPage
     '    End If
     'End Sub
 
+    ''' <summary>
+    ''' Handles the SearchAsst event of the click control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub click_SearchAsst(ByVal sender As Object, ByVal e As RoutedEventArgs)
         SB.Text = "Search Assistant"
         Dim NextPage As New frmSearchAsst(_SecureID)
@@ -4113,6 +5318,11 @@ Class MainPage
 
     '********************************************************************************************************
     '********************************************************************************************************
+    ''' <summary>
+    ''' Handles the GenContentSQL event of the click control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Sub click_GenContentSQL(ByVal sender As Object, ByVal e As RoutedEventArgs)
 
         UdpateSearchTerm("ALL", "isSuperAdmin", _isSuperAdmin.ToString, "B")
@@ -4161,6 +5371,10 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the gen document search SQL.
+    ''' </summary>
+    ''' <param name="MySql">My SQL.</param>
     Sub client_GenDocSearchSql(MySql As String)
         If MySql.Length > 0 Then
             Dim cw As New popSqlStmt(MySql)
@@ -4172,6 +5386,11 @@ Class MainPage
     End Sub
 
     '********************************************************************************************************
+    ''' <summary>
+    ''' Handles the GenEmailSQLStmt event of the click control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Sub click_GenEmailSQLStmt(ByVal sender As Object, ByVal e As RoutedEventArgs)
 
         UdpateSearchTerm("ALL", "isSuperAdmin", _isSuperAdmin.ToString, "B")
@@ -4219,6 +5438,10 @@ Class MainPage
         client_GenEmailGeneratedSQL(SS)
     End Sub
 
+    ''' <summary>
+    ''' Clients the gen email generated SQL.
+    ''' </summary>
+    ''' <param name="SS">The ss.</param>
     Sub client_GenEmailGeneratedSQL(SS As String)
         If SS.Length > 0 Then
             Dim cw As New popSqlStmt(SS)
@@ -4230,6 +5453,11 @@ Class MainPage
     End Sub
 
     '********************************************************************************************************
+    ''' <summary>
+    ''' Handles the GenAttachmentSQL event of the click control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub click_GenAttachmentSQL(ByVal sender As Object, ByVal e As RoutedEventArgs)
         Dim ContainsClause As String = ""
         Dim isEmail As Boolean = True
@@ -4238,6 +5466,10 @@ Class MainPage
         client_GenEmailAttachmentsSQL(SS)
     End Sub
 
+    ''' <summary>
+    ''' Clients the gen email attachments SQL.
+    ''' </summary>
+    ''' <param name="SS">The ss.</param>
     Sub client_GenEmailAttachmentsSQL(SS As String)
         If SS.Length > 0 Then
             Dim cw As New popSqlStmt(SS)
@@ -4249,6 +5481,11 @@ Class MainPage
     End Sub
 
     '********************************************************************************************************
+    ''' <summary>
+    ''' Handles the ReviewSearchParms event of the click control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub click_ReviewSearchParms(ByVal sender As Object, ByVal e As RoutedEventArgs)
         Dim S As String = ""
         Dim tKey As String = ""
@@ -4287,6 +5524,11 @@ Class MainPage
     '    'RemoveHandler _c1SpellChecker.CheckControlCompleted, AddressOf SpellCK_Completed
     'End Sub
 
+    ''' <summary>
+    ''' Handles the SelectionChanged event of the cbLibrary control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub cbLibrary_SelectionChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.SelectionChangedEventArgs) Handles cbLibrary.SelectionChanged
         COMMON.SaveClick(10002, gCurrUserGuidID)
         Dim LibraryName As String = cbLibrary.SelectedItem
@@ -4302,6 +5544,9 @@ Class MainPage
         client_GetLibOwnerByName(LibraryOwnerGuid)
     End Sub
 
+    ''' <summary>
+    ''' Reorders the email grid cols.
+    ''' </summary>
     Sub ReorderEmailGridCols()
 
         Dim QuestionNumber As Integer = 0
@@ -4324,6 +5569,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Reorders the dg emails cols.
+    ''' </summary>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <param name="ColDisplayOrder">The col display order.</param>
     Sub ReorderDgEmailsCols(ByVal ColName As String, ByVal ColDisplayOrder As Integer)
 
         'If gDebug Then
@@ -4349,6 +5599,9 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Reorders the content grid cols.
+    ''' </summary>
     Sub ReorderContentGridCols()
         Console.WriteLine("Trace:106")
         Dim QuestionNumber As Integer = 0
@@ -4370,6 +5623,11 @@ Class MainPage
         Next
     End Sub
 
+    ''' <summary>
+    ''' Reorders the dg content cols.
+    ''' </summary>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <param name="ColDisplayOrder">The col display order.</param>
     Sub ReorderDgContentCols(ByVal ColName As String, ByVal ColDisplayOrder As Integer)
         Console.WriteLine("Trace:107")
         Try
@@ -4385,6 +5643,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Loaded event of the dgContent control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub dgContent_Loaded(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles dgContent.Loaded
         Console.WriteLine("Trace:11")
 
@@ -4399,6 +5662,11 @@ Class MainPage
         getSavedContentGridColumnsDisplayOrder()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Loaded event of the dgEmails control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub dgEmails_Loaded(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles dgEmails.Loaded
         Console.WriteLine("Trace:11A")
         If gDebug Then
@@ -4419,6 +5687,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unloaded event of the LayoutRoot control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub LayoutRoot_Unloaded(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles LayoutRoot.Unloaded
         Console.WriteLine("Trace:12")
         If DoNotDoThis Then
@@ -4432,6 +5705,11 @@ Class MainPage
         SaveGridLayoutToDB(dgEmails)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unchecked event of the ckMyContent control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckMyContent_Unchecked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckMyContent.Unchecked
         Console.WriteLine("Trace:13")
         If DoNotDoThis Then
@@ -4441,6 +5719,11 @@ Class MainPage
         UdpateSearchTerm("ALL", "ckMyContent", ckMyContent.IsChecked, "B")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unchecked event of the ckMasterOnly control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckMasterOnly_Unchecked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckMasterOnly.Unchecked
         Console.WriteLine("Trace:14")
         If DoNotDoThis Then
@@ -4450,6 +5733,11 @@ Class MainPage
         UdpateSearchTerm("ALL", "ckMasterOnly", ckMasterOnly.IsChecked, "B")
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the nbrWeightMin control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub nbrWeightMin_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles nbrWeightMin.TextChanged
         Console.WriteLine("Trace:15")
         If DoNotDoThis Then
@@ -4459,6 +5747,11 @@ Class MainPage
         UdpateSearchTerm("ALL", "nbrWeightMin", nbrWeightMin.Text, "S")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Checked event of the ckMasterOnly control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckMasterOnly_Checked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckMasterOnly.Checked
         Console.WriteLine("Trace:16")
         If DoNotDoThis Then
@@ -4468,6 +5761,11 @@ Class MainPage
         UdpateSearchTerm("ALL", "ckMasterOnly", ckMasterOnly.IsChecked, "B")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Checked event of the ckMyContent control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckMyContent_Checked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckMyContent.Checked
         Console.WriteLine("Trace:17")
         If DoNotDoThis Then
@@ -4477,6 +5775,11 @@ Class MainPage
         UdpateSearchTerm("ALL", "ckMyContent", ckMyContent.IsChecked, "B")
     End Sub
 
+    ''' <summary>
+    ''' Handles the 1 event of the rbEmails_Checked control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub rbEmails_Checked_1(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles rbEmails.Checked
         Console.WriteLine("Trace:18")
         If DoNotDoThis Then
@@ -4487,6 +5790,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the 1 event of the rbContent_Checked control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub rbContent_Checked_1(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles rbContent.Checked
         Console.WriteLine("Trace:19")
         If DoNotDoThis Then
@@ -4497,6 +5805,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Checked event of the ckWeights control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckWeights_Checked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckWeights.Checked
         Console.WriteLine("Trace:20")
         If DoNotDoThis Then
@@ -4506,6 +5819,11 @@ Class MainPage
         UdpateSearchTerm("ALL", "ckWeights", ckWeights.IsChecked, "B")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Checked event of the ckLimitToLib control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckLimitToLib_Checked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckLimitToLib.Checked
 
         Console.WriteLine("Trace:21")
@@ -4519,6 +5837,11 @@ Class MainPage
         UdpateSearchTerm("ALL", "ckLimitToLib", ckLimitToLib.IsChecked, "B")
     End Sub
 
+    ''' <summary>
+    ''' Handles the 1 event of the ckFilters_Checked control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckFilters_Checked_1(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckFilters.Checked
         Console.WriteLine("Trace:22")
         'If DoNotDoThis Then
@@ -4533,6 +5856,11 @@ Class MainPage
         SetFilterVisibility()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Checked event of the ckSetEmailPublic control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckSetEmailPublic_Checked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckSetEmailPublic.Checked
         Console.WriteLine("Trace:23")
         If DoNotDoThis Then
@@ -4542,6 +5870,11 @@ Class MainPage
         UdpateSearchTerm("ALL", "ckSetEmailPublic", ckSetEmailPublic.IsChecked, "B")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unchecked event of the ckSetEmailPublic control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckSetEmailPublic_Unchecked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckSetEmailPublic.Unchecked
         Console.WriteLine("Trace:24")
         If DoNotDoThis Then
@@ -4551,6 +5884,11 @@ Class MainPage
         UdpateSearchTerm("ALL", "ckSetEmailPublic", ckSetEmailPublic.IsChecked, "B")
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the txtSearch control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub txtSearch_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles txtSearch.TextChanged
         Console.WriteLine("Trace:25")
         If DoNotDoThis Then
@@ -4560,6 +5898,11 @@ Class MainPage
         UdpateSearchTerm("ALL", "txtSearch", txtSearch.Text, "S")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Checked event of the ckShowDetails control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckShowDetails_Checked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckShowDetails.Checked
         Console.WriteLine("Trace:26")
         If DoNotDoThis Then
@@ -4569,6 +5912,11 @@ Class MainPage
         UdpateSearchTerm("ALL", "ckShowDetails", ckShowDetails.IsChecked, "B")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unchecked event of the ckShowDetails control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckShowDetails_Unchecked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckShowDetails.Unchecked
         Console.WriteLine("Trace:27")
         If DoNotDoThis Then
@@ -4578,6 +5926,11 @@ Class MainPage
         UdpateSearchTerm("ALL", "ckShowDetails", ckShowDetails.IsChecked, "B")
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the SBDoc control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub SBDoc_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles SBDoc.TextChanged
         Console.WriteLine("Trace:28")
         If DoNotDoThis Then
@@ -4587,6 +5940,10 @@ Class MainPage
         UdpateSearchTerm("ALL", "SBDoc", SBDoc.Text, "S")
     End Sub
 
+    ''' <summary>
+    ''' Contents the search parms set.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function contentSearchParmsSet() As Boolean
         Dim B As Boolean = False
         For Each sVal As String In dictMasterSearch.Values
@@ -4598,6 +5955,10 @@ Class MainPage
         Return B
     End Function
 
+    ''' <summary>
+    ''' Emails the search parms set.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function emailSearchParmsSet() As Boolean
         Dim B As Boolean = False
         For Each sVal As String In dictMasterSearch.Values
@@ -4609,6 +5970,11 @@ Class MainPage
         Return B
     End Function
 
+    ''' <summary>
+    ''' Handles the Click event of the hlAlerts control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlAlerts_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlAlerts.Click
         Console.WriteLine("Trace:29")
         If DoNotDoThis Then
@@ -4624,6 +5990,9 @@ Class MainPage
         cw.Show()
     End Sub
 
+    ''' <summary>
+    ''' Sets the notification flags.
+    ''' </summary>
     Sub setNotificationFlags()
         lblIsPublicShow.Visibility = Visibility.Visible
         LblIsWebShow.Visibility = Visibility.Visible
@@ -4633,6 +6002,11 @@ Class MainPage
         lblSap.Visibility = Visibility.Visible
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unchecked event of the ckWeights control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckWeights_Unchecked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs)
         Console.WriteLine("Trace:30")
         If DoNotDoThis Then
@@ -4642,6 +6016,11 @@ Class MainPage
         UdpateSearchTerm("ALL", "ckWeights", ckWeights.IsChecked, "B")
     End Sub
 
+    ''' <summary>
+    ''' Handles the 1 event of the rbContent_Unchecked control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub rbContent_Unchecked_1(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs)
         Console.WriteLine("Trace:31")
         If DoNotDoThis Then
@@ -4651,6 +6030,11 @@ Class MainPage
         UdpateSearchTerm("ALL", "rbContent", rbContent.IsChecked, "B")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unchecked event of the rbAll control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub rbAll_Unchecked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles rbAll.Unchecked
         Console.WriteLine("Trace:32")
         If DoNotDoThis Then
@@ -4660,6 +6044,11 @@ Class MainPage
         UdpateSearchTerm("ALL", "rbAll", rbAll.IsChecked, "B")
     End Sub
 
+    ''' <summary>
+    ''' Handles the 2 event of the rbContent_Unchecked control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub rbContent_Unchecked_2(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles rbContent.Unchecked
         Console.WriteLine("Trace:33")
         If DoNotDoThis Then
@@ -4668,6 +6057,11 @@ Class MainPage
         UdpateSearchTerm("ALL", "rbContent", rbContent.IsChecked, "B")
     End Sub
 
+    ''' <summary>
+    ''' Handles the 1 event of the ckWeights_Unchecked control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckWeights_Unchecked_1(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs)
         Console.WriteLine("Trace:34")
         If DoNotDoThis Then
@@ -4676,6 +6070,11 @@ Class MainPage
         UdpateSearchTerm("ALL", "ckWeights", ckWeights.IsChecked, "B")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unchecked event of the ckLimitToLib control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckLimitToLib_Unchecked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckLimitToLib.Unchecked
 
         Console.WriteLine("Trace:35")
@@ -4687,6 +6086,11 @@ Class MainPage
         UdpateSearchTerm("ALL", "ckLimitToLib", ckLimitToLib.IsChecked, "B")
     End Sub
 
+    ''' <summary>
+    ''' Handles the 2 event of the ckWeights_Unchecked control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckWeights_Unchecked_2(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckWeights.Unchecked
         Console.WriteLine("Trace:36")
         If DoNotDoThis Then
@@ -4695,6 +6099,9 @@ Class MainPage
         UdpateSearchTerm("ALL", "ckWeights", ckWeights.IsChecked, "B")
     End Sub
 
+    ''' <summary>
+    ''' Exports the search to file to CSV.
+    ''' </summary>
     Sub ExportSearchToFileToCsv()
         'Dim path As String = _UserID + ".Export.csv"
         'dgContent.Save(_UserID + ".Export", C1.Silverlight.FlexGrid.FileFormat.Csv)
@@ -4702,6 +6109,9 @@ Class MainPage
         MessageBox.Show(msg)
     End Sub
 
+    ''' <summary>
+    ''' Exports the search to file to HTML.
+    ''' </summary>
     Sub ExportSearchToFileToHtml()
         Console.WriteLine("Trace:37")
         If DoNotDoThis Then
@@ -4711,6 +6121,9 @@ Class MainPage
         MessageBox.Show(msg)
     End Sub
 
+    ''' <summary>
+    ''' Exports the search to file to text.
+    ''' </summary>
     Sub ExportSearchToFileToText()
         Console.WriteLine("Trace:38")
         If DoNotDoThis Then
@@ -4720,6 +6133,11 @@ Class MainPage
         MessageBox.Show(msg)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the HyperlinkButton1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub HyperlinkButton1_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles HyperlinkButton1.Click
         Console.WriteLine("Trace:39")
         If DoNotDoThis Then
@@ -4728,6 +6146,11 @@ Class MainPage
         ISO.RequestMoreIso()
     End Sub
 
+    ''' <summary>
+    ''' Handles the 1 event of the hlLibrary_Click control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlLibrary_Click_1(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlLibrary.Click
         Console.WriteLine("Trace:40")
         If DoNotDoThis Then
@@ -4742,6 +6165,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlSaveSearch control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlSaveSearch_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlSaveSearch.Click
         Console.WriteLine("Trace:41")
         If DoNotDoThis Then
@@ -4754,6 +6182,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Closed event of the popupSaveSearch control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub popupSaveSearch_Closed(ByVal sender As System.Object, ByVal e As EventArgs)
         Dim lw As popupSaveSearch = CType(sender, popupSaveSearch)
 
@@ -4769,6 +6202,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the hlHelp control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub hlHelp_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlHelp.Click
         Console.WriteLine("Trace:42")
         If DoNotDoThis Then
@@ -4780,6 +6218,9 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Quicks the search add.
+    ''' </summary>
     Sub QuickSearchAdd()
 
         Dim SearchParms As String = PRM.BuildParmString(dictMasterSearch)
@@ -4805,6 +6246,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Quicks the search recall.
+    ''' </summary>
+    ''' <param name="IdNumber">The identifier number.</param>
+    ''' <param name="bRetrieveSavedSearch">if set to <c>true</c> [b retrieve saved search].</param>
     Sub QuickSearchRecall(ByVal IdNumber As Integer, ByVal bRetrieveSavedSearch As Boolean)
         Console.WriteLine("Trace:43")
         If DoNotDoThis Then
@@ -4950,6 +6396,9 @@ Class MainPage
         bQuickSearchRecall = False
     End Sub
 
+    ''' <summary>
+    ''' Searches the history save.
+    ''' </summary>
     Sub SearchHistorySave()
 
         Dim SearchName As String = _UserID + "-$$QuickSearch"
@@ -4964,6 +6413,18 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the ck content flags completed.
+    ''' </summary>
+    ''' <param name="gSecureID">The g secure identifier.</param>
+    ''' <param name="CurrentGuid">The current unique identifier.</param>
+    ''' <param name="SD">if set to <c>true</c> [sd].</param>
+    ''' <param name="SP">if set to <c>true</c> [sp].</param>
+    ''' <param name="SAP">if set to <c>true</c> [sap].</param>
+    ''' <param name="bMaster">if set to <c>true</c> [b master].</param>
+    ''' <param name="RSS">if set to <c>true</c> [RSS].</param>
+    ''' <param name="WEB">if set to <c>true</c> [web].</param>
+    ''' <param name="PUB">if set to <c>true</c> [pub].</param>
     Sub client_ckContentFlagsCompleted(gSecureID As Integer, CurrentGuid As String, SD As Boolean, SP As Boolean, SAP As Boolean, bMaster As Boolean, RSS As Boolean, WEB As Boolean, PUB As Boolean)
         bQuickSearchRecall = True
         Dim RC As Boolean = True
@@ -5021,6 +6482,10 @@ Class MainPage
         bQuickSearchRecall = False
     End Sub
 
+    ''' <summary>
+    ''' Clients the search history save.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub client_SearchHistorySave(RC As Boolean)
         If RC Then
             SB.Text = "Your search has been saved."
@@ -5031,6 +6496,9 @@ Class MainPage
         ''RemoveHandler ProxySearch.SaveUserSearchCompleted, AddressOf client_SearchHistorySave
     End Sub
 
+    ''' <summary>
+    ''' Searches the history reload.
+    ''' </summary>
     Sub SearchHistoryReload()
 
         Dim SearchName As String = _UserID + "-$$QuickSearch"
@@ -5042,6 +6510,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the recall search.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="strSearches">The string searches.</param>
     Sub client_RecallSearch(RC As Boolean, strSearches As String)
         If RC Then
             If RC Then
@@ -5070,6 +6543,11 @@ Class MainPage
         'RemoveHandler ProxySearch.RecallUserSearchCompleted, AddressOf client_RecallSearch
     End Sub
 
+    ''' <summary>
+    ''' Handles the Checked event of the ckSetEmailAsDefault control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckSetEmailAsDefault_Checked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckSetEmailAsDefault.Checked
         Console.WriteLine("Trace:44")
         If DoNotDoThis Then
@@ -5108,6 +6586,11 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unchecked event of the ckSetEmailAsDefault control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckSetEmailAsDefault_Unchecked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckSetEmailAsDefault.Unchecked
         Console.WriteLine("Trace:45")
         If DoNotDoThis Then
@@ -5147,6 +6630,11 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Clients the execute SQL select screen.
+    ''' </summary>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="S">The s.</param>
     Sub client_ExecuteSqlSelectScreen(RC As Boolean, S As String)
 
         If RC Then
@@ -5160,6 +6648,9 @@ Class MainPage
         ''RemoveHandler ProxySearch.ExecuteSqlNewConnSecureCompleted, AddressOf client_ExecuteSqlSelectScreen
     End Sub
 
+    ''' <summary>
+    ''' Sets the default screen.
+    ''' </summary>
     Sub SetDefaultScreen()
 
         'AddHandler ProxySearch.getDefaultScreenCompleted, AddressOf client_getDefaultScreen
@@ -5168,6 +6659,10 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Clients the get default screen.
+    ''' </summary>
+    ''' <param name="SS">The ss.</param>
     Sub client_getDefaultScreen(SS As String)
 
         If RC Then
@@ -5187,14 +6682,29 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the MouseEnter event of the lblUserID control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Input.MouseEventArgs"/> instance containing the event data.</param>
     Private Sub lblUserID_MouseEnter(ByVal sender As System.Object, ByVal e As System.Windows.Input.MouseEventArgs) Handles lblUserID.MouseEnter
         lblUserID.Content = _UserGuid
     End Sub
 
+    ''' <summary>
+    ''' Handles the 1 event of the lblUserID_MouseLeave control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Input.MouseEventArgs"/> instance containing the event data.</param>
     Private Sub lblUserID_MouseLeave_1(ByVal sender As System.Object, ByVal e As System.Windows.Input.MouseEventArgs) Handles lblUserID.MouseLeave
         lblUserID.Content = _UserID
     End Sub
 
+    ''' <summary>
+    ''' Handles the Checked event of the ckMakeIsPublic control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckMakeIsPublic_Checked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckMakeIsPublic.Checked
         Console.WriteLine("Trace:46")
         If DoNotDoThis Then
@@ -5209,6 +6719,11 @@ Class MainPage
         UdpateSearchTerm("ALL", "ckMakeIsPublic", ckMakeIsPublic.IsChecked, "B")
     End Sub
 
+    ''' <summary>
+    ''' Handles the UnChecked event of the ckMakeIsPublic control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckMakeIsPublic_UnChecked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckMakeIsPublic.Unchecked
         Console.WriteLine("Trace:47")
         If DoNotDoThis Then
@@ -5223,6 +6738,11 @@ Class MainPage
         UdpateSearchTerm("ALL", "ckMakeIsPublic", ckMakeIsPublic.IsChecked, "B")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Checked event of the ckMakeMasterDoc control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckMakeMasterDoc_Checked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckMakeMasterDoc.Checked
         Console.WriteLine("Trace:48")
         If DoNotDoThis Then
@@ -5237,6 +6757,11 @@ Class MainPage
         UdpateSearchTerm("ALL", "ckMakeMasterDoc", ckMakeMasterDoc.IsChecked, "B")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Unchecked event of the ckMakeMasterDoc control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckMakeMasterDoc_Unchecked(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles ckMakeMasterDoc.Unchecked
 
         Console.WriteLine("Trace:49")
@@ -5252,10 +6777,20 @@ Class MainPage
         UdpateSearchTerm("ALL", "ckMakeMasterDoc", ckMakeMasterDoc.IsChecked, "B")
     End Sub
 
+    ''' <summary>
+    ''' Handles the MouseEnter event of the HyperlinkButton3 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
     Private Sub HyperlinkButton3_MouseEnter(sender As Object, e As MouseEventArgs) Handles HyperlinkButton3.MouseEnter
         SB.Text = "In order to Archive content, you will need access to the Archive Application"
     End Sub
 
+    ''' <summary>
+    ''' Handles the MouseLeave event of the HyperlinkButton3 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
     Private Sub HyperlinkButton3_MouseLeave(sender As Object, e As MouseEventArgs) Handles HyperlinkButton3.MouseLeave
         SB.Text = " "
     End Sub
@@ -5268,6 +6803,9 @@ Class MainPage
     '    SB.Text = " "
     'End Sub
 
+    ''' <summary>
+    ''' Builds the search parameters.
+    ''' </summary>
     Sub BuildSearchParameters()
 
         Dim SearchText As String = txtSearch.Text.Trim
@@ -5359,6 +6897,10 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Generates the SQL.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Private Function GenerateSQL() As String
         Dim S As String = ""
         Dim TypeSQL As String = ""
@@ -5395,6 +6937,11 @@ Class MainPage
         Return S
     End Function
 
+    ''' <summary>
+    ''' Handles the Click event of the linkGenSql control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub linkGenSql_Click(sender As Object, e As RoutedEventArgs) Handles linkGenSql.Click
 
         GeneratedSql = GenerateSQL()
@@ -5407,6 +6954,11 @@ Class MainPage
         DoNotShowMsgBox = False
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the Button control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub Button_Click(sender As Object, e As RoutedEventArgs)
         Dim ES As String = ENC.AES256EncryptString("DALE MILLER")
         Dim DS As String = ENC.AES256DecryptString(ES)
@@ -5418,6 +6970,13 @@ Class MainPage
 
     'End Sub
 
+    ''' <summary>
+    ''' Gets the dictionary value.
+    ''' </summary>
+    ''' <param name="DR">The dr.</param>
+    ''' <param name="dKey">The d key.</param>
+    ''' <param name="DictVal">The dictionary value.</param>
+    ''' <returns>System.String.</returns>
     Private Function getDictVal(DR As Object, dKey As String, DictVal As Dictionary(Of String, String)) As String
 
         Dim VAL As String = ""
@@ -5430,6 +6989,9 @@ Class MainPage
 
     End Function
 
+    ''' <summary>
+    ''' Sets the email column widths.
+    ''' </summary>
     Private Sub setEmailColumnWidths()
         For Each col As DataGridColumn In dgEmails.Columns
             Dim name As String = col.Header
@@ -5493,6 +7055,11 @@ Class MainPage
         Next
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectionChanged event of the dgEmails control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub dgEmails_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles dgEmails.SelectionChanged
 
         CurrentlySelectedGrid = "EMAIL"
@@ -5638,6 +7205,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the KeyDown event of the dgContent control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="KeyEventArgs"/> instance containing the event data.</param>
     Private Sub dgContent_KeyDown(sender As Object, e As KeyEventArgs) Handles dgContent.KeyDown
         If e.Key = Key.F12 Then
             Dim cm As ContextMenu = FindResource("PopupContent")
@@ -5646,6 +7218,11 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the KeyDown event of the nbrSearchHist control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="KeyEventArgs"/> instance containing the event data.</param>
     Private Sub nbrSearchHist_KeyDown(sender As Object, e As KeyEventArgs) Handles lblMain.KeyDown
 
         Dim CurrSearchId As Double = Convert.ToDouble(lblMain.Content)
@@ -5664,6 +7241,11 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the ScrollPositionChanging event of the dgEmails control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Controls.ScrollChangedEventArgs"/> instance containing the event data.</param>
     Private Sub dgEmails_ScrollPositionChanging(ByVal sender As System.Object, ByVal e As System.Windows.Controls.ScrollChangedEventArgs)
 
         If bGhostFetchActive Then
@@ -5719,6 +7301,11 @@ Class MainPage
         SB.Text = "EMail: % " + PctLocation.ToString
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the nbrEmailRows control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub nbrEmailRows_TextChanged(sender As Object, e As TextChangedEventArgs) Handles nbrEmailRows.TextChanged
         PageRowLimit = Convert.ToInt32(nbrEmailRows.Text)
         nbrDocRows.Text = nbrEmailRows.Text
@@ -5726,12 +7313,22 @@ Class MainPage
         EmailUpperPageNbr = PageRowLimit
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the nbrDocRows control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="TextChangedEventArgs"/> instance containing the event data.</param>
     Private Sub nbrDocRows_TextChanged(sender As Object, e As TextChangedEventArgs) Handles nbrDocRows.TextChanged
         PageRowLimit = CInt(nbrDocRows.Text)
         DocLowerPageNbr = 0
         DocUpperPageNbr = PageRowLimit
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectionChanged event of the dgAttachments control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub dgAttachments_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles dgAttachments.SelectionChanged
 
         If SelectedGrid.Equals("dgEmails") Then
@@ -5766,14 +7363,29 @@ Class MainPage
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the ColumnReordered event of the dgEmails control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="DataGridColumnEventArgs"/> instance containing the event data.</param>
     Private Sub dgEmails_ColumnReordered(sender As Object, e As DataGridColumnEventArgs) Handles dgEmails.ColumnReordered
         SaveGridColumnOrder(dgEmails, dictEmailGridColDisplayOrder)
     End Sub
 
+    ''' <summary>
+    ''' Handles the ColumnReordered event of the dgContent control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="DataGridColumnEventArgs"/> instance containing the event data.</param>
     Private Sub dgContent_ColumnReordered(sender As Object, e As DataGridColumnEventArgs) Handles dgContent.ColumnReordered
         SaveGridColumnOrder(dgContent, dictContentGridColDisplayOrder)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnPlus control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnPlus_Click(sender As Object, e As RoutedEventArgs) Handles btnPlus.Click
         If DoNotApplyQuickSearch Then
             Return
@@ -5781,6 +7393,11 @@ Class MainPage
         QuickSearchRecall(CInt(lblMain.Content), False)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnMinus control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnMinus_Click(sender As Object, e As RoutedEventArgs) Handles btnMinus.Click
         If DoNotApplyQuickSearch Then
             Return
@@ -5788,6 +7405,11 @@ Class MainPage
         QuickSearchRecall(CInt(lblMain.Content), False)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Checked event of the ckShowAll control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub ckShowAll_Checked(sender As Object, e As RoutedEventArgs) Handles ckShowAll.Checked
 
         If gSelectedGrid.Equals("dgEmail") Then
@@ -5810,6 +7432,9 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Hides all content columns.
+    ''' </summary>
     Private Sub HideAllContentColumns()
         Dim columns As ObservableCollection(Of DataGridColumn) = dgContent.Columns
 
@@ -5817,6 +7442,9 @@ Class MainPage
             col.Visibility = Visibility.Collapsed
         Next
     End Sub
+    ''' <summary>
+    ''' Hides all email columns.
+    ''' </summary>
     Private Sub HideAllEmailColumns()
         Dim columns As ObservableCollection(Of DataGridColumn) = dgEmails.Columns
 
@@ -5824,6 +7452,9 @@ Class MainPage
             col.Visibility = Visibility.Collapsed
         Next
     End Sub
+    ''' <summary>
+    ''' Shows all email columns.
+    ''' </summary>
     Private Sub ShowAllEmailColumns()
         Dim columns As ObservableCollection(Of DataGridColumn) = dgEmails.Columns
 
@@ -5831,6 +7462,9 @@ Class MainPage
             col.Visibility = Visibility.Visible
         Next
     End Sub
+    ''' <summary>
+    ''' Shows all content columns.
+    ''' </summary>
     Private Sub ShowAllContentColumns()
         Dim columns As ObservableCollection(Of DataGridColumn) = dgContent.Columns
 
@@ -5838,6 +7472,9 @@ Class MainPage
             col.Visibility = Visibility.Visible
         Next
     End Sub
+    ''' <summary>
+    ''' Shows the basic email columns.
+    ''' </summary>
     Private Sub ShowBasicEmailColumns()
         Dim columns As ObservableCollection(Of DataGridColumn) = dgEmails.Columns
         For Each col As DataGridColumn In columns
@@ -5902,6 +7539,9 @@ Class MainPage
         Next
     End Sub
 
+    ''' <summary>
+    ''' Populates the master search dictionary.
+    ''' </summary>
     Public Sub PopulateMasterSearchDict()
 
         Dim AutoSql As String = ""
@@ -6019,6 +7659,9 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Shows the basic content columns.
+    ''' </summary>
     Private Sub ShowBasicContentColumns()
         Dim columns As ObservableCollection(Of DataGridColumn) = dgContent.Columns
         For Each col As DataGridColumn In columns
@@ -6075,25 +7718,50 @@ Class MainPage
         Next
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectionChanged event of the tabSearch control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
     Private Sub tabSearch_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles tabSearch.SelectionChanged
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnDownload control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnDownload_Click(sender As Object, e As RoutedEventArgs) Handles btnDownload.Click
         Dim msg As String = DLOAD.DownLoadSelectedItems(dgContent, dgEmails)
         MessageBox.Show(msg, "DOWNLOADED FILES")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnViewDL control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnViewDL_Click(sender As Object, e As RoutedEventArgs) Handles btnViewDL.Click
 
         Process.Start(gDownloadDIR)
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the GotFocus event of the btnOpenRestoreScreen control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub btnOpenRestoreScreen_GotFocus(sender As Object, e As RoutedEventArgs) Handles btnOpenRestoreScreen.GotFocus
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the BtnGetCount control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub BtnGetCount_Click(sender As Object, e As RoutedEventArgs) Handles btnGetCount.Click
 
         If rbAll.IsChecked Then
@@ -6120,6 +7788,11 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the 1 event of the Button_Click control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub Button_Click_1(sender As Object, e As RoutedEventArgs) Handles button.Click
 
         'Dim L As New List(Of String)
@@ -6140,14 +7813,29 @@ Class MainPage
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the AutoGeneratingColumn event of the DgContent control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="DataGridAutoGeneratingColumnEventArgs"/> instance containing the event data.</param>
     Private Sub DgContent_AutoGeneratingColumn(sender As Object, e As DataGridAutoGeneratingColumnEventArgs) Handles dgContent.AutoGeneratingColumn
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Loaded event of the TabEmail control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub TabEmail_Loaded(sender As Object, e As RoutedEventArgs) Handles TabEmail.Loaded
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the AutoGeneratedColumns event of the DgContent control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub DgContent_AutoGeneratedColumns(sender As Object, e As EventArgs) Handles dgContent.AutoGeneratedColumns
 
         Console.WriteLine("dgContent Columns ******************************************")
@@ -6161,6 +7849,11 @@ Class MainPage
         Next
     End Sub
 
+    ''' <summary>
+    ''' Handles the AutoGeneratedColumns event of the DgEmails control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub DgEmails_AutoGeneratedColumns(sender As Object, e As EventArgs) Handles dgEmails.AutoGeneratedColumns
 
         If gDebug Then
@@ -6177,29 +7870,82 @@ Class MainPage
         setEmailColumnWidths()
     End Sub
 
+    ''' <summary>
+    ''' Handles the SizeChanged event of the GridLayoutDocs control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="SizeChangedEventArgs"/> instance containing the event data.</param>
     Private Sub GridLayoutDocs_SizeChanged(sender As Object, e As SizeChangedEventArgs) Handles gridLayoutDocs.SizeChanged
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the BtnRefresh control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
     Private Sub BtnRefresh_Click(sender As Object, e As RoutedEventArgs) Handles btnRefresh.Click
 
     End Sub
 End Class
 
+''' <summary>
+''' Class GridCols.
+''' </summary>
 Public Class GridCols
+    ''' <summary>
+    ''' The col ord
+    ''' </summary>
     Public ColOrd As Integer
+    ''' <summary>
+    ''' The colname
+    ''' </summary>
     Public Colname As String
+    ''' <summary>
+    ''' The width
+    ''' </summary>
     Public Width As Integer
+    ''' <summary>
+    ''' The b read only
+    ''' </summary>
     Public bReadOnly As Boolean
+    ''' <summary>
+    ''' The visible
+    ''' </summary>
     Public Visible As Boolean
+    ''' <summary>
+    ''' The grid name
+    ''' </summary>
     Public GridName As String
 End Class
 
+''' <summary>
+''' Class DS_ContentDS.
+''' </summary>
 Public Class DS_ContentDS
+    ''' <summary>
+    ''' Gets or sets the content ds.
+    ''' </summary>
+    ''' <value>The content ds.</value>
     Public Property ContentDS As DataTable
 End Class
+''' <summary>
+''' Class DS_ImageData.
+''' </summary>
 Public Class DS_ImageData
+    ''' <summary>
+    ''' Gets or sets the name of the source.
+    ''' </summary>
+    ''' <value>The name of the source.</value>
     Public Property SourceName As String
+    ''' <summary>
+    ''' Gets or sets the length of the file.
+    ''' </summary>
+    ''' <value>The length of the file.</value>
     Public Property FileLength As String
+    ''' <summary>
+    ''' Gets or sets the source image.
+    ''' </summary>
+    ''' <value>The source image.</value>
     Public Property SourceImage As Byte()
 End Class
