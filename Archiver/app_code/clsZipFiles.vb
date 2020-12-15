@@ -20,6 +20,7 @@ Public Class clsZipFiles
     Dim UTIL As New clsUtility
     Dim LOG As New clsLogging
     Dim ENC As new ECMEncrypt
+    Dim DBA As New clsDbARCHS
 
     Dim ISO As New clsIsolatedStorage
     Dim ZDS As New clsZIPDATASOURCE

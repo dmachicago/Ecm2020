@@ -4037,6 +4037,10 @@ SKIPFOLDER:
         LL = 26
         Dim file_FullName As String = "" : LL = 31
         Dim file_name As String = "" : LL = 36
+        Dim ExplodeZipFile As String = System.Configuration.ConfigurationManager.AppSettings("bExplodeZipFile")
+        If ExplodeZipFile.Equals("1") Then
+            bExplodeZipFile = True
+        End If
         LL = 41
         If Not Directory.Exists(ERR_FQN) Then : LL = 46
             LL = 51
@@ -4571,7 +4575,6 @@ Process01:
                             End If
 
                             LL = 2191
-                            bExplodeZipFile = True : LL = 2196
                             ThisFileNeedsToBeMoved = False : LL = 2201
                             ThisFileNeedsToBeDeleted = False : LL = 2206
                             LL = 2211
@@ -5242,25 +5245,26 @@ Process01:
                                 'frmNotify.lblFileSpec.Text = "Size: " + BytesLoading.ToString + Units + " / " + TS.Hours.ToString + ":" + sMin + ":" + sSec : LL = 4936
                                 'frmNotify.Refresh() : LL = 4941
 
+                                '*************************************** PROCESS ZIPFILE *************************************** 
                                 Application.DoEvents() : LL = 4946
-                                LL = 4951
                                 isZipFile = ZF.isZipFile(file_FullName) : LL = 4956
                                 If isZipFile = True Then : LL = 4961
                                     Dim ExistingParentZipGuid As String = DBARCH.GetGuidByFqn(file_FullName, 0) : LL = 4966
-                                    bExplodeZipFile = False : LL = 4971
                                     StackLevel = 0 : LL = 4976
                                     ListOfFiles.Clear() : LL = 4981
                                     If ExistingParentZipGuid.Length > 0 Then : LL = 4986
                                         DBLocal.addZipFile(file_FullName, ExistingParentZipGuid, False) : LL = 4991
-                                        ZF.UploadZipFile(UIDcurr, MachineIDcurr, file_FullName, ExistingParentZipGuid, True, False, RetentionCode, isPublic, StackLevel, ListOfFiles) : LL = 4996
+                                        ZF.UploadZipFile(UIDcurr, MachineIDcurr, file_FullName, ExistingParentZipGuid, True, False, RetentionCode, isPublic, StackLevel, ListOfFiles)
                                         DBLocal.updateFileArchiveInfoLastArchiveDate(file_FullName)
+                                        LOG.WriteToArchiveLog("ZIP FILE already in Repo: Processing UPDATE for: " + file_FullName)
                                     Else : LL = 5006
                                         DBLocal.addZipFile(file_FullName, SourceGuid, False) : LL = 5011
-                                        ZF.UploadZipFile(UIDcurr, MachineIDcurr, file_FullName, SourceGuid, True, False, RetentionCode, isPublic, StackLevel, ListOfFiles) : LL = 5016
+                                        ZF.UploadZipFile(UIDcurr, MachineIDcurr, file_FullName, SourceGuid, True, False, RetentionCode, isPublic, StackLevel, ListOfFiles)
                                         DBLocal.updateFileArchiveInfoLastArchiveDate(file_FullName)
+                                        LOG.WriteToArchiveLog("ZIP FILE NEW - addding : " + file_FullName)
                                     End If : LL = 5026
                                 End If : LL = 5031
-                                LL = 5036
+                                '*************************************** PROCESS ZIP FILE *************************************** 
 
                             End If : LL = 5041
 NextFile:                   LL = 5046
@@ -5441,7 +5445,6 @@ NextFolder:
         ListOfFiles.Clear() : LL = 5701
         LL = 5706
         For i As Integer = 0 To ZipFilesContent.Count - 1 : LL = 5711
-            bExplodeZipFile = False : LL = 5716
             'FrmMDIMain.SB.Text = "Processing Quickref"	:	LL = 	5721
             'If i >= 24 Then	:	LL = 	5726
             '    Debug.Print("here")	:	LL = 	5731

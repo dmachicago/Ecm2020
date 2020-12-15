@@ -10095,6 +10095,7 @@ NextFolder:
                         LOG.WriteToArchiveLog(file_FullName)
                     End If
 
+                    '**************************** ZIPFILE WDM********************************************************
                     Dim isZipFile As Boolean = ZF.isZipFile(file_FullName)
                     If isZipFile = True Then
                         Dim StackLevel As Integer = 0
@@ -10103,17 +10104,21 @@ NextFolder:
                         If ExistingParentZipGuid.Length > 0 Then
                             'ZipFiles.Add(file_FullName .Trim + "|" + ExistingParentZipGuid)
                             DBLocal.addZipFile(file_FullName, ExistingParentZipGuid, False)
+                            '**************************** UPLOAD ZIPFILE ********************************************************
                             ZF.UploadZipFile(UID, MachineID, file_FullName, ExistingParentZipGuid, True, False, RetentionCode, isPublic, StackLevel, ListOfFiles)
                             DBLocal.updateFileArchiveInfoLastArchiveDate(file_FullName)
                         Else
                             'ZipFiles.Add(file_FullName .Trim + "|" + SourceGuid )
                             DBLocal.addZipFile(file_FullName, SourceGuid, False)
+                            '**************************** UPLOAD ZIPFILE ********************************************************
                             ZF.UploadZipFile(UID, MachineID, file_FullName, SourceGuid, True, False, RetentionCode, isPublic, StackLevel, ListOfFiles)
                             DBLocal.updateFileArchiveInfoLastArchiveDate(file_FullName)
                         End If
                         ListOfFiles = Nothing
                         GC.Collect()
                     End If
+                    '**************************************************************************************************
+
                     Application.DoEvents()
                     If Not isZipFile Then
                         Dim bExt As Boolean = isExtExcluded(file_SourceTypeCode, True)
