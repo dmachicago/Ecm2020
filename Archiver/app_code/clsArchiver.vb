@@ -2911,10 +2911,6 @@ SKIP2NEXT:
                                     End If
                                     LL = 1572
                                     If isZipFile = True Then
-                                        LL = 1573
-                                        '** Explode and load
-                                        LL = 1574
-                                        'WDM ZIPFILE
                                         LL = 1575
                                         Dim AttachmentName As String = Atmt.FileName
                                         LL = 1576
@@ -8664,9 +8660,9 @@ GetNextParentFolder:
             Dim StartInsert As Date = Now
             LOG.WriteToTimerLog("Start ArchiveRssFeed", "InsertRSSFeed:" + file_FullName, "START")
 
-            Dim BB As Boolean = AddSourceToRepo(gCurrUserGuidID, gMachineID, gNetworkID, SourceGuid, RssFQN, file_FullName, file_SourceTypeCode, file_LastAccessDate, file_CreateDate, file_LastWriteTime, gCurrUserGuidID, LastVerNbr, RetentionCode, isPublic, CrcHash, RSSProcessingDir)
+            Dim ReturnedSourceGuid As String = AddSourceToRepo(gCurrUserGuidID, gMachineID, gNetworkID, SourceGuid, RssFQN, file_FullName, file_SourceTypeCode, file_LastAccessDate, file_CreateDate, file_LastWriteTime, gCurrUserGuidID, LastVerNbr, RetentionCode, isPublic, CrcHash, RSSProcessingDir)
 
-            If BB Then
+            If ReturnedSourceGuid.Length > 0 Then
                 LOG.WriteToTimerLog("END ArchiveRssFeed", "AddSourceToRepo" + file_FullName, "STOP", StartInsert)
             Else
                 LOG.WriteToTimerLog("FAIL ArchiveRssFeed", "AddSourceToRepo" + file_FullName, "STOP", StartInsert)
@@ -8765,16 +8761,16 @@ GetNextParentFolder:
             Dim StartInsert As Date = Now
             LOG.WriteToTimerLog("Start ArchiveRssFeedWebPage", "InsertRSSFeed:" + file_FullName, "START")
 
-            Dim BB As Boolean = AddSourceToRepo(gCurrUserGuidID, gMachineID, gNetworkID, SourceGuid, file_FullName, file_SourceName, file_SourceTypeCode, file_LastAccessDate, file_CreateDate, file_LastWriteTime, gCurrUserGuidID, LastVerNbr, RetentionCode, isPublic, CrcHash, WEBProcessingDir)
+            Dim ReturnedSourceGuid As String = AddSourceToRepo(gCurrUserGuidID, gMachineID, gNetworkID, SourceGuid, file_FullName, file_SourceName, file_SourceTypeCode, file_LastAccessDate, file_CreateDate, file_LastWriteTime, gCurrUserGuidID, LastVerNbr, RetentionCode, isPublic, CrcHash, WEBProcessingDir)
 
-            If BB Then
+            If ReturnedSourceGuid.Length > 0 Then
                 insertSourceChild(RssSourceGuid, SourceGuid)
                 LOG.WriteToTimerLog("END ArchiveRssFeedWebPage", "AddSourceToRepo" + file_FullName, "STOP", StartInsert)
             Else
                 LOG.WriteToTimerLog("FAIL ArchiveRssFeedWebPage", "AddSourceToRepo" + file_FullName, "STOP", StartInsert)
             End If
 
-            If BB Then
+            If ReturnedSourceGuid.Length > 0 Then
 
                 Dim VersionNbr As String = "0"
                 Dim UpdateInsert As Date = Now
@@ -9011,9 +9007,9 @@ GetNextParentFolder:
             Dim StartInsert As Date = Now
             LOG.WriteToTimerLog("Start ArchiveWebPage", "InsertWebPage:" + file_FullName, "START")
 
-            Dim BB As Boolean = AddSourceToRepo(gCurrUserGuidID, gMachineID, gNetworkID, SourceGuid, file_SourceName, file_FullName, file_SourceTypeCode, file_LastAccessDate, file_CreateDate, file_LastWriteTime, gCurrUserGuidID, LastVerNbr, RetentionCode, isPublic, CrcHash, WEBProcessingDir)
+            Dim ReturnedSourceGuid As String = AddSourceToRepo(gCurrUserGuidID, gMachineID, gNetworkID, SourceGuid, file_SourceName, file_FullName, file_SourceTypeCode, file_LastAccessDate, file_CreateDate, file_LastWriteTime, gCurrUserGuidID, LastVerNbr, RetentionCode, isPublic, CrcHash, WEBProcessingDir)
 
-            If BB Then
+            If ReturnedSourceGuid.Length > 0 Then
                 If ParentSourceGuid.Length > 0 Then
                     insertSourceChild(ParentSourceGuid, SourceGuid)
                 End If
@@ -9022,7 +9018,7 @@ GetNextParentFolder:
                 LOG.WriteToTimerLog("FAIL ArchiveWebPage", "AddSourceToRepo" + file_FullName, "STOP", StartInsert)
             End If
 
-            If BB Then
+            If ReturnedSourceGuid.Length > 0 Then
 
                 Dim VersionNbr As String = "0"
                 Dim UpdateInsert As Date = Now
@@ -9082,7 +9078,7 @@ GetNextParentFolder:
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
-
+        Console.WriteLine("clsArchive: ArchiveContent")
         If xDebug Then LOG.WriteToArchiveLog("clsArchiver:ArchiveContent 100")
 
         Dim versionNumber As String = Application.ProductVersion.ToString
@@ -9312,7 +9308,7 @@ ProcessOneFileOnly:
 
                     If iDatasourceCnt = 0 Then
                         '********************************************************************************
-                        '* The file DOES NOT exist in the reporsitory, add it now.
+                        '* The file DOES NOT exist in the repository, add it now.
                         '********************************************************************************
                         Application.DoEvents()
                         LastVerNbr = 0
@@ -9323,18 +9319,18 @@ ProcessOneFileOnly:
 
                         '****************************************************************************************************************************************************************
                         '****************************************************************************************************************************************************************
-                        Dim BB As Boolean = AddSourceToRepo(UID, MachineID, gNetworkID, SourceGuid, file_FullName, file_SourceName, file_SourceTypeCode, file_LastAccessDate, file_CreateDate, file_LastWriteTime, gCurrUserGuidID, LastVerNbr, RetentionCode, isPublic, ImageHash, file_DirName)
+                        Dim ReturnedSourceGuid As String = AddSourceToRepo(UID, MachineID, gNetworkID, SourceGuid, file_FullName, file_SourceName, file_SourceTypeCode, file_LastAccessDate, file_CreateDate, file_LastWriteTime, gCurrUserGuidID, LastVerNbr, RetentionCode, isPublic, ImageHash, file_DirName)
                         '****************************************************************************************************************************************************************
                         '****************************************************************************************************************************************************************
-                        If BB Then
+                        If ReturnedSourceGuid.Length > 0 Then
                             setRetentionDate(SourceGuid, RetentionCode, OriginalFileType)
                             LOG.WriteToDBUpdatesLog("UPDATED/ADDED FILE: " + SourceGuid + " : " + file_FullName)
                         Else
                             LOG.WriteToDBUpdatesLog("ERROR FAILED- FILE: " + SourceGuid + " : " + file_FullName)
                         End If
-
+                        '*****  WDM Changed ZIP Ext and corrected the below 12/15/2020
                         Dim fExt As String = DMA.getFileExtension(file_FullName)
-                        If FQN.ToUpper.Equals("ZIP") Then
+                        If fExt.ToUpper.Equals("ZIP") Then
                             DBLocal.addZipFile(file_FullName, False, SourceGuid)
                             Dim StackLevel As Integer = 0
                             Dim ListOfFiles As New Dictionary(Of String, Integer)
@@ -10095,25 +10091,30 @@ NextFolder:
                         LOG.WriteToArchiveLog(file_FullName)
                     End If
 
+                    '**************************** ZIPFILE WDM********************************************************
                     Dim isZipFile As Boolean = ZF.isZipFile(file_FullName)
                     If isZipFile = True Then
                         Dim StackLevel As Integer = 0
                         Dim ListOfFiles As New Dictionary(Of String, Integer)
-                        Dim ExistingParentZipGuid As String = GetGuidByFqn(file_FullName, 0)
+                        Dim ExistingParentZipGuid As String = GetGuidByFqn(file_FullName)
                         If ExistingParentZipGuid.Length > 0 Then
                             'ZipFiles.Add(file_FullName .Trim + "|" + ExistingParentZipGuid)
                             DBLocal.addZipFile(file_FullName, ExistingParentZipGuid, False)
+                            '**************************** UPLOAD ZIPFILE ********************************************************
                             ZF.UploadZipFile(UID, MachineID, file_FullName, ExistingParentZipGuid, True, False, RetentionCode, isPublic, StackLevel, ListOfFiles)
                             DBLocal.updateFileArchiveInfoLastArchiveDate(file_FullName)
                         Else
                             'ZipFiles.Add(file_FullName .Trim + "|" + SourceGuid )
                             DBLocal.addZipFile(file_FullName, SourceGuid, False)
+                            '**************************** UPLOAD ZIPFILE ********************************************************
                             ZF.UploadZipFile(UID, MachineID, file_FullName, SourceGuid, True, False, RetentionCode, isPublic, StackLevel, ListOfFiles)
                             DBLocal.updateFileArchiveInfoLastArchiveDate(file_FullName)
                         End If
                         ListOfFiles = Nothing
                         GC.Collect()
                     End If
+                    '**************************************************************************************************
+
                     Application.DoEvents()
                     If Not isZipFile Then
                         Dim bExt As Boolean = isExtExcluded(file_SourceTypeCode, True)
@@ -10177,10 +10178,10 @@ NextFolder:
                         Application.DoEvents()
                         AttachmentCode = "C"
 
-                        Dim BB As Boolean = AddSourceToRepo(UID, MachineID, gNetworkID, SourceGuid, file_FullName, file_SourceName, file_SourceTypeCode, file_LastAccessDate, file_CreateDate, file_LastWriteTime, gCurrUserGuidID, LastVerNbr, RetentionCode, isPublic, CrcHash, file_DirName)
+                        Dim ReturnedSourceGuid As String = AddSourceToRepo(UID, MachineID, gNetworkID, SourceGuid, file_FullName, file_SourceName, file_SourceTypeCode, file_LastAccessDate, file_CreateDate, file_LastWriteTime, gCurrUserGuidID, LastVerNbr, RetentionCode, isPublic, CrcHash, file_DirName)
                         DBLocal.updateFileArchiveInfoLastArchiveDate(file_FullName)
 
-                        If BB Then
+                        If ReturnedSourceGuid.Length > 0 Then
 
                             'Dim VersionNbr As String = "0"
                             'Dim CRC As String = DMA.CalcCRC(file_FullName)
@@ -10750,8 +10751,9 @@ NextFolder:
 
     End Function
 
-    Function ArchiveSingleFile(ByVal UID As String, ByVal FQN As String) As Boolean
+    Function ArchiveSingleFile(ByVal UID As String, ByVal FQN As String) As String
 
+        Dim SourceGuid As String = Guid.NewGuid.ToString
         Dim B As Boolean = True
 
         Dim DOCS As New clsDataSource_V2
@@ -10829,7 +10831,7 @@ NextFolder:
         Dim SharePointDoc As Boolean = True
         Dim SharePointList As Boolean = True
         Dim SharePointListItem As Boolean = True
-        Dim SourceGuid As String = Guid.NewGuid.ToString
+
         Dim SourceImage As Byte() = Nothing
         Dim SourceImageOrigin As String = ""
         Dim SourceName As String = ""
@@ -10974,7 +10976,7 @@ NextFolder:
                 ExecuteSqlNewConn(90214, MySql)
                 LOG.WriteToErrorLog("Unrecoverable Error - removed file '" + FI.FullName + "' from the repository.")
 
-                Dim DisplayMsg As String = "A source file failed to load. Review ERROR log." + environment.NewLine + FI.FullName
+                Dim DisplayMsg As String = "A source file failed to load. Review ERROR log." + Environment.NewLine + FI.FullName
                 frmHelp.MsgToDisplay = DisplayMsg
                 frmHelp.CallingScreenName = "ECM Archive"
                 frmHelp.CaptionName = "Fatal Load Error"
@@ -11095,6 +11097,7 @@ NextFile:
                 S = "update [DirectoryListenerFiles] set Archived = 1 where sourcefile = '" + FI.FullName + "' and MachineName = '" + MachineID + "'"
                 B = ExecuteSqlNewConn(90218, S)
                 If Not B Then
+                    SourceGuid = ""
                     LOG.WriteToListenLog("ERROR: ArchiveSingleFile: failed to archive: " + FI.DirectoryName + " \ " + FQN)
                 End If
             End If
@@ -11133,7 +11136,7 @@ SKIPOUT:
         '        LOG.WriteToListenLog("ERROR: ArchiveSingleFile: failed to archive: " + fi.DirectoryName + " \ " + FQN)
         '    End If
         'End If
-        Return True
+        Return sessionguid
         frmNotify.lblPdgPages.Text = "*"
     End Function
 

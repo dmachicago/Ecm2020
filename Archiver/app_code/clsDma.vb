@@ -862,13 +862,13 @@ FERR:
 
                     If fi.Length > 0 Then
                         Dim fn As String = fi.Name
-                        If fn.Substring(1, 1).Equals("~") Then
-                            If I = 0 Then
+                        'If fn.Substring(1, 1).Equals("~") Then
+                        If I = 0 Then
                                 DirFiles.Add(FileAttributes)
                             Else
                                 DirFiles.Add(FileAttributes)
                             End If
-                        End If
+                        'End If
                     End If
                     iFilesAdded += 1
 NextFile:

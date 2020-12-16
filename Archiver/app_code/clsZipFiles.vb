@@ -20,6 +20,7 @@ Public Class clsZipFiles
     Dim UTIL As New clsUtility
     Dim LOG As New clsLogging
     Dim ENC As new ECMEncrypt
+    Dim DBA As New clsDbARCHS
 
     Dim ISO As New clsIsolatedStorage
     Dim ZDS As New clsZIPDATASOURCE
@@ -57,16 +58,15 @@ Public Class clsZipFiles
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
-        Dim ExplodeContentZip As String = DBARCH.getSystemParm("ExplodeContentZip")
-        If (ExplodeContentZip.Equals("N")) Then
+        Dim ExplodeZipFile As String = System.Configuration.ConfigurationManager.AppSettings("ExplodeZipFile")
+        If (ExplodeZipFile.Equals("0")) Then
             Return True
         End If
         ' ExplodeEmailAttachment()
         ' ExplodeEmailZip()
-        ' ExplodeContentZip()
+        ' ExplodeZipFile()
 
         'Check to see if the "EXPLODE ZIP FILE flag is true and if so, just return true.
-
         StackLevel += 1
         Dim isArchiveBitOn As Boolean = DMA.isArchiveBitOn(FQN)
         Dim bIsArchivedAlready As Boolean = DMA.isFileArchiveAttributeSet(FQN)
@@ -87,7 +87,7 @@ Public Class clsZipFiles
         Dim B As Boolean = False
 
         fExt = fExt.ToUpper
-        If UCase(fExt).Equals("ZIP") Then
+        If UCase(fExt).Equals("ZIP") Or UCase(fExt).Equals(".ZIP") Then
             B = UnZip(FQN, ZipProcessingDir)
             If B Then
                 If Not bThisIsAnEmail Then
@@ -130,7 +130,7 @@ Public Class clsZipFiles
                 Then
 
             B = Un7zip(FQN$, ZipProcessingDir)
-            'WDMXXXX
+
             If B Then
                 If Not bThisIsAnEmail Then
                     UnzipAndLoadContent(UID, MachineID, ZipProcessingDir, ParentZipGuid, bThisIsAnEmail, RetentionCode, isPublic, StackLevel, ListOfFiles)
@@ -233,13 +233,14 @@ Public Class clsZipFiles
                             ByVal StackLevel As Integer,
                             ByRef ListOfFiles As Dictionary(Of String, Integer))
 
-        Dim ExplodeContentZip As String = DBARCH.getSystemParm("ExplodeContentZip")
-        If (ExplodeContentZip.Equals("N")) Then
+
+        Dim ExplodeZipFile As String = System.Configuration.ConfigurationManager.AppSettings("ExplodeZipFile")
+        If (ExplodeZipFile.Equals("0")) Then
             Return
         End If
         ' ExplodeEmailAttachment()
         ' ExplodeEmailZip()
-        ' ExplodeContentZip()
+        ' ExplodeZipFile()
         'Check to see if the "EXPLODE ZIP FILE flag is true and if so, just return true.
 
         Dim DirFiles As New List(Of String)
@@ -385,34 +386,40 @@ Public Class clsZipFiles
                         Dim EMX As New clsEmailFunctions
                         Dim xAttachedFiles As New List(Of String)
                         If File.Exists(file_FullName) Then
-                            EMX.LoadMsgFile(UID, file_FullName, gMachineID, "CONTENT-ZIP-FILE", "", RetentionCode$, "UNKNOWN", "", xAttachedFiles, False, NewSourceGuid$, "FOUND IN CONTENT ZIP FILE:" + file_FullName.Replace("'", "`"))
+                            EMX.LoadMsgFile(UID, file_FullName, gMachineID, "CONTENT-ZIP-FILE", "", RetentionCode$, "UNKNOWN", "", xAttachedFiles, False, NewSourceGuid, "FOUND IN CONTENT ZIP FILE:" + file_FullName.Replace("'", "`"))
                         End If
                         EMX = Nothing
                     Else
 
                         Dim AttachmentCode As String = "C"
                         'Dim CrcHash As String = ENC.getCountDataSourceFiles(file_FullName)
-
-                        BB = DBARCH.AddSourceToRepo(UID, MachineID, gNetworkID, NewSourceGuid$, file_FullName, file_SourceName, file_SourceTypeCode, file_LastAccessDate$, file_CreateDate$, file_LastWriteTime$, gCurrUserGuidID, LastVerNbr, RetentionCode, isPublic, CrcHash, file_DirName$)
-                        If BB Then
-                            Dim BBX As Boolean = DBARCH.ExecuteSqlNewConn(90000, "Update DataSource set ParentGuid = '" + ParentSourceGuid + "' where SourceGuid = '" + NewSourceGuid$ + "' ")
+                        Dim ReturnedSourceGuid As String = DBARCH.AddSourceToRepo(UID, MachineID, gNetworkID, NewSourceGuid, file_FullName, file_SourceName, file_SourceTypeCode, file_LastAccessDate$, file_CreateDate$, file_LastWriteTime$, gCurrUserGuidID, LastVerNbr, RetentionCode, isPublic, CrcHash, file_DirName$)
+                        If ReturnedSourceGuid.Length > 0 Then
+                            BB = True
+                            NewSourceGuid = ReturnedSourceGuid
+                            Dim BBX As Boolean = DBARCH.ExecuteSqlNewConn(90000, "Update DataSource set ParentGuid = '" + ParentSourceGuid + "' where SourceGuid = '" + ReturnedSourceGuid + "' ")
+                        Else
+                            NewSourceGuid = ""
+                            BB = False
                         End If
                     End If
                 Catch ex As Exception
+                    NewSourceGuid = ""
                     LOG.WriteToArchiveLog("ERROR DBARCH.AddSourceToRepo 300a " + ex.Message)
                     BB = False
                 End Try
 
-                If BB Then
-                    If isZipFile(file_FullName) Then
-                        Dim RC As Boolean = UploadZipFile(UID, MachineID, file_FullName, ParentSourceGuid, SkipIfAlreadyArchived, bThisIsAnEmail, RetentionCode, isPublic, StackLevel, ListOfFiles)
-                    End If
+                If NewSourceGuid.Length > 0 Then
+                    'WDM Commented out below 12-16-2020
+                    'If isZipFile(file_FullName) Then
+                    '    Dim RC As Boolean = UploadZipFile(UID, MachineID, file_FullName, ParentSourceGuid, SkipIfAlreadyArchived, bThisIsAnEmail, RetentionCode, isPublic, StackLevel, ListOfFiles)
+                    'End If
 
                     If LibraryList.Count > 0 Then
                         For III As Integer = 0 To LibraryList.Count - 1
                             Dim LibraryName$ = LibraryList(III)
                             Dim ARCH As New clsArchiver
-                            ARCH.AddLibraryItem(NewSourceGuid$, file_SourceName, file_SourceTypeCode, LibraryName$)
+                            ARCH.AddLibraryItem(NewSourceGuid, file_SourceName, file_SourceTypeCode, LibraryName$)
                             ARCH = Nothing
                             GC.Collect()
                             GC.WaitForPendingFinalizers()
@@ -420,21 +427,21 @@ Public Class clsZipFiles
                     End If
                     Application.DoEvents()
 
-                    DBARCH.UpdateDocFqn(NewSourceGuid$, file_FullName)
-                    DBARCH.UpdateDocSize(NewSourceGuid$, file_Length$)
-                    DBARCH.UpdateDocDir(NewSourceGuid$, file_FullName)
-                    DBARCH.UpdateDocOriginalFileType(NewSourceGuid$, OriginalFileType$)
-                    DBARCH.UpdateZipFileIndicator(NewSourceGuid$, False)
-                    DBARCH.UpdateIsContainedWithinZipFile(NewSourceGuid$)
+                    DBARCH.UpdateDocFqn(NewSourceGuid, file_FullName)
+                    DBARCH.UpdateDocSize(NewSourceGuid, file_Length$)
+                    DBARCH.UpdateDocDir(NewSourceGuid, file_FullName)
+                    DBARCH.UpdateDocOriginalFileType(NewSourceGuid, OriginalFileType$)
+                    DBARCH.UpdateZipFileIndicator(NewSourceGuid, False)
+                    DBARCH.UpdateIsContainedWithinZipFile(NewSourceGuid)
                     Dim ZipFileFqn$ = DBARCH.getFqnFromGuid(ParentSourceGuid)
-                    DBARCH.UpdateZipFileOwnerGuid(ParentSourceGuid, NewSourceGuid$, ZipFileFqn$)
+                    DBARCH.UpdateZipFileOwnerGuid(ParentSourceGuid, NewSourceGuid, ZipFileFqn$)
 
                     Application.DoEvents()
-                    InsertSrcAttrib(NewSourceGuid$, "FILENAME", file_SourceName, OriginalFileType$)
-                    InsertSrcAttrib(NewSourceGuid$, "CreateDate", file_CreateDate$, OriginalFileType$)
-                    InsertSrcAttrib(NewSourceGuid$, "FILESIZE", file_Length$, OriginalFileType$)
-                    InsertSrcAttrib(NewSourceGuid$, "ChangeDate", file_LastAccessDate, OriginalFileType$)
-                    InsertSrcAttrib(NewSourceGuid$, "WriteDate", file_LastWriteTime$, OriginalFileType$)
+                    InsertSrcAttrib(NewSourceGuid, "FILENAME", file_SourceName, OriginalFileType$)
+                    InsertSrcAttrib(NewSourceGuid, "CreateDate", file_CreateDate$, OriginalFileType$)
+                    InsertSrcAttrib(NewSourceGuid, "FILESIZE", file_Length$, OriginalFileType$)
+                    InsertSrcAttrib(NewSourceGuid, "ChangeDate", file_LastAccessDate, OriginalFileType$)
+                    InsertSrcAttrib(NewSourceGuid, "WriteDate", file_LastWriteTime$, OriginalFileType$)
 
                 End If
                 'Else
@@ -454,7 +461,7 @@ Public Class clsZipFiles
 
                 '            Dim BB As Boolean = False
                 '            Try
-                '                BB = DBARCH.AddSourceToRepo(UID, MachineID, gNetworkID, NewSourceGuid$, _
+                '                BB = DBARCH.AddSourceToRepo(UID, MachineID, gNetworkID, NewSourceGuid, _
                 '                                     file_FullName, _
                 '                                     file_SourceName, _
                 '                                     file_SourceTypeCode, _
@@ -463,33 +470,33 @@ Public Class clsZipFiles
                 '                                     file_LastWriteTime$, gCurrUserGuidID, NextVersionNbr, RetentionCode, isPublic, CrcHash, file_DirName$)
 
                 '                If BB Then
-                '                    Dim BBX As Boolean = DBARCH.ExecuteSqlNewConn("Update DataSource set ParentGuid = '" + ParentSourceGuid + "' where SourceGuid = '" + NewSourceGuid$ + "' ")
+                '                    Dim BBX As Boolean = DBARCH.ExecuteSqlNewConn("Update DataSource set ParentGuid = '" + ParentSourceGuid + "' where SourceGuid = '" + NewSourceGuid + "' ")
                 '                End If
 
                 '                If LibraryList.Count > 0 Then
                 '                    For III As Integer = 0 To LibraryList.Count - 1
                 '                        Dim LibraryName$ = LibraryList(III)
-                '                        DBARCH.AddLibraryItem(NewSourceGuid$, file_SourceName, file_SourceTypeCode, LibraryName$)
+                '                        DBARCH.AddLibraryItem(NewSourceGuid, file_SourceName, file_SourceTypeCode, LibraryName$)
                 '                    Next
                 '                End If
 
                 '                'Dim VersionNbr As String = "0"
 
-                '                DBARCH.UpdateDocFqn(NewSourceGuid$, file_FullName)
-                '                DBARCH.UpdateDocSize(NewSourceGuid$, file_Length$)
-                '                DBARCH.UpdateDocDir(NewSourceGuid$, file_FullName)
-                '                DBARCH.UpdateDocOriginalFileType(NewSourceGuid$, OriginalFileType$)
-                '                DBARCH.UpdateZipFileIndicator(NewSourceGuid$, False)
-                '                DBARCH.UpdateIsContainedWithinZipFile(NewSourceGuid$)
+                '                DBARCH.UpdateDocFqn(NewSourceGuid, file_FullName)
+                '                DBARCH.UpdateDocSize(NewSourceGuid, file_Length$)
+                '                DBARCH.UpdateDocDir(NewSourceGuid, file_FullName)
+                '                DBARCH.UpdateDocOriginalFileType(NewSourceGuid, OriginalFileType$)
+                '                DBARCH.UpdateZipFileIndicator(NewSourceGuid, False)
+                '                DBARCH.UpdateIsContainedWithinZipFile(NewSourceGuid)
                 '                Dim ZipFileFqn$ = DBARCH.getFqnFromGuid(ParentSourceGuid)
-                '                DBARCH.UpdateZipFileOwnerGuid(ParentSourceGuid, NewSourceGuid$, ZipFileFqn$)
+                '                DBARCH.UpdateZipFileOwnerGuid(ParentSourceGuid, NewSourceGuid, ZipFileFqn$)
 
-                '                'DBARCH.delFileParms(NewSourceGuid$)
-                '                InsertSrcAttrib(NewSourceGuid$, "FILENAME", file_SourceName, OriginalFileType$)
-                '                InsertSrcAttrib(NewSourceGuid$, "CreateDate", file_CreateDate$, OriginalFileType$)
-                '                InsertSrcAttrib(NewSourceGuid$, "FILESIZE", file_Length$, OriginalFileType$)
-                '                InsertSrcAttrib(NewSourceGuid$, "ChangeDate", file_LastAccessDate, OriginalFileType$)
-                '                InsertSrcAttrib(NewSourceGuid$, "WriteDate", file_LastWriteTime$, OriginalFileType$)
+                '                'DBARCH.delFileParms(NewSourceGuid)
+                '                InsertSrcAttrib(NewSourceGuid, "FILENAME", file_SourceName, OriginalFileType$)
+                '                InsertSrcAttrib(NewSourceGuid, "CreateDate", file_CreateDate$, OriginalFileType$)
+                '                InsertSrcAttrib(NewSourceGuid, "FILESIZE", file_Length$, OriginalFileType$)
+                '                InsertSrcAttrib(NewSourceGuid, "ChangeDate", file_LastAccessDate, OriginalFileType$)
+                '                InsertSrcAttrib(NewSourceGuid, "WriteDate", file_LastWriteTime$, OriginalFileType$)
 
                 '            Catch ex As Exception
                 '                LOG.WriteToArchiveLog("ERROR DBARCH.AddSourceToRepo 200 " + ex.Message)
@@ -511,37 +518,37 @@ Public Class clsZipFiles
                 '            Dim BB As Boolean = False
 
                 '            Dim OriginalFileName As String = DMA.getFileName(file_FullName)
-                '            BB = DBARCH.UpdateSourceImageInRepo(OriginalFileName, UID, MachineID, NewSourceGuid$, file_LastAccessDate$, file_CreateDate$, file_LastWriteTime$, LastVerNbr, file_FullName, RetentionCode, isPublic, CrcHash)
+                '            BB = DBARCH.UpdateSourceImageInRepo(OriginalFileName, UID, MachineID, NewSourceGuid, file_LastAccessDate$, file_CreateDate$, file_LastWriteTime$, LastVerNbr, file_FullName, RetentionCode, isPublic, CrcHash)
                 '            If Not BB Then
-                '                Dim MySql$ = "Delete from DataSource where SourceGuid = '" + NewSourceGuid$ + "'"
+                '                Dim MySql$ = "Delete from DataSource where SourceGuid = '" + NewSourceGuid + "'"
                 '                DBARCH.ExecuteSqlNewConn(MySql)
                 '                LOG.WriteToArchiveLog("Fatal Error - removed file '" + file_FullName + "' from the repository.")
                 '            Else
-                '                Dim BBX As Boolean = DBARCH.ExecuteSqlNewConn("Update DataSource set ParentGuid = '" + ParentSourceGuid + "' where SourceGuid = '" + NewSourceGuid$ + "' ")
+                '                Dim BBX As Boolean = DBARCH.ExecuteSqlNewConn("Update DataSource set ParentGuid = '" + ParentSourceGuid + "' where SourceGuid = '" + NewSourceGuid + "' ")
                 '            End If
 
                 '            If LibraryList.Count > 0 Then
                 '                For III As Integer = 0 To LibraryList.Count - 1
                 '                    Dim LibraryName$ = LibraryList(III)
-                '                    DBARCH.AddLibraryItem(NewSourceGuid$, file_SourceName, file_SourceTypeCode, LibraryName$)
+                '                    DBARCH.AddLibraryItem(NewSourceGuid, file_SourceName, file_SourceTypeCode, LibraryName$)
                 '                Next
                 '            End If
 
-                '            DBARCH.UpdateDocFqn(NewSourceGuid$, file_FullName)
-                '            DBARCH.UpdateDocSize(NewSourceGuid$, file_Length$)
-                '            DBARCH.UpdateDocOriginalFileType(NewSourceGuid$, OriginalFileType$)
-                '            DBARCH.UpdateZipFileIndicator(NewSourceGuid$, "N")
-                '            DBARCH.UpdateIsContainedWithinZipFile(NewSourceGuid$)
-                '            DBARCH.UpdateZipFileOwnerGuid(ParentSourceGuid, NewSourceGuid$, file_FullName)
+                '            DBARCH.UpdateDocFqn(NewSourceGuid, file_FullName)
+                '            DBARCH.UpdateDocSize(NewSourceGuid, file_Length$)
+                '            DBARCH.UpdateDocOriginalFileType(NewSourceGuid, OriginalFileType$)
+                '            DBARCH.UpdateZipFileIndicator(NewSourceGuid, "N")
+                '            DBARCH.UpdateIsContainedWithinZipFile(NewSourceGuid)
+                '            DBARCH.UpdateZipFileOwnerGuid(ParentSourceGuid, NewSourceGuid, file_FullName)
 
-                '            DBARCH.UpdateDocDir(NewSourceGuid$, file_FullName)
+                '            DBARCH.UpdateDocDir(NewSourceGuid, file_FullName)
 
                 '            If (LCase(file_SourceTypeCode).Equals(".doc") Or LCase(file_SourceTypeCode).Equals(".docx")) Then
-                '                GetWordDocMetadata(file_FullName, NewSourceGuid$, OriginalFileType$)
+                '                GetWordDocMetadata(file_FullName, NewSourceGuid, OriginalFileType$)
                 '            End If
                 '            If (file_SourceTypeCode.Equals(".xls") _
                 '                        Or file_SourceTypeCode.Equals(".xlsx") Or file_SourceTypeCode.Equals(".xlsm")) Then
-                '                Me.GetExcelMetaData(file_FullName, NewSourceGuid$, OriginalFileType$)
+                '                Me.GetExcelMetaData(file_FullName, NewSourceGuid, OriginalFileType$)
                 '            End If
                 '        Else
                 '            If ddebug Then Debug.Print("Document " + file_FullName + " has not changed, SKIPPING.")
@@ -561,6 +568,7 @@ NextFile:
                     File.Delete(file_FullName$)
                 Catch ex As Exception
                     Console.WriteLine("Failed to delete A2: " + S)
+                    LOG.WriteToArchiveLog("ERROR Failed to delete FILE : " + S)
                 End Try
 
             Catch ex As Exception
@@ -909,8 +917,8 @@ SkipToNextFile:
 
     Function UnZip(ByVal FQN As String, ByVal ZipProcessingDir As String) As Boolean
 
-        Dim ExplodeContentZip As String = DBARCH.getSystemParm("ExplodeContentZip")
-        If (ExplodeContentZip.Equals("N")) Then
+        Dim ExplodeZipFile As String = System.Configuration.ConfigurationManager.AppSettings("ExplodeZipFile")
+        If (ExplodeZipFile.Equals("0")) Then
             Return True
         End If
         ' ExplodeEmailAttachment()

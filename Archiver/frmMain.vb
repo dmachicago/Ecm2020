@@ -45,7 +45,9 @@ Public Class frmMain : Implements IDisposable
     Dim DBLocal As New clsDbLocal
     Dim REG As New clsRegistry
     Dim LM As New clsLicenseMgt
+    Dim QI As New clsQuickInventory
 
+    Dim ArchiveList As New List(Of String)
     Dim AssignedLibraries As New List(Of String)
     Dim ArchiveActive As Boolean = False
     Dim ActivityThread As Thread
@@ -305,6 +307,7 @@ Public Class frmMain : Implements IDisposable
 
         updateMessageBar("Applying any needed updates, standby...")
         ApplyDDUpdates()
+        updateMessageBar("Completed, proceeding...")
 
         '*** Check SQLite databasews exist and create if not
         DBLocal.ValidateDatabases()
@@ -726,7 +729,7 @@ Public Class frmMain : Implements IDisposable
                 Me.WindowState = FormWindowState.Minimized : LL = 168
             End If : LL = 169
 
-            updateMessageBar("6 of 18")
+            updateMessageBar("6 of 18 : UpgradeSettings")
 
             Try : LL = 171
                 If My.Settings("UpgradeSettings") = True Then : LL = 172
@@ -775,7 +778,7 @@ Public Class frmMain : Implements IDisposable
 
             LL = 199
 
-            updateMessageBar("7 of 18")
+            updateMessageBar("7 of 18 ckDbConnection")
             B = DBARCH.ckDbConnection("frmMain 100") : LL = 200
             If B = False Then : LL = 201
                 If gRunUnattended = True Then : LL = 202
@@ -4011,6 +4014,8 @@ SKIPFOLDER:
 
     Sub ArchiveContent(MachineID As String, CurrUserGuidID As String, FilesToBeUploaded As List(Of String))
 
+        Console.WriteLine("frmMain: ArchiveContent")
+
         FilesBackedUp = 0
         FilesSkipped = 0
 
@@ -4037,6 +4042,12 @@ SKIPFOLDER:
         LL = 26
         Dim file_FullName As String = "" : LL = 31
         Dim file_name As String = "" : LL = 36
+        Dim ExplodeZipFile As String = System.Configuration.ConfigurationManager.AppSettings("ExplodeZipFile")
+        If IsNothing(ExplodeZipFile) Then
+            bExplodeZipFile = True
+        ElseIf ExplodeZipFile.Equals("1") Then
+            bExplodeZipFile = True
+        End If
         LL = 41
         If Not Directory.Exists(ERR_FQN) Then : LL = 46
             LL = 51
@@ -4206,7 +4217,7 @@ SKIPFOLDER:
                     If UseThreads = False Then PBx.Refresh() : LL = 791
                     Application.DoEvents() : LL = 796
                     LL = 801
-                    If i >= ActiveFolders.Count Then : LL = 806
+                    If i > ActiveFolders.Count Then : LL = 806
                         Exit For : LL = 811
                     End If : LL = 816
                     LL = 821
@@ -4455,7 +4466,7 @@ Process01:
                         Dim bSubDirFlg As Boolean = False : LL = 1831
                         Try : LL = 1836
                             If ddebug Then LOG.WriteToArchiveLog("Starting File capture") : LL = 1841
-                            FilesToArchive.Clear() : LL = 1846
+                            'FilesToArchive.Clear() : LL = 1846
                             If ddebug Then LOG.WriteToArchiveLog("Starting File capture: Init FilesToArchive") : LL = 1851
                             LL = 1856
                             '**************************************************************************	:	LL = 	1861
@@ -4497,6 +4508,9 @@ Process01:
                                 FilesToArchive = DBLocal.getListenerfiles()
                                 FilesToArchiveID = DBLocal.getListenerfilesID()
                             ElseIf Not IsNothing(FilesToBeUploaded) Then
+                                If FilesToBeUploaded.Count.Equals(0) Then
+                                    FilesToBeUploaded = QI.PerformFastInventory(Environment.MachineName, gCurrLoginID)
+                                End If
                                 LOG.WriteToArchiveLog("DIRECTORY LISTENER IS NOT ACTIVATED and NOT BEING USED")
                                 If FilesToBeUploaded.Count > 0 Then
                                     FilesToArchive = FilesToBeUploaded
@@ -4559,7 +4573,7 @@ Process01:
                         Dim CurrCreateDate As Date = Now
                         Dim CurrLastUpdate As Date = Now
 
-                        For K As Integer = 0 To FilesToArchive.Count - 1 : LL = 2186
+                        For K As Int32 = 0 To FilesToArchive.Count - 1 : LL = 2186
 
                             'LOG.WriteToArchiveLog("REMOVE LATER 600: Archiving gTempDisableDirListener: " + gTempDisableDirListener.ToString)
 
@@ -4571,7 +4585,6 @@ Process01:
                             End If
 
                             LL = 2191
-                            bExplodeZipFile = True : LL = 2196
                             ThisFileNeedsToBeMoved = False : LL = 2201
                             ThisFileNeedsToBeDeleted = False : LL = 2206
                             LL = 2211
@@ -4756,6 +4769,10 @@ Process01:
                                 GoTo NextFile
                             End If
 
+                            If file_name.Contains(".zip") Then
+                                Console.WriteLine("Procesing ZIP FILE: " + file_name)
+                            End If
+
                             If (NbrFilesFoundInRepo > 0) Then : LL = 2681
                                 'LOG.WriteToArchiveLog("REMOVE LATER 1000: NbrFilesFoundInRepo > 0")
                                 'LOG.WriteToArchiveLog("REMOVE LATER 06 - Processing File: <" + CurrFQN + ">")
@@ -4806,10 +4823,10 @@ Process01:
                             If file_Extension.Equals(".msg") Then : LL = 2866
                                 LOG.WriteToArchiveLog("NOTICE: Content Archive File : " + file_FullName + " was found to be a message file, moved file.") : LL = 2871
                                 If MsgNotification = False Or gRunUnattended = True Then : LL = 2876
-                                    Dim DisplayMsg As String = "A message file was encounted in a backup directory." + environment.NewLine : LL = 2881
-                                    DisplayMsg = DisplayMsg + "It has been moved to the EMAIL Working directory." + environment.NewLine : LL = 2886
-                                    DisplayMsg = DisplayMsg + "To archive a MSG file, it should be imported into outlook." + environment.NewLine : LL = 2891
-                                    DisplayMsg = DisplayMsg + "This file has ALSO been added to the CONTENT repository." + environment.NewLine : LL = 2896
+                                    Dim DisplayMsg As String = "A message file was encounted in a backup directory." + Environment.NewLine : LL = 2881
+                                    DisplayMsg = DisplayMsg + "It has been moved to the EMAIL Working directory." + Environment.NewLine : LL = 2886
+                                    DisplayMsg = DisplayMsg + "To archive a MSG file, it should be imported into outlook." + Environment.NewLine : LL = 2891
+                                    DisplayMsg = DisplayMsg + "This file has ALSO been added to the CONTENT repository." + Environment.NewLine : LL = 2896
                                     frmHelp.MsgToDisplay = DisplayMsg : LL = 2901
                                     frmHelp.CallingScreenName = "ECM Archive" : LL = 2906
                                     frmHelp.CaptionName = "MSG File Encounted in Content Archive" : LL = 2911
@@ -4817,7 +4834,7 @@ Process01:
                                     frmHelp.Show() : LL = 2921
                                     MsgNotification = True : LL = 2926
                                     If gRunUnattended = True Then : LL = 2931
-                                        LOG.WriteToArchiveLog("WARNING: ArchiveContent 100: " + environment.NewLine + DisplayMsg) : LL = 2936
+                                        LOG.WriteToArchiveLog("WARNING: ArchiveContent 100: " + Environment.NewLine + DisplayMsg) : LL = 2936
                                     End If : LL = 2941
                                 End If : LL = 2946
                                 LL = 2951
@@ -4877,7 +4894,7 @@ Process01:
                             If bcnt = 0 Then : LL = 3301
                                 Dim SubstituteFileType As String = DBARCH.getProcessFileAsExt(file_Extension) : LL = 3306
                                 If SubstituteFileType = Nothing Then : LL = 3311
-                                    Dim MSG As String = "The file type '" + file_Extension + "' is undefined." + environment.NewLine + "DO YOU WISH TO AUTOMATICALLY DEFINE IT?" + environment.NewLine + "This will allow content to be archived, but not searched." : LL = 3316
+                                    Dim MSG As String = "The file type '" + file_Extension + "' is undefined." + Environment.NewLine + "DO YOU WISH TO AUTOMATICALLY DEFINE IT?" + Environment.NewLine + "This will allow content to be archived, but not searched." : LL = 3316
                                     'Dim dlgRes As DialogResult = MessageBox.Show(MSG, "Filetype Undefined", MessageBoxButtons.YesNo)	:	LL = 	3321
                                     LL = 3326
                                     If ddebug Then LOG.WriteToArchiveLog(MSG) : LL = 3331
@@ -5049,7 +5066,7 @@ Process01:
                                             LOG.WriteToArchiveLog("ERROR failed to set Processed flag: " + file_FullName)
                                         End If
                                     Else
-                                        LOG.WriteToArchiveLog("ERROR: ArchiveContent-AA1 Failed load: " + environment.NewLine + file_FullName)
+                                        LOG.WriteToArchiveLog("ERROR: ArchiveContent-AA1 Failed load: " + Environment.NewLine + file_FullName)
                                     End If
                                     LOG.WriteToTimerLog("****ArchiveContent-01", "UpdateSourceImageInRepo", "STOP", UpdateTimer)
                                     UpdateTimer = Now
@@ -5088,7 +5105,7 @@ Process01:
                                         If UseThreads = False Then SB5.BackColor = Color.Red
                                         If UseThreads = False Then SB5.ForeColor = Color.Yellow
 
-                                        Dim DisplayMsg As String = "A source file failed to load. Review ERROR log." + environment.NewLine + file_FullName + "LL: " + LL.ToString
+                                        Dim DisplayMsg As String = "A source file failed to load. Review ERROR log." + Environment.NewLine + file_FullName + "LL: " + LL.ToString
                                         frmHelp.MsgToDisplay = DisplayMsg
                                         frmHelp.CallingScreenName = "ECM Archive"
                                         frmHelp.CaptionName = "Fatal Load Error"
@@ -5122,7 +5139,7 @@ Process01:
                                                 LOG.WriteToArchiveLog("Thread 90 - caught ThreadAbortException - resetting.")
                                                 Thread.ResetAbort()
                                             Catch ex As Exception
-                                                Console.WriteLine(ex.Message + environment.NewLine + "LL=" + LL.ToString)
+                                                Console.WriteLine(ex.Message + Environment.NewLine + "LL=" + LL.ToString)
                                                 Dim st As New StackTrace(True)
                                                 st = New StackTrace(ex, True)
                                                 LOG.WriteToArchiveLog("LL=" + LL.ToString)
@@ -5237,30 +5254,26 @@ Process01:
                                 sMin = TS.Minutes.ToString : LL = 4926
                                 sSec = TS.Seconds.ToString : LL = 4931
 
-                                'frmNotify.lblPdgPages.Text = "Size: " + BytesLoading.ToString + Units + " / " + TS.Hours.ToString + ":" + sMin + ":" + sSec
-                                'frmNotify.Refresh()
-                                'frmNotify.lblFileSpec.Text = "Size: " + BytesLoading.ToString + Units + " / " + TS.Hours.ToString + ":" + sMin + ":" + sSec : LL = 4936
-                                'frmNotify.Refresh() : LL = 4941
-
+                                '*************************************** PROCESS ZIPFILE *************************************** 
                                 Application.DoEvents() : LL = 4946
-                                LL = 4951
                                 isZipFile = ZF.isZipFile(file_FullName) : LL = 4956
                                 If isZipFile = True Then : LL = 4961
-                                    Dim ExistingParentZipGuid As String = DBARCH.GetGuidByFqn(file_FullName, 0) : LL = 4966
-                                    bExplodeZipFile = False : LL = 4971
+                                    Dim ExistingParentZipGuid As String = DBARCH.GetGuidByFqn(file_FullName) : LL = 4966
                                     StackLevel = 0 : LL = 4976
                                     ListOfFiles.Clear() : LL = 4981
                                     If ExistingParentZipGuid.Length > 0 Then : LL = 4986
                                         DBLocal.addZipFile(file_FullName, ExistingParentZipGuid, False) : LL = 4991
-                                        ZF.UploadZipFile(UIDcurr, MachineIDcurr, file_FullName, ExistingParentZipGuid, True, False, RetentionCode, isPublic, StackLevel, ListOfFiles) : LL = 4996
+                                        ZF.UploadZipFile(UIDcurr, MachineIDcurr, file_FullName, ExistingParentZipGuid, True, False, RetentionCode, isPublic, StackLevel, ListOfFiles)
                                         DBLocal.updateFileArchiveInfoLastArchiveDate(file_FullName)
+                                        LOG.WriteToArchiveLog("ZIP FILE already in Repo: Processing UPDATE for: " + file_FullName)
                                     Else : LL = 5006
                                         DBLocal.addZipFile(file_FullName, SourceGuid, False) : LL = 5011
-                                        ZF.UploadZipFile(UIDcurr, MachineIDcurr, file_FullName, SourceGuid, True, False, RetentionCode, isPublic, StackLevel, ListOfFiles) : LL = 5016
+                                        ZF.UploadZipFile(UIDcurr, MachineIDcurr, file_FullName, SourceGuid, True, False, RetentionCode, isPublic, StackLevel, ListOfFiles)
                                         DBLocal.updateFileArchiveInfoLastArchiveDate(file_FullName)
+                                        LOG.WriteToArchiveLog("ZIP FILE NEW - addding : " + file_FullName)
                                     End If : LL = 5026
                                 End If : LL = 5031
-                                LL = 5036
+                                '*************************************** PROCESS ZIP FILE *************************************** 
 
                             End If : LL = 5041
 NextFile:                   LL = 5046
@@ -5411,7 +5424,7 @@ NextFolder:
                         Thread.ResetAbort()
                     Catch ex As Exception
                         If Not gRunUnattended Then
-                            MessageBox.Show("Could not remove the file " + FQN + "." + environment.NewLine + ex.Message)
+                            MessageBox.Show("Could not remove the file " + FQN + "." + Environment.NewLine + ex.Message)
                         Else
                             LOG.WriteToArchiveLog("Could not remove the file " + FQN + ". - " + ex.Message)
                             Dim st As New StackTrace(True)
@@ -5440,19 +5453,80 @@ NextFolder:
         StackLevel = 0 : LL = 5696
         ListOfFiles.Clear() : LL = 5701
         LL = 5706
+
+        For I = 0 To FilesToBeUploaded.Count - 1
+            Dim tname As String = FilesToBeUploaded(I)
+            Dim textension As String = Path.GetExtension(tname)
+            Dim isZipFIle As Boolean = False
+            Select Case (textension.ToLower())
+                Case ".zip"
+                    isZipFIle = True
+                Case ".zip"
+                    isZipFIle = True
+                Case ("ISO")
+                    isZipFIle = True
+                Case "ARJ"
+                    isZipFIle = True
+                Case "CAB"
+                    isZipFIle = True
+                Case "CHM"
+                    isZipFIle = True
+                Case "CPIO"
+                    isZipFIle = True
+                Case "CramFS"
+                    isZipFIle = True
+                Case "DEB"
+                    isZipFIle = True
+                Case "DMG"
+                    isZipFIle = True
+                Case "FAT"
+                    isZipFIle = True
+                Case "HFS"
+                    isZipFIle = True
+                Case "LZH"
+                    isZipFIle = True
+                Case "LZMA"
+                    isZipFIle = True
+                Case "MBR"
+                    isZipFIle = True
+                Case "MSI"
+                    isZipFIle = True
+                Case "NSIS"
+                    isZipFIle = True
+                Case "NTFS"
+                    isZipFIle = True
+                Case "RAR"
+                    isZipFIle = True
+                Case "RPM"
+                    isZipFIle = True
+                Case "SquashFS"
+                    isZipFIle = True
+                Case "UDF"
+                    isZipFIle = True
+                Case "VHD"
+                    isZipFIle = True
+                Case "WIM"
+                    isZipFIle = True
+                Case "XAR"
+                    isZipFIle = True
+                Case "Z"
+                    isZipFIle = True
+            End Select
+            If isZipFIle Then
+                ZipFilesContent.Add(tname)
+            End If
+        Next
+
         For i As Integer = 0 To ZipFilesContent.Count - 1 : LL = 5711
-            bExplodeZipFile = False : LL = 5716
-            'FrmMDIMain.SB.Text = "Processing Quickref"	:	LL = 	5721
-            'If i >= 24 Then	:	LL = 	5726
-            '    Debug.Print("here")	:	LL = 	5731
-            'End If	:	LL = 	5736
-            Dim cData As String = ZipFilesContent(i).ToString : LL = 5741
+            StackLevel = 0
             Dim ParentGuid As String = "" : LL = 5746
-            Dim FQN As String = "" : LL = 5751
-            Dim K As Integer = InStr(cData, "|") : LL = 5756
-            FQN = Mid(cData, 1, K - 1) : LL = 5761
-            ParentGuid = Mid(cData, K + 1) : LL = 5766
-            ZF.UploadZipFile(UIDcurr, MachineIDcurr, FQN, ParentGuid, ckArchiveBit.Checked, False, RetentionCode, isPublic, StackLevel, ListOfFiles) : LL = 5771
+            Dim FQN As String = ZipFilesContent(i).ToString
+            Dim pguid As String = DBARCH.getSourceGuidByFqn(FQN, gCurrUserGuidID)
+            If pguid.Length.Equals(0) Then
+                pguid = Guid.NewGuid.ToString
+            End If
+            ParentGuid = pguid
+            ZF.UploadZipFile(UIDcurr, MachineIDcurr, FQN, ParentGuid, False, False, RetentionCode, isPublic, StackLevel, ListOfFiles) : LL = 5771
         Next : LL = 5776
 
         LL = 5781
@@ -10230,8 +10304,9 @@ GoodLogin:
 
     End Sub
 
-    Private Sub PerformContentArchive(Optional FilesToBeUploaded As List(Of String) = Nothing)
+    Private Sub PerformContentArchive()
 
+        Dim FilesToBeUploaded As New List(Of String)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
@@ -10316,6 +10391,9 @@ GoodLogin:
             gCurrUserGuidID = UIDcurr
             Try
                 frmNotify.TopMost = False
+                If UseDirectoryListener.Equals(0) And FilesToBeUploaded.Count.Equals(0) Then
+                    FilesToBeUploaded = QI.PerformFastInventory(Environment.MachineName, gCurrLoginID)
+                End If
                 '************************************** ArchiveContent ****************************************************************
                 '**********************************************************************************************************************
                 'LOG.WriteToArchiveLog("REMOVE LATER 200: Starting ArchiveContent")
@@ -12822,6 +12900,13 @@ NEXTONE:
     End Sub
 
     Private Sub ContentThread_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles ContentThread.DoWork
+
+        '********************************************************************************
+        If ArchiveList.Count.Equals(0) Then
+            ArchiveList = QI.PerformFastInventory(Environment.MachineName, gCurrLoginID)
+        End If
+        '********************************************************************************
+
         PerformContentArchive()
         frmNotify.Hide()
         gAutoExecContentComplete = True
@@ -13402,11 +13487,11 @@ NEXTONE:
                             Application.DoEvents()
 
                             Dim bSuccess As Boolean = True
-
+                            Dim ReturnSourceGuid As String = ""
                             If InventoryReloadMethod = 1 Then
-                                bSuccess = ARCH.ArchiveSingleFile(gCurrLoginID, fqn)
+                                ReturnSourceGuid = ARCH.ArchiveSingleFile(gCurrLoginID, fqn)
                             Else
-                                bSuccess = ARCH.insertSingleFILE(fqn)
+                                ReturnSourceGuid = ARCH.insertSingleFILE(fqn)
                             End If
 
                             If bSuccess Then
@@ -13613,6 +13698,12 @@ SkipIT:
                 Return
             End If
 
+            ''************************************** WDM ******************************************
+            'If ArchiveList.Count = 0 Then
+            '    ArchiveList = QI.PerformFastInventory(Environment.MachineName, gCurrLoginID)
+            'End If
+            ''********************************************************************************
+
             Try
                 SB.Text = "Quick CONTENT ARCHIVE LAUNCHED"
                 '****************** Execute PerformContentArchive() on a separate thread **********************************
@@ -13623,6 +13714,7 @@ SkipIT:
                 '**********************************************************************************************************
                 gAutoExecContentComplete = False
                 '-------------------------------------------------------------
+                'PerformContentArchive(ArchiveList)
                 PerformContentArchive()
                 '-------------------------------------------------------------
                 gAutoExecContentComplete = True
@@ -13645,6 +13737,12 @@ SkipIT:
     End Sub
 
     Private Sub ReapplyALLDBUpdatesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReapplyALLDBUpdatesToolStripMenuItem.Click
+
+        Dim NotNow As Boolean = True
+
+        If NotNow Then
+            Return
+        End If
 
         Dim msg As String = "This will reapply all database updates that might be missing, are you sure?"
         Dim dlgRes As DialogResult = MessageBox.Show(msg, "DB Updates", MessageBoxButtons.YesNo)
@@ -14114,25 +14212,27 @@ SkipIT:
         frmMessageBar.lblmsg.Text = "STANDBY, pulling data from Repository"
         frmMessageBar.Refresh()
         Dim watch As Stopwatch = Stopwatch.StartNew()
-        Dim QI As New clsQuickInventory
+
         Dim ArchiveList As New List(Of String)
 
         PB1.Style = ProgressBarStyle.Marquee
         PB1.MarqueeAnimationSpeed = 50
-        '********************************************************************************
-        ArchiveList = QI.PerformFastInventory(Environment.MachineName, gCurrLoginID)
-        '********************************************************************************
+        ''********************************************************************************
+        'If ArchiveList.Count = 0 Then
+        '    ArchiveList = QI.PerformFastInventory(Environment.MachineName, gCurrLoginID)
+        'End If
+        ''********************************************************************************
         PB1.MarqueeAnimationSpeed = 0
         PB1.Value = 0
 
-        QI = Nothing
         frmMessageBar.Close()
 
         SB.Text = "FAST SCAN COMPLETE: " + ArchiveList.Count.ToString + " files found need processing."
         SB.Refresh()
 
         '********************************************************************************
-        PerformContentArchive(ArchiveList)
+        'PerformContentArchive(ArchiveList)
+        PerformContentArchive()
         '********************************************************************************
 
         watch.Stop()

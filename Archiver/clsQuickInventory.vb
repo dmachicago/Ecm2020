@@ -113,7 +113,7 @@ Public Class clsQuickInventory
 
         Dim AllowedExts As String = DBA.getIncludedFileTypeWhereIn(gCurrLoginID, DirName)
         AllowedExts = AllowedExts + ","
-        AllowedExts = WhereIN
+        'AllowedExts = WhereIN
         Dim FQN As String = ""
         Dim FileLEngth As Int64 = 0
         Dim LastWriteDate As DateTime = Now
@@ -180,12 +180,15 @@ Public Class clsQuickInventory
                                     Application.DoEvents()
                                     LL = 4
                                     'Dim TgtExt As String = fi.Extension.ToLower + ","
-                                    Dim TgtExt As String = "'" + fi.Extension.ToLower + "'"
+                                    Dim TgtExt As String = fi.Extension.ToLower + ","
                                     Dim TgtDir As String = fi.DirectoryName
                                     LL = 5
                                     LastWriteDate = fi.LastWriteTime
                                     FQN = fi.FullName
                                     LL = 6
+                                    If TgtExt.Equals(".zip,") Then
+                                        Console.WriteLine("ZIP: " + fi.FullName)
+                                    End If
                                     If AllowedExts.Contains(TgtExt) Then
                                         LL = 7
                                         If FQN.Contains("'") Then

@@ -1,3 +1,16 @@
+' ***********************************************************************
+' Assembly         : EcmArchiver
+' Author           : wdale
+' Created          : 12-15-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 12-15-2020
+' ***********************************************************************
+' <copyright file="clsDbARCH.vb" company="ECM Library">
+'     Copyright © ECM Library 2011, all rights reserved
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
 #Const RemoteOcr = 0
 
 Imports System.Data.SqlClient
@@ -7,77 +20,220 @@ Imports ECMEncryption
 Imports Ionic.Zip
 Imports Microsoft.Win32
 
+''' <summary>
+''' Class clsDatabaseARCH.
+''' Implements the <see cref="System.IDisposable" />
+''' </summary>
+''' <seealso cref="System.IDisposable" />
 Public Class clsDatabaseARCH : Implements IDisposable
 
+    ''' <summary>
+    ''' The curr domain
+    ''' </summary>
     Dim currDomain As AppDomain = AppDomain.CurrentDomain
 
     ' Inherits System.Web.UI.Page
 
+    ''' <summary>
+    ''' The iso
+    ''' </summary>
     Dim ISO As New clsIsolatedStorage
+    ''' <summary>
+    ''' The reg
+    ''' </summary>
     Dim REG As New clsRegistry
 
     'Dim ProxyArchive As New SVCCLCArchive.Service1Client
     'Dim ProxyFS As New SVCFS.Service1Client
 
+    ''' <summary>
+    ''' The tc
+    ''' </summary>
     Dim TC As New clsTimeCalcs
+    ''' <summary>
+    ''' The comp
+    ''' </summary>
     Dim COMP As New clsCompression
 
+    ''' <summary>
+    ''' The b use command process for inventory
+    ''' </summary>
     Dim bUseCommandProcessForInventory As Integer = CInt(System.Configuration.ConfigurationManager.AppSettings("UseCommandProcessForInventory"))
+    ''' <summary>
+    ''' The ddebug
+    ''' </summary>
     Public ddebug As Boolean = False
+    ''' <summary>
+    ''' The ix v1
+    ''' </summary>
     Dim IXV1 As Integer = 0
+    ''' <summary>
+    ''' The cf
+    ''' </summary>
     Dim CF As New clsFile
+    ''' <summary>
+    ''' The enc
+    ''' </summary>
     Dim ENC As New ECMEncrypt
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Dim LOG As New clsLogging
+    ''' <summary>
+    ''' The utility
+    ''' </summary>
     Dim UTIL As New clsUtility
+    ''' <summary>
+    ''' The dma
+    ''' </summary>
     Dim DMA As New clsDma
 
+    ''' <summary>
+    ''' The kgen
+    ''' </summary>
     Dim KGEN As New clsKeyGen
 
     '** Public ConnectionStringID As String = "XOMR1.1ConnectionString"
     '** Do not forget that this is a global access var to thte DBARCH
     '** and MUST be changed to run on different platforms.
+    ''' <summary>
+    ''' The connection string identifier
+    ''' </summary>
     Public ConnectionStringID As String = ""
 
+    ''' <summary>
+    ''' The server name
+    ''' </summary>
     Public ServerName As String = ""
+    ''' <summary>
+    ''' The TGT unique identifier
+    ''' </summary>
     Public TgtGuid As String = ""
 
+    ''' <summary>
+    ''' The sl machine network
+    ''' </summary>
     Public slMachineNetwork As New Dictionary(Of String, String)
+    ''' <summary>
+    ''' The sl container unique identifier
+    ''' </summary>
     Public slContainerGuid As New Dictionary(Of String, Guid)
+    ''' <summary>
+    ''' The sl projects
+    ''' </summary>
     Public slProjects As New SortedList
+    ''' <summary>
+    ''' The sl project teams
+    ''' </summary>
     Public slProjectTeams As New SortedList
+    ''' <summary>
+    ''' The sl metric periods
+    ''' </summary>
     Public slMetricPeriods As New SortedList
+    ''' <summary>
+    ''' The sl excel col names
+    ''' </summary>
     Public slExcelColNames As New SortedList
+    ''' <summary>
+    ''' The sl growth platform
+    ''' </summary>
     Public slGrowthPlatform As New SortedList
+    ''' <summary>
+    ''' The sl operating group
+    ''' </summary>
     Public slOperatingGroup As New SortedList
+    ''' <summary>
+    ''' The sl operating unit
+    ''' </summary>
     Public slOperatingUnit As New SortedList
+    ''' <summary>
+    ''' The sl geography
+    ''' </summary>
     Public slGeography As New SortedList
+    ''' <summary>
+    ''' The sl geographic unit
+    ''' </summary>
     Public slGeographicUnit As New SortedList
+    ''' <summary>
+    ''' The sl client service group
+    ''' </summary>
     Public slClientServiceGroup As New SortedList
+    ''' <summary>
+    ''' The sl delivery center
+    ''' </summary>
     Public slDeliveryCenter As New SortedList
+    ''' <summary>
+    ''' The sl type of work
+    ''' </summary>
     Public slTypeOfWork As New SortedList
+    ''' <summary>
+    ''' The sl project team type of work
+    ''' </summary>
     Public slProjectTeamTypeOfWork As New SortedList
+    ''' <summary>
+    ''' The sl submission status
+    ''' </summary>
     Public slSubmissionStatus As New SortedList
+    ''' <summary>
+    ''' The sl submitted by
+    ''' </summary>
     Public slSubmittedBy As New SortedList
+    ''' <summary>
+    ''' The el
+    ''' </summary>
     Public EL As New ArrayList
 
+    ''' <summary>
+    ''' The table cols
+    ''' </summary>
     Public TblCols(4, 0) As String
 
     ' Dim owner As IWin32Window
+    ''' <summary>
+    ''' The g connection string
+    ''' </summary>
     Dim gConnStr As String = ""
 
+    ''' <summary>
+    ''' The dbdir
+    ''' </summary>
     Dim DBDIR As String = "C:\Program Files\Microsoft SQL Server\MSSQL.1\MSSQL\Data\org_db.mdf"
+    ''' <summary>
+    ''' The dq
+    ''' </summary>
     Dim DQ As String = Chr(34)
 
     'Private gCurrUserGuidID = ""
+    ''' <summary>
+    ''' The curr user pw
+    ''' </summary>
     Private CurrUserPW As String = ""
 
+    ''' <summary>
+    ''' The g connection
+    ''' </summary>
     Dim gConn As SqlConnection = Nothing
+    ''' <summary>
+    ''' The g command
+    ''' </summary>
     Dim gCmd As SqlCommand = Nothing
+    ''' <summary>
+    ''' The overwrite once
+    ''' </summary>
     Dim OverwriteOnce As Boolean = False
+    ''' <summary>
+    ''' The overwrite always
+    ''' </summary>
     Dim OverwriteAlways As Boolean = False
 
+    ''' <summary>
+    ''' The gateway identifier
+    ''' </summary>
     Private _GatewayID As String = ""
 
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="clsDatabaseARCH"/> class.
+    ''' </summary>
     Sub New()
         'Dim sDebug  = System.Configuration.ConfigurationManager.AppSettings("debug_clsDatabase")
         'Dim sDebug As String = getUserParm("debug_ClsDatabase")
@@ -89,6 +245,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the data set.
+    ''' </summary>
+    ''' <param name="MySql">My SQL.</param>
+    ''' <returns>DataSet.</returns>
     Public Function getDataSet(MySql As String) As DataSet
 
         Dim ds As New DataSet
@@ -112,13 +273,18 @@ Public Class clsDatabaseARCH : Implements IDisposable
             'Next
 
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR getDataSet 01: " + ex.Message + environment.NewLine + MySql)
+            LOG.WriteToArchiveLog("ERROR getDataSet 01: " + ex.Message + Environment.NewLine + MySql)
         End Try
 
         Return ds
 
     End Function
 
+    ''' <summary>
+    ''' Gets the users allowed file ext.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>List(Of System.String).</returns>
     Public Function getUsersAllowedFileExt(UserID As String) As List(Of String)
 
         Dim L As New List(Of String)
@@ -148,6 +314,14 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the existing files.
+    ''' </summary>
+    ''' <param name="TgtDir">The TGT dir.</param>
+    ''' <param name="ScanSubDir">The scan sub dir.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>List(Of System.String).</returns>
     Public Function getExistingFiles(TgtDir As String, ScanSubDir As String, MachineID As String, UserID As String) As List(Of String)
 
         Dim L As New List(Of String)
@@ -189,6 +363,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the DSFQN.
+    ''' </summary>
+    ''' <param name="TOPN">The topn.</param>
+    ''' <param name="PASSEDfqn">The passe DFQN.</param>
+    ''' <returns>Dictionary(Of System.String, System.String).</returns>
     Public Function getDSFQN(TOPN As String, PASSEDfqn As String) As Dictionary(Of String, String)
 
         Dim L As New Dictionary(Of String, String)
@@ -222,6 +402,9 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Sets the DSFQN.
+    ''' </summary>
     Public Sub setDSFQN()
 
         Dim FM = New frmMessageBar()
@@ -351,6 +534,9 @@ Public Class clsDatabaseARCH : Implements IDisposable
         FM.Dispose()
     End Sub
 
+    ''' <summary>
+    ''' Validates the file hash.
+    ''' </summary>
     Public Sub validateFileHash()
 
         frmMessageBar.Show()
@@ -506,6 +692,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
     End Sub
 
 
+    ''' <summary>
+    ''' Gets the SQL server hash.
+    ''' </summary>
+    ''' <param name="str">The string.</param>
+    ''' <param name="ReturnHEX">if set to <c>true</c> [return hexadecimal].</param>
+    ''' <returns>System.String.</returns>
     Public Function getSqlServerHASH(str As String, Optional ReturnHEX As Boolean = False) As String
 
         'If IsNothing(ReturnHEX) Then
@@ -554,6 +746,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
     ''' <summary>
     ''' Gets or sets the global gateway ID.
     ''' </summary>
+    ''' <value>The gateway identifier.</value>
     Public Property GatewayID() As String
         Get
             Return _GatewayID
@@ -566,9 +759,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
     ''' <summary>
     ''' Sets the ocr processing parms.
     ''' </summary>
-    ''' <param name="SourceGuid">    The source GUID.</param>
+    ''' <param name="SourceGuid">The source GUID.</param>
     ''' <param name="SourceTypeCode">The source type code.</param>
-    ''' <returns></returns>
+    ''' <param name="FileName">Name of the file.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function SetOcrProcessingParms(SourceGuid As String, SourceTypeCode As String, FileName As String) As Boolean
 
         FileName = UTIL.RemoveSingleQuotes(FileName)
@@ -593,6 +787,13 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return b
     End Function
 
+    ''' <summary>
+    ''' Cks the col data.
+    ''' </summary>
+    ''' <param name="TblName">Name of the table.</param>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <param name="tData">The t data.</param>
+    ''' <returns>System.String.</returns>
     Function CkColData(ByVal TblName As String, ByVal ColName As String, ByVal tData As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -636,7 +837,6 @@ Public Class clsDatabaseARCH : Implements IDisposable
     ''' <summary>
     ''' LoadColInfo reads table_name, column_name, data_type, character_maximum_length from INFORMATION_SCHEMA.COLUMNS.
     ''' </summary>
-    ''' <remarks></remarks>
     Sub LoadColInfo()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -688,6 +888,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Sets the email CRC hash.
+    ''' </summary>
+    ''' <param name="isadmin">if set to <c>true</c> [isadmin].</param>
     Sub setEmailCrcHash(isadmin As Boolean)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -799,7 +1003,6 @@ Public Class clsDatabaseARCH : Implements IDisposable
     ''' INFORMATION_SCHEMA.COLUMNS based on the provided Table Name.
     ''' </summary>
     ''' <param name="TableName">The name of the table to retrieve column information about.</param>
-    ''' <remarks></remarks>
     Sub LoadColInfo(ByVal TableName As String)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -851,6 +1054,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Audits the specified SQL.
+    ''' </summary>
+    ''' <param name="sql">The SQL.</param>
+    ''' <param name="UserID">The user identifier.</param>
     Sub Audit(ByVal sql As String, ByVal UserID As String)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -880,6 +1088,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Cks the null.
+    ''' </summary>
+    ''' <param name="tVal">The t value.</param>
+    ''' <returns>System.String.</returns>
     Public Function ckNull(ByVal tVal As String) As String
         If tVal.Trim.Length = 0 Then
             Return "null"
@@ -888,6 +1101,16 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End If
     End Function
 
+    ''' <summary>
+    ''' Audits the insert.
+    ''' </summary>
+    ''' <param name="ChangeID">The change identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="Msg">The MSG.</param>
+    ''' <param name="TableName">Name of the table.</param>
+    ''' <param name="TypeChange">The type change.</param>
+    ''' <param name="ChangeDate">The change date.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function AuditInsert(ByVal ChangeID As String, ByVal UserID As String, ByVal Msg As String, ByVal TableName As String, ByVal TypeChange As String, ByVal ChangeDate As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -919,6 +1142,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Adds the nulls.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.String.</returns>
     Public Function AddNulls(ByVal S As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -966,6 +1194,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return S
     End Function
 
+    ''' <summary>
+    ''' Adds the nulls to update.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.String.</returns>
     Public Function AddNullsToUpdate(ByVal S As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1008,6 +1241,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return S
     End Function
 
+    ''' <summary>
+    ''' Cks the database connection.
+    ''' </summary>
+    ''' <param name="From">From.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckDbConnection(ByVal From As String) As Boolean
         ddebug = False
 
@@ -1076,6 +1314,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return b
     End Function
 
+    ''' <summary>
+    ''' Uses the encrypted.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UseEncrypted() As Boolean
         Dim strVal As String = System.Configuration.ConfigurationManager.AppSettings("UseEncrypted")
         If strVal.Equals("1") Then
@@ -1085,6 +1327,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End If
     End Function
 
+    ''' <summary>
+    ''' Resets the iso connection string.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Function resetIsoConnStr(SecureID As Integer) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1096,6 +1343,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return fn
     End Function
 
+    ''' <summary>
+    ''' Gets the iso connection string.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getIsoConnStr(SecureID As Integer) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1106,6 +1358,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return cs
     End Function
 
+    ''' <summary>
+    ''' Saves the iso connection string.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ECS">The ecs.</param>
     Sub saveIsoConnStr(SecureID As Integer, ECS As String)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1136,6 +1393,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     'End Function
 
+    ''' <summary>
+    ''' Gets the license connection string.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getLicenseConnStr() As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1150,6 +1411,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the repo connection string.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getRepoConnStr() As String
         'If gTraceFunctionCalls.Equals(1) Then
         '    LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1163,6 +1428,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Sets the connection string.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function setConnStr() As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1172,28 +1441,50 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the gate way connection string x.
+    ''' </summary>
+    ''' <param name="gGateWayID">The g gate way identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getGateWayConnStrX(gGateWayID As String) As String
 
         Return setConnStr()
 
     End Function
 
+    ''' <summary>
+    ''' Gets the thesaurus connection string.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getThesaurusConnStr() As String
 
         Return setThesaurusConnStr()
 
     End Function
 
+    ''' <summary>
+    ''' Setps the w.
+    ''' </summary>
+    ''' <param name="tVal">The t value.</param>
     Public Sub setpW(ByVal tVal As String)
         CurrUserPW = tVal
     End Sub
 
+    ''' <summary>
+    ''' Gets the connection.
+    ''' </summary>
+    ''' <returns>SqlConnection.</returns>
     Public Function GetConnection() As SqlConnection
 
         CkConn()
         Return gConn
     End Function
 
+    ''' <summary>
+    ''' Gets the SQL adaptor.
+    ''' </summary>
+    ''' <param name="Sql">The SQL.</param>
+    ''' <returns>SqlDataAdapter.</returns>
     Public Function getSqlAdaptor(ByVal Sql As String) As SqlDataAdapter
         CkConn()
         Dim sSelect As String = Sql
@@ -1203,6 +1494,9 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return da
     End Function
 
+    ''' <summary>
+    ''' Cks the connection.
+    ''' </summary>
     Public Sub CkConn()
         If gConn Is Nothing Then
             Try
@@ -1223,6 +1517,9 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End If
     End Sub
 
+    ''' <summary>
+    ''' Closes the connection.
+    ''' </summary>
     Public Sub CloseConn()
         If gConn Is Nothing Then
         Else
@@ -1234,6 +1531,9 @@ Public Class clsDatabaseARCH : Implements IDisposable
         GC.Collect()
     End Sub
 
+    ''' <summary>
+    ''' Resets the connection.
+    ''' </summary>
     Public Sub ResetConn()
         If gConn Is Nothing Then
             Try
@@ -1265,6 +1565,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End If
     End Sub
 
+    ''' <summary>
+    ''' is the execute count statement.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function iExecCountStmt(ByVal S As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1307,6 +1612,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' is the get row count.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function iGetRowCount(ByVal S As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1383,6 +1693,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' is the data exist.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function iDataExist(ByVal S As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1422,6 +1737,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' is the get maximum row NBR from XML.
+    ''' </summary>
+    ''' <returns>System.Int32.</returns>
     Public Function iGetMaxRowNbrFromXml() As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1460,6 +1779,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the one value.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.String.</returns>
     Public Function getOneVal(ByVal S As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1489,6 +1813,15 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' XCKs the email exists.
+    ''' </summary>
+    ''' <param name="SenderEmailAddress">The sender email address.</param>
+    ''' <param name="ReceivedByName">Name of the received by.</param>
+    ''' <param name="ReceivedTime">The received time.</param>
+    ''' <param name="SenderName">Name of the sender.</param>
+    ''' <param name="SentOn">The sent on.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function xckEmailExists(ByVal SenderEmailAddress As String, ByVal ReceivedByName As String, ByVal ReceivedTime As String, ByVal SenderName As String, ByVal SentOn As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1543,7 +1876,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
     ''' Cks the email unique identifier exists.
     ''' </summary>
     ''' <param name="EmailGuid">The email unique identifier.</param>
-    ''' <returns></returns>
+    ''' <returns>System.Int32.</returns>
     Public Function ckEmailGuidExists(ByVal EmailGuid As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1578,6 +1911,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' Cks the content unique identifier exists.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function ckContentGuidExists(ByVal SourceGuid As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1610,6 +1948,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' Gets the source datatype by unique identifier.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getSourceDatatypeByGuid(ByVal SourceGuid As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1643,6 +1986,9 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return tVal
     End Function
 
+    ''' <summary>
+    ''' Increments the next identifier.
+    ''' </summary>
     Public Sub IncrementNextID()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1655,6 +2001,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Dim b As Boolean = Me.ExecuteSqlNewConn(S, False)
     End Sub
 
+    ''' <summary>
+    ''' Sets the folder as active.
+    ''' </summary>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <param name="sAction">The s action.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function SetFolderAsActive(ByVal FolderName As String, ByVal sAction As String) As Boolean
         Dim SS As String = " "
         SS = "update  [EmailFolder] set [SelectedForArchive] = '" + sAction + "' where FolderName = '" + FolderName + "'"
@@ -1662,6 +2014,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return b
     End Function
 
+    ''' <summary>
+    ''' Gets the next identifier.
+    ''' </summary>
+    ''' <returns>System.Int32.</returns>
     Public Function getNextID() As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1692,6 +2048,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Sets the user default notifications.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
     Public Sub SetUserDefaultNotifications(ByVal UserID As String)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1724,6 +2084,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Counts the user entries.
+    ''' </summary>
+    ''' <returns>System.Int32.</returns>
     Public Function CountUserEntries() As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1754,6 +2118,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the global seach count.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function getGlobalSeachCnt(ByVal UID As String) As Integer
         Dim tQuery As String = ""
         If gTraceFunctionCalls.Equals(1) Then
@@ -1784,6 +2153,9 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Cks the user information data.
+    ''' </summary>
     Public Sub ckUserInfoData()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1866,6 +2238,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End If
     End Sub
 
+    ''' <summary>
+    ''' Sels the count.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function SelCount(ByVal S As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1899,6 +2276,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Cks the admin user.
+    ''' </summary>
+    ''' <param name="Userid">The userid.</param>
+    ''' <param name="PW">The pw.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckAdminUser(ByVal Userid As String, ByVal PW As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1923,6 +2306,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return b
     End Function
 
+    ''' <summary>
+    ''' Gets the admin user identifier.
+    ''' </summary>
+    ''' <param name="Userid">The userid.</param>
+    ''' <param name="PW">The pw.</param>
+    ''' <returns>System.String.</returns>
     Public Function getAdminUserId(ByVal Userid As String, ByVal PW As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1949,6 +2338,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return id
     End Function
 
+    ''' <summary>
+    ''' Gets the name of the document cat identifier by.
+    ''' </summary>
+    ''' <param name="CatName">Name of the cat.</param>
+    ''' <returns>System.String.</returns>
     Public Function getDocCatIdByName(ByVal CatName As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1974,6 +2368,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return id
     End Function
 
+    ''' <summary>
+    ''' Gets the user name by identifier.
+    ''' </summary>
+    ''' <param name="Userid">The userid.</param>
+    ''' <returns>System.String.</returns>
     Public Function getUserNameByID(ByVal Userid As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1999,6 +2398,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return id
     End Function
 
+    ''' <summary>
+    ''' Gets the user login by userid.
+    ''' </summary>
+    ''' <param name="Userid">The userid.</param>
+    ''' <returns>System.String.</returns>
     Public Function getUserLoginByUserid(ByVal Userid As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2024,6 +2428,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return id
     End Function
 
+    ''' <summary>
+    ''' Adds the profile file types.
+    ''' </summary>
+    ''' <param name="ProfileName">Name of the profile.</param>
+    ''' <param name="LB">The lb.</param>
     Public Sub AddProfileFileTypes(ByVal ProfileName As String, ByVal LB As ListBox)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2064,6 +2473,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the skip words.
+    ''' </summary>
+    ''' <param name="A">a.</param>
     Public Sub GetSkipWords(ByRef A As ArrayList)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2096,6 +2509,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the device identifier.
+    ''' </summary>
+    ''' <param name="InventoryNo">The inventory no.</param>
+    ''' <returns>System.String.</returns>
     Public Function getDeviceID(ByVal InventoryNo As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2121,6 +2539,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return id
     End Function
 
+    ''' <summary>
+    ''' Gets the photo title.
+    ''' </summary>
+    ''' <param name="PhotoID">The photo identifier.</param>
+    ''' <param name="pTitle">The p title.</param>
+    ''' <returns>System.String.</returns>
     Public Function getPhotoTitle(ByRef PhotoID As Integer, ByRef pTitle As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2153,6 +2577,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return tempTitle
     End Function
 
+    ''' <summary>
+    ''' Gets the photo title.
+    ''' </summary>
+    ''' <param name="PhotoID">The photo identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getPhotoTitle(ByRef PhotoID As Integer) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2178,6 +2607,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return id
     End Function
 
+    ''' <summary>
+    ''' Gets the contact identifier.
+    ''' </summary>
+    ''' <param name="FirstName">The first name.</param>
+    ''' <param name="LastName">The last name.</param>
+    ''' <returns>System.String.</returns>
     Public Function getContactID(ByVal FirstName As String, ByVal LastName As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2206,6 +2641,13 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return id
     End Function
 
+    ''' <summary>
+    ''' Records the exists.
+    ''' </summary>
+    ''' <param name="Tbl">The table.</param>
+    ''' <param name="WhereVar">The where variable.</param>
+    ''' <param name="CompareVal">The compare value.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function RecordExists(ByVal Tbl As String, ByVal WhereVar As String, ByVal CompareVal As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2223,6 +2665,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return b
     End Function
 
+    ''' <summary>
+    ''' Gets the next key.
+    ''' </summary>
+    ''' <param name="TBL">The table.</param>
+    ''' <param name="tCol">The t col.</param>
+    ''' <returns>System.String.</returns>
     Public Function getNextKey(ByVal TBL As String, ByVal tCol As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2264,6 +2712,13 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return d
     End Function
 
+    ''' <summary>
+    ''' Gets the next key.
+    ''' </summary>
+    ''' <param name="TBL">The table.</param>
+    ''' <param name="tCol">The t col.</param>
+    ''' <param name="SQL">The SQL.</param>
+    ''' <returns>System.String.</returns>
     Public Function getNextKey(ByVal TBL As String, ByVal tCol As String, ByVal SQL As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2292,6 +2747,14 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return d
     End Function
 
+    ''' <summary>
+    ''' Gets the key by lookup col.
+    ''' </summary>
+    ''' <param name="TBL">The table.</param>
+    ''' <param name="kCol">The k col.</param>
+    ''' <param name="tCol">The t col.</param>
+    ''' <param name="LookUpVal">The look up value.</param>
+    ''' <returns>System.String.</returns>
     Public Function getKeyByLookupCol(ByVal TBL As String, ByVal kCol As String, ByVal tCol As String, ByVal LookUpVal As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2323,6 +2786,14 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return d
     End Function
 
+    ''' <summary>
+    ''' Gets the key by lookup col.
+    ''' </summary>
+    ''' <param name="TBL">The table.</param>
+    ''' <param name="kCol">The k col.</param>
+    ''' <param name="tCol">The t col.</param>
+    ''' <param name="LookUpVal">The look up value.</param>
+    ''' <returns>System.String.</returns>
     Public Function getKeyByLookupCol(ByVal TBL As String, ByVal kCol As String, ByVal tCol As String, ByVal LookUpVal As Integer) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2352,6 +2823,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return d
     End Function
 
+    ''' <summary>
+    ''' Validates the user by uid.
+    ''' </summary>
+    ''' <param name="uid">The uid.</param>
+    ''' <param name="upw">The upw.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function ValidateUserByUid(ByVal uid As String, ByVal upw As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2386,6 +2863,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return i
     End Function
 
+    ''' <summary>
+    ''' Validates the content ownership.
+    ''' </summary>
+    ''' <param name="tgtGuid">The TGT unique identifier.</param>
+    ''' <param name="contentTypeCode">The content type code.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ValidateContentOwnership(ByVal tgtGuid As String, ByVal contentTypeCode As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2435,6 +2918,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return isOwner
     End Function
 
+    ''' <summary>
+    ''' Validates the co owner.
+    ''' </summary>
+    ''' <param name="OwnerGuid">The owner unique identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ValidateCoOwner(ByVal OwnerGuid As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2484,6 +2972,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return isCoOwner
     End Function
 
+    ''' <summary>
+    ''' Validates the content of the co owner of.
+    ''' </summary>
+    ''' <param name="ContentGuid">The content unique identifier.</param>
+    ''' <param name="ContentType">Type of the content.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ValidateCoOwnerOfContent(ByVal ContentGuid As String, ByVal ContentType As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2533,6 +3027,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return isCoOwner
     End Function
 
+    ''' <summary>
+    ''' Gets the content owner unique identifier.
+    ''' </summary>
+    ''' <param name="tgtGuid">The TGT unique identifier.</param>
+    ''' <param name="contentTypeCode">The content type code.</param>
+    ''' <returns>System.String.</returns>
     Public Function getContentOwnerGuid(ByVal tgtGuid As String, ByVal contentTypeCode As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2576,6 +3076,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return OwnerGuid
     End Function
 
+    ''' <summary>
+    ''' Validates the user identifier.
+    ''' </summary>
+    ''' <param name="uid">The uid.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function ValidateUserId(ByVal uid As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2610,6 +3115,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return i
     End Function
 
+    ''' <summary>
+    ''' Gets the authority.
+    ''' </summary>
+    ''' <param name="uid">The uid.</param>
+    ''' <returns>System.String.</returns>
     Public Function getAuthority(ByVal uid As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2660,6 +3170,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the photo ext.
+    ''' </summary>
+    ''' <param name="pid">The pid.</param>
+    ''' <returns>System.String.</returns>
     Public Function getPhotoExt(ByVal pid As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2694,6 +3209,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the type of the photo img.
+    ''' </summary>
+    ''' <param name="pid">The pid.</param>
+    ''' <returns>System.String.</returns>
     Public Function getPhotoImgType(ByVal pid As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2728,6 +3248,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the type of the user.
+    ''' </summary>
+    ''' <param name="uid">The uid.</param>
+    ''' <returns>System.String.</returns>
     Public Function getUserType(ByVal uid As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2764,6 +3289,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the source CRC.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="SourceType">Type of the source.</param>
+    ''' <returns>System.String.</returns>
     Public Function getSourceCrc(ByVal SourceGuid As String, ByVal SourceType As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2795,6 +3326,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the source image hash.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="SourceType">Type of the source.</param>
+    ''' <returns>System.String.</returns>
     Public Function getSourceImageHash(ByVal SourceGuid As String, ByVal SourceType As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2827,6 +3364,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the length of the source.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="SourceType">Type of the source.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function getSourceLength(ByVal SourceGuid As String, ByVal SourceType As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2858,6 +3401,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End Try
     End Function
 
+    ''' <summary>
+    ''' SQLs the qry.
+    ''' </summary>
+    ''' <param name="sql">The SQL.</param>
+    ''' <param name="rsData">The rs data.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function SqlQry(ByVal sql As String, ByRef rsData As SqlDataReader) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2906,6 +3455,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End Try
     End Function
 
+    ''' <summary>
+    ''' Creates new id.
+    ''' </summary>
+    ''' <param name="Tbl">The table.</param>
+    ''' <param name="idCol">The identifier col.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function NewID(ByVal Tbl As String, ByVal idCol As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2931,6 +3486,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the maximum photo identifier.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getMaxPhotoID() As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2956,6 +3515,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the photo identifier bycaption.
+    ''' </summary>
+    ''' <param name="Caption">The caption.</param>
+    ''' <returns>System.String.</returns>
     Public Function getPhotoIDBycaption(ByVal Caption As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2981,6 +3545,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the user pw.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <returns>System.String.</returns>
     Public Function getUserPW(ByVal UID As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3005,6 +3574,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return iStr.Trim
     End Function
 
+    ''' <summary>
+    ''' Gets the FQN from unique identifier.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="TgtTbl">The TGT table.</param>
+    ''' <returns>System.String.</returns>
     Public Function getFqnFromGuid(ByVal SourceGuid As String, Optional TgtTbl As String = "DataSource") As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3053,6 +3628,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return iStr.Trim
     End Function
 
+    ''' <summary>
+    ''' Gets the filename by unique identifier.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getFilenameByGuid(ByVal SourceGuid As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3077,6 +3657,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return iStr.Trim
     End Function
 
+    ''' <summary>
+    ''' Gets the user unique identifier identifier.
+    ''' </summary>
+    ''' <param name="UserLoginId">The user login identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getUserGuidID(ByVal UserLoginId As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3121,6 +3706,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return iStr.Trim
     End Function
 
+    ''' <summary>
+    ''' Gets the quick reference identifier NBR.
+    ''' </summary>
+    ''' <param name="QuickRefName">Name of the quick reference.</param>
+    ''' <param name="UserGuidID">The user unique identifier identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getQuickRefIdNbr(ByVal QuickRefName As String, ByVal UserGuidID As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3146,6 +3737,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return iStr.Trim
     End Function
 
+    ''' <summary>
+    ''' Gets the next document identifier.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getNextDocID() As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3171,6 +3766,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the document identifier by FQN.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>System.String.</returns>
     Public Function getDocIdByFqn(ByVal FQN As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3197,6 +3797,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Cks the document exist by FQN.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckDocExistByFqn(ByVal FQN As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3223,6 +3828,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Executes the count SQL.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function ExecCountSQL(ByVal S As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3252,6 +3862,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return I
     End Function
 
+    ''' <summary>
+    ''' Verifies the user identifier.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function VerifyUserID(ByVal UID As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3283,6 +3898,14 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Items the exists.
+    ''' </summary>
+    ''' <param name="Tbl">The table.</param>
+    ''' <param name="idCol">The identifier col.</param>
+    ''' <param name="ColVal">The col value.</param>
+    ''' <param name="ColType">Type of the col.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ItemExists(ByVal Tbl As String, ByVal idCol As String, ByVal ColVal As String, ByVal ColType As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3318,6 +3941,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return b
     End Function
 
+    ''' <summary>
+    ''' Validates the device identifier.
+    ''' </summary>
+    ''' <param name="ID">The identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ValidateDeviceID(ByVal ID As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3350,6 +3978,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return b
     End Function
 
+    ''' <summary>
+    ''' Xxes the SQL qry.
+    ''' </summary>
+    ''' <param name="sql">The SQL.</param>
+    ''' <returns>SqlDataReader.</returns>
     Public Function xxSqlQry(ByVal sql As String) As SqlDataReader
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3392,6 +4025,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End SyncLock
     End Function
 
+    ''' <summary>
+    ''' SQLs the qry new thread.
+    ''' </summary>
+    ''' <param name="tSql">The t SQL.</param>
+    ''' <param name="tConn">The t connection.</param>
+    ''' <param name="rsDataQry">The rs data qry.</param>
     Public Sub SqlQryNewThread(ByVal tSql As String, ByRef tConn As SqlConnection, ByRef rsDataQry As SqlDataReader)
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -3424,6 +4063,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' SQLs the qry.
+    ''' </summary>
+    ''' <param name="sql">The SQL.</param>
+    ''' <param name="Conn">The connection.</param>
+    ''' <returns>SqlDataReader.</returns>
     Public Function SqlQry(ByVal sql As String, ByVal Conn As SqlConnection) As SqlDataReader
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3463,6 +4108,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return rsDataQry
     End Function
 
+    ''' <summary>
+    ''' SQLs the qry new connection.
+    ''' </summary>
+    ''' <param name="sql">The SQL.</param>
+    ''' <returns>SqlDataReader.</returns>
     Public Function SqlQryNewConn(ByVal sql As String) As SqlDataReader
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3505,6 +4155,13 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return rsDataQry
     End Function
 
+    ''' <summary>
+    ''' Updates the remote machine.
+    ''' </summary>
+    ''' <param name="CompanyID">The company identifier.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <param name="Applied">The applied.</param>
+    ''' <param name="LicenseID">The license identifier.</param>
     Public Sub UpdateRemoteMachine(ByVal CompanyID As String, ByVal MachineID As String, ByVal Applied As String, ByVal LicenseID As String)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3537,6 +4194,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         'UPDATE [License] SET [MachineID] = 'XX' ,[Applied] = 1 WHERE CompanyID = 'XX' and LicenseID = 0
     End Sub
 
+    ''' <summary>
+    ''' SQLs the qry remote connection.
+    ''' </summary>
+    ''' <param name="QrySql">The qry SQL.</param>
+    ''' <returns>SqlDataReader.</returns>
     Public Function SqlQryRemoteConn(ByVal QrySql As String) As SqlDataReader
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3581,6 +4243,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return rsDataQry
     End Function
 
+    ''' <summary>
+    ''' SQLs the qry new connection.
+    ''' </summary>
+    ''' <param name="sql">The SQL.</param>
+    ''' <param name="ConnectionString">The connection string.</param>
+    ''' <returns>SqlDataReader.</returns>
     Public Function SqlQryNewConn(ByVal sql As String, ByVal ConnectionString As String) As SqlDataReader
 
         ''Session("ActiveError") = False
@@ -3619,17 +4287,27 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return rsDataQry
     End Function
 
+    ''' <summary>
+    ''' Sets the global conection.
+    ''' </summary>
     Public Sub setGlobalConection()
         CloseConn()
         CkConn()
     End Sub
 
+    ''' <summary>
+    ''' Closes the global conection.
+    ''' </summary>
     Public Sub closeGlobalConection()
         If gConn.State = Data.ConnectionState.Open Then
             gConn.Close()
         End If
     End Sub
 
+    ''' <summary>
+    ''' Cks the site facility.
+    ''' </summary>
+    ''' <param name="FacilityID">The facility identifier.</param>
     Public Sub ckSiteFacility(ByVal FacilityID As String)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3660,6 +4338,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Executes the SQL tx.
+    ''' </summary>
+    ''' <param name="sql">The SQL.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ExecuteSqlTx(ByVal sql As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3728,6 +4411,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return rc
     End Function
 
+    ''' <summary>
+    ''' Executes the SQL no tx.
+    ''' </summary>
+    ''' <param name="sql">The SQL.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ExecuteSqlNoTx(ByVal sql As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3775,6 +4463,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return rc
     End Function
 
+    ''' <summary>
+    ''' xes the execute SQL new connection.
+    ''' </summary>
+    ''' <param name="sql">The SQL.</param>
+    ''' <param name="ValidateOwnerShip">if set to <c>true</c> [validate owner ship].</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function xExecuteSqlNewConn(ByVal sql As String, ByVal ValidateOwnerShip As Boolean) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3831,6 +4525,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return rc
     End Function
 
+    ''' <summary>
+    ''' Machines the register.
+    ''' </summary>
+    ''' <param name="MachineName">Name of the machine.</param>
+    ''' <param name="NetWorkName">Name of the net work.</param>
+    ''' <returns>System.String.</returns>
     Function MachineRegister(MachineName As String, NetWorkName As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3894,6 +4594,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Executes the SQL new connection.
+    ''' </summary>
+    ''' <param name="sql">The SQL.</param>
+    ''' <param name="ValidateOwnerShip">if set to <c>true</c> [validate owner ship].</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ExecuteSqlNewConn(ByVal sql As String, ByVal ValidateOwnerShip As Boolean) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3982,6 +4688,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return BB
     End Function
 
+    ''' <summary>
+    ''' Executes the SQL same connection.
+    ''' </summary>
+    ''' <param name="sql">The SQL.</param>
+    ''' <param name="CN">The cn.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ExecuteSqlSameConn(ByVal sql As String, ByVal CN As SqlConnection) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -4040,6 +4752,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return BB
     End Function
 
+    ''' <summary>
+    ''' Executes the SQL new connection.
+    ''' </summary>
+    ''' <param name="loc">The loc.</param>
+    ''' <param name="sql">The SQL.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ExecuteSqlNewConn(loc As Int32, ByVal sql As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -4131,6 +4849,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return RC
     End Function
 
+    ''' <summary>
+    ''' Applies the SQL statement.
+    ''' </summary>
+    ''' <param name="sql">The SQL.</param>
+    ''' <param name="ErrMsg">The error MSG.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ApplySqlStmt(ByVal sql As String, ByRef ErrMsg As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -4164,6 +4888,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return rc
     End Function
 
+    ''' <summary>
+    ''' Executes the SQL lookup table.
+    ''' </summary>
+    ''' <param name="sql">The SQL.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ExecuteSqlLookupTable(ByVal sql As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -4200,6 +4929,13 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return rc
     End Function
 
+    ''' <summary>
+    ''' Executes the SQL.
+    ''' </summary>
+    ''' <param name="sql">The SQL.</param>
+    ''' <param name="NewConnectionStr">Creates new connectionstr.</param>
+    ''' <param name="ValidateOwnerShip">if set to <c>true</c> [validate owner ship].</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ExecuteSql(ByVal sql As String, ByVal NewConnectionStr As String, ByVal ValidateOwnerShip As Boolean) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -4267,6 +5003,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Executes the sp.
+    ''' </summary>
+    ''' <param name="spName">Name of the sp.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ExecSP(ByVal spName As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -4300,6 +5041,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Sps the apply update.
+    ''' </summary>
+    ''' <param name="UpdateSql">The update SQL.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function SP_ApplyUpdate(ByVal UpdateSql As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -4349,6 +5095,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Executes the SQL no audit.
+    ''' </summary>
+    ''' <param name="sql">The SQL.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ExecuteSqlNoAudit(ByVal sql As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -4405,6 +5156,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return rc
     End Function
 
+    ''' <summary>
+    ''' Saves the history.
+    ''' </summary>
+    ''' <param name="SQL">The SQL.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function saveHistory(ByVal SQL As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -4474,6 +5230,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return b
     End Function
 
+    ''' <summary>
+    ''' Gets the cpu time.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getCpuTime() As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -4501,6 +5261,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the table name from SQL.
+    ''' </summary>
+    ''' <param name="Sql">The SQL.</param>
+    ''' <returns>System.String.</returns>
     Function GetTableNameFromSql(ByVal Sql As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -4563,6 +5328,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the where clause from SQL.
+    ''' </summary>
+    ''' <param name="Sql">The SQL.</param>
+    ''' <returns>System.String.</returns>
     Function GetWhereClauseFromSql(ByVal Sql As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -4589,6 +5359,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the type SQL statement.
+    ''' </summary>
+    ''' <param name="Sql">The SQL.</param>
+    ''' <returns>System.String.</returns>
     Function GetTypeSqlStmt(ByVal Sql As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -4626,6 +5401,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return SqlType
     End Function
 
+    ''' <summary>
+    ''' Cks the module authentication.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="AuthCode">The authentication code.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckModuleAuth(ByVal UID As String, ByVal AuthCode As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -4697,6 +5478,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return AuthGranted
     End Function
 
+    ''' <summary>
+    ''' Gets the name of the server database.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function getServerDbName() As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -4725,6 +5510,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return ServerDbName
     End Function
 
+    ''' <summary>
+    ''' Cks the authority.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="AuthCode">The authentication code.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckAuthority(ByVal UID As String, ByVal AuthCode As String) As Boolean
         Dim AuthGranted As Boolean = False
         AuthCode = UCase(AuthCode)
@@ -4758,6 +5549,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return AuthGranted
     End Function
 
+    ''' <summary>
+    ''' Users the has authority.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="AuthCode">The authentication code.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UserHasAuthority(ByVal UID As String, ByVal AuthCode As String) As Boolean
         Dim AuthGranted As Boolean = False
         AuthCode = UCase(AuthCode)
@@ -4857,6 +5654,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return AuthGranted
     End Function
 
+    ''' <summary>
+    ''' Cks the length of the field.
+    ''' </summary>
+    ''' <param name="Title">The title.</param>
+    ''' <param name="fld">The field.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckFldLen(ByVal Title As String, ByVal fld As String) As Boolean
         If Len(fld) = 0 Then
             LOG.WriteToArchiveLog("Error ckFldLen 100.10i - " + Title + " is a required field.")
@@ -4874,6 +5677,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     'End Sub
 
+    ''' <summary>
+    ''' Gets the curr dir.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function GetCurrDir() As String
         Dim s As String = ""
         Dim ch As String = ""
@@ -4893,6 +5700,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return cPath
     End Function
 
+    ''' <summary>
+    ''' Retrieves the document.
+    ''' </summary>
+    ''' <param name="DocID">The document identifier.</param>
+    ''' <returns>System.Byte().</returns>
     Public Function RetrieveDocument(ByVal DocID As String) As Byte()
 
         Dim cn As SqlConnection = Nothing
@@ -4933,6 +5745,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return Nothing
     End Function
 
+    ''' <summary>
+    ''' Gets the document FQN by identifier.
+    ''' </summary>
+    ''' <param name="DocID">The document identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getDocumentFqnById(ByVal DocID As String) As String
 
         Dim cn As SqlConnection = Nothing
@@ -4976,6 +5793,13 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return Nothing
     End Function
 
+    ''' <summary>
+    ''' zs the trace.
+    ''' </summary>
+    ''' <param name="StmtID">The statement identifier.</param>
+    ''' <param name="Stmt">The statement.</param>
+    ''' <param name="PgmName">Name of the PGM.</param>
+    ''' <param name="ex">The ex.</param>
     Sub ZTrace(ByVal StmtID As Integer, ByVal Stmt As String, ByVal PgmName As String, ByVal ex As Exception)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -5003,6 +5827,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Fixes the single quotes.
+    ''' </summary>
+    ''' <param name="Stmt">The statement.</param>
     Sub FixSingleQuotes(ByRef Stmt As String)
         Dim I As Integer = 0
         Dim CH As String = ""
@@ -5014,6 +5842,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Next
     End Sub
 
+    ''' <summary>
+    ''' xes the trace.
+    ''' </summary>
+    ''' <param name="StmtID">The statement identifier.</param>
+    ''' <param name="PgmName">Name of the PGM.</param>
+    ''' <param name="Stmt">The statement.</param>
     Public Sub xTrace(ByVal StmtID As Integer, ByVal PgmName As String, ByVal Stmt As String)
 
         If Stmt.Contains("Failed to save search results") Then
@@ -5046,6 +5880,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Clears the restore queue.
+    ''' </summary>
+    ''' <param name="gGateWayID">The g gate way identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ClearRestoreQueue(gGateWayID As Integer, UserID As String) As Boolean
 
         Dim rsData As SqlDataReader = Nothing
@@ -5063,6 +5903,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End Try
     End Function
 
+    ''' <summary>
+    ''' Remotes the trace.
+    ''' </summary>
+    ''' <param name="StmtID">The statement identifier.</param>
+    ''' <param name="PgmName">Name of the PGM.</param>
+    ''' <param name="Stmt">The statement.</param>
     Public Sub RemoteTrace(ByVal StmtID As Integer, ByVal PgmName As String, ByVal Stmt As String)
 
         If Stmt.Contains("Failed to save search results") Then
@@ -5097,6 +5943,9 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Zeroes the trace.
+    ''' </summary>
     Sub ZeroTrace()
         Dim S As String = ""
         S = "delete from PgmTrace "
@@ -5108,6 +5957,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End If
     End Sub
 
+    ''' <summary>
+    ''' Zeroizes the email to delete.
+    ''' </summary>
+    ''' <param name="Userid">The userid.</param>
     Sub ZeroizeEmailToDelete(ByVal Userid As String)
         Dim S As String = ""
         S = "delete from EmailToDelete where UserID = '" + Userid + "'"
@@ -5119,6 +5972,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End If
     End Sub
 
+    ''' <summary>
+    ''' Logs the entry new.
+    ''' </summary>
+    ''' <param name="IPADDR">The ipaddr.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function LogEntryNew(ByVal IPADDR As String) As Integer
 
         Dim NextKey As String = getNextKey("LOGINS", "LoginTrackingNbr")
@@ -5146,6 +6004,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Logs the entry update.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="LoginTrackingNbr">The login tracking NBR.</param>
     Public Sub LogEntryUpdate(ByVal UID As String, ByVal LoginTrackingNbr As Integer)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -5174,6 +6037,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Logs the entry update.
+    ''' </summary>
+    ''' <param name="LoginTrackingNbr">The login tracking NBR.</param>
     Public Sub LogEntryUpdate(ByVal LoginTrackingNbr As Integer)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -5190,6 +6057,18 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Inserts the email.
+    ''' </summary>
+    ''' <param name="EmailFrom">The email from.</param>
+    ''' <param name="EmailTo">The email to.</param>
+    ''' <param name="EmailSubj">The email subj.</param>
+    ''' <param name="EmailCC">The email cc.</param>
+    ''' <param name="EmailBCC">The email BCC.</param>
+    ''' <param name="EMailBody">The e mail body.</param>
+    ''' <param name="EMailBody2">The e mail body2.</param>
+    ''' <param name="EmailDate">The email date.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function InsertEmail(ByVal EmailFrom As String, ByVal EmailTo As String, ByVal EmailSubj As String, ByVal EmailCC As String, ByVal EmailBCC As String, ByVal EMailBody As String, ByVal EMailBody2 As String, ByVal EmailDate As Date) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -5220,6 +6099,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return b
     End Function
 
+    ''' <summary>
+    ''' Adds the upload file data.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="UploadedBy">The uploaded by.</param>
     Public Sub AddUploadFileData(ByVal FQN As String, ByVal UploadedBy As String)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -5233,6 +6117,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End If
     End Sub
 
+    ''' <summary>
+    ''' Inserts the file audit.
+    ''' </summary>
+    ''' <param name="FN">The function.</param>
+    ''' <param name="UploadedBy">The uploaded by.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function InsertFileAudit(ByVal FN As String, ByVal UploadedBy As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -5262,6 +6152,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Sets the upload success true.
+    ''' </summary>
+    ''' <param name="UploadID">The upload identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function setUploadSuccessTrue(ByVal UploadID As Integer) As Boolean
 
         Dim b As Boolean = False
@@ -5279,6 +6174,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return b
     End Function
 
+    ''' <summary>
+    ''' Gets the last upload time.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function GetLastUploadTime() As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -5318,6 +6217,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the elapsed time.
+    ''' </summary>
+    ''' <param name="UploadID">The upload identifier.</param>
+    ''' <param name="FN">The function.</param>
+    ''' <param name="ET">The et.</param>
     Sub GetElapsedTime(ByVal UploadID As String, ByRef FN As String, ByRef ET As String)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -5348,6 +6253,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Cks the attribute exists.
+    ''' </summary>
+    ''' <param name="AttributeName">Name of the attribute.</param>
+    ''' <param name="PropVal">The property value.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ckAttributeExists(ByVal AttributeName As String, ByVal PropVal As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -5371,6 +6282,14 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return b
     End Function
 
+    ''' <summary>
+    ''' Cks the email folder exist.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="FolderID">The folder identifier.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <param name="ContainerName">Name of the container.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckEmailFolderExist(UserID As String, FolderID As String, FolderName As String, ContainerName As String) As Boolean
 
         Dim s As String = "select count(*) from EmailFolder where [UserID] = '" + UserID + "' and [FolderID] = '" + FolderID + "' and [FolderName] = '" + FolderName + "' and [ContainerName] = '" + ContainerName + "' "
@@ -5404,6 +6323,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
     '' <param name="FN"></param>
     '' <returns>TRUE if the file has been loaded, FALSE if not.</returns>
     '' <remarks></remarks>
+    ''' <summary>
+    ''' Cks the datasource exists.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckDatasourceExists(ByVal FQN As String, ByVal UID As String) As Boolean
         FQN = UTIL.RemoveSingleQuotes(FQN)
         CloseConn()
@@ -5429,6 +6354,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the table count.
+    ''' </summary>
+    ''' <param name="TblName">Name of the table.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function getTableCount(ByVal TblName As String) As Integer
         Try
             Dim S As String = "Select  count(*) FROM " + TblName
@@ -5455,6 +6385,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' is the count.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function iCount(ByVal S As String) As Integer
         SyncLock Me
             Try
@@ -5477,6 +6412,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End SyncLock
     End Function
 
+    ''' <summary>
+    ''' is the content of the count.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function iCountContent(ByVal S As String) As Integer
 
         Dim I As Integer = 0
@@ -5545,6 +6485,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the ss count data source files.
+    ''' </summary>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="CRC">The CRC.</param>
+    ''' <returns>System.String.</returns>
     Public Function getSSCountDataSourceFiles(ByVal SourceName As String, ByVal CRC As String) As String
         Dim SourceGuid As String = ""
         Try
@@ -5580,6 +6526,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return SourceGuid
     End Function
 
+    ''' <summary>
+    ''' Hexadecimals the string to binary.
+    ''' </summary>
+    ''' <param name="hexString">The hexadecimal string.</param>
+    ''' <returns>System.String.</returns>
     Function HexStringToBinary(ByVal hexString As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -5595,6 +6546,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
     '    Return Convert.ToString(num, 2)
     'End Function
 
+    ''' <summary>
+    ''' Gets the count data source files.
+    ''' </summary>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="HexHash">The hexadecimal hash.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function getCountDataSourceFiles(ByVal SourceName As String, HexHash As String) As Integer
         Dim CNT As Integer = -1
         'If Not HexHash.Contains("0x") Then
@@ -5619,6 +6576,14 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return CNT
     End Function
 
+    ''' <summary>
+    ''' Updates the data source file information.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="FileLength">Length of the file.</param>
+    ''' <param name="Imagehash">The imagehash.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function UpdateDataSourceFileInfo(FQN As String, SourceGuid As String, FileLength As Integer, Imagehash As String) As Boolean
 
         Dim b As Boolean = True
@@ -5719,6 +6684,14 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Updates the souce image.
+    ''' </summary>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="Imagehash">The imagehash.</param>
+    ''' <param name="RetentionExpirationDate">The retention expiration date.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function UpdateSouceImage(MachineID As String, FQN As String, Imagehash As String, RetentionExpirationDate As DateTime) As Boolean
 
         If FQN.Contains("'") Then
@@ -5765,6 +6738,13 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Updates the souce image.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="RetentionYears">The retention years.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function UpdateSouceImage(SourceGuid As String, FQN As String, RetentionYears As Integer) As Boolean
 
         If FQN.Contains("'") Then
@@ -5831,6 +6811,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Cks the file exist in repo.
+    ''' </summary>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>List(Of System.String).</returns>
     Public Function ckFileExistInRepo(MachineID As String, ByVal FQN As String) As List(Of String)
 
         Dim BFound As Boolean = False
@@ -5872,6 +6858,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return ListOfGuids
     End Function
 
+    ''' <summary>
+    ''' Gets the count data source files.
+    ''' </summary>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="WebPagePublishDate">The web page publish date.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function getCountDataSourceFiles(ByVal SourceName As String, WebPagePublishDate As Date) As Integer
         Dim CNT As Integer = -1
         Try
@@ -5894,6 +6886,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return CNT
     End Function
 
+    ''' <summary>
+    ''' Gets the count RSS file.
+    ''' </summary>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="WebPagePublishDate">The web page publish date.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function getCountRssFile(ByVal SourceName As String, WebPagePublishDate As String) As Integer
         Dim CNT As Integer = -1
         Try
@@ -5916,6 +6914,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return CNT
     End Function
 
+    ''' <summary>
+    ''' Gets the maximum data source version NBR.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>System.Int32.</returns>
     Function GetMaxDataSourceVersionNbr(ByVal UserID As String, ByVal FQN As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -5969,6 +6973,13 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the maximum data source version NBR.
+    ''' </summary>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="CRC">The CRC.</param>
+    ''' <param name="FileLength">Length of the file.</param>
+    ''' <returns>System.Int32.</returns>
     Function GetMaxDataSourceVersionNbr(ByVal SourceName As String, ByVal CRC As String, ByVal FileLength As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6004,6 +7015,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the unique identifier.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function getGuid() As String
         Dim MyGuid As Guid = Guid.NewGuid()
         Return MyGuid.ToString
@@ -6013,6 +7028,9 @@ Public Class clsDatabaseARCH : Implements IDisposable
     '' Bilds the sorted lists for blazing fast lookup speeds.
     '' </summary>
     '' <remarks></remarks>
+    ''' <summary>
+    ''' Populates the sorted lists.
+    ''' </summary>
     Public Sub PopulateSortedLists()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6028,6 +7046,9 @@ Public Class clsDatabaseARCH : Implements IDisposable
     '' access the database thus giving us extreme speed.
     '' </summary>
     '' <remarks></remarks>
+    ''' <summary>
+    ''' Populates the project sorted list.
+    ''' </summary>
     Sub PopulateProjectSortedList()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6056,6 +7077,9 @@ Public Class clsDatabaseARCH : Implements IDisposable
         rsData.Close()
     End Sub
 
+    ''' <summary>
+    ''' Populates the project team sorted list.
+    ''' </summary>
     Sub PopulateProjectTeamSortedList()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6083,6 +7107,9 @@ Public Class clsDatabaseARCH : Implements IDisposable
         rsData.Close()
     End Sub
 
+    ''' <summary>
+    ''' Populates the metric period sorted list.
+    ''' </summary>
     Sub PopulateMetricPeriodSortedList()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6110,6 +7137,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         rsData.Close()
     End Sub
 
+    ''' <summary>
+    ''' Gets the metric period identifier by key.
+    ''' </summary>
+    ''' <param name="MetricPeriod">The metric period.</param>
+    ''' <param name="ProjectTeamID">The project team identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getMetricPeriodIdByKey(ByVal MetricPeriod As String, ByVal ProjectTeamID As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6141,6 +7174,9 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return tKey
     End Function
 
+    ''' <summary>
+    ''' Links the run identifier.
+    ''' </summary>
     Sub LinkRunId()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6171,6 +7207,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the last upload identifier.
+    ''' </summary>
+    ''' <returns>System.Int32.</returns>
     Function getLastUploadID() As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6199,6 +7239,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the last project identifier.
+    ''' </summary>
+    ''' <returns>System.Int32.</returns>
     Function getLastProjectID() As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6227,6 +7271,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Cks the name of the excel col.
+    ''' </summary>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckExcelColName(ByVal ColName As String) As Boolean
         Dim B As Boolean = False
         Dim I As Int32 = Me.slExcelColNames.IndexOfKey(ColName)
@@ -6238,6 +7287,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Populates the sorted lists.
+    ''' </summary>
+    ''' <param name="ListName">Name of the list.</param>
+    ''' <param name="tKey">The t key.</param>
+    ''' <param name="tDesc">The t desc.</param>
     Sub populateSortedLists(ByVal ListName As String, ByVal tKey As String, ByVal tDesc As String)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6280,6 +7335,14 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End If
     End Sub
 
+    ''' <summary>
+    ''' Adds the lookup data.
+    ''' </summary>
+    ''' <param name="TBL">The table.</param>
+    ''' <param name="CodeCol">The code col.</param>
+    ''' <param name="DescCol">The desc col.</param>
+    ''' <param name="tCode">The t code.</param>
+    ''' <param name="tDesc">The t desc.</param>
     Sub AddLookupData(ByVal TBL As String, ByVal CodeCol As String, ByVal DescCol As String, ByVal tCode As String, ByVal tDesc As String)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6303,16 +7366,32 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Sets the configuration database.
+    ''' </summary>
+    ''' <param name="DbId">The database identifier.</param>
     Public Sub SetConfigDb(ByVal DbId As String)
         ConnectionStringID = DbId
     End Sub
 
+    ''' <summary>
+    ''' Gets the ds value.
+    ''' </summary>
+    ''' <param name="RS">The rs.</param>
+    ''' <param name="I">The i.</param>
+    ''' <returns>System.String.</returns>
     Function GetDsValue(ByVal RS As SqlDataReader, ByVal I As Integer) As String
         Dim tVal As String = RS.GetValue(I).ToString
         tVal = UTIL.RemoveSingleQuotes(tVal)
         Return tVal
     End Function
 
+    ''' <summary>
+    ''' Adds to sl.
+    ''' </summary>
+    ''' <param name="SL">The sl.</param>
+    ''' <param name="S">The s.</param>
+    ''' <param name="dups">The dups.</param>
     Sub AddToSL(ByRef SL As SortedList, ByVal S As String, ByRef dups As Integer)
         Try
             Dim I As Integer = SL.IndexOfKey(S)
@@ -6328,6 +7407,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Sps the ck next identifier.
+    ''' </summary>
+    ''' <param name="ID">The identifier.</param>
     Public Sub spCkNextID(ByVal ID As String)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6351,6 +7434,22 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Inserts the email MSG.
+    ''' </summary>
+    ''' <param name="ID">The identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="EmailGUID">The email unique identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="ReceivedByName">Name of the received by.</param>
+    ''' <param name="ReceivedTime">The received time.</param>
+    ''' <param name="SenderEmailAddress">The sender email address.</param>
+    ''' <param name="SenderName">Name of the sender.</param>
+    ''' <param name="SentOn">The sent on.</param>
+    ''' <param name="RetentionCode">The retention code.</param>
+    ''' <param name="isPublic">The is public.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function InsertEmailMsg(ByVal ID As Integer,
                                    ByVal UID As String,
                                    ByVal FQN As String,
@@ -6417,6 +7516,19 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Updates the email MSG.
+    ''' </summary>
+    ''' <param name="OriginalName">Name of the original.</param>
+    ''' <param name="ID">The identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="EmailGUID">The email unique identifier.</param>
+    ''' <param name="RetentionCode">The retention code.</param>
+    ''' <param name="isPublic">The is public.</param>
+    ''' <param name="SourceHash">The source hash.</param>
+    ''' <param name="DirName">Name of the dir.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UpdateEmailMsg(ByVal OriginalName As String,
                                    ByVal ID As Integer,
                                    ByVal UID As String,
@@ -6470,6 +7582,14 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Updates the attachment.
+    ''' </summary>
+    ''' <param name="EmailGUID">The email unique identifier.</param>
+    ''' <param name="AttachmentBinary">The attachment binary.</param>
+    ''' <param name="AttachmentName">Name of the attachment.</param>
+    ''' <param name="AttachmentCode">The attachment code.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UpdateAttachment(ByVal EmailGUID As String, ByVal AttachmentBinary() As Byte, ByVal AttachmentName As String, ByVal AttachmentCode As String) As Boolean
 
         Dim bExtendTime As Boolean = False
@@ -6505,6 +7625,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Executes the sp update long name hash.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function Exec_spUpdateLongNameHash(ByVal SourceGuid As String, ByVal FQN As String) As Boolean
 
         Dim InsertConnStr As String = getRepoConnStr()
@@ -6534,6 +7660,16 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Updates the attachment by FQN.
+    ''' </summary>
+    ''' <param name="ID">The identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="EmailGUID">The email unique identifier.</param>
+    ''' <param name="AttachmentName">Name of the attachment.</param>
+    ''' <param name="AttachmentCode">The attachment code.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UpdateAttachmentByFQN(ByVal ID As Integer, ByVal UID As String, ByVal FQN As String, ByVal EmailGUID As String, ByVal AttachmentName As String, ByVal AttachmentCode As String) As Boolean
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim B As Boolean = False
@@ -6573,6 +7709,14 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' xes the insert attachment.
+    ''' </summary>
+    ''' <param name="EmailGUID">The email unique identifier.</param>
+    ''' <param name="AttachmentBinary">The attachment binary.</param>
+    ''' <param name="AttachmentName">Name of the attachment.</param>
+    ''' <param name="AttachmentCode">The attachment code.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function xInsertAttachment(ByVal EmailGUID As String, ByVal AttachmentBinary() As Byte, ByVal AttachmentName As String, ByVal AttachmentCode As String) As Boolean
         Dim B As Boolean = False
         Try
@@ -6597,6 +7741,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Validates the ext exists.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
     Sub ValidateExtExists(ByVal FQN As String)
         Dim ATYPE As New clsATTACHMENTTYPE
         Dim FileExt As String = "." + UTIL.getFileSuffix(FQN)
@@ -6609,6 +7757,20 @@ Public Class clsDatabaseARCH : Implements IDisposable
         ATYPE = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Inserts the attachment FQN.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="EmailGUID">The email unique identifier.</param>
+    ''' <param name="AttachmentName">Name of the attachment.</param>
+    ''' <param name="AttachmentCode">The attachment code.</param>
+    ''' <param name="UserGuidID">The user unique identifier identifier.</param>
+    ''' <param name="RetentionCode">The retention code.</param>
+    ''' <param name="CrcHASH">The CRC hash.</param>
+    ''' <param name="isPublic">The is public.</param>
+    ''' <param name="FileDirectory">The file directory.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function InsertAttachmentFqn(ByVal UID As String,
                                         ByVal FQN As String,
                                         ByVal EmailGUID As String,
@@ -6679,6 +7841,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Cks the ocr needed.
+    ''' </summary>
+    ''' <param name="AttachmentType">Type of the attachment.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckOcrNeeded(AttachmentType As String) As Boolean
         '** Convert to use [ImageTypeCode] table in database
         If AttachmentType.ToLower.Equals(".pdf") Then
@@ -6722,6 +7889,14 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End If
     End Function
 
+    ''' <summary>
+    ''' Updates the email binary.
+    ''' </summary>
+    ''' <param name="ID">The identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="EmailGUID">The email unique identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UpdateEmailBinary(ByVal ID As Integer, ByVal UID As String, ByVal FQN As String, ByVal EmailGUID As String) As Boolean
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim B As Boolean = False
@@ -6758,6 +7933,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Cks the document exists.
+    ''' </summary>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="CRC">The CRC.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ckDocumentExists(ByVal SourceName As String, ByVal CRC As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6797,6 +7978,13 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Cks the document exists.
+    ''' </summary>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <param name="CRC">The CRC.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckDocumentExists(ByVal SourceName As String, ByVal MachineID As String, CRC As String) As Boolean
         SourceName = UTIL.RemoveSingleQuotes(SourceName)
         Dim S As String = ""
@@ -6832,6 +8020,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the process as ext.
+    ''' </summary>
+    ''' <param name="CurrExt">The curr ext.</param>
+    ''' <returns>System.String.</returns>
     Public Function getProcessAsExt(CurrExt As String) As String
 
         Dim pext As String = ""
@@ -6876,6 +8069,26 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return pext
     End Function
 
+    ''' <summary>
+    ''' Adds the source to repo.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <param name="NetworkName">Name of the network.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="UploadFQN">The upload FQN.</param>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="SourceTypeCode">The source type code.</param>
+    ''' <param name="sLastAccessDate">The s last access date.</param>
+    ''' <param name="sCreateDate">The s create date.</param>
+    ''' <param name="sLastWriteTime">The s last write time.</param>
+    ''' <param name="DataSourceOwnerUserID">The data source owner user identifier.</param>
+    ''' <param name="VersionNbr">The version NBR.</param>
+    ''' <param name="RetentionCode">The retention code.</param>
+    ''' <param name="isPublic">The is public.</param>
+    ''' <param name="FileHash">The file hash.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function AddSourceToRepo(ByVal UID As String, ByVal MachineID As String, NetworkName As String,
                                      ByVal SourceGuid As String,
                                        ByVal UploadFQN As String,
@@ -6889,7 +8102,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
                                        ByVal RetentionCode As String,
                                        ByVal isPublic As String,
                                        FileHash As String,
-                                       FolderName As String) As Boolean
+                                       FolderName As String) As String
 
         If (SourceName.Trim.Length().Equals(0)) Then
             SourceName = Path.GetFileName(UploadFQN)
@@ -6907,19 +8120,19 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Try
             LastWriteTime = CDate(sLastWriteTime)
         Catch ex0 As Exception
-            LOG.WriteToDBUpdatesLog("ERROR: AddSourceToRepo 100 - LastWriteTime: " + ex0.Message + environment.NewLine + sLastWriteTime)
+            LOG.WriteToDBUpdatesLog("ERROR: AddSourceToRepo 100 - LastWriteTime: " + ex0.Message + Environment.NewLine + sLastWriteTime)
         End Try
 
         Try
             LastAccessDate = CDate(sLastAccessDate)
         Catch ex1 As Exception
-            LOG.WriteToDBUpdatesLog("ERROR: AddSourceToRepo 101 - LastAccessDate: " + ex1.Message + environment.NewLine + sLastAccessDate)
+            LOG.WriteToDBUpdatesLog("ERROR: AddSourceToRepo 101 - LastAccessDate: " + ex1.Message + Environment.NewLine + sLastAccessDate)
         End Try
 
         Try
             CreateDate = CDate(sCreateDate)
         Catch ex2 As Exception
-            LOG.WriteToDBUpdatesLog("ERROR: AddSourceToRepo 102 - CreateDate: " + ex2.Message + environment.NewLine + sCreateDate)
+            LOG.WriteToDBUpdatesLog("ERROR: AddSourceToRepo 102 - CreateDate: " + ex2.Message + Environment.NewLine + sCreateDate)
         End Try
 
         Dim fExt As String = SourceTypeCode
@@ -6930,7 +8143,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
         B = ckDocumentExists(SourceName, FileHash)
         If B = True Then
             saveContentOwner(SourceGuid, gCurrUserGuidID, "C", FolderName, gMachineID, gNetworkID)
-            LOG.WriteToDBUpdatesLog("Info: clsDatabaseARCH : AddSourceToRepo: file exists, did not update or overwrite." + environment.NewLine + UploadFQN)
+            LOG.WriteToDBUpdatesLog("Info: clsDatabaseARCH : AddSourceToRepo: file exists, did not update or overwrite." + Environment.NewLine + UploadFQN)
             Return True
         Else
             Console.WriteLine("No Exists: " + SourceName)
@@ -6960,10 +8173,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
             Return False
         End If
         If SourceImage.Length > 500000000 Then
-            LOG.WriteToDBUpdatesLog("Notification : AddSourceToRepo : 661b : Loading large file: " + UploadFQN + environment.NewLine + "File Length: " + SourceImage.Length.ToString)
+            LOG.WriteToDBUpdatesLog("Notification : AddSourceToRepo : 661b : Loading large file: " + UploadFQN + Environment.NewLine + "File Length: " + SourceImage.Length.ToString)
         End If
         If SourceImage.Length > 1000000000 Then
-            LOG.WriteToDBUpdatesLog("Notification : AddSourceToRepo : 661b : Loading extremely large file: " + UploadFQN + environment.NewLine + "File Length: " + SourceImage.Length.ToString)
+            LOG.WriteToDBUpdatesLog("Notification : AddSourceToRepo : 661b : Loading extremely large file: " + UploadFQN + Environment.NewLine + "File Length: " + SourceImage.Length.ToString)
         End If
 
         Try
@@ -6983,21 +8196,42 @@ Public Class clsDatabaseARCH : Implements IDisposable
             'WDM CHECK THIS OUT
             'B = AddSourceToRepo(UID, MachineID, "LOCAL", SourceGuid, UploadFQN, SourceName, SourceTypeCode, sLastAccessDate, sCreateDate, sLastWriteTime, UID, VersionNbr, RetentionCode, isPublic, FileHash, FolderName)
 
-            '********************************************************************************
-            '************************ UpdateSourceImage *************************************
-            B = UpdateSourceImage(SourceGuid, SourceImage)
-            '********************************************************************************
-            '********************************************************************************
+            Dim FIleExt As String = Path.GetExtension(UploadFQN)
+            Dim OriginalFileName As String = Path.GetFileName(UploadFQN)
+            Dim DirName As String = Path.GetDirectoryName(UploadFQN)
+            Dim bUseZipFles As Boolean = True
+            Dim BBX As Boolean = True
 
-            If Not B Then
-                LOG.WriteToDBUpdatesLog("ERROR Load Failed for: " + UploadFQN + environment.NewLine + ReturnMsg)
-            Else
-                LOG.WriteToDBUpdatesLog("Notice Load successful for: " + UploadFQN)
-                saveContentOwner(SourceGuid, gCurrUserGuidID, "C", FolderName, gMachineID, gNetworkID)
-                If ckOcrNeeded(fExt) Then
-                    SetOcrProcessingParms(SourceGuid, "C", SourceName)
+            Dim LOF As List(Of String) = ckFileExistInRepo(Environment.MachineName, gCurrUserGuidID)
+            If LOF.Count.Equals(0) Then
+
+                Dim NewSourceGuid As String = insertSingleFILE(UploadFQN)
+                If NewSourceGuid.Length.Equals(0) Then
+                    BBX = False
+                    LOG.WriteToArchiveLog("ERROR AddSource Failed for: " + UploadFQN)
+                Else
+                    BBX = True
+                    SourceGuid = NewSourceGuid
                 End If
+            End If
 
+            If BBX Then
+                '********************************************************************************
+                '************************ UpdateSourceImage *************************************
+                B = UpdateSourceImage(SourceGuid, SourceImage)
+                '********************************************************************************
+                '********************************************************************************
+
+                If Not B Then
+                    LOG.WriteToDBUpdatesLog("ERROR Load Failed for: " + UploadFQN + Environment.NewLine + ReturnMsg)
+                Else
+                    LOG.WriteToDBUpdatesLog("Notice Load successful for: " + UploadFQN)
+                    saveContentOwner(SourceGuid, gCurrUserGuidID, "C", FolderName, gMachineID, gNetworkID)
+                    If ckOcrNeeded(fExt) Then
+                        SetOcrProcessingParms(SourceGuid, "C", SourceName)
+                    End If
+
+                End If
             End If
 
             'ProxyArchive = Nothing
@@ -7005,11 +8239,17 @@ Public Class clsDatabaseARCH : Implements IDisposable
             GC.WaitForPendingFinalizers()
         Catch ex As Exception
             B = False
-            LOG.WriteToDBUpdatesLog("clsDatabaseARCH : AddSourceToRepo : 2495b : " + UploadFQN + environment.NewLine + ex.Message)
+            LOG.WriteToDBUpdatesLog("clsDatabaseARCH : AddSourceToRepo : 2495b : " + UploadFQN + Environment.NewLine + ex.Message)
         End Try
-        Return B
+        Return SourceGuid
     End Function
 
+    ''' <summary>
+    ''' Updates the source image.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="SourceImage">The source image.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UpdateSourceImage(SourceGuid As String, SourceImage As Byte()) As Boolean
 
         Dim B As Boolean = True
@@ -7042,8 +8282,8 @@ Public Class clsDatabaseARCH : Implements IDisposable
                 End Using
                 B = True
             Catch ex As Exception
-                LOG.WriteToDBUpdatesLog("ERROR 22x: UpdateSourceImage 01: " + ex.Message + environment.NewLine + MySql)
-                LOG.WriteToArchiveLog("ERROR 22x: UpdateSourceImage 01: " + ex.Message + environment.NewLine + MySql)
+                LOG.WriteToDBUpdatesLog("ERROR 22x: UpdateSourceImage 01: " + ex.Message + Environment.NewLine + MySql)
+                LOG.WriteToArchiveLog("ERROR 22x: UpdateSourceImage 01: " + ex.Message + Environment.NewLine + MySql)
                 B = False
             End Try
         Catch ex As Exception
@@ -7057,6 +8297,15 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Applies the source type code.
+    ''' </summary>
+    ''' <param name="MachineName">Name of the machine.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="FileExt">The file ext.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Private Function ApplySourceTypeCode(MachineName As String, UserID As String, SourceName As String, FileExt As String, SourceGuid As String) As Boolean
         Dim bb As Boolean = True
         Try
@@ -7083,6 +8332,22 @@ Public Class clsDatabaseARCH : Implements IDisposable
     End Function
 
 
+    ''' <summary>
+    ''' Updates the source image in repo.
+    ''' </summary>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="LastAccessDate">The last access date.</param>
+    ''' <param name="CreateDate">The create date.</param>
+    ''' <param name="LastWriteTime">The last write time.</param>
+    ''' <param name="VersionNbr">The version NBR.</param>
+    ''' <param name="UploadFQN">The upload FQN.</param>
+    ''' <param name="RetentionCode">The retention code.</param>
+    ''' <param name="isPublic">The is public.</param>
+    ''' <param name="FileHash">The file hash.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UpdateSourceImageInRepo(ByVal SourceName As String,
                                       ByVal UID As String,
                                       ByVal MachineID As String,
@@ -7251,6 +8516,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Updates the name of the source.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="SourceName">Name of the source.</param>
     Sub UpdateSourceName(SourceGuid As String, SourceName As String)
 
         Dim b As Boolean = False
@@ -7262,6 +8532,17 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the URL binary HTML.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="LastAccessDate">The last access date.</param>
+    ''' <param name="CreateDate">The create date.</param>
+    ''' <param name="LastWriteTime">The last write time.</param>
+    ''' <param name="VersionNbr">The version NBR.</param>
+    ''' <param name="HTML">The HTML.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UpdateUrlBinaryHtml(ByVal UID As String, ByVal SourceGuid As String, ByVal LastAccessDate As String, ByVal CreateDate As String, ByVal LastWriteTime As String, ByVal VersionNbr As Integer, ByVal HTML As String) As Boolean
 
         Dim B As Boolean = False
@@ -7286,6 +8567,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is sourcefile older than last entry] [the specified source name].
+    ''' </summary>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="CrcHASH">The CRC hash.</param>
+    ''' <returns><c>true</c> if [is sourcefile older than last entry] [the specified source name]; otherwise, <c>false</c>.</returns>
     Public Function isSourcefileOlderThanLastEntry(SourceName As String, CrcHASH As String) As Boolean
 
         Dim B As Boolean = False
@@ -7315,6 +8602,20 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' xes the xis sourcefile older than last entry.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="UploadFQN">The upload FQN.</param>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="SourceTypeCode">The source type code.</param>
+    ''' <param name="FileLength">Length of the file.</param>
+    ''' <param name="LastAccessDate">The last access date.</param>
+    ''' <param name="CreateDate">The create date.</param>
+    ''' <param name="LastWriteTime">The last write time.</param>
+    ''' <param name="VersionNbr">The version NBR.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function XXisSourcefileOlderThanLastEntry(ByVal UserID As String, ByVal SourceGuid As String,
                    ByVal UploadFQN As String,
                    ByVal SourceName As String,
@@ -7398,6 +8699,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the attachment from database.
+    ''' </summary>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <returns>System.Byte().</returns>
     Public Function GetAttachmentFromDB(ByVal EmailGuid As String) As Byte()
 
         Dim con As New SqlConnection(getRepoConnStr())
@@ -7429,8 +8735,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
     ''' Determines if an email has already been stored based on the short subject, received time, and
     ''' the sender's email address.
     ''' </summary>
-    ''' <param name="EmailSubj">         The subject of the email.</param>
-    ''' <param name="EmailReceivedTime"> The time the email was received.</param>
+    ''' <param name="EmailSubj">The subject of the email.</param>
+    ''' <param name="EmailCreationTime">The email creation time.</param>
+    ''' <param name="EmailReceivedTime">The time the email was received.</param>
+    ''' <param name="EmailSentOn">The email sent on.</param>
     ''' <param name="SenderEmailAddress">The email addres of the sender.</param>
     ''' <returns>Boolean</returns>
     ''' <remarks>This funcition, if extended to include other parms in the lookup will be overloaded.</remarks>
@@ -7476,6 +8784,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Cks the backup folder.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckBackupFolder(ByVal UserID As String, ByVal FolderName As String) As Boolean
 
         Dim S As String = ""
@@ -7521,6 +8835,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Deletes the sub dirs.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="FQN">The FQN.</param>
     Public Sub delSubDirs(ByVal UID As String, ByVal FQN As String)
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim S As String = ""
@@ -7541,6 +8860,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Deletes the file parms.
+    ''' </summary>
+    ''' <param name="SGUID">The sguid.</param>
     Public Sub delFileParms(ByVal SGUID As String)
         Dim S As String = ""
         Dim B As Boolean = False
@@ -7567,7 +8890,6 @@ Public Class clsDatabaseARCH : Implements IDisposable
     ''' Looks to see what filetypes have been defined to the system It looks in table AvailFileTypes.
     ''' </summary>
     ''' <returns>Bolean True/False</returns>
-    ''' <remarks></remarks>
     Public Function ckFileExtExists() As Boolean
         Dim S As String = ""
         Dim B As Boolean = False
@@ -7606,6 +8928,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Cks the FQN exists.
+    ''' </summary>
+    ''' <param name="fqn">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckFQNExists(fqn As String) As Boolean
         Dim S As String = ""
         Dim B As Boolean = False
@@ -7644,6 +8971,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Cks the user exists.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckUserExists(ByVal UserID As String) As Boolean
         Dim S As String = ""
         Dim B As Boolean = False
@@ -7690,6 +9022,13 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Cks the user login exists.
+    ''' </summary>
+    ''' <param name="UserLogin">The user login.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function ckUserLoginExists(ByVal UserLogin As String, ByRef RC As Boolean, ByRef RetMsg As String) As Integer
         Dim S As String = ""
         Dim B As Boolean = True
@@ -7744,6 +9083,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the binary password.
+    ''' </summary>
+    ''' <param name="UserLogin">The user login.</param>
+    ''' <returns>System.String.</returns>
     Public Function getBinaryPassword(ByVal UserLogin As String) As String
         Dim S As String = ""
         Dim B As Boolean = False
@@ -7786,6 +9130,13 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Cks the folder exists.
+    ''' </summary>
+    ''' <param name="FileDirectory">The file directory.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckFolderExists(ByVal FileDirectory As String, ByVal UserID As String, ByVal FolderName As String) As Boolean
         Try
             Dim S As String = ""
@@ -7835,6 +9186,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Cks the URL exists.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckUrlExists(ByVal FQN As String) As Boolean
         Try
             Dim S As String = ""
@@ -7879,6 +9235,14 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Cks the master exists.
+    ''' </summary>
+    ''' <param name="FileName">Name of the file.</param>
+    ''' <param name="TblName">Name of the table.</param>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckMasterExists(ByVal FileName As String, ByVal TblName As String, ByVal ColName As String, Optional ByVal SourceGuid As String = Nothing) As Boolean
         'SELECT count(*) FROM  [DataSource] where [SourceName] = 'Current State of ECM.docx' and [isMaster] = 'Y'
 
@@ -7934,6 +9298,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Cks the parms folder exists.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckParmsFolderExists(ByVal UserID As String, ByVal FolderName As String) As Boolean
         Try
             Dim S As String = ""
@@ -7980,6 +9350,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Selects the one email parm.
+    ''' </summary>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <returns>Array.</returns>
     Public Function SelectOneEmailParm(ByVal WhereClause As String) As Array
 
         Dim A(11) As String
@@ -8047,6 +9422,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return A
     End Function
 
+    ''' <summary>
+    ''' Loads the avail file types.
+    ''' </summary>
+    ''' <param name="CB">The cb.</param>
     Public Sub LoadAvailFileTypes(ByRef CB As ComboBox)
         CB.Items.Clear()
         Dim A(9) As String
@@ -8078,6 +9457,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End Using
     End Sub
 
+    ''' <summary>
+    ''' Loads the avail users.
+    ''' </summary>
+    ''' <param name="CB">The cb.</param>
     Public Sub LoadAvailUsers(ByRef CB As ComboBox)
         CB.Items.Clear()
         Dim A(9) As String
@@ -8109,6 +9492,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End Using
     End Sub
 
+    ''' <summary>
+    ''' Loads the retention codes.
+    ''' </summary>
+    ''' <param name="CB">The cb.</param>
     Public Sub LoadRetentionCodes(ByRef CB As ComboBox)
         CB.Items.Clear()
         Dim A(9) As String
@@ -8148,6 +9535,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End Using
     End Sub
 
+    ''' <summary>
+    ''' Loads the avail file types.
+    ''' </summary>
+    ''' <param name="LB">The lb.</param>
     Public Sub LoadAvailFileTypes(ByRef LB As ListBox)
 
         LB.Items.Clear()
@@ -8185,6 +9576,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End Using
     End Sub
 
+    ''' <summary>
+    ''' Loads the file type profiles.
+    ''' </summary>
+    ''' <param name="CB">The cb.</param>
     Public Sub LoadFileTypeProfiles(ByRef CB As ComboBox)
 
         CB.Items.Clear()
@@ -8218,6 +9613,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End Using
     End Sub
 
+    ''' <summary>
+    ''' Gets the included file type where in.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="DirName">Name of the dir.</param>
+    ''' <returns>System.String.</returns>
     Public Function getIncludedFileTypeWhereIn(ByVal UserID As String, ByVal DirName As String) As String
 
         Dim ConnStr As String = getRepoConnStr()
@@ -8250,6 +9651,9 @@ Public Class clsDatabaseARCH : Implements IDisposable
                 Do While RSData.Read()
                     bFound = True
                     Dim SS As String = RSData.GetValue(1).ToString.ToLower
+                    If SS.Equals(".zip") Then
+                        Console.WriteLine("XX11 ZIP")
+                    End If
                     WC += SS + ","
                 Loop
                 If bFound Then
@@ -8266,6 +9670,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return WC
     End Function
 
+    ''' <summary>
+    ''' Gets the included file type where in.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>Dictionary(Of System.String, System.String).</returns>
     Public Function getIncludedFileTypeWhereIn(ByVal UserID As String) As Dictionary(Of String, String)
 
         Dim TDict As New Dictionary(Of String, String)
@@ -8345,6 +9754,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
     End Function
 
 
+    ''' <summary>
+    ''' Loads the included file types.
+    ''' </summary>
+    ''' <param name="LB">The lb.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="DirName">Name of the dir.</param>
     Public Sub LoadIncludedFileTypes(ByRef LB As ListBox, ByVal UserID As String, ByVal DirName As String)
         LB.Items.Clear()
         Dim A(9) As String
@@ -8385,6 +9800,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End Using
     End Sub
 
+    ''' <summary>
+    ''' Loads the excluded file types.
+    ''' </summary>
+    ''' <param name="LB">The lb.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="DirName">Name of the dir.</param>
     Public Sub LoadExcludedFileTypes(ByRef LB As ListBox, ByVal UserID As String, ByVal DirName As String)
         LB.Items.Clear()
         Dim A(9) As String
@@ -8425,6 +9846,14 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End Using
     End Sub
 
+    ''' <summary>
+    ''' Gets the active email folders.
+    ''' </summary>
+    ''' <param name="TopLevelOutlookFolderName">Name of the top level outlook folder.</param>
+    ''' <param name="LB">The lb.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="CF">The cf.</param>
+    ''' <param name="ArchivedEmailFolders">The archived email folders.</param>
     Sub GetActiveEmailFolders(ByVal TopLevelOutlookFolderName As String, ByRef LB As ListBox, ByVal UserID As String, ByVal CF As SortedList(Of String, String), ByVal ArchivedEmailFolders As ArrayList)
 
         ArchivedEmailFolders.Clear()
@@ -8486,6 +9915,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Activates the archive folder.
+    ''' </summary>
+    ''' <param name="ParentFolder">The parent folder.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <param name="UserID">The user identifier.</param>
     Sub ActivateArchiveFolder(ByVal ParentFolder As String, ByVal FolderName As String, ByVal UserID As String)
         'Update EmailFolder set
         'SelectedForArchive = 'Y'
@@ -8501,6 +9936,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End If
     End Sub
 
+    ''' <summary>
+    ''' Des the activate archive folder.
+    ''' </summary>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <param name="UserID">The user identifier.</param>
     Sub deActivateArchiveFolder(ByVal FolderName As String, ByVal UserID As String)
         Dim S As String = "Update EmailFolder set SelectedForArchive = 'N' where UserID = '" + UserID + "' and FolderName = '" + FolderName + "'"
         Dim B1 As Boolean = ExecuteSqlNoTx(S)
@@ -8509,6 +9949,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End If
     End Sub
 
+    ''' <summary>
+    ''' Sets the active email folders.
+    ''' </summary>
+    ''' <param name="TopLevelOutlookFolder">The top level outlook folder.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function setActiveEmailFolders(ByVal TopLevelOutlookFolder As String, ByVal UserID As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8582,6 +10028,26 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return SubFoldersToProcess
     End Function
 
+    ''' <summary>
+    ''' Gets the directory data.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="DBID">The dbid.</param>
+    ''' <param name="IncludeSubDirs">The include sub dirs.</param>
+    ''' <param name="VersionFiles">The version files.</param>
+    ''' <param name="FolderDisabled">The folder disabled.</param>
+    ''' <param name="ckMetaData">The ck meta data.</param>
+    ''' <param name="ckPublic">The ck public.</param>
+    ''' <param name="OcrDirectory">The ocr directory.</param>
+    ''' <param name="isSysDefault">The is system default.</param>
+    ''' <param name="ArchiveSkipBit">if set to <c>true</c> [archive skip bit].</param>
+    ''' <param name="ListenForChanges">if set to <c>true</c> [listen for changes].</param>
+    ''' <param name="ListenDirectory">if set to <c>true</c> [listen directory].</param>
+    ''' <param name="ListenSubDirectory">if set to <c>true</c> [listen sub directory].</param>
+    ''' <param name="DirGuid">The dir unique identifier.</param>
+    ''' <param name="OcrPdf">The ocr PDF.</param>
+    ''' <param name="DeleteOnArchive">The delete on archive.</param>
     Sub GetDirectoryData(ByVal UserID As String,
                          ByVal FQN As String,
                          ByRef DBID As String,
@@ -8657,6 +10123,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Determines whether [is sub dir processed] [the specified user identifier].
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="DirFQN">The dir FQN.</param>
+    ''' <returns><c>true</c> if [is sub dir processed] [the specified user identifier]; otherwise, <c>false</c>.</returns>
     Function isSubDirProcessed(ByVal UserID As String, ByVal DirFQN As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8703,6 +10175,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the directories.
+    ''' </summary>
+    ''' <param name="LB">The lb.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="ShowDisabled">if set to <c>true</c> [show disabled].</param>
     Sub GetDirectories(ByRef LB As ListBox, ByVal UserID As String, ByVal ShowDisabled As Boolean)
         '*WDM 7/20/2009 - Modified query to bring back DISTINCT directories
         Dim S As String = ""
@@ -8711,21 +10189,21 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
         S = ""
         If ShowDisabled = True Then
-            S = "Select    distinct [FQN], ckDisableDir " + environment.NewLine
-            S = S + "             FROM [Directory] " + environment.NewLine
-            S = S + " where [UserID] = '" + gCurrUserGuidID + "' " + environment.NewLine
-            S = S + " and (QuickRefEntry = 0  or QuickRefEntry is null) and ckDisableDir = 'Y'" + environment.NewLine
-            S = S + " or isSysDefault = 1" + environment.NewLine
-            S = S + " group by FQN, ckDisableDir " + environment.NewLine
-            S = S + " order by fqn " + environment.NewLine
+            S = "Select    distinct [FQN], ckDisableDir " + Environment.NewLine
+            S = S + "             FROM [Directory] " + Environment.NewLine
+            S = S + " where [UserID] = '" + gCurrUserGuidID + "' " + Environment.NewLine
+            S = S + " and (QuickRefEntry = 0  or QuickRefEntry is null) and ckDisableDir = 'Y'" + Environment.NewLine
+            S = S + " or isSysDefault = 1" + Environment.NewLine
+            S = S + " group by FQN, ckDisableDir " + Environment.NewLine
+            S = S + " order by fqn " + Environment.NewLine
         Else
-            S = "Select    distinct [FQN], ckDisableDir " + environment.NewLine
-            S = S + "             FROM [Directory] " + environment.NewLine
-            S = S + " where [UserID] = '" + gCurrUserGuidID + "' " + environment.NewLine
-            S = S + " and (QuickRefEntry = 0  or QuickRefEntry is null) and ckDisableDir <> 'Y'  " + environment.NewLine
+            S = "Select    distinct [FQN], ckDisableDir " + Environment.NewLine
+            S = S + "             FROM [Directory] " + Environment.NewLine
+            S = S + " where [UserID] = '" + gCurrUserGuidID + "' " + Environment.NewLine
+            S = S + " and (QuickRefEntry = 0  or QuickRefEntry is null) and ckDisableDir <> 'Y'  " + Environment.NewLine
             '** S = S + " or isSysDefault = 1" + environment.NewLine
-            S = S + " group by FQN, ckDisableDir " + environment.NewLine
-            S = S + " order by fqn " + environment.NewLine
+            S = S + " group by FQN, ckDisableDir " + Environment.NewLine
+            S = S + " order by fqn " + Environment.NewLine
         End If
 
         'Clipboard.Clear()
@@ -8769,6 +10247,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         End Using
     End Sub
 
+    ''' <summary>
+    ''' Gets the directory dictionary.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>Dictionary(Of System.String, System.String).</returns>
     Function GetDirectoryDICT(ByVal UserID As String) As Dictionary(Of String, String)
         '*WDM 11/14/2020 - Modified query to bring back list of directories
 
@@ -8776,10 +10259,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Dim S As String = ""
         S = ""
 
-        S = "Select [FQN], IncludeSubDirs " + environment.NewLine
-        S = S + "  FROM [Directory] " + environment.NewLine
-        S = S + "  where [UserID] = '" + UserID + "' " + environment.NewLine
-        S = S + "  order by fqn " + environment.NewLine
+        S = "Select [FQN], IncludeSubDirs " + Environment.NewLine
+        S = S + "  FROM [Directory] " + Environment.NewLine
+        S = S + "  where [UserID] = '" + UserID + "' " + Environment.NewLine
+        S = S + "  order by fqn " + Environment.NewLine
 
         Dim ConnStr As String = getRepoConnStr()
         Dim Conn As New SqlConnection(ConnStr)
@@ -8813,16 +10296,21 @@ Public Class clsDatabaseARCH : Implements IDisposable
     End Function
 
 
+    ''' <summary>
+    ''' Gets the directories.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>List(Of System.String).</returns>
     Function GetDirectories(ByVal UserID As String) As List(Of String)
         '*WDM 11/14/2020 - Modified query to bring back list of directories
         Dim LOS As New List(Of String)
         Dim S As String = ""
         S = ""
 
-        S = "Select    distinct [FQN] " + environment.NewLine
-        S = S + "             FROM [Directory] " + environment.NewLine
-        S = S + " where [UserID] = '" + UserID + "' " + environment.NewLine
-        S = S + " order by fqn " + environment.NewLine
+        S = "Select    distinct [FQN] " + Environment.NewLine
+        S = S + "             FROM [Directory] " + Environment.NewLine
+        S = S + " where [UserID] = '" + UserID + "' " + Environment.NewLine
+        S = S + " order by fqn " + Environment.NewLine
 
         Dim ConnStr As String = getRepoConnStr()
         Dim Conn As New SqlConnection(ConnStr)
@@ -8852,6 +10340,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the included files.
+    ''' </summary>
+    ''' <param name="LB">The lb.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
     Sub GetIncludedFiles(ByRef LB As ListBox, ByVal UserID As String, ByVal FQN As String)
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim S As String = "Select [ExtCode] FROM [IncludedFiles] where [UserID] = '" + UserID + "'  and [FQN] = '" + FQN + "'"
@@ -8890,6 +10384,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the active databases.
+    ''' </summary>
+    ''' <param name="CB">The cb.</param>
     Sub GetActiveDatabases(ByRef CB As ComboBox)
 
         Dim S As String = " SELECT [DB_ID] FROM [Databases] "
@@ -8924,6 +10422,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the process as list.
+    ''' </summary>
+    ''' <param name="CB">The cb.</param>
     Public Sub GetProcessAsList(ByRef CB As ComboBox)
 
         Dim S As String = "Select [ExtCode] ,[ProcessExtCode] FROM [ProcessFileAs] order by [ExtCode],[ProcessExtCode]"
@@ -8959,6 +10461,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Cks the recon parm exists.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="ReconParm">The recon parm.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckReconParmExists(ByVal UserID As String, ByVal ReconParm As String) As Boolean
         Dim S As String = ""
         Dim B As Boolean = False
@@ -8998,6 +10506,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Cks the process as exists.
+    ''' </summary>
+    ''' <param name="Pext">The pext.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckProcessAsExists(ByVal Pext As String) As Boolean
         Dim S As String = ""
         Dim B As Boolean = False
@@ -9035,6 +10548,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Cks the ext exists.
+    ''' </summary>
+    ''' <param name="tExt">The t ext.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckExtExists(ByVal tExt As String) As Boolean
         Dim S As String = ""
         Dim B As Boolean = False
@@ -9072,6 +10590,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Cks the directory exists.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckDirectoryExists(ByVal UserID As String, ByVal FQN As String) As Boolean
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim S As String = ""
@@ -9114,6 +10638,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the rcon parm.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="ParmID">The parm identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getRconParm(ByVal UserID As String, ByVal ParmID As String) As String
 
         Dim S As String = " SELECT [ParmValue] FROM [RunParms] where Parm = '" + ParmID + "' and UserID = '" + UserID + "'"
@@ -9146,6 +10676,13 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return SS
     End Function
 
+    ''' <summary>
+    ''' Executes the SQL new connection.
+    ''' </summary>
+    ''' <param name="sql">The SQL.</param>
+    ''' <param name="ConnStr">The connection string.</param>
+    ''' <param name="ValidateOwnerShip">if set to <c>true</c> [validate owner ship].</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ExecuteSqlNewConn(ByVal sql As String, ByVal ConnStr As String, ByVal ValidateOwnerShip As Boolean) As Boolean
         If ValidateOwnerShip = True Then
             If TgtGuid.Length = 0 Then
@@ -9195,6 +10732,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return rc
     End Function
 
+    ''' <summary>
+    ''' Gets the email database connection string.
+    ''' </summary>
+    ''' <param name="DBID">The dbid.</param>
+    ''' <returns>System.String.</returns>
     Function GetEmailDBConnStr(ByRef DBID As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -9233,6 +10775,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the email folders.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="aFolders">a folders.</param>
     Sub GetEmailFolders(ByRef UID As String, ByRef aFolders As String())
 
         Dim S As String = "Select "
@@ -9279,6 +10826,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the user directories.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <returns>Dictionary(Of System.String, System.String).</returns>
     Public Function GetUserDirectories(ByVal UID As String) As Dictionary(Of String, String)
 
         Dim LOF As New Dictionary(Of String, String)
@@ -9341,6 +10893,11 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the content archive file folders.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="aFolders">a folders.</param>
     Public Sub GetContentArchiveFileFolders(ByVal UID As String, ByRef aFolders As String())
         IXV1 = 0
         DMA.IXV1 = 0
@@ -9460,6 +11017,12 @@ SkipThisOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the content archive file folders.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="tgtFolders">The TGT folders.</param>
+    ''' <param name="TgtFolder">The TGT folder.</param>
     Public Sub GetContentArchiveFileFolders(ByVal UID As String, ByRef tgtFolders As List(Of String), ByVal TgtFolder As String)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -9633,6 +11196,13 @@ SkipThisOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Sets the content archive file folder.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="tgtFolders">The TGT folders.</param>
+    ''' <param name="TgtFolder">The TGT folder.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function setContentArchiveFileFolder(ByVal UID As String, ByRef tgtFolders As List(Of String), ByVal TgtFolder As String) As Boolean
 
         TgtFolder = UTIL.RemoveSingleQuotes(TgtFolder)
@@ -9788,6 +11358,11 @@ SkipThisOne:
         Return isGood
     End Function
 
+    ''' <summary>
+    ''' xes the get content archive file folders.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="aFolders">a folders.</param>
     Public Sub xGetContentArchiveFileFolders(ByVal UID As String, ByRef aFolders As String())
 
         Dim S As String = " "
@@ -9855,6 +11430,12 @@ SkipThisOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the content archive file folders.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="aFolders">a folders.</param>
+    ''' <param name="DirPath">The dir path.</param>
     Public Sub GetContentArchiveFileFolders(ByVal UID As String, ByRef aFolders As String(), ByVal DirPath As String)
 
         Dim S As String = "Select     S.SUBFQN, D.IncludeSubDirs, D.DB_ID, D.VersionFiles, D.ckDisableDir, D.FQN"
@@ -9925,6 +11506,12 @@ SkipThisOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the quick archive file folders.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="aFolders">a folders.</param>
+    ''' <param name="DirPath">The dir path.</param>
     Public Sub GetQuickArchiveFileFolders(ByVal UID As String, ByRef aFolders As String(), ByVal DirPath As String)
 
         Dim S As String = "Select     S.SUBFQN, D.IncludeSubDirs, D.DB_ID, D.VersionFiles, D.ckDisableDir, D.FQN, D.RetentionCode"
@@ -10007,6 +11594,22 @@ SkipThisOne:
     '      ,[DB_ID]
     '  FROM [Email]
     'where UserID = 'wmiller'
+    ''' <summary>
+    ''' Gets the email folder parms.
+    ''' </summary>
+    ''' <param name="TopFolder">The top folder.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <param name="ArchiveEmails">The archive emails.</param>
+    ''' <param name="RemoveAfterArchive">The remove after archive.</param>
+    ''' <param name="SetAsDefaultFolder">The set as default folder.</param>
+    ''' <param name="ArchiveAfterXDays">The archive after x days.</param>
+    ''' <param name="RemoveAfterXDays">The remove after x days.</param>
+    ''' <param name="RemoveXDays">The remove x days.</param>
+    ''' <param name="ArchiveXDays">The archive x days.</param>
+    ''' <param name="DB_ID">The database identifier.</param>
+    ''' <param name="ArchiveOnlyIfRead">The archive only if read.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function GetEmailFolderParms(ByVal TopFolder As String, ByVal UID As String, ByVal FolderName As String, ByRef ArchiveEmails As String, ByRef RemoveAfterArchive As String, ByRef SetAsDefaultFolder As String, ByRef ArchiveAfterXDays As String, ByRef RemoveAfterXDays As String, ByRef RemoveXDays As String, ByRef ArchiveXDays As String, ByRef DB_ID As String, ByRef ArchiveOnlyIfRead As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -10087,6 +11690,11 @@ SkipThisOne:
         Return BB
     End Function
 
+    ''' <summary>
+    ''' Gets the email subject.
+    ''' </summary>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function GetEmailSubject(ByVal EmailGuid As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -10131,6 +11739,12 @@ SkipThisOne:
         Return Subject
     End Function
 
+    ''' <summary>
+    ''' Gets the email attachment unique identifier.
+    ''' </summary>
+    ''' <param name="AttachmentName">Name of the attachment.</param>
+    ''' <param name="CrcHASH">The CRC hash.</param>
+    ''' <returns>System.String.</returns>
     Function GetEmailAttachmentGuid(ByVal AttachmentName As String, CrcHASH As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -10173,6 +11787,11 @@ SkipThisOne:
         Return RowGuid
     End Function
 
+    ''' <summary>
+    ''' Gets the email body.
+    ''' </summary>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function GetEmailBody(ByVal EmailGuid As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -10217,6 +11836,11 @@ SkipThisOne:
         Return Subject
     End Function
 
+    ''' <summary>
+    ''' Gets the document title.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function GetDocTitle(ByVal SourceGuid As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -10270,6 +11894,11 @@ SkipThisOne:
         Return Subject
     End Function
 
+    ''' <summary>
+    ''' Gets the document filename.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function GetDocFilename(ByVal SourceGuid As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -10311,11 +11940,17 @@ SkipThisOne:
         If BB = False Then
             FileName = "No file name supplied for this content."
         Else
-            FileName = environment.NewLine + FileName
+            FileName = Environment.NewLine + FileName
         End If
         Return FileName
     End Function
 
+    ''' <summary>
+    ''' Adds the included filetypes.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="IncludeSubDirs">The include sub dirs.</param>
+    ''' <returns>ArrayList.</returns>
     Public Function AddIncludedFiletypes(ByVal FQN As String, ByVal IncludeSubDirs As String) As ArrayList
         FQN = UTIL.RemoveSingleQuotes(FQN)
 
@@ -10344,6 +11979,12 @@ SkipThisOne:
         Return L
     End Function
 
+    ''' <summary>
+    ''' Adds the excluded filetypes.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="IncludeSubDirs">The include sub dirs.</param>
+    ''' <returns>ArrayList.</returns>
     Public Function AddExcludedFiletypes(ByVal FQN As String, ByVal IncludeSubDirs As String) As ArrayList
 
         FQN = UTIL.RemoveSingleQuotes(FQN)
@@ -10369,6 +12010,12 @@ SkipThisOne:
         Return L
     End Function
 
+    ''' <summary>
+    ''' Gets all included filetypes.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="IncludeSubDirs">The include sub dirs.</param>
+    ''' <returns>ArrayList.</returns>
     Public Function GetAllIncludedFiletypes(ByVal FQN As String, ByVal IncludeSubDirs As String) As ArrayList
         FQN = UTIL.RemoveSingleQuotes(FQN)
 
@@ -10401,6 +12048,12 @@ SkipThisOne:
         Return L
     End Function
 
+    ''' <summary>
+    ''' Gets all excluded filetypes.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="IncludeSubDirs">The include sub dirs.</param>
+    ''' <returns>ArrayList.</returns>
     Public Function GetAllExcludedFiletypes(ByVal FQN As String, ByVal IncludeSubDirs As String) As ArrayList
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim L As New ArrayList
@@ -10431,6 +12084,11 @@ SkipThisOne:
         Return L
     End Function
 
+    ''' <summary>
+    ''' Gets the included filetypes.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>ArrayList.</returns>
     Public Function GetIncludedFiletypes(ByVal FQN As String) As ArrayList
 
         Dim L As New ArrayList
@@ -10484,6 +12142,11 @@ SkipThisOne:
         Return L
     End Function
 
+    ''' <summary>
+    ''' Gets the included filetypes by user identifier.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function GetIncludedFiletypesByUserID(ByVal UserID As String) As String
 
         Dim ConnStr As String = getRepoConnStr()
@@ -10520,6 +12183,11 @@ SkipThisOne:
     End Function
 
 
+    ''' <summary>
+    ''' Gets the excluded filetypes.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>ArrayList.</returns>
     Public Function GetExcludedFiletypes(ByVal FQN As String) As ArrayList
 
         Dim L As New ArrayList
@@ -10568,6 +12236,13 @@ SkipThisOne:
 
     End Function
 
+    ''' <summary>
+    ''' Adds the secondary sourcetype.
+    ''' </summary>
+    ''' <param name="Sourcetypecode">The sourcetypecode.</param>
+    ''' <param name="Sourcetypedesc">The sourcetypedesc.</param>
+    ''' <param name="Storeexternal">The storeexternal.</param>
+    ''' <param name="Indexable">The indexable.</param>
     Sub AddSecondarySOURCETYPE(ByVal Sourcetypecode As String, ByVal Sourcetypedesc As String, ByVal Storeexternal As String, ByVal Indexable As String)
         Dim ST As New clsSOURCETYPE
         ST.setSourcetypecode(Sourcetypecode)
@@ -10577,6 +12252,10 @@ SkipThisOne:
         ST.Insert()
     End Sub
 
+    ''' <summary>
+    ''' Deletes the secondary sourcetype.
+    ''' </summary>
+    ''' <param name="Sourcetypecode">The sourcetypecode.</param>
     Sub delSecondarySOURCETYPE(ByVal Sourcetypecode As String)
         Dim ST As New clsSOURCETYPE
         ST.setSourcetypecode(Sourcetypecode)
@@ -10584,6 +12263,11 @@ SkipThisOne:
         ST.Delete(WhereClause)
     End Sub
 
+    ''' <summary>
+    ''' Finds all table indexes.
+    ''' </summary>
+    ''' <param name="TBL">The table.</param>
+    ''' <returns>Array.</returns>
     Function FindAllTableIndexes(ByVal TBL As String) As Array
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -10627,6 +12311,12 @@ SkipThisOne:
 
     End Function
 
+    ''' <summary>
+    ''' Finds all index cols.
+    ''' </summary>
+    ''' <param name="TBL">The table.</param>
+    ''' <param name="IdxName">Name of the index.</param>
+    ''' <returns>Array.</returns>
     Function FindAllIndexCols(ByVal TBL As String, ByVal IdxName As String) As Array
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -10672,6 +12362,12 @@ SkipThisOne:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the type of the column data.
+    ''' </summary>
+    ''' <param name="TBL">The table.</param>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <returns>System.String.</returns>
     Function getColumnDataType(ByVal TBL As String, ByVal ColName As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -10710,6 +12406,12 @@ SkipThisOne:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the row by key.
+    ''' </summary>
+    ''' <param name="TBL">The table.</param>
+    ''' <param name="WC">The wc.</param>
+    ''' <returns>SqlDataReader.</returns>
     Public Function GetRowByKey(ByVal TBL As String, ByVal WC As String) As SqlDataReader
         Try
             Dim Auth As String = ""
@@ -10735,6 +12437,12 @@ SkipThisOne:
 
     End Function
 
+    ''' <summary>
+    ''' Cks the arch email folder.
+    ''' </summary>
+    ''' <param name="KeyFolder">The key folder.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function ckArchEmailFolder(ByVal KeyFolder As String, ByVal UserID As String) As Integer
 
         Dim b As Boolean = True
@@ -10765,6 +12473,12 @@ SkipThisOne:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the arch email folder identifier by folder.
+    ''' </summary>
+    ''' <param name="KeyFolder">The key folder.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getArchEmailFolderIDByFolder(ByVal KeyFolder As String, ByVal UserID As String) As String
 
         Dim b As Boolean = True
@@ -10800,6 +12514,12 @@ SkipThisOne:
 
     End Function
 
+    ''' <summary>
+    ''' Cks the arch child email folder.
+    ''' </summary>
+    ''' <param name="FolderID">The folder identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function ckArchChildEmailFolder(ByVal FolderID As String, ByVal UserID As String) As Integer
 
         Dim b As Boolean = True
@@ -10828,6 +12548,12 @@ SkipThisOne:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the arch email folder retention code.
+    ''' </summary>
+    ''' <param name="FolderID">The folder identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getArchEmailFolderRetentionCode(ByVal FolderID As String, ByVal UserID As String) As String
         Dim rCode As String = ""
         Dim b As Boolean = True
@@ -10858,6 +12584,12 @@ SkipThisOne:
 
     End Function
 
+    ''' <summary>
+    ''' is the count.
+    ''' </summary>
+    ''' <param name="Tbl">The table.</param>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function iCount(ByVal Tbl As String, ByVal WhereClause As String) As Boolean
         Dim b As Boolean = True
         Dim SQL As String = "Select count(*) from " + Tbl + " " + WhereClause
@@ -10870,6 +12602,12 @@ SkipThisOne:
         Return b
     End Function
 
+    ''' <summary>
+    ''' is the get row count.
+    ''' </summary>
+    ''' <param name="TBL">The table.</param>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function iGetRowCount(ByVal TBL As String, ByVal WhereClause As String) As Integer
 
         Dim cnt As Integer = -1
@@ -10918,6 +12656,13 @@ SkipThisOne:
 
     End Function
 
+    ''' <summary>
+    ''' is the get row count.
+    ''' </summary>
+    ''' <param name="TBL">The table.</param>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <param name="ConnectionStr">The connection string.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function iGetRowCount(ByVal TBL As String, ByVal WhereClause As String, ByVal ConnectionStr As String) As Integer
 
         Dim cnt As Integer = -1
@@ -10961,6 +12706,38 @@ SkipThisOne:
 
     End Function
 
+    ''' <summary>
+    ''' Archives the email.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="FqnEmailImage">The FQN email image.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="SUBJECT">The subject.</param>
+    ''' <param name="SentTO">The sent to.</param>
+    ''' <param name="Body">The body.</param>
+    ''' <param name="Bcc">The BCC.</param>
+    ''' <param name="BillingInformation">The billing information.</param>
+    ''' <param name="CC">The cc.</param>
+    ''' <param name="Companies">The companies.</param>
+    ''' <param name="CreationTime">The creation time.</param>
+    ''' <param name="ReadReceiptRequested">The read receipt requested.</param>
+    ''' <param name="ReceivedByName">Name of the received by.</param>
+    ''' <param name="ReceivedTime">The received time.</param>
+    ''' <param name="AllRecipients">All recipients.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="SenderEmailAddress">The sender email address.</param>
+    ''' <param name="SenderName">Name of the sender.</param>
+    ''' <param name="Sensitivity">The sensitivity.</param>
+    ''' <param name="SentOn">The sent on.</param>
+    ''' <param name="MsgSize">Size of the MSG.</param>
+    ''' <param name="DeferredDeliveryTime">The deferred delivery time.</param>
+    ''' <param name="EntryID">The entry identifier.</param>
+    ''' <param name="ExpiryTime">The expiry time.</param>
+    ''' <param name="LastModificationTime">The last modification time.</param>
+    ''' <param name="ShortSubj">The short subj.</param>
+    ''' <param name="SourceTypeCode">The source type code.</param>
+    ''' <param name="OriginalFolder">The original folder.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ArchiveEmail(ByVal UID As String, ByVal FqnEmailImage As String, ByVal EmailGuid As String, ByVal SUBJECT As String, ByVal SentTO As String, ByVal Body As String, ByVal Bcc As String, ByVal BillingInformation As String, ByVal CC As String, ByVal Companies As String, ByVal CreationTime As DateTime, ByVal ReadReceiptRequested As String, ByVal ReceivedByName As String, ByVal ReceivedTime As DateTime, ByVal AllRecipients As String, ByVal UserID As String, ByVal SenderEmailAddress As String, ByVal SenderName As String, ByVal Sensitivity As String, ByVal SentOn As DateTime, ByVal MsgSize As String, ByVal DeferredDeliveryTime As DateTime, ByVal EntryID As String, ByVal ExpiryTime As DateTime, ByVal LastModificationTime As DateTime, ByVal ShortSubj As String, ByVal SourceTypeCode As String, ByVal OriginalFolder As String) As Boolean
         Dim ID As Integer = 13345
         FqnEmailImage = UTIL.RemoveSingleQuotes(FqnEmailImage)
@@ -11056,6 +12833,11 @@ SkipThisOne:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Inserts the email binary.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="tGuid">The t unique identifier.</param>
     Public Sub InsertEmailBinary(ByVal FQN As String, ByVal tGuid As String)
         FQN = UTIL.RemoveSingleQuotes(FQN)
         ' Read a bitmap contents in a stream
@@ -11102,6 +12884,9 @@ SkipThisOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Applies the cc.
+    ''' </summary>
     Sub ApplyCC()
         Dim L As New List(Of String)
         Dim RECIPS As New clsRECIPIENTS
@@ -11185,6 +12970,9 @@ SkipThisOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Builds all recips.
+    ''' </summary>
     Sub BuildAllRecips()
         Dim L As New List(Of String)
         Dim RECIPS As New clsRECIPIENTS
@@ -11245,6 +13033,9 @@ SkipThisOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Builds all missing data.
+    ''' </summary>
     Sub BuildAllMissingData()
         Dim L As New List(Of String)
         Dim RECIPS As New clsRECIPIENTS
@@ -11293,6 +13084,9 @@ SkipThisOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Builds all c cs.
+    ''' </summary>
     Sub BuildAllCCs()
         Dim L As New List(Of String)
         Dim RECIPS As New clsRECIPIENTS
@@ -11352,6 +13146,10 @@ SkipThisOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the excluded emails.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
     Sub getExcludedEmails(ByVal UserID As String)
         Dim L As New List(Of String)
         Dim RECIPS As New clsRECIPIENTS
@@ -11377,6 +13175,13 @@ SkipThisOne:
         RSData = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Gets the directory parms.
+    ''' </summary>
+    ''' <param name="A">a.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function getDirectoryParms(ByRef A As String(), ByVal FQN As String, ByVal UserID As String) As Boolean
 
         FQN = UTIL.RemoveSingleQuotes(FQN)
@@ -11414,17 +13219,17 @@ REDO:
         Try
             Dim rsData As SqlDataReader = Nothing
             Dim S As String = ""
-            S = S + " SELECT [UserID]" + environment.NewLine
-            S = S + " ,[IncludeSubDirs]" + environment.NewLine
-            S = S + " ,[FQN]" + environment.NewLine
-            S = S + " ,[DB_ID]" + environment.NewLine
-            S = S + " ,[VersionFiles]" + environment.NewLine
-            S = S + " ,[ckMetaData] " + environment.NewLine
-            S = S + " ,OcrDirectory " + environment.NewLine
-            S = S + " ,RetentionCode" + environment.NewLine
-            S = S + " ,OcrPdf" + environment.NewLine
-            S = S + " ,ckPublic" + environment.NewLine
-            S = S + " FROM [Directory]" + environment.NewLine
+            S = S + " SELECT [UserID]" + Environment.NewLine
+            S = S + " ,[IncludeSubDirs]" + Environment.NewLine
+            S = S + " ,[FQN]" + Environment.NewLine
+            S = S + " ,[DB_ID]" + Environment.NewLine
+            S = S + " ,[VersionFiles]" + Environment.NewLine
+            S = S + " ,[ckMetaData] " + Environment.NewLine
+            S = S + " ,OcrDirectory " + Environment.NewLine
+            S = S + " ,RetentionCode" + Environment.NewLine
+            S = S + " ,OcrPdf" + Environment.NewLine
+            S = S + " ,ckPublic" + Environment.NewLine
+            S = S + " FROM [Directory]" + Environment.NewLine
             S = S + " where fqn = '" + CurrFqn + "' and Userid = '" + UserID + "'"
 
             Dim CS As String = getRepoConnStr()
@@ -11507,6 +13312,10 @@ REDO:
         End If
     End Function
 
+    ''' <summary>
+    ''' Gets the first retention code.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getFirstRetentionCode() As String
         Dim rCode As String = ""
         Dim S As String = "Select RetentionCode "
@@ -11544,6 +13353,12 @@ REDO:
         Return rCode
     End Function
 
+    ''' <summary>
+    ''' Gets the next document version NBR.
+    ''' </summary>
+    ''' <param name="Userid">The userid.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function getNextDocVersionNbr(ByVal Userid As String, ByVal FQN As String) As Integer
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim S As String = "Select max([VersionNbr]) "
@@ -11570,6 +13385,13 @@ REDO:
         Return I
     End Function
 
+    ''' <summary>
+    ''' Deletes the name of the document by.
+    ''' </summary>
+    ''' <param name="Userid">The userid.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function DeleteDocumentByName(ByVal Userid As String, ByVal FQN As String, ByVal SourceGuid As String) As Boolean
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim b As Boolean = False
@@ -11605,6 +13427,11 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Deletes the document by unique identifier.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function DeleteDocumentByGuid(ByVal SourceGuid As String) As Boolean
         Dim SHIST As New clsSEARCHHISTORY
         Dim b As Boolean = False
@@ -11643,6 +13470,12 @@ REDO:
         Return b
     End Function
 
+    ''' <summary>
+    ''' Determines whether [has document been updated] [the specified userid].
+    ''' </summary>
+    ''' <param name="Userid">The userid.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if [has document been updated] [the specified userid]; otherwise, <c>false</c>.</returns>
     Public Function hasDocumentBeenUpdated(ByVal Userid As String, ByVal FQN As String) As Boolean
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim b As Boolean = False
@@ -11667,6 +13500,11 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Updates the size of the document.
+    ''' </summary>
+    ''' <param name="DocGuid">The document unique identifier.</param>
+    ''' <param name="fSize">Size of the f.</param>
     Public Sub UpdateDocSize(ByVal DocGuid As String, ByVal fSize As String)
         Dim S As String = ""
         S = S + "  UPDATE [DataSource]"
@@ -11681,6 +13519,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the size of the document.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="fSize">Size of the f.</param>
     Public Sub UpdateDocSize(ByVal FQN As String, ByVal UID As String, ByVal fSize As String)
 
         FQN = UTIL.RemoveSingleQuotes(FQN)
@@ -11698,6 +13542,10 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the RSS link FLG to true.
+    ''' </summary>
+    ''' <param name="DocGuid">The document unique identifier.</param>
     Public Sub UpdateRssLinkFlgToTrue(ByVal DocGuid As String)
 
         Dim S As String = ""
@@ -11713,6 +13561,10 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the web link FLG to true.
+    ''' </summary>
+    ''' <param name="DocGuid">The document unique identifier.</param>
     Public Sub UpdateWebLinkFlgToTrue(ByVal DocGuid As String)
 
         Dim S As String = ""
@@ -11728,6 +13580,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the source CRC.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="CRC">The CRC.</param>
     Public Sub UpdateSourceCRC(SourceGuid As String, CRC As String)
 
         Dim S As String = ""
@@ -11744,6 +13601,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the content description.
+    ''' </summary>
+    ''' <param name="DocGuid">The document unique identifier.</param>
+    ''' <param name="Description">The description.</param>
     Public Sub UpdateContentDescription(ByVal DocGuid As String, Description As String)
 
         Dim sDescription As String = Description.Replace("'", "''")
@@ -11761,6 +13623,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the content key words.
+    ''' </summary>
+    ''' <param name="DocGuid">The document unique identifier.</param>
+    ''' <param name="KeyWords">The key words.</param>
     Public Sub UpdateContentKeyWords(ByVal DocGuid As String, KeyWords As String)
 
         Dim sKeyWords As String = KeyWords.Replace("'", "''")
@@ -11781,6 +13648,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the web page URL reference.
+    ''' </summary>
+    ''' <param name="DocGuid">The document unique identifier.</param>
+    ''' <param name="PageUrl">The page URL.</param>
     Public Sub UpdateWebPageUrlRef(ByVal DocGuid As String, PageUrl As String)
 
         Dim sPageUrl As String = PageUrl.Replace("'", "''")
@@ -11798,6 +13670,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the web page hash.
+    ''' </summary>
+    ''' <param name="DocGuid">The document unique identifier.</param>
+    ''' <param name="URLHash">The URL hash.</param>
     Public Sub UpdateWebPageHash(ByVal DocGuid As String, URLHash As String)
 
         Dim sURLHash As String = URLHash.Replace("'", "''")
@@ -11815,6 +13692,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the web page publish date.
+    ''' </summary>
+    ''' <param name="DocGuid">The document unique identifier.</param>
+    ''' <param name="WebPagePublishDate">The web page publish date.</param>
     Public Sub UpdateWebPagePublishDate(ByVal DocGuid As String, WebPagePublishDate As String)
 
         Dim sWebPagePublishDate As String = WebPagePublishDate.Replace("'", "''")
@@ -11832,6 +13714,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the retention code.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="RetentionCode">The retention code.</param>
     Public Sub UpdateRetentionCode(ByVal SourceGuid As String, ByVal RetentionCode As String)
 
         Dim S As String = ""
@@ -11847,6 +13734,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the document FQN.
+    ''' </summary>
+    ''' <param name="DocGuid">The document unique identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
     Public Sub UpdateDocFqn(ByVal DocGuid As String, ByVal FQN As String)
         FQN = UTIL.RemoveSingleQuotes(FQN)
 
@@ -11863,6 +13755,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the document CRC.
+    ''' </summary>
+    ''' <param name="DocGuid">The document unique identifier.</param>
+    ''' <param name="CRC">The CRC.</param>
     Public Sub UpdateDocCrc(ByVal DocGuid As String, ByVal CRC As String)
 
         Dim S As String = ""
@@ -11879,6 +13776,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' xes the update all document CRC.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="CRC">The CRC.</param>
     Public Sub xUpdateAllDocCrc(ByVal FQN As String, ByVal CRC As String)
 
         Dim S As String = ""
@@ -11895,6 +13797,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the type of the document original file.
+    ''' </summary>
+    ''' <param name="DocGuid">The document unique identifier.</param>
+    ''' <param name="OriginalFileType">Type of the original file.</param>
     Public Sub UpdateDocOriginalFileType(ByVal DocGuid As String, ByVal OriginalFileType As String)
         OriginalFileType = UTIL.RemoveSingleQuotes(OriginalFileType)
         Dim S As String = ""
@@ -11910,6 +13817,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the zip file indicator.
+    ''' </summary>
+    ''' <param name="DocGuid">The document unique identifier.</param>
+    ''' <param name="cZipFile">if set to <c>true</c> [c zip file].</param>
     Public Sub UpdateZipFileIndicator(ByVal DocGuid As String, ByVal cZipFile As Boolean)
 
         Dim C As String = ""
@@ -11932,6 +13844,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the email indicator.
+    ''' </summary>
+    ''' <param name="DocGuid">The document unique identifier.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
     Public Sub UpdateEmailIndicator(ByVal DocGuid As String, ByVal EmailGuid As String)
         Dim S As String = ""
         S = S + "  UPDATE [DataSource]"
@@ -11945,6 +13862,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the zip file owner unique identifier.
+    ''' </summary>
+    ''' <param name="ParentGuid">The parent unique identifier.</param>
+    ''' <param name="ZipFileGuid">The zip file unique identifier.</param>
+    ''' <param name="ZipFileFQN">The zip file FQN.</param>
     Public Sub UpdateZipFileOwnerGuid(ByVal ParentGuid As String, ByVal ZipFileGuid As String, ByVal ZipFileFQN As String)
 
         Dim S As String = ""
@@ -11966,6 +13889,10 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the is contained within zip file.
+    ''' </summary>
+    ''' <param name="DocGuid">The document unique identifier.</param>
     Public Sub UpdateIsContainedWithinZipFile(ByVal DocGuid As String)
 
         Dim C As String = ""
@@ -11983,6 +13910,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the document dir.
+    ''' </summary>
+    ''' <param name="DocGuid">The document unique identifier.</param>
+    ''' <param name="DocDir">The document dir.</param>
     Public Sub UpdateDocDir(ByVal DocGuid As String, ByVal DocDir As String)
 
         DocDir = UTIL.RemoveSingleQuotes(DocDir)
@@ -12001,6 +13933,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Deletes the data source and attrs.
+    ''' </summary>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function DeleteDataSourceAndAttrs(ByVal WhereClause As String) As Boolean
         Dim s As String = ""
         Dim B As Boolean = False
@@ -12015,6 +13952,11 @@ REDO:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the process file as ext.
+    ''' </summary>
+    ''' <param name="FileExt">The file ext.</param>
+    ''' <returns>System.String.</returns>
     Public Function getProcessFileAsExt(ByVal FileExt As String) As String
         If FileExt.Trim.Length = 0 Then
             Return ".UKN"
@@ -12046,6 +13988,13 @@ REDO:
         Return ProcessExtCode
     End Function
 
+    ''' <summary>
+    ''' Sets the document public flag by owner dir.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="PublicFlag">if set to <c>true</c> [public flag].</param>
+    ''' <param name="bDisableDir">if set to <c>true</c> [b disable dir].</param>
+    ''' <param name="OcrDirectory">The ocr directory.</param>
     Sub SetDocumentPublicFlagByOwnerDir(ByVal FQN As String, ByVal PublicFlag As Boolean, ByVal bDisableDir As Boolean, ByVal OcrDirectory As String)
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim UID As String = gCurrUserGuidID
@@ -12073,7 +14022,7 @@ REDO:
 
         '*******************************************************
         S = "update [Directory] set [ckPublic] = '" + sFlag + "', ckDisableDir = '" + DisableDir + "' where Userid = '" + UID + "' and [FQN] = '" + FQN + "'"
-        SS = SS + environment.NewLine + environment.NewLine + S
+        SS = SS + Environment.NewLine + Environment.NewLine + S
         B = ExecuteSqlNewConn(S, False)
         If Not B Then
             ' xTrace(93925, "clsDataBase:SetDocumentPublicFlag", "Failed to set public flag in DIRECTORY table.")
@@ -12083,7 +14032,7 @@ REDO:
         End If
 
         S = "update [Directory] set [ckPublic] = '" + sFlag + "', ckDisableDir = '" + DisableDir + "' where Userid = '" + UID + "' and [FQN] = '" + FQN + "'"
-        SS = SS + environment.NewLine + environment.NewLine + S
+        SS = SS + Environment.NewLine + Environment.NewLine + S
         B = ExecuteSqlNewConn(S, False)
         If Not B Then
             ' xTrace(93925, "clsDataBase:SetDocumentPublicFlag", "Failed to set public flag in DIRECTORY table.")
@@ -12093,7 +14042,7 @@ REDO:
         End If
 
         S = "update [Directory] set [OcrDirectory] = '" + OcrDirectory + "' where Userid = '" + UID + "' and [FQN] = '" + FQN + "'"
-        SS = SS + environment.NewLine + environment.NewLine + S
+        SS = SS + Environment.NewLine + Environment.NewLine + S
         B = ExecuteSqlNewConn(S, False)
         If Not B Then
             ' xTrace(93925, "clsDataBase:SetDocumentPublicFlag", "Failed to set public flag in DIRECTORY table.")
@@ -12105,7 +14054,7 @@ REDO:
         '*******************************************************
         S = "update [SubDir] set ckPublic = '" + sFlag + "', ckDisableDir = '" + DisableDir + "' where Userid = '" + UID + "' "
         S = S + " and ([FQN] = '" + FQN + "' or [SUBFQN] = '" + FQN + "')"
-        SS = SS + environment.NewLine + environment.NewLine + S
+        SS = SS + Environment.NewLine + Environment.NewLine + S
         B = ExecuteSqlNewConn(S, False)
         If Not B Then
             ' xTrace(93926, "clsDataBase:SetDocumentPublicFlag", "Failed to set public flag in SUBDIR table.")
@@ -12116,7 +14065,7 @@ REDO:
 
         S = "update [SubDir] set ckPublic = '" + sFlag + "', ckDisableDir = '" + DisableDir + "' where Userid = '" + UID + "' "
         S = S + " and ([FQN] = '" + FQN + "' or [SUBFQN] = '" + FQN + "')"
-        SS = SS + environment.NewLine + environment.NewLine + S
+        SS = SS + Environment.NewLine + Environment.NewLine + S
         B = ExecuteSqlNewConn(S, False)
         If Not B Then
             ' xTrace(93926, "clsDataBase:SetDocumentPublicFlag", "Failed to set public flag in SUBDIR table.")
@@ -12128,7 +14077,7 @@ REDO:
         S = "update [DataSource] set [isPublic] = '" + sFlag + "'"
         S = S + " where FileDirectory = '" + FQN + "'"
         S = S + " and DataSourceOwnerUserID = '" + UID + "'"
-        SS = SS + environment.NewLine + environment.NewLine + S
+        SS = SS + Environment.NewLine + Environment.NewLine + S
         B = ExecuteSqlNewConn(S, False)
         If Not B Then
             ' xTrace(93926, "clsDataBase:SetDocumentPublicFlag", "Failed to set public flag in DataSource table.")
@@ -12140,7 +14089,7 @@ REDO:
         S = "update [DataSource] set [isPublic] = '" + sFlag + "'"
         S = S + " where FileDirectory = '" + FQN + "'"
         S = S + " and DataSourceOwnerUserID = '" + UID + "'"
-        SS = SS + environment.NewLine + environment.NewLine + S
+        SS = SS + Environment.NewLine + Environment.NewLine + S
         B = ExecuteSqlNewConn(S, False)
         If Not B Then
             ' xTrace(93926, "clsDataBase:SetDocumentPublicFlag", "Failed to set public flag in DataSource table.")
@@ -12151,6 +14100,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Sets the document public flag.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="PublicFlag">if set to <c>true</c> [public flag].</param>
     Sub SetDocumentPublicFlag(ByVal UID As String, ByVal FQN As String, ByVal PublicFlag As Boolean)
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim S As String = ""
@@ -12193,6 +14148,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Cks the master already defined.
+    ''' </summary>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <returns>System.Int32.</returns>
     Function ckMasterAlreadyDefined(ByVal SourceName As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -12239,6 +14199,11 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Sets the document to master.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="MasterFlag">if set to <c>true</c> [master flag].</param>
     Sub SetDocumentToMaster(ByVal SourceGuid As String, ByVal MasterFlag As Boolean)
 
         Dim S As String = ""
@@ -12265,6 +14230,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Sets the document public flag.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="isPublic">if set to <c>true</c> [is public].</param>
     Sub SetDocumentPublicFlag(ByVal SourceGuid As String, ByVal isPublic As Boolean)
 
         Dim S As String = ""
@@ -12291,6 +14261,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Sets the email public flag.
+    ''' </summary>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="isPublic">if set to <c>true</c> [is public].</param>
     Sub SetEmailPublicFlag(ByVal EmailGuid As String, ByVal isPublic As Boolean)
 
         Dim S As String = ""
@@ -12317,6 +14292,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Adds the image using dataset.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="SrcTable">The source table.</param>
     Sub addImageUsingDataset(ByVal S As String, ByVal FQN As String, ByVal SrcTable As String)
         FQN = UTIL.RemoveSingleQuotes(FQN)
         'Dim da As New SqlDataAdapter("Select SourceImage From SourceImage where SourceGuid = 'SourceGuid' and DataSourceOwnerUserID = 'DataSourceOwnerUserID'", gConn)
@@ -12354,6 +14335,12 @@ REDO:
         ' If gRunUnattended = False Then MessageBox.Show("Image saved to database")
     End Sub
 
+    ''' <summary>
+    ''' Updates the image using dataset.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="SrcTable">The source table.</param>
     Sub updateImageUsingDataset(ByVal S As String, ByVal FQN As String, ByVal SrcTable As String)
         FQN = UTIL.RemoveSingleQuotes(FQN)
         'Dim da As New SqlDataAdapter("Select SourceImage From SourceImage where SourceGuid = 'SourceGuid' and DataSourceOwnerUserID = 'DataSourceOwnerUserID'", gConn)
@@ -12393,6 +14380,13 @@ REDO:
         ' If gRunUnattended = False Then MessageBox.Show("Image saved to database")
     End Sub
 
+    ''' <summary>
+    ''' Writes the image source data from database write to file.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="OverWrite">if set to <c>true</c> [over write].</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function writeImageSourceDataFromDbWriteToFile(ByVal SourceGuid As String, ByVal FQN As String, ByVal OverWrite As Boolean) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -12443,7 +14437,7 @@ REDO:
                 ' If gRunUnattended = False Then MessageBox.Show("No restore: ", ex)
                 If ddebug Then Debug.Print(ex.Message)
                 ' xTrace(CInt(58342.15), "clsDataBase:imageDataReadFromDbWriteToFile" + ex.Message)
-                LOG.WriteToArchiveLog("clsDatabaseARCH : writeImageSourceDataFromDbWriteToFile : 4749 : " + ex.Message + environment.NewLine + ex.StackTrace)
+                LOG.WriteToArchiveLog("clsDatabaseARCH : writeImageSourceDataFromDbWriteToFile : 4749 : " + ex.Message + Environment.NewLine + ex.StackTrace)
             End Try
 
             MyCB = Nothing
@@ -12462,6 +14456,13 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Writes the attachment from database write to file.
+    ''' </summary>
+    ''' <param name="RowID">The row identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="OverWrite">if set to <c>true</c> [over write].</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function writeAttachmentFromDbWriteToFile(ByVal RowID As String, ByVal FQN As String, ByVal OverWrite As Boolean) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -12534,6 +14535,12 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' xes the populate ComboBox.
+    ''' </summary>
+    ''' <param name="CB">The cb.</param>
+    ''' <param name="TblColName">Name of the table col.</param>
+    ''' <param name="S">The s.</param>
     Sub xPopulateComboBox(ByRef CB As ComboBox, ByVal TblColName As String, ByVal S As String)
         Try
             CloseConn()
@@ -12587,6 +14594,14 @@ REDO:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Gets the email restore FQN parms.
+    ''' </summary>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="Subject">The subject.</param>
+    ''' <param name="CreationTime">The creation time.</param>
+    ''' <param name="SentOn">The sent on.</param>
+    ''' <param name="MsgSize">Size of the MSG.</param>
     Sub getEmailRestoreFqnParms(ByVal EmailGuid As String, ByRef Subject As String, ByRef CreationTime As String, ByRef SentOn As String, ByRef MsgSize As String)
         Dim S As String = ""
         S = S + " select Subject, CreationTime, SentOn, MsgSize, EmailGuid"
@@ -12608,6 +14623,13 @@ REDO:
         RSData = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Gets the name of the email file restore.
+    ''' </summary>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="WorkingDirectory">The working directory.</param>
+    ''' <param name="Suffix">The suffix.</param>
+    ''' <returns>System.String.</returns>
     Function getEmailFileRestoreName(ByVal EmailGuid As String, ByVal WorkingDirectory As String, ByVal Suffix As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -12689,6 +14711,14 @@ REDO:
         Return FQN
     End Function
 
+    ''' <summary>
+    ''' Writes the email from database to file.
+    ''' </summary>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="WorkingDirectory">The working directory.</param>
+    ''' <param name="Suffix">The suffix.</param>
+    ''' <param name="currFileSize">Size of the curr file.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function writeEmailFromDbToFile(ByVal EmailGuid As String, ByVal WorkingDirectory As String, ByVal Suffix As String, ByVal currFileSize As Double) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -12765,6 +14795,12 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Populates the ComboBox.
+    ''' </summary>
+    ''' <param name="CB">The cb.</param>
+    ''' <param name="TblColName">Name of the table col.</param>
+    ''' <param name="S">The s.</param>
     Sub PopulateComboBox(ByRef CB As ComboBox, ByVal TblColName As String, ByVal S As String)
 
         CB.Items.Clear()
@@ -12844,6 +14880,12 @@ REDO:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Populates the ComboBox merge.
+    ''' </summary>
+    ''' <param name="CB">The cb.</param>
+    ''' <param name="TblColName">Name of the table col.</param>
+    ''' <param name="S">The s.</param>
     Sub PopulateComboBoxMerge(ByRef CB As ComboBox, ByVal TblColName As String, ByVal S As String)
 
         Dim tConn As New SqlConnection(getRepoConnStr())
@@ -12929,6 +14971,12 @@ REDO:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Populates the ListBox merge.
+    ''' </summary>
+    ''' <param name="LB">The lb.</param>
+    ''' <param name="TblColName">Name of the table col.</param>
+    ''' <param name="S">The s.</param>
     Sub PopulateListBoxMerge(ByRef LB As ListBox, ByVal TblColName As String, ByVal S As String)
 
         Dim tConn As New SqlConnection(getRepoConnStr())
@@ -13012,6 +15060,12 @@ REDO:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Populates the ListBox remove.
+    ''' </summary>
+    ''' <param name="LB">The lb.</param>
+    ''' <param name="TblColName">Name of the table col.</param>
+    ''' <param name="S">The s.</param>
     Sub PopulateListBoxRemove(ByRef LB As ListBox, ByVal TblColName As String, ByVal S As String)
 
         Dim tConn As New SqlConnection(getRepoConnStr())
@@ -13092,6 +15146,12 @@ REDO:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Populates the ListBox.
+    ''' </summary>
+    ''' <param name="LB">The lb.</param>
+    ''' <param name="TblColName">Name of the table col.</param>
+    ''' <param name="SelectionSql">The selection SQL.</param>
     Sub PopulateListBox(ByRef LB As ListBox, ByVal TblColName As String, ByVal SelectionSql As String)
         Try
             LB.DataSource = Nothing
@@ -13150,6 +15210,10 @@ REDO:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Populates the user sl.
+    ''' </summary>
+    ''' <param name="SL">The sl.</param>
     Sub PopulateUserSL(ByRef SL As SortedList)
         SL.Clear()
         Dim S As String = "Select [UserName], [UserID]  FROM [Users] order by [UserName]"
@@ -13177,6 +15241,12 @@ REDO:
         RSData = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Gets the datasource parm.
+    ''' </summary>
+    ''' <param name="AttributeName">Name of the attribute.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getDatasourceParm(ByVal AttributeName As String, ByVal SourceGuid As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13243,6 +15313,11 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the table col string.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.String.</returns>
     Function getTblColString(ByVal S As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13303,6 +15378,14 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the saved value.
+    ''' </summary>
+    ''' <param name="userid">The userid.</param>
+    ''' <param name="SaveName">Name of the save.</param>
+    ''' <param name="SaveTypeCode">The save type code.</param>
+    ''' <param name="ValName">Name of the value.</param>
+    ''' <returns>System.String.</returns>
     Function getSavedValue(ByVal userid As String, ByVal SaveName As String, ByVal SaveTypeCode As String, ByVal ValName As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13346,6 +15429,12 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the last successful archive date.
+    ''' </summary>
+    ''' <param name="ArchiveType">Type of the archive.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getLastSuccessfulArchiveDate(ByVal ArchiveType As String, ByVal UserID As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13409,6 +15498,12 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Cks the user start up parameter.
+    ''' </summary>
+    ''' <param name="Userid">The userid.</param>
+    ''' <param name="ValName">Name of the value.</param>
+    ''' <returns>System.Int32.</returns>
     Function ckUserStartUpParameter(ByVal Userid As String, ByVal ValName As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13430,6 +15525,12 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the working directory.
+    ''' </summary>
+    ''' <param name="Userid">The userid.</param>
+    ''' <param name="ValName">Name of the value.</param>
+    ''' <returns>System.String.</returns>
     Function getWorkingDirectory(ByVal Userid As String, ByVal ValName As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13486,13 +15587,18 @@ REDO:
                 End If
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR clsDatabaseARCH:getWorkingDirectory 100 - " + ex.Message + environment.NewLine + ex.StackTrace)
+            LOG.WriteToArchiveLog("ERROR clsDatabaseARCH:getWorkingDirectory 100 - " + ex.Message + Environment.NewLine + ex.StackTrace)
         End Try
 
         Return ColVAl
 
     End Function
 
+    ''' <summary>
+    ''' is the count NBR email attachments.
+    ''' </summary>
+    ''' <param name="EMailGuid">The e mail unique identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function iCountNbrEmailAttachments(ByVal EMailGuid As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13541,6 +15647,10 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Defines the file ext.
+    ''' </summary>
+    ''' <param name="LB">The lb.</param>
     Sub DefineFileExt(ByRef LB As List(Of String))
         Dim ColVAl As String = ""
         Dim S As String = ""
@@ -13561,6 +15671,14 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the BLOB.
+    ''' </summary>
+    ''' <param name="TblName">Name of the table.</param>
+    ''' <param name="ImageColumnName">Name of the image column.</param>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function UpdateBlob(ByVal TblName As String, ByVal ImageColumnName As String, ByVal WhereClause As String, ByVal FQN As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13586,6 +15704,9 @@ REDO:
         Return b
     End Function
 
+    ''' <summary>
+    ''' Rebuilds the fulltext catalog.
+    ''' </summary>
     Sub RebuildFulltextCatalog()
         Dim S As String = ""
         S = "EXEC sp_fulltext_catalog 'ftCatalog', 'start_full' "
@@ -13594,6 +15715,11 @@ REDO:
         ExecuteSqlNewConn(S, False)
     End Sub
 
+    ''' <summary>
+    ''' Determines whether the specified userid is admin.
+    ''' </summary>
+    ''' <param name="Userid">The userid.</param>
+    ''' <returns><c>true</c> if the specified userid is admin; otherwise, <c>false</c>.</returns>
     Function isAdmin(ByVal Userid As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13660,6 +15786,11 @@ REDO:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is global searcher] [the specified userid].
+    ''' </summary>
+    ''' <param name="Userid">The userid.</param>
+    ''' <returns><c>true</c> if [is global searcher] [the specified userid]; otherwise, <c>false</c>.</returns>
     Function isGlobalSearcher(ByVal Userid As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13683,6 +15814,11 @@ REDO:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is super admin] [the specified userid].
+    ''' </summary>
+    ''' <param name="Userid">The userid.</param>
+    ''' <returns><c>true</c> if [is super admin] [the specified userid]; otherwise, <c>false</c>.</returns>
     Function isSuperAdmin(ByVal Userid As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13706,6 +15842,11 @@ REDO:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is image file] [the specified t file type].
+    ''' </summary>
+    ''' <param name="tFileType">Type of the t file.</param>
+    ''' <returns><c>true</c> if [is image file] [the specified t file type]; otherwise, <c>false</c>.</returns>
     Function isImageFile(ByVal tFileType As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13739,6 +15880,11 @@ REDO:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the size of the email.
+    ''' </summary>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function getEmailSize(ByVal EmailGuid As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13767,6 +15913,12 @@ REDO:
         Return I
     End Function
 
+    ''' <summary>
+    ''' Gets the dir unique identifier.
+    ''' </summary>
+    ''' <param name="DirFQN">The dir FQN.</param>
+    ''' <param name="MachineName">Name of the machine.</param>
+    ''' <returns>System.String.</returns>
     Function getDirGuid(ByVal DirFQN As String, ByVal MachineName As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13803,6 +15955,11 @@ REDO:
         Return tGuid
     End Function
 
+    ''' <summary>
+    ''' Gets the dir listener name by unique identifier.
+    ''' </summary>
+    ''' <param name="DirGuid">The dir unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getDirListenerNameByGuid(ByVal DirGuid As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13830,6 +15987,11 @@ REDO:
         Return DirName
     End Function
 
+    ''' <summary>
+    ''' Gets the description.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getDescription(ByVal SourceGuid As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13862,6 +16024,12 @@ REDO:
         Return sData
     End Function
 
+    ''' <summary>
+    ''' Gets the sd cols.
+    ''' </summary>
+    ''' <param name="ConnstrName">Name of the connstr.</param>
+    ''' <param name="TableName">Name of the table.</param>
+    ''' <returns>System.String.</returns>
     Function getSdCols(ByVal ConnstrName As String, ByVal TableName As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13893,6 +16061,12 @@ REDO:
         Return sData
     End Function
 
+    ''' <summary>
+    ''' Refactors the userid.
+    ''' </summary>
+    ''' <param name="FromUserid">From userid.</param>
+    ''' <param name="ToUserid">Converts to userid.</param>
+    ''' <returns>System.String.</returns>
     Function RefactorUserid(ByVal FromUserid As String, ByVal ToUserid As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13925,6 +16099,11 @@ REDO:
         Return Msg
     End Function
 
+    ''' <summary>
+    ''' Gets the pw.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <returns>System.String.</returns>
     Function getPw(ByVal UID As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13950,6 +16129,11 @@ REDO:
         Return ColVAl
     End Function
 
+    ''' <summary>
+    ''' is the content of the count user.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <returns>System.Int32.</returns>
     Function iCountUserContent(ByVal UID As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13980,6 +16164,11 @@ REDO:
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' is the count user emails.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <returns>System.Int32.</returns>
     Function iCountUserEmails(ByVal UID As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -14010,6 +16199,14 @@ REDO:
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' Saves the error MSG.
+    ''' </summary>
+    ''' <param name="ErrMsg">The error MSG.</param>
+    ''' <param name="ErrStack">The error stack.</param>
+    ''' <param name="IDNBR">The idnbr.</param>
+    ''' <param name="ConnectiveGuid">The connective unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function SaveErrMsg(ByVal ErrMsg As String, ByVal ErrStack As String, ByVal IDNBR As String, ByVal ConnectiveGuid As String) As String
 
         Dim DBARCH As New clsDatabaseARCH
@@ -14053,7 +16250,7 @@ REDO:
                     'End If
                     rc = CStr(True)
                 Catch ex As Exception
-                    rc = "SaveErrMsg" + environment.NewLine + ex.Message + environment.NewLine + environment.NewLine + ex.StackTrace
+                    rc = "SaveErrMsg" + Environment.NewLine + ex.Message + Environment.NewLine + Environment.NewLine + ex.StackTrace
                     LOG.WriteToArchiveLog("clsDatabaseARCH : SaveErrMsg : 5325 : ", ex)
                 End Try
                 If CN.State = Data.ConnectionState.Open Then
@@ -14067,7 +16264,7 @@ REDO:
                 End If
             End Using
         Catch ex As Exception
-            rc = "SaveErrMsg" + environment.NewLine + ex.Message + environment.NewLine + environment.NewLine + ex.StackTrace
+            rc = "SaveErrMsg" + Environment.NewLine + ex.Message + Environment.NewLine + Environment.NewLine + ex.StackTrace
             LOG.WriteToArchiveLog("clsDatabaseARCH : SaveErrMsg : 5336 : ", ex)
         End Try
 
@@ -14082,6 +16279,15 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the missing vaules.
+    ''' </summary>
+    ''' <param name="tGuid">The t unique identifier.</param>
+    ''' <param name="VersionNbr">The version NBR.</param>
+    ''' <param name="LastAccessDate">The last access date.</param>
+    ''' <param name="LastWriteTime">The last write time.</param>
+    ''' <param name="RetentionExpirationDate">The retention expiration date.</param>
+    ''' <param name="IsPublic">The is public.</param>
     Sub getMissingVaules(ByVal tGuid As String, ByRef VersionNbr As String, ByRef LastAccessDate As String, ByRef LastWriteTime As String, ByRef RetentionExpirationDate As String, ByRef IsPublic As String)
         Dim S As String = " SELECt  [VersionNbr]"
         S = S + " ,[LastAccessDate]      "
@@ -14118,6 +16324,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the missing email vaules.
+    ''' </summary>
+    ''' <param name="tGuid">The t unique identifier.</param>
+    ''' <param name="RetentionExpirationDate">The retention expiration date.</param>
+    ''' <param name="IsPublic">The is public.</param>
     Sub getMissingEmailVaules(ByVal tGuid As String, ByRef RetentionExpirationDate As String, ByRef IsPublic As String)
         Dim S As String = " SELECT [isPublic],[RetentionExpirationDate] FROM [Email] where [EmailGuid] = '" + tGuid + "'"
 
@@ -14145,6 +16357,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the meta data.
+    ''' </summary>
+    ''' <param name="tGuid">The t unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getMetaData(ByVal tGuid As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -14168,9 +16385,9 @@ REDO:
                 Dim CS As String = getRepoConnStr() : Dim CONN As New SqlConnection(CS) : CONN.Open() : Dim command As New SqlCommand(S, CONN) : RSData = command.ExecuteReader()
                 If RSData.HasRows Then
                     Do While RSData.Read
-                        Dim AttributeValue As String = RSData.GetValue(0).ToString + " ... " + environment.NewLine
-                        Dim AttributeName As String = RSData.GetValue(1).ToString + " ... " + environment.NewLine
-                        Msg += AttributeName + ":" + AttributeValue + environment.NewLine
+                        Dim AttributeValue As String = RSData.GetValue(0).ToString + " ... " + Environment.NewLine
+                        Dim AttributeName As String = RSData.GetValue(1).ToString + " ... " + Environment.NewLine
+                        Msg += AttributeName + ":" + AttributeValue + Environment.NewLine
                     Loop
                 End If
 
@@ -14187,6 +16404,11 @@ REDO:
         Return Msg
     End Function
 
+    ''' <summary>
+    ''' Gets the system parm.
+    ''' </summary>
+    ''' <param name="SysParm">The system parm.</param>
+    ''' <returns>System.String.</returns>
     Function getSystemParm(ByVal SysParm As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -14226,6 +16448,11 @@ REDO:
         Return SystemParameter
     End Function
 
+    ''' <summary>
+    ''' Gets the user parm.
+    ''' </summary>
+    ''' <param name="UserParm">The user parm.</param>
+    ''' <returns>System.String.</returns>
     Function getUserParm(ByVal UserParm As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -14266,6 +16493,12 @@ REDO:
         Return SystemParameter
     End Function
 
+    ''' <summary>
+    ''' Gets the user parm.
+    ''' </summary>
+    ''' <param name="UserParm">The user parm.</param>
+    ''' <param name="DefaultValue">The default value.</param>
+    ''' <returns>System.String.</returns>
     Function getUserParm(ByVal UserParm As String, ByVal DefaultValue As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -14306,6 +16539,11 @@ REDO:
         Return SystemParameter
     End Function
 
+    ''' <summary>
+    ''' Gets the content columns.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="SL">The sl.</param>
     Sub getContentColumns(ByVal SourceGuid As String, ByRef SL As SortedList)
         Dim S As String = ""
         S = S + " SELECT  "
@@ -14355,6 +16593,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the email columns.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="SL">The sl.</param>
     Sub getEmailColumns(ByVal SourceGuid As String, ByRef SL As SortedList)
         Dim S As String = ""
         S = S + " SELECT  "
@@ -14418,6 +16661,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Fills the sorted list.
+    ''' </summary>
+    ''' <param name="RSData">The rs data.</param>
+    ''' <param name="iRow">The i row.</param>
+    ''' <param name="SL">The sl.</param>
     Sub FillSortedList(ByVal RSData As SqlDataReader, ByVal iRow As Integer, ByRef SL As SortedList)
         Dim cName As String = RSData.GetName(iRow).ToString
         Try
@@ -14431,14 +16680,20 @@ REDO:
 
     End Sub
 
-    Function GetGuidByFqn(ByVal FQN As String, ByVal VersionNbr As String) As String
+    ''' <summary>
+    ''' Gets the unique identifier by FQN.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="VersionNbr">The version NBR.</param>
+    ''' <returns>System.String.</returns>
+    Function GetGuidByFqn(ByVal FQN As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
         FQN = UTIL.RemoveSingleQuotes(FQN)
 
-        Dim S As String = "Select SourceGuid from DataSource where FQN = '" + FQN + "' and machineid = '" + gMachineID + "' and VersionNbr = " + VersionNbr
+        Dim S As String = "Select SourceGuid from DataSource where FQN = '" + FQN + "' and machineid = '" + gMachineID + "' order by VersionNbr desc "
         CloseConn()
         CkConn()
         Dim xGuid As String = ""
@@ -14461,6 +16716,11 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the unique identifier by URL.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>System.String.</returns>
     Function GetGuidByURL(ByVal FQN As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -14491,6 +16751,11 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the name of the library owner by.
+    ''' </summary>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <returns>System.String.</returns>
     Function GetLibOwnerByName(ByVal LibraryName As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -14538,6 +16803,12 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Adds the document source description.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="Description">The description.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function addDocSourceDescription(ByVal SourceGuid As String, ByVal Description As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -14558,6 +16829,12 @@ REDO:
     '    Return b
     'End Function
 
+    ''' <summary>
+    ''' Adds the document source key words.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="KeyWords">The key words.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function addDocSourceKeyWords(ByVal SourceGuid As String, ByVal KeyWords As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -14570,6 +16847,18 @@ REDO:
         Return b
     End Function
 
+    ''' <summary>
+    ''' Updates the meta data.
+    ''' </summary>
+    ''' <param name="Author">The author.</param>
+    ''' <param name="Description">The description.</param>
+    ''' <param name="Keywords">The keywords.</param>
+    ''' <param name="QuickRefIdNbr">The quick reference identifier NBR.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="MetadataTag">The metadata tag.</param>
+    ''' <param name="MetadataValue">The metadata value.</param>
+    ''' <param name="Library">The library.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function UpdateMetaData(ByVal Author As String, ByVal Description As String, ByVal Keywords As String, ByVal QuickRefIdNbr As String, ByVal FQN As String, ByVal MetadataTag As String, ByVal MetadataValue As String, ByVal Library As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -14601,6 +16890,9 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Loads the process dates.
+    ''' </summary>
     Sub LoadProcessDates()
 
         Dim S As String = ""
@@ -14655,6 +16947,11 @@ REDO:
     End Sub
 
     'select LibraryName FROM LibDirectory where DirectoryName = 'c:\temp'
+    ''' <summary>
+    ''' Gets the library dirs.
+    ''' </summary>
+    ''' <param name="DirectoryName">Name of the directory.</param>
+    ''' <param name="L">The l.</param>
     Sub getLibDirs(ByVal DirectoryName As String, ByRef L As List(Of String))
 
         L.Clear()
@@ -14687,6 +16984,12 @@ REDO:
         RSData = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Gets the source unique identifier by FQN.
+    ''' </summary>
+    ''' <param name="fqn">The FQN.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getSourceGuidByFqn(ByVal fqn As String, ByVal UserID As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -14736,6 +17039,12 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the source unique identifier by sourcename CRC.
+    ''' </summary>
+    ''' <param name="Sourcename">The sourcename.</param>
+    ''' <param name="CRC">The CRC.</param>
+    ''' <returns>System.String.</returns>
     Function getSourceGuidBySourcenameCRC(ByVal Sourcename As String, ByVal CRC As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -14765,6 +17074,11 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the source name by unique identifier.
+    ''' </summary>
+    ''' <param name="RowGuid">The row unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getSourceNameByGuid(ByVal RowGuid As String) As String
         Dim TD As New Dictionary(Of String, String)
         Dim SourceName As String = ""
@@ -14800,6 +17114,10 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Loads the entry identifier by user identifier.
+    ''' </summary>
+    ''' <param name="L">The l.</param>
     Sub LoadEntryIdByUserID(ByRef L As SortedList)
 
         Dim S As String = "Select EmailIdentifier from email where UserID = '" + gCurrUserGuidID + "' "
@@ -14840,6 +17158,10 @@ REDO:
         frmMain.SB.Text = ""
     End Sub
 
+    ''' <summary>
+    ''' Gets the count store identifier by folder.
+    ''' </summary>
+    ''' <returns>System.Int32.</returns>
     Function getCountStoreIdByFolder() As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -14874,6 +17196,11 @@ REDO:
         Return iCnt
     End Function
 
+    ''' <summary>
+    ''' Gets the group users.
+    ''' </summary>
+    ''' <param name="GroupName">Name of the group.</param>
+    ''' <param name="GroupList">The group list.</param>
     Sub getGroupUsers(ByVal GroupName As String, ByRef GroupList As ArrayList)
 
         If InStr(GroupName, "''") > 0 Then
@@ -14904,6 +17231,14 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Updates the archive flag.
+    ''' </summary>
+    ''' <param name="ParentFolder">The parent folder.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="aFlag">a flag.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UpdateArchiveFlag(ByVal ParentFolder As String, ByVal UID As String, ByVal aFlag As String, ByVal FolderName As String) As Boolean
         Dim b As Boolean = False
         Dim s As String = ""
@@ -14914,6 +17249,14 @@ REDO:
         Return ExecuteSqlNewConn(s, False)
     End Function
 
+    ''' <summary>
+    ''' Deletes the email archive folder.
+    ''' </summary>
+    ''' <param name="ParentFolder">The parent folder.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="aFlag">a flag.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function DeleteEmailArchiveFolder(ByVal ParentFolder As String, ByVal UID As String, ByVal aFlag As String, ByVal FolderName As String) As Boolean
         Dim b As Boolean = False
         Dim s As String = ""
@@ -14949,6 +17292,11 @@ REDO:
     '    rsData = Nothing
     '    Return id
     'End Function
+    ''' <summary>
+    ''' Gets the parent folder name by identifier.
+    ''' </summary>
+    ''' <param name="FolderID">The folder identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getParentFolderNameById(ByVal FolderID As String) As String
         Dim b As Boolean = True
         Dim S As String = ""
@@ -14972,6 +17320,10 @@ REDO:
         Return id
     End Function
 
+    ''' <summary>
+    ''' Gets the archive folder ids.
+    ''' </summary>
+    ''' <param name="DGV">The DGV.</param>
     Public Sub getArchiveFolderIds(ByRef DGV As DataGridView)
 
         Dim SA As New SortedList(Of String, String)
@@ -14997,6 +17349,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Removes the group user.
+    ''' </summary>
+    ''' <param name="GroupName">Name of the group.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function RemoveGroupUser(ByVal GroupName As String, ByVal UserID As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -15049,6 +17407,11 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the name of the group owner unique identifier by group.
+    ''' </summary>
+    ''' <param name="GroupName">Name of the group.</param>
+    ''' <returns>System.String.</returns>
     Function getGroupOwnerGuidByGroupName(ByVal GroupName As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -15086,6 +17449,11 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the user email addr by user identifier.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getUserEmailAddrByUserID(ByVal UserID As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -15112,6 +17480,11 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the user name by email addr.
+    ''' </summary>
+    ''' <param name="EmailAddress">The email address.</param>
+    ''' <returns>System.String.</returns>
     Function getUserNameByEmailAddr(ByVal EmailAddress As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -15141,6 +17514,12 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Loads the reassign history.
+    ''' </summary>
+    ''' <param name="OldUid">The old uid.</param>
+    ''' <param name="NewUid">Creates new uid.</param>
+    ''' <param name="UserArray">The user array.</param>
     Sub loadReassignHistory(ByVal OldUid As String, ByVal NewUid As String, ByRef UserArray As ArrayList)
         UserArray.Clear()
         Dim S As String = "  SELECT [UserID]"
@@ -15218,6 +17597,10 @@ REDO:
         RSData = Nothing
     End Sub
 
+    ''' <summary>
+    ''' xes the get XRT.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function xGetXrt() As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -15270,6 +17653,10 @@ REDO:
     'End Function
 
     'SELECT max([LicenseID]) FROM  [License]
+    ''' <summary>
+    ''' Gets the maximum license identifier.
+    ''' </summary>
+    ''' <returns>System.Int32.</returns>
     Function GetMaxLicenseID() As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -15301,6 +17688,10 @@ REDO:
         Return CInt(CInt(tCnt))
     End Function
 
+    ''' <summary>
+    ''' Licenses the exists.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function LicenseExists() As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -15334,10 +17725,10 @@ REDO:
             rsData = Nothing
         Catch ex As Exception
             LOG.WriteToArchiveLog("ERROR: LicenseExists - ", ex)
-            Dim Msg As String = "License validation error:" + environment.NewLine
-            Msg += "A license could not be found for the product." + environment.NewLine
-            Msg += ex.Message + environment.NewLine
-            Msg += CS + environment.NewLine + environment.NewLine
+            Dim Msg As String = "License validation error:" + Environment.NewLine
+            Msg += "A license could not be found for the product." + Environment.NewLine
+            Msg += ex.Message + Environment.NewLine
+            Msg += CS + Environment.NewLine + Environment.NewLine
             Msg += "This message is on the clipboard if needed for debug."
             MessageBox.Show(Msg)
             Clipboard.Clear()
@@ -15348,10 +17739,20 @@ REDO:
         Return b
     End Function
 
+    ''' <summary>
+    ''' Gets the license last version.
+    ''' </summary>
     Sub getLicenseLastVersion()
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the XRT.
+    ''' </summary>
+    ''' <param name="CustomerName">Name of the customer.</param>
+    ''' <param name="CustomerID">The customer identifier.</param>
+    ''' <param name="dDebug">The d debug.</param>
+    ''' <returns>System.String.</returns>
     Function GetXrt(CustomerName As String, CustomerID As String, Optional dDebug As Integer = 0) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -15390,6 +17791,10 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the curr machine count.
+    ''' </summary>
+    ''' <returns>System.Int32.</returns>
     Function GetCurrMachineCnt() As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -15419,6 +17824,10 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the NBR users.
+    ''' </summary>
+    ''' <returns>System.Int32.</returns>
     Function GetNbrUsers() As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -15449,6 +17858,10 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the NBR machine.
+    ''' </summary>
+    ''' <returns>System.Int32.</returns>
     Function GetNbrMachine() As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -15478,6 +17891,11 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the NBR machine.
+    ''' </summary>
+    ''' <param name="MachineName">Name of the machine.</param>
+    ''' <returns>System.Int32.</returns>
     Function GetNbrMachine(ByVal MachineName As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -15507,6 +17925,10 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the curr user count.
+    ''' </summary>
+    ''' <returns>System.Int32.</returns>
     Function GetCurrUserCnt() As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -15536,6 +17958,13 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Saves the license cut and paste.
+    ''' </summary>
+    ''' <param name="LS">The ls.</param>
+    ''' <param name="CustomerID">The customer identifier.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function saveLicenseCutAndPaste(ByVal LS As String, ByVal CustomerID As String, ByVal MachineID As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -15579,6 +18008,11 @@ REDO:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the profile desc.
+    ''' </summary>
+    ''' <param name="ProfileName">Name of the profile.</param>
+    ''' <returns>System.String.</returns>
     Function GetProfileDesc(ByVal ProfileName As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -15610,6 +18044,11 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the type of the attribute data.
+    ''' </summary>
+    ''' <param name="AttributeName">Name of the attribute.</param>
+    ''' <returns>System.String.</returns>
     Function getAttributeDataType(ByVal AttributeName As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -15639,6 +18078,11 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the attribute allowed values.
+    ''' </summary>
+    ''' <param name="AttributeName">Name of the attribute.</param>
+    ''' <returns>System.String.</returns>
     Function getAttributeAllowedValues(ByVal AttributeName As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -15668,6 +18112,11 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Quoteses the required.
+    ''' </summary>
+    ''' <param name="DataType">Type of the data.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function QuotesRequired(ByVal DataType As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -15699,6 +18148,11 @@ REDO:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the length of the data source image.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.Double.</returns>
     Function getDataSourceImageLength(ByVal SourceGuid As String) As Double
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -15736,6 +18190,11 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Updates the curr archive stats.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="SourceTypeCode">The source type code.</param>
     Sub UpdateCurrArchiveStats(ByVal FQN As String, ByVal SourceTypeCode As String)
 
         If gCurrentArchiveGuid.Trim.Length = 0 Then gCurrentArchiveGuid = Guid.NewGuid.ToString
@@ -15816,6 +18275,12 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Updates the curr archive stats.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="SourceTypeCode">The source type code.</param>
+    ''' <param name="ArchiveGuid">The archive unique identifier.</param>
     Sub UpdateCurrArchiveStats(ByVal FQN As String, ByVal SourceTypeCode As String, ByVal ArchiveGuid As String)
 
         If gCurrentArchiveGuid.Trim.Length = 0 Then gCurrentArchiveGuid = Guid.NewGuid.ToString
@@ -15899,9 +18364,8 @@ REDO:
     ''' <summary>
     ''' Now, we can get this data... So what, how do we pass it all back?
     ''' </summary>
-    ''' <param name="frm">     </param>
-    ''' <param name="fControl"></param>
-    ''' <remarks></remarks>
+    ''' <param name="FormName">Name of the form.</param>
+    ''' <param name="slFormHelp">The sl form help.</param>
     Sub getFormHelpData(ByVal FormName As String, ByRef slFormHelp As SortedList(Of String, String))
 
         Try
@@ -15953,6 +18417,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the form tooltips.
+    ''' </summary>
+    ''' <param name="frm">The FRM.</param>
+    ''' <param name="TT">The tt.</param>
+    ''' <param name="setActive">if set to <c>true</c> [set active].</param>
     Sub getFormTooltips(ByRef frm As Form, ByRef TT As ToolTip, ByVal setActive As Boolean)
 
         Dim HELP As New clsHELPTEXT
@@ -15986,6 +18456,10 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Marks the image copy for deletion.
+    ''' </summary>
+    ''' <param name="fqn">The FQN.</param>
     Public Sub MarkImageCopyForDeletion(ByVal fqn As String)
         fqn = UTIL.RemoveSingleQuotes(fqn)
         Dim B As Boolean = False
@@ -16012,6 +18486,9 @@ REDO:
         GC.Collect()
     End Sub
 
+    ''' <summary>
+    ''' Deletes the marked image copy files.
+    ''' </summary>
     Public Sub DeleteMarkedImageCopyFiles()
 
         Dim FileToDelete As New ArrayList
@@ -16078,6 +18555,10 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Sets the ocr attributes to pass.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
     Sub SetOcrAttributesToPass(ByVal SourceGuid As String)
         Dim S As String = "update DataSource set OcrPerformed = 'Y', isGraphic = 'Y' where SourceGuid = '" + SourceGuid + "'"
         Dim b As Boolean = Me.ExecuteSqlNewConn(S, False)
@@ -16086,6 +18567,10 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Sets the ocr attributes to fail.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
     Sub SetOcrAttributesToFail(ByVal SourceGuid As String)
         Dim S As String = "update DataSource set OcrPerformed = 'F', isGraphic = 'Y' where SourceGuid = '" + SourceGuid + "'"
         Dim b As Boolean = Me.ExecuteSqlNewConn(S, False)
@@ -16094,6 +18579,10 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Sets the ocr attributes to not performed.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
     Sub SetOcrAttributesToNotPerformed(ByVal SourceGuid As String)
         Dim S As String = "update DataSource set OcrPerformed = 'N', isGraphic = 'Y' where SourceGuid = '" + SourceGuid + "'"
         Dim b As Boolean = Me.ExecuteSqlNewConn(S, False)
@@ -16103,6 +18592,11 @@ REDO:
     End Sub
 
     'GraphicContainsText
+    ''' <summary>
+    ''' Sets the image hidden text.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="ImageHiddenText">The image hidden text.</param>
     Sub SetImageHiddenText(ByVal SourceGuid As String, ByVal ImageHiddenText As String)
 
         ImageHiddenText = UTIL.RemoveSingleQuotes(ImageHiddenText)
@@ -16120,6 +18614,11 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Appends the image hidden text.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="ImageHiddenText">The image hidden text.</param>
     Sub AppendImageHiddenText(ByVal SourceGuid As String, ByVal ImageHiddenText As String)
 
         ImageHiddenText = UTIL.RemoveSingleQuotes(ImageHiddenText)
@@ -16137,6 +18636,11 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Appends the ocr text.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="OcrText">The ocr text.</param>
     Sub AppendOcrText(ByVal SourceGuid As String, ByVal OcrText As String)
         Dim DTE As Date = Now
 
@@ -16163,6 +18667,12 @@ REDO:
         LOG.WriteToTimerLog("clsDatabaseARCH", "AppendOcrText", "END", DTE)
     End Sub
 
+    ''' <summary>
+    ''' Appends the email ocr text.
+    ''' </summary>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="OcrText">The ocr text.</param>
+    ''' <param name="AttachmentName">Name of the attachment.</param>
     Sub AppendEmailOcrText(ByVal EmailGuid As String, ByVal OcrText As String, ByVal AttachmentName As String)
 
         AttachmentName = AttachmentName.Replace("'", "''")
@@ -16181,6 +18691,10 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Blanks the out single quotes.
+    ''' </summary>
+    ''' <param name="sText">The s text.</param>
     Public Sub BlankOutSingleQuotes(ByRef sText As String)
         For i As Integer = 1 To sText.Length
             Dim CH As String = Mid(sText, i, 1)
@@ -16190,6 +18704,12 @@ REDO:
         Next
     End Sub
 
+    ''' <summary>
+    ''' Sets the email ocr text.
+    ''' </summary>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="OcrText">The ocr text.</param>
+    ''' <param name="AttachmentName">Name of the attachment.</param>
     Sub SetEmailOcrText(ByVal EmailGuid As String, ByVal OcrText As String, ByVal AttachmentName As String)
         AttachmentName = AttachmentName.Replace("'", "''")
         Try
@@ -16208,6 +18728,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Concats the email body.
+    ''' </summary>
+    ''' <param name="BodyText">The body text.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
     Sub concatEmailBody(ByVal BodyText As String, ByVal EmailGuid As String)
 
         Try
@@ -16218,8 +18743,8 @@ REDO:
 
             BodyText = BodyText.Replace("'", "`")
 
-            Dim S As String = "update Email " + environment.NewLine
-            S += "set Body = '" + BodyText + "'" + environment.NewLine
+            Dim S As String = "update Email " + Environment.NewLine
+            S += "set Body = '" + BodyText + "'" + Environment.NewLine
             S += " where EmailGuid = '" + EmailGuid + "'"
             Dim b As Boolean = ExecuteSqlNewConn(90107, S)
 
@@ -16232,16 +18757,25 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the attachment counts.
+    ''' </summary>
     Sub UpdateAttachmentCounts()
         Dim S As String = "update Email "
         S = S + " set NbrAttachments = (select count(*) from EmailAttachment where Email.EmailGuid = EmailAttachment.EmailGuid)"
         'S = S + " WHERE NbrAttachments Is NULL "
         Dim B As Boolean = Me.ExecuteSqlNewConn(S, False)
         If Not B Then
-            LOG.WriteToArchiveLog("NOTICE: Failed to update the Attachment counts for Emails." + environment.NewLine + S)
+            LOG.WriteToArchiveLog("NOTICE: Failed to update the Attachment counts for Emails." + Environment.NewLine + S)
         End If
     End Sub
 
+    ''' <summary>
+    ''' Users the parm update.
+    ''' </summary>
+    ''' <param name="ParmName">Name of the parm.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="ParmVal">The parm value.</param>
     Sub UserParmUpdate(ByVal ParmName As String, ByVal UserID As String, ByVal ParmVal As String)
         Dim iCnt As Integer = UserParmExists(ParmName, UserID)
         If iCnt = 0 Then
@@ -16263,6 +18797,11 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Users the parm delete.
+    ''' </summary>
+    ''' <param name="ParmName">Name of the parm.</param>
+    ''' <param name="UserID">The user identifier.</param>
     Sub UserParmDelete(ByVal ParmName As String, ByVal UserID As String)
         Dim iCnt As Integer = UserParmExists(ParmName, UserID)
         If iCnt = 0 Then
@@ -16283,6 +18822,11 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Gets the active email folders.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>ArrayList.</returns>
     Function GetActiveEmailFolders(ByVal UserID As String) As ArrayList
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -16313,6 +18857,11 @@ REDO:
         Return A
     End Function
 
+    ''' <summary>
+    ''' Validates the curr user pw.
+    ''' </summary>
+    ''' <param name="EncPW">The enc pw.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ValidateCurrUserPW(ByVal EncPW As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -16346,6 +18895,12 @@ REDO:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the email retention code.
+    ''' </summary>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
     Function GetEmailRetentionCode(ByVal FolderName As String, ByVal UserID As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -16377,6 +18932,12 @@ REDO:
         Return rCode
     End Function
 
+    ''' <summary>
+    ''' Users the parm insert.
+    ''' </summary>
+    ''' <param name="ParmName">Name of the parm.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="ParmVal">The parm value.</param>
     Sub UserParmInsert(ByVal ParmName As String, ByVal UserID As String, ByVal ParmVal As String)
 
         Dim iCnt As Integer = UserParmExists(ParmName, UserID)
@@ -16401,6 +18962,12 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Users the parm insert update.
+    ''' </summary>
+    ''' <param name="ParmName">Name of the parm.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="ParmVal">The parm value.</param>
     Sub UserParmInsertUpdate(ByVal ParmName As String, ByVal UserID As String, ByVal ParmVal As String)
 
         Dim iCnt As Integer = UserParmExists(ParmName, UserID)
@@ -16429,6 +18996,11 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' is the select count.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.Int32.</returns>
     Function iSelectCount(ByVal S As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -16459,6 +19031,12 @@ REDO:
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' Users the parm exists.
+    ''' </summary>
+    ''' <param name="ParmName">Name of the parm.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function UserParmExists(ByVal ParmName As String, ByVal UserID As String) As Integer
         Dim S As String = ""
         If gTraceFunctionCalls.Equals(1) Then
@@ -16499,6 +19077,12 @@ REDO:
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' Users the parm retrive.
+    ''' </summary>
+    ''' <param name="ParmName">Name of the parm.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
     Function UserParmRetrive(ByVal ParmName As String, ByVal UserID As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -16568,6 +19152,10 @@ REDO:
         Return sVal
     End Function
 
+    ''' <summary>
+    ''' Gets the help connection string.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getHelpConnStr() As String
         Dim bUseConfig As Boolean = True
         Dim HelpConnStr As String = ""
@@ -16575,6 +19163,14 @@ REDO:
         Return HelpConnStr
     End Function
 
+    ''' <summary>
+    ''' Loads the user search history.
+    ''' </summary>
+    ''' <param name="MaxNbrSearches">The maximum NBR searches.</param>
+    ''' <param name="Uid">The uid.</param>
+    ''' <param name="Screen">The screen.</param>
+    ''' <param name="SearchHistoryArrayList">The search history array list.</param>
+    ''' <param name="NbrReturned">The NBR returned.</param>
     Sub LoadUserSearchHistory(ByVal MaxNbrSearches As Integer, ByVal Uid As String, ByVal Screen As String, ByRef SearchHistoryArrayList As ArrayList, ByRef NbrReturned As Integer)
         Try
             NbrReturned = 0
@@ -16605,6 +19201,14 @@ REDO:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Limits to existing recs.
+    ''' </summary>
+    ''' <param name="DGV">The DGV.</param>
+    ''' <param name="UIDCellName">Name of the uid cell.</param>
+    ''' <param name="GuidCellName">Name of the unique identifier cell.</param>
+    ''' <param name="PB">The pb.</param>
+    ''' <param name="DeleteAll">if set to <c>true</c> [delete all].</param>
     Sub LimitToExistingRecs(ByVal DGV As DataGridView, ByVal UIDCellName As String, ByVal GuidCellName As String, ByRef PB As ProgressBar, ByVal DeleteAll As Boolean)
         Dim ASG As New clsACTIVESEARCHGUIDS
 
@@ -16642,6 +19246,10 @@ REDO:
         ASG = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Limits to existing recs.
+    ''' </summary>
+    ''' <param name="CurrentGuids">The current guids.</param>
     Sub LimitToExistingRecs(ByVal CurrentGuids As List(Of String))
 
         Dim ASG As New clsACTIVESEARCHGUIDS
@@ -16670,6 +19278,10 @@ REDO:
         ASG = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Gets the default thesaurus.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getDefaultThesaurus() As String
         'Dim EcmLibConnectionString As String = ""
 
@@ -16709,6 +19321,11 @@ REDO:
         Return DefaultThesaurus
     End Function
 
+    ''' <summary>
+    ''' Expands the inflection terms.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.String.</returns>
     Function ExpandInflectionTerms(ByVal S As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -16723,7 +19340,7 @@ REDO:
                 Do While RSData.Read()
                     Dim S1 As String = RSData.GetValue(0).ToString
                     Dim S2 As String = RSData.GetValue(1).ToString
-                    Msg = Msg + S1 + " : " + S2 + environment.NewLine
+                    Msg = Msg + S1 + " : " + S2 + Environment.NewLine
                 Loop
             End If
             RSData.Close()
@@ -16735,6 +19352,11 @@ REDO:
     End Function
 
     'SELECT COUNT(*) FROM [DB_UpdateHist] where [FixID] = 1 and Status = 'applied'
+    ''' <summary>
+    ''' Cks the database update.
+    ''' </summary>
+    ''' <param name="FixID">The fix identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function ckDbUpdate(ByVal FixID As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -16759,6 +19381,10 @@ REDO:
         Return ii
     End Function
 
+    ''' <summary>
+    ''' Deletes the email by unique identifier.
+    ''' </summary>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
     Sub DeleteEmailByGuid(ByVal EmailGuid As String)
         Dim SHIST As New clsSEARCHHISTORY
 
@@ -16835,6 +19461,10 @@ REDO:
         SHIST = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Deletes the source by unique identifier.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
     Sub DeleteSourceByGuid(ByVal SourceGuid As String)
         Dim S As String = ""
         Dim B As Boolean = True
@@ -16851,6 +19481,9 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Retentions the temporary zeroize.
+    ''' </summary>
     Sub RetentionTempZeroize()
         Dim S As String = "DELETE FROM [RetentionTemp] WHERE UserID = '" + gCurrUserGuidID + "'"
         Dim B As Boolean = Me.ExecuteSqlNewConn(S, False)
@@ -16859,6 +19492,12 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Retentions the temporary insert.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="ContentGuid">The content unique identifier.</param>
+    ''' <param name="TypeContent">Content of the type.</param>
     Sub RetentionTempInsert(ByVal UserID As String, ByVal ContentGuid As String, ByVal TypeContent As String)
 
         Dim S As String = ""
@@ -16877,6 +19516,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Retentions the type of the temporary count.
+    ''' </summary>
+    ''' <param name="TypeContent">Content of the type.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function RetentionTempCountType(ByVal TypeContent As String, ByVal UserID As String) As Integer
 
         Dim S As String = ""
@@ -16910,6 +19555,10 @@ REDO:
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' Admins the exist.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function adminExist() As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -16974,7 +19623,7 @@ REDO:
                     MessageBox.Show("Failed to add the required ADMIN account. Add the account manually to allow login.")
                     Return False
                 Else
-                    MessageBox.Show("The ADMIN account has been created, you will have to login under ADMIN using the password 'password' to continue." + environment.NewLine + "You must change the password or security will be compromised.")
+                    MessageBox.Show("The ADMIN account has been created, you will have to login under ADMIN using the password 'password' to continue." + Environment.NewLine + "You must change the password or security will be compromised.")
                     Return False
                 End If
             End If
@@ -16982,6 +19631,11 @@ REDO:
         End Using
     End Function
 
+    ''' <summary>
+    ''' Licenses the version exist.
+    ''' </summary>
+    ''' <param name="VersionNbr">The version NBR.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function LicenseVersionExist(ByVal VersionNbr As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -17018,6 +19672,18 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the license data current.
+    ''' </summary>
+    ''' <param name="ExistingVersionNbr">The existing version NBR.</param>
+    ''' <param name="ExistingActivationDate">The existing activation date.</param>
+    ''' <param name="ExistingInstallDate">The existing install date.</param>
+    ''' <param name="ExistingCustomerID">The existing customer identifier.</param>
+    ''' <param name="ExistingCustomerName">Name of the existing customer.</param>
+    ''' <param name="ExistingLicenseID">The existing license identifier.</param>
+    ''' <param name="ExistingXrtNxr1">The existing XRT NXR1.</param>
+    ''' <param name="ExistingServerIdentifier">The existing server identifier.</param>
+    ''' <param name="ExistingSqlInstanceIdentifier">The existing SQL instance identifier.</param>
     Sub getLicenseDataCurrent(ByRef ExistingVersionNbr As String,
                        ByRef ExistingActivationDate As String,
                        ByRef ExistingInstallDate As String,
@@ -17076,6 +19742,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Counts the quick reference items.
+    ''' </summary>
+    ''' <param name="QuickRefIdNbr">The quick reference identifier NBR.</param>
+    ''' <returns>System.Int32.</returns>
     Function CountQuickRefItems(ByVal QuickRefIdNbr As Integer) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -17109,6 +19780,11 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the quick reference identifier.
+    ''' </summary>
+    ''' <param name="QuickRef">The quick reference.</param>
+    ''' <returns>System.Int32.</returns>
     Function getQuickRefId(ByVal QuickRef As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -17144,6 +19820,10 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Retrieves the search history.
+    ''' </summary>
+    ''' <param name="SearchHistoryArrayList">The search history array list.</param>
     Sub retrieveSearchHistory(ByVal SearchHistoryArrayList As ArrayList)
 
         SearchHistoryArrayList.Clear()
@@ -17166,6 +19846,9 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Adds the missing CRC.
+    ''' </summary>
     Sub AddMissingCrc()
         'SELECT FQN, SourceGuid FROM DataSource
         Dim S As String = "Select count(*) "
@@ -17213,6 +19896,13 @@ REDO:
         ''FrmMDIMain.TSPB1.Value = 0
     End Sub
 
+    ''' <summary>
+    ''' Inserts the source attribute.
+    ''' </summary>
+    ''' <param name="SGUID">The sguid.</param>
+    ''' <param name="aName">a name.</param>
+    ''' <param name="aVal">a value.</param>
+    ''' <param name="OriginalFileType">Type of the original file.</param>
     Sub InsertSrcAttrib(ByVal SGUID As String, ByVal aName As String, ByVal aVal As String, ByVal OriginalFileType As String)
         Dim SRCATTR As New clsSOURCEATTRIBUTE
         SRCATTR.setSourceguid(SGUID)
@@ -17225,6 +19915,10 @@ REDO:
     End Sub
 
     'select count(*) from Attributes where AttributeName = 'XX'
+    ''' <summary>
+    ''' Attributes the exists.
+    ''' </summary>
+    ''' <param name="AttributeName">Name of the attribute.</param>
     Sub AttributeExists(ByVal AttributeName As String)
         'SELECT FQN, SourceGuid FROM DataSource
         Dim S As String = "Select count(*) from Attributes where AttributeName = '" + AttributeName + "'"
@@ -17254,6 +19948,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Cks the attribute exists.
+    ''' </summary>
+    ''' <param name="AttributeName">Name of the attribute.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ckAttributeExists(ByVal AttributeName As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -17271,6 +19970,10 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Removes the freetext stop words.
+    ''' </summary>
+    ''' <param name="SearchPhrase">The search phrase.</param>
     Sub RemoveFreetextStopWords(ByRef SearchPhrase As String)
 
         SearchPhrase = SearchPhrase.Trim
@@ -17310,6 +20013,17 @@ REDO:
         SearchPhrase = NewPhrase
     End Sub
 
+    ''' <summary>
+    ''' Sets the source global access flags.
+    ''' </summary>
+    ''' <param name="tgtGuid">The TGT unique identifier.</param>
+    ''' <param name="FileType">Type of the file.</param>
+    ''' <param name="rbPublic">if set to <c>true</c> [rb public].</param>
+    ''' <param name="rbPrivate">if set to <c>true</c> [rb private].</param>
+    ''' <param name="rbMstrYes">if set to <c>true</c> [rb MSTR yes].</param>
+    ''' <param name="rbMstrNot">if set to <c>true</c> [rb MSTR not].</param>
+    ''' <param name="SB">The sb.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function SetSourceGlobalAccessFlags(ByVal tgtGuid As String, ByVal FileType As String,
                                    ByVal rbPublic As Boolean,
                                    ByVal rbPrivate As Boolean,
@@ -17433,6 +20147,11 @@ REDO:
         Return Bb
     End Function
 
+    ''' <summary>
+    ''' Does the content of the iown this.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function DoIownThisContent(ByVal SourceGuid As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -17471,6 +20190,11 @@ REDO:
         Return b
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is email public] [the specified email unique identifier].
+    ''' </summary>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <returns><c>true</c> if [is email public] [the specified email unique identifier]; otherwise, <c>false</c>.</returns>
     Function isEmailPublic(ByVal EmailGuid As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -17520,13 +20244,16 @@ REDO:
         Return b
     End Function
 
+    ''' <summary>
+    ''' Zeroizes the global search.
+    ''' </summary>
     Sub ZeroizeGlobalSearch()
         Dim S As String = "delete from GlobalSeachResults where UserID = '" + gCurrUserGuidID + "'"
         Dim B As Boolean = False
         Try
             B = ExecuteSqlNewConn(S, False)
             If Not B Then
-                LOG.WriteToArchiveLog("ERROR 100 - clsDatabaseARCH:ZeroizeGlobalSearch: Failed to seroize global search - " + environment.NewLine + S)
+                LOG.WriteToArchiveLog("ERROR 100 - clsDatabaseARCH:ZeroizeGlobalSearch: Failed to seroize global search - " + Environment.NewLine + S)
             End If
         Catch ex As Exception
             LOG.WriteToArchiveLog("ERROR 200 - clsDatabaseARCH:ZeroizeGlobalSearch: ", ex)
@@ -17534,6 +20261,11 @@ REDO:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Gets the owner unique identifier.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getOwnerGuid(ByVal SourceGuid As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -17580,6 +20312,12 @@ REDO:
         Return id
     End Function
 
+    ''' <summary>
+    ''' Cks the content ownership.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="LoggedInUserGuid">The logged in user unique identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ckContentOwnership(ByVal SourceGuid As String, ByVal LoggedInUserGuid As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -17601,6 +20339,11 @@ REDO:
         End If
     End Function
 
+    ''' <summary>
+    ''' Gets all libraries user can access.
+    ''' </summary>
+    ''' <param name="AccessibleLibraries">The accessible libraries.</param>
+    ''' <param name="isAdmin">if set to <c>true</c> [is admin].</param>
     Sub GetAllLibrariesUserCanAccess(ByRef AccessibleLibraries As ArrayList, ByVal isAdmin As Boolean)
         Dim rsData As SqlDataReader = Nothing
         Dim LibraryName As String = ""
@@ -17662,6 +20405,10 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the name of the server instance.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function getServerInstanceName() As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -17688,6 +20435,10 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the name of the server machine.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function getServerMachineName() As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -17714,6 +20465,13 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Sets the server identifier.
+    ''' </summary>
+    ''' <param name="SqlServerInstanceNameX">The SQL server instance name x.</param>
+    ''' <param name="CustomerID">The customer identifier.</param>
+    ''' <param name="LicenseID">The license identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function setServerIdentifier(ByVal SqlServerInstanceNameX As String, ByVal CustomerID As String, ByVal LicenseID As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -17731,6 +20489,12 @@ REDO:
         Return True
     End Function
 
+    ''' <summary>
+    ''' Gets the server identifier.
+    ''' </summary>
+    ''' <param name="CustomerID">The customer identifier.</param>
+    ''' <param name="LicenseID">The license identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getServerIdentifier(ByVal CustomerID As String, ByVal LicenseID As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -17757,6 +20521,13 @@ REDO:
         Return SqlServerInstanceNameX
     End Function
 
+    ''' <summary>
+    ''' Sets the SQL instance identifier.
+    ''' </summary>
+    ''' <param name="SqlServerMachineName">Name of the SQL server machine.</param>
+    ''' <param name="CustomerID">The customer identifier.</param>
+    ''' <param name="LicenseID">The license identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function setSqlInstanceIdentifier(ByVal SqlServerMachineName As String, ByVal CustomerID As String, ByVal LicenseID As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -17774,6 +20545,12 @@ REDO:
         Return True
     End Function
 
+    ''' <summary>
+    ''' Gets the SQL instance identifier.
+    ''' </summary>
+    ''' <param name="CustomerID">The customer identifier.</param>
+    ''' <param name="LicenseID">The license identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function getSqlInstanceIdentifier(ByVal CustomerID As String, ByVal LicenseID As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -17800,12 +20577,25 @@ REDO:
         Return CBool(SqlServerMachineName)
     End Function
 
+    ''' <summary>
+    ''' Strings to byte array.
+    ''' </summary>
+    ''' <param name="str">The string.</param>
+    ''' <returns>System.Byte().</returns>
     Public Shared Function StrToByteArray(ByVal str As String) As Byte()
         Dim encoding As New System.Text.ASCIIEncoding()
         'Dim encoding As New System.Text.UnicodeEncoding
         Return encoding.GetBytes(str)
     End Function 'StrToByteArray
 
+    ''' <summary>
+    ''' Gets the satus flags.
+    ''' </summary>
+    ''' <param name="isPublic">The is public.</param>
+    ''' <param name="isMaster">The is master.</param>
+    ''' <param name="isWebPage">The is web page.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="SourceType">Type of the source.</param>
     Public Sub getSatusFlags(ByRef isPublic As CheckBox, ByRef isMaster As CheckBox, ByRef isWebPage As CheckBox, ByVal SourceGuid As String, ByVal SourceType As String)
         Dim sPublic As String = ""
         Dim sMaster As String = ""
@@ -17882,6 +20672,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the retention code.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="DirName">Name of the dir.</param>
+    ''' <returns>System.String.</returns>
     Function getRetentionCode(ByVal UserID As String, DirName As String) As String
 
         DirName = DirName.Replace("''", "'")
@@ -17910,6 +20706,11 @@ REDO:
         Return RetentionCode
     End Function
 
+    ''' <summary>
+    ''' Gets the retention period.
+    ''' </summary>
+    ''' <param name="RetentionCode">The retention code.</param>
+    ''' <returns>System.Int32.</returns>
     Function getRetentionPeriod(ByVal RetentionCode As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -17943,6 +20744,10 @@ REDO:
         Return rPeriod
     End Function
 
+    ''' <summary>
+    ''' Gets the retention period maximum.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function getRetentionPeriodMax() As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -17978,6 +20783,10 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the retention period years maximum.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function getRetentionPeriodYearsMax() As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -18008,6 +20817,9 @@ REDO:
         Return rPeriod
     End Function
 
+    ''' <summary>
+    ''' Sets the exchange default retention code.
+    ''' </summary>
     Sub SetExchangeDefaultRetentionCode()
         Dim S As String = ""
         S = S + " update ExchangeHostPop "
@@ -18016,6 +20828,12 @@ REDO:
         Me.ExecuteSqlNewConn(90110, S)
     End Sub
 
+    ''' <summary>
+    ''' Gets the dir retention code.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
     Function GetDirRetentionCode(ByVal FQN As String, ByVal UserID As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -18076,6 +20894,11 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the retention MGR.
+    ''' </summary>
+    ''' <param name="RetentionCode">The retention code.</param>
+    ''' <returns>System.String.</returns>
     Function GetRetentionMgr(ByVal RetentionCode As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -18108,6 +20931,12 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Sets the retention date.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="RetentionCode">The retention code.</param>
+    ''' <param name="FileExtention">The file extention.</param>
     Sub setRetentionDate(ByVal SourceGuid As String, ByVal RetentionCode As String, ByVal FileExtention As String)
 
         Dim RetentionUnits As Integer = getRetentionPeriod(RetentionCode)
@@ -18133,6 +20962,13 @@ REDO:
         B = Me.ExecuteSqlNewConn(S, False)
     End Sub
 
+    ''' <summary>
+    ''' Counts the machine.
+    ''' </summary>
+    ''' <param name="MachineName">Name of the machine.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function cntMachine(ByVal MachineName As String, ByVal FQN As String, ByVal SourceGuid As String) As Boolean
 
         FQN = UTIL.RemoveSingleQuotes(FQN)
@@ -18176,6 +21012,12 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Adds the machine source xx.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function AddMachineSourceXX(ByVal FQN As String, ByVal SourceGuid As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -18209,6 +21051,11 @@ REDO:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is library owner] [the specified library name].
+    ''' </summary>
+    ''' <param name="LibName">Name of the library.</param>
+    ''' <returns><c>true</c> if [is library owner] [the specified library name]; otherwise, <c>false</c>.</returns>
     Function isLibOwner(ByVal LibName As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -18256,6 +21103,11 @@ REDO:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is library item owner] [the specified library item unique identifier].
+    ''' </summary>
+    ''' <param name="LibraryItemGuid">The library item unique identifier.</param>
+    ''' <returns><c>true</c> if [is library item owner] [the specified library item unique identifier]; otherwise, <c>false</c>.</returns>
     Function isLibItemOwner(ByVal LibraryItemGuid As String) As Boolean
 
         Dim S As String = ""
@@ -18296,6 +21148,11 @@ REDO:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the web metadata.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="WebParms">The web parms.</param>
     Sub getWebMetadata(ByVal SourceGuid As String, ByRef WebParms As SortedList(Of String, String))
 
         WebParms.Clear()
@@ -18373,6 +21230,10 @@ REDO:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Populates the library combo.
+    ''' </summary>
+    ''' <param name="CB">The cb.</param>
     Sub PopulateLibCombo(ByRef CB As ComboBox)
 
         Try
@@ -18395,6 +21256,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the count source.
+    ''' </summary>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="CRC">The CRC.</param>
+    ''' <returns>System.Int32.</returns>
     Function getCntSource(ByVal SourceName As String, ByVal CRC As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -18450,6 +21317,11 @@ REDO:
     End Function
 
     'select datalength(SourceImage)  from DataSource where SourceGuid = '15bd8f45-5795-4526-adee-b0ddde66490b'
+    ''' <summary>
+    ''' Gets the size of the image.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function GetImageSize(ByVal SourceGuid As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -18482,6 +21354,12 @@ REDO:
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' Gets the maximum version NBR.
+    ''' </summary>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="CRC">The CRC.</param>
+    ''' <returns>System.Int32.</returns>
     Function GetMaxVersionNbr(ByVal SourceName As String, CRC As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -18531,12 +21409,17 @@ REDO:
             'End If
         Catch ex As Exception
             LOG.WriteToArchiveLog("ERROR: clsDatabaseARCH : GetMaxVersionNbr 100 - ", ex)
-            LOG.WriteToArchiveLog("ERROR: clsDatabaseARCH : GetMaxVersionNbr 100 - SQL: " + environment.NewLine + S)
+            LOG.WriteToArchiveLog("ERROR: clsDatabaseARCH : GetMaxVersionNbr 100 - SQL: " + Environment.NewLine + S)
         End Try
 
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' Cks the files need update.
+    ''' </summary>
+    ''' <param name="ListOfFiles">The list of files.</param>
+    ''' <param name="CheckArchiveBit">if set to <c>true</c> [check archive bit].</param>
     Sub ckFilesNeedUpdate(ByRef ListOfFiles As List(Of String), ByVal CheckArchiveBit As Boolean)
 
         Dim INFO As New Dictionary(Of String, String)
@@ -18702,6 +21585,12 @@ NxtRec:
 
     End Sub
 
+    ''' <summary>
+    ''' Cks the source needs update.
+    ''' </summary>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="CRC">The CRC.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ckSourceNeedsUpdate(ByVal SourceName As String, CRC As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -18724,13 +21613,17 @@ NxtRec:
             End If
         Catch ex As Exception
             bNeedsUpdating = True
-            LOG.WriteToArchiveLog("ERROR 001 clsDatabaseARCH:ckSourceNeedsUpdate - " + S + environment.NewLine + ex.Message)
+            LOG.WriteToArchiveLog("ERROR 001 clsDatabaseARCH:ckSourceNeedsUpdate - " + S + Environment.NewLine + ex.Message)
         End Try
 
         Return bNeedsUpdating
 
     End Function
 
+    ''' <summary>
+    ''' Adds the archive dir.
+    ''' </summary>
+    ''' <param name="DirFQN">The dir FQN.</param>
     Sub AddArchiveDir(ByVal DirFQN As String)
         DirFQN = UTIL.RemoveSingleQuotes(DirFQN)
 
@@ -18753,6 +21646,12 @@ NxtRec:
 
     End Sub
 
+    ''' <summary>
+    ''' Archives the dir exists.
+    ''' </summary>
+    ''' <param name="DirFqn">The dir FQN.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function ArchiveDirExists(ByVal DirFqn As String, ByVal MachineID As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -18792,6 +21691,13 @@ NxtRec:
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' Gets the database information.
+    ''' </summary>
+    ''' <param name="ProductVersion">The product version.</param>
+    ''' <param name="ProductLevel">The product level.</param>
+    ''' <param name="Edition">The edition.</param>
+    ''' <param name="VersionDesc">The version desc.</param>
     Sub getDbInfo(ByRef ProductVersion As String, ByRef ProductLevel As String, ByRef Edition As String, ByRef VersionDesc As String)
         Dim S As String = ""
         S = S + " SELECT SERVERPROPERTY('productversion') as ProductVersion, "
@@ -18821,6 +21727,10 @@ NxtRec:
         GC.WaitForFullGCComplete()
     End Sub
 
+    ''' <summary>
+    ''' Populates all user library combo.
+    ''' </summary>
+    ''' <param name="cb">The cb.</param>
     Sub PopulateAllUserLibCombo(ByVal cb As ComboBox)
         Dim S As String = ""
         Try
@@ -18849,6 +21759,10 @@ NxtRec:
 
     End Sub
 
+    ''' <summary>
+    ''' Populates the group user library combo.
+    ''' </summary>
+    ''' <param name="cb">The cb.</param>
     Sub PopulateGroupUserLibCombo(ByVal cb As ComboBox)
         Dim S As String = ""
         Dim bIsAdmin As Boolean = isAdmin(gCurrUserGuidID)
@@ -18859,14 +21773,14 @@ NxtRec:
                 S = S + "Select [LibraryName] FROM [Library] order by [LibraryName]"
             Else
                 S = ""
-                S = S + "Select distinct LibraryName from GroupLibraryAccess " + environment.NewLine
-                S = S + " where GroupName in " + environment.NewLine
-                S = S + " (select distinct GroupName from GroupUsers where UserID = '" + gCurrUserGuidID + "')" + environment.NewLine
-                S = S + "             union " + environment.NewLine
-                S = S + " select distinct LibraryName from LibraryUsers where UserID = '" + gCurrUserGuidID + "'" + environment.NewLine
-                S = S + " and LibraryName in (select LibraryName from Library)" + environment.NewLine
-                S = S + "             union " + environment.NewLine
-                S = S + " select LibraryName from Library where UserID = '" + gCurrUserGuidID + "'" + environment.NewLine
+                S = S + "Select distinct LibraryName from GroupLibraryAccess " + Environment.NewLine
+                S = S + " where GroupName in " + Environment.NewLine
+                S = S + " (select distinct GroupName from GroupUsers where UserID = '" + gCurrUserGuidID + "')" + Environment.NewLine
+                S = S + "             union " + Environment.NewLine
+                S = S + " select distinct LibraryName from LibraryUsers where UserID = '" + gCurrUserGuidID + "'" + Environment.NewLine
+                S = S + " and LibraryName in (select LibraryName from Library)" + Environment.NewLine
+                S = S + "             union " + Environment.NewLine
+                S = S + " select LibraryName from Library where UserID = '" + gCurrUserGuidID + "'" + Environment.NewLine
             End If
 
             Dim RSData As SqlDataReader = Nothing
@@ -18889,6 +21803,10 @@ NxtRec:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the user group membership.
+    ''' </summary>
+    ''' <returns>ArrayList.</returns>
     Function GetUserGroupMembership() As ArrayList
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -18914,6 +21832,11 @@ NxtRec:
         Return A
     End Function
 
+    ''' <summary>
+    ''' Cks the working dir exists.
+    ''' </summary>
+    ''' <param name="TypeDir">The type dir.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function ckWorkingDirExists(ByVal TypeDir As String) As Integer
         TypeDir = TypeDir.ToUpper
 
@@ -18950,6 +21873,12 @@ NxtRec:
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' Creates the new working dir.
+    ''' </summary>
+    ''' <param name="TypeDir">The type dir.</param>
+    ''' <param name="DirName">Name of the dir.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function CreateNewWorkingDir(ByVal TypeDir As String, ByVal DirName As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -19026,6 +21955,9 @@ NxtRec:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Cks the missing working dirs.
+    ''' </summary>
     Sub ckMissingWorkingDirs()
         Dim iCnt As Integer = 0
         Dim TempDirName As String = DMA.getEnvVarTempDir
@@ -19039,6 +21971,11 @@ NxtRec:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Exchanges the email exists.
+    ''' </summary>
+    ''' <param name="EmailIdentifier">The email identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ExchangeEmailExists(ByVal EmailIdentifier As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -19058,6 +21995,12 @@ NxtRec:
 
     End Function
 
+    ''' <summary>
+    ''' Exchanges the email exists v2.
+    ''' </summary>
+    ''' <param name="EmailIdentifier">The email identifier.</param>
+    ''' <param name="RecHash">The record hash.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ExchangeEmailExistsV2(ByVal EmailIdentifier As String, RecHash As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -19077,6 +22020,11 @@ NxtRec:
 
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is archive disabled] [the specified archive type code].
+    ''' </summary>
+    ''' <param name="ArchiveTypeCode">The archive type code.</param>
+    ''' <returns><c>true</c> if [is archive disabled] [the specified archive type code]; otherwise, <c>false</c>.</returns>
     Function isArchiveDisabled(ByVal ArchiveTypeCode As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -19128,6 +22076,11 @@ NxtRec:
 
     End Function
 
+    ''' <summary>
+    ''' Writes the XML data.
+    ''' </summary>
+    ''' <param name="TblName">Name of the table.</param>
+    ''' <param name="FQN">The FQN.</param>
     Public Sub WriteXMLData(ByVal TblName As String, ByVal FQN As String)
         getRepoConnStr()
 
@@ -19146,6 +22099,11 @@ NxtRec:
 
     End Sub
 
+    ''' <summary>
+    ''' Loads the rs from XML.
+    ''' </summary>
+    ''' <param name="TblName">Name of the table.</param>
+    ''' <param name="FQN">The FQN.</param>
     Public Sub LoadRsFromXML(ByVal TblName As String, ByVal FQN As String)
 
         getRepoConnStr()
@@ -19194,6 +22152,11 @@ NxtRec:
         daSvr = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Fixes the identifier exists.
+    ''' </summary>
+    ''' <param name="ID">The identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function FixIdExists(ByVal ID As Integer) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -19236,6 +22199,9 @@ NxtRec:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Initializes the service parameters.
+    ''' </summary>
     Sub InitializeServiceParameters()
 
         Dim S As String = ""
@@ -19299,6 +22265,11 @@ NxtRec:
 
     End Sub
 
+    ''' <summary>
+    ''' Systems the parm exists.
+    ''' </summary>
+    ''' <param name="ParmName">Name of the parm.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function SysParmExists(ByVal ParmName As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -19329,13 +22300,16 @@ NxtRec:
             dsSharePoint = Nothing
         Catch ex As Exception
             B = False
-            LOG.WriteToArchiveLog("SysParmExists: 100 - " + ex.Message + environment.NewLine + ConnStr + environment.NewLine)
+            LOG.WriteToArchiveLog("SysParmExists: 100 - " + ex.Message + Environment.NewLine + ConnStr + Environment.NewLine)
         End Try
 
         Return B
 
     End Function
 
+    ''' <summary>
+    ''' Adds the default retention code.
+    ''' </summary>
     Sub AddDefaultRetentionCode()
 
         Dim UID As String = getUserGuidID("admin")
@@ -19356,6 +22330,12 @@ NxtRec:
         Dim b As Boolean = ExecuteSqlNewConn(S, False)
     End Sub
 
+    ''' <summary>
+    ''' Updates the ip.
+    ''' </summary>
+    ''' <param name="HostName">Name of the host.</param>
+    ''' <param name="IP">The ip.</param>
+    ''' <param name="checkCode">The check code.</param>
     Sub updateIp(ByVal HostName As String, ByVal IP As String, ByVal checkCode As Integer)
         ' 0 = add if new 1 = update access count 2 = update search count 2 = update access count and
         ' search count
@@ -19408,6 +22388,14 @@ NxtRec:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the do not change help text.
+    ''' </summary>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <param name="ScreenName">Name of the screen.</param>
+    ''' <param name="WidgetName">Name of the widget.</param>
+    ''' <param name="WidgetText">The widget text.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UpdateDoNotChangeHelpText(ByVal WhereClause As String, ByVal ScreenName As String, ByVal WidgetName As String, ByVal WidgetText As String) As Boolean
 
         Dim b As Boolean = False
@@ -19426,6 +22414,11 @@ NxtRec:
         Return b
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is client only] [the specified user identifier].
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns><c>true</c> if [is client only] [the specified user identifier]; otherwise, <c>false</c>.</returns>
     Function isClientOnly(ByVal UserID As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -19474,6 +22467,10 @@ NxtRec:
 
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is single instance].
+    ''' </summary>
+    ''' <returns><c>true</c> if [is single instance]; otherwise, <c>false</c>.</returns>
     Function isSingleInstance() As Boolean
         'select SysParmVal from SystemParms where SysParm = 'SYS_SingleInstance'
         If gTraceFunctionCalls.Equals(1) Then
@@ -19523,6 +22520,10 @@ NxtRec:
 
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is extended PDF processing].
+    ''' </summary>
+    ''' <returns><c>true</c> if [is extended PDF processing]; otherwise, <c>false</c>.</returns>
     Function isExtendedPdfProcessing() As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -19572,6 +22573,10 @@ NxtRec:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the PDF processing dir.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function getPdfProcessingDir() As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -19622,6 +22627,10 @@ NxtRec:
 
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is public allowed].
+    ''' </summary>
+    ''' <returns><c>true</c> if [is public allowed]; otherwise, <c>false</c>.</returns>
     Function isPublicAllowed() As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -19671,6 +22680,9 @@ NxtRec:
 
     End Function
 
+    ''' <summary>
+    ''' Sets the maximum size of the file upload.
+    ''' </summary>
     Sub setMaxFileUploadSize()
 
         Dim S As String = ""
@@ -19708,6 +22720,10 @@ NxtRec:
 
     End Sub
 
+    ''' <summary>
+    ''' Shows the graphic meta data screen.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ShowGraphicMetaDataScreen() As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -19847,6 +22863,11 @@ NxtRec:
 
     'End Sub
 
+    ''' <summary>
+    ''' Gets the container unique identifier.
+    ''' </summary>
+    ''' <param name="ContainerName">Name of the container.</param>
+    ''' <returns>Guid.</returns>
     Function getContainerGuid(ContainerName As String) As Guid
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -19888,6 +22909,12 @@ NxtRec:
         Return TgtGuid
     End Function
 
+    ''' <summary>
+    ''' Saves the content container.
+    ''' </summary>
+    ''' <param name="ContainerGuid">The container unique identifier.</param>
+    ''' <param name="ContentUserRowGuid">The content user row unique identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function SaveContentContainer(ContainerGuid As Guid, ContentUserRowGuid As Guid) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -19905,23 +22932,23 @@ NxtRec:
             Return False
         End If
         Try
-            S += " if not exists (select ContainerGuid from [ContentContainer] where [ContentUserRowGuid] = '" + ContentUserRowGuid.ToString + "' and [ContainerGuid] = '" + ContainerGuid.ToString + "')" + environment.NewLine
-            S += " begin " + environment.NewLine
-            S += " INSERT INTO [ContentContainer]" + environment.NewLine
-            S += " ([ContentUserRowGuid]" + environment.NewLine
-            S += " ,[ContainerGuid])" + environment.NewLine
-            S += " VALUES " + environment.NewLine
-            S += " ('" + ContentUserRowGuid.ToString + "'" + environment.NewLine
-            S += " ,'" + ContainerGuid.ToString + "')" + environment.NewLine
-            S += " END" + environment.NewLine
+            S += " if not exists (select ContainerGuid from [ContentContainer] where [ContentUserRowGuid] = '" + ContentUserRowGuid.ToString + "' and [ContainerGuid] = '" + ContainerGuid.ToString + "')" + Environment.NewLine
+            S += " begin " + Environment.NewLine
+            S += " INSERT INTO [ContentContainer]" + Environment.NewLine
+            S += " ([ContentUserRowGuid]" + Environment.NewLine
+            S += " ,[ContainerGuid])" + Environment.NewLine
+            S += " VALUES " + Environment.NewLine
+            S += " ('" + ContentUserRowGuid.ToString + "'" + Environment.NewLine
+            S += " ,'" + ContainerGuid.ToString + "')" + Environment.NewLine
+            S += " END" + Environment.NewLine
 
             B = ExecuteSqlNewConn(90141, S)
 
             If Not B Then
-                LOG.WriteToArchiveLog("ERROR SaveContentContainer 77342.B - Failed to insert content container: " + environment.NewLine + S)
+                LOG.WriteToArchiveLog("ERROR SaveContentContainer 77342.B - Failed to insert content container: " + Environment.NewLine + S)
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR SaveContentContainer 77342.C - Failed to insert content container: " + environment.NewLine + S)
+            LOG.WriteToArchiveLog("ERROR SaveContentContainer 77342.C - Failed to insert content container: " + Environment.NewLine + S)
         End Try
 
 
@@ -19929,6 +22956,16 @@ NxtRec:
 
     End Function
 
+    ''' <summary>
+    ''' Saves the content owner.
+    ''' </summary>
+    ''' <param name="ContentGuid">The content unique identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="ContentTypeCode">The content type code.</param>
+    ''' <param name="ContainerName">Name of the container.</param>
+    ''' <param name="MachineName">Name of the machine.</param>
+    ''' <param name="NetworkName">Name of the network.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function saveContentOwner(ByVal ContentGuid As String,
                               ByVal UserID As String,
                               ContentTypeCode As String,
@@ -20015,19 +23052,19 @@ NxtRec:
     ''' Saves the machine by name and the associated peice of content on that machine.
     ''' </summary>
     ''' <param name="MachineName">Name of the machine.</param>
-    ''' <param name="SourceGuid"> The source GUID.</param>
-    ''' <param name="UserID">     The user ID.</param>
+    ''' <param name="SourceGuid">The source GUID.</param>
+    ''' <param name="UserID">The user ID.</param>
     Sub saveMachine(MachineName As String, SourceGuid As String, UserID As String)
 
         Dim MySql As String = ""
 
-        MySql += "  if NOT exists (Select MachineName from Machine " + environment.NewLine
-        MySql += "      where MachineName = '" + MachineName + "' " + environment.NewLine
-        MySql += "      and SourceGuid = '" + SourceGuid + "' " + environment.NewLine
-        MySql += "      and UserID = '" + UserID + "')" + environment.NewLine
-        MySql += "  Begin " + environment.NewLine
-        MySql += "      INSERT INTO [Machine] (SourceGuid, MachineName, UserID) VALUES ('" + SourceGuid + "','" + MachineName + "', '" + UserID + "' )" + environment.NewLine
-        MySql += "  End" + environment.NewLine
+        MySql += "  if NOT exists (Select MachineName from Machine " + Environment.NewLine
+        MySql += "      where MachineName = '" + MachineName + "' " + Environment.NewLine
+        MySql += "      and SourceGuid = '" + SourceGuid + "' " + Environment.NewLine
+        MySql += "      and UserID = '" + UserID + "')" + Environment.NewLine
+        MySql += "  Begin " + Environment.NewLine
+        MySql += "      INSERT INTO [Machine] (SourceGuid, MachineName, UserID) VALUES ('" + SourceGuid + "','" + MachineName + "', '" + UserID + "' )" + Environment.NewLine
+        MySql += "  End" + Environment.NewLine
 
         Dim BB As Boolean = ExecuteSqlNewConn(90143, MySql)
 
@@ -20042,8 +23079,8 @@ NxtRec:
     ''' Gets the content GUID based on the name of the File/Email and the HASH code.
     ''' </summary>
     ''' <param name="SourceName">Name of the source document.</param>
-    ''' <param name="CrcHash">   The CRC hash.</param>
-    ''' <returns></returns>
+    ''' <param name="CrcHash">The CRC hash.</param>
+    ''' <returns>System.String.</returns>
     Function getContentGuid(SourceName As String, CrcHash As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -20075,6 +23112,12 @@ NxtRec:
         Return TgtGuid
     End Function
 
+    ''' <summary>
+    ''' Gets the content user unique identifier.
+    ''' </summary>
+    ''' <param name="ContentGuid">The content unique identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>Guid.</returns>
     Function getContentUserGuid(ContentGuid As String, UserID As String) As Guid
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -20102,6 +23145,12 @@ NxtRec:
         Return TgtGuid
     End Function
 
+    ''' <summary>
+    ''' Contents the owner exists.
+    ''' </summary>
+    ''' <param name="ContentGuid">The content unique identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ContentOwnerExists(ByVal ContentGuid As String, ByVal UserID As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -20121,6 +23170,9 @@ NxtRec:
 
     End Function
 
+    ''' <summary>
+    ''' Synchronizes the source owners.
+    ''' </summary>
     Sub SyncSourceOwners()
 
         Dim SqlStmts As New List(Of String)
@@ -20170,6 +23222,9 @@ NxtRec:
 
     End Sub
 
+    ''' <summary>
+    ''' Cks the run at start up.
+    ''' </summary>
     Sub ckRunAtStartUp()
 
         Dim C As String = ""
@@ -20203,11 +23258,15 @@ NxtRec:
                     oKey.Close()
                 End If
             Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR ckRunAtStartUp 102.22.1 - Failed to set start up parameter." + environment.NewLine + ex.Message)
+                LOG.WriteToArchiveLog("ERROR ckRunAtStartUp 102.22.1 - Failed to set start up parameter." + Environment.NewLine + ex.Message)
             End Try
         End If
     End Sub
 
+    ''' <summary>
+    ''' Registers the machine to database.
+    ''' </summary>
+    ''' <param name="MachineName">Name of the machine.</param>
     Public Sub RegisterMachineToDB(ByVal MachineName As String)
         MachineName = UTIL.RemoveSingleQuotes(MachineName)
         Dim iCnt As Integer = iGetRowCount("MachineRegistered", " Where MachineName = '" + MachineName + "' ")
@@ -20217,12 +23276,17 @@ NxtRec:
             S = "Insert into MachineRegistered (MachineName,CreateDate,LastUpdate) values ('" + MachineName + "', '" + Now.ToString + "', '" + Now.ToString + "')"
             B = ExecuteSqlNewConn(90145, S)
             If Not B Then
-                LOG.WriteToArchiveLog("ERROR RegisterMachineToDB 100 - Failed to add machine ID." + environment.NewLine + S)
+                LOG.WriteToArchiveLog("ERROR RegisterMachineToDB 100 - Failed to add machine ID." + Environment.NewLine + S)
             End If
         End If
 
     End Sub
 
+    ''' <summary>
+    ''' Determines whether [is machine registered] [the specified machine name].
+    ''' </summary>
+    ''' <param name="MachineName">Name of the machine.</param>
+    ''' <returns><c>true</c> if [is machine registered] [the specified machine name]; otherwise, <c>false</c>.</returns>
     Public Function isMachineRegistered(ByVal MachineName As String) As Boolean
         MachineName = UTIL.RemoveSingleQuotes(MachineName)
         Dim iCnt As Integer = iGetRowCount("MachineRegistered", " Where MachineName = '" + MachineName + "' ")
@@ -20233,6 +23297,10 @@ NxtRec:
         End If
     End Function
 
+    ''' <summary>
+    ''' Registers the ecm client.
+    ''' </summary>
+    ''' <param name="MachineName">Name of the machine.</param>
     Sub RegisterEcmClient(ByVal MachineName As String)
         Dim iCnt As Integer = 0
 
@@ -20248,6 +23316,12 @@ NxtRec:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Determines whether [is dir admin disabled] [the specified user identifier].
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if [is dir admin disabled] [the specified user identifier]; otherwise, <c>false</c>.</returns>
     Function isDirAdminDisabled(ByVal UserID As String, ByVal FQN As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -20271,6 +23345,11 @@ NxtRec:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the folder name by identifier.
+    ''' </summary>
+    ''' <param name="FolderID">The folder identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getFolderNameById(ByVal FolderID As String) As String
         Dim b As Boolean = True
         Dim S As String = ""
@@ -20310,6 +23389,12 @@ NxtRec:
         Return id
     End Function
 
+    ''' <summary>
+    ''' Gets the name of the folder identifier by.
+    ''' </summary>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <returns>System.String.</returns>
     Public Function getFolderIdByName(ByVal FolderName As String, ByVal UID As String) As String
 
         FolderName = UTIL.RemoveSingleQuotes(FolderName)
@@ -20339,6 +23424,11 @@ NxtRec:
 
     End Function
 
+    ''' <summary>
+    ''' Removes the library directories.
+    ''' </summary>
+    ''' <param name="DirectoryName">Name of the directory.</param>
+    ''' <param name="LibraryName">Name of the library.</param>
     Sub RemoveLibraryDirectories(ByVal DirectoryName As String, ByVal LibraryName As String)
 
         DirectoryName = UTIL.RemoveSingleQuotes(DirectoryName)
@@ -20376,6 +23466,12 @@ NxtRec:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Removes the library emails.
+    ''' </summary>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <param name="UserID">The user identifier.</param>
     Sub RemoveLibraryEmails(ByVal FolderName As String, ByVal LibraryName As String, ByVal UserID As String)
 
         Dim s As String = ""
@@ -20413,6 +23509,14 @@ NxtRec:
 
     End Sub
 
+    ''' <summary>
+    ''' Adds the library directory.
+    ''' </summary>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="RecordsAdded">The records added.</param>
+    ''' <param name="bAddSubDir">if set to <c>true</c> [b add sub dir].</param>
     Sub AddLibraryDirectory(ByVal FolderName As String, ByVal LibraryName As String, ByVal UserID As String, ByRef RecordsAdded As Integer, ByVal bAddSubDir As Boolean)
         'select sourceguid,SourceName,OriginalFileType from DataSource where FileDirectory = 'c:\temp'
         RecordsAdded = 0
@@ -20596,6 +23700,13 @@ NextRec:
         frmLibraryAssignment.SB.Text = "Done: " + i.ToString + " of " + iCnt.ToString
     End Sub
 
+    ''' <summary>
+    ''' Adds the library email.
+    ''' </summary>
+    ''' <param name="EmailFolder">The email folder.</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="RecordsAdded">The records added.</param>
     Sub AddLibraryEmail(ByVal EmailFolder As String, ByVal LibraryName As String, ByVal UserID As String, ByVal RecordsAdded As Integer)
 
         Dim CurrentmailFolderID As String = getFolderIdByName(EmailFolder, UserID)
@@ -20642,7 +23753,7 @@ NextRec:
             Try
                 File.Delete(TempFQN)
             Catch ex As Exception
-                LOG.WriteToArchiveLog("Warning: could not delete " + TempFQN + "." + environment.NewLine + ex.Message)
+                LOG.WriteToArchiveLog("Warning: could not delete " + TempFQN + "." + Environment.NewLine + ex.Message)
             End Try
         End If
         F = Nothing
@@ -20665,10 +23776,10 @@ NextRec:
                 Body = RSData.GetValue(2).ToString
                 OriginalFileType = RSData.GetValue(3).ToString
 
-                If InStr(SourceName, environment.NewLine) > 0 Or InStr(SourceName, vbCr) > 0 Or InStr(SourceName, vbLf) > 0 Then
+                If InStr(SourceName, Environment.NewLine) > 0 Or InStr(SourceName, vbCr) > 0 Or InStr(SourceName, vbLf) > 0 Then
                     SourceName = UTIL.RemoveCrLF(SourceName)
                 End If
-                If InStr(Body, environment.NewLine) > 0 Or InStr(Body, vbCr) > 0 Or InStr(Body, vbLf) > 0 Then
+                If InStr(Body, Environment.NewLine) > 0 Or InStr(Body, vbCr) > 0 Or InStr(Body, vbLf) > 0 Then
                     Body = UTIL.RemoveCrLF(Body)
                 End If
 
@@ -20784,6 +23895,10 @@ SkipRec01:
         frmMain.SB.Text = "Library audit complete."
     End Sub
 
+    ''' <summary>
+    ''' Adds the system MSG.
+    ''' </summary>
+    ''' <param name="tMsg">The t MSG.</param>
     Sub AddSysMsg(ByVal tMsg As String)
 
         tMsg = UTIL.RemoveSingleQuotesV1(tMsg)
@@ -20811,6 +23926,11 @@ SkipRec01:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Determines whether [is dir enabled] [the specified FQN].
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if [is dir enabled] [the specified FQN]; otherwise, <c>false</c>.</returns>
     Function isDirEnabled(ByVal FQN As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -20864,6 +23984,10 @@ SkipRec01:
 
     End Function
 
+    ''' <summary>
+    ''' Adds the name of the hashed dir.
+    ''' </summary>
+    ''' <param name="sName">Name of the s.</param>
     Sub AddHashedDirName(ByVal sName As String)
 
         Dim S As String = ""
@@ -20913,6 +24037,10 @@ SkipRec01:
 
     End Sub
 
+    ''' <summary>
+    ''' Adds the name of the hashed file.
+    ''' </summary>
+    ''' <param name="sName">Name of the s.</param>
     Sub AddHashedFileName(ByVal sName As String)
 
         Dim S As String = ""
@@ -20963,6 +24091,11 @@ SkipRec01:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the FQNS.
+    ''' </summary>
+    ''' <param name="Qty">The qty.</param>
+    ''' <returns>ArrayList.</returns>
     Function getFqns(ByVal Qty As String) As ArrayList
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -20999,6 +24132,17 @@ SkipRec01:
 
     End Function
 
+    ''' <summary>
+    ''' Adds the PST folder.
+    ''' </summary>
+    ''' <param name="StoreID">The store identifier.</param>
+    ''' <param name="ParentFolderName">Name of the parent folder.</param>
+    ''' <param name="ParentFolderID">The parent folder identifier.</param>
+    ''' <param name="FolderKeyName">Name of the folder key.</param>
+    ''' <param name="FolderID">The folder identifier.</param>
+    ''' <param name="PstFQN">The PST FQN.</param>
+    ''' <param name="RetentionCode">The retention code.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function AddPstFolder(ByVal StoreID As String, ByVal ParentFolderName As String, ByVal ParentFolderID As String, ByVal FolderKeyName As String, ByVal FolderID As String, ByVal PstFQN As String, ByVal RetentionCode As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -21057,6 +24201,11 @@ SkipRec01:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the dir profile.
+    ''' </summary>
+    ''' <param name="ProfileName">Name of the profile.</param>
+    ''' <returns>System.String.</returns>
     Function getDirProfile(ByVal ProfileName As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -21097,6 +24246,10 @@ SkipRec01:
         Return ProfileStr
     End Function
 
+    ''' <summary>
+    ''' Gets the name of current server.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function getNameOfCurrentServer() As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -21130,6 +24283,11 @@ SkipRec01:
         Return SvrName
     End Function
 
+    ''' <summary>
+    ''' Gets the quick row count.
+    ''' </summary>
+    ''' <param name="TableName">Name of the table.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function getQuickRowCnt(ByVal TableName As String) As Integer
         Dim I As Integer = 0
         TableName = UTIL.RemoveSingleQuotes(TableName)
@@ -21157,6 +24315,10 @@ SkipRec01:
         Return I
     End Function
 
+    ''' <summary>
+    ''' Gets the help information.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function getHelpInfo() As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -21185,22 +24347,22 @@ SkipRec01:
                     HoursAvail = RSData.GetValue(4).ToString
 
                     If HelpName.Trim.Length > 0 Then
-                        HelpInfo = HelpInfo + "Contact - " + HelpName + environment.NewLine
+                        HelpInfo = HelpInfo + "Contact - " + HelpName + Environment.NewLine
                     End If
                     If HelpName.Trim.Length > 0 Then
-                        HelpInfo = HelpInfo + "Email - " + HelpEmailAddr + environment.NewLine
+                        HelpInfo = HelpInfo + "Email - " + HelpEmailAddr + Environment.NewLine
                     End If
                     If HelpName.Trim.Length > 0 Then
-                        HelpInfo = HelpInfo + "Phone - " + HelpPhone + environment.NewLine
+                        HelpInfo = HelpInfo + "Phone - " + HelpPhone + Environment.NewLine
                     End If
                     If HelpName.Trim.Length > 0 Then
-                        HelpInfo = HelpInfo + "Help Area - " + AreaOfFocus + environment.NewLine
+                        HelpInfo = HelpInfo + "Help Area - " + AreaOfFocus + Environment.NewLine
                     End If
                     If HelpName.Trim.Length > 0 Then
-                        HelpInfo = HelpInfo + "Hours - " + HoursAvail + environment.NewLine
+                        HelpInfo = HelpInfo + "Hours - " + HoursAvail + Environment.NewLine
                     End If
 
-                    HelpInfo += environment.NewLine
+                    HelpInfo += Environment.NewLine
 
                 Loop
             End If
@@ -21216,6 +24378,10 @@ SkipRec01:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the help email.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function getHelpEmail() As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -21253,6 +24419,11 @@ SkipRec01:
 
     End Function
 
+    ''' <summary>
+    ''' Populates the grid.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <param name="DGV">The DGV.</param>
     Sub PopulateGrid(ByVal S As String, ByRef DGV As DataGridView)
         'System.Windows.Forms.DataGridViewCellEventArgs
         Try
@@ -21277,6 +24448,10 @@ SkipRec01:
 
     End Sub
 
+    ''' <summary>
+    ''' Traces the activity.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
     Sub TraceActivity(ByVal Msg As String)
         Dim S As String = ""
         Msg = UTIL.RemoveSingleQuotes(Msg)
@@ -21284,6 +24459,11 @@ SkipRec01:
         ExecuteSqlNewConn(90155, S)
     End Sub
 
+    ''' <summary>
+    ''' Updates the version information.
+    ''' </summary>
+    ''' <param name="Product">The product.</param>
+    ''' <param name="ProductVersion">The product version.</param>
     Sub UpdateVersionInfo(ByVal Product As String, ByVal ProductVersion As String)
 
         Product = UTIL.RemoveSingleQuotes(Product)
@@ -21301,11 +24481,16 @@ SkipRec01:
 
         Dim B As Boolean = ExecuteSqlNewConn(S, False)
         If B = False Then
-            LOG.WriteToArchiveLog("ERROR: UpdateVersionInfo - 100 : failed to update version info. " + environment.NewLine + S)
+            LOG.WriteToArchiveLog("ERROR: UpdateVersionInfo - 100 : failed to update version info. " + Environment.NewLine + S)
         End If
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the version information.
+    ''' </summary>
+    ''' <param name="Product">The product.</param>
+    ''' <returns>System.String.</returns>
     Function getVersionInfo(ByVal Product As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -21339,13 +24524,17 @@ SkipRec01:
 
         Dim B As Boolean = ExecuteSqlNewConn(S, False)
         If B = False Then
-            LOG.WriteToArchiveLog("ERROR: UpdateVersionInfo - 100 : failed to update version info. " + environment.NewLine + S)
+            LOG.WriteToArchiveLog("ERROR: UpdateVersionInfo - 100 : failed to update version info. " + Environment.NewLine + S)
         End If
 
         Return VerInfo
 
     End Function
 
+    ''' <summary>
+    ''' Fixes the email keys.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function FixEmailKeys() As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -21408,6 +24597,10 @@ SkipRec01:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the attachment weights.
+    ''' </summary>
+    ''' <param name="SL">The sl.</param>
     Sub getAttachmentWeights(ByRef SL As SortedList(Of String, Integer))
         SL.Clear()
         Dim S As String = "Select EmailGuid, Weight from EmailAttachmentSearchList where UserID = '" + gCurrUserGuidID + "'"
@@ -21458,6 +24651,10 @@ SkipRec01:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the disabled directories.
+    ''' </summary>
+    ''' <param name="ListOfDirs">The list of dirs.</param>
     Sub getDisabledDirectories(ByRef ListOfDirs As List(Of String))
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -21486,6 +24683,10 @@ SkipRec01:
 
     End Sub
 
+    ''' <summary>
+    ''' Runs the unattended.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function RunUnattended() As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -21511,6 +24712,11 @@ SkipRec01:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the size of the database.
+    ''' </summary>
+    ''' <param name="TargetGrid">The target grid.</param>
+    ''' <returns>System.Double.</returns>
     Function getDbSize(ByRef TargetGrid As System.Windows.Forms.DataGridView) As Double
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -21531,6 +24737,10 @@ SkipRec01:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the table dasd use.
+    ''' </summary>
+    ''' <param name="TargetGrid">The target grid.</param>
     Sub getTableDasdUse(ByRef TargetGrid As System.Windows.Forms.DataGridView)
         Dim S As String = ""
         Dim CS As String = getRepoConnStr()
@@ -21553,6 +24763,10 @@ SkipRec01:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the space used.
+    ''' </summary>
+    ''' <param name="TargetGrid">The target grid.</param>
     Sub getSpaceUsed(ByRef TargetGrid As System.Windows.Forms.DataGridView)
         Dim S As String = ""
         Dim CS As String = getRepoConnStr()
@@ -21576,6 +24790,10 @@ SkipRec01:
 
     End Sub
 
+    ''' <summary>
+    ''' Determines whether [is listening on].
+    ''' </summary>
+    ''' <returns><c>true</c> if [is listening on]; otherwise, <c>false</c>.</returns>
     Function isListeningOn() As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -21591,6 +24809,10 @@ SkipRec01:
         End If
     End Function
 
+    ''' <summary>
+    ''' Gets the listener files.
+    ''' </summary>
+    ''' <param name="L">The l.</param>
     Sub GetListenerFiles(ByRef L As SortedList(Of String, String))
 
         Dim S As String = ""
@@ -21654,6 +24876,9 @@ SkipRec01:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the modified files.
+    ''' </summary>
     Public Sub getModifiedFiles()
 
         Dim cPath As String = LOG.getTempEnvironDir()
@@ -21752,11 +24977,16 @@ P1:
                 End Try
             End Try
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: getModifiedFiles 200 Listener Files could not be processed for = " + tFQN + environment.NewLine + ex.Message)
+            LOG.WriteToArchiveLog("ERROR: getModifiedFiles 200 Listener Files could not be processed for = " + tFQN + Environment.NewLine + ex.Message)
         End Try
         ''FrmMDIMain.ListenerStatus.Text = "."
     End Sub
 
+    ''' <summary>
+    ''' Gets the size of the document.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function getDocSize(ByVal SourceGuid As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -21782,6 +25012,12 @@ P1:
         Return I
     End Function
 
+    ''' <summary>
+    ''' Registers the archive file.
+    ''' </summary>
+    ''' <param name="SourceFile">The source file.</param>
+    ''' <param name="DirName">Name of the dir.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function RegisterArchiveFile(ByVal SourceFile As String, ByVal DirName As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -21828,6 +25064,9 @@ P1:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Cleans the out old listener files.
+    ''' </summary>
     Sub CleanOutOldListenerFiles()
         Dim S As String = "delete from DirectoryListenerFiles where DATEDIFF(dd,entrydate,GETDATE()) > 30"
         Dim B As Boolean = ExecuteSqlNewConn(90159, S)
@@ -21836,6 +25075,9 @@ P1:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Removes the temporary ocr files.
+    ''' </summary>
     Sub removeTempOcrFiles()
         Try
             Dim WorkingDirectory As String = getWorkingDirectory(gCurrUserGuidID, "CONTENT WORKING DIRECTORY")
@@ -21846,6 +25088,9 @@ P1:
 
     End Sub
 
+    ''' <summary>
+    ''' Removes the null emails.
+    ''' </summary>
     Sub RemoveNullEmails()
         Dim S As String = ""
         S = "Select count(*) from email where datalength(emailimage) < 1 or EmailImage is null"
@@ -21885,6 +25130,9 @@ P1:
         ''FrmMDIMain.SB4.Text = "Done"
     End Sub
 
+    ''' <summary>
+    ''' Removes the null source.
+    ''' </summary>
     Sub RemoveNullSource()
         Dim S As String = ""
         S = "Select count(*) from dataSource where datalength(SourceImage) < 1 or SourceImage is null"
@@ -21925,6 +25173,11 @@ P1:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the directory libraries.
+    ''' </summary>
+    ''' <param name="DirectoryName">Name of the directory.</param>
+    ''' <param name="L">The l.</param>
     Sub GetDirectoryLibraries(ByVal DirectoryName As String, ByRef L As List(Of String))
         L.Clear()
 
@@ -21961,6 +25214,12 @@ P1:
         GC.WaitForPendingFinalizers()
     End Sub
 
+    ''' <summary>
+    ''' Cks the folder disabled.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="DirFQN">The dir FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckFolderDisabled(ByVal UID As String, ByVal DirFQN As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -21988,6 +25247,11 @@ P1:
 
     End Function
 
+    ''' <summary>
+    ''' Adds the file ext.
+    ''' </summary>
+    ''' <param name="FileExt">The file ext.</param>
+    ''' <param name="Description">The description.</param>
     Sub AddFileExt(ByVal FileExt As String, ByVal Description As String)
         'FrmMDIMain.SB4.Text = FileExt
         FileExt = UTIL.RemoveSingleQuotes(FileExt)
@@ -21996,6 +25260,12 @@ P1:
         Dim B As Boolean = ExecuteSqlNewConn(90160, S)
     End Sub
 
+    ''' <summary>
+    ''' Deletes the content.
+    ''' </summary>
+    ''' <param name="TgtGuid">The TGT unique identifier.</param>
+    ''' <param name="TypeContent">Content of the type.</param>
+    ''' <param name="FQN">The FQN.</param>
     Sub DeleteContent(ByVal TgtGuid As String, ByVal TypeContent As String, ByVal FQN As String)
 
         Dim S As String = ""
@@ -22025,6 +25295,11 @@ P1:
 
     End Sub
 
+    ''' <summary>
+    ''' Determines whether [is parent dir disabled] [the specified dir FQN].
+    ''' </summary>
+    ''' <param name="DirFQN">The dir FQN.</param>
+    ''' <returns><c>true</c> if [is parent dir disabled] [the specified dir FQN]; otherwise, <c>false</c>.</returns>
     Function isParentDirDisabled(ByVal DirFQN As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -22070,6 +25345,11 @@ P1:
 
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is directory disabled] [the specified dir FQN].
+    ''' </summary>
+    ''' <param name="DirFqn">The dir FQN.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function isDirectoryDisabled(ByVal DirFqn As String) As Integer
 
         Dim RC As Integer = -1
@@ -22119,6 +25399,11 @@ P1:
         Return RC
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is sub dir included bit on] [the specified dir FQN].
+    ''' </summary>
+    ''' <param name="DirFqn">The dir FQN.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function isSubDirIncludedBitON(ByVal DirFqn As String) As Integer
 
         Dim RC As Integer = -1
@@ -22168,6 +25453,11 @@ P1:
         Return RC
     End Function
 
+    ''' <summary>
+    ''' Determines whether the specified file type code is indexed.
+    ''' </summary>
+    ''' <param name="FileTypeCode">The file type code.</param>
+    ''' <returns><c>true</c> if the specified file type code is indexed; otherwise, <c>false</c>.</returns>
     Function isIndexed(ByVal FileTypeCode As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -22187,6 +25477,11 @@ P1:
     End Function
 
     '
+    ''' <summary>
+    ''' Determines whether the specified file type code is ocrd.
+    ''' </summary>
+    ''' <param name="FileTypeCode">The file type code.</param>
+    ''' <returns><c>true</c> if the specified file type code is ocrd; otherwise, <c>false</c>.</returns>
     Function isOcrd(ByVal FileTypeCode As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -22205,6 +25500,10 @@ P1:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the ocr types.
+    ''' </summary>
+    ''' <param name="L">The l.</param>
     Sub getOcrTypes(ByRef L As List(Of String))
         Dim S As String = "Select ImageTypeCode from ImageTypeCodes"
 
@@ -22230,6 +25529,10 @@ P1:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the indexed types.
+    ''' </summary>
+    ''' <param name="L">The l.</param>
     Sub getIndexedTypes(ByRef L As List(Of String))
         Dim S As String = "Select document_type from sys.fulltext_document_types"
 
@@ -22255,6 +25558,10 @@ P1:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the processs as ext.
+    ''' </summary>
+    ''' <param name="L">The l.</param>
     Sub getProcesssAsExt(ByRef L As SortedList(Of String, String))
         L.Clear()
         Dim S As String = "Select [ExtCode],[ProcessExtCode] FROM [ProcessFileAs]"
@@ -22278,6 +25585,10 @@ P1:
         RSData = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Shows the indexed files.
+    ''' </summary>
+    ''' <param name="D">The d.</param>
     Sub ShowIndexedFiles(ByRef D As DataGridView)
 
         Dim AL As New ArrayList
@@ -22365,6 +25676,13 @@ P1:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the ocr text.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="ContentType">Type of the content.</param>
+    ''' <param name="AttachmentName">Name of the attachment.</param>
+    ''' <returns>System.String.</returns>
     Function getOcrText(ByRef SourceGuid As String, ByVal ContentType As String, ByVal AttachmentName As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -22398,6 +25716,10 @@ P1:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the SQL server version.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function getSqlServerVersion() As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -22424,6 +25746,10 @@ P1:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the dbsizemb.
+    ''' </summary>
+    ''' <returns>System.Double.</returns>
     Function getDBSIZEMB() As Double
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -22462,7 +25788,7 @@ P1:
     ''' Builds the dictionary.
     ''' </summary>
     ''' <param name="MySql">My SQL.</param>
-    ''' <returns></returns>
+    ''' <returns>Dictionary(Of System.String, System.String).</returns>
     Function BuildDictionary(MySql As String) As Dictionary(Of String, String)
 
         Dim DICT As New Dictionary(Of String, String)
@@ -22500,6 +25826,11 @@ P1:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the list of.
+    ''' </summary>
+    ''' <param name="MySql">My SQL.</param>
+    ''' <returns>List(Of System.String).</returns>
     Function getListOf(MySql As String) As List(Of String)
 
         Dim L As New List(Of String)
@@ -22522,7 +25853,7 @@ P1:
                 Loop
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("Error: clsDatabaseARCH:getListOf Error 100: " + ex.Message + environment.NewLine + MySql)
+            LOG.WriteToArchiveLog("Error: clsDatabaseARCH:getListOf Error 100: " + ex.Message + Environment.NewLine + MySql)
         End Try
 
         If Not rsData.IsClosed Then
@@ -22534,6 +25865,11 @@ P1:
         Return L
     End Function
 
+    ''' <summary>
+    ''' Gets the file ext.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getFileExt(SourceGuid As String) As String
 
         Dim MySQl As String = "Select FQN from DataSource where SourceGuid = '" + SourceGuid + "' "
@@ -22561,7 +25897,7 @@ P1:
                 End Using
             End Using
         Catch ex As Exception
-            LOG.WriteToArchiveLog("Error: clsDatabaseARCH:getFileExt Error 100: " + ex.Message + environment.NewLine + MySQl)
+            LOG.WriteToArchiveLog("Error: clsDatabaseARCH:getFileExt Error 100: " + ex.Message + Environment.NewLine + MySQl)
         End Try
 
         GC.Collect()
@@ -22571,6 +25907,9 @@ P1:
         Return EXT
     End Function
 
+    ''' <summary>
+    ''' Rebuilds the cross index file types.
+    ''' </summary>
     Sub RebuildCrossIndexFileTypes()
 
         Dim FM As New frmNotify
@@ -22703,7 +26042,7 @@ P1:
                                 CMD.CommandText = MySql
                                 CMD.ExecuteNonQuery()
                             Catch ex As Exception
-                                LOG.WriteToArchiveLog("ERROR 22x: updateDBUpdateLastwrite: " + ex.Message + environment.NewLine + MySql)
+                                LOG.WriteToArchiveLog("ERROR 22x: updateDBUpdateLastwrite: " + ex.Message + Environment.NewLine + MySql)
                                 B = False
                             End Try
                         Next
@@ -22721,6 +26060,9 @@ P1:
 
     End Sub
 
+    ''' <summary>
+    ''' Validates the file types email.
+    ''' </summary>
     Sub ValidateFileTypesEmail()
         Dim S As String = "Select rowid, attachmentname from EmailAttachment where OriginalFileTypeCode is null "
         Dim I As Integer = 0
@@ -22773,6 +26115,9 @@ P1:
 
     End Sub
 
+    ''' <summary>
+    ''' Rebuilds the cross index file types email.
+    ''' </summary>
     Sub RebuildCrossIndexFileTypesEmail()
 
         ValidateFileTypesEmail()
@@ -22833,6 +26178,11 @@ P1:
 
     End Sub
 
+    ''' <summary>
+    ''' Emails the exists.
+    ''' </summary>
+    ''' <param name="EmailIdentifier">The email identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function EmailExists(ByVal EmailIdentifier As String) As Integer
 
         EmailIdentifier = UTIL.RemoveSingleQuotes(EmailIdentifier)
@@ -22847,6 +26197,9 @@ P1:
     End Function
 
     'update Email set EmailIdentifier = EmailGuid where EmailIdentifier is null
+    ''' <summary>
+    ''' Resets the missing email ids.
+    ''' </summary>
     Sub resetMissingEmailIds()
 
         Dim B As Boolean = False
@@ -22857,6 +26210,11 @@ P1:
         B = ExecuteSqlNewConn(S, False)
     End Sub
 
+    ''' <summary>
+    ''' Gets the library users.
+    ''' </summary>
+    ''' <param name="isAdmin">if set to <c>true</c> [is admin].</param>
+    ''' <param name="G">The g.</param>
     Sub getLibUsers(ByVal isAdmin As Boolean, ByRef G As DataGridView)
         G.Columns.Clear()
         G.Rows.Clear()
@@ -22920,12 +26278,15 @@ P1:
 
     End Sub
 
+    ''' <summary>
+    ''' Cleans up library items.
+    ''' </summary>
     Sub cleanUpLibraryItems()
 
         Dim S As String = ""
-        S = S + " delete from LibraryItems where " + environment.NewLine
-        S = S + " SourceGuid not in (select emailguid as TgtGuid from Email" + environment.NewLine
-        S = S + " union " + environment.NewLine
+        S = S + " delete from LibraryItems where " + Environment.NewLine
+        S = S + " SourceGuid not in (select emailguid as TgtGuid from Email" + Environment.NewLine
+        S = S + " union " + Environment.NewLine
         S = S + " select sourceguid as TgtGuid from DataSource)"
 
         Dim B As Boolean = ExecuteSqlNewConn(90169, S)
@@ -22965,6 +26326,9 @@ P1:
 
     End Sub
 
+    ''' <summary>
+    ''' Inventories the content library items.
+    ''' </summary>
     Sub inventoryContentLibraryItems()
 
         Dim S As String = ""
@@ -23088,22 +26452,22 @@ P1:
 
             If iCnt = 0 Then
                 S = ""
-                S = S + " INSERT INTO [LibraryItems]" + environment.NewLine
-                S = S + " ([SourceGuid]" + environment.NewLine
-                S = S + " ,[ItemTitle]" + environment.NewLine
-                S = S + " ,[ItemType]" + environment.NewLine
-                S = S + " ,[LibraryItemGuid]" + environment.NewLine
-                S = S + " ,[DataSourceOwnerUserID]" + environment.NewLine
-                S = S + " ,[LibraryOwnerUserID]" + environment.NewLine
-                S = S + " ,[LibraryName]" + environment.NewLine
-                S = S + " ,[AddedByUserGuidId])" + environment.NewLine
-                S = S + "      VALUES( " + environment.NewLine
-                S = S + " ('" + SourceGuid + "'" + environment.NewLine
-                S = S + " ,'" + SourceName + "'" + environment.NewLine
-                S = S + " ,'" + OriginalFileType + "'" + environment.NewLine
-                S = S + " ,'" + Guid.NewGuid.ToString + "'" + environment.NewLine
-                S = S + " ,'" + DataSourceOwnerUserID + "'" + environment.NewLine
-                S = S + " ,'" + LibraryName + "'" + environment.NewLine
+                S = S + " INSERT INTO [LibraryItems]" + Environment.NewLine
+                S = S + " ([SourceGuid]" + Environment.NewLine
+                S = S + " ,[ItemTitle]" + Environment.NewLine
+                S = S + " ,[ItemType]" + Environment.NewLine
+                S = S + " ,[LibraryItemGuid]" + Environment.NewLine
+                S = S + " ,[DataSourceOwnerUserID]" + Environment.NewLine
+                S = S + " ,[LibraryOwnerUserID]" + Environment.NewLine
+                S = S + " ,[LibraryName]" + Environment.NewLine
+                S = S + " ,[AddedByUserGuidId])" + Environment.NewLine
+                S = S + "      VALUES( " + Environment.NewLine
+                S = S + " ('" + SourceGuid + "'" + Environment.NewLine
+                S = S + " ,'" + SourceName + "'" + Environment.NewLine
+                S = S + " ,'" + OriginalFileType + "'" + Environment.NewLine
+                S = S + " ,'" + Guid.NewGuid.ToString + "'" + Environment.NewLine
+                S = S + " ,'" + DataSourceOwnerUserID + "'" + Environment.NewLine
+                S = S + " ,'" + LibraryName + "'" + Environment.NewLine
                 S = S + " ,'" + gCurrUserGuidID + "')"
 
                 Dim B As Boolean = ExecuteSqlNewConn(90175, S)
@@ -23125,6 +26489,9 @@ NextRow:
 
     End Sub
 
+    ''' <summary>
+    ''' Inventories the email library items.
+    ''' </summary>
     Sub inventoryEmailLibraryItems()
 
         Dim S As String = ""
@@ -23142,13 +26509,13 @@ NextRow:
 
         Dim TGuid As String = Guid.NewGuid.ToString
         S = ""
-        S = S + " Select DISTINCT" + environment.NewLine
-        S = S + " LibEmail.LibraryName , email.emailGuid, " + environment.NewLine
-        S = S + " email.SourceTypeCode, Library.UserID, Email.ShortSubj, " + environment.NewLine
-        S = S + " Email.UserID" + environment.NewLine
-        S = S + " FROM         LibEmail INNER JOIN" + environment.NewLine
-        S = S + " Email ON LibEmail.FolderName = Email.OriginalFolder" + environment.NewLine
-        S = S + " INNER Join " + environment.NewLine
+        S = S + " Select DISTINCT" + Environment.NewLine
+        S = S + " LibEmail.LibraryName , email.emailGuid, " + Environment.NewLine
+        S = S + " email.SourceTypeCode, Library.UserID, Email.ShortSubj, " + Environment.NewLine
+        S = S + " Email.UserID" + Environment.NewLine
+        S = S + " FROM         LibEmail INNER JOIN" + Environment.NewLine
+        S = S + " Email ON LibEmail.FolderName = Email.OriginalFolder" + Environment.NewLine
+        S = S + " INNER Join " + Environment.NewLine
         S = S + " Library ON LibEmail.UserID = Library.UserID"
 
         Clipboard.Clear()
@@ -23240,22 +26607,22 @@ NextRow:
 
             If iCnt = 0 Then
                 S = ""
-                S = S + " INSERT INTO [LibraryItems]" + environment.NewLine
-                S = S + " ([SourceGuid]" + environment.NewLine
-                S = S + " ,[ItemTitle]" + environment.NewLine
-                S = S + " ,[ItemType]" + environment.NewLine
-                S = S + " ,[LibraryItemGuid]" + environment.NewLine
-                S = S + " ,[DataSourceOwnerUserID]" + environment.NewLine
-                S = S + " ,[LibraryOwnerUserID]" + environment.NewLine
-                S = S + " ,[LibraryName]" + environment.NewLine
-                S = S + " ,[AddedByUserGuidId])" + environment.NewLine
-                S = S + "      VALUES( " + environment.NewLine
-                S = S + " ('" + SourceGuid + "'" + environment.NewLine
-                S = S + " ,'" + SourceName + "'" + environment.NewLine
-                S = S + " ,'" + OriginalFileType + "'" + environment.NewLine
-                S = S + " ,'" + Guid.NewGuid.ToString + "'" + environment.NewLine
-                S = S + " ,'" + DataSourceOwnerUserID + "'" + environment.NewLine
-                S = S + " ,'" + LibraryName + "'" + environment.NewLine
+                S = S + " INSERT INTO [LibraryItems]" + Environment.NewLine
+                S = S + " ([SourceGuid]" + Environment.NewLine
+                S = S + " ,[ItemTitle]" + Environment.NewLine
+                S = S + " ,[ItemType]" + Environment.NewLine
+                S = S + " ,[LibraryItemGuid]" + Environment.NewLine
+                S = S + " ,[DataSourceOwnerUserID]" + Environment.NewLine
+                S = S + " ,[LibraryOwnerUserID]" + Environment.NewLine
+                S = S + " ,[LibraryName]" + Environment.NewLine
+                S = S + " ,[AddedByUserGuidId])" + Environment.NewLine
+                S = S + "      VALUES( " + Environment.NewLine
+                S = S + " ('" + SourceGuid + "'" + Environment.NewLine
+                S = S + " ,'" + SourceName + "'" + Environment.NewLine
+                S = S + " ,'" + OriginalFileType + "'" + Environment.NewLine
+                S = S + " ,'" + Guid.NewGuid.ToString + "'" + Environment.NewLine
+                S = S + " ,'" + DataSourceOwnerUserID + "'" + Environment.NewLine
+                S = S + " ,'" + LibraryName + "'" + Environment.NewLine
                 S = S + " ,'" + gCurrUserGuidID + "')"
 
                 Dim B As Boolean = ExecuteSqlNewConn(90176, S)
@@ -23279,6 +26646,12 @@ NextRow:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the list of assigned libraries.
+    ''' </summary>
+    ''' <param name="DirectoryName">Name of the directory.</param>
+    ''' <param name="TypeEntry">The type entry.</param>
+    ''' <param name="AssignedLibraries">The assigned libraries.</param>
     Sub GetListOfAssignedLibraries(ByVal DirectoryName As String, ByVal TypeEntry As String, ByRef AssignedLibraries As List(Of String))
 
         Dim S As String = ""
@@ -23316,6 +26689,12 @@ NextRow:
 
     End Sub
 
+    ''' <summary>
+    ''' Determines whether [is sub dir included] [the specified dir FQN].
+    ''' </summary>
+    ''' <param name="DirFQN">The dir FQN.</param>
+    ''' <param name="ParentDir">The parent dir.</param>
+    ''' <returns><c>true</c> if [is sub dir included] [the specified dir FQN]; otherwise, <c>false</c>.</returns>
     Function isSubDirIncluded(ByVal DirFQN As String, ByRef ParentDir As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -23364,6 +26743,10 @@ NextRow:
         Return False
     End Function
 
+    ''' <summary>
+    ''' Gets the library owner guids.
+    ''' </summary>
+    ''' <param name="LibraryOwnerGuids">The library owner guids.</param>
     Sub getLibraryOwnerGuids(ByRef LibraryOwnerGuids As SortedList(Of String, String))
         Dim S As String = "Select LibraryName,UserID from Library"
         Dim RSData As SqlDataReader = Nothing
@@ -23389,6 +26772,10 @@ NextRow:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Adds the library group user.
+    ''' </summary>
+    ''' <param name="GroupName">Name of the group.</param>
     Sub AddLibraryGroupUser(ByVal GroupName As String)
 
         GroupName = UTIL.RemoveSingleQuotes(GroupName)
@@ -23477,26 +26864,26 @@ NextRow:
                     'iSql = iSql + ",'" + LibraryName + "')"
 
                     iSql = ""
-                    iSql += "INSERT INTO [LibraryUsers]" + environment.NewLine
-                    iSql += "           ([ReadOnly]" + environment.NewLine
-                    iSql += "           ,[CreateAccess]" + environment.NewLine
-                    iSql += "           ,[UpdateAccess]" + environment.NewLine
-                    iSql += "           ,[DeleteAccess]" + environment.NewLine
-                    iSql += "           ,[UserID]" + environment.NewLine
-                    iSql += "           ,[LibraryOwnerUserID]" + environment.NewLine
-                    iSql += "           ,[LibraryName]" + environment.NewLine
-                    iSql += "           ,[NotAddedAsGroupMember]" + environment.NewLine
-                    iSql += "           ,[GroupUser])" + environment.NewLine
-                    iSql += "     VALUES" + environment.NewLine
-                    iSql += "           (0" + environment.NewLine
-                    iSql += "           ,1" + environment.NewLine
-                    iSql += "           ,1" + environment.NewLine
-                    iSql += "           ,0" + environment.NewLine
-                    iSql += "           ,'" + GroupUserGuid + "'" + environment.NewLine
-                    iSql += "           ,'" + GroupOwnerUserIDGuid + "'" + environment.NewLine
-                    iSql += "           ,'" + LibraryName + "'" + environment.NewLine
-                    iSql += "           ,0" + environment.NewLine
-                    iSql += "           ,1)" + environment.NewLine
+                    iSql += "INSERT INTO [LibraryUsers]" + Environment.NewLine
+                    iSql += "           ([ReadOnly]" + Environment.NewLine
+                    iSql += "           ,[CreateAccess]" + Environment.NewLine
+                    iSql += "           ,[UpdateAccess]" + Environment.NewLine
+                    iSql += "           ,[DeleteAccess]" + Environment.NewLine
+                    iSql += "           ,[UserID]" + Environment.NewLine
+                    iSql += "           ,[LibraryOwnerUserID]" + Environment.NewLine
+                    iSql += "           ,[LibraryName]" + Environment.NewLine
+                    iSql += "           ,[NotAddedAsGroupMember]" + Environment.NewLine
+                    iSql += "           ,[GroupUser])" + Environment.NewLine
+                    iSql += "     VALUES" + Environment.NewLine
+                    iSql += "           (0" + Environment.NewLine
+                    iSql += "           ,1" + Environment.NewLine
+                    iSql += "           ,1" + Environment.NewLine
+                    iSql += "           ,0" + Environment.NewLine
+                    iSql += "           ,'" + GroupUserGuid + "'" + Environment.NewLine
+                    iSql += "           ,'" + GroupOwnerUserIDGuid + "'" + Environment.NewLine
+                    iSql += "           ,'" + LibraryName + "'" + Environment.NewLine
+                    iSql += "           ,0" + Environment.NewLine
+                    iSql += "           ,1)" + Environment.NewLine
 
                     insertExecutionList.Add(iSql)
 
@@ -23529,14 +26916,19 @@ NextRow:
             Dim B As Boolean = True
             B = ExecuteSqlNewConn(90178, tSql)
             If Not B Then
-                LOG.WriteToArchiveLog("ERROR: Failed to ADD library user. " + environment.NewLine + tSql)
+                LOG.WriteToArchiveLog("ERROR: Failed to ADD library user. " + Environment.NewLine + tSql)
             Else
-                LOG.WriteToArchiveLog("NOTICE: ADDED library user. " + environment.NewLine + tSql)
+                LOG.WriteToArchiveLog("NOTICE: ADDED library user. " + Environment.NewLine + tSql)
             End If
         Next
 
     End Sub
 
+    ''' <summary>
+    ''' Deletes the library group user.
+    ''' </summary>
+    ''' <param name="GroupName">Name of the group.</param>
+    ''' <param name="LibraryName">Name of the library.</param>
     Public Sub DeleteLibraryGroupUser(ByVal GroupName As String, ByVal LibraryName As String)
 
         GroupName = UTIL.RemoveSingleQuotes(GroupName)
@@ -23544,12 +26936,12 @@ NextRow:
 
         Dim S As String = ""
 
-        S += " SELECT     GroupLibraryAccess.GroupName, GroupLibraryAccess.LibraryName, GroupUsers.UserID AS Userid" + environment.NewLine
-        S += " FROM       GroupLibraryAccess INNER JOIN" + environment.NewLine
-        S += "            GroupUsers ON GroupLibraryAccess.GroupName = GroupUsers.GroupName" + environment.NewLine
-        S += " WHERE      GroupLibraryAccess.GroupName = '" + GroupName + "'" + environment.NewLine
-        S += " AND        LibraryName = '" + LibraryName + "'" + environment.NewLine
-        S += " order by   GroupLibraryAccess.GroupName, GroupLibraryAccess.LibraryName" + environment.NewLine
+        S += " SELECT     GroupLibraryAccess.GroupName, GroupLibraryAccess.LibraryName, GroupUsers.UserID AS Userid" + Environment.NewLine
+        S += " FROM       GroupLibraryAccess INNER JOIN" + Environment.NewLine
+        S += "            GroupUsers ON GroupLibraryAccess.GroupName = GroupUsers.GroupName" + Environment.NewLine
+        S += " WHERE      GroupLibraryAccess.GroupName = '" + GroupName + "'" + Environment.NewLine
+        S += " AND        LibraryName = '" + LibraryName + "'" + Environment.NewLine
+        S += " order by   GroupLibraryAccess.GroupName, GroupLibraryAccess.LibraryName" + Environment.NewLine
 
         Dim Userid As String = ""
         Dim RSData As SqlDataReader = Nothing
@@ -23584,6 +26976,12 @@ NextRow:
 
     End Sub
 
+    ''' <summary>
+    ''' Deletes the library group user.
+    ''' </summary>
+    ''' <param name="GroupName">Name of the group.</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <param name="GroupUserID">The group user identifier.</param>
     Public Sub DeleteLibraryGroupUser(ByVal GroupName As String, ByVal LibraryName As String, ByVal GroupUserID As String)
 
         GroupName = UTIL.RemoveSingleQuotes(GroupName)
@@ -23591,12 +26989,12 @@ NextRow:
 
         Dim S As String = ""
 
-        S += " SELECT     GroupLibraryAccess.GroupName, GroupLibraryAccess.LibraryName, GroupUsers.UserID AS Userid" + environment.NewLine
-        S += " FROM         GroupLibraryAccess INNER JOIN" + environment.NewLine
-        S += "                       GroupUsers ON GroupLibraryAccess.GroupName = GroupUsers.GroupName" + environment.NewLine
-        S += " WHERE     (GroupLibraryAccess.GroupName = '" + GroupName + "') " + environment.NewLine
-        S += "     AND (GroupLibraryAccess.LibraryName = '" + LibraryName + "') " + environment.NewLine
-        S += "     AND (GroupUsers.UserID = '" + GroupUserID + "')" + environment.NewLine
+        S += " SELECT     GroupLibraryAccess.GroupName, GroupLibraryAccess.LibraryName, GroupUsers.UserID AS Userid" + Environment.NewLine
+        S += " FROM         GroupLibraryAccess INNER JOIN" + Environment.NewLine
+        S += "                       GroupUsers ON GroupLibraryAccess.GroupName = GroupUsers.GroupName" + Environment.NewLine
+        S += " WHERE     (GroupLibraryAccess.GroupName = '" + GroupName + "') " + Environment.NewLine
+        S += "     AND (GroupLibraryAccess.LibraryName = '" + LibraryName + "') " + Environment.NewLine
+        S += "     AND (GroupUsers.UserID = '" + GroupUserID + "')" + Environment.NewLine
 
         Clipboard.Clear()
         Clipboard.SetText(S)
@@ -23634,6 +27032,9 @@ NextRow:
 
     End Sub
 
+    ''' <summary>
+    ''' Verifies the orphan source data.
+    ''' </summary>
     Sub VerifyOrphanSourceData()
         Try
             Dim S As String = "Select sourceguid from DataSource where DATALENGTH(SourceImage) = 0"
@@ -23669,6 +27070,9 @@ NextRow:
 
     End Sub
 
+    ''' <summary>
+    ''' Verifies the orphan email data.
+    ''' </summary>
     Sub VerifyOrphanEmailData()
 
         Try
@@ -23702,6 +27106,11 @@ NextRow:
 
     End Sub
 
+    ''' <summary>
+    ''' Adds the standard triggers.
+    ''' </summary>
+    ''' <param name="TblName">Name of the table.</param>
+    ''' <param name="Keys">The keys.</param>
     Sub AddStdTriggers(ByVal TblName As String, ByVal Keys As List(Of String))
         Dim S As String = ""
         Dim B As Boolean = False
@@ -23711,9 +27120,9 @@ NextRow:
         TriggerName = "trig<XX>_Update"
         TriggerName = TriggerName.Replace("<XX>", TblName.Trim)
         S = ""
-        S = S + " IF EXISTS (SELECT * FROM sys.triggers" + environment.NewLine
-        S = S + "     WHERE name = '<XX>')" + environment.NewLine
-        S = S + " DROP TRIGGER <XX>" + environment.NewLine
+        S = S + " IF EXISTS (SELECT * FROM sys.triggers" + Environment.NewLine
+        S = S + "     WHERE name = '<XX>')" + Environment.NewLine
+        S = S + " DROP TRIGGER <XX>" + Environment.NewLine
         S = S.Replace("<XX>", TriggerName.Trim)
         B = ExecuteSqlNewConn(90181, S)
         If Not B Then
@@ -23724,24 +27133,24 @@ NextRow:
         Clipboard.SetText(S)
 
         S = ""
-        S = S + "CREATE TRIGGER trig<XX>_Update" + environment.NewLine
-        S = S + "   ON <XX>" + environment.NewLine
-        S = S + "         AFTER Update " + environment.NewLine
-        S = S + "   AS" + environment.NewLine
-        S = S + "         BEGIN " + environment.NewLine
-        S = S + "         UPDATE <XX> " + environment.NewLine
-        S = S + "   SET RowLastModDate = GETDATE(), [RepoSvrName] = @@SERVERNAME" + environment.NewLine
-        S = S + "         FROM inserted " + environment.NewLine
+        S = S + "CREATE TRIGGER trig<XX>_Update" + Environment.NewLine
+        S = S + "   ON <XX>" + Environment.NewLine
+        S = S + "         AFTER Update " + Environment.NewLine
+        S = S + "   AS" + Environment.NewLine
+        S = S + "         BEGIN " + Environment.NewLine
+        S = S + "         UPDATE <XX> " + Environment.NewLine
+        S = S + "   SET RowLastModDate = GETDATE(), [RepoSvrName] = @@SERVERNAME" + Environment.NewLine
+        S = S + "         FROM inserted " + Environment.NewLine
         S = S + "   WHERE "
         For i As Integer = 0 To Keys.Count - 1
             If i = 0 Then
-                S = S + "     <XX>" + "." + Keys(i) + " = inserted." + Keys(i) + environment.NewLine
+                S = S + "     <XX>" + "." + Keys(i) + " = inserted." + Keys(i) + Environment.NewLine
             Else
-                S = S + "     and <XX>" + "." + Keys(i) + " = inserted." + Keys(i) + environment.NewLine
+                S = S + "     and <XX>" + "." + Keys(i) + " = inserted." + Keys(i) + Environment.NewLine
             End If
         Next
         S = S.Replace("<XX>", TblName.Trim)
-        S = S + " End" + environment.NewLine
+        S = S + " End" + Environment.NewLine
 
         Clipboard.Clear()
         Clipboard.SetText(S)
@@ -23754,9 +27163,9 @@ NextRow:
         TriggerName = "<XX>_INS"
         TriggerName = TriggerName.Replace("<XX>", TblName.Trim)
         S = ""
-        S = S + " IF EXISTS (SELECT * FROM sys.triggers" + environment.NewLine
-        S = S + "     WHERE name = '<XX>')" + environment.NewLine
-        S = S + " DROP TRIGGER <XX>" + environment.NewLine
+        S = S + " IF EXISTS (SELECT * FROM sys.triggers" + Environment.NewLine
+        S = S + "     WHERE name = '<XX>')" + Environment.NewLine
+        S = S + " DROP TRIGGER <XX>" + Environment.NewLine
         S = S.Replace("<XX>", TriggerName.Trim)
 
         Clipboard.Clear()
@@ -23768,25 +27177,25 @@ NextRow:
         End If
 
         S = ""
-        S = S + " Create TRIGGER <XX>_INS" + environment.NewLine
-        S = S + "   ON dbo.<XX>" + environment.NewLine
-        S = S + "   FOR UPDATE " + environment.NewLine
-        S = S + " AS" + environment.NewLine
-        S = S + "   IF ( @@ROWCOUNT = 0 )" + environment.NewLine
-        S = S + "                 Return" + environment.NewLine
-        S = S + "   IF TRIGGER_NESTLEVEL() > 1" + environment.NewLine
-        S = S + "                 Return" + environment.NewLine
-        S = S + "   UPDATE <XX>" + environment.NewLine
-        S = S + "   SET RowLastModDate = getdate(),  RowCreationDate = getdate(), [RepoSvrName] = @@SERVERNAME" + environment.NewLine
-        S = S + "   FROM <XX> t" + environment.NewLine
-        S = S + "   JOIN inserted i" + environment.NewLine
+        S = S + " Create TRIGGER <XX>_INS" + Environment.NewLine
+        S = S + "   ON dbo.<XX>" + Environment.NewLine
+        S = S + "   FOR UPDATE " + Environment.NewLine
+        S = S + " AS" + Environment.NewLine
+        S = S + "   IF ( @@ROWCOUNT = 0 )" + Environment.NewLine
+        S = S + "                 Return" + Environment.NewLine
+        S = S + "   IF TRIGGER_NESTLEVEL() > 1" + Environment.NewLine
+        S = S + "                 Return" + Environment.NewLine
+        S = S + "   UPDATE <XX>" + Environment.NewLine
+        S = S + "   SET RowLastModDate = getdate(),  RowCreationDate = getdate(), [RepoSvrName] = @@SERVERNAME" + Environment.NewLine
+        S = S + "   FROM <XX> t" + Environment.NewLine
+        S = S + "   JOIN inserted i" + Environment.NewLine
         'S = S + "   ON t.ArchiveID = i.ArchiveID" + environment.NewLine
-        S = S + "   ON " + environment.NewLine
+        S = S + "   ON " + Environment.NewLine
         For i As Integer = 0 To Keys.Count - 1
             If i = 0 Then
-                S = S + "     t" + "." + Keys(i) + " = i." + Keys(i) + environment.NewLine
+                S = S + "     t" + "." + Keys(i) + " = i." + Keys(i) + Environment.NewLine
             Else
-                S = S + "     and t" + "." + Keys(i) + " = i." + Keys(i) + environment.NewLine
+                S = S + "     and t" + "." + Keys(i) + " = i." + Keys(i) + Environment.NewLine
             End If
         Next
         S = S.Replace("<XX>", TblName.Trim)
@@ -23802,6 +27211,9 @@ NextRow:
         Return
     End Sub
 
+    ''' <summary>
+    ''' Verifies the standard triggers.
+    ''' </summary>
     Sub VerifyStandardTriggers()
 
         Dim Keys As New List(Of String)
@@ -23876,6 +27288,12 @@ NextRow:
 
     End Sub
 
+    ''' <summary>
+    ''' Counts the groups user belongs to.
+    ''' </summary>
+    ''' <param name="TcbLibraryName">Name of the TCB library.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function countGroupsUserBelongsTo(ByVal TcbLibraryName As String, ByVal UserID As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -23889,6 +27307,11 @@ NextRow:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the group libraries.
+    ''' </summary>
+    ''' <param name="GroupName">Name of the group.</param>
+    ''' <param name="ListOfLibraries">The list of libraries.</param>
     Public Sub GetGroupLibraries(ByVal GroupName As String, ByRef ListOfLibraries As List(Of String))
 
         ListOfLibraries.Clear()
@@ -23918,6 +27341,9 @@ NextRow:
 
     End Sub
 
+    ''' <summary>
+    ''' Resets the library users count.
+    ''' </summary>
     Sub ResetLibraryUsersCount()
 
         Dim b As Boolean = True
@@ -23977,12 +27403,17 @@ NextRow:
             S = "delete from LibraryUsers where (SingleUser is null or SingleUser = 0) and GroupCnt = 0 "
             b = ExecuteSqlNewConn(90187, S)
             If Not b Then
-                LOG.WriteToArchiveLog("ERROR XX1: Failed to delete NULL LibraryUsers." + environment.NewLine + S)
+                LOG.WriteToArchiveLog("ERROR XX1: Failed to delete NULL LibraryUsers." + Environment.NewLine + S)
             End If
         End If
         'FrmMDIMain.SB4.Text = "Complete."
     End Sub
 
+    ''' <summary>
+    ''' Gets the list of containing libraries.
+    ''' </summary>
+    ''' <param name="tGuid">The t unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getListOfContainingLibraries(ByVal tGuid As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -23997,7 +27428,7 @@ NextRow:
         If RSData.HasRows Then
             Do While RSData.Read()
                 LibName = RSData.GetValue(0).ToString
-                ListOfLibs += LibName + environment.NewLine
+                ListOfLibs += LibName + Environment.NewLine
             Loop
         Else
             ListOfLibs += "None"
@@ -24007,6 +27438,9 @@ NextRow:
         Return ListOfLibs
     End Function
 
+    ''' <summary>
+    ''' Fixes the email fields.
+    ''' </summary>
     Sub FixEmailFields()
 
         Dim S As String = ""
@@ -24102,6 +27536,9 @@ NextRow:
 
     End Sub
 
+    ''' <summary>
+    ''' Fixes the email recipients.
+    ''' </summary>
     Sub FixEmailRecipients()
 
         Dim Recipient As String = ""
@@ -24162,6 +27599,9 @@ NextRow:
         'FrmMDIMain.SB4.Text = ""
     End Sub
 
+    ''' <summary>
+    ''' Records the growth.
+    ''' </summary>
     Sub RecordGrowth()
         Dim S As String = ""
         S = S + " IF OBJECT_ID('DatabaseFiles') IS NULL"
@@ -24185,6 +27625,9 @@ NextRow:
 
     End Sub
 
+    ''' <summary>
+    ''' Emails the hash rows.
+    ''' </summary>
     Sub EmailHashRows()
 
         Dim S As String = ""
@@ -24265,6 +27708,11 @@ NextOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Emails the hash rows apply.
+    ''' </summary>
+    ''' <param name="L">The l.</param>
+    ''' <param name="CS">The cs.</param>
     Sub EmailHashRowsApply(ByRef L As SortedList(Of String, String), ByVal CS As String)
         Dim rc As Boolean = False
         Dim CN As New SqlConnection(CS)
@@ -24315,7 +27763,7 @@ NextOne:
                     Application.DoEvents()
                 End If
             Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR 100 - EmailHashRowsApply: " + ex.Message + environment.NewLine + UpdateSql)
+                LOG.WriteToArchiveLog("ERROR 100 - EmailHashRowsApply: " + ex.Message + Environment.NewLine + UpdateSql)
                 B = False
             End Try
         Next
@@ -24327,6 +27775,9 @@ NextOne:
         CN.Dispose()
     End Sub
 
+    ''' <summary>
+    ''' Contents the hash rows.
+    ''' </summary>
     Sub ContentHashRows()
 
         Dim S As String = ""
@@ -24408,6 +27859,11 @@ NextOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Contents the hash rows apply.
+    ''' </summary>
+    ''' <param name="L">The l.</param>
+    ''' <param name="CS">The cs.</param>
     Sub ContentHashRowsApply(ByRef L As SortedList(Of String, String), ByVal CS As String)
         Dim rc As Boolean = False
         Dim CN As New SqlConnection(CS)
@@ -24447,7 +27903,7 @@ NextOne:
                     Application.DoEvents()
                 End If
             Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR 100 - EmailHashRowsApply: " + ex.Message + environment.NewLine + UpdateSql)
+                LOG.WriteToArchiveLog("ERROR 100 - EmailHashRowsApply: " + ex.Message + Environment.NewLine + UpdateSql)
                 B = False
             End Try
         Next
@@ -24459,6 +27915,12 @@ NextOne:
         CN.Dispose()
     End Sub
 
+    ''' <summary>
+    ''' Contents the add hash.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="tHash">The t hash.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
     Sub ContentAddHash(ByVal SourceGuid As String, ByVal tHash As String, ByVal MachineID As String)
 
         Dim CS As String = getRepoConnStr()
@@ -24479,7 +27941,7 @@ NextOne:
                 LOG.WriteToArchiveLog("ERROR: ContentHashRowsApply - 100 " + UpdateSql)
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: ContentHashRowsApply - 200 " + ex.Message + environment.NewLine + UpdateSql)
+            LOG.WriteToArchiveLog("ERROR: ContentHashRowsApply - 200 " + ex.Message + Environment.NewLine + UpdateSql)
             B = False
         End Try
 
@@ -24487,6 +27949,11 @@ NextOne:
         CN.Dispose()
     End Sub
 
+    ''' <summary>
+    ''' Emails the add hash.
+    ''' </summary>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="EmailIdentifier">The email identifier.</param>
     Sub EmailAddHash(ByVal EmailGuid As String, ByVal EmailIdentifier As String)
 
         Dim CS As String = getRepoConnStr()
@@ -24509,7 +27976,7 @@ NextOne:
                 LOG.WriteToArchiveLog("ERROR: EmailHashRowsApply - 100 " + UpdateSql)
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: EmailHashRowsApply - 200 " + ex.Message + environment.NewLine + UpdateSql)
+            LOG.WriteToArchiveLog("ERROR: EmailHashRowsApply - 200 " + ex.Message + Environment.NewLine + UpdateSql)
             B = False
         End Try
 
@@ -24517,6 +27984,16 @@ NextOne:
         CN.Dispose()
     End Sub
 
+    ''' <summary>
+    ''' Gens the email hash code.
+    ''' </summary>
+    ''' <param name="subject">The subject.</param>
+    ''' <param name="body">The body.</param>
+    ''' <param name="CreationTime">The creation time.</param>
+    ''' <param name="SenderEmailAddress">The sender email address.</param>
+    ''' <param name="nbrAttachments">The NBR attachments.</param>
+    ''' <param name="SourceTypeCode">The source type code.</param>
+    ''' <returns>System.String.</returns>
     Public Function genEmailHashCode(ByVal subject As String,
                              ByVal body As String,
                              ByVal CreationTime As String,
@@ -24529,6 +28006,17 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' xes the xadd content hash key.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="VersionNbr">The version NBR.</param>
+    ''' <param name="CreateDate">The create date.</param>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="OriginalFileType">Type of the original file.</param>
+    ''' <param name="FileLength">Length of the file.</param>
+    ''' <param name="CRC">The CRC.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
     Sub XXaddContentHashKey(ByVal SourceGuid As String,
                         ByVal VersionNbr As String,
                         ByVal CreateDate As String,
@@ -24542,11 +28030,17 @@ NextOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Allows an object to try to free resources and perform other cleanup operations before it is reclaimed by garbage collection.
+    ''' </summary>
     Protected Overrides Sub Finalize()
         KGEN = Nothing
         MyBase.Finalize()
     End Sub
 
+    ''' <summary>
+    ''' Cleans up email folders.
+    ''' </summary>
     Sub CleanUpEmailFolders()
 
         Dim S As String = ""
@@ -24569,6 +28063,11 @@ NextOne:
 
     End Sub
 
+    ''' <summary>
+    ''' bs the file name exists.
+    ''' </summary>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function bFileNameExists(ByVal SourceName As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -24587,6 +28086,15 @@ NextOne:
         Return B
     End Function
 
+    ''' <summary>
+    ''' bs the identical file.
+    ''' </summary>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="CRC">The CRC.</param>
+    ''' <param name="CreateDate">The create date.</param>
+    ''' <param name="LastAccessDate">The last access date.</param>
+    ''' <param name="FileLength">Length of the file.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function bIdenticalFile(ByVal SourceName As String,
                             ByVal CRC As String,
                             ByVal CreateDate As String,
@@ -24609,6 +28117,11 @@ NextOne:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the user unique identifier by login identifier.
+    ''' </summary>
+    ''' <param name="LoginID">The login identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getUserGuidByLoginID(ByVal LoginID As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -24645,6 +28158,11 @@ NextOne:
         Return UGuid
     End Function
 
+    ''' <summary>
+    ''' Appends the ocr text email.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="OCR_Text">The ocr text.</param>
     Sub AppendOcrTextEmail(ByVal SourceGuid As String, ByVal OCR_Text As String)
 
         Dim OcrText As String = OCR_Text
@@ -24666,6 +28184,10 @@ NextOne:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Appends the ocr text email.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
     Sub AppendOcrTextEmail(ByVal SourceGuid As String)
 
         Dim OcrText As String = ""
@@ -24697,6 +28219,11 @@ NextOne:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Gets all ocr data.
+    ''' </summary>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Private Function GetAllOcrData(ByVal EmailGuid As String) As String
         Dim S As String = "select OcrText from emailattachment where EmailGuid = '" + EmailGuid + "'"
         Dim AllText As String = ""
@@ -24719,6 +28246,12 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Counts the unique entry.
+    ''' </summary>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function cnt_UniqueEntry(ByVal LibraryName As String, ByVal SourceGuid As String) As Integer
 
         LibraryName = UTIL.RemoveSingleQuotes(LibraryName)
@@ -24732,6 +28265,13 @@ NextOne:
         Return B
     End Function     '** cnt_UK_LibItems
 
+    ''' <summary>
+    ''' Sets the email ocr text.
+    ''' </summary>
+    ''' <param name="Body">The body.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="OcrText">The ocr text.</param>
+    ''' <param name="AttachmentName">Name of the attachment.</param>
     Sub SetEmailOcrText(ByVal Body As String, ByVal EmailGuid As String, ByVal OcrText As String, ByVal AttachmentName As String)
 
         AttachmentName = AttachmentName.Replace("'", "''")
@@ -24747,6 +28287,13 @@ NextOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Adds the document source error.
+    ''' </summary>
+    ''' <param name="SourceType">Type of the source.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="Notes">The notes.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function addDocSourceError(ByVal SourceType As String, ByVal SourceGuid As String, ByVal Notes As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -24763,6 +28310,14 @@ NextOne:
         Return b
     End Function
 
+    ''' <summary>
+    ''' Adds the library item.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="ItemTitle">The item title.</param>
+    ''' <param name="FileExt">The file ext.</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function AddLibraryItem(ByVal SourceGuid As String, ByVal ItemTitle As String, ByVal FileExt As String, ByVal LibraryName As String) As Boolean
 
         ItemTitle = UTIL.RemoveSingleQuotes(ItemTitle)
@@ -24813,11 +28368,20 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Adds the excg key.
+    ''' </summary>
+    ''' <param name="ExcgKey">The excg key.</param>
     Sub AddExcgKey(ByVal ExcgKey As String)
         Dim S As String = "INSERT INTO [ExcgKey] ([MailKey]) VALUES ('" + ExcgKey.ToString + "')"
         Dim B As Boolean = ExecuteSqlNewConn(90198, S)
     End Sub
 
+    ''' <summary>
+    ''' Deletes the directory.
+    ''' </summary>
+    ''' <param name="dirPath">The dir path.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function DeleteDirectory(ByVal dirPath As String) As Boolean
 
         Dim objDI As New DirectoryInfo(dirPath)
@@ -24830,6 +28394,10 @@ NextOne:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Creates the dir.
+    ''' </summary>
+    ''' <param name="dirPath">The dir path.</param>
     Sub CreateDir(ByVal dirPath As String)
         Try
             If Directory.Exists(dirPath) Then
@@ -24897,6 +28465,10 @@ NextOne:
 
     ' End Sub
 
+    ''' <summary>
+    ''' Loads the exck keys.
+    ''' </summary>
+    ''' <param name="L">The l.</param>
     Sub LoadExckKeys(ByRef L As SortedList(Of String, String))
         Dim SS As String = "select count(*) from [ExcgKey]"
         Dim iKeyCnt As Integer = iCount(SS)
@@ -24995,10 +28567,9 @@ NextOne:
     ''' for existing outlook emails but will not be as fast as if the function "LoadOutlookKeys" is
     ''' used, but has unlimited size as one record at a time is searched.
     ''' </summary>
-    ''' <param name="EntryID">   </param>
-    ''' <param name="CurrUserID"></param>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
+    ''' <param name="EntryID">The entry identifier.</param>
+    ''' <param name="CurrUserID">The curr user identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ckEntryIdExists(ByVal EntryID As String, ByVal CurrUserID As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -25013,6 +28584,13 @@ NextOne:
         End If
     End Function
 
+    ''' <summary>
+    ''' Adds the source type code.
+    ''' </summary>
+    ''' <param name="SourceTypeCode">The source type code.</param>
+    ''' <param name="bStoreExternal">The b store external.</param>
+    ''' <param name="SourceTypeDesc">The source type desc.</param>
+    ''' <param name="bIndexable">The b indexable.</param>
     Public Sub AddSourceTypeCode(ByVal SourceTypeCode As String, ByVal bStoreExternal As Integer, ByVal SourceTypeDesc As String, ByVal bIndexable As Integer)
 
         If InStr(SourceTypeCode, ".") = 0 Then
@@ -25023,16 +28601,16 @@ NextOne:
         Dim b As Boolean = False
         Dim s As String = ""
 
-        s = s + " IF not Exists (Select SourceTypeCode from SourceType where SourceTypeCode = '" + SourceTypeCode + "') " + environment.NewLine
-        s = s + " INSERT INTO SourceType(" + environment.NewLine
-        s = s + "SourceTypeCode," + environment.NewLine
-        s = s + "StoreExternal," + environment.NewLine
-        s = s + "SourceTypeDesc," + environment.NewLine
-        s = s + "Indexable) values (" + environment.NewLine
-        s = s + "'" + SourceTypeCode + "'" + "," + environment.NewLine
-        s = s & bStoreExternal & "," + environment.NewLine
-        s = s + "'" + SourceTypeDesc + "'" + "," + environment.NewLine
-        s = s & bIndexable & ")" + environment.NewLine
+        s = s + " IF not Exists (Select SourceTypeCode from SourceType where SourceTypeCode = '" + SourceTypeCode + "') " + Environment.NewLine
+        s = s + " INSERT INTO SourceType(" + Environment.NewLine
+        s = s + "SourceTypeCode," + Environment.NewLine
+        s = s + "StoreExternal," + Environment.NewLine
+        s = s + "SourceTypeDesc," + Environment.NewLine
+        s = s + "Indexable) values (" + Environment.NewLine
+        s = s + "'" + SourceTypeCode + "'" + "," + Environment.NewLine
+        s = s & bStoreExternal & "," + Environment.NewLine
+        s = s + "'" + SourceTypeDesc + "'" + "," + Environment.NewLine
+        s = s & bIndexable & ")" + Environment.NewLine
 
         b = ExecuteSqlNewConn(s, False)
         If Not b Then
@@ -25041,6 +28619,9 @@ NextOne:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Loads the profiles.
+    ''' </summary>
     Sub LoadProfiles()
         Dim S As String = ""
         Dim B As Boolean = False
@@ -25143,6 +28724,10 @@ NextOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Loads the file type dictionary.
+    ''' </summary>
+    ''' <param name="DICT">The dictionary.</param>
     Sub LoadFileTypeDictionary(ByRef DICT As Dictionary(Of String, Integer))
         DICT.Clear()
         Dim S As String = "Select distinct SourceTypeCode from SourceType"
@@ -25165,6 +28750,27 @@ NextOne:
         GC.Collect()
     End Sub
 
+    ''' <summary>
+    ''' Updates the source image compressed.
+    ''' </summary>
+    ''' <param name="ID">The identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="UploadFQN">The upload FQN.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="LastAccessDate">The last access date.</param>
+    ''' <param name="CreateDate">The create date.</param>
+    ''' <param name="LastWriteTime">The last write time.</param>
+    ''' <param name="VersionNbr">The version NBR.</param>
+    ''' <param name="CompressedImageBinary">The compressed image binary.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <param name="RetStr">The ret string.</param>
+    ''' <param name="OriginalSize">Size of the original.</param>
+    ''' <param name="CompressedSize">Size of the compressed.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="rMsg">The r MSG.</param>
+    ''' <param name="TransmissionStartTime">The transmission start time.</param>
+    ''' <param name="txEndTime">The tx end time.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UpdateSourceImageCompressed(ByVal ID As Integer,
                                                 ByVal UID As String,
                                                 ByVal UploadFQN As String,
@@ -25213,6 +28819,10 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the zip password.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function getZipPassword() As String
         Dim S As String = ""
         S += "X"
@@ -25224,6 +28834,21 @@ NextOne:
         Return S
     End Function
 
+    ''' <summary>
+    ''' Inserts the source image.
+    ''' </summary>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <param name="OriginalFileName">Name of the original file.</param>
+    ''' <param name="FileGuid">The file unique identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="RepositoryTable">The repository table.</param>
+    ''' <param name="RetentionCode">The retention code.</param>
+    ''' <param name="isPublic">The is public.</param>
+    ''' <param name="SourceHash">The source hash.</param>
+    ''' <param name="DirName">Name of the dir.</param>
+    ''' <param name="bUseZipFles">if set to <c>true</c> [b use zip fles].</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function InsertSourceImage(UserID As String, ByVal MachineID As String,
                 ByVal OriginalFileName As String,
                 ByVal FileGuid As String,
@@ -25240,7 +28865,7 @@ NextOne:
         Dim bApplied As Boolean = Exec_spUpdateLongNameHash(FileGuid, FQN)
         If Not bApplied Then
             LOG.WriteToArchiveLog("ERROR HA12X: (Exec_spUpdateLongNameHash) : Failed to update the long file names cross references: ")
-            LOG.WriteToArchiveLog("HOW TO TEST in Sql Server: " + environment.NewLine + "    exec spUpdateLongNameHash '" + FQN + "', '" + FileGuid + "' ")
+            LOG.WriteToArchiveLog("HOW TO TEST in Sql Server: " + Environment.NewLine + "    exec spUpdateLongNameHash '" + FQN + "', '" + FileGuid + "' ")
         End If
 
         Dim BX As Boolean = InsertBinaryData(RepositoryTable, FQN, SourceHash, FileGuid)
@@ -25383,25 +29008,25 @@ NextOne:
             Dim Msg As String = ""
             If RC Then
                 LL = 46
-                Msg = "Successful Upload: " + TransmissionType + environment.NewLine
-                Msg += "   Original Size: " + OriginalSize.ToString + environment.NewLine
-                Msg += "   Compressed Size: " + CompressedSize.ToString + environment.NewLine
-                Msg += "   Compress Time: " + (totalCompressSecs / 1000).ToString + " sec" + environment.NewLine
-                Msg += "   Transmit Time: " + (totalTransmitSecs / 1000).ToString + " sec" + environment.NewLine
-                Msg += "   BPS: " + (CompressedSize / (totalTransmitSecs / 100)).ToString + environment.NewLine
-                Msg += "   File: " + FQN + environment.NewLine
+                Msg = "Successful Upload: " + TransmissionType + Environment.NewLine
+                Msg += "   Original Size: " + OriginalSize.ToString + Environment.NewLine
+                Msg += "   Compressed Size: " + CompressedSize.ToString + Environment.NewLine
+                Msg += "   Compress Time: " + (totalCompressSecs / 1000).ToString + " sec" + Environment.NewLine
+                Msg += "   Transmit Time: " + (totalTransmitSecs / 1000).ToString + " sec" + Environment.NewLine
+                Msg += "   BPS: " + (CompressedSize / (totalTransmitSecs / 100)).ToString + Environment.NewLine
+                Msg += "   File: " + FQN + Environment.NewLine
                 LOG.WriteToArchiveLog(Msg)
                 ' xTrace(663341, "SUCCESS: SaveUploadStats", Msg)
                 LL = 47
             Else
                 LL = 48
-                Msg = "Failed Upload: " + TransmissionType + environment.NewLine
-                Msg += "   Original Size: " + OriginalSize.ToString + environment.NewLine
-                Msg += "   Compressed Size: " + CompressedSize.ToString + environment.NewLine
-                Msg += "   Compress Time: " + (totalCompressSecs / 1000).ToString + " sec" + environment.NewLine
-                Msg += "   Transmit Time: " + (totalTransmitSecs / 1000).ToString + " sec" + environment.NewLine
-                Msg += "   BPS: " + (CompressedSize / (totalTransmitSecs / 1000)).ToString + environment.NewLine
-                Msg += "   File: " + FQN + environment.NewLine
+                Msg = "Failed Upload: " + TransmissionType + Environment.NewLine
+                Msg += "   Original Size: " + OriginalSize.ToString + Environment.NewLine
+                Msg += "   Compressed Size: " + CompressedSize.ToString + Environment.NewLine
+                Msg += "   Compress Time: " + (totalCompressSecs / 1000).ToString + " sec" + Environment.NewLine
+                Msg += "   Transmit Time: " + (totalTransmitSecs / 1000).ToString + " sec" + Environment.NewLine
+                Msg += "   BPS: " + (CompressedSize / (totalTransmitSecs / 1000)).ToString + Environment.NewLine
+                Msg += "   File: " + FQN + Environment.NewLine
                 LOG.WriteToArchiveLog(Msg)
                 ' xTrace(663342, "FAILED: SaveUploadStats", Msg)
                 LL = 49
@@ -25427,11 +29052,24 @@ NextOne:
             End If
         Catch ex As Exception
             bSuccess = False
-            LOG.WriteToArchiveLog("ERROR - InsertSourceImage: LL = " + LL.ToString + environment.NewLine + ex.Message.ToString)
+            LOG.WriteToArchiveLog("ERROR - InsertSourceImage: LL = " + LL.ToString + Environment.NewLine + ex.Message.ToString)
         End Try
         Return bSuccess
     End Function
 
+    ''' <summary>
+    ''' Inserts the buffered source.
+    ''' </summary>
+    ''' <param name="LocID">The loc identifier.</param>
+    ''' <param name="CompressedBuffer">The compressed buffer.</param>
+    ''' <param name="OriginalFileName">Name of the original file.</param>
+    ''' <param name="FileGuid">The file unique identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="RepositoryTable">The repository table.</param>
+    ''' <param name="RetentionCode">The retention code.</param>
+    ''' <param name="isPublic">The is public.</param>
+    ''' <param name="FileHash">The file hash.</param>
+    ''' <param name="DirName">Name of the dir.</param>
     Sub InsertBufferedSource(ByVal LocID As Integer, ByVal CompressedBuffer As Byte(),
                        ByVal OriginalFileName As String,
                        ByVal FileGuid As String,
@@ -25466,7 +29104,7 @@ NextOne:
         Dim bTesting As Boolean = False
         If bTesting Then
             Try
-                AddSourceToRepo(gCurrUserGuidID, gMachineID, "LOCAL", FileGuid, FQN, SourceName, SourceTypeCode, sLastAccessDate, sCreateDate, sLastWriteTime, gCurrUserGuidID,
+                Dim ReturnedSourceGuid As String = AddSourceToRepo(gCurrUserGuidID, gMachineID, "LOCAL", FileGuid, FQN, SourceName, SourceTypeCode, sLastAccessDate, sCreateDate, sLastWriteTime, gCurrUserGuidID,
                                        VersionNbr, RetentionCode, isPublic, FileHash, DirName)
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
@@ -25562,6 +29200,14 @@ NextOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Chunks the file upload.
+    ''' </summary>
+    ''' <param name="OriginalFileName">Name of the original file.</param>
+    ''' <param name="FileGuid">The file unique identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="RepositoryTable">The repository table.</param>
+    ''' <param name="CrcHASH">The CRC hash.</param>
     Sub ChunkFileUpload(ByVal OriginalFileName As String, ByVal FileGuid As String, ByVal FQN As String, ByVal RepositoryTable As String, CrcHASH As String)
 
         Dim Ticks As Long = 0
@@ -25653,6 +29299,14 @@ NextOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Uploads the file stream x.
+    ''' </summary>
+    ''' <param name="OriginalFileName">Name of the original file.</param>
+    ''' <param name="FileGuid">The file unique identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="RepositoryTable">The repository table.</param>
+    ''' <param name="Sha1HASH">The sha1 hash.</param>
     Sub UploadFileStreamX(ByVal OriginalFileName As String, ByVal FileGuid As String, ByVal FQN As String, ByVal RepositoryTable As String, Sha1HASH As String)
 
         'WDMXX()
@@ -25716,6 +29370,9 @@ NextOne:
         GC.WaitForPendingFinalizers()
     End Sub
 
+    ''' <summary>
+    ''' Verifies the retention dates.
+    ''' </summary>
     Sub VerifyRetentionDates()
         Dim MySql As String = ""
         Dim B As Boolean = False
@@ -25740,6 +29397,15 @@ NextOne:
 
     End Sub
 
+    ''' <summary>
+    ''' xes the xsave content user record.
+    ''' </summary>
+    ''' <param name="MachineName">Name of the machine.</param>
+    ''' <param name="NetworkName">Name of the network.</param>
+    ''' <param name="ContentTypeCode">The content type code.</param>
+    ''' <param name="ContentGuid">The content unique identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function XXsaveContentUserRecord(MachineName As String,
                                       NetworkName As String,
                                       ContentTypeCode As String,
@@ -25755,12 +29421,12 @@ NextOne:
             InsertContentUserRecord(ContentTypeCode, ContentGuid, UserID, I)
 
             Dim MySql As String = ""
-            MySql += " if NOT exists (Select userID from Machine " + environment.NewLine
-            MySql += " where MachineGuid = '" + MachineGuid + "' " + environment.NewLine
-            MySql += " and ContentGuid = '" + ContentGuid + "')" + environment.NewLine
-            MySql += " Begin " + environment.NewLine
-            MySql += " INSERT INTO [Machine] ([UserID],[ContentGuid],[ContentTypeCode],[MachineGuid]) VALUES ('" + UserID + "','" + ContentGuid + "','" + ContentTypeCode + "','" + MachineGuid + "')" + environment.NewLine
-            MySql += " End" + environment.NewLine
+            MySql += " if NOT exists (Select userID from Machine " + Environment.NewLine
+            MySql += " where MachineGuid = '" + MachineGuid + "' " + Environment.NewLine
+            MySql += " and ContentGuid = '" + ContentGuid + "')" + Environment.NewLine
+            MySql += " Begin " + Environment.NewLine
+            MySql += " INSERT INTO [Machine] ([UserID],[ContentGuid],[ContentTypeCode],[MachineGuid]) VALUES ('" + UserID + "','" + ContentGuid + "','" + ContentTypeCode + "','" + MachineGuid + "')" + Environment.NewLine
+            MySql += " End" + Environment.NewLine
 
             Dim BB As Boolean = ExecuteSqlNewConn(90249, MySql)
 
@@ -25768,12 +29434,19 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Cks the content user record exists.
+    ''' </summary>
+    ''' <param name="ContentTypeCode">The content type code.</param>
+    ''' <param name="ContentGuid">The content unique identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function ckContentUserRecordExists(ContentTypeCode As String,
                                             ContentGuid As String,
                                             UserID As String) As Integer
 
         Dim s As String = ""
-        s = s + " Select count(*) from [ContentUser]" + environment.NewLine
+        s = s + " Select count(*) from [ContentUser]" + Environment.NewLine
         s = s + " where ContentGuid = '" + ContentGuid + "' and UserID = '" + UserID + "' "
 
         Dim i As Integer = iCount(s)
@@ -25785,10 +29458,10 @@ NextOne:
     ''' Inserts the content user record.
     ''' </summary>
     ''' <param name="ContentTypeCode">The content type code.</param>
-    ''' <param name="ContentGuid">    The content GUID.</param>
-    ''' <param name="UserID">         The user ID.</param>
-    ''' <param name="NbrOccurances">  The NBR occurances.</param>
-    ''' <returns></returns>
+    ''' <param name="ContentGuid">The content GUID.</param>
+    ''' <param name="UserID">The user ID.</param>
+    ''' <param name="NbrOccurances">The NBR occurances.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function InsertContentUserRecord(ContentTypeCode As String,
                                             ContentGuid As String,
                                             UserID As String,
@@ -25797,15 +29470,15 @@ NextOne:
         Dim NewID As String = Guid.NewGuid.ToString
         Dim s As String = ""
 
-        s = s + " INSERT INTO [ContentUser]" + environment.NewLine
-        s = s + " ([ContentTypeCode]" + environment.NewLine
-        s = s + " ,[ContentGuid]" + environment.NewLine
-        s = s + " ,[UserID]" + environment.NewLine
-        s = s + " ,[NbrOccurances])" + environment.NewLine
-        s = s + " VALUES " + environment.NewLine
-        s = s + " ('" + ContentTypeCode + "'" + environment.NewLine
-        s = s + " ,'" + ContentGuid + "'" + environment.NewLine
-        s = s + " ,'" + UserID + "'" + environment.NewLine
+        s = s + " INSERT INTO [ContentUser]" + Environment.NewLine
+        s = s + " ([ContentTypeCode]" + Environment.NewLine
+        s = s + " ,[ContentGuid]" + Environment.NewLine
+        s = s + " ,[UserID]" + Environment.NewLine
+        s = s + " ,[NbrOccurances])" + Environment.NewLine
+        s = s + " VALUES " + Environment.NewLine
+        s = s + " ('" + ContentTypeCode + "'" + Environment.NewLine
+        s = s + " ,'" + ContentGuid + "'" + Environment.NewLine
+        s = s + " ,'" + UserID + "'" + Environment.NewLine
         s = s + " ," + NbrOccurances.ToString + " )"
 
         Dim BB As Boolean = ExecuteSqlNewConn(90250, s)
@@ -25814,6 +29487,16 @@ NextOne:
     End Function
 
     '**************************************************************
+    ''' <summary>
+    ''' Saves the RSS pull.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="RssName">Name of the RSS.</param>
+    ''' <param name="RssUrl">The RSS URL.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="RetentionCode">The retention code.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function Save_RssPull(SecureID As Integer, ByVal RssName As String, ByVal RssUrl As String, ByVal UserID As String, RetentionCode As String, ByRef RC As Boolean) As Boolean
 
         RC = True
@@ -25904,6 +29587,13 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the RSS pull.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <returns>BindingSource.</returns>
     Public Function GET_RssPull(SecureID As Integer, WhereClause As String, RC As Boolean) As BindingSource
 
         Dim MySql As String = Nothing
@@ -25955,6 +29645,13 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the RSS pull data.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <returns>List(Of System.String).</returns>
     Public Function GET_RssPullData(SecureID As Integer, WhereClause As String, RC As Boolean) As List(Of String)
 
         Dim ListOfUrls As New List(Of String)
@@ -26004,6 +29701,13 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the web site data.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <returns>List(Of System.String).</returns>
     Public Function GET_WebSiteData(SecureID As Integer, WhereClause As String, RC As Boolean) As List(Of String)
 
         Dim ListOfUrls As New List(Of String)
@@ -26061,6 +29765,13 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the web page data.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <returns>List(Of System.String).</returns>
     Public Function GET_WebPageData(SecureID As Integer, WhereClause As String, RC As Boolean) As List(Of String)
 
         Dim ListOfUrls As New List(Of String)
@@ -26118,6 +29829,13 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the web screen for grid.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <returns>BindingSource.</returns>
     Public Function GET_WebScreenForGRID(SecureID As Integer, WhereClause As String, RC As Boolean) As BindingSource
 
         Dim MySql As String = Nothing
@@ -26126,12 +29844,12 @@ NextOne:
         MySql += "[WebUrl], "
         MySql += "[UserID], "
         MySql += "[RetentionCode] "
-        MySql += " From [WebScreen]" & environment.NewLine
+        MySql += " From [WebScreen]" & Environment.NewLine
 
         If WhereClause IsNot Nothing Then
             MySql += WhereClause
         End If
-        MySql += " order by [WebScreen]" & environment.NewLine
+        MySql += " order by [WebScreen]" & Environment.NewLine
 
         Dim ConnStr As String = getRepoConnStr()
         Dim CONN As New SqlConnection(ConnStr)
@@ -26167,6 +29885,16 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Saves the web screen URL.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="WebScreen">The web screen.</param>
+    ''' <param name="WebUrl">The web URL.</param>
+    ''' <param name="RetentionCode">The retention code.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function Save_WebScreenURL(SecureID As Integer, ByVal WebScreen As String, ByVal WebUrl As String, RetentionCode As String, ByVal UserID As String, ByRef RC As Boolean) As Boolean
 
         Dim sWebScreen = WebScreen.Replace("'", "''")
@@ -26256,6 +29984,13 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the web site.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <returns>BindingSource.</returns>
     Public Function GET_WebSite(SecureID As Integer, WhereClause As String, RC As Boolean) As BindingSource
 
         Dim MySql As String = Nothing
@@ -26266,7 +30001,7 @@ NextOne:
         MySql += "[Depth], "
         MySql += "[Width], "
         MySql += "[RetentionCode] "
-        MySql += " From [WebSite]" & environment.NewLine
+        MySql += " From [WebSite]" & Environment.NewLine
 
         If WhereClause IsNot Nothing Then
             MySql += WhereClause
@@ -26309,6 +30044,18 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Saves the web site URL.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="WebSite">The web site.</param>
+    ''' <param name="WebUrl">The web URL.</param>
+    ''' <param name="depth">The depth.</param>
+    ''' <param name="width">The width.</param>
+    ''' <param name="RetentionCode">The retention code.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function Save_WebSiteURL(SecureID As Integer, ByVal WebSite As String, ByVal WebUrl As String, depth As Integer, width As Integer, RetentionCode As String, ByVal UserID As String, ByRef RC As Boolean) As Boolean
 
         Dim sWebSite = WebSite.Replace("'", "''")
@@ -26407,6 +30154,20 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Saves the retention code.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="RetentionCode">The retention code.</param>
+    ''' <param name="RetentionDesc">The retention desc.</param>
+    ''' <param name="RetentionUnits">The retention units.</param>
+    ''' <param name="RetentionAction">The retention action.</param>
+    ''' <param name="ManagerID">The manager identifier.</param>
+    ''' <param name="DaysWarning">The days warning.</param>
+    ''' <param name="ResponseRequired">The response required.</param>
+    ''' <param name="RetentionPeriod">The retention period.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function Save_RetentionCode(SecureID As Integer,
                                        RetentionCode As String,
                                        RetentionDesc As String,
@@ -26523,6 +30284,12 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the retention codes.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <returns>BindingSource.</returns>
     Public Function GET_RetentionCodes(SecureID As Integer, RC As Boolean) As BindingSource
 
         Dim MySql As String = Nothing
@@ -26573,6 +30340,11 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Inserts the source child.
+    ''' </summary>
+    ''' <param name="ParentSourceGuid">The parent source unique identifier.</param>
+    ''' <param name="ChildSourceGuid">The child source unique identifier.</param>
     Sub insertSourceChild(ParentSourceGuid As String, ChildSourceGuid As String)
         'SELECT FQN, SourceGuid FROM DataSource
         Dim S = "Select count(*) from [DataSourceChildren] where ParentSourceGuid = '" + ParentSourceGuid + "' and ChildSourceGuid = '" + ChildSourceGuid + "' "
@@ -26592,6 +30364,11 @@ NextOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Insertrs the ss child.
+    ''' </summary>
+    ''' <param name="rssRowGuid">The RSS row unique identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
     Sub insertrSSChild(rssRowGuid As String, SourceGuid As String)
 
         Dim S = "Select count(*) from [RSSChildren] where RssRowGuid = '" + rssRowGuid + "' and SourceGuid = '" + SourceGuid + "' "
@@ -26610,6 +30387,17 @@ NextOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Inserts the email attachment record.
+    ''' </summary>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="AttachmentName">Name of the attachment.</param>
+    ''' <param name="AttachmentCode">The attachment code.</param>
+    ''' <param name="AttachmentType">Type of the attachment.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
+    ''' <param name="CRC">The CRC.</param>
+    ''' <returns>System.String.</returns>
     Public Function InsertEmailAttachmentRecord(ByVal EmailGuid As String,
                                        ByVal AttachmentName As String,
                                        ByVal AttachmentCode As String,
@@ -26625,24 +30413,24 @@ NextOne:
 
         sGuid = Guid.NewGuid.ToString()
 
-        S += " INSERT INTO [EmailAttachment]" + environment.NewLine
-        S += " ( " + environment.NewLine
-        S += "  [RowGuid]" + environment.NewLine
-        S += " ,[AttachmentName]" + environment.NewLine
-        S += " ,[EmailGuid]" + environment.NewLine
-        S += " ,[AttachmentCode]" + environment.NewLine
-        S += " ,[AttachmentType]" + environment.NewLine
-        S += " ,[UserID]" + environment.NewLine
-        S += " ,[CRC]" + environment.NewLine
-        S += " )" + environment.NewLine
-        S += " VALUES " + environment.NewLine
-        S += " ('" + sGuid + "'" + environment.NewLine
-        S += " ,'" + AttachmentName + "'" + environment.NewLine
-        S += " ,'" + EmailGuid + "'" + environment.NewLine
-        S += " ,'" + AttachmentCode + "'" + environment.NewLine
-        S += " ,'" + AttachmentType + "'" + environment.NewLine
-        S += " ,'" + UserID + "'" + environment.NewLine
-        S += " , convert(nvarchar(100), " + CRC + ")" + environment.NewLine
+        S += " INSERT INTO [EmailAttachment]" + Environment.NewLine
+        S += " ( " + Environment.NewLine
+        S += "  [RowGuid]" + Environment.NewLine
+        S += " ,[AttachmentName]" + Environment.NewLine
+        S += " ,[EmailGuid]" + Environment.NewLine
+        S += " ,[AttachmentCode]" + Environment.NewLine
+        S += " ,[AttachmentType]" + Environment.NewLine
+        S += " ,[UserID]" + Environment.NewLine
+        S += " ,[CRC]" + Environment.NewLine
+        S += " )" + Environment.NewLine
+        S += " VALUES " + Environment.NewLine
+        S += " ('" + sGuid + "'" + Environment.NewLine
+        S += " ,'" + AttachmentName + "'" + Environment.NewLine
+        S += " ,'" + EmailGuid + "'" + Environment.NewLine
+        S += " ,'" + AttachmentCode + "'" + Environment.NewLine
+        S += " ,'" + AttachmentType + "'" + Environment.NewLine
+        S += " ,'" + UserID + "'" + Environment.NewLine
+        S += " , convert(nvarchar(100), " + CRC + ")" + Environment.NewLine
 
         Dim cs As String = setConnStr()
         Dim B As Boolean = True
@@ -26658,6 +30446,20 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Saves the upload stats.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="RepositoryTable">The repository table.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="OriginalSize">Size of the original.</param>
+    ''' <param name="CompressedSize">Size of the compressed.</param>
+    ''' <param name="TxStartTime">The tx start time.</param>
+    ''' <param name="TxEndTime">The tx end time.</param>
+    ''' <param name="TxTotalTime">The tx total time.</param>
+    ''' <param name="BPS">The BPS.</param>
+    ''' <param name="AttachmentName">Name of the attachment.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function SaveUploadStats(SecureID As Integer, ByVal RepositoryTable As String, ByVal SourceGuid As String,
                              ByVal OriginalSize As Integer,
                              ByVal CompressedSize As Integer,
@@ -26774,6 +30576,21 @@ NextOne:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Inserts the image to repo table.
+    ''' </summary>
+    ''' <param name="ID">The identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="tgtGuid">The TGT unique identifier.</param>
+    ''' <param name="iRead">The i read.</param>
+    ''' <param name="FileHash">The file hash.</param>
+    ''' <param name="FileLength">Length of the file.</param>
+    ''' <param name="FileName">Name of the file.</param>
+    ''' <param name="RepositoryTable">The repository table.</param>
+    ''' <param name="LastSegment">if set to <c>true</c> [last segment].</param>
+    ''' <param name="OriginalFileName">Name of the original file.</param>
+    ''' <param name="Buffer">The buffer.</param>
+    ''' <returns>System.String.</returns>
     Public Function InsertImageToRepoTable(ByVal ID As Integer,
                                          ByVal UID As String,
                                          ByVal tgtGuid As String,
@@ -26841,7 +30658,7 @@ NextOne:
             LL = 19
         Catch ex As Exception
             bLoadFileToDB = False
-            ErrMsg = "ERROR - InsertImageToRepoTable: " + FileName + environment.NewLine + ex.Message.ToString
+            ErrMsg = "ERROR - InsertImageToRepoTable: " + FileName + Environment.NewLine + ex.Message.ToString
         Finally
             oFileStream.Close()
             oFileStream.Dispose()
@@ -27042,6 +30859,21 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Uploads the buffered append.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="tgtGuid">The TGT unique identifier.</param>
+    ''' <param name="iRead">The i read.</param>
+    ''' <param name="FileHash">The file hash.</param>
+    ''' <param name="FileLength">Length of the file.</param>
+    ''' <param name="FileName">Name of the file.</param>
+    ''' <param name="RepositoryTable">The repository table.</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
+    ''' <param name="LastSegment">if set to <c>true</c> [last segment].</param>
+    ''' <param name="OriginalFileName">Name of the original file.</param>
+    ''' <param name="Buffer">The buffer.</param>
+    ''' <returns>System.String.</returns>
     Public Function UploadBufferedAppend(ByVal UID As String, ByVal tgtGuid As String, ByVal iRead As Integer, ByVal FileHash As String,
                                          ByVal FileLength As Long,
                                          ByVal FileName As String,
@@ -27092,7 +30924,7 @@ NextOne:
                 bLoadFileToDB = True
             End If
         Catch ex As Exception
-            ErrMsg = "ERROR - UploadBufferedAppend: " + FileName + environment.NewLine + ex.Message.ToString
+            ErrMsg = "ERROR - UploadBufferedAppend: " + FileName + Environment.NewLine + ex.Message.ToString
         Finally
             oFileStream.Close()
             oFileStream.Dispose()
@@ -27237,6 +31069,10 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Verifies the retention dates.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub VerifyRetentionDates(SecureID As Integer)
 
         Dim MySql As String = ""
@@ -27312,6 +31148,12 @@ NextOne:
         Return RID
     End Function
 
+    ''' <summary>
+    ''' Cks the content owner exists.
+    ''' </summary>
+    ''' <param name="ContentGuid">The content unique identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ckContentOwnerExists(ByVal ContentGuid As String,
                               ByVal UserID As String
                               ) As Boolean
@@ -27334,6 +31176,12 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Cks the content owner exists.
+    ''' </summary>
+    ''' <param name="ContentGuid">The content unique identifier.</param>
+    ''' <param name="RID">The rid.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ckContentOwnerExists(ByVal ContentGuid As String,
                               ByVal RID As Integer
                               ) As Boolean
@@ -27356,7 +31204,14 @@ NextOne:
 
     End Function
 
-    Public Function insertSingleFILE(FQN As String) As Boolean
+    ''' <summary>
+    ''' Inserts the selected single file.
+    ''' </summary>
+    ''' <param name="FQN">The FQN of the selected single file.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+    Public Function insertSingleFILE(FQN As String) As String
+
+        Dim SourceGuid As String = Guid.NewGuid.ToString
 
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -27377,7 +31232,7 @@ NextOne:
             Dim CreationDate As DateTime = Now
             Dim DataSourceOwnerUserID As String = ""
             Dim DataVerified As Boolean = True
-            Dim Description As String = ""
+            Dim Description As String = FQN + " loaded as a single file upload"
             Dim FileAttached As Boolean = True
             Dim FileDirectory As String = ""
             Dim FileDirectoryName As String = ""
@@ -27440,7 +31295,7 @@ NextOne:
             Dim SharePointDoc As Boolean = True
             Dim SharePointList As Boolean = True
             Dim SharePointListItem As Boolean = True
-            Dim SourceGuid As String = Guid.NewGuid.ToString
+
             Dim SourceImageOrigin As String = ""
             Dim SourceName As String = ""
             Dim SourceTypeCode As String = ""
@@ -27563,6 +31418,25 @@ NextOne:
                 If FqnHASH.Length > 150 Then Console.WriteLine("ERROR: FqnHASH")
                 If SourceImageOrigin.Length > 10 Then Console.WriteLine("ERROR: SourceImageOrigin")
                 Console.WriteLine(FQN)
+            End If
+
+
+            '*****  WDM Changed ZIP Ext and corrected the below 12/15/2020
+            Dim fExt As String = DMA.getFileExtension(FQN)
+            If IsZipFile.Equals("Y") Then
+                Dim ZF As New clsZipFiles
+                isPublic = "Y"
+                Dim StackLevel As Integer = 0
+                Dim ListOfFiles As New Dictionary(Of String, Integer)
+                Dim BX As Boolean = ZF.UploadZipFile(gCurrUserGuidID, gMachineID, FQN, SourceGuid, True, False, RetentionCode, isPublic, StackLevel, ListOfFiles)
+                ListOfFiles = Nothing
+                ZF = Nothing
+                GC.Collect()
+                If BX Then
+                    Return True
+                Else
+                    Return False
+                End If
             End If
 
             Dim TSQL As String = "INSERT INTO DataSource ( 
@@ -27849,24 +31723,32 @@ NextOne:
                 Catch ex As Exception
                     LOG.WriteToArchiveLog("clsDatabaseARCH : InsertNewContent failed to insert ProcessAS : 300 : " + ex.Message)
                     LOG.WriteToFailedLoadLog("clsDatabaseARCH : InsertNewContent : 300 Failed To insert ProcessAS : " + Environment.NewLine + FQN + Environment.NewLine + ex.Message)
+                    SourceGuid = ""
                 End Try
 
             Catch ex As Exception
+                SourceGuid = ""
                 B = False
                 LOG.WriteToArchiveLog("clsDatabaseARCH : InsertNewContent : 100 : ", ex)
                 LOG.WriteToFailedLoadLog("clsDatabaseARCH : InsertNewContent : 100 Failed To Load : " + Environment.NewLine + FQN + Environment.NewLine + ex.Message)
             End Try
         Catch ex As Exception
+            SourceGuid = ""
             LOG.WriteToArchiveLog("clsDatabaseARCH : InsertNewContent : 00 : ", ex)
             LOG.WriteToFailedLoadLog("clsDatabaseARCH : InsertNewContent : 00 Failed To Load : " + Environment.NewLine + FQN + Environment.NewLine + ex.Message)
-
         End Try
 
 
 
-        Return B
+        Return SourceGuid
     End Function
 
+    ''' <summary>
+    ''' Updates the single file.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function updateSingleFILE(SourceGuid As String, FQN As String) As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -28017,6 +31899,13 @@ NextOne:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Updates the content of the existing.
+    ''' </summary>
+    ''' <param name="tDict">The t dictionary.</param>
+    ''' <param name="RowID">The row identifier.</param>
+    ''' <param name="SourceImage">The source image.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function updateExistingContent(tDict As Dictionary(Of String, String), RowID As String, SourceImage As Byte()) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -28099,6 +31988,11 @@ NextOne:
     End Function
 
 
+    ''' <summary>
+    ''' Gets the count.
+    ''' </summary>
+    ''' <param name="MySql">My SQL.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function getCount(MySql As String) As Integer
         Dim CNT As Integer = 0
         Try
@@ -28123,6 +32017,10 @@ NextOne:
         Return CNT
     End Function
 
+    ''' <summary>
+    ''' Cleanups the name of the source.
+    ''' </summary>
+    ''' <param name="MachineName">Name of the machine.</param>
     Sub CleanupSourceName(MachineName As String)
 
         Dim UserID As String = ""
@@ -28214,6 +32112,14 @@ NextOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Inserts the binary data.
+    ''' </summary>
+    ''' <param name="RepositoryTable">The repository table.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="FileHash">The file hash.</param>
+    ''' <param name="TgtGuid">The TGT unique identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function InsertBinaryData(RepositoryTable As String, FQN As String, FileHash As String, TgtGuid As String) As Boolean
 
         If FileHash.Length < 10 Then
@@ -28341,14 +32247,14 @@ NextOne:
                     LL = 130
                     B = UpdateDataSourceFileInfo(FQN, TgtGuid, FileLength, FileHash)
                 Catch ex As Exception
-                    LOG.WriteToArchiveLog("ERROR 22 InsertBinaryData: LL=" + LL.ToString + environment.NewLine + ex.Message)
+                    LOG.WriteToArchiveLog("ERROR 22 InsertBinaryData: LL=" + LL.ToString + Environment.NewLine + ex.Message)
                 End Try
 
 
             End Try
         Catch ex As Exception
             B = False
-            LOG.WriteToArchiveLog("ERROR 00 InsertBinaryData: LL=" + LL.ToString + environment.NewLine + ex.Message)
+            LOG.WriteToArchiveLog("ERROR 00 InsertBinaryData: LL=" + LL.ToString + Environment.NewLine + ex.Message)
         End Try
 
 
@@ -28356,6 +32262,9 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Sps the update retention.
+    ''' </summary>
     Public Sub spUpdateRetention()
 
         Dim s As String = "UPDATE DataSource 
@@ -28373,6 +32282,11 @@ NextOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Inserts the database update.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function insertDBUpdate(FQN As String) As Boolean
 
         FQN = FQN.Replace("'", "''")
@@ -28405,7 +32319,7 @@ NextOne:
                 Try
                     CMD.ExecuteNonQuery()
                 Catch ex As Exception
-                    LOG.WriteToArchiveLog("ERROR 22x1: insertDBUpdate: " + ex.Message + environment.NewLine + MySql)
+                    LOG.WriteToArchiveLog("ERROR 22x1: insertDBUpdate: " + ex.Message + Environment.NewLine + MySql)
                     B = False
                 End Try
             End Using
@@ -28413,6 +32327,11 @@ NextOne:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Updates the database update lastwrite.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function updateDBUpdateLastwrite(FQN As String) As Boolean
 
         FQN = FQN.Replace("'", "''")
@@ -28450,7 +32369,7 @@ NextOne:
                 Try
                     CMD.ExecuteNonQuery()
                 Catch ex As Exception
-                    LOG.WriteToArchiveLog("ERROR 22x: updateDBUpdateLastwrite: " + ex.Message + environment.NewLine + MySql)
+                    LOG.WriteToArchiveLog("ERROR 22x: updateDBUpdateLastwrite: " + ex.Message + Environment.NewLine + MySql)
                     B = False
                 End Try
             End Using
@@ -28458,6 +32377,10 @@ NextOne:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Zeroizes the database update.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ZeroizeDBUpdate() As Boolean
 
         Dim B As Boolean = True
@@ -28482,7 +32405,7 @@ NextOne:
                 Try
                     CMD.ExecuteNonQuery()
                 Catch ex As Exception
-                    LOG.WriteToArchiveLog("ERROR 22x: ReapplyDBUpdate: " + ex.Message + environment.NewLine + MySql)
+                    LOG.WriteToArchiveLog("ERROR 22x: ReapplyDBUpdate: " + ex.Message + Environment.NewLine + MySql)
                     B = False
                 End Try
             End Using
@@ -28490,6 +32413,11 @@ NextOne:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Synchronizes the selected directories.
+    ''' </summary>
+    ''' <param name="ListOfDirToKeep">The list of dir to keep.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function SyncSelectedDirectories(ListOfDirToKeep As String) As Boolean
 
         Dim B As Boolean = True
@@ -28521,7 +32449,7 @@ NextOne:
                 End Using
             End Using
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR 01A ckUpdateTbl: LL=" + LL.ToString + environment.NewLine + connString + environment.NewLine + ex.Message)
+            LOG.WriteToArchiveLog("ERROR 01A ckUpdateTbl: LL=" + LL.ToString + Environment.NewLine + connString + Environment.NewLine + ex.Message)
             B = False
         End Try
 
@@ -28529,6 +32457,10 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Cks the update table.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckUpdateTbl() As Boolean
 
         Dim B As Boolean = True
@@ -28590,7 +32522,7 @@ NextOne:
                         CMD.ExecuteNonQuery()
                         LL = 170
                     Catch ex As Exception
-                        LOG.WriteToArchiveLog("ERROR 22x: updateDBUpdateLastwrite: " + ex.Message + environment.NewLine + MySql)
+                        LOG.WriteToArchiveLog("ERROR 22x: updateDBUpdateLastwrite: " + ex.Message + Environment.NewLine + MySql)
                         B = False
                     End Try
                     LL = 180
@@ -28599,13 +32531,17 @@ NextOne:
             End Using
             LL = 200
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR 01A ckUpdateTbl: LL=" + LL.ToString + environment.NewLine + connString + environment.NewLine + ex.Message)
+            LOG.WriteToArchiveLog("ERROR 01A ckUpdateTbl: LL=" + LL.ToString + Environment.NewLine + connString + Environment.NewLine + ex.Message)
             B = False
         End Try
 
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the used extension.
+    ''' </summary>
+    ''' <returns>List(Of System.String).</returns>
     Public Function getUsedExtension() As List(Of String)
 
         Dim exts As New List(Of String)
@@ -28635,6 +32571,11 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the database update exists.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function getDBUpdateExists(FQN As String) As Integer
 
         Dim iCnt As Integer
@@ -28660,6 +32601,11 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the database update last write date.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>DateTime.</returns>
     Public Function getDBUpdateLastWriteDate(FQN As String) As DateTime
 
         Dim AppliedDate As DateTime = Now
@@ -28685,6 +32631,10 @@ NextOne:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the source dt.
+    ''' </summary>
+    ''' <returns>DataTable.</returns>
     Function getSrcDT() As DataTable
         Dim strSql As String = "select RowGuid, SourceName, OriginalFileType, SourceTypeCode from DataSource"
         Dim DT As New DataTable
@@ -28708,6 +32658,11 @@ NextOne:
         Return DT
     End Function
 
+    ''' <summary>
+    ''' Fetches the where in clause.
+    ''' </summary>
+    ''' <param name="DirName">Name of the dir.</param>
+    ''' <returns>System.String.</returns>
     Function fetchWhereInClause(DirName As String) As String
         Dim WhereIn As String = ""
         Dim spName As String = "GenWhereInClause"
@@ -28754,6 +32709,10 @@ NextOne:
         Return WhereIn
     End Function
 
+    ''' <summary>
+    ''' Gets the where in clauses.
+    ''' </summary>
+    ''' <returns>Dictionary(Of System.String, System.String).</returns>
     Function getWhereInClauses() As Dictionary(Of String, String)
 
         Dim DICT_WhereAS As New Dictionary(Of String, String)
@@ -28780,9 +32739,16 @@ NextOne:
     End Function
 
 #Region "IDisposable Support"
+    ''' <summary>
+    ''' The disposed value
+    ''' </summary>
     Private disposedValue As Boolean ' To detect redundant calls
 
     ' IDisposable
+    ''' <summary>
+    ''' Releases unmanaged and - optionally - managed resources.
+    ''' </summary>
+    ''' <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
     Protected Overridable Sub Dispose(disposing As Boolean)
         If Not disposedValue Then
             If disposing Then
@@ -28799,6 +32765,9 @@ NextOne:
 
 
     ' This code added by Visual Basic to correctly implement the disposable pattern.
+    ''' <summary>
+    ''' Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+    ''' </summary>
     Public Sub Dispose() Implements IDisposable.Dispose
         ' Do not change this code.  Put cleanup code in Dispose(disposing As Boolean) above.
         Dispose(True)
