@@ -41,6 +41,7 @@ Module modGlobals
     Public FilesSkipped As Integer = 0
     Public MoreFileToProcess As Integer = 0
 
+    Public gSourceGuid As String = ""
     Public gBatchLogin As String = ""
     Public gBatchEncryptedPW As String = ""
 

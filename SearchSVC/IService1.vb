@@ -39,6 +39,10 @@ Public Interface IService1
     <OperationContract>
     Function AddUserGroup(ByVal GroupName As String, ByVal GroupOwnerUserID As String) As Boolean
 
+    ''' <summary>
+    '''   <br />
+    ''' </summary>
+    ''' <param name="MaxNbr"></param>
     <OperationContract>
     Function getErrorLogs(MaxNbr As String) As String
 

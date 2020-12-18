@@ -6576,6 +6576,52 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return CNT
     End Function
 
+    Public Function getSourceGuidByImageHash(ByVal SourceName As String, HexHash As String) As String
+        Dim SourceGuid As String = ""
+        'If Not HexHash.Contains("0x") Then
+        '    HexHash = "0x" + HexHash
+        'End If
+        ''Dim HexStr As String = HexStringToBinary(HexHash)
+        Try
+            SourceName = UTIL.RemoveSingleQuotes(SourceName)
+            Dim S As String = "Select SourceGuid FROM DataSource where SourceName = '" + SourceName + "' and ImageHash = '" + HexHash + "'; "
+            CloseConn()
+            CkConn()
+            Dim rsData As SqlDataReader = Nothing
+            Dim b As Boolean = False
+            Dim CS As String = getRepoConnStr() : Dim CONN As New SqlConnection(CS) : CONN.Open() : Dim command As New SqlCommand(S, CONN) : rsData = command.ExecuteReader()
+
+            rsData.Read()
+            SourceGuid = rsData.GetValue(0).ToString
+            rsData.Close()
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("clsDatabaseARCH : getCountDataSourceFiles : 2174 : ", ex)
+        End Try
+        Return SourceGuid
+    End Function
+
+
+    Public Function ckZipchildExists(ParentGuid As String, ByVal SourceName As String, HexHash As String) As Integer
+        Dim CNT As Integer = -1
+        Try
+            SourceName = UTIL.RemoveSingleQuotes(SourceName)
+            Dim S As String = "Select count(*) FROM DataSource where SourceName = '" + SourceName + "' and ImageHash = '" + HexHash + "' and SourceGuid = '+ParentGuid+' "
+            CloseConn()
+            CkConn()
+            Dim rsData As SqlDataReader = Nothing
+            Dim b As Boolean = False
+            Dim CS As String = getRepoConnStr() : Dim CONN As New SqlConnection(CS) : CONN.Open() : Dim command As New SqlCommand(S, CONN) : rsData = command.ExecuteReader()
+
+            rsData.Read()
+            CNT = rsData.GetInt32(0)
+            rsData.Close()
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("clsDatabaseARCH : getCountDataSourceFiles : 2174 : ", ex)
+        End Try
+        Return CNT
+    End Function
+
+
     ''' <summary>
     ''' Updates the data source file information.
     ''' </summary>
@@ -8089,20 +8135,22 @@ Public Class clsDatabaseARCH : Implements IDisposable
     ''' <param name="FileHash">The file hash.</param>
     ''' <param name="FolderName">Name of the folder.</param>
     ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-    Public Function AddSourceToRepo(ByVal UID As String, ByVal MachineID As String, NetworkName As String,
-                                     ByVal SourceGuid As String,
-                                       ByVal UploadFQN As String,
-                                       ByVal SourceName As String,
-                                       ByVal SourceTypeCode As String,
-                                       ByVal sLastAccessDate As String,
-                                       ByVal sCreateDate As String,
-                                       ByVal sLastWriteTime As String,
-                                       ByVal DataSourceOwnerUserID As String,
-                                       ByVal VersionNbr As Integer,
-                                       ByVal RetentionCode As String,
-                                       ByVal isPublic As String,
-                                       FileHash As String,
-                                       FolderName As String) As String
+    Public Function AddSourceToRepo(ByVal UID As String,
+                                    ByVal MachineID As String,
+                                    NetworkName As String,
+                                    ByVal SourceGuid As String,
+                                    ByVal UploadFQN As String,
+                                    ByVal SourceName As String,
+                                    ByVal SourceTypeCode As String,
+                                    ByVal sLastAccessDate As String,
+                                    ByVal sCreateDate As String,
+                                    ByVal sLastWriteTime As String,
+                                    ByVal DataSourceOwnerUserID As String,
+                                    ByVal VersionNbr As Integer,
+                                    ByVal RetentionCode As String,
+                                    ByVal isPublic As String,
+                                    FileHash As String,
+                                    FolderName As String) As String
 
         If (SourceName.Trim.Length().Equals(0)) Then
             SourceName = Path.GetFileName(UploadFQN)
@@ -16693,7 +16741,8 @@ REDO:
 
         FQN = UTIL.RemoveSingleQuotes(FQN)
 
-        Dim S As String = "Select SourceGuid from DataSource where FQN = '" + FQN + "' and machineid = '" + gMachineID + "' order by VersionNbr desc "
+        Dim S As String = "Select top 1 SourceGuid from 
+                                DataSource where FQN = '" + FQN + "' and machineid = '" + gMachineID + "' and UserID = '" + gCurrLoginID + "' order by VersionNbr desc "
         CloseConn()
         CkConn()
         Dim xGuid As String = ""
@@ -16997,14 +17046,11 @@ REDO:
 
         fqn = UTIL.RemoveSingleQuotes(fqn)
         Try
-            Dim S As String = " SELECT SourceGuid FROM DataSource where FQN = '" + fqn + "' AND DataSourceOwnerUserID = '" + UserID + "' "
+            Dim S As String = " SELECT top 1 SourceGuid FROM DataSource where FQN = '" + fqn + "' AND DataSourceOwnerUserID = '" + UserID + "' order by VersionNbr desc"
             Dim SourceGuid As String = ""
 
-            Dim RSData As SqlDataReader = Nothing
-            'RSData = SqlQryNo'Session(S)
-            ' Dim CS  = getRepoConnStr() : Dim CONN As New SqlConnection(CS) : CONN.Open() : Dim command As New SqlCommand(S, CONN) : rsdata= command.ExecuteReader()
-
             Dim CS As String = getRepoConnStr()
+            Dim RSData As SqlDataReader = Nothing
             Dim CONN As New SqlConnection(CS)
             CONN.Open()
             Dim command As New SqlCommand(S, CONN)
@@ -17013,7 +17059,6 @@ REDO:
             If RSData.HasRows Then
                 Do While RSData.Read()
                     SourceGuid = RSData.GetValue(0).ToString
-                    Application.DoEvents()
                 Loop
             End If
 
@@ -21353,6 +21398,48 @@ REDO:
         End If
         Return cnt
     End Function
+
+    Function GetImageBinary(ByVal SourceGuid As String, TblCode As String) As Byte()
+        If gTraceFunctionCalls.Equals(1) Then
+            LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
+        End If
+
+        Dim b As Boolean = True
+        Dim i As Integer = 0
+        Dim id As String = ""
+        Dim S As String = ""
+        Dim MyBytes As Byte() = Nothing
+        Dim CS As String = getRepoConnStr()
+
+        Try
+            CloseConn()
+            CkConn()
+
+            If (TblCode.Equals("C")) Then
+                S = "Select SourceImage from DataSource where SourceGuid = '" + SourceGuid + "'"
+            Else
+                S = "Select Attachment from EmailAttachment where RowGuid = '" + SourceGuid + "'"
+            End If
+            Using CONN As New SqlConnection(CS)
+                CONN.Open()
+                Using command As New SqlCommand(S, CONN)
+                    Using rsData As SqlDataReader = command.ExecuteReader()
+                        If rsData.HasRows Then
+                            rsData.Read()
+                            MyBytes = rsData(0)
+                        End If
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR GetImageBinary: " + ex.Message + vbCrLf + S)
+            b = False
+        End Try
+
+        Return MyBytes
+
+    End Function
+
 
     ''' <summary>
     ''' Gets the maximum version NBR.
@@ -25849,6 +25936,42 @@ P1:
                     C1 = rsData.GetValue(0).ToString
                     If Not L.Contains(C1) Then
                         L.Add(C1)
+                    End If
+                Loop
+            End If
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("Error: clsDatabaseARCH:getListOf Error 100: " + ex.Message + Environment.NewLine + MySql)
+        End Try
+
+        If Not rsData.IsClosed Then
+            rsData.Close()
+        End If
+        rsData = Nothing
+        GC.Collect()
+
+        Return L
+    End Function
+
+    Function getDictionaryOfStrings(MySql As String) As Dictionary(Of String, String)
+
+        Dim L As New Dictionary(Of String, String)
+        Dim C1 As String = ""
+        Dim C2 As String = ""
+        Dim rsData As SqlDataReader = Nothing
+        Dim DBSIZEMB As Double = 0
+
+        Try
+            Dim CS As String = getRepoConnStr()
+            Dim CONN As New SqlConnection(CS)
+            CONN.Open()
+            Dim command As New SqlCommand(MySql, CONN)
+            rsData = command.ExecuteReader()
+            If rsData.HasRows Then
+                Do While rsData.Read()
+                    C1 = rsData.GetValue(0).ToString
+                    C2 = rsData.GetValue(1).ToString
+                    If Not L.Keys.Contains(C1) Then
+                        L.Add(C1, C2)
                     End If
                 Loop
             End If

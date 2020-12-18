@@ -4012,10 +4012,11 @@ SKIPFOLDER:
         frmPercent.Close()
     End Sub
 
-    Sub ArchiveContent(MachineID As String, CurrUserGuidID As String, FilesToBeUploaded As List(Of String))
+    Sub ArchiveContent(MachineID As String, CurrUserGuidID As String, FilesToBeUploaded As List(Of String), Optional SetSourceGuid As Boolean = False)
 
         Console.WriteLine("frmMain: ArchiveContent")
 
+        gSourceGuid = ""
         FilesBackedUp = 0
         FilesSkipped = 0
 
@@ -4202,7 +4203,7 @@ SKIPFOLDER:
                             LOG.WriteToArchiveLog("Thread 90 - caught ThreadAbortException - resetting.")
                             Thread.ResetAbort()
                         Catch ex As Exception
-                            LOG.WriteToArchiveLog("ERROR ArchiveContent 22x: LL=" + LL.ToString + environment.NewLine + ex.Message)
+                            LOG.WriteToArchiveLog("ERROR ArchiveContent 22x: LL=" + LL.ToString + Environment.NewLine + ex.Message)
                         End Try
                         LL = 741
                         If UseThreads = False Then SB5.Text = "Terminated archive!" : LL = 746
@@ -4276,26 +4277,26 @@ SKIPFOLDER:
 
                     Dim ParmMsg As String = "" : LL = 996
                     FOLDER_IncludeSubDirs = FolderParms(1) : LL = 1001
-                    ParmMsg += "FOLDER_IncludeSubDirs set to " + FOLDER_IncludeSubDirs + " for " + FOLDER_FQN + environment.NewLine : LL = 1006
+                    ParmMsg += "FOLDER_IncludeSubDirs set to " + FOLDER_IncludeSubDirs + " for " + FOLDER_FQN + Environment.NewLine : LL = 1006
 
                     LL = 1011
                     Dim FOLDER_DBID As String = FolderParms(2) : LL = 1016
-                    ParmMsg += "FOLDER_DBID  set to " + FOLDER_DBID + " for " + FOLDER_FQN + environment.NewLine : LL = 1021
+                    ParmMsg += "FOLDER_DBID  set to " + FOLDER_DBID + " for " + FOLDER_FQN + Environment.NewLine : LL = 1021
                     LL = 1026
                     Dim FOLDER_VersionFiles As String = FolderParms(3) : LL = 1031
-                    ParmMsg += "FOLDER_VersionFiles  set to " + FOLDER_VersionFiles + " for " + FOLDER_FQN + environment.NewLine : LL = 1036
+                    ParmMsg += "FOLDER_VersionFiles  set to " + FOLDER_VersionFiles + " for " + FOLDER_FQN + Environment.NewLine : LL = 1036
                     LL = 1041
                     Dim DisableDir As String = FolderParms(4) : LL = 1046
-                    ParmMsg += "DisableDir  set to " + DisableDir + " for " + FOLDER_FQN + environment.NewLine : LL = 1051
+                    ParmMsg += "DisableDir  set to " + DisableDir + " for " + FOLDER_FQN + Environment.NewLine : LL = 1051
                     LL = 1056
                     OcrDirectory = FolderParms(5) : LL = 1061
-                    ParmMsg += "OcrDirectory  set to " + OcrDirectory + " for " + FOLDER_FQN + environment.NewLine : LL = 1066
+                    ParmMsg += "OcrDirectory  set to " + OcrDirectory + " for " + FOLDER_FQN + Environment.NewLine : LL = 1066
                     LL = 1071
                     ParentDir = FolderParms(7) : LL = 1076
-                    ParmMsg += "ParentDir  set to " + ParentDir + " for " + FOLDER_FQN + environment.NewLine : LL = 1081
+                    ParmMsg += "ParentDir  set to " + ParentDir + " for " + FOLDER_FQN + Environment.NewLine : LL = 1081
                     LL = 1086
                     Dim skipArchiveBit As String = FolderParms(8) : LL = 1091
-                    ParmMsg += "skipArchiveBit  set to " + skipArchiveBit + " for " + FOLDER_FQN + environment.NewLine : LL = 1096
+                    ParmMsg += "skipArchiveBit  set to " + skipArchiveBit + " for " + FOLDER_FQN + Environment.NewLine : LL = 1096
                     LL = 1101
                     OcrPdf = FolderParms(9) : LL = 1106
                     If OcrPdf.Equals("Y") Then : LL = 1111
@@ -4306,10 +4307,10 @@ SKIPFOLDER:
 
                     LL = 1136
                     DeleteOnArchive = FolderParms(10) : LL = 1141
-                    ParmMsg += "DeleteOnArchive set to " + DeleteOnArchive + " for " + FOLDER_FQN + environment.NewLine : LL = 1146
+                    ParmMsg += "DeleteOnArchive set to " + DeleteOnArchive + " for " + FOLDER_FQN + Environment.NewLine : LL = 1146
                     LL = 1151
                     isPublic = FolderParms(11) : LL = 1156
-                    ParmMsg += "isPublic set to " + isPublic + " for " + FOLDER_FQN + environment.NewLine : LL = 1161
+                    ParmMsg += "isPublic set to " + isPublic + " for " + FOLDER_FQN + Environment.NewLine : LL = 1161
                     LL = 1166
                     '***************************	:	LL = 	1171
                     'MessageBox.Show(ParmMsg)	:	LL = 	1176
@@ -4404,7 +4405,7 @@ Process01:
                             Try
                                 f.Demand()
                             Catch sx As Exception
-                                LOG.WriteToArchiveLog("ERROR ArchiveContent Permissions: " + environment.NewLine + sx.Message)
+                                LOG.WriteToArchiveLog("ERROR ArchiveContent Permissions: " + Environment.NewLine + sx.Message)
                             End Try
                             f = Nothing
                         Else
@@ -4539,7 +4540,7 @@ Process01:
                         Catch ex As IOException
                             LOG.WriteToArchiveLog("Thread 88 IO exception: " + ex.Message)
                             'LOG.WriteToArchiveLog("Thread 88 IO InnerException: " & ex.InnerException.ToString)
-                            LOG.WriteToArchiveLog("FOLDER_FQN 88: " + FOLDER_FQN + environment.NewLine + "LL = " + LL.ToString)
+                            LOG.WriteToArchiveLog("FOLDER_FQN 88: " + FOLDER_FQN + Environment.NewLine + "LL = " + LL.ToString)
                             LOG.WriteToArchiveLog(ex.StackTrace)
                             GC.Collect()
                             GC.WaitForPendingFinalizers()
@@ -4547,7 +4548,7 @@ Process01:
                             LOG.WriteToArchiveLog("Thread 90 - caught ThreadAbortException - resetting.")
                             Thread.ResetAbort()
                         Catch ex As Exception
-                            LOG.WriteToArchiveLog("ERROR Archive Folder Acquisition Failure : " + FOLDER_FQN + environment.NewLine + "LL=" + LL.ToString)
+                            LOG.WriteToArchiveLog("ERROR Archive Folder Acquisition Failure : " + FOLDER_FQN + Environment.NewLine + "LL=" + LL.ToString)
                             Dim st As New StackTrace(True)
                             st = New StackTrace(ex, True)
                             LOG.WriteToArchiveLog("Line: " & st.GetFrame(0).GetFileLineNumber().ToString)
@@ -4801,7 +4802,8 @@ Process01:
                             End If : LL = 2751
                             '*******************************************************************	:	LL = 	2756
                             '*******************************************************************	:	LL = 	2761
-                            Dim SourceGuid As String = DBARCH.getGuid() : LL = 2766
+                            SourceGuid = DBARCH.getGuid() : LL = 2766
+
                             LL = 2771
                             LOG.WriteToTimerLog("ArchiveContent-01", "Archive File:" + file_FullName, "START") : LL = 2781
                             LL = 2786
@@ -4926,7 +4928,7 @@ Process01:
                             ssFile = DMA.getFileName(file_FullName) : LL = 3461
 
                             Dim strNbr As String = UTIL.setFilelenUnits(file_Length) : LL = 3466
-                            'wdmxx
+
                             frmNotify.Label1.Text = file_DirectoryName
                             frmNotify.lblPdgPages.Text = "@: " + strNbr + " / " + ssFile
                             frmNotify.lblFileSpec.Text = "fILE: " + K.ToString + " of " + FilesToArchive.Count.ToString
@@ -5030,6 +5032,7 @@ Process01:
                                 '**************************************************************************************************
                                 '******************************* INSERT INTITAL CONTENT DATA **************************************
                                 bSuccessExecution = DOCS.Insert(SourceGuid, ImageHash, RetentionYears, RetentionExpirationDate) : LL = 3981
+
                                 '**************************************************************************************************
                                 '**************************************************************************************************
                                 If Not bSuccessExecution Then
@@ -5092,8 +5095,8 @@ Process01:
                                         If CurrExt.Trim.Length = 0 Then
                                             CurrExt = Path.GetExtension(CurrFileName)
                                         End If
-                                        Dim NewSql As String = "Update DataSource set OriginalFileType = '" + CurrExt + "' , CreateDate = '" + CurrCreateDate.ToString + "', LastWriteTime = '" + CurrLastUpdate.ToString + "'  where SourceGuid = '" + SourceGuid + "' "
-                                        DBARCH.ExecuteSqlNewConn(90076, NewSql)
+                                        Dim ZSQL = "Update DataSource set OriginalFileType = '" + CurrExt + "' , CreateDate = '" + CurrCreateDate.ToString + "', LastWriteTime = '" + CurrLastUpdate.ToString + "'  where SourceGuid = '" + SourceGuid + "' "
+                                        DBARCH.ExecuteSqlNewConn(90076, ZSQL)
 
                                     End If
                                     '****************************************************************************************************************************	:	LL = 	4161
@@ -5259,8 +5262,22 @@ Process01:
                                 isZipFile = ZF.isZipFile(file_FullName) : LL = 4956
                                 If isZipFile = True Then : LL = 4961
                                     Dim ExistingParentZipGuid As String = DBARCH.GetGuidByFqn(file_FullName) : LL = 4966
+
+                                    'Dim zcnt As Integer = CountCharacter(file_FullName, "~")
+                                    'If zcnt.Equals(2) Then
+                                    '    Dim AR() = file_FullName.Split("~")
+                                    '    ExistingParentZipGuid = AR(1)
+                                    '    Console.WriteLine("XXX: " + ExistingParentZipGuid)
+                                    'End If
+
                                     StackLevel = 0 : LL = 4976
                                     ListOfFiles.Clear() : LL = 4981
+                                    If SetSourceGuid Then
+                                        'WDMXX
+                                        gSourceGuid = SourceGuid
+                                    Else
+                                        gSourceGuid = ""
+                                    End If
                                     If ExistingParentZipGuid.Length > 0 Then : LL = 4986
                                         DBLocal.addZipFile(file_FullName, ExistingParentZipGuid, False) : LL = 4991
                                         ZF.UploadZipFile(UIDcurr, MachineIDcurr, file_FullName, ExistingParentZipGuid, True, False, RetentionCode, isPublic, StackLevel, ListOfFiles)
@@ -5517,17 +5534,35 @@ NextFolder:
             End If
         Next
 
-        For i As Integer = 0 To ZipFilesContent.Count - 1 : LL = 5711
-            StackLevel = 0
-            Dim ParentGuid As String = "" : LL = 5746
-            Dim FQN As String = ZipFilesContent(i).ToString
-            Dim pguid As String = DBARCH.getSourceGuidByFqn(FQN, gCurrUserGuidID)
-            If pguid.Length.Equals(0) Then
-                pguid = Guid.NewGuid.ToString
-            End If
-            ParentGuid = pguid
-            ZF.UploadZipFile(UIDcurr, MachineIDcurr, FQN, ParentGuid, False, False, RetentionCode, isPublic, StackLevel, ListOfFiles) : LL = 5771
-        Next : LL = 5776
+        Dim ExecuteThis As Boolean = True
+
+        If ExecuteThis Then
+            For i As Integer = 0 To ZipFilesContent.Count - 1 : LL = 5711
+                StackLevel = 0
+                Console.WriteLine("Curr ZIP SourceGuid: " + SourceGuid)
+                Dim ParentGuid As String = "" : LL = 5746
+                Dim FQN As String = ZipFilesContent(i).ToString
+                Dim pGuid As String = DBARCH.getSourceGuidByFqn(FQN, gCurrUserGuidID)
+                If pGuid.Length.Equals(0) Then
+                    pGuid = Guid.NewGuid.ToString
+                End If
+                ParentGuid = pGuid
+                ZF.UploadZipFile(UIDcurr, MachineIDcurr, FQN, ParentGuid, False, False, RetentionCode, isPublic, StackLevel, ListOfFiles) : LL = 5771
+            Next
+        End If
+
+        Dim NewSQL As String = "update datasource set ZipExploded = 'Y' 
+                                where SourceGuid in (
+                                select distinct dsp.SourceGuid 
+                                from DataSource DSP
+                                join DataSOurce DSC
+                                on DSP.SourceGuid = DSC.ParentGuid
+                                ) 
+                                AND ZipExploded is null;"
+        Dim bSuccess As Boolean = DBARCH.ExecuteSqlNewConn(0, NewSQL)
+        If Not bSuccess Then
+            LOG.WriteToArchiveLog("FAILED TO UPDATE ZIPFILE's ZipExploded flag...")
+        End If
 
         LL = 5781
         ListOfFiles = Nothing : LL = 5786
@@ -5558,8 +5593,19 @@ NextFolder:
         GC.Collect()
         GC.WaitForPendingFinalizers()
         GC.WaitForFullGCComplete()
+        gSourceGuid = ""
 
     End Sub
+
+    Public Function CountCharacter(ByVal value As String, ByVal ch As Char) As Integer
+        Dim cnt As Integer = 0
+        For Each c As Char In value
+            If c = ch Then
+                cnt += 1
+            End If
+        Next
+        Return cnt
+    End Function
 
     Sub ArchiveData(ByVal UID As String, ByVal FileDirectory As String, ByVal TopFolder As String, ByRef SL As SortedList)
 
@@ -10472,6 +10518,8 @@ GoodLogin:
         frmNotify.Hide()
         gAutoExecContentComplete = True
 
+        DropTempFiles()
+
     End Sub
 
     Private Sub FileUploadToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FileUploadToolStripMenuItem.Click
@@ -14484,6 +14532,208 @@ SkipIT:
     Private Sub FilesAreRetrievedFromDirectoryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FilesAreRetrievedFromDirectoryToolStripMenuItem.Click
         frmLoadTest.Show()
     End Sub
+
+    Private Sub ZipfileExplodeAndProcessToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ZipfileExplodeAndProcessToolStripMenuItem.Click
+        ProcessUnexplodedZipFiles()
+    End Sub
+
+    Sub ProcessUnexplodedZipFiles()
+
+        Dim ExplodeDir As String = System.Configuration.ConfigurationManager.AppSettings("ExplodeDir")
+        Dim ProcessFQN As String = ""
+        Dim OriginalFileType As String = ""
+        Dim SourceGuid As String = ""
+        Dim ListOfFiles As New Dictionary(Of String, Integer)
+        Dim FilesToBeUploaded As New List(Of String)
+        Dim B As Boolean = False
+
+        If Not Directory.Exists(ExplodeDir) Then
+            Directory.CreateDirectory(ExplodeDir)
+        End If
+
+        '        CreateDate
+        '        LastAccessDate
+        'LastWriteTime
+        'RetentionExpirationDate
+
+        Dim FqnSql As String = "select sourceguid, FQN from DataSource 
+                    where OriginalFileType in (Select [SourceTypeCode] FROM [LoadProfileItem] where ProfileName = 'ZIP Files') 
+                    and (ZipExploded != 'Y' or ZipExploded is null)"
+        Dim FTSql As String = "select sourceguid, OriginalFileType from DataSource 
+                    where OriginalFileType in (Select [SourceTypeCode] FROM [LoadProfileItem] where ProfileName = 'ZIP Files') 
+                    and (ZipExploded != 'Y' or ZipExploded is null)"
+        Dim CreateDateSql As String = "select sourceguid, cast(CreateDate as nvarchar(50)) as CreateDate from DataSource 
+                    where OriginalFileType in (Select [SourceTypeCode] FROM [LoadProfileItem] where ProfileName = 'ZIP Files') 
+                    and (ZipExploded != 'Y' or ZipExploded is null)"
+        Dim LastWriteTimeSql As String = "select sourceguid, cast(LastWriteTime as nvarchar(50)) as LastWriteTime  from DataSource 
+                    where OriginalFileType in (Select [SourceTypeCode] FROM [LoadProfileItem] where ProfileName = 'ZIP Files') 
+                    and (ZipExploded != 'Y' or ZipExploded is null)"
+
+        Dim OriginalSourceName As String = ""
+        Dim OriginalFQN As String = ""
+        Dim OriginalDIR As String = ""
+        Dim WriteTime As String = ""
+        Dim CreateDate As String = ""
+        Dim file_FullName As String = ""
+        Dim RetentionCode As String = "NA"
+        Dim LastWriteTimeDate As Dictionary(Of String, String) = DBARCH.getDictionaryOfStrings(LastWriteTimeSql)
+        Dim DictCreateDate As Dictionary(Of String, String) = DBARCH.getDictionaryOfStrings(CreateDateSql)
+        Dim DictZipFQN As Dictionary(Of String, String) = DBARCH.getDictionaryOfStrings(FqnSql)
+        Dim DictZipEXTS As Dictionary(Of String, String) = DBARCH.getDictionaryOfStrings(FTSql)
+        Dim ImageBytes As Byte() = Nothing
+        Dim isPublic As String = "Y"
+
+        For Each SourceGuid In DictZipEXTS.Keys
+
+            OriginalFileType = DictZipEXTS(SourceGuid)
+            ImageBytes = DBARCH.GetImageBinary(SourceGuid, "C")
+            file_FullName = DictZipFQN(SourceGuid)
+            file_FullName = ProcessFQN
+
+            WriteTime = LastWriteTimeDate(SourceGuid)
+            CreateDate = DictCreateDate(SourceGuid)
+            OriginalFQN = DictZipFQN(SourceGuid)
+            OriginalDIR = Path.GetDirectoryName(OriginalFQN)
+            OriginalSourceName = Path.GetFileName(OriginalFQN)
+
+            ProcessFQN = ExplodeDir + "/ZIP~" + SourceGuid + "~" + OriginalFileType
+
+            Try
+                Using writer As BinaryWriter = New BinaryWriter(File.Open(ProcessFQN, FileMode.Create))
+                    writer.Write(ImageBytes)
+                End Using
+                FilesToBeUploaded.Clear()
+                FilesToBeUploaded.Add(ProcessFQN)
+                '*************************************** PROCESS ZIPFILE *************************************** 
+                Dim DelSql As String = "Delete from DataSource where SourceGuid = '" + SourceGuid + "' "
+                B = DBARCH.ExecuteSqlNewConn(0, DelSql)
+                If B Then
+                    ArchiveContent(Environment.MachineName, gCurrLoginID, FilesToBeUploaded, True)
+                Else
+                    LOG.WriteToArchiveLog("ERROR ProcessUnexplodedZipFiles 06Z: Filed to remove Zipfile, skipping: ")
+                End If
+                '*************************************** PROCESS ZIP FILE *************************************** 
+            Catch ex As Exception
+                LOG.WriteToArchiveLog("ERROR ProcessUnexplodedZipFiles: " + SourceGuid + Environment.NewLine + ex.Message)
+            End Try
+
+            DropTempFiles()
+
+            Dim BBX As Boolean = True
+
+            Dim SQL As String = "Update Datasource set FQN = '" + OriginalFQN + "' where SourceGuid = '" + gSourceGuid + "' "
+            BBX = DBARCH.ExecuteSqlNewConn(0, SQL)
+            If Not BBX Then
+                LOG.WriteToArchiveLog("ERROR ProcessUnexplodedZipFiles 01: " + SQL)
+            End If
+            SQL = "Update Datasource set FileDirectory = '" + OriginalDIR + "' where SourceGuid = '" + gSourceGuid + "' "
+            BBX = DBARCH.ExecuteSqlNewConn(0, SQL)
+            If Not BBX Then
+                LOG.WriteToArchiveLog("ERROR ProcessUnexplodedZipFiles 02: " + SQL)
+            End If
+
+            WriteTime = LastWriteTimeDate(SourceGuid)
+            SQL = "Update Datasource set LastWriteTime = cast('" + WriteTime + "' as datetime) where SourceGuid = '" + gSourceGuid + "' "
+            BBX = DBARCH.ExecuteSqlNewConn(0, SQL)
+            If Not BBX Then
+                LOG.WriteToArchiveLog("ERROR ProcessUnexplodedZipFiles 02: " + SQL)
+            End If
+
+            CreateDate = DictCreateDate(SourceGuid)
+            SQL = "Update Datasource set CreateDate = cast('" + CreateDate + "' as datetime) where SourceGuid = '" + gSourceGuid + "' "
+            BBX = DBARCH.ExecuteSqlNewConn(0, SQL)
+            If Not BBX Then
+                LOG.WriteToArchiveLog("ERROR ProcessUnexplodedZipFiles 02: " + SQL)
+            End If
+
+            SQL = "Update Datasource set SourceName = '" + OriginalSourceName + "' where SourceGuid = '" + gSourceGuid + "' "
+            BBX = DBARCH.ExecuteSqlNewConn(0, SQL)
+            If Not BBX Then
+                LOG.WriteToArchiveLog("ERROR ProcessUnexplodedZipFiles 02: " + SQL)
+            End If
+
+        Next
+
+        Dim NewSQL As String = "update datasource set ZipExploded = 'Y' 
+                                where SourceGuid in (
+                                select distinct dsp.SourceGuid 
+                                from DataSource DSP
+                                join DataSOurce DSC
+                                on DSP.SourceGuid = DSC.ParentGuid
+                                ) 
+                                AND ZipExploded is null;"
+        DBARCH.ExecuteSqlNewConn(0, NewSQL)
+    End Sub
+
+    Sub DropTempFiles()
+
+        Dim ExplodeDir As String = System.Configuration.ConfigurationManager.AppSettings("ExplodeDir")
+
+        If Directory.Exists(ExplodeDir) Then
+
+            Try
+                Dim ListOfDirs() As String = Directory.GetDirectories(ExplodeDir, "*.*", SearchOption.AllDirectories)
+                Dim FilesToDrop() As String = Directory.GetFiles(ExplodeDir, "*.*", SearchOption.AllDirectories)
+
+                Array.Sort(ListOfDirs)
+                Array.Reverse(ListOfDirs)
+                Array.Sort(FilesToDrop)
+                Array.Reverse(FilesToDrop)
+
+                For Each xstr As String In FilesToDrop
+                    Try
+                        File.Delete(xstr)
+                    Catch ex As Exception
+                        LOG.WriteToArchiveLog("ERROR XX016: Failed to delete: " + xstr + vbCrLf + ex.Message)
+                    End Try
+                Next
+                For Each xdir As String In ListOfDirs
+                    Try
+                        Directory.Delete(xdir)
+                    Catch ex As Exception
+                        LOG.WriteToArchiveLog("ERROR XX017: Failed to delete: " + xdir + vbCrLf + ex.Message)
+                    End Try
+
+                Next
+            Catch ex As Exception
+                LOG.WriteToArchiveLog("ERROR ProcessUnexplodedZipFiles failed to delete : " + ExplodeDir + Environment.NewLine + ex.Message)
+            End Try
+        End If
+
+
+        Dim TempProcessingDir = System.Configuration.ConfigurationManager.AppSettings("TempProcessingDir")
+        If Directory.Exists(TempProcessingDir) Then
+            Try
+                Dim ListOfDirs() As String = Directory.GetDirectories(TempProcessingDir, "*", SearchOption.AllDirectories)
+                Dim FilesToDrop() As String = Directory.GetFiles(TempProcessingDir, "*", SearchOption.AllDirectories)
+
+                Array.Sort(ListOfDirs)
+                Array.Reverse(ListOfDirs)
+                Array.Sort(FilesToDrop)
+                Array.Reverse(FilesToDrop)
+
+                For Each xstr As String In FilesToDrop
+                    Try
+                        File.Delete(xstr)
+                    Catch ex As Exception
+                        LOG.WriteToArchiveLog("ERROR XX020: Failed to delete: " + xstr + vbCrLf + ex.Message)
+                    End Try
+                Next
+                For Each xdir As String In ListOfDirs
+                    Try
+                        Directory.Delete(xdir)
+                    Catch ex As Exception
+                        LOG.WriteToArchiveLog("ERROR XX021: Failed to delete: " + xdir + vbCrLf + ex.Message)
+                    End Try
+
+                Next
+            Catch ex As Exception
+                LOG.WriteToArchiveLog("ERROR ProcessUnexplodedZipFiles failed to delete : " + TempProcessingDir + Environment.NewLine + ex.Message)
+            End Try
+        End If
+
+    End Sub
+
 End Class
 
 <System.Runtime.Serialization.DataContract()>

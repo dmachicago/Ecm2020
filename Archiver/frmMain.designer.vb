@@ -232,6 +232,8 @@ Partial Class frmMain
         Me.CheckForViolationsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ValidateFileHASHCodesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ValidateProcessAsFileExtsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ValidationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FilesAreRetrievedFromDirectoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenSQLHelpScreenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EncryptStringToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenLicenseFormToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -381,8 +383,7 @@ Partial Class frmMain
         Me.lblNotice = New System.Windows.Forms.Label()
         Me.ThreadValidateSourceName = New System.ComponentModel.BackgroundWorker()
         Me.ThreadSetNameHash = New System.ComponentModel.BackgroundWorker()
-        Me.ValidationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.FilesAreRetrievedFromDirectoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ZipfileExplodeAndProcessToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.gbEmail.SuspendLayout()
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbFiletypes.SuspendLayout()
@@ -2317,7 +2318,7 @@ Partial Class frmMain
         '
         'RepositoryUtilitiesToolStripMenuItem
         '
-        Me.RepositoryUtilitiesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InventoryDirectoryToolStripMenuItem1, Me.PickAndLoadADocumentToolStripMenuItem, Me.ClearRestoreQueueToolStripMenuItem1, Me.CompareDirToRepositoryToolStripMenuItem1, Me.ValidateDirectoryFilesToolStripMenuItem, Me.ReapplyALLDBUpdatesToolStripMenuItem, Me.ValidateRetentionDatesToolStripMenuItem})
+        Me.RepositoryUtilitiesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InventoryDirectoryToolStripMenuItem1, Me.PickAndLoadADocumentToolStripMenuItem, Me.ClearRestoreQueueToolStripMenuItem1, Me.CompareDirToRepositoryToolStripMenuItem1, Me.ValidateDirectoryFilesToolStripMenuItem, Me.ReapplyALLDBUpdatesToolStripMenuItem, Me.ValidateRetentionDatesToolStripMenuItem, Me.ZipfileExplodeAndProcessToolStripMenuItem})
         Me.RepositoryUtilitiesToolStripMenuItem.Name = "RepositoryUtilitiesToolStripMenuItem"
         Me.RepositoryUtilitiesToolStripMenuItem.Size = New System.Drawing.Size(254, 26)
         Me.RepositoryUtilitiesToolStripMenuItem.Text = "Repository Utilities"
@@ -2325,43 +2326,43 @@ Partial Class frmMain
         'InventoryDirectoryToolStripMenuItem1
         '
         Me.InventoryDirectoryToolStripMenuItem1.Name = "InventoryDirectoryToolStripMenuItem1"
-        Me.InventoryDirectoryToolStripMenuItem1.Size = New System.Drawing.Size(264, 26)
+        Me.InventoryDirectoryToolStripMenuItem1.Size = New System.Drawing.Size(267, 26)
         Me.InventoryDirectoryToolStripMenuItem1.Text = "CHECK FOR MISSING FILES"
         '
         'PickAndLoadADocumentToolStripMenuItem
         '
         Me.PickAndLoadADocumentToolStripMenuItem.Name = "PickAndLoadADocumentToolStripMenuItem"
-        Me.PickAndLoadADocumentToolStripMenuItem.Size = New System.Drawing.Size(264, 26)
+        Me.PickAndLoadADocumentToolStripMenuItem.Size = New System.Drawing.Size(267, 26)
         Me.PickAndLoadADocumentToolStripMenuItem.Text = "Pick and Load a Document"
         '
         'ClearRestoreQueueToolStripMenuItem1
         '
         Me.ClearRestoreQueueToolStripMenuItem1.Name = "ClearRestoreQueueToolStripMenuItem1"
-        Me.ClearRestoreQueueToolStripMenuItem1.Size = New System.Drawing.Size(264, 26)
+        Me.ClearRestoreQueueToolStripMenuItem1.Size = New System.Drawing.Size(267, 26)
         Me.ClearRestoreQueueToolStripMenuItem1.Text = "Clear Restore Queue"
         '
         'CompareDirToRepositoryToolStripMenuItem1
         '
         Me.CompareDirToRepositoryToolStripMenuItem1.Name = "CompareDirToRepositoryToolStripMenuItem1"
-        Me.CompareDirToRepositoryToolStripMenuItem1.Size = New System.Drawing.Size(264, 26)
+        Me.CompareDirToRepositoryToolStripMenuItem1.Size = New System.Drawing.Size(267, 26)
         Me.CompareDirToRepositoryToolStripMenuItem1.Text = "Compare Dir To Repository"
         '
         'ValidateDirectoryFilesToolStripMenuItem
         '
         Me.ValidateDirectoryFilesToolStripMenuItem.Name = "ValidateDirectoryFilesToolStripMenuItem"
-        Me.ValidateDirectoryFilesToolStripMenuItem.Size = New System.Drawing.Size(264, 26)
+        Me.ValidateDirectoryFilesToolStripMenuItem.Size = New System.Drawing.Size(267, 26)
         Me.ValidateDirectoryFilesToolStripMenuItem.Text = "Validate Directory Files"
         '
         'ReapplyALLDBUpdatesToolStripMenuItem
         '
         Me.ReapplyALLDBUpdatesToolStripMenuItem.Name = "ReapplyALLDBUpdatesToolStripMenuItem"
-        Me.ReapplyALLDBUpdatesToolStripMenuItem.Size = New System.Drawing.Size(264, 26)
+        Me.ReapplyALLDBUpdatesToolStripMenuItem.Size = New System.Drawing.Size(267, 26)
         Me.ReapplyALLDBUpdatesToolStripMenuItem.Text = "Reapply ALL DB Updates"
         '
         'ValidateRetentionDatesToolStripMenuItem
         '
         Me.ValidateRetentionDatesToolStripMenuItem.Name = "ValidateRetentionDatesToolStripMenuItem"
-        Me.ValidateRetentionDatesToolStripMenuItem.Size = New System.Drawing.Size(264, 26)
+        Me.ValidateRetentionDatesToolStripMenuItem.Size = New System.Drawing.Size(267, 26)
         Me.ValidateRetentionDatesToolStripMenuItem.Text = "Validate Retention Dates"
         '
         'LastArchiveDateToolStripMenuItem
@@ -2599,6 +2600,19 @@ Partial Class frmMain
         Me.ValidateProcessAsFileExtsToolStripMenuItem.Name = "ValidateProcessAsFileExtsToolStripMenuItem"
         Me.ValidateProcessAsFileExtsToolStripMenuItem.Size = New System.Drawing.Size(308, 26)
         Me.ValidateProcessAsFileExtsToolStripMenuItem.Text = "Validate iFilter Extensions"
+        '
+        'ValidationToolStripMenuItem
+        '
+        Me.ValidationToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FilesAreRetrievedFromDirectoryToolStripMenuItem})
+        Me.ValidationToolStripMenuItem.Name = "ValidationToolStripMenuItem"
+        Me.ValidationToolStripMenuItem.Size = New System.Drawing.Size(254, 26)
+        Me.ValidationToolStripMenuItem.Text = "Validation"
+        '
+        'FilesAreRetrievedFromDirectoryToolStripMenuItem
+        '
+        Me.FilesAreRetrievedFromDirectoryToolStripMenuItem.Name = "FilesAreRetrievedFromDirectoryToolStripMenuItem"
+        Me.FilesAreRetrievedFromDirectoryToolStripMenuItem.Size = New System.Drawing.Size(302, 26)
+        Me.FilesAreRetrievedFromDirectoryToolStripMenuItem.Text = "Files are retrieved from Directory"
         '
         'OpenSQLHelpScreenToolStripMenuItem
         '
@@ -3887,18 +3901,11 @@ Partial Class frmMain
         'ThreadSetNameHash
         '
         '
-        'ValidationToolStripMenuItem
+        'ZipfileExplodeAndProcessToolStripMenuItem
         '
-        Me.ValidationToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FilesAreRetrievedFromDirectoryToolStripMenuItem})
-        Me.ValidationToolStripMenuItem.Name = "ValidationToolStripMenuItem"
-        Me.ValidationToolStripMenuItem.Size = New System.Drawing.Size(254, 26)
-        Me.ValidationToolStripMenuItem.Text = "Validation"
-        '
-        'FilesAreRetrievedFromDirectoryToolStripMenuItem
-        '
-        Me.FilesAreRetrievedFromDirectoryToolStripMenuItem.Name = "FilesAreRetrievedFromDirectoryToolStripMenuItem"
-        Me.FilesAreRetrievedFromDirectoryToolStripMenuItem.Size = New System.Drawing.Size(302, 26)
-        Me.FilesAreRetrievedFromDirectoryToolStripMenuItem.Text = "Files are retrieved from Directory"
+        Me.ZipfileExplodeAndProcessToolStripMenuItem.Name = "ZipfileExplodeAndProcessToolStripMenuItem"
+        Me.ZipfileExplodeAndProcessToolStripMenuItem.Size = New System.Drawing.Size(267, 26)
+        Me.ZipfileExplodeAndProcessToolStripMenuItem.Text = "Zipfile Explode and Process"
         '
         'frmMain
         '
@@ -4336,4 +4343,5 @@ Partial Class frmMain
     Friend WithEvents PickAndLoadADocumentToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ValidationToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FilesAreRetrievedFromDirectoryToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ZipfileExplodeAndProcessToolStripMenuItem As ToolStripMenuItem
 End Class
