@@ -6133,15 +6133,13 @@ NextFolder:
             Next
         End If
 
-        Dim NewSQL As String = "update datasource set ZipExploded = 'Y' 
-                                where SourceGuid in (
-                                select distinct dsp.SourceGuid 
-                                from DataSource DSP
-                                join DataSOurce DSC
-                                on DSP.SourceGuid = DSC.ParentGuid
-                                ) 
-                                AND ZipExploded is null;"
-        Dim bSuccess As Boolean = DBARCH.ExecuteSqlNewConn(0, NewSQL)
+        Dim CorrectiveSQL As String = "update DataSource set [ZipExploded] = 'Y'
+                                        where sourceguid in (
+                                        select distinct PArentGuid from DataSource
+                                        where ParentGuid is not null and ParentGuid != '' and ParentGuid != 'NA'
+                                        ) and [ZipExploded] is null"
+        Dim bSuccess As Boolean = DBARCH.ExecuteSqlNewConn(0, CorrectiveSQL)
+
         If Not bSuccess Then
             LOG.WriteToArchiveLog("FAILED TO UPDATE ZIPFILE's ZipExploded flag...")
         End If
@@ -11676,6 +11674,12 @@ GoodLogin:
         frmNotify.Hide()
         gAutoExecContentComplete = True
 
+        Dim CorrectiveSQL As String = "update DataSource set [ZipExploded] = 'Y'
+                                        where sourceguid in (
+                                        select distinct PArentGuid from DataSource
+                                        where ParentGuid is not null and ParentGuid != '' and ParentGuid != 'NA'
+                                        ) and [ZipExploded] is null"
+        DBARCH.ExecuteSqlNewConn(0, CorrectiveSQL)
         DropTempFiles()
 
     End Sub

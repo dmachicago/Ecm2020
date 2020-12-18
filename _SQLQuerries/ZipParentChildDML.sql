@@ -59,3 +59,10 @@ Delete from DataSOurce where OriginalFileType = '.zip'
 select SourceName, SourceguID from DataSource 
 where ParentGuid is not null and ParentGuid <> '' and ParentGuid <> 'NA' 
 and ParentGuid not in (Select SourceGuid from DataSource) ;
+
+/* Set the ZipExploded to Y if child records exist */
+update DataSource set [ZipExploded] = 'Y'
+where sourceguid in (
+select distinct PArentGuid from DataSource
+where ParentGuid is not null and ParentGuid != '' and ParentGuid != 'NA'
+) and [ZipExploded] is null
