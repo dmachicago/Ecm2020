@@ -1,4 +1,17 @@
-﻿Imports System.Configuration
+﻿' ***********************************************************************
+' Assembly         : EcmArchiver
+' Author           : wdale
+' Created          : 11-25-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 11-26-2020
+' ***********************************************************************
+' <copyright file="clsDbLocal.vb" company="ECM Library">
+'     Copyright © ECM Library 2011, all rights reserved
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+Imports System.Configuration
 Imports System.Data.SqlClient
 Imports System.Data.SqlServerCe
 Imports System.IO
@@ -6,29 +19,85 @@ Imports ECMEncryption
 'Imports Microsoft.Data.Sqlite
 Imports System.Data.SQLite
 
+''' <summary>
+''' Class clsDbLocal.
+''' Implements the <see cref="System.IDisposable" />
+''' </summary>
+''' <seealso cref="System.IDisposable" />
 Public Class clsDbLocal : Implements IDisposable
 
+    ''' <summary>
+    ''' The listerner connection
+    ''' </summary>
     Public ListernerConn As New SQLiteConnection()
 
+    ''' <summary>
+    ''' The enc
+    ''' </summary>
     Dim ENC As New ECMEncrypt
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Dim LOG As New clsLogging
 
+    ''' <summary>
+    ''' The b sq lite c onnected
+    ''' </summary>
     Public bSQLiteCOnnected As Boolean = False
+    ''' <summary>
+    ''' The sq lite connection
+    ''' </summary>
     Public SQLiteCONN As New SQLiteConnection()
 
+    ''' <summary>
+    ''' The contact cs
+    ''' </summary>
     Private ContactCS As String = ""
+    ''' <summary>
+    ''' The zip cs
+    ''' </summary>
     Private ZipCS As String = ""
+    ''' <summary>
+    ''' The file cs
+    ''' </summary>
     Private FileCS As String = ""
+    ''' <summary>
+    ''' The dir cs
+    ''' </summary>
     Private DirCS As String = ""
+    ''' <summary>
+    ''' The inv cs
+    ''' </summary>
     Private InvCS As String = ""
+    ''' <summary>
+    ''' The outlook cs
+    ''' </summary>
     Private OutlookCS As String = ""
+    ''' <summary>
+    ''' The exchange cs
+    ''' </summary>
     Private ExchangeCS As String = ""
+    ''' <summary>
+    ''' The listener cs
+    ''' </summary>
     Private ListenerCS As String = ""
+    ''' <summary>
+    ''' The curr domain
+    ''' </summary>
     Dim currDomain As AppDomain = AppDomain.CurrentDomain
 
+    ''' <summary>
+    ''' The sq lite listener database
+    ''' </summary>
     Public SQLiteListenerDB As String = System.Configuration.ConfigurationManager.AppSettings("SQLiteListenerDB")
+    ''' <summary>
+    ''' The dir listener file path
+    ''' </summary>
     Public DirListenerFilePath As String = System.Configuration.ConfigurationManager.AppSettings("DirListenerFilePath")
 
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="clsDbLocal"/> class.
+    ''' </summary>
     Sub New()
 
         AddHandler currDomain.UnhandledException, AddressOf MYExnHandler
@@ -38,6 +107,9 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Res the inventory.
+    ''' </summary>
     Sub ReInventory()
 
         Try
@@ -210,6 +282,13 @@ Public Class clsDbLocal : Implements IDisposable
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Gets the allowed extension.
+    ''' </summary>
+    ''' <param name="DirName">Name of the dir.</param>
+    ''' <param name="Level">The level.</param>
+    ''' <param name="tDict">The t dictionary.</param>
+    ''' <returns>System.String.</returns>
     Public Function getAllowedExtension(DirName As String, Level As Integer, tDict As Dictionary(Of String, String)) As String
 
         DirName = DirName.ToLower
@@ -238,6 +317,12 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the allowed extension.
+    ''' </summary>
+    ''' <param name="DirName">Name of the dir.</param>
+    ''' <param name="Level">The level.</param>
+    ''' <returns>List(Of System.String).</returns>
     Public Function getAllowedExtension(DirName As String, Level As Integer) As List(Of String)
 
         Dim DB As New clsDatabaseARCH
@@ -269,6 +354,10 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the allowed extension.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getAllowedExtension() As String
 
         Dim DB As New clsDatabaseARCH
@@ -283,6 +372,11 @@ Public Class clsDbLocal : Implements IDisposable
     End Function
 
 
+    ''' <summary>
+    ''' Cks the listenerfile processed.
+    ''' </summary>
+    ''' <param name="ListenerFileName">Name of the listener file.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckListenerfileProcessed(ListenerFileName As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -319,6 +413,10 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the listenerf top dir.
+    ''' </summary>
+    ''' <returns>List(Of System.String).</returns>
     Public Function getListenerfTopDir() As List(Of String)
 
         bConnSet = setListenerConn()
@@ -352,6 +450,10 @@ Public Class clsDbLocal : Implements IDisposable
         Return FilesToProcess
     End Function
 
+    ''' <summary>
+    ''' Gets the listenerfiles.
+    ''' </summary>
+    ''' <returns>List(Of System.String).</returns>
     Public Function getListenerfiles() As List(Of String)
 
         Dim FilesToProcess As New List(Of String)
@@ -469,8 +571,8 @@ Public Class clsDbLocal : Implements IDisposable
     ''' </summary>
     ''' <param name="Level">The level.</param>
     ''' <param name="path">The path.</param>
-    ''' <param name="Dirs">The dirs.</param>
-    ''' <returns></returns>
+    ''' <param name="DirsOfWC">The dirs of wc.</param>
+    ''' <param name="WC">The wc.</param>
     Sub GetParentWC(Level As Integer, path As String, DirsOfWC As Dictionary(Of String, String), ByRef WC As String)
 
         If DirsOfWC.Keys.Contains(path) Then
@@ -494,6 +596,10 @@ Public Class clsDbLocal : Implements IDisposable
     End Sub
 
 
+    ''' <summary>
+    ''' Gets the listenerfiles identifier.
+    ''' </summary>
+    ''' <returns>List(Of System.String).</returns>
     Public Function getListenerfilesID() As List(Of String)
 
         Dim LConn As New SQLiteConnection()
@@ -523,6 +629,11 @@ Public Class clsDbLocal : Implements IDisposable
         Return FilesToProcess
     End Function
 
+    ''' <summary>
+    ''' Sets the listenerfile processed.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function setListenerfileProcessed(FQN As String) As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -554,6 +665,10 @@ Public Class clsDbLocal : Implements IDisposable
         Return bConnSet
     End Function
 
+    ''' <summary>
+    ''' Removes the listenerfile processed.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function removeListenerfileProcessed() As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -583,6 +698,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Removes the listenerfile processed.
+    ''' </summary>
+    ''' <param name="RowIDs">The row i ds.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function removeListenerfileProcessed(RowIDs As List(Of String)) As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -626,6 +746,10 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Listeners the remove processed.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ListenerRemoveProcessed() As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -652,6 +776,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Recursives the search.
+    ''' </summary>
+    ''' <param name="strDirectory">The string directory.</param>
+    ''' <param name="array">The array.</param>
     Private Sub RecursiveSearch(ByRef strDirectory As String, ByRef array As ArrayList)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -693,6 +822,9 @@ Public Class clsDbLocal : Implements IDisposable
         Next dirIter
     End Sub
 
+    ''' <summary>
+    ''' Allows an object to try to free resources and perform other cleanup operations before it is reclaimed by garbage collection.
+    ''' </summary>
     Protected Overloads Overrides Sub Finalize()
         MyBase.Finalize()
         'If gTraceFunctionCalls.Equals(1) Then
@@ -721,6 +853,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Sub 'Finalize
 
+    ''' <summary>
+    ''' Inventories the dir.
+    ''' </summary>
+    ''' <param name="DirName">Name of the dir.</param>
+    ''' <param name="bUseArchiveBit">if set to <c>true</c> [b use archive bit].</param>
     Sub InventoryDir(ByVal DirName As String, ByVal bUseArchiveBit As Boolean)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -737,6 +874,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Inventories the file.
+    ''' </summary>
+    ''' <param name="FileName">Name of the file.</param>
+    ''' <param name="FileHash">The file hash.</param>
     Sub InventoryFile(ByVal FileName As String, FileHash As String)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -757,6 +899,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the dir identifier.
+    ''' </summary>
+    ''' <param name="DirName">Name of the dir.</param>
+    ''' <returns>System.Int32.</returns>
     Function GetDirID(ByVal DirName As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -820,6 +967,12 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the dir identifier.
+    ''' </summary>
+    ''' <param name="DirName">Name of the dir.</param>
+    ''' <param name="UseArchiveBit">if set to <c>true</c> [use archive bit].</param>
+    ''' <returns>System.Int32.</returns>
     Function GetDirID(ByVal DirName As String, ByRef UseArchiveBit As Boolean) As Integer
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -877,6 +1030,12 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Adds the dir.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="bUseArchiveBit">if set to <c>true</c> [b use archive bit].</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function addDir(ByVal FQN As String, ByVal bUseArchiveBit As Boolean) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -931,6 +1090,10 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Resets the extension.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function resetExtension() As Boolean
 
         Dim B As Boolean = True
@@ -972,6 +1135,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Adds the extension.
+    ''' </summary>
+    ''' <param name="AllowedExts">The allowed exts.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function addExtension(AllowedExts As List(Of String)) As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -1025,6 +1193,11 @@ Public Class clsDbLocal : Implements IDisposable
 
 
 
+    ''' <summary>
+    ''' Deletes the dir.
+    ''' </summary>
+    ''' <param name="DirName">Name of the dir.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function delDir(ByVal DirName As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1067,6 +1240,12 @@ Public Class clsDbLocal : Implements IDisposable
     End Function
 
 
+    ''' <summary>
+    ''' Gets the file identifier.
+    ''' </summary>
+    ''' <param name="FileName">Name of the file.</param>
+    ''' <param name="FileHash">The file hash.</param>
+    ''' <returns>System.Int32.</returns>
     Function GetFileID(ByVal FileName As String, FileHash As String) As Integer
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1108,6 +1287,12 @@ Public Class clsDbLocal : Implements IDisposable
         Return FileID
     End Function
 
+    ''' <summary>
+    ''' Adds the file.
+    ''' </summary>
+    ''' <param name="FileName">Name of the file.</param>
+    ''' <param name="FileHash">The file hash.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function addFile(ByVal FileName As String, FileHash As String) As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -1161,6 +1346,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Adds the directory.
+    ''' </summary>
+    ''' <param name="DictOfDirs">The dictionary of dirs.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function addDirectory(ByVal DictOfDirs As Dictionary(Of String, Integer)) As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -1229,6 +1419,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Adds the file.
+    ''' </summary>
+    ''' <param name="DictOfFiles">The dictionary of files.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function addFile(ByVal DictOfFiles As Dictionary(Of String, Integer)) As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -1297,6 +1492,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Adds the inventory.
+    ''' </summary>
+    ''' <param name="DictLWD">The dictionary LWD.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function addInventory(ByVal DictLWD As Dictionary(Of String, String)) As Boolean
 
         Dim DictDirID As Dictionary(Of String, Integer) = LoadDirs()
@@ -1400,6 +1600,12 @@ Public Class clsDbLocal : Implements IDisposable
     End Function
 
 
+    ''' <summary>
+    ''' Adds the contact.
+    ''' </summary>
+    ''' <param name="FullName">The full name.</param>
+    ''' <param name="Email1Address">The email1 address.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function addContact(ByVal FullName As String, ByVal Email1Address As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1440,6 +1646,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Files the exists.
+    ''' </summary>
+    ''' <param name="FileName">Name of the file.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function fileExists(ByVal FileName As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1474,6 +1685,12 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Contacts the exists.
+    ''' </summary>
+    ''' <param name="FullName">The full name.</param>
+    ''' <param name="Email1Address">The email1 address.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function contactExists(ByVal FullName As String, ByVal Email1Address As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1513,6 +1730,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Deletes the file.
+    ''' </summary>
+    ''' <param name="FileName">Name of the file.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function delFile(ByVal FileName As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1551,6 +1773,12 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Adds the inventory force.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="bArchiveBit">if set to <c>true</c> [b archive bit].</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function addInventoryForce(ByVal FQN As String, ByVal bArchiveBit As Boolean) As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -1649,6 +1877,9 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Rebuilds the database.
+    ''' </summary>
     Public Sub RebuildDB()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1824,6 +2055,10 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Applies the SQL.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
     Sub ApplySQL(S As String)
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -1857,6 +2092,16 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Adds the inventory.
+    ''' </summary>
+    ''' <param name="DirID">The dir identifier.</param>
+    ''' <param name="FileID">The file identifier.</param>
+    ''' <param name="FileSize">Size of the file.</param>
+    ''' <param name="LastUpdate">The last update.</param>
+    ''' <param name="ArchiveBit">if set to <c>true</c> [archive bit].</param>
+    ''' <param name="FileHash">The file hash.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function addInventory(ByVal DirID As Integer,
                           ByVal FileID As Integer,
                           ByVal FileSize As Long,
@@ -1921,6 +2166,12 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Deletes the inventory.
+    ''' </summary>
+    ''' <param name="DirID">The dir identifier.</param>
+    ''' <param name="FileID">The file identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function delInventory(ByVal DirID As Integer,
                           ByVal FileID As Integer) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
@@ -1968,6 +2219,13 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Inventories the exists.
+    ''' </summary>
+    ''' <param name="DirID">The dir identifier.</param>
+    ''' <param name="FileID">The file identifier.</param>
+    ''' <param name="CRC">The CRC.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function InventoryExists(ByVal DirID As Integer, ByVal FileID As Integer, CRC As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2023,6 +2281,13 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Inventories the hash compare.
+    ''' </summary>
+    ''' <param name="DirID">The dir identifier.</param>
+    ''' <param name="FileID">The file identifier.</param>
+    ''' <param name="CurrHash">The curr hash.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function InventoryHashCompare(ByVal DirID As Integer,
                           ByVal FileID As Integer, ByVal CurrHash As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
@@ -2083,6 +2348,13 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Sets the inventory archive.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="ArchiveFlag">if set to <c>true</c> [archive flag].</param>
+    ''' <param name="FileHash">The file hash.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function setInventoryArchive(ByVal FQN As String, ByVal ArchiveFlag As Boolean, FileHash As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2164,6 +2436,13 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Sets the inventory archive.
+    ''' </summary>
+    ''' <param name="DirID">The dir identifier.</param>
+    ''' <param name="FileID">The file identifier.</param>
+    ''' <param name="ArchiveFlag">if set to <c>true</c> [archive flag].</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function setInventoryArchive(ByVal DirID As Integer, ByVal FileID As Integer, ByVal ArchiveFlag As Boolean) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2216,12 +2495,22 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Fixes the single quotes.
+    ''' </summary>
+    ''' <param name="str">The string.</param>
+    ''' <returns>System.String.</returns>
     Function fixSingleQuotes(str As String) As String
         str = str.Replace("''", "'")
         str = str.Replace("'", "''")
         Return str
     End Function
 
+    ''' <summary>
+    ''' Updates the file archive information last archive date.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function updateFileArchiveInfoLastArchiveDate(FQN As String) As Boolean
 
         FQN = FQN.Replace("''", "'")
@@ -2253,6 +2542,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Cks the file exsists.
+    ''' </summary>
+    ''' <param name="fqn">The FQN.</param>
+    ''' <returns>System.Int32.</returns>
     Function ckFileExsists(fqn As String) As Integer
 
         Dim I As Integer = 0
@@ -2289,6 +2583,11 @@ Public Class clsDbLocal : Implements IDisposable
         Return I
     End Function
 
+    ''' <summary>
+    ''' Adds the file archive information.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function AddFileArchiveInfo(FQN As String) As Boolean
 
         FQN = FQN.Replace("''", "'")
@@ -2339,6 +2638,10 @@ Public Class clsDbLocal : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the sq lite files.
+    ''' </summary>
+    ''' <returns>Dictionary(Of System.String, System.String).</returns>
     Function getSQLiteFiles() As Dictionary(Of String, String)
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -2420,6 +2723,11 @@ Public Class clsDbLocal : Implements IDisposable
     End Function
 
 
+    ''' <summary>
+    ''' Gets the file archive information.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>Dictionary(Of System.String, System.String).</returns>
     Function getFileArchiveInfo(FQN As String) As Dictionary(Of String, String)
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -2500,6 +2808,13 @@ Public Class clsDbLocal : Implements IDisposable
         Return INFO
     End Function
 
+    ''' <summary>
+    ''' Cks the needs archive.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="SkipIfArchiveBitOn">if set to <c>true</c> [skip if archive bit on].</param>
+    ''' <param name="FileHash">The file hash.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ckNeedsArchive(ByVal FQN As String, ByVal SkipIfArchiveBitOn As Boolean, ByRef FileHash As String) As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -2638,6 +2953,9 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Truncates the dirs.
+    ''' </summary>
     Sub truncateDirs()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2658,6 +2976,9 @@ Public Class clsDbLocal : Implements IDisposable
         End Using
     End Sub
 
+    ''' <summary>
+    ''' Truncates the dir files.
+    ''' </summary>
     Sub truncateDirFiles()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2678,6 +2999,9 @@ Public Class clsDbLocal : Implements IDisposable
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Truncates the contacts.
+    ''' </summary>
     Sub truncateContacts()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2698,6 +3022,9 @@ Public Class clsDbLocal : Implements IDisposable
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Truncates the exchange.
+    ''' </summary>
     Sub truncateExchange()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2724,6 +3051,9 @@ Public Class clsDbLocal : Implements IDisposable
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Truncates the outlook.
+    ''' </summary>
     Sub truncateOutlook()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2750,6 +3080,9 @@ Public Class clsDbLocal : Implements IDisposable
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Truncates the files.
+    ''' </summary>
     Sub truncateFiles()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2777,6 +3110,9 @@ Public Class clsDbLocal : Implements IDisposable
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Truncates the inventory.
+    ''' </summary>
     Sub truncateInventory()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2797,6 +3133,9 @@ Public Class clsDbLocal : Implements IDisposable
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Backups the dir table.
+    ''' </summary>
     Sub BackupDirTbl()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2859,6 +3198,9 @@ Public Class clsDbLocal : Implements IDisposable
 
 
 
+    ''' <summary>
+    ''' Backs up sq lite.
+    ''' </summary>
     Sub BackUpSQLite()
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -2886,6 +3228,9 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Backups the sq lite database.
+    ''' </summary>
     Sub BackupSQLiteDB()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2903,6 +3248,9 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Restores the sq lite.
+    ''' </summary>
     Sub RestoreSQLite()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2920,6 +3268,9 @@ Public Class clsDbLocal : Implements IDisposable
     End Sub
 
 
+    ''' <summary>
+    ''' Backups the outlook table.
+    ''' </summary>
     Sub BackupOutlookTbl()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2977,6 +3328,9 @@ Public Class clsDbLocal : Implements IDisposable
         GC.WaitForPendingFinalizers()
     End Sub
 
+    ''' <summary>
+    ''' Backups the exchange table.
+    ''' </summary>
     Sub BackupExchangeTbl()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3041,6 +3395,11 @@ Public Class clsDbLocal : Implements IDisposable
         GC.WaitForPendingFinalizers()
     End Sub
 
+    ''' <summary>
+    ''' Adds the outlook.
+    ''' </summary>
+    ''' <param name="sKey">The s key.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function addOutlook(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3082,6 +3441,11 @@ Public Class clsDbLocal : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Adds the exchange.
+    ''' </summary>
+    ''' <param name="sKey">The s key.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function addExchange(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3117,6 +3481,11 @@ Public Class clsDbLocal : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Outlooks the exists.
+    ''' </summary>
+    ''' <param name="sKey">The s key.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function OutlookExists(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3177,6 +3546,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Exchanges the exists.
+    ''' </summary>
+    ''' <param name="sKey">The s key.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ExchangeExists(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3239,6 +3613,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Marks the exchange found.
+    ''' </summary>
+    ''' <param name="sKey">The s key.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function MarkExchangeFound(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3280,6 +3659,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Marks the outlook found.
+    ''' </summary>
+    ''' <param name="sKey">The s key.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function MarkOutlookFound(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3320,6 +3704,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Deletes the outlook.
+    ''' </summary>
+    ''' <param name="sKey">The s key.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function delOutlook(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3361,6 +3750,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Deletes the exchange.
+    ''' </summary>
+    ''' <param name="sKey">The s key.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function delExchange(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3402,6 +3796,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Deletes the outlook missing.
+    ''' </summary>
+    ''' <param name="sKey">The s key.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function delOutlookMissing(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3440,6 +3839,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Deletes the exchange missing.
+    ''' </summary>
+    ''' <param name="sKey">The s key.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function delExchangeMissing(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3479,6 +3883,10 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Sets the outlook missing.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function setOutlookMissing() As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3517,6 +3925,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Sets the exchange missing.
+    ''' </summary>
+    ''' <param name="sKey">The s key.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function setExchangeMissing(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3554,6 +3967,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Sets the outlook key found.
+    ''' </summary>
+    ''' <param name="sKey">The s key.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function setOutlookKeyFound(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3591,6 +4009,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Sets the exchange key found.
+    ''' </summary>
+    ''' <param name="sKey">The s key.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function setExchangeKeyFound(ByVal sKey As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3624,6 +4047,10 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Loads the exchange keys.
+    ''' </summary>
+    ''' <param name="L">The l.</param>
     Sub LoadExchangeKeys(ByRef L As SortedList(Of String, String))
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3675,6 +4102,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Adds the listener.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function addListener(ByVal FQN As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3705,6 +4137,10 @@ Public Class clsDbLocal : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Deletes the listeners processed.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function DelListenersProcessed() As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3736,6 +4172,11 @@ Public Class clsDbLocal : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Marks the listeners processed.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function MarkListenersProcessed(ByVal FQN As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3768,6 +4209,11 @@ Public Class clsDbLocal : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Removes the listener file.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function removeListenerFile(ByVal FQN As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3799,6 +4245,10 @@ Public Class clsDbLocal : Implements IDisposable
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the listener files.
+    ''' </summary>
+    ''' <param name="L">The l.</param>
     Sub getListenerFiles(ByRef L As SortedList(Of String, Integer))
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -3844,6 +4294,10 @@ Public Class clsDbLocal : Implements IDisposable
         GC.WaitForPendingFinalizers()
     End Sub
 
+    ''' <summary>
+    ''' Actives the listener files.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ActiveListenerFiles() As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3902,6 +4356,13 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Adds the zip file.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="ParentGuid">The parent unique identifier.</param>
+    ''' <param name="bThisIsAnEmail">if set to <c>true</c> [b this is an email].</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function addZipFile(ByVal FQN As String, ByVal ParentGuid As String, ByVal bThisIsAnEmail As Boolean) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3965,6 +4426,11 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Sets the zip file processed.
+    ''' </summary>
+    ''' <param name="FileName">Name of the file.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function setZipFileProcessed(ByVal FileName As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -4006,6 +4472,12 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Sets the zip NBR of files.
+    ''' </summary>
+    ''' <param name="FileName">Name of the file.</param>
+    ''' <param name="NumberOfZipFiles">The number of zip files.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function setZipNbrOfFiles(ByVal FileName As String, ByVal NumberOfZipFiles As Integer) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -4042,6 +4514,12 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Sets the zip in work.
+    ''' </summary>
+    ''' <param name="FileName">Name of the file.</param>
+    ''' <param name="NumberOfZipFiles">The number of zip files.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function setZipInWork(ByVal FileName As String, ByVal NumberOfZipFiles As Integer) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -4079,6 +4557,10 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Cleans the zip files.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function cleanZipFiles() As Boolean
 
         Dim B As Boolean = True
@@ -4128,6 +4610,10 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Zeroizes the zip files.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function zeroizeZipFiles() As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -4164,6 +4650,10 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Gets the zip files.
+    ''' </summary>
+    ''' <param name="L">The l.</param>
     Sub getZipFiles(ByRef L As SortedList(Of String, Integer))
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -4216,6 +4706,10 @@ Public Class clsDbLocal : Implements IDisposable
         GC.WaitForPendingFinalizers()
     End Sub
 
+    ''' <summary>
+    ''' Gets the ce email identifiers.
+    ''' </summary>
+    ''' <param name="L">The l.</param>
     Sub getCE_EmailIdentifiers(ByRef L As SortedList)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -4277,6 +4771,10 @@ Public Class clsDbLocal : Implements IDisposable
         GC.WaitForPendingFinalizers()
     End Sub
 
+    ''' <summary>
+    ''' Sets the listener connection.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function setListenerConn() As Boolean
 
         If Not File.Exists(SQLiteListenerDB) Then
@@ -4308,7 +4806,7 @@ Public Class clsDbLocal : Implements IDisposable
     ''' <summary>
     ''' Sets the sl connection.
     ''' </summary>
-    ''' <returns></returns>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function setSLConn() As Boolean
 
         Dim bb As Boolean = True
@@ -4341,6 +4839,10 @@ Public Class clsDbLocal : Implements IDisposable
         Return bb
     End Function
 
+    ''' <summary>
+    ''' Gets the sl connection.
+    ''' </summary>
+    ''' <returns>System.Object.</returns>
     Public Function getSLConn() As Object
 
         Dim NewConn As New SQLiteConnection()
@@ -4361,6 +4863,10 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Closes the sl connection.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function closeSLConn() As Boolean
         Dim bb As Boolean = False
 
@@ -4381,9 +4887,16 @@ Public Class clsDbLocal : Implements IDisposable
 
 
 #Region "IDisposable Support"
+    ''' <summary>
+    ''' The disposed value
+    ''' </summary>
     Private disposedValue As Boolean ' To detect redundant calls
 
     ' IDisposable
+    ''' <summary>
+    ''' Releases unmanaged and - optionally - managed resources.
+    ''' </summary>
+    ''' <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
     Protected Overridable Sub Dispose(disposing As Boolean)
         If Not disposedValue Then
             If disposing Then
@@ -4398,6 +4911,9 @@ Public Class clsDbLocal : Implements IDisposable
         disposedValue = True
     End Sub
 
+    ''' <summary>
+    ''' Gets the use last archive date active.
+    ''' </summary>
     Sub getUseLastArchiveDateActive()
 
         Dim S As String = "select cast(LastArchiveDate as text), LastArchiveDateActive from LastArchive"
@@ -4456,6 +4972,9 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Sets the use last archive date active.
+    ''' </summary>
     Sub setUseLastArchiveDateActive()
 
         Dim S As String = "update LastArchive set LastArchiveDate = '" + Now + "';"
@@ -4479,6 +4998,9 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Turns the off use last archive date active.
+    ''' </summary>
     Sub TurnOffUseLastArchiveDateActive()
 
         Dim S As String = "update LastArchive set LastArchiveDateActive = '0' "
@@ -4504,6 +5026,10 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the count use last archive date active.
+    ''' </summary>
+    ''' <returns>System.Int32.</returns>
     Function getCountUseLastArchiveDateActive() As Integer
 
         Dim I As Integer
@@ -4542,6 +5068,9 @@ Public Class clsDbLocal : Implements IDisposable
         Return I
     End Function
 
+    ''' <summary>
+    ''' Sets the first use last archive date active.
+    ''' </summary>
     Sub setFirstUseLastArchiveDateActive()
 
         Dim I As Integer = getCountUseLastArchiveDateActive()
@@ -4570,6 +5099,9 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Zeroizes the last archive date.
+    ''' </summary>
     Sub ZeroizeLastArchiveDate()
         Dim S As String = "Delete from LastArchive "
 
@@ -4589,6 +5121,10 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Initializes the use last archive date active.
+    ''' </summary>
+    ''' <param name="InitDate">The initialize date.</param>
     Sub InitUseLastArchiveDateActive(InitDate As String)
 
         Dim today As DateTime = DateTime.Now
@@ -4624,6 +5160,9 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Turns the on use last archive date active.
+    ''' </summary>
     Sub TurnOnUseLastArchiveDateActive()
 
         Dim S As String = "update LastArchive set LastArchiveDateActive = '1' "
@@ -4649,6 +5188,9 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Validates the databases.
+    ''' </summary>
     Sub ValidateDatabases()
 
         Dim SQLiteListenerDB As String = System.Configuration.ConfigurationManager.AppSettings("SQLiteListenerDB")
@@ -4700,6 +5242,10 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the file inventory.
+    ''' </summary>
+    ''' <returns>Dictionary(Of System.String, DateTime).</returns>
     Function getFileInventory() As Dictionary(Of String, DateTime)
 
         Dim DICT As New Dictionary(Of String, DateTime)
@@ -4735,6 +5281,10 @@ Public Class clsDbLocal : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Loads the dirs.
+    ''' </summary>
+    ''' <returns>Dictionary(Of System.String, System.Int32).</returns>
     Function LoadDirs() As Dictionary(Of String, Integer)
 
         Dim DIRS As New Dictionary(Of String, Integer)
@@ -4772,7 +5322,7 @@ Public Class clsDbLocal : Implements IDisposable
     ''' <summary>
     ''' Loads the files from the SQLite database.
     ''' </summary>
-    ''' <returns></returns>
+    ''' <returns>Dictionary(Of System.String, System.Int32).</returns>
     Function LoadFiles() As Dictionary(Of String, Integer)
 
         Dim FILES As New Dictionary(Of String, Integer)
@@ -4816,6 +5366,9 @@ Public Class clsDbLocal : Implements IDisposable
     'End Sub
 
     ' This code added by Visual Basic to correctly implement the disposable pattern.
+    ''' <summary>
+    ''' Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+    ''' </summary>
     Public Sub Dispose() Implements IDisposable.Dispose
         ' Do not change this code.  Put cleanup code in Dispose(disposing As Boolean) above.
         Dispose(True)

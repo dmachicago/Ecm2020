@@ -1,3 +1,16 @@
+' ***********************************************************************
+' Assembly         : EcmArchiver
+' Author           : wdale
+' Created          : 12-15-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 12-17-2020
+' ***********************************************************************
+' <copyright file="clsZipFiles.vb" company="ECM Library">
+'     Copyright © ECM Library 2011, all rights reserved
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
 #Const RemoteOcr = 0
 
 Imports System.Data.SqlClient
@@ -11,27 +24,79 @@ Imports System.Configuration.ConfigurationSettings
 Imports System.Security.Principal
 Imports ECMEncryption
 
+''' <summary>
+''' Class clsZipFiles.
+''' </summary>
 Public Class clsZipFiles
 
+    ''' <summary>
+    ''' The total files evaluated
+    ''' </summary>
     Dim TotalFilesEvaluated As Integer = 0
 
+    ''' <summary>
+    ''' The zip
+    ''' </summary>
     Dim WithEvents zip As New Chilkat.Zip
+    ''' <summary>
+    ''' The dma
+    ''' </summary>
     Dim DMA As New clsDma
+    ''' <summary>
+    ''' The utility
+    ''' </summary>
     Dim UTIL As New clsUtility
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Dim LOG As New clsLogging
-    Dim ENC As new ECMEncrypt
+    ''' <summary>
+    ''' The enc
+    ''' </summary>
+    Dim ENC As New ECMEncrypt
+    ''' <summary>
+    ''' The dba
+    ''' </summary>
     Dim DBA As New clsDbARCHS
 
+    ''' <summary>
+    ''' The iso
+    ''' </summary>
     Dim ISO As New clsIsolatedStorage
+    ''' <summary>
+    ''' The ZDS
+    ''' </summary>
     Dim ZDS As New clsZIPDATASOURCE
+    ''' <summary>
+    ''' The dbarch
+    ''' </summary>
     Dim DBARCH As New clsDatabaseARCH
+    ''' <summary>
+    ''' The unasgnd
+    ''' </summary>
     Dim UNASGND As New clsAVAILFILETYPESUNDEFINED
+    ''' <summary>
+    ''' The srcattr
+    ''' </summary>
     Dim SRCATTR As New clsSOURCEATTRIBUTE
     'Dim CMODI As New clsModi
+    ''' <summary>
+    ''' The ddebug
+    ''' </summary>
     Dim ddebug As Boolean = True
+    ''' <summary>
+    ''' The excluded types
+    ''' </summary>
     Public ExcludedTypes As New ArrayList
+    ''' <summary>
+    ''' The included types
+    ''' </summary>
     Public IncludedTypes As New ArrayList
 
+    ''' <summary>
+    ''' Gets the zip password.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function getZipPassword() As String
         Dim S As String = ""
         S += "X"
@@ -43,6 +108,20 @@ Public Class clsZipFiles
         Return S
     End Function
 
+    ''' <summary>
+    ''' Uploads the zip file.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="ParentZipGuid">The parent zip unique identifier.</param>
+    ''' <param name="SkipIfAlreadyArchived">if set to <c>true</c> [skip if already archived].</param>
+    ''' <param name="bThisIsAnEmail">if set to <c>true</c> [b this is an email].</param>
+    ''' <param name="RetentionCode">The retention code.</param>
+    ''' <param name="isPublic">The is public.</param>
+    ''' <param name="StackLevel">The stack level.</param>
+    ''' <param name="ListOfFiles">The list of files.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UploadZipFile(ByVal UID As String,
                                   ByVal MachineID As String,
                                   ByVal FQN As String,
@@ -223,6 +302,19 @@ Public Class clsZipFiles
 
     End Function
 
+    ''' <summary>
+    ''' Explodes the Zipfile and loads all of its files.
+    ''' </summary>
+    ''' <param name="ZipFQN">The zip FQN.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <param name="ZipProcessingDir">The zip processing dir.</param>
+    ''' <param name="ParentSourceGuid">The parent source unique identifier.</param>
+    ''' <param name="bThisIsAnEmail">if set to <c>true</c> [b this is an email].</param>
+    ''' <param name="RetentionCode">The retention code.</param>
+    ''' <param name="isPublic">The is public.</param>
+    ''' <param name="StackLevel">The stack level.</param>
+    ''' <param name="ListOfFiles">The list of files.</param>
     Sub ExplodeAndLoad(ByVal ZipFQN As String,
                         ByVal UID As String,
                         ByVal MachineID As String,
@@ -459,6 +551,18 @@ NextFile:
     End Sub
 
 
+    ''' <summary>
+    ''' Unzips the content of the and load.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <param name="ZipProcessingDir">The zip processing dir.</param>
+    ''' <param name="ParentSourceGuid">The parent source unique identifier.</param>
+    ''' <param name="bThisIsAnEmail">if set to <c>true</c> [b this is an email].</param>
+    ''' <param name="RetentionCode">The retention code.</param>
+    ''' <param name="isPublic">The is public.</param>
+    ''' <param name="StackLevel">The stack level.</param>
+    ''' <param name="ListOfFiles">The list of files.</param>
     Sub UnzipAndLoadContent(ByVal UID As String,
                             ByVal MachineID As String,
                             ByVal ZipProcessingDir As String,
@@ -714,6 +818,10 @@ NextFile:
         frmMain.SB2.Text = ""
     End Sub
 
+    ''' <summary>
+    ''' Zeroizes the directory.
+    ''' </summary>
+    ''' <param name="DirectoryFQN">The directory FQN.</param>
     Sub ZeroizeDirectory(ByVal DirectoryFQN As String)
         Dim strFileSize As String = ""
         Dim di As New IO.DirectoryInfo(DirectoryFQN$)
@@ -725,6 +833,10 @@ NextFile:
         Next
     End Sub
 
+    ''' <summary>
+    ''' Validates the ext exists.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
     Sub ValidateExtExists(ByVal FQN As String)
         Dim ATYPE As New clsATTACHMENTTYPE
         Dim FileExt$ = "." + UTIL.getFileSuffix(FQN$)
@@ -737,6 +849,16 @@ NextFile:
         ATYPE = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Unzips the and load email attachment.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <param name="TemporaryZipDirectory">The temporary zip directory.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="ZipFileFQN">The zip file FQN.</param>
+    ''' <param name="StackLevel">The stack level.</param>
+    ''' <param name="ListOfFiles">The list of files.</param>
     Sub UnzipAndLoadEmailAttachment(ByVal UID As String,
                                     ByVal MachineID As String,
                                     ByVal TemporaryZipDirectory As String,
@@ -822,6 +944,18 @@ SkipToNextFile:
         Application.DoEvents()
     End Sub
 
+    ''' <summary>
+    ''' Processes the email zip file.
+    ''' </summary>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="OwnerGCurrUserID">The owner g curr user identifier.</param>
+    ''' <param name="SkipIfAlreadyArchived">if set to <c>true</c> [skip if already archived].</param>
+    ''' <param name="ZipFileFQN">The zip file FQN.</param>
+    ''' <param name="StackLevel">The stack level.</param>
+    ''' <param name="ListOfFiles">The list of files.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ProcessEmailZipFile(ByVal MachineID As String,
                                         ByVal EmailGuid As String,
                                         ByVal FQN As String,
@@ -932,12 +1066,11 @@ SkipToNextFile:
     End Function
 
     ''' <summary>
-    ''' This is a recursive routine that takes the top direcotry as the starting path and 
+    ''' This is a recursive routine that takes the top direcotry as the starting path and
     ''' will return all directories and subdirectories of subdirectoriDB.
     ''' </summary>
     ''' <param name="StartPath">The top level directory to search</param>
     ''' <param name="DirectoryList">An array list object that will be populated with all subdirectoriDB.</param>
-    ''' <remarks></remarks>
     Sub GetDirectories(ByVal StartPath As String, ByRef DirectoryList As ArrayList)
         Try
             Dim Dirs() As String = Directory.GetDirectories(StartPath)
@@ -958,7 +1091,6 @@ SkipToNextFile:
     ''' and then deletes each file within the directory.
     ''' </summary>
     ''' <param name="DirPath">Top level directory to delete.</param>
-    ''' <remarks></remarks>
     Sub RemoveAllDirFiles(ByVal DirPath As String)
         Dim DirList As New ArrayList
         GetDirectories(DirPath$, DirList)
@@ -982,6 +1114,10 @@ SkipToNextFile:
 
         Next
     End Sub
+    ''' <summary>
+    ''' Gets the un zip dir.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function GetUnZipDir() As String
 
         Dim dirPath As String = UTIL.getTempProcessingDir
@@ -996,6 +1132,10 @@ SkipToNextFile:
         Return dirPath
 
     End Function
+    ''' <summary>
+    ''' Gets the email un zip dir.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function GetEmailUnZipDir() As String
 
         Dim dirPath As String = UTIL.getTempProcessingDir
@@ -1050,6 +1190,12 @@ SkipToNextFile:
         Return dirPath
     End Function
 
+    ''' <summary>
+    ''' Uns the zip.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="ZipProcessingDir">The zip processing dir.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function UnZip(ByVal FQN As String, ByVal ZipProcessingDir As String) As Boolean
 
         Dim ExplodeZipFile As String = System.Configuration.ConfigurationManager.AppSettings("ExplodeZipFile")
@@ -1105,6 +1251,11 @@ SkipToNextFile:
 
         Return B
     End Function
+    ''' <summary>
+    ''' Uns the rar.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function UnRar(ByVal FQN As String) As Boolean
 
 
@@ -1132,6 +1283,12 @@ SkipToNextFile:
 
     End Function
 
+    ''' <summary>
+    ''' Un7zips the specified FQN.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="UnzipDir">The unzip dir.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function Un7zip(ByVal FQN As String, ByRef UnzipDir As String) As Boolean
 
         Dim success As Boolean = True
@@ -1171,6 +1328,11 @@ SkipToNextFile:
         Return success
 
     End Function
+    ''' <summary>
+    ''' Untars the g zarchive.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function UntarGZarchive(ByVal FQN As String) As Boolean
 
 
@@ -1211,6 +1373,11 @@ SkipToNextFile:
     End Function
 
 
+    ''' <summary>
+    ''' Untars the zarchive.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function UntarZarchive(ByVal FQN As String) As Boolean
 
 
@@ -1247,6 +1414,11 @@ SkipToNextFile:
     End Function
 
 
+    ''' <summary>
+    ''' Uns the tar archive.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function UnTarArchive(ByVal FQN As String) As Boolean
         Try
             Dim dirPath As String = GetUnZipDir()
@@ -1287,6 +1459,11 @@ SkipToNextFile:
 
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is zip file] [the specified FQN].
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if [is zip file] [the specified FQN]; otherwise, <c>false</c>.</returns>
     Public Function isZipFile(ByVal FQN As String) As Boolean
 
         Dim fExt$ = UTIL.getFileSuffix(FQN).ToUpper
@@ -1352,6 +1529,13 @@ SkipToNextFile:
     End Function
 
 
+    ''' <summary>
+    ''' Inserts the source attribute.
+    ''' </summary>
+    ''' <param name="SGCurrUserID">The sg curr user identifier.</param>
+    ''' <param name="aName">a name.</param>
+    ''' <param name="aVal">a value.</param>
+    ''' <param name="OriginalFileType">Type of the original file.</param>
     Sub InsertSrcAttrib(ByVal SGCurrUserID As String, ByVal aName As String, ByVal aVal As String, ByVal OriginalFileType As String)
         SRCATTR.setSourceguid(SGCurrUserID)
         SRCATTR.setAttributename(aName)
@@ -1368,6 +1552,12 @@ SkipToNextFile:
         End If
 
     End Sub
+    ''' <summary>
+    ''' Gets the word document metadata.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="SourceGCurrUserID">The source g curr user identifier.</param>
+    ''' <param name="OriginalFileType">Type of the original file.</param>
     Sub GetWordDocMetadata(ByVal FQN As String, ByVal SourceGCurrUserID As String, ByVal OriginalFileType As String)
 
 
@@ -1387,6 +1577,12 @@ SkipToNextFile:
 
 
     End Sub
+    ''' <summary>
+    ''' Gets the excel meta data.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="SourceGCurrUserID">The source g curr user identifier.</param>
+    ''' <param name="OriginalFileType">Type of the original file.</param>
     Sub GetExcelMetaData(ByVal FQN As String, ByVal SourceGCurrUserID As String, ByVal OriginalFileType As String)
 
 
@@ -1406,6 +1602,11 @@ SkipToNextFile:
 
 
     End Sub
+    ''' <summary>
+    ''' Determines whether [is ext included] [the specified f ext].
+    ''' </summary>
+    ''' <param name="fExt">The f ext.</param>
+    ''' <returns><c>true</c> if [is ext included] [the specified f ext]; otherwise, <c>false</c>.</returns>
     Function isExtIncluded(ByVal fExt As String) As Boolean
 
 
@@ -1424,6 +1625,11 @@ SkipToNextFile:
 
 
     End Function
+    ''' <summary>
+    ''' Determines whether [is ext excluded] [the specified f ext].
+    ''' </summary>
+    ''' <param name="fExt">The f ext.</param>
+    ''' <returns><c>true</c> if [is ext excluded] [the specified f ext]; otherwise, <c>false</c>.</returns>
     Function isExtExcluded(ByVal fExt As String) As Boolean
 
 
@@ -1513,6 +1719,13 @@ SkipToNextFile:
     '    Return True
     'End Function
 
+    ''' <summary>
+    ''' Unzips the and load email attachment.
+    ''' </summary>
+    ''' <param name="DirectoryFQN">The directory FQN.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="AttachmentName">Name of the attachment.</param>
+    ''' <param name="AttachmentsLoaded">if set to <c>true</c> [attachments loaded].</param>
     Sub UnzipAndLoadEmailAttachment(ByVal DirectoryFQN As String, ByVal EmailGuid As String, ByVal AttachmentName As String, ByRef AttachmentsLoaded As Boolean)
 
         Dim ExplodeEmailZip As String = DBARCH.getSystemParm("ExplodeEmailZip")

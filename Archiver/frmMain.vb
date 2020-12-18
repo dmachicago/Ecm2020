@@ -1,3 +1,16 @@
+' ***********************************************************************
+' Assembly         : EcmArchiver
+' Author           : wdale
+' Created          : 12-15-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 12-17-2020
+' ***********************************************************************
+' <copyright file="frmMain.vb" company="ECM Library">
+'     Copyright © ECM Library 2011, all rights reserved
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
 #Const RemoteOcr = 0
 
 Imports ECMEncryption
@@ -15,108 +28,358 @@ Imports System.Security.Permissions
 'Imports Microsoft.Data.Sqlite
 Imports System.Data.SQLite
 
+''' <summary>
+''' Class frmMain.
+''' Implements the <see cref="System.Windows.Forms.Form" />
+''' Implements the <see cref="System.IDisposable" />
+''' </summary>
+''' <seealso cref="System.Windows.Forms.Form" />
+''' <seealso cref="System.IDisposable" />
 Public Class frmMain : Implements IDisposable
 
     'Dim ProxySearch As New SVCSearch.Service1Client
     'Dim ProxyArchive As New SVCCLCArchive.Service1Client
     'Dim ProxyFS As New SVCFS.Service1Client
 
+    ''' <summary>
+    ''' The graphic dictionary
+    ''' </summary>
     Public GraphicDict As New List(Of String)
+    ''' <summary>
+    ''' The zip dictionary
+    ''' </summary>
     Public ZipDict As New Dictionary(Of String, String)
+    ''' <summary>
+    ''' The allow duplicate files
+    ''' </summary>
     Public AllowDuplicateFiles As String = System.Configuration.ConfigurationManager.AppSettings("AllowDuplicateFiles")
+    ''' <summary>
+    ''' The logging path
+    ''' </summary>
     Dim LoggingPath As String = System.Configuration.ConfigurationManager.AppSettings("LoggingPath")
 
+    ''' <summary>
+    ''' The traceflow
+    ''' </summary>
     Dim TRACEFLOW As String = System.Configuration.ConfigurationManager.AppSettings("TRACEFLOW")
+    ''' <summary>
+    ''' The verify embedded zip files
+    ''' </summary>
     Dim VerifyEmbeddedZipFiles As String = ""
+    ''' <summary>
+    ''' The skip permission
+    ''' </summary>
     Dim SkipPermission As Boolean = False
+    ''' <summary>
+    ''' The local database back up complete
+    ''' </summary>
     Dim LocalDBBackUpComplete As Boolean = False
 
+    ''' <summary>
+    ''' The directory list
+    ''' </summary>
     Dim DirectoryList As New Dictionary(Of String, String)
 
+    ''' <summary>
+    ''' The b use remote server
+    ''' </summary>
     Dim bUseRemoteServer As Boolean = False
+    ''' <summary>
+    ''' The machine i dcurr
+    ''' </summary>
     Dim MachineIDcurr As String = ""
+    ''' <summary>
+    ''' The UI dcurr
+    ''' </summary>
     Dim UIDcurr As String = ""
+    ''' <summary>
+    ''' The arguments passed in
+    ''' </summary>
     Dim ArgsPassedIn As Boolean = False
+    ''' <summary>
+    ''' The gb email width
+    ''' </summary>
     Dim gbEmailWidth As Integer = 0
+    ''' <summary>
+    ''' The arguments
+    ''' </summary>
     Dim args As String() = Nothing
 
+    ''' <summary>
+    ''' The si
+    ''' </summary>
     Dim SI As New clsSAVEDITEMS
+    ''' <summary>
+    ''' The iso
+    ''' </summary>
     Dim ISO As New clsIsolatedStorage
+    ''' <summary>
+    ''' The database local
+    ''' </summary>
     Dim DBLocal As New clsDbLocal
+    ''' <summary>
+    ''' The reg
+    ''' </summary>
     Dim REG As New clsRegistry
+    ''' <summary>
+    ''' The lm
+    ''' </summary>
     Dim LM As New clsLicenseMgt
+    ''' <summary>
+    ''' The qi
+    ''' </summary>
     Dim QI As New clsQuickInventory
 
+    ''' <summary>
+    ''' The archive list
+    ''' </summary>
     Dim ArchiveList As New List(Of String)
+    ''' <summary>
+    ''' The assigned libraries
+    ''' </summary>
     Dim AssignedLibraries As New List(Of String)
+    ''' <summary>
+    ''' The archive active
+    ''' </summary>
     Dim ArchiveActive As Boolean = False
+    ''' <summary>
+    ''' The activity thread
+    ''' </summary>
     Dim ActivityThread As Thread
+    ''' <summary>
+    ''' The login as new user
+    ''' </summary>
     Dim LoginAsNewUser As Boolean = False
+    ''' <summary>
+    ''' The t2
+    ''' </summary>
     Dim t2 As Thread
+    ''' <summary>
+    ''' The t3
+    ''' </summary>
     Dim t3 As Thread
+    ''' <summary>
+    ''' The t4
+    ''' </summary>
     Dim t4 As Thread
+    ''' <summary>
+    ''' The t5
+    ''' </summary>
     Dim t5 As Thread
+    ''' <summary>
+    ''' The t6
+    ''' </summary>
     Dim t6 As Thread
+    ''' <summary>
+    ''' The t7
+    ''' </summary>
     Dim t7 As Thread
+    ''' <summary>
+    ''' The t8
+    ''' </summary>
     Dim t8 As Thread
+    ''' <summary>
+    ''' The t
+    ''' </summary>
     Dim t As Thread
 
+    ''' <summary>
+    ''' The use local settings only
+    ''' </summary>
     Dim UseLocalSettingsOnly = "0"
+    ''' <summary>
+    ''' The use threads
+    ''' </summary>
     Dim UseThreads As Boolean = True
 
+    ''' <summary>
+    ''' The automatic execute check
+    ''' </summary>
     Public AutoExecCheck As Integer = 0
+    ''' <summary>
+    ''' The thread count
+    ''' </summary>
     Public ThreadCnt As Integer = 0
+    ''' <summary>
+    ''' The mini archive running
+    ''' </summary>
     Dim MiniArchiveRunning As Boolean = False
+    ''' <summary>
+    ''' The listeners defined
+    ''' </summary>
     Dim ListenersDefined As Boolean = False
+    ''' <summary>
+    ''' The listen for changes
+    ''' </summary>
     Dim ListenForChanges As Boolean = False
+    ''' <summary>
+    ''' The listen directory
+    ''' </summary>
     Dim ListenDirectory As Boolean = False
+    ''' <summary>
+    ''' The listen sub directory
+    ''' </summary>
     Dim ListenSubDirectory As Boolean = False
+    ''' <summary>
+    ''' The dir unique identifier
+    ''' </summary>
     Dim DirGuid As String = ""
 
+    ''' <summary>
+    ''' The machine name
+    ''' </summary>
     Dim MachineName As String = Environment.MachineName.ToString
 
+    ''' <summary>
+    ''' The folders refreshed
+    ''' </summary>
     Dim FoldersRefreshed As Boolean = False
+    ''' <summary>
+    ''' All email folders showing
+    ''' </summary>
     Dim AllEmailFoldersShowing As Boolean = False
+    ''' <summary>
+    ''' The b applying dir parms
+    ''' </summary>
     Dim bApplyingDirParms As Boolean = False
+    ''' <summary>
+    ''' The b single instance content
+    ''' </summary>
     Dim bSingleInstanceContent As Boolean = True
+    ''' <summary>
+    ''' The b add this file as new version
+    ''' </summary>
     Dim bAddThisFileAsNewVersion As Boolean = False
 
+    ''' <summary>
+    ''' The NBR files in dir
+    ''' </summary>
     Dim NbrFilesInDir As Integer = 0
 
+    ''' <summary>
+    ''' The parent folder
+    ''' </summary>
     Dim ParentFolder As String = ""
+    ''' <summary>
+    ''' The FQN folder
+    ''' </summary>
     Dim FQNFolder As String = ""
+    ''' <summary>
+    ''' The b active change
+    ''' </summary>
     Dim bActiveChange As Boolean = False
+    ''' <summary>
+    ''' The is outlook avail
+    ''' </summary>
     Dim isOutlookAvail As Boolean = False
 
+    ''' <summary>
+    ''' The emails backed up
+    ''' </summary>
     Public EmailsBackedUp As Integer = 0
+    ''' <summary>
+    ''' The emails skipped
+    ''' </summary>
     Public EmailsSkipped As Integer = 0
 
+    ''' <summary>
+    ''' The current directory
+    ''' </summary>
     Dim CurrentDirectory As String = ""
 
+    ''' <summary>
+    ''' The image size double
+    ''' </summary>
     Dim ImageSizeDouble As Double = 0
+    ''' <summary>
+    ''' The image unique identifier
+    ''' </summary>
     Dim ImageGuid As String = ""
 
+    ''' <summary>
+    ''' The ge
+    ''' </summary>
     Dim GE As New clsGlobalEntity
+    ''' <summary>
+    ''' The listen
+    ''' </summary>
     Dim LISTEN As New clsListener
+    ''' <summary>
+    ''' The proc
+    ''' </summary>
     Dim PROC As New clsProcess
+    ''' <summary>
+    ''' The display activity
+    ''' </summary>
     Dim DisplayActivity As Boolean = False
+    ''' <summary>
+    ''' The is admin
+    ''' </summary>
     Dim isAdmin As Boolean = False
+    ''' <summary>
+    ''' The alr
+    ''' </summary>
     Dim ALR As New clsAutoLibRef
+    ''' <summary>
+    ''' The include list has changed
+    ''' </summary>
     Dim IncludeListHasChanged As Boolean = False
+    ''' <summary>
+    ''' The recon
+    ''' </summary>
     Dim RECON As New clsRecon
+    ''' <summary>
+    ''' The arch
+    ''' </summary>
     Dim ARCH As New clsArchiver
+    ''' <summary>
+    ''' The parms
+    ''' </summary>
     Dim PARMS As New clsExecParms
+    ''' <summary>
+    ''' The stats
+    ''' </summary>
     Dim STATS As New clsARCHIVESTATS
+    ''' <summary>
+    ''' The unasgnd
+    ''' </summary>
     Dim UNASGND As New clsAVAILFILETYPESUNDEFINED
+    ''' <summary>
+    ''' The ap
+    ''' </summary>
     Dim AP As New clsAppParms
+    ''' <summary>
+    ''' The zf
+    ''' </summary>
     Dim ZF As New clsZipFiles
+    ''' <summary>
+    ''' The users
+    ''' </summary>
     Dim USERS As New clsUSERS
+    ''' <summary>
+    ''' The m p3
+    ''' </summary>
     Dim MP3 As New clsMP3
+    ''' <summary>
+    ''' The MSG notification
+    ''' </summary>
     Dim MsgNotification As Boolean = False
+    ''' <summary>
+    ''' The fi
+    ''' </summary>
     Dim FI As New clsFileInfo
+    ''' <summary>
+    ''' The enc
+    ''' </summary>
     Dim ENC As New ECMEncrypt
 
+    ''' <summary>
+    ''' The utility
+    ''' </summary>
     Dim UTIL As New clsUtility
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Dim LOG As New clsLogging
 
     'Dim KAT As New clsChilKat
@@ -124,47 +387,143 @@ Public Class frmMain : Implements IDisposable
     'Dim CMODI As New clsModi
 
     'Public gCurrUserGuidID = ""
+    ''' <summary>
+    ''' The curr identity
+    ''' </summary>
     Public CurrIdentity As String = ""
 
+    ''' <summary>
+    ''' The formloaded
+    ''' </summary>
     Dim formloaded As Boolean = False
 
+    ''' <summary>
+    ''' The b use attach data
+    ''' </summary>
     Dim bUseAttachData As Boolean = False
+    ''' <summary>
+    ''' The company identifier
+    ''' </summary>
     Dim CompanyID As String = ""
+    ''' <summary>
+    ''' The repo identifier
+    ''' </summary>
     Dim RepoID As String = ""
 
+    ''' <summary>
+    ''' The docs
+    ''' </summary>
     Dim DOCS As New clsDataSource_V2
+    ''' <summary>
+    ''' The avl
+    ''' </summary>
     Dim AVL As New clsAVAILFILETYPES
 
     'Dim DBASES As New clsDbARCHS
+    ''' <summary>
+    ''' The emparms
+    ''' </summary>
     Dim EMPARMS As New clsEMAILARCHPARMS
 
+    ''' <summary>
+    ''' The EMF
+    ''' </summary>
     Dim EMF As New clsEMAILFOLDER
+    ''' <summary>
+    ''' The exl
+    ''' </summary>
     Dim EXL As New clsEXCLUDEDFILES
+    ''' <summary>
+    ''' The inl
+    ''' </summary>
     Dim INL As New clsINCLUDEDFILES
+    ''' <summary>
+    ''' The ruser
+    ''' </summary>
     Dim RUSER As New clsReconUSERS
+    ''' <summary>
+    ''' The dbarch
+    ''' </summary>
     Dim DBARCH As New clsDatabaseARCH
+    ''' <summary>
+    ''' The rparm
+    ''' </summary>
     Dim RPARM As New clsRUNPARMS
+    ''' <summary>
+    ''' The dirs
+    ''' </summary>
     Dim DIRS As New clsDIRECTORY
+    ''' <summary>
+    ''' The subdirectory
+    ''' </summary>
     Dim SUBDIRECTORY As New clsSUBDIR
+    ''' <summary>
+    ''' The dma
+    ''' </summary>
     Dim DMA As New clsDma
+    ''' <summary>
+    ''' The pfa
+    ''' </summary>
     Dim PFA As New clsPROCESSFILEAS
+    ''' <summary>
+    ''' The completed polls
+    ''' </summary>
     Dim CompletedPolls As Integer = 0
+    ''' <summary>
+    ''' The attribute
+    ''' </summary>
     Dim ATTRIB As New clsATTRIBUTES
+    ''' <summary>
+    ''' The srcattr
+    ''' </summary>
     Dim SRCATTR As New clsSOURCEATTRIBUTE
+    ''' <summary>
+    ''' The atch type
+    ''' </summary>
     Dim ATCH_TYPE As New clsATTACHMENTTYPE
 
+    ''' <summary>
+    ''' The sub directories
+    ''' </summary>
     Public SubDirectories As New ArrayList
+    ''' <summary>
+    ''' The included types
+    ''' </summary>
     Public IncludedTypes As New ArrayList
+    ''' <summary>
+    ''' The excluded types
+    ''' </summary>
     Public ExcludedTypes As New ArrayList
+    ''' <summary>
+    ''' The authorized file types
+    ''' </summary>
     Public AuthorizedFileTypes As New ArrayList
+    ''' <summary>
+    ''' The un authorized file types
+    ''' </summary>
     Public UnAuthorizedFileTypes As New ArrayList
 
+    ''' <summary>
+    ''' The ddebug
+    ''' </summary>
     Dim ddebug As Boolean = False
+    ''' <summary>
+    ''' The b help loaded
+    ''' </summary>
     Dim bHelpLoaded As Boolean = False
+    ''' <summary>
+    ''' The archived email folders
+    ''' </summary>
     Public ArchivedEmailFolders As New ArrayList
 
+    ''' <summary>
+    ''' The current domain
+    ''' </summary>
     Dim currentDomain As AppDomain = AppDomain.CurrentDomain
 
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="frmMain"/> class.
+    ''' </summary>
     Sub New()
         InitializeComponent()
 
@@ -257,6 +616,9 @@ Public Class frmMain : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Applies the dd updates.
+    ''' </summary>
     Sub ApplyDDUpdates()
         frmDBUpdates.Show()
         frmDBUpdates.Hide()
@@ -266,6 +628,11 @@ Public Class frmMain : Implements IDisposable
         frmDBUpdates.Close()
     End Sub
 
+    ''' <summary>
+    ''' Cks the form open.
+    ''' </summary>
+    ''' <param name="fname">The fname.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ckFormOpen(fname As String) As Boolean
 
         Dim xb As Boolean = False
@@ -280,6 +647,9 @@ Public Class frmMain : Implements IDisposable
 
     End Function
 
+    ''' <summary>
+    ''' Sets the last archive label.
+    ''' </summary>
     Sub setLastArchiveLabel()
         If gUseLastArchiveDate.Equals("1") Then
             lblUseLastArchiveDate.Text = "Last Arch ON: " + gLastArchiveDate.ToString
@@ -292,6 +662,11 @@ Public Class frmMain : Implements IDisposable
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Load event of the frmReconMain control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub frmReconMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1358,6 +1733,10 @@ Public Class frmMain : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the message bar.
+    ''' </summary>
+    ''' <param name="strText">The string text.</param>
     Sub updateMessageBar(strText As String)
         Dim b As Boolean = False
         Try
@@ -1373,6 +1752,9 @@ Public Class frmMain : Implements IDisposable
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Gets the rid of old messages.
+    ''' </summary>
     Sub GetRidOfOldMessages()
 
         ARCH.CreateEcmHistoryFolder()
@@ -1386,6 +1768,9 @@ Public Class frmMain : Implements IDisposable
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Cks the initial data.
+    ''' </summary>
     Sub ckInitialData()
         AddInitialDB()
         'wdm()
@@ -1684,6 +2069,11 @@ Public Class frmMain : Implements IDisposable
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the ckRemoveAfterXDays control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckRemoveAfterXDays_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckRemoveAfterXDays.CheckedChanged
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1695,6 +2085,11 @@ Public Class frmMain : Implements IDisposable
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the MouseDown event of the lbActiveFolder control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
     Private Sub lbActiveFolder_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles lbActiveFolder.MouseDown
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1714,6 +2109,11 @@ Public Class frmMain : Implements IDisposable
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectedIndexChanged event of the ListBox1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ListBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lbActiveFolder.SelectedIndexChanged
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1770,6 +2170,9 @@ Public Class frmMain : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Adds the new directory.
+    ''' </summary>
     Sub AddNewDirectory()
         Dim EmailFolderName As String = ""
         Dim RemoveAfterArchive As String = ""
@@ -1865,6 +2268,11 @@ Public Class frmMain : Implements IDisposable
         cbEmailDB.Text = DBID
     End Sub
 
+    ''' <summary>
+    ''' Removes the already archived.
+    ''' </summary>
+    ''' <param name="ParentFolder">The parent folder.</param>
+    ''' <param name="HideArchived">if set to <c>true</c> [hide archived].</param>
     Sub RemoveAlreadyArchived(ByVal ParentFolder As String, ByVal HideArchived As Boolean)
 
         Dim I As Integer = 0
@@ -1894,6 +2302,11 @@ Public Class frmMain : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnRefreshFolders control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnRefreshFolders_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRefreshFolders.Click
         'btnValidateEntry.Visible = False
         If gTraceFunctionCalls.Equals(1) Then
@@ -1935,6 +2348,11 @@ Public Class frmMain : Implements IDisposable
         Me.Cursor = Cursors.Default
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnActive control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnActive_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActive.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -1958,6 +2376,11 @@ Public Class frmMain : Implements IDisposable
 
     End Sub
 
+    ''' <summary>
+    ''' Verifies the email folder exists.
+    ''' </summary>
+    ''' <param name="FileDirectory">The file directory.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
     Sub VerifyEmailFolderExists(ByVal FileDirectory As String, ByVal FolderName As String)
         Me.Cursor = Cursors.AppStarting
         Dim i As Integer = EMF.cnt_IDX_FolderName(FileDirectory, FolderName, gCurrUserGuidID)
@@ -1967,6 +2390,11 @@ Public Class frmMain : Implements IDisposable
         Me.Cursor = Cursors.Default
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnSaveConditions control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnSaveConditions_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSaveConditions.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2177,6 +2605,11 @@ SKIPFOLDER:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnSelDir control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnSelDir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelDir.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2214,6 +2647,11 @@ SKIPFOLDER:
         btnSaveChanges.BackColor = Color.OrangeRed
     End Sub
 
+    ''' <summary>
+    ''' Handles the Enter event of the GroupBox2 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub GroupBox2_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles gbContentMgt.Enter
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2221,6 +2659,11 @@ SKIPFOLDER:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnAddFiletype control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnAddFiletype_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAddFiletype.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2256,6 +2699,11 @@ SKIPFOLDER:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ckRemoveAfterDays control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckRemoveAfterDays_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckRemoveFileType.Click
         If Not DBARCH.isAdmin(gCurrUserGuidID) Then
             DMA.SayWords("Admin authority is required to perform this function, please ask an Admin for assistance.")
@@ -2287,6 +2735,11 @@ SKIPFOLDER:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the Button1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         If Not DBARCH.isAdmin(gCurrUserGuidID) Then
             DMA.SayWords("Admin authority is required to perform this function, please ask an Admin for assistance.")
@@ -2303,6 +2756,11 @@ SKIPFOLDER:
         DBARCH.GetProcessAsList(cbProcessAsList)
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the ckIncludeAllTypes control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckIncludeAllTypes_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2322,6 +2780,11 @@ SKIPFOLDER:
         'End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the MouseDown event of the lbArchiveDirs control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
     Private Sub lbArchiveDirs_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles lbArchiveDirs.MouseDown
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2343,6 +2806,11 @@ SKIPFOLDER:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectedIndexChanged event of the ListBox2 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ListBox2_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lbArchiveDirs.SelectedIndexChanged
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2475,6 +2943,11 @@ SKIPFOLDER:
 
     End Sub
 
+    ''' <summary>
+    ''' Shows the sellected libs.
+    ''' </summary>
+    ''' <param name="DirName">Name of the dir.</param>
+    ''' <param name="TypeList">The type list.</param>
     Sub ShowSellectedLibs(ByVal DirName As String, ByVal TypeList As String)
 
         If ckShowLibs.Checked Then
@@ -2495,6 +2968,11 @@ SKIPFOLDER:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectedIndexChanged event of the lbIncludeExts control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub lbIncludeExts_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lbIncludeExts.SelectedIndexChanged
         If bApplyingDirParms = True Then
             Return
@@ -2518,6 +2996,11 @@ SKIPFOLDER:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the Button3 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2537,6 +3020,9 @@ SKIPFOLDER:
 
     End Sub
 
+    ''' <summary>
+    ''' Adds the initial database.
+    ''' </summary>
     Private Sub AddInitialDB()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2607,6 +3093,11 @@ SKIPFOLDER:
 
     End Sub
 
+    ''' <summary>
+    ''' Adds the initial email folder.
+    ''' </summary>
+    ''' <param name="FileDirectory">The file directory.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
     Private Sub AddInitialEmailFolder(ByVal FileDirectory As String, ByVal FolderName As String)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2633,6 +3124,11 @@ SKIPFOLDER:
         Me.Cursor = Cursors.Default
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the ckRunAtStartup control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckRunAtStartup_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If formloaded = False Then
             Return
@@ -2697,6 +3193,11 @@ SKIPFOLDER:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the ckDisable control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckDisable_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckDisable.CheckedChanged
         If formloaded = False Then
             Return
@@ -2712,6 +3213,9 @@ SKIPFOLDER:
         SB.Text = "Disabled set to " + ckDisable.Checked.ToString
     End Sub
 
+    ''' <summary>
+    ''' Gets the execute parms.
+    ''' </summary>
     Sub GetExecParms()
 
         Dim ArchiveType As String = ""
@@ -2792,6 +3296,11 @@ SKIPFOLDER:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the SenderMgtToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub SenderMgtToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -2800,6 +3309,10 @@ SKIPFOLDER:
         frmSenderMgt.Show()
     End Sub
 
+    ''' <summary>
+    ''' Includes the directory.
+    ''' </summary>
+    ''' <param name="DirFqn">The dir FQN.</param>
     Sub IncludeDirectory(ByVal DirFqn As String)
 
         ckSubDirs.Checked = True
@@ -3011,6 +3524,11 @@ SKIPFOLDER:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnAddDir control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnAddDir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAddDir.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3021,6 +3539,15 @@ SKIPFOLDER:
 
     End Sub
 
+    ''' <summary>
+    ''' Adds the sub dirs.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="isPublic">if set to <c>true</c> [is public].</param>
+    ''' <param name="isEnabled">if set to <c>true</c> [is enabled].</param>
+    ''' <param name="OcrDirectory">The ocr directory.</param>
+    ''' <param name="clAdminDir">if set to <c>true</c> [cl admin dir].</param>
+    ''' <param name="RetentionCode">The retention code.</param>
     Sub AddSubDirs(ByVal FQN As String, ByVal isPublic As Boolean, ByVal isEnabled As Boolean, ByVal OcrDirectory As String, ByVal clAdminDir As Boolean, ByVal RetentionCode As String)
         Dim PublicFlag As String = ""
         Dim DirEnabled As String = ""
@@ -3139,6 +3666,11 @@ SKIPFOLDER:
 
     End Sub
 
+    ''' <summary>
+    ''' Adds the sub dirs.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="LB">The lb.</param>
     Sub addSubDirs(ByVal FQN As String, ByRef LB As List(Of String))
         LB.Clear()
         FQN = UTIL.RemoveSingleQuotes(FQN)
@@ -3164,6 +3696,11 @@ SKIPFOLDER:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the Button6 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSaveChanges.Click
         Dim FQN As String = txtDir.Text.Trim
         If gTraceFunctionCalls.Equals(1) Then
@@ -3482,6 +4019,10 @@ SKIPFOLDER:
         Me.Cursor = System.Windows.Forms.Cursors.Default
     End Sub
 
+    ''' <summary>
+    ''' Mirrors the directory.
+    ''' </summary>
+    ''' <param name="DirName">Name of the dir.</param>
     Private Sub MirrorDirectory(DirName As String)
 
         lblNotice.Text = "ADDING: " + DirName
@@ -3753,6 +4294,11 @@ SKIPFOLDER:
         Me.Cursor = System.Windows.Forms.Cursors.Default
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnInclFileType control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnInclFileType_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnInclFileType.Click
         Try
             If gTraceFunctionCalls.Equals(1) Then
@@ -3798,6 +4344,11 @@ SKIPFOLDER:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnRemoveDir control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnRemoveDir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRemoveDir.Click
         Try
             If gTraceFunctionCalls.Equals(1) Then
@@ -3882,6 +4433,11 @@ SKIPFOLDER:
         Me.Cursor = System.Windows.Forms.Cursors.Default
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the Button5 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRefresh.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3901,6 +4457,11 @@ SKIPFOLDER:
 
     End Sub
 
+    ''' <summary>
+    ''' CVTs the ck box.
+    ''' </summary>
+    ''' <param name="CB">The cb.</param>
+    ''' <returns>System.String.</returns>
     Function cvtCkBox(ByVal CB As CheckBox) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3915,6 +4476,11 @@ SKIPFOLDER:
         Return S
     End Function
 
+    ''' <summary>
+    ''' CVTs the tf.
+    ''' </summary>
+    ''' <param name="tVal">The t value.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function cvtTF(ByVal tVal As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -3929,6 +4495,11 @@ SKIPFOLDER:
 
     End Function
 
+    ''' <summary>
+    ''' Handles the Click event of the Button2 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
 
         If Not DBARCH.isAdmin(gCurrUserGuidID) Then
@@ -3978,6 +4549,10 @@ SKIPFOLDER:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Activates the progress bar.
+    ''' </summary>
+    ''' <param name="FileLength">Length of the file.</param>
     Sub ActivateProgressBar(ByVal FileLength As Double)
 
         'Dim ImageSizeDouble As Double = 0
@@ -4012,6 +4587,13 @@ SKIPFOLDER:
         frmPercent.Close()
     End Sub
 
+    ''' <summary>
+    ''' Archives the content.
+    ''' </summary>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <param name="CurrUserGuidID">The curr user unique identifier identifier.</param>
+    ''' <param name="FilesToBeUploaded">The files to be uploaded.</param>
+    ''' <param name="SetSourceGuid">if set to <c>true</c> [set source unique identifier].</param>
     Sub ArchiveContent(MachineID As String, CurrUserGuidID As String, FilesToBeUploaded As List(Of String), Optional SetSourceGuid As Boolean = False)
 
         Console.WriteLine("frmMain: ArchiveContent")
@@ -5597,6 +6179,12 @@ NextFolder:
 
     End Sub
 
+    ''' <summary>
+    ''' Counts the character.
+    ''' </summary>
+    ''' <param name="value">The value.</param>
+    ''' <param name="ch">The ch.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function CountCharacter(ByVal value As String, ByVal ch As Char) As Integer
         Dim cnt As Integer = 0
         For Each c As Char In value
@@ -5607,6 +6195,13 @@ NextFolder:
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' Archives the data.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="FileDirectory">The file directory.</param>
+    ''' <param name="TopFolder">The top folder.</param>
+    ''' <param name="SL">The sl.</param>
     Sub ArchiveData(ByVal UID As String, ByVal FileDirectory As String, ByVal TopFolder As String, ByRef SL As SortedList)
 
         CompletedPolls = CompletedPolls + 1
@@ -5851,6 +6446,11 @@ NextFolder:
 
     ' End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnDeleteEmailEntry control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnDeleteEmailEntry_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDeleteEmailEntry.Click
         ParentFolder = cbParentFolders.Text
         If gTraceFunctionCalls.Equals(1) Then
@@ -5909,6 +6509,9 @@ NextFolder:
         Me.Cursor = Cursors.Default
     End Sub
 
+    ''' <summary>
+    ''' Adds the file attributes.
+    ''' </summary>
     Sub AddFileAttributes()
 
         InsertAttrib("FILESIZE", "Byte length of a file", "INT")
@@ -5920,6 +6523,12 @@ NextFolder:
 
     End Sub
 
+    ''' <summary>
+    ''' Inserts the attribute.
+    ''' </summary>
+    ''' <param name="aName">a name.</param>
+    ''' <param name="aDesc">a desc.</param>
+    ''' <param name="aType">a type.</param>
     Sub InsertAttrib(ByVal aName As String, ByVal aDesc As String, ByVal aType As String)
         ATTRIB.setAttributename(aName)
         ATTRIB.setAttributedesc(aDesc)
@@ -5927,6 +6536,13 @@ NextFolder:
         ATTRIB.Insert()
     End Sub
 
+    ''' <summary>
+    ''' Inserts the source attribute.
+    ''' </summary>
+    ''' <param name="SGUID">The sguid.</param>
+    ''' <param name="aName">a name.</param>
+    ''' <param name="aVal">a value.</param>
+    ''' <param name="OriginalFileType">Type of the original file.</param>
     Sub InsertSrcAttrib(ByVal SGUID As String, ByVal aName As String, ByVal aVal As String, ByVal OriginalFileType As String)
         SRCATTR.setSourceguid(SGUID)
         SRCATTR.setAttributename(aName)
@@ -5936,6 +6552,13 @@ NextFolder:
         SRCATTR.Insert()
     End Sub
 
+    ''' <summary>
+    ''' Updates the source attribute.
+    ''' </summary>
+    ''' <param name="SGUID">The sguid.</param>
+    ''' <param name="aName">a name.</param>
+    ''' <param name="aVal">a value.</param>
+    ''' <param name="SourceType">Type of the source.</param>
     Sub UpdateSrcAttrib(ByVal SGUID As String, ByVal aName As String, ByVal aVal As String, ByVal SourceType As String)
         Dim iCnt As Integer = SRCATTR.cnt_PK35(aName, gCurrUserGuidID, SGUID)
         If iCnt = 0 Then
@@ -5957,6 +6580,12 @@ NextFolder:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the word document metadata.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="SourceGUID">The source unique identifier.</param>
+    ''' <param name="OriginalFileType">Type of the original file.</param>
     Sub GetWordDocMetadata(ByVal FQN As String, ByVal SourceGUID As String, ByVal OriginalFileType As String)
         Try
             Dim TempDir As String = System.IO.Path.GetTempPath
@@ -5983,6 +6612,12 @@ NextFolder:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the excel meta data.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="SourceGUID">The source unique identifier.</param>
+    ''' <param name="OriginalFileType">Type of the original file.</param>
     Sub GetExcelMetaData(ByVal FQN As String, ByVal SourceGUID As String, ByVal OriginalFileType As String)
 
         Dim TempDir As String = System.IO.Path.GetTempPath
@@ -6017,6 +6652,13 @@ NextFolder:
 
     End Sub
 
+    ''' <summary>
+    ''' Incls the add list.
+    ''' </summary>
+    ''' <param name="LB">The lb.</param>
+    ''' <param name="UserGuid">The user unique identifier.</param>
+    ''' <param name="PassedFQN">The passed FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function InclAddList(ByVal LB As ListBox, ByVal UserGuid As String, ByVal PassedFQN As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6031,6 +6673,13 @@ NextFolder:
         Return True
     End Function
 
+    ''' <summary>
+    ''' Excludes the add list.
+    ''' </summary>
+    ''' <param name="LB">The lb.</param>
+    ''' <param name="UserGuid">The user unique identifier.</param>
+    ''' <param name="PassedFQN">The passed FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ExcludeAddList(ByVal LB As ListBox, ByVal UserGuid As String, ByVal PassedFQN As String) As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -6047,6 +6696,14 @@ NextFolder:
         Return True
     End Function
 
+    ''' <summary>
+    ''' Exls the add list.
+    ''' </summary>
+    ''' <param name="LB">The lb.</param>
+    ''' <param name="PassedFQN">The passed FQN.</param>
+    ''' <param name="typeCode">The type code.</param>
+    ''' <param name="InclSubDirs">if set to <c>true</c> [incl sub dirs].</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ExlAddList(ByVal LB As ListBox, ByVal PassedFQN As String, ByVal typeCode As String, ByVal InclSubDirs As Boolean) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6094,12 +6751,25 @@ NextFolder:
         Return True
     End Function
 
+    ''' <summary>
+    ''' Gets all sub dirs.
+    ''' </summary>
+    ''' <param name="lDirs">The l dirs.</param>
+    ''' <param name="PassedFQN">The passed FQN.</param>
     Sub GetAllSubDirs(ByVal lDirs As List(Of String), ByVal PassedFQN As String)
         lDirs.Clear()
         lDirs.Add(PassedFQN)
         addSubDirs(PassedFQN, lDirs)
     End Sub
 
+    ''' <summary>
+    ''' Adds the list.
+    ''' </summary>
+    ''' <param name="LB">The lb.</param>
+    ''' <param name="PassedFQN">The passed FQN.</param>
+    ''' <param name="typeCode">The type code.</param>
+    ''' <param name="InclSubDirs">if set to <c>true</c> [incl sub dirs].</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function AddList(ByVal LB As ListBox, ByVal PassedFQN As String, ByVal typeCode As String, ByVal InclSubDirs As Boolean) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6143,6 +6813,9 @@ NextFolder:
     '    ARCH.ArchiveAllEmail()
     '    SB2.Text = "Email Complete"
     'End Sub
+    ''' <summary>
+    ''' Saves the start up parms.
+    ''' </summary>
     Sub saveStartUpParms()
         If Not formloaded Then
             Return
@@ -6282,6 +6955,11 @@ NextFolder:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnSaveSchedule control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnSaveSchedule_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSaveSchedule.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6346,6 +7024,11 @@ NextFolder:
     '    End If
     'End Sub
 
+    ''' <summary>
+    ''' Handles the SelectedIndexChanged event of the cbTimeUnit control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub cbTimeUnit_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6353,10 +7036,20 @@ NextFolder:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the MouseHover event of the gbPolling control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub gbPolling_MouseHover(ByVal sender As Object, ByVal e As System.EventArgs) Handles gbPolling.MouseHover
         SB.Text = "Use these parameters to set up the archive execution."
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the ckSubDirs control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckSubDirs_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckSubDirs.CheckedChanged
         If bActiveChange = True Then
             Return
@@ -6364,6 +7057,11 @@ NextFolder:
         btnSaveChanges.BackColor = Color.OrangeRed
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the ckPublic control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckPublic_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckPublic.CheckedChanged
         If bActiveChange = True Then
             Return
@@ -6371,6 +7069,11 @@ NextFolder:
         btnSaveChanges.BackColor = Color.OrangeRed
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnExclude control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnExclude_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExclude.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6410,6 +7113,11 @@ NextFolder:
         btnSaveChanges.BackColor = Color.OrangeRed
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnRemoveExclude control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnRemoveExclude_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRemoveExclude.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6426,6 +7134,11 @@ NextFolder:
         btnSaveChanges.BackColor = Color.OrangeRed
     End Sub
 
+    ''' <summary>
+    ''' Folders the exists.
+    ''' </summary>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function FolderExists(ByVal FolderName As String) As Boolean
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -6454,6 +7167,11 @@ NextFolder:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the lbExcludeExts control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub lbExcludeExts_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles lbExcludeExts.TextChanged
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6478,6 +7196,11 @@ NextFolder:
         Next
     End Sub
 
+    ''' <summary>
+    ''' Handles the TextChanged event of the txtDir control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub txtDir_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDir.TextChanged
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6487,6 +7210,11 @@ NextFolder:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the ckUseLastProcessDateAsCutoff control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckUseLastProcessDateAsCutoff_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckUseLastProcessDateAsCutoff.CheckedChanged
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6494,6 +7222,11 @@ NextFolder:
         DBARCH.UserParmInsertUpdate("ckUseLastProcessDateAsCutoff", gCurrUserGuidID, ckUseLastProcessDateAsCutoff.Checked)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Resize event of the frmReconMain control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub frmReconMain_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Resize
 
         If formloaded = False Then
@@ -6507,6 +7240,9 @@ NextFolder:
 
     End Sub
 
+    ''' <summary>
+    ''' Resets the bad dates.
+    ''' </summary>
     Sub resetBadDates()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6523,6 +7259,10 @@ NextFolder:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Gets the exchange folders.
+    ''' </summary>
+    ''' <param name="bNewThread">if set to <c>true</c> [b new thread].</param>
     Sub GetExchangeFolders(ByVal bNewThread As Boolean)
 
         If DBARCH.isArchiveDisabled("EXCHANGE") = True Then
@@ -6564,6 +7304,11 @@ NextFolder:
         GC.WaitForFullGCComplete()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnInclProfile control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnInclProfile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnInclProfile.Click
         Dim pName As String = cbProfile.Text
         If pName.Trim.Length = 0 Then
@@ -6581,6 +7326,11 @@ NextFolder:
         btnSaveChanges.BackColor = Color.OrangeRed
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnExclProfile control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnExclProfile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExclProfile.Click
         Dim pName As String = cbProfile.Text
         If pName.Trim.Length = 0 Then
@@ -6598,6 +7348,10 @@ NextFolder:
         btnSaveChanges.BackColor = Color.OrangeRed
     End Sub
 
+    ''' <summary>
+    ''' Sets the archive end stats.
+    ''' </summary>
+    ''' <param name="ArchiveType">Type of the archive.</param>
     Sub SetArchiveEndStats(ByVal ArchiveType As String)
         STATS.setArchiveenddate(Now.ToString)
         STATS.setArchivetype(ArchiveType)
@@ -6629,6 +7383,11 @@ NextFolder:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Sets the archive begin stats.
+    ''' </summary>
+    ''' <param name="ArchiveType">Type of the archive.</param>
+    ''' <param name="NewGuid">Creates new guid.</param>
     Sub SetArchiveBeginStats(ByVal ArchiveType As String, ByVal NewGuid As String)
         STATS.setArchivestartdate(Now.ToString)
         STATS.setArchiveenddate(Now.ToString)
@@ -6664,11 +7423,21 @@ NextFolder:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectedIndexChanged event of the cbParentFolders control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub cbParentFolders_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbParentFolders.SelectedIndexChanged
         ParentFolder = cbParentFolders.Text.Trim
         btnRefreshFolders_Click(Nothing, Nothing)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ResetSelectedMailBoxesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ResetSelectedMailBoxesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ResetSelectedMailBoxesToolStripMenuItem.Click
         Dim msg As String = "This will remove all of your mailbox selections" + environment.NewLine + "it will not remove any archives. Are you sure?"
         Dim dlgRes As DialogResult = MessageBox.Show(msg, "Reset Email Folders", MessageBoxButtons.YesNo)
@@ -6707,6 +7476,11 @@ NextFolder:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Opening event of the ContextMenuStrip1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.ComponentModel.CancelEventArgs"/> instance containing the event data.</param>
     Private Sub ContextMenuStrip1_Opening(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip1.Opening
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6714,6 +7488,11 @@ NextFolder:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the EmailLibraryReassignmentToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub EmailLibraryReassignmentToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EmailLibraryReassignmentToolStripMenuItem.Click
         'Me.lbArchiveDirs.SelectedItem.ToString
         If gTraceFunctionCalls.Equals(1) Then
@@ -6730,6 +7509,11 @@ NextFolder:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectedIndexChanged event of the cbFileDB control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub cbFileDB_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbFileDB.SelectedIndexChanged
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6737,6 +7521,11 @@ NextFolder:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the Label8 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub Label8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label8.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6744,6 +7533,11 @@ NextFolder:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectedIndexChanged event of the lbAvailExts control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub lbAvailExts_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lbAvailExts.SelectedIndexChanged
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6757,6 +7551,11 @@ NextFolder:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the ckTerminate control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckTerminate_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckTerminate.CheckedChanged
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -6768,6 +7567,11 @@ NextFolder:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnSaveDirProfile control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnSaveDirProfile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSaveDirProfile.Click
 
         Dim DirProfileName As String = cbDirProfile.Text.Trim
@@ -6812,6 +7616,11 @@ NextFolder:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnApplyDirProfile control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnApplyDirProfile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApplyDirProfile.Click
         Dim DirProfileName As String = cbDirProfile.Text.Trim
         If DirProfileName.Length = 0 Then
@@ -6832,6 +7641,11 @@ NextFolder:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnUpdateDirectoryProfile control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnUpdateDirectoryProfile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnUpdateDirectoryProfile.Click
 
         Dim DirProfileName As String = cbDirProfile.Text.Trim
@@ -6856,6 +7670,11 @@ NextFolder:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnDeleteDirProfile control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnDeleteDirProfile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDeleteDirProfile.Click
         Dim DirProfileName As String = cbDirProfile.Text.Trim
         If DirProfileName.Length = 0 Then
@@ -6879,6 +7698,10 @@ NextFolder:
 
     End Sub
 
+    ''' <summary>
+    ''' Builds the dir profile parms.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function buildDirProfileParms() As String
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -6931,6 +7754,10 @@ NextFolder:
 
     End Function
 
+    ''' <summary>
+    ''' Applies the dir profile parms.
+    ''' </summary>
+    ''' <param name="Parms">The parms.</param>
     Sub applyDirProfileParms(ByVal Parms As String)
 
         Dim ParmArray As String() = Parms.Split(Chr(254))
@@ -7022,6 +7849,11 @@ NextRec:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectedIndexChanged event of the lbExcludeExts control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub lbExcludeExts_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lbExcludeExts.SelectedIndexChanged
         If bApplyingDirParms = True Then
             Return
@@ -7032,6 +7864,11 @@ NextRec:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the ckArchiveBit control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckArchiveBit_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckArchiveBit.CheckedChanged
         If bActiveChange = True Then
             Return
@@ -7068,6 +7905,11 @@ NextRec:
         btnSaveChanges.BackColor = Color.OrangeRed
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the ckDisableDir control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckDisableDir_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckDisableDir.CheckedChanged
         If bActiveChange = True Then
             Return
@@ -7082,6 +7924,11 @@ NextRec:
         btnSaveChanges.BackColor = Color.OrangeRed
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the ckOcr control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckOcr_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckOcr.CheckedChanged
         If bActiveChange = True Then
             Return
@@ -7093,6 +7940,11 @@ NextRec:
         btnSaveChanges.BackColor = Color.OrangeRed
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the ckVersionFiles control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckVersionFiles_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckVersionFiles.CheckedChanged
         If bActiveChange = True Then
             Return
@@ -7104,6 +7956,11 @@ NextRec:
         btnSaveChanges.BackColor = Color.OrangeRed
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the ckMetaData control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckMetaData_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckMetaData.CheckedChanged
         If bActiveChange = True Then
             Return
@@ -7115,6 +7972,11 @@ NextRec:
         btnSaveChanges.BackColor = Color.OrangeRed
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the clAdminDir control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub clAdminDir_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles clAdminDir.CheckedChanged
         If bActiveChange = True Then
             Return
@@ -7126,6 +7988,9 @@ NextRec:
         btnSaveChanges.BackColor = Color.OrangeRed
     End Sub
 
+    ''' <summary>
+    ''' Gets the listeners.
+    ''' </summary>
     Sub getListeners()
 
         DirectoryList.Clear()
@@ -7156,6 +8021,10 @@ NextRec:
         End Using
     End Sub
 
+    ''' <summary>
+    ''' Processes the listener.
+    ''' </summary>
+    ''' <param name="SetAction">if set to <c>true</c> [set action].</param>
     Sub ProcessListener(SetAction As Boolean)
 
         Dim DirsToMonitor As String = System.Configuration.ConfigurationManager.AppSettings("DirsToMonitor")
@@ -7242,6 +8111,11 @@ StartOver:
         Return
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the CkMonitor control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub CkMonitor_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CkMonitor.CheckedChanged
         If lbArchiveDirs.SelectedItems.Count.Equals(0) Then
             MessageBox.Show("To use this, one and only one directory must be selected, returning")
@@ -7256,6 +8130,11 @@ StartOver:
         MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ")
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the ckRunUnattended control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckRunUnattended_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckRunUnattended.CheckedChanged
 
         If formloaded = False Then
@@ -7335,6 +8214,9 @@ StartOver:
 
     End Sub
 
+    ''' <summary>
+    ''' Sets the unattended flag.
+    ''' </summary>
     Sub SetUnattendedFlag()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -7368,6 +8250,9 @@ StartOver:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Sets the unattended CheckBox.
+    ''' </summary>
     Sub SetUnattendedCheckBox()
         formloaded = False
 
@@ -7392,6 +8277,9 @@ StartOver:
         formloaded = True
     End Sub
 
+    ''' <summary>
+    ''' Validates the entry.
+    ''' </summary>
     Sub ValidateEntry()
 
         If FoldersRefreshed = True Then
@@ -7411,6 +8299,11 @@ StartOver:
         Me.Cursor = Cursors.Default
     End Sub
 
+    ''' <summary>
+    ''' Handles the Tick event of the TimerListeners control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub TimerListeners_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TimerListeners.Tick
 
         If ListenersDefined = False Then
@@ -7508,6 +8401,11 @@ StartOver:
         'TimerListeners.Enabled = True
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the ckPauseListener control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckPauseListener_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckPauseListener.CheckedChanged
         'Dim LISTEN As New clsListener
         If formloaded = False Then
@@ -7534,6 +8432,10 @@ StartOver:
     End Sub
 
     ''** process table DirectoryListenerFiles
+    ''' <summary>
+    ''' Processes the listener files.
+    ''' </summary>
+    ''' <param name="UseThreads">if set to <c>true</c> [use threads].</param>
     Sub ProcessListenerFiles(ByVal UseThreads As Boolean)
 
         Dim L As New SortedList(Of String, Integer)
@@ -7625,6 +8527,11 @@ SKIPTHISREC:
         L = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Handles the Tick event of the TimerUploadFiles control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub TimerUploadFiles_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TimerUploadFiles.Tick
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -7717,6 +8624,11 @@ SKIPTHISREC:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Tick event of the TimerEndRun control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub TimerEndRun_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TimerEndRun.Tick
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -7828,6 +8740,11 @@ SKIPTHISREC:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnRefreshRetent control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnRefreshRetent_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRefreshRetent.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -7836,6 +8753,11 @@ SKIPTHISREC:
         DBARCH.LoadRetentionCodes(cbEmailRetention)
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the ckShowLibs control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckShowLibs_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckShowLibs.CheckedChanged
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -7847,6 +8769,11 @@ SKIPTHISREC:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the ckOcrPdf control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckOcrPdf_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckOcrPdf.CheckedChanged
         If bActiveChange = True Then
             Return
@@ -7858,6 +8785,9 @@ SKIPTHISREC:
         btnSaveChanges.BackColor = Color.OrangeRed
     End Sub
 
+    ''' <summary>
+    ''' Sets the date formats.
+    ''' </summary>
     Sub SetDateFormats()
 
         Dim dateString As String = ""
@@ -7877,6 +8807,10 @@ SKIPTHISREC:
 
     End Sub
 
+    ''' <summary>
+    ''' Cks the license.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ckLicense() As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8056,6 +8990,11 @@ SKIPTHISREC:
         End If
     End Function
 
+    ''' <summary>
+    ''' Handles the Click event of the OutlookEmailsToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub OutlookEmailsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OutlookEmailsToolStripMenuItem.Click
 
         If ckDisable.Checked Then
@@ -8089,6 +9028,11 @@ SKIPTHISREC:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ExchangeEmailsToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ExchangeEmailsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExchangeEmailsToolStripMenuItem.Click
         If ckDisable.Checked Then
             SB.Text = "DISABLE ALL is checked - no archive allowed."
@@ -8122,6 +9066,11 @@ SKIPTHISREC:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ContentToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ContentToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ContentToolStripMenuItem.Click
 
         Dim watch As Stopwatch = Stopwatch.StartNew()
@@ -8135,6 +9084,11 @@ SKIPTHISREC:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ArchiveALLToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ArchiveALLToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ArchiveALLToolStripMenuItem.Click
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -8170,6 +9124,11 @@ SKIPTHISREC:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the LoginAsDifferenctUserToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub LoginAsDifferenctUserToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LoginAsDifferenctUserToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8182,6 +9141,9 @@ SKIPTHISREC:
         tssAuth.Text = DBARCH.getAuthority(gCurrUserGuidID)
     End Sub
 
+    ''' <summary>
+    ''' Closes the child windows.
+    ''' </summary>
     Sub CloseChildWindows()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8193,6 +9155,10 @@ SKIPTHISREC:
         Next form
     End Sub
 
+    ''' <summary>
+    ''' Logs the into system.
+    ''' </summary>
+    ''' <param name="OverRideLoginID">The over ride login identifier.</param>
     Sub LogIntoSystem(ByVal OverRideLoginID As String)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8356,6 +9322,9 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Sets the defaults.
+    ''' </summary>
     Sub SetDefaults()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8474,6 +9443,9 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Sets the version and server.
+    ''' </summary>
     Public Sub SetVersionAndServer()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8502,6 +9474,11 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the server.
+    ''' </summary>
+    ''' <param name="ConnectionString">The connection string.</param>
+    ''' <returns>System.String.</returns>
     Function getServer(ByVal ConnectionString As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8525,6 +9502,11 @@ GoodLogin:
         Return SVR
     End Function
 
+    ''' <summary>
+    ''' Handles the Click event of the ParameterExecutionToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ParameterExecutionToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ParameterExecutionToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8542,6 +9524,11 @@ GoodLogin:
         MessageBox.Show(MSG)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the HistoryToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub HistoryToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles HistoryToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8549,6 +9536,11 @@ GoodLogin:
         frmHistory.Show()
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the ckExpand control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckExpand_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckExpand.CheckedChanged
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8573,6 +9565,11 @@ GoodLogin:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the ckDisableContentArchive control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckDisableContentArchive_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckDisableContentArchive.CheckedChanged
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8581,6 +9578,11 @@ GoodLogin:
         SB.Text = "Content Disabled set to " + ckDisableContentArchive.Checked.ToString
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the ckDisableOutlookEmailArchive control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckDisableOutlookEmailArchive_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckDisableOutlookEmailArchive.CheckedChanged
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8589,6 +9591,11 @@ GoodLogin:
         SB.Text = "EMAIL Disabled set to " + ckDisableOutlookEmailArchive.Checked.ToString
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the ckDisableExchange control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckDisableExchange_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckDisableExchange.CheckedChanged
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8602,6 +9609,11 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ViewLogsToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ViewLogsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ViewLogsToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8621,6 +9633,11 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the DirectoryInventoryToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub DirectoryInventoryToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DirectoryInventoryToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8645,6 +9662,10 @@ GoodLogin:
         GC.WaitForFullGCApproach()
     End Sub
 
+    ''' <summary>
+    ''' Inventories the repo directories.
+    ''' </summary>
+    ''' <param name="ProcessOnlyNewFile">if set to <c>true</c> [process only new file].</param>
     Sub InventoryRepoDirectories(ProcessOnlyNewFile As Boolean)
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -8787,6 +9808,11 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ListFilesInDirectoryToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ListFilesInDirectoryToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListFilesInDirectoryToolStripMenuItem.Click
 
         InventoryRepoDirectories(True)
@@ -8795,6 +9821,11 @@ GoodLogin:
 
 
 
+    ''' <summary>
+    ''' Handles the Click event of the GetAllSubdirFilesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub GetAllSubdirFilesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GetAllSubdirFilesToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8828,6 +9859,11 @@ GoodLogin:
         GC.WaitForFullGCApproach()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ViewOCRErrorFilesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ViewOCRErrorFilesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ViewOCRErrorFilesToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8845,6 +9881,11 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ScheduleToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ScheduleToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ScheduleToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8852,6 +9893,11 @@ GoodLogin:
         frmSchedule.ShowDialog()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the RunningArchiverToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub RunningArchiverToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RunningArchiverToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8859,6 +9905,11 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the AboutToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8867,6 +9918,11 @@ GoodLogin:
         AboutBox1.ShowDialog()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ManualEditAppConfigToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ManualEditAppConfigToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ManualEditAppConfigToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8876,6 +9932,11 @@ GoodLogin:
         System.Diagnostics.Process.Start("notepad.exe", AppName)
     End Sub
 
+    ''' <summary>
+    ''' Handles the ValueChanged event of the NumericUpDown1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub NumericUpDown1_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles nbrArchiveHours.ValueChanged
         If Not formloaded Then
             Return
@@ -8904,6 +9965,11 @@ GoodLogin:
         My.Settings.Save()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Tick event of the TimerQuickArchive control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub TimerQuickArchive_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TimerQuickArchive.Tick
         If ckDisable.Checked Then
             Return
@@ -8934,12 +10000,22 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Elapseds the hours.
+    ''' </summary>
+    ''' <param name="tStart">The t start.</param>
+    ''' <returns>System.Decimal.</returns>
     Public Function ElapsedHours(ByVal tStart As Date) As Decimal
         Dim elapsed_time As TimeSpan
         elapsed_time = Now.Subtract(tStart)
         Return elapsed_time.TotalHours
     End Function
 
+    ''' <summary>
+    ''' Handles the Click event of the btnArchiveNow control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnArchiveNow_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnArchiveNow.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8948,11 +10024,9 @@ GoodLogin:
         TimerQuickArchive_Tick(Nothing, Nothing)
     End Sub
 
-    ''' <summary> This will create a Application Reference file on the users desktop if they do not
-    ''' already have one when the program is loaded.
-    ' If not debugging in visual studio check for Application Reference #if (!debug)
-    ' CheckForShortcut(); #endif
-    ''' </summary
+    ''' <summary>
+    ''' Checks for shortcut.
+    ''' </summary>
     Private Sub CheckForShortcut()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8982,6 +10056,11 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ImpersonateLoginToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ImpersonateLoginToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ImpersonateLoginToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8990,6 +10069,11 @@ GoodLogin:
         frmImpersonate.ShowDialog()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the AddDesktopIconToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub AddDesktopIconToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AddDesktopIconToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -8998,6 +10082,11 @@ GoodLogin:
         CheckForShortcut()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnRefreshRebuild control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnRefreshRebuild_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRefreshRebuild.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -9016,6 +10105,11 @@ GoodLogin:
         Me.Cursor = Cursors.Default
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the AllToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub AllToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AllToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -9027,6 +10121,11 @@ GoodLogin:
         gbFiletypes.Visible = True
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the EmailToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub EmailToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EmailToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -9038,6 +10137,11 @@ GoodLogin:
         gbFiletypes.Visible = False
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ContentToolStripMenuItem1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ContentToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ContentToolStripMenuItem1.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -9049,6 +10153,11 @@ GoodLogin:
         gbFiletypes.Visible = False
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ExecutionControlToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ExecutionControlToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExecutionControlToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -9060,6 +10169,11 @@ GoodLogin:
         gbFiletypes.Visible = False
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the FileTypesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub FileTypesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FileTypesToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -9071,6 +10185,11 @@ GoodLogin:
         gbFiletypes.Visible = True
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the EncryptStringToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub EncryptStringToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EncryptStringToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -9079,6 +10198,11 @@ GoodLogin:
         frmEncryptString.ShowDialog()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnRefreshDefaults control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnRefreshDefaults_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRefreshDefaults.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -9310,6 +10434,11 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnDefaultAsso control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnDefaultAsso_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDefaultAsso.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -9331,6 +10460,11 @@ GoodLogin:
         MessageBox.Show("Default associations readded.")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnAddDefaults control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnAddDefaults_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAddDefaults.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -9507,6 +10641,9 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Adds the source type defaults.
+    ''' </summary>
     Sub AddSourceTypeDefaults()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -10092,6 +11229,11 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the FileHashToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub FileHashToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FileHashToolStripMenuItem.Click
         OpenFileDialog1.ShowDialog()
         If gTraceFunctionCalls.Equals(1) Then
@@ -10140,11 +11282,19 @@ GoodLogin:
         MessageBox.Show(sMsg)
     End Sub
 
+    ''' <summary>
+    ''' Releases unmanaged resources and performs other cleanup operations before the <see cref="T:System.ComponentModel.Component" /> is reclaimed by garbage collection.
+    ''' </summary>
     Protected Overloads Overrides Sub Finalize()
         MyBase.Finalize()
 
     End Sub 'Finalize
 
+    ''' <summary>
+    ''' Handles the DoWork event of the BackgroundWorker1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.ComponentModel.DoWorkEventArgs"/> instance containing the event data.</param>
     Private Sub BackgroundWorker1_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -10282,6 +11432,11 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the DoWork event of the BackgroundWorker2 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.ComponentModel.DoWorkEventArgs"/> instance containing the event data.</param>
     Private Sub BackgroundWorker2_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker2.DoWork
 
         If ckDisableExchange.Checked Then
@@ -10350,6 +11505,9 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Performs the content archive.
+    ''' </summary>
     Private Sub PerformContentArchive()
 
         Dim FilesToBeUploaded As New List(Of String)
@@ -10522,6 +11680,11 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the FileUploadToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub FileUploadToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FileUploadToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -10545,6 +11708,11 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the FileUploadBufferedToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub FileUploadBufferedToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FileUploadBufferedToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -10579,6 +11747,11 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the FileChunkUploadToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub FileChunkUploadToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FileChunkUploadToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -10593,6 +11766,11 @@ GoodLogin:
         DBARCH.ChunkFileUpload(OriginalFileName, FileGuid, FQN, "DataSource", CrcHASH)
     End Sub
 
+    ''' <summary>
+    ''' Handles the DoWork event of the BackgroundDirListener control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.ComponentModel.DoWorkEventArgs"/> instance containing the event data.</param>
     Private Sub BackgroundDirListener_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundDirListener.DoWork
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -10740,6 +11918,9 @@ GoodLogin:
     '    End If
     'End Sub
 
+    ''' <summary>
+    ''' Gets the query string parameters.
+    ''' </summary>
     Private Sub GetQueryStringParameters() 'As NameValueCollection
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -10797,6 +11978,11 @@ GoodLogin:
         LOG.WriteToParmLog("Step 45")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ExitToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -10805,6 +11991,11 @@ GoodLogin:
         Application.Exit()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ExitToolStripMenuItem1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ExitToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem1.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -10812,6 +12003,11 @@ GoodLogin:
         Application.Exit()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the InstallCLCToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub InstallCLCToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -10819,6 +12015,11 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the 1 event of the InstallCLCToolStripMenuItem_Click control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub InstallCLCToolStripMenuItem_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
     End Sub
@@ -10826,6 +12027,9 @@ GoodLogin:
     'tsTimeToArchive
     'tsCountDown
 
+    ''' <summary>
+    ''' Calculates the next archive time.
+    ''' </summary>
     Private Sub CalcNextArchiveTime()
 
         Dim LastArchiveDate As Date = Nothing
@@ -10862,6 +12066,11 @@ GoodLogin:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnCountFiles control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnCountFiles_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCountFiles.Click
 
         Dim I As Integer = lbArchiveDirs.SelectedItems.Count
@@ -10899,6 +12108,11 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the AppConfigVersionToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub AppConfigVersionToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AppConfigVersionToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -10907,6 +12121,11 @@ GoodLogin:
         MessageBox.Show("App Confing Version: " + S)
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the ckDeleteAfterArchive control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckDeleteAfterArchive_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckDeleteAfterArchive.CheckedChanged
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -10917,6 +12136,11 @@ GoodLogin:
         'End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the DoWork event of the BackgroundWorkerContacts control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.ComponentModel.DoWorkEventArgs"/> instance containing the event data.</param>
     Private Sub BackgroundWorkerContacts_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorkerContacts.DoWork
         'frmNotify.Label1.Text = "Contacts: "
         If gTraceFunctionCalls.Equals(1) Then
@@ -10926,6 +12150,11 @@ GoodLogin:
         ARCH.ArchiveContacts()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ToolStripMenuItem1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem1.Click
         If ckDisable.Checked Then
             SB.Text = "DISABLE ALL is checked - no archive allowed."
@@ -11035,6 +12264,11 @@ GoodLogin:
     '    ReOcrPendingGraphics()
     'End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ReOcrIncompleteGraphicFilesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ReOcrIncompleteGraphicFilesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ReOcrIncompleteGraphicFilesToolStripMenuItem.Click
         If asyncBatchOcrPending.IsBusy Then
             Return
@@ -11053,6 +12287,11 @@ GoodLogin:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ReOcrALLGraphicFilesToolStripMenuItem1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ReOcrALLGraphicFilesToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ReOcrALLGraphicFilesToolStripMenuItem1.Click
         If asyncBatchOcrALL.IsBusy Then
             Return
@@ -11071,6 +12310,11 @@ GoodLogin:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the EstimateNumberOfFilesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub EstimateNumberOfFilesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EstimateNumberOfFilesToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11102,10 +12346,20 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the CEDatabasesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub CEDatabasesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ZIPFilesArchivesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ZIPFilesArchivesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim msg As String = "This deletes the pending ZIP files to be processed, are you sure?"
         Dim dlgRes As DialogResult = MessageBox.Show(msg, "Datastore Cleansing", MessageBoxButtons.YesNo)
@@ -11121,6 +12375,11 @@ GoodLogin:
         MessageBox.Show("Temporary zip files cleaned up and ready.")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ViewCEDirectoriesToolStripMenuItem1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ViewCEDirectoriesToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim tPath As String = System.IO.Path.GetTempPath
         tPath = tPath + "EcmLibrary\CE"
@@ -11131,6 +12390,11 @@ GoodLogin:
         Shell("explorer.exe " + Chr(34) + tPath + Chr(34), vbNormalFocus)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the InstallCESP2ToolStripMenuItem1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub InstallCESP2ToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11139,6 +12403,11 @@ GoodLogin:
         Process.Start("http://www.microsoft.com/downloads/en/details.aspx?FamilyID=e497988a-c93a-404c-b161-3a0b323dce24")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the AllToolStripMenuItem1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub AllToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11147,6 +12416,11 @@ GoodLogin:
         ZIPFilesArchivesToolStripMenuItem_Click(Nothing, Nothing)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the RSSPullToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub RSSPullToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RSSPullToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11155,6 +12429,11 @@ GoodLogin:
         ARCH.getRssFeed(sUrl)
     End Sub
 
+    ''' <summary>
+    ''' Handles the LinkClicked event of the hlExchange control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Forms.LinkLabelLinkClickedEventArgs"/> instance containing the event data.</param>
     Private Sub hlExchange_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles hlExchange.LinkClicked
         Dim B As Boolean = DBARCH.isAdmin(gCurrUserGuidID)
         If Not B Then
@@ -11169,6 +12448,11 @@ GoodLogin:
         frmExhangeMail.Show()
     End Sub
 
+    ''' <summary>
+    ''' Handles the LinkClicked event of the LinkLabel1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Forms.LinkLabelLinkClickedEventArgs"/> instance containing the event data.</param>
     Private Sub LinkLabel1_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11177,6 +12461,11 @@ GoodLogin:
         frmPstLoader.ShowDialog()
     End Sub
 
+    ''' <summary>
+    ''' Handles the DoWork event of the asyncVerifyRetainDates control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.ComponentModel.DoWorkEventArgs"/> instance containing the event data.</param>
     Private Sub asyncVerifyRetainDates_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles asyncVerifyRetainDates.DoWork
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11184,6 +12473,11 @@ GoodLogin:
         DBARCH.VerifyRetentionDates()
     End Sub
 
+    ''' <summary>
+    ''' Handles the <see cref="E:HelpToolStripMenuItemClick" /> event.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub OnlineHelpToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OnlineHelpToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11191,6 +12485,11 @@ GoodLogin:
         Process.Start("http://www.EcmLibrary.com/HelpSaaS/Archive.htm")
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the ckRunOnStart control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ckRunOnStart_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles ckRunOnStart.CheckedChanged
         If formloaded = False Then
             Return
@@ -11256,10 +12555,20 @@ GoodLogin:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ResetEMAILCRCCodesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ResetEMAILCRCCodesToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs)
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the LoginToSystemToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub LoginToSystemToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles LoginToSystemToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11268,6 +12577,11 @@ GoodLogin:
         LoginForm1.ShowDialog()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ChangeUserPasswordToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ChangeUserPasswordToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ChangeUserPasswordToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11275,6 +12589,11 @@ GoodLogin:
         frmPasswordChange.ShowDialog()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the GetOutlookEmailIDsToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub GetOutlookEmailIDsToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs)
         MessageBox.Show("Not currntly implemented...")
     End Sub
@@ -11283,9 +12602,7 @@ GoodLogin:
     ''' Handles the FormClosing event of the frmMain control. This is the dispose functionality.
     ''' </summary>
     ''' <param name="sender">The source of the event.</param>
-    ''' <param name="e">     
-    ''' The <see cref="System.Windows.Forms.FormClosingEventArgs"/> instance containing the event data.
-    ''' </param>
+    ''' <param name="e">The <see cref="System.Windows.Forms.FormClosingEventArgs" /> instance containing the event data.</param>
     Private Sub frmReconMain_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -11333,6 +12650,11 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the WebSitesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub WebSitesToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles WebSitesToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11342,6 +12664,11 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the WebPagesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub WebPagesToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles WebPagesToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11351,6 +12678,11 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ArchiveRSSPullsToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ArchiveRSSPullsToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ArchiveRSSPullsToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11372,6 +12704,10 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the RSS.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub GetRSS(SecureID As Integer)
 
         Dim RC As Boolean = True
@@ -11383,6 +12719,10 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the web page.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub GetWebPage(SecureID As Integer)
 
         Dim RC As Boolean = True
@@ -11394,6 +12734,10 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the web site.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub GetWebSite(SecureID As Integer)
 
         Dim dItems As New System.Collections.Generic.List(Of DS_WebSite)
@@ -11407,6 +12751,11 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnAddRssFeed control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnAddRssFeed_Click(sender As System.Object, e As System.EventArgs) Handles btnAddRssFeed.Click
         Dim tName As String = txtRssName.Text
         Dim tUrl As String = txtRssURL.Text
@@ -11430,6 +12779,11 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnSaveWebPage control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnSaveWebPage_Click(sender As System.Object, e As System.EventArgs) Handles btnSaveWebPage.Click
         Dim tName As String = txtWebScreenName.Text
         Dim tUrl As String = txtWebScreenUrl.Text
@@ -11448,6 +12802,11 @@ GoodLogin:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnSaveWebSite control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnSaveWebSite_Click(sender As System.Object, e As System.EventArgs) Handles btnSaveWebSite.Click
         Dim tName As String = txtWebSiteName.Text
         Dim tUrl As String = txtWebSiteURL.Text
@@ -11467,6 +12826,11 @@ GoodLogin:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnRemoveWebSite control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnRemoveWebSite_Click(sender As System.Object, e As System.EventArgs) Handles btnRemoveWebSite.Click
         Dim I As Integer = dgWebSite.SelectedRows.Count
         If I <> 1 Then
@@ -11494,6 +12858,11 @@ GoodLogin:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnRemoveWebPage control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnRemoveWebPage_Click(sender As System.Object, e As System.EventArgs) Handles btnRemoveWebPage.Click
 
         Dim I As Integer = dgWebPage.SelectedRows.Count
@@ -11520,6 +12889,11 @@ GoodLogin:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnRemoveRSSfeed control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub btnRemoveRSSfeed_Click(sender As System.Object, e As System.EventArgs) Handles btnRemoveRSSfeed.Click
 
         Dim I As Integer = dgRss.SelectedRows.Count
@@ -11546,6 +12920,11 @@ GoodLogin:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the MouseClick event of the dgRss control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
     Private Sub dgRss_MouseClick(sender As System.Object, e As System.Windows.Forms.MouseEventArgs)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11554,6 +12933,11 @@ GoodLogin:
         SB.Text = "RSS Grid has " + dgRss.Rows.Count.ToString + " rows."
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectionChanged event of the dgRss control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub dgRss_SelectionChanged(sender As System.Object, e As System.EventArgs) Handles dgRss.SelectionChanged
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11569,6 +12953,11 @@ GoodLogin:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectionChanged event of the dgWebPage control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub dgWebPage_SelectionChanged(sender As System.Object, e As System.EventArgs) Handles dgWebPage.SelectionChanged
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11584,6 +12973,11 @@ GoodLogin:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the SelectionChanged event of the dgWebSite control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub dgWebSite_SelectionChanged(sender As System.Object, e As System.EventArgs) Handles dgWebSite.SelectionChanged
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11601,6 +12995,11 @@ GoodLogin:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the DoWork event of the AsyncRssPull control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.ComponentModel.DoWorkEventArgs"/> instance containing the event data.</param>
     Private Sub AsyncRssPull_DoWork(sender As System.Object, e As System.ComponentModel.DoWorkEventArgs) Handles asyncRssPull.DoWork
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11631,6 +13030,11 @@ GoodLogin:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the DoWork event of the asyncSpiderWebSite control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.ComponentModel.DoWorkEventArgs"/> instance containing the event data.</param>
     Private Sub asyncSpiderWebSite_DoWork(sender As System.Object, e As System.ComponentModel.DoWorkEventArgs) Handles asyncSpiderWebSite.DoWork
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11661,6 +13065,11 @@ GoodLogin:
         ARCH.ArchiveWebSites(gCurrUserGuidID)
     End Sub
 
+    ''' <summary>
+    ''' Handles the DoWork event of the AsyncSpiderWebPage control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.ComponentModel.DoWorkEventArgs"/> instance containing the event data.</param>
     Private Sub AsyncSpiderWebPage_DoWork(sender As System.Object, e As System.ComponentModel.DoWorkEventArgs) Handles asyncSpiderWebPage.DoWork
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11692,6 +13101,11 @@ GoodLogin:
         ARCH.ArchiveSingleWebPage(gCurrUserGuidID)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the RetentionRulesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub RetentionRulesToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles RetentionRulesToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11700,6 +13114,11 @@ GoodLogin:
         frmRetentionCode.ShowDialog()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the RulesExecutionToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub RulesExecutionToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles RulesExecutionToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11708,6 +13127,11 @@ GoodLogin:
         frmRetentionMgt.ShowDialog()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the CheckForUpdatesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub CheckForUpdatesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CheckForUpdatesToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11784,6 +13208,11 @@ GoodLogin:
     '    MessageBox.Show(s)
     'End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ShowSystemVersionToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ShowSystemVersionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ShowSystemVersionToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11796,6 +13225,11 @@ GoodLogin:
         MessageBox.Show(OSVersion)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ClearRestoreQueueToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ClearRestoreQueueToolStripMenuItem_Click(sender As Object, e As EventArgs)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -11809,18 +13243,33 @@ GoodLogin:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Unicodes the bytes to string.
+    ''' </summary>
+    ''' <param name="bytes">The bytes.</param>
+    ''' <returns>System.String.</returns>
     Private Function UnicodeBytesToString(
     ByVal bytes() As Byte) As String
 
         Return System.Text.Encoding.Unicode.GetString(bytes)
     End Function
 
+    ''' <summary>
+    ''' Unicodes the string to bytes.
+    ''' </summary>
+    ''' <param name="str">The string.</param>
+    ''' <returns>System.Byte().</returns>
     Private Function UnicodeStringToBytes(
     ByVal str As String) As Byte()
 
         Return System.Text.Encoding.Unicode.GetBytes(str)
     End Function
 
+    ''' <summary>
+    ''' Handles the Click event of the SelectedFilesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub SelectedFilesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectedFilesToolStripMenuItem.Click
 
         OpenFileDialog1.Multiselect = True
@@ -12008,6 +13457,11 @@ NEXTONE:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnArchive1Doc control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub btnArchive1Doc_Click(sender As Object, e As EventArgs) Handles btnArchive1Doc.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -12016,6 +13470,11 @@ NEXTONE:
         SelectedFilesToolStripMenuItem_Click(Nothing, Nothing)
     End Sub
 
+    ''' <summary>
+    ''' Gets the contentl dictionary value.
+    ''' </summary>
+    ''' <param name="tkey">The tkey.</param>
+    ''' <returns>System.String.</returns>
     Public Function getContentlDictValue(tkey As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -12191,6 +13650,11 @@ NEXTONE:
         Return tval
     End Function
 
+    ''' <summary>
+    ''' Gets the email dictionary value.
+    ''' </summary>
+    ''' <param name="tkey">The tkey.</param>
+    ''' <returns>System.String.</returns>
     Public Function getEmailDictValue(tkey As String) As String
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -12360,6 +13824,10 @@ NEXTONE:
         Return tval
     End Function
 
+    ''' <summary>
+    ''' Fills the email dictionary.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function fillEmailDict() As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -12527,6 +13995,10 @@ NEXTONE:
 
     End Function
 
+    ''' <summary>
+    ''' Fills the content dictionary.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function fillContentDict() As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -12699,6 +14171,11 @@ NEXTONE:
         DictContent.Add("RowID", RowID)
     End Function
 
+    ''' <summary>
+    ''' Cks the is graphic.
+    ''' </summary>
+    ''' <param name="ext">The ext.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ckIsGraphic(ext As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -12713,6 +14190,9 @@ NEXTONE:
         End If
     End Function
 
+    ''' <summary>
+    ''' Populates the graphic extensions.
+    ''' </summary>
     Private Sub populateGraphicExtensions()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -12743,6 +14223,9 @@ NEXTONE:
 
     End Sub
 
+    ''' <summary>
+    ''' Populates the zip extensions.
+    ''' </summary>
     Private Sub populateZipExtensions()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -12771,6 +14254,11 @@ NEXTONE:
 
     End Sub
 
+    ''' <summary>
+    ''' Cks the is zip file.
+    ''' </summary>
+    ''' <param name="ext">The ext.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ckIsZipFile(ext As String) As Boolean
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -12785,6 +14273,11 @@ NEXTONE:
         End If
     End Function
 
+    ''' <summary>
+    ''' Handles the SelectedIndexChanged event of the cbProfile control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub cbProfile_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbProfile.SelectedIndexChanged
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -12792,6 +14285,11 @@ NEXTONE:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the OpenLicenseFormToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub OpenLicenseFormToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenLicenseFormToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -12799,6 +14297,11 @@ NEXTONE:
         frmLicense.ShowDialog()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the Button4 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -12821,6 +14324,11 @@ NEXTONE:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Tick event of the TimerAutoExec control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub TimerAutoExec_Tick(sender As Object, e As EventArgs) Handles TimerAutoExec.Tick
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -12852,6 +14360,11 @@ NEXTONE:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the RebuildSQLiteDBToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub RebuildSQLiteDBToolStripMenuItem_Click(sender As Object, e As EventArgs)
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -12860,6 +14373,11 @@ NEXTONE:
         MessageBox.Show("Database rebuilt")
     End Sub
 
+    ''' <summary>
+    ''' Handles the DoWork event of the asyncBatchOcrALL control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.ComponentModel.DoWorkEventArgs"/> instance containing the event data.</param>
     Private Sub asyncBatchOcrALL_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles asyncBatchOcrALL.DoWork
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -12867,6 +14385,11 @@ NEXTONE:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the DoWork event of the asyncBatchOcrPending control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.ComponentModel.DoWorkEventArgs"/> instance containing the event data.</param>
     Private Sub asyncBatchOcrPending_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles asyncBatchOcrPending.DoWork
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -12874,6 +14397,11 @@ NEXTONE:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the UnhandledExceptionsToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub UnhandledExceptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UnhandledExceptionsToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -12892,6 +14420,11 @@ NEXTONE:
         'RemoveHandler Application.ThreadException, AddressOf MYThreadHandler
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the BackupSQLiteDBToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub BackupSQLiteDBToolStripMenuItem_Click(sender As Object, e As EventArgs)
         '
         DBLocal.BackUpSQLite()
@@ -12900,6 +14433,11 @@ NEXTONE:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the RestoreSQLiteDBToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub RestoreSQLiteDBToolStripMenuItem_Click(sender As Object, e As EventArgs)
 
         DBLocal.RestoreSQLite()
@@ -12907,19 +14445,38 @@ NEXTONE:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the 1 event of the BackupSQLiteDBToolStripMenuItem_Click control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub BackupSQLiteDBToolStripMenuItem_Click_1(sender As Object, e As EventArgs)
         DBLocal.BackUpSQLite()
         MessageBox.Show("Backup Complete...")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the SQLiteInterfaceScreenToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub SQLiteInterfaceScreenToolStripMenuItem_Click(sender As Object, e As EventArgs)
         frmSqlite.Show()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the InventoryDirectoryToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub InventoryDirectoryToolStripMenuItem_Click(sender As Object, e As EventArgs)
 
     End Sub
 
+    ''' <summary>
+    ''' Threads the update notice.
+    ''' </summary>
+    ''' <param name="value">The value.</param>
     Public Sub ThreadUpdateNotice(ByVal value As String)
         If InvokeRequired Then
             Me.Invoke(New Action(Of String)(AddressOf ThreadUpdateNotice), New Object() {value})
@@ -12929,6 +14486,10 @@ NEXTONE:
         lblNotice.Text = value
     End Sub
 
+    ''' <summary>
+    ''' Threads the update sb.
+    ''' </summary>
+    ''' <param name="value">The value.</param>
     Public Sub ThreadUpdateSB(ByVal value As String)
         If InvokeRequired Then
             Me.Invoke(New Action(Of String)(AddressOf ThreadUpdateSB), New Object() {value})
@@ -12938,6 +14499,10 @@ NEXTONE:
         SB.Text = value
     End Sub
 
+    ''' <summary>
+    ''' Threads the update s b2.
+    ''' </summary>
+    ''' <param name="value">The value.</param>
     Public Sub ThreadUpdateSB2(ByVal value As String)
         If InvokeRequired Then
             Me.Invoke(New Action(Of String)(AddressOf ThreadUpdateSB2), New Object() {value})
@@ -12947,6 +14512,11 @@ NEXTONE:
         SB2.Text = value
     End Sub
 
+    ''' <summary>
+    ''' Handles the DoWork event of the ContentThread control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.ComponentModel.DoWorkEventArgs"/> instance containing the event data.</param>
     Private Sub ContentThread_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles ContentThread.DoWork
 
         '********************************************************************************
@@ -12960,6 +14530,11 @@ NEXTONE:
         gAutoExecContentComplete = True
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the GetListenerFilesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub GetListenerFilesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GetListenerFilesToolStripMenuItem.Click
         Dim s As String = ""
         Dim LOF As New List(Of String)
@@ -12967,6 +14542,11 @@ NEXTONE:
         MessageBox.Show("Retrieved " + LOF.ToString + " files to process.")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the CompareDirToRepositoryToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub CompareDirToRepositoryToolStripMenuItem_Click(sender As Object, e As EventArgs)
 
         Dim msg As String = ""
@@ -13106,11 +14686,21 @@ NEXTONE:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the 1 event of the ThreadValidateSourceName_DoWork control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.ComponentModel.DoWorkEventArgs"/> instance containing the event data.</param>
     Private Sub ThreadValidateSourceName_DoWork_1(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles ThreadValidateSourceName.DoWork
         Dim MachineName As String = Environment.MachineName.ToString
         DBARCH.CleanupSourceName(MachineName)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the LIstWindowsLogsToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub LIstWindowsLogsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LIstWindowsLogsToolStripMenuItem.Click
         Dim remoteEventLogs As EventLog()
         Dim MachineName As String = Environment.MachineName
@@ -13122,10 +14712,18 @@ NEXTONE:
         Next
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the CheckLogsForListenerInfoToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub CheckLogsForListenerInfoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CheckLogsForListenerInfoToolStripMenuItem.Click
         DisplayEventLogProperties()
     End Sub
 
+    ''' <summary>
+    ''' Displays the event log properties.
+    ''' </summary>
     Private Shared Sub DisplayEventLogProperties()
         Dim eventLogs As EventLog() = EventLog.GetEventLogs()
 
@@ -13174,6 +14772,9 @@ NEXTONE:
         Next
     End Sub
 
+    ''' <summary>
+    ''' Resets the sqlite.
+    ''' </summary>
     Sub ResetSqlite()
 
         DBLocal.truncateDirs()
@@ -13186,6 +14787,11 @@ NEXTONE:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ResetSQLiteArchivesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ResetSQLiteArchivesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetSQLiteArchivesToolStripMenuItem.Click
         Dim msg As String = "This empties the temporary data store used for performance enhancement, are you sure?"
         Dim dlgRes As DialogResult = MessageBox.Show(msg, "Datastore Cleansing", MessageBoxButtons.YesNo)
@@ -13201,6 +14807,11 @@ NEXTONE:
         MessageBox.Show("Temporary file stores cleaned up and ready.")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the GetOutlookEMailIDsToolStripMenuItem1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub GetOutlookEMailIDsToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles GetOutlookEMailIDsToolStripMenuItem1.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13233,6 +14844,11 @@ NEXTONE:
         GC.WaitForPendingFinalizers()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ResetZIPFilesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ResetZIPFilesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetZIPFilesToolStripMenuItem.Click
         Dim msg As String = "This deletes the pending ZIP files to be processed, are you sure?"
         Dim dlgRes As DialogResult = MessageBox.Show(msg, "Datastore Cleansing", MessageBoxButtons.YesNo)
@@ -13248,6 +14864,11 @@ NEXTONE:
         MessageBox.Show("Temporary zip files cleaned up and ready.")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ResetEmailIdentifierCodesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ResetEmailIdentifierCodesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetEmailIdentifierCodesToolStripMenuItem.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13256,6 +14877,11 @@ NEXTONE:
         GetOutlookEmailIDsToolStripMenuItem_Click(Nothing, Nothing)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the RebuildSQLiteDBToolStripMenuItem1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub RebuildSQLiteDBToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles RebuildSQLiteDBToolStripMenuItem1.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13264,16 +14890,31 @@ NEXTONE:
         MessageBox.Show("Database rebuilt")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the BackupSQLiteDBToolStripMenuItem1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub BackupSQLiteDBToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles BackupSQLiteDBToolStripMenuItem1.Click
         DBLocal.BackUpSQLite()
         MessageBox.Show("Backup Complete...")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the RestoreSQLiteDBToolStripMenuItem1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub RestoreSQLiteDBToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles RestoreSQLiteDBToolStripMenuItem1.Click
         DBLocal.RestoreSQLite()
         MessageBox.Show("Restore Complete...")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ClearRestoreQueueToolStripMenuItem1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ClearRestoreQueueToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ClearRestoreQueueToolStripMenuItem1.Click
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -13287,10 +14928,20 @@ NEXTONE:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the SQToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub SQToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SQToolStripMenuItem.Click
         frmSqlite.Show()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the CompareDirToRepositoryToolStripMenuItem1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub CompareDirToRepositoryToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CompareDirToRepositoryToolStripMenuItem1.Click
 
         Dim msg As String = ""
@@ -13430,6 +15081,11 @@ NEXTONE:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the InventoryDirectoryToolStripMenuItem1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub InventoryDirectoryToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles InventoryDirectoryToolStripMenuItem1.Click
 
         Dim InventoryReloadMethod As Integer = 2
@@ -13570,6 +15226,11 @@ NEXTDIR:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ValidateDirectoryFilesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ValidateDirectoryFilesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ValidateDirectoryFilesToolStripMenuItem.Click
         Dim Dname As String = ""
         If (FolderBrowserDialog1.ShowDialog() = DialogResult.OK) Then
@@ -13719,6 +15380,10 @@ SkipIT:
         MessageBox.Show(Msg)
     End Sub
 
+    ''' <summary>
+    ''' Performs the quick scan.
+    ''' </summary>
+    ''' <param name="PerformQuickArchive">if set to <c>true</c> [perform quick archive].</param>
     Sub PerformQuickScan(PerformQuickArchive As Boolean)
 
         If gTraceFunctionCalls.Equals(1) Then
@@ -13784,6 +15449,11 @@ SkipIT:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ReapplyALLDBUpdatesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ReapplyALLDBUpdatesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReapplyALLDBUpdatesToolStripMenuItem.Click
 
         Dim NotNow As Boolean = True
@@ -13808,6 +15478,11 @@ SkipIT:
     End Sub
 
 
+    ''' <summary>
+    ''' Handles the Click event of the CanLongFilenamesBeTurnedOnToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub CanLongFilenamesBeTurnedOnToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CanLongFilenamesBeTurnedOnToolStripMenuItem.Click
         Dim isLongFileNamesAvail As Boolean = UTIL.isLongFileNamesAvail
         If isLongFileNamesAvail Then
@@ -13817,6 +15492,11 @@ SkipIT:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the TurnONLongFilenamesAdminNeededToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub TurnONLongFilenamesAdminNeededToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TurnONLongFilenamesAdminNeededToolStripMenuItem.Click
 
         Clipboard.Clear()
@@ -13825,6 +15505,11 @@ SkipIT:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the HowToTurnOnLongFilenamesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub HowToTurnOnLongFilenamesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HowToTurnOnLongFilenamesToolStripMenuItem.Click
 
         Dim S As String = ""
@@ -13851,6 +15536,11 @@ SkipIT:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the CheckForViolationsToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub CheckForViolationsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CheckForViolationsToolStripMenuItem.Click
         If ThreadSetNameHash.IsBusy Then
             SB.Text = "ABORTING, ALREADY EXECUTING..."
@@ -13869,15 +15559,30 @@ SkipIT:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the FileNamesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub FileNamesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileNamesToolStripMenuItem.Click
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the LongFilenamesOnOrOFFToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub LongFilenamesOnOrOFFToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Dim txt As String = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem", "LongPathsEnabled", "")
         MessageBox.Show("Current Value in Registry: " + txt)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the LongFilenameHASHToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub LongFilenameHASHToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LongFilenameHASHToolStripMenuItem.Click
 
         Dim tgtfqn As String = "C:\Users\wmiller\Documents\SQL Server Management Studio\HFit_Rewrite\CurrentWork\_Eligibility\Documentation\RoleEligibilityTracking-Chad.doc"
@@ -13902,6 +15607,11 @@ SkipIT:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ValidateLongDirectroryNamesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ValidateLongDirectroryNamesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ValidateLongDirectroryNamesToolStripMenuItem.Click
         If ThreadSetNameHash.IsBusy Then
             SB.Text = "ABORTING, ALREADY EXECUTING..."
@@ -13921,6 +15631,11 @@ SkipIT:
         'DBARCH.setDSFQN()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the TextStringHashToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub TextStringHashToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TextStringHashToolStripMenuItem.Click
         Dim DirName As String = "C:\dev\Ecm2020"
 
@@ -13939,11 +15654,21 @@ SkipIT:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the DoWork event of the ThreadSetNameHash control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="System.ComponentModel.DoWorkEventArgs"/> instance containing the event data.</param>
     Private Sub ThreadSetNameHash_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles ThreadSetNameHash.DoWork
         DBARCH.setDSFQN()
         MessageBox.Show("Analysis of long file names complete...")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ValidateLongDirectroryNamesToolStripMenuItem1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ValidateLongDirectroryNamesToolStripMenuItem1_Click(sender As Object, e As EventArgs)
         If ThreadSetNameHash.IsBusy Then
             SB.Text = "ABORTING, ALREADY EXECUTING..."
@@ -13963,11 +15688,21 @@ SkipIT:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ValidateFileHASHCodesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ValidateFileHASHCodesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ValidateFileHASHCodesToolStripMenuItem.Click
         DBARCH.validateFileHash()
         MessageBox.Show("File Hash validation complete...")
     End Sub
 
+    ''' <summary>
+    ''' Handles the CheckedChanged event of the CheckBox2 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox2.CheckedChanged
         If lbArchiveDirs.SelectedItems.Count.Equals(0) Then
             MessageBox.Show("To use this, one and only one directory must be selected, returning")
@@ -13982,19 +15717,39 @@ SkipIT:
         MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ValidateProcessAsFileExtsToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ValidateProcessAsFileExtsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ValidateProcessAsFileExtsToolStripMenuItem.Click
         DBARCH.RebuildCrossIndexFileTypes()
     End Sub
 
+    ''' <summary>
+    ''' Handles the LinkClicked event of the LinkLabel2 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="LinkLabelLinkClickedEventArgs"/> instance containing the event data.</param>
     Private Sub LinkLabel2_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
         MessageBox.Show("NOT Operable at this time...")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ManualEditListenerConfigToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ManualEditListenerConfigToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ManualEditListenerConfigToolStripMenuItem.Click
         Dim DirsToMonitor As String = System.Configuration.ConfigurationManager.AppSettings("DirsToMonitor")
         System.Diagnostics.Process.Start("notepad.exe", DirsToMonitor)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ContentNoLIstenerToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ContentNoLIstenerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContentNoLIstenerToolStripMenuItem.Click
 
         Dim watch As Stopwatch = Stopwatch.StartNew()
@@ -14009,6 +15764,11 @@ SkipIT:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ValidateRetentionDatesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ValidateRetentionDatesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ValidateRetentionDatesToolStripMenuItem.Click
         SB.Text = "Verifying Retention Dates"
         DBARCH.spUpdateRetention()
@@ -14016,21 +15776,41 @@ SkipIT:
         MessageBox.Show("Retention Dates VERIFIED")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the FulltextLogAnalysisToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub FulltextLogAnalysisToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FulltextLogAnalysisToolStripMenuItem.Click
         frmFti.Show()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the UpdateAvailableIFiltersToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub UpdateAvailableIFiltersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpdateAvailableIFiltersToolStripMenuItem.Click
         'spAddAvailExtensions
         DBARCH.ExecSP("spAddAvailExtensions")
         MessageBox.Show("Filters updated...")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ReInventoryAllFilesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ReInventoryAllFilesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReInventoryAllFilesToolStripMenuItem.Click
         'DBLocal.ReInventory()
         InventoryRepoDirectories(False)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the GetDirFilesByFilterToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub GetDirFilesByFilterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GetDirFilesByFilterToolStripMenuItem.Click
         'Dim sFiles() As String = Directory.GetFiles("c:\dev\Ecm2020", "*.pdf|*.xlsx|*.xls|*.docx|*.doc|*.txt", SearchOption.AllDirectories)
         Dim I As Integer = 0
@@ -14074,6 +15854,11 @@ SkipIT:
         MessageBox.Show(msg)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the GenWhereINDictToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub GenWhereINDictToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenWhereINDictToolStripMenuItem.Click
         Dim tDict As New Dictionary(Of String, String)
         tDict = DBARCH.getIncludedFileTypeWhereIn(gCurrLoginID)
@@ -14083,11 +15868,21 @@ SkipIT:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the Label13 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub Label13_Click(sender As Object, e As EventArgs) Handles Label13.Click
 
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnSetLastArchiveON control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub btnSetLastArchiveON_Click(sender As Object, e As EventArgs) Handles btnSetLastArchiveON.Click
         DBLocal.TurnOnUseLastArchiveDateActive()
         If gUseLastArchiveDate.Equals("1") Then
@@ -14099,6 +15894,11 @@ SkipIT:
         setLastArchiveLabel()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the btnSetLastArchiveOFF control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub btnSetLastArchiveOFF_Click(sender As Object, e As EventArgs) Handles btnSetLastArchiveOFF.Click
         DBLocal.TurnOffUseLastArchiveDateActive()
         If gUseLastArchiveDate.Equals("1") Then
@@ -14110,6 +15910,11 @@ SkipIT:
         setLastArchiveLabel()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the TurnONToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub TurnONToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TurnONToolStripMenuItem.Click
         DBLocal.TurnOnUseLastArchiveDateActive()
         If gUseLastArchiveDate.Equals("1") Then
@@ -14121,6 +15926,11 @@ SkipIT:
         setLastArchiveLabel()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the TurnOFFToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub TurnOFFToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TurnOFFToolStripMenuItem.Click
         DBLocal.TurnOffUseLastArchiveDateActive()
         If gUseLastArchiveDate.Equals("1") Then
@@ -14132,18 +15942,33 @@ SkipIT:
         setLastArchiveLabel()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the TurnListenerONToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub TurnListenerONToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TurnListenerONToolStripMenuItem.Click
         ProcessListener(True)
         getListeners()
         MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the TurnListenerOFFToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub TurnListenerOFFToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TurnListenerOFFToolStripMenuItem.Click
         ProcessListener(False)
         getListeners()
         MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the InitializeToGivenDateToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub InitializeToGivenDateToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InitializeToGivenDateToolStripMenuItem.Click
         Dim Message, Title, xDefault, MyValue
         Message = "Enter a Date in the form of MM/DD/YYYY"    ' Set prompt.
@@ -14174,6 +15999,11 @@ SkipIT:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ValidateRepoContentsToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ValidateRepoContentsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ValidateRepoContentsToolStripMenuItem.Click
 
         Dim msg As String = "This process can be very time consuming as few minutes or a few dyas, are you sure?"
@@ -14211,10 +16041,20 @@ SkipIT:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ArchiveToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ArchiveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ArchiveToolStripMenuItem.Click
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ListenerONALLDirsToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ListenerONALLDirsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListenerONALLDirsToolStripMenuItem.Click
         Try
             Dim I As Int32 = 0
@@ -14229,6 +16069,11 @@ SkipIT:
         MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ListenerOFFALLDirsToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ListenerOFFALLDirsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListenerOFFALLDirsToolStripMenuItem.Click
         Try
             Dim I As Int32 = 0
@@ -14244,11 +16089,21 @@ SkipIT:
         MessageBox.Show("IMPORTANT: You will have to stop and start the servive now as an ADMIN ")
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the NetworkListenerToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub NetworkListenerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NetworkListenerToolStripMenuItem.Click
         FrmListenerTest.Show()
     End Sub
 
 
+    ''' <summary>
+    ''' Handles the Click event of the ContentFastScanToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ContentFastScanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContentFastScanToolStripMenuItem.Click
 
         gAutoExecContentComplete = False
@@ -14295,12 +16150,22 @@ SkipIT:
         gAutoExecContentComplete = True
     End Sub
 
+    ''' <summary>
+    ''' Handles the MouseEnter event of the ContentToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ContentToolStripMenuItem_MouseEnter(sender As Object, e As EventArgs) Handles ContentToolStripMenuItem.MouseEnter
         If gUseLastArchiveDate.Equals("1") Then
             ContentToolStripMenuItem.Text = ContentToolStripMenuItem.Text + " {Lastarchive ON}"
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the MouseLeave event of the ContentToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ContentToolStripMenuItem_MouseLeave(sender As Object, e As EventArgs) Handles ContentToolStripMenuItem.MouseLeave
 
         If ContentToolStripMenuItem.Text.Contains("{Lastarchive ON}") Then
@@ -14312,6 +16177,11 @@ SkipIT:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the TestCKDBTBLToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub TestCKDBTBLToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TestCKDBTBLToolStripMenuItem.Click
         Dim B As Boolean = DBARCH.ckUpdateTbl()
         If B Then
@@ -14321,6 +16191,11 @@ SkipIT:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the TestCamelCaseSplitToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub TestCamelCaseSplitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TestCamelCaseSplitToolStripMenuItem.Click
         Dim s As String = "ThisIsAFileNameToBeSplit"
         Dim s2 As String = UTIL.SplitCamelCase(s)
@@ -14328,10 +16203,20 @@ SkipIT:
         MessageBox.Show(s)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the OpenSQLHelpScreenToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub OpenSQLHelpScreenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenSQLHelpScreenToolStripMenuItem.Click
         frmSqlHelp.Show()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the OpenFileReadWriteToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub OpenFileReadWriteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenFileReadWriteToolStripMenuItem.Click
         ' Call ShowDialog.
         Dim result As DialogResult = OpenFileDialog1.ShowDialog()
@@ -14360,6 +16245,11 @@ SkipIT:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the QuickListFilesInDIrAndSubdirToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub QuickListFilesInDIrAndSubdirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles QuickListFilesInDIrAndSubdirToolStripMenuItem.Click
 
         Dim Message As String = "Enter the Directory you wish to scan:"
@@ -14391,6 +16281,11 @@ SkipIT:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the GenWhereinClausesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub GenWhereinClausesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenWhereinClausesToolStripMenuItem.Click
         Dim WC As Dictionary(Of String, String)
         WC = DBARCH.getWhereInClauses
@@ -14400,6 +16295,9 @@ SkipIT:
 
     End Sub
 
+    ''' <summary>
+    ''' Synchronizes the selected directories.
+    ''' </summary>
     Private Sub SyncSelectedDirectories()
 
         Dim Str As String = ""
@@ -14417,10 +16315,20 @@ SkipIT:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the TestSyncSelectedFoldersToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub TestSyncSelectedFoldersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TestSyncSelectedFoldersToolStripMenuItem.Click
         SyncSelectedDirectories()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the DBConnectToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub DBConnectToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DBConnectToolStripMenuItem.Click
 
         Dim message, title As String
@@ -14454,6 +16362,11 @@ SkipIT:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the CreateSQLiteDBToolStripMenuItem1 control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub CreateSQLiteDBToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CreateSQLiteDBToolStripMenuItem1.Click
 
         Dim NewDB As String = "c:\temp\TestSQLite.db"
@@ -14478,10 +16391,20 @@ SkipIT:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ReinventoryFilesOnlyNewToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ReinventoryFilesOnlyNewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReinventoryFilesOnlyNewToolStripMenuItem.Click
         InventoryRepoDirectories(True)
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ProcessMissingFilesToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ProcessMissingFilesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProcessMissingFilesToolStripMenuItem.Click
         Dim FQN As String = ""
 
@@ -14491,6 +16414,11 @@ SkipIT:
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the PickAndLoadADocumentToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub PickAndLoadADocumentToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PickAndLoadADocumentToolStripMenuItem.Click
 
         OpenFileDialog1.Multiselect = True
@@ -14525,18 +16453,36 @@ SkipIT:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Handles the Enter event of the gbEmail control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub gbEmail_Enter(sender As Object, e As EventArgs) Handles gbEmail.Enter
 
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the FilesAreRetrievedFromDirectoryToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub FilesAreRetrievedFromDirectoryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FilesAreRetrievedFromDirectoryToolStripMenuItem.Click
         frmLoadTest.Show()
     End Sub
 
+    ''' <summary>
+    ''' Handles the Click event of the ZipfileExplodeAndProcessToolStripMenuItem control.
+    ''' </summary>
+    ''' <param name="sender">The source of the event.</param>
+    ''' <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
     Private Sub ZipfileExplodeAndProcessToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ZipfileExplodeAndProcessToolStripMenuItem.Click
         ProcessUnexplodedZipFiles()
     End Sub
 
+    ''' <summary>
+    ''' Processes the unexploded zip files.
+    ''' </summary>
     Sub ProcessUnexplodedZipFiles()
 
         Dim ExplodeDir As String = System.Configuration.ConfigurationManager.AppSettings("ExplodeDir")
@@ -14665,6 +16611,9 @@ SkipIT:
         DBARCH.ExecuteSqlNewConn(0, NewSQL)
     End Sub
 
+    ''' <summary>
+    ''' Drops the temporary files.
+    ''' </summary>
     Sub DropTempFiles()
 
         Dim ExplodeDir As String = System.Configuration.ConfigurationManager.AppSettings("ExplodeDir")
@@ -14736,217 +16685,748 @@ SkipIT:
 
 End Class
 
+''' <summary>
+''' Class DS_RssPull.
+''' </summary>
 <System.Runtime.Serialization.DataContract()>
 Public Class DS_RssPull
 
+    ''' <summary>
+    ''' The RSS name
+    ''' </summary>
     <System.Runtime.Serialization.DataMember()>
     Public RssName As String
 
+    ''' <summary>
+    ''' The RSS URL
+    ''' </summary>
     <System.Runtime.Serialization.DataMember()>
     Public RssUrl As String
 
+    ''' <summary>
+    ''' The user identifier
+    ''' </summary>
     <System.Runtime.Serialization.DataMember()>
     Public UserID As String
 
 End Class
 
+''' <summary>
+''' Class DS_WebSite.
+''' </summary>
 <System.Runtime.Serialization.DataContract()>
 Public Class DS_WebSite
 
+    ''' <summary>
+    ''' The web site
+    ''' </summary>
     <System.Runtime.Serialization.DataMember()>
     Public WebSite As String
 
+    ''' <summary>
+    ''' The web URL
+    ''' </summary>
     <System.Runtime.Serialization.DataMember()>
     Public WebUrl As String
 
+    ''' <summary>
+    ''' The user identifier
+    ''' </summary>
     <System.Runtime.Serialization.DataMember()>
     Public UserID As String
 
+    ''' <summary>
+    ''' The depth
+    ''' </summary>
     <System.Runtime.Serialization.DataMember()>
     Public depth As Integer
 
+    ''' <summary>
+    ''' The width
+    ''' </summary>
     <System.Runtime.Serialization.DataMember()>
     Public width As Integer
 
 End Class
 
+''' <summary>
+''' Class DS_WebScreen.
+''' </summary>
 <System.Runtime.Serialization.DataContract()>
 Public Class DS_WebScreen
 
+    ''' <summary>
+    ''' The web screen
+    ''' </summary>
     <System.Runtime.Serialization.DataMember()>
     Public WebScreen As String
 
+    ''' <summary>
+    ''' The web URL
+    ''' </summary>
     <System.Runtime.Serialization.DataMember()>
     Public WebUrl As String
 
+    ''' <summary>
+    ''' The user identifier
+    ''' </summary>
     <System.Runtime.Serialization.DataMember()>
     Public UserID As String
 
 End Class
 
+''' <summary>
+''' Class DS_Content.
+''' </summary>
 Public Class DS_Content
+    ''' <summary>
+    ''' The row unique identifier
+    ''' </summary>
     Public RowGuid As String = ""
+    ''' <summary>
+    ''' The source unique identifier
+    ''' </summary>
     Public SourceGuid As String = ""
+    ''' <summary>
+    ''' The create date
+    ''' </summary>
     Public CreateDate As String = ""
+    ''' <summary>
+    ''' The source name
+    ''' </summary>
     Public SourceName As String = ""
+    ''' <summary>
+    ''' The source image
+    ''' </summary>
     Public SourceImage As Byte() = Nothing
+    ''' <summary>
+    ''' The source type code
+    ''' </summary>
     Public SourceTypeCode As String = ""
+    ''' <summary>
+    ''' The FQN
+    ''' </summary>
     Public FQN As String = ""
+    ''' <summary>
+    ''' The version NBR
+    ''' </summary>
     Public VersionNbr As String = ""
+    ''' <summary>
+    ''' The last access date
+    ''' </summary>
     Public LastAccessDate As String = ""
+    ''' <summary>
+    ''' The file length
+    ''' </summary>
     Public FileLength As String = ""
+    ''' <summary>
+    ''' The last write time
+    ''' </summary>
     Public LastWriteTime As String = ""
+    ''' <summary>
+    ''' The user identifier
+    ''' </summary>
     Public UserID As String = ""
+    ''' <summary>
+    ''' The data source owner user identifier
+    ''' </summary>
     Public DataSourceOwnerUserID As String = ""
+    ''' <summary>
+    ''' The is public
+    ''' </summary>
     Public isPublic As String = ""
+    ''' <summary>
+    ''' The file directory
+    ''' </summary>
     Public FileDirectory As String = ""
+    ''' <summary>
+    ''' The original file type
+    ''' </summary>
     Public OriginalFileType As String = ""
+    ''' <summary>
+    ''' The retention expiration date
+    ''' </summary>
     Public RetentionExpirationDate As String = ""
+    ''' <summary>
+    ''' The is public previous state
+    ''' </summary>
     Public IsPublicPreviousState As String = ""
+    ''' <summary>
+    ''' The is available
+    ''' </summary>
     Public isAvailable As String = ""
+    ''' <summary>
+    ''' The is contained within zip file
+    ''' </summary>
     Public isContainedWithinZipFile As String = ""
+    ''' <summary>
+    ''' The is zip file
+    ''' </summary>
     Public IsZipFile As String = ""
+    ''' <summary>
+    ''' The data verified
+    ''' </summary>
     Public DataVerified As String = ""
+    ''' <summary>
+    ''' The zip file unique identifier
+    ''' </summary>
     Public ZipFileGuid As String = ""
+    ''' <summary>
+    ''' The zip file FQN
+    ''' </summary>
     Public ZipFileFQN As String = ""
+    ''' <summary>
+    ''' The description
+    ''' </summary>
     Public Description As String = ""
+    ''' <summary>
+    ''' The key words
+    ''' </summary>
     Public KeyWords As String = ""
+    ''' <summary>
+    ''' The notes
+    ''' </summary>
     Public Notes As String = ""
+    ''' <summary>
+    ''' The is perm
+    ''' </summary>
     Public isPerm As String = ""
+    ''' <summary>
+    ''' The is master
+    ''' </summary>
     Public isMaster As String = ""
+    ''' <summary>
+    ''' The creation date
+    ''' </summary>
     Public CreationDate As String = ""
+    ''' <summary>
+    ''' The ocr performed
+    ''' </summary>
     Public OcrPerformed As String = ""
+    ''' <summary>
+    ''' The is graphic
+    ''' </summary>
     Public isGraphic As String = ""
+    ''' <summary>
+    ''' The graphic contains text
+    ''' </summary>
     Public GraphicContainsText As String = ""
+    ''' <summary>
+    ''' The ocr text
+    ''' </summary>
     Public OcrText As String = ""
+    ''' <summary>
+    ''' The image hidden text
+    ''' </summary>
     Public ImageHiddenText As String = ""
+    ''' <summary>
+    ''' The is web page
+    ''' </summary>
     Public isWebPage As String = ""
+    ''' <summary>
+    ''' The parent unique identifier
+    ''' </summary>
     Public ParentGuid As String = ""
+    ''' <summary>
+    ''' The retention code
+    ''' </summary>
     Public RetentionCode As String = ""
+    ''' <summary>
+    ''' The machine identifier
+    ''' </summary>
     Public MachineID As String = ""
+    ''' <summary>
+    ''' The CRC
+    ''' </summary>
     Public CRC As String = ""
+    ''' <summary>
+    ''' The image hash
+    ''' </summary>
     Public ImageHash As String = ""
+    ''' <summary>
+    ''' The share point
+    ''' </summary>
     Public SharePoint As String = ""
+    ''' <summary>
+    ''' The share point document
+    ''' </summary>
     Public SharePointDoc As String = ""
+    ''' <summary>
+    ''' The share point list
+    ''' </summary>
     Public SharePointList As String = ""
+    ''' <summary>
+    ''' The share point list item
+    ''' </summary>
     Public SharePointListItem As String = ""
+    ''' <summary>
+    ''' The structured data
+    ''' </summary>
     Public StructuredData As String = ""
+    ''' <summary>
+    ''' The hive connection name
+    ''' </summary>
     Public HiveConnectionName As String = ""
+    ''' <summary>
+    ''' The hive active
+    ''' </summary>
     Public HiveActive As String = ""
+    ''' <summary>
+    ''' The repo SVR name
+    ''' </summary>
     Public RepoSvrName As String = ""
+    ''' <summary>
+    ''' The row creation date
+    ''' </summary>
     Public RowCreationDate As String = ""
+    ''' <summary>
+    ''' The row last mod date
+    ''' </summary>
     Public RowLastModDate As String = ""
+    ''' <summary>
+    ''' The contained within
+    ''' </summary>
     Public ContainedWithin As String = ""
+    ''' <summary>
+    ''' The record length
+    ''' </summary>
     Public RecLen As String = ""
+    ''' <summary>
+    ''' The record hash
+    ''' </summary>
     Public RecHash As String = ""
+    ''' <summary>
+    ''' The original size
+    ''' </summary>
     Public OriginalSize As String = ""
+    ''' <summary>
+    ''' The compressed size
+    ''' </summary>
     Public CompressedSize As String = ""
+    ''' <summary>
+    ''' The tx start time
+    ''' </summary>
     Public txStartTime As String = ""
+    ''' <summary>
+    ''' The tx end time
+    ''' </summary>
     Public txEndTime As String = ""
+    ''' <summary>
+    ''' The tx total time
+    ''' </summary>
     Public txTotalTime As String = ""
+    ''' <summary>
+    ''' The transmit time
+    ''' </summary>
     Public TransmitTime As String = ""
+    ''' <summary>
+    ''' The file attached
+    ''' </summary>
     Public FileAttached As String = ""
+    ''' <summary>
+    ''' The BPS
+    ''' </summary>
     Public BPS As String = ""
+    ''' <summary>
+    ''' The repo name
+    ''' </summary>
     Public RepoName As String = ""
+    ''' <summary>
+    ''' The hash file
+    ''' </summary>
     Public HashFile As String = ""
+    ''' <summary>
+    ''' The hash name
+    ''' </summary>
     Public HashName As String = ""
+    ''' <summary>
+    ''' The ocr successful
+    ''' </summary>
     Public OcrSuccessful As String = ""
+    ''' <summary>
+    ''' The ocr pending
+    ''' </summary>
     Public OcrPending As String = ""
+    ''' <summary>
+    ''' The PDF is searchable
+    ''' </summary>
     Public PdfIsSearchable As String = ""
+    ''' <summary>
+    ''' The PDF ocr required
+    ''' </summary>
     Public PdfOcrRequired As String = ""
+    ''' <summary>
+    ''' The PDF ocr success
+    ''' </summary>
     Public PdfOcrSuccess As String = ""
+    ''' <summary>
+    ''' The PDF ocr text extracted
+    ''' </summary>
     Public PdfOcrTextExtracted As String = ""
+    ''' <summary>
+    ''' The PDF pages
+    ''' </summary>
     Public PdfPages As String = ""
+    ''' <summary>
+    ''' The PDF images
+    ''' </summary>
     Public PdfImages As String = ""
+    ''' <summary>
+    ''' The require ocr
+    ''' </summary>
     Public RequireOcr As String = ""
+    ''' <summary>
+    ''' The RSS link FLG
+    ''' </summary>
     Public RssLinkFlg As String = ""
+    ''' <summary>
+    ''' The RSS link unique identifier
+    ''' </summary>
     Public RssLinkGuid As String = ""
+    ''' <summary>
+    ''' The page URL
+    ''' </summary>
     Public PageURL As String = ""
+    ''' <summary>
+    ''' The retention date
+    ''' </summary>
     Public RetentionDate As String = ""
+    ''' <summary>
+    ''' The URL hash
+    ''' </summary>
     Public URLHash As String = ""
+    ''' <summary>
+    ''' The web page publish date
+    ''' </summary>
     Public WebPagePublishDate As String = ""
+    ''' <summary>
+    ''' The sap data
+    ''' </summary>
     Public SapData As String = ""
+    ''' <summary>
+    ''' The row identifier
+    ''' </summary>
     Public RowID As String = ""
 End Class
 
+''' <summary>
+''' Class DS_Email.
+''' </summary>
 Public Class DS_Email
+    ''' <summary>
+    ''' The email unique identifier
+    ''' </summary>
     Public EmailGuid As String = ""
+    ''' <summary>
+    ''' The subject
+    ''' </summary>
     Public SUBJECT As String = ""
+    ''' <summary>
+    ''' The sent to
+    ''' </summary>
     Public SentTO As String = ""
+    ''' <summary>
+    ''' The body
+    ''' </summary>
     Public Body As String = ""
+    ''' <summary>
+    ''' The BCC
+    ''' </summary>
     Public Bcc As String = ""
+    ''' <summary>
+    ''' The billing information
+    ''' </summary>
     Public BillingInformation As String = ""
+    ''' <summary>
+    ''' The cc
+    ''' </summary>
     Public CC As String = ""
+    ''' <summary>
+    ''' The companies
+    ''' </summary>
     Public Companies As String = ""
+    ''' <summary>
+    ''' The creation time
+    ''' </summary>
     Public CreationTime As String = ""
+    ''' <summary>
+    ''' The read receipt requested
+    ''' </summary>
     Public ReadReceiptRequested As String = ""
+    ''' <summary>
+    ''' The received by name
+    ''' </summary>
     Public ReceivedByName As String = ""
+    ''' <summary>
+    ''' The received time
+    ''' </summary>
     Public ReceivedTime As String = ""
+    ''' <summary>
+    ''' All recipients
+    ''' </summary>
     Public AllRecipients As String = ""
+    ''' <summary>
+    ''' The user identifier
+    ''' </summary>
     Public UserID As String = ""
+    ''' <summary>
+    ''' The sender email address
+    ''' </summary>
     Public SenderEmailAddress As String = ""
+    ''' <summary>
+    ''' The sender name
+    ''' </summary>
     Public SenderName As String = ""
+    ''' <summary>
+    ''' The sensitivity
+    ''' </summary>
     Public Sensitivity As String = ""
+    ''' <summary>
+    ''' The sent on
+    ''' </summary>
     Public SentOn As String = ""
+    ''' <summary>
+    ''' The MSG size
+    ''' </summary>
     Public MsgSize As String = ""
+    ''' <summary>
+    ''' The deferred delivery time
+    ''' </summary>
     Public DeferredDeliveryTime As String = ""
+    ''' <summary>
+    ''' The entry identifier
+    ''' </summary>
     Public EntryID As String = ""
+    ''' <summary>
+    ''' The expiry time
+    ''' </summary>
     Public ExpiryTime As String = ""
+    ''' <summary>
+    ''' The last modification time
+    ''' </summary>
     Public LastModificationTime As String = ""
+    ''' <summary>
+    ''' The email image
+    ''' </summary>
     Public EmailImage As Byte() = Nothing
+    ''' <summary>
+    ''' The accounts
+    ''' </summary>
     Public Accounts As String = ""
+    ''' <summary>
+    ''' The short subj
+    ''' </summary>
     Public ShortSubj As String = ""
+    ''' <summary>
+    ''' The source type code
+    ''' </summary>
     Public SourceTypeCode As String = ""
+    ''' <summary>
+    ''' The original folder
+    ''' </summary>
     Public OriginalFolder As String = ""
+    ''' <summary>
+    ''' The store identifier
+    ''' </summary>
     Public StoreID As String = ""
+    ''' <summary>
+    ''' The is public
+    ''' </summary>
     Public isPublic As String = ""
+    ''' <summary>
+    ''' The retention expiration date
+    ''' </summary>
     Public RetentionExpirationDate As String = ""
+    ''' <summary>
+    ''' The is public previous state
+    ''' </summary>
     Public IsPublicPreviousState As String = ""
+    ''' <summary>
+    ''' The is available
+    ''' </summary>
     Public isAvailable As String = ""
+    ''' <summary>
+    ''' The curr mail folder identifier
+    ''' </summary>
     Public CurrMailFolderID As String = ""
+    ''' <summary>
+    ''' The is perm
+    ''' </summary>
     Public isPerm As String = ""
+    ''' <summary>
+    ''' The is master
+    ''' </summary>
     Public isMaster As String = ""
+    ''' <summary>
+    ''' The creation date
+    ''' </summary>
     Public CreationDate As String = ""
+    ''' <summary>
+    ''' The NBR attachments
+    ''' </summary>
     Public NbrAttachments As String = ""
+    ''' <summary>
+    ''' The CRC
+    ''' </summary>
     Public CRC As String = ""
+    ''' <summary>
+    ''' The image hash
+    ''' </summary>
     Public ImageHash As String = ""
+    ''' <summary>
+    ''' The description
+    ''' </summary>
     Public Description As String = ""
+    ''' <summary>
+    ''' The key words
+    ''' </summary>
     Public KeyWords As String = ""
+    ''' <summary>
+    ''' The retention code
+    ''' </summary>
     Public RetentionCode As String = ""
+    ''' <summary>
+    ''' The email identifier
+    ''' </summary>
     Public EmailIdentifier As String = ""
+    ''' <summary>
+    ''' The convert eml to MSG
+    ''' </summary>
     Public ConvertEmlToMSG As String = ""
+    ''' <summary>
+    ''' The hive connection name
+    ''' </summary>
     Public HiveConnectionName As String = ""
+    ''' <summary>
+    ''' The hive active
+    ''' </summary>
     Public HiveActive As String = ""
+    ''' <summary>
+    ''' The repo SVR name
+    ''' </summary>
     Public RepoSvrName As String = ""
+    ''' <summary>
+    ''' The row creation date
+    ''' </summary>
     Public RowCreationDate As String = ""
+    ''' <summary>
+    ''' The row last mod date
+    ''' </summary>
     Public RowLastModDate As String = ""
+    ''' <summary>
+    ''' The uidl
+    ''' </summary>
     Public UIDL As String = ""
+    ''' <summary>
+    ''' The record length
+    ''' </summary>
     Public RecLen As String = ""
+    ''' <summary>
+    ''' The record hash
+    ''' </summary>
     Public RecHash As String = ""
+    ''' <summary>
+    ''' The original size
+    ''' </summary>
     Public OriginalSize As String = ""
+    ''' <summary>
+    ''' The compressed size
+    ''' </summary>
     Public CompressedSize As String = ""
+    ''' <summary>
+    ''' The tx start time
+    ''' </summary>
     Public txStartTime As String = ""
+    ''' <summary>
+    ''' The tx end time
+    ''' </summary>
     Public txEndTime As String = ""
+    ''' <summary>
+    ''' The tx total time
+    ''' </summary>
     Public txTotalTime As String = ""
+    ''' <summary>
+    ''' The transmit time
+    ''' </summary>
     Public TransmitTime As String = ""
+    ''' <summary>
+    ''' The file attached
+    ''' </summary>
     Public FileAttached As String = ""
+    ''' <summary>
+    ''' The BPS
+    ''' </summary>
     Public BPS As String = ""
+    ''' <summary>
+    ''' The repo name
+    ''' </summary>
     Public RepoName As String = ""
+    ''' <summary>
+    ''' The hash file
+    ''' </summary>
     Public HashFile As String = ""
+    ''' <summary>
+    ''' The hash name
+    ''' </summary>
     Public HashName As String = ""
+    ''' <summary>
+    ''' The contains attachment
+    ''' </summary>
     Public ContainsAttachment As String = ""
+    ''' <summary>
+    ''' The NBR attachment
+    ''' </summary>
     Public NbrAttachment As String = ""
+    ''' <summary>
+    ''' The NBR zip files
+    ''' </summary>
     Public NbrZipFiles As String = ""
+    ''' <summary>
+    ''' The NBR zip files count
+    ''' </summary>
     Public NbrZipFilesCnt As String = ""
+    ''' <summary>
+    ''' The PDF is searchable
+    ''' </summary>
     Public PdfIsSearchable As String = ""
+    ''' <summary>
+    ''' The PDF ocr required
+    ''' </summary>
     Public PdfOcrRequired As String = ""
+    ''' <summary>
+    ''' The PDF ocr success
+    ''' </summary>
     Public PdfOcrSuccess As String = ""
+    ''' <summary>
+    ''' The PDF ocr text extracted
+    ''' </summary>
     Public PdfOcrTextExtracted As String = ""
+    ''' <summary>
+    ''' The PDF pages
+    ''' </summary>
     Public PdfPages As String = ""
+    ''' <summary>
+    ''' The PDF images
+    ''' </summary>
     Public PdfImages As String = ""
+    ''' <summary>
+    ''' The machine identifier
+    ''' </summary>
     Public MachineID As String = ""
+    ''' <summary>
+    ''' The notes
+    ''' </summary>
     Public notes As String = ""
+    ''' <summary>
+    ''' The NBR occurances
+    ''' </summary>
     Public NbrOccurances As String = ""
+    ''' <summary>
+    ''' The row identifier
+    ''' </summary>
     Public RowID As String = ""
+    ''' <summary>
+    ''' The row unique identifier
+    ''' </summary>
     Public RowGuid As String = ""
 End Class

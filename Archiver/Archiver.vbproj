@@ -875,6 +875,12 @@
     <None Include="FTILogs\CopyFTI_logs.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Help\Archiver.chm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Help\Archiver.chw">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="PS_BatchScripts\RemoveDeletedFiles.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

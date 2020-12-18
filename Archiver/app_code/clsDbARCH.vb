@@ -4,13 +4,13 @@
 ' Created          : 12-15-2020
 '
 ' Last Modified By : wdale
-' Last Modified On : 12-15-2020
+' Last Modified On : 12-17-2020
 ' ***********************************************************************
 ' <copyright file="clsDbARCH.vb" company="ECM Library">
 '     Copyright © ECM Library 2011, all rights reserved
 ' </copyright>
 ' <summary></summary>
-' ***********************************************************************
+' *************************************************************************
 #Const RemoteOcr = 0
 
 Imports System.Data.SqlClient
@@ -232,7 +232,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
     Private _GatewayID As String = ""
 
     ''' <summary>
-    ''' Initializes a new instance of the <see cref="clsDatabaseARCH"/> class.
+    ''' Initializes a new instance of the <see cref="clsDatabaseARCH" /> class.
     ''' </summary>
     Sub New()
         'Dim sDebug  = System.Configuration.ConfigurationManager.AppSettings("debug_clsDatabase")
@@ -6576,6 +6576,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Return CNT
     End Function
 
+    ''' <summary>
+    ''' Gets the source unique identifier by image hash.
+    ''' </summary>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="HexHash">The hexadecimal hash.</param>
+    ''' <returns>System.String.</returns>
     Public Function getSourceGuidByImageHash(ByVal SourceName As String, HexHash As String) As String
         Dim SourceGuid As String = ""
         'If Not HexHash.Contains("0x") Then
@@ -6601,6 +6607,13 @@ Public Class clsDatabaseARCH : Implements IDisposable
     End Function
 
 
+    ''' <summary>
+    ''' Cks the zipchild exists.
+    ''' </summary>
+    ''' <param name="ParentGuid">The parent unique identifier.</param>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="HexHash">The hexadecimal hash.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function ckZipchildExists(ParentGuid As String, ByVal SourceName As String, HexHash As String) As Integer
         Dim CNT As Integer = -1
         Try
@@ -16732,7 +16745,6 @@ REDO:
     ''' Gets the unique identifier by FQN.
     ''' </summary>
     ''' <param name="FQN">The FQN.</param>
-    ''' <param name="VersionNbr">The version NBR.</param>
     ''' <returns>System.String.</returns>
     Function GetGuidByFqn(ByVal FQN As String) As String
         If gTraceFunctionCalls.Equals(1) Then
@@ -21399,6 +21411,12 @@ REDO:
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' Gets the image binary.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="TblCode">The table code.</param>
+    ''' <returns>System.Byte().</returns>
     Function GetImageBinary(ByVal SourceGuid As String, TblCode As String) As Byte()
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
@@ -25952,6 +25970,11 @@ P1:
         Return L
     End Function
 
+    ''' <summary>
+    ''' Gets the dictionary of strings.
+    ''' </summary>
+    ''' <param name="MySql">My SQL.</param>
+    ''' <returns>Dictionary(Of System.String, System.String).</returns>
     Function getDictionaryOfStrings(MySql As String) As Dictionary(Of String, String)
 
         Dim L As New Dictionary(Of String, String)
