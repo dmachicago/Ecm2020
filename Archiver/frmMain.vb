@@ -12487,6 +12487,7 @@ GoodLogin:
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
         Process.Start("http://www.EcmLibrary.com/HelpSaaS/Archive.htm")
+
     End Sub
 
     ''' <summary>
@@ -16687,6 +16688,13 @@ SkipIT:
 
     End Sub
 
+    Private Sub FunctionalHelpToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FunctionalHelpToolStripMenuItem.Click
+        Help.ShowHelp(ParentForm, "Help/Archiver.chm", HelpNavigator.TableOfContents, Nothing)
+    End Sub
+
+    Private Sub FunctionalHelpToolStripMenuItem1_Click(sender As Object, e As EventArgs)
+        Help.ShowHelp(ParentForm, "Help/Archiver.chm", HelpNavigator.TableOfContents, Nothing)
+    End Sub
 End Class
 
 ''' <summary>

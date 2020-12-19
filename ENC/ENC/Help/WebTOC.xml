@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Id="dea2d74b-9027-4f47-9170-ff3bedd31fea" Title="ECMEncryption Namespace" Url="html/N-ECMEncryption.htm">
+    <HelpTOCNode Id="cff33650-fe42-457c-afcb-df6c2014b906" Title="ECMEncrypt Class" Url="html/T-ECMEncryption.ECMEncrypt.htm">
+      <HelpTOCNode Title="ECMEncrypt Members" Url="html/AllMembers.T-ECMEncryption.ECMEncrypt.htm" />
+      <HelpTOCNode Id="77f0a9d5-c513-412f-97b5-0d083b969b9e" Title="ECMEncrypt Methods" Url="html/Methods.T-ECMEncryption.ECMEncrypt.htm">
+        <HelpTOCNode Title="AES256DecryptString Method " Url="html/M-ECMEncryption.ECMEncrypt.AES256DecryptString.htm" />
+        <HelpTOCNode Title="AES256EncryptString Method " Url="html/M-ECMEncryption.ECMEncrypt.AES256EncryptString.htm" />
+        <HelpTOCNode Title="aesDecrypt Method " Url="html/M-ECMEncryption.ECMEncrypt.aesDecrypt.htm" />
+        <HelpTOCNode Title="AESDecryptPhrase Method " Url="html/M-ECMEncryption.ECMEncrypt.AESDecryptPhrase.htm" />
+        <HelpTOCNode Title="aesEncrypt Method " Url="html/M-ECMEncryption.ECMEncrypt.aesEncrypt.htm" />
+        <HelpTOCNode Title="AESEncryptPhrase Method " Url="html/M-ECMEncryption.ECMEncrypt.AESEncryptPhrase.htm" />
+        <HelpTOCNode Id="93990407-8b52-4c49-87a7-51882250579e" Title="DecryptPhrase Method " Url="html/Overload-ECMEncryption.ECMEncrypt.DecryptPhrase.htm">
+          <HelpTOCNode Title="DecryptPhrase Method (String, String)" Url="html/M-ECMEncryption.ECMEncrypt.DecryptPhrase.htm" />
+          <HelpTOCNode Title="DecryptPhrase Method (String)" Url="html/M-ECMEncryption.ECMEncrypt.DecryptPhrase_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="DecryptPhrase2 Method " Url="html/M-ECMEncryption.ECMEncrypt.DecryptPhrase2.htm" />
+        <HelpTOCNode Title="DecryptTripleDES Method " Url="html/M-ECMEncryption.ECMEncrypt.DecryptTripleDES.htm" />
+        <HelpTOCNode Title="DecryptTripleDES128 Method " Url="html/M-ECMEncryption.ECMEncrypt.DecryptTripleDES128.htm" />
+        <HelpTOCNode Id="bafbec32-1a38-45ae-b5d6-f0cefa697b93" Title="EncryptPhrase Method " Url="html/Overload-ECMEncryption.ECMEncrypt.EncryptPhrase.htm">
+          <HelpTOCNode Title="EncryptPhrase Method (String)" Url="html/M-ECMEncryption.ECMEncrypt.EncryptPhrase.htm" />
+          <HelpTOCNode Title="EncryptPhrase Method (String, Boolean, String)" Url="html/M-ECMEncryption.ECMEncrypt.EncryptPhrase_1.htm" />
+          <HelpTOCNode Title="EncryptPhrase Method (String, String)" Url="html/M-ECMEncryption.ECMEncrypt.EncryptPhrase_2.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="EncryptPhraseB64 Method " Url="html/M-ECMEncryption.ECMEncrypt.EncryptPhraseB64.htm" />
+        <HelpTOCNode Title="EncryptPhraseShift Method " Url="html/M-ECMEncryption.ECMEncrypt.EncryptPhraseShift.htm" />
+        <HelpTOCNode Title="EncryptPhraseV1 Method " Url="html/M-ECMEncryption.ECMEncrypt.EncryptPhraseV1.htm" />
+        <HelpTOCNode Title="EncryptTripleDES Method " Url="html/M-ECMEncryption.ECMEncrypt.EncryptTripleDES.htm" />
+        <HelpTOCNode Title="FromBase64 Method " Url="html/M-ECMEncryption.ECMEncrypt.FromBase64.htm" />
+        <HelpTOCNode Title="GenerateSHA256HashFromFile Method " Url="html/M-ECMEncryption.ECMEncrypt.GenerateSHA256HashFromFile.htm" />
+        <HelpTOCNode Title="GenerateSHA256HashFromFileV2 Method " Url="html/M-ECMEncryption.ECMEncrypt.GenerateSHA256HashFromFileV2.htm" />
+        <HelpTOCNode Title="GenerateSHA256String Method " Url="html/M-ECMEncryption.ECMEncrypt.GenerateSHA256String.htm" />
+        <HelpTOCNode Title="GenerateSHA512HashFromFile Method " Url="html/M-ECMEncryption.ECMEncrypt.GenerateSHA512HashFromFile.htm" />
+        <HelpTOCNode Title="GenerateSHA512StringV2 Method " Url="html/M-ECMEncryption.ECMEncrypt.GenerateSHA512StringV2.htm" />
+        <HelpTOCNode Title="getSha1HashFromFile Method " Url="html/M-ECMEncryption.ECMEncrypt.getSha1HashFromFile.htm" />
+        <HelpTOCNode Title="getSha1HashKey Method " Url="html/M-ECMEncryption.ECMEncrypt.getSha1HashKey.htm" />
+        <HelpTOCNode Title="hashCrc32 Method " Url="html/M-ECMEncryption.ECMEncrypt.hashCrc32.htm" />
+        <HelpTOCNode Title="hashMd5File Method " Url="html/M-ECMEncryption.ECMEncrypt.hashMd5File.htm" />
+        <HelpTOCNode Title="hashSha1File Method " Url="html/M-ECMEncryption.ECMEncrypt.hashSha1File.htm" />
+        <HelpTOCNode Title="hashSha1FileV2 Method " Url="html/M-ECMEncryption.ECMEncrypt.hashSha1FileV2.htm" />
+        <HelpTOCNode Title="log Method " Url="html/M-ECMEncryption.ECMEncrypt.log.htm" />
+        <HelpTOCNode Title="Reverse Method " Url="html/M-ECMEncryption.ECMEncrypt.Reverse.htm" />
+        <HelpTOCNode Title="saveString Method " Url="html/M-ECMEncryption.ECMEncrypt.saveString.htm" />
+        <HelpTOCNode Title="SHA3Decrypt Method " Url="html/M-ECMEncryption.ECMEncrypt.SHA3Decrypt.htm" />
+        <HelpTOCNode Title="SHA3Encrypt Method " Url="html/M-ECMEncryption.ECMEncrypt.SHA3Encrypt.htm" />
+        <HelpTOCNode Title="SHA512SqlServerHash Method " Url="html/M-ECMEncryption.ECMEncrypt.SHA512SqlServerHash.htm" />
+        <HelpTOCNode Title="SHA512String Method " Url="html/M-ECMEncryption.ECMEncrypt.SHA512String.htm" />
+        <HelpTOCNode Title="ToBase64 Method " Url="html/M-ECMEncryption.ECMEncrypt.ToBase64.htm" />
+        <HelpTOCNode Title="xt001trc Method " Url="html/M-ECMEncryption.ECMEncrypt.xt001trc.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="fdc1d001-5f36-4417-9263-20cad99a4d7e" Title="ENCTest Namespace" Url="html/N-ENCTest.htm">
+    <HelpTOCNode Id="0f24bfdd-688f-4256-af04-2c1947b94f16" Title="frmMain Class" Url="html/T-ENCTest.frmMain.htm">
+      <HelpTOCNode Title="frmMain Members" Url="html/AllMembers.T-ENCTest.frmMain.htm" />
+      <HelpTOCNode Title="frmMain Constructor " Url="html/M-ENCTest.frmMain.-ctor.htm" />
+      <HelpTOCNode Title="frmMain Methods" Url="html/Methods.T-ENCTest.frmMain.htm" />
+      <HelpTOCNode Title="frmMain Properties" Url="html/Properties.T-ENCTest.frmMain.htm" />
+      <HelpTOCNode Title="frmMain Events" Url="html/Events.T-ENCTest.frmMain.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>

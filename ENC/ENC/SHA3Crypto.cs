@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : ENC
+// Author           : wdale
+// Created          : 07-16-2020
+//
+// Last Modified By : wdale
+// Last Modified On : 07-16-2020
+// ***********************************************************************
+// <copyright file="SHA3Crypto.cs" company="">
+//     Copyright ©  2019
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -8,6 +21,9 @@ using System.IO;
 
 namespace ECMEncryption
 {
+    /// <summary>
+    /// Class SHA3Crypto.
+    /// </summary>
     class SHA3Crypto
     {
         /// <summary>
@@ -15,7 +31,8 @@ namespace ECMEncryption
         /// </summary>
         /// <param name="plainText">String to be encrypted</param>
         /// <param name="password">Password</param>
-        public  string Encrypt(string plainText, string password)
+        /// <returns>System.String.</returns>
+        public string Encrypt(string plainText, string password)
         {
             if (plainText == null)
             {
@@ -44,8 +61,9 @@ namespace ECMEncryption
         /// </summary>
         /// <param name="encryptedText">String to be decrypted</param>
         /// <param name="password">Password used during encryption</param>
+        /// <returns>System.String.</returns>
         /// <exception cref="FormatException"></exception>
-        public  string Decrypt(string encryptedText, string password)
+        public string Decrypt(string encryptedText, string password)
         {
             if (encryptedText == null)
             {
@@ -68,7 +86,13 @@ namespace ECMEncryption
             return str;
         }
 
-        private  byte[] Encrypt(byte[] bytesToBeEncrypted, byte[] passwordBytes)
+        /// <summary>
+        /// Encrypts the specified bytes to be encrypted.
+        /// </summary>
+        /// <param name="bytesToBeEncrypted">The bytes to be encrypted.</param>
+        /// <param name="passwordBytes">The password bytes.</param>
+        /// <returns>System.Byte[].</returns>
+        private byte[] Encrypt(byte[] bytesToBeEncrypted, byte[] passwordBytes)
         {
             byte[] encryptedBytes = null;
 
@@ -102,7 +126,13 @@ namespace ECMEncryption
             return encryptedBytes;
         }
 
-        private  byte[] Decrypt(byte[] bytesToBeDecrypted, byte[] passwordBytes)
+        /// <summary>
+        /// Decrypts the specified bytes to be decrypted.
+        /// </summary>
+        /// <param name="bytesToBeDecrypted">The bytes to be decrypted.</param>
+        /// <param name="passwordBytes">The password bytes.</param>
+        /// <returns>System.Byte[].</returns>
+        private byte[] Decrypt(byte[] bytesToBeDecrypted, byte[] passwordBytes)
         {
             byte[] decryptedBytes = null;
 

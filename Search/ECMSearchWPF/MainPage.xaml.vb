@@ -6,6 +6,7 @@ Imports System.IO
 Imports System.Linq
 Imports System.Web.Script.Serialization
 Imports System.Windows.Controls.Primitives
+'Imports System.Windows.Forms
 Imports ECMEncryption
 Imports Microsoft.Win32
 
@@ -261,6 +262,7 @@ Class MainPage
 
     Dim EP1 As String = ISO.SetCLC_State2(CurrLoginID, "IDENTIFIED", CompanyID, RepoID)
     Dim EP2 As String = ISO.SetSAAS_State(UserGuid, "ACTIVE", CompanyID, RepoID)
+    Public Property ParentForm As Control
 
     'Dim MD As SpellDictionary = _c1SpellChecker.MainDictionary
     'Dim UD As UserDictionary = _c1SpellChecker.UserDictionary
@@ -4770,10 +4772,6 @@ Class MainPage
     End Sub
 
     Private Sub hlHelp_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlHelp.Click
-        Console.WriteLine("Trace:42")
-        If DoNotDoThis Then
-            Return
-        End If
         Dim HelpURL As String = "HTTP://www.EcmLibrary.com/HelpSaas/EcmSaasIndex.htm"
         'HtmlPage.Window.Navigate(New Uri(HelpURL, UriKind.Absolute), "_blank")
         Process.Start(HelpURL)
@@ -6182,6 +6180,18 @@ Class MainPage
     End Sub
 
     Private Sub BtnRefresh_Click(sender As Object, e As RoutedEventArgs) Handles btnRefresh.Click
+
+    End Sub
+
+    Private Sub HyperlinkButton7_Click(sender As Object, e As RoutedEventArgs) Handles HyperlinkButton7.Click
+        Try
+            Dim startInfo As New ProcessStartInfo
+            startInfo.FileName = "Help\Search.chm"
+            Process.Start(startInfo)
+        Catch ex As Exception
+            MessageBox.Show("Failed to open Functional Help: " + Environment.NewLine + ex.Message)
+        End Try
+
 
     End Sub
 End Class

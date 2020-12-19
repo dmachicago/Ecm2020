@@ -1,4 +1,17 @@
-﻿Imports System.IO.IsolatedStorage
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 12-15-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 12-15-2020
+' ***********************************************************************
+' <copyright file="grid.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+Imports System.IO.IsolatedStorage
 Imports System.Threading
 Imports System.Windows.Media
 Imports System.Windows.Media.Imaging
@@ -7,12 +20,25 @@ Imports System.Windows.Controls
 Imports System.Windows.Controls.Primitives
 Imports System.IO
 
+''' <summary>
+''' Class grid. This class cannot be inherited.
+''' </summary>
 Public NotInheritable Class grid
 
+    ''' <summary>
+    ''' Prevents a default instance of the <see cref="grid"/> class from being created.
+    ''' </summary>
     Private Sub New()
     End Sub
 
 
+    ''' <summary>
+    ''' Selects the index of the row by.
+    ''' </summary>
+    ''' <param name="dataGrid">The data grid.</param>
+    ''' <param name="rowIndex">Index of the row.</param>
+    ''' <exception cref="ArgumentException">The SelectionUnit of the DataGrid must be set to FullRow.</exception>
+    ''' <exception cref="ArgumentException"></exception>
     Public Shared Sub SelectRowByIndex(dataGrid As DataGrid, rowIndex As Integer)
         If Not dataGrid.SelectionUnit.Equals(DataGridSelectionUnit.FullRow) Then
             Throw New ArgumentException("The SelectionUnit of the DataGrid must be set to FullRow.")
@@ -39,6 +65,11 @@ Public NotInheritable Class grid
         End If
     End Sub
 
+    ''' <summary>
+    ''' Dictionaries from type.
+    ''' </summary>
+    ''' <param name="atype">The atype.</param>
+    ''' <returns>Dictionary(Of System.String, System.Object).</returns>
     Public Shared Function DictionaryFromType(atype As Object) As Dictionary(Of String, Object)
         If atype Is Nothing Then
             Return New Dictionary(Of String, Object)()
@@ -56,6 +87,11 @@ Public NotInheritable Class grid
         Return dict
     End Function
 
+    ''' <summary>
+    ''' Propertieses from type.
+    ''' </summary>
+    ''' <param name="atype">The atype.</param>
+    ''' <returns>System.String().</returns>
     Public Shared Function PropertiesFromType(atype As Object) As String()
         If atype Is Nothing Then
             Return New String() {}
@@ -75,6 +111,10 @@ Public NotInheritable Class grid
         Return propNames.ToArray()
     End Function
 
+    ''' <summary>
+    ''' Enums the class.
+    ''' </summary>
+    ''' <returns>Dictionary(Of System.Object, System.Object).</returns>
     Public Shared Function enumClass() As Dictionary(Of Object, Object)
 
         Dim D As Dictionary(Of Object, Object) = New Dictionary(Of Object, Object)()
@@ -99,6 +139,11 @@ Public NotInheritable Class grid
         Return D
     End Function
 
+    ''' <summary>
+    ''' Gets the cel value.
+    ''' </summary>
+    ''' <param name="dgrid">The dgrid.</param>
+    ''' <returns>System.String.</returns>
     Public Shared Function GetCelValue(dgrid As DataGrid) As String
         Dim DR As Object = dgrid.SelectedItems(0)
         Dim str As String = ""
@@ -109,6 +154,12 @@ Public NotInheritable Class grid
         Return str
     End Function
 
+    ''' <summary>
+    ''' Gets the cel value.
+    ''' </summary>
+    ''' <param name="dgrid">The dgrid.</param>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <returns>System.String.</returns>
     Public Shared Function GetCelValue(dgrid As DataGrid, ColName As String) As String
         Dim DR As Object = dgrid.SelectedItems(0)
         Dim str As String = ""
@@ -121,6 +172,13 @@ Public NotInheritable Class grid
         Return str
     End Function
 
+    ''' <summary>
+    ''' Gets the cel value.
+    ''' </summary>
+    ''' <param name="dgrid">The dgrid.</param>
+    ''' <param name="RowIdx">Index of the row.</param>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <returns>System.String.</returns>
     Public Shared Function GetCelValue(dgrid As DataGrid, RowIdx As Integer, ColName As String) As String
         Dim DR As Object = dgrid.Items(RowIdx)
         Dim str As String = ""
@@ -133,6 +191,13 @@ Public NotInheritable Class grid
         Return str
     End Function
 
+    ''' <summary>
+    ''' Gets the selected cell.
+    ''' </summary>
+    ''' <param name="dataGrid">The data grid.</param>
+    ''' <param name="rowContainer">The row container.</param>
+    ''' <param name="column">The column.</param>
+    ''' <returns>DataGridCell.</returns>
     Public Shared Function GetSelectedCell(dataGrid As DataGrid, rowContainer As DataGridRow, column As Integer) As DataGridCell
         If rowContainer IsNot Nothing Then
             Dim presenter As DataGridCellsPresenter = FindVisualChild(Of DataGridCellsPresenter)(rowContainer)
@@ -159,6 +224,15 @@ Public NotInheritable Class grid
         Return Nothing
     End Function
 
+    ''' <summary>
+    ''' Selects the index of the cell by.
+    ''' </summary>
+    ''' <param name="dataGrid">The data grid.</param>
+    ''' <param name="rowIndex">Index of the row.</param>
+    ''' <param name="columnIndex">Index of the column.</param>
+    ''' <exception cref="ArgumentException">The SelectionUnit of the DataGrid must be set to Cell.</exception>
+    ''' <exception cref="ArgumentException"></exception>
+    ''' <exception cref="ArgumentException"></exception>
     Public Shared Sub SelectCellByIndex(dataGrid As DataGrid, rowIndex As Integer, columnIndex As Integer)
         If Not dataGrid.SelectionUnit.Equals(DataGridSelectionUnit.Cell) Then
             Throw New ArgumentException("The SelectionUnit of the DataGrid must be set to Cell.")
@@ -191,6 +265,12 @@ Public NotInheritable Class grid
         End If
     End Sub
 
+    ''' <summary>
+    ''' Finds the visual child.
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="obj">The object.</param>
+    ''' <returns>T.</returns>
     Public Shared Function FindVisualChild(Of T As DependencyObject)(obj As DependencyObject) As T
         For i As Integer = 0 To VisualTreeHelper.GetChildrenCount(obj) - 1
             Dim child As DependencyObject = VisualTreeHelper.GetChild(obj, i)
@@ -206,10 +286,24 @@ Public NotInheritable Class grid
         Return Nothing
     End Function
 
+    ''' <summary>
+    ''' Makes the new weak reference.
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="Obj">The object.</param>
+    ''' <returns>WeakReference.</returns>
     Public Shared Function MakeNewWeakReference(Of T As Class)(Obj As T) As WeakReference
         Return New WeakReference(Obj)
     End Function
 
+    ''' <summary>
+    ''' Updates the cell thru data structure.
+    ''' </summary>
+    ''' <param name="dgrid">The dgrid.</param>
+    ''' <param name="RowIdx">Index of the row.</param>
+    ''' <param name="ColIndex">Index of the col.</param>
+    ''' <param name="newValue">The new value.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Shared Function updateCellThruDataStructure(dgrid As DataGrid, RowIdx As Integer, ColIndex As Integer, newValue As Object) As Boolean
         Dim bResetToRowMode As Boolean = False
         Dim O As DataGridSelectionUnit = dgrid.SelectionUnit
@@ -242,6 +336,14 @@ Public NotInheritable Class grid
         Return B
     End Function
 
+    ''' <summary>
+    ''' Updates the cell thru data structure.
+    ''' </summary>
+    ''' <param name="dgrid">The dgrid.</param>
+    ''' <param name="RowIdx">Index of the row.</param>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <param name="newValue">The new value.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Shared Function updateCellThruDataStructure(dgrid As DataGrid, RowIdx As Integer, ColName As String, newValue As Object) As Boolean
         Dim bResetToRowMode As Boolean = False
         Dim O As DataGridSelectionUnit = dgrid.SelectionUnit
@@ -273,6 +375,14 @@ Public NotInheritable Class grid
         Return B
     End Function
 
+    ''' <summary>
+    ''' Updates the cell.
+    ''' </summary>
+    ''' <param name="dgrid">The dgrid.</param>
+    ''' <param name="RowIdx">Index of the row.</param>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <param name="newValue">The new value.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Shared Function updateCell(dgrid As DataGrid, RowIdx As Integer, ColName As String, newValue As Object) As Boolean
         Dim B As Boolean = True
         Try
@@ -323,6 +433,7 @@ Public NotInheritable Class grid
     ''' Enums objects within the grid tree.
     ''' </summary>
     ''' <param name="DGRID">The dgrid.</param>
+    ''' <param name="ObjectList">The object list.</param>
     Public Shared Sub EnumGridTree(DGRID As DependencyObject, ByRef ObjectList As Dictionary(Of String, String))
 
         For i As Integer = 0 To VisualTreeHelper.GetChildrenCount(DGRID) - 1
@@ -358,6 +469,12 @@ Public NotInheritable Class grid
         Return
     End Sub
 
+    ''' <summary>
+    ''' Gets the scrollbar.
+    ''' </summary>
+    ''' <param name="DGRID">The dgrid.</param>
+    ''' <param name="name">The name.</param>
+    ''' <returns>ScrollBar.</returns>
     Public Shared Function GetScrollbar(DGRID As DependencyObject, name As String) As ScrollBar
         For i As Integer = 0 To VisualTreeHelper.GetChildrenCount(DGRID) - 1
             Dim child = VisualTreeHelper.GetChild(DGRID, i)
@@ -376,6 +493,12 @@ Public NotInheritable Class grid
     End Function
 
     '<System.Runtime.CompilerServices.Extension> _
+    ''' <summary>
+    ''' Gets the dg scrollbar.
+    ''' </summary>
+    ''' <param name="DGRID">The dgrid.</param>
+    ''' <param name="name">The name.</param>
+    ''' <returns>ScrollBar.</returns>
     Public Shared Function GetDGScrollbar(DGRID As DependencyObject, name As String) As ScrollBar
         For i As Integer = 0 To VisualTreeHelper.GetChildrenCount(DGRID) - 1
             Dim child = VisualTreeHelper.GetChild(DGRID, i)
@@ -391,6 +514,12 @@ Public NotInheritable Class grid
         Return Nothing
     End Function
 
+    ''' <summary>
+    ''' Gets the scroll bar current PCT.
+    ''' </summary>
+    ''' <param name="dg">The dg.</param>
+    ''' <param name="sbarname">The sbarname.</param>
+    ''' <returns>System.Double.</returns>
     Public Shared Function getScrollBarCurrentPct(dg As DataGrid, sbarname As String) As Double
         Try
             Dim sbar As ScrollBar = GetScrollbar(dg, sbarname)
@@ -405,21 +534,44 @@ Public NotInheritable Class grid
     End Function
 
     ' Get the current position of the scrollbar.
+    ''' <summary>
+    ''' Gets the scroll bar current position.
+    ''' </summary>
+    ''' <param name="dg">The dg.</param>
+    ''' <param name="sbarname">The sbarname.</param>
+    ''' <returns>System.Double.</returns>
     Public Shared Function getScrollBarCurrentPosition(dg As DataGrid, sbarname As String) As Double
         Dim sbar As ScrollBar = GetScrollbar(dg, sbarname)
         Return sbar.Value
     End Function
 
+    ''' <summary>
+    ''' Gets the scroll bar maximum position.
+    ''' </summary>
+    ''' <param name="dg">The dg.</param>
+    ''' <param name="sbarname">The sbarname.</param>
+    ''' <returns>System.Double.</returns>
     ''' Gets the scroll bar maximum position.
     Public Shared Function getScrollBarMaxPosition(dg As DataGrid, sbarname As String) As Double
         Dim sbar As ScrollBar = GetScrollbar(dg, sbarname)
         Return sbar.Maximum
     End Function
 
+    ''' <summary>
+    ''' Gets the selected row.
+    ''' </summary>
+    ''' <param name="dgrid">The dgrid.</param>
+    ''' <returns>DataGridRow.</returns>
     Public Shared Function GetSelectedRow(dgrid As DataGrid) As DataGridRow
         Return DirectCast(dgrid.ItemContainerGenerator.ContainerFromItem(dgrid.SelectedItem), DataGridRow)
     End Function
 
+    ''' <summary>
+    ''' Gets the name of the column index by.
+    ''' </summary>
+    ''' <param name="dgrid">The dgrid.</param>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <returns>System.Int32.</returns>
     Public Shared Function getColumnIndexByName(dgrid As DataGrid, ColName As String) As Integer
         Dim cname As String = ""
         Dim i As Integer = -1
@@ -439,6 +591,12 @@ Public NotInheritable Class grid
         Return i
     End Function
 
+    ''' <summary>
+    ''' Gets the index of the column name by.
+    ''' </summary>
+    ''' <param name="dgrid">The dgrid.</param>
+    ''' <param name="ColIdx">Index of the col.</param>
+    ''' <returns>System.String.</returns>
     Public Shared Function getColumnNameByIndex(dgrid As DataGrid, ColIdx As Integer) As String
         Dim cname As String = ""
         Dim i As Integer = -1
@@ -453,6 +611,12 @@ Public NotInheritable Class grid
         Return cname
     End Function
 
+    ''' <summary>
+    ''' Gets the row.
+    ''' </summary>
+    ''' <param name="dgrid">The dgrid.</param>
+    ''' <param name="index">The index.</param>
+    ''' <returns>DataGridRow.</returns>
     Public Shared Function GetRow(dgrid As DataGrid, index As Integer) As DataGridRow
         If index < 0 Then
             Return Nothing
@@ -474,7 +638,7 @@ Public NotInheritable Class grid
     ''' <param name="dgrid">The data grid.</param>
     ''' <param name="row">The row.</param>
     ''' <param name="columnName">Name of the column.</param>
-    ''' <returns></returns>
+    ''' <returns>DataGridCell.</returns>
     Public Shared Function GetCell(dgrid As DataGrid, row As DataGridRow, columnName As String) As DataGridCell
         Dim column As Integer = -1
         column = getColumnIndexByName(dgrid, columnName)
@@ -484,6 +648,13 @@ Public NotInheritable Class grid
         Return GetCell(dgrid, row, column)
     End Function
 
+    ''' <summary>
+    ''' Gets the cell value as string.
+    ''' </summary>
+    ''' <param name="dgrid">The dgrid.</param>
+    ''' <param name="RowIdx">Index of the row.</param>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <returns>System.String.</returns>
     Public Shared Function GetCellValueAsString(dgrid As DataGrid, RowIdx As Integer, ColName As String) As String
         Dim ColIDX As Integer = getColumnIndexByName(dgrid, ColName)
         If ColIDX < 0 Then
@@ -493,6 +664,13 @@ Public NotInheritable Class grid
         Dim str As String = GetCellValueAsString(dgrid, RowIdx, ColIDX)
         Return str
     End Function
+    ''' <summary>
+    ''' Gets the cell value as string.
+    ''' </summary>
+    ''' <param name="dgrid">The dgrid.</param>
+    ''' <param name="RowIdx">Index of the row.</param>
+    ''' <param name="ColIDX">Index of the col.</param>
+    ''' <returns>System.String.</returns>
     Public Shared Function GetCellValueAsString(dgrid As DataGrid, RowIdx As Integer, ColIDX As Integer) As String
         Dim RowNbr As Integer = RowIdx
         If RowNbr < 0 Then
@@ -530,7 +708,7 @@ Public NotInheritable Class grid
     ''' </summary>
     ''' <param name="dgrid">The dgrid.</param>
     ''' <param name="ColIDX">Index of the col.</param>
-    ''' <returns></returns>
+    ''' <returns>System.String.</returns>
     Public Shared Function GetCellValueAsString(dgrid As DataGrid, ColIDX As Integer) As String
         Dim RowNbr As Integer = dgrid.SelectedIndex
         If RowNbr < 0 Then
@@ -561,7 +739,7 @@ Public NotInheritable Class grid
     ''' </summary>
     ''' <param name="dgrid">The dgrid.</param>
     ''' <param name="ColName">Name of the col.</param>
-    ''' <returns></returns>
+    ''' <returns>System.String.</returns>
     Public Shared Function GetCellValueAsString(dgrid As DataGrid, ColName As String) As String
 
         Dim RowNbr As Integer = dgrid.SelectedIndex
@@ -590,6 +768,12 @@ Public NotInheritable Class grid
         Return Nothing
 
     End Function
+    ''' <summary>
+    ''' Gets the visual child.
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="parent">The parent.</param>
+    ''' <returns>T.</returns>
     Public Shared Function GetVisualChild(Of T As Visual)(parent As Visual) As T
         Dim child As T = Nothing
         Dim numVisuals As Integer = VisualTreeHelper.GetChildrenCount(parent)
@@ -606,10 +790,24 @@ Public NotInheritable Class grid
         Return child
     End Function
 
+    ''' <summary>
+    ''' Gets the cell as cell.
+    ''' </summary>
+    ''' <param name="grid">The grid.</param>
+    ''' <param name="row">The row.</param>
+    ''' <param name="column">The column.</param>
+    ''' <returns>DataGridCell.</returns>
     Public Shared Function GetCellAsCell(grid As DataGrid, row As Integer, column As Integer) As DataGridCell
         Dim rowContainer As DataGridRow = GetRow(grid, row)
         Return GetCell(grid, rowContainer, column)
     End Function
+    ''' <summary>
+    ''' Gets the cell as string.
+    ''' </summary>
+    ''' <param name="grid">The grid.</param>
+    ''' <param name="row">The row.</param>
+    ''' <param name="column">The column.</param>
+    ''' <returns>DataGridCell.</returns>
     Public Shared Function GetCellAsString(grid As DataGrid, row As Integer, column As Integer) As DataGridCell
         Dim rowContainer As DataGridRow = GetRow(grid, row)
         Return GetCell(grid, rowContainer, column)
@@ -620,10 +818,8 @@ Public NotInheritable Class grid
     ''' </summary>
     ''' <param name="dataGrid">The data grid.</param>
     ''' <param name="rowIndex">Index of the row.</param>
-    ''' <exception cref="ArgumentException">
-    ''' The SelectionUnit of the DataGrid must be set to FullRow.
-    ''' or
-    ''' </exception>
+    ''' <exception cref="ArgumentException">The SelectionUnit of the DataGrid must be set to FullRow.</exception>
+    ''' <exception cref="ArgumentException"></exception>
     Public Shared Sub SelectSingleRow(ByRef dataGrid As DataGrid, rowIndex As Integer)
         If Not dataGrid.SelectionUnit.Equals(DataGridSelectionUnit.FullRow) Then
             Throw New ArgumentException("The SelectionUnit of the DataGrid must be set to FullRow.")
@@ -655,7 +851,7 @@ Public NotInheritable Class grid
     ''' Converts the data grid to data table.
     ''' </summary>
     ''' <param name="dg">The datagrid.</param>
-    ''' <returns></returns>
+    ''' <returns>DataTable.</returns>
     Public Shared Function ConvertDataGridToDataTable(dg As DataGrid) As DataTable
         'Dim o As Object = dataTable.Rows.Item(0).Item("ColumnNameOrIndex")
         dg.SelectAllCells()
@@ -685,6 +881,12 @@ Public NotInheritable Class grid
 
     End Function
 
+    ''' <summary>
+    ''' Gets the selected cell value.
+    ''' </summary>
+    ''' <param name="DG">The dg.</param>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <returns>System.String.</returns>
     Public Shared Function getSelectedCellValue(DG As DataGrid, ColName As String) As String
         Dim item As Object = DG.SelectedItem
         Dim iCol As Integer = getColumnIndexByName(DG, ColName)
@@ -692,6 +894,11 @@ Public NotInheritable Class grid
         Return strItem
     End Function
 
+    ''' <summary>
+    ''' Finds the index of the row.
+    ''' </summary>
+    ''' <param name="row">The row.</param>
+    ''' <returns>System.Int32.</returns>
     Private Function FindRowIndex(row As DataGridRow) As Integer
         Dim dataGrid As DataGrid = TryCast(ItemsControl.ItemsControlFromItemContainer(row), DataGrid)
 
@@ -704,13 +911,19 @@ Public NotInheritable Class grid
     ''' Gets the selected cell value for a single selected cell and returns that value as a string.
     ''' </summary>
     ''' <param name="DG">The datagrid.</param>
-    ''' <returns></returns>
+    ''' <returns>System.String.</returns>
     Public Shared Function getSelectedCellValue(DG As DataGrid) As String
         Dim cellInfo = DG.SelectedCells(0)
         Dim content = TryCast(cellInfo.Column.GetCellContent(cellInfo.Item), TextBlock).Text
         Return content
     End Function
 
+    ''' <summary>
+    ''' Exports the grid to text.
+    ''' </summary>
+    ''' <param name="DG">The dg.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Shared Function ExportGridToTEXT(DG As DataGrid, UserID As String) As String
 
         DG.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader
@@ -736,6 +949,12 @@ Public NotInheritable Class grid
         Return Msg
     End Function
 
+    ''' <summary>
+    ''' Exports the grid to HTML.
+    ''' </summary>
+    ''' <param name="DG">The dg.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Shared Function ExportGridToHTML(DG As DataGrid, UserID As String) As String
 
         DG.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader
@@ -761,6 +980,12 @@ Public NotInheritable Class grid
         Return Msg
     End Function
 
+    ''' <summary>
+    ''' Exports the grid to CSV.
+    ''' </summary>
+    ''' <param name="DG">The dg.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Shared Function ExportGridToCSV(DG As DataGrid, UserID As String) As String
 
         DG.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader
@@ -786,6 +1011,13 @@ Public NotInheritable Class grid
         Return Msg
     End Function
 
+    ''' <summary>
+    ''' Gets the cell.
+    ''' </summary>
+    ''' <param name="dataGrid">The data grid.</param>
+    ''' <param name="rowContainer">The row container.</param>
+    ''' <param name="column">The column.</param>
+    ''' <returns>DataGridCell.</returns>
     Public Shared Function GetCell(dataGrid As DataGrid, rowContainer As DataGridRow, column As Integer) As DataGridCell
         If rowContainer IsNot Nothing Then
             Dim presenter As DataGridCellsPresenter = FindVisualChild(Of DataGridCellsPresenter)(rowContainer)
@@ -809,6 +1041,12 @@ Public NotInheritable Class grid
         Return Nothing
     End Function
 
+    ''' <summary>
+    ''' Creates the data table.
+    ''' </summary>
+    ''' <param name="TableName">Name of the table.</param>
+    ''' <param name="TableCols">The table cols.</param>
+    ''' <returns>DataTable.</returns>
     Public Shared Function CreateDataTable(TableName As String, TableCols As Dictionary(Of String, String)) As DataTable
 
         Dim ColumnType As String = ""
@@ -889,12 +1127,31 @@ Public NotInheritable Class grid
 
 End Class
 
+''' <summary>
+''' Class tempdata.
+''' </summary>
 Public Class tempdata
+    ''' <summary>
+    ''' The name
+    ''' </summary>
     Public name As String
+    ''' <summary>
+    ''' The email
+    ''' </summary>
     Public email As String
+    ''' <summary>
+    ''' The age
+    ''' </summary>
     Public age As Integer
+    ''' <summary>
+    ''' The decimal
+    ''' </summary>
     Public dec As Decimal
 
+    ''' <summary>
+    ''' Gets or sets the name of the dg.
+    ''' </summary>
+    ''' <value>The name of the dg.</value>
     Public Property dg_name()
         Get
             Return name
@@ -903,6 +1160,10 @@ Public Class tempdata
             name = value
         End Set
     End Property
+    ''' <summary>
+    ''' Gets or sets the dg email.
+    ''' </summary>
+    ''' <value>The dg email.</value>
     Public Property dg_email()
         Get
             Return email
@@ -911,6 +1172,10 @@ Public Class tempdata
             email = value
         End Set
     End Property
+    ''' <summary>
+    ''' Gets or sets the dg age.
+    ''' </summary>
+    ''' <value>The dg age.</value>
     Public Property dg_age()
         Get
             Return age
@@ -919,6 +1184,10 @@ Public Class tempdata
             age = value
         End Set
     End Property
+    ''' <summary>
+    ''' Gets or sets the dg decimal.
+    ''' </summary>
+    ''' <value>The dg decimal.</value>
     Public Property dg_decimal()
         Get
             Return dec

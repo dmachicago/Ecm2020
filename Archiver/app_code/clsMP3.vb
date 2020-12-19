@@ -1,3 +1,16 @@
+' ***********************************************************************
+' Assembly         : EcmArchiver
+' Author           : wdale
+' Created          : 09-28-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 10-16-2020
+' ***********************************************************************
+' <copyright file="clsMP3.vb" company="ECM Library">
+'     Copyright © ECM Library 2011, all rights reserved
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
 Imports HundredMilesSoftware.UltraID3Lib
 Imports System
 Imports System.IO
@@ -5,23 +18,59 @@ Imports System.Runtime.InteropServices
 Imports System.ComponentModel
 
 
+''' <summary>
+''' Class clsMP3.
+''' Implements the <see cref="EcmArchiver.clsDatabaseARCH" />
+''' </summary>
+''' <seealso cref="EcmArchiver.clsDatabaseARCH" />
 Public Class clsMP3
     Inherits clsDatabaseARCH
 
+    ''' <summary>
+    ''' The ud
+    ''' </summary>
     Dim UD As New UltraID3
     'Dim DBARCH As New clsDatabaseARCH
 
+    ''' <summary>
+    ''' The dma
+    ''' </summary>
     Dim DMA As New clsDma
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Dim LOG As New clsLogging
+    ''' <summary>
+    ''' The utility
+    ''' </summary>
     Dim UTIL As New clsUtility
 
+    ''' <summary>
+    ''' The attribute
+    ''' </summary>
     Dim ATTR As New clsATTRIBUTES
+    ''' <summary>
+    ''' The s attribute
+    ''' </summary>
     Dim sAttr As New clsSOURCEATTRIBUTE
+    ''' <summary>
+    ''' The DFLT
+    ''' </summary>
     Dim DFLT As New clsValidateCodes
+    ''' <summary>
+    ''' The ddebug
+    ''' </summary>
     Shadows ddebug As Boolean = True
+    ''' <summary>
+    ''' The key words
+    ''' </summary>
     Dim KeyWords As New ArrayList
 
 
+    ''' <summary>
+    ''' Gets the key words.
+    ''' </summary>
+    ''' <param name="Phrase">The phrase.</param>
     Sub getKeyWords(ByVal Phrase As String)
         Dim Words As String = ""
 
@@ -50,6 +99,12 @@ Public Class clsMP3
             Next
         Next
     End Sub
+    ''' <summary>
+    ''' Gets the recording meta data.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="FileType">Type of the file.</param>
     Sub getRecordingMetaData(ByVal FQN As String, ByVal SourceGuid As String, ByVal FileType As String)
         Try
             KeyWords.Clear()
@@ -295,6 +350,11 @@ Public Class clsMP3
 
 
     End Sub
+    ''' <summary>
+    ''' Removes the duplicate key words.
+    ''' </summary>
+    ''' <param name="KeyWords">The key words.</param>
+    ''' <returns>System.String.</returns>
     Function RemoveDuplicateKeyWords(ByVal KeyWords As ArrayList) As String
         Dim NewWords As New ArrayList
         Dim A(0) As String
@@ -334,6 +394,12 @@ Public Class clsMP3
         Return S
     End Function
 
+    ''' <summary>
+    ''' Gets the meta data.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>SortedList(Of System.String, System.String).</returns>
     Private Function getMetaData(ByVal FQN As String, ByVal SourceGuid As String) As SortedList(Of String, String)
 
         Dim L As New SortedList(Of String, String)
@@ -435,6 +501,14 @@ Public Class clsMP3
         Return L
 
     End Function
+    ''' <summary>
+    ''' Adds the meta data.
+    ''' </summary>
+    ''' <param name="tkey">The tkey.</param>
+    ''' <param name="tVal">The t value.</param>
+    ''' <param name="DocGuid">The document unique identifier.</param>
+    ''' <param name="DataType">Type of the data.</param>
+    ''' <param name="FileType">Type of the file.</param>
     Sub AddMetaData(ByVal tkey As String, ByVal tVal As String, ByVal DocGuid As String, ByVal DataType As String, ByVal FileType As String)
 
         If tVal.Length = 0 Then

@@ -45,7 +45,7 @@
     <SuiteName>ECM Library</SuiteName>
     <WebPage>default.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>52</ApplicationRevision>
+    <ApplicationRevision>54</ApplicationRevision>
     <ApplicationVersion>4.3.2.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -509,6 +509,9 @@
     <None Include="ClassDiagram1.cd" />
     <None Include="CodeSigningCertificate.pfx" />
     <None Include="ECMSearchWPF_TemporaryKey.pfx" />
+    <None Include="Help\Search.chm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\DataSources\System.Data.DataSet.datasource" />
     <None Include="My Project\DataSources\System.Data.DataTable.datasource" />

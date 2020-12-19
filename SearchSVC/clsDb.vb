@@ -1,4 +1,17 @@
-﻿Imports ECMEncryption
+﻿' ***********************************************************************
+' Assembly         : EcmCloudWcf.Web
+' Author           : wdale
+' Created          : 07-16-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 07-16-2020
+' ***********************************************************************
+' <copyright file="clsDb.vb" company="ECM Library,LLC">
+'     Copyright @ECM Library 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+Imports ECMEncryption
 
 ''' <summary>
 ''' This is the database class for the thesaurus developed and used by ECM Library developers. It is
@@ -6,19 +19,45 @@
 ''' you are reading this code without our WRITTEN permission, I will find you , I will hunt you down,
 ''' and I will do my very best to completely and utterly DESTROY YOU - count on it.
 ''' </summary>
-''' <remarks></remarks>
 Public Class clsDb
 
+    ''' <summary>
+    ''' The enc
+    ''' </summary>
     Dim ENC As New ECMEncrypt
+    ''' <summary>
+    ''' The dma
+    ''' </summary>
     Dim DMA As New clsDmaSVR
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Dim LOG As New clsLogging
+    ''' <summary>
+    ''' The utility
+    ''' </summary>
     Dim UTIL As New clsUtilitySVR
 
+    ''' <summary>
+    ''' The d debug
+    ''' </summary>
     Dim dDebug As Boolean = False
+    ''' <summary>
+    ''' The trex connection
+    ''' </summary>
     Dim TrexConnection As New SqlConnection
+    ''' <summary>
+    ''' The thesaurus connection string
+    ''' </summary>
     Dim ThesaurusConnectionString As String = ""
+    ''' <summary>
+    ''' The ecm library connection string
+    ''' </summary>
     Dim EcmLibConnectionString As String = ""
 
+    ''' <summary>
+    ''' Sets the ecm library connection string.
+    ''' </summary>
     Public Sub setEcmLibConnStr()
         Dim bUseConfig As Boolean = True
         Dim S As String = ""
@@ -31,6 +70,12 @@ Public Class clsDb
 
     End Sub
 
+    ''' <summary>
+    ''' Executes the SQL new connection.
+    ''' </summary>
+    ''' <param name="sql">The SQL.</param>
+    ''' <param name="NewConnectionStr">Creates new connectionstr.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ExecuteSqlNewConn(ByVal sql As String, ByVal NewConnectionStr As String) As Boolean
         Try
             Dim rc As Boolean = False
@@ -75,6 +120,12 @@ Public Class clsDb
 
     End Function
 
+    ''' <summary>
+    ''' SQLs the qry.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="sql">The SQL.</param>
+    ''' <returns>SqlDataReader.</returns>
     Public Function SqlQry(ByVal SecureID As Integer, ByVal sql As String) As SqlDataReader
 
         Dim dDebug As Boolean = True
@@ -103,6 +154,11 @@ Public Class clsDb
         Return rsDataQry
     End Function
 
+    ''' <summary>
+    ''' Gets the default thesaurus.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getDefaultThesaurus(ByVal SecureID As Integer) As String
         'Dim EcmLibConnectionString As String = ""
         setEcmLibConnStr()
@@ -147,6 +203,10 @@ Public Class clsDb
         Return DefaultThesaurus$
     End Function
 
+    ''' <summary>
+    ''' Thesauruses the exist.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ThesaurusExist() As Boolean
         Dim B As Boolean = True
         Dim I As Integer = getCountOfThesauri()
@@ -163,6 +223,10 @@ Public Class clsDb
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the count of thesauri.
+    ''' </summary>
+    ''' <returns>System.Int32.</returns>
     Function getCountOfThesauri() As Integer
         Dim cnt As Integer = -1
         Dim s As String = ""
@@ -194,6 +258,12 @@ Public Class clsDb
 
     End Function
 
+    ''' <summary>
+    ''' is the get row count.
+    ''' </summary>
+    ''' <param name="TBL">The table.</param>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function iGetRowCount(ByVal TBL As String, ByVal WhereClause As String) As Integer
 
         Dim cnt As Integer = -1
@@ -228,6 +298,12 @@ Public Class clsDb
 
     End Function
 
+    ''' <summary>
+    ''' Gets the row by key.
+    ''' </summary>
+    ''' <param name="TBL">The table.</param>
+    ''' <param name="WC">The wc.</param>
+    ''' <returns>SqlDataReader.</returns>
     Public Function GetRowByKey(ByVal TBL As String, ByVal WC As String) As SqlDataReader
         Try
             Dim Auth As String = ""
@@ -253,6 +329,10 @@ Public Class clsDb
 
     End Function
 
+    ''' <summary>
+    ''' Sets the connection thesaurus string.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function setConnThesaurusStr() As String
 
         Dim S As String = System.Configuration.ConfigurationManager.AppSettings("ECM_ThesaurusConnectionString").ToString
@@ -265,6 +345,10 @@ Public Class clsDb
 
     End Function
 
+    ''' <summary>
+    ''' Gets the thesaurus connection string.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getThesaurusConnectionString() As String
 
         Dim S As String = ""
@@ -273,6 +357,12 @@ Public Class clsDb
 
     End Function
 
+    ''' <summary>
+    ''' Gets the name of the class.
+    ''' </summary>
+    ''' <param name="ClassonomyName">Name of the classonomy.</param>
+    ''' <param name="Token">The token.</param>
+    ''' <returns>System.String.</returns>
     Function getClassName(ByVal ClassonomyName As String, ByVal Token As String) As String
         Dim S As String = ""
         S = S + " SELECT GroupID"
@@ -306,6 +396,12 @@ Public Class clsDb
         Return ClassID$
     End Function
 
+    ''' <summary>
+    ''' Gets the thesaurus identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ThesaurusName">Name of the thesaurus.</param>
+    ''' <returns>System.String.</returns>
     Function getThesaurusID(ByVal SecureID As Integer, ByVal ThesaurusName As String) As String
 
         If ThesaurusName$.Trim.Length = 0 Then
@@ -346,6 +442,11 @@ Public Class clsDb
         Return TID
     End Function
 
+    ''' <summary>
+    ''' Gets the thesaurus number identifier.
+    ''' </summary>
+    ''' <param name="ThesaurusName">Name of the thesaurus.</param>
+    ''' <returns>System.Int32.</returns>
     Function getThesaurusNumberID(ByVal ThesaurusName As String) As Integer
 
         Dim S As String = ""
@@ -379,6 +480,14 @@ Public Class clsDb
         Return TID
     End Function
 
+    ''' <summary>
+    ''' Inserts the child word.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="RootID">The root identifier.</param>
+    ''' <param name="Token">The token.</param>
+    ''' <param name="TokenID">The token identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function InsertChildWord(ByVal SecureID As Integer, ByVal RootID As String, ByVal Token As String, ByVal TokenID As Integer) As Boolean
         Dim ConnStr As String = getThesaurusConnectionString()
         Dim B As Boolean = False
@@ -404,6 +513,11 @@ Public Class clsDb
 
     End Function
 
+    ''' <summary>
+    ''' Roots the word exists.
+    ''' </summary>
+    ''' <param name="RootToken">The root token.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function RootWordExists(ByVal RootToken As String) As Boolean
         Dim ConnStr As String = getThesaurusConnectionString()
         Dim B As Boolean = False
@@ -444,6 +558,11 @@ Public Class clsDb
 
     End Function
 
+    ''' <summary>
+    ''' Adds the token.
+    ''' </summary>
+    ''' <param name="Token">The token.</param>
+    ''' <returns>System.Int32.</returns>
     Function AddToken(ByVal Token As String) As Integer
         Dim TokenID As Integer = -1
         TokenID = getTokenID(Token)
@@ -454,6 +573,11 @@ Public Class clsDb
 
     End Function
 
+    ''' <summary>
+    ''' Gets the token identifier.
+    ''' </summary>
+    ''' <param name="Token">The token.</param>
+    ''' <returns>System.Int32.</returns>
     Function getTokenID(ByVal Token As String) As Integer
         Token = UTIL.RemoveSingleQuotes(Token)
         Dim ID As Integer = 0
@@ -484,6 +608,13 @@ Public Class clsDb
 
     End Function
 
+    ''' <summary>
+    ''' Childs the word exists.
+    ''' </summary>
+    ''' <param name="RootID">The root identifier.</param>
+    ''' <param name="Token">The token.</param>
+    ''' <param name="TokenID">The token identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ChildWordExists(ByVal RootID As String, ByVal Token As String, ByVal TokenID As Integer) As Boolean
         Dim ConnStr As String = getThesaurusConnectionString()
         Dim B As Boolean = False
@@ -529,6 +660,13 @@ Public Class clsDb
 
     End Function
 
+    ''' <summary>
+    ''' Inserts the root word.
+    ''' </summary>
+    ''' <param name="ThesaurusID">The thesaurus identifier.</param>
+    ''' <param name="RootToken">The root token.</param>
+    ''' <param name="RootID">The root identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function InsertRootWord(ByVal ThesaurusID As String, ByVal RootToken As String, ByVal RootID As String) As Boolean
         Dim ConnStr As String = getThesaurusConnectionString()
         Dim B As Boolean = False
@@ -552,6 +690,14 @@ Public Class clsDb
 
     End Function
 
+    ''' <summary>
+    ''' Gets the synonyms.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ThesaurusID">The thesaurus identifier.</param>
+    ''' <param name="Token">The token.</param>
+    ''' <param name="Synonyms">The synonyms.</param>
+    ''' <returns>System.String.</returns>
     Function getSynonyms(ByVal SecureID As Integer, ByVal ThesaurusID As String, ByVal Token As String, ByRef Synonyms As String) As String
 
         Dim lbSynonyms() As String = Synonyms.Split("|")
@@ -625,6 +771,14 @@ Public Class clsDb
         Return TgtSynonyms
     End Function
 
+    ''' <summary>
+    ''' Gets the synonyms.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ThesaurusID">The thesaurus identifier.</param>
+    ''' <param name="Token">The token.</param>
+    ''' <param name="SynonymsArray">The synonyms array.</param>
+    ''' <param name="AppendToList">if set to <c>true</c> [append to list].</param>
     Sub getSynonyms(ByVal SecureID As Integer, ByVal ThesaurusID As String, ByVal Token As String, ByRef SynonymsArray As ArrayList, ByVal AppendToList As Boolean)
         Dim ConnStr As String = getThesaurusConnectionString()
         Dim B As Boolean = False
@@ -663,6 +817,12 @@ Public Class clsDb
 
     End Sub
 
+    ''' <summary>
+    ''' Gets all tokens.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="LB">The lb.</param>
+    ''' <param name="ThesaurusID">The thesaurus identifier.</param>
     Sub getAllTokens(ByVal SecureID As Integer, ByRef LB As ListBox, ByVal ThesaurusID As String)
         LB.Items.Clear()
         Dim ConnStr As String = getThesaurusConnectionString()
@@ -685,6 +845,12 @@ Public Class clsDb
         rsSynonyms = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Populates the ComboBox.
+    ''' </summary>
+    ''' <param name="CB">The cb.</param>
+    ''' <param name="TblColName">Name of the table col.</param>
+    ''' <param name="S">The s.</param>
     Sub PopulateComboBox(ByRef CB As List(Of String), ByVal TblColName As String, ByVal S As String)
 
         Dim TryAgain As Boolean = False

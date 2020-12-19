@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title="AES256DecryptString method" Url="html/M-ECMEncryption.ECMEncrypt.AES256DecryptString.htm" />
+  <HelpKINode Title="AES256EncryptString method" Url="html/M-ECMEncryption.ECMEncrypt.AES256EncryptString.htm" />
+  <HelpKINode Title="aesDecrypt method" Url="html/M-ECMEncryption.ECMEncrypt.aesDecrypt.htm" />
+  <HelpKINode Title="AESDecryptPhrase method" Url="html/M-ECMEncryption.ECMEncrypt.AESDecryptPhrase.htm" />
+  <HelpKINode Title="aesEncrypt method" Url="html/M-ECMEncryption.ECMEncrypt.aesEncrypt.htm" />
+  <HelpKINode Title="AESEncryptPhrase method" Url="html/M-ECMEncryption.ECMEncrypt.AESEncryptPhrase.htm" />
+  <HelpKINode Title="DecryptPhrase method" Url="html/Overload-ECMEncryption.ECMEncrypt.DecryptPhrase.htm" />
+  <HelpKINode Title="DecryptPhrase2 method" Url="html/M-ECMEncryption.ECMEncrypt.DecryptPhrase2.htm" />
+  <HelpKINode Title="DecryptTripleDES method" Url="html/M-ECMEncryption.ECMEncrypt.DecryptTripleDES.htm" />
+  <HelpKINode Title="DecryptTripleDES128 method" Url="html/M-ECMEncryption.ECMEncrypt.DecryptTripleDES128.htm" />
+  <HelpKINode Title="ECMEncrypt class">
+    <HelpKINode Title="ECMEncrypt Class" Url="html/T-ECMEncryption.ECMEncrypt.htm" />
+    <HelpKINode Title="ECMEncrypt Members" Url="html/AllMembers.T-ECMEncryption.ECMEncrypt.htm" />
+    <HelpKINode Title="about ECMEncrypt class" Url="html/T-ECMEncryption.ECMEncrypt.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-ECMEncryption.ECMEncrypt.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-ECMEncryption.ECMEncrypt.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ECMEncrypt.AES256DecryptString method" Url="html/M-ECMEncryption.ECMEncrypt.AES256DecryptString.htm" />
+  <HelpKINode Title="ECMEncrypt.AES256EncryptString method" Url="html/M-ECMEncryption.ECMEncrypt.AES256EncryptString.htm" />
+  <HelpKINode Title="ECMEncrypt.aesDecrypt method" Url="html/M-ECMEncryption.ECMEncrypt.aesDecrypt.htm" />
+  <HelpKINode Title="ECMEncrypt.AESDecryptPhrase method" Url="html/M-ECMEncryption.ECMEncrypt.AESDecryptPhrase.htm" />
+  <HelpKINode Title="ECMEncrypt.aesEncrypt method" Url="html/M-ECMEncryption.ECMEncrypt.aesEncrypt.htm" />
+  <HelpKINode Title="ECMEncrypt.AESEncryptPhrase method" Url="html/M-ECMEncryption.ECMEncrypt.AESEncryptPhrase.htm" />
+  <HelpKINode Title="ECMEncrypt.DecryptPhrase method" Url="html/Overload-ECMEncryption.ECMEncrypt.DecryptPhrase.htm" />
+  <HelpKINode Title="ECMEncrypt.DecryptPhrase2 method" Url="html/M-ECMEncryption.ECMEncrypt.DecryptPhrase2.htm" />
+  <HelpKINode Title="ECMEncrypt.DecryptTripleDES method" Url="html/M-ECMEncryption.ECMEncrypt.DecryptTripleDES.htm" />
+  <HelpKINode Title="ECMEncrypt.DecryptTripleDES128 method" Url="html/M-ECMEncryption.ECMEncrypt.DecryptTripleDES128.htm" />
+  <HelpKINode Title="ECMEncrypt.EncryptPhrase method" Url="html/Overload-ECMEncryption.ECMEncrypt.EncryptPhrase.htm" />
+  <HelpKINode Title="ECMEncrypt.EncryptPhraseB64 method" Url="html/M-ECMEncryption.ECMEncrypt.EncryptPhraseB64.htm" />
+  <HelpKINode Title="ECMEncrypt.EncryptPhraseShift method" Url="html/M-ECMEncryption.ECMEncrypt.EncryptPhraseShift.htm" />
+  <HelpKINode Title="ECMEncrypt.EncryptPhraseV1 method" Url="html/M-ECMEncryption.ECMEncrypt.EncryptPhraseV1.htm" />
+  <HelpKINode Title="ECMEncrypt.EncryptTripleDES method" Url="html/M-ECMEncryption.ECMEncrypt.EncryptTripleDES.htm" />
+  <HelpKINode Title="ECMEncrypt.FromBase64 method" Url="html/M-ECMEncryption.ECMEncrypt.FromBase64.htm" />
+  <HelpKINode Title="ECMEncrypt.GenerateSHA256HashFromFile method" Url="html/M-ECMEncryption.ECMEncrypt.GenerateSHA256HashFromFile.htm" />
+  <HelpKINode Title="ECMEncrypt.GenerateSHA256HashFromFileV2 method" Url="html/M-ECMEncryption.ECMEncrypt.GenerateSHA256HashFromFileV2.htm" />
+  <HelpKINode Title="ECMEncrypt.GenerateSHA256String method" Url="html/M-ECMEncryption.ECMEncrypt.GenerateSHA256String.htm" />
+  <HelpKINode Title="ECMEncrypt.GenerateSHA512HashFromFile method" Url="html/M-ECMEncryption.ECMEncrypt.GenerateSHA512HashFromFile.htm" />
+  <HelpKINode Title="ECMEncrypt.GenerateSHA512StringV2 method" Url="html/M-ECMEncryption.ECMEncrypt.GenerateSHA512StringV2.htm" />
+  <HelpKINode Title="ECMEncrypt.getSha1HashFromFile method" Url="html/M-ECMEncryption.ECMEncrypt.getSha1HashFromFile.htm" />
+  <HelpKINode Title="ECMEncrypt.getSha1HashKey method" Url="html/M-ECMEncryption.ECMEncrypt.getSha1HashKey.htm" />
+  <HelpKINode Title="ECMEncrypt.hashCrc32 method" Url="html/M-ECMEncryption.ECMEncrypt.hashCrc32.htm" />
+  <HelpKINode Title="ECMEncrypt.hashMd5File method" Url="html/M-ECMEncryption.ECMEncrypt.hashMd5File.htm" />
+  <HelpKINode Title="ECMEncrypt.hashSha1File method" Url="html/M-ECMEncryption.ECMEncrypt.hashSha1File.htm" />
+  <HelpKINode Title="ECMEncrypt.hashSha1FileV2 method" Url="html/M-ECMEncryption.ECMEncrypt.hashSha1FileV2.htm" />
+  <HelpKINode Title="ECMEncrypt.log method" Url="html/M-ECMEncryption.ECMEncrypt.log.htm" />
+  <HelpKINode Title="ECMEncrypt.Reverse method" Url="html/M-ECMEncryption.ECMEncrypt.Reverse.htm" />
+  <HelpKINode Title="ECMEncrypt.saveString method" Url="html/M-ECMEncryption.ECMEncrypt.saveString.htm" />
+  <HelpKINode Title="ECMEncrypt.SHA3Decrypt method" Url="html/M-ECMEncryption.ECMEncrypt.SHA3Decrypt.htm" />
+  <HelpKINode Title="ECMEncrypt.SHA3Encrypt method" Url="html/M-ECMEncryption.ECMEncrypt.SHA3Encrypt.htm" />
+  <HelpKINode Title="ECMEncrypt.SHA512SqlServerHash method" Url="html/M-ECMEncryption.ECMEncrypt.SHA512SqlServerHash.htm" />
+  <HelpKINode Title="ECMEncrypt.SHA512String method" Url="html/M-ECMEncryption.ECMEncrypt.SHA512String.htm" />
+  <HelpKINode Title="ECMEncrypt.ToBase64 method" Url="html/M-ECMEncryption.ECMEncrypt.ToBase64.htm" />
+  <HelpKINode Title="ECMEncrypt.xt001trc method" Url="html/M-ECMEncryption.ECMEncrypt.xt001trc.htm" />
+  <HelpKINode Title="ECMEncryption namespace" Url="html/N-ECMEncryption.htm" />
+  <HelpKINode Title="ECMEncryption.ECMEncrypt class">
+    <HelpKINode Title="ECMEncrypt Class" Url="html/T-ECMEncryption.ECMEncrypt.htm" />
+    <HelpKINode Title="ECMEncrypt Members" Url="html/AllMembers.T-ECMEncryption.ECMEncrypt.htm" />
+  </HelpKINode>
+  <HelpKINode Title="EncryptPhrase method" Url="html/Overload-ECMEncryption.ECMEncrypt.EncryptPhrase.htm" />
+  <HelpKINode Title="EncryptPhraseB64 method" Url="html/M-ECMEncryption.ECMEncrypt.EncryptPhraseB64.htm" />
+  <HelpKINode Title="EncryptPhraseShift method" Url="html/M-ECMEncryption.ECMEncrypt.EncryptPhraseShift.htm" />
+  <HelpKINode Title="EncryptPhraseV1 method" Url="html/M-ECMEncryption.ECMEncrypt.EncryptPhraseV1.htm" />
+  <HelpKINode Title="EncryptTripleDES method" Url="html/M-ECMEncryption.ECMEncrypt.EncryptTripleDES.htm" />
+  <HelpKINode Title="ENCTest namespace" Url="html/N-ENCTest.htm" />
+  <HelpKINode Title="ENCTest.frmMain class">
+    <HelpKINode Title="frmMain Class" Url="html/T-ENCTest.frmMain.htm" />
+    <HelpKINode Title="frmMain Members" Url="html/AllMembers.T-ENCTest.frmMain.htm" />
+  </HelpKINode>
+  <HelpKINode Title="frmMain class">
+    <HelpKINode Title="frmMain Class" Url="html/T-ENCTest.frmMain.htm" />
+    <HelpKINode Title="frmMain Members" Url="html/AllMembers.T-ENCTest.frmMain.htm" />
+    <HelpKINode Title="about frmMain class" Url="html/T-ENCTest.frmMain.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-ENCTest.frmMain.htm" />
+    <HelpKINode Title="constructor" Url="html/M-ENCTest.frmMain.-ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events.T-ENCTest.frmMain.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-ENCTest.frmMain.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-ENCTest.frmMain.htm" />
+  </HelpKINode>
+  <HelpKINode Title="frmMain.frmMain constructor" Url="html/M-ENCTest.frmMain.-ctor.htm" />
+  <HelpKINode Title="FromBase64 method" Url="html/M-ECMEncryption.ECMEncrypt.FromBase64.htm" />
+  <HelpKINode Title="GenerateSHA256HashFromFile method" Url="html/M-ECMEncryption.ECMEncrypt.GenerateSHA256HashFromFile.htm" />
+  <HelpKINode Title="GenerateSHA256HashFromFileV2 method" Url="html/M-ECMEncryption.ECMEncrypt.GenerateSHA256HashFromFileV2.htm" />
+  <HelpKINode Title="GenerateSHA256String method" Url="html/M-ECMEncryption.ECMEncrypt.GenerateSHA256String.htm" />
+  <HelpKINode Title="GenerateSHA512HashFromFile method" Url="html/M-ECMEncryption.ECMEncrypt.GenerateSHA512HashFromFile.htm" />
+  <HelpKINode Title="GenerateSHA512StringV2 method" Url="html/M-ECMEncryption.ECMEncrypt.GenerateSHA512StringV2.htm" />
+  <HelpKINode Title="getSha1HashFromFile method" Url="html/M-ECMEncryption.ECMEncrypt.getSha1HashFromFile.htm" />
+  <HelpKINode Title="getSha1HashKey method" Url="html/M-ECMEncryption.ECMEncrypt.getSha1HashKey.htm" />
+  <HelpKINode Title="hashCrc32 method" Url="html/M-ECMEncryption.ECMEncrypt.hashCrc32.htm" />
+  <HelpKINode Title="hashMd5File method" Url="html/M-ECMEncryption.ECMEncrypt.hashMd5File.htm" />
+  <HelpKINode Title="hashSha1File method" Url="html/M-ECMEncryption.ECMEncrypt.hashSha1File.htm" />
+  <HelpKINode Title="hashSha1FileV2 method" Url="html/M-ECMEncryption.ECMEncrypt.hashSha1FileV2.htm" />
+  <HelpKINode Title="log method" Url="html/M-ECMEncryption.ECMEncrypt.log.htm" />
+  <HelpKINode Title="Reverse method" Url="html/M-ECMEncryption.ECMEncrypt.Reverse.htm" />
+  <HelpKINode Title="saveString method" Url="html/M-ECMEncryption.ECMEncrypt.saveString.htm" />
+  <HelpKINode Title="SHA3Decrypt method" Url="html/M-ECMEncryption.ECMEncrypt.SHA3Decrypt.htm" />
+  <HelpKINode Title="SHA3Encrypt method" Url="html/M-ECMEncryption.ECMEncrypt.SHA3Encrypt.htm" />
+  <HelpKINode Title="SHA512SqlServerHash method" Url="html/M-ECMEncryption.ECMEncrypt.SHA512SqlServerHash.htm" />
+  <HelpKINode Title="SHA512String method" Url="html/M-ECMEncryption.ECMEncrypt.SHA512String.htm" />
+  <HelpKINode Title="ToBase64 method" Url="html/M-ECMEncryption.ECMEncrypt.ToBase64.htm" />
+  <HelpKINode Title="xt001trc method" Url="html/M-ECMEncryption.ECMEncrypt.xt001trc.htm" />
+</HelpKI>

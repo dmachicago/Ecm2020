@@ -1,0 +1,861 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"[]>
+<html>
+  <head><link rel="shortcut icon" href="../favicon.ico" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="save" content="history" />
+    <title>ECMEncrypt Methods</title>
+    <link rel="stylesheet" type="text/css" href="../styles/lightweight.css" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <link rel="stylesheet" type="text/css" href="../styles/lw-code.css" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <script type="text/javascript" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" src="../scripts/languageSelector.js"> </script>
+    <meta name="container" content="ECMEncryption" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <meta name="file" content="Methods.T-ECMEncryption.ECMEncrypt" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <meta name="guid" content="Methods.T-ECMEncryption.ECMEncrypt" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <xml xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+      <MSHelp:Attr Name="AssetID" Value="Methods.T:ECMEncryption.ECMEncrypt" />
+      <MSHelp:TOCTitle Title="ECMEncrypt Methods" />
+      <MSHelp:RLTitle Title="ECMEncrypt Methods (ECMEncryption)" />
+      <MSHelp:Keyword Index="A" Term="Methods.T:ECMEncryption.ECMEncrypt" />
+      <MSHelp:Keyword Index="A" Term="frlrfECMEncryptionECMEncryptMethodsTopic" />
+      <MSHelp:Keyword Index="K" Term="ECMEncrypt class, methods" />
+      <MSHelp:Attr Name="DevLang" Value="CSharp" />
+      <MSHelp:Attr Name="DevLang" Value="VB" />
+      <MSHelp:Attr Name="Locale" Value="en-us" />
+      <MSHelp:Attr Name="TopicType" Value="kbSyntax" />
+      <MSHelp:Attr Name="TopicType" Value="apiref" />
+      <MSHelp:Attr Name="AssemblyVersion" Value="" />
+    </xml>
+  <link rel="stylesheet" href="../TOC.css"><script type="text/javascript" src="../TOC.js"></script></head>
+  <body onload="javascript: Initialize();" onresize="javascript: ResizeTree();">
+            <div id="TOCDiv" class="TOCDiv" style="width: 310px; float: left; position: relative; ">
+
+            <div id="divSearchOpts" class="SearchOpts" style="height: 95px; display: none;">
+                <div class="SearchOptsInner">
+                    <img class="TOCLink" onclick="javascript: ShowHideSearch(false);" src="../Close.png" height="24" width="24" alt="Hide Search" title="Hide Search" style="float: right;" />
+                    <span class="Title">Keyword(s) to search:</span>
+                </div>
+                <div class="SearchOptsInner">
+                    <input id="txtSearchText" type="text" style="width: 95.5%;" onkeypress="javascript: return OnSearchTextKeyPress(event);" />
+                </div>
+                <div class="SearchOptsInner">
+                    <input id="chkSortByTitle" type="checkbox" />&nbsp;Sort results by title
+                    <input type="button" value="Search" onclick="javascript: return PerformSearch();" style="float: right;" />
+                </div>
+            </div>
+
+            <div id="divIndexOpts" class="IndexOpts" style="height: 28px; display: none;">
+                <img class="TOCLink" onclick="javascript: ShowHideIndex(false);"
+                     src="../Close.png" height="24" width="24" alt="Hide Keyword Index" title="Hide Keyword Index" style="float: right;" />
+                <span class="Title">Keyword Index</span>
+            </div>
+
+            <div id="divNavOpts" class="NavOpts" style="height: 28px;">
+                <!--<img class="TOCLink" onclick="javascript: SyncTOC();" src="../SyncTOC.png"
+                     height="24" width="24" alt="Sync to TOC" title="Sync to TOC" />-->
+                <img class="TOCLink" onclick="javascript: ExpandOrCollapseAll(true);"
+                     src="../ExpandAll.png" height="24" width="24" alt="Expand all" title="Expand all" />
+                <img class="TOCLink" onclick="javascript: ExpandOrCollapseAll(false);"
+                     src="../CollapseAll.png" height="24" width="24" alt="Collapse all" title="Collapse all" />
+                <!--<img class="TOCLink" onclick="javascript: alert('Please make sure to use either Index.aspx or Index.php to enable the Keyword Index feature.');"
+                     src="../Index.png" height="24" width="24" alt="Keyword Index" title="Keyword Index" />-->
+                <img class="TOCLink" onclick="javascript: ShowHideSearch(true);"
+                     src="../Search.png" height="24" width="24" alt="Search" title="Search" />
+                <img class="TOCLink" onclick="javascript: ShowDirectLink();"
+                     src="../Link.png" height="24" width="24" alt="Get direct link to the displayed topic" title="Get direct link to the displayed topic" />
+                <a href="#" onclick="javascript: window.history.go(-1); return false;">
+                    <img class="TOCLink" style="float: right;"
+                         src="../Back.png" height="24" width="24" alt="Previous page" title="Previous page" />
+                </a>
+            </div>
+
+            <div class="Tree" id="divSearchResults" style="display: none;"
+                 onselectstart="javascript: return false;">
+            </div>
+
+            <div class="Tree" id="divIndexResults" style="display: none;"
+                 onselectstart="javascript: return false;">
+            </div>
+
+            <div class="Tree" id="divTree" onselectstart="javascript: return false;">
+              <div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="N-ECMEncryption.htm" target="_self">ECMEncryption Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-ECMEncryption.ECMEncrypt.htm" target="_self">ECMEncrypt Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="AllMembers.T-ECMEncryption.ECMEncrypt.htm" target="_self">ECMEncrypt Members</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Methods.T-ECMEncryption.ECMEncrypt.htm" target="_self">ECMEncrypt Methods</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.AES256DecryptString.htm" target="_self">AES256DecryptString Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.AES256EncryptString.htm" target="_self">AES256EncryptString Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.aesDecrypt.htm" target="_self">aesDecrypt Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.AESDecryptPhrase.htm" target="_self">AESDecryptPhrase Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.aesEncrypt.htm" target="_self">aesEncrypt Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.AESEncryptPhrase.htm" target="_self">AESEncryptPhrase Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-ECMEncryption.ECMEncrypt.DecryptPhrase.htm" target="_self">DecryptPhrase Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.DecryptPhrase2.htm" target="_self">DecryptPhrase2 Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.DecryptTripleDES.htm" target="_self">DecryptTripleDES Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.DecryptTripleDES128.htm" target="_self">DecryptTripleDES128 Method </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Overload-ECMEncryption.ECMEncrypt.EncryptPhrase.htm" target="_self">EncryptPhrase Method </a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.EncryptPhraseB64.htm" target="_self">EncryptPhraseB64 Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.EncryptPhraseShift.htm" target="_self">EncryptPhraseShift Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.EncryptPhraseV1.htm" target="_self">EncryptPhraseV1 Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.EncryptTripleDES.htm" target="_self">EncryptTripleDES Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.FromBase64.htm" target="_self">FromBase64 Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.GenerateSHA256HashFromFile.htm" target="_self">GenerateSHA256HashFromFile Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.GenerateSHA256HashFromFileV2.htm" target="_self">GenerateSHA256HashFromFileV2 Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.GenerateSHA256String.htm" target="_self">GenerateSHA256String Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.GenerateSHA512HashFromFile.htm" target="_self">GenerateSHA512HashFromFile Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.GenerateSHA512StringV2.htm" target="_self">GenerateSHA512StringV2 Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.getSha1HashFromFile.htm" target="_self">getSha1HashFromFile Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.getSha1HashKey.htm" target="_self">getSha1HashKey Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.hashCrc32.htm" target="_self">hashCrc32 Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.hashMd5File.htm" target="_self">hashMd5File Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.hashSha1File.htm" target="_self">hashSha1File Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.hashSha1FileV2.htm" target="_self">hashSha1FileV2 Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.log.htm" target="_self">log Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.Reverse.htm" target="_self">Reverse Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.saveString.htm" target="_self">saveString Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.SHA3Decrypt.htm" target="_self">SHA3Decrypt Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.SHA3Encrypt.htm" target="_self">SHA3Encrypt Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.SHA512SqlServerHash.htm" target="_self">SHA512SqlServerHash Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.SHA512String.htm" target="_self">SHA512String Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.ToBase64.htm" target="_self">ToBase64 Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-ECMEncryption.ECMEncrypt.xt001trc.htm" target="_self">xt001trc Method </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="N-ENCTest.htm" target="_self">ENCTest Namespace</a>
+<div class="Hidden">
+</div>
+</div>
+
+            </div>
+
+        </div>
+
+        <div id="TOCSizer" class="TOCSizer" onmousedown="OnMouseDown(event)" onselectstart="javascript: return false;"></div>
+        
+        <div id ="TopicContent" name="TopicContent" class="TopicContent" style="float: none; margin-left: 312px;height: -webkit-fill-available;display:block;overflow: auto;">
+          
+          <!-- Content Starts Here -->
+          <div class="contentPlaceHolder" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+      <div class="content">
+        <div class="topicContainer">
+          <div class="topic">
+            <p class="majorTitle" />
+            <h1 class="title">ECMEncrypt Methods</h1>
+            <div id="mainSection">
+              <div id="mainBody">
+                <p>The <a href="T-ECMEncryption.ECMEncrypt.htm">ECMEncrypt</a> type exposes the following members.</p>
+                <div class="LW_CollapsibleArea_Container">
+                  <div class="LW_CollapsibleArea_TitleDiv">
+                    <h2 class="LW_CollapsibleArea_Title">Methods</h2>
+                    <div class="LW_CollapsibleArea_HrDiv">
+                      <hr class="LW_CollapsibleArea_Hr" />
+                    </div>
+                  </div>
+                  <a id="methodTableSection">
+                    <!---->
+                  </a>
+                  <table class="members">
+                    <tr>
+                      <th class="iconColumn">
+               
+            </th>
+                      <th class="nameColumn">Name</th>
+                      <th class="descriptionColumn">Description</th>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.AES256DecryptString.htm">AES256DecryptString</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Aes the S256 decrypt string.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.AES256EncryptString.htm">AES256EncryptString</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Aes the S256 encrypt string.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.aesDecrypt.htm">aesDecrypt</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Aeses the decrypt.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.AESDecryptPhrase.htm">AESDecryptPhrase</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Aeses the decrypt phrase.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.aesEncrypt.htm">aesEncrypt</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Aeses the encrypt.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.AESEncryptPhrase.htm">AESEncryptPhrase</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Aeses the encrypt phrase.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.DecryptPhrase.htm">DecryptPhrase(String, String)</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Decrypts the phrase.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.DecryptPhrase_1.htm">DecryptPhrase(String)</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Decrypts the phrase.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.DecryptPhrase2.htm">DecryptPhrase2</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Decrypts the phrase2.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.DecryptTripleDES.htm">DecryptTripleDES</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Decrypts the triple DES.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.DecryptTripleDES128.htm">DecryptTripleDES128</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Decrypts the triple de S128.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.EncryptPhrase.htm">EncryptPhrase(String)</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Encrypts the phrase.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.EncryptPhrase_1.htm">EncryptPhrase(String, Boolean<span class="languageSpecificText"><span class="cpp">%</span></span>, String<span class="languageSpecificText"><span class="cpp">%</span></span>)</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Encrypts the phrase.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.EncryptPhrase_2.htm">EncryptPhrase(String, String)</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Encrypts the phrase.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.EncryptPhraseB64.htm">EncryptPhraseB64</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Encrypts the phrase B64.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.EncryptPhraseShift.htm">EncryptPhraseShift</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Encrypts the phrase shift.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.EncryptPhraseV1.htm">EncryptPhraseV1</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Encrypts the phrase v1.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.EncryptTripleDES.htm">EncryptTripleDES</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Encrypts the triple DES.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/bsc2ak47.aspx" target="_blank">Equals(System.Object)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Determines whether the specified <a href="http://msdn.microsoft.com/en-us/library/system.object.aspx" target="_blank">Object</a> is equal to the current <a href="http://msdn.microsoft.com/en-us/library/system.object.aspx" target="_blank">Object</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.object.aspx" target="_blank">Object</a>.)</td>
+                    </tr>
+                    <tr data="protected;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/protmethod.gif" alt="Protected method" title="Protected method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.object.finalize.aspx" target="_blank">Finalize</a>
+                      </td>
+                      <td>
+                        <div class="summary">Allows an object to try to free resources and perform other cleanup operations before it is reclaimed by garbage collection.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.object.aspx" target="_blank">Object</a>.)</td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.FromBase64.htm">FromBase64</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Froms the base64.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.GenerateSHA256HashFromFile.htm">GenerateSHA256HashFromFile</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Generates the sh a256 hash from file.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.GenerateSHA256HashFromFileV2.htm">GenerateSHA256HashFromFileV2</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Generates the sh a256 hash from file v2.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.GenerateSHA256String.htm">GenerateSHA256String</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Generates the sh a256 string.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.GenerateSHA512HashFromFile.htm">GenerateSHA512HashFromFile</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Generates the sh a512 hash from file.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.GenerateSHA512StringV2.htm">GenerateSHA512StringV2</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Generates the sh a512 string v2.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.object.gethashcode.aspx" target="_blank">GetHashCode</a>
+                      </td>
+                      <td>
+                        <div class="summary">Serves as a hash function for a particular type. </div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.object.aspx" target="_blank">Object</a>.)</td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.getSha1HashFromFile.htm">getSha1HashFromFile</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Gets the sha1 hash from file.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.getSha1HashKey.htm">getSha1HashKey</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Gets the sha1 hash key.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.object.gettype.aspx" target="_blank">GetType</a>
+                      </td>
+                      <td>
+                        <div class="summary">Gets the <a href="http://msdn.microsoft.com/en-us/library/system.type.aspx" target="_blank">Type</a> of the current instance.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.object.aspx" target="_blank">Object</a>.)</td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.hashCrc32.htm">hashCrc32</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Hashes the CRC32.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.hashMd5File.htm">hashMd5File</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Hashes the MD5 file.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.hashSha1File.htm">hashSha1File</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Hashes the sha1 file.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.hashSha1FileV2.htm">hashSha1FileV2</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Hashes the sha1 file v2.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.log.htm">log</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Logs the specified MSG.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="protected;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/protmethod.gif" alt="Protected method" title="Protected method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.object.memberwiseclone.aspx" target="_blank">MemberwiseClone</a>
+                      </td>
+                      <td>
+                        <div class="summary">Creates a shallow copy of the current <a href="http://msdn.microsoft.com/en-us/library/system.object.aspx" target="_blank">Object</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.object.aspx" target="_blank">Object</a>.)</td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.Reverse.htm">Reverse</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Reverses the specified value.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.saveString.htm">saveString</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Saves the string.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.SHA3Decrypt.htm">SHA3Decrypt</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Shes the a3 decrypt.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.SHA3Encrypt.htm">SHA3Encrypt</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Shes the a3 encrypt.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.SHA512SqlServerHash.htm">SHA512SqlServerHash</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Shes the a512 SQL server hash.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.SHA512String.htm">SHA512String</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Shes the a512 string.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.ToBase64.htm">ToBase64</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   Converts to base64.
+   </div>
+                      </td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.object.tostring.aspx" target="_blank">ToString</a>
+                      </td>
+                      <td>
+                        <div class="summary">Returns a string that represents the current object.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.object.aspx" target="_blank">Object</a>.)</td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-ECMEncryption.ECMEncrypt.xt001trc.htm">xt001trc</a>
+                      </td>
+                      <td>
+                        <div class="summary">
+   XT001TRCs the specified s.
+   </div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="LW_CollapsibleArea_Container">
+                  <div class="LW_CollapsibleArea_TitleDiv">
+                    <h2 class="LW_CollapsibleArea_Title">See Also</h2>
+                    <div class="LW_CollapsibleArea_HrDiv">
+                      <hr class="LW_CollapsibleArea_Hr" />
+                    </div>
+                  </div>
+                  <a id="seeAlsoSection">
+                    <!---->
+                  </a>
+                  <div class="seeAlsoStyle">
+                    <a href="T-ECMEncryption.ECMEncrypt.htm">ECMEncrypt Class</a>
+                  </div>
+                  <div class="seeAlsoStyle">
+                    <a href="N-ECMEncryption.htm">ECMEncryption Namespace</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div id="footer" class="footerContainer">
+          <div class="footerLogoContainer">
+            <div style="margin-top:5px">
+              <span class="customCopyrightFooter" />
+            </div>
+            <div style="margin-top:5px" class="copyrightFooter">
+              <a href="http://submain.com/fwlink/gd-help/generated/">Created with evaluation copy of GhostDoc Pro. Click here to purchase and remove this link.</a>
+            </div>
+            <div> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+          <!-- /Content Ends Here -->
+        </div>
+
+
+  </body>
+</html>

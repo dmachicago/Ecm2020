@@ -1,4 +1,26 @@
 
+/* Generate CMD Parameter Statements */
+select 'CMD.Parameters.Add(New SqlParameter("@'+column_name+'", ' + column_name + '))' from INFORMATION_SCHEMA.COLUMNS where table_name = 'DataSource';
+
+
+/* Generate MySQL Statement Colummns*/
+select column_name + ', '  from INFORMATION_SCHEMA.COLUMNS where table_name = 'DataSource';
+/* Generate MySQL Statement Colummns*/
+select '@'+column_name + ', '  from INFORMATION_SCHEMA.COLUMNS where table_name = 'DataSource';
+
+/* Generate MySQL Statement Colummns*/
+select 'MySql += " '+column_name+' = @' + column_name + '"' from INFORMATION_SCHEMA.COLUMNS where table_name = 'DataSource';
+
+
+/*
+MySql = "UPDATE DataSource SET "
+        MySql += " SourceImage = @SourceImage "
+        MySql += " , Imagehash = @Imagehash"
+        MySql += " , LastAccessDate = getdate()"
+        MySql += " , RetentionExpirationDate = @RetentionExpirationDate"
+        MySql += " , ImageLen = @ImageLen"
+        MySql += " where MachineID = @MachineID and FQN = @FQN"
+*/
 
 IF EXISTS
 (

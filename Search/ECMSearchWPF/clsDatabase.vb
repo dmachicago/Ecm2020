@@ -1,4 +1,17 @@
-﻿Imports System.Data
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 12-15-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 12-15-2020
+' ***********************************************************************
+' <copyright file="clsDatabase.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+Imports System.Data
 Imports System.Data.SqlClient
 Imports System.Data.Sql
 Imports System.IO
@@ -7,16 +20,30 @@ Imports System.Collections.Generic
 Imports System.IO.Compression
 Imports ECMEncryption
 
+''' <summary>
+''' Class clsDatabase.
+''' </summary>
 Public Class clsDatabase
 
+    ''' <summary>
+    ''' The enc
+    ''' </summary>
     Dim ENC As New ECMEncrypt
     'Dim ENC2 As New clsEncrypt
 
+    ''' <summary>
+    ''' Gets the gateway cs.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getGatewayCs() As String
         gCSGateWay = getGatewayCs()
         Return gCSGateWay
     End Function
 
+    ''' <summary>
+    ''' Gets the cs gateway.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getCSGateway() As String
 
 
@@ -35,17 +62,30 @@ Public Class clsDatabase
     End Function
 
 
+    ''' <summary>
+    ''' Gets the repo cs.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function getRepoCs() As String
         gCSRepo = gFetchCS()
         Return gCSRepo
     End Function
 
+    ''' <summary>
+    ''' Sets the repo cs.
+    ''' </summary>
+    ''' <param name="RowID">The row identifier.</param>
+    ''' <returns>System.String.</returns>
     Private Function setRepoCS(RowID As Integer) As String
         Dim RepoCS As String = gFetchCS()
         Return RepoCS
     End Function
 
 
+    ''' <summary>
+    ''' Gets the endpoint.
+    ''' </summary>
+    ''' <param name="RowID">The row identifier.</param>
     Public Sub getEndpoint(RowID As String)
 
 

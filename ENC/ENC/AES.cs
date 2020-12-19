@@ -1,15 +1,42 @@
-﻿
+﻿// ***********************************************************************
+// Assembly         : ENC
+// Author           : wdale
+// Created          : 07-16-2020
+//
+// Last Modified By : wdale
+// Last Modified On : 07-16-2020
+// ***********************************************************************
+// <copyright file="AES.cs" company="">
+//     Copyright ©  2019
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
 using System;
 using System.IO;
 using System.Security.Cryptography;
 
 namespace ECMEncryption
 {
+    /// <summary>
+    /// Class AES.
+    /// </summary>
     class AES
     {
+        /// <summary>
+        /// The iv
+        /// </summary>
         private byte[] IV = { 21, 0, 121, 212, 61, 50, 4, 79, 13, 156, 200, 213, 79, 155, 201, 16 };
+        /// <summary>
+        /// The key
+        /// </summary>
         private byte[] KEY = { 21, 0, 121, 212, 61, 50, 4, 79, 13, 156, 200, 213, 79, 155, 201, 16, 21, 0, 121, 212, 61, 50, 4, 79, 13, 156, 200, 213, 79, 155, 201, 16 };
-        public  string Encrypt(string original)
+        /// <summary>
+        /// Encrypts the specified original.
+        /// </summary>
+        /// <param name="original">The original.</param>
+        /// <returns>System.String.</returns>
+        public string Encrypt(string original)
         {
             string str = "";
             try
@@ -40,7 +67,12 @@ namespace ECMEncryption
             }
             return str;
         }
-        public  string Decrypt(string EncrytpedString)
+        /// <summary>
+        /// Decrypts the specified encrytped string.
+        /// </summary>
+        /// <param name="EncrytpedString">The encrytped string.</param>
+        /// <returns>System.String.</returns>
+        public string Decrypt(string EncrytpedString)
         {
             string str = "";
             byte[] encrypted = System.Text.Encoding.Unicode.GetBytes(EncrytpedString);
@@ -62,6 +94,18 @@ namespace ECMEncryption
             }
             return str;
         }
+        /// <summary>
+        /// Encrypts the string to bytes aes.
+        /// </summary>
+        /// <param name="plainText">The plain text.</param>
+        /// <param name="Key">The key.</param>
+        /// <param name="IV">The iv.</param>
+        /// <returns>System.Byte[].</returns>
+        /// <exception cref="System.ArgumentNullException">plainText</exception>
+        /// <exception cref="System.ArgumentNullException">Key</exception>
+        /// <exception cref="System.ArgumentNullException">Key</exception>
+        /// <exception cref="System.ArgumentNullException">plainText</exception>
+        /// <exception cref="System.ArgumentNullException">Key</exception>
         private byte[] EncryptStringToBytes_Aes(string plainText, byte[] Key, byte[] IV)
         {
             // Check arguments. 
@@ -98,6 +142,18 @@ namespace ECMEncryption
             // Return the encrypted bytes from the memory stream. 
             return encrypted;
         }
+        /// <summary>
+        /// Decrypts the string from bytes aes.
+        /// </summary>
+        /// <param name="cipherText">The cipher text.</param>
+        /// <param name="Key">The key.</param>
+        /// <param name="IV">The iv.</param>
+        /// <returns>System.String.</returns>
+        /// <exception cref="System.ArgumentNullException">cipherText</exception>
+        /// <exception cref="System.ArgumentNullException">Key</exception>
+        /// <exception cref="System.ArgumentNullException">IV</exception>
+        /// <exception cref="System.ArgumentNullException">cipherText</exception>
+        /// <exception cref="System.ArgumentNullException">Key</exception>
         private string DecryptStringFromBytes_Aes(byte[] cipherText, byte[] Key, byte[] IV)
         {
             // Check arguments. 

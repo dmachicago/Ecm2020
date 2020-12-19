@@ -14441,6 +14441,427 @@ REDO:
         ' If gRunUnattended = False Then MessageBox.Show("Image saved to database")
     End Sub
 
+    Function addZipChild(ChildFQN As String,
+                        ParentDir As String,
+                        ParentGuid As String,
+                        ParentFileFQN As String,
+                        RetentionCode As String,
+                        RetentionDate As DateTime,
+                        RetentionExpirationDate As DateTime) As Boolean
+
+        Dim FI As New FileInfo(ChildFQN)
+
+        Dim BPS As Double = 0
+        Dim CompressedSize As Integer = 0
+        Dim ContainedWithin As String = ""
+        Dim CRC As String = ""
+        Dim CreateDate As DateTime = Now
+        Dim CreationDate As DateTime = Now
+        Dim DataSourceOwnerUserID As String = ""
+        Dim DataVerified As Boolean = True
+        Dim Description As String = ""
+        Dim FileAttached As Boolean = True
+        Dim FileDirectory As String = ParentDir
+        Dim FileDirectoryName As String = ParentDir
+        Dim FileLength As Integer = 0
+        Dim FQN As String = ChildFQN
+        Dim FqnHASH As String = ENC.GenerateSHA256String(ParentDir)
+        Dim GraphicContainsText As Char = ""
+        Dim HashFile As String = ""
+        Dim HashName As String = ""
+        Dim HiveActive As Boolean = False
+        Dim HiveConnectionName As String = ""
+        Dim Imagehash As String = ENC.GenerateSHA256HashFromFileV2(FQN)
+        Dim ImageHiddenText As String = ""
+        Dim ImageLen As Integer = FI.Length
+        Dim isAvailable As Char = ""
+        Dim isContainedWithinZipFile As Char = "Y"
+        Dim isGraphic As Char = ""
+        Dim isMaster As Char = "N"
+        Dim isPerm As Char = ""
+        Dim isPublic As Char = "Y"
+        Dim IsPublicPreviousState As Char = ""
+        Dim isWebPage As Char = "N"
+        Dim IsZipFile As Char = "N"
+        Dim KeyWords As String = ""
+        Dim LastAccessDate As DateTime = Now
+        Dim LastWriteTime As DateTime = Now
+        Dim MachineID As String = Environment.MachineName
+        Dim Notes As String = ""
+
+        Dim OcrPending As Char = ""
+
+        Dim OcrPerformed As Char = ""
+        Dim OcrSuccessful As Char = ""
+        Dim OcrText As String = ""
+
+        Dim OriginalFileType As String = FI.Extension
+        Dim OriginalSize As Integer = FI.Length
+        Dim PageURL As String = ""
+        'Dim ParentGuid As String = ""
+        Dim PdfImages As Integer = 0
+
+        Dim PdfIsSearchable As Char = ""
+        Dim PdfOcrRequired As Char = ""
+
+        Dim PdfOcrSuccess As Char = ""
+        Dim PdfOcrTextExtracted As Char = ""
+        Dim PdfPages As Integer = 0
+        Dim RecHash As String = ""
+        Dim RecLen As Double = 0
+        Dim RecTimeStamp As DateTime = Now
+        Dim RepoName As String = ""
+        Dim RepoSvrName As String = ""
+
+        Dim RequireOcr As Boolean = False
+
+        'Dim RetentionCode As String = ""
+        'Dim RetentionDate As DateTime = Now
+        'Dim RetentionExpirationDate As DateTime = Now
+
+        Dim RowCreationDate As DateTime = Now
+        Dim RowGuid As String = Guid.NewGuid.ToString
+        Dim RowLastModDate As DateTime = Now
+        Dim RssLinkFlg As Boolean = False
+        Dim RssLinkGuid As String = ""
+        Dim SapData As Boolean = False
+        Dim SharePoint As Boolean = False
+        Dim SharePointDoc As Boolean = False
+        Dim SharePointList As Boolean = False
+        Dim SharePointListItem As Boolean = False
+        Dim SourceGuid As String = Guid.NewGuid.ToString
+        Dim SourceImage As Byte() = Nothing
+        Dim SourceImageOrigin As String = ""
+        Dim SourceName As String = ""
+        Dim SourceTypeCode As String = ""
+        Dim StructuredData As Boolean = True
+        Dim TransmitTime As Double = 0
+        Dim txEndTime As DateTime = Now
+        Dim txStartTime As DateTime = Now
+        Dim txTotalTime As Double = 0
+        Dim URLHash As String = ""
+        Dim UserID As String = gCurrUserGuidID
+        Dim VersionNbr As Integer = 0
+        Dim WebPagePublishDate As String = ""
+        Dim ZipExploded As Char = ""
+        Dim ZipFileFQN As String = ParentFileFQN
+        Dim ZipFileGuid As String = ParentGuid
+        Dim B As Boolean = True
+
+        Dim GraphicTypes As List(Of String) = getListOf("select lower(GraphicFileTypeExt) from GraphicFileType")
+        If GraphicTypes.Contains(FI.Extension.ToLower) Then
+            OcrPending = "Y"
+            OcrPerformed = "N"
+            RequireOcr = True
+        Else
+            OcrPending = "N"
+            OcrPerformed = "N"
+            RequireOcr = False
+        End If
+
+        FI = Nothing
+
+        Dim MySql As String = "Insert into DataSource 
+            RowGuid, 
+            SourceGuid, 
+            CreateDate, 
+            SourceName, 
+            SourceTypeCode, 
+            FQN, 
+            VersionNbr, 
+            LastAccessDate, 
+            FileLength, 
+            LastWriteTime, 
+            UserID, 
+            DataSourceOwnerUserID, 
+            isPublic, 
+            FileDirectory, 
+            OriginalFileType, 
+            RetentionExpirationDate, 
+            IsPublicPreviousState, 
+            isAvailable, 
+            isContainedWithinZipFile, 
+            IsZipFile, 
+            DataVerified, 
+            ZipFileGuid, 
+            ZipFileFQN, 
+            Description, 
+            KeyWords, 
+            Notes, 
+            isPerm, 
+            isMaster, 
+            CreationDate, 
+            OcrPerformed, 
+            isGraphic, 
+            GraphicContainsText, 
+            OcrText, 
+            ImageHiddenText, 
+            isWebPage, 
+            ParentGuid, 
+            RetentionCode, 
+            MachineID, 
+            CRC, 
+            SharePoint, 
+            SharePointDoc, 
+            SharePointList, 
+            SharePointListItem, 
+            StructuredData, 
+            HiveConnectionName, 
+            HiveActive, 
+            RepoSvrName, 
+            RowCreationDate, 
+            RowLastModDate, 
+            ContainedWithin, 
+            RecLen, 
+            RecHash, 
+            OriginalSize, 
+            CompressedSize, 
+            txStartTime, 
+            txEndTime, 
+            txTotalTime, 
+            TransmitTime, 
+            FileAttached, 
+            BPS, 
+            RepoName, 
+            HashFile, 
+            HashName, 
+            OcrSuccessful, 
+            OcrPending, 
+            PdfIsSearchable, 
+            PdfOcrRequired, 
+            PdfOcrSuccess, 
+            PdfOcrTextExtracted, 
+            PdfPages, 
+            PdfImages, 
+            RequireOcr, 
+            RssLinkFlg, 
+            RssLinkGuid, 
+            PageURL, 
+            RetentionDate, 
+            URLHash, 
+            WebPagePublishDate, 
+            SapData, 
+            Imagehash, 
+            ImageLen, 
+            FileDirectoryName, 
+            FqnHASH, 
+            SourceImageOrigin, 
+            RecTimeStamp, 
+            SourceImage, 
+            ZipExploded
+            Values (
+            @RowGuid, 
+            @SourceGuid, 
+            @CreateDate, 
+            @SourceName, 
+            @SourceTypeCode, 
+            @FQN, 
+            @VersionNbr, 
+            @LastAccessDate, 
+            @FileLength, 
+            @LastWriteTime, 
+            @UserID, 
+            @DataSourceOwnerUserID, 
+            @isPublic, 
+            @FileDirectory, 
+            @OriginalFileType, 
+            @RetentionExpirationDate, 
+            @IsPublicPreviousState, 
+            @isAvailable, 
+            @isContainedWithinZipFile, 
+            @IsZipFile, 
+            @DataVerified, 
+            @ZipFileGuid, 
+            @ZipFileFQN, 
+            @Description, 
+            @KeyWords, 
+            @Notes, 
+            @isPerm, 
+            @isMaster, 
+            @CreationDate, 
+            @OcrPerformed, 
+            @isGraphic, 
+            @GraphicContainsText, 
+            @OcrText, 
+            @ImageHiddenText, 
+            @isWebPage, 
+            @ParentGuid, 
+            @RetentionCode, 
+            @MachineID, 
+            @CRC, 
+            @SharePoint, 
+            @SharePointDoc, 
+            @SharePointList, 
+            @SharePointListItem, 
+            @StructuredData, 
+            @HiveConnectionName, 
+            @HiveActive, 
+            @RepoSvrName, 
+            @RowCreationDate, 
+            @RowLastModDate, 
+            @ContainedWithin, 
+            @RecLen, 
+            @RecHash, 
+            @OriginalSize, 
+            @CompressedSize, 
+            @txStartTime, 
+            @txEndTime, 
+            @txTotalTime, 
+            @TransmitTime, 
+            @FileAttached, 
+            @BPS, 
+            @RepoName, 
+            @HashFile, 
+            @HashName, 
+            @OcrSuccessful, 
+            @OcrPending, 
+            @PdfIsSearchable, 
+            @PdfOcrRequired, 
+            @PdfOcrSuccess, 
+            @PdfOcrTextExtracted, 
+            @PdfPages, 
+            @PdfImages, 
+            @RequireOcr, 
+            @RssLinkFlg, 
+            @RssLinkGuid, 
+            @PageURL, 
+            @RetentionDate, 
+            @URLHash, 
+            @WebPagePublishDate, 
+            @SapData, 
+            @Imagehash, 
+            @ImageLen, 
+            @FileDirectoryName, 
+            @FqnHASH, 
+            @SourceImageOrigin, 
+            @RecTimeStamp, 
+            @SourceImage, 
+            @ZipExploded, 
+        )"
+
+        Dim ConnStr As String = setConnStr()
+        Dim CONN As New SqlConnection(ConnStr)
+        If CONN.State = ConnectionState.Closed Then
+            CONN.Open()
+        End If
+
+        Dim CMD As New SqlCommand()
+        CMD.CommandType = CommandType.StoredProcedure
+        Try
+            CMD.Connection = CONN
+            CMD.CommandType = CommandType.Text
+            CMD.CommandText = MySql
+
+            Using CONN
+                Using CMD
+
+                    CMD.Parameters.Add(New SqlParameter("@RowGuid", RowGuid))
+                    CMD.Parameters.Add(New SqlParameter("@SourceGuid", SourceGuid))
+                    CMD.Parameters.Add(New SqlParameter("@CreateDate", CreateDate))
+                    CMD.Parameters.Add(New SqlParameter("@SourceName", SourceName))
+                    CMD.Parameters.Add(New SqlParameter("@SourceTypeCode", SourceTypeCode))
+                    CMD.Parameters.Add(New SqlParameter("@FQN", FQN))
+                    CMD.Parameters.Add(New SqlParameter("@VersionNbr", VersionNbr))
+                    CMD.Parameters.Add(New SqlParameter("@LastAccessDate", LastAccessDate))
+                    CMD.Parameters.Add(New SqlParameter("@FileLength", FileLength))
+                    CMD.Parameters.Add(New SqlParameter("@LastWriteTime", LastWriteTime))
+                    CMD.Parameters.Add(New SqlParameter("@UserID", UserID))
+                    CMD.Parameters.Add(New SqlParameter("@DataSourceOwnerUserID", DataSourceOwnerUserID))
+                    CMD.Parameters.Add(New SqlParameter("@isPublic", isPublic))
+                    CMD.Parameters.Add(New SqlParameter("@FileDirectory", FileDirectory))
+                    CMD.Parameters.Add(New SqlParameter("@OriginalFileType", OriginalFileType))
+                    CMD.Parameters.Add(New SqlParameter("@RetentionExpirationDate", RetentionExpirationDate))
+                    CMD.Parameters.Add(New SqlParameter("@IsPublicPreviousState", IsPublicPreviousState))
+                    CMD.Parameters.Add(New SqlParameter("@isAvailable", isAvailable))
+                    CMD.Parameters.Add(New SqlParameter("@isContainedWithinZipFile", isContainedWithinZipFile))
+                    CMD.Parameters.Add(New SqlParameter("@IsZipFile", IsZipFile))
+                    CMD.Parameters.Add(New SqlParameter("@DataVerified", DataVerified))
+                    CMD.Parameters.Add(New SqlParameter("@ZipFileGuid", ZipFileGuid))
+                    CMD.Parameters.Add(New SqlParameter("@ZipFileFQN", ZipFileFQN))
+                    CMD.Parameters.Add(New SqlParameter("@Description", Description))
+                    CMD.Parameters.Add(New SqlParameter("@KeyWords", KeyWords))
+                    CMD.Parameters.Add(New SqlParameter("@Notes", Notes))
+                    CMD.Parameters.Add(New SqlParameter("@isPerm", isPerm))
+                    CMD.Parameters.Add(New SqlParameter("@isMaster", isMaster))
+                    CMD.Parameters.Add(New SqlParameter("@CreationDate", CreationDate))
+                    CMD.Parameters.Add(New SqlParameter("@OcrPerformed", OcrPerformed))
+                    CMD.Parameters.Add(New SqlParameter("@isGraphic", isGraphic))
+                    CMD.Parameters.Add(New SqlParameter("@GraphicContainsText", GraphicContainsText))
+                    CMD.Parameters.Add(New SqlParameter("@OcrText", OcrText))
+                    CMD.Parameters.Add(New SqlParameter("@ImageHiddenText", ImageHiddenText))
+                    CMD.Parameters.Add(New SqlParameter("@isWebPage", isWebPage))
+                    CMD.Parameters.Add(New SqlParameter("@ParentGuid", ParentGuid))
+                    CMD.Parameters.Add(New SqlParameter("@RetentionCode", RetentionCode))
+                    CMD.Parameters.Add(New SqlParameter("@MachineID", MachineID))
+                    CMD.Parameters.Add(New SqlParameter("@CRC", CRC))
+                    CMD.Parameters.Add(New SqlParameter("@SharePoint", SharePoint))
+                    CMD.Parameters.Add(New SqlParameter("@SharePointDoc", SharePointDoc))
+                    CMD.Parameters.Add(New SqlParameter("@SharePointList", SharePointList))
+                    CMD.Parameters.Add(New SqlParameter("@SharePointListItem", SharePointListItem))
+                    CMD.Parameters.Add(New SqlParameter("@StructuredData", StructuredData))
+                    CMD.Parameters.Add(New SqlParameter("@HiveConnectionName", HiveConnectionName))
+                    CMD.Parameters.Add(New SqlParameter("@HiveActive", HiveActive))
+                    CMD.Parameters.Add(New SqlParameter("@RepoSvrName", RepoSvrName))
+                    CMD.Parameters.Add(New SqlParameter("@RowCreationDate", RowCreationDate))
+                    CMD.Parameters.Add(New SqlParameter("@RowLastModDate", RowLastModDate))
+                    CMD.Parameters.Add(New SqlParameter("@ContainedWithin", ContainedWithin))
+                    CMD.Parameters.Add(New SqlParameter("@RecLen", RecLen))
+                    CMD.Parameters.Add(New SqlParameter("@RecHash", RecHash))
+                    CMD.Parameters.Add(New SqlParameter("@OriginalSize", OriginalSize))
+                    CMD.Parameters.Add(New SqlParameter("@CompressedSize", CompressedSize))
+                    CMD.Parameters.Add(New SqlParameter("@txStartTime", txStartTime))
+                    CMD.Parameters.Add(New SqlParameter("@txEndTime", txEndTime))
+                    CMD.Parameters.Add(New SqlParameter("@txTotalTime", txTotalTime))
+                    CMD.Parameters.Add(New SqlParameter("@TransmitTime", TransmitTime))
+                    CMD.Parameters.Add(New SqlParameter("@FileAttached", FileAttached))
+                    CMD.Parameters.Add(New SqlParameter("@BPS", BPS))
+                    CMD.Parameters.Add(New SqlParameter("@RepoName", RepoName))
+                    CMD.Parameters.Add(New SqlParameter("@HashFile", HashFile))
+                    CMD.Parameters.Add(New SqlParameter("@HashName", HashName))
+                    CMD.Parameters.Add(New SqlParameter("@OcrSuccessful", OcrSuccessful))
+                    CMD.Parameters.Add(New SqlParameter("@OcrPending", OcrPending))
+                    CMD.Parameters.Add(New SqlParameter("@PdfIsSearchable", PdfIsSearchable))
+                    CMD.Parameters.Add(New SqlParameter("@PdfOcrRequired", PdfOcrRequired))
+                    CMD.Parameters.Add(New SqlParameter("@PdfOcrSuccess", PdfOcrSuccess))
+                    CMD.Parameters.Add(New SqlParameter("@PdfOcrTextExtracted", PdfOcrTextExtracted))
+                    CMD.Parameters.Add(New SqlParameter("@PdfPages", PdfPages))
+                    CMD.Parameters.Add(New SqlParameter("@PdfImages", PdfImages))
+                    CMD.Parameters.Add(New SqlParameter("@RequireOcr", RequireOcr))
+                    CMD.Parameters.Add(New SqlParameter("@RssLinkFlg", RssLinkFlg))
+                    CMD.Parameters.Add(New SqlParameter("@RssLinkGuid", RssLinkGuid))
+                    CMD.Parameters.Add(New SqlParameter("@PageURL", PageURL))
+                    CMD.Parameters.Add(New SqlParameter("@RetentionDate", RetentionDate))
+                    CMD.Parameters.Add(New SqlParameter("@URLHash", URLHash))
+                    CMD.Parameters.Add(New SqlParameter("@WebPagePublishDate", WebPagePublishDate))
+                    CMD.Parameters.Add(New SqlParameter("@SapData", SapData))
+                    CMD.Parameters.Add(New SqlParameter("@Imagehash", Imagehash))
+                    CMD.Parameters.Add(New SqlParameter("@ImageLen", ImageLen))
+                    CMD.Parameters.Add(New SqlParameter("@FileDirectoryName", FileDirectoryName))
+                    CMD.Parameters.Add(New SqlParameter("@FqnHASH", FqnHASH))
+                    CMD.Parameters.Add(New SqlParameter("@SourceImageOrigin", SourceImageOrigin))
+                    CMD.Parameters.Add(New SqlParameter("@RecTimeStamp", RecTimeStamp))
+                    CMD.Parameters.Add(New SqlParameter("@SourceImage", SourceImage))
+                    CMD.Parameters.Add(New SqlParameter("@ZipExploded", ZipExploded))
+
+                    CMD.ExecuteNonQuery()
+                End Using
+            End Using
+            B = True
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR 721x UpdateDataSourceFileInfo 00: " + ex.Message)
+            LOG.WriteToArchiveLog("[SourceName] " + SourceName.Length.ToString)
+            LOG.WriteToArchiveLog("[Imagehash] " = Imagehash.Length.ToString)
+            LOG.WriteToArchiveLog("[CRC] " = Imagehash.Length.ToString)
+            LOG.WriteToArchiveLog("[SourceTypeCode] " = SourceTypeCode.Length.ToString)
+            LOG.WriteToArchiveLog("[OriginalFileType] " = OriginalFileType.Length.ToString)
+            LOG.WriteToArchiveLog("[MachineID] " = MachineID.Length.ToString)
+            LOG.WriteToArchiveLog("[RecHash] " = Imagehash.Length.ToString)
+            B = False
+        End Try
+        Return B
+    End Function
+
+
     ''' <summary>
     ''' Writes the image source data from database write to file.
     ''' </summary>

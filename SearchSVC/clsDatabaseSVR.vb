@@ -1,3 +1,16 @@
+' ***********************************************************************
+' Assembly         : EcmCloudWcf.Web
+' Author           : wdale
+' Created          : 12-15-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 12-15-2020
+' ***********************************************************************
+' <copyright file="clsDatabaseSVR.vb" company="ECM Library,LLC">
+'     Copyright @ECM Library 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
 Imports System.IO
 Imports System.IO.Compression
 Imports ECMEncryption
@@ -10,83 +23,233 @@ Imports Newtonsoft.Json
 '' basis for clients of DMA, Limited.
 '' </summary>
 '' <remarks></remarks>
+''' <summary>
+''' Class clsDatabaseSVR.
+''' </summary>
 <Runtime.InteropServices.Guid("5771FF43-76C6-43A0-AE7D-08AA1645EAA4")>
 Public Class clsDatabaseSVR
     ' Inherits System.Web.UI.Page
 
+    ''' <summary>
+    ''' The enc
+    ''' </summary>
     Dim ENC As New ECMEncrypt
+    ''' <summary>
+    ''' The time out secs
+    ''' </summary>
     Dim TimeOutSecs As String = "90"
 
+    ''' <summary>
+    ''' The ret MSG
+    ''' </summary>
     Dim RetMsg As String = ""
+    ''' <summary>
+    ''' The rc
+    ''' </summary>
     Dim RC As Integer = 0
+    ''' <summary>
+    ''' The company identifier
+    ''' </summary>
     Private CompanyID As String = ""
+    ''' <summary>
+    ''' The repo identifier
+    ''' </summary>
     Private RepoID As String = ""
 
+    ''' <summary>
+    ''' The thesaurus connection string
+    ''' </summary>
     Dim ThesaurusConnectionString As String = ""
+    ''' <summary>
+    ''' The get count only
+    ''' </summary>
     Dim getCountOnly As Boolean = Nothing
+    ''' <summary>
+    ''' The use existing records only
+    ''' </summary>
     Dim UseExistingRecordsOnly As Boolean = Nothing
+    ''' <summary>
+    ''' The generated SQL
+    ''' </summary>
     Dim GeneratedSQL As String = Nothing
+    ''' <summary>
+    ''' The use command process for inventory
+    ''' </summary>
     Dim UseCommandProcessForInventory As Boolean = False
+    ''' <summary>
+    ''' The d debug
+    ''' </summary>
     Public dDebug As Boolean = False
+    ''' <summary>
+    ''' The ix v1
+    ''' </summary>
     Dim IXV1 As Integer = 0
 
+    ''' <summary>
+    ''' The SQLSVR
+    ''' </summary>
     Dim SQLSVR As New clsSqlSVR
+    ''' <summary>
+    ''' The gen
+    ''' </summary>
     Dim GEN As New clsGeneratorSVR
+    ''' <summary>
+    ''' The cf
+    ''' </summary>
     Dim CF As New clsFile
 
     'Dim ENC As New clsEncrypt
     'Dim ENC2 As New ENC
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Dim LOG As New clsLogging
 
+    ''' <summary>
+    ''' The utility
+    ''' </summary>
     Dim UTIL As New clsUtilitySVR
+    ''' <summary>
+    ''' The dma
+    ''' </summary>
     Dim DMA As New clsDmaSVR
+    ''' <summary>
+    ''' The kgen
+    ''' </summary>
     Dim KGEN As New clsKeyGen
 
     'Dim ENC As New ECMEncrypt
 
+    ''' <summary>
+    ''' The g connection
+    ''' </summary>
     Public gConn As New SqlConnection
+    ''' <summary>
+    ''' The TGT unique identifier
+    ''' </summary>
     Public TgtGuid As String = ""
 
+    ''' <summary>
+    ''' The thesaurus words
+    ''' </summary>
     Dim ThesaurusWords As New ArrayList
 
     '** Public ConnectionStringID As String = "XOMR1.1ConnectionString"
     '** Do not forget that this is a global access var to thte DB
     '** and MUST be changed to run on different platforms.
+    ''' <summary>
+    ''' The connection string identifier
+    ''' </summary>
     Public ConnectionStringID As String = ""
 
+    ''' <summary>
+    ''' The server name
+    ''' </summary>
     Public ServerName As String = ""
 
+    ''' <summary>
+    ''' The sl projects
+    ''' </summary>
     Public slProjects As New Dictionary(Of String, String)
+    ''' <summary>
+    ''' The sl project teams
+    ''' </summary>
     Public slProjectTeams As New Dictionary(Of String, String)
+    ''' <summary>
+    ''' The sl metric periods
+    ''' </summary>
     Public slMetricPeriods As New Dictionary(Of String, String)
+    ''' <summary>
+    ''' The sl excel col names
+    ''' </summary>
     Public slExcelColNames As New Dictionary(Of String, String)
+    ''' <summary>
+    ''' The sl growth platform
+    ''' </summary>
     Public slGrowthPlatform As New Dictionary(Of String, String)
+    ''' <summary>
+    ''' The sl operating group
+    ''' </summary>
     Public slOperatingGroup As New Dictionary(Of String, String)
+    ''' <summary>
+    ''' The sl operating unit
+    ''' </summary>
     Public slOperatingUnit As New Dictionary(Of String, String)
+    ''' <summary>
+    ''' The sl geography
+    ''' </summary>
     Public slGeography As New Dictionary(Of String, String)
+    ''' <summary>
+    ''' The sl geographic unit
+    ''' </summary>
     Public slGeographicUnit As New Dictionary(Of String, String)
+    ''' <summary>
+    ''' The sl client service group
+    ''' </summary>
     Public slClientServiceGroup As New Dictionary(Of String, String)
+    ''' <summary>
+    ''' The sl delivery center
+    ''' </summary>
     Public slDeliveryCenter As New Dictionary(Of String, String)
+    ''' <summary>
+    ''' The sl type of work
+    ''' </summary>
     Public slTypeOfWork As New Dictionary(Of String, String)
+    ''' <summary>
+    ''' The sl project team type of work
+    ''' </summary>
     Public slProjectTeamTypeOfWork As New Dictionary(Of String, String)
+    ''' <summary>
+    ''' The sl submission status
+    ''' </summary>
     Public slSubmissionStatus As New Dictionary(Of String, String)
+    ''' <summary>
+    ''' The sl submitted by
+    ''' </summary>
     Public slSubmittedBy As New Dictionary(Of String, String)
+    ''' <summary>
+    ''' The el
+    ''' </summary>
     Public EL As New ArrayList
 
+    ''' <summary>
+    ''' The table cols
+    ''' </summary>
     Public TblCols(4, 0) As String
 
     ' Dim owner As IWin32Window
+    ''' <summary>
+    ''' The g connection string
+    ''' </summary>
     Dim gConnStr As String = ""
 
+    ''' <summary>
+    ''' The dbdir
+    ''' </summary>
     Dim DBDIR As String = "C:\Program Files\Microsoft SQL Server\MSSQL.1\MSSQL\Data\org_db.mdf"
+    ''' <summary>
+    ''' The dq
+    ''' </summary>
     Dim DQ As String = Chr(34)
 
     'Private gCurrUserGuidID = ""
+    ''' <summary>
+    ''' The curr user pw
+    ''' </summary>
     Private CurrUserPW As String = ""
 
+    ''' <summary>
+    ''' The overwrite once
+    ''' </summary>
     Dim OverwriteOnce As Boolean = False
+    ''' <summary>
+    ''' The overwrite always
+    ''' </summary>
     Dim OverwriteAlways As Boolean = False
 
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="clsDatabaseSVR"/> class.
+    ''' </summary>
     Sub New()
 
         'Dim sDebug  = getUserParm("debug_ClsDatabase")
@@ -99,6 +262,10 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the license count.
+    ''' </summary>
+    ''' <returns>System.Int32.</returns>
     Public Function getLicenseCount() As Integer
         Dim SecureID As Integer = 0
         Dim S As String = "Select count(*) from License"
@@ -114,8 +281,8 @@ Public Class clsDatabaseSVR
     ''' Gets the word inflections.
     ''' </summary>
     ''' <param name="QRY">The qry.</param>
-    ''' <param name="CS"> The cs.</param>
-    ''' <returns></returns>
+    ''' <param name="CS">The cs.</param>
+    ''' <returns>System.String.</returns>
     Public Function getWordInflections(QRY As String, CS As String) As String
 
         CS = ENC.AES256DecryptString(CS)
@@ -135,7 +302,7 @@ Public Class clsDatabaseSVR
     ''' <summary>
     ''' Removes the expired alerts.
     ''' </summary>
-    ''' <returns></returns>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function removeExpiredAlerts() As Boolean
         Dim B As Boolean = True
         Dim S As String = "delete FROM [dbo].[AlertWord] where [ExpirationDate] <= getdate()"
@@ -147,7 +314,7 @@ Public Class clsDatabaseSVR
     ''' Gets the error logs.
     ''' </summary>
     ''' <param name="MaxNbr">The maximum NBR.</param>
-    ''' <returns></returns>
+    ''' <returns>System.String.</returns>
     Public Function getErrorLogs(MaxNbr As String) As String
 
         Dim DT As New DataTable
@@ -202,11 +369,11 @@ Public Class clsDatabaseSVR
     ''' <summary>
     ''' Cks the session identifier.
     ''' </summary>
-    ''' <param name="SecureID">      The secure identifier.</param>
-    ''' <param name="UserID">        The user identifier.</param>
-    ''' <param name="SessionID">     The session identifier.</param>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="SessionID">The session identifier.</param>
     ''' <param name="ControlSection">The control section.</param>
-    ''' <returns></returns>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Private Function ckSessionID(SecureID As Integer, UserID As String, SessionID As String, ControlSection As String) As Boolean
         Dim S As String = "Select count(*) from SessionID where UserID = '" + UserID + "' and SessionID = '" + SessionID + "' and ControlSection = '" + ControlSection + "' "
         Dim iCnt As Integer = iCount(SecureID, S)
@@ -221,8 +388,8 @@ Public Class clsDatabaseSVR
     ''' GETS THE SESSION ID DECRYPTION KEY
     ''' </summary>
     ''' <param name="SecureID">The secure identifier.</param>
-    ''' <param name="UserID">  The user identifier.</param>
-    ''' <returns></returns>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getContractIDKey(SecureID As Integer, UserID As String) As String
         Dim pKey As String = ""
         Dim RSData As SqlDataReader = Nothing
@@ -261,8 +428,8 @@ Public Class clsDatabaseSVR
     ''' Gets the contract identifier.
     ''' </summary>
     ''' <param name="SecureID">The secure identifier.</param>
-    ''' <param name="UserID">  The user identifier.</param>
-    ''' <returns></returns>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getContractID(SecureID As Integer, UserID As String) As String
         Dim iCnt As Integer = iCount(SecureID, "Select count(*) from Users where UserID = '" + UserID + "' ")
         Dim NEWID As String = ""
@@ -309,7 +476,7 @@ Public Class clsDatabaseSVR
     ''' <param name="GateWayEndPoint">The gate way end point.</param>
     ''' <param name="DownloadEndpoint">The download endpoint.</param>
     ''' <param name="ENCCS">The enccs.</param>
-    ''' <returns></returns>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function validateAttachSecureLogin(ByRef SecureID As Integer,
                                               ByVal CompanyID As String,
                                                 ByVal RepoID As String,
@@ -474,7 +641,7 @@ Public Class clsDatabaseSVR
     ''' Uses the encrypted.
     ''' </summary>
     ''' <param name="SecureID">The secure identifier.</param>
-    ''' <returns></returns>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UseEncrypted(SecureID As Integer) As Boolean
         Dim I As Integer = CInt(System.Configuration.ConfigurationManager.AppSettings("UseEncrypted"))
         If I = 1 Then
@@ -549,7 +716,7 @@ Public Class clsDatabaseSVR
     ''' <param name="TypeSearch">The type search.</param>
     ''' <param name="JsonSearchParms">The json search parms.</param>
     ''' <param name="RetMsg">The ret MSG.</param>
-    ''' <returns></returns>
+    ''' <returns>System.String.</returns>
     Function ExecuteSearchJson(TypeSearch As String, ByVal JsonSearchParms As String, ByRef RetMsg As String) As String
         RetMsg = Date.Today.ToLongDateString
 
@@ -754,6 +921,11 @@ Public Class clsDatabaseSVR
         Return strOfRows
     End Function
 
+    ''' <summary>
+    ''' Gets the json data.
+    ''' </summary>
+    ''' <param name="I">The i.</param>
+    ''' <returns>System.String.</returns>
     Function getJsonData(I As String) As String
 
         Dim jdata As String = ""
@@ -776,6 +948,12 @@ Public Class clsDatabaseSVR
         Return jdata
     End Function
 
+    ''' <summary>
+    ''' Adds the json data.
+    ''' </summary>
+    ''' <param name="RowKey">The row key.</param>
+    ''' <param name="jdata">The jdata.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function addJsonData(RowKey As String, jdata As String) As Boolean
 
         Dim CS As String = DBgetConnStr()
@@ -806,15 +984,10 @@ Public Class clsDatabaseSVR
     ''' <param name="SecureID">The secure identifier.</param>
     ''' <param name="currSearchCnt">The curr search count.</param>
     ''' <param name="bGenSql">if set to <c>true</c> [b gen SQL].</param>
-    ''' <param name="EmailGenSql">The email gen SQL.</param>
     ''' <param name="SearchParmsJson">The search parms json.</param>
-    ''' <param name="ContentGenSql">The content gen SQL.</param>
-    ''' <param name="strListOEmailRows">The string list o email rows.</param>
-    ''' <param name="strListOfContentRows">The string list of content rows.</param>
-    ''' <param name="bFirstEmailSearchSubmit">if set to <c>true</c> [b first email search submit].</param>
     ''' <param name="bFirstContentSearchSubmit">if set to <c>true</c> [b first content search submit].</param>
-    ''' <param name="EmailRowCnt">The email row count.</param>
     ''' <param name="ContentRowCnt">The content row count.</param>
+    ''' <returns>System.String.</returns>
     Function ExecuteSearchContent(ByRef SecureID As Integer,
                 ByRef currSearchCnt As Integer,
                 ByVal bGenSql As Boolean,
@@ -1032,6 +1205,16 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Executes the search email.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="currSearchCnt">The curr search count.</param>
+    ''' <param name="bGenSql">if set to <c>true</c> [b gen SQL].</param>
+    ''' <param name="SearchParmsJson">The search parms json.</param>
+    ''' <param name="bFirstEmailSearchSubmit">if set to <c>true</c> [b first email search submit].</param>
+    ''' <param name="EmailRowCnt">The email row count.</param>
+    ''' <returns>System.String.</returns>
     Function ExecuteSearchEmail(ByRef SecureID As Integer,
                 ByRef currSearchCnt As Integer,
                 ByVal bGenSql As Boolean,
@@ -1262,7 +1445,7 @@ Public Class clsDatabaseSVR
     ''' <param name="currSearchCnt">The curr search count.</param>
     ''' <param name="bGenSql">if set to <c>true</c> [b gen SQL].</param>
     ''' <param name="EmailGenSql">The email gen SQL.</param>
-    ''' <param name="SearchParms">The search parms.</param>
+    ''' <param name="SearchParmsJson">The search parms json.</param>
     ''' <param name="ContentGenSql">The content gen SQL.</param>
     ''' <param name="strListOEmailRows">The string list of email rows.</param>
     ''' <param name="strListOfContentRows">The string list of content rows.</param>
@@ -1270,7 +1453,7 @@ Public Class clsDatabaseSVR
     ''' <param name="bFirstContentSearchSubmit">if set to <c>true</c> [b first content search submit].</param>
     ''' <param name="EmailRowCnt">The email row count.</param>
     ''' <param name="ContentRowCnt">The content row count.</param>
-    ''' <returns></returns>
+    ''' <returns>DataSet.</returns>
     Function ExecuteSearchDT(SearchType As String,
                 ByRef currSearchCnt As Integer,
                 ByVal bGenSql As Boolean,
@@ -1517,6 +1700,13 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Generates the SQL.
+    ''' </summary>
+    ''' <param name="SearchParmList">The search parm list.</param>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TypeSQL">The type SQL.</param>
+    ''' <returns>System.String.</returns>
     Function GenerateSQL(ByVal SearchParmList As SortedList(Of String, String), ByRef SecureID As Integer, TypeSQL As String) As String
         Dim AutoGeneratedSQL As String = ""
         If (TypeSQL.Equals("C")) Then
@@ -1548,7 +1738,7 @@ Public Class clsDatabaseSVR
     ''' <param name="DocLowerPageNbr">The document lower page NBR.</param>
     ''' <param name="DocUpperPageNbr">The document upper page NBR.</param>
     ''' <param name="QryToExecute">The qry to execute.</param>
-    ''' <param name="ListOfRows">The list of rows.</param>
+    ''' <param name="DSRowsOfContent">Content of the ds rows of.</param>
     ''' <param name="bNewRow">if set to <c>true</c> [b new row].</param>
     ''' <param name="ContentRowCnt">The content row count.</param>
     Sub SearchContent(ByVal SearchParmList As SortedList(Of String, String), ByRef SecureID As Integer, ByVal UID As String,
@@ -1653,7 +1843,7 @@ Public Class clsDatabaseSVR
     ''' <param name="LowerPageNbr">The lower page NBR.</param>
     ''' <param name="UpperPageNbr">The upper page NBR.</param>
     ''' <param name="GeneratedSql">The generated SQL.</param>
-    ''' <param name="DSRowsOfData">The ds rows of data.</param>
+    ''' <param name="DSRowsOfEmails">The ds rows of emails.</param>
     ''' <param name="bFirstEmailSearchSubmit">if set to <c>true</c> [b first email search submit].</param>
     ''' <param name="EmailRowCount">The email row count.</param>
     Sub SearchEmails(ByVal SearchParmList As SortedList(Of String, String),
@@ -1757,7 +1947,7 @@ Public Class clsDatabaseSVR
     ''' <param name="TblName">Name of the table.</param>
     ''' <param name="ColName">Name of the col.</param>
     ''' <param name="tData">The t data.</param>
-    ''' <returns></returns>
+    ''' <returns>System.String.</returns>
     Function CkColData(ByRef SecureID As Integer, ByVal TblName As String, ByVal ColName As String, ByVal tData As String) As String
         Dim xData As String = ""
         Dim K As Integer
@@ -1849,8 +2039,8 @@ Public Class clsDatabaseSVR
     ''' LoadColInfo reads table_name, column_name, data_type, character_maximum_length from
     ''' INFORMATION_SCHEMA.COLUMNS based on the provided Table Name.
     ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     ''' <param name="TableName">The name of the table to retrieve column information about.</param>
-    ''' <remarks></remarks>
     Sub LoadColInfo(ByRef SecureID As Integer, ByVal TableName As String)
 
         Dim S As String = ""
@@ -1933,7 +2123,7 @@ Public Class clsDatabaseSVR
     ''' </summary>
     ''' <param name="SecureID">The secure identifier.</param>
     ''' <param name="tVal">The t value.</param>
-    ''' <returns></returns>
+    ''' <returns>System.String.</returns>
     Public Function ckNull(ByRef SecureID As Integer, ByVal tVal As String) As String
         If tVal.Trim.Length = 0 Then
             Return "null"
@@ -1952,7 +2142,7 @@ Public Class clsDatabaseSVR
     ''' <param name="TableName">Name of the table.</param>
     ''' <param name="TypeChange">The type change.</param>
     ''' <param name="ChangeDate">The change date.</param>
-    ''' <returns></returns>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function AuditInsert(ByRef SecureID As Integer, ByVal ChangeID As String, ByVal UserID As String, ByVal Msg As String, ByVal TableName As String, ByVal TypeChange As String, ByVal ChangeDate As String) As Boolean
         Dim b As Boolean = False
 
@@ -2111,7 +2301,7 @@ Public Class clsDatabaseSVR
     ''' <param name="tgtCol">The TGT col.</param>
     ''' <param name="NewOwnerID">The new owner identifier.</param>
     ''' <param name="OldOwnerID">The old owner identifier.</param>
-    ''' <returns></returns>
+    ''' <returns>System.String.</returns>
     Private Function changeOwnership(ByVal SecureID As Integer, ByVal TBL As String, ByVal tgtCol As String, ByVal NewOwnerID As String, ByVal OldOwnerID As String) As String
 
         Dim S As String = "update " + TBL + " set " + tgtCol + " = '" + NewOwnerID + "' where " + tgtCol + " = '" + OldOwnerID + "'" + vbCrLf
@@ -2127,7 +2317,7 @@ Public Class clsDatabaseSVR
     ''' </summary>
     ''' <param name="SecureID">The secure identifier.</param>
     ''' <param name="S">The s.</param>
-    ''' <returns></returns>
+    ''' <returns>System.String.</returns>
     Public Function AddNulls(ByRef SecureID As Integer, ByVal S As String) As String
         Dim i As Integer = 0
         Dim j As Integer = 0
@@ -2175,7 +2365,7 @@ Public Class clsDatabaseSVR
     ''' </summary>
     ''' <param name="SecureID">The secure identifier.</param>
     ''' <param name="S">The s.</param>
-    ''' <returns></returns>
+    ''' <returns>System.String.</returns>
     Public Function AddNullsToUpdate(ByRef SecureID As Integer, ByVal S As String) As String
         Dim i As Integer = 0
         Dim j As Integer = 0
@@ -2219,7 +2409,7 @@ Public Class clsDatabaseSVR
     ''' <param name="SecureID">The secure identifier.</param>
     ''' <param name="CSName">Name of the cs.</param>
     ''' <param name="From">From.</param>
-    ''' <returns></returns>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckDbConnection(ByRef SecureID As Integer, CSName As String, ByVal From As String) As Boolean
         Dim b As Boolean = False
         If dDebug Then DBLogMessage(SecureID, gCurrUserGuidID, "clsDatabase : ckDbConnection : 100 : " + gConn.ConnectionString)
@@ -2294,16 +2484,32 @@ Public Class clsDatabaseSVR
     '    gConnStr = S
     'End Sub
 
+    ''' <summary>
+    ''' Setps the w.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="tVal">The t value.</param>
     Public Sub setpW(ByRef SecureID As Integer, ByVal tVal As String)
         CurrUserPW = tVal
     End Sub
 
+    ''' <summary>
+    ''' Gets the connection.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>SqlConnection.</returns>
     Public Function GetConnection(ByRef SecureID As Integer) As SqlConnection
 
         DBCkConn(SecureID)
         Return gConn
     End Function
 
+    ''' <summary>
+    ''' Gets the SQL adaptor.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Sql">The SQL.</param>
+    ''' <returns>SqlDataAdapter.</returns>
     Public Function getSqlAdaptor(ByRef SecureID As Integer, ByVal Sql As String) As SqlDataAdapter
         DBCkConn(SecureID)
         Dim sSelect As String = Sql
@@ -2313,6 +2519,12 @@ Public Class clsDatabaseSVR
         Return da
     End Function
 
+    ''' <summary>
+    ''' is the execute count statement.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function iExecCountStmt(ByRef SecureID As Integer, ByVal S As String) As Integer
 
         Dim tQuery As String = ""
@@ -2351,6 +2563,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' is the get row count.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function iGetRowCount(ByRef SecureID As Integer, ByVal S As String) As Integer
 
         Dim tQuery As String = ""
@@ -2423,6 +2641,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' is the data exist.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function iDataExist(ByRef SecureID As Integer, ByVal S As String) As Integer
 
         Dim tQuery As String = ""
@@ -2458,6 +2682,11 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' is the get maximum row NBR from XML.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function iGetMaxRowNbrFromXml(ByRef SecureID As Integer) As Integer
 
         Dim tQuery As String = ""
@@ -2492,6 +2721,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the one value.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.String.</returns>
     Public Function getOneVal(ByRef SecureID As Integer, ByVal S As String) As String
 
         Dim tVal As String = S
@@ -2517,6 +2752,16 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' XCKs the email exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SenderEmailAddress">The sender email address.</param>
+    ''' <param name="ReceivedByName">Name of the received by.</param>
+    ''' <param name="ReceivedTime">The received time.</param>
+    ''' <param name="SenderName">Name of the sender.</param>
+    ''' <param name="SentOn">The sent on.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function xckEmailExists(ByRef SecureID As Integer, ByVal SenderEmailAddress As String,
     ByVal ReceivedByName As String, ByVal ReceivedTime As String, ByVal SenderName As String, ByVal SentOn As String) As Boolean
         Dim tQuery As String = ""
@@ -2564,6 +2809,12 @@ Public Class clsDatabaseSVR
         End If
     End Function
 
+    ''' <summary>
+    ''' Cks the email unique identifier exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function ckEmailGuidExists(ByRef SecureID As Integer, ByVal EmailGuid As String) As Integer
 
         Dim S As String = ""
@@ -2594,6 +2845,12 @@ Public Class clsDatabaseSVR
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' Cks the content unique identifier exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function ckContentGuidExists(ByRef SecureID As Integer, ByVal SourceGuid As String) As Integer
 
         Dim S As String = ""
@@ -2622,6 +2879,12 @@ Public Class clsDatabaseSVR
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' Gets the source datatype by unique identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function getSourceDatatypeByGuid(ByRef SecureID As Integer, ByVal SourceGuid As String) As Integer
 
         Dim S As String = ""
@@ -2651,6 +2914,10 @@ Public Class clsDatabaseSVR
         Return tVal
     End Function
 
+    ''' <summary>
+    ''' Increments the next identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Public Sub IncrementNextID(ByRef SecureID As Integer)
         DBCloseConn(SecureID)
         DBCkConn(SecureID)
@@ -2658,6 +2925,13 @@ Public Class clsDatabaseSVR
         Dim b As Boolean = DBExecuteSql(SecureID, S, False)
     End Sub
 
+    ''' <summary>
+    ''' Sets the folder as active.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <param name="sAction">The s action.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function SetFolderAsActive(ByRef SecureID As Integer, ByVal FolderName As String, ByVal sAction As String) As Boolean
         Dim SS As String = " "
         SS = "update  [EmailFolder] set [SelectedForArchive] = '" + sAction + "' where FolderName = '" + FolderName + "'"
@@ -2665,6 +2939,11 @@ Public Class clsDatabaseSVR
         Return b
     End Function
 
+    ''' <summary>
+    ''' Gets the next identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function getNextID(ByRef SecureID As Integer) As Integer
         Dim tQuery As String = ""
         Dim S As String = "Select max([IdNbr]) FROM [NextIdNbr] "
@@ -2691,6 +2970,11 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Sets the user default notifications.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
     Public Sub SetUserDefaultNotifications(ByRef SecureID As Integer, ByVal UserID As String)
         Dim S As String = "INSERT INTO [OwnerNotifications]"
         S = S + " ([OwnerNotificationID]"
@@ -2718,6 +3002,11 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Counts the user entries.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function CountUserEntries(ByRef SecureID As Integer) As Integer
         Dim tQuery As String = ""
         Dim S As String = "Select count(*) from UserData "
@@ -2743,6 +3032,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the global seach count.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function getGlobalSeachCnt(ByRef SecureID As Integer, ByVal UID As String) As Integer
         Dim tQuery As String = ""
         Dim S As String = "Select count(*) FROM [GlobalSeachResults] where userid = '" + UID + "'"
@@ -2768,6 +3063,10 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Cks the user information data.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Public Sub ckUserInfoData(ByRef SecureID As Integer)
 
         Dim tQuery As String = ""
@@ -2846,6 +3145,12 @@ Public Class clsDatabaseSVR
         End If
     End Sub
 
+    ''' <summary>
+    ''' Sels the count.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function SelCount(ByRef SecureID As Integer, ByVal S As String) As Integer
 
         Dim tQuery As String = ""
@@ -2875,6 +3180,11 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Validates the admin user.
+    ''' </summary>
+    ''' <param name="Userid">The userid.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Private Function validateAdminUser(ByVal Userid As String) As Boolean
         Dim b As Boolean = True
         Dim S As String = ""
@@ -2894,6 +3204,13 @@ Public Class clsDatabaseSVR
         Return b
     End Function
 
+    ''' <summary>
+    ''' Cks the admin user.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Userid">The userid.</param>
+    ''' <param name="PW">The pw.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckAdminUser(ByRef SecureID As Integer, ByVal Userid As String, ByVal PW As String) As Boolean
         Dim b As Boolean = True
         Dim S As String = "Select userid from dco.<SchemaName>.admin_user where userid = '" + Userid + "' and password = '" + PW + "'"
@@ -2913,6 +3230,13 @@ Public Class clsDatabaseSVR
         Return b
     End Function
 
+    ''' <summary>
+    ''' Gets the admin user identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Userid">The userid.</param>
+    ''' <param name="PW">The pw.</param>
+    ''' <returns>System.String.</returns>
     Public Function getAdminUserId(ByRef SecureID As Integer, ByVal Userid As String, ByVal PW As String) As String
         Dim b As Boolean = True
         Dim S As String = "Select useridnbr from admin_user where userid = '" + Userid + "' and password = '" + PW + "'"
@@ -2934,6 +3258,12 @@ Public Class clsDatabaseSVR
         Return id
     End Function
 
+    ''' <summary>
+    ''' Gets the name of the document cat identifier by.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="CatName">Name of the cat.</param>
+    ''' <returns>System.String.</returns>
     Public Function getDocCatIdByName(ByRef SecureID As Integer, ByVal CatName As String) As String
         Dim b As Boolean = True
         Dim S As String = "Select CategoryID  FROM DocumentCategories  where CategoryName = '" + CatName + "' "
@@ -2954,6 +3284,12 @@ Public Class clsDatabaseSVR
         Return id
     End Function
 
+    ''' <summary>
+    ''' Gets the user name by identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Userid">The userid.</param>
+    ''' <returns>System.String.</returns>
     Public Function getUserNameByID(ByRef SecureID As Integer, ByVal Userid As String) As String
         Dim b As Boolean = True
         Dim S As String = "Select UserName FROM Users where UserID = '" + Userid + "' "
@@ -2974,6 +3310,12 @@ Public Class clsDatabaseSVR
         Return id
     End Function
 
+    ''' <summary>
+    ''' Gets the user login by userid.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Userid">The userid.</param>
+    ''' <returns>System.String.</returns>
     Public Function getUserLoginByUserid(ByRef SecureID As Integer, ByVal Userid As String) As String
         Dim b As Boolean = True
         Dim S As String = "Select UserLoginID FROM Users where UserID = '" + Userid + "' "
@@ -2994,6 +3336,12 @@ Public Class clsDatabaseSVR
         Return id
     End Function
 
+    ''' <summary>
+    ''' Adds the profile file types.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ProfileName">Name of the profile.</param>
+    ''' <param name="LB">The lb.</param>
     Public Sub AddProfileFileTypes(ByRef SecureID As Integer, ByVal ProfileName As String, ByVal LB As ListBox)
         Dim rsData As SqlDataReader = Nothing
         Try
@@ -3031,6 +3379,12 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the device identifier by value.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="InventoryNo">The inventory no.</param>
+    ''' <returns>System.String.</returns>
     Public Function getDeviceIDByVal(ByRef SecureID As Integer, ByVal InventoryNo As String) As String
         Dim b As Boolean = True
         Dim S As String = "Select DEVICEID FROM INVENTORY WHERE INVENTORYNO = " + InventoryNo
@@ -3051,6 +3405,13 @@ Public Class clsDatabaseSVR
         Return id
     End Function
 
+    ''' <summary>
+    ''' Gets the photo title.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="PhotoID">The photo identifier.</param>
+    ''' <param name="pTitle">The p title.</param>
+    ''' <returns>System.String.</returns>
     Public Function getPhotoTitle(ByRef SecureID As Integer, ByRef PhotoID As Integer, ByRef pTitle As String) As String
         Dim b As Boolean = True
         Dim S As String = "Select Caption, PhotoID from photos "
@@ -3078,6 +3439,12 @@ Public Class clsDatabaseSVR
         Return tempTitle
     End Function
 
+    ''' <summary>
+    ''' Gets the photo title.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="PhotoID">The photo identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getPhotoTitle(ByRef SecureID As Integer, ByRef PhotoID As Integer) As String
         Dim b As Boolean = True
         Dim S As String = "Select Caption from photos where PhotoID = " & PhotoID
@@ -3098,6 +3465,13 @@ Public Class clsDatabaseSVR
         Return id
     End Function
 
+    ''' <summary>
+    ''' Gets the contact identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FirstName">The first name.</param>
+    ''' <param name="LastName">The last name.</param>
+    ''' <returns>System.String.</returns>
     Public Function getContactID(ByRef SecureID As Integer, ByVal FirstName As String, ByVal LastName As String) As String
         Dim b As Boolean = True
         Dim SS As String = "Select ContactID FROM Contacts "
@@ -3121,6 +3495,14 @@ Public Class clsDatabaseSVR
         Return id
     End Function
 
+    ''' <summary>
+    ''' Records the exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Tbl">The table.</param>
+    ''' <param name="WhereVar">The where variable.</param>
+    ''' <param name="CompareVal">The compare value.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function RecordExists(ByRef SecureID As Integer, ByVal Tbl As String, ByVal WhereVar As String, ByVal CompareVal As String) As Boolean
         Dim b As Boolean = True
         Dim SQL As String = "Select * from " + Tbl + " where " + WhereVar + " = '" + CompareVal + "'"
@@ -3133,6 +3515,13 @@ Public Class clsDatabaseSVR
         Return b
     End Function
 
+    ''' <summary>
+    ''' Gets the next key.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TBL">The table.</param>
+    ''' <param name="tCol">The t col.</param>
+    ''' <returns>System.String.</returns>
     Public Function getNextKey(ByRef SecureID As Integer, ByVal TBL As String, ByVal tCol As String) As String
 
         DBCloseConn(SecureID)
@@ -3170,6 +3559,14 @@ Public Class clsDatabaseSVR
         Return d
     End Function
 
+    ''' <summary>
+    ''' Gets the next key.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TBL">The table.</param>
+    ''' <param name="tCol">The t col.</param>
+    ''' <param name="SQL">The SQL.</param>
+    ''' <returns>System.String.</returns>
     Public Function getNextKey(ByRef SecureID As Integer, ByVal TBL As String, ByVal tCol As String, ByVal SQL As String) As String
 
         Dim tQuery As String = ""
@@ -3194,6 +3591,15 @@ Public Class clsDatabaseSVR
         Return d
     End Function
 
+    ''' <summary>
+    ''' Gets the key by lookup col.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TBL">The table.</param>
+    ''' <param name="kCol">The k col.</param>
+    ''' <param name="tCol">The t col.</param>
+    ''' <param name="LookUpVal">The look up value.</param>
+    ''' <returns>System.String.</returns>
     Public Function getKeyByLookupCol(ByRef SecureID As Integer, ByVal TBL As String, ByVal kCol As String, ByVal tCol As String, ByVal LookUpVal As String) As String
 
         Dim tQuery As String = ""
@@ -3221,6 +3627,15 @@ Public Class clsDatabaseSVR
         Return d
     End Function
 
+    ''' <summary>
+    ''' Gets the key by lookup col.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TBL">The table.</param>
+    ''' <param name="kCol">The k col.</param>
+    ''' <param name="tCol">The t col.</param>
+    ''' <param name="LookUpVal">The look up value.</param>
+    ''' <returns>System.String.</returns>
     Public Function getKeyByLookupCol(ByRef SecureID As Integer, ByVal TBL As String, ByVal kCol As String, ByVal tCol As String, ByVal LookUpVal As Integer) As String
 
         Dim tQuery As String = ""
@@ -3246,6 +3661,13 @@ Public Class clsDatabaseSVR
         Return d
     End Function
 
+    ''' <summary>
+    ''' Validates the user by uid.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="uid">The uid.</param>
+    ''' <param name="EncryptedPW">The encrypted pw.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function ValidateUserByUid(ByRef SecureID As Integer, ByVal uid As String, ByVal EncryptedPW As String) As Integer
 
         Dim S As String = "Select count(*) as CNT from Userdata where UserID = '" + uid + "' and UserPW = '" + EncryptedPW + "'"
@@ -3276,6 +3698,13 @@ Public Class clsDatabaseSVR
         Return i
     End Function
 
+    ''' <summary>
+    ''' Validates the content ownership.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TgtGuid">The TGT unique identifier.</param>
+    ''' <param name="contentTypeCode">The content type code.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ValidateContentOwnership(ByRef SecureID As Integer, ByVal TgtGuid As String, ByVal contentTypeCode As String) As Boolean
 
         Dim S As String = ""
@@ -3321,6 +3750,12 @@ Public Class clsDatabaseSVR
         Return isOwner
     End Function
 
+    ''' <summary>
+    ''' Validates the co owner by value.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="OwnerGuid">The owner unique identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ValidateCoOwnerByVal(ByRef SecureID As Integer, ByVal OwnerGuid As String) As Boolean
 
         Dim S As String = "Select count(*) from CoOwner where PreviousOwnerUserID = '" + OwnerGuid + "' and CurrentOwnerUserID = '" + gCurrUserGuidID + "'"
@@ -3366,6 +3801,13 @@ Public Class clsDatabaseSVR
         Return isCoOwner
     End Function
 
+    ''' <summary>
+    ''' Validates the content of the co owner of.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ContentGuid">The content unique identifier.</param>
+    ''' <param name="ContentType">Type of the content.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ValidateCoOwnerOfContent(ByRef SecureID As Integer, ByVal ContentGuid As String, ByVal ContentType As String) As Boolean
 
         Dim OwnerGuid As String = getContentOwnerGuid(SecureID, ContentGuid, ContentType)
@@ -3411,6 +3853,13 @@ Public Class clsDatabaseSVR
         Return isCoOwner
     End Function
 
+    ''' <summary>
+    ''' Gets the content owner unique identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TgtGuid">The TGT unique identifier.</param>
+    ''' <param name="contentTypeCode">The content type code.</param>
+    ''' <returns>System.String.</returns>
     Public Function getContentOwnerGuid(ByRef SecureID As Integer, ByVal TgtGuid As String, ByVal contentTypeCode As String) As String
 
         Dim S As String = ""
@@ -3450,6 +3899,12 @@ Public Class clsDatabaseSVR
         Return OwnerGuid
     End Function
 
+    ''' <summary>
+    ''' Validates the user identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="uid">The uid.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function ValidateUserId(ByRef SecureID As Integer, ByVal uid As String) As Integer
 
         Dim S As String = "Select count(*) as CNT from Userdata where UserID = '" + uid + "'"
@@ -3480,6 +3935,12 @@ Public Class clsDatabaseSVR
         Return i
     End Function
 
+    ''' <summary>
+    ''' Gets the authority.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="uid">The uid.</param>
+    ''' <returns>System.String.</returns>
     Public Function getAuthority(ByRef SecureID As Integer, ByVal uid As String) As String
         If uid = Nothing Then
             '"Error","User id has not been set...")
@@ -3526,6 +3987,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the photo ext.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="pid">The pid.</param>
+    ''' <returns>System.String.</returns>
     Public Function getPhotoExt(ByRef SecureID As Integer, ByVal pid As String) As String
         If pid = Nothing Then
             '"Error","User id has not been set...")
@@ -3555,6 +4022,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the type of the photo img.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="pid">The pid.</param>
+    ''' <returns>System.String.</returns>
     Public Function getPhotoImgType(ByRef SecureID As Integer, ByVal pid As String) As String
         If pid = Nothing Then
             '"Error","User id has not been set...")
@@ -3584,6 +4057,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the type of the user.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="uid">The uid.</param>
+    ''' <returns>System.String.</returns>
     Public Function getUserType(ByRef SecureID As Integer, ByVal uid As String) As String
 
         Dim S As String = ""
@@ -3616,6 +4095,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the length of the source.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="SourceType">Type of the source.</param>
+    ''' <returns>Int64.</returns>
     Public Function getSourceLength(ByVal SourceGuid As String, SourceType As String) As Int64
 
         Try
@@ -3640,6 +4125,12 @@ Public Class clsDatabaseSVR
             Return -1
         End Try
     End Function
+    ''' <summary>
+    ''' Gets the name of the source.
+    ''' </summary>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="SourceType">Type of the source.</param>
+    ''' <returns>System.String.</returns>
     Public Function getSourceName(ByVal SourceGuid As String, SourceType As String) As String
 
         Try
@@ -3664,6 +4155,13 @@ Public Class clsDatabaseSVR
             Return ""
         End Try
     End Function
+    ''' <summary>
+    ''' Gets the source CRC.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="SourceType">Type of the source.</param>
+    ''' <returns>System.String.</returns>
     Public Function getSourceCrc(ByRef SecureID As Integer, ByVal SourceGuid As String, ByVal SourceType As String) As String
 
         Try
@@ -3691,6 +4189,13 @@ Public Class clsDatabaseSVR
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the length of the source.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="SourceType">Type of the source.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function getSourceLength(ByRef SecureID As Integer, ByVal SourceGuid As String, ByVal SourceType As String) As Integer
 
         Try
@@ -3718,6 +4223,13 @@ Public Class clsDatabaseSVR
         End Try
     End Function
 
+    ''' <summary>
+    ''' SQLs the qry.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="sql">The SQL.</param>
+    ''' <param name="rsData">The rs data.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function SqlQry(ByRef SecureID As Integer, ByVal sql As String, ByRef rsData As SqlDataReader) As Boolean
 
         If dDebug Then
@@ -3766,6 +4278,13 @@ Public Class clsDatabaseSVR
         End Try
     End Function
 
+    ''' <summary>
+    ''' Creates new id.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Tbl">The table.</param>
+    ''' <param name="idCol">The identifier col.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function NewID(ByRef SecureID As Integer, ByVal Tbl As String, ByVal idCol As String) As Integer
         Dim s As String = ""
         s = "Select max(" + idCol + ")+1 from " + Tbl
@@ -3786,6 +4305,11 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the maximum photo identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getMaxPhotoID(ByRef SecureID As Integer) As String
         Dim s As String = ""
         s = "Select max(photoid) from photos "
@@ -3806,6 +4330,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the photo identifier bycaption.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Caption">The caption.</param>
+    ''' <returns>System.String.</returns>
     Public Function getPhotoIDBycaption(ByRef SecureID As Integer, ByVal Caption As String) As String
         Dim s As String = ""
         s = "Select photoid from photos where caption = '" + Caption + "'"
@@ -3826,6 +4356,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the user pw.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <returns>System.String.</returns>
     Public Function getUserPW(ByRef SecureID As Integer, ByVal UID As String) As String
         Dim s As String = ""
         s = "Select UserPW from userdata where userid = '" + UID + "'"
@@ -3845,6 +4381,12 @@ Public Class clsDatabaseSVR
         Return iStr.Trim
     End Function
 
+    ''' <summary>
+    ''' Gets the FQN from unique identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getFqnFromGuid(ByRef SecureID As Integer, ByVal SourceGuid As String) As String
         Dim s As String = ""
         s = "Select FQN FROM DataSource Where SourceGuid = '" + SourceGuid + "'"
@@ -3883,6 +4425,12 @@ Public Class clsDatabaseSVR
         Return iStr.Trim
     End Function
 
+    ''' <summary>
+    ''' Gets the filename by unique identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getFilenameByGuid(ByRef SecureID As Integer, ByVal SourceGuid As String) As String
         Dim s As String = ""
         s = "Select SourceName FROM DataSource Where SourceGuid = '" + SourceGuid + "'"
@@ -3902,6 +4450,12 @@ Public Class clsDatabaseSVR
         Return iStr.Trim
     End Function
 
+    ''' <summary>
+    ''' Gets the user unique identifier identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserLoginId">The user login identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getUserGuidID(ByRef SecureID As Integer, ByVal UserLoginId As String) As String
         Dim s As String = ""
         s = "Select [UserID] FROM  [Users] Where UserLoginID = '" + UserLoginId + "'"
@@ -3927,6 +4481,13 @@ Public Class clsDatabaseSVR
         Return iStr.Trim
     End Function
 
+    ''' <summary>
+    ''' Gets the quick reference identifier NBR.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="QuickRefName">Name of the quick reference.</param>
+    ''' <param name="UserGuidID">The user unique identifier identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getQuickRefIdNbr(ByRef SecureID As Integer, ByVal QuickRefName As String, ByVal UserGuidID As String) As String
         Dim s As String = ""
         s = "Select  [QuickRefIdNbr] FROM [QuickRef] where QuickRefName = '" + QuickRefName + "' and UserID = '" + UserGuidID + "'"
@@ -3947,6 +4508,11 @@ Public Class clsDatabaseSVR
         Return iStr.Trim
     End Function
 
+    ''' <summary>
+    ''' Gets the next document identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getNextDocID(ByRef SecureID As Integer) As String
 
         Dim s As String = ""
@@ -3968,6 +4534,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the document identifier by FQN.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>System.String.</returns>
     Public Function getDocIdByFqn(ByRef SecureID As Integer, ByVal FQN As String) As String
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim s As String = ""
@@ -3989,6 +4561,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Cks the document exist by FQN.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckDocExistByFqn(ByRef SecureID As Integer, ByVal FQN As String) As Boolean
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim s As String = ""
@@ -4010,6 +4588,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Executes the count SQL.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function ExecCountSQL(ByRef SecureID As Integer, ByVal S As String) As Integer
         Dim I As Integer = 0
         Try
@@ -4034,6 +4618,12 @@ Public Class clsDatabaseSVR
         Return I
     End Function
 
+    ''' <summary>
+    ''' Verifies the user identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function VerifyUserID(ByRef SecureID As Integer, ByVal UID As String) As Boolean
         Dim s As String = ""
         s = "Select count(*) from Userdata where Userid = '" + UID + "'"
@@ -4060,6 +4650,15 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Items the exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Tbl">The table.</param>
+    ''' <param name="idCol">The identifier col.</param>
+    ''' <param name="ColVal">The col value.</param>
+    ''' <param name="ColType">Type of the col.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ItemExists(ByRef SecureID As Integer, ByVal Tbl As String, ByVal idCol As String, ByVal ColVal As String, ByVal ColType As String) As Boolean
         Dim s As String = ""
         Dim b As Boolean = False
@@ -4090,6 +4689,12 @@ Public Class clsDatabaseSVR
         Return b
     End Function
 
+    ''' <summary>
+    ''' Validates the device identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ID">The identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ValidateDeviceID(ByRef SecureID As Integer, ByVal ID As String) As Boolean
         Dim s As String = ""
         If ID.Length = 0 Then
@@ -4117,6 +4722,12 @@ Public Class clsDatabaseSVR
         Return b
     End Function
 
+    ''' <summary>
+    ''' Xxes the SQL qry.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="sql">The SQL.</param>
+    ''' <returns>SqlDataReader.</returns>
     Public Function xxSqlQry(ByRef SecureID As Integer, ByVal sql As String) As SqlDataReader
         Dim B As Boolean = True
         Dim rsDataQry As SqlDataReader = Nothing
@@ -4158,6 +4769,13 @@ Public Class clsDatabaseSVR
         Return rsDataQry
     End Function
 
+    ''' <summary>
+    ''' SQLs the qry new thread.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="tSql">The t SQL.</param>
+    ''' <param name="tConn">The t connection.</param>
+    ''' <param name="rsDataQry">The rs data qry.</param>
     Public Sub SqlQryNewThread(ByRef SecureID As Integer, ByVal tSql As String, ByRef tConn As SqlConnection, ByRef rsDataQry As SqlDataReader)
 
         Dim rc As Boolean = False
@@ -4184,6 +4802,13 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' SQLs the qry.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="sql">The SQL.</param>
+    ''' <param name="Conn">The connection.</param>
+    ''' <returns>SqlDataReader.</returns>
     Public Function SqlQry(ByRef SecureID As Integer, ByVal sql As String, ByVal Conn As SqlConnection) As SqlDataReader
         ''Session("ActiveError") = False
         Dim dDebug As Boolean = False
@@ -4218,6 +4843,14 @@ Public Class clsDatabaseSVR
         Return rsDataQry
     End Function
 
+    ''' <summary>
+    ''' Updates the remote machine.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="CompanyID">The company identifier.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <param name="Applied">The applied.</param>
+    ''' <param name="LicenseID">The license identifier.</param>
     Public Sub UpdateRemoteMachine(ByRef SecureID As Integer, ByVal CompanyID As String, ByVal MachineID As String, ByVal Applied As String, ByVal LicenseID As String)
         Dim RemoteConnStr As String = ""
 
@@ -4245,6 +4878,12 @@ Public Class clsDatabaseSVR
         'UPDATE [License] SET [MachineID] = 'XX' ,[Applied] = 1 WHERE CompanyID = 'XX' and LicenseID = 0
     End Sub
 
+    ''' <summary>
+    ''' SQLs the qry remote connection.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="QrySql">The qry SQL.</param>
+    ''' <returns>SqlDataReader.</returns>
     Public Function SqlQryRemoteConn(ByRef SecureID As Integer, ByVal QrySql As String) As SqlDataReader
         ''Session("ActiveError") = False
         Dim dDebug As Boolean = False
@@ -4285,17 +4924,30 @@ Public Class clsDatabaseSVR
         Return rsDataQry
     End Function
 
+    ''' <summary>
+    ''' Sets the global conection.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Public Sub setGlobalConection(ByRef SecureID As Integer)
         DBCloseConn(SecureID)
         DBCkConn(SecureID)
     End Sub
 
+    ''' <summary>
+    ''' Closes the global conection.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Public Sub closeGlobalConection(ByRef SecureID As Integer)
         If gConn.State = Data.ConnectionState.Open Then
             gConn.Close()
         End If
     End Sub
 
+    ''' <summary>
+    ''' Cks the site facility.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FacilityID">The facility identifier.</param>
     Public Sub ckSiteFacility(ByRef SecureID As Integer, ByVal FacilityID As String)
         Dim NewKey As String = Trim(FacilityID)
         Dim H As String = Hex(Val(NewKey))
@@ -4321,6 +4973,12 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Executes the SQL tx.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="sql">The SQL.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ExecuteSqlTx(ByRef SecureID As Integer, ByVal sql As String) As Boolean
 
         Dim TxName As String = "TX001"
@@ -4387,6 +5045,12 @@ Public Class clsDatabaseSVR
         Return rc
     End Function
 
+    ''' <summary>
+    ''' Executes the SQL no tx.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="sql">The SQL.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ExecuteSqlNoTx(ByRef SecureID As Integer, ByVal sql As String) As Boolean
 
         Dim rc As Boolean = False
@@ -4430,6 +5094,15 @@ Public Class clsDatabaseSVR
         Return rc
     End Function
 
+    ''' <summary>
+    ''' Executes the SQL stack.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SqlStack">The SQL stack.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="SessionID">The session identifier.</param>
+    ''' <param name="ControlSection">The control section.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ExecuteSqlStack(ByRef SecureID As Integer, ByRef SqlStack As Dictionary(Of Integer, String), UserID As String, SessionID As String, ControlSection As String) As Boolean
 
         Dim b As Boolean = ckSessionID(SecureID, UserID, SessionID, ControlSection)
@@ -4513,6 +5186,13 @@ Public Class clsDatabaseSVR
         Return BB
     End Function
 
+    ''' <summary>
+    ''' Applies the SQL statement.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="sql">The SQL.</param>
+    ''' <param name="ErrMsg">The error MSG.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ApplySqlStmt(ByRef SecureID As Integer, ByVal sql As String, ByRef ErrMsg As String) As Boolean
 
         Dim rc As Boolean = False
@@ -4542,6 +5222,12 @@ Public Class clsDatabaseSVR
         Return rc
     End Function
 
+    ''' <summary>
+    ''' Executes the SQL lookup table.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="MySql">My SQL.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ExecuteSqlLookupTable(ByRef SecureID As Integer, ByVal MySql As String) As Boolean
 
         Dim rc As Boolean = False
@@ -4575,6 +5261,12 @@ Public Class clsDatabaseSVR
         Return rc
     End Function
 
+    ''' <summary>
+    ''' Executes the sp.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="spName">Name of the sp.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ExecSP(ByRef SecureID As Integer, ByVal spName As String) As Boolean
         Dim B As Boolean = False
         Dim TimeTrk As Boolean = True
@@ -4604,6 +5296,12 @@ Public Class clsDatabaseSVR
         Return B
     End Function
 
+    ''' <summary>
+    ''' Sps the apply update.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UpdateSql">The update SQL.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function SP_ApplyUpdate(ByRef SecureID As Integer, ByVal UpdateSql As String) As Boolean
         Dim spName As String = ""
 
@@ -4649,6 +5347,12 @@ Public Class clsDatabaseSVR
         Return B
     End Function
 
+    ''' <summary>
+    ''' Executes the SQL no audit.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="sql">The SQL.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ExecuteSqlNoAudit(ByRef SecureID As Integer, ByVal sql As String) As Boolean
 
         Dim TxName As String = "TX001"
@@ -4701,6 +5405,12 @@ Public Class clsDatabaseSVR
         Return rc
     End Function
 
+    ''' <summary>
+    ''' Saves the history.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SQL">The SQL.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function saveHistory(ByRef SecureID As Integer, ByVal SQL As String) As Boolean
         Dim b As Boolean = True
         Dim typeSql As String = ""
@@ -4765,6 +5475,11 @@ Public Class clsDatabaseSVR
         Return b
     End Function
 
+    ''' <summary>
+    ''' Gets the cpu time.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getCpuTime(ByRef SecureID As Integer) As String
         '** You can browse the available performance counters by
         '** going to Control Panel | Administrative Tools | Performance and clicking Add.
@@ -4787,6 +5502,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the table name from SQL.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Sql">The SQL.</param>
+    ''' <returns>System.String.</returns>
     Function GetTableNameFromSql(ByRef SecureID As Integer, ByVal Sql As String) As String
         Dim b As Boolean = True
         Dim typeSql As String = ""
@@ -4840,6 +5561,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the where clause from SQL.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Sql">The SQL.</param>
+    ''' <returns>System.String.</returns>
     Function GetWhereClauseFromSql(ByRef SecureID As Integer, ByVal Sql As String) As String
         Dim b As Boolean = True
         Dim typeSql As String = ""
@@ -4857,6 +5584,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the type SQL statement.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Sql">The SQL.</param>
+    ''' <returns>System.String.</returns>
     Function GetTypeSqlStmt(ByRef SecureID As Integer, ByVal Sql As String) As String
         Dim b As Boolean = True
         Dim typeSql As String = ""
@@ -4885,6 +5618,13 @@ Public Class clsDatabaseSVR
         Return SqlType
     End Function
 
+    ''' <summary>
+    ''' Cks the module authentication.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="AuthCode">The authentication code.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckModuleAuth(ByRef SecureID As Integer, ByVal UID As String, ByVal AuthCode As String) As Boolean
         AuthCode = UCase(AuthCode)
         Dim AuthGranted As Boolean = False
@@ -4955,6 +5695,11 @@ Public Class clsDatabaseSVR
         Return AuthGranted
     End Function
 
+    ''' <summary>
+    ''' Gets the name of the server database.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getServerDbName(ByRef SecureID As Integer) As String
 
         Dim s As String = "Select DB_NAME() AS DataBaseName, @@SERVERNAME AS 'SVR'"
@@ -4985,6 +5730,13 @@ Public Class clsDatabaseSVR
         Return ServerName + " : " + ServerDbName
     End Function
 
+    ''' <summary>
+    ''' Cks the authority.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="AuthCode">The authentication code.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckAuthority(ByRef SecureID As Integer, ByVal UID As String, ByVal AuthCode As String) As Boolean
         Dim AuthGranted As Boolean = False
         AuthCode = UCase(AuthCode)
@@ -5018,6 +5770,13 @@ Public Class clsDatabaseSVR
         Return AuthGranted
     End Function
 
+    ''' <summary>
+    ''' Users the has authority.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="AuthCode">The authentication code.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UserHasAuthority(ByRef SecureID As Integer, ByVal UID As String, ByVal AuthCode As String) As Boolean
         Dim AuthGranted As Boolean = False
         AuthCode = UCase(AuthCode)
@@ -5117,6 +5876,13 @@ Public Class clsDatabaseSVR
         Return AuthGranted
     End Function
 
+    ''' <summary>
+    ''' Cks the length of the field.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Title">The title.</param>
+    ''' <param name="fld">The field.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckFldLen(ByRef SecureID As Integer, ByVal Title As String, ByVal fld As String) As Boolean
         If Len(fld) = 0 Then
             DBLogMessage(SecureID, gCurrUserGuidID, "Error ckFldLen 100.10i - " + Title + " is a required field.")
@@ -5134,6 +5900,11 @@ Public Class clsDatabaseSVR
 
     'End Sub
 
+    ''' <summary>
+    ''' Gets the curr dir.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function GetCurrDir(ByRef SecureID As Integer) As String
         Dim s As String = ""
         Dim ch As String = ""
@@ -5153,6 +5924,12 @@ Public Class clsDatabaseSVR
         Return cPath
     End Function
 
+    ''' <summary>
+    ''' Retrieves the document.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DocID">The document identifier.</param>
+    ''' <returns>System.Byte().</returns>
     Public Function RetrieveDocument(ByRef SecureID As Integer, ByVal DocID As String) As Byte()
 
         Dim cn As SqlConnection = Nothing
@@ -5193,6 +5970,12 @@ Public Class clsDatabaseSVR
         Return Nothing
     End Function
 
+    ''' <summary>
+    ''' Gets the document FQN by identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DocID">The document identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getDocumentFqnById(ByRef SecureID As Integer, ByVal DocID As String) As String
 
         Dim cn As SqlConnection = Nothing
@@ -5236,6 +6019,10 @@ Public Class clsDatabaseSVR
         Return Nothing
     End Function
 
+    ''' <summary>
+    ''' Zeroes the trace.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub ZeroTrace(ByRef SecureID As Integer)
         Dim S As String = ""
         S = "delete from PgmTrace "
@@ -5247,6 +6034,11 @@ Public Class clsDatabaseSVR
         End If
     End Sub
 
+    ''' <summary>
+    ''' Zeroizes the email to delete.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Userid">The userid.</param>
     Sub ZeroizeEmailToDelete(ByRef SecureID As Integer, ByVal Userid As String)
         Dim S As String = ""
         S = "delete from EmailToDelete where UserID = '" + Userid + "'"
@@ -5258,6 +6050,12 @@ Public Class clsDatabaseSVR
         End If
     End Sub
 
+    ''' <summary>
+    ''' Logs the entry new.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="IPADDR">The ipaddr.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function LogEntryNew(ByRef SecureID As Integer, ByVal IPADDR As String) As Integer
 
         Dim NextKey As String = getNextKey(SecureID, "LOGINS", "LoginTrackingNbr")
@@ -5285,6 +6083,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Logs the entry update.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="LoginTrackingNbr">The login tracking NBR.</param>
     Public Sub LogEntryUpdate(ByRef SecureID As Integer, ByVal UID As String, ByVal LoginTrackingNbr As Integer)
 
         If UID = Nothing Then
@@ -5309,6 +6113,11 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Logs the entry update.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="LoginTrackingNbr">The login tracking NBR.</param>
     Public Sub LogEntryUpdate(ByRef SecureID As Integer, ByVal LoginTrackingNbr As Integer)
 
         Dim S As String = ""
@@ -5321,6 +6130,19 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Inserts the email.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EmailFrom">The email from.</param>
+    ''' <param name="EmailTo">The email to.</param>
+    ''' <param name="EmailSubj">The email subj.</param>
+    ''' <param name="EmailCC">The email cc.</param>
+    ''' <param name="EmailBCC">The email BCC.</param>
+    ''' <param name="EMailBody">The e mail body.</param>
+    ''' <param name="EMailBody2">The e mail body2.</param>
+    ''' <param name="EmailDate">The email date.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function InsertEmail(ByRef SecureID As Integer, ByVal EmailFrom As String, ByVal EmailTo As String, ByVal EmailSubj As String, ByVal EmailCC As String, ByVal EmailBCC As String, ByVal EMailBody As String, ByVal EMailBody2 As String, ByVal EmailDate As Date) As Boolean
 
         Dim S As String = ""
@@ -5347,6 +6169,12 @@ Public Class clsDatabaseSVR
         Return b
     End Function
 
+    ''' <summary>
+    ''' Adds the upload file data.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="UploadedBy">The uploaded by.</param>
     Public Sub AddUploadFileData(ByRef SecureID As Integer, ByVal FQN As String, ByVal UploadedBy As String)
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim B As Boolean = ckDatasourceExists(SecureID, FQN, UploadedBy)
@@ -5355,6 +6183,13 @@ Public Class clsDatabaseSVR
         End If
     End Sub
 
+    ''' <summary>
+    ''' Inserts the file audit.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FN">The function.</param>
+    ''' <param name="UploadedBy">The uploaded by.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function InsertFileAudit(ByRef SecureID As Integer, ByVal FN As String, ByVal UploadedBy As String) As Boolean
 
         Dim b As Boolean = False
@@ -5380,6 +6215,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Sets the upload success true.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UploadID">The upload identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function setUploadSuccessTrue(ByRef SecureID As Integer, ByVal UploadID As Integer) As Boolean
 
         Dim b As Boolean = False
@@ -5397,6 +6238,11 @@ Public Class clsDatabaseSVR
         Return b
     End Function
 
+    ''' <summary>
+    ''' Gets the last upload time.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Function GetLastUploadTime(ByRef SecureID As Integer) As String
 
         DBCloseConn(SecureID)
@@ -5433,6 +6279,13 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the elapsed time.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UploadID">The upload identifier.</param>
+    ''' <param name="FN">The function.</param>
+    ''' <param name="ET">The et.</param>
     Public Sub GetElapsedTime(ByRef SecureID As Integer, ByVal UploadID As String, ByRef FN As String, ByRef ET As String)
 
         Try
@@ -5459,6 +6312,13 @@ Public Class clsDatabaseSVR
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Cks the attribute exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="AttributeName">Name of the attribute.</param>
+    ''' <param name="PropVal">The property value.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ckAttributeExists(ByRef SecureID As Integer, ByVal AttributeName As String, ByVal PropVal As String) As Boolean
 
         Dim s As String = "Select count(*) from Attribute where AttributeName = '" + AttributeName + "'"
@@ -5485,6 +6345,13 @@ Public Class clsDatabaseSVR
     '' <param name="FN"></param>
     '' <returns>TRUE if the file has been loaded, FALSE if not.</returns>
     '' <remarks></remarks>
+    ''' <summary>
+    ''' Cks the datasource exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckDatasourceExists(ByRef SecureID As Integer, ByVal FQN As String, ByVal UID As String) As Boolean
         FQN = UTIL.RemoveSingleQuotes(FQN)
         DBCloseConn(SecureID)
@@ -5510,6 +6377,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the table count.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TblName">Name of the table.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function getTableCount(ByRef SecureID As Integer, ByVal TblName As String) As Integer
         Try
             Dim S As String = "Select  count(*) FROM " + TblName
@@ -5536,6 +6409,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' is the count.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function iCount(ByRef SecureID As Integer, ByVal S As String) As Integer
         SyncLock Me
             Try
@@ -5564,6 +6443,12 @@ Public Class clsDatabaseSVR
         End SyncLock
     End Function
 
+    ''' <summary>
+    ''' is the content of the count.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function iCountContent(ByRef SecureID As Integer, ByVal S As String) As Integer
 
         Dim I As Integer = 0
@@ -5636,6 +6521,15 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the count data source files.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="OriginalFileType">Type of the original file.</param>
+    ''' <param name="FileLength">Length of the file.</param>
+    ''' <param name="CRC">The CRC.</param>
+    ''' <returns>System.String.</returns>
     Public Function getCountDataSourceFiles(ByRef SecureID As Integer, ByVal SourceName As String, ByVal OriginalFileType As String, ByVal FileLength As Integer, ByVal CRC As String) As String
 
         Try
@@ -5670,6 +6564,13 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the count data source files.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function getCountDataSourceFiles(ByRef SecureID As Integer, ByVal UserID As String, ByVal FQN As String) As Integer
 
         Try
@@ -5712,6 +6613,14 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the count data source files.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="VerNO">The ver no.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function getCountDataSourceFiles(ByRef SecureID As Integer, ByVal UserID As String, ByVal FQN As String, ByVal VerNO As Integer) As Integer
         Try
             FQN = UTIL.RemoveSingleQuotes(FQN)
@@ -5739,6 +6648,13 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the maximum data source version NBR.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>System.Int32.</returns>
     Function GetMaxDataSourceVersionNbr(ByRef SecureID As Integer, ByVal UserID As String, ByVal FQN As String) As Integer
         Try
             FQN = UTIL.RemoveSingleQuotes(FQN)
@@ -5788,6 +6704,14 @@ Public Class clsDatabaseSVR
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the maximum data source version NBR.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="CRC">The CRC.</param>
+    ''' <param name="FileLength">Length of the file.</param>
+    ''' <returns>System.Int32.</returns>
     Function GetMaxDataSourceVersionNbr(ByRef SecureID As Integer, ByVal SourceName As String, ByVal CRC As String, ByVal FileLength As String) As Integer
         Try
             SourceName = UTIL.RemoveSingleQuotes(SourceName)
@@ -5823,6 +6747,10 @@ Public Class clsDatabaseSVR
     '' Bilds the sorted lists for blazing fast lookup speeds.
     '' </summary>
     '' <remarks></remarks>
+    ''' <summary>
+    ''' Populates the sorted lists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Public Sub PopulateSortedLists(ByRef SecureID As Integer)
         PopulateProjectSortedList(SecureID)
         PopulateProjectTeamSortedList(SecureID)
@@ -5834,6 +6762,10 @@ Public Class clsDatabaseSVR
     '' access the database thus giving us extreme speed.
     '' </summary>
     '' <remarks></remarks>
+    ''' <summary>
+    ''' Populates the project sorted list.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub PopulateProjectSortedList(ByRef SecureID As Integer)
         Dim PID As Integer = 0
         Dim s As String = "Select RomID, ProjectID from Project"
@@ -5857,6 +6789,10 @@ Public Class clsDatabaseSVR
         rsData.Close()
     End Sub
 
+    ''' <summary>
+    ''' Populates the project team sorted list.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub PopulateProjectTeamSortedList(ByRef SecureID As Integer)
 
         slProjectTeams.Clear()
@@ -5880,6 +6816,10 @@ Public Class clsDatabaseSVR
         rsData.Close()
     End Sub
 
+    ''' <summary>
+    ''' Populates the metric period sorted list.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub PopulateMetricPeriodSortedList(ByRef SecureID As Integer)
 
         slMetricPeriods.Clear()
@@ -5903,6 +6843,13 @@ Public Class clsDatabaseSVR
         rsData.Close()
     End Sub
 
+    ''' <summary>
+    ''' Gets the metric period identifier by key.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="MetricPeriod">The metric period.</param>
+    ''' <param name="ProjectTeamID">The project team identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getMetricPeriodIdByKey(ByRef SecureID As Integer, ByVal MetricPeriod As String, ByVal ProjectTeamID As String) As String
 
         slMetricPeriods.Clear()
@@ -5931,6 +6878,10 @@ Public Class clsDatabaseSVR
         Return tKey
     End Function
 
+    ''' <summary>
+    ''' Links the run identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub LinkRunId(ByRef SecureID As Integer)
         Dim LoadID As Integer = 0
         Dim s As String = "Select max([UploadID]) FROM [FileUpload]"
@@ -5957,6 +6908,11 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the last upload identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function getLastUploadID(ByRef SecureID As Integer) As Integer
 
         Dim LoadID As Integer = -1
@@ -5982,6 +6938,11 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the last project identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function getLastProjectID(ByRef SecureID As Integer) As Integer
 
         Dim LoadID As Integer = -1
@@ -6007,12 +6968,25 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Cks the name of the excel col.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckExcelColName(ByRef SecureID As Integer, ByVal ColName As String) As Boolean
         Dim B As Boolean = False
         B = Me.slExcelColNames.ContainsKey(ColName)
         Return B
     End Function
 
+    ''' <summary>
+    ''' Populates the sorted lists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ListName">Name of the list.</param>
+    ''' <param name="tKey">The t key.</param>
+    ''' <param name="tDesc">The t desc.</param>
     Sub populateSortedLists(ByRef SecureID As Integer, ByVal ListName As String, ByVal tKey As String, ByVal tDesc As String)
 
         If ListName.Equals("GrowthPlatform") Then
@@ -6040,6 +7014,15 @@ Public Class clsDatabaseSVR
         End If
     End Sub
 
+    ''' <summary>
+    ''' Adds the lookup data.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TBL">The table.</param>
+    ''' <param name="CodeCol">The code col.</param>
+    ''' <param name="DescCol">The desc col.</param>
+    ''' <param name="tCode">The t code.</param>
+    ''' <param name="tDesc">The t desc.</param>
     Sub AddLookupData(ByRef SecureID As Integer, ByVal TBL As String, ByVal CodeCol As String, ByVal DescCol As String, ByVal tCode As String, ByVal tDesc As String)
         Dim S As String = ""
 
@@ -6059,16 +7042,35 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Sets the configuration database.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DbId">The database identifier.</param>
     Public Sub SetConfigDb(ByRef SecureID As Integer, ByVal DbId As String)
         ConnectionStringID = DbId
     End Sub
 
+    ''' <summary>
+    ''' Gets the ds value.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="RS">The rs.</param>
+    ''' <param name="I">The i.</param>
+    ''' <returns>System.String.</returns>
     Function GetDsValue(ByRef SecureID As Integer, ByVal RS As SqlDataReader, ByVal I As Integer) As String
         Dim tVal As String = RS.GetValue(I).ToString
         tVal = UTIL.RemoveSingleQuotes(tVal)
         Return tVal
     End Function
 
+    ''' <summary>
+    ''' Adds to sl.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SL">The sl.</param>
+    ''' <param name="S">The s.</param>
+    ''' <param name="dups">The dups.</param>
     Sub AddToSL(ByRef SecureID As Integer, ByRef SL As Dictionary(Of String, String), ByVal S As String, ByRef dups As Integer)
         Try
             Dim B As Boolean = SL.ContainsKey(S)
@@ -6084,6 +7086,11 @@ Public Class clsDatabaseSVR
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Sps the ck next identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ID">The identifier.</param>
     Public Sub spCkNextID(ByRef SecureID As Integer, ByVal ID As String)
         Dim B As Boolean = False
         Dim TimeTrk As Boolean = True
@@ -6103,6 +7110,19 @@ Public Class clsDatabaseSVR
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Inserts the email MSG.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="EmailGUID">The email unique identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="ReceivedByName">Name of the received by.</param>
+    ''' <param name="ReceivedTime">The received time.</param>
+    ''' <param name="SenderEmailAddress">The sender email address.</param>
+    ''' <param name="SenderName">Name of the sender.</param>
+    ''' <param name="SentOn">The sent on.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function InsertEmailMsg(ByRef SecureID As Integer, ByVal FQN As String, ByVal EmailGUID As String, ByVal UserID As String, ByVal ReceivedByName As String, ByVal ReceivedTime As DateTime, ByVal SenderEmailAddress As String, ByVal SenderName As String, ByVal SentOn As DateTime) As Boolean
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim B As Boolean = False
@@ -6139,6 +7159,13 @@ Public Class clsDatabaseSVR
         Return B
     End Function
 
+    ''' <summary>
+    ''' Updates the email MSG.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="EmailGUID">The email unique identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UpdateEmailMsg(ByRef SecureID As Integer, ByVal FQN As String, ByVal EmailGUID As String) As Boolean
         Dim LL As Integer = 0
         FQN = UTIL.RemoveSingleQuotes(FQN)
@@ -6180,6 +7207,15 @@ Public Class clsDatabaseSVR
         Return B
     End Function
 
+    ''' <summary>
+    ''' Updates the attachment.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EmailGUID">The email unique identifier.</param>
+    ''' <param name="AttachmentBinary">The attachment binary.</param>
+    ''' <param name="AttachmentName">Name of the attachment.</param>
+    ''' <param name="AttachmentCode">The attachment code.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UpdateAttachment(ByRef SecureID As Integer, ByVal EmailGUID As String, ByVal AttachmentBinary() As Byte, ByVal AttachmentName As String, ByVal AttachmentCode As String) As Boolean
 
         Dim bExtendTime As Boolean = False
@@ -6215,6 +7251,15 @@ Public Class clsDatabaseSVR
         Return B
     End Function
 
+    ''' <summary>
+    ''' Updates the attachment by FQN.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="EmailGUID">The email unique identifier.</param>
+    ''' <param name="AttachmentName">Name of the attachment.</param>
+    ''' <param name="AttachmentCode">The attachment code.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UpdateAttachmentByFQN(ByRef SecureID As Integer, ByVal FQN As String, ByVal EmailGUID As String, ByVal AttachmentName As String, ByVal AttachmentCode As String) As Boolean
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim B As Boolean = False
@@ -6243,6 +7288,15 @@ Public Class clsDatabaseSVR
         Return B
     End Function
 
+    ''' <summary>
+    ''' xes the insert attachment.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EmailGUID">The email unique identifier.</param>
+    ''' <param name="AttachmentBinary">The attachment binary.</param>
+    ''' <param name="AttachmentName">Name of the attachment.</param>
+    ''' <param name="AttachmentCode">The attachment code.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function xInsertAttachment(ByRef SecureID As Integer, ByVal EmailGUID As String, ByVal AttachmentBinary() As Byte, ByVal AttachmentName As String, ByVal AttachmentCode As String) As Boolean
         Dim B As Boolean = False
         Try
@@ -6267,6 +7321,11 @@ Public Class clsDatabaseSVR
         Return B
     End Function
 
+    ''' <summary>
+    ''' Validates the ext exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
     Sub ValidateExtExists(ByRef SecureID As Integer, ByVal FQN As String)
         Dim ATYPE As New clsATTACHMENTTYPE(SecureID)
         Dim FileExt As String = "." + UTIL.getFileSuffix(FQN)
@@ -6279,6 +7338,16 @@ Public Class clsDatabaseSVR
         ATYPE = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Inserts the attachment FQN.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="EmailGUID">The email unique identifier.</param>
+    ''' <param name="AttachmentName">Name of the attachment.</param>
+    ''' <param name="AttachmentCode">The attachment code.</param>
+    ''' <param name="UserGuidID">The user unique identifier identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function InsertAttachmentFqn(ByRef SecureID As Integer, ByVal FQN As String, ByVal EmailGUID As String, ByVal AttachmentName As String, ByVal AttachmentCode As String, ByVal UserGuidID As String) As Boolean
 
         ValidateExtExists(SecureID, FQN)
@@ -6331,6 +7400,13 @@ Public Class clsDatabaseSVR
         Return B
     End Function
 
+    ''' <summary>
+    ''' Updates the email binary.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="EmailGUID">The email unique identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UpdateEmailBinary(ByRef SecureID As Integer, ByVal FQN As String, ByVal EmailGUID As String) As Boolean
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim B As Boolean = False
@@ -6355,6 +7431,14 @@ Public Class clsDatabaseSVR
         Return B
     End Function
 
+    ''' <summary>
+    ''' Cks the document exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="VersionNbr">The version NBR.</param>
+    ''' <param name="DataSourceOwnerUserID">The data source owner user identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ckDocumentExists(ByRef SecureID As Integer, ByVal FQN As String, ByVal VersionNbr As Integer, ByVal DataSourceOwnerUserID As String) As Boolean
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim S As String = ""
@@ -6390,6 +7474,14 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Cks the document exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <param name="DataSourceOwnerUserID">The data source owner user identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ckDocumentExists(ByRef SecureID As Integer, ByVal FQN As String, ByVal MachineID As String, ByVal DataSourceOwnerUserID As String) As Boolean
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim S As String = ""
@@ -6425,6 +7517,20 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Inserts the sourcefile.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="UploadFQN">The upload FQN.</param>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="SourceTypeCode">The source type code.</param>
+    ''' <param name="sLastAccessDate">The s last access date.</param>
+    ''' <param name="sCreateDate">The s create date.</param>
+    ''' <param name="sLastWriteTime">The s last write time.</param>
+    ''' <param name="DataSourceOwnerUserID">The data source owner user identifier.</param>
+    ''' <param name="VersionNbr">The version NBR.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function InsertSourcefile(ByRef SecureID As Integer, ByVal SourceGuid As String,
     ByVal UploadFQN As String,
     ByVal SourceName As String,
@@ -6554,6 +7660,17 @@ Public Class clsDatabaseSVR
         Return B
     End Function
 
+    ''' <summary>
+    ''' Updates the source image.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="LastAccessDate">The last access date.</param>
+    ''' <param name="CreateDate">The create date.</param>
+    ''' <param name="LastWriteTime">The last write time.</param>
+    ''' <param name="VersionNbr">The version NBR.</param>
+    ''' <param name="UploadFQN">The upload FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UpdateSourceImage(ByRef SecureID As Integer, ByVal SourceGuid As String, ByVal LastAccessDate As String, ByVal CreateDate As String, ByVal LastWriteTime As String, ByVal VersionNbr As Integer, ByVal UploadFQN As String) As Boolean
         Dim LL As Integer = 0
         Dim B As Boolean = False
@@ -6643,6 +7760,18 @@ Public Class clsDatabaseSVR
         Return B
     End Function
 
+    ''' <summary>
+    ''' Updates the source image compressed.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UploadFQN">The upload FQN.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="LastAccessDate">The last access date.</param>
+    ''' <param name="CreateDate">The create date.</param>
+    ''' <param name="LastWriteTime">The last write time.</param>
+    ''' <param name="VersionNbr">The version NBR.</param>
+    ''' <param name="CompressedDataBuffer">The compressed data buffer.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UpdateSourceImageCompressed(ByRef SecureID As Integer, ByVal UploadFQN As String, ByVal SourceGuid As String, ByVal LastAccessDate As String, ByVal CreateDate As String, ByVal LastWriteTime As String, ByVal VersionNbr As Integer, ByVal CompressedDataBuffer() As Byte) As Boolean
         Dim LL As Integer = 0
         Dim B As Boolean = False
@@ -6719,6 +7848,17 @@ Public Class clsDatabaseSVR
         Return B
     End Function
 
+    ''' <summary>
+    ''' Updates the URL binary HTML.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="LastAccessDate">The last access date.</param>
+    ''' <param name="CreateDate">The create date.</param>
+    ''' <param name="LastWriteTime">The last write time.</param>
+    ''' <param name="VersionNbr">The version NBR.</param>
+    ''' <param name="HTML">The HTML.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UpdateUrlBinaryHtml(ByRef SecureID As Integer, ByVal SourceGuid As String, ByVal LastAccessDate As String, ByVal CreateDate As String, ByVal LastWriteTime As String, ByVal VersionNbr As Integer, ByVal HTML As String) As Boolean
 
         Dim B As Boolean = False
@@ -6764,6 +7904,19 @@ Public Class clsDatabaseSVR
         Return B
     End Function
 
+    ''' <summary>
+    ''' Updates the sourcefile.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="UploadFQN">The upload FQN.</param>
+    ''' <param name="StoredExternally">if set to <c>true</c> [stored externally].</param>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="SourceTypeCode">The source type code.</param>
+    ''' <param name="LastAccessDate">The last access date.</param>
+    ''' <param name="CreateDate">The create date.</param>
+    ''' <param name="LastWriteTime">The last write time.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function updateSourcefile(ByRef SecureID As Integer, ByVal SourceGuid As String,
     ByVal UploadFQN As String,
     ByVal StoredExternally As Boolean,
@@ -6827,6 +7980,21 @@ Public Class clsDatabaseSVR
         Return B
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is sourcefile older than last entry] [the specified secure identifier].
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="UploadFQN">The upload FQN.</param>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="SourceTypeCode">The source type code.</param>
+    ''' <param name="FileLength">Length of the file.</param>
+    ''' <param name="LastAccessDate">The last access date.</param>
+    ''' <param name="CreateDate">The create date.</param>
+    ''' <param name="LastWriteTime">The last write time.</param>
+    ''' <param name="VersionNbr">The version NBR.</param>
+    ''' <returns><c>true</c> if [is sourcefile older than last entry] [the specified secure identifier]; otherwise, <c>false</c>.</returns>
     Public Function isSourcefileOlderThanLastEntry(ByRef SecureID As Integer, ByVal UserID As String, ByVal SourceGuid As String,
     ByVal UploadFQN As String,
     ByVal SourceName As String,
@@ -6902,6 +8070,12 @@ Public Class clsDatabaseSVR
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the attachment from database.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <returns>System.Byte().</returns>
     Public Function GetAttachmentFromDB(ByRef SecureID As Integer, ByVal EmailGuid As String) As Byte()
 
         Dim con As New SqlConnection(DBgetConnStr())
@@ -6938,8 +8112,11 @@ Public Class clsDatabaseSVR
     ''' Determines if an email has already been stored based on the short subject, received time, and
     ''' the sender's email address.
     ''' </summary>
-    ''' <param name="EmailSubj">         The subject of the email.</param>
-    ''' <param name="EmailReceivedTime"> The time the email was received.</param>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EmailSubj">The subject of the email.</param>
+    ''' <param name="EmailCreationTime">The email creation time.</param>
+    ''' <param name="EmailReceivedTime">The time the email was received.</param>
+    ''' <param name="EmailSentOn">The email sent on.</param>
     ''' <param name="SenderEmailAddress">The email addres of the sender.</param>
     ''' <returns>Boolean</returns>
     ''' <remarks>This funcition, if extended to include other parms in the lookup will be overloaded.</remarks>
@@ -6985,6 +8162,13 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Cks the backup folder.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckBackupFolder(ByRef SecureID As Integer, ByVal UserID As String, ByVal FolderName As String) As Boolean
 
         Dim S As String = ""
@@ -7030,6 +8214,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Deletes the sub dirs.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="FQN">The FQN.</param>
     Public Sub delSubDirs(ByRef SecureID As Integer, ByVal UID As String, ByVal FQN As String)
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim S As String = ""
@@ -7050,6 +8240,11 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Deletes the file parms.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SGUID">The sguid.</param>
     Public Sub delFileParms(ByRef SecureID As Integer, ByVal SGUID As String)
         Dim S As String = ""
         Dim B As Boolean = False
@@ -7075,8 +8270,8 @@ Public Class clsDatabaseSVR
     ''' <summary>
     ''' Looks to see what filetypes have been defined to the system It looks in table AvailFileTypes.
     ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     ''' <returns>Bolean True/False</returns>
-    ''' <remarks></remarks>
     Public Function ckFileExtExists(ByRef SecureID As Integer) As Boolean
         Dim S As String = ""
         Dim B As Boolean = False
@@ -7115,6 +8310,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Cks the user exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckUserExists(ByRef SecureID As Integer, ByVal UserID As String) As Boolean
         Dim S As String = ""
         Dim B As Boolean = False
@@ -7161,6 +8362,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Cks the user login exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserLogin">The user login.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckUserLoginExists(ByRef SecureID As Integer, ByVal UserLogin As String) As Boolean
         Dim S As String = ""
         Dim B As Boolean = False
@@ -7207,6 +8414,14 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Validates the login.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserLogin">The user login.</param>
+    ''' <param name="PW">The pw.</param>
+    ''' <param name="UserGuidID">The user unique identifier identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function validateLogin(ByRef SecureID As Integer, ByVal UserLogin As String, ByVal PW As String, ByRef UserGuidID As String) As Boolean
 
         GC.Collect()
@@ -7293,6 +8508,14 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Changes the user password admin.
+    ''' </summary>
+    ''' <param name="AdminUserID">The admin user identifier.</param>
+    ''' <param name="UserLogin">The user login.</param>
+    ''' <param name="NewPw1">Creates new pw1.</param>
+    ''' <param name="NewPw2">Creates new pw2.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ChangeUserPasswordAdmin(AdminUserID As String, ByVal UserLogin As String, ByVal NewPw1 As String, ByVal NewPw2 As String) As Boolean
 
         If Not NewPw1.Equals(NewPw2) Then
@@ -7336,12 +8559,12 @@ Public Class clsDatabaseSVR
     ''' <summary>
     ''' Changes the user password.
     ''' </summary>
-    ''' <param name="SecureID"> The secure identifier.</param>
+    ''' <param name="SecureID">The secure identifier.</param>
     ''' <param name="UserLogin">The user login.</param>
-    ''' <param name="OldPW">    The old pw.</param>
-    ''' <param name="NewPw1">   The new PW1.</param>
-    ''' <param name="NewPw2">   The new PW2.</param>
-    ''' <returns></returns>
+    ''' <param name="OldPW">The old pw.</param>
+    ''' <param name="NewPw1">The new PW1.</param>
+    ''' <param name="NewPw2">The new PW2.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ChangeUserPassword(ByRef SecureID As Integer, ByVal UserLogin As String, ByVal OldPW As String, ByVal NewPw1 As String, ByVal NewPw2 As String) As Boolean
 
         If Not NewPw1.Equals(NewPw2) Then
@@ -7380,6 +8603,12 @@ Public Class clsDatabaseSVR
         Return RC
     End Function
 
+    ''' <summary>
+    ''' Gets the binary password.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserLogin">The user login.</param>
+    ''' <returns>System.String.</returns>
     Public Function getBinaryPassword(ByRef SecureID As Integer, ByVal UserLogin As String) As String
         Dim S As String = ""
         Dim B As Boolean = False
@@ -7424,6 +8653,14 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Cks the folder exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ContainerName">Name of the container.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckFolderExists(ByRef SecureID As Integer, ByVal ContainerName As String, ByVal UserID As String, ByVal FolderName As String) As Boolean
         Try
             Dim S As String = ""
@@ -7472,6 +8709,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Cks the URL exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckUrlExists(ByRef SecureID As Integer, ByVal FQN As String) As Boolean
         Try
             Dim S As String = ""
@@ -7516,6 +8759,15 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Cks the master exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FileName">Name of the file.</param>
+    ''' <param name="TblName">Name of the table.</param>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckMasterExists(ByRef SecureID As Integer, ByVal FileName As String, ByVal TblName As String, ByVal ColName As String, Optional ByVal SourceGuid As String = Nothing) As Boolean
         'SELECT count(*) FROM  [DataSource] where [SourceName] = 'Current State of ECM.docx' and [isMaster] = 'Y'
 
@@ -7571,6 +8823,13 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Cks the parms folder exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckParmsFolderExists(ByRef SecureID As Integer, ByVal UserID As String, ByVal FolderName As String) As Boolean
         Try
             Dim S As String = ""
@@ -7617,6 +8876,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Selects the one email parm.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <returns>Array.</returns>
     Public Function SelectOneEmailParm(ByRef SecureID As Integer, ByVal WhereClause As String) As Array
 
         Dim A(11) As String
@@ -7684,6 +8949,11 @@ Public Class clsDatabaseSVR
         Return A
     End Function
 
+    ''' <summary>
+    ''' Loads the avail file types.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="CB">The cb.</param>
     Public Sub LoadAvailFileTypes(ByRef SecureID As Integer, ByRef CB As List(Of String))
         CB.Clear()
         Dim A(9) As String
@@ -7715,6 +8985,11 @@ Public Class clsDatabaseSVR
         End Using
     End Sub
 
+    ''' <summary>
+    ''' Loads the avail users.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="CB">The cb.</param>
     Public Sub LoadAvailUsers(ByRef SecureID As Integer, ByRef CB As List(Of String))
         CB.Clear()
         Dim A(9) As String
@@ -7746,6 +9021,11 @@ Public Class clsDatabaseSVR
         End Using
     End Sub
 
+    ''' <summary>
+    ''' Loads the retention codes.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="CB">The cb.</param>
     Public Sub LoadRetentionCodes(ByRef SecureID As Integer, ByRef CB As List(Of String))
         CB.Clear()
         Dim A(9) As String
@@ -7785,6 +9065,11 @@ Public Class clsDatabaseSVR
         End Using
     End Sub
 
+    ''' <summary>
+    ''' Loads the avail file types.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="LB">The lb.</param>
     Public Sub LoadAvailFileTypes(ByRef SecureID As Integer, ByRef LB As ListBox)
         LB.Items.Clear()
         Dim A(9) As String
@@ -7817,6 +9102,11 @@ Public Class clsDatabaseSVR
         End Using
     End Sub
 
+    ''' <summary>
+    ''' Loads the file type profiles.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="CB">The cb.</param>
     Public Sub LoadFileTypeProfiles(ByRef SecureID As Integer, ByRef CB As List(Of String))
 
         CB.Clear()
@@ -7850,6 +9140,13 @@ Public Class clsDatabaseSVR
         End Using
     End Sub
 
+    ''' <summary>
+    ''' Loads the included file types.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="LB">The lb.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="DirName">Name of the dir.</param>
     Public Sub LoadIncludedFileTypes(ByRef SecureID As Integer, ByRef LB As ListBox, ByVal UserID As String, ByVal DirName As String)
         LB.Items.Clear()
         Dim A(9) As String
@@ -7890,6 +9187,13 @@ Public Class clsDatabaseSVR
         End Using
     End Sub
 
+    ''' <summary>
+    ''' Loads the excluded file types.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="LB">The lb.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="DirName">Name of the dir.</param>
     Public Sub LoadExcludedFileTypes(ByRef SecureID As Integer, ByRef LB As ListBox, ByVal UserID As String, ByVal DirName As String)
         LB.Items.Clear()
         Dim A(9) As String
@@ -7930,6 +9234,15 @@ Public Class clsDatabaseSVR
         End Using
     End Sub
 
+    ''' <summary>
+    ''' Gets the active email folders.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TopLevelOutlookFolderName">Name of the top level outlook folder.</param>
+    ''' <param name="LB">The lb.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="CF">The cf.</param>
+    ''' <param name="ArchivedEmailFolders">The archived email folders.</param>
     Sub GetActiveEmailFolders(ByRef SecureID As Integer, ByVal TopLevelOutlookFolderName As String, ByRef LB As ListBox, ByVal UserID As String, ByVal CF As Dictionary(Of String, String), ByVal ArchivedEmailFolders As ArrayList)
 
         ArchivedEmailFolders.Clear()
@@ -7995,6 +9308,13 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Activates the archive folder.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ParentFolder">The parent folder.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <param name="UserID">The user identifier.</param>
     Sub ActivateArchiveFolder(ByRef SecureID As Integer, ByVal ParentFolder As String, ByVal FolderName As String, ByVal UserID As String)
         'Update EmailFolder set
         'SelectedForArchive = 'Y'
@@ -8010,6 +9330,12 @@ Public Class clsDatabaseSVR
         End If
     End Sub
 
+    ''' <summary>
+    ''' Des the activate archive folder.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <param name="UserID">The user identifier.</param>
     Sub deActivateArchiveFolder(ByRef SecureID As Integer, ByVal FolderName As String, ByVal UserID As String)
         Dim S As String = "Update EmailFolder set SelectedForArchive = 'N' where UserID = '" + UserID + "' and FolderName = '" + FolderName + "'"
         Dim B1 As Boolean = ExecuteSqlNoTx(SecureID, S)
@@ -8018,6 +9344,13 @@ Public Class clsDatabaseSVR
         End If
     End Sub
 
+    ''' <summary>
+    ''' Sets the active email folders.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TopLevelOutlookFolder">The top level outlook folder.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function setActiveEmailFolders(ByRef SecureID As Integer, ByVal TopLevelOutlookFolder As String, ByVal UserID As String) As Integer
 
         Dim SubFoldersToProcess As Integer = 0
@@ -8068,6 +9401,26 @@ Public Class clsDatabaseSVR
         Return SubFoldersToProcess
     End Function
 
+    ''' <summary>
+    ''' Gets the directory data.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="DBID">The dbid.</param>
+    ''' <param name="IncludeSubDirs">The include sub dirs.</param>
+    ''' <param name="VersionFiles">The version files.</param>
+    ''' <param name="FolderDisabled">The folder disabled.</param>
+    ''' <param name="ckMetaData">The ck meta data.</param>
+    ''' <param name="ckPublic">The ck public.</param>
+    ''' <param name="OcrDirectory">The ocr directory.</param>
+    ''' <param name="isSysDefault">The is system default.</param>
+    ''' <param name="ArchiveSkipBit">if set to <c>true</c> [archive skip bit].</param>
+    ''' <param name="ListenForChanges">if set to <c>true</c> [listen for changes].</param>
+    ''' <param name="ListenDirectory">if set to <c>true</c> [listen directory].</param>
+    ''' <param name="ListenSubDirectory">if set to <c>true</c> [listen sub directory].</param>
+    ''' <param name="DirGuid">The dir unique identifier.</param>
+    ''' <param name="OcrPdf">The ocr PDF.</param>
     Sub GetDirectoryData(ByRef SecureID As Integer, ByVal UserID As String,
     ByVal FQN As String,
     ByRef DBID As String,
@@ -8142,6 +9495,13 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Determines whether [is sub dir processed] [the specified secure identifier].
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="DirFQN">The dir FQN.</param>
+    ''' <returns><c>true</c> if [is sub dir processed] [the specified secure identifier]; otherwise, <c>false</c>.</returns>
     Function isSubDirProcessed(ByRef SecureID As Integer, ByVal UserID As String, ByVal DirFQN As String) As Boolean
 
         DirFQN = UTIL.RemoveSingleQuotes(DirFQN)
@@ -8185,6 +9545,13 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the directories.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="LB">The lb.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="ShowDisabled">if set to <c>true</c> [show disabled].</param>
     Sub GetDirectories(ByRef SecureID As Integer, ByRef LB As ListBox, ByVal UserID As String, ByVal ShowDisabled As Boolean)
         '*WDM 7/20/2009 - Modified query to bring back DISTINCT directories
         Dim S As String = ""
@@ -8249,6 +9616,13 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the included files.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="LB">The lb.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
     Sub GetIncludedFiles(ByRef SecureID As Integer, ByRef LB As ListBox, ByVal UserID As String, ByVal FQN As String)
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim S As String = "Select [ExtCode] FROM [IncludedFiles] where [UserID] = '" + UserID + "'  and [FQN] = '" + FQN + "'"
@@ -8289,6 +9663,11 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the active databases.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="CB">The cb.</param>
     Sub GetActiveDatabases(ByRef SecureID As Integer, ByRef CB As List(Of String))
 
         Dim S As String = " SELECT [DB_ID] FROM [Databases] "
@@ -8323,6 +9702,11 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the process as list.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="CB">The cb.</param>
     Public Sub GetProcessAsList(ByRef SecureID As Integer, ByRef CB As List(Of String))
 
         Dim S As String = "Select [ExtCode] ,[ProcessExtCode] FROM [ProcessFileAs] order by [ExtCode],[ProcessExtCode]"
@@ -8358,6 +9742,13 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Cks the run parm exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="ReconParm">The recon parm.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckRunParmExists(ByRef SecureID As Integer, ByVal UserID As String, ByVal ReconParm As String) As Boolean
         Dim S As String = ""
         Dim B As Boolean = False
@@ -8397,6 +9788,12 @@ Public Class clsDatabaseSVR
         Return B
     End Function
 
+    ''' <summary>
+    ''' Cks the process as exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Pext">The pext.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckProcessAsExists(ByRef SecureID As Integer, ByVal Pext As String) As Boolean
         Dim S As String = ""
         Dim B As Boolean = False
@@ -8434,6 +9831,12 @@ Public Class clsDatabaseSVR
         Return B
     End Function
 
+    ''' <summary>
+    ''' Cks the ext exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="tExt">The t ext.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckExtExists(ByRef SecureID As Integer, ByVal tExt As String) As Boolean
         Dim S As String = ""
         Dim B As Boolean = False
@@ -8471,6 +9874,13 @@ Public Class clsDatabaseSVR
         Return B
     End Function
 
+    ''' <summary>
+    ''' Cks the directory exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckDirectoryExists(ByRef SecureID As Integer, ByVal UserID As String, ByVal FQN As String) As Boolean
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim S As String = ""
@@ -8513,6 +9923,14 @@ Public Class clsDatabaseSVR
         Return B
     End Function
 
+    ''' <summary>
+    ''' Saves the run parm.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="ParmID">The parm identifier.</param>
+    ''' <param name="ParmVal">The parm value.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function SaveRunParm(ByRef SecureID As Integer, ByVal UserID As String, ByRef ParmID As String, ByRef ParmVal As String) As Boolean
         Dim B As Boolean = False
         Dim S As String = ""
@@ -8578,6 +9996,13 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the run parm.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="ParmID">The parm identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getRunParm(ByRef SecureID As Integer, ByVal UserID As String, ByVal ParmID As String) As String
 
         Dim S As String = " SELECT [ParmValue] FROM [RunParms] where Parm = '" + ParmID + "' and UserID = '" + UserID + "'"
@@ -8610,6 +10035,12 @@ Public Class clsDatabaseSVR
         Return SS
     End Function
 
+    ''' <summary>
+    ''' Gets the email database connection string.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DBID">The dbid.</param>
+    ''' <returns>System.String.</returns>
     Function GetEmailDBConnStr(ByRef SecureID As Integer, ByRef DBID As String) As String
 
         Dim S As String = "Select DB_CONN_STR from databases where DB_ID = '" + DBID + "' "
@@ -8645,6 +10076,12 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the email folders.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="aFolders">a folders.</param>
     Sub GetEmailFolders(ByRef SecureID As Integer, ByRef UID As String, ByRef aFolders As String())
 
         Dim S As String = "Select "
@@ -9128,6 +10565,12 @@ Public Class clsDatabaseSVR
     End Function
 #End If
 
+    ''' <summary>
+    ''' xes the get content archive file folders.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="aFolders">a folders.</param>
     Public Sub xGetContentArchiveFileFolders(ByRef SecureID As Integer, ByVal UID As String, ByRef aFolders As String())
 
         Dim S As String = " "
@@ -9195,6 +10638,13 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the content archive file folders.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="aFolders">a folders.</param>
+    ''' <param name="DirPath">The dir path.</param>
     Public Sub GetContentArchiveFileFolders(ByRef SecureID As Integer, ByVal UID As String, ByRef aFolders As String(), ByVal DirPath As String)
 
         Dim S As String = "Select     S.SUBFQN, D.IncludeSubDirs, D.DB_ID, D.VersionFiles, D.ckDisableDir, D.FQN"
@@ -9265,6 +10715,13 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the quick archive file folders.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="aFolders">a folders.</param>
+    ''' <param name="DirPath">The dir path.</param>
     Public Sub GetQuickArchiveFileFolders(ByRef SecureID As Integer, ByVal UID As String, ByRef aFolders As String(), ByVal DirPath As String)
 
         Dim S As String = "Select     S.SUBFQN, D.IncludeSubDirs, D.DB_ID, D.VersionFiles, D.ckDisableDir, D.FQN, D.RetentionCode"
@@ -9347,6 +10804,23 @@ Public Class clsDatabaseSVR
     '      ,[DB_ID]
     '  FROM [Email]
     'where UserID = 'wmiller'
+    ''' <summary>
+    ''' Gets the email folder parms.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TopFolder">The top folder.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <param name="ArchiveEmails">The archive emails.</param>
+    ''' <param name="RemoveAfterArchive">The remove after archive.</param>
+    ''' <param name="SetAsDefaultFolder">The set as default folder.</param>
+    ''' <param name="ArchiveAfterXDays">The archive after x days.</param>
+    ''' <param name="RemoveAfterXDays">The remove after x days.</param>
+    ''' <param name="RemoveXDays">The remove x days.</param>
+    ''' <param name="ArchiveXDays">The archive x days.</param>
+    ''' <param name="DB_ID">The database identifier.</param>
+    ''' <param name="ArchiveOnlyIfRead">The archive only if read.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function GetEmailFolderParms(ByRef SecureID As Integer, ByVal TopFolder As String, ByVal UID As String, ByVal FolderName As String, ByRef ArchiveEmails As String, ByRef RemoveAfterArchive As String, ByRef SetAsDefaultFolder As String, ByRef ArchiveAfterXDays As String, ByRef RemoveAfterXDays As String, ByRef RemoveXDays As String, ByRef ArchiveXDays As String, ByRef DB_ID As String, ByRef ArchiveOnlyIfRead As String) As Boolean
 
         ArchiveEmails = ""
@@ -9424,6 +10898,12 @@ Public Class clsDatabaseSVR
         Return BB
     End Function
 
+    ''' <summary>
+    ''' Gets the email subject.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function GetEmailSubject(ByRef SecureID As Integer, ByVal EmailGuid As String) As String
 
         Dim Subject As String = ""
@@ -9465,6 +10945,12 @@ Public Class clsDatabaseSVR
         Return Subject
     End Function
 
+    ''' <summary>
+    ''' Gets the email body.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function GetEmailBody(ByRef SecureID As Integer, ByVal EmailGuid As String) As String
 
         Dim Subject As String = ""
@@ -9506,6 +10992,12 @@ Public Class clsDatabaseSVR
         Return Subject
     End Function
 
+    ''' <summary>
+    ''' Gets the document title.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function GetDocTitle(ByRef SecureID As Integer, ByVal SourceGuid As String) As String
 
         Dim TitleFound As Boolean = False
@@ -9556,6 +11048,12 @@ Public Class clsDatabaseSVR
         Return Subject
     End Function
 
+    ''' <summary>
+    ''' Gets the document filename.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function GetDocFilename(ByRef SecureID As Integer, ByVal SourceGuid As String) As String
 
         Dim FileName As String = ""
@@ -9599,6 +11097,13 @@ Public Class clsDatabaseSVR
         Return FileName
     End Function
 
+    ''' <summary>
+    ''' Adds the included filetypes.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="L">The l.</param>
+    ''' <param name="IncludeSubDirs">The include sub dirs.</param>
     Public Sub AddIncludedFiletypes(ByRef SecureID As Integer, ByVal FQN As String, ByVal L As ArrayList, ByVal IncludeSubDirs As String)
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim AllDirs(0) As String
@@ -9617,6 +11122,13 @@ Public Class clsDatabaseSVR
         End If
     End Sub
 
+    ''' <summary>
+    ''' Adds the excluded filetypes.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="L">The l.</param>
+    ''' <param name="IncludeSubDirs">The include sub dirs.</param>
     Public Sub AddExcludedFiletypes(ByRef SecureID As Integer, ByVal FQN As String, ByVal L As ArrayList, ByVal IncludeSubDirs As String)
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim AllDirs(0) As String
@@ -9635,6 +11147,13 @@ Public Class clsDatabaseSVR
         End If
     End Sub
 
+    ''' <summary>
+    ''' Gets all included filetypes.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="L">The l.</param>
+    ''' <param name="IncludeSubDirs">The include sub dirs.</param>
     Public Sub GetAllIncludedFiletypes(ByRef SecureID As Integer, ByVal FQN As String, ByVal L As ArrayList, ByVal IncludeSubDirs As String)
         FQN = UTIL.RemoveSingleQuotes(FQN)
         L.Clear()
@@ -9654,6 +11173,13 @@ Public Class clsDatabaseSVR
         End If
     End Sub
 
+    ''' <summary>
+    ''' Gets all excluded filetypes.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="L">The l.</param>
+    ''' <param name="IncludeSubDirs">The include sub dirs.</param>
     Public Sub GetAllExcludedFiletypes(ByRef SecureID As Integer, ByVal FQN As String, ByVal L As ArrayList, ByVal IncludeSubDirs As String)
         FQN = UTIL.RemoveSingleQuotes(FQN)
         L.Clear()
@@ -9673,6 +11199,12 @@ Public Class clsDatabaseSVR
         End If
     End Sub
 
+    ''' <summary>
+    ''' Gets the included filetypes.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="L">The l.</param>
     Public Sub GetIncludedFiletypes(ByRef SecureID As Integer, ByVal FQN As String, ByVal L As ArrayList)
         L.Clear()
 
@@ -9726,6 +11258,12 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the excluded filetypes.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="L">The l.</param>
     Public Sub GetExcludedFiletypes(ByRef SecureID As Integer, ByVal FQN As String, ByRef L As ArrayList)
 
         L.Clear()
@@ -9774,6 +11312,14 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Adds the secondary sourcetype.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Sourcetypecode">The sourcetypecode.</param>
+    ''' <param name="Sourcetypedesc">The sourcetypedesc.</param>
+    ''' <param name="Storeexternal">The storeexternal.</param>
+    ''' <param name="Indexable">The indexable.</param>
     Sub AddSecondarySOURCETYPE(ByRef SecureID As Integer, ByVal Sourcetypecode As String, ByVal Sourcetypedesc As String, ByVal Storeexternal As String, ByVal Indexable As String)
 
         Dim ST As New clsSOURCETYPE(SecureID)
@@ -9785,6 +11331,11 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Deletes the secondary sourcetype.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Sourcetypecode">The sourcetypecode.</param>
     Sub delSecondarySOURCETYPE(ByRef SecureID As Integer, ByVal Sourcetypecode As String)
         Dim ST As New clsSOURCETYPE(SecureID)
         ST.setSourcetypecode(Sourcetypecode)
@@ -9792,6 +11343,12 @@ Public Class clsDatabaseSVR
         ST.Delete(WhereClause)
     End Sub
 
+    ''' <summary>
+    ''' Finds all table indexes.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TBL">The table.</param>
+    ''' <returns>Array.</returns>
     Function FindAllTableIndexes(ByRef SecureID As Integer, ByVal TBL As String) As Array
         Dim SL As New Dictionary(Of String, String)
         Dim S As String = ""
@@ -9831,6 +11388,13 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Finds all index cols.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TBL">The table.</param>
+    ''' <param name="IdxName">Name of the index.</param>
+    ''' <returns>Array.</returns>
     Function FindAllIndexCols(ByRef SecureID As Integer, ByVal TBL As String, ByVal IdxName As String) As Array
         Dim SL As New Dictionary(Of String, String)
         Dim S As String = ""
@@ -9872,6 +11436,13 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the type of the column data.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TBL">The table.</param>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <returns>System.String.</returns>
     Function getColumnDataType(ByRef SecureID As Integer, ByVal TBL As String, ByVal ColName As String) As String
         Dim SL As New Dictionary(Of String, String)
         Dim S As String = ""
@@ -9906,6 +11477,13 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the row by key.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TBL">The table.</param>
+    ''' <param name="WC">The wc.</param>
+    ''' <returns>SqlDataReader.</returns>
     Public Function GetRowByKey(ByRef SecureID As Integer, ByVal TBL As String, ByVal WC As String) As SqlDataReader
         Try
             Dim Auth As String = ""
@@ -9931,6 +11509,13 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Cks the arch email folder.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="KeyFolder">The key folder.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function ckArchEmailFolder(ByRef SecureID As Integer, ByVal KeyFolder As String, ByVal UserID As String) As Integer
 
         Dim b As Boolean = True
@@ -9961,6 +11546,13 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the arch email folder identifier by folder.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="KeyFolder">The key folder.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getArchEmailFolderIDByFolder(ByRef SecureID As Integer, ByVal KeyFolder As String, ByVal UserID As String) As String
 
         Dim b As Boolean = True
@@ -9996,6 +11588,13 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Cks the arch child email folder.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FolderID">The folder identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function ckArchChildEmailFolder(ByRef SecureID As Integer, ByVal FolderID As String, ByVal UserID As String) As Integer
 
         Dim b As Boolean = True
@@ -10024,6 +11623,13 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Gets the arch email folder retention code.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FolderID">The folder identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getArchEmailFolderRetentionCode(ByRef SecureID As Integer, ByVal FolderID As String, ByVal UserID As String) As String
         Dim rCode As String = ""
         Dim b As Boolean = True
@@ -10054,6 +11660,13 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' is the count.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Tbl">The table.</param>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function iCount(ByRef SecureID As Integer, ByVal Tbl As String, ByVal WhereClause As String) As Boolean
         Dim b As Boolean = True
         Dim SQL As String = "Select count(*) from " + Tbl + " " + WhereClause
@@ -10066,6 +11679,13 @@ Public Class clsDatabaseSVR
         Return b
     End Function
 
+    ''' <summary>
+    ''' is the get row count.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TBL">The table.</param>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function iGetRowCount(ByRef SecureID As Integer, ByVal TBL As String, ByVal WhereClause As String) As Integer
 
         Dim cnt As Integer = -1
@@ -10114,6 +11734,14 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' is the get row count.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TBL">The table.</param>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <param name="ConnectionStr">The connection string.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function iGetRowCount(ByRef SecureID As Integer, ByVal TBL As String, ByVal WhereClause As String, ByVal ConnectionStr As String) As Integer
 
         Dim cnt As Integer = -1
@@ -10157,6 +11785,38 @@ Public Class clsDatabaseSVR
 
     End Function
 
+    ''' <summary>
+    ''' Archives the email.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FqnEmailImage">The FQN email image.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="SUBJECT">The subject.</param>
+    ''' <param name="SentTO">The sent to.</param>
+    ''' <param name="Body">The body.</param>
+    ''' <param name="Bcc">The BCC.</param>
+    ''' <param name="BillingInformation">The billing information.</param>
+    ''' <param name="CC">The cc.</param>
+    ''' <param name="Companies">The companies.</param>
+    ''' <param name="CreationTime">The creation time.</param>
+    ''' <param name="ReadReceiptRequested">The read receipt requested.</param>
+    ''' <param name="ReceivedByName">Name of the received by.</param>
+    ''' <param name="ReceivedTime">The received time.</param>
+    ''' <param name="AllRecipients">All recipients.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="SenderEmailAddress">The sender email address.</param>
+    ''' <param name="SenderName">Name of the sender.</param>
+    ''' <param name="Sensitivity">The sensitivity.</param>
+    ''' <param name="SentOn">The sent on.</param>
+    ''' <param name="MsgSize">Size of the MSG.</param>
+    ''' <param name="DeferredDeliveryTime">The deferred delivery time.</param>
+    ''' <param name="EntryID">The entry identifier.</param>
+    ''' <param name="ExpiryTime">The expiry time.</param>
+    ''' <param name="LastModificationTime">The last modification time.</param>
+    ''' <param name="ShortSubj">The short subj.</param>
+    ''' <param name="SourceTypeCode">The source type code.</param>
+    ''' <param name="OriginalFolder">The original folder.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ArchiveEmail(ByRef SecureID As Integer, ByVal FqnEmailImage As String, ByVal EmailGuid As String, ByVal SUBJECT As String, ByVal SentTO As String, ByVal Body As String, ByVal Bcc As String, ByVal BillingInformation As String, ByVal CC As String, ByVal Companies As String, ByVal CreationTime As DateTime, ByVal ReadReceiptRequested As String, ByVal ReceivedByName As String, ByVal ReceivedTime As DateTime, ByVal AllRecipients As String, ByVal UserID As String, ByVal SenderEmailAddress As String, ByVal SenderName As String, ByVal Sensitivity As String, ByVal SentOn As DateTime, ByVal MsgSize As String, ByVal DeferredDeliveryTime As DateTime, ByVal EntryID As String, ByVal ExpiryTime As DateTime, ByVal LastModificationTime As DateTime, ByVal ShortSubj As String, ByVal SourceTypeCode As String, ByVal OriginalFolder As String) As Boolean
         FqnEmailImage = UTIL.RemoveSingleQuotes(FqnEmailImage)
         Dim B As Boolean = False
@@ -10238,6 +11898,12 @@ Public Class clsDatabaseSVR
         Return B
     End Function
 
+    ''' <summary>
+    ''' Inserts the email binary.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="tGuid">The t unique identifier.</param>
     Public Sub InsertEmailBinary(ByRef SecureID As Integer, ByVal FQN As String, ByVal tGuid As String)
         FQN = UTIL.RemoveSingleQuotes(FQN)
         ' Read a bitmap contents in a stream
@@ -10284,6 +11950,10 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Applies the cc.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub ApplyCC(ByRef SecureID As Integer)
         Dim L As New List(Of String)
         Dim RECIPS As New clsRECIPIENTS(SecureID)
@@ -10367,6 +12037,10 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Builds all recips.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub BuildAllRecips(ByRef SecureID As Integer)
         Dim L As New List(Of String)
         Dim RECIPS As New clsRECIPIENTS(SecureID)
@@ -10431,6 +12105,10 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Builds all missing data.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub BuildAllMissingData(ByRef SecureID As Integer)
         Dim L As New List(Of String)
         Dim RECIPS As New clsRECIPIENTS(SecureID)
@@ -10483,6 +12161,10 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Builds all c cs.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub BuildAllCCs(ByRef SecureID As Integer)
         Dim L As New List(Of String)
         Dim RECIPS As New clsRECIPIENTS(SecureID)
@@ -10546,6 +12228,11 @@ Public Class clsDatabaseSVR
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the excluded emails.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
     Sub getExcludedEmails(ByRef SecureID As Integer, ByVal UserID As String)
         Dim L As New List(Of String)
         Dim RECIPS As New clsRECIPIENTS(SecureID)
@@ -10571,6 +12258,14 @@ Public Class clsDatabaseSVR
         RSData = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Gets the directory parms.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DirectoryParms">The directory parms.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function getDirectoryParms(ByRef SecureID As Integer, ByRef DirectoryParms As String, ByVal FQN As String, ByVal UserID As String) As Boolean
         FQN = UTIL.RemoveSingleQuotes(FQN)
 
@@ -10700,6 +12395,11 @@ REDO:
         End If
     End Function
 
+    ''' <summary>
+    ''' Gets the first retention code.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getFirstRetentionCode(ByRef SecureID As Integer) As String
         Dim rCode As String = ""
         Dim S As String = "Select RetentionCode "
@@ -10737,6 +12437,13 @@ REDO:
         Return rCode
     End Function
 
+    ''' <summary>
+    ''' Gets the next document version NBR.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Userid">The userid.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function getNextDocVersionNbr(ByRef SecureID As Integer, ByVal Userid As String, ByVal FQN As String) As Integer
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim S As String = "Select max([VersionNbr]) "
@@ -10763,6 +12470,14 @@ REDO:
         Return I
     End Function
 
+    ''' <summary>
+    ''' Deletes the name of the document by.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Userid">The userid.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function DeleteDocumentByName(ByRef SecureID As Integer, ByVal Userid As String, ByVal FQN As String, ByVal SourceGuid As String) As Boolean
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim b As Boolean = False
@@ -10798,6 +12513,12 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Deletes the document by unique identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function DeleteDocumentByGuid(ByRef SecureID As Integer, ByVal SourceGuid As String) As Boolean
         Dim SHIST As New clsSEARCHHISTORY(SecureID)
         Dim b As Boolean = False
@@ -10836,6 +12557,13 @@ REDO:
         Return b
     End Function
 
+    ''' <summary>
+    ''' Determines whether [has document been updated] [the specified secure identifier].
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Userid">The userid.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if [has document been updated] [the specified secure identifier]; otherwise, <c>false</c>.</returns>
     Public Function hasDocumentBeenUpdated(ByRef SecureID As Integer, ByVal Userid As String, ByVal FQN As String) As Boolean
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim b As Boolean = False
@@ -10860,6 +12588,12 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Updates the size of the document.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DocGuid">The document unique identifier.</param>
+    ''' <param name="fSize">Size of the f.</param>
     Public Sub UpdateDocSize(ByRef SecureID As Integer, ByVal DocGuid As String, ByVal fSize As String)
         Dim S As String = ""
         S = S + "  UPDATE [DataSource]"
@@ -10874,6 +12608,13 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the size of the document.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="fSize">Size of the f.</param>
     Public Sub UpdateDocSize(ByRef SecureID As Integer, ByVal FQN As String, ByVal UID As String, ByVal fSize As String)
 
         FQN = UTIL.RemoveSingleQuotes(FQN)
@@ -10891,6 +12632,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the document FQN.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DocGuid">The document unique identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
     Public Sub UpdateDocFqn(ByRef SecureID As Integer, ByVal DocGuid As String, ByVal FQN As String)
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim S As String = ""
@@ -10906,6 +12653,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the document CRC.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DocGuid">The document unique identifier.</param>
+    ''' <param name="CRC">The CRC.</param>
     Public Sub UpdateDocCrc(ByRef SecureID As Integer, ByVal DocGuid As String, ByVal CRC As String)
 
         Dim S As String = ""
@@ -10921,6 +12674,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' xes the update all document CRC.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="CRC">The CRC.</param>
     Public Sub xUpdateAllDocCrc(ByRef SecureID As Integer, ByVal FQN As String, ByVal CRC As String)
 
         Dim S As String = ""
@@ -10936,6 +12695,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the type of the document original file.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DocGuid">The document unique identifier.</param>
+    ''' <param name="OriginalFileType">Type of the original file.</param>
     Public Sub UpdateDocOriginalFileType(ByRef SecureID As Integer, ByVal DocGuid As String, ByVal OriginalFileType As String)
         OriginalFileType = UTIL.RemoveSingleQuotes(OriginalFileType)
         Dim S As String = ""
@@ -10951,6 +12716,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the zip file indicator.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DocGuid">The document unique identifier.</param>
+    ''' <param name="cZipFile">if set to <c>true</c> [c zip file].</param>
     Public Sub UpdateZipFileIndicator(ByRef SecureID As Integer, ByVal DocGuid As String, ByVal cZipFile As Boolean)
 
         Dim C As String = ""
@@ -10973,6 +12744,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the email indicator.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DocGuid">The document unique identifier.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
     Public Sub UpdateEmailIndicator(ByRef SecureID As Integer, ByVal DocGuid As String, ByVal EmailGuid As String)
         Dim S As String = ""
         S = S + "  UPDATE [DataSource]"
@@ -10986,6 +12763,13 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the zip file owner unique identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ParentGuid">The parent unique identifier.</param>
+    ''' <param name="ZipFileGuid">The zip file unique identifier.</param>
+    ''' <param name="ZipFileFQN">The zip file FQN.</param>
     Public Sub UpdateZipFileOwnerGuid(ByRef SecureID As Integer, ByVal ParentGuid As String, ByVal ZipFileGuid As String, ByVal ZipFileFQN As String)
 
         Dim S As String = ""
@@ -11001,6 +12785,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the is contained within zip file.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DocGuid">The document unique identifier.</param>
     Public Sub UpdateIsContainedWithinZipFile(ByRef SecureID As Integer, ByVal DocGuid As String)
 
         Dim C As String = ""
@@ -11018,6 +12807,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the document dir.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DocGuid">The document unique identifier.</param>
+    ''' <param name="DocDir">The document dir.</param>
     Public Sub UpdateDocDir(ByRef SecureID As Integer, ByVal DocGuid As String, ByVal DocDir As String)
 
         DocDir = UTIL.RemoveSingleQuotes(DocDir)
@@ -11036,6 +12831,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Deletes the data source and attrs.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function DeleteDataSourceAndAttrs(ByRef SecureID As Integer, ByVal WhereClause As String) As Boolean
         Dim s As String = ""
         Dim B As Boolean = False
@@ -11050,6 +12851,12 @@ REDO:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the process file as ext.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FileExt">The file ext.</param>
+    ''' <returns>System.String.</returns>
     Public Function getProcessFileAsExt(ByRef SecureID As Integer, ByVal FileExt As String) As String
 
         If FileExt.Trim.Length = 0 Then
@@ -11083,6 +12890,14 @@ REDO:
         Return ProcessExtCode
     End Function
 
+    ''' <summary>
+    ''' Sets the document public flag by owner dir.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="PublicFlag">if set to <c>true</c> [public flag].</param>
+    ''' <param name="bDisableDir">if set to <c>true</c> [b disable dir].</param>
+    ''' <param name="OcrDirectory">The ocr directory.</param>
     Sub SetDocumentPublicFlagByOwnerDir(ByRef SecureID As Integer, ByVal FQN As String, ByVal PublicFlag As Boolean, ByVal bDisableDir As Boolean, ByVal OcrDirectory As String)
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim UID As String = gCurrUserGuidID
@@ -11188,6 +13003,13 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Sets the document public flag.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="PublicFlag">if set to <c>true</c> [public flag].</param>
     Sub SetDocumentPublicFlag(ByRef SecureID As Integer, ByVal UID As String, ByVal FQN As String, ByVal PublicFlag As Boolean)
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim S As String = ""
@@ -11230,6 +13052,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Cks the master already defined.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <returns>System.Int32.</returns>
     Function ckMasterAlreadyDefined(ByRef SecureID As Integer, ByVal SourceName As String) As Integer
 
         Dim con As New SqlConnection(DBgetConnStr())
@@ -11273,6 +13101,12 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Sets the document to master.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="MasterFlag">if set to <c>true</c> [master flag].</param>
     Sub SetDocumentToMaster(ByRef SecureID As Integer, ByVal SourceGuid As String, ByVal MasterFlag As Boolean)
 
         Dim S As String = ""
@@ -11299,6 +13133,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Sets the document public flag.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="isPublic">if set to <c>true</c> [is public].</param>
     Sub SetDocumentPublicFlag(ByRef SecureID As Integer, ByVal SourceGuid As String, ByVal isPublic As Boolean)
 
         Dim S As String = ""
@@ -11325,6 +13165,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Sets the email public flag.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="isPublic">if set to <c>true</c> [is public].</param>
     Sub SetEmailPublicFlag(ByRef SecureID As Integer, ByVal EmailGuid As String, ByVal isPublic As Boolean)
 
         Dim S As String = ""
@@ -11351,6 +13197,13 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Adds the image using dataset.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="S">The s.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="SrcTable">The source table.</param>
     Sub addImageUsingDataset(ByRef SecureID As Integer, ByVal S As String, ByVal FQN As String, ByVal SrcTable As String)
 
         FQN = UTIL.RemoveSingleQuotes(FQN)
@@ -11389,6 +13242,13 @@ REDO:
         If gRunUnattended = False Then MsgBox("Image saved to database")
     End Sub
 
+    ''' <summary>
+    ''' Updates the image using dataset.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="S">The s.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="SrcTable">The source table.</param>
     Sub updateImageUsingDataset(ByRef SecureID As Integer, ByVal S As String, ByVal FQN As String, ByVal SrcTable As String)
 
         FQN = UTIL.RemoveSingleQuotes(FQN)
@@ -11430,16 +13290,15 @@ REDO:
     End Sub
 
     ''' <summary>
+    ''' Writes the image source data from database write to file.
     ''' </summary>
-    ''' <param name="SourceGuid">          The Source GUID to download</param>
-    ''' <param name="FQN">                 
-    ''' The returned name of the selected file including the file extension.
-    ''' </param>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The Source GUID to download</param>
+    ''' <param name="FQN">The returned name of the selected file including the file extension.</param>
     ''' <param name="CompressedDataBuffer">The buffer to receive the compressed binary file data</param>
-    ''' <param name="OriginalSize">        the Original size fo the file</param>
-    ''' <param name="CompressedSize">      the Compressed size fo the file</param>
-    ''' <param name="RC">                  True indicates success, False indicates failure</param>
-    ''' <remarks></remarks>
+    ''' <param name="OriginalSize">the Original size fo the file</param>
+    ''' <param name="CompressedSize">the Compressed size fo the file</param>
+    ''' <param name="RC">True indicates success, False indicates failure</param>
     Sub writeImageSourceDataFromDbWriteToFile(ByRef SecureID As Integer, ByVal SourceGuid As String, ByRef FQN As String, ByRef CompressedDataBuffer() As Byte, ByRef OriginalSize As Integer, ByRef CompressedSize As Integer, ByRef RC As Boolean)
 
         FQN = ""
@@ -11521,6 +13380,16 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Writes the attachment from database write to file.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="RowID">The row identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="CompressedDataBuffer">The compressed data buffer.</param>
+    ''' <param name="OriginalSize">Size of the original.</param>
+    ''' <param name="CompressedSize">Size of the compressed.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub writeAttachmentFromDbWriteToFile(ByRef SecureID As Integer, ByVal RowID As String, ByRef FQN As String, ByRef CompressedDataBuffer() As Byte, ByRef OriginalSize As Integer, ByRef CompressedSize As Integer, ByRef RC As Boolean)
 
         FQN = ""
@@ -11582,6 +13451,16 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Writes the email from database to file.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="SourceTypeCode">The source type code.</param>
+    ''' <param name="CompressedDataBuffer">The compressed data buffer.</param>
+    ''' <param name="OriginalSize">Size of the original.</param>
+    ''' <param name="CompressedSize">Size of the compressed.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub writeEmailFromDbToFile(ByRef SecureID As Integer, ByVal EmailGuid As String, ByRef SourceTypeCode As String, ByRef CompressedDataBuffer() As Byte, ByRef OriginalSize As Integer, ByRef CompressedSize As Integer, ByRef RC As Boolean)
 
         Dim SourceTblName As String = "Email"
@@ -11655,6 +13534,14 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Databases the write to file.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="FileName">Name of the file.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function DbWriteToFile(ByRef SecureID As Integer, ByVal UID As String, ByVal SourceGuid As String, ByRef FileName As String) As Boolean
 
         Dim FQN As String = "\TempContent\"
@@ -11727,6 +13614,12 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Sends the file to client v2.
+    ''' </summary>
+    ''' <param name="file">The file.</param>
+    ''' <param name="fileName">Name of the file.</param>
+    ''' <param name="fExt">The f ext.</param>
     Private Sub SendFileToClientV2(ByVal file As Byte(), ByVal fileName As String, ByVal fExt As String)
 
         Dim MimeType As String = UTIL.getMimeType(fExt)
@@ -11741,6 +13634,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Sends the file to client.
+    ''' </summary>
+    ''' <param name="file">The file.</param>
+    ''' <param name="fileName">Name of the file.</param>
+    ''' <param name="fExt">The f ext.</param>
     Private Sub SendFileToClient(ByVal file As Byte(), ByVal fileName As String, ByVal fExt As String)
         Dim Response As HttpResponse = HttpContext.Current.Response
         Response.Clear()
@@ -11756,6 +13655,15 @@ REDO:
         Response.End()
     End Sub
 
+    ''' <summary>
+    ''' Gets the email restore FQN parms.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="Subject">The subject.</param>
+    ''' <param name="CreationTime">The creation time.</param>
+    ''' <param name="SentOn">The sent on.</param>
+    ''' <param name="MsgSize">Size of the MSG.</param>
     Sub getEmailRestoreFqnParms(ByRef SecureID As Integer, ByVal EmailGuid As String, ByRef Subject As String, ByRef CreationTime As String, ByRef SentOn As String, ByRef MsgSize As String)
         Dim S As String = ""
         S = S + " select Subject, CreationTime, SentOn, MsgSize, EmailGuid"
@@ -11777,6 +13685,14 @@ REDO:
         RSData = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Gets the name of the email file restore.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="WorkingDirectory">The working directory.</param>
+    ''' <param name="Suffix">The suffix.</param>
+    ''' <returns>System.String.</returns>
     Function getEmailFileRestoreName(ByRef SecureID As Integer, ByVal EmailGuid As String, ByVal WorkingDirectory As String, ByVal Suffix As String) As String
 
         Dim SkipExistingFiles As Boolean = False
@@ -11854,6 +13770,13 @@ REDO:
         Return FQN
     End Function
 
+    ''' <summary>
+    ''' Populates the ComboBox.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="StrCB">The string cb.</param>
+    ''' <param name="TblColName">Name of the table col.</param>
+    ''' <param name="S">The s.</param>
     Sub PopulateComboBox(ByRef SecureID As Integer, ByRef StrCB As String(), ByVal TblColName As String, ByVal S As String)
 
         Dim CB As List(Of String) = New List(Of String)()
@@ -11926,6 +13849,13 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Populates the ComboBox merge.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="StrCB">The string cb.</param>
+    ''' <param name="TblColName">Name of the table col.</param>
+    ''' <param name="S">The s.</param>
     Sub PopulateComboBoxMerge(ByRef SecureID As Integer, ByRef StrCB As String, ByVal TblColName As String, ByVal S As String)
 
         Dim CB As List(Of String) = New List(Of String)()
@@ -12004,6 +13934,13 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Populates the ListBox merge.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="LB">The lb.</param>
+    ''' <param name="TblColName">Name of the table col.</param>
+    ''' <param name="S">The s.</param>
     Sub PopulateListBoxMerge(ByRef SecureID As Integer, ByRef LB As List(Of String), ByVal TblColName As String, ByVal S As String)
 
         Dim tConn As New SqlConnection(DBgetConnStr())
@@ -12078,6 +14015,13 @@ REDO:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Populates the ListBox remove.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="LB">The lb.</param>
+    ''' <param name="TblColName">Name of the table col.</param>
+    ''' <param name="S">The s.</param>
     Sub PopulateListBoxRemove(ByRef SecureID As Integer, ByRef LB As ListBox, ByVal TblColName As String, ByVal S As String)
 
         Dim tConn As New SqlConnection(DBgetConnStr())
@@ -12149,6 +14093,13 @@ REDO:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Populates the ListBox.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="LB">The lb.</param>
+    ''' <param name="TblColName">Name of the table col.</param>
+    ''' <param name="SelectionSql">The selection SQL.</param>
     Sub PopulateListBox(ByRef SecureID As Integer, ByRef LB As ListBox, ByVal TblColName As String, ByVal SelectionSql As String)
         Try
             LB.DataSource = Nothing
@@ -12206,6 +14157,11 @@ REDO:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Populates the user sl.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SL">The sl.</param>
     Sub PopulateUserSL(ByRef SecureID As Integer, ByRef SL As Dictionary(Of String, String))
         SL.Clear()
         Dim S As String = "Select [UserName], [UserID]  FROM [Users] order by [UserName]"
@@ -12233,6 +14189,13 @@ REDO:
         RSData = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Gets the datasource parm.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="AttributeName">Name of the attribute.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getDatasourceParm(ByRef SecureID As Integer, ByVal AttributeName As String, ByVal SourceGuid As String) As String
 
         Dim S As String = ""
@@ -12290,6 +14253,12 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the table col string.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.String.</returns>
     Function getTblColString(ByRef SecureID As Integer, ByVal S As String) As String
 
         'Select AttributeValue
@@ -12347,6 +14316,15 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the saved value.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="userid">The userid.</param>
+    ''' <param name="SaveName">Name of the save.</param>
+    ''' <param name="SaveTypeCode">The save type code.</param>
+    ''' <param name="ValName">Name of the value.</param>
+    ''' <returns>System.String.</returns>
     Function getSavedValue(ByRef SecureID As Integer, ByVal userid As String, ByVal SaveName As String, ByVal SaveTypeCode As String, ByVal ValName As String) As String
         Dim S As String = ""
         Dim b As Boolean = True
@@ -12387,6 +14365,13 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the last successful archive date.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ArchiveType">Type of the archive.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getLastSuccessfulArchiveDate(ByRef SecureID As Integer, ByVal ArchiveType As String, ByVal UserID As String) As String
 
         Dim S As String = "Select  max(archiveEndDate)"
@@ -12447,6 +14432,13 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Cks the user start up parameter.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Userid">The userid.</param>
+    ''' <param name="ValName">Name of the value.</param>
+    ''' <returns>System.Int32.</returns>
     Function ckUserStartUpParameter(ByRef SecureID As Integer, ByVal Userid As String, ByVal ValName As String) As Integer
 
         '        where [SaveName] = 'UserStartUpParameters'
@@ -12465,6 +14457,13 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the working directory.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Userid">The userid.</param>
+    ''' <param name="ValName">Name of the value.</param>
+    ''' <returns>System.String.</returns>
     Function getWorkingDirectory(ByRef SecureID As Integer, ByVal Userid As String, ByVal ValName As String) As String
         Dim ColVAl As String = ""
         Dim S As String = ""
@@ -12524,6 +14523,12 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' is the count NBR email attachments.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EMailGuid">The e mail unique identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function iCountNbrEmailAttachments(ByRef SecureID As Integer, ByVal EMailGuid As String) As Integer
 
         Dim con As New SqlConnection(DBgetConnStr())
@@ -12569,6 +14574,11 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Defines the file ext.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="LB">The lb.</param>
     Sub DefineFileExt(ByRef SecureID As Integer, ByRef LB As List(Of String))
         Dim ColVAl As String = ""
         Dim S As String = ""
@@ -12589,6 +14599,15 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the BLOB.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TblName">Name of the table.</param>
+    ''' <param name="ImageColumnName">Name of the image column.</param>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function UpdateBlob(ByRef SecureID As Integer, ByVal TblName As String, ByVal ImageColumnName As String, ByVal WhereClause As String, ByVal FQN As String) As Boolean
         FQN = UTIL.RemoveSingleQuotes(FQN)
         Dim b As Boolean = False
@@ -12610,6 +14629,10 @@ REDO:
         Return b
     End Function
 
+    ''' <summary>
+    ''' Rebuilds the fulltext catalog.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub RebuildFulltextCatalog(ByRef SecureID As Integer)
         Dim S As String = ""
         S = "EXEC sp_fulltext_catalog 'ftCatalog', 'start_full' "
@@ -12618,6 +14641,12 @@ REDO:
         DBExecuteSql(SecureID, S, False)
     End Sub
 
+    ''' <summary>
+    ''' Gets the user authentication.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Userid">The userid.</param>
+    ''' <returns>System.String.</returns>
     Function getUserAuth(ByRef SecureID As Integer, ByVal Userid As String) As String
         Dim B As Boolean = False
 
@@ -12665,6 +14694,12 @@ REDO:
         Return ColVAl
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is image file] [the specified secure identifier].
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="tFileType">Type of the t file.</param>
+    ''' <returns><c>true</c> if [is image file] [the specified secure identifier]; otherwise, <c>false</c>.</returns>
     Function isImageFile(ByRef SecureID As Integer, ByVal tFileType As String) As Boolean
 
         If InStr(tFileType, "\") > 0 Then
@@ -12691,6 +14726,12 @@ REDO:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the size of the email.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function getEmailSize(ByRef SecureID As Integer, ByVal EmailGuid As String) As Integer
 
         Dim I As Integer = 0
@@ -12716,6 +14757,13 @@ REDO:
         Return I
     End Function
 
+    ''' <summary>
+    ''' Gets the dir unique identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DirFQN">The dir FQN.</param>
+    ''' <param name="MachineName">Name of the machine.</param>
+    ''' <returns>System.String.</returns>
     Function getDirGuid(ByRef SecureID As Integer, ByVal DirFQN As String, ByVal MachineName As String) As String
 
         DirFQN = UTIL.RemoveSingleQuotes(DirFQN)
@@ -12749,6 +14797,12 @@ REDO:
         Return tGuid
     End Function
 
+    ''' <summary>
+    ''' Gets the dir listener name by unique identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DirGuid">The dir unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getDirListenerNameByGuid(ByRef SecureID As Integer, ByVal DirGuid As String) As String
 
         Dim B As Boolean = False
@@ -12773,6 +14827,12 @@ REDO:
         Return DirName
     End Function
 
+    ''' <summary>
+    ''' Gets the description.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getDescription(ByRef SecureID As Integer, ByVal SourceGuid As String) As String
         Dim B As Boolean = False
         Dim sData As String = ""
@@ -12797,6 +14857,13 @@ REDO:
         Return sData
     End Function
 
+    ''' <summary>
+    ''' Gets the sd cols.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ConnstrName">Name of the connstr.</param>
+    ''' <param name="TableName">Name of the table.</param>
+    ''' <returns>System.String.</returns>
     Function getSdCols(ByRef SecureID As Integer, ByVal ConnstrName As String, ByVal TableName As String) As String
 
         ConnstrName = UTIL.RemoveSingleQuotes(ConnstrName)
@@ -12825,6 +14892,13 @@ REDO:
         Return sData
     End Function
 
+    ''' <summary>
+    ''' Refactors the userid.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FromUserid">From userid.</param>
+    ''' <param name="ToUserid">Converts to userid.</param>
+    ''' <returns>System.String.</returns>
     Function RefactorUserid(ByRef SecureID As Integer, ByVal FromUserid As String, ByVal ToUserid As String) As String
 
         Dim Msg As String = ""
@@ -12854,6 +14928,12 @@ REDO:
         Return Msg
     End Function
 
+    ''' <summary>
+    ''' Gets the pw.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <returns>System.String.</returns>
     Function getPw(ByRef SecureID As Integer, ByVal UID As String) As String
 
         Dim ColVAl As String = ""
@@ -12869,6 +14949,12 @@ REDO:
         Return ColVAl
     End Function
 
+    ''' <summary>
+    ''' is the content of the count user.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <returns>System.Int32.</returns>
     Function iCountUserContent(ByRef SecureID As Integer, ByVal UID As String) As Integer
         Dim S As String = "Select count(*) from DataSource where DataSourceOwnerUserID = '" + UID + "'"
 
@@ -12895,6 +14981,12 @@ REDO:
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' is the count user emails.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <returns>System.Int32.</returns>
     Function iCountUserEmails(ByRef SecureID As Integer, ByVal UID As String) As Integer
         Dim S As String = "Select count(*) from email where Userid = '" + UID + "'"
 
@@ -12921,6 +15013,16 @@ REDO:
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' Gets the missing vaules.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="tGuid">The t unique identifier.</param>
+    ''' <param name="VersionNbr">The version NBR.</param>
+    ''' <param name="LastAccessDate">The last access date.</param>
+    ''' <param name="LastWriteTime">The last write time.</param>
+    ''' <param name="RetentionExpirationDate">The retention expiration date.</param>
+    ''' <param name="IsPublic">The is public.</param>
     Sub getMissingVaules(ByRef SecureID As Integer, ByVal tGuid As String, ByRef VersionNbr As String, ByRef LastAccessDate As String, ByRef LastWriteTime As String, ByRef RetentionExpirationDate As String, ByRef IsPublic As String)
         Dim S As String = " SELECt  [VersionNbr]"
         S = S + " ,[LastAccessDate]      "
@@ -12957,6 +15059,13 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the missing email vaules.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="tGuid">The t unique identifier.</param>
+    ''' <param name="RetentionExpirationDate">The retention expiration date.</param>
+    ''' <param name="IsPublic">The is public.</param>
     Sub getMissingEmailVaules(ByRef SecureID As Integer, ByVal tGuid As String, ByRef RetentionExpirationDate As String, ByRef IsPublic As String)
         Dim S As String = " SELECT [isPublic],[RetentionExpirationDate] FROM [Email] where [EmailGuid] = '" + tGuid + "'"
 
@@ -12984,6 +15093,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the meta data combo.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="tGuid">The t unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function GetMetaDataCombo(ByRef SecureID As Integer, ByVal tGuid As String) As String
 
         Dim S As String = ""
@@ -13023,6 +15138,11 @@ REDO:
         Return Msg
     End Function
 
+    ''' <summary>
+    ''' Gets the system parm.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SystemParms">The system parms.</param>
     Sub getSystemParm(ByRef SecureID As Integer, ByRef SystemParms As Dictionary(Of String, String))
 
         SystemParms.Clear()
@@ -13066,6 +15186,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the user parms.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="UserParms">The user parms.</param>
     Sub getUserParms(ByRef SecureID As Integer, ByVal UserID As String, ByRef UserParms As Dictionary(Of String, String))
 
         UserParms.Clear()
@@ -13105,6 +15231,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the user parm.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserParm">The user parm.</param>
+    ''' <returns>System.String.</returns>
     Function getUserParm(ByRef SecureID As Integer, ByVal UserParm As String) As String
         If gCurrUserGuidID.Length = 0 Then
             Return "0"
@@ -13141,6 +15273,13 @@ REDO:
         Return SystemParameter
     End Function
 
+    ''' <summary>
+    ''' Gets the user parm.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserParm">The user parm.</param>
+    ''' <param name="DefaultValue">The default value.</param>
+    ''' <returns>System.String.</returns>
     Function getUserParm(ByRef SecureID As Integer, ByVal UserParm As String, ByVal DefaultValue As String) As String
         If gCurrUserGuidID.Length = 0 Then
             Return "0"
@@ -13177,6 +15316,12 @@ REDO:
         Return SystemParameter
     End Function
 
+    ''' <summary>
+    ''' Gets the content columns.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="SL">The sl.</param>
     Sub getContentColumns(ByRef SecureID As Integer, ByVal SourceGuid As String, ByRef SL As Dictionary(Of String, String))
         Dim S As String = ""
         S = S + " SELECT  "
@@ -13226,6 +15371,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the email columns.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="SL">The sl.</param>
     Sub getEmailColumns(ByRef SecureID As Integer, ByVal SourceGuid As String, ByRef SL As Dictionary(Of String, String))
         Dim S As String = ""
         S = S + " SELECT  "
@@ -13289,6 +15440,13 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Fills the sorted list.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="RSData">The rs data.</param>
+    ''' <param name="iRow">The i row.</param>
+    ''' <param name="SL">The sl.</param>
     Sub FillSortedList(ByRef SecureID As Integer, ByVal RSData As SqlDataReader, ByVal iRow As Integer, ByRef SL As Dictionary(Of String, String))
         Dim cName As String = RSData.GetName(iRow).ToString
         Try
@@ -13302,6 +15460,13 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the unique identifier by FQN.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="VersionNbr">The version NBR.</param>
+    ''' <returns>System.String.</returns>
     Function GetGuidByFqn(ByRef SecureID As Integer, ByVal FQN As String, ByVal VersionNbr As String) As String
         FQN = UTIL.RemoveSingleQuotes(FQN)
 
@@ -13328,6 +15493,12 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the unique identifier by URL.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>System.String.</returns>
     Function GetGuidByURL(ByRef SecureID As Integer, ByVal FQN As String) As String
         FQN = UTIL.RemoveSingleQuotes(FQN)
 
@@ -13354,6 +15525,12 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the name of the library owner by.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <returns>System.String.</returns>
     Function GetLibOwnerByName(ByRef SecureID As Integer, ByVal LibraryName As String) As String
 
         If InStr(LibraryName, "''") > 0 Then
@@ -13398,6 +15575,13 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Adds the document source description.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="Description">The description.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function addDocSourceDescription(ByRef SecureID As Integer, ByVal SourceGuid As String, ByVal Description As String) As Boolean
         Description = UTIL.RemoveSingleQuotes(Description)
         Dim S As String = ""
@@ -13406,6 +15590,13 @@ REDO:
         Return b
     End Function
 
+    ''' <summary>
+    ''' Adds the document source error.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="Notes">The notes.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function addDocSourceError(ByRef SecureID As Integer, ByVal SourceGuid As String, ByVal Notes As String) As Boolean
         Notes = UTIL.RemoveSingleQuotes(Notes)
         Dim S As String = ""
@@ -13414,6 +15605,13 @@ REDO:
         Return b
     End Function
 
+    ''' <summary>
+    ''' Adds the document source key words.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="KeyWords">The key words.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function addDocSourceKeyWords(ByRef SecureID As Integer, ByVal SourceGuid As String, ByVal KeyWords As String) As Boolean
         KeyWords = UTIL.RemoveSingleQuotes(KeyWords)
         Dim S As String = ""
@@ -13422,6 +15620,19 @@ REDO:
         Return b
     End Function
 
+    ''' <summary>
+    ''' Updates the meta data.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Author">The author.</param>
+    ''' <param name="Description">The description.</param>
+    ''' <param name="Keywords">The keywords.</param>
+    ''' <param name="QuickRefIdNbr">The quick reference identifier NBR.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="MetadataTag">The metadata tag.</param>
+    ''' <param name="MetadataValue">The metadata value.</param>
+    ''' <param name="Library">The library.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function UpdateMetaData(ByRef SecureID As Integer, ByVal Author As String, ByVal Description As String, ByVal Keywords As String, ByVal QuickRefIdNbr As String, ByVal FQN As String, ByVal MetadataTag As String, ByVal MetadataValue As String, ByVal Library As String) As Boolean
 
         MetadataTag = UTIL.RemoveSingleQuotes(MetadataTag)
@@ -13450,6 +15661,11 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Processes the dates.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>Dictionary(Of System.String, System.DateTime).</returns>
     Function ProcessDates(ByRef SecureID As Integer) As Dictionary(Of String, Date)
 
         Dim D As New Dictionary(Of String, Date)
@@ -13511,6 +15727,12 @@ REDO:
     End Function
 
     'select LibraryName FROM LibDirectory where DirectoryName = 'c:\temp'
+    ''' <summary>
+    ''' Gets the library dirs.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DirectoryName">Name of the directory.</param>
+    ''' <param name="L">The l.</param>
     Sub getLibDirs(ByRef SecureID As Integer, ByVal DirectoryName As String, ByRef L As List(Of String))
 
         L.Clear()
@@ -13543,6 +15765,13 @@ REDO:
         RSData = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Gets the source unique identifier by FQN.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="fqn">The FQN.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getSourceGuidByFqn(ByRef SecureID As Integer, ByVal fqn As String, ByVal UserID As String) As String
         fqn = UTIL.RemoveSingleQuotes(fqn)
         Try
@@ -13588,6 +15817,12 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Loads the entry identifier by folder.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <param name="L">The l.</param>
     Sub LoadEntryIdByFolder(ByRef SecureID As Integer, ByVal FolderName As String, ByRef L As Dictionary(Of String, String))
 
         FolderName = UTIL.RemoveSingleQuotes(FolderName)
@@ -13627,6 +15862,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the count store identifier by folder.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <returns>System.Int32.</returns>
     Function getCountStoreIdByFolder(ByRef SecureID As Integer, ByVal FolderName As String) As Integer
         Dim iCnt As Integer = 0
         Dim S As String = "Select count(*) from email where OriginalFolder = '" + FolderName + "'"
@@ -13656,6 +15897,14 @@ REDO:
         Return iCnt
     End Function
 
+    ''' <summary>
+    ''' Gets the group users.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="GroupName">Name of the group.</param>
+    ''' <param name="GroupList">The group list.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
     Sub getGroupUsers(ByRef SecureID As Integer, ByVal GroupName As String, ByRef GroupList As ArrayList, ByRef RC As Boolean, ByRef RetMsg As String)
 
         RC = True
@@ -13694,6 +15943,15 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the archive flag.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ParentFolder">The parent folder.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="aFlag">a flag.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UpdateArchiveFlag(ByRef SecureID As Integer, ByVal ParentFolder As String, ByVal UID As String, ByVal aFlag As String, ByVal FolderName As String) As Boolean
         Dim b As Boolean = False
         Dim s As String = ""
@@ -13704,6 +15962,15 @@ REDO:
         Return DBExecuteSql(SecureID, s, False)
     End Function
 
+    ''' <summary>
+    ''' Deletes the email archive folder.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ParentFolder">The parent folder.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="aFlag">a flag.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function DeleteEmailArchiveFolder(ByRef SecureID As Integer, ByVal ParentFolder As String, ByVal UID As String, ByVal aFlag As String, ByVal FolderName As String) As Boolean
         Dim b As Boolean = False
         Dim s As String = ""
@@ -13739,6 +16006,12 @@ REDO:
     '    rsData = Nothing
     '    Return id
     'End Function
+    ''' <summary>
+    ''' Gets the parent folder name by identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FolderID">The folder identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getParentFolderNameById(ByRef SecureID As Integer, ByVal FolderID As String) As String
         Dim b As Boolean = True
         Dim S As String = ""
@@ -13762,6 +16035,11 @@ REDO:
         Return id
     End Function
 
+    ''' <summary>
+    ''' Gets the archive folder ids.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DGV">The DGV.</param>
     Public Sub getArchiveFolderIds(ByRef SecureID As Integer, ByRef DGV As struct_ArchiveFolderId)
 
         Dim SA As New Dictionary(Of String, String)
@@ -13788,6 +16066,13 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Removes the group user.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="GroupName">Name of the group.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function RemoveGroupUser(ByRef SecureID As Integer, ByVal GroupName As String, ByVal UserID As String) As Boolean
 
         GroupName = UTIL.RemoveSingleQuotes(GroupName)
@@ -13840,6 +16125,12 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the name of the group owner unique identifier by group.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="GroupName">Name of the group.</param>
+    ''' <returns>System.String.</returns>
     Function getGroupOwnerGuidByGroupName(ByRef SecureID As Integer, ByVal GroupName As String) As String
 
         If InStr(GroupName, "''") > 0 Then
@@ -13874,6 +16165,12 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the user email addr by user identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getUserEmailAddrByUserID(ByRef SecureID As Integer, ByVal UserID As String) As String
         Try
             Dim S As String = "Select EmailAddress FROM Users where UserID = '" + UserID + "'"
@@ -13896,6 +16193,12 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the user name by email addr.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EmailAddress">The email address.</param>
+    ''' <returns>System.String.</returns>
     Function getUserNameByEmailAddr(ByRef SecureID As Integer, ByVal EmailAddress As String) As String
         Try
             Dim S As String = "Select UserName FROM email where EmailAddress = '" + EmailAddress + "'"
@@ -13921,6 +16224,13 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Loads the reassign history.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="OldUid">The old uid.</param>
+    ''' <param name="NewUid">Creates new uid.</param>
+    ''' <param name="UserArray">The user array.</param>
     Sub loadReassignHistory(ByRef SecureID As Integer, ByVal OldUid As String, ByVal NewUid As String, ByRef UserArray As ArrayList)
         UserArray.Clear()
         Dim S As String = "  SELECT [UserID]"
@@ -13998,6 +16308,14 @@ REDO:
         RSData = Nothing
     End Sub
 
+    ''' <summary>
+    ''' xes the get XRT identifier.
+    ''' </summary>
+    ''' <param name="CustomerID">The customer identifier.</param>
+    ''' <param name="ServerName">Name of the server.</param>
+    ''' <param name="DBName">Name of the database.</param>
+    ''' <param name="InstanceName">Name of the instance.</param>
+    ''' <returns>System.Int32.</returns>
     Function xGetXrtID(CustomerID As String, ServerName As String, DBName As String, InstanceName As String) As Integer
         Dim iMax As Integer = GetMaxLicenseID(0)
         Return iMax
@@ -14022,6 +16340,11 @@ REDO:
         'Return SecureID
     End Function
 
+    ''' <summary>
+    ''' xes the get XRT.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Function xGetXrt(ByRef SecureID As Integer) As String
         Dim iMax As Integer = GetMaxLicenseID(SecureID)
         Try
@@ -14050,6 +16373,11 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the maximum license identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function GetMaxLicenseID(ByRef SecureID As Integer) As Integer
         Try
             Dim S As String = "Select max([LicenseID]) FROM [License]"
@@ -14079,6 +16407,11 @@ REDO:
         DBLogMessage(SecureID, gCurrUserGuidID, "clsDatabase  GetMaxLicenseID :  5843 - License validated.")
     End Function
 
+    ''' <summary>
+    ''' Licenses the exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function LicenseExists(ByRef SecureID As Integer) As Boolean
         Dim b As Boolean = False
         Dim CS As String = ""
@@ -14117,6 +16450,13 @@ REDO:
         Return b
     End Function
 
+    ''' <summary>
+    ''' Gets the XRT.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
+    ''' <returns>System.String.</returns>
     Function GetXrt(ByRef SecureID As Integer, ByVal RC As Boolean, ByVal RetMsg As String) As String
         Dim S As String = "Select Agreement from License where [LicenseID] = (SELECT max([LicenseID]) FROM [License])"
         Dim iMax As Integer = GetMaxLicenseID(SecureID)
@@ -14150,6 +16490,11 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the curr machine count.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function GetCurrMachineCnt(ByRef SecureID As Integer) As Integer
         Try
             Dim S As String = "Select count(*) FROM [Machine]"
@@ -14175,6 +16520,11 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the NBR users.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function GetNbrUsers(ByRef SecureID As Integer) As Integer
         Try
             Dim S As String = "Select count(*) from Users "
@@ -14201,6 +16551,11 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the NBR machine.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function GetNbrMachine(ByRef SecureID As Integer) As Integer
         Try
             Dim S As String = "Select count(*) from MachineRegistered "
@@ -14226,6 +16581,12 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the NBR machine.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="MachineName">Name of the machine.</param>
+    ''' <returns>System.Int32.</returns>
     Function GetNbrMachine(ByRef SecureID As Integer, ByVal MachineName As String) As Integer
         Try
             Dim S As String = "Select COUNT(Distinct MachineName) from machine "
@@ -14254,6 +16615,11 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the curr user count.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function GetCurrUserCnt(ByRef SecureID As Integer) As Integer
         Try
             Dim S As String = "Select count(*) FROM [Users]"
@@ -14279,6 +16645,14 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Saves the license cut and paste.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="LS">The ls.</param>
+    ''' <param name="CustomerID">The customer identifier.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function saveLicenseCutAndPaste(ByRef SecureID As Integer, ByVal LS As String, ByVal CustomerID As String, ByVal MachineID As String) As Boolean
 
         Dim S As String = "Select count(*) from License where CustomerID = '" + CustomerID + "' and MachineID = '" + MachineID + "' "
@@ -14317,6 +16691,12 @@ REDO:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the profile desc.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ProfileName">Name of the profile.</param>
+    ''' <returns>System.String.</returns>
     Function GetProfileDesc(ByRef SecureID As Integer, ByVal ProfileName As String) As String
         Try
             Dim S As String = "Select [ProfileDesc] FROM [LoadProfile] where [ProfileName] ='" + ProfileName + "'"
@@ -14344,6 +16724,12 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the attribute allowed values.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="AttributeName">Name of the attribute.</param>
+    ''' <returns>System.String.</returns>
     Function getAttributeAllowedValues(ByRef SecureID As Integer, ByVal AttributeName As String) As String
         Dim tVal As String = ""
         Dim S As String = "Select AllowedValues FROM [Attributes] where AttributeName = '" + AttributeName + "'"
@@ -14369,6 +16755,12 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the length of the data source image.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.Double.</returns>
     Function getDataSourceImageLength(ByRef SecureID As Integer, ByVal SourceGuid As String) As Double
         Dim S As String = "Select max(datalength(SourceImage)) from DataSource where SourceGuid = '" + SourceGuid + "'"
         Dim tVal As String = ""
@@ -14402,6 +16794,12 @@ REDO:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Updates the curr archive stats.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="SourceTypeCode">The source type code.</param>
     Sub UpdateCurrArchiveStats(ByRef SecureID As Integer, ByVal FQN As String, ByVal SourceTypeCode As String)
 
         If gCurrentArchiveGuid.Trim.Length = 0 Then gCurrentArchiveGuid = Guid.NewGuid.ToString
@@ -14482,6 +16880,13 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Updates the curr archive stats.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="SourceTypeCode">The source type code.</param>
+    ''' <param name="ArchiveGuid">The archive unique identifier.</param>
     Sub UpdateCurrArchiveStats(ByRef SecureID As Integer, ByVal FQN As String, ByVal SourceTypeCode As String, ByVal ArchiveGuid As String)
 
         If gCurrentArchiveGuid.Trim.Length = 0 Then gCurrentArchiveGuid = Guid.NewGuid.ToString
@@ -14565,9 +16970,9 @@ REDO:
     ''' <summary>
     ''' Now, we can get this data... So what, how do we pass it all back?
     ''' </summary>
-    ''' <param name="frm">     </param>
-    ''' <param name="fControl"></param>
-    ''' <remarks></remarks>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FormName">Name of the form.</param>
+    ''' <param name="slFormHelp">The sl form help.</param>
     Sub getFormHelpData(ByRef SecureID As Integer, ByVal FormName As String, ByRef slFormHelp As Dictionary(Of String, String))
 
         Try
@@ -14621,6 +17026,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Marks the image copy for deletion.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="fqn">The FQN.</param>
     Public Sub MarkImageCopyForDeletion(ByRef SecureID As Integer, ByVal fqn As String)
         fqn = UTIL.RemoveSingleQuotes(fqn)
         Dim B As Boolean = False
@@ -14647,6 +17057,10 @@ REDO:
         GC.Collect()
     End Sub
 
+    ''' <summary>
+    ''' Deletes the marked image copy files.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Public Sub DeleteMarkedImageCopyFiles(ByRef SecureID As Integer)
 
         Dim FileToDelete As New ArrayList
@@ -14717,6 +17131,11 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Sets the ocr attributes to pass.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
     Sub SetOcrAttributesToPass(ByRef SecureID As Integer, ByVal SourceGuid As String)
         Dim S As String = "update DataSource set OcrPerformed = 'Y', isGraphic = 'Y' where SourceGuid = '" + SourceGuid + "'"
         Dim b As Boolean = DBExecuteSql(SecureID, S, False)
@@ -14725,6 +17144,11 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Sets the ocr attributes to fail.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
     Sub SetOcrAttributesToFail(ByRef SecureID As Integer, ByVal SourceGuid As String)
         Dim S As String = "update DataSource set OcrPerformed = 'F', isGraphic = 'Y' where SourceGuid = '" + SourceGuid + "'"
         Dim b As Boolean = DBExecuteSql(SecureID, S, False)
@@ -14733,6 +17157,11 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Sets the ocr attributes to not performed.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
     Sub SetOcrAttributesToNotPerformed(ByRef SecureID As Integer, ByVal SourceGuid As String)
         Dim S As String = "update DataSource set OcrPerformed = 'N', isGraphic = 'Y' where SourceGuid = '" + SourceGuid + "'"
         Dim b As Boolean = DBExecuteSql(SecureID, S, False)
@@ -14742,6 +17171,12 @@ REDO:
     End Sub
 
     'GraphicContainsText
+    ''' <summary>
+    ''' Sets the image hidden text.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="ImageHiddenText">The image hidden text.</param>
     Sub SetImageHiddenText(ByRef SecureID As Integer, ByVal SourceGuid As String, ByVal ImageHiddenText As String)
 
         ImageHiddenText = UTIL.RemoveSingleQuotes(ImageHiddenText)
@@ -14759,6 +17194,12 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Appends the image hidden text.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="ImageHiddenText">The image hidden text.</param>
     Sub AppendImageHiddenText(ByRef SecureID As Integer, ByVal SourceGuid As String, ByVal ImageHiddenText As String)
 
         ImageHiddenText = UTIL.RemoveSingleQuotes(ImageHiddenText)
@@ -14776,6 +17217,12 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Appends the ocr text.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="OcrText">The ocr text.</param>
     Sub AppendOcrText(ByRef SecureID As Integer, ByVal SourceGuid As String, ByVal OcrText As String)
         Dim DTE As Date = Now
 
@@ -14809,6 +17256,13 @@ REDO:
         LOG.WriteToTimerLog("clsDatabase", "AppendOcrText", "END", DTE)
     End Sub
 
+    ''' <summary>
+    ''' Appends the email ocr text.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="OcrText">The ocr text.</param>
+    ''' <param name="AttachmentName">Name of the attachment.</param>
     Sub AppendEmailOcrText(ByRef SecureID As Integer, ByVal EmailGuid As String, ByVal OcrText As String, ByVal AttachmentName As String)
 
         Dim ExistingOcrText As String = getOcrText(SecureID, EmailGuid, "EMAIL", AttachmentName)
@@ -14826,6 +17280,11 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Blanks the out single quotes.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="sText">The s text.</param>
     Public Sub BlankOutSingleQuotes(ByRef SecureID As Integer, ByRef sText As String)
         For i As Integer = 1 To sText.Length
             Dim CH As String = Mid(sText, i, 1)
@@ -14835,6 +17294,11 @@ REDO:
         Next
     End Sub
 
+    ''' <summary>
+    ''' Cleans the text.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="sText">The s text.</param>
     Public Sub CleanText(ByRef SecureID As Integer, ByRef sText As String)
         For i As Integer = 1 To sText.Length
             Dim CH As String = Mid(sText, i, 1)
@@ -14844,6 +17308,13 @@ REDO:
         Next
     End Sub
 
+    ''' <summary>
+    ''' Sets the email ocr text.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="OcrText">The ocr text.</param>
+    ''' <param name="AttachmentName">Name of the attachment.</param>
     Sub SetEmailOcrText(ByRef SecureID As Integer, ByVal EmailGuid As String, ByVal OcrText As String, ByVal AttachmentName As String)
         'ByVal BodyText ,
         Try
@@ -14862,6 +17333,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Concats the email body.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="BodyText">The body text.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
     Sub concatEmailBody(ByRef SecureID As Integer, ByVal BodyText As String, ByVal EmailGuid As String)
 
         Try
@@ -14884,6 +17361,10 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Updates the attachment counts.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub UpdateAttachmentCounts(ByRef SecureID As Integer)
         Dim S As String = "update Email "
         S = S + " set NbrAttachments = (select count(*) from EmailAttachment where Email.EmailGuid = EmailAttachment.EmailGuid)"
@@ -14894,6 +17375,13 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Users the parm update.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ParmName">Name of the parm.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="ParmVal">The parm value.</param>
     Sub UserParmUpdate(ByRef SecureID As Integer, ByVal ParmName As String, ByVal UserID As String, ByVal ParmVal As String)
         Dim iCnt As Integer = UserParmExists(SecureID, ParmName, UserID)
         If iCnt = 0 Then
@@ -14915,6 +17403,12 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Users the parm delete.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ParmName">Name of the parm.</param>
+    ''' <param name="UserID">The user identifier.</param>
     Sub UserParmDelete(ByRef SecureID As Integer, ByVal ParmName As String, ByVal UserID As String)
         Dim iCnt As Integer = UserParmExists(SecureID, ParmName, UserID)
         If iCnt = 0 Then
@@ -14935,6 +17429,12 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Gets the active email folders.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>ArrayList.</returns>
     Function GetActiveEmailFolders(ByRef SecureID As Integer, ByVal UserID As String) As ArrayList
         Dim A As New ArrayList
         Dim S As String = "Select distinct foldername from EmailArchParms where UserID = '" + UserID + "'"
@@ -14961,6 +17461,12 @@ REDO:
         Return A
     End Function
 
+    ''' <summary>
+    ''' Validates the curr user pw.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EncPW">The enc pw.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ValidateCurrUserPW(ByRef SecureID As Integer, ByVal EncPW As String) As Boolean
 
         Dim S As String = "Select count(*) from Users where UserID = '" + gCurrUserGuidID + "' and UserPassword = '" + EncPW + "' "
@@ -14991,6 +17497,13 @@ REDO:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the email retention code.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
     Function GetEmailRetentionCode(ByRef SecureID As Integer, ByVal FolderName As String, ByVal UserID As String) As String
 
         FolderName = UTIL.RemoveSingleQuotes(FolderName)
@@ -15019,6 +17532,13 @@ REDO:
         Return rCode
     End Function
 
+    ''' <summary>
+    ''' Users the parm insert.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ParmName">Name of the parm.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="ParmVal">The parm value.</param>
     Sub UserParmInsert(ByRef SecureID As Integer, ByVal ParmName As String, ByVal UserID As String, ByVal ParmVal As String)
 
         Dim iCnt As Integer = UserParmExists(SecureID, ParmName, UserID)
@@ -15043,6 +17563,14 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Users the parm insert update.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ParmName">Name of the parm.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="ParmVal">The parm value.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub UserParmInsertUpdate(ByRef SecureID As Integer, ByVal ParmName As String, ByVal UserID As String, ByVal ParmVal As String, ByRef RC As Boolean)
 
         Dim iCnt As Integer = UserParmExists(SecureID, ParmName, UserID)
@@ -15069,6 +17597,12 @@ REDO:
         RC = b
     End Sub
 
+    ''' <summary>
+    ''' is the select count.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.Int32.</returns>
     Function iSelectCount(ByRef SecureID As Integer, ByVal S As String) As Integer
 
         DBCloseConn(SecureID)
@@ -15096,6 +17630,13 @@ REDO:
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' Users the parm exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ParmName">Name of the parm.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function UserParmExists(ByRef SecureID As Integer, ByVal ParmName As String, ByVal UserID As String) As Integer
         Dim S As String = ""
 
@@ -15133,6 +17674,13 @@ REDO:
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' Users the parm retrive.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ParmName">Name of the parm.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
     Function UserParmRetrive(ByRef SecureID As Integer, ByVal ParmName As String, ByVal UserID As String) As String
         Dim S As String = ""
         Dim iCnt As Integer = UserParmExists(SecureID, ParmName, UserID)
@@ -15198,6 +17746,11 @@ REDO:
         Return sVal
     End Function
 
+    ''' <summary>
+    ''' Gets the help connection string.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getHelpConnStr(ByRef SecureID As Integer) As String
         Dim bUseConfig As Boolean = True
         Dim HelpConnStr As String = ""
@@ -15205,6 +17758,15 @@ REDO:
         Return HelpConnStr
     End Function
 
+    ''' <summary>
+    ''' Loads the user search history.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="MaxNbrSearches">The maximum NBR searches.</param>
+    ''' <param name="Uid">The uid.</param>
+    ''' <param name="Screen">The screen.</param>
+    ''' <param name="SearchHistoryArrayList">The search history array list.</param>
+    ''' <param name="NbrReturned">The NBR returned.</param>
     Sub LoadUserSearchHistory(ByRef SecureID As Integer, ByVal MaxNbrSearches As Integer, ByVal Uid As String, ByVal Screen As String, ByRef SearchHistoryArrayList As List(Of String), ByRef NbrReturned As Integer)
         Try
             NbrReturned = 0
@@ -15235,6 +17797,14 @@ REDO:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Limits to existing recs.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DGV">The DGV.</param>
+    ''' <param name="UIDCellName">Name of the uid cell.</param>
+    ''' <param name="GuidCellName">Name of the unique identifier cell.</param>
+    ''' <param name="DeleteAll">if set to <c>true</c> [delete all].</param>
     Sub LimitToExistingRecs(ByRef SecureID As Integer, ByVal DGV As List(Of struct_ActiveSearchGuids), ByVal UIDCellName As String, ByVal GuidCellName As String, ByVal DeleteAll As Boolean)
         Dim ASG As New clsACTIVESEARCHGUIDS(SecureID)
 
@@ -15265,6 +17835,11 @@ REDO:
         ASG = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Limits to existing recs.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="CurrentGuids">The current guids.</param>
     Sub LimitToExistingRecs(ByRef SecureID As Integer, ByVal CurrentGuids As List(Of String))
 
         Dim ASG As New clsACTIVESEARCHGUIDS(SecureID)
@@ -15293,6 +17868,11 @@ REDO:
         ASG = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Gets the default thesaurus.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getDefaultThesaurus(ByRef SecureID As Integer) As String
         'Dim EcmLibConnectionString As String = ""
 
@@ -15332,6 +17912,12 @@ REDO:
         Return DefaultThesaurus
     End Function
 
+    ''' <summary>
+    ''' Expands the inflection terms.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="S">The s.</param>
+    ''' <returns>System.String.</returns>
     Public Function ExpandInflectionTerms(ByRef SecureID As Integer, ByVal S As String) As String
         Dim Msg As String = ""
         Try
@@ -15354,6 +17940,12 @@ REDO:
     End Function
 
     'SELECT COUNT(*) FROM [DB_UpdateHist] where [FixID] = 1 and Status = 'applied'
+    ''' <summary>
+    ''' Cks the database update.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FixID">The fix identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function ckDbUpdate(ByRef SecureID As Integer, ByVal FixID As String) As Integer
         Dim S As String = "Select COUNT(*) FROM [DB_UpdateHist] where [FixID] = " + FixID + " and Status = 'applied'"
         Dim ii As Integer = 0
@@ -15374,6 +17966,11 @@ REDO:
         Return ii
     End Function
 
+    ''' <summary>
+    ''' Deletes the email by unique identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
     Sub DeleteEmailByGuid(ByRef SecureID As Integer, ByVal EmailGuid As String)
         Dim SHIST As New clsSEARCHHISTORY(SecureID)
 
@@ -15450,6 +18047,11 @@ REDO:
         SHIST = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Deletes the source by unique identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
     Sub DeleteSourceByGuid(ByRef SecureID As Integer, ByVal SourceGuid As String)
         Dim S As String = ""
         Dim B As Boolean = True
@@ -15466,6 +18068,10 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Retentions the temporary zeroize.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub RetentionTempZeroize(ByRef SecureID As Integer)
         Dim S As String = "DELETE FROM [RetentionTemp] WHERE UserID = '" + gCurrUserGuidID + "'"
         Dim B As Boolean = DBExecuteSql(SecureID, S, False)
@@ -15474,6 +18080,13 @@ REDO:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Retentions the temporary insert.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="ContentGuid">The content unique identifier.</param>
+    ''' <param name="TypeContent">Content of the type.</param>
     Sub RetentionTempInsert(ByRef SecureID As Integer, ByVal UserID As String, ByVal ContentGuid As String, ByVal TypeContent As String)
 
         Dim S As String = ""
@@ -15492,6 +18105,13 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Retentions the type of the temporary count.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TypeContent">Content of the type.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function RetentionTempCountType(ByRef SecureID As Integer, ByVal TypeContent As String, ByVal UserID As String) As Integer
 
         Dim S As String = ""
@@ -15525,6 +18145,11 @@ REDO:
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' Admins the exist.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function adminExist(ByRef SecureID As Integer) As Boolean
         Dim S As String = ""
         S = S + " SELECT [UserID]"
@@ -15593,6 +18218,12 @@ REDO:
         End Using
     End Function
 
+    ''' <summary>
+    ''' Licenses the version exist.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="VersionNbr">The version NBR.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function LicenseVersionExist(ByRef SecureID As Integer, ByVal VersionNbr As String) As Boolean
         Dim S As String = "Select count(*) FROM [License] where VersionNbr = " + VersionNbr
         DBCloseConn(SecureID)
@@ -15625,6 +18256,19 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the license data current.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ExistingVersionNbr">The existing version NBR.</param>
+    ''' <param name="ExistingActivationDate">The existing activation date.</param>
+    ''' <param name="ExistingInstallDate">The existing install date.</param>
+    ''' <param name="ExistingCustomerID">The existing customer identifier.</param>
+    ''' <param name="ExistingCustomerName">Name of the existing customer.</param>
+    ''' <param name="ExistingLicenseID">The existing license identifier.</param>
+    ''' <param name="ExistingXrtNxr1">The existing XRT NXR1.</param>
+    ''' <param name="ExistingServerIdentifier">The existing server identifier.</param>
+    ''' <param name="ExistingSqlInstanceIdentifier">The existing SQL instance identifier.</param>
     Sub getLicenseDataCurrent(ByRef SecureID As Integer, ByRef ExistingVersionNbr As String,
     ByRef ExistingActivationDate As String,
     ByRef ExistingInstallDate As String,
@@ -15683,6 +18327,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Counts the quick reference items.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="QuickRefIdNbr">The quick reference identifier NBR.</param>
+    ''' <returns>System.Int32.</returns>
     Function CountQuickRefItems(ByRef SecureID As Integer, ByVal QuickRefIdNbr As Integer) As Integer
 
         Dim S As String = "Select count(*) from QuickRefItems where QuickRefIdNbr = " + QuickRefIdNbr.ToString
@@ -15713,6 +18363,12 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the quick reference identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="QuickRef">The quick reference.</param>
+    ''' <returns>System.Int32.</returns>
     Function getQuickRefId(ByRef SecureID As Integer, ByVal QuickRef As String) As Integer
 
         Dim S As String = "Select QuickRefIdNbr from QuickRef where QuickRefName = '" + QuickRef + "'"
@@ -15745,6 +18401,11 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Retrieves the search history.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SearchHistoryArrayList">The search history array list.</param>
     Sub retrieveSearchHistory(ByRef SecureID As Integer, ByVal SearchHistoryArrayList As ArrayList)
 
         SearchHistoryArrayList.Clear()
@@ -15767,6 +18428,10 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Adds the missing CRC.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub AddMissingCrc(ByRef SecureID As Integer)
         'SELECT FQN, SourceGuid FROM DataSource
         Dim S As String = "Select count(*) "
@@ -15813,6 +18478,14 @@ REDO:
         'FrmMDIMain.TSPB1.Value = 0
     End Sub
 
+    ''' <summary>
+    ''' Inserts the source attribute.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SGUID">The sguid.</param>
+    ''' <param name="aName">a name.</param>
+    ''' <param name="aVal">a value.</param>
+    ''' <param name="OriginalFileType">Type of the original file.</param>
     Sub InsertSrcAttrib(ByRef SecureID As Integer, ByVal SGUID As String, ByVal aName As String, ByVal aVal As String, ByVal OriginalFileType As String)
         Dim SRCATTR As New clsSOURCEATTRIBUTE(SecureID)
         SRCATTR.setSourceguid(SGUID)
@@ -15825,6 +18498,11 @@ REDO:
     End Sub
 
     'select count(*) from Attributes where AttributeName = 'XX'
+    ''' <summary>
+    ''' Attributes the exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="AttributeName">Name of the attribute.</param>
     Sub AttributeExists(ByRef SecureID As Integer, ByVal AttributeName As String)
         'SELECT FQN, SourceGuid FROM DataSource
         Dim S As String = "Select count(*) from Attributes where AttributeName = '" + AttributeName + "'"
@@ -15854,6 +18532,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Cks the attribute exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="AttributeName">Name of the attribute.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ckAttributeExists(ByRef SecureID As Integer, ByVal AttributeName As String) As Boolean
 
         Dim S As String = "Select count(*) from Attributes where AttributeName = '" + AttributeName + "'"
@@ -15868,6 +18552,18 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Sets the source global access flags.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TgtGuid">The TGT unique identifier.</param>
+    ''' <param name="FileType">Type of the file.</param>
+    ''' <param name="rbPublic">if set to <c>true</c> [rb public].</param>
+    ''' <param name="rbPrivate">if set to <c>true</c> [rb private].</param>
+    ''' <param name="rbMstrYes">if set to <c>true</c> [rb MSTR yes].</param>
+    ''' <param name="rbMstrNot">if set to <c>true</c> [rb MSTR not].</param>
+    ''' <param name="SB">The sb.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function SetSourceGlobalAccessFlags(ByRef SecureID As Integer, ByVal TgtGuid As String, ByVal FileType As String,
     ByVal rbPublic As Boolean,
     ByVal rbPrivate As Boolean,
@@ -15991,6 +18687,12 @@ REDO:
         Return Bb
     End Function
 
+    ''' <summary>
+    ''' Downs the load document.
+    ''' </summary>
+    ''' <param name="TypeImage">The type image.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.Byte().</returns>
     Public Function DownLoadDocument(ByRef TypeImage As String, ByVal SourceGuid As String) As Byte()
 
         Dim b As Boolean = True
@@ -16033,6 +18735,12 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is email public] [the specified secure identifier].
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <returns><c>true</c> if [is email public] [the specified secure identifier]; otherwise, <c>false</c>.</returns>
     Function isEmailPublic(ByRef SecureID As Integer, ByVal EmailGuid As String) As Boolean
 
         Dim b As Boolean = True
@@ -16079,6 +18787,11 @@ REDO:
         Return b
     End Function
 
+    ''' <summary>
+    ''' Zeroizes the global search.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ZeroizeGlobalSearch(ByRef SecureID As Integer) As Boolean
         Dim S As String = "delete from GlobalSeachResults where UserID = '" + gCurrUserGuidID + "'"
         Dim B As Boolean = False
@@ -16094,6 +18807,12 @@ REDO:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets all libraries user can access.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="AccessibleLibraries">The accessible libraries.</param>
+    ''' <param name="DBisAdmin">if set to <c>true</c> [d bis admin].</param>
     Sub GetAllLibrariesUserCanAccess(ByRef SecureID As Integer, ByRef AccessibleLibraries As ArrayList, ByVal DBisAdmin As Boolean)
         Dim rsData As SqlDataReader = Nothing
         Dim LibraryName As String = ""
@@ -16162,8 +18881,8 @@ REDO:
     ''' the following local server name information if the local server name has not been changed
     ''' since setup.
     ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     ''' <returns>Returns the "server name" as setup during installation as a string variable.</returns>
-    ''' <remarks></remarks>
     Function getServerInstanceName(SecureID As Integer) As String
 
         Dim S As String = "SELECT SERVERPROPERTY('SERVERNAME')"
@@ -16190,8 +18909,8 @@ REDO:
     ''' <summary>
     ''' Gets the name of server to which the application is attached.
     ''' </summary>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getServerMachineName(ByRef SecureID As Integer) As String
 
         Dim S As String = "Select SERVERPROPERTY('MachineName')"
@@ -16218,6 +18937,7 @@ REDO:
     ''' <summary>
     ''' Retrieves the name of the machine that is logged in to SQL Server
     ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     ''' <returns>The name of the "logged in workstation" as a string variable</returns>
     ''' <remarks>Do not reley on this for any security implementations, use A.D.</remarks>
     Function getAttachedMachineName(ByRef SecureID As Integer) As String
@@ -16250,8 +18970,8 @@ REDO:
     ''' <summary>
     ''' Retrieves the currently LOGGED in User ID.
     ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     ''' <returns>Currently LOGGED in User ID as a string variable.</returns>
-    ''' <remarks></remarks>
     Function getLoggedInUser(ByRef SecureID As Integer) As String
 
         Dim S As String = "select SUSER_NAME() LoggedInUser "
@@ -16276,6 +18996,14 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Sets the server identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SqlServerInstanceNameX">The SQL server instance name x.</param>
+    ''' <param name="CustomerID">The customer identifier.</param>
+    ''' <param name="LicenseID">The license identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function setServerIdentifier(ByRef SecureID As Integer, ByVal SqlServerInstanceNameX As String, ByVal CustomerID As String, ByVal LicenseID As String) As Boolean
         Dim X As String = ENC.AES256EncryptString(SqlServerInstanceNameX)
         X = UTIL.RemoveSingleQuotes(X)
@@ -16289,6 +19017,13 @@ REDO:
         Return True
     End Function
 
+    ''' <summary>
+    ''' Gets the server identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="CustomerID">The customer identifier.</param>
+    ''' <param name="LicenseID">The license identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getServerIdentifier(ByRef SecureID As Integer, ByVal CustomerID As String, ByVal LicenseID As String) As String
         Dim SqlServerInstanceNameX As String = ""
         Dim S As String = "Select SqlServerInstanceNameX from License where CustomerID = '" + CustomerID + "' and VersionNbr = '" + LicenseID + "'"
@@ -16311,6 +19046,14 @@ REDO:
         Return SqlServerInstanceNameX
     End Function
 
+    ''' <summary>
+    ''' Sets the SQL instance identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SqlServerMachineName">Name of the SQL server machine.</param>
+    ''' <param name="CustomerID">The customer identifier.</param>
+    ''' <param name="LicenseID">The license identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function setSqlInstanceIdentifier(ByRef SecureID As Integer, ByVal SqlServerMachineName As String, ByVal CustomerID As String, ByVal LicenseID As String) As Boolean
         Dim X As String = ENC.AES256EncryptString(SqlServerMachineName)
         X = UTIL.RemoveSingleQuotes(X)
@@ -16324,6 +19067,13 @@ REDO:
         Return True
     End Function
 
+    ''' <summary>
+    ''' Gets the SQL instance identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="CustomerID">The customer identifier.</param>
+    ''' <param name="LicenseID">The license identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function getSqlInstanceIdentifier(ByRef SecureID As Integer, ByVal CustomerID As String, ByVal LicenseID As String) As Boolean
         Dim SqlServerMachineName As String = ""
         Dim S As String = "Select SqlServerMachineName from License where CustomerID = '" + CustomerID + "' and LicenseID = '" + LicenseID + "'"
@@ -16346,12 +19096,26 @@ REDO:
         Return SqlServerMachineName
     End Function
 
+    ''' <summary>
+    ''' Strings to byte array.
+    ''' </summary>
+    ''' <param name="str">The string.</param>
+    ''' <returns>System.Byte().</returns>
     Public Shared Function StrToByteArray(ByVal str As String) As Byte()
         Dim encoding As New System.Text.ASCIIEncoding()
         'Dim encoding As New System.Text.UnicodeEncoding
         Return encoding.GetBytes(str)
     End Function 'StrToByteArray
 
+    ''' <summary>
+    ''' Gets the satus flags.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="isPublic">The is public.</param>
+    ''' <param name="isMaster">The is master.</param>
+    ''' <param name="isWebPage">The is web page.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="SourceType">Type of the source.</param>
     Public Sub getSatusFlags(ByRef SecureID As Integer, ByRef isPublic As CheckBox, ByRef isMaster As CheckBox, ByRef isWebPage As CheckBox, ByVal SourceGuid As String, ByVal SourceType As String)
         Dim sPublic As String = ""
         Dim sMaster As String = ""
@@ -16428,6 +19192,12 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the retention period.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="RetentionCode">The retention code.</param>
+    ''' <returns>System.Int32.</returns>
     Function getRetentionPeriod(ByRef SecureID As Integer, ByVal RetentionCode As String) As Integer
 
         If RetentionCode.Trim.Length = 0 Then
@@ -16458,6 +19228,11 @@ REDO:
         Return rPeriod
     End Function
 
+    ''' <summary>
+    ''' Gets the retention period maximum.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getRetentionPeriodMax(SecureID As Integer) As String
 
         'Dim SqlServerMachineName  = ""
@@ -16488,6 +19263,11 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the retention period years maximum.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getRetentionPeriodYearsMax(SecureID As Integer) As String
 
         'Dim SqlServerMachineName  = ""
@@ -16515,6 +19295,10 @@ REDO:
         Return rPeriod
     End Function
 
+    ''' <summary>
+    ''' Sets the exchange default retention code.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub SetExchangeDefaultRetentionCode(ByRef SecureID As Integer)
         Dim S As String = ""
         S = S + " update ExchangeHostPop "
@@ -16523,6 +19307,13 @@ REDO:
         DBExecuteSql(SecureID, S)
     End Sub
 
+    ''' <summary>
+    ''' Gets the dir retention code.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
     Function GetDirRetentionCode(ByRef SecureID As Integer, ByVal FQN As String, ByVal UserID As String) As String
 
         FQN = UTIL.RemoveSingleQuotes(FQN)
@@ -16580,6 +19371,12 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the retention MGR.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="RetentionCode">The retention code.</param>
+    ''' <returns>System.String.</returns>
     Function GetRetentionMgr(ByRef SecureID As Integer, ByVal RetentionCode As String) As String
         Dim S As String = ""
         S = S + " select ManagerName from Retention   "
@@ -16608,6 +19405,13 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Sets the retention date.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="RetentionCode">The retention code.</param>
+    ''' <param name="FileExtention">The file extention.</param>
     Sub setRetentionDate(ByRef SecureID As Integer, ByVal SourceGuid As String, ByVal RetentionCode As String, ByVal FileExtention As String)
 
         Dim RetentionYears As Integer = getRetentionPeriod(SecureID, RetentionCode)
@@ -16633,6 +19437,14 @@ REDO:
         B = DBExecuteSql(SecureID, S, False)
     End Sub
 
+    ''' <summary>
+    ''' Counts the machine.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="MachineName">Name of the machine.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function cntMachine(ByRef SecureID As Integer, ByVal MachineName As String, ByVal FQN As String, ByVal SourceGuid As String) As Boolean
 
         FQN = UTIL.RemoveSingleQuotes(FQN)
@@ -16676,6 +19488,13 @@ REDO:
 
     End Function
 
+    ''' <summary>
+    ''' Adds the machine source.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.Object.</returns>
     Function AddMachineSource(ByRef SecureID As Integer, ByVal FQN As String, ByVal SourceGuid As String)
 
         Dim B As Boolean = False
@@ -16706,6 +19525,12 @@ REDO:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Adds the user group.
+    ''' </summary>
+    ''' <param name="GroupName">Name of the group.</param>
+    ''' <param name="GroupOwnerUserID">The group owner user identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function AddUserGroup(ByVal GroupName As String, ByVal GroupOwnerUserID As String) As Boolean
 
         Dim B As Boolean = False
@@ -16742,6 +19567,12 @@ REDO:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is library owner] [the specified secure identifier].
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="LibName">Name of the library.</param>
+    ''' <returns><c>true</c> if [is library owner] [the specified secure identifier]; otherwise, <c>false</c>.</returns>
     Function isLibOwner(ByRef SecureID As Integer, ByVal LibName As String) As Boolean
         Dim S As String = ""
         Dim B As Boolean = False
@@ -16785,6 +19616,12 @@ REDO:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is library item owner] [the specified secure identifier].
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="LibraryItemGuid">The library item unique identifier.</param>
+    ''' <returns><c>true</c> if [is library item owner] [the specified secure identifier]; otherwise, <c>false</c>.</returns>
     Function isLibItemOwner(ByRef SecureID As Integer, ByVal LibraryItemGuid As String) As Boolean
         Dim S As String = ""
         Dim B As Boolean = False
@@ -16824,6 +19661,12 @@ REDO:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the web metadata.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="WebParms">The web parms.</param>
     Sub getWebMetadata(ByRef SecureID As Integer, ByVal SourceGuid As String, ByRef WebParms As Dictionary(Of String, String))
 
         WebParms.Clear()
@@ -16901,6 +19744,11 @@ REDO:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Populates the library combo.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="StrCB">The string cb.</param>
     Sub PopulateLibCombo(ByRef SecureID As Integer, StrCB As String())
 
         'Try
@@ -16925,6 +19773,13 @@ REDO:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the count source.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function getCntSource(ByRef SecureID As Integer, ByVal FQN As String, ByVal MachineID As String) As Integer
         FQN = UTIL.RemoveSingleQuotes(FQN)
 
@@ -16976,6 +19831,12 @@ REDO:
     End Function
 
     'select datalength(SourceImage)  from DataSource where SourceGuid = '15bd8f45-5795-4526-adee-b0ddde66490b'
+    ''' <summary>
+    ''' Gets the size of the image.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function GetImageSize(ByRef SecureID As Integer, ByVal SourceGuid As String) As Integer
         Dim S As String = ""
         S = "Select datalength(SourceImage)  from DataSource where SourceGuid = '" + SourceGuid + "'"
@@ -17004,6 +19865,12 @@ REDO:
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' Gets the maximum version NBR.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns>System.Int32.</returns>
     Function GetMaxVersionNbr(ByRef SecureID As Integer, ByVal FQN As String) As Integer
         Dim cnt As Integer = -1
         Dim S As String = ""
@@ -17051,6 +19918,12 @@ REDO:
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' Cks the files need update.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ListOfFiles">The list of files.</param>
+    ''' <param name="CheckArchiveBit">if set to <c>true</c> [check archive bit].</param>
     Sub ckFilesNeedUpdate(ByRef SecureID As Integer, ByRef ListOfFiles As String(), ByVal CheckArchiveBit As Boolean)
         Try
             Dim A(0) As String
@@ -17107,6 +19980,18 @@ NxtRec:
 
     End Sub
 
+    ''' <summary>
+    ''' Cks the source needs update.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="VersionNbr">The version NBR.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <param name="FileLength">Length of the file.</param>
+    ''' <param name="CreateDate">The create date.</param>
+    ''' <param name="LastAccessDate">The last access date.</param>
+    ''' <param name="LastWriteTime">The last write time.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ckSourceNeedsUpdate(ByRef SecureID As Integer, ByVal FQN As String,
     ByVal VersionNbr As String,
     ByVal MachineID As String,
@@ -17209,6 +20094,11 @@ NxtRec:
 
     End Function
 
+    ''' <summary>
+    ''' Adds the archive dir.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DirFQN">The dir FQN.</param>
     Sub AddArchiveDir(ByRef SecureID As Integer, ByVal DirFQN As String)
         DirFQN = UTIL.RemoveSingleQuotes(DirFQN)
 
@@ -17231,6 +20121,13 @@ NxtRec:
 
     End Sub
 
+    ''' <summary>
+    ''' Archives the dir exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DirFqn">The dir FQN.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function ArchiveDirExists(ByRef SecureID As Integer, ByVal DirFqn As String, ByVal MachineID As String) As Integer
         Dim S As String = ""
 
@@ -17266,6 +20163,14 @@ NxtRec:
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' Gets the database information.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ProductVersion">The product version.</param>
+    ''' <param name="ProductLevel">The product level.</param>
+    ''' <param name="Edition">The edition.</param>
+    ''' <param name="VersionDesc">The version desc.</param>
     Sub getDbInfo(ByRef SecureID As Integer, ByRef ProductVersion As String, ByRef ProductLevel As String, ByRef Edition As String, ByRef VersionDesc As String)
         Dim S As String = ""
         S = S + " SELECT SERVERPROPERTY('productversion') as ProductVersion, "
@@ -17295,6 +20200,11 @@ NxtRec:
         GC.WaitForFullGCComplete()
     End Sub
 
+    ''' <summary>
+    ''' Populates all user library combo.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="cb">The cb.</param>
     Sub PopulateAllUserLibCombo(ByRef SecureID As Integer, ByVal cb As List(Of String))
         Dim S As String = ""
         Try
@@ -17326,6 +20236,12 @@ NxtRec:
 
     End Sub
 
+    ''' <summary>
+    ''' Populates the group user library combo.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="cb">The cb.</param>
     Public Sub PopulateGroupUserLibCombo(ByRef SecureID As Integer, ByVal UID As String, ByRef cb As String)
         Dim S As String = ""
 
@@ -17381,6 +20297,11 @@ NxtRec:
         GC.WaitForPendingFinalizers()
     End Sub
 
+    ''' <summary>
+    ''' Gets the user group membership.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>ArrayList.</returns>
     Function GetUserGroupMembership(SecureID As Integer) As ArrayList
         Dim A As New ArrayList
         Dim S As String = "Select distinct GroupName from GroupUsers where UserID = '" + gCurrUserGuidID + "'"
@@ -17405,6 +20326,12 @@ NxtRec:
         Return A
     End Function
 
+    ''' <summary>
+    ''' Cks the working dir exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TypeDir">The type dir.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function ckWorkingDirExists(ByRef SecureID As Integer, ByVal TypeDir As String) As Integer
         TypeDir = TypeDir.ToUpper
 
@@ -17441,6 +20368,13 @@ NxtRec:
         Return cnt
     End Function
 
+    ''' <summary>
+    ''' Creates the new working dir.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TypeDir">The type dir.</param>
+    ''' <param name="DirName">Name of the dir.</param>
+    ''' <returns>System.Object.</returns>
     Function CreateNewWorkingDir(ByRef SecureID As Integer, ByVal TypeDir As String, ByVal DirName As String)
         Dim S As String = ""
 
@@ -17513,6 +20447,10 @@ NxtRec:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Cks the missing working dirs.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub ckMissingWorkingDirs(ByRef SecureID As Integer)
         Dim iCnt As Integer = 0
         Dim TempDirName As String = DMA.getEnvVarTempDir
@@ -17526,6 +20464,12 @@ NxtRec:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Exchanges the email exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EmailIdentifier">The email identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ExchangeEmailExists(ByRef SecureID As Integer, ByVal EmailIdentifier As String) As Boolean
 
         EmailIdentifier = UTIL.RemoveSingleQuotes(EmailIdentifier)
@@ -17560,6 +20504,12 @@ NxtRec:
         End If
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is archive disabled] [the specified secure identifier].
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ArchiveTypeCode">The archive type code.</param>
+    ''' <returns><c>true</c> if [is archive disabled] [the specified secure identifier]; otherwise, <c>false</c>.</returns>
     Function isArchiveDisabled(ByRef SecureID As Integer, ByVal ArchiveTypeCode As String) As Boolean
 
         Dim S As String = ""
@@ -17608,6 +20558,12 @@ NxtRec:
 
     End Function
 
+    ''' <summary>
+    ''' Writes the XML data.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TblName">Name of the table.</param>
+    ''' <param name="FQN">The FQN.</param>
     Public Sub WriteXMLData(ByRef SecureID As Integer, ByVal TblName As String, ByVal FQN As String)
         DBgetConnStr()
 
@@ -17626,6 +20582,12 @@ NxtRec:
 
     End Sub
 
+    ''' <summary>
+    ''' Loads the rs from XML.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TblName">Name of the table.</param>
+    ''' <param name="FQN">The FQN.</param>
     Public Sub LoadRsFromXML(ByRef SecureID As Integer, ByVal TblName As String, ByVal FQN As String)
 
         DBgetConnStr()
@@ -17674,6 +20636,12 @@ NxtRec:
         daSvr = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Fixes the identifier exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ID">The identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function FixIdExists(ByRef SecureID As Integer, ByVal ID As Integer) As Boolean
         Dim S As String = ""
         Dim B As Boolean = False
@@ -17712,6 +20680,10 @@ NxtRec:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Initializes the service parameters.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub InitializeServiceParameters(ByRef SecureID As Integer)
 
         Dim S As String = ""
@@ -17775,6 +20747,12 @@ NxtRec:
 
     End Sub
 
+    ''' <summary>
+    ''' Systems the parm exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ParmName">Name of the parm.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function SysParmExists(ByRef SecureID As Integer, ByVal ParmName As String) As Boolean
         Dim B As Boolean = False
         Dim I As Integer = 0
@@ -17808,6 +20786,10 @@ NxtRec:
 
     End Function
 
+    ''' <summary>
+    ''' Adds the default retention code.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub AddDefaultRetentionCode(ByRef SecureID As Integer)
 
         Dim UID As String = getUserGuidID(SecureID, "admin")
@@ -17828,6 +20810,14 @@ NxtRec:
         Dim b As Boolean = DBExecuteSql(SecureID, S, False)
     End Sub
 
+    ''' <summary>
+    ''' Updates the ip.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="HostName">Name of the host.</param>
+    ''' <param name="IP">The ip.</param>
+    ''' <param name="checkCode">The check code.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub UpdateIP(ByRef SecureID As Integer, ByVal HostName As String, ByVal IP As String, ByVal checkCode As Integer, ByRef RC As Boolean)
         ' 0 = add if new 1 = update access count 2 = update search count 2 = update access count and
         ' search count
@@ -17880,6 +20870,15 @@ NxtRec:
         RC = B
     End Sub
 
+    ''' <summary>
+    ''' Updates the do not change help text.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="WhereClause">The where clause.</param>
+    ''' <param name="ScreenName">Name of the screen.</param>
+    ''' <param name="WidgetName">Name of the widget.</param>
+    ''' <param name="WidgetText">The widget text.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function UpdateDoNotChangeHelpText(ByRef SecureID As Integer, ByVal WhereClause As String, ByVal ScreenName As String, ByVal WidgetName As String, ByVal WidgetText As String) As Boolean
 
         Dim b As Boolean = False
@@ -17898,6 +20897,12 @@ NxtRec:
         Return b
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is client only] [the specified secure identifier].
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns><c>true</c> if [is client only] [the specified secure identifier]; otherwise, <c>false</c>.</returns>
     Function isClientOnly(ByRef SecureID As Integer, ByVal UserID As String) As Boolean
 
         Dim B As Boolean = False
@@ -17943,6 +20948,11 @@ NxtRec:
 
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is single instance] [the specified secure identifier].
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns><c>true</c> if [is single instance] [the specified secure identifier]; otherwise, <c>false</c>.</returns>
     Function isSingleInstance(SecureID As Integer) As Boolean
         'select SysParmVal from SystemParms where SysParm = 'SYS_SingleInstance'
         Dim S As String = ""
@@ -17988,6 +20998,11 @@ NxtRec:
 
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is extended PDF processing] [the specified secure identifier].
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns><c>true</c> if [is extended PDF processing] [the specified secure identifier]; otherwise, <c>false</c>.</returns>
     Function isExtendedPdfProcessing(SecureID As Integer) As Boolean
         'select SysParmVal from SystemParms where SysParm = 'SYS_SingleInstance'
         Dim S As String = ""
@@ -18033,6 +21048,11 @@ NxtRec:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the PDF processing dir.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getPdfProcessingDir(SecureID As Integer) As String
         'select SysParmVal from SystemParms where SysParm = 'SYS_SingleInstance'
         Dim S As String = ""
@@ -18079,6 +21099,11 @@ NxtRec:
 
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is public allowed] [the specified secure identifier].
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns><c>true</c> if [is public allowed] [the specified secure identifier]; otherwise, <c>false</c>.</returns>
     Function isPublicAllowed(SecureID As Integer) As Boolean
 
         Dim S As String = ""
@@ -18125,6 +21150,10 @@ NxtRec:
 
     End Function
 
+    ''' <summary>
+    ''' Sets the maximum size of the file upload.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub setMaxFileUploadSize(ByRef SecureID As Integer)
 
         Dim S As String = ""
@@ -18162,6 +21191,11 @@ NxtRec:
 
     End Sub
 
+    ''' <summary>
+    ''' Shows the graphic meta data screen.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ShowGraphicMetaDataScreen(SecureID As Integer) As Boolean
         'select SysParmVal from SystemParms where SysParm = 'SYS_SingleInstance'
         Dim S As String = ""
@@ -18207,6 +21241,21 @@ NxtRec:
 
     End Function
 
+    ''' <summary>
+    ''' Adds the group user.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SessionID">The session identifier.</param>
+    ''' <param name="CurrUserID">The curr user identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="FullAccess">The full access.</param>
+    ''' <param name="ReadOnlyAccess">The read only access.</param>
+    ''' <param name="DeleteAccess">The delete access.</param>
+    ''' <param name="Searchable">The searchable.</param>
+    ''' <param name="GroupOwnerUserID">The group owner user identifier.</param>
+    ''' <param name="GroupName">Name of the group.</param>
+    ''' <param name="ControlSection">The control section.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function AddGroupUser(SecureID As Integer, SessionID As String, CurrUserID As String, UserID As String, FullAccess As String, ReadOnlyAccess As String, DeleteAccess As String, Searchable As String, GroupOwnerUserID As String, GroupName As String, ControlSection As String) As Boolean
         Dim iCnt As Integer = 0
         Dim S As String = ""
@@ -18259,6 +21308,13 @@ NxtRec:
         Return b
     End Function
 
+    ''' <summary>
+    ''' Adds the content owner.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function AddContentOwner(ByRef SecureID As Integer, ByVal SourceGuid As String, ByVal UserID As String) As Boolean
         Dim iCnt As Integer = 0
         Dim S As String = ""
@@ -18280,6 +21336,13 @@ NxtRec:
 
     End Function
 
+    ''' <summary>
+    ''' Contents the owner exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ContentOwnerExists(ByRef SecureID As Integer, ByVal SourceGuid As String, ByVal UserID As String) As Boolean
         Dim iCnt As Integer = 0
         Dim S As String = ""
@@ -18295,6 +21358,10 @@ NxtRec:
 
     End Function
 
+    ''' <summary>
+    ''' Synchronizes the source owners.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub SyncSourceOwners(ByRef SecureID As Integer)
 
         Dim SqlStmts As New List(Of String)
@@ -18380,6 +21447,11 @@ NxtRec:
     '        End Try
     '    End If
     'End Sub
+    ''' <summary>
+    ''' Registers the machine to database.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="MachineName">Name of the machine.</param>
     Public Sub RegisterMachineToDB(ByRef SecureID As Integer, ByVal MachineName As String)
         MachineName = UTIL.RemoveSingleQuotes(MachineName)
         Dim iCnt As Integer = iGetRowCount("MachineRegistered", " Where MachineName = '" + MachineName + "' ")
@@ -18395,6 +21467,12 @@ NxtRec:
 
     End Sub
 
+    ''' <summary>
+    ''' Determines whether [is machine registered] [the specified secure identifier].
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="MachineName">Name of the machine.</param>
+    ''' <returns><c>true</c> if [is machine registered] [the specified secure identifier]; otherwise, <c>false</c>.</returns>
     Public Function isMachineRegistered(ByRef SecureID As Integer, ByVal MachineName As String) As Boolean
         MachineName = UTIL.RemoveSingleQuotes(MachineName)
         Dim iCnt As Integer = iGetRowCount("MachineRegistered", " Where MachineName = '" + MachineName + "' ")
@@ -18405,6 +21483,11 @@ NxtRec:
         End If
     End Function
 
+    ''' <summary>
+    ''' Registers the ecm client.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="MachineName">Name of the machine.</param>
     Sub RegisterEcmClient(ByRef SecureID As Integer, ByVal MachineName As String)
         Dim iCnt As Integer = 0
 
@@ -18420,6 +21503,13 @@ NxtRec:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Determines whether [is dir admin disabled] [the specified secure identifier].
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if [is dir admin disabled] [the specified secure identifier]; otherwise, <c>false</c>.</returns>
     Function isDirAdminDisabled(ByRef SecureID As Integer, ByVal UserID As String, ByVal FQN As String) As Boolean
 
         FQN = UTIL.RemoveSingleQuotes(FQN)
@@ -18440,6 +21530,12 @@ NxtRec:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the folder name by identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FolderID">The folder identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getFolderNameById(ByRef SecureID As Integer, ByVal FolderID As String) As String
         Dim b As Boolean = True
         Dim S As String = ""
@@ -18479,6 +21575,13 @@ NxtRec:
         Return id
     End Function
 
+    ''' <summary>
+    ''' Gets the name of the folder identifier by.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <returns>System.String.</returns>
     Public Function getFolderIdByName(ByRef SecureID As Integer, ByVal FolderName As String, ByVal UID As String) As String
 
         FolderName = UTIL.RemoveSingleQuotes(FolderName)
@@ -18508,6 +21611,15 @@ NxtRec:
 
     End Function
 
+    ''' <summary>
+    ''' Removes the library directories.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="DirectoryName">Name of the directory.</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
     Sub RemoveLibraryDirectories(ByRef SecureID As Integer, ByVal UserID As String, ByVal DirectoryName As String, ByVal LibraryName As String, ByRef RC As Boolean, ByRef RetMsg As String)
         RC = False
         DirectoryName = UTIL.RemoveSingleQuotes(DirectoryName)
@@ -18550,6 +21662,15 @@ NxtRec:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Removes the library emails.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
     Sub RemoveLibraryEmails(ByRef SecureID As Integer, ByVal FolderName As String, ByVal LibraryName As String, ByVal UserID As String, ByRef RC As Boolean, ByRef RetMsg As String)
 
         Dim s As String = ""
@@ -18588,6 +21709,16 @@ NxtRec:
 
     End Sub
 
+    ''' <summary>
+    ''' Adds the library directory.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FolderName">Name of the folder.</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="RecordsAdded">The records added.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
     Sub AddLibraryDirectory(ByRef SecureID As Integer, ByVal FolderName As String, ByVal LibraryName As String, ByVal UserID As String, ByRef RecordsAdded As Integer, ByRef RC As Boolean, ByRef RetMsg As String)
 
         Dim bAddSubDir As Boolean = isSubDirProcessed(SecureID, UserID, FolderName.Trim)
@@ -18736,6 +21867,16 @@ NextRec:
 
     End Sub
 
+    ''' <summary>
+    ''' Adds the library email.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EmailFolder">The email folder.</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="RecordsAdded">The records added.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
     Sub AddLibraryEmail(ByRef SecureID As Integer, ByVal EmailFolder As String, ByVal LibraryName As String, ByVal UserID As String, ByRef RecordsAdded As Integer, ByRef RC As Boolean, ByRef RetMsg As String)
 
         Dim ListOfItems As New List(Of String)
@@ -18918,6 +22059,11 @@ SkipRec01:
         ''FrmMDIMain.SB.Text = "Library audit complete."
     End Sub
 
+    ''' <summary>
+    ''' Adds the system MSG.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="tMsg">The t MSG.</param>
     Sub AddSysMsg(ByRef SecureID As Integer, ByVal tMsg As String)
 
         tMsg = UTIL.RemoveSingleQuotesV1(tMsg)
@@ -18945,6 +22091,13 @@ SkipRec01:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Adds the system MSG.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="tMsg">The t MSG.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub AddSysMsg(ByRef SecureID As Integer, ByVal UserID As String, ByVal tMsg As String, ByVal RC As Boolean)
 
         tMsg = UTIL.RemoveSingleQuotesV1(tMsg)
@@ -18972,6 +22125,12 @@ SkipRec01:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Determines whether [is dir enabled] [the specified secure identifier].
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <returns><c>true</c> if [is dir enabled] [the specified secure identifier]; otherwise, <c>false</c>.</returns>
     Function isDirEnabled(ByRef SecureID As Integer, ByVal FQN As String) As Boolean
 
         FQN = UTIL.RemoveSingleQuotes(FQN)
@@ -19022,6 +22181,11 @@ SkipRec01:
 
     End Function
 
+    ''' <summary>
+    ''' Adds the name of the hashed dir.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="sName">Name of the s.</param>
     Sub AddHashedDirName(ByRef SecureID As Integer, ByVal sName As String)
 
         Dim S As String = ""
@@ -19071,6 +22235,11 @@ SkipRec01:
 
     End Sub
 
+    ''' <summary>
+    ''' Adds the name of the hashed file.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="sName">Name of the s.</param>
     Sub AddHashedFileName(ByRef SecureID As Integer, ByVal sName As String)
 
         Dim S As String = ""
@@ -19121,6 +22290,12 @@ SkipRec01:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the FQNS.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Qty">The qty.</param>
+    ''' <returns>ArrayList.</returns>
     Function getFqns(ByRef SecureID As Integer, ByVal Qty As String) As ArrayList
 
         Dim A As New ArrayList
@@ -19154,6 +22329,18 @@ SkipRec01:
 
     End Function
 
+    ''' <summary>
+    ''' Adds the PST folder.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="StoreID">The store identifier.</param>
+    ''' <param name="ParentFolderName">Name of the parent folder.</param>
+    ''' <param name="ParentFolderID">The parent folder identifier.</param>
+    ''' <param name="FolderKeyName">Name of the folder key.</param>
+    ''' <param name="FolderID">The folder identifier.</param>
+    ''' <param name="PstFQN">The PST FQN.</param>
+    ''' <param name="RetentionCode">The retention code.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function AddPstFolder(ByRef SecureID As Integer, ByVal StoreID As String, ByVal ParentFolderName As String, ByVal ParentFolderID As String, ByVal FolderKeyName As String, ByVal FolderID As String, ByVal PstFQN As String, ByVal RetentionCode As String) As Boolean
         'ByVal FolderID , ByVal CurrFolder As Microsoft.Office.Interop.Outlook.MAPIFolder,
         Dim B As Boolean = True
@@ -19208,6 +22395,12 @@ SkipRec01:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the dir profile.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ProfileName">Name of the profile.</param>
+    ''' <returns>System.String.</returns>
     Function getDirProfile(ByRef SecureID As Integer, ByVal ProfileName As String) As String
 
         ProfileName = UTIL.RemoveSingleQuotes(ProfileName)
@@ -19245,6 +22438,11 @@ SkipRec01:
         Return ProfileStr
     End Function
 
+    ''' <summary>
+    ''' Gets the name of current server.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getNameOfCurrentServer(SecureID As Integer) As String
         Dim SvrName As String = ""
         Dim S As String = "Select serverproperty('MachineName')"
@@ -19274,6 +22472,12 @@ SkipRec01:
         Return SvrName
     End Function
 
+    ''' <summary>
+    ''' Gets the quick row count.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TableName">Name of the table.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function getQuickRowCnt(ByRef SecureID As Integer, ByVal TableName As String) As Integer
         Dim I As Integer = 0
         TableName = UTIL.RemoveSingleQuotes(TableName)
@@ -19301,6 +22505,11 @@ SkipRec01:
         Return I
     End Function
 
+    ''' <summary>
+    ''' Gets the help information.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getHelpInfo(SecureID As Integer) As String
 
         Dim RSData As SqlDataReader = Nothing
@@ -19357,6 +22566,11 @@ SkipRec01:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the help email.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getHelpEmail(SecureID As Integer) As String
 
         Dim RSData As SqlDataReader = Nothing
@@ -19410,6 +22624,11 @@ SkipRec01:
 
     'End Sub
 
+    ''' <summary>
+    ''' Traces the activity.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Msg">The MSG.</param>
     Sub TraceActivity(ByRef SecureID As Integer, ByVal Msg As String)
         Dim S As String = ""
         Msg = UTIL.RemoveSingleQuotes(Msg)
@@ -19417,6 +22636,12 @@ SkipRec01:
         DBExecuteSql(SecureID, S)
     End Sub
 
+    ''' <summary>
+    ''' Updates the version information.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Product">The product.</param>
+    ''' <param name="ProductVersion">The product version.</param>
     Sub UpdateVersionInfo(ByRef SecureID As Integer, ByVal Product As String, ByVal ProductVersion As String)
 
         Product = UTIL.RemoveSingleQuotes(Product)
@@ -19439,6 +22664,12 @@ SkipRec01:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the version information.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Product">The product.</param>
+    ''' <returns>System.String.</returns>
     Function getVersionInfo(ByRef SecureID As Integer, ByVal Product As String) As String
         Dim VerInfo As String = ""
         Product = UTIL.RemoveSingleQuotes(Product)
@@ -19475,6 +22706,11 @@ SkipRec01:
 
     End Function
 
+    ''' <summary>
+    ''' Fixes the email keys.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function FixEmailKeys(SecureID As Integer) As Boolean
 
         Dim B As Boolean = True
@@ -19538,6 +22774,12 @@ SkipRec01:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the attachment weights.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SL">The sl.</param>
+    ''' <param name="UserGuidID">The user unique identifier identifier.</param>
     Sub getAttachmentWeights(ByRef SecureID As Integer, ByRef SL As Dictionary(Of String, Integer), ByVal UserGuidID As String)
         SL.Clear()
         Dim S As String = "Select EmailGuid, Weight from EmailAttachmentSearchList where UserID = '" + UserGuidID + "'"
@@ -19588,6 +22830,11 @@ SkipRec01:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the disabled directories.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ListOfDirs">The list of dirs.</param>
     Sub getDisabledDirectories(ByRef SecureID As Integer, ByRef ListOfDirs As List(Of String))
         ListOfDirs.Clear()
         Dim S As String = "Select [FQN] FROM [Directory] where UserID = '" + gCurrUserGuidID + "' and (ckDisableDir = 'Y' or AdminDisabled = 1)"
@@ -19608,6 +22855,11 @@ SkipRec01:
         RSData = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Runs the unattended.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function RunUnattended(SecureID As Integer) As Boolean
         Dim ckVal As String = getUserParm(SecureID, "user_RunUnattended")
         'Dim ckVal  = getSystemParm("srv_RunUnattended")
@@ -19629,6 +22881,11 @@ SkipRec01:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the size of the database.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.Double.</returns>
     Function getDbSize(SecureID As Integer) As Double
 
         Dim S As String = " "
@@ -19681,6 +22938,11 @@ SkipRec01:
 
     'End Sub
 
+    ''' <summary>
+    ''' Determines whether [is listening on] [the specified secure identifier].
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns><c>true</c> if [is listening on] [the specified secure identifier]; otherwise, <c>false</c>.</returns>
     Function isListeningOn(SecureID As Integer) As Boolean
         Dim MachineName As String = DMA.GetCurrMachineName()
         Dim S As String = "Select COUNT(*) FROM [DirectoryListener] where Machinename = '" + MachineName + "' and [ListenerActive] = 1"
@@ -19692,6 +22954,11 @@ SkipRec01:
         End If
     End Function
 
+    ''' <summary>
+    ''' Gets the listener files.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="L">The l.</param>
     Sub GetListenerFiles(ByRef SecureID As Integer, ByRef L As Dictionary(Of String, String))
 
         Dim S As String = ""
@@ -19755,6 +23022,10 @@ SkipRec01:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the modified files.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Public Sub getModifiedFiles(ByRef SecureID As Integer)
 
         Dim cPath As String = LOG.getTempEnvironDir()
@@ -19858,6 +23129,12 @@ P1:
         'FrmMDIMain.ListenerStatus.Text = "."
     End Sub
 
+    ''' <summary>
+    ''' Gets the size of the document.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function getDocSize(ByRef SecureID As Integer, ByVal SourceGuid As String) As Integer
         Dim B As Boolean = False
         Dim I As Integer = 0
@@ -19879,6 +23156,13 @@ P1:
         Return I
     End Function
 
+    ''' <summary>
+    ''' Registers the archive file.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceFile">The source file.</param>
+    ''' <param name="DirName">Name of the dir.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function RegisterArchiveFile(ByRef SecureID As Integer, ByVal SourceFile As String, ByVal DirName As String) As Boolean
 
         gListenerActivityStart = Now
@@ -19922,6 +23206,10 @@ P1:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Cleans the out old listener files.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub CleanOutOldListenerFiles(ByRef SecureID As Integer)
         Dim S As String = "delete from DirectoryListenerFiles where DATEDIFF(dd,entrydate,GETDATE()) > 30"
         Dim B As Boolean = DBExecuteSql(SecureID, S)
@@ -19930,6 +23218,10 @@ P1:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Removes the temporary ocr files.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub removeTempOcrFiles(ByRef SecureID As Integer)
         Try
             Dim WorkingDirectory As String = getWorkingDirectory(SecureID, gCurrUserGuidID, "CONTENT WORKING DIRECTORY")
@@ -19940,6 +23232,10 @@ P1:
 
     End Sub
 
+    ''' <summary>
+    ''' Removes the null emails.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub RemoveNullEmails(ByRef SecureID As Integer)
         Dim S As String = ""
         S = "Select count(*) from email where datalength(emailimage) < 1 or EmailImage is null"
@@ -19979,6 +23275,10 @@ P1:
         'FrmMDIMain.SB4.Text = "Done"
     End Sub
 
+    ''' <summary>
+    ''' Removes the null source.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub RemoveNullSource(ByRef SecureID As Integer)
         Dim S As String = ""
         S = "Select count(*) from dataSource where datalength(SourceImage) < 1 or SourceImage is null"
@@ -20019,6 +23319,12 @@ P1:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the directory libraries.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DirectoryName">Name of the directory.</param>
+    ''' <param name="L">The l.</param>
     Sub GetDirectoryLibraries(ByRef SecureID As Integer, ByVal DirectoryName As String, ByRef L As List(Of String))
         L.Clear()
 
@@ -20053,6 +23359,13 @@ P1:
 
     End Sub
 
+    ''' <summary>
+    ''' Cks the folder disabled.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="DirFQN">The dir FQN.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckFolderDisabled(ByRef SecureID As Integer, ByVal UID As String, ByVal DirFQN As String) As Boolean
 
         Dim S As String = " "
@@ -20074,6 +23387,12 @@ P1:
 
     End Function
 
+    ''' <summary>
+    ''' Adds the file ext.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FileExt">The file ext.</param>
+    ''' <param name="Description">The description.</param>
     Sub AddFileExt(ByRef SecureID As Integer, ByVal FileExt As String, ByVal Description As String)
         'FrmMDIMain.SB4.Text = FileExt
         FileExt = UTIL.RemoveSingleQuotes(FileExt)
@@ -20082,6 +23401,13 @@ P1:
         Dim B As Boolean = DBExecuteSql(SecureID, S)
     End Sub
 
+    ''' <summary>
+    ''' Deletes the content.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TgtGuid">The TGT unique identifier.</param>
+    ''' <param name="TypeContent">Content of the type.</param>
+    ''' <param name="FQN">The FQN.</param>
     Sub DeleteContent(ByRef SecureID As Integer, ByVal TgtGuid As String, ByVal TypeContent As String, ByVal FQN As String)
 
         Dim S As String = ""
@@ -20111,6 +23437,12 @@ P1:
 
     End Sub
 
+    ''' <summary>
+    ''' Determines whether [is parent dir disabled] [the specified secure identifier].
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DirFQN">The dir FQN.</param>
+    ''' <returns><c>true</c> if [is parent dir disabled] [the specified secure identifier]; otherwise, <c>false</c>.</returns>
     Function isParentDirDisabled(ByRef SecureID As Integer, ByVal DirFQN As String) As Boolean
         Dim TgtLib As String = ""
         Dim TempDir As String = ""
@@ -20152,6 +23484,12 @@ P1:
 
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is directory disabled] [the specified secure identifier].
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DirFqn">The dir FQN.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function isDirectoryDisabled(ByRef SecureID As Integer, ByVal DirFqn As String) As Integer
 
         Dim RC As Integer = -1
@@ -20201,6 +23539,12 @@ P1:
         Return RC
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is sub dir included bit on] [the specified secure identifier].
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DirFqn">The dir FQN.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function isSubDirIncludedBitON(ByRef SecureID As Integer, ByVal DirFqn As String) As Integer
 
         Dim RC As Integer = -1
@@ -20250,6 +23594,12 @@ P1:
         Return RC
     End Function
 
+    ''' <summary>
+    ''' Determines whether the specified secure identifier is indexed.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FileTypeCode">The file type code.</param>
+    ''' <returns><c>true</c> if the specified secure identifier is indexed; otherwise, <c>false</c>.</returns>
     Function isIndexed(ByRef SecureID As Integer, ByVal FileTypeCode As String) As Boolean
 
         If InStr(FileTypeCode, ".") = 0 Then
@@ -20266,6 +23616,12 @@ P1:
     End Function
 
     '
+    ''' <summary>
+    ''' Determines whether the specified secure identifier is ocrd.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="FileTypeCode">The file type code.</param>
+    ''' <returns><c>true</c> if the specified secure identifier is ocrd; otherwise, <c>false</c>.</returns>
     Function isOcrd(ByRef SecureID As Integer, ByVal FileTypeCode As String) As Boolean
 
         If InStr(FileTypeCode, ".") = 0 Then
@@ -20281,6 +23637,11 @@ P1:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the ocr types.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="L">The l.</param>
     Sub getOcrTypes(ByRef SecureID As Integer, ByRef L As List(Of String))
         Dim S As String = "Select ImageTypeCode from ImageTypeCodes"
 
@@ -20306,6 +23667,11 @@ P1:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the indexed types.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="L">The l.</param>
     Sub getIndexedTypes(ByRef SecureID As Integer, ByRef L As List(Of String))
         Dim S As String = "Select document_type from sys.fulltext_document_types"
 
@@ -20331,6 +23697,11 @@ P1:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the processs as ext.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="L">The l.</param>
     Sub getProcesssAsExt(ByRef SecureID As Integer, ByRef L As Dictionary(Of String, String))
         L.Clear()
         Dim S As String = "Select [ExtCode],[ProcessExtCode] FROM [ProcessFileAs]"
@@ -20397,6 +23768,14 @@ P1:
 
     'End Sub
 
+    ''' <summary>
+    ''' Gets the ocr text.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="ContentType">Type of the content.</param>
+    ''' <param name="AttachmentName">Name of the attachment.</param>
+    ''' <returns>System.String.</returns>
     Function getOcrText(ByRef SecureID As Integer, ByRef SourceGuid As String, ByVal ContentType As String, ByVal AttachmentName As String) As String
 
         Dim S As String = "Select document_type from sys.fulltext_document_types"
@@ -20427,6 +23806,11 @@ P1:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the SQL server version.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getSqlServerVersion(SecureID As Integer) As String
 
         Dim S As String = "Select @@VERSION AS 'ServerVersion'"
@@ -20454,6 +23838,11 @@ P1:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the dbsizemb.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.Double.</returns>
     Function getDBSIZEMB(SecureID As Integer) As Double
 
         Dim S As String = "exec Sp_spaceused"
@@ -20485,6 +23874,10 @@ P1:
 
     End Function
 
+    ''' <summary>
+    ''' Rebuilds the cross index file types.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub RebuildCrossIndexFileTypes(ByRef SecureID As Integer)
         Dim S As String = " SELECT  ProcessFileAs.ExtCode, DataSource.SourceGuid, DataSource.OriginalFileType, DataSource.SourceTypeCode, ProcessFileAs.ProcessExtCode"
         S = S + " FROM         ProcessFileAs INNER JOIN"
@@ -20541,6 +23934,10 @@ P1:
 
     End Sub
 
+    ''' <summary>
+    ''' Validates the file types email.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub ValidateFileTypesEmail(SecureID As Integer)
         Dim S As String = "Select rowid, attachmentname from EmailAttachment where OriginalFileTypeCode is null "
         Dim I As Integer = 0
@@ -20593,6 +23990,10 @@ P1:
 
     End Sub
 
+    ''' <summary>
+    ''' Rebuilds the cross index file types email.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub RebuildCrossIndexFileTypesEmail(ByRef SecureID As Integer)
 
         ValidateFileTypesEmail(SecureID)
@@ -20653,6 +24054,12 @@ P1:
 
     End Sub
 
+    ''' <summary>
+    ''' Emails the exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EmailIdentifier">The email identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Public Function EmailExists(ByRef SecureID As Integer, ByVal EmailIdentifier As String) As Integer
 
         EmailIdentifier = UTIL.RemoveSingleQuotes(EmailIdentifier)
@@ -20667,6 +24074,12 @@ P1:
     End Function
 
     'update Email set EmailIdentifier = EmailGuid where EmailIdentifier is null
+    ''' <summary>
+    ''' Resets the missing email ids.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="CurrUserGuidID">The curr user unique identifier identifier.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub resetMissingEmailIds(ByRef SecureID As Integer, ByVal CurrUserGuidID As String, ByRef RC As Boolean)
 
         Dim B As Boolean = False
@@ -20678,6 +24091,12 @@ P1:
         RC = B
     End Sub
 
+    ''' <summary>
+    ''' Gets the library users.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DBisAdmin">if set to <c>true</c> [d bis admin].</param>
+    ''' <param name="G">The g.</param>
     Sub getLibUsers(ByRef SecureID As Integer, ByVal DBisAdmin As Boolean, ByRef G As List(Of struct_LibUsers))
 
         Dim LUsers As New struct_LibUsers
@@ -20744,6 +24163,11 @@ P1:
 
     End Sub
 
+    ''' <summary>
+    ''' Cleans up library items.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
     Sub cleanUpLibraryItems(ByRef SecureID As Integer, ByVal UserID As String)
 
         Dim S As String = ""
@@ -20789,6 +24213,10 @@ P1:
 
     End Sub
 
+    ''' <summary>
+    ''' Inventories the content library items.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub inventoryContentLibraryItems(ByRef SecureID As Integer)
 
         Dim S As String = ""
@@ -20949,6 +24377,10 @@ NextRow:
 
     End Sub
 
+    ''' <summary>
+    ''' Inventories the email library items.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub inventoryEmailLibraryItems(SecureID As Integer)
 
         Dim S As String = ""
@@ -21097,6 +24529,13 @@ NextRow:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the list of assigned libraries.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DirectoryName">Name of the directory.</param>
+    ''' <param name="TypeEntry">The type entry.</param>
+    ''' <param name="AssignedLibraries">The assigned libraries.</param>
     Sub GetListOfAssignedLibraries(ByRef SecureID As Integer, ByVal DirectoryName As String, ByVal TypeEntry As String, ByRef AssignedLibraries As List(Of String))
 
         Dim S As String = ""
@@ -21134,6 +24573,13 @@ NextRow:
 
     End Sub
 
+    ''' <summary>
+    ''' Determines whether [is sub dir included] [the specified secure identifier].
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="DirFQN">The dir FQN.</param>
+    ''' <param name="ParentDir">The parent dir.</param>
+    ''' <returns><c>true</c> if [is sub dir included] [the specified secure identifier]; otherwise, <c>false</c>.</returns>
     Function isSubDirIncluded(ByRef SecureID As Integer, ByVal DirFQN As String, ByRef ParentDir As String) As Boolean
 
         ParentDir = ""
@@ -21179,6 +24625,11 @@ NextRow:
         Return False
     End Function
 
+    ''' <summary>
+    ''' Gets the library owner guids.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="LibraryOwnerGuids">The library owner guids.</param>
     Sub getLibraryOwnerGuids(ByRef SecureID As Integer, ByRef LibraryOwnerGuids As Dictionary(Of String, String))
         Dim S As String = "Select LibraryName,UserID from Library"
         Dim RSData As SqlDataReader = Nothing
@@ -21204,6 +24655,18 @@ NextRow:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Adds the group library access.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <param name="GroupName">Name of the group.</param>
+    ''' <param name="GroupOwnerUserID">The group owner user identifier.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="CurrUserID">The curr user identifier.</param>
+    ''' <param name="SessionID">The session identifier.</param>
+    ''' <param name="ControlSection">The control section.</param>
     Sub AddGroupLibraryAccess(SecureID As Integer, UserID As String, LibraryName As String, GroupName As String, GroupOwnerUserID As String, ByRef RC As Boolean, CurrUserID As String, SessionID As String, ControlSection As String)
 
         Dim B As Boolean = ckSessionID(SecureID, CurrUserID, SessionID, ControlSection)
@@ -21249,6 +24712,15 @@ NextRow:
 
     End Sub
 
+    ''' <summary>
+    ''' Adds the library group user.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="GroupName">Name of the group.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="CurrUserID">The curr user identifier.</param>
+    ''' <param name="SessionID">The session identifier.</param>
+    ''' <param name="ControlSection">The control section.</param>
     Sub AddLibraryGroupUser(ByRef SecureID As Integer, ByVal GroupName As String, ByRef RC As Boolean, CurrUserID As String, SessionID As String, ControlSection As String)
         Dim B As Boolean = ckSessionID(SecureID, CurrUserID, SessionID, ControlSection)
         If B = False Then
@@ -21386,6 +24858,13 @@ NextRow:
 
     End Sub
 
+    ''' <summary>
+    ''' Deletes the library group user.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="GroupName">Name of the group.</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Public Sub DeleteLibraryGroupUser(ByRef SecureID As Integer, ByVal GroupName As String, ByVal LibraryName As String, ByRef RC As Boolean)
         RC = True
         GroupName = UTIL.RemoveSingleQuotes(GroupName)
@@ -21411,44 +24890,51 @@ NextRow:
         End Using
 
 
-            'Dim Userid As String = ""
-            'Dim RSData As SqlDataReader = Nothing
-            ''RSData = SqlQryNo'Session(S)
-            'Dim CS As String = DBgetConnStr() : Dim CONN As New SqlConnection(CS) : CONN.Open() : Dim command As New SqlCommand(S, CONN)
-            'Try
-            '    RSData = command.ExecuteReader()
-            '    If RSData.HasRows Then
-            '        Do While RSData.Read()
-            '            Userid = RSData.GetValue(2).ToString
-            '            Dim SS As String = "delete from GroupLibraryAccess where UseriD = '" + Userid + "' and LibraryName = '" + LibraryName + "' and groupname = '" + GroupName + "'"
-            '            Dim B1 As Boolean = DBExecuteSql(SecureID, SS)
-            '            If Not B1 Then
-            '                Console.WriteLine("Failed to delete " + Userid + " from Library " + LibraryName + ".")
-            '            End If
-            '            'Dim iCnt As Integer = countGroupsUserBelongsTo(SecureID, LibraryName, Userid)
-            '            'If iCnt = 0 Then
-            '            '    SS = "delete from LibraryUsers where UserID = '" + Userid + "' and LibraryName = '" + LibraryName + "'  and SingleUser != 1"
-            '            '    Dim B1 As Boolean = DBExecuteSql(SecureID, S)
-            '            '    If Not B1 Then
-            '            '        Console.WriteLine("Failed to delete " + Userid + " from Library " + LibraryName + ".")
-            '            '    End If
-            '            'End If
-            '        Loop
-            '    End If
-            'Catch ex As Exception
-            '    DBLogMessage(SecureID, gCurrUserGuidID, "ERROR: AddLibraryGroupUser 100 - " + ex.Message + vbCrLf + S)
-            '    RC = False
-            'Finally
-            '    RSData.Close()
-            'End Try
+        'Dim Userid As String = ""
+        'Dim RSData As SqlDataReader = Nothing
+        ''RSData = SqlQryNo'Session(S)
+        'Dim CS As String = DBgetConnStr() : Dim CONN As New SqlConnection(CS) : CONN.Open() : Dim command As New SqlCommand(S, CONN)
+        'Try
+        '    RSData = command.ExecuteReader()
+        '    If RSData.HasRows Then
+        '        Do While RSData.Read()
+        '            Userid = RSData.GetValue(2).ToString
+        '            Dim SS As String = "delete from GroupLibraryAccess where UseriD = '" + Userid + "' and LibraryName = '" + LibraryName + "' and groupname = '" + GroupName + "'"
+        '            Dim B1 As Boolean = DBExecuteSql(SecureID, SS)
+        '            If Not B1 Then
+        '                Console.WriteLine("Failed to delete " + Userid + " from Library " + LibraryName + ".")
+        '            End If
+        '            'Dim iCnt As Integer = countGroupsUserBelongsTo(SecureID, LibraryName, Userid)
+        '            'If iCnt = 0 Then
+        '            '    SS = "delete from LibraryUsers where UserID = '" + Userid + "' and LibraryName = '" + LibraryName + "'  and SingleUser != 1"
+        '            '    Dim B1 As Boolean = DBExecuteSql(SecureID, S)
+        '            '    If Not B1 Then
+        '            '        Console.WriteLine("Failed to delete " + Userid + " from Library " + LibraryName + ".")
+        '            '    End If
+        '            'End If
+        '        Loop
+        '    End If
+        'Catch ex As Exception
+        '    DBLogMessage(SecureID, gCurrUserGuidID, "ERROR: AddLibraryGroupUser 100 - " + ex.Message + vbCrLf + S)
+        '    RC = False
+        'Finally
+        '    RSData.Close()
+        'End Try
 
-            'RSData = Nothing
+        'RSData = Nothing
 
-            GC.Collect()
+        GC.Collect()
         GC.WaitForPendingFinalizers()
 
     End Sub
 
+    ''' <summary>
+    ''' Deletes the library group user.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="GroupName">Name of the group.</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <param name="GroupUserID">The group user identifier.</param>
     Public Sub DeleteLibraryGroupUser(ByRef SecureID As Integer, ByVal GroupName As String, ByVal LibraryName As String, ByVal GroupUserID As String)
 
         GroupName = GroupName.Replace("'", "''")
@@ -21496,6 +24982,10 @@ NextRow:
 
     End Sub
 
+    ''' <summary>
+    ''' Verifies the orphan source data.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub VerifyOrphanSourceData(ByRef SecureID As Integer)
         Try
             Dim S As String = "Select sourceguid from DataSource where DATALENGTH(SourceImage) = 0"
@@ -21531,6 +25021,10 @@ NextRow:
 
     End Sub
 
+    ''' <summary>
+    ''' Verifies the orphan email data.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub VerifyOrphanEmailData(ByRef SecureID As Integer)
 
         Try
@@ -21564,6 +25058,12 @@ NextRow:
 
     End Sub
 
+    ''' <summary>
+    ''' Adds the standard triggers.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TblName">Name of the table.</param>
+    ''' <param name="Keys">The keys.</param>
     Sub AddStdTriggers(ByRef SecureID As Integer, ByVal TblName As String, ByVal Keys As List(Of String))
         Dim S As String = ""
         Dim B As Boolean = False
@@ -21664,6 +25164,10 @@ NextRow:
         Return
     End Sub
 
+    ''' <summary>
+    ''' Verifies the standard triggers.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub VerifyStandardTriggers(ByRef SecureID As Integer)
 
         Dim Keys As New List(Of String)
@@ -21738,6 +25242,13 @@ NextRow:
 
     End Sub
 
+    ''' <summary>
+    ''' Counts the groups user belongs to.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TcbLibraryName">Name of the TCB library.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.Int32.</returns>
     Function countGroupsUserBelongsTo(ByRef SecureID As Integer, ByVal TcbLibraryName As String, ByVal UserID As String) As Integer
 
         Dim S As String = ""
@@ -21748,6 +25259,12 @@ NextRow:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the group libraries.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="GroupName">Name of the group.</param>
+    ''' <param name="ListOfLibraries">The list of libraries.</param>
     Public Sub GetGroupLibraries(ByRef SecureID As Integer, ByVal GroupName As String, ByRef ListOfLibraries As List(Of String))
 
         ListOfLibraries.Clear()
@@ -21777,6 +25294,11 @@ NextRow:
 
     End Sub
 
+    ''' <summary>
+    ''' Resets the library users count.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub ResetLibraryUsersCount(ByRef SecureID As Integer, ByRef RC As Boolean)
         RC = True
         Dim b As Boolean = True
@@ -21848,6 +25370,12 @@ NextRow:
         'FrmMDIMain.SB4.Text = "Complete."
     End Sub
 
+    ''' <summary>
+    ''' Gets the list of containing libraries.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="tGuid">The t unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getListOfContainingLibraries(ByRef SecureID As Integer, ByVal tGuid As String) As String
         Dim S As String = "select LibraryName from LibraryItems where SourceGuid = '" + tGuid + "' "
         Dim LibName As String = ""
@@ -21868,6 +25396,10 @@ NextRow:
         Return ListOfLibs
     End Function
 
+    ''' <summary>
+    ''' Fixes the email fields.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub FixEmailFields(SecureID As Integer)
 
         Dim S As String = ""
@@ -21963,6 +25495,10 @@ NextRow:
 
     End Sub
 
+    ''' <summary>
+    ''' Fixes the email recipients.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub FixEmailRecipients(SecureID As Integer)
 
         Dim Recipient As String = ""
@@ -22023,6 +25559,11 @@ NextRow:
         'FrmMDIMain.SB4.Text = ""
     End Sub
 
+    ''' <summary>
+    ''' Records the growth.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Sub RecordGrowth(ByRef SecureID As Integer, ByRef RC As Boolean)
         Dim S As String = ""
         S = S + " IF OBJECT_ID('DatabaseFiles') IS NULL"
@@ -22047,6 +25588,10 @@ NextRow:
 
     End Sub
 
+    ''' <summary>
+    ''' Emails the hash rows.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub EmailHashRows(ByRef SecureID As Integer)
 
         Dim S As String = ""
@@ -22128,6 +25673,12 @@ NextOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Emails the hash rows apply.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="L">The l.</param>
+    ''' <param name="CS">The cs.</param>
     Sub EmailHashRowsApply(ByRef SecureID As Integer, ByRef L As Dictionary(Of String, String), ByVal CS As String)
         Dim rc As Boolean = False
         Dim CN As New SqlConnection(CS)
@@ -22190,6 +25741,10 @@ NextOne:
         CN.Dispose()
     End Sub
 
+    ''' <summary>
+    ''' Contents the hash rows.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub ContentHashRows(ByRef SecureID As Integer)
 
         Dim S As String = ""
@@ -22271,6 +25826,12 @@ NextOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Contents the hash rows apply.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="L">The l.</param>
+    ''' <param name="CS">The cs.</param>
     Sub ContentHashRowsApply(ByRef SecureID As Integer, ByRef L As Dictionary(Of String, String), ByVal CS As String)
         Dim rc As Boolean = False
         Dim CN As New SqlConnection(CS)
@@ -22322,6 +25883,12 @@ NextOne:
         CN.Dispose()
     End Sub
 
+    ''' <summary>
+    ''' Contents the add hash.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="tHash">The t hash.</param>
     Sub ContentAddHash(ByRef SecureID As Integer, ByVal SourceGuid As String, ByVal tHash As String)
 
         Dim CS As String = DBgetConnStr()
@@ -22350,6 +25917,12 @@ NextOne:
         CN.Dispose()
     End Sub
 
+    ''' <summary>
+    ''' Emails the add hash.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="tHash">The t hash.</param>
     Sub EmailAddHash(ByRef SecureID As Integer, ByVal EmailGuid As String, ByVal tHash As String)
 
         Dim CS As String = DBgetConnStr()
@@ -22378,6 +25951,17 @@ NextOne:
         CN.Dispose()
     End Sub
 
+    ''' <summary>
+    ''' Adds the email hash key.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EmailGuid">The email unique identifier.</param>
+    ''' <param name="subject">The subject.</param>
+    ''' <param name="body">The body.</param>
+    ''' <param name="CreationTime">The creation time.</param>
+    ''' <param name="SenderEmailAddress">The sender email address.</param>
+    ''' <param name="nbrAttachments">The NBR attachments.</param>
+    ''' <param name="SourceTypeCode">The source type code.</param>
     Sub addEmailHashKey(ByRef SecureID As Integer, ByVal EmailGuid As String,
     ByVal subject As String,
     ByVal body As String,
@@ -22391,6 +25975,17 @@ NextOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Adds the content hash key.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="VersionNbr">The version NBR.</param>
+    ''' <param name="CreateDate">The create date.</param>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="OriginalFileType">Type of the original file.</param>
+    ''' <param name="FileLength">Length of the file.</param>
+    ''' <param name="CRC">The CRC.</param>
     Sub addContentHashKey(ByRef SecureID As Integer, ByVal SourceGuid As String,
     ByVal VersionNbr As String,
     ByVal CreateDate As String,
@@ -22404,11 +25999,18 @@ NextOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Allows an object to try to free resources and perform other cleanup operations before it is reclaimed by garbage collection.
+    ''' </summary>
     Protected Overrides Sub Finalize()
         KGEN = Nothing
         MyBase.Finalize()
     End Sub
 
+    ''' <summary>
+    ''' Cleans up email folders.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub CleanUpEmailFolders(ByRef SecureID As Integer)
 
         Dim S As String = ""
@@ -22431,6 +26033,12 @@ NextOne:
 
     End Sub
 
+    ''' <summary>
+    ''' bs the file name exists.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function bFileNameExists(ByRef SecureID As Integer, ByVal SourceName As String) As Boolean
         Dim B As Boolean = True
         Dim I As Integer = 0
@@ -22445,6 +26053,16 @@ NextOne:
         Return B
     End Function
 
+    ''' <summary>
+    ''' bs the identical file.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceName">Name of the source.</param>
+    ''' <param name="CRC">The CRC.</param>
+    ''' <param name="CreateDate">The create date.</param>
+    ''' <param name="LastAccessDate">The last access date.</param>
+    ''' <param name="FileLength">Length of the file.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function bIdenticalFile(ByRef SecureID As Integer, ByVal SourceName As String,
     ByVal CRC As String,
     ByVal CreateDate As String,
@@ -22464,6 +26082,12 @@ NextOne:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the parm value.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="Parms">The parms.</param>
     Sub GetParmValue(ByRef SecureID As Integer, ByVal UID As String, ByRef Parms As List(Of String))
 
         Parms.Clear()
@@ -22510,6 +26134,19 @@ NextOne:
 
     End Sub
 
+    ''' <summary>
+    ''' Populates the email grid with weights.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="CallerName">Name of the caller.</param>
+    ''' <param name="MySql">My SQL.</param>
+    ''' <param name="nbrWeightMin">The NBR weight minimum.</param>
+    ''' <param name="StartingRow">The starting row.</param>
+    ''' <param name="EndingRow">The ending row.</param>
+    ''' <param name="bFirstEmailSearchSubmit">if set to <c>true</c> [b first email search submit].</param>
+    ''' <param name="EmailRowCnt">The email row count.</param>
+    ''' <returns>System.Collections.Generic.List(Of DS_EMAIL).</returns>
     Function PopulateEmailGridWithWeights(ByRef SecureID As Integer, ByVal UID As String, ByVal CallerName As String,
                                     ByVal MySql As String, ByVal nbrWeightMin As String,
                                     ByVal StartingRow As Integer,
@@ -22808,6 +26445,18 @@ GetNextRecord:
 
     End Function
 
+    ''' <summary>
+    ''' Populates the email grid with no weights.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="CallerName">Name of the caller.</param>
+    ''' <param name="MySql">My SQL.</param>
+    ''' <param name="StartingRow">The starting row.</param>
+    ''' <param name="EndingRow">The ending row.</param>
+    ''' <param name="bNewEmailSearchSubmit">if set to <c>true</c> [b new email search submit].</param>
+    ''' <param name="EmailRowCnt">The email row count.</param>
+    ''' <returns>System.Collections.Generic.List(Of DS_EMAIL).</returns>
     Function PopulateEmailGridWithNoWeights(ByRef SecureID As Integer, ByVal UID As String,
     ByVal CallerName As String,
     ByVal MySql As String,
@@ -23134,6 +26783,14 @@ GetNextRecord:
 
     End Function
 
+    ''' <summary>
+    ''' Temporaries the email table.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="IDGuid">The identifier unique identifier.</param>
+    ''' <param name="Classification">The classification.</param>
+    ''' <param name="ListOfEmails">The list of emails.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Private Function TempEmailTable(SecureID As Integer, IDGuid As String, Classification As String, ListOfEmails As List(Of DS_EMAIL)) As Boolean
         Dim B As Boolean = True
         Dim BB As Boolean = True
@@ -23169,6 +26826,17 @@ GetNextRecord:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Merges the email attachments.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="ListOfEmails">The list of emails.</param>
+    ''' <param name="ckWeights">if set to <c>true</c> [ck weights].</param>
+    ''' <param name="Weight">The weight.</param>
+    ''' <param name="PaginateData">if set to <c>true</c> [paginate data].</param>
+    ''' <param name="LowerPageNbr">The lower page NBR.</param>
+    ''' <param name="UpperPageNbr">The upper page NBR.</param>
     Sub MergeEmailAttachments(ByRef SecureID As Integer, ByVal UID As String, ByRef ListOfEmails As List(Of DS_EMAIL),
     ByVal ckWeights As Boolean, ByVal Weight As String,
     ByVal PaginateData As Boolean, ByVal LowerPageNbr As Integer, ByVal UpperPageNbr As Integer)
@@ -23477,6 +27145,17 @@ GetNextRecord:
 
     End Sub
 
+    ''' <summary>
+    ''' Populates the source grid with weights.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="StartingRow">The starting row.</param>
+    ''' <param name="EndingRow">The ending row.</param>
+    ''' <param name="CallerName">Name of the caller.</param>
+    ''' <param name="MySql">My SQL.</param>
+    ''' <param name="bNewRows">if set to <c>true</c> [b new rows].</param>
+    ''' <param name="SourceRowCnt">The source row count.</param>
+    ''' <returns>List(Of DS_CONTENT).</returns>
     Function PopulateSourceGridWithWeights(ByRef SecureID As Integer, ByVal StartingRow As Integer, ByVal EndingRow As Integer, ByVal CallerName As String,
     ByVal MySql As String, ByRef bNewRows As Boolean, ByRef SourceRowCnt As Integer) As List(Of DS_CONTENT)
 
@@ -23740,6 +27419,17 @@ GetNextRecord:
 
     End Function
 
+    ''' <summary>
+    ''' Populates the source grid no weights.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="StartingRow">The starting row.</param>
+    ''' <param name="EndingRow">The ending row.</param>
+    ''' <param name="CallerName">Name of the caller.</param>
+    ''' <param name="MySql">My SQL.</param>
+    ''' <param name="bNewRows">if set to <c>true</c> [b new rows].</param>
+    ''' <param name="SourceRowCnt">The source row count.</param>
+    ''' <returns>System.Collections.Generic.List(Of DS_CONTENT).</returns>
     Function PopulateSourceGridNoWeights(ByRef SecureID As Integer, ByVal StartingRow As Integer, ByVal EndingRow As Integer, ByVal CallerName As String, ByVal MySql As String, ByRef bNewRows As Boolean, ByRef SourceRowCnt As Integer) As System.Collections.Generic.List(Of DS_CONTENT)
 
         bNewRows = False
@@ -23997,6 +27687,18 @@ GetNextRecord:
 
     End Function
 
+    ''' <summary>
+    ''' Saves the state of the screen.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="ScreenName">Name of the screen.</param>
+    ''' <param name="DICT">The dictionary.</param>
+    ''' <param name="rMsg">The r MSG.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="HiveConnectionName">Name of the hive connection.</param>
+    ''' <param name="HiveActive">if set to <c>true</c> [hive active].</param>
+    ''' <param name="RepoSvrName">Name of the repo SVR.</param>
     Sub saveScreenState(ByRef SecureID As Integer, ByVal UID As String, ByVal ScreenName As String, ByVal DICT As Dictionary(Of String, String), ByRef rMsg As String, ByRef RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String)
 
         rMsg = "Screen save complete:" + vbCrLf
@@ -24054,6 +27756,19 @@ GetNextRecord:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the state of the screen.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="ScreenName">Name of the screen.</param>
+    ''' <param name="DICT">The dictionary.</param>
+    ''' <param name="rMsg">The r MSG.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="HiveConnectionName">Name of the hive connection.</param>
+    ''' <param name="HiveActive">if set to <c>true</c> [hive active].</param>
+    ''' <param name="RepoSvrName">Name of the repo SVR.</param>
+    ''' <returns>List(Of DS_USERSCREENSTATE).</returns>
     Function getScreenState(ByRef SecureID As Integer, ByVal UID As String, ByVal ScreenName As String, ByRef DICT As Dictionary(Of String, String), ByRef rMsg As String, ByRef RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String) As List(Of DS_USERSCREENSTATE)
         rMsg = "Successfully acquired Screen '" + ScreenName + "'s state data."
 
@@ -24212,6 +27927,28 @@ GetNextRecord:
         Return ListOfRows
     End Function
 
+    ''' <summary>
+    ''' Saves the grid layout.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="ScreenName">Name of the screen.</param>
+    ''' <param name="GridName">Name of the grid.</param>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <param name="ColOrder">The col order.</param>
+    ''' <param name="ColWidth">Width of the col.</param>
+    ''' <param name="ColVisible">if set to <c>true</c> [col visible].</param>
+    ''' <param name="ColReadOnly">if set to <c>true</c> [col read only].</param>
+    ''' <param name="ColSortOrder">The col sort order.</param>
+    ''' <param name="ColSortAsc">if set to <c>true</c> [col sort asc].</param>
+    ''' <param name="HiveConnectionName">Name of the hive connection.</param>
+    ''' <param name="HiveActive">if set to <c>true</c> [hive active].</param>
+    ''' <param name="RepoSvrName">Name of the repo SVR.</param>
+    ''' <param name="RowCreationDate">The row creation date.</param>
+    ''' <param name="RowLastModDate">The row last mod date.</param>
+    ''' <param name="RowNbr">The row NBR.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="rMsg">The r MSG.</param>
     Sub saveGridLayout(ByRef SecureID As Integer, ByRef UserID As String,
                 ByRef ScreenName As String,
                 ByRef GridName As String,
@@ -24339,6 +28076,20 @@ GetNextRecord:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the grid layout.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="ScreenName">Name of the screen.</param>
+    ''' <param name="GridName">Name of the grid.</param>
+    ''' <param name="DICT">The dictionary.</param>
+    ''' <param name="rMsg">The r MSG.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="HiveConnectionName">Name of the hive connection.</param>
+    ''' <param name="HiveActive">if set to <c>true</c> [hive active].</param>
+    ''' <param name="RepoSvrName">Name of the repo SVR.</param>
+    ''' <returns>List(Of DS_clsUSERGRIDSTATE).</returns>
     Function getGridLayout(ByRef SecureID As Integer, ByVal UID As String,
     ByVal ScreenName As String,
     GridName As String,
@@ -24552,6 +28303,18 @@ GetNextRecord:
         Return ListOfRows
     End Function
 
+    ''' <summary>
+    ''' Saves the search parms.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="ScreenName">Name of the screen.</param>
+    ''' <param name="DICT">The dictionary.</param>
+    ''' <param name="rMsg">The r MSG.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="HiveConnectionName">Name of the hive connection.</param>
+    ''' <param name="HiveActive">if set to <c>true</c> [hive active].</param>
+    ''' <param name="RepoSvrName">Name of the repo SVR.</param>
     Sub saveSearchParms(ByRef SecureID As Integer, ByVal UID As String, ByVal ScreenName As String, ByVal DICT As Dictionary(Of String, String), ByRef rMsg As String, ByRef RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String)
 
         rMsg = "Search save complete:" + vbCrLf
@@ -24613,15 +28376,16 @@ GetNextRecord:
     ''' Pass in a fully populated dictionary of items and all of those parameters and their values
     ''' will be saved in the me.
     ''' </summary>
-    ''' <param name="UID">               Current User Login ID</param>
-    ''' <param name="ScreenName">        THe screen name from calling this function</param>
-    ''' <param name="DICT">              The dictionary to be populated.</param>
-    ''' <param name="rMsg">              A return message</param>
-    ''' <param name="RC">                A boolean return code</param>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SearchID">The search identifier.</param>
+    ''' <param name="UID">Current User Login ID</param>
+    ''' <param name="ScreenName">THe screen name from calling this function</param>
+    ''' <param name="DICT">The dictionary to be populated.</param>
+    ''' <param name="rMsg">A return message</param>
+    ''' <param name="RC">A boolean return code</param>
     ''' <param name="HiveConnectionName">The hive name</param>
-    ''' <param name="HiveActive">        True if a hive connection is active.</param>
-    ''' <param name="RepoSvrName">       The home repository server name.</param>
-    ''' <remarks></remarks>
+    ''' <param name="HiveActive">True if a hive connection is active.</param>
+    ''' <param name="RepoSvrName">The home repository server name.</param>
     Sub saveSearchState(ByRef SecureID As Integer, ByVal SearchID As Integer, ByVal UID As String, ByVal ScreenName As String, ByVal DICT As Dictionary(Of String, String), ByRef rMsg As String, ByRef RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String)
 
         rMsg = "Search save complete:" + vbCrLf
@@ -24685,20 +28449,18 @@ GetNextRecord:
     ''' Pass in a dictionary and that dictionary of items will be filled in by the database. This
     ''' also returns a fully populated list of DS_USERSCREENSTATE items.
     ''' </summary>
-    ''' <param name="UID">               Current User Login ID</param>
-    ''' <param name="SearchID">          
-    ''' Each search has an associated SEARCH ID that specifically identifies that search as one that
-    ''' has been performed by a user.
-    ''' </param>
-    ''' <param name="ScreenName">        THe screen name from calling this function</param>
-    ''' <param name="DICT">              The dictionary to be populated.</param>
-    ''' <param name="rMsg">              A return message</param>
-    ''' <param name="RC">                A boolean return code</param>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SearchID">Each search has an associated SEARCH ID that specifically identifies that search as one that
+    ''' has been performed by a user.</param>
+    ''' <param name="UID">Current User Login ID</param>
+    ''' <param name="ScreenName">THe screen name from calling this function</param>
+    ''' <param name="DICT">The dictionary to be populated.</param>
+    ''' <param name="rMsg">A return message</param>
+    ''' <param name="RC">A boolean return code</param>
     ''' <param name="HiveConnectionName">The hive name</param>
-    ''' <param name="HiveActive">        True if a hive connection is active.</param>
-    ''' <param name="RepoSvrName">       The home repository server name.</param>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
+    ''' <param name="HiveActive">True if a hive connection is active.</param>
+    ''' <param name="RepoSvrName">The home repository server name.</param>
+    ''' <returns>List(Of DS_USERSEARCHSTATE).</returns>
     Function getSearchState(ByRef SecureID As Integer, ByVal SearchID As Integer, ByVal UID As String, ByVal ScreenName As String, ByRef DICT As Dictionary(Of String, String), ByRef rMsg As String, ByRef RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String) As List(Of DS_USERSEARCHSTATE)
         rMsg = "Successfully acquired Search '" + ScreenName + "'s state data."
 
@@ -24998,6 +28760,12 @@ GetNextRecord:
 
     'End Function
 
+    ''' <summary>
+    ''' Gens the admin content SQL xx.
+    ''' </summary>
+    ''' <param name="SearchParmList">The search parm list.</param>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Function genAdminContentSqlXX(ByVal SearchParmList As SortedList(Of String, String), ByRef SecureID As Integer) As String
 
         '***************************************************************************************************
@@ -25154,6 +28922,12 @@ GetNextRecord:
         Return UserSql
     End Function
 
+    ''' <summary>
+    ''' Gets the search parm list.
+    ''' </summary>
+    ''' <param name="sKey">The s key.</param>
+    ''' <param name="SearchParmList">The search parm list.</param>
+    ''' <returns>System.String.</returns>
     Function getSearchParmList(ByVal sKey As String, ByVal SearchParmList As SortedList(Of String, String)) As String
         Dim rVal As String = ""
         If SearchParmList.ContainsKey(sKey) Then
@@ -25162,18 +28936,34 @@ GetNextRecord:
         Return rVal
     End Function
 
+    ''' <summary>
+    ''' Gens the conten count SQL.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Function genContenCountSql(ByVal SecureID As Integer) As String
         Dim DocsSql As String = "Select count(*) " + vbCrLf
         DocsSql += "FROM DataSource " + vbCrLf
         Return DocsSql
     End Function
 
+    ''' <summary>
+    ''' Gens the email count SQL.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Function genEmailCountSql(ByVal SecureID As Integer) As String
         Dim DocsSql As String = "Select count(*) " + vbCrLf
         DocsSql += "FROM [email] " + vbCrLf
         Return DocsSql
     End Function
 
+    ''' <summary>
+    ''' Gets the content table cols.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ckWeights">if set to <c>true</c> [ck weights].</param>
+    ''' <returns>System.String.</returns>
     Function getContentTblCols(ByRef SecureID As Integer, ByVal ckWeights As Boolean) As String
         Dim DocsSql As String = ""
 
@@ -25226,6 +29016,11 @@ GetNextRecord:
         Return DocsSql
     End Function
 
+    ''' <summary>
+    ''' Gens the is in libraries SQL.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function genIsInLibrariesSql(ByVal SecureID As Integer) As Boolean
 
         Dim B As Boolean = False
@@ -25256,6 +29051,12 @@ GetNextRecord:
 
     End Function
 
+    ''' <summary>
+    ''' Gets all cols SQL.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TblID">The table identifier.</param>
+    ''' <returns>SqlDataReader.</returns>
     Public Function getAllColsSql(ByRef SecureID As Integer, ByVal TblID As String) As SqlDataReader
         Dim s As String = "Select C.name, C.column_id, "
         s = s + " C.system_type_id , C.max_length, "
@@ -25276,6 +29077,14 @@ GetNextRecord:
         Return rsData
     End Function
 
+    ''' <summary>
+    ''' Gens the single library select.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="EmailContainsClause">The email contains clause.</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <returns>System.String.</returns>
     Function genSingleLibrarySelect(ByRef SecureID As Integer, ByVal UID As String, ByVal EmailContainsClause As String, ByVal LibraryName As String) As String
         Dim S As String = ""
 
@@ -25291,6 +29100,20 @@ GetNextRecord:
         Return S
     End Function
 
+    ''' <summary>
+    ''' Adds the library items.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="ItemTitle">The item title.</param>
+    ''' <param name="ItemType">Type of the item.</param>
+    ''' <param name="LibraryItemGuid">The library item unique identifier.</param>
+    ''' <param name="DataSourceOwnerUserID">The data source owner user identifier.</param>
+    ''' <param name="LibraryOwnerUserID">The library owner user identifier.</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <param name="AddedByUserGuidId">The added by user unique identifier identifier.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="rMsg">The r MSG.</param>
     Sub AddLibraryItems(ByRef SecureID As Integer, ByVal SourceGuid As String,
     ByVal ItemTitle As String,
     ByVal ItemType As String,
@@ -25346,6 +29169,11 @@ GetNextRecord:
 
     End Sub
 
+    ''' <summary>
+    ''' Compresses the specified buffer to compress.
+    ''' </summary>
+    ''' <param name="BufferToCompress">The buffer to compress.</param>
+    ''' <returns>System.Byte().</returns>
     Public Shared Function Compress(ByVal BufferToCompress As Byte()) As Byte()
         Dim ms As New MemoryStream()
         Dim zip As New GZipStream(ms, CompressionMode.Compress, True)
@@ -25365,6 +29193,11 @@ GetNextRecord:
 
     End Function
 
+    ''' <summary>
+    ''' Decompresses the specified buffer to decompress.
+    ''' </summary>
+    ''' <param name="BufferToDecompress">The buffer to decompress.</param>
+    ''' <returns>System.Byte().</returns>
     Public Shared Function Decompress(ByVal BufferToDecompress As Byte()) As Byte()
         Dim ms As New MemoryStream()
         Dim msgLength As Integer = BitConverter.ToInt32(BufferToDecompress, 0)
@@ -25379,6 +29212,12 @@ GetNextRecord:
         Return buffer
     End Function
 
+    ''' <summary>
+    ''' Gets the email attachments.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="CurrEmailGuid">The curr email unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Function GetEmailAttachments(ByRef SecureID As Integer, ByVal CurrEmailGuid As String) As String
 
         Dim ListOfItems As New List(Of DS_EmailAttachments)
@@ -25433,12 +29272,12 @@ GetNextRecord:
     ''' <param name="SecureID">The secure identifier, can be set to 0 if there is only one repository in use..</param>
     ''' <param name="SourceGuid">The source unique identifier is that of the ZIP file.</param>
     ''' <param name="RC">RC will return as true upon success or false otherwise.</param>
-    ''' <returns>The return string is JSON and comprised of 
-    '''Item.SourceName = SourceName
-    '''Item.SourceGuid = SourceGuid
-    '''Item.isParent = isParent
-    '''If isParent, SourceGuid Is the containing ZIP file
-    '''If Not isParent, SourceGuid Is the file within the ZIP file</returns>
+    ''' <returns>The return string is JSON and comprised of
+    ''' Item.SourceName = SourceName
+    ''' Item.SourceGuid = SourceGuid
+    ''' Item.isParent = isParent
+    ''' If isParent, SourceGuid Is the containing ZIP file
+    ''' If Not isParent, SourceGuid Is the file within the ZIP file</returns>
     Function GetFilesInZipDetail(ByRef SecureID As Integer, ByVal SourceGuid As String, ByRef RC As Boolean) As String
 
         Dim ListOfItems As List(Of DS_ZipFiles) = New List(Of DS_ZipFiles)
@@ -25504,12 +29343,22 @@ GetNextRecord:
 
     End Function
 
+    ''' <summary>
+    ''' Cleans the log.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Sub CleanLog(ByRef SecureID As Integer)
         Dim S As String = ""
         S = "DELETE FROM [Logs] WHERE DATEDIFF(day,getdate(),[EntryDate]) > 3"
         Dim B As Boolean = DBExecuteSql(SecureID, S)
     End Sub
 
+    ''' <summary>
+    ''' Gets the thesaurus identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ThesaurusName">Name of the thesaurus.</param>
+    ''' <returns>System.String.</returns>
     Function getThesaurusID(ByRef SecureID As Integer, ByVal ThesaurusName As String) As String
 
         If ThesaurusName.Trim.Length = 0 Then
@@ -25550,6 +29399,11 @@ GetNextRecord:
         Return TID
     End Function
 
+    ''' <summary>
+    ''' Gets the thesaurus connection string.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function getThesaurusConnectionString(ByRef SecureID As Integer) As String
 
         If ThesaurusConnectionString = "" Then
@@ -25563,12 +29417,24 @@ GetNextRecord:
         Return ThesaurusConnectionString
     End Function
 
+    ''' <summary>
+    ''' Sets the connection thesaurus string.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Public Sub setConnThesaurusStr(ByRef SecureID As Integer)
         Dim S As String = ""
         S = System.Configuration.ConfigurationManager.AppSettings("ECM_ThesaurusConnectionString").ToString
         ThesaurusConnectionString = S
     End Sub
 
+    ''' <summary>
+    ''' Populates the secure login cb.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="StrCB">The string cb.</param>
+    ''' <param name="CompanyID">The company identifier.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
     Sub PopulateSecureLoginCB(ByRef SecureID As Integer, ByRef StrCB As String, ByVal CompanyID As String, ByRef RC As Boolean, ByRef RetMsg As String)
 
         Dim CB As List(Of String) = New List(Of String)()
@@ -25641,6 +29507,14 @@ GetNextRecord:
 
     End Sub
 
+    ''' <summary>
+    ''' Populates the secure login cb v2.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="AllRepos">All repos.</param>
+    ''' <param name="CompanyID">The company identifier.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
     Sub PopulateSecureLoginCB_V2(ByRef SecureID As Integer, ByRef AllRepos As String, ByVal CompanyID As String, ByRef RC As Boolean, ByRef RetMsg As String)
 
         RC = True
@@ -25696,6 +29570,14 @@ GetNextRecord:
 
     End Sub
 
+    ''' <summary>
+    ''' Actives the session.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SessionGuid">The session unique identifier.</param>
+    ''' <param name="ParmName">Name of the parm.</param>
+    ''' <param name="ParmValue">The parm value.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function ActiveSession(ByRef SecureID As Integer, ByVal SessionGuid As Guid, ByVal ParmName As String, ByVal ParmValue As String) As Boolean
         Dim iCnt As Integer = -1
         Dim S As String = ""
@@ -25737,6 +29619,13 @@ GetNextRecord:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Actives the session get value.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SessionGuid">The session unique identifier.</param>
+    ''' <param name="ParmName">Name of the parm.</param>
+    ''' <returns>System.String.</returns>
     Public Function ActiveSessionGetVal(ByRef SecureID As Integer, ByRef SessionGuid As Guid, ByRef ParmName As String) As String
         Dim iCnt As Integer = -1
         Dim S As String = ""
@@ -25777,6 +29666,15 @@ GetNextRecord:
         Return ParmVal
     End Function
 
+    ''' <summary>
+    ''' Gets the list of strings.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="strListOfItems">The string list of items.</param>
+    ''' <param name="MySql">My SQL.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function getListOfStrings(ByRef SecureID As Integer, ByRef strListOfItems As String, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String) As Boolean
         Dim B As Boolean = False
         Dim ListOfItems As List(Of String) = New List(Of String)()
@@ -25810,6 +29708,15 @@ GetNextRecord:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the list of strings1.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="strListOfItems">The string list of items.</param>
+    ''' <param name="MySql">My SQL.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function getListOfStrings1(ByRef SecureID As Integer, ByRef strListOfItems As String, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String) As Boolean
         Dim B As Boolean = False
         Dim ListOfItems As List(Of String) = New List(Of String)()
@@ -25843,6 +29750,15 @@ GetNextRecord:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the list of strings2.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="strListOfItems">The string list of items.</param>
+    ''' <param name="MySql">My SQL.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function getListOfStrings2(ByRef SecureID As Integer, ByRef strListOfItems As String, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String) As Boolean
         Dim B As Boolean = False
         Dim ListOfItems As List(Of String) = New List(Of String)()
@@ -25878,6 +29794,15 @@ GetNextRecord:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the list of strings3.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="strListOfItems">The string list of items.</param>
+    ''' <param name="MySql">My SQL.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function getListOfStrings3(ByRef SecureID As Integer, ByRef strListOfItems As String, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String) As Boolean
         Dim B As Boolean = False
         Dim ListOfItems As List(Of String) = New List(Of String)()
@@ -25913,6 +29838,15 @@ GetNextRecord:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the list of strings4.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="strListOfItems">The string list of items.</param>
+    ''' <param name="MySql">My SQL.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function getListOfStrings4(ByRef SecureID As Integer, ByRef strListOfItems As String, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String) As Boolean
         Dim B As Boolean = False
         Dim ListOfItems As List(Of String) = New List(Of String)()
@@ -25948,6 +29882,14 @@ GetNextRecord:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the list of strings01.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="MySql">My SQL.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
+    ''' <returns>System.String.</returns>
     Function getListOfStrings01(ByRef SecureID As Integer, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String) As String
 
         Dim ListOfItems As New System.Collections.Generic.List(Of DS_ListOfStrings01)
@@ -25982,6 +29924,14 @@ GetNextRecord:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the list of strings02.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="MySql">My SQL.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
+    ''' <returns>List(Of DS_ListOfStrings02).</returns>
     Function getListOfStrings02(ByRef SecureID As Integer, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String) As List(Of DS_ListOfStrings02)
 
         Dim ListOfItems As New System.Collections.Generic.List(Of DS_ListOfStrings02)
@@ -26012,6 +29962,14 @@ GetNextRecord:
         Return ListOfItems
     End Function
 
+    ''' <summary>
+    ''' Gets the list of strings03.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="MySql">My SQL.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
+    ''' <returns>List(Of DS_ListOfStrings03).</returns>
     Function getListOfStrings03(ByRef SecureID As Integer, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String) As List(Of DS_ListOfStrings03)
 
         Dim ListOfItems As New System.Collections.Generic.List(Of DS_ListOfStrings03)
@@ -26042,6 +30000,14 @@ GetNextRecord:
         Return ListOfItems
     End Function
 
+    ''' <summary>
+    ''' Gets the list of strings04.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="MySql">My SQL.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
+    ''' <returns>List(Of DS_ListOfStrings04).</returns>
     Function getListOfStrings04(ByRef SecureID As Integer, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String) As List(Of DS_ListOfStrings04)
 
         Dim ListOfItems As New System.Collections.Generic.List(Of DS_ListOfStrings04)
@@ -26072,6 +30038,12 @@ GetNextRecord:
         Return ListOfItems
     End Function
 
+    ''' <summary>
+    ''' Populates the library grid.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>List(Of DS_VLibraryStats).</returns>
     Function PopulateLibraryGrid(ByRef SecureID As Integer, ByVal UserID As String) As List(Of DS_VLibraryStats)
 
         Dim ListOfRows As New System.Collections.Generic.List(Of DS_VLibraryStats)
@@ -26166,6 +30138,12 @@ GetNextRecord:
 
     End Function
 
+    ''' <summary>
+    ''' Populates the co owner grid.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <returns>System.String.</returns>
     Function PopulateCoOwnerGrid(ByVal SecureID As Integer, ByVal UID As String) As String
 
         Dim S As String = ""
@@ -26254,6 +30232,13 @@ GetNextRecord:
         Return Json
     End Function
 
+    ''' <summary>
+    ''' Populates the user grid.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="DBisAdmin">if set to <c>true</c> [d bis admin].</param>
+    ''' <returns>System.Collections.Generic.List(Of DS_VUserGrid).</returns>
     Function PopulateUserGrid(ByRef SecureID As Integer, ByVal UserID As String, ByVal DBisAdmin As Boolean) As System.Collections.Generic.List(Of DS_VUserGrid)
 
         Dim ListOfRows As New System.Collections.Generic.List(Of DS_VUserGrid)
@@ -26423,12 +30408,9 @@ GetNextRecord:
     ''' <summary>
     ''' Get the list of All users or a Group's users
     ''' </summary>
-    ''' <param name="SecureID"> </param>
-    ''' <param name="GroupName">
-    ''' Pass in a Group Name to filter the search, or leave it balnk to bring back all users
-    ''' </param>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="GroupName">Pass in a Group Name to filter the search, or leave it balnk to bring back all users</param>
+    ''' <returns>System.Collections.Generic.List(Of DS_dgGrpUsers).</returns>
     Function PopulateGroupUserGrid(ByRef SecureID As Integer, ByVal GroupName As String) As System.Collections.Generic.List(Of DS_dgGrpUsers)
 
         If GroupName Is Nothing Then
@@ -26525,6 +30507,13 @@ GetNextRecord:
 
     End Function
 
+    ''' <summary>
+    ''' Populates the dg assigned.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.Collections.Generic.List(Of DS_DgAssigned).</returns>
     Function PopulateDgAssigned(ByRef SecureID As Integer, ByVal LibraryName As String, ByVal UserID As String) As System.Collections.Generic.List(Of DS_DgAssigned)
 
         Dim ListOfRows As New System.Collections.Generic.List(Of DS_DgAssigned)
@@ -26608,6 +30597,13 @@ GetNextRecord:
 
     End Function
 
+    ''' <summary>
+    ''' Populates the library items grid.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.Collections.Generic.List(Of DS_LibItems).</returns>
     Public Function PopulateLibItemsGrid(ByRef SecureID As Integer, ByVal LibraryName As String, ByVal UserID As String) As System.Collections.Generic.List(Of DS_LibItems)
 
         Dim ListOfRows As New System.Collections.Generic.List(Of DS_LibItems)
@@ -26738,6 +30734,11 @@ GetNextRecord:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the row count SQL.
+    ''' </summary>
+    ''' <param name="MySql">My SQL.</param>
+    ''' <returns>System.String.</returns>
     Function GetRowCountSql(ByVal MySql As String) As String
         Dim NewSql As String = "Select Count(*) " + vbCrLf
         Dim A() As String = MySql.Split(vbCrLf)
@@ -26765,6 +30766,16 @@ NEXTLINE:
         Return NewSql
     End Function
 
+    ''' <summary>
+    ''' Deletes the group users.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="CurrSelectedGroupName">Name of the curr selected group.</param>
+    ''' <param name="GroupOwnerGuid">The group owner unique identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="iDeleted">The i deleted.</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function DeleteGroupUsers(SecureID As Integer, ByVal CurrSelectedGroupName As String,
                         ByVal GroupOwnerGuid As String,
                         ByVal UserID As String, ByRef iDeleted As Integer, ByRef RetMsg As String) As Boolean
@@ -26802,6 +30813,13 @@ NEXTLINE:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Populates the dg group users.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="OwnerUserGuidID">The owner user unique identifier identifier.</param>
+    ''' <param name="GroupName">Name of the group.</param>
+    ''' <returns>System.Collections.Generic.List(Of DS_DgGroupUsers).</returns>
     Public Function PopulateDgGroupUsers(ByRef SecureID As Integer, ByVal OwnerUserGuidID As String, ByVal GroupName As String) As System.Collections.Generic.List(Of DS_DgGroupUsers)
 
         Dim ListOfRows As New System.Collections.Generic.List(Of DS_DgGroupUsers)
@@ -26911,6 +30929,12 @@ NEXTLINE:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the user identifier by user login identifier.
+    ''' </summary>
+    ''' <param name="SecureId">The secure identifier.</param>
+    ''' <param name="UserLoginId">The user login identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getUserIdByUserLoginId(SecureId As Integer, UserLoginId As String) As String
         Dim UserID As String = ""
         Dim MySql As String = "Select UserID from dbo.Users where UserLoginID = '" + UserLoginId + "' "
@@ -26937,6 +30961,13 @@ NEXTLINE:
         Return UserID
     End Function
 
+    ''' <summary>
+    ''' Inserts the co owner.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="CurrentOwner">The current owner.</param>
+    ''' <param name="CoOwner">The co owner.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function InsertCoOwner(ByVal SecureID As Integer, ByVal CurrentOwner As String, ByVal CoOwner As String) As Boolean
         Dim B As Boolean = False
 
@@ -26965,6 +30996,12 @@ NEXTLINE:
     End Function
 
 
+    ''' <summary>
+    ''' Gets the encrypted value.
+    ''' </summary>
+    ''' <param name="iKey">The i key.</param>
+    ''' <param name="A">a.</param>
+    ''' <returns>System.String.</returns>
     Private Function getEncryptedValue(ByVal iKey As String, ByVal A As SortedList(Of String, String)) As String
         Dim tVal As String = ""
 
@@ -26981,6 +31018,12 @@ NEXTLINE:
         End If
         Return tVal
     End Function
+    ''' <summary>
+    ''' Parses the lic.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <param name="tKey">The t key.</param>
+    ''' <returns>System.String.</returns>
     Private Function ParseLic(ByVal S As String, ByVal tKey As String) As String
 
         Dim tVal As String = ""
@@ -26999,6 +31042,28 @@ NEXTLINE:
         Return tVal$
     End Function
 
+    ''' <summary>
+    ''' Saves the user.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="UserName">Name of the user.</param>
+    ''' <param name="EmailAddress">The email address.</param>
+    ''' <param name="UserPassword">The user password.</param>
+    ''' <param name="Admin">The admin.</param>
+    ''' <param name="isActive">The is active.</param>
+    ''' <param name="UserLoginID">The user login identifier.</param>
+    ''' <param name="ClientOnly">if set to <c>true</c> [client only].</param>
+    ''' <param name="HiveConnectionName">Name of the hive connection.</param>
+    ''' <param name="HiveActive">if set to <c>true</c> [hive active].</param>
+    ''' <param name="RepoSvrName">Name of the repo SVR.</param>
+    ''' <param name="RowCreationDate">The row creation date.</param>
+    ''' <param name="RowLastModDate">The row last mod date.</param>
+    ''' <param name="ActiveGuid">The active unique identifier.</param>
+    ''' <param name="RepoName">Name of the repo.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function SaveUser(ByVal SecureID As Integer, ByRef UserID As String, ByRef UserName As String, ByRef EmailAddress As String,
                 ByRef UserPassword As String, ByRef Admin As String, ByRef isActive As String,
                 ByRef UserLoginID As String, ByRef ClientOnly As Boolean, ByRef HiveConnectionName As String,
@@ -27137,6 +31202,13 @@ NEXTLINE:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Deletes the user.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SelectedUserGuid">The selected user unique identifier.</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function DeleteUser(ByVal SecureID As Integer, ByVal SelectedUserGuid As String, ByRef RetMsg As String) As Boolean
         Dim B As Boolean = True
         Try
@@ -27175,6 +31247,11 @@ NEXTLINE:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Deletes the table user.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
     Sub DeleteTableUser(ByVal SecureID As Integer, ByVal UserID As String)
 
         Dim B As Boolean = False
@@ -27283,6 +31360,14 @@ NEXTLINE:
 
     End Sub
 
+    ''' <summary>
+    ''' Removes the u ser.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="TBL">The table.</param>
+    ''' <param name="tgtCol">The TGT col.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Private Function RemoveUSer(ByVal SecureID As Integer, ByVal TBL As String, ByVal tgtCol As String, ByVal UserID As String) As Boolean
         Dim S As String = "Delete from  " + TBL + " Where " + tgtCol + " = '" + UserID + "'"
         Dim B As Boolean = DBExecuteSql(SecureID, S)
@@ -27292,6 +31377,13 @@ NEXTLINE:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Populates the library users grid.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <param name="ckLibUsersOnly">if set to <c>true</c> [ck library users only].</param>
+    ''' <returns>List(Of DS_VLibraryUsers).</returns>
     Function PopulateLibraryUsersGrid(ByRef SecureID As Integer, ByVal LibraryName As String, ByVal ckLibUsersOnly As Boolean) As List(Of DS_VLibraryUsers)
 
         LibraryName = UTIL.RemoveSingleQuotes(LibraryName)
@@ -27358,6 +31450,33 @@ NEXTLINE:
 
     End Function
 
+    ''' <summary>
+    ''' Saves the search schedule.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SearchName">Name of the search.</param>
+    ''' <param name="NotificationSMS">The notification SMS.</param>
+    ''' <param name="SearchDesc">The search desc.</param>
+    ''' <param name="OwnerID">The owner identifier.</param>
+    ''' <param name="SearchQuery">The search query.</param>
+    ''' <param name="SendToEmail">The send to email.</param>
+    ''' <param name="ScheduleUnit">The schedule unit.</param>
+    ''' <param name="ScheduleHour">The schedule hour.</param>
+    ''' <param name="ScheduleDaysOfWeek">The schedule days of week.</param>
+    ''' <param name="ScheduleDaysOfMonth">The schedule days of month.</param>
+    ''' <param name="ScheduleMonthOfQtr">The schedule month of QTR.</param>
+    ''' <param name="StartToRunDate">The start to run date.</param>
+    ''' <param name="EndRunDate">The end run date.</param>
+    ''' <param name="SearchParameters">The search parameters.</param>
+    ''' <param name="LastRunDate">The last run date.</param>
+    ''' <param name="NumberOfExecutions">The number of executions.</param>
+    ''' <param name="CreateDate">The create date.</param>
+    ''' <param name="LastModDate">The last mod date.</param>
+    ''' <param name="ScheduleHourInterval">The schedule hour interval.</param>
+    ''' <param name="RepoName">Name of the repo.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function saveSearchSchedule(ByVal SecureID As Integer, ByRef SearchName As String, ByRef NotificationSMS As String, ByRef SearchDesc As String, ByRef OwnerID As String, ByRef SearchQuery As String, ByRef SendToEmail As String, ByRef ScheduleUnit As String, ByRef ScheduleHour As String, ByRef ScheduleDaysOfWeek As String, ByRef ScheduleDaysOfMonth As String, ByRef ScheduleMonthOfQtr As String, ByRef StartToRunDate As Date, ByRef EndRunDate As Date, ByRef SearchParameters As String, ByRef LastRunDate As Date, ByRef NumberOfExecutions As Integer, ByRef CreateDate As Date, ByRef LastModDate As Date, ByRef ScheduleHourInterval As Integer, ByRef RepoName As String, ByRef RC As Boolean, ByRef RetMsg As String) As Boolean
 
         'wdm()
@@ -27467,6 +31586,33 @@ NEXTLINE:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the search schedule.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SearchName">Name of the search.</param>
+    ''' <param name="NotificationSMS">The notification SMS.</param>
+    ''' <param name="SearchDesc">The search desc.</param>
+    ''' <param name="OwnerID">The owner identifier.</param>
+    ''' <param name="SearchQuery">The search query.</param>
+    ''' <param name="SendToEmail">The send to email.</param>
+    ''' <param name="ScheduleUnit">The schedule unit.</param>
+    ''' <param name="ScheduleHour">The schedule hour.</param>
+    ''' <param name="ScheduleDaysOfWeek">The schedule days of week.</param>
+    ''' <param name="ScheduleDaysOfMonth">The schedule days of month.</param>
+    ''' <param name="ScheduleMonthOfQtr">The schedule month of QTR.</param>
+    ''' <param name="StartToRunDate">The start to run date.</param>
+    ''' <param name="EndRunDate">The end run date.</param>
+    ''' <param name="SearchParameters">The search parameters.</param>
+    ''' <param name="LastRunDate">The last run date.</param>
+    ''' <param name="NumberOfExecutions">The number of executions.</param>
+    ''' <param name="CreateDate">The create date.</param>
+    ''' <param name="LastModDate">The last mod date.</param>
+    ''' <param name="ScheduleHourInterval">The schedule hour interval.</param>
+    ''' <param name="RepoName">Name of the repo.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function getSearchSchedule(ByVal SecureID As Integer, ByRef SearchName As String, ByRef NotificationSMS As String, ByRef SearchDesc As String, ByRef OwnerID As String, ByRef SearchQuery As String, ByRef SendToEmail As String, ByRef ScheduleUnit As String, ByRef ScheduleHour As String, ByRef ScheduleDaysOfWeek As String, ByRef ScheduleDaysOfMonth As String, ByRef ScheduleMonthOfQtr As String, ByRef StartToRunDate As Date, ByRef EndRunDate As Date, ByRef SearchParameters As String, ByRef LastRunDate As Date, ByRef NumberOfExecutions As Integer, ByRef CreateDate As Date, ByRef LastModDate As Date, ByRef ScheduleHourInterval As Integer, ByRef RepoName As String, ByRef RC As Boolean, ByRef RetMsg As String) As Boolean
 
         SearchName = UTIL.RemoveSingleQuotes(SearchName)
@@ -27684,12 +31830,11 @@ NEXTLINE:
     ''' <summary>
     ''' Sets the curent state of the ECM SAAS Search Engine
     ''' </summary>
-    ''' <param name="SecureID"></param>
-    ''' <param name="UserID">  </param>
-    ''' <param name="DirName"> SAAS ACTIVE, CLC ACTIVE, RESTORE DIR, PREVIEW DIR</param>
-    ''' <param name="FullPath"></param>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="DirName">SAAS ACTIVE, CLC ACTIVE, RESTORE DIR, PREVIEW DIR</param>
+    ''' <param name="FullPath">The full path.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function SetSAASState(ByVal SecureID As Integer, ByVal UserID As String, ByVal DirName As String, ByVal FullPath As String) As Boolean
 
         Dim spName As String = ""
@@ -27746,6 +31891,16 @@ NEXTLINE:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the state of the saas.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="DirName">Name of the dir.</param>
+    ''' <param name="FullPath">The full path.</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <returns>System.String.</returns>
     Function getSAASState(ByVal SecureID As Integer, ByVal UserID As String, ByVal DirName As String, ByVal FullPath As String, ByRef RetMsg As String, ByRef RC As Boolean) As String
 
         Dim tVal As String = ""
@@ -27780,6 +31935,14 @@ NEXTLINE:
         Return tVal
     End Function
 
+    ''' <summary>
+    ''' Changes the user content public.
+    ''' </summary>
+    ''' <param name="ServiceID">The service identifier.</param>
+    ''' <param name="CurrSelectedUserGuid">The curr selected user unique identifier.</param>
+    ''' <param name="isPublic">The is public.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
     Public Sub ChangeUserContentPublic(ByVal ServiceID As Integer, ByVal CurrSelectedUserGuid As String, ByVal isPublic As String, ByRef RC As Boolean, ByRef RetMsg As String)
 
         Dim B As Boolean = False
@@ -27802,6 +31965,19 @@ NEXTLINE:
 
     End Sub
 
+    ''' <summary>
+    ''' Saves the restore file.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="tgtTable">The TGT table.</param>
+    ''' <param name="ContentGuid">The content unique identifier.</param>
+    ''' <param name="Preview">if set to <c>true</c> [preview].</param>
+    ''' <param name="Restore">if set to <c>true</c> [restore].</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMsg">The ret MSG.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function saveRestoreFile(ByVal SecureID As Integer, ByVal tgtTable As String, ByRef ContentGuid As String, ByVal Preview As Boolean, ByVal Restore As Boolean, ByRef UserID As String, ByRef MachineID As String, ByRef RC As Boolean, ByVal RetMsg As String) As Boolean
 
         Dim MySql As String = ""
@@ -27911,6 +32087,14 @@ NEXTLINE:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the restore file count.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <param name="Preview">if set to <c>true</c> [preview].</param>
+    ''' <returns>System.Int32.</returns>
     Function getRestoreFileCount(ByVal SecureID As Integer, ByRef UserID As String, ByRef MachineID As String, ByRef Preview As Boolean) As Integer
 
         Dim iCnt As Integer = 0
@@ -27925,6 +32109,12 @@ NEXTLINE:
 
     End Function
 
+    ''' <summary>
+    ''' Removes the restore file by unique identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="RowGuid">The row unique identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function removeRestoreFileByGuid(ByVal SecureID As Integer, ByVal RowGuid As String) As Boolean
 
         Dim B As Boolean = True
@@ -27939,6 +32129,13 @@ NEXTLINE:
 
     End Function
 
+    ''' <summary>
+    ''' Removes the restore files.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function removeRestoreFiles(ByVal SecureID As Integer, ByRef UserID As String, ByRef MachineID As String) As Boolean
 
         UserID = UTIL.RemoveSingleQuotes(UserID)
@@ -27956,6 +32153,27 @@ NEXTLINE:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the restore file.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ContentGuid">The content unique identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="FileSize">Size of the file.</param>
+    ''' <param name="ContentType">Type of the content.</param>
+    ''' <param name="Preview">if set to <c>true</c> [preview].</param>
+    ''' <param name="Restore">if set to <c>true</c> [restore].</param>
+    ''' <param name="ProcessingCompleted">if set to <c>true</c> [processing completed].</param>
+    ''' <param name="EntryDate">The entry date.</param>
+    ''' <param name="ProcessedDate">The processed date.</param>
+    ''' <param name="StartDownloadTime">The start download time.</param>
+    ''' <param name="EndDownloadTime">The end download time.</param>
+    ''' <param name="RepoName">Name of the repo.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
+    ''' <param name="RetMSg">The ret m sg.</param>
+    ''' <returns>List(Of DS_RESTOREQUEUE).</returns>
     Function getRestoreFile(ByVal SecureID As Integer, ByRef ContentGuid As String, ByRef UserID As String, ByRef MachineID As String, ByRef FQN As String, ByRef FileSize As Integer, ByRef ContentType As String, ByRef Preview As Boolean, ByRef Restore As Boolean, ByRef ProcessingCompleted As Boolean, ByRef EntryDate As Date, ByRef ProcessedDate As Date, ByRef StartDownloadTime As Date, ByRef EndDownloadTime As Date, ByRef RepoName As String, ByRef RC As Boolean, ByVal RetMSg As String) As List(Of DS_RESTOREQUEUE)
 
         Dim rsDataQry As SqlDataReader = Nothing
@@ -28141,6 +32359,13 @@ NEXTLINE:
 
     End Function
 
+    ''' <summary>
+    ''' Saves the search parms history.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="QryParms">The qry parms.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function saveSearchParmsHistory(ByRef SecureID As Integer, ByVal QryParms As String, UserID As String) As Boolean
 
         Dim SS As String = QryParms.Replace(" | ", "|")
@@ -28174,6 +32399,12 @@ NEXTLINE:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Alerts the search.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="StringToExamine">The string to examine.</param>
+    ''' <param name="IssuedByUserID">The issued by user identifier.</param>
     Sub AlertSearch(ByVal SecureID As Integer, ByVal StringToExamine As String, ByVal IssuedByUserID As String)
 
         If StringToExamine.Trim.Length = 0 Then
@@ -28271,6 +32502,12 @@ NEXTLINE:
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the attribute data type2.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="AttributeName">Name of the attribute.</param>
+    ''' <returns>System.String.</returns>
     Function getAttributeDataType2(ByVal SecureID As Integer, ByVal AttributeName As String) As String
         Dim tVal As String = ""
         Dim S As String = "Select AttributeDataType FROM [Attributes] where AttributeName = '" + AttributeName + "'"
@@ -28295,6 +32532,12 @@ NEXTLINE:
         End Try
     End Function
 
+    ''' <summary>
+    ''' Gets the content meta data.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>List(Of DS_Metadata).</returns>
     Function GetContentMetaData(ByVal SecureID As Integer, ByVal SourceGuid As String) As List(Of DS_Metadata)
 
         Dim ListOfMetadata As New System.Collections.Generic.List(Of DS_Metadata)
@@ -28369,6 +32612,16 @@ GetNextRecord:
 
     End Function
 
+    ''' <summary>
+    ''' Schedules the file down load.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ContentGuid">The content unique identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="ContentType">Type of the content.</param>
+    ''' <param name="Preview">The preview.</param>
+    ''' <param name="Restore">The restore.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function scheduleFileDownLoad(ByVal SecureID As Integer,
                             ByVal ContentGuid As String,
                             ByVal UserID As String,
@@ -28411,10 +32664,11 @@ GetNextRecord:
     ''' <summary>
     ''' Saves a user search to the database and all associated PARAMETERS
     ''' </summary>
-    ''' <param name="SecureID">   </param>
-    ''' <param name="strSearches"></param>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SearchName">Name of the search.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="strSearches">The string searches.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function SaveUserSearch(ByVal SecureID As Integer, ByVal SearchName As String, ByVal UID As String, ByVal strSearches As String) As Boolean
 
         SearchName = SearchName.Replace("''", "'")
@@ -28452,6 +32706,14 @@ GetNextRecord:
 
     End Function
 
+    ''' <summary>
+    ''' Recalls the user search.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SearchName">Name of the search.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="strSearches">The string searches.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function RecallUserSearch(ByVal SecureID As Integer, ByVal SearchName As String, ByVal UID As String, ByRef strSearches As String) As Boolean
 
         strSearches = ""
@@ -28490,6 +32752,12 @@ GetNextRecord:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the default screen.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <returns>System.String.</returns>
     Function getDefaultScreen(ByVal SecureID As Integer, ByVal UserID As String) As String
         Dim ParmVal As String = "CONTENT"
         Dim S As String = " select ParmVal from [UserCurrParm] where UserID = '" + UserID + "' and ParmName = 'uDefaultScreen'"
@@ -28519,6 +32787,14 @@ GetNextRecord:
         Return ParmVal
     End Function
 
+    ''' <summary>
+    ''' Databases the trace.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="StmtID">The statement identifier.</param>
+    ''' <param name="Stmt">The statement.</param>
+    ''' <param name="PgmName">Name of the PGM.</param>
+    ''' <param name="ex">The ex.</param>
     Public Sub DBTrace(ByRef SecureID As Integer, ByVal StmtID As Integer, ByVal Stmt As String, ByVal PgmName As String, ByVal ex As Exception)
 
         Dim ErrStack As String = ex.StackTrace.ToString
@@ -28544,6 +32820,13 @@ GetNextRecord:
 
     End Sub
 
+    ''' <summary>
+    ''' Databases the trace.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="StmtID">The statement identifier.</param>
+    ''' <param name="PgmName">Name of the PGM.</param>
+    ''' <param name="Stmt">The statement.</param>
     Public Sub DBTrace(ByRef SecureID As Integer, ByVal StmtID As Integer, ByVal PgmName As String, ByVal Stmt As String)
 
         If Stmt.Contains("Failed to save search results") Then
@@ -28571,6 +32854,11 @@ GetNextRecord:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Databases the fix single quotes.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Stmt">The statement.</param>
     Public Sub DBFixSingleQuotes(ByRef SecureID As Integer, ByRef Stmt As String)
         Dim I As Integer = 0
         Dim CH As String = ""
@@ -28582,6 +32870,13 @@ GetNextRecord:
         Next
     End Sub
 
+    ''' <summary>
+    ''' Databases the execute SQL by connection.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="sql">The SQL.</param>
+    ''' <param name="CN">The cn.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function DBExecuteSqlByConn(ByRef SecureID As Integer, ByVal sql As String, ByVal CN As SqlConnection) As Boolean
         Dim rc As Boolean = False
 
@@ -28634,6 +32929,13 @@ GetNextRecord:
         Return BB
     End Function
 
+    ''' <summary>
+    ''' Databases the execute encrypted SQL.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="EncSql">The enc SQL.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function DBExecuteEncryptedSql(ByRef SecureID As Integer, ByRef EncSql As String, ByVal UID As String) As Boolean
 
         Dim sKey As String = "DALE" 'write function getSessionKey (UserID)
@@ -28699,6 +33001,12 @@ GetNextRecord:
         Return BB
     End Function
 
+    ''' <summary>
+    ''' Databases the execute SQL.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="MySql">My SQL.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function DBExecuteSql(ByRef SecureID As Integer, ByRef MySql As String) As Boolean
         'If SecureID = 0 Then
         '    Return False
@@ -28767,6 +33075,13 @@ GetNextRecord:
         Return BB
     End Function
 
+    ''' <summary>
+    ''' Databases the execute SQL.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="sql">The SQL.</param>
+    ''' <param name="ValidateOwnerShip">if set to <c>true</c> [validate owner ship].</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function DBExecuteSql(ByRef SecureID As Integer, ByVal sql As String, ByVal ValidateOwnerShip As Boolean) As Boolean
         If ValidateOwnerShip = True Then
             If TgtGuid.Length = 0 Then
@@ -28810,6 +33125,14 @@ GetNextRecord:
         Return rc
     End Function
 
+    ''' <summary>
+    ''' Databases the execute SQL.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="MySql">My SQL.</param>
+    ''' <param name="ConnStr">The connection string.</param>
+    ''' <param name="ValidateOwnerShip">if set to <c>true</c> [validate owner ship].</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function DBExecuteSql(ByRef SecureID As Integer, ByRef MySql As String, ByVal ConnStr As String, ByVal ValidateOwnerShip As Boolean) As Boolean
         If ValidateOwnerShip = True Then
             If TgtGuid.Length = 0 Then
@@ -28859,6 +33182,12 @@ GetNextRecord:
         Return rc
     End Function
 
+    ''' <summary>
+    ''' Databases the log message.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="sMessage">The s message.</param>
     Sub DBLogMessage(ByRef SecureID As Integer, ByVal UID As String, ByVal sMessage As String)
         If UID.Length = 0 Then
             UID = gCurrUserGuidID
@@ -28873,6 +33202,10 @@ GetNextRecord:
         Console.WriteLine("B=" + B.ToString)
     End Sub
 
+    ''' <summary>
+    ''' Databases the close connection.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Public Sub DBCloseConn(ByRef SecureID As Integer)
         If gConn Is Nothing Then
         Else
@@ -28884,6 +33217,15 @@ GetNextRecord:
         GC.Collect()
     End Sub
 
+    ''' <summary>
+    ''' Databases the save error MSG.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ErrMsg">The error MSG.</param>
+    ''' <param name="ErrStack">The error stack.</param>
+    ''' <param name="IDNBR">The idnbr.</param>
+    ''' <param name="ConnectiveGuid">The connective unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function DBSaveErrMsg(ByRef SecureID As Integer, ByVal ErrMsg As String, ByVal ErrStack As String, ByVal IDNBR As String, ByVal ConnectiveGuid As String) As String
 
         'Dim DB As New clsDatabase
@@ -28949,6 +33291,10 @@ GetNextRecord:
 
     End Function
 
+    ''' <summary>
+    ''' Databases the ck connection.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Public Sub DBCkConn(ByRef SecureID As Integer)
 
         Dim connstr As String = DBgetConnStr()
@@ -28983,6 +33329,10 @@ GetNextRecord:
         End If
     End Sub
 
+    ''' <summary>
+    ''' Databases the reset connection.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
     Public Sub DBResetConn(ByRef SecureID As Integer)
         If gConn Is Nothing Then
             Try
@@ -29030,6 +33380,13 @@ GetNextRecord:
         End If
     End Sub
 
+    ''' <summary>
+    ''' ds the BCK content ownership.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="LoggedInUserGuid">The logged in user unique identifier.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function DBckContentOwnership(ByRef SecureID As Integer, ByVal SourceGuid As String, ByVal LoggedInUserGuid As String) As Boolean
 
         If DBisAdmin(SecureID, LoggedInUserGuid) Then
@@ -29048,6 +33405,12 @@ GetNextRecord:
         End If
     End Function
 
+    ''' <summary>
+    ''' ds the bis admin.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Userid">The userid.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function DBisAdmin(ByRef SecureID As Integer, ByVal Userid As String) As Boolean
         Dim B As Boolean = False
 
@@ -29109,6 +33472,12 @@ GetNextRecord:
         Return B
     End Function
 
+    ''' <summary>
+    ''' ds the bis global searcher.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Userid">The userid.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function DBisGlobalSearcher(ByRef SecureID As Integer, ByVal Userid As String) As Boolean
         Dim B As Boolean = False
 
@@ -29128,6 +33497,12 @@ GetNextRecord:
         Return B
     End Function
 
+    ''' <summary>
+    ''' ds the bis super admin.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Userid">The userid.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function DBisSuperAdmin(ByRef SecureID As Integer, ByVal Userid As String) As Boolean
         Dim B As Boolean = False
 
@@ -29147,6 +33522,12 @@ GetNextRecord:
         Return B
     End Function
 
+    ''' <summary>
+    ''' ds the bget owner unique identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function DBgetOwnerGuid(ByRef SecureID As Integer, ByVal SourceGuid As String) As String
         'select DataSourceOwnerUserID from DataSource where SourceGuid= 'XX'
         Dim b As Boolean = True
@@ -29189,11 +33570,21 @@ GetNextRecord:
         Return id
     End Function
 
+    ''' <summary>
+    ''' ds the bget unique identifier.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function DBgetGuid(ByRef SecureID As Integer) As String
         Dim MyGuid As Guid = Guid.NewGuid()
         Return MyGuid.ToString
     End Function
 
+    ''' <summary>
+    ''' Databases the get skip words.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="A">a.</param>
     Public Sub DBGetSkipWords(ByRef SecureID As Integer, ByRef A As ArrayList)
         Dim rsData As SqlDataReader = Nothing
         Try
@@ -29221,6 +33612,12 @@ GetNextRecord:
 
     End Sub
 
+    ''' <summary>
+    ''' Databases the create data reader.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="sql">The SQL.</param>
+    ''' <returns>SqlDataReader.</returns>
     Public Function DBCreateDataReader(ByRef SecureID As Integer, ByVal sql As String) As SqlDataReader
         ''Session("ActiveError") = False
         Dim dDebug As Boolean = False
@@ -29258,6 +33655,13 @@ GetNextRecord:
         Return rsDataQry
     End Function
 
+    ''' <summary>
+    ''' Databases the create data reader.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="sql">The SQL.</param>
+    ''' <param name="ConnectionString">The connection string.</param>
+    ''' <returns>SqlDataReader.</returns>
     Public Function DBCreateDataReader(ByRef SecureID As Integer, ByVal sql As String, ByVal ConnectionString As String) As SqlDataReader
         ''Session("ActiveError") = False
         Dim dDebug As Boolean = False
@@ -29295,6 +33699,13 @@ GetNextRecord:
         Return rsDataQry
     End Function
 
+    ''' <summary>
+    ''' Saves the click stats.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="ClickID">The click identifier.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Public Sub SaveClickStats(SecureID As Integer, ByVal ClickID As Integer, ByVal UserID As String, ByRef RC As Boolean)
 
         Dim spName As String = "spSaveClickStat"
@@ -29318,6 +33729,13 @@ GetNextRecord:
 
     End Sub
 
+    ''' <summary>
+    ''' Saves the search words.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="Words">The words.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="TypeSearch">The type search.</param>
     Public Sub SaveSearchWords(SecureID As Integer, ByVal Words As String, ByVal UserID As String, ByVal TypeSearch As String)
 
         Words = Words.Replace(ChrW(34), " ")
@@ -29333,6 +33751,13 @@ GetNextRecord:
         Next
     End Sub
 
+    ''' <summary>
+    ''' Saves the search stats.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SearchWord">The search word.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="TypeSearch">The type search.</param>
     Public Sub SaveSearchStats(SecureID As Integer, ByVal SearchWord As String, ByVal UserID As String, ByVal TypeSearch As String)
         Dim spName As String = "spSaveWordStat"
         Dim TimeTrk As Boolean = True
@@ -29354,6 +33779,18 @@ GetNextRecord:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Cks the content flags.
+    ''' </summary>
+    ''' <param name="SecureID">The secure identifier.</param>
+    ''' <param name="SourceGuid">The source unique identifier.</param>
+    ''' <param name="SD">if set to <c>true</c> [sd].</param>
+    ''' <param name="SP">if set to <c>true</c> [sp].</param>
+    ''' <param name="SAP">if set to <c>true</c> [sap].</param>
+    ''' <param name="bMaster">if set to <c>true</c> [b master].</param>
+    ''' <param name="RSS">if set to <c>true</c> [RSS].</param>
+    ''' <param name="WEB">if set to <c>true</c> [web].</param>
+    ''' <param name="bPublic">if set to <c>true</c> [b public].</param>
     Public Sub ckContentFlags(SecureID As Integer, SourceGuid As String, ByRef SD As Boolean, ByRef SP As Boolean, ByRef SAP As Boolean, ByRef bMaster As Boolean, ByRef RSS As Boolean, ByRef WEB As Boolean, ByRef bPublic As Boolean)
 
         Try
@@ -29451,12 +33888,21 @@ GetNextRecord:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Issues the alert.
+    ''' </summary>
+    ''' <param name="Hits">The hits.</param>
     Private Sub IssueAlert(ByVal Hits As String)
         '** Send out an EMAIL and an IM here!
         '** Get the Alert Contact Information and send out the
         '** Table AlertContact
     End Sub
 
+    ''' <summary>
+    ''' Gets the content dt.
+    ''' </summary>
+    ''' <param name="sourceguid">The sourceguid.</param>
+    ''' <returns>DataTable.</returns>
     Function getContentDT(sourceguid As String) As DataTable
 
         Dim DS As New DataSet

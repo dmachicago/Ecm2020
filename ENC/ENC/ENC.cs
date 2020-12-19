@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : ENC
+// Author           : wdale
+// Created          : 10-09-2020
+//
+// Last Modified By : wdale
+// Last Modified On : 10-24-2020
+// ***********************************************************************
+// <copyright file="ENC.cs" company="">
+//     Copyright ©  2019
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,20 +22,51 @@ using System.IO;
 namespace ECMEncryption
 {
 
+    /// <summary>
+    /// Class ECMEncrypt.
+    /// </summary>
     public class ECMEncrypt
     {
 
+        /// <summary>
+        /// The encoding1252
+        /// </summary>
         private static readonly Encoding Encoding1252 = Encoding.GetEncoding(1252);
+        /// <summary>
+        /// The sh a3
+        /// </summary>
         SHA3Crypto SHA3 = new SHA3Crypto();
+        /// <summary>
+        /// The aes
+        /// </summary>
         AES aes = new AES();
 
+        /// <summary>
+        /// The rc
+        /// </summary>
         int RC = 0;
+        /// <summary>
+        /// The ret MSG
+        /// </summary>
         string RetMsg = "";
+        /// <summary>
+        /// The ddebug
+        /// </summary>
         bool ddebug = false;
 
+        /// <summary>
+        /// The block size
+        /// </summary>
         int BlockSize = 128;
+        /// <summary>
+        /// The iv
+        /// </summary>
         byte[] IV = { 1, 4, 1, 4, 2, 1, 3, 5, 6, 2, 3, 7, 3, 0, 9, 5 };
 
+        /// <summary>
+        /// Gets the pw.
+        /// </summary>
+        /// <returns>System.String.</returns>
         private string getPw()
         {
             string x = "";
@@ -55,6 +99,11 @@ namespace ECMEncryption
             return x;
         }
 
+        /// <summary>
+        /// Aes the S256 encrypt string.
+        /// </summary>
+        /// <param name="plainText">The plain text.</param>
+        /// <returns>System.String.</returns>
         public string AES256EncryptString(string plainText)
         {
             SHA256 mySHA256 = SHA256Managed.Create();
@@ -103,6 +152,10 @@ namespace ECMEncryption
             // Return the encrypted data as a string
             return cipherText;
         }
+        /// <summary>
+        /// Logs the specified MSG.
+        /// </summary>
+        /// <param name="msg">The MSG.</param>
         public void log(string msg)
         {
             msg += DateTime.Now.ToString() + " : " + msg;
@@ -113,6 +166,12 @@ namespace ECMEncryption
                 file.WriteLine(msg);
             }
         }
+        /// <summary>
+        /// Aes the S256 decrypt string.
+        /// </summary>
+        /// <param name="cipherText">The cipher text.</param>
+        /// <param name="ddbug">The ddbug.</param>
+        /// <returns>System.String.</returns>
         public string AES256DecryptString(string cipherText, int ddbug = 0)
         {
 
@@ -198,25 +257,55 @@ namespace ECMEncryption
             return plainText;
         }
 
+        /// <summary>
+        /// Shes the a3 encrypt.
+        /// </summary>
+        /// <param name="str">The string.</param>
+        /// <returns>System.String.</returns>
         public string SHA3Encrypt(string str)
         {
             return SHA3.Encrypt(str, getPw());
         }
+        /// <summary>
+        /// Shes the a3 decrypt.
+        /// </summary>
+        /// <param name="str">The string.</param>
+        /// <returns>System.String.</returns>
         public string SHA3Decrypt(string str)
         {
             return SHA3.Decrypt(str, getPw());
         }
 
+        /// <summary>
+        /// Aeses the encrypt.
+        /// </summary>
+        /// <param name="original">The original.</param>
+        /// <returns>System.String.</returns>
         public string aesEncrypt(string original)
         {
             string str = aes.Encrypt(original);
             return str;
         }
+        /// <summary>
+        /// Aeses the decrypt.
+        /// </summary>
+        /// <param name="encstr">The encstr.</param>
+        /// <returns>System.String.</returns>
         public string aesDecrypt(string encstr)
         {
             string str = aes.Decrypt(encstr);
             return str;
         }
+        /// <summary>
+        /// Encrypts the string to bytes aes.
+        /// </summary>
+        /// <param name="plainText">The plain text.</param>
+        /// <param name="Key">The key.</param>
+        /// <param name="IV">The iv.</param>
+        /// <returns>System.Byte[].</returns>
+        /// <exception cref="System.ArgumentNullException">plainText</exception>
+        /// <exception cref="System.ArgumentNullException">Key</exception>
+        /// <exception cref="System.ArgumentNullException">Key</exception>
         byte[] EncryptStringToBytes_Aes(string plainText, byte[] Key, byte[] IV)
         {
             // Check arguments. 
@@ -253,6 +342,16 @@ namespace ECMEncryption
             // Return the encrypted bytes from the memory stream. 
             return encrypted;
         }
+        /// <summary>
+        /// Decrypts the string from bytes aes.
+        /// </summary>
+        /// <param name="cipherText">The cipher text.</param>
+        /// <param name="Key">The key.</param>
+        /// <param name="IV">The iv.</param>
+        /// <returns>System.String.</returns>
+        /// <exception cref="System.ArgumentNullException">cipherText</exception>
+        /// <exception cref="System.ArgumentNullException">Key</exception>
+        /// <exception cref="System.ArgumentNullException">IV</exception>
         string DecryptStringFromBytes_Aes(byte[] cipherText, byte[] Key, byte[] IV)
         {
             // Check arguments. 
@@ -297,12 +396,22 @@ namespace ECMEncryption
         //    return strModified;
         //}
 
+        /// <summary>
+        /// Converts to base64.
+        /// </summary>
+        /// <param name="str">The string.</param>
+        /// <returns>System.String.</returns>
         public string ToBase64(string str)
         {
             byte[] byt = System.Text.Encoding.UTF8.GetBytes(str);
             string strModified = Convert.ToBase64String(byt);
             return strModified;
         }
+        /// <summary>
+        /// Froms the base64.
+        /// </summary>
+        /// <param name="str">The string.</param>
+        /// <returns>System.String.</returns>
         public string FromBase64(string str)
         {
             byte[] b = Convert.FromBase64String(str);
@@ -310,6 +419,11 @@ namespace ECMEncryption
             return strOriginal;
         }
 
+        /// <summary>
+        /// Encrypts the triple DES.
+        /// </summary>
+        /// <param name="TextToEncrypt">The text to encrypt.</param>
+        /// <returns>System.String.</returns>
         public string EncryptTripleDES(string TextToEncrypt)
         {
             try
@@ -355,6 +469,11 @@ namespace ECMEncryption
 
         }
 
+        /// <summary>
+        /// Decrypts the triple DES.
+        /// </summary>
+        /// <param name="TextToDecrypt">The text to decrypt.</param>
+        /// <returns>System.String.</returns>
         public string DecryptTripleDES(string TextToDecrypt)
         {
             try
@@ -399,6 +518,12 @@ namespace ECMEncryption
             }
         }
 
+        /// <summary>
+        /// Aeses the decrypt phrase.
+        /// </summary>
+        /// <param name="Phrase">The phrase.</param>
+        /// <param name="pw">The pw.</param>
+        /// <returns>System.String.</returns>
         public string AESDecryptPhrase(string Phrase, string pw)
         {
             if (pw.Length.Equals(0))
@@ -425,6 +550,12 @@ namespace ECMEncryption
             }
             return Phrase.Substring(0, Phrase.Length - 1);
         }
+        /// <summary>
+        /// Aeses the encrypt phrase.
+        /// </summary>
+        /// <param name="Phrase">The phrase.</param>
+        /// <param name="pw">The pw.</param>
+        /// <returns>System.String.</returns>
         public string AESEncryptPhrase(string Phrase, string pw)
         {
             if (pw.Length.Equals(0))
@@ -451,6 +582,11 @@ namespace ECMEncryption
             }
             return S;
         }
+        /// <summary>
+        /// Encrypts the phrase.
+        /// </summary>
+        /// <param name="Phrase">The phrase.</param>
+        /// <returns>System.String.</returns>
         public string EncryptPhrase(string Phrase)
         {
             if (Phrase.Equals(null))
@@ -495,6 +631,11 @@ namespace ECMEncryption
 
             return S;
         }
+        /// <summary>
+        /// Reverses the specified value.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>System.String.</returns>
         public string Reverse(string value)
         {
             // Convert to char array.
@@ -505,6 +646,12 @@ namespace ECMEncryption
             return new string(arr);
         }
 
+        /// <summary>
+        /// Encrypts the phrase shift.
+        /// </summary>
+        /// <param name="Phrase">The phrase.</param>
+        /// <param name="shiftKey">The shift key.</param>
+        /// <returns>System.String.</returns>
         public string EncryptPhraseShift(string Phrase, string shiftKey)
         {
             string S = "";
@@ -552,6 +699,12 @@ namespace ECMEncryption
 
             return WCH;
         }
+        /// <summary>
+        /// Encrypts the phrase v1.
+        /// </summary>
+        /// <param name="Phrase">The phrase.</param>
+        /// <param name="shiftKey">The shift key.</param>
+        /// <returns>System.String.</returns>
         public string EncryptPhraseV1(string Phrase, string shiftKey)
         {
             string S = "";
@@ -599,6 +752,12 @@ namespace ECMEncryption
 
             return S;
         }
+        /// <summary>
+        /// Decrypts the phrase.
+        /// </summary>
+        /// <param name="Phrase">The phrase.</param>
+        /// <param name="shiftKey">The shift key.</param>
+        /// <returns>System.String.</returns>
         public string DecryptPhrase(string Phrase, string shiftKey)
         {
             string S = "";
@@ -645,6 +804,11 @@ namespace ECMEncryption
 
             return S;
         }
+        /// <summary>
+        /// Decrypts the phrase.
+        /// </summary>
+        /// <param name="Phrase">The phrase.</param>
+        /// <returns>System.String.</returns>
         public string DecryptPhrase(string Phrase)
         {
             string S = "";
@@ -675,6 +839,11 @@ namespace ECMEncryption
 
             return S;
         }
+        /// <summary>
+        /// Decrypts the phrase2.
+        /// </summary>
+        /// <param name="Phrase">The phrase.</param>
+        /// <returns>System.String.</returns>
         public string DecryptPhrase2(string Phrase)
         {
             string S = "";
@@ -703,6 +872,11 @@ namespace ECMEncryption
 
             return S;
         }
+        /// <summary>
+        /// Scrambles the key.
+        /// </summary>
+        /// <param name="v_strKey">The v string key.</param>
+        /// <returns>System.String.</returns>
         private static string ScrambleKey(string v_strKey)
         {
             System.Text.StringBuilder sbKey = new System.Text.StringBuilder();
@@ -716,6 +890,13 @@ namespace ECMEncryption
             return sbKey.ToString();
         }
 
+        /// <summary>
+        /// Encrypts the phrase.
+        /// </summary>
+        /// <param name="sOut">The s out.</param>
+        /// <param name="RC">if set to <c>true</c> [rc].</param>
+        /// <param name="RetMsg">The ret MSG.</param>
+        /// <returns>System.String.</returns>
         public string EncryptPhrase(string sOut, ref bool RC, ref string RetMsg)
         {
             if (sOut.Length == 0)
@@ -752,6 +933,12 @@ namespace ECMEncryption
         //    return EncryptPhrase (sOut, pw);
         //}
 
+        /// <summary>
+        /// Encrypts the phrase.
+        /// </summary>
+        /// <param name="sOut">The s out.</param>
+        /// <param name="pw">The pw.</param>
+        /// <returns>System.String.</returns>
         public string EncryptPhrase(string sOut, string pw)
         {
             if (sOut.Length == 0)
@@ -784,6 +971,11 @@ namespace ECMEncryption
             return S;
         }
 
+        /// <summary>
+        /// Encrypts the phrase B64.
+        /// </summary>
+        /// <param name="sIn">The s in.</param>
+        /// <returns>String.</returns>
         public String EncryptPhraseB64(String sIn)
         {
             string sKey = getPw();
@@ -813,6 +1005,11 @@ namespace ECMEncryption
         //    return Convert.ToBase64String(DESEncrypt.TransformFinalBlock(Buffer, 0, Buffer.Length));
         //}
 
+        /// <summary>
+        /// Hashes the sha1 file.
+        /// </summary>
+        /// <param name="FQN">The FQN.</param>
+        /// <returns>System.String.</returns>
         public string hashSha1File(string FQN)
         {
 
@@ -847,6 +1044,11 @@ namespace ECMEncryption
 
         }
 
+        /// <summary>
+        /// Hashes the CRC32.
+        /// </summary>
+        /// <param name="filePath">The file path.</param>
+        /// <returns>System.String.</returns>
         public string hashCrc32(string filePath)
         {
             int BUF_SIZE = 32;
@@ -869,6 +1071,11 @@ namespace ECMEncryption
 
         }
 
+        /// <summary>
+        /// Hashes the sha1 file v2.
+        /// </summary>
+        /// <param name="filePath">The file path.</param>
+        /// <returns>System.String.</returns>
         public string hashSha1FileV2(string filePath)
         {
             int BUF_SIZE = 32;
@@ -915,6 +1122,11 @@ namespace ECMEncryption
             return hashResult;
         }
 
+        /// <summary>
+        /// Hashes the MD5 file.
+        /// </summary>
+        /// <param name="filePath">The file path.</param>
+        /// <returns>System.String.</returns>
         public string hashMd5File(string filePath)
         {
             int BUF_SIZE = 32;
@@ -970,6 +1182,12 @@ namespace ECMEncryption
             return hashResult;
         }
 
+        /// <summary>
+        /// Decrypts the triple de S128.
+        /// </summary>
+        /// <param name="sOut">The s out.</param>
+        /// <param name="B">if set to <c>true</c> [b].</param>
+        /// <returns>System.String.</returns>
         public string DecryptTripleDES128(string sOut, bool B)
         {
             try
@@ -997,6 +1215,10 @@ namespace ECMEncryption
             }
         }
 
+        /// <summary>
+        /// XMP2RT21s this instance.
+        /// </summary>
+        /// <returns>System.String.</returns>
         private string xmp2rt21()
         {
             string S = "";
@@ -1032,6 +1254,12 @@ namespace ECMEncryption
             return S;
         }
 
+        /// <summary>
+        /// XT001TRCs the specified s.
+        /// </summary>
+        /// <param name="S">The s.</param>
+        /// <param name="ddebug">The ddebug.</param>
+        /// <returns>SortedList&lt;System.String, System.String&gt;.</returns>
         public SortedList<string, string> xt001trc(string S, int ddebug = 0)
         {
             SortedList<string, string> A = new SortedList<string, string>();
@@ -1078,6 +1306,11 @@ namespace ECMEncryption
             return A;
         }
 
+        /// <summary>
+        /// Saves the string.
+        /// </summary>
+        /// <param name="action">The action.</param>
+        /// <param name="s">The s.</param>
         public void saveString(string action, string s)
         {
             //bool b = true;
@@ -1111,12 +1344,22 @@ namespace ECMEncryption
             }
         }
 
+        /// <summary>
+        /// Strings to byte array.
+        /// </summary>
+        /// <param name="str">The string.</param>
+        /// <returns>System.Byte[].</returns>
         private byte[] StrToByteArray(string str)
         {
             System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
             return encoding.GetBytes(str);
         } // StrToByteArray
 
+        /// <summary>
+        /// Gets the sha1 hash key.
+        /// </summary>
+        /// <param name="strToHash">The string to hash.</param>
+        /// <returns>System.String.</returns>
         public string getSha1HashKey(string strToHash)
         {
             string hashResult = string.Empty;
@@ -1135,6 +1378,11 @@ namespace ECMEncryption
             return hashResult;
         }
 
+        /// <summary>
+        /// Gets the sha1 hash from file.
+        /// </summary>
+        /// <param name="FileFQN">The file FQN.</param>
+        /// <returns>System.String.</returns>
         public string getSha1HashFromFile(string FileFQN)
         {
             int BUF_SIZE = 32;
@@ -1157,6 +1405,11 @@ namespace ECMEncryption
             return hashResult;
         }
 
+        /// <summary>
+        /// Generates the sh a256 string.
+        /// </summary>
+        /// <param name="inputString">The input string.</param>
+        /// <returns>System.String.</returns>
         public string GenerateSHA256String(string inputString)
         {
             SHA256 sha512 = SHA256Managed.Create();
@@ -1164,6 +1417,11 @@ namespace ECMEncryption
             byte[] hash = sha512.ComputeHash(bytes);
             return GetHexStringFromHash(hash);
         }
+        /// <summary>
+        /// Generates the sh a256 hash from file.
+        /// </summary>
+        /// <param name="FQN">The FQN.</param>
+        /// <returns>System.String.</returns>
         public string GenerateSHA256HashFromFile(string FQN)
         {
             FQN = @"C:\temp\Channels.txt";
@@ -1180,6 +1438,11 @@ namespace ECMEncryption
             return s;
         }
 
+        /// <summary>
+        /// Generates the sh a256 hash from file v2.
+        /// </summary>
+        /// <param name="FQN">The FQN.</param>
+        /// <returns>System.String.</returns>
         public string GenerateSHA256HashFromFileV2(string FQN)
         {
             SHA256 sha256 = SHA256Managed.Create();
@@ -1202,6 +1465,11 @@ namespace ECMEncryption
             return shash;
         }
 
+        /// <summary>
+        /// Generates the sh a512 string v2.
+        /// </summary>
+        /// <param name="inputString">The input string.</param>
+        /// <returns>System.String.</returns>
         public string GenerateSHA512StringV2(string inputString)
         {
             SHA512 sha512 = new SHA512Managed();
@@ -1211,6 +1479,11 @@ namespace ECMEncryption
             return s;
         }
 
+        /// <summary>
+        /// Shes the a512 string.
+        /// </summary>
+        /// <param name="inputString">The input string.</param>
+        /// <returns>System.String.</returns>
         public string SHA512String(string inputString)
         {
             string hex = "";
@@ -1223,6 +1496,11 @@ namespace ECMEncryption
             return hex;
         }
 
+        /// <summary>
+        /// Shes the a512 SQL server hash.
+        /// </summary>
+        /// <param name="s">The s.</param>
+        /// <returns>System.String.</returns>
         public string SHA512SqlServerHash(string s)
         {
             byte[] bytes = Encoding1252.GetBytes(s);
@@ -1231,8 +1509,13 @@ namespace ECMEncryption
             string HashStr = GetHexStringFromHash(hashBytes);
             return HashStr;
         }
-    
 
+
+        /// <summary>
+        /// Generates the sh a512 hash from file.
+        /// </summary>
+        /// <param name="FQN">The FQN.</param>
+        /// <returns>System.String.</returns>
         public string GenerateSHA512HashFromFile(string FQN)
         {
             int LL = 0;
@@ -1258,6 +1541,11 @@ namespace ECMEncryption
         //    return strTemp.ToString();
         //}
 
+        /// <summary>
+        /// Computes the file hash.
+        /// </summary>
+        /// <param name="fileName">Name of the file.</param>
+        /// <returns>System.String.</returns>
         private string ComputeFileHash(string fileName)
         {
             string S = "";
@@ -1292,6 +1580,11 @@ namespace ECMEncryption
             return S;
         }
 
+        /// <summary>
+        /// Gets the hexadecimal string from hash.
+        /// </summary>
+        /// <param name="hash">The hash.</param>
+        /// <returns>System.String.</returns>
         private string GetHexStringFromHash(byte[] hash)
         {
             StringBuilder result = new StringBuilder();

@@ -194,6 +194,7 @@ Partial Class frmMain
         Me.ValidateDirectoryFilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReapplyALLDBUpdatesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ValidateRetentionDatesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ZipfileExplodeAndProcessToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LastArchiveDateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TurnONToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TurnOFFToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -290,6 +291,7 @@ Partial Class frmMain
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FunctionalHelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OnlineHelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.AppConfigVersionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -383,7 +385,6 @@ Partial Class frmMain
         Me.lblNotice = New System.Windows.Forms.Label()
         Me.ThreadValidateSourceName = New System.ComponentModel.BackgroundWorker()
         Me.ThreadSetNameHash = New System.ComponentModel.BackgroundWorker()
-        Me.ZipfileExplodeAndProcessToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.gbEmail.SuspendLayout()
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbFiletypes.SuspendLayout()
@@ -1185,7 +1186,7 @@ Partial Class frmMain
         '
         'PictureBox2
         '
-        Me.PictureBox2.Image = Global.EcmArchiver.My.Resources.Resources.DMALogo2
+        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
         Me.PictureBox2.Location = New System.Drawing.Point(16, 453)
         Me.PictureBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.PictureBox2.Name = "PictureBox2"
@@ -2365,6 +2366,12 @@ Partial Class frmMain
         Me.ValidateRetentionDatesToolStripMenuItem.Size = New System.Drawing.Size(267, 26)
         Me.ValidateRetentionDatesToolStripMenuItem.Text = "Validate Retention Dates"
         '
+        'ZipfileExplodeAndProcessToolStripMenuItem
+        '
+        Me.ZipfileExplodeAndProcessToolStripMenuItem.Name = "ZipfileExplodeAndProcessToolStripMenuItem"
+        Me.ZipfileExplodeAndProcessToolStripMenuItem.Size = New System.Drawing.Size(267, 26)
+        Me.ZipfileExplodeAndProcessToolStripMenuItem.Text = "Zipfile Explode and Process"
+        '
         'LastArchiveDateToolStripMenuItem
         '
         Me.LastArchiveDateToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TurnONToolStripMenuItem, Me.TurnOFFToolStripMenuItem, Me.InitializeToGivenDateToolStripMenuItem})
@@ -2950,7 +2957,7 @@ Partial Class frmMain
         '
         'HelpToolStripMenuItem
         '
-        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem, Me.OnlineHelpToolStripMenuItem, Me.ToolStripSeparator4, Me.AppConfigVersionToolStripMenuItem, Me.RunningArchiverToolStripMenuItem, Me.ParameterExecutionToolStripMenuItem, Me.HistoryToolStripMenuItem})
+        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem, Me.FunctionalHelpToolStripMenuItem, Me.OnlineHelpToolStripMenuItem, Me.ToolStripSeparator4, Me.AppConfigVersionToolStripMenuItem, Me.RunningArchiverToolStripMenuItem, Me.ParameterExecutionToolStripMenuItem, Me.HistoryToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
         Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(53, 24)
         Me.HelpToolStripMenuItem.Text = "Help"
@@ -2960,6 +2967,12 @@ Partial Class frmMain
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
         Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(219, 26)
         Me.AboutToolStripMenuItem.Text = "About"
+        '
+        'FunctionalHelpToolStripMenuItem
+        '
+        Me.FunctionalHelpToolStripMenuItem.Name = "FunctionalHelpToolStripMenuItem"
+        Me.FunctionalHelpToolStripMenuItem.Size = New System.Drawing.Size(219, 26)
+        Me.FunctionalHelpToolStripMenuItem.Text = "Functional Help"
         '
         'OnlineHelpToolStripMenuItem
         '
@@ -3901,12 +3914,6 @@ Partial Class frmMain
         'ThreadSetNameHash
         '
         '
-        'ZipfileExplodeAndProcessToolStripMenuItem
-        '
-        Me.ZipfileExplodeAndProcessToolStripMenuItem.Name = "ZipfileExplodeAndProcessToolStripMenuItem"
-        Me.ZipfileExplodeAndProcessToolStripMenuItem.Size = New System.Drawing.Size(267, 26)
-        Me.ZipfileExplodeAndProcessToolStripMenuItem.Text = "Zipfile Explode and Process"
-        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -4344,4 +4351,5 @@ Partial Class frmMain
     Friend WithEvents ValidationToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FilesAreRetrievedFromDirectoryToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ZipfileExplodeAndProcessToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FunctionalHelpToolStripMenuItem As ToolStripMenuItem
 End Class

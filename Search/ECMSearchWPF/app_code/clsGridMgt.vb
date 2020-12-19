@@ -1,10 +1,36 @@
-﻿Public Class clsGridMgt
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 12-15-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 12-15-2020
+' ***********************************************************************
+' <copyright file="clsGridMgt.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+''' <summary>
+''' Class clsGridMgt.
+''' </summary>
+Public Class clsGridMgt
 
+    ''' <summary>
+    ''' The iso
+    ''' </summary>
     Dim ISO As New clsIsolatedStorage
 
-    Sub SaveGridState(ByVal Userid As String, _
-                      ByVal ScreenName As String, _
-                      ByVal DG As DataGrid, _
+    ''' <summary>
+    ''' Saves the state of the grid.
+    ''' </summary>
+    ''' <param name="Userid">The userid.</param>
+    ''' <param name="ScreenName">Name of the screen.</param>
+    ''' <param name="DG">The dg.</param>
+    ''' <param name="Dict">The dictionary.</param>
+    Sub SaveGridState(ByVal Userid As String,
+                      ByVal ScreenName As String,
+                      ByVal DG As DataGrid,
                       ByRef Dict As Dictionary(Of Integer, String))
 
         Dim ColDisplayOrder As String = DG.Name + " Column Display Order: " + vbCrLf
@@ -25,6 +51,11 @@
 
     End Sub
 
+    ''' <summary>
+    ''' Saves the grid dictionary.
+    ''' </summary>
+    ''' <param name="DG">The dg.</param>
+    ''' <param name="Dict">The dictionary.</param>
     Sub SaveGridDictionary(ByVal DG As DataGrid, ByRef Dict As Dictionary(Of Integer, String))
 
         For I As Integer = 0 To DG.Columns.Count - 1
@@ -38,9 +69,16 @@
 
     End Sub
 
-    Sub getGridState(ByVal ScreenName As String, _
-                     ByVal GridName As String, _
-                     ByVal UID As String, _
+    ''' <summary>
+    ''' Gets the state of the grid.
+    ''' </summary>
+    ''' <param name="ScreenName">Name of the screen.</param>
+    ''' <param name="GridName">Name of the grid.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="Dict">The dictionary.</param>
+    Sub getGridState(ByVal ScreenName As String,
+                     ByVal GridName As String,
+                     ByVal UID As String,
                      ByRef Dict As Dictionary(Of Integer, String))
 
         ISO.ReadGridColDisplayOrder(ScreenName, GridName, UID, Dict)

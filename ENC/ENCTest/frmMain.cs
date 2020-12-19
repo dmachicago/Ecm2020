@@ -4,17 +4,34 @@ using System.Windows.Forms;
 
 namespace ENCTest
 {
+    /// <summary>
+    /// Class frmMain.
+    /// Implements the <see cref="System.Windows.Forms.Form" />
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class frmMain : Form
     {
         //private SHA3Crypto SHA3 = new SHA3Crypto();
+        /// <summary>
+        /// The enc
+        /// </summary>
         private ECMEncrypt ENC = new ECMEncrypt ();
+        /// <summary>
+        /// The b encrypt
+        /// </summary>
         private bool bEncrypt = false;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="frmMain"/> class.
+        /// </summary>
         public frmMain ()
         {
             InitializeComponent ();
         }
 
+        /// <summary>
+        /// Tests the encryption.
+        /// </summary>
         private void testEncryption ()
         {
             string Phrase = txtPhrase.Text;
@@ -68,6 +85,9 @@ namespace ENCTest
             }
         }
 
+        /// <summary>
+        /// Tests the decryption.
+        /// </summary>
         private void testDecryption ()
         {
             string Phrase = txtEncrypted.Text;
@@ -118,6 +138,9 @@ namespace ENCTest
             }
         }
 
+        /// <summary>
+        /// Executes the enc.
+        /// </summary>
         private void ExecEnc ()
         {
             if (bEncrypt)
@@ -130,6 +153,11 @@ namespace ENCTest
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnEncrypt control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnEncrypt_Click (object sender, EventArgs e)
         {
             bEncrypt = true;
@@ -137,6 +165,11 @@ namespace ENCTest
             //ExecEnc ();
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnDecrypt control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnDecrypt_Click (object sender, EventArgs e)
         {
             bEncrypt = false;
@@ -144,6 +177,11 @@ namespace ENCTest
             //ExecEnc ();
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnClipboard control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnClipboard_Click (object sender, EventArgs e)
         {
             Clipboard.Clear ();

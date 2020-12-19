@@ -1,4 +1,17 @@
-﻿Imports System.Collections.Generic
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 12-15-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 12-15-2020
+' ***********************************************************************
+' <copyright file="clsIsolatedStorage.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 Imports System.IO.IsolatedStorage
@@ -9,43 +22,124 @@ Imports System.IO.DirectoryNotFoundException
 Imports System.IO.IsolatedStorage.IsolatedStorageFile
 Imports System.IO.IsolatedStorage.IsolatedStorageFileStream
 
+''' <summary>
+''' Class clsIsolatedStorage.
+''' </summary>
 Public Class clsIsolatedStorage
 
 
 
+    ''' <summary>
+    ''' The dir ecm grids
+    ''' </summary>
     Public dirEcmGrids As String = "EcmGridParms"
+    ''' <summary>
+    ''' The function all search email grid
+    ''' </summary>
     Public fnAllSearchEmailGrid As String = "dgEmailAll.grid.dat"
+    ''' <summary>
+    ''' The function all search content grid
+    ''' </summary>
     Public fnAllSearchContentGrid As String = "dgContentAll.grid.dat"
+    ''' <summary>
+    ''' The function search content grid
+    ''' </summary>
     Public fnSearchContentGrid As String = "dgContent.grid.dat"
+    ''' <summary>
+    ''' The function search email grid
+    ''' </summary>
     Public fnSearchEmailGrid As String = "dgEmail.grid.dat"
 
+    ''' <summary>
+    ''' The dir form data
+    ''' </summary>
     Public dirFormData As String = "EcmForm."
+    ''' <summary>
+    ''' The dir temporary data
+    ''' </summary>
     Public dirTempData As String = "EcmTemp."
+    ''' <summary>
+    ''' The dir log data
+    ''' </summary>
     Public dirLogData As String = "EcmLogs."
+    ''' <summary>
+    ''' The dir save data
+    ''' </summary>
     Public dirSaveData As String = "EcmSavedData."
 
+    ''' <summary>
+    ''' The dir restore
+    ''' </summary>
     Public dirRestore As String = "EcmRestoreFiles."
+    ''' <summary>
+    ''' The file restore
+    ''' </summary>
     Dim FileRestore As String = ".RestoreDat"
 
+    ''' <summary>
+    ''' The dir preview
+    ''' </summary>
     Public dirPreview As String = "EcmPreviewFile."
+    ''' <summary>
+    ''' The file preview
+    ''' </summary>
     Public filePreview As String = "ECM.Preview.dat"
 
+    ''' <summary>
+    ''' The dir search filter
+    ''' </summary>
     Public dirSearchFilter As String = "EcmSearchFilter."
+    ''' <summary>
+    ''' The dir CLC
+    ''' </summary>
     Public dirCLC As String = "EcmSearchFilter."
+    ''' <summary>
+    ''' The dir search save
+    ''' </summary>
     Public dirSearchSave As String = "EcmSavedSearch."
+    ''' <summary>
+    ''' The dir detail search parms
+    ''' </summary>
     Public dirDetailSearchParms As String = "EcmDetailSearchParm."
+    ''' <summary>
+    ''' The dir files
+    ''' </summary>
     Public dirFiles As String = "EcmTempFiles."
+    ''' <summary>
+    ''' The dir persist
+    ''' </summary>
     Public dirPersist As String = "EcmPersistantData."
 
+    ''' <summary>
+    ''' The b do not overwrite existing file
+    ''' </summary>
     Public bDoNotOverwriteExistingFile As Boolean = True
+    ''' <summary>
+    ''' The b overwrite existing file
+    ''' </summary>
     Public bOverwriteExistingFile As Boolean = False
+    ''' <summary>
+    ''' The b restore to original directory
+    ''' </summary>
     Public bRestoreToOriginalDirectory As Boolean = False
+    ''' <summary>
+    ''' The b restore to my documents
+    ''' </summary>
     Public bRestoreToMyDocuments As Boolean = False
+    ''' <summary>
+    ''' The b create original dir if missing
+    ''' </summary>
     Public bCreateOriginalDirIfMissing As Boolean = True
 
     'Dim LOG As New clsLogMain
+    ''' <summary>
+    ''' The iso
+    ''' </summary>
     Dim ISO As IsolatedStorageFile = IsolatedStorageFile.GetUserStoreForDomain()
 
+    ''' <summary>
+    ''' Initializes a new instance of the <see cref="clsIsolatedStorage"/> class.
+    ''' </summary>
     Sub New()
 
         If Not ISO.FileExists(dirPersist) Then
@@ -102,12 +196,24 @@ Public Class clsIsolatedStorage
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the grid dir.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function getGridDir() As String
         Return dirEcmGrids
     End Function
+    ''' <summary>
+    ''' Gets the forms dir.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function getFormsDir() As String
         Return dirEcmGrids
     End Function
+    ''' <summary>
+    ''' Gets the temporary dir.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function getTempDir() As String
         Return dirTempData
     End Function
@@ -135,11 +241,20 @@ Public Class clsIsolatedStorage
     '    Return tgtVal
     'End Function
 
+    ''' <summary>
+    ''' Strings to byte array.
+    ''' </summary>
+    ''' <param name="str">The string.</param>
+    ''' <returns>System.Byte().</returns>
     Public Shared Function StrToByteArray(ByVal str As String) As Byte()
         Dim encoding As New System.Text.UTF8Encoding()
         Return encoding.GetBytes(str)
     End Function 'StrToByteArray
 
+    ''' <summary>
+    ''' Fixes the FQN.
+    ''' </summary>
+    ''' <param name="fqn">The FQN.</param>
     Sub fixFqn(ByRef fqn As String)
         Dim i As Integer = 0
         i = fqn.IndexOf("\")
@@ -151,6 +266,15 @@ Public Class clsIsolatedStorage
 
     End Sub
 
+    ''' <summary>
+    ''' Zeroizes the save form data.
+    ''' </summary>
+    ''' <param name="IndexKey">The index key.</param>
+    ''' <param name="ScreenName">Name of the screen.</param>
+    ''' <param name="SaveTypeCode">The save type code.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="ValName">Name of the value.</param>
+    ''' <param name="ValValue">The value value.</param>
     Public Sub ZeroizeSaveFormData(ByVal IndexKey As Integer, ByVal ScreenName As String, ByVal SaveTypeCode As String, ByVal UID As String, ByVal ValName As String, ByVal ValValue As String)
         Dim FormDataFileName As String = ScreenName + IndexKey.ToString + ".dat"
         Dim FQN As String = System.IO.Path.Combine(dirFormData, FormDataFileName)
@@ -181,6 +305,15 @@ Public Class clsIsolatedStorage
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Saves the form data.
+    ''' </summary>
+    ''' <param name="DICT">The dictionary.</param>
+    ''' <param name="IndexKey">The index key.</param>
+    ''' <param name="ScreenName">Name of the screen.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="ValName">Name of the value.</param>
+    ''' <param name="ValValue">The value value.</param>
     Public Sub SaveFormData(ByRef DICT As Dictionary(Of String, String), ByVal IndexKey As Integer, ByVal ScreenName As String, ByVal UID As String, ByVal ValName As String, ByVal ValValue As String)
 
         Dim isoStore As IsolatedStorageFile
@@ -213,6 +346,14 @@ Public Class clsIsolatedStorage
 
     End Sub
 
+    ''' <summary>
+    ''' Reads the form data.
+    ''' </summary>
+    ''' <param name="DICT">The dictionary.</param>
+    ''' <param name="IndexKey">The index key.</param>
+    ''' <param name="ScreenName">Name of the screen.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ReadFormData(ByRef DICT As Dictionary(Of String, String), ByVal IndexKey As Integer, ByVal ScreenName As String, ByVal UID As String) As Boolean
 
         Dim isoStore As IsolatedStorageFile
@@ -281,6 +422,14 @@ Public Class clsIsolatedStorage
     End Function
 
     '***********************************************************************************
+    ''' <summary>
+    ''' Zeroizes the grid sort order.
+    ''' </summary>
+    ''' <param name="ScreenName">Name of the screen.</param>
+    ''' <param name="GridName">Name of the grid.</param>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <param name="SortType">Type of the sort.</param>
+    ''' <param name="UID">The uid.</param>
     Public Sub ZeroizeGridSortOrder(ByVal ScreenName As String, ByVal GridName As String, ByVal ColName As String, ByVal SortType As String, ByVal UID As String)
 
         Dim FormDataFileName As String = ScreenName + "." + GridName + ".dat"
@@ -310,6 +459,14 @@ Public Class clsIsolatedStorage
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Saves the grid sort col.
+    ''' </summary>
+    ''' <param name="ScreenName">Name of the screen.</param>
+    ''' <param name="GridName">Name of the grid.</param>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <param name="SortType">Type of the sort.</param>
+    ''' <param name="UID">The uid.</param>
     Public Sub saveGridSortCol(ByVal ScreenName As String, ByVal GridName As String, ByVal ColName As String, ByVal SortType As String, ByVal UID As String)
 
         ZeroizeGridSortOrder(ScreenName, GridName, ColName, SortType, UID)
@@ -342,6 +499,15 @@ Public Class clsIsolatedStorage
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Gets the grid sort col.
+    ''' </summary>
+    ''' <param name="ScreenName">Name of the screen.</param>
+    ''' <param name="GridName">Name of the grid.</param>
+    ''' <param name="ColName">Name of the col.</param>
+    ''' <param name="SortType">Type of the sort.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="RC">if set to <c>true</c> [rc].</param>
     Public Sub getGridSortCol(ByVal ScreenName As String, ByVal GridName As String, ByRef ColName As String, ByRef SortType As String, ByVal UID As String, ByRef RC As Boolean)
         Dim FormDataFileName As String = ScreenName + "." + GridName + ".dat"
         Dim FQN As String = System.IO.Path.Combine(dirFormData, FormDataFileName)
@@ -393,6 +559,15 @@ Public Class clsIsolatedStorage
     End Sub
 
     '********************************************************************************************************************************************************
+    ''' <summary>
+    ''' Zeroizes the grid col display order.
+    ''' </summary>
+    ''' <param name="ScreenName">Name of the screen.</param>
+    ''' <param name="GridName">Name of the grid.</param>
+    ''' <param name="ColumnName">Name of the column.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="ValName">Name of the value.</param>
+    ''' <param name="ValValue">The value value.</param>
     Public Sub ZeroizeGridColDisplayOrder(ByVal ScreenName As String, ByVal GridName As String, ByVal ColumnName As String, ByVal UID As String, ByVal ValName As String, ByVal ValValue As String)
 
         'Dim dirFormData As String = "FormData"
@@ -420,6 +595,13 @@ Public Class clsIsolatedStorage
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Saves the grid col display order.
+    ''' </summary>
+    ''' <param name="ScreenName">Name of the screen.</param>
+    ''' <param name="GridName">Name of the grid.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="DICT">The dictionary.</param>
     Public Sub SaveGridColDisplayOrder(ByVal ScreenName As String, ByVal GridName As String, ByVal UID As String, ByVal DICT As Dictionary(Of Integer, String))
 
         Dim FormDataFileName As String = ScreenName + "." + GridName + ".ColDisplayOrder" + ".dat"
@@ -454,6 +636,13 @@ Public Class clsIsolatedStorage
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Reads the grid col display order.
+    ''' </summary>
+    ''' <param name="ScreenName">Name of the screen.</param>
+    ''' <param name="GridName">Name of the grid.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="DICT">The dictionary.</param>
     Public Sub ReadGridColDisplayOrder(ByVal ScreenName As String, ByVal GridName As String, ByVal UID As String, ByRef DICT As Dictionary(Of Integer, String))
 
         Dim FormDataFileName As String = ScreenName + "." + GridName + ".ColDisplayOrder" + ".dat"
@@ -505,6 +694,10 @@ Public Class clsIsolatedStorage
 
     End Sub
 
+    ''' <summary>
+    ''' Saves the user data.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
     Public Sub SaveUserData(ByVal UID As String)
 
         'Dim dirFormData As String = "EcmTemp"
@@ -531,6 +724,10 @@ Public Class clsIsolatedStorage
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Reads the user data.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function ReadUserData() As String
         'Dim dirFormData As String = "EcmTemp"
         Dim FQN As String = System.IO.Path.Combine(dirFormData, "UINFO.dat")
@@ -557,6 +754,10 @@ Public Class clsIsolatedStorage
 
     End Function
 
+    ''' <summary>
+    ''' Deleteds the user data.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function DeletedUserData() As String
         'Dim dirFormData As String = "EcmTemp"
         Dim FQN As String = System.IO.Path.Combine(dirFormData, "UINFO.dat")
@@ -581,6 +782,11 @@ Public Class clsIsolatedStorage
     End Function
 
 
+    ''' <summary>
+    ''' Writes the line to file.
+    ''' </summary>
+    ''' <param name="FileName">Name of the file.</param>
+    ''' <param name="Msg">The MSG.</param>
     Private Sub WriteLineToFile(ByVal FileName As String, ByVal Msg As String)
         Dim FQN As String = System.IO.Path.Combine(dirSaveData, FileName)
         fixFqn(FQN)
@@ -599,6 +805,11 @@ Public Class clsIsolatedStorage
 
     End Sub
 
+    ''' <summary>
+    ''' Reads from file line by line.
+    ''' </summary>
+    ''' <param name="FileName">Name of the file.</param>
+    ''' <returns>System.String.</returns>
     Private Function ReadFromFileLineByLine(ByVal FileName As String) As String
         Dim FQN As String = System.IO.Path.Combine(dirSaveData, FileName)
         fixFqn(FQN)
@@ -619,6 +830,13 @@ Public Class clsIsolatedStorage
         Return sb
     End Function
 
+    ''' <summary>
+    ''' Saves the grid setup.
+    ''' </summary>
+    ''' <param name="ScreenName">Name of the screen.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="DG">The dg.</param>
+    ''' <param name="DICT">The dictionary.</param>
     Private Sub SaveGridSetup(ByVal ScreenName As String, ByVal UserID As String, ByVal DG As DataGrid, ByVal DICT As Dictionary(Of Integer, String))
         DICT.Clear()
 
@@ -654,6 +872,13 @@ Public Class clsIsolatedStorage
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the grid setup.
+    ''' </summary>
+    ''' <param name="ScreenName">Name of the screen.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="DG">The dg.</param>
+    ''' <param name="DICT">The dictionary.</param>
     Private Sub getGridSetup(ByVal ScreenName As String, ByVal UserID As String, ByVal DG As DataGrid, ByVal DICT As Dictionary(Of Integer, String))
 
         DICT.Clear()
@@ -688,6 +913,12 @@ Public Class clsIsolatedStorage
     End Sub
 
 
+    ''' <summary>
+    ''' Saves the screen setup.
+    ''' </summary>
+    ''' <param name="ScreenName">Name of the screen.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="DICT">The dictionary.</param>
     Private Sub SaveScreenSetup(ByVal ScreenName As String, ByVal UserID As String, ByVal DICT As Dictionary(Of Integer, String))
         DICT.Clear()
 
@@ -718,6 +949,12 @@ Public Class clsIsolatedStorage
 
     End Sub
 
+    ''' <summary>
+    ''' Gets the screen setup.
+    ''' </summary>
+    ''' <param name="ScreenName">Name of the screen.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="DICT">The dictionary.</param>
     Private Sub getScreenSetup(ByVal ScreenName As String, ByVal UserID As String, ByVal DICT As Dictionary(Of Integer, String))
 
         DICT.Clear()
@@ -751,6 +988,11 @@ Public Class clsIsolatedStorage
 
     End Sub
 
+    ''' <summary>
+    ''' Saves the file restore data.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="listOfGuids">The list of guids.</param>
     Public Sub SaveFileRestoreData(ByVal UID As String, ByVal listOfGuids As List(Of String))
 
         Dim RecodsAdded As Integer = 0
@@ -791,6 +1033,9 @@ Public Class clsIsolatedStorage
         isoStore.Dispose()
 
     End Sub
+    ''' <summary>
+    ''' Initializes the file restore data.
+    ''' </summary>
     Public Sub initFileRestoreData()
 
         Dim RecodsAdded As Integer = 0
@@ -819,6 +1064,9 @@ Public Class clsIsolatedStorage
 
 
     End Sub
+    ''' <summary>
+    ''' Initializes the file preview data.
+    ''' </summary>
     Public Sub initFilePreviewData()
 
         Dim RecodsAdded As Integer = 0
@@ -846,6 +1094,12 @@ Public Class clsIsolatedStorage
         End Try
 
     End Sub
+    ''' <summary>
+    ''' Reads the file restore data.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="L">The l.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ReadFileRestoreData(ByVal UID As String, ByRef L As List(Of String)) As Boolean
 
         Dim B As Boolean = True
@@ -905,6 +1159,13 @@ Public Class clsIsolatedStorage
         Return B
     End Function
 
+    ''' <summary>
+    ''' Saves the file preview unique identifier.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="tgtTable">The TGT table.</param>
+    ''' <param name="tgtGuid">The TGT unique identifier.</param>
+    ''' <param name="StoredFQN">The stored FQN.</param>
     Public Sub SaveFilePreviewGuid(ByVal UID As String, ByVal tgtTable As String, ByVal tgtGuid As String, ByVal StoredFQN As String)
 
         Dim isoStore As IsolatedStorageFile
@@ -935,6 +1196,12 @@ Public Class clsIsolatedStorage
 
     End Sub
 
+    ''' <summary>
+    ''' Reads the file preview data.
+    ''' </summary>
+    ''' <param name="tgtGuid">The TGT unique identifier.</param>
+    ''' <param name="StoredFQN">The stored FQN.</param>
+    ''' <returns>System.String.</returns>
     Public Function ReadFilePreviewData(ByVal tgtGuid As String, ByVal StoredFQN As String) As String
 
         Dim GuidToDownLoad As String = ""
@@ -979,6 +1246,12 @@ Public Class clsIsolatedStorage
         Return GuidToDownLoad
     End Function
 
+    ''' <summary>
+    ''' Gets the search filters.
+    ''' </summary>
+    ''' <param name="SearchName">Name of the search.</param>
+    ''' <param name="UserID">The user identifier.</param>
+    ''' <param name="SearchDICT">The search dictionary.</param>
     Public Sub getSearchFilters(ByVal SearchName As String, ByVal UserID As String, ByVal SearchDICT As Dictionary(Of String, String))
 
         SearchDICT.Clear()
@@ -1018,6 +1291,12 @@ Public Class clsIsolatedStorage
 
     End Sub
 
+    ''' <summary>
+    ''' Saves the search filters.
+    ''' </summary>
+    ''' <param name="SearchName">Name of the search.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="SearchDICT">The search dictionary.</param>
     Public Sub saveSearchFilters(ByVal SearchName As String, ByVal UID As String, ByVal SearchDICT As Dictionary(Of String, String))
 
         SearchDICT.Clear()
@@ -1051,6 +1330,13 @@ Public Class clsIsolatedStorage
         Next
         isoStore.Dispose()
     End Sub
+    ''' <summary>
+    ''' Sets the CLC statex.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="currState">State of the curr.</param>
+    ''' <param name="CompanyID">The company identifier.</param>
+    ''' <param name="RepoID">The repo identifier.</param>
     Sub SetCLC_Statex(ByVal UID As String, ByVal currState As String, ByVal CompanyID As String, ByVal RepoID As String)
 
         '** NO NO NO
@@ -1075,6 +1361,14 @@ Public Class clsIsolatedStorage
         writer.Dispose()
         isoStore.Dispose()
     End Sub
+    ''' <summary>
+    ''' Sets the CLC state2.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="currState">State of the curr.</param>
+    ''' <param name="CompanyID">The company identifier.</param>
+    ''' <param name="RepoID">The repo identifier.</param>
+    ''' <returns>System.String.</returns>
     Function SetCLC_State2(ByVal UID As String, ByVal currState As String, ByVal CompanyID As String, ByVal RepoID As String) As String
 
         Dim EP As String = GatewayEndPoint + vbCrLf + DownloadEndPoint
@@ -1147,6 +1441,11 @@ Public Class clsIsolatedStorage
         Return EP
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is CLC active] [the specified uid].
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <returns><c>true</c> if [is CLC active] [the specified uid]; otherwise, <c>false</c>.</returns>
     Function isClcActive(ByVal UID As String) As Boolean
 
         'C:\Users\wmiller\AppData\LocalLow\Microsoft\Silverlight\is\42fotd3y.o1g\h3lraamt.gka\1\s\1slx5pjb0uazhq0mvvi1zkh5pl5te3cec1zm1hrdv0jeguazg2aaaaga\f
@@ -1187,6 +1486,10 @@ Public Class clsIsolatedStorage
         Return B
     End Function
 
+    ''' <summary>
+    ''' Determines whether [is CLC installed].
+    ''' </summary>
+    ''' <returns><c>true</c> if [is CLC installed]; otherwise, <c>false</c>.</returns>
     Function isClcInstalled() As Boolean
         Dim B As Boolean = False
         Dim FileName As String = "CLC.RUNNING"
@@ -1206,6 +1509,11 @@ Public Class clsIsolatedStorage
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gets the iso dir path.
+    ''' </summary>
+    ''' <param name="TgtDir">The TGT dir.</param>
+    ''' <returns>System.String.</returns>
     Function getIsoDirPath(ByVal TgtDir As String) As String
 
         Dim B As Boolean = False
@@ -1224,6 +1532,11 @@ Public Class clsIsolatedStorage
         isoStore.Dispose()
         Return B
     End Function
+    ''' <summary>
+    ''' Deletes the iso dir.
+    ''' </summary>
+    ''' <param name="TgtDir">The TGT dir.</param>
+    ''' <returns>System.String.</returns>
     Function deleteIsoDir(ByVal TgtDir As String) As String
 
         Dim B As Boolean = False
@@ -1241,6 +1554,11 @@ Public Class clsIsolatedStorage
         Return B
     End Function
 
+    ''' <summary>
+    ''' Saves the name of the search by.
+    ''' </summary>
+    ''' <param name="SearchName">Name of the search.</param>
+    ''' <param name="DICT">The dictionary.</param>
     Public Sub SaveSearchByName(ByVal SearchName As String, ByRef DICT As Dictionary(Of String, String))
 
         Dim ErrorShown As Boolean = False
@@ -1275,6 +1593,12 @@ Public Class clsIsolatedStorage
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Reads the name of the search data by.
+    ''' </summary>
+    ''' <param name="SearchName">Name of the search.</param>
+    ''' <param name="DICT">The dictionary.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ReadSearchDataByName(ByVal SearchName As String, ByRef DICT As Dictionary(Of String, String)) As Boolean
 
         DICT.Clear()
@@ -1345,6 +1669,11 @@ Public Class clsIsolatedStorage
 
     End Function
 
+    ''' <summary>
+    ''' Saves the detail search parms.
+    ''' </summary>
+    ''' <param name="DetailType">Type of the detail.</param>
+    ''' <param name="DICT">The dictionary.</param>
     Public Sub SaveDetailSearchParms(ByVal DetailType As String, ByRef DICT As Dictionary(Of String, String))
 
         If Not DetailType.Equals("EMAIL") And Not DetailType.Equals("CONTENT") Then
@@ -1385,6 +1714,12 @@ Public Class clsIsolatedStorage
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Reads the detail search parms.
+    ''' </summary>
+    ''' <param name="DetailType">Type of the detail.</param>
+    ''' <param name="DICT">The dictionary.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ReadDetailSearchParms(ByVal DetailType As String, ByRef DICT As Dictionary(Of String, String)) As Boolean
 
         If Not DetailType.Equals("EMAIL") And Not DetailType.Equals("CONTENT") Then
@@ -1461,6 +1796,11 @@ Public Class clsIsolatedStorage
 
     End Function
 
+    ''' <summary>
+    ''' Deletes the detail search parms.
+    ''' </summary>
+    ''' <param name="DetailType">Type of the detail.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function DeleteDetailSearchParms(ByVal DetailType As String) As Boolean
 
         If Not DetailType.Equals("EMAIL") And Not DetailType.Equals("CONTENT") Then
@@ -1492,6 +1832,10 @@ Public Class clsIsolatedStorage
         Return B
 
     End Function
+    ''' <summary>
+    ''' Deletes the CLC ready status.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function DeleteClcReadyStatus() As Boolean
 
         Dim isoStore As IsolatedStorageFile
@@ -1520,6 +1864,10 @@ Public Class clsIsolatedStorage
 
     End Function
 
+    ''' <summary>
+    ''' Deletes the search running.
+    ''' </summary>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function DeleteSearchRunning() As Boolean
 
         Dim isoStore As IsolatedStorageFile
@@ -1546,6 +1894,11 @@ Public Class clsIsolatedStorage
 
     End Function
 
+    ''' <summary>
+    ''' Zeroizes the temporary file.
+    ''' </summary>
+    ''' <param name="FileNameOnly">The file name only.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ZeroizeTempFile(ByVal FileNameOnly As String) As Boolean
 
         Dim isoStore As IsolatedStorageFile
@@ -1567,6 +1920,12 @@ Public Class clsIsolatedStorage
         End Try
         Return B
     End Function
+    ''' <summary>
+    ''' Appends the temporary file.
+    ''' </summary>
+    ''' <param name="FileNameOnly">The file name only.</param>
+    ''' <param name="tgtLine">The TGT line.</param>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function AppendTempFile(ByVal FileNameOnly As String, ByVal tgtLine As String) As Boolean
 
         Dim isoStore As IsolatedStorageFile
@@ -1592,6 +1951,11 @@ Public Class clsIsolatedStorage
         Return B
     End Function
 
+    ''' <summary>
+    ''' Persists the data initialize.
+    ''' </summary>
+    ''' <param name="tKey">The t key.</param>
+    ''' <param name="tData">The t data.</param>
     Public Sub PersistDataInit(ByVal tKey As String, ByVal tData As String)
 
         Try
@@ -1608,6 +1972,11 @@ Public Class clsIsolatedStorage
         End Try
 
     End Sub
+    ''' <summary>
+    ''' Persists the data save.
+    ''' </summary>
+    ''' <param name="tKey">The t key.</param>
+    ''' <param name="tData">The t data.</param>
     Public Sub PersistDataSave(ByVal tKey As String, ByVal tData As String)
 
         Try
@@ -1625,6 +1994,11 @@ Public Class clsIsolatedStorage
 
     End Sub
 
+    ''' <summary>
+    ''' Persists the data read.
+    ''' </summary>
+    ''' <param name="tKey">The t key.</param>
+    ''' <returns>System.String.</returns>
     Public Function PersistDataRead(ByVal tKey As String) As String
 
         Dim FQN As String = System.IO.Path.Combine(dirPersist, "Persist.dat")
@@ -1686,6 +2060,12 @@ Public Class clsIsolatedStorage
 
     End Function
 
+    ''' <summary>
+    ''' Previews the file initialize.
+    ''' </summary>
+    ''' <param name="CompanyID">The company identifier.</param>
+    ''' <param name="RepoID">The repo identifier.</param>
+    ''' <param name="UnencryptedCS">The unencrypted cs.</param>
     Public Sub PreviewFileInit(ByVal CompanyID As String, ByVal RepoID As String, ByVal UnencryptedCS As String)
 
         Dim FileName As String = dirCLC + "." + "EcmActiveInstance.DAT"
@@ -1704,6 +2084,9 @@ Public Class clsIsolatedStorage
 
 
     End Sub
+    ''' <summary>
+    ''' Previews the file zeroize.
+    ''' </summary>
     Public Sub PreviewFileZeroize()
 
 
@@ -1725,6 +2108,14 @@ Public Class clsIsolatedStorage
 
     End Sub
 
+    ''' <summary>
+    ''' Sets the state of the saas.
+    ''' </summary>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="currState">State of the curr.</param>
+    ''' <param name="CompanyID">The company identifier.</param>
+    ''' <param name="RepoID">The repo identifier.</param>
+    ''' <returns>System.String.</returns>
     Function SetSAAS_State(ByVal UID As String, ByVal currState As String, ByVal CompanyID As String, ByVal RepoID As String) As String
 
         Dim EP As String = GatewayEndPoint + vbCrLf + DownloadEndPoint
@@ -1761,6 +2152,11 @@ Public Class clsIsolatedStorage
         Return EP
     End Function
 
+    ''' <summary>
+    ''' Reads the PDF to stream.
+    ''' </summary>
+    ''' <param name="ReportName">Name of the report.</param>
+    ''' <returns>Stream.</returns>
     Public Function ReadPdfToStream(ByVal ReportName As String) As Stream
 
         Dim b As Boolean = True
@@ -1787,6 +2183,11 @@ Public Class clsIsolatedStorage
 
     End Function
 
+    ''' <summary>
+    ''' Reads the HTML to stream.
+    ''' </summary>
+    ''' <param name="ReportName">Name of the report.</param>
+    ''' <returns>Stream.</returns>
     Public Function ReadHtmlToStream(ByVal ReportName As String) As Stream
 
         Dim b As Boolean = True
@@ -1819,6 +2220,9 @@ Public Class clsIsolatedStorage
 
     End Function
 
+    ''' <summary>
+    ''' Requests the more iso.
+    ''' </summary>
     Public Sub RequestMoreIso()
         Try
             Using isof As IsolatedStorageFile = IsolatedStorageFile.GetUserStoreForDomain()

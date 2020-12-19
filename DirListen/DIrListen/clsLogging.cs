@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : DIrListen
+// Author           : wdale
+// Created          : 12-15-2020
+//
+// Last Modified By : wdale
+// Last Modified On : 12-15-2020
+// ***********************************************************************
+// <copyright file="clsLogging.cs" company="ECM">
+//     Copyright ©  2020 DMA, Ltd
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 //using System.Data.SQLite;
@@ -12,16 +25,45 @@ using System.Threading;
 
 namespace ArchiveListener
 {
+    /// <summary>
+    /// Class UTIL.
+    /// </summary>
     static public class UTIL
     {
+        /// <summary>
+        /// The FQN
+        /// </summary>
         static public string fqn = "";
+        /// <summary>
+        /// The log identifier
+        /// </summary>
         static public int LogID = 0;
+        /// <summary>
+        /// The cs
+        /// </summary>
         static string CS = "";
+        /// <summary>
+        /// The ll
+        /// </summary>
         public static int LL = 0;
+        /// <summary>
+        /// The log dir
+        /// </summary>
         public static string LogDir = ReadSetting("LogDir");
+        /// <summary>
+        /// The log path
+        /// </summary>
         public static string LogPATH = ReadSetting("DirListenerFilePath");
+        /// <summary>
+        /// The sq lite listener database
+        /// </summary>
         public static string SQLiteListenerDB = ArchiveListener.UTIL.ReadSetting("SQLiteListenerDB");
 
+        /// <summary>
+        /// Reads the setting.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <returns>System.String.</returns>
         public static string ReadSetting(string key)
         {
             try
@@ -37,6 +79,15 @@ namespace ArchiveListener
             }
         }
 
+        /// <summary>
+        /// Adds the sq lite file.
+        /// </summary>
+        /// <param name="ContainingFile">The containing file.</param>
+        /// <param name="ListenerDir">The listener dir.</param>
+        /// <param name="FQN">The FQN.</param>
+        /// <param name="LineID">The line identifier.</param>
+        /// <param name="OldFileName">Old name of the file.</param>
+        /// <returns>Boolean.</returns>
         public static Boolean AddSQLiteFile(string ContainingFile, string ListenerDir, string FQN, int LineID, string OldFileName)
         {
             LL = 1000;
@@ -108,6 +159,9 @@ namespace ArchiveListener
             return b;
         }
 
+        /// <summary>
+        /// Adds the sq lite database.
+        /// </summary>
         public static void AddSQLiteDB()
         {
             try
@@ -145,6 +199,10 @@ namespace ArchiveListener
         }
 
 
+        /// <summary>
+        /// Converts to longtimestring.
+        /// </summary>
+        /// <returns>System.String.</returns>
         public static string ToLongTimeString()
         {
             DateTime time = DateTime.Now;
@@ -152,6 +210,14 @@ namespace ArchiveListener
             return s;
         }
 
+        /// <summary>
+        /// Logs the MSG.
+        /// </summary>
+        /// <param name="action">The action.</param>
+        /// <param name="ListenerDir">The listener dir.</param>
+        /// <param name="TrackedFQN">The tracked FQN.</param>
+        /// <param name="dir">The dir.</param>
+        /// <param name="OldFileName">Old name of the file.</param>
         public static void LogMsg(string action, string ListenerDir, string TrackedFQN, string dir, string OldFileName)
         {
             try
@@ -224,6 +290,10 @@ namespace ArchiveListener
             }
         }
 
+        /// <summary>
+        /// Logs the error.
+        /// </summary>
+        /// <param name="msg">The MSG.</param>
         static public void LogError(string msg)
         {
             string AppPath = AppDomain.CurrentDomain.BaseDirectory;
@@ -246,6 +316,10 @@ namespace ArchiveListener
             }
         }
 
+        /// <summary>
+        /// Logs the start up.
+        /// </summary>
+        /// <param name="msg">The MSG.</param>
         static public void LogStartUp(string msg)
         {
             try
