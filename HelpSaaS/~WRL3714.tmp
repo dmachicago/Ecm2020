@@ -1,0 +1,2696 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 12">
+<meta name=Originator content="Microsoft Word 12">
+<link rel=File-List href="ArchiveDetailedHelp_files/filelist.xml">
+<link rel=Edit-Time-Data href="ArchiveDetailedHelp_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Dale Miller</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>Liz Garnand</o:LastAuthor>
+  <o:Revision>4</o:Revision>
+  <o:TotalTime>1133</o:TotalTime>
+  <o:Created>2011-09-20T15:53:00Z</o:Created>
+  <o:LastSaved>2011-09-20T16:03:00Z</o:LastSaved>
+  <o:Pages>7</o:Pages>
+  <o:Words>3591</o:Words>
+  <o:Characters>20470</o:Characters>
+  <o:Lines>170</o:Lines>
+  <o:Paragraphs>48</o:Paragraphs>
+  <o:CharactersWithSpaces>24013</o:CharactersWithSpaces>
+  <o:Version>12.00</o:Version>
+ </o:DocumentProperties>
+ <o:OfficeDocumentSettings>
+  <o:RelyOnVML/>
+  <o:AllowPNG/>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+<link rel=dataStoreItem href="ArchiveDetailedHelp_files/item0011.xml"
+target="ArchiveDetailedHelp_files/props0012.xml">
+<link rel=themeData href="ArchiveDetailedHelp_files/themedata.thmx">
+<link rel=colorSchemeMapping
+href="ArchiveDetailedHelp_files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:PunctuationKerning/>
+  <w:DrawingGridHorizontalSpacing>5.5 pt</w:DrawingGridHorizontalSpacing>
+  <w:DisplayHorizontalDrawingGridEvery>2</w:DisplayHorizontalDrawingGridEvery>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:SplitPgBreakAndParaMark/>
+   <w:DontVertAlignCellWithSp/>
+   <w:DontBreakConstrainedForcedTables/>
+   <w:DontVertAlignInTxbx/>
+   <w:Word11KerningPairs/>
+   <w:CachedColBalance/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
+  DefSemiHidden="true" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="267">
+  <w:LsdException Locked="false" Priority="0" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 9"/>
+  <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" Priority="10" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" Priority="11" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="22" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="59" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Table Grid"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:1;
+	mso-generic-font-family:roman;
+	mso-font-format:other;
+	mso-font-pitch:variable;
+	mso-font-signature:0 0 0 0 0 0;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611985 1073741899 0 0 415 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520092929 1073786111 9 0 415 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520081665 -1073717157 41 0 66047 0;}
+@font-face
+	{font-family:"Microsoft Sans Serif";
+	panose-1:2 11 6 4 2 2 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520082689 -1073741822 8 0 66047 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";}
+h1
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 1 Char";
+	mso-style-next:Normal;
+	margin-top:24.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	mso-bidi-font-size:14.0pt;
+	font-family:"Cambria","serif";
+	mso-fareast-font-family:"Times New Roman";
+	color:#365F91;
+	mso-font-kerning:0pt;
+	font-weight:bold;}
+h2
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 2 Char";
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:14.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	font-weight:bold;}
+h3
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 3 Char";
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:3;
+	font-size:13.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+h4
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 4 Char";
+	mso-style-next:Normal;
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:4;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	mso-fareast-font-family:"Times New Roman";
+	color:#4F81BD;
+	font-weight:bold;
+	font-style:italic;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-priority:39;
+	mso-style-qformat:yes;
+	mso-style-next:Normal;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";
+	text-transform:uppercase;
+	font-weight:bold;}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-priority:39;
+	mso-style-qformat:yes;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:11.0pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";
+	font-variant:small-caps;}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-priority:39;
+	mso-style-qformat:yes;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:22.0pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";
+	font-style:italic;}
+p.MsoToc4, li.MsoToc4, div.MsoToc4
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-priority:39;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:33.0pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";}
+p.MsoToc5, li.MsoToc5, div.MsoToc5
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-priority:39;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:44.0pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";}
+p.MsoToc6, li.MsoToc6, div.MsoToc6
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-priority:39;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:55.0pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";}
+p.MsoToc7, li.MsoToc7, div.MsoToc7
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-priority:39;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:66.0pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";}
+p.MsoToc8, li.MsoToc8, div.MsoToc8
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-priority:39;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:77.0pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";}
+p.MsoToc9, li.MsoToc9, div.MsoToc9
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-priority:39;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:88.0pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Header Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 3.25in right 6.5in;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Footer Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 3.25in right 6.5in;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:purple;
+	mso-themecolor:followedhyperlink;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";}
+code
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+pre
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"HTML Preformatted Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-fareast-font-family:Calibri;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-noshow:yes;
+	mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{mso-style-noshow:yes;
+	mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{mso-style-noshow:yes;
+	mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{mso-style-noshow:yes;
+	mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";}
+p.MsoTocHeading, li.MsoTocHeading, div.MsoTocHeading
+	{mso-style-noshow:yes;
+	mso-style-priority:39;
+	mso-style-qformat:yes;
+	mso-style-parent:"Heading 1";
+	mso-style-next:Normal;
+	margin-top:24.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	mso-bidi-font-size:14.0pt;
+	font-family:"Cambria","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:#365F91;
+	font-weight:bold;}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 1";
+	mso-ansi-font-size:16.0pt;
+	mso-bidi-font-size:14.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-fareast-font-family:"Times New Roman";
+	mso-hansi-font-family:Cambria;
+	color:#365F91;
+	font-weight:bold;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 2";
+	mso-ansi-font-size:14.0pt;
+	mso-bidi-font-size:14.0pt;
+	font-family:"Times New Roman","serif";
+	mso-ascii-font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-hansi-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	font-weight:bold;}
+span.Heading3Char
+	{mso-style-name:"Heading 3 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 3";
+	mso-ansi-font-size:13.0pt;
+	mso-bidi-font-size:13.0pt;
+	font-family:"Times New Roman","serif";
+	mso-ascii-font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-hansi-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+span.Heading4Char
+	{mso-style-name:"Heading 4 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 4";
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-fareast-font-family:"Times New Roman";
+	mso-hansi-font-family:Cambria;
+	mso-bidi-font-family:"Times New Roman";
+	color:#4F81BD;
+	font-weight:bold;
+	font-style:italic;}
+span.HTMLPreformattedChar
+	{mso-style-name:"HTML Preformatted Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"HTML Preformatted";
+	font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+span.HeaderChar
+	{mso-style-name:"Header Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Header;}
+span.FooterChar
+	{mso-style-name:"Footer Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Footer;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Balloon Text";
+	mso-ansi-font-size:8.0pt;
+	mso-bidi-font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-ascii-font-family:Tahoma;
+	mso-hansi-font-family:Tahoma;
+	mso-bidi-font-family:Tahoma;}
+span.sub
+	{mso-style-name:sub;
+	mso-style-unhide:no;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-size:10.0pt;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	mso-ascii-font-family:Calibri;
+	mso-fareast-font-family:Calibri;
+	mso-hansi-font-family:Calibri;}
+ /* Page Definitions */
+ @page
+	{mso-footnote-separator:url("ArchiveDetailedHelp_files/header.htm") fs;
+	mso-footnote-continuation-separator:url("ArchiveDetailedHelp_files/header.htm") fcs;
+	mso-endnote-separator:url("ArchiveDetailedHelp_files/header.htm") es;
+	mso-endnote-continuation-separator:url("ArchiveDetailedHelp_files/header.htm") ecs;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:.5in .5in .5in .5in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	border:solid #943634 2.25pt;
+	mso-border-themecolor:accent2;
+	mso-border-themeshade:191;
+	padding:24.0pt 24.0pt 24.0pt 24.0pt;
+	mso-footer:url("ArchiveDetailedHelp_files/header.htm") f1;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:146098248;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1439656310 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l0:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1
+	{mso-list-id:753665411;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1493310438 67698709 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l1:level1
+	{mso-level-number-format:alpha-upper;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:92.25pt;
+	text-indent:-.25in;}
+@list l1:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2
+	{mso-list-id:1737359388;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1242754546 848225952 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l2:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:39.2pt;
+	text-indent:-.25in;
+	mso-ansi-font-style:normal;}
+@list l2:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3
+	{mso-list-id:1844011322;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1819689488 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l3:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-bidi-font-family:"Times New Roman";}
+table.MsoTableGrid
+	{mso-style-name:"Table Grid";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-priority:59;
+	mso-style-unhide:no;
+	border:solid black 1.0pt;
+	mso-border-themecolor:text1;
+	mso-border-alt:solid black .5pt;
+	mso-border-themecolor:text1;
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-border-insideh:.5pt solid black;
+	mso-border-insideh-themecolor:text1;
+	mso-border-insidev:.5pt solid black;
+	mso-border-insidev-themecolor:text1;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="44034"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=WordSection1>
+
+<h1><a name="_Toc225130653"></a><a name="_Toc225130737"></a><a
+name="_Toc228676652"></a><a name="_Toc230063700"></a><a name="_Toc225136718"><span
+style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><o:p>&nbsp;</o:p></span></span></span></span></a></h1>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='margin-left:26.6pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid #F2F2F2 .5pt;mso-border-themecolor:background1;mso-border-themeshade:
+ 242;mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
+ .5pt solid #F2F2F2;mso-border-insideh-themecolor:background1;mso-border-insideh-themeshade:
+ 242;mso-border-insidev:.5pt solid #F2F2F2;mso-border-insidev-themecolor:background1;
+ mso-border-insidev-themeshade:242'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:193.0pt'>
+  <td width=696 valign=top style='width:7.25in;border:solid #F2F2F2 1.0pt;
+  mso-border-themecolor:background1;mso-border-themeshade:242;mso-border-alt:
+  solid #F2F2F2 .5pt;mso-border-themecolor:background1;mso-border-themeshade:
+  242;padding:0in 5.4pt 0in 5.4pt;height:193.0pt'>
+  <h1 style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><a
+  name="_Setup_Screen_–"></a><span style='mso-bidi-font-family:Calibri;
+  font-weight:normal;mso-bidi-font-weight:bold'>Setup Screen – ECM Library
+  Archive System</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-size:14.0pt;mso-bidi-font-family:
+  Calibri;font-weight:normal;mso-bidi-font-weight:bold'><o:p></o:p></span></span></span></span></span></span></h1>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><o:p>&nbsp;</o:p></span></span></span></span></span></p>
+  <h2 style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='font-weight:normal;mso-bidi-font-weight:bold'>Contents on this Page:<o:p></o:p></span></span></span></span></span></span></h2>
+  <p class=MsoNormal style='margin-left:.5in'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'></span></span></span></span></span><a
+  href="#_File_Archive_Screen"><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='color:#365F91;mso-themecolor:accent1;mso-themeshade:191'>File Archive
+  Screen Section (Middle –bottom)</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span></a><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'><br>
+  <span style='mso-spacerun:yes'>     </span></span></span></span></span></span></span><a
+  href="#_General_Steps_to"><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='color:#365F91;mso-themecolor:accent1;mso-themeshade:191'>General Steps
+  to Archive your Content</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span></a><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'><br>
+  <span style='mso-spacerun:yes'>      </span></span></span></span></span></span></span><a
+  href="#_Assigning_Folders_or"><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='color:#365F91;mso-themecolor:accent1;mso-themeshade:191'>Assigning
+  Folders or File Directories to a Library</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span></a><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'><br>
+  </span></span></span></span></span></span><a href="#_Email_Setup"><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'>Email Archive Screen Section</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span></a><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'><br>
+  </span></span></span></span></span></span><a href="#_Polling_Setup"><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'>Polling Setup</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span></a><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'><br>
+  </span></span></span></span></span></span><a href="#_File_Types_Group"><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'>File Types Group</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span></a><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'><br>
+  </span></span></span></span></span></span><a href="#_Set_Up_Directory"><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'>Set Up Directory Parameters</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span></a><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'><br style='mso-special-character:line-break'>
+  <![if !supportLineBreakNewLine]><br style='mso-special-character:line-break'>
+  <![endif]><o:p></o:p></span></span></span></span></span></span></p>
+  <h2 style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='font-weight:normal;mso-bidi-font-weight:bold'>ECM Archival Help Links:<o:p></o:p></span></span></span></span></span></span></h2>
+  <p class=MsoNormal style='margin-left:.5in'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'></span></span></span></span></span><a
+  href="archive.htm"><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='color:#365F91;mso-themecolor:accent1;mso-themeshade:191'>Short Version
+  Archive Step Help Page</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span></a><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'><br>
+  </span></span></span></span></span></span><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'></span></span></span></span></span><a
+  href="ECMSaaSIndex.htm"><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:minor-bidi;
+  color:#365F91;mso-themecolor:accent1;mso-themeshade:191'>ECM Library Master
+  Help Index</span></span></span></span></span></span><span style='mso-bookmark:
+  _Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span></a><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'><br style='mso-special-character:line-break'>
+  <![if !supportLineBreakNewLine]><br style='mso-special-character:line-break'>
+  <![endif]><o:p></o:p></span></span></span></span></span></span></p>
+  <h1><span style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><a name="_Archive_Setup_and"></a><span
+  style='mso-bidi-font-family:Calibri;font-weight:normal;mso-bidi-font-weight:
+  bold'>Archive Setup and Management <o:p></o:p></span></span></span></span></span></span></h1>
+  <h1 style='margin-left:.5in;text-indent:-.25in;mso-outline-level:1;
+  mso-list:l0 level1 lfo2'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><a
+  name="_File_Archive_Screen"></a><![if !supportLists]><span style='mso-fareast-font-family:
+  Cambria;mso-bidi-font-family:Cambria;font-weight:normal;mso-bidi-font-weight:
+  bold'><span style='mso-list:Ignore'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+  </span></span></span><![endif]><span style='mso-bidi-font-family:Calibri;
+  font-weight:normal;mso-bidi-font-weight:bold'><span
+  style='mso-spacerun:yes'> </span>File Archive Screen Section<o:p></o:p></span></span></span></span></span></span></h1>
+  <p class=MsoNormal><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='mso-bidi-font-family:Calibri'><o:p>&nbsp;</o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'>The
+  Setup process may appear a bit complex and intimidating at first, but it is
+  very straight forward and them once it is done – it is done.<span
+  style='mso-spacerun:yes'>  </span>It rarely has to be revisited. </span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'>This
+  screen defines what content on your computer will be archived and made
+  searchable including, pictures, music, documents, and anything else you might
+  wish to have backed up and archived. </span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='mso-bidi-font-family:Calibri'>Once Archive is set up and content is
+  initially archived, for future archives ECM Library will determine whether a
+  file has changed or not by evaluating the create date, the last write date,
+  length of the file and the “CRC” of the file.&nbsp;&nbsp; If there are any
+  differences between the archived file and the scanned file, ECM Library will
+  either archive that file again or it will version it, depending of the
+  archive parameter used.&nbsp;&nbsp;&nbsp;</span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><i
+  style='mso-bidi-font-style:normal'>Once something is archived, only an administrator
+  with delete authority can “undo” and delete content out of the archive.<span
+  style='mso-spacerun:yes'>  </span>Deleting something out of libraries does
+  not delete it out of the repository.<o:p></o:p></i></span></span></span></span></span></p>
+  <p class=MsoNormal align=center style='margin-left:3.2pt;text-align:center'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-no-proof:yes'><v:shapetype
+   id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+   path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+   <v:stroke joinstyle="miter"/>
+   <v:formulas>
+    <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+    <v:f eqn="sum @0 1 0"/>
+    <v:f eqn="sum 0 0 @1"/>
+    <v:f eqn="prod @2 1 2"/>
+    <v:f eqn="prod @3 21600 pixelWidth"/>
+    <v:f eqn="prod @3 21600 pixelHeight"/>
+    <v:f eqn="sum @0 0 1"/>
+    <v:f eqn="prod @6 1 2"/>
+    <v:f eqn="prod @7 21600 pixelWidth"/>
+    <v:f eqn="sum @8 21600 0"/>
+    <v:f eqn="prod @7 21600 pixelHeight"/>
+    <v:f eqn="sum @10 21600 0"/>
+   </v:formulas>
+   <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+   <o:lock v:ext="edit" aspectratio="t"/>
+  </v:shapetype><v:shape id="Picture_x0020_10" o:spid="_x0000_i1028" type="#_x0000_t75"
+   style='width:462pt;height:327.75pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="ArchiveDetailedHelp_files/image001.png" o:title=""/>
+  </v:shape></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'>The
+  example folder listed in the file archive yellow section shows what a user
+  would see if an administrator has set a mandatory directory to archive.<span
+  style='mso-spacerun:yes'>  </span></span></span></span></span></span></p>
+  <h2><span style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><a name="_General_Steps_to"></a><span
+  style='font-weight:normal;mso-bidi-font-weight:bold'>General Steps to Archive
+  your Content:<o:p></o:p></span></span></span></span></span></span></h2>
+  <p class=MsoListParagraphCxSpFirst style='margin-left:39.2pt;mso-add-space:
+  auto;text-indent:-.25in;mso-list:l2 level1 lfo4'><span style='mso-bookmark:
+  _Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><![if !supportLists]><span
+  style='mso-bidi-font-family:Calibri'><span style='mso-list:Ignore'>1.<span
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]>Identify
+  a retention date with the drop-down-arrow menu.<span
+  style='mso-spacerun:yes'>  </span>This setting cannot be changed to specific
+  content that has been archived.<span style='mso-spacerun:yes'>  </span>The
+  default minimum archive time set by ECM Library is 10 years, unless your
+  administrator has modified this retention rule.<span
+  style='mso-spacerun:yes'>    </span><i style='mso-bidi-font-style:normal'>See
+  your administrator if you are not sure which retention rule to use.<o:p></o:p></i></span></span></span></span></span></p>
+  <p class=MsoListParagraphCxSpMiddle style='margin-left:39.2pt;mso-add-space:
+  auto;text-indent:-.25in;mso-list:l2 level1 lfo4'><span style='mso-bookmark:
+  _Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><![if !supportLists]><span
+  style='mso-bidi-font-family:Calibri'><span style='mso-list:Ignore'>2.<span
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]>Select
+  “Select Dir for Archive” button and select a directory.<span
+  style='mso-spacerun:yes'>  </span></span></span></span></span></span></p>
+  <p class=MsoListParagraphCxSpMiddle style='margin-left:39.2pt;mso-add-space:
+  auto;text-indent:-.25in;mso-list:l2 level1 lfo4'><span style='mso-bookmark:
+  _Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><![if !supportLists]><span
+  style='mso-bidi-font-family:Calibri'><span style='mso-list:Ignore'>3.<span
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+  style='mso-bidi-font-family:Calibri'>On the very right of the screen notice a
+  listing of file types.<span style='mso-spacerun:yes'>  </span>Highlight the
+  file types to archive and then click on the “Include” button that
+  appears.<span style='mso-spacerun:yes'>    </span></span>Select the file
+  types you wish, by selecting all or a group of file <span class=GramE>types<span
+  style='mso-spacerun:yes'>  </span>or</span> by clicking one or more file
+  types (using shift with the mouse click) you wish to archive.</span></span></span></span></span></p>
+  <p class=MsoListParagraphCxSpMiddle style='margin-left:39.2pt;mso-add-space:
+  auto'><span style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:
+  _Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='mso-bidi-font-family:Calibri'>Your files will be now listed in the
+  “Included” column.<span style='mso-spacerun:yes'>  </span>(As an alternative
+  shortcut, click on the arrow below the “Select <span class=SpellE>Filetype</span>
+  Profile” and select groupings of similar file types like “Office Documents”
+  and “Apply”.<span style='mso-spacerun:yes'>  </span>)<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoListParagraphCxSpMiddle style='margin-left:39.2pt;mso-add-space:
+  auto;text-indent:-.25in;mso-list:l2 level1 lfo4'><span style='mso-bookmark:
+  _Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><![if !supportLists]><span
+  style='mso-bidi-font-family:Calibri'><span style='mso-list:Ignore'>4.<span
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+  style='mso-bidi-font-family:Calibri'>Highlight this new directory by
+  selecting it in the grid yellow/beige area.<span style='mso-spacerun:yes'>  
+  </span></span>If desired, you can change the default archive parameters. </span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'><span
+  style='mso-spacerun:yes'>  </span></span>Check on or off the parameters you
+  wish to use:</span></span></span></span></span></p>
+  <p class=MsoListParagraphCxSpMiddle style='margin-left:92.25pt;mso-add-space:
+  auto;text-indent:-.25in;mso-list:l1 level1 lfo6'><span style='mso-bookmark:
+  _Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><![if !supportLists]><span
+  style='font-size:9.0pt;line-height:115%;mso-bidi-font-family:Calibri'><span
+  style='mso-list:Ignore'>A.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span></span><![endif]><span style='font-size:9.0pt;line-height:115%;
+  mso-bidi-font-family:Calibri'>Include Subdirectories:<span
+  style='mso-spacerun:yes'>  </span>By checking this parameter, any existing or
+  new sub-folders created will be archived.<span style='mso-spacerun:yes'>   
+  </span>This is recommended unless you have existing or future sub-folders
+  that need to be archived with different parameters.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoListParagraphCxSpMiddle style='margin-left:92.25pt;mso-add-space:
+  auto;text-indent:-.25in;mso-list:l1 level1 lfo6'><span style='mso-bookmark:
+  _Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><![if !supportLists]><span
+  style='font-size:9.0pt;line-height:115%;mso-bidi-font-family:Calibri'><span
+  style='mso-list:Ignore'>B.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span></span><![endif]><span style='font-size:9.0pt;line-height:115%;
+  mso-bidi-font-family:Calibri'>Disable Dir Archive:<span
+  style='mso-spacerun:yes'>   </span>Checking this parameter will stop future
+  archives on this specific directory.<span style='mso-spacerun:yes'> 
+  </span>Please note that anything archived to-date will remain in the
+  repository.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoListParagraphCxSpMiddle style='margin-left:92.25pt;mso-add-space:
+  auto;text-indent:-.25in;mso-list:l1 level1 lfo6'><span style='mso-bookmark:
+  _Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><![if !supportLists]><span
+  style='font-size:9.0pt;line-height:115%;mso-bidi-font-family:Calibri'><span
+  style='mso-list:Ignore'>C.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span></span><![endif]><span style='font-size:9.0pt;line-height:115%;
+  mso-bidi-font-family:Calibri'>OCR This Directory:<span
+  style='mso-spacerun:yes'>  </span>If you have graphic files that you would
+  like to have “Object Character Recognition” applied to, any file type ending
+  with .bmp, .gif, .<span class=SpellE>ico</span>, .jpg, .<span class=SpellE>png</span>,
+  .<span class=SpellE>tif</span>, and .tiff will be scanned and any
+  OCR-readable text will be added to the text for searches. E.g. Screen shots,
+  scans of forms or news articles, etc.<span style='mso-spacerun:yes'>  
+  </span>The way to check how well ECM Library processes OCR can be tested via
+  this screen: <span style='color:#365F91;mso-themecolor:accent1;mso-themeshade:
+  191'><span style='mso-spacerun:yes'> </span></span></span></span></span></span></span></span><a
+  href="../Help/OCR%20Results.htm"><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='font-size:9.0pt;line-height:115%;mso-bidi-font-family:Calibri;
+  color:#365F91;mso-themecolor:accent1;mso-themeshade:191'>OCR Results.htm</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span></a><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-size:9.0pt;line-height:
+  115%;mso-bidi-font-family:Calibri'>.<span style='mso-spacerun:yes'> 
+  </span>Clicking on OCR may slow down your archive process, but once content
+  is archived, it cannot be later up-dated with an <span class=SpellE>OCR’d</span>
+  within your current directory.<span style='mso-spacerun:yes'>   </span>OCR
+  can only be applied to content that has not yet been archived.<span
+  style='mso-spacerun:yes'>  </span><o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoListParagraphCxSpMiddle style='margin-left:92.25pt;mso-add-space:
+  auto;text-indent:-.25in;mso-list:l1 level1 lfo6'><span style='mso-bookmark:
+  _Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><![if !supportLists]><span
+  style='font-size:9.0pt;line-height:115%;mso-bidi-font-family:Calibri'><span
+  style='mso-list:Ignore'>D.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span></span><![endif]><span style='font-size:9.0pt;line-height:115%;
+  mso-bidi-font-family:Calibri'>OCR PDF Graphics:<span
+  style='mso-spacerun:yes'>  </span>If you have graphic files that you would
+  like to have “Object Character Recognition” applied to specific to PDF files,
+  please select this parameter. <o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoListParagraphCxSpMiddle style='margin-left:92.25pt;mso-add-space:
+  auto;text-indent:-.25in;mso-list:l1 level1 lfo6'><span style='mso-bookmark:
+  _Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><![if !supportLists]><span
+  style='font-size:9.0pt;line-height:115%;mso-bidi-font-family:Calibri'><span
+  style='mso-list:Ignore'>E.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span></span><![endif]><span style='font-size:9.0pt;line-height:115%;
+  mso-bidi-font-family:Calibri'>Skip if Archive bit is on:<span
+  style='mso-spacerun:yes'>  </span>Your computer keeps track of the file
+  properties which include whether a file has a bit turned on or off.<span
+  style='mso-spacerun:yes'>  </span>This feature will speed up your archiving
+  process but should be used only if no other software process turns on the
+  “bit”.<span style='mso-spacerun:yes'>  </span>We recommend you have this
+  parameter turned off for the first archive and then use it for subsequent
+  archives.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoListParagraphCxSpMiddle style='margin-left:92.25pt;mso-add-space:
+  auto;text-indent:-.25in;mso-list:l1 level1 lfo6'><span style='mso-bookmark:
+  _Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><![if !supportLists]><span
+  style='font-size:9.0pt;line-height:115%;mso-bidi-font-family:Calibri'><span
+  style='mso-list:Ignore'>F.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span></span><![endif]><span style='font-size:9.0pt;line-height:115%;
+  mso-bidi-font-family:Calibri'>Version Files:<span style='mso-spacerun:yes'> 
+  </span>If you wish to keep a trail of all changes made to each file/document,
+  check this window.<span style='mso-spacerun:yes'>  </span>If you prefer to
+  have the most recent document archived which will over-write previous
+  versions, do not check this box.<span style='mso-spacerun:yes'>  </span>The
+  default set up by ECM Library is that all versions are archived.<span
+  style='mso-spacerun:yes'>  </span><o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoListParagraphCxSpMiddle style='margin-left:92.25pt;mso-add-space:
+  auto;text-indent:-.25in;mso-list:l1 level1 lfo6'><span style='mso-bookmark:
+  _Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><![if !supportLists]><span
+  style='font-size:9.0pt;line-height:115%;mso-bidi-font-family:Calibri'><span
+  style='mso-list:Ignore'>G.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span></span><![endif]><span style='font-size:9.0pt;line-height:115%;
+  mso-bidi-font-family:Calibri'>Capture Metadata:<span
+  style='mso-spacerun:yes'>  </span>This allows the archive to include any
+  metadata specific to particular files.<span style='mso-spacerun:yes'> 
+  </span>Otherwise it will not be captured.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoListParagraphCxSpMiddle style='margin-left:92.25pt;mso-add-space:
+  auto;text-indent:-.25in;mso-list:l1 level1 lfo6'><span style='mso-bookmark:
+  _Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><![if !supportLists]><span
+  style='font-size:9.0pt;line-height:115%;mso-bidi-font-family:Calibri'><span
+  style='mso-list:Ignore'>H.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span></span><![endif]><span style='font-size:9.0pt;line-height:115%;
+  mso-bidi-font-family:Calibri'>Mandatory Directory:<span
+  style='mso-spacerun:yes'>  </span>Only an administrator can set up a
+  mandatory Directory.<span style='mso-spacerun:yes'>   </span>Mandatory
+  directories look at a consistent directory path used across users and
+  automatically archive each time the Archive is executed.<span
+  style='mso-spacerun:yes'>  </span>Wildcards can be used.<span
+  style='mso-spacerun:yes'>  </span>For example<span
+  style='mso-spacerun:yes'>       </span>c:\Users\%userid%\Documents<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoListParagraphCxSpMiddle style='margin-left:92.25pt;mso-add-space:
+  auto;text-indent:-.25in;mso-list:l1 level1 lfo6'><span style='mso-bookmark:
+  _Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><![if !supportLists]><span
+  style='font-size:9.0pt;line-height:115%;mso-bidi-font-family:Calibri'><span
+  style='mso-list:Ignore'>I.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span></span><![endif]><span style='font-size:9.0pt;line-height:115%;
+  mso-bidi-font-family:Calibri'>Make Public:<i style='mso-bidi-font-style:normal'><span
+  style='mso-spacerun:yes'>  </span>This may be invisible if not made available
+  by your company’s administrators.<span style='mso-spacerun:yes'>  </span></i>We
+  expect most users will NOT check this:<span style='mso-spacerun:yes'> 
+  </span>if checked, ALL users across the whole enterprise will be able to see
+  that archived content.<span style='mso-spacerun:yes'>  </span>Once archived,
+  you cannot uncheck the public parameters and modify it to private/public for
+  content that has already been archived.<span style='mso-spacerun:yes'> 
+  </span>Changes on private or public can be done by changing content through
+  the </span></span></span></span></span></span><a
+  href="../Help/frmMetadata.htm"><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='font-size:9.0pt;line-height:115%;mso-bidi-font-family:Calibri;
+  color:#365F91;mso-themecolor:accent1;mso-themeshade:191'>Metadata Screen</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span></a><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-size:9.0pt;line-height:
+  115%;mso-bidi-font-family:Calibri;color:#365F91;mso-themecolor:accent1;
+  mso-themeshade:191'> </span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-size:9.0pt;line-height:
+  115%;mso-bidi-font-family:Calibri'>after using the search and retrieval
+  process.<span style='mso-spacerun:yes'>  </span>Specific Directories can be
+  searched and retrieved through the content search screen.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoListParagraphCxSpMiddle style='margin-left:92.25pt;mso-add-space:
+  auto;text-indent:-.25in;mso-list:l1 level1 lfo6'><span style='mso-bookmark:
+  _Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><![if !supportLists]><span
+  style='font-size:9.0pt;line-height:115%;mso-bidi-font-family:Calibri'><span
+  style='mso-list:Ignore'>J.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span></span><![endif]><span style='font-size:9.0pt;line-height:115%;
+  mso-bidi-font-family:Calibri'>Show Libraries:<i style='mso-bidi-font-style:
+  normal'><span style='mso-spacerun:yes'>  </span></i>This will bring up pop-up
+  window that, as you highlight directory paths in the File Archive box, it
+  will show you what libraries this directory path are being assigned.<span
+  style='mso-spacerun:yes'>  </span>Unlike the other check boxes, this does not
+  assign a parameter, but shows you what has been assigned.<span
+  style='mso-spacerun:yes'>  </span>To assign a library to a directory path,
+  highlight a directory path listed under “File Archive” and right click with
+  your mouse.<span style='mso-spacerun:yes'>  </span>A separate window will
+  appear that will list available libraries to the user.<span
+  style='mso-spacerun:yes'>  </span>Select a library and it will be placed
+  under “Assigned Libraries”.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoListParagraphCxSpMiddle style='margin-left:92.25pt;mso-add-space:
+  auto;text-indent:-.25in;mso-list:l1 level1 lfo6'><span style='mso-bookmark:
+  _Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><![if !supportLists]><span
+  style='font-size:9.0pt;line-height:115%;mso-bidi-font-family:Calibri'><span
+  style='mso-list:Ignore'>K.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span></span><![endif]><span style='font-size:9.0pt;line-height:115%;
+  mso-bidi-font-family:Calibri'>Listen:<span style='mso-spacerun:yes'> 
+  </span>For active directories, this is helpful to place a priority to
+  immediately queue a change for the next scheduled archive.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoListParagraphCxSpMiddle style='margin-left:39.2pt;mso-add-space:
+  auto;text-indent:-.25in;mso-list:l2 level1 lfo4'><span style='mso-bookmark:
+  _Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><![if !supportLists]><span
+  style='mso-bidi-font-family:Calibri'><span style='mso-list:Ignore'>5.<span
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]>Select
+  “Save changes to Archive” to keep this archive setting for each directory.</span></span></span></span></span></p>
+  <p class=MsoListParagraphCxSpLast style='margin-left:39.2pt;mso-add-space:
+  auto;text-indent:-.25in;mso-list:l2 level1 lfo4'><span style='mso-bookmark:
+  _Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><![if !supportLists]><span
+  style='mso-bidi-font-family:Calibri'><span style='mso-list:Ignore'>6.<span
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]>You
+  can now archive your content!<span style='mso-spacerun:yes'>   </span>You can
+  also set up whatever automatic time you wish to have the archiver to run by
+  using the </span></span></span></span></span><a href="#_Polling_Setup"><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'>Polling Set up</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span></a><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'> section of this screen.</span></span></span></span></span></p>
+  <h2><span style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-weight:normal;
+  mso-bidi-font-weight:bold'><o:p>&nbsp;</o:p></span></span></span></span></span></span></h2>
+  <h2 style='mso-outline-level:2'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><a
+  name="_Assigning_Folders_or"></a><span style='font-weight:normal;mso-bidi-font-weight:
+  bold'>Assigning Folders or File Directories to a Library:<o:p></o:p></span></span></span></span></span></span></h2>
+  <p class=MsoNormal><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'>If
+  you want to assign a directory to a Library you can right click mouse on the
+  Directory to assign it to a Library.<span style='mso-spacerun:yes'> 
+  </span>For information on how to set up a Library, see </span></span></span></span></span><a
+  href="../Help/Library%20Creation%20and%20Management%20Screen.htm"><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'>Library Creation and Management Screen.htm</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span></a><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'> <o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='mso-bidi-font-family:Calibri;mso-no-proof:yes'><v:shape id="Picture_x0020_2"
+   o:spid="_x0000_i1027" type="#_x0000_t75" style='width:342pt;height:250.5pt;
+   visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="ArchiveDetailedHelp_files/image002.png" o:title=""/>
+  </v:shape></span></span></span></span></span></span><span style='mso-bookmark:
+  _Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'><o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='mso-bidi-font-family:Calibri'><o:p>&nbsp;</o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='mso-bidi-font-family:Calibri'>One or more libraries can be assigned at
+  the time of archive. &nbsp;If you change assign or remove library, it will
+  update all past and future archives of that particular directory path for the
+  library name that has been assigned or removed.&nbsp;<span
+  style='mso-spacerun:yes'>  </span>&nbsp; <o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='mso-bidi-font-family:Calibri'>Exchange &amp; PST Archives:<span
+  style='mso-spacerun:yes'>  </span>You will be asked to assign exchange emails
+  or PST emails to a library at the time of archive.<span
+  style='mso-spacerun:yes'>  </span>You can set up a library that is private:
+  only you can see these emails, or you can create a library where a group of
+  users that you select are included to view these emails.<span
+  style='mso-spacerun:yes'>  </span><o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='mso-bidi-font-family:Calibri'>Once a person is assigned to a library,
+  their searches will automatically include all libraries to which they are a
+  member.<span style='mso-spacerun:yes'>  </span>To not see library items in a
+  search return<span class=GramE>,<span style='mso-spacerun:yes'>  </span>users</span>
+  can select on “my content only” in the content search screen.<span
+  style='mso-spacerun:yes'>  </span><o:p></o:p></span></span></span></span></span></span></p>
+  <h2><span style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-weight:normal;
+  mso-bidi-font-weight:bold'>Mandatory Folder User for administrators:<o:p></o:p></span></span></span></span></span></span></h2>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'>If
+  you want to automatically identify each directory for multiple computers and
+  identify it as mandatory<span class=GramE>,<span style='mso-spacerun:yes'> 
+  </span>it</span> will automatically archive any computer set up for archive
+  that uses that file structure (e.g. c:\ will get all the identified files
+  types under that folder).<span style='mso-spacerun:yes'>  </span>If the file
+  structure changes based on the user you can use this wildcard to skip a
+  user’s name and get all folders underneath that structure.<span
+  style='mso-spacerun:yes'>    </span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'>c:\Users\%userid%\Documents</span></span></span></span></span></p>
+  <p class=MsoNormal><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'></span></span></span></span></span><a
+  href="#_Setup_Screen_–"><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='color:#365F91;mso-themecolor:accent1;mso-themeshade:191'>Back to top</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span></a><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'><o:p></o:p></span></span></span></span></span></span></p>
+  <h2><span style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><a name="_Set_Up_Directory"></a><span
+  style='mso-bidi-font-family:Calibri;font-weight:normal;mso-bidi-font-weight:
+  bold'>Set <span class=GramE>Up</span> Directory Parameters for
+  administrators:<o:p></o:p></span></span></span></span></span></span></h2>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'>If
+  you want to create a directory parameter that can be recommended for all
+  users, you can save it and let others know to use a particular “Archive
+  Profile” name when they archive specific directories.<span
+  style='mso-spacerun:yes'>  </span>For example, here the profile includes
+  subdirectories, version files, capture metadata and certain file types (not
+  seen on the screen). <span style='mso-spacerun:yes'> </span><i
+  style='mso-bidi-font-style:normal'>A= Apply the profile S= Save the new
+  profile, U=Update and existing profile and D=Delete the existing profile</i>.<span
+  style='mso-spacerun:yes'>   </span>As an administrator, if you make any
+  changes to this parameter setting, any directory that uses profile </span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>rule
+  within your enterprise </span>will be affected for previous and future
+  archives.<span style='mso-spacerun:yes'>  </span>(But nothing previously
+  archived is deleted – just any new information will be added such as metadata
+  or subdirectories.<span style='mso-spacerun:yes'>  </span>However OCR function
+  will NOT be added in for previous archives. )<span style='mso-spacerun:yes'> 
+  </span>For example, if you add in “.<span class=SpellE>docx</span>” then all
+  existing <span class=SpellE>filetypes</span> ending with .<span class=SpellE>docx</span>
+  will be archived under that directory structure.<span
+  style='mso-spacerun:yes'>  </span>Once set up, <span class=SpellE>any one</span>
+  within your enterprise can type in the beginning of the profile name you have
+  created with a % wildcard following it, and by clicking on <span class=GramE>the
+  @</span>, it will display the name(s) ending with that wildcard.<span
+  style='mso-spacerun:yes'>  </span>From there it can be applied (A). </span></span></span></span></span></p>
+  <p class=MsoNormal align=center style='margin-left:3.2pt;text-align:center'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri;
+  mso-no-proof:yes'><v:shape id="Picture_x0020_5" o:spid="_x0000_i1026" type="#_x0000_t75"
+   style='width:214.5pt;height:115.5pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="ArchiveDetailedHelp_files/image005.png" o:title=""/>
+  </v:shape></span></span></span></span></span></span><span style='mso-bookmark:
+  _Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'><o:p></o:p></span></span></span></span></span></span></p>
+  <h2><span style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri;
+  font-weight:normal;mso-bidi-font-weight:bold'>General Terminology in File
+  Archive Screen Section<o:p></o:p></span></span></span></span></span></span></h2>
+  <p class=MsoNormal style='margin-left:156.6pt;text-indent:-153.0pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>List
+  of Active Directories<span style='mso-tab-count:1'>            </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>Under
+  the file Archive list is a list of all directories that have been defined to
+  the system to be archived. By selecting a row of the list, all of its
+  settings will be displayed and become editable.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:156.6pt;text-indent:-153.0pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>Include
+  all file types<span style='mso-tab-count:1'>                   </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>When
+  checked, all file types within the directory will be added to the repository.
+  This does not mean they will become searchable as a word splitter must exist
+  for a file type to make it searchable. But all metadata concerning the file,
+  no matter what the type, will be searchable.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:156.6pt;text-indent:-153.0pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>Available
+  <span style='mso-tab-count:1'>                                   </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>The
+  list of available file types with the asterisk representing all file types to
+  be included.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:156.6pt;text-indent:-153.0pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>Include<span
+  style='mso-tab-count:1'>                                       </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>The
+  list of file types included in this directory that will be archived.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:156.6pt;text-indent:-153.0pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>Exclude<span
+  style='mso-tab-count:1'>                                      </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>The
+  list of file types NOT TO BE included in this directory and that will NOT be
+  archived.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:156.6pt;text-indent:-153.0pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span class=GramE><span style='font-family:
+  "Arial","sans-serif"'>Select<span style='mso-spacerun:yes'>  </span>Dir</span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>
+  for Archive<span style='mso-tab-count:1'>               </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-ascii-font-family:Calibri;
+  mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+  minor-latin;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>This
+  selects and includes the directory you wish to archive.<span
+  style='mso-spacerun:yes'>  </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>Once
+  all archive parameters have been decided and selected or set, <span
+  class=GramE>press save</span> to keep the archive parameters for this
+  selected directory.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:156.6pt;text-indent:-153.0pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>Remove
+  Dir from Archive<span style='mso-tab-count:1'>         </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>There
+  are times when a directory will no longer be archived. Press this to delete
+  the directory from the archival process. However, if content is already in
+  the repository and tied directly to this directory, it cannot be deleted, as
+  this would cause data corruption. Therefore, if data exists for this
+  directory, the archival process can be disabled, but the directory cannot be
+  deleted.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:156.6pt;text-indent:-153.0pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>Save
+  Change to Archive<span style='mso-tab-count:1'>           </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>When
+  changes are made to the archival parameters for a directory, press this
+  button to save the changes within the repository.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:156.6pt;text-indent:-153.0pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>Include
+  Sub-directories<span style='mso-tab-count:1'>              </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>When
+  checked, will cause all subdirectories with the current directory to be
+  included into the archival process, This will save you considerable time as
+  one quick click and all data and all subdirectories can be archived.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:156.6pt;text-indent:-153.0pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>Make
+  Public<span style='mso-tab-count:1'>                               </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>This
+  allows all content within this directory to be made available company wide.</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'><span
+  style='mso-spacerun:yes'>   </span>This is only seen if made available by
+  administrators.</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'><o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:156.6pt;text-indent:-153.0pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>Disable
+  Dir Archive<span style='mso-tab-count:1'>                    </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>There
+  are times when a directory will no longer be archived. Press this to delete
+  the directory from the archival process. However, if content s already in the
+  repository and tied directly to this directory, it cannot be deleted, this
+  would cause data corruption. Therefore, if data exists for this directory,
+  the archival process can be disabled, but the directory cannot be deleted.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:156.6pt;text-indent:-153.0pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>Version
+  Files <span style='mso-tab-count:1'>                             </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>When
+  a file is deemed to already exist with the repository, it will not be added
+  twice unless this check box is checked. When this is checked, a file will be
+  added to the repository with a version number added. Without this, files are
+  overwritten in the repository with the most current version.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:156.6pt;text-indent:-153.0pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>Capture
+  Metadata<span style='mso-tab-count:1'>                      </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>In
+  the case of Microsoft documents, this will open the document and capture all
+  of the associated internal metadata from with that document and add it to the
+  repository.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:156.6pt;text-indent:-153.0pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>Include<span
+  style='mso-tab-count:1'>                                       </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>This
+  must be pressed in order to include the specified file types in the archival
+  process.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:156.6pt;text-indent:-153.0pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>Exclude<span
+  style='mso-tab-count:1'>                                      </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>This
+  must be pressed in order to exclude the specified file types from the
+  archival process.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:156.6pt;text-indent:-153.0pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>Remove
+  under Include List<span style='mso-tab-count:1'>        </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>Removes
+  the selected file type from the include list of files.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:156.6pt;text-indent:-153.0pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>Remove
+  under Exclude List<span style='mso-tab-count:1'>      </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>Removes
+  the selected file type from the exclude list of files.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:156.6pt;text-indent:-153.0pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>Status
+  Bar<span style='mso-tab-count:1'>                                  </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>Provides
+  status messages to you, the user.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:156.6pt;text-indent:-153.0pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>Terminate
+  current archive<span style='mso-spacerun:yes'>      </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-ascii-font-family:Calibri;
+  mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+  minor-latin;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>Allows
+  you to stop an archive from running and completing the process.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:156.6pt;text-indent:-153.0pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>Refresh<span
+  style='mso-tab-count:1'>                                      </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-ascii-font-family:Calibri;
+  mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+  minor-latin;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>This
+  button allows you to refresh changes.<span style='mso-spacerun:yes'> 
+  </span>For example, if you disable a directory, press the reset button to see
+  the results.<o:p></o:p></span></span></span></span></span></span></p>
+  <h1 style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo2'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><a name="_Email_Archive_Screen"></a><a
+  name="_Email_Setup"></a><![if !supportLists]><span style='mso-fareast-font-family:
+  Cambria;mso-bidi-font-family:Cambria;font-weight:normal;mso-bidi-font-weight:
+  bold'><span style='mso-list:Ignore'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+  </span></span></span><![endif]><span style='mso-bidi-font-family:Calibri;
+  font-weight:normal;mso-bidi-font-weight:bold'><span
+  style='mso-spacerun:yes'> </span>Email Archive Screen Section<o:p></o:p></span></span></span></span></span></span></h1>
+  <p class=MsoNormal><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'>For
+  email set up when it is being archived from an individual’s Outlook folders,
+  the steps would be as follows:</span></span></span></span></span></p>
+  <p class=MsoListParagraphCxSpFirst style='text-indent:-.25in;mso-list:l3 level1 lfo8'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><![if !supportLists]><span
+  style='mso-bidi-font-family:Calibri'><span style='mso-list:Ignore'>1.<span
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]>Check
+  your Outlook Folder Structure and verify that your top folder has been kept
+  to the default “Personal Folders”.<span style='mso-spacerun:yes'>  </span>If
+  yours is different, contact your administrator. Administrators will need to
+  change the line in your app <span class=SpellE>config</span> file that reads </span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-size:8.5pt;line-height:
+  115%;font-family:"Microsoft Sans Serif","sans-serif"'><span
+  style='mso-spacerun:yes'>    </span>&lt;add key=&quot;EmailFolder1&quot;
+  value=&quot;Personal Folders&quot; /<span class=GramE>&gt;<span
+  style='font-size:11.0pt;line-height:115%;font-family:"Calibri","sans-serif";
+  mso-bidi-font-family:"Times New Roman"'><span style='mso-spacerun:yes'> 
+  </span>before</span></span></span> you can archive.</span></span></span></span></span></p>
+  <p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l3 level1 lfo8'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><![if !supportLists]><span
+  style='mso-bidi-font-family:Calibri'><span style='mso-list:Ignore'>2.<span
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]>Select
+  “Avail for Archive”.</span></span></span></span></span></p>
+  <p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l3 level1 lfo8'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><![if !supportLists]><span
+  style='mso-bidi-font-family:Calibri'><span style='mso-list:Ignore'>3.<span
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]>Highlight
+  in the yellow/beige grid below all the folders you wish to be archived.</span></span></span></span></span></p>
+  <p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l3 level1 lfo8'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><![if !supportLists]><span
+  style='mso-bidi-font-family:Calibri'><span style='mso-list:Ignore'>4.<span
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]>Click
+  on the parameters you wish to use, including a must – “archive emails in
+  folder”.</span></span></span></span></span></p>
+  <p class=MsoListParagraphCxSpLast style='text-indent:-.25in;mso-list:l3 level1 lfo8'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><![if !supportLists]><span
+  style='mso-bidi-font-family:Calibri'><span style='mso-list:Ignore'>5.<span
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]>Activate.</span></span></span></span></span></p>
+  <p class=MsoNormal><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'>Once
+  these folders are “activated” you can select “Archived” button to see the
+  listing of those email folders that will be available for an archive.<span
+  style='mso-spacerun:yes'>  </span>(New subfolders created later under an
+  archived folder or folders with name changes are NOT included in the archive<span
+  style='color:#365F91;mso-themecolor:accent1;mso-themeshade:191'>. </span></span></span></span></span></span><a
+  href="#_Email_Subfolders"><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='color:#365F91;mso-themecolor:accent1;mso-themeshade:191'>See below</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span></a><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'>. )<span style='mso-spacerun:yes'> 
+  </span></span></span></span></span></span></p>
+  <p class=MsoNormal><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'>All
+  Emails are automatically <span class=SpellE>OCR’d</span> (Object Character
+  Recognition on specific graphic file types:<span style='mso-spacerun:yes'> 
+  </span></span></span></span></span></span><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='font-size:9.0pt;line-height:115%;mso-bidi-font-family:Calibri'>.bmp,
+  .gif, .<span class=SpellE>ico</span>, .jpg, .<span class=SpellE>png</span>, .<span
+  class=SpellE>tif</span></span>) and anything that is <span class=SpellE>OCR’d</span>
+  is included into the text for searches. <span
+  style='mso-spacerun:yes'> </span><span style='mso-spacerun:yes'> </span>For
+  administrators, the text that has archived <span class=GramE>for<span
+  style='font-size:9.0pt;line-height:115%;mso-bidi-font-family:Calibri'> <span
+  style='mso-spacerun:yes'> </span></span><span style='mso-bidi-font-family:
+  Calibri'>ECM</span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>
+  Library can be viewed through Microsoft SQL Manager through a Select query
+  process.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'>Now
+  you can archive your emails by selecting “Archive Outlook Emails” or “Archive
+  All” if you also have content to archive.</span></span></span></span></span></p>
+  <h3 style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><a
+  name="_Use_Last_Folder"></a><span style='font-weight:normal;mso-bidi-font-weight:
+  bold'>Use Last Folder Date<o:p></o:p></span></span></span></span></span></span></h3>
+  <p class=MsoNormal><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'>At
+  the top left hand side of the Email Archive section is a check box beside
+  ‘Use Last Folder Date’. If this box is checked, the archival process for
+  emails is fast, significantly faster than if not. This is because you are
+  telling the system to remember the last time you did a successful archive of
+  your emails and the next time archive happens, ignore all emails older than
+  that last archive date. This is because these older emails are already in the
+  repository and do not have to be revisited. So a date check is performed and
+  if the suspect <span class=GramE>email’s</span> create date is newer or equal
+  the last date that a successful archive was accomplished, it will be added to
+  the repository. If it is older than that date, it will be ignored as it has
+  already been processed. The reason you can select and deselect it is so that
+  a safety check is on place. If you ever suspect that all of your emails may
+  not be in the repository, or if you just want to make sure, uncheck the box
+  and run an archive. Then, rest assured, all emails will be revalidated as to
+  whether they exist within the repository. If they are found, they are not
+  added again, but if they are not there, they are added. This is done to every
+  email without regard to date.</span></span></span></span></span></p>
+  <p class=MsoNormal><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'></span></span></span></span></span><a
+  href="#_Setup_Screen_–"><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='color:#365F91;mso-themecolor:accent1;mso-themeshade:191'>Back to top</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span></a><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'><o:p></o:p></span></span></span></span></span></span></p>
+  <h3 style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><a
+  name="_Avail_for_Archive"></a><span style='font-weight:normal;mso-bidi-font-weight:
+  bold'>Email Archive Details<o:p></o:p></span></span></span></span></span></span></h3>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'>When
+  the “Avail for Archive” is pressed, you can see a list of every folder that
+  is contained within your Outlook client.<span style='mso-spacerun:yes'> 
+  </span>But <span class=GramE>it<span style='mso-spacerun:yes'>  </span>will</span>
+  also contain folders that are not email specific folders that are not email
+  folders – do not select non-email folders. When the list is presented, select
+  (click it with the mouse) the item (email folder) you wish to add to the
+  archive list. It <span class=GramE>will</span> high light and then you can
+  specify how you wish the selected folder to be processed. </span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'>For
+  example, check the ‘<i style='mso-bidi-font-style:normal'>Archive Emails in
+  Folder</i>’ checkbox and this folder will be added to the archive list of
+  active email folders. This is exactly what you want so that the emails in
+  this folder will be processed. This archives them and backups your emails in
+  to the repository and also allows them to be searched as soon as they are
+  added.</span></span></span></span></span></p>
+  <p class=MsoNormal><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'></span></span></span></span></span><a
+  href="#_Setup_Screen_–"><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='color:#365F91;mso-themecolor:accent1;mso-themeshade:191'>Back to top</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span></a><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'><o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'>The
+  ‘<i style='mso-bidi-font-style:normal'>Do Not Delete Unread Emails</i>’ check
+  box causes the system to keep unread emails on your local machine. They will
+  still be archived, but will not be removed. It is a safety measure that will
+  insure you have a chance to read your emails before they are removed. This
+  does not stop them from being archived and backed up into the repository.</span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'>‘<i
+  style='mso-bidi-font-style:normal'>Remove After Archive</i>’ does just that –
+  it removes each email from the local computer after <span class=GramE>it<span
+  style='mso-spacerun:yes'>  </span>has</span> been successfully archived. This
+  is not the case if you have other controls set differently. For example, if
+  the do not delete until read is checked, then the email will not be removed
+  until such time. In fact, without specifically giving your permission to
+  remove an email using this check box, it will stay on the local machine but
+  will still be backed up into the repository during archive.</span></span></span></span></span></p>
+  <h2><span style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><a name="_Email_Subfolders"></a><strong><i
+  style='mso-bidi-font-style:normal'><span style='font-weight:normal'>Email
+  Subfolders</span></i></strong></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><strong><i style='mso-bidi-font-style:
+  normal'><span style='mso-bidi-font-family:Calibri;font-weight:normal'><o:p></o:p></span></i></strong></span></span></span></span></span></h2>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='color:#1F497D;mso-themecolor:text2'>NOTE:</span><span
+  style='mso-spacerun:yes'>  </span>If you activate a mail folder for archive,
+  and later create sub folder under this folder, this new sub folder will not
+  be automatically included in the archive. <span
+  style='mso-spacerun:yes'> </span>You can view what is archived and what is
+  “available for archive” at any time and add new folders at anytime, but each
+  INDIVIDUAL folder needs to be “activated” for archive. </span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'><o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'>If
+  your email is archived directly from the Exchange server, ECM Library will archive
+  ALL your <span class=GramE>emails ,</span> unless your administrator sets up
+  the archive differently.<span style='mso-spacerun:yes'>   </span></span></span></span></span></span></p>
+  <p class=MsoNormal><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'></span></span></span></span></span><a
+  href="#_Setup_Screen_–"><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='color:#365F91;mso-themecolor:accent1;mso-themeshade:191'>Back to top</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span></a><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'><o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><i
+  style='mso-bidi-font-style:normal'>Archive Items after a specified number of
+  days</i> insure that even if items are not archived for any reason, they will
+  be archived no matter what in the number of days you specify. Again, this is
+  not used often, but it is a safety valve available to you to make certain all
+  of your critical emails is archived, backed up and searchable.</span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><i
+  style='mso-bidi-font-style:normal'>Remove items after a specified number of
+  days </i>are set so that emails do not clog up your PC. If combined with Do
+  Not Delete Unread Emails, the latter will take precedence. But when checked
+  and the email is read, it will be removed from the email folder after the
+  number of specified days. </span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'>Once
+  these selections are completed for the selected folder, press the ACTIVATE
+  button and you are done. All emails in this folder will be processed as you
+  have instructed during every archive.</span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><i
+  style='mso-bidi-font-style:normal'>DEACTIVATE</i> allows you to stop the
+  selected folder from being archived. It takes the folder out of the active
+  state unless an administrator has specifically set up a folder for archive.
+  Then, deactivate will have no effect. </span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'>The
+  <i style='mso-bidi-font-style:normal'>Default Folder</i> check box is set by
+  an administrator and usually in large corporations where one folder will be
+  the one designated to receive all emails. Otherwise, it is not used.</span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'>When
+  the <i style='mso-bidi-font-style:normal'>Archived</i> button is pressed, a
+  list of email folders you or an administrator has defined to be included into
+  the archival process will be presented in the list. Once showing, a folder
+  can be selected and its archival parameters can be modified.</span></span></span></span></span></p>
+  <p class=MsoNormal><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='font-size:14.0pt;line-height:115%;mso-bidi-font-family:Calibri'>On
+  Outlook<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'>If
+  you change your computer directory structure, Email Folder names, or add in
+  subfolders under a folder, ECM Library will be unable to archive it until you
+  change your set up.<span style='mso-spacerun:yes'>  </span>For more detail
+  see</span></span></span></span></span><a href="../Help/Outlookhelp.htm"><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'>:<span style='mso-spacerun:yes'>   </span>Outlook
+  </span></span></span></span></span></span><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='mso-bidi-font-family:Calibri;color:#365F91;mso-themecolor:accent1;
+  mso-themeshade:191'>Folder Archive Considerations</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span></a><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'>.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'></span></span></span></span></span><a
+  href="#_Setup_Screen_–"><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='color:#365F91;mso-themecolor:accent1;mso-themeshade:191'>Back to top</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span></a><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'><o:p></o:p></span></span></span></span></span></span></p>
+  <h2><span style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><a name="_Polling_Setup"></a><span
+  style='mso-bidi-font-family:Calibri;font-weight:normal;mso-bidi-font-weight:
+  bold'>Setting up Scheduling of Automatic Future Archives:<o:p></o:p></span></span></span></span></span></span></h2>
+  <p class=MsoNormal><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='mso-bidi-font-family:Calibri'>To automatically archive any changes or
+  additions to content and emails going forward, go under the “Menu Archive”
+  and select “Schedule”.<span style='mso-spacerun:yes'>  </span>This will bring
+  up the separate Archive application.<span style='mso-spacerun:yes'> 
+  </span>This application takes advantage of Microsoft Scheduler, and makes
+  archiving easy, whether or not your application is running at the time or
+  not.<span style='mso-spacerun:yes'>   </span>To set up your schedule, click
+  on what you want to have archived (All, file folders, Outlook, Exchange), add
+  in when to archive (e.g. Daily), time to run and start time.<span
+  style='mso-spacerun:yes'>  </span>Finally, click “Add New Selected Task” and
+  it will the new task will appear in the grid above.<span
+  style='mso-spacerun:yes'>   </span>Note that the specific email folders,
+  directory paths and/or exchange accounts need to be set up in the Archive Set
+  Up screen, with all their archive parameters in order for anything to be
+  identified during Archive.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='mso-bidi-font-family:Calibri'>Finally, highlight your Task Name, and
+  click on “Enable Archive” to turn on the Scheduled Task.<span
+  style='mso-spacerun:yes'>  </span>You can “Disable Archive” by highlighting
+  the Task name.<span style='mso-spacerun:yes'>  </span>This capability allows you
+  to choose to turn the automatic schedule on or off by task.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='mso-bidi-font-family:Calibri;mso-no-proof:yes'><v:shape id="Picture_x0020_3"
+   o:spid="_x0000_i1025" type="#_x0000_t75" style='width:455.25pt;height:174.75pt;
+   visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="ArchiveDetailedHelp_files/image004.png" o:title=""/>
+  </v:shape></span></span></span></span></span></span><span style='mso-bookmark:
+  _Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'><o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'></span></span></span></span></span><a
+  href="#_Setup_Screen_–"><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='color:#365F91;mso-themecolor:accent1;mso-themeshade:191'>Back to top</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span></a><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'><o:p></o:p></span></span></span></span></span></span></p>
+  <h1 style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo2'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><a name="_File_Types_Group"></a><![if !supportLists]><span
+  style='mso-fareast-font-family:Cambria;mso-bidi-font-family:Cambria;
+  font-weight:normal;mso-bidi-font-weight:bold'><span style='mso-list:Ignore'>2.<span
+  style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+  style='mso-bidi-font-family:Calibri;font-weight:normal;mso-bidi-font-weight:
+  bold'>File Types Screen Section (top right)<o:p></o:p></span></span></span></span></span></span></h1>
+  <p class=MsoNormal><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='mso-bidi-font-family:Calibri'>When the archival process loads an
+  email, email attachment, or any other type of content, it needs to know how to
+  split apart the words contained within that content and index them for
+  search. This is the area in which ‘other types of content’ can be defined.
+  When a word splitter is installed, whether it is from Microsoft or a third
+  party such as Adobe, there are many times when it will work on other types of
+  content or documents. An example is the VBA splitter that comes from
+  Microsoft. Not only does it work for VBA, but can work well for .NET VB, VB 4<span
+  class=GramE>,5,6</span> and so on. Therefore, by setting up a “process as”
+  entry, all of your existing VB programs could be entered into the repository
+  and searched. This applies to text, word documents, rtf files, and a myriad
+  of others.<span style='mso-spacerun:yes'>   </span>NOTE:<span
+  style='mso-spacerun:yes'>  </span>We strongly recommend you have research
+  first whether using a particular file type to process another file type can
+  be done first before applying these changes.<span style='mso-spacerun:yes'> 
+  </span><o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:3.2pt'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><o:p>&nbsp;</o:p></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:143.1pt;text-indent:-139.5pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>File
+  types<span style='mso-spacerun:yes'>                              </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>These
+  are the file types defined and available currently within your SQL <span
+  class=GramE>Server<span style='mso-spacerun:yes'>  </span>repository</span>.</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'><o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:143.1pt;text-indent:-139.5pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>The
+  </span></span></span></span></span></span><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='font-size:16.0pt;line-height:115%;font-family:"Arial","sans-serif"'>+</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>
+  Button<span style='mso-tab-count:1'>                         </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>Add
+  the file type specified within the drop down text as a new and available file
+  type. <o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:143.1pt;text-indent:-139.5pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>The
+  “X” button<span style='mso-tab-count:1'>                       </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>Delete
+  the selected file type.</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'><o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:143.1pt;text-indent:-139.5pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>Process
+  Type <span style='mso-tab-count:1'>                       </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>Select
+  the existing file type that you wish to use as the designated file type to be
+  applied to another file type.</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'><o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:143.1pt;text-indent:-139.5pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>As
+  Type<span style='mso-tab-count:1'>                                 </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>Enter
+  the file type you wish to be processed as the type specified in the “Process
+  Type” drop down box.</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'><o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:143.1pt;text-indent:-139.5pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>List
+  of assigned types<span style='mso-tab-count:1'>            </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>This
+  presents a list of file types as they are defined to be processed with then
+  system</span></span></span></span></span></span><span style='mso-bookmark:
+  _Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'><o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:143.1pt;text-indent:-139.5pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>Add
+  Button<span style='mso-tab-count:1'>                             </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>When
+  you have defined a “process as” file type, press this button to save it as
+  part of the system. It will immediately be available to all users.<o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:143.1pt;text-indent:-139.5pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>Remove
+  Button<span style='mso-tab-count:1'>                     </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>Press
+  to remove a “process as” file type.</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'><o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:143.1pt;text-indent:-139.5pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>Exchange<span
+  style='mso-tab-count:1'>                              </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>If
+  an Exchange or POP server has been set up by an administrator (see </span></span></span></span></span></span><a
+  href="../Help/frmExchangeMail.htm"><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='color:#365F91;mso-themecolor:accent1;mso-themeshade:191'>frmExchangeMail.htm</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span></a><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>)
+  then the exchange archive will be performed, but only at the administrator
+  level. <o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:143.1pt;text-indent:-139.5pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'>PST<span
+  style='mso-spacerun:yes'>                                       </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri'>Opens
+  up a separate window where exported PST old archive files can be identified
+  that have been exported from Outlook.<span style='mso-spacerun:yes'> 
+  </span>This selects those directory paths for the next scheduled
+  Archive.<span style='mso-spacerun:yes'>  </span></span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='font-family:"Arial","sans-serif"'><o:p></o:p></span></span></span></span></span></span></p>
+  <p class=MsoNormal style='margin-left:156.2pt;text-align:justify;text-indent:
+  -153.35pt;line-height:150%'><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><o:p>&nbsp;</o:p></span></span></span></span></span></p>
+  <p class=MsoNormal><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'></span></span></span></span></span><a
+  href="#_Setup_Screen_–"><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><span
+  style='color:#365F91;mso-themecolor:accent1;mso-themeshade:191'>Back to top</span></span></span></span></span></span><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span></a><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'><o:p></o:p></span></span></span></span></span></span></p>
+  <span style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span>
+  <p class=MsoNormal><span style='mso-bookmark:_Toc225136718'><span
+  style='mso-bookmark:_Toc230063700'><span style='mso-bookmark:_Toc228676652'><span
+  style='mso-bookmark:_Toc225130737'><span style='mso-bookmark:_Toc225130653'><o:p>&nbsp;</o:p></span></span></span></span></span></p>
+  </td>
+  <span style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span>
+ </tr>
+ <tr style='mso-yfti-irow:1;mso-yfti-lastrow:yes'>
+  <td width=696 valign=top style='width:7.25in;border:solid #F2F2F2 1.0pt;
+  mso-border-themecolor:background1;mso-border-themeshade:242;border-top:none;
+  mso-border-top-alt:solid #F2F2F2 .5pt;mso-border-top-themecolor:background1;
+  mso-border-top-themeshade:242;mso-border-alt:solid #F2F2F2 .5pt;mso-border-themecolor:
+  background1;mso-border-themeshade:242;padding:0in 5.4pt 0in 5.4pt'><span
+  style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span>
+  <h1><span style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'><span style='mso-bidi-font-family:Calibri;
+  font-weight:normal;mso-bidi-font-weight:bold'><o:p>&nbsp;</o:p></span></span></span></span></span></span></h1>
+  </td>
+  <span style='mso-bookmark:_Toc225136718'><span style='mso-bookmark:_Toc230063700'><span
+  style='mso-bookmark:_Toc228676652'><span style='mso-bookmark:_Toc225130737'><span
+  style='mso-bookmark:_Toc225130653'></span></span></span></span></span>
+ </tr>
+</table>
+
+<span style='mso-bookmark:_Toc228676652'></span><span style='mso-bookmark:_Toc230063700'></span><span
+style='mso-bookmark:_Toc225136718'></span>
+
+<h3 style='margin-left:.5in'><span style='mso-bookmark:_Toc225130737'><span
+style='mso-bookmark:_Toc225130653'><a name="_Toc230063701"><br
+style='mso-special-character:line-break'>
+<![if !supportLineBreakNewLine]><br style='mso-special-character:line-break'>
+<![endif]></a></span></span></h3>
+
+<p class=MsoNormal style='margin-left:.25in;line-height:150%'><span
+style='font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

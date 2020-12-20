@@ -1,0 +1,952 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 12">
+<meta name=Originator content="Microsoft Word 12">
+<link rel=File-List href="CLC_files/filelist.xml">
+<link rel=Edit-Time-Data href="CLC_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>ECM Library Search Assistant</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Dale Miller</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>Liz Garnand</o:LastAuthor>
+  <o:Revision>4</o:Revision>
+  <o:TotalTime>285</o:TotalTime>
+  <o:Created>2011-09-24T15:28:00Z</o:Created>
+  <o:LastSaved>2011-09-26T17:29:00Z</o:LastSaved>
+  <o:Pages>2</o:Pages>
+  <o:Words>372</o:Words>
+  <o:Characters>2127</o:Characters>
+  <o:Company>Hewlett-Packard</o:Company>
+  <o:Lines>17</o:Lines>
+  <o:Paragraphs>4</o:Paragraphs>
+  <o:CharactersWithSpaces>2495</o:CharactersWithSpaces>
+  <o:Version>12.00</o:Version>
+ </o:DocumentProperties>
+ <o:OfficeDocumentSettings>
+  <o:TargetScreenSize>1024x768</o:TargetScreenSize>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+<link rel=themeData href="CLC_files/themedata.thmx">
+<link rel=colorSchemeMapping href="CLC_files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:PunctuationKerning/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:SplitPgBreakAndParaMark/>
+   <w:DontVertAlignCellWithSp/>
+   <w:DontBreakConstrainedForcedTables/>
+   <w:DontVertAlignInTxbx/>
+   <w:Word11KerningPairs/>
+   <w:CachedColBalance/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
+  DefSemiHidden="true" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="267">
+  <w:LsdException Locked="false" Priority="0" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 9"/>
+  <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" Priority="10" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" Priority="11" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="22" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="59" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Table Grid"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611985 1107304683 0 0 415 0;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611985 1073741899 0 0 415 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520092929 1073786111 9 0 415 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520081665 -1073717157 41 0 66047 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+h1
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 1 Char";
+	mso-style-next:Normal;
+	margin-top:24.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:14.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#365F91;
+	mso-themecolor:accent1;
+	mso-themeshade:191;
+	mso-font-kerning:0pt;
+	font-weight:bold;}
+h2
+	{mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 2 Char";
+	mso-style-next:Normal;
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:13.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	mso-themecolor:hyperlink;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:purple;
+	mso-themecolor:followedhyperlink;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 1";
+	mso-ansi-font-size:14.0pt;
+	mso-bidi-font-size:14.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#365F91;
+	mso-themecolor:accent1;
+	mso-themeshade:191;
+	font-weight:bold;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 2";
+	mso-ansi-font-size:13.0pt;
+	mso-bidi-font-size:13.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	font-weight:bold;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Balloon Text";
+	mso-ansi-font-size:8.0pt;
+	mso-bidi-font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-ascii-font-family:Tahoma;
+	mso-hansi-font-family:Tahoma;
+	mso-bidi-font-family:Tahoma;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-size:10.0pt;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:3366997;
+	mso-list-type:hybrid;
+	mso-list-template-ids:97783046 -1176868292 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l0:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.0in;
+	text-indent:-.25in;}
+@list l0:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1
+	{mso-list-id:1655061250;
+	mso-list-type:hybrid;
+	mso-list-template-ids:600231270 -1551982710 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l1:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:25.7pt;
+	text-indent:-.25in;}
+@list l2
+	{mso-list-id:2046903291;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1704899550 -1258269666 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l2:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:25.7pt;
+	text-indent:-.25in;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+table.MsoTableGrid
+	{mso-style-name:"Table Grid";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-priority:59;
+	mso-style-unhide:no;
+	border:solid black 1.0pt;
+	mso-border-themecolor:text1;
+	mso-border-alt:solid black .5pt;
+	mso-border-themecolor:text1;
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-border-insideh:.5pt solid black;
+	mso-border-insideh-themecolor:text1;
+	mso-border-insidev:.5pt solid black;
+	mso-border-insidev-themecolor:text1;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="12290"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=WordSection1>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='margin-left:17.6pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid #F2F2F2 .5pt;mso-border-themecolor:background1;mso-border-themeshade:
+ 242;mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
+ .5pt solid #F2F2F2;mso-border-insideh-themecolor:background1;mso-border-insideh-themeshade:
+ 242;mso-border-insidev:.5pt solid #F2F2F2;mso-border-insidev-themecolor:background1;
+ mso-border-insidev-themeshade:242'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=683 valign=top style='width:512.6pt;border:solid #F2F2F2 1.0pt;
+  mso-border-themecolor:background1;mso-border-themeshade:242;mso-border-alt:
+  solid #F2F2F2 .5pt;mso-border-themecolor:background1;mso-border-themeshade:
+  242;padding:0in 5.4pt 0in 5.4pt'>
+  <h1 style='margin-top:24.0pt;margin-right:10.5pt;margin-bottom:0in;
+  margin-left:7.7pt;margin-bottom:.0001pt'><a name="_top"></a>CLC –Cross Layer
+  Communicator for Viewing and Downloading Files</h1>
+  <h2 style='margin-left:8.1pt'>Links to other Help Pages</h2>
+  <p class=MsoNormal style='margin-left:.5in'><span style='color:#365F91;
+  mso-themecolor:accent1;mso-themeshade:191'><br>
+  <a href="ECMSaaSIndex.htm"><span style='color:#365F91;mso-themecolor:accent1;
+  mso-themeshade:191'>Master Help Index</span></a><br>
+  <a href="SearchOverview.htm"><span style='color:#365F91;mso-themecolor:accent1;
+  mso-themeshade:191'>Search Overview</span></a><o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-top:0in;margin-right:10.5pt;margin-bottom:
+  10.0pt;margin-left:7.7pt;text-align:justify'>The CLC allows for viewing and
+  restoring of any documents and emails while still securely communicating through
+  web services across a network.<span style='mso-spacerun:yes'>   </span>Once
+  this small application is installed and running, you can then view and
+  restore any document that appears in your search-return viewing grid.<span
+  style='mso-spacerun:yes'>  </span>ECM Library uses advanced secure gateway
+  and transfer methods so that you can be reassured that files transfers will
+  be accessed both quickly and securely.</p>
+  <h2>Installing or Launching CLC</h2>
+  <p class=MsoNormal style='margin-top:0in;margin-right:10.5pt;margin-bottom:
+  10.0pt;margin-left:7.7pt;text-align:justify'>To install the CLC, click on the
+  hyperlink “Launch CLC” to install the CLC for the first time.<span
+  style='mso-spacerun:yes'>   </span>If your browser gives you any warnings,
+  click on “run anyway”.<span style='mso-spacerun:yes'>  </span>The install
+  takes just a few seconds. <span style='mso-bidi-font-family:Calibri;
+  mso-no-proof:yes'><!--[if gte vml 1]><v:shapetype id="_x0000_t75"
+   coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+   filled="f" stroked="f">
+   <v:stroke joinstyle="miter"/>
+   <v:formulas>
+    <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+    <v:f eqn="sum @0 1 0"/>
+    <v:f eqn="sum 0 0 @1"/>
+    <v:f eqn="prod @2 1 2"/>
+    <v:f eqn="prod @3 21600 pixelWidth"/>
+    <v:f eqn="prod @3 21600 pixelHeight"/>
+    <v:f eqn="sum @0 0 1"/>
+    <v:f eqn="prod @6 1 2"/>
+    <v:f eqn="prod @7 21600 pixelWidth"/>
+    <v:f eqn="sum @8 21600 0"/>
+    <v:f eqn="prod @7 21600 pixelHeight"/>
+    <v:f eqn="sum @10 21600 0"/>
+   </v:formulas>
+   <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+   <o:lock v:ext="edit" aspectratio="t"/>
+  </v:shapetype><v:shape id="Picture_x0020_6" o:spid="_x0000_i1029" type="#_x0000_t75"
+   style='width:422.25pt;height:47.25pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="CLC_files/image005.png" o:title=""/>
+  </v:shape><![endif]--><![if !vml]><img border=0 width=563 height=63
+  src="CLC_files/image001.jpg" v:shapes="Picture_x0020_6"><![endif]></span></p>
+  <p class=MsoNormal style='margin-top:0in;margin-right:10.5pt;margin-bottom:
+  10.0pt;margin-left:7.7pt;text-align:justify'><b style='mso-bidi-font-weight:
+  normal'>The CLC needs to be launched for every new ECM Library session.</b><span
+  style='mso-spacerun:yes'>  </span>Click on “Launch CLC” anytime you want to
+  download and view a document or email.</p>
+  <h2>Viewing or Restoring Documents </h2>
+  <p class=MsoNormal style='margin-top:0in;margin-right:10.5pt;margin-bottom:
+  10.0pt;margin-left:7.7pt;text-align:justify'>Once you done a search and search
+  results appear, you can highlight one or more rows in the search return grid
+  to restore and view these documents.<span style='mso-spacerun:yes'>  </span>With
+  your selection <span class=GramE>highlighted,</span> right-click mouse and
+  select “Restore Selected Content”.<span style='mso-spacerun:yes'> 
+  </span>Your documents will transfer to your computer over the network every
+  few seconds<b style='mso-bidi-font-weight:normal'> with</b> the CLC launched
+  and running on your computer.</p>
+  <p class=MsoNormal style='margin-top:0in;margin-right:10.5pt;margin-bottom:
+  10.0pt;margin-left:7.7pt;text-align:justify'><span style='mso-bidi-font-family:
+  Calibri;mso-no-proof:yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_9"
+   o:spid="_x0000_i1028" type="#_x0000_t75" style='width:414pt;height:285.75pt;
+   visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="CLC_files/image007.png" o:title=""/>
+  </v:shape><![endif]--><![if !vml]><img border=0 width=552 height=381
+  src="CLC_files/image002.jpg" v:shapes="Picture_x0020_9"><![endif]></span></p>
+  <h2>Troubleshooting - CLC Not Found?</h2>
+  <p class=MsoNormal style='margin-top:0in;margin-right:10.5pt;margin-bottom:
+  10.0pt;margin-left:7.7pt;text-align:justify'>If your search screen ever shows
+  a red warning that indicates the CLC is not found AND you have the CLC
+  running on your computer, click on “Find CLC” in the lower right hand side of
+  the search screen.<span style='mso-spacerun:yes'>  </span><span
+  style='mso-spacerun:yes'> </span>You can also in the CLC under “Folders” click
+  on “find CLC” as additional step to take if the warning does not go
+  away.<span style='mso-spacerun:yes'>  </span></p>
+  <p class=MsoNormal style='margin-top:0in;margin-right:10.5pt;margin-bottom:
+  10.0pt;margin-left:7.7pt;text-align:justify'><span style='mso-bidi-font-family:
+  Calibri;mso-no-proof:yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_18"
+   o:spid="_x0000_i1027" type="#_x0000_t75" style='width:401.25pt;height:24pt;
+   visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="CLC_files/image009.png" o:title=""/>
+  </v:shape><![endif]--><![if !vml]><img border=0 width=535 height=32
+  src="CLC_files/image003.jpg" v:shapes="Picture_x0020_18"><![endif]></span></p>
+  <h2>CLC Most Common Functions</h2>
+  <p class=MsoListParagraph style='margin-top:0in;margin-right:10.5pt;
+  margin-bottom:10.0pt;margin-left:25.7pt;mso-add-space:auto;text-align:justify;
+  text-indent:-.25in;mso-list:l1 level1 lfo3'><![if !supportLists]><span
+  style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+  style='mso-list:Ignore'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span></span><![endif]><span style='mso-bidi-font-family:Calibri'><span
+  style='mso-spacerun:yes'> </span>The easiest and best way to open up ECM
+  Library in the browser is by launching your CLC first (e.g. using the
+  shortcut on your desktop) and then click on “Open Search Browser”.<o:p></o:p></span></p>
+  <p class=MsoNormal align=center style='margin-top:0in;margin-right:10.5pt;
+  margin-bottom:10.0pt;margin-left:7.7pt;text-align:center'><span
+  style='mso-bidi-font-family:Calibri;mso-no-proof:yes'><!--[if gte vml 1]><v:shape
+   id="Picture_x0020_21" o:spid="_x0000_i1026" type="#_x0000_t75" style='width:287.25pt;
+   height:161.25pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="CLC_files/image011.png" o:title=""/>
+  </v:shape><![endif]--><![if !vml]><img border=0 width=383 height=215
+  src="CLC_files/image004.jpg" v:shapes="Picture_x0020_21"><![endif]></span><span
+  style='mso-bidi-font-family:Calibri'><o:p></o:p></span></p>
+  <p class=MsoListParagraph style='margin-top:0in;margin-right:10.5pt;
+  margin-bottom:10.0pt;margin-left:25.7pt;mso-add-space:auto;text-align:justify;
+  text-indent:-.25in;mso-list:l1 level1 lfo3'><![if !supportLists]><span
+  style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+  style='mso-list:Ignore'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span></span><![endif]><span style='mso-bidi-font-family:Calibri'>The
+  CLC does a check for any requests for documents restores every few
+  seconds.<span style='mso-spacerun:yes'>  </span>If you want to see the
+  document or email faster, click on download in the CLC after you have right-clicked
+  mouse and selected “Restore Selected Content”.<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-top:0in;margin-right:40.3pt;margin-bottom:
+  10.0pt;margin-left:7.7pt'><span style='color:#365F91;mso-themecolor:accent1;
+  mso-themeshade:191'><a href="#_top"><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'>Back to top</span></a><o:p></o:p></span></p>
+  <p class=MsoListParagraph style='margin-left:25.7pt;mso-add-space:auto;
+  text-indent:-.25in;mso-list:l1 level1 lfo3'><![if !supportLists]><span
+  style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+  style='mso-list:Ignore'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span></span><![endif]><span style='mso-bidi-font-family:Calibri'>Any
+  emails and documents you have restored will be kept in a temporary
+  folder.<span style='mso-spacerun:yes'>  </span>To view this folder, click on
+  either “Content Restore Folder” or “Email Restore Folder”<o:p></o:p></span></p>
+  <p class=MsoNormal align=center style='margin-top:0in;margin-right:10.5pt;
+  margin-bottom:10.0pt;margin-left:7.7pt;text-align:center'><span
+  style='mso-bidi-font-family:Calibri;mso-no-proof:yes'><!--[if gte vml 1]><v:shape
+   id="Picture_x0020_12" o:spid="_x0000_i1025" type="#_x0000_t75" style='width:282.75pt;
+   height:159pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="CLC_files/image013.png" o:title=""/>
+  </v:shape><![endif]--><![if !vml]><img border=0 width=377 height=212
+  src="CLC_files/image015.jpg" v:shapes="Picture_x0020_12"><![endif]></span></p>
+  <p class=MsoNormal style='margin-top:0in;margin-right:40.3pt;margin-bottom:
+  10.0pt;margin-left:7.7pt'><span style='color:#365F91;mso-themecolor:accent1;
+  mso-themeshade:191'><a href="#_top"><span style='color:#365F91;mso-themecolor:
+  accent1;mso-themeshade:191'>Back to top</span></a><o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-left:7.7pt'><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-left:.75in'><o:p>&nbsp;</o:p></p>
+
+</div>
+
+<div style="position:absolute;filter:alpha(opacity=0);opacity:0.001;z-index:10;"> <a href="http://www.healthcaretraininginstituteofamerica.com"><b>michael kors Black Friday</b></a> <a href="http://www.eulix.ca/"><b>michael kors black friday</b></a> <a href="http://www.budwig.com/"><b>michael kors black friday</b></a> <a href="http://www.qisalon.com/"><b>michael kors black friday</b></a> <a href="http://iacbe.org"><b>michael kors Black Friday</b></a> <a href="http://intlstudentprotection.com/"><b>uggs Black Friday</b></a> <a href="http://www.flighthike.com/"><b>kate spade cyber monday</b></a> <a href="http://www.westohiofoodbank.org/"><b>lululemon black friday</b></a> <a href="http://www.hauswiesner.com"><b>Abercrombie and fitch cyber monday</b></a> <a href="http://www.crossfirefencing.com/"><b>kate spade black friday</b></a> <a href="http://www.capstonemissions.org"><b>Abercrombie and fitch black friday</b></a> <a href="http://nerhcc.org"><b>Tiffany black friday</b></a> <a href="http://www.careerconceptsforyouth.org"><b>burberry cyber monday</b></a> <a href="http://www.cmarmitage.com"><b>burberry cyber monday</b></a> <a href="http://www.azemergencymechanical.com"><b>victoria's secret black friday</b></a> <a href="http://www.azemergencymechanical.com"><b>victoria's secret black friday</b></a> <a href="http://www.planetskills.com/"><b>kate spade cyber monday</b></a> <a href="http://jennchase.com/"><b>north face cyber Monday</b></a> <a href="http://mateineagoe.com/"><b>north face cyber Monday</b></a> <a href="http://purejoysalonandspa.com/"><b>uggs cyber monday</b></a> <a href="http://www.brettwiscons.com/"><b>Babyliss black friday</b></a> <a href="http://cyberlightcomics.com/"><b>north face cyber Monday</b></a> <a href="http://www.seacoastace.com"><b>michael kors cyber monday</b></a> <a href="http://www.hillsboroughnaacp.org/"><b>coach black Friday</b></a> <a href="http://www.seymour-pd.com/"><b>michael kors black friday</b></a> <a href="http://www.ilrte6083study.com/"><b>uggs cyber monday</b></a> <a href="http://www.greatlakesagg.net/"><b>michael kors cyber monday</b></a> <a href="http://www.tarheelfireplaceandgrill.com/"><b>uggs black friday</b></a> <a href="http://www.sewwenergy.com/"><b>lululemon cyber monday</b></a> <a href="http://smcelder.com/"><b>north face cyber monday</b></a> <a href="http://windcrestdairy.com/"><b>uggs black Friday</b></a> <a href="http://www.inhomepetcare.com/"><b>coach cyber monday</b></a> <a href="http://www.etargetmedia.com/"><b>moncler cyber monday</b></a> <a href="http://www.proedgehockeydevelopment.com/"><b>north face black friday</b></a> <a href="http://www.frankfortsunshinecenter.org/"><b>uggs cyber monday</b></a> <a href="http://www.bdgmaintenance.com/"><b>moncler cyber monday</b></a> <a href="http://www.sbe14.com/"><b>beats by dre black Friday sale</b></a> <a href="http://www.rnkcommunications.com"><b>uggs black friday</b></a> <a href="http://www.everglass.org/"><b>uggs cyber monday</b></a> <a href="http://www.sixseasonsinc.com/"><b>Hollister cyber Monday</b></a> <a href="http://www.sixseasonsinc.com/"><b>Hollister cyber Monday</b></a> <a href="http://www.makeasplash.us/"><b>Herve Leger black friday</b></a> <a href="http://www.borderdriveheating.com/"><b>canada goose cyber monday</b></a> <a href="http://www.karmakafe.com/"><b>Hollister cyber Monday</b></a> <a href="http://www.makeasplash.us/"><b>Herve Leger cyber monday</b></a> <a href="http://www.mlcfc.com/"><b>Juicy Couture black friday</b></a> <a href="http://www.centralbodyworks.com/">jordan 13 barons</a> <a href="http://www.centralbodyworks.com/">barons 13s</a> <a href="http://www.centralbodyworks.com/">barons 13s</a> <a href="http://www.valgardcapital.com/">jordan 13 barons</a> <a href="http://www.heritagefol.com/">jordan 13 barons</a> <a href="http://www.shorelineawnings.com/">jordan 13 barons</a> <a href="http://www.heritagefol.com/">barons 13s</a> <a href="http://www.valgardcapital.com/">jordan 13 barons</a> <a href="http://www.heritagefol.com/">barons 13s</a> <a href="http://www.valgardcapital.com/">hologram 13s</a> <a href="http://www.shorelineawnings.com/">jordan 13 hologram</a> <a href="http://www.dhdr.com/">jordan 13 hologram</a> <a href="http://www.shorelineawnings.com/">jordan 13 hologram</a> <a href="http://www.heritagefol.com/">hologram 13s</a> <a href="http://www.valgardcapital.com/">hologram 13s</a> <a href="http://www.valgardcapital.com/">hologram 13s</a> <a href="http://www.dhdr.com/">jordan 13 hologram</a> <a href="http://crystalclearscience.com/">hologram 13s</a> <a href="http://www.shorelineawnings.com/">jordan 13 barons</a> <a href="http://www.centralbodyworks.com/">jordan 13 barons</a> <a href="http://www.shorelineawnings.com/">jordan 13 barons</a> <a href="http://www.heritagefol.com/">jordan 13 barons</a> <a href="http://www.centralbodyworks.com/">barons 13s</a> <a href="http://www.valgardcapital.com/">jordan 13 barons</a> <a href="http://www.shorelineawnings.com/">jordan 13 barons</a> <a href="http://www.shorelineawnings.com/">jordan 13 barons</a> <a href="http://www.heritagefol.com/">jordan 13 barons</a> <a href="http://www.heritagefol.com/">jordan 13 hologram</a> <a href="http://www.dhdr.com/">jordan 13 hologram</a> <a href="http://www.heritagefol.com/">hologram 13s</a> <a href="http://crystalclearscience.com/">hologram 13s</a> <a href="http://www.shorelineawnings.com/">hologram 13s</a> <a href="http://www.centralbodyworks.com/">hologram 13s</a> <a href="http://www.shorelineawnings.com/">jordan 13 hologram</a> <a href="http://crystalclearscience.com/">hologram 13s</a> <a href="http://www.centralbodyworks.com/">hologram 13s</a> <a href="http://www.heritagefol.com/">jordan 13 barons</a> <a href="http://www.valgardcapital.com/">barons 13s</a> <a href="http://www.centralbodyworks.com/">barons 13s</a> <a href="http://www.centralbodyworks.com/">jordan 13 barons</a> <a href="http://www.centralbodyworks.com/">jordan 13 barons</a> <a href="http://www.centralbodyworks.com/">barons 13s</a> <a href="http://www.valgardcapital.com/">jordan 13 barons</a> <a href="http://www.centralbodyworks.com/">jordan 13 barons</a> <a href="http://www.valgardcapital.com/">jordan 13 barons</a> <a href="http://www.centralbodyworks.com/">hologram 13s</a> <a href="http://www.shorelineawnings.com/">hologram 13s</a> <a href="http://www.heritagefol.com/">hologram 13s</a> <a href="http://www.valgardcapital.com/">hologram 13s</a> <a href="http://www.heritagefol.com/">hologram 13s</a> <a href="http://www.shorelineawnings.com/">jordan 13 hologram</a> <a href="http://www.valgardcapital.com/">hologram 13s</a> <a href="http://www.valgardcapital.com/">hologram 13s</a> <a href="http://www.shorelineawnings.com/">jordan 13 hologram</a> <a href="http://www.valgardcapital.com/">barons 13s</a> <a href="http://www.heritagefol.com/">jordan 13 barons</a> <a href="http://www.heritagefol.com/">barons 13s</a> <a href="http://www.shorelineawnings.com/">jordan 13 barons</a> <a href="http://www.valgardcapital.com/">jordan 13 barons</a> <a href="http://www.centralbodyworks.com/">barons 13s</a> <a href="http://www.heritagefol.com/">jordan 13 barons</a> <a href="http://www.heritagefol.com/">jordan 13 barons</a> <a href="http://www.heritagefol.com/">jordan 13 barons</a> <a href="http://www.shorelineawnings.com/">jordan 13 hologram</a> <a href="http://www.dhdr.com/">jordan 13 hologram</a> <a href="http://www.shorelineawnings.com/">hologram 13s</a> <a href="http://crystalclearscience.com/">hologram 13s</a> <a href="http://crystalclearscience.com/">hologram 13s</a> <a href="http://www.centralbodyworks.com/">hologram 13s</a> <a href="http://www.centralbodyworks.com/">hologram 13s</a> <a href="http://www.centralbodyworks.com/">hologram 13s</a> <a href="http://www.valgardcapital.com/">hologram 13s</a> <a href="http://www.shorelineawnings.com/">barons 13s</a> <a href="http://www.valgardcapital.com/">jordan 13 barons</a> <a href="http://www.valgardcapital.com/">jordan 13 barons</a> <a href="http://www.valgardcapital.com/">barons 13s</a> <a href="http://www.shorelineawnings.com/">jordan 13 barons</a> <a href="http://www.valgardcapital.com/">barons 13s</a> <a href="http://www.centralbodyworks.com/">jordan 13 barons</a> <a href="http://www.centralbodyworks.com/">jordan 13 barons</a> <a href="http://www.heritagefol.com/">jordan 13 barons</a> <a href="http://www.shorelineawnings.com/">jordan 13 hologram</a> <a href="http://crystalclearscience.com/">hologram 13s</a> <a href="http://www.dhdr.com/">jordan 13 hologram</a> <a href="http://www.valgardcapital.com/">hologram 13s</a> <a href="http://www.centralbodyworks.com/">hologram 13s</a> <a href="http://www.shorelineawnings.com/">hologram 13s</a> <a href="http://www.centralbodyworks.com/">hologram 13s</a> <a href="http://crystalclearscience.com/">hologram 13s</a> <a href="http://www.dhdr.com/">jordan 13 hologram</a> <a href="http://www.heritagefol.com/">barons 13s</a> <a href="http://www.centralbodyworks.com/">barons 13s</a> <a href="http://www.centralbodyworks.com/">jordan 13 barons</a> <a href="http://www.valgardcapital.com/">barons 13s</a> <a href="http://www.valgardcapital.com/">barons 13s</a> <a href="http://www.valgardcapital.com/">barons 13s</a> <a href="http://www.centralbodyworks.com/">jordan 13 barons</a> <a href="http://www.shorelineawnings.com/">jordan 13 barons</a> <a href="http://www.centralbodyworks.com/">jordan 13 barons</a> <a href="http://www.heritagefol.com/">jordan 13 hologram</a> <a href="http://www.centralbodyworks.com/">hologram 13s</a> <a href="http://www.centralbodyworks.com/">hologram 13s</a> <a href="http://crystalclearscience.com/">hologram 13s</a> <a href="http://www.shorelineawnings.com/">jordan 13 hologram</a> <a href="http://www.shorelineawnings.com/">jordan 13 hologram</a> <a href="http://crystalclearscience.com/">hologram 13s</a> <a href="http://www.valgardcapital.com/">hologram 13s</a> <a href="http://www.shorelineawnings.com/">hologram 13s</a> <a href="http://www.valgardcapital.com/">jordan 13 barons</a> <a href="http://www.centralbodyworks.com/">barons 13s</a> <a href="http://www.centralbodyworks.com/">barons 13s</a> <a href="http://www.valgardcapital.com/">barons 13s</a> <a href="http://www.shorelineawnings.com/">jordan 13 barons</a> <a href="http://www.centralbodyworks.com/">barons 13s</a> <a href="http://www.shorelineawnings.com/">jordan 13 barons</a> <a href="http://www.heritagefol.com/">jordan 13 barons</a> <a href="http://www.centralbodyworks.com/">jordan 13 barons</a> <a href="http://www.centralbodyworks.com/">jordan 13 hologram</a> <a href="http://crystalclearscience.com/">hologram 13s</a> <a href="http://crystalclearscience.com/">hologram 13s</a> <a href="http://www.shorelineawnings.com/">hologram 13s</a> <a href="http://www.dhdr.com/">jordan 13 hologram</a> <a href="http://www.shorelineawnings.com/">jordan 13 hologram</a> <a href="http://www.shorelineawnings.com/">hologram 13s</a> <a href="http://www.heritagefol.com/">hologram 13s</a> <a href="http://www.dhdr.com/">jordan 13 hologram</a> <a href="http://www.shorelineawnings.com/">barons 13s</a> <a href="http://www.valgardcapital.com/">jordan 13 barons</a> <a href="http://www.shorelineawnings.com/">jordan 13 barons</a> <a href="http://www.heritagefol.com/">barons 13s</a> <a href="http://www.valgardcapital.com/">barons 13s</a> <a href="http://www.valgardcapital.com/">barons 13s</a> <a href="http://www.valgardcapital.com/">barons 13s</a> <a href="http://www.valgardcapital.com/">barons 13s</a> <a href="http://www.centralbodyworks.com/">jordan 13 barons</a> <a href="http://www.valgardcapital.com/">hologram 13s</a> <a href="http://www.heritagefol.com/">hologram 13s</a> <a href="http://crystalclearscience.com/">hologram 13s</a> <a href="http://www.centralbodyworks.com/">hologram 13s</a> <a href="http://crystalclearscience.com/">hologram 13s</a> <a href="http://www.shorelineawnings.com/">jordan 13 hologram</a> <a href="http://www.shorelineawnings.com/">jordan 13 hologram</a> <a href="http://crystalclearscience.com/">hologram 13s</a> <a href="http://crystalclearscience.com/">hologram 13s</a> <a href="http://www.heritagefol.com/">jordan 13 barons</a> <a href="http://www.heritagefol.com/">jordan 13 barons</a> <a href="http://www.shorelineawnings.com/">jordan 13 barons</a> <a href="http://www.heritagefol.com/">barons 13s</a> <a href="http://www.heritagefol.com/">jordan 13 barons</a> <a href="http://www.valgardcapital.com/">jordan 13 barons</a> <a href="http://www.heritagefol.com/">jordan 13 barons</a> <a href="http://www.valgardcapital.com/">jordan 13 barons</a> <a href="http://www.heritagefol.com/">jordan 13 barons</a> <a href="http://www.centralbodyworks.com/">hologram 13s</a> <a href="http://www.valgardcapital.com/">hologram 13s</a> <a href="http://crystalclearscience.com/">hologram 13s</a> <a href="http://crystalclearscience.com/">hologram 13s</a> <a href="http://www.heritagefol.com/">hologram 13s</a> <a href="http://www.shorelineawnings.com/">jordan 13 hologram</a> <a href="http://www.shorelineawnings.com/">hologram 13s</a> <a href="http://crystalclearscience.com/">hologram 13s</a> <a href="http://www.shorelineawnings.com/">hologram 13s</a> <a href="http://www.shorelineawnings.com/">jordan 13 barons</a> <a href="http://www.heritagefol.com/">barons 13s</a> <a href="http://www.valgardcapital.com/">barons 13s</a> <a href="http://www.valgardcapital.com/">barons 13s</a> <a href="http://www.valgardcapital.com/">barons 13s</a> <a href="http://www.heritagefol.com/">jordan 13 barons</a> <a href="http://www.valgardcapital.com/">barons 13s</a> <a href="http://www.centralbodyworks.com/">jordan 13 barons</a> <a href="http://www.valgardcapital.com/">jordan 13 barons</a> <a href="http://www.heritagefol.com/">hologram 13s</a> <a href="http://crystalclearscience.com/">hologram 13s</a> <a href="http://www.centralbodyworks.com/">hologram 13s</a> <a href="http://crystalclearscience.com/">hologram 13s</a> <a href="http://crystalclearscience.com/">hologram 13s</a> <a href="http://www.shorelineawnings.com/">jordan 13 hologram</a> <a href="http://www.heritagefol.com/">hologram 13s</a> <a href="http://crystalclearscience.com/">hologram 13s</a> <a href="http://www.shorelineawnings.com/">hologram 13s</a> <a href="http://www.gladsmere.com/">jordan 11 legend blue</a> <a href="http://www.bbbjazzorchestra.com/">jordan 11 legend blue</a> <a href="http://www.townofbroadalbin.org/">legend blue 11s</a> <a href="http://www.mohawkvalleyortho.com/">legend blue 11s</a> <a href="http://www.pen-uro.com/">legend blue 11s</a> <a href="http://www.xtreamhost.com/">legend blue 11s</a> <a href="http://www.nmplimited.com/">jordan 11 legend blue</a> <a href="http://samplinginternational.com/">legend blue 11s</a> <a href="http://www.tuttle-realty.com/">legend blue 11s</a> <a href="http://www.bluemaxliquors.com/">legend blue 11s</a> <a href="http://www.sdajnw.com/">jordan 11 legend blue</a> <a href="http://www.heavensgate.com/">jordan 11 legend blue</a> <a href="http://www.potterycamp.com/">jordan 11 legend blue</a> <a href="http://www.patchogueprinting.com/">jordan 6 black infrared</a> <a href="http://www.immediatecareeast.com/">jordan 6 black infrared</a> <a href="http://www.timcunningham.com/">jordan 11 legend blue</a> <a href="http://www.bloombehavior.com/">black infrared 6s</a> <a href="http://www.gslhog.org/">jordan 6 black infrared</a> <a href="http://www.gslhog.org/">jordan 6 black infrared</a> <a href="http://www.heavensgate.com/">jordan 11 legend blue</a> <a href="http://www.alinematsika.com/">jordan 6 black infrared</a> <a href="http://www.nationalathleticcombine.com">legend blue 11s</a> <a href="http://www.gslhog.org/">black infrared 6s</a> <a href="http://bejab.com/">black infrared 6s</a> <a href="http://www.parkcharlestonhoa.org">louis vuitton outlet</a> <a href="http://amstar-usa.com">legend blue 11s</a> <a href="http://www.quick-flight.com">legend blue 11s</a> <a href="http://shepherdinggrace.org/">black infrared 6s</a> <a href="http://www.morrelldesigns.com/">michael kors outlet online</a> <a href="http://bejab.com/">black infrared 6s</a> <a href="http://www.pen-uro.com/">legend blue 11s</a> <a href="http://www.gulfportyachtclub.org/">jordan 6 black infrared</a> <a href="http://www.exiumpartners.com">uggs black friday</a> <a href="http://www.kimmyfoundation.org/">jordan 11 legend blue</a> <a href="http://www.amsterdamrotary.org/">black infrared 6s</a> <a href="http://www.gulfportyachtclub.org/">jordan 6 black infrared</a> <a href="http://www.highfiddle.com">legend blue 11s</a> <a href="http://www.parkcharlestonhoa.org">louis vuitton outlet</a> <a href="http://www.obbatala.com">louis vuitton outlet</a> <a href="http://theweathercell.com/">jordan 11 legend blue</a> <a href="http://www.centralbodyworks.com/">barons 13s</a> <a href="http://www.countryboyauction.com/">barons 13s</a> <a href="http://www.gloriapizza.com/">bred 13s</a> <a href="http://www.preservationhall.com/">infrared 23 13s</a> <a href="http://www.gloriapizza.com/">bred 13s</a> <a href="http://www.centralbodyworks.com/">jordan 13 Hologram</a> <a href="http://www.berkeleytile.net/">Hologram 13s</a> <a href="http://www.valgardcapital.com/">Hologram 13s</a> <a href="http://www.merrylumber.com">coach black friday</a> <a href="http://www.heritagefol.com/">barons 13s</a> <a href="http://www.marianamonteiro.org">michael kors black friday</a> <a href="http://www.centralbodyworks.com/">jordan 13 Hologram</a> <a href="http://www.preservationhall.com/">infrared 23 13s</a> <a href="http://huntvalleycontractors.com/">3m 13s</a> <a href="http://thephotomomma.com/">3m 13s</a> <a href="http://veronikswimwear.com">north face black friday</a> <a href="http://www.fl-tek.com">coach black friday</a> <a href="http://hikaritaiko.org/">jordan 13 Hologram</a> <a href="http://www.remcobsi.com/">jordan retro 11</a> <a href="http://broemerlaw.com/">jordan 13 3m</a> <a href="http://www.force-tjr.org/">jordan 11 legend blue</a> <a href="http://www.bddjyr.net/">black infrared 6s</a> <a href="http://www.ditoppamedical.com/">jordan 6 black infrared</a> <a href="http://amstar-usa.com">legend blue 11s</a> <a href="http://www.bdlheatcool.com">coach outlet online</a> <a href="http://www.expertweldingco.com/">black infrared 6s</a> <a href="http://www.gslhog.org/">black infrared 6s</a> <a href="http://www.bdlheatcool.com">coach outlet online</a> <a href="http://www.highfiddle.com/">jordan 11 legend blue</a> <a href="http://www.pinterest.com/infrared6s2014/new-jordan-toro-infrared-6s-23-for-sale/">jordan 6 black infrared</a> <a href="http://www.aboveandbeyondautocare.com/">uggs black friday</a> <a href="http://www.gslhog.org/">black infrared 6s</a> <a href="http://www.thecripples.com">michael kors outlet</a>  <a href="http://sungazer.net/">jordan 11 legend blue</a> <a href="http://www.highfiddle.com/">jordan 11 legend blue</a> <a href="http://www.impactathletic.com">michael kors outlet online</a>  <a href="http://www.rickstromoski.com/">michael kors outlet</a>  <a href="http://www.nationalathleticcombine.com">legend blue 11s</a> <a href="http://www.morrelldesigns.com/">michael kors outlet online</a> <a href="http://www.treasurevalleytax.com/">uggs black friday</a> <a href="http://www.fl-tek.com">coach black friday</a> <a href="http://thephotomomma.com/">jordan 13 infrared 23</a> <a href="http://www.shorelineawnings.com/">jordan 13 Hologram</a> <a href="http://www.dclglaw.com/">3m reflective 13s</a> <a href="http://www.dclglaw.com/">3m reflective 13s</a> <a href="http://thephotomomma.com/">3m reflective 13s</a> <a href="http://www.centralbodyworks.com/">Hologram 13s</a> <a href="http://www.valgardcapital.com/">barons 13s</a> <a href="http://www.centralbodyworks.com/">jordan 13 barons</a> <a href="http://bergenequestrian.com/">3m 13s</a> <a href="http://veronikswimwear.com">north face black friday</a> <a href="http://whitman-company.com/">jordan 13 barons</a> <a href="http://www.dhdr.com/">jordan 13 barons</a> <a href="http://graceandgloryacademy.org/">jordan 13 3m reflective</a> <a href="http://buesingcorp.com/">3m reflective 13s</a> <a href="http://broemerlaw.com/">3m reflective 13s</a> <a href="http://www.centralbodyworks.com/">jordan 13 Hologram</a> <a href="http://www.centralbodyworks.com/">jordan 13 barons</a> <a href="http://www.shorelineawnings.com/">barons 13s</a> <a href="http://laarbo.net/">jordan 13 infrared 23</a> <a href="http://www.heavensgate.com/">jordan 11 legend blue</a> <a href="http://www.quick-flight.com/">jordan 11 legend blue</a> <a href="http://www.cleanwatercentral.org/">michael kors outlet</a>  <a href="http://www.nationalathleticcombine.com">legend blue 11s</a> <a href="http://www.impactathletic.com">michael kors outlet online</a>  <a href="http://www.pinterest.com/infrared6s2014/new-jordan-toro-infrared-6s-23-for-sale/">jordan 6 black infrared</a> <a href="http://bejab.com/">jordan 6 black infrared</a> <a href="http://www.mansuremusic.biz">louis vuitton outlet</a> <a href="http://www.gulfportyachtclub.org/">jordan 6 black infrared</a> <a href="http://www.cleanwatercentral.org/">michael kors outlet</a>  <a href="http://www.cakeandthebeanstalk.com/">black infrared 6s</a> <a href="http://amstar-usa.com">legend blue 11s</a> <a href="http://www.impactathletic.com">michael kors outlet</a>  <a href="http://www.arisguitarist.com/">jordan 11 legend blue</a> <a href="http://www.mansuremusic.biz">louis vuitton outlet</a> <a href="http://sungazer.net/">jordan 11 legend blue</a> <a href="http://www.cartercorporation.com/">black infrared 6s</a> <a href="http://www.aboveandbeyondautocare.com/">uggs black friday</a> <a href="http://www.kimmyfoundation.org/">jordan 11 legend blue</a> <a href="http://www.waltercraig.com">louis vuitton outlet</a> <a href="http://www.dhdr.com/">jordan 13 barons</a> <a href="http://hikaritaiko.org/">Hologram 13s</a> <a href="http://www.dclglaw.com/">jordan 13 3m reflective</a> <a href="http://www.valgardcapital.com/">barons 13s</a> <a href="http://www.indianactocouncil.org/">barons 13s</a> <a href="http://www.jschepper.net/">jordan 13 infrared 23</a> <a href="http://www.countryboyauction.com/">barons 13s</a> <a href="http://www.top10realestatevalues.com/">jordan 13 3m</a> <a href="http://resurrectionrollergirls.org/">jordan 13 Hologram</a> <a href="http://www.scottlaw.com/">jordan 13 bred</a> <a href="http://www.merrylumber.com">coach black friday</a> <a href="http://www.merrylumber.com">coach black friday</a> <a href="http://www.mtgcity.com">michael kors black friday</a> <a href="http://broemerlaw.com/">jordan 13 3m reflective</a> <a href="http://www.centralbodyworks.com/">Hologram 13s</a> <a href="http://thephotomomma.com/">jordan 13 infrared 23</a> <a href="http://bergenequestrian.com/">3m 13s</a> <a href="http://broemerlaw.com/">3m reflective 13s</a> <a href="http://www.ccdisposal.com/">3m reflective 13s</a> <a href="http://www.fl-tek.com">coach black friday</a> <a href="http://www.impactathletic.com">michael kors outlet online</a>  <a href="http://bejab.com/">black infrared 6s</a> <a href="http://www.sangabrieldentalgroup.com">louis vuitton outlet</a> <a href="http://bejab.com/">jordan 6 black infrared</a> <a href="http://www.sangabrieldentalgroup.com">louis vuitton outlet</a> <a href="http://www.waltercraig.com">louis vuitton outlet</a> <a href="http://www.arisguitarist.com/">jordan 11 legend blue</a> <a href="http://theweathercell.com/">legend blue 11s</a> <a href="http://www.patchogueprinting.com/">black infrared 6s</a> <a href="http://www.locustgroveenterprises.com">louis vuitton outlet</a> <a href="http://www.waltercraig.com">louis vuitton outlet</a> <a href="http://www.heavensgate.com/">jordan 11 legend blue</a> <a href="http://www.ballroomandbeyond.com/">jordan 6 black infrared</a> <a href="http://www.jhpf.org">legend blue 11s</a> <a href="http://www.almarse.com">uggs black friday</a> <a href="http://www.bluemaxliquors.com/">jordan 11 legend blue</a> <a href="http://www.ditoppamedical.com/">black infrared 6s</a> <a href="http://www.pen-uro.com/">jordan 11 legend blue</a> <a href="http://www.quick-flight.com/">jordan 11 legend blue</a> <a href="http://www.meelhill-erp.com/">louis vuitton outlet</a> <a href="http://buesingcorp.com/">3m reflective 13s</a> <a href="http://www.preservationhall.com/">infrared 23 13s</a> <a href="http://www.kalbindustries.com/">infrared 23 13s</a> <a href="http://www.jschepper.net/">infrared 23 13s</a> <a href="http://www.starmedix.com/">jordan 13 infrared 23</a> <a href="http://broemerlaw.com/">jordan 13 3m reflective</a> <a href="http://hikaritaiko.org/">jordan 13 Hologram</a> <a href="http://broemerlaw.com/">jordan 13 3m reflective</a> <a href="http://crystalclearscience.com/">barons 13s</a> <a href="http://centervillecivic.org/">3m 13s</a> <a href="http://broemerlaw.com/">3m 13s</a> <a href="http://www.centralbodyworks.com/">Hologram 13s</a> <a href="http://www.jschepper.net/">infrared 23 13s</a> <a href="http://laarbo.net/">jordan 13 infrared 23</a> <a href="http://broemerlaw.com/">3m reflective 13s</a> <a href="http://www.valgardcapital.com/">barons 13s</a> <a href="http://www.shorelineawnings.com/">jordan 13 Hologram</a> <a href="http://www.top10realestatevalues.com/">jordan 13 3m</a> <a href="http://veronikswimwear.com">north face black friday</a> <a href="http://huntvalleycontractors.com/">3m 13s</a> <a href="http://www.treasurevalleytax.com/">uggs black friday</a> <a href="http://www.arisguitarist.com/">jordan 11 legend blue</a> <a href="http://www.cecilsautomotive.com/">black infrared 6s</a> <a href="http://bejab.com/">jordan 6 black infrared</a> <a href="http://theweathercell.com/">legend blue 11s</a> <a href="http://www.janicecookknight.com">louis vuitton outlet</a> <a href="http://www.sangabrieldentalgroup.com">louis vuitton outlet</a> <a href="http://www.obbatala.com">louis vuitton outlet</a> <a href="http://www.mcguinessunlimited.com">louis vuitton outlet</a> <a href="http://www.bluemaxliquors.com/">jordan 11 legend blue</a> <a href="http://www.almarse.com">uggs black friday</a> <a href="http://www.rickstromoski.com/">michael kors outlet</a>  <a href="http://www.exiumpartners.com">uggs black friday</a> <a href="http://www.amsterdamrotary.org/">jordan 6 black infrared</a> <a href="http://katemacintyrefoundation.com">michael kors outlet</a>  <a href="http://www.impactathletic.com">michael kors outlet online</a>  <a href="http://www.mansuremusic.biz">louis vuitton outlet</a> <a href="http://www.instrumentationrepair.com/">louis vuitton outlet</a> <a href="http://www.geminirestoration.com/">jordan 11 legend blue</a> <a href="http://www.meelhill-erp.com/">louis vuitton outlet</a> <a href="http://www.reuterequipment.com/">jordan 13 Hologram</a> <a href="http://www.jschepper.net/">infrared 23 13s</a> <a href="http://www.dclglaw.com/">3m reflective 13s</a> <a href="http://www.sectornow.com/">jordan 13 3m</a> <a href="http://www.mtgcity.com">michael kors black friday</a> <a href="http://bergenequestrian.com/">3m 13s</a> <a href="http://www.merrylumber.com">coach black friday</a> <a href="http://www.sectornow.com/">jordan 13 3m</a> <a href="http://www.countryboyauction.com/">jordan 13 Hologram</a> <a href="http://www.gloriapizza.com/">bred 13s</a> <a href="http://www.heritagefol.com/">barons 13s</a> <a href="http://www.distinctivesweets.com">beats by dre black friday</a> <a href="http://broemerlaw.com/">3m reflective 13s</a> <a href="http://www.indianactocouncil.org/">barons 13s</a> <a href="http://www.dclglaw.com/">3m reflective 13s</a> <a href="http://thephotomomma.com/">3m reflective 13s</a> <a href="http://www.valgardcapital.com/">barons 13s</a> <a href="http://www.preservationhall.com/">infrared 23 13s</a> <a href="http://www.starmedix.com/">jordan 13 infrared 23</a> <a href="http://www.gloriapizza.com/">bred 13s</a> <a href="http://www.amsterdamrotary.org/">jordan 6 black infrared</a> <a href="http://www.rickstromoski.com/">michael kors outlet</a>  <a href="http://shepherdinggrace.org/">jordan 6 black infrared</a> <a href="http://www.cleanwatercentral.org/">michael kors outlet</a>  <a href="http://www.cecilsautomotive.com/">jordan 6 black infrared</a> <a href="http://www.ditoppamedical.com/">black infrared 6s</a> <a href="http://www.waltercraig.com">louis vuitton outlet</a> <a href="http://www.habitatforhumanitylockport.com">beats by dre cheap</a> <a href="http://www.morrelldesigns.com/">michael kors outlet online</a> <a href="http://www.amsterdamrotary.org/">black infrared 6s</a> <a href="http://www.qualitask.net">louis vuitton outlet</a> <a href="http://www.nationalathleticcombine.com">legend blue 11s</a> <a href="http://www.falkpr.com">beats by dre cheap</a> <a href="http://www.kimmyfoundation.org/">jordan 11 legend blue</a> <a href="http://www.quick-flight.com">legend blue 11s</a> <a href="http://www.jhpf.org">legend blue 11s</a> <a href="http://www.gulfportyachtclub.org/">jordan 6 black infrared</a> <a href="http://www.patchogueprinting.com/">black infrared 6s</a> <a href="http://www.almarse.com">uggs black friday</a> <a href="http://www.pen-uro.com/">jordan 11 legend blue</a> <a href="http://broemerlaw.com/">jordan 13 3m</a> <a href="http://www.countryboyauction.com/">jordan 13 Hologram</a> <a href="http://resurrectionrollergirls.org/">Hologram 13s</a> <a href="http://buesingcorp.com/">3m reflective 13s</a> <a href="http://www.heritagefol.com/">barons 13s</a> <a href="http://www.top10realestatevalues.com/">jordan 13 Hologram</a> <a href="http://thephotomomma.com/">jordan 13 infrared 23</a> <a href="http://www.heritagefol.com/">jordan 13 barons</a> <a href="http://thephotomomma.com/">3m reflective 13s</a> <a href="http://www.reuterequipment.com/">jordan 13 Hologram</a> <a href="http://www.centralbodyworks.com/">jordan 13 barons</a> <a href="http://www.preservationhall.com/">jordan 13 bred</a> <a href="http://www.remcobsi.com/">jordan retro 11</a> <a href="http://www.fl-tek.com">coach black friday</a> <a href="http://www.shorelineawnings.com/">barons 13s</a> <a href="http://www.starmedix.com/">jordan 13 infrared 23</a> <a href="http://resurrectionrollergirls.org/">Hologram 13s</a> <a href="http://www.starmedix.com/">jordan 13 infrared 23</a> <a href="http://hikaritaiko.org/">jordan 13 Hologram</a> <a href="http://hikaritaiko.org/">Hologram 13s</a></div></body>
+
+</html>
