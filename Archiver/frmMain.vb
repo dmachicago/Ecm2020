@@ -880,16 +880,16 @@ Public Class frmMain : Implements IDisposable
                     LL = 149
                     If Arg.ToUpper.Equals("?") Then
                         Dim MSG As String = "" : LL = 151
-                        MSG = MSG + "RUV = Reset USER application variables to those defiend by the APP CONFIG file." + environment.NewLine + environment.NewLine : LL = 152
-                        MSG = MSG + "CompanyID;RepoID" + environment.NewLine + environment.NewLine : LL = 153
-                        MSG = MSG + "X = Execute archive and close." + environment.NewLine + environment.NewLine : LL = 153
-                        MSG = MSG + "C = Archive CONTENT only." + environment.NewLine + environment.NewLine : LL = 154
-                        MSG = MSG + "O = Archive OUTLOOK only." + environment.NewLine + environment.NewLine : LL = 155
-                        MSG = MSG + "E = Archive EXCHANGE Servers only." + environment.NewLine + environment.NewLine : LL = 156
-                        MSG = MSG + "A = Archive ALL." + environment.NewLine + environment.NewLine : LL = 157
-                        MSG = MSG + "To Execute:" + environment.NewLine : LL = 158
-                        MSG = MSG + "<full path>EcmArchiveSetup.exe <parm>" + environment.NewLine : LL = 159
-                        MSG = MSG + "(E.G.) C:\dev\ECM\EcmLibSvc\EcmLibSvc\bin\Debug\EcmArchiveSetup.exe Q" + environment.NewLine : LL = 160
+                        MSG = MSG + "RUV = Reset USER application variables to those defiend by the APP CONFIG file." + Environment.NewLine + Environment.NewLine : LL = 152
+                        MSG = MSG + "CompanyID;RepoID" + Environment.NewLine + Environment.NewLine : LL = 153
+                        MSG = MSG + "X = Execute archive and close." + Environment.NewLine + Environment.NewLine : LL = 153
+                        MSG = MSG + "C = Archive CONTENT only." + Environment.NewLine + Environment.NewLine : LL = 154
+                        MSG = MSG + "O = Archive OUTLOOK only." + Environment.NewLine + Environment.NewLine : LL = 155
+                        MSG = MSG + "E = Archive EXCHANGE Servers only." + Environment.NewLine + Environment.NewLine : LL = 156
+                        MSG = MSG + "A = Archive ALL." + Environment.NewLine + Environment.NewLine : LL = 157
+                        MSG = MSG + "To Execute:" + Environment.NewLine : LL = 158
+                        MSG = MSG + "<full path>EcmArchiveSetup.exe <parm>" + Environment.NewLine : LL = 159
+                        MSG = MSG + "(E.G.) C:\dev\ECM\EcmLibSvc\EcmLibSvc\bin\Debug\EcmArchiveSetup.exe Q" + Environment.NewLine : LL = 160
                         MessageBox.Show(MSG) : LL = 161
                         End : LL = 162
                     End If : LL = 163
@@ -989,7 +989,7 @@ Public Class frmMain : Implements IDisposable
                     Application.Exit()
                 Else : LL = 204.1
                     Dim ConnStr As String = DBARCH.getRepoConnStr()
-                    MessageBox.Show("ABORTING - Failed to connect to the database, contact an administrator - closing ECM." + environment.NewLine + ConnStr) : LL = 205.1
+                    MessageBox.Show("ABORTING - Failed to connect to the database, contact an administrator - closing ECM." + Environment.NewLine + ConnStr) : LL = 205.1
                     Application.Exit()
                 End If
                 tsTunnelConn.Text = "Tunnel:OFF"
@@ -1606,11 +1606,11 @@ Public Class frmMain : Implements IDisposable
             Dim st As New StackTrace(True)
             st = New StackTrace(ex, True)
             LOG.WriteToArchiveLog("Line: " & st.GetFrame(0).GetFileLineNumber().ToString)
-            Dim sMsg As String = "ERROR frmReconMain_Load 01: " & LL & environment.NewLine & ex.Message
+            Dim sMsg As String = "ERROR frmReconMain_Load 01: " & LL & Environment.NewLine & ex.Message
             LOG.WriteToArchiveLog(sMsg)
             Clipboard.Clear()
             Clipboard.SetText(ex.Message)
-            MessageBox.Show("ERROR frmReconMain_Load 01 check the logs: " + LL.ToString + environment.NewLine + ex.Message)
+            MessageBox.Show("ERROR frmReconMain_Load 01 check the logs: " + LL.ToString + Environment.NewLine + ex.Message)
         End Try
 
         If DBARCH.isAdmin(CurrUserGuidID) Then
@@ -3047,7 +3047,7 @@ SKIPFOLDER:
             LOG.WriteToArchiveLog("Thread 10 - caught ThreadAbortException - resetting.")
             Thread.ResetAbort()
         Catch ex As Exception
-            MessageBox.Show("ERROR 219.23.4: Call Administrator" + environment.NewLine + ex.Message)
+            MessageBox.Show("ERROR 219.23.4: Call Administrator" + Environment.NewLine + ex.Message)
             Dim st As New StackTrace(True)
             st = New StackTrace(ex, True)
             LOG.WriteToArchiveLog("Line: " & st.GetFrame(0).GetFileLineNumber().ToString)
@@ -3066,7 +3066,7 @@ SKIPFOLDER:
             LOG.WriteToArchiveLog("Thread 10 - caught ThreadAbortException - resetting.")
             Thread.ResetAbort()
         Catch ex As Exception
-            MessageBox.Show("ERROR 219.23.4: Call Administrator" + environment.NewLine + ex.Message)
+            MessageBox.Show("ERROR 219.23.4: Call Administrator" + Environment.NewLine + ex.Message)
             Dim st As New StackTrace(True)
             st = New StackTrace(ex, True)
             LOG.WriteToArchiveLog("Line: " & st.GetFrame(0).GetFileLineNumber().ToString)
@@ -3085,7 +3085,7 @@ SKIPFOLDER:
             LOG.WriteToArchiveLog("Thread 10 - caught ThreadAbortException - resetting.")
             Thread.ResetAbort()
         Catch ex As Exception
-            MessageBox.Show("ERROR 219.23.4: Call Administrator" + environment.NewLine + ex.Message)
+            MessageBox.Show("ERROR 219.23.4: Call Administrator" + Environment.NewLine + ex.Message)
             Dim st As New StackTrace(True)
             st = New StackTrace(ex, True)
             LOG.WriteToArchiveLog("Line: " & st.GetFrame(0).GetFileLineNumber().ToString)
@@ -3184,7 +3184,7 @@ SKIPFOLDER:
             LOG.WriteToArchiveLog("Thread 10 - caught ThreadAbortException - resetting.")
             Thread.ResetAbort()
         Catch ex As Exception
-            MessageBox.Show("Failed to set start up parameter." + environment.NewLine + ex.Message)
+            MessageBox.Show("Failed to set start up parameter." + Environment.NewLine + ex.Message)
             LOG.WriteToArchiveLog("ERROR ckRunAtStartup_CheckedChanged - Failed to set start up parameter.", ex)
             Dim st As New StackTrace(True)
             st = New StackTrace(ex, True)
@@ -3709,16 +3709,16 @@ SKIPFOLDER:
 
         If ckArchiveBit.Checked Then
             Dim tMsg As String = ""
-            tMsg = tMsg + "WARNING! Skip if ARCHIVE bit set a HIGH RISK function." + environment.NewLine
-            tMsg = tMsg + "ECM Library is not responsible for selecting to use it." + environment.NewLine
-            tMsg = tMsg + "The file archive bit is a complex and ECM Library is not responsible for " + environment.NewLine
-            tMsg = tMsg + "missed, skipped, or any other content related mishap due to " + environment.NewLine
-            tMsg = tMsg + "this function being selected. " + environment.NewLine + environment.NewLine
-            tMsg = tMsg + "YOU UNDERSTAND AND FULLY ACCEPT THE RISK IN CHOOSING " + environment.NewLine
-            tMsg = tMsg + "TO SKIP CONTENT BASED ON THE ARCHIVE BIT. " + environment.NewLine + environment.NewLine
-            tMsg = tMsg + "Selecting the 'Skip If Archive Bit off' check box exposes the " + environment.NewLine
-            tMsg = tMsg + "archive to great risk. " + environment.NewLine
-            tMsg = tMsg + "By agreeing to this disclaimer, you accept fully all the risk " + environment.NewLine
+            tMsg = tMsg + "WARNING! Skip if ARCHIVE bit set a HIGH RISK function." + Environment.NewLine
+            tMsg = tMsg + "ECM Library is not responsible for selecting to use it." + Environment.NewLine
+            tMsg = tMsg + "The file archive bit is a complex and ECM Library is not responsible for " + Environment.NewLine
+            tMsg = tMsg + "missed, skipped, or any other content related mishap due to " + Environment.NewLine
+            tMsg = tMsg + "this function being selected. " + Environment.NewLine + Environment.NewLine
+            tMsg = tMsg + "YOU UNDERSTAND AND FULLY ACCEPT THE RISK IN CHOOSING " + Environment.NewLine
+            tMsg = tMsg + "TO SKIP CONTENT BASED ON THE ARCHIVE BIT. " + Environment.NewLine + Environment.NewLine
+            tMsg = tMsg + "Selecting the 'Skip If Archive Bit off' check box exposes the " + Environment.NewLine
+            tMsg = tMsg + "archive to great risk. " + Environment.NewLine
+            tMsg = tMsg + "By agreeing to this disclaimer, you accept fully all the risk " + Environment.NewLine
             tMsg = tMsg + "associated with skipping content with the archive bit set "
             tMsg = tMsg + "previously Archived."
             Dim dlgRes As DialogResult = MsgBox(tMsg, MsgBoxStyle.YesNo + MsgBoxStyle.Critical, "YOU ACCEPT ALL THE RISK!")
@@ -6602,7 +6602,7 @@ NextFolder:
             Thread.ResetAbort()
         Catch ex As Exception
             DBARCH.xTrace(3655, "GetWordDocMetadata", ex.Message.ToString)
-            LOG.WriteToArchiveLog("GetWordDocMetadata: Failed to process word metadata: GetWordDocMetadata - " + environment.NewLine + ex.Message)
+            LOG.WriteToArchiveLog("GetWordDocMetadata: Failed to process word metadata: GetWordDocMetadata - " + Environment.NewLine + ex.Message)
             Dim st As New StackTrace(True)
             st = New StackTrace(ex, True)
             LOG.WriteToArchiveLog("Line: " & st.GetFrame(0).GetFileLineNumber().ToString)
@@ -7437,7 +7437,7 @@ NextFolder:
     ''' <param name="sender">The source of the event.</param>
     ''' <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     Private Sub ResetSelectedMailBoxesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ResetSelectedMailBoxesToolStripMenuItem.Click
-        Dim msg As String = "This will remove all of your mailbox selections" + environment.NewLine + "it will not remove any archives. Are you sure?"
+        Dim msg As String = "This will remove all of your mailbox selections" + Environment.NewLine + "it will not remove any archives. Are you sure?"
         Dim dlgRes As DialogResult = MessageBox.Show(msg, "Reset Email Folders", MessageBoxButtons.YesNo)
         If dlgRes = Windows.Forms.DialogResult.No Then
             Return
@@ -7876,8 +7876,8 @@ NextRec:
         End If
 
         Dim S As String = ""
-        S = "Whenever a file is created or changed, the operating system activates the Archive Bit or modified bit. Unless you select to use backup methods that depend on a date and time stamp, ECM Library uses the archive bit to determine whether a file has been backed up, which is an important element of your backup strategy. It is dangerous if other archive methods, processes or tools access an identified directory." + environment.NewLine
-        S = S + "Selecting the following backup methods can affect the archive bit: " + environment.NewLine
+        S = "Whenever a file is created or changed, the operating system activates the Archive Bit or modified bit. Unless you select to use backup methods that depend on a date and time stamp, ECM Library uses the archive bit to determine whether a file has been backed up, which is an important element of your backup strategy. It is dangerous if other archive methods, processes or tools access an identified directory." + Environment.NewLine
+        S = S + "Selecting the following backup methods can affect the archive bit: " + Environment.NewLine
         S = S + "  �  Full - Back up files - Using archive bit (reset archive bit) + environment.NewLine"
         S = S + "  �  Differential - Back up changed files since last full - Using archive bit (does not reset archive bit) + environment.NewLine"
         S = S + "  �  Incremental - Back up changed files since last full or incremental - Using archive bit (reset archive bit) + environment.NewLine"
@@ -8837,10 +8837,10 @@ SKIPTHISREC:
                 Dim SS As String = "Select count(*) from LoginClient"
                 Dim EcmClientsDefinedToSystem As Integer = DBARCH.iCount(SS)
                 If EcmClientsDefinedToSystem > gMaxClients Then
-                    Dim MSG As String = "It appears all ECM Client licenses have been used." + environment.NewLine
-                    MSG += "Please logon from a licensed machine," + environment.NewLine + environment.NewLine
-                    MSG += "or contact ECM Library for additional client licenses." + environment.NewLine + environment.NewLine
-                    MSG += "Thank you, closing down." + environment.NewLine
+                    Dim MSG As String = "It appears all ECM Client licenses have been used." + Environment.NewLine
+                    MSG += "Please logon from a licensed machine," + Environment.NewLine + Environment.NewLine
+                    MSG += "or contact ECM Library for additional client licenses." + Environment.NewLine + Environment.NewLine
+                    MSG += "Thank you, closing down." + Environment.NewLine
                     MessageBox.Show(MSG)
                     End
                 End If
@@ -8865,12 +8865,12 @@ SKIPTHISREC:
 
             If CurrNbrOfUsers >= gNbrOfUsers Then
                 Dim Msg As String = ""
-                Msg = Msg + "FrmMDIMain : MachineName : 1103 : " + environment.NewLine
-                Msg = Msg + "     Number of licenses warning : '" + MachineName + "'" + environment.NewLine
-                Msg = Msg + "     We are very sorry, but the maximum number of USERS has been exceeded." + environment.NewLine
-                Msg = Msg + "     ECM found " + CurrNbrOfUsers.ToString + " users currently registered in the system." + environment.NewLine
-                Msg = Msg + "     Your license awards " + gNbrOfUsers.ToString + " users." + environment.NewLine
-                Msg = Msg + "You will have to login with an existing User ID and Password." + environment.NewLine + "Please contact admin for support."
+                Msg = Msg + "FrmMDIMain : MachineName : 1103 : " + Environment.NewLine
+                Msg = Msg + "     Number of licenses warning : '" + MachineName + "'" + Environment.NewLine
+                Msg = Msg + "     We are very sorry, but the maximum number of USERS has been exceeded." + Environment.NewLine
+                Msg = Msg + "     ECM found " + CurrNbrOfUsers.ToString + " users currently registered in the system." + Environment.NewLine
+                Msg = Msg + "     Your license awards " + gNbrOfUsers.ToString + " users." + Environment.NewLine
+                Msg = Msg + "You will have to login with an existing User ID and Password." + Environment.NewLine + "Please contact admin for support."
                 LOG.WriteToArchiveLog(Msg)
                 MessageBox.Show(Msg, "CRITICAL Notice", System.Windows.Forms.MessageBoxButtons.OK)
                 Me.LoginAsDifferenctUserToolStripMenuItem_Click(Nothing, Nothing)
@@ -8885,18 +8885,18 @@ SKIPTHISREC:
                 DBARCH.updateIp(MachineIDcurr, gIpAddr, 1)
                 If ddebug Then LOG.WriteToTraceLog("FrmMDIMain 15")
                 Dim Msg As String = ""
-                Msg = Msg + "FrmMDIMain : Current Users : 1103b : " + environment.NewLine
-                Msg = Msg + "     Number of current SEATS warning : '" + MachineName + "'" + environment.NewLine
-                Msg = Msg + "     We are very sorry, but the maximum number of seats (WorkStations) has been exceeded." + environment.NewLine
-                Msg = Msg + "     ECM found " + CurrNbrOfMachine.ToString + " machines registered in the system." + environment.NewLine
-                Msg = Msg + "     Your license awards " + gNbrOfSeats.ToString + " seats." + environment.NewLine
-                Msg = Msg + "You will have to login from a WorkStation already defined to ECM." + environment.NewLine + "Please contact admin for support."
+                Msg = Msg + "FrmMDIMain : Current Users : 1103b : " + Environment.NewLine
+                Msg = Msg + "     Number of current SEATS warning : '" + MachineName + "'" + Environment.NewLine
+                Msg = Msg + "     We are very sorry, but the maximum number of seats (WorkStations) has been exceeded." + Environment.NewLine
+                Msg = Msg + "     ECM found " + CurrNbrOfMachine.ToString + " machines registered in the system." + Environment.NewLine
+                Msg = Msg + "     Your license awards " + gNbrOfSeats.ToString + " seats." + Environment.NewLine
+                Msg = Msg + "You will have to login from a WorkStation already defined to ECM." + Environment.NewLine + "Please contact admin for support."
                 LOG.WriteToArchiveLog(Msg)
                 MessageBox.Show(Msg, "CRITICAL Notice", System.Windows.Forms.MessageBoxButtons.OK)
                 If isAdmin Then
                     Msg = ""
-                    Msg = Msg + "You are an administrator for ECM Library." + environment.NewLine
-                    Msg = Msg + "If you have a new license, would you like " + environment.NewLine
+                    Msg = Msg + "You are an administrator for ECM Library." + Environment.NewLine
+                    Msg = Msg + "If you have a new license, would you like " + Environment.NewLine
                     Msg = Msg + "to open the license management screen and apply a new license."
                     MessageBox.Show(Msg, "CRITICAL Notice", System.Windows.Forms.MessageBoxButtons.OK)
                     Dim dlgRes As DialogResult = MessageBox.Show(Msg, "License Update", MessageBoxButtons.YesNo)
@@ -8944,7 +8944,7 @@ SKIPTHISREC:
                 iNumberOfDays = tsTimeSpan.Days
 
                 If Now > ExpirationDate.AddDays(30) Then
-                    MessageBox.Show("The ECM run license has expired." + environment.NewLine + environment.NewLine + "Please contact ECM Library support.", "CRITICAL Notice", System.Windows.Forms.MessageBoxButtons.OK)
+                    MessageBox.Show("The ECM run license has expired." + Environment.NewLine + Environment.NewLine + "Please contact ECM Library support.", "CRITICAL Notice", System.Windows.Forms.MessageBoxButtons.OK)
                     End
                 End If
 
@@ -8969,7 +8969,7 @@ SKIPTHISREC:
 
                 If Now > ExpirationDate Then
                     LOG.WriteToArchiveLog("FrmMDIMain : 1001 We are very sorry, but your software LEASE has expired. Please contact ECM Library support.")
-                    MessageBox.Show("We are very sorry, but your software license has expired." + environment.NewLine + environment.NewLine + "Please contact ECM Library support.", "CRITICAL Notice", System.Windows.Forms.MessageBoxButtons.OK)
+                    MessageBox.Show("We are very sorry, but your software license has expired." + Environment.NewLine + Environment.NewLine + "Please contact ECM Library support.", "CRITICAL Notice", System.Windows.Forms.MessageBoxButtons.OK)
                     frmLicense.ShowDialog()
                     MessageBox.Show("The application will now end, please restart with the new license.")
                 End If
@@ -8979,7 +8979,7 @@ SKIPTHISREC:
             Dim MaintExpire As Date = CDate(LM.ParseLic(LT, "dtMaintExpire"))
             If Now > MaintExpire Then
                 frmNotifyMessage.Show()
-                gNotifyMsg = "We are very sorry to inform you, but your maintenance agreement has expired." + environment.NewLine + environment.NewLine + "Please contact ECM Library support."
+                gNotifyMsg = "We are very sorry to inform you, but your maintenance agreement has expired." + Environment.NewLine + Environment.NewLine + "Please contact ECM Library support."
                 LOG.WriteToArchiveLog("FrmMDIMain : 1002 We are very sorry to inform you, but your maintenance agreement has expired.")
             End If
             'If ddebug Then LOG.WriteToTraceLog("FrmMDIMain 22")
@@ -9510,15 +9510,15 @@ GoodLogin:
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
         Dim MSG As String = ""
-        MSG = MSG + "RUV = Reset USER application variables to those defiend by the APP CONFIG file." + environment.NewLine + environment.NewLine
-        MSG = MSG + "X = Execute archive and close." + environment.NewLine + environment.NewLine
-        MSG = MSG + "C = Archive CONTENT only." + environment.NewLine + environment.NewLine
-        MSG = MSG + "O = Archive OUTLOOK only." + environment.NewLine + environment.NewLine
-        MSG = MSG + "E = Archive EXCHANGE Servers only." + environment.NewLine + environment.NewLine
-        MSG = MSG + "A = Archive ALL." + environment.NewLine + environment.NewLine
-        MSG = MSG + "To Execute:" + environment.NewLine
-        MSG = MSG + "<full path>EcmArchiveSetup.exe <parm>" + environment.NewLine
-        MSG = MSG + "(E.G.) C:\dev\ECM\EcmLibSvc\EcmLibSvc\bin\Debug\EcmArchiveSetup.exe Q" + environment.NewLine
+        MSG = MSG + "RUV = Reset USER application variables to those defiend by the APP CONFIG file." + Environment.NewLine + Environment.NewLine
+        MSG = MSG + "X = Execute archive and close." + Environment.NewLine + Environment.NewLine
+        MSG = MSG + "C = Archive CONTENT only." + Environment.NewLine + Environment.NewLine
+        MSG = MSG + "O = Archive OUTLOOK only." + Environment.NewLine + Environment.NewLine
+        MSG = MSG + "E = Archive EXCHANGE Servers only." + Environment.NewLine + Environment.NewLine
+        MSG = MSG + "A = Archive ALL." + Environment.NewLine + Environment.NewLine
+        MSG = MSG + "To Execute:" + Environment.NewLine
+        MSG = MSG + "<full path>EcmArchiveSetup.exe <parm>" + Environment.NewLine
+        MSG = MSG + "(E.G.) C:\dev\ECM\EcmLibSvc\EcmLibSvc\bin\Debug\EcmArchiveSetup.exe Q" + Environment.NewLine
         MessageBox.Show(MSG)
     End Sub
 
@@ -11272,10 +11272,10 @@ GoodLogin:
 
         Dim sMsg As String = ""
 
-        sMsg += "CRC32     : " + CRC32HASH + environment.NewLine
-        sMsg += "MD5       : " + MD5HASH + environment.NewLine
-        sMsg += "SHA1      : " + SHA1HASH + environment.NewLine
-        sMsg += "SHA1 Quick: " + SHA1QUICK + environment.NewLine
+        sMsg += "CRC32     : " + CRC32HASH + Environment.NewLine
+        sMsg += "MD5       : " + MD5HASH + Environment.NewLine
+        sMsg += "SHA1      : " + SHA1HASH + Environment.NewLine
+        sMsg += "SHA1 Quick: " + SHA1QUICK + Environment.NewLine
 
         MessageBox.Show(sMsg)
     End Sub
@@ -12326,25 +12326,25 @@ GoodLogin:
         Dim Msg As String = ""
         Dim iCnt As Integer = 0
 
-        Dim S As String = "select COUNT(*) from EmailAttachment where AttachmentCode in (select ImageTypeCode from ImageTypeCodes) " + environment.NewLine
+        Dim S As String = "select COUNT(*) from EmailAttachment where AttachmentCode in (select ImageTypeCode from ImageTypeCodes) " + Environment.NewLine
 
         iCnt = DBARCH.iCount(S)
-        Msg += "Total EMAIL Graphics: " + iCnt.ToString + environment.NewLine
+        Msg += "Total EMAIL Graphics: " + iCnt.ToString + Environment.NewLine
 
-        S = "select COUNT(*) from EmailAttachment where AttachmentCode in (select ImageTypeCode from ImageTypeCodes) " + environment.NewLine
-        S += "and (OcrPending is null or OcrPending = 'Y')" + environment.NewLine
+        S = "select COUNT(*) from EmailAttachment where AttachmentCode in (select ImageTypeCode from ImageTypeCodes) " + Environment.NewLine
+        S += "and (OcrPending is null or OcrPending = 'Y')" + Environment.NewLine
         iCnt = DBARCH.iCount(S)
-        Msg += "Total pending EMAIL Graphics: " + iCnt.ToString + environment.NewLine + environment.NewLine
+        Msg += "Total pending EMAIL Graphics: " + iCnt.ToString + Environment.NewLine + Environment.NewLine
 
-        S = "select COUNT(*) from DataSource where OriginalFileType in (select ImageTypeCode from ImageTypeCodes) " + environment.NewLine
+        S = "select COUNT(*) from DataSource where OriginalFileType in (select ImageTypeCode from ImageTypeCodes) " + Environment.NewLine
         iCnt = DBARCH.iCount(S)
-        Msg += "Total Source Graphics: " + iCnt.ToString + environment.NewLine
+        Msg += "Total Source Graphics: " + iCnt.ToString + Environment.NewLine
 
-        S = "select COUNT(*) from DataSource where OriginalFileType in (select ImageTypeCode from ImageTypeCodes) " + environment.NewLine
-        S += "and (OcrPending is null or OcrPending = 'Y')" + environment.NewLine
-        S += "and (OcrPerformed is null or OcrPerformed != 'Y')" + environment.NewLine
+        S = "select COUNT(*) from DataSource where OriginalFileType in (select ImageTypeCode from ImageTypeCodes) " + Environment.NewLine
+        S += "and (OcrPending is null or OcrPending = 'Y')" + Environment.NewLine
+        S += "and (OcrPerformed is null or OcrPerformed != 'Y')" + Environment.NewLine
         iCnt = DBARCH.iCount(S)
-        Msg += "Total Pending Source Graphics: " + iCnt.ToString + environment.NewLine
+        Msg += "Total Pending Source Graphics: " + iCnt.ToString + Environment.NewLine
 
         MessageBox.Show(Msg)
 
@@ -12552,7 +12552,7 @@ GoodLogin:
             LOG.WriteToArchiveLog("Thread 90 - caught ThreadAbortException - resetting.")
             Thread.ResetAbort()
         Catch ex As Exception
-            MessageBox.Show("Failed to set startup parameter." + environment.NewLine + ex.Message)
+            MessageBox.Show("Failed to set startup parameter." + Environment.NewLine + ex.Message)
             LOG.WriteToArchiveLog("ERROR ckRunAtStartup_CheckedChanged - Failed to set start up parameter.", ex)
             Dim st As New StackTrace(True)
             st = New StackTrace(ex, True)
@@ -13439,14 +13439,14 @@ GoodLogin:
                         If b Then
                             SB.Text = ("Inserted: " + FQN)
                             SB.Refresh()
-                            FilesProcessed += tDict("SourceName") + environment.NewLine
+                            FilesProcessed += tDict("SourceName") + Environment.NewLine
                         End If
                     Else
                         Dim b As Boolean = DBARCH.updateExistingContent(tDict, RowID, FileBytes)
                         If b Then
                             SB.Text = ("Updated: " + FQN)
                             SB.Refresh()
-                            FilesProcessed += tDict("SourceName") + environment.NewLine
+                            FilesProcessed += tDict("SourceName") + Environment.NewLine
                         End If
                     End If
 NEXTONE:
@@ -13457,7 +13457,7 @@ NEXTONE:
             Catch ex As Exception
                 SB.Text = "Error   " + FQN + " @ " + ex.Message.ToString
             End Try
-            MessageBox.Show("FILES PROCESSED:" + environment.NewLine + FilesProcessed)
+            MessageBox.Show("FILES PROCESSED:" + Environment.NewLine + FilesProcessed)
             CF = Nothing
         End If
     End Sub
@@ -15146,7 +15146,7 @@ NEXTONE:
                         txtFilesArray = Directory.GetFiles(targetDirectory, "*.*", SearchOption.TopDirectoryOnly)
                     End If
                 Catch ex As Exception
-                    LOG.WriteToArchiveLog("ERROR processging " + targetDirectory + environment.NewLine + ex.Message)
+                    LOG.WriteToArchiveLog("ERROR processging " + targetDirectory + Environment.NewLine + ex.Message)
                     GoTo NEXTDIR
                 End Try
 
@@ -15361,7 +15361,7 @@ NEXTDIR:
                     iSkipCnt += 1
                 End If
             Catch ex As Exception
-                LOG.WriteToDirAnalysisLog("     ERROR: DirectoryInventory: " + ex.Message + environment.NewLine + "DIRECTORY:" + Dname + environment.NewLine + "File: " + FName, False)
+                LOG.WriteToDirAnalysisLog("     ERROR: DirectoryInventory: " + ex.Message + Environment.NewLine + "DIRECTORY:" + Dname + Environment.NewLine + "File: " + FName, False)
             End Try
 SkipIT:
             prevdir = Dname
@@ -15369,11 +15369,11 @@ SkipIT:
 
         frmNotify.Hide()
 
-        Msg = "Inventory Count: " + iInventoryCnt.ToString + environment.NewLine
-        Msg += "Directory Count: " + iDirCnt.ToString + environment.NewLine
-        Msg += "Bad Directories: " + iBadDir.ToString + environment.NewLine
-        Msg += "Bad Files: " + iBadCnt.ToString + environment.NewLine
-        Msg += "Skipped Files: " + iSkipCnt.ToString + environment.NewLine + environment.NewLine
+        Msg = "Inventory Count: " + iInventoryCnt.ToString + Environment.NewLine
+        Msg += "Directory Count: " + iDirCnt.ToString + Environment.NewLine
+        Msg += "Bad Directories: " + iBadDir.ToString + Environment.NewLine
+        Msg += "Bad Files: " + iBadCnt.ToString + Environment.NewLine
+        Msg += "Skipped Files: " + iSkipCnt.ToString + Environment.NewLine + Environment.NewLine
         Msg += "RUN COMPLETE"
 
         LOG.WriteToDirAnalysisLog("Inventory Count: " + iInventoryCnt.ToString, False)
@@ -15506,7 +15506,7 @@ SkipIT:
 
         Clipboard.Clear()
         Clipboard.SetText("reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem /t REG_SZ /v LongPathsEnabled /d 1 /f")
-        MessageBox.Show("This Command is in the clipboard." + environment.NewLine + "Execute this command from a command prompt as an Administrator" + environment.NewLine + environment.NewLine + "reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem /t REG_SZ /v LongPathsEnabled /d 1 /f")
+        MessageBox.Show("This Command is in the clipboard." + Environment.NewLine + "Execute this command from a command prompt as an Administrator" + Environment.NewLine + Environment.NewLine + "reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem /t REG_SZ /v LongPathsEnabled /d 1 /f")
 
     End Sub
 
@@ -15518,19 +15518,19 @@ SkipIT:
     Private Sub HowToTurnOnLongFilenamesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HowToTurnOnLongFilenamesToolStripMenuItem.Click
 
         Dim S As String = ""
-        S += "In the past the maximum supported file length was 260 characters (256 usable after the drive characters And termination character). In Windows 10 long file name support can be enabled which allows file names up to 32,767 characters (although you lose a few characters for mandatory characters that are part of the name). To enable this perform the following:" + environment.NewLine
-        S += environment.NewLine
-        S += "Start the registry editor (regedit.exe)" + environment.NewLine
-        S += "Navigate to HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem" + environment.NewLine
-        S += "Double Click LongPathsEnabled" + environment.NewLine
-        S += "Set to 1 And click OK" + environment.NewLine
-        S += "Reboot" + environment.NewLine + environment.NewLine
+        S += "In the past the maximum supported file length was 260 characters (256 usable after the drive characters And termination character). In Windows 10 long file name support can be enabled which allows file names up to 32,767 characters (although you lose a few characters for mandatory characters that are part of the name). To enable this perform the following:" + Environment.NewLine
+        S += Environment.NewLine
+        S += "Start the registry editor (regedit.exe)" + Environment.NewLine
+        S += "Navigate to HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem" + Environment.NewLine
+        S += "Double Click LongPathsEnabled" + Environment.NewLine
+        S += "Set to 1 And click OK" + Environment.NewLine
+        S += "Reboot" + Environment.NewLine + Environment.NewLine
         S += "This can also be enabled via Group Policy via Computer Configuration > Administrative Templates > System > Filesystem > Enable NTFS long paths."
-        S += environment.NewLine
-        S += environment.NewLine
+        S += Environment.NewLine
+        S += Environment.NewLine
         S += "reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem /t REG_SZ /v LongPathsEnabled /d 1 /f"
-        S += environment.NewLine
-        S += environment.NewLine
+        S += Environment.NewLine
+        S += Environment.NewLine
         S += "This Text has been placed into the clipboard in case you wish to run from the command line as an Administrator"
 
         Dim cmd As String = "reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem /t REG_SZ /v LongPathsEnabled /d 1 /f"
@@ -15851,7 +15851,7 @@ SkipIT:
             Console.WriteLine("Total DIRS: " + Dirs.Count.ToString)
             Console.WriteLine("Total Files: " + I.ToString)
 
-            msg = "Total DIRS: " + Dirs.Count.ToString + environment.NewLine + "Total Files: " + I.ToString
+            msg = "Total DIRS: " + Dirs.Count.ToString + Environment.NewLine + "Total Files: " + I.ToString
         Catch ex As Exception
             Console.WriteLine(ex.Message)
         End Try
@@ -16204,7 +16204,7 @@ SkipIT:
     Private Sub TestCamelCaseSplitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TestCamelCaseSplitToolStripMenuItem.Click
         Dim s As String = "ThisIsAFileNameToBeSplit"
         Dim s2 As String = UTIL.SplitCamelCase(s)
-        s = s + environment.NewLine + s2
+        s = s + Environment.NewLine + s2
         MessageBox.Show(s)
     End Sub
 
@@ -16237,10 +16237,10 @@ SkipIT:
                 readText = File.ReadAllLines(FQN)
                 iCnt = readText.Length
                 If iCnt >= 3 Then
-                    lines = readText(0) + environment.NewLine
+                    lines = readText(0) + Environment.NewLine
                     lines += readText(1)
                 End If
-                Msg = "Lines read: " + iCnt.ToString + environment.NewLine
+                Msg = "Lines read: " + iCnt.ToString + Environment.NewLine
                 Msg += lines
                 MessageBox.Show(Msg)
             Catch ex As Exception
@@ -16490,6 +16490,9 @@ SkipIT:
     ''' </summary>
     Sub ProcessUnexplodedZipFiles()
 
+
+        frmNotify2.Show()
+
         Dim ExplodeDir As String = System.Configuration.ConfigurationManager.AppSettings("ExplodeDir")
         Dim ProcessFQN As String = ""
         Dim ListOfFiles As New Dictionary(Of String, Integer)
@@ -16519,12 +16522,16 @@ SkipIT:
         Dim ZipExploded As String = ""
         Dim StackLevel As Integer = 0
         Dim RetentionCode As String = ""
+        Dim RetentionDate As DateTime = Nothing
+        Dim RetentionExpirationDate As DateTime = Nothing
         Dim bThisIsAnEmail As Boolean = False
         Dim isPublic As String = "Y"
         Dim ZipProcessingDir As String = UTIL.getTempProcessingDir
         Dim AllExts As String = ""
+        Dim DirToDelete As New List(Of String)
         Dim FileToDelete As New List(Of String)
         Dim TSQL As String = ""
+        Dim bSuccess As Boolean = True
 
         If Not Directory.Exists(ExplodeDir) Then
             Directory.CreateDirectory(ExplodeDir)
@@ -16552,6 +16559,8 @@ SkipIT:
                                     ,[SourceImage]
                                     ,[ZipExploded]
                                     ,RetentionCode
+                                    ,RetentionDate
+                                    ,RetentionExpirationDate
                               FROM [dbo].[DataSource]
                               where OriginalFileType in (Select [SourceTypeCode] FROM [LoadProfileItem] where ProfileName = 'ZIP Files') 
                                     and (ZipExploded != 'Y' or ZipExploded is null)"
@@ -16560,6 +16569,12 @@ SkipIT:
             DS = DBARCH.getDataSet(MySql)
 
             For Each dr As DataRow In DS.Tables(0).Rows
+
+                frmNotify2.lblEmailMsg.Text = ""
+                frmNotify2.lblMsg2.Text = ""
+                frmNotify2.lblFolder.Text = ""
+                frmNotify2.PB.Value = 0
+
                 ParentGuid = dr.Item("ParentGuid").ToString
                 CreateDate = dr.Item("CreateDate").ToString
                 SourceName = dr.Item("SourceName").ToString
@@ -16579,7 +16594,18 @@ SkipIT:
                 ImageLen = dr.Item("ImageLen").ToString
                 SourceImage = dr.Item("SourceImage").ToString
                 ZipExploded = dr.Item("ZipExploded").ToString
-                RetentionCode = dr.Item("RetentionCode").ToString
+                RetentionCode = dr.Item("RetentionCode")
+                RetentionDate = dr.Item("RetentionDate")
+                RetentionExpirationDate = dr.Item("RetentionExpirationDate")
+
+                frmNotify2.lblEmailMsg.Text = "Processing: " + SourceName
+
+                If RetentionCode.Trim.Length.Equals(0) Or RetentionCode.Equals("NA") Then
+                    RetentionCode = "Retain 10 Years"
+                    RetentionDate = Now
+                    RetentionExpirationDate = DateAdd(DateInterval.Year, 10, Now)
+                End If
+
 
                 TSQL = "Select LOWER(ExtCode) From IncludedFiles Where UserID = '" + gCurrLoginID + "' AND fqn = '" + FileDirectory + "'"
                 ListOfExts = DBARCH.getListOf(TSQL)
@@ -16600,29 +16626,48 @@ SkipIT:
 
                 AllExts = AllExts.Substring(0, AllExts.Length - 1)
 
-                Dim TempZipDir As String = ZipProcessingDir + "\Explode\ZIP_" + SourceName + ".UPZIP"
+                Dim TempZipDir As String = ZipProcessingDir + "Explode\ZIP_" + SourceName + ".UPZIP"
                 If Not Directory.Exists(TempZipDir) Then
                     Directory.CreateDirectory(TempZipDir)
                 End If
-
-                If Not FileToDelete.Contains(TempZipDir) Then
-                    FileToDelete.Add(TempZipDir)
-                End If
+                DirToDelete.Add(TempZipDir)
 
                 AllExts = AllExts.Replace("'", "")
                 ListOfZippedFiles = ZIP.ExplodeZip(FQN, gCurrLoginID, Environment.MachineName, TempZipDir, ParentGuid, bThisIsAnEmail, RetentionCode, isPublic, StackLevel)
 
+                frmNotify2.PB.Maximum = ListOfZippedFiles.Length + 1
                 For i As Integer = 0 To ListOfZippedFiles.Length - 1
+
+                    frmNotify2.PB.Value = i
+                    frmNotify2.lblMsg2.Text = "File " + (i + 1).ToString + " of " + ListOfZippedFiles.Length.ToString
+                    Application.DoEvents()
+
                     Dim tfqn = ListOfZippedFiles(i)
-                    If Not FileToDelete.Contains(tfqn) Then
-                        FileToDelete.Add(tfqn)
-                    End If
+                    Dim ChildFQN As String = tfqn
+                    FileToDelete.Add(tfqn)
                     Dim xext As String = Path.GetExtension(tfqn) + ","
+                    Dim xFileName As String = Path.GetFileName(tfqn)
                     If AllExts.Contains(xext) Then
                         Console.WriteLine("process this file " + tfqn)
                         Dim ListOfEmbeddedFiles As List(Of String) = DBARCH.ckFileExistInRepo(Environment.MachineName, tfqn)
                         If ListOfEmbeddedFiles.Count.Equals(0) Then
-                            Console.WriteLine("Add this file to the repository and update parentguid " + tfqn)
+                            frmNotify2.lblFolder.Text = "Attaching: " + xFileName
+                            Application.DoEvents()
+                            bSuccess = DBARCH.addZipChild(ChildFQN, FileDirectory, ParentGuid, FQN, RetentionCode, RetentionDate, RetentionExpirationDate)
+                        End If
+                        If ListOfEmbeddedFiles.Count.Equals(1) Then
+                            frmNotify2.lblFolder.Text = "Attaching: " + xFileName
+                            Application.DoEvents()
+                            Dim psql As String = "Update DataSource set ParentGuid = '" + ParentGuid + "' where SourceGuid " = ListOfEmbeddedFiles(0)
+                            bSuccess = DBARCH.ExecuteSqlNewConn(0, psql)
+                            If Not bSuccess Then
+                                LOG.WriteToArchiveLog("ERROR Failed to attch " + ListOfEmbeddedFiles(0) + " : To " + SourceName)
+                            End If
+                        End If
+                        If bSuccess Then
+                            LOG.WriteToArchiveLog("SUCCESS ADDED ZIP CHILD: " + Path.GetFileName(tfqn) + " to " + SourceName)
+                        Else
+                            LOG.WriteToArchiveLog("ERROR Failed to ADD ZIP CHILD: " + Path.GetFileName(tfqn) + " to " + SourceName)
                         End If
                         If ListOfEmbeddedFiles.Count.Equals(1) Then
                             Console.WriteLine("File already exists, Update parentguid " + tfqn)
@@ -16630,11 +16675,92 @@ SkipIT:
                     End If
                 Next
 SHIPTHISONE:
+                MySql = "Update DataSource set ZipExploded = 'Y' where SourceGuid = '" + ParentGuid + "' "
+                bSuccess = DBARCH.ExecuteSqlNewConn(0, MySql)
+                If Not bSuccess Then
+                    LOG.WriteToArchiveLog("ERROR Failed to update ZipExploded flag for '" + ParentGuid + "'")
+                End If
+                Application.DoEvents()
             Next
+
+            frmNotify2.PB.Value = 0
 
         Catch ex As Exception
             LOG.WriteToArchiveLog("ERROR ProcessUnexplodedZipFiles 00: " + ex.Message)
         End Try
+
+        frmNotify2.lblEmailMsg.Text = ""
+        frmNotify2.lblMsg2.Text = ""
+        frmNotify2.lblFolder.Text = ""
+        frmNotify2.PB.Value = 0
+
+        DirToDelete.Sort()
+        DirToDelete.Reverse()
+        FileToDelete.Sort()
+        FileToDelete.Reverse()
+
+        frmNotify2.PB.Maximum = FileToDelete.Count + 1
+        Dim ix As Integer = 0
+        For Each strfqn In FileToDelete
+            ix += 1
+            frmNotify2.lblMsg2.Text = "Removing: " + strfqn
+            frmNotify2.lblFolder.Text = ix.ToString + " of " + FileToDelete.Count.ToString
+            frmNotify2.PB.Increment(1)
+            If File.Exists(strfqn) Then
+                Try
+                    File.Delete(strfqn)
+                Catch ex As Exception
+                    LOG.WriteToArchiveLog("ERROR ProcessUnexplodeded Zip Files 22: Failed to delete temp file: " + strfqn + Environment.NewLine + ex.Message)
+                End Try
+            End If
+            Application.DoEvents()
+        Next
+
+        Try
+            ' Loop over the subdirectories and remove them with their contents
+            For Each d In Directory.GetDirectories(ZipProcessingDir)
+                Try
+                    Directory.Delete(d, True)
+                Catch ex As Exception
+                    LOG.WriteToArchiveLog("ERROR Failed to purge directory and sub-directories in " + ZipProcessingDir + Environment.NewLine + ex.Message)
+                End Try
+
+            Next
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("NOTICE: Clearing temp processing directory error: " + ex.Message)
+        End Try
+
+        Try
+            ' Finish removing also the files in the root folder
+            For Each f In Directory.GetFiles(ZipProcessingDir)
+                Try
+                    File.Delete(f)
+                Catch ex As Exception
+                    LOG.WriteToArchiveLog("ERROR Failed to delete " + f + " in " + ZipProcessingDir + Environment.NewLine + ex.Message)
+                End Try
+            Next
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("NOTICE: Clearing temp processing files error: " + ex.Message)
+        End Try
+
+
+        ix = 0
+        frmNotify2.PB.Maximum = DirToDelete.Count + 1
+
+        For Each strDir In DirToDelete
+            ix += 1
+            frmNotify2.lblMsg2.Text = "Removing: " + strDir
+            frmNotify2.lblFolder.Text = ix.ToString + " of " + DirToDelete.Count.ToString
+            frmNotify2.PB.Increment(1)
+            If Directory.Exists(strDir) Then
+                Try
+                    Directory.Delete(strDir)
+                Catch ex As Exception
+                    LOG.WriteToArchiveLog("ERROR ProcessUnexplodeded Zip Files 22: Failed to remove temp directory: " + strDir + Environment.NewLine + ex.Message)
+                End Try
+            End If
+            Application.DoEvents()
+        Next
 
 
         Dim NewSQL As String = "update datasource set ZipExploded = 'Y' 
@@ -16648,6 +16774,9 @@ SHIPTHISONE:
         DBARCH.ExecuteSqlNewConn(0, NewSQL)
 
         ZIP = Nothing
+        frmNotify2.Close()
+        frmNotify2.Dispose()
+        SB.Text = "ZIP FILE ANALYSIS COMPLETED..."
 
     End Sub
 

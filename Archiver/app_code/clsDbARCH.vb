@@ -6885,7 +6885,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Try
             FQN = FQN.Replace("''", "'")
             FQN = FQN.Replace("'", "''")
-            Dim S As String = "select SOurceGuid from DataSource where MachineID = '" + MachineID + "' and  FQN = '" + FQN + "' "
+            Dim S As String = "select top 1 SourceGuid from DataSource where MachineID = '" + MachineID + "' and  FQN = '" + FQN + "' order by VersionNbr desc"
             Dim rsData As SqlDataReader = Nothing
             Dim b As Boolean = False
             Dim CS As String = getRepoConnStr()
@@ -14453,7 +14453,7 @@ REDO:
 
         Dim BPS As Double = 0
         Dim CompressedSize As Integer = 0
-        Dim ContainedWithin As String = ""
+        Dim ContainedWithin As String = ParentGuid
         Dim CRC As String = ""
         Dim CreateDate As DateTime = Now
         Dim CreationDate As DateTime = Now
@@ -14461,17 +14461,18 @@ REDO:
         Dim DataVerified As Boolean = True
         Dim Description As String = ""
         Dim FileAttached As Boolean = True
-        Dim FileDirectory As String = ParentDir
-        Dim FileDirectoryName As String = ParentDir
-        Dim FileLength As Integer = 0
+        Dim FileDirectory As String = FI.DirectoryName
+        Dim FileDirectoryName As String = FI.DirectoryName
+        Dim FileLength As Int64 = 0
         Dim FQN As String = ChildFQN
-        Dim FqnHASH As String = ENC.GenerateSHA256String(ParentDir)
+        Dim FqnHASH As String = ENC.GenerateSHA256String(ChildFQN)
         Dim GraphicContainsText As Char = ""
         Dim HashFile As String = ""
         Dim HashName As String = ""
         Dim HiveActive As Boolean = False
         Dim HiveConnectionName As String = ""
         Dim Imagehash As String = ENC.GenerateSHA256HashFromFileV2(FQN)
+        CRC = Imagehash
         Dim ImageHiddenText As String = ""
         Dim ImageLen As Integer = FI.Length
         Dim isAvailable As Char = ""
@@ -14548,6 +14549,8 @@ REDO:
         Dim ZipFileGuid As String = ParentGuid
         Dim B As Boolean = True
 
+        SourceImage = File.ReadAllBytes(ChildFQN)
+
         Dim GraphicTypes As List(Of String) = getListOf("select lower(GraphicFileTypeExt) from GraphicFileType")
         If GraphicTypes.Contains(FI.Extension.ToLower) Then
             OcrPending = "Y"
@@ -14559,9 +14562,7 @@ REDO:
             RequireOcr = False
         End If
 
-        FI = Nothing
-
-        Dim MySql As String = "Insert into DataSource 
+        Dim MySql As String = "Insert into DataSource (
             RowGuid, 
             SourceGuid, 
             CreateDate, 
@@ -14649,6 +14650,7 @@ REDO:
             RecTimeStamp, 
             SourceImage, 
             ZipExploded
+            ) 
             Values (
             @RowGuid, 
             @SourceGuid, 
@@ -14736,7 +14738,7 @@ REDO:
             @SourceImageOrigin, 
             @RecTimeStamp, 
             @SourceImage, 
-            @ZipExploded, 
+            @ZipExploded 
         )"
 
         Dim ConnStr As String = setConnStr()
@@ -14754,30 +14756,29 @@ REDO:
 
             Using CONN
                 Using CMD
-
                     CMD.Parameters.Add(New SqlParameter("@RowGuid", RowGuid))
                     CMD.Parameters.Add(New SqlParameter("@SourceGuid", SourceGuid))
                     CMD.Parameters.Add(New SqlParameter("@CreateDate", CreateDate))
-                    CMD.Parameters.Add(New SqlParameter("@SourceName", SourceName))
-                    CMD.Parameters.Add(New SqlParameter("@SourceTypeCode", SourceTypeCode))
+                    CMD.Parameters.Add(New SqlParameter("@SourceName", FI.Name))
+                    CMD.Parameters.Add(New SqlParameter("@SourceTypeCode", FI.Extension))
                     CMD.Parameters.Add(New SqlParameter("@FQN", FQN))
                     CMD.Parameters.Add(New SqlParameter("@VersionNbr", VersionNbr))
                     CMD.Parameters.Add(New SqlParameter("@LastAccessDate", LastAccessDate))
-                    CMD.Parameters.Add(New SqlParameter("@FileLength", FileLength))
+                    CMD.Parameters.Add(New SqlParameter("@FileLength", FI.Length))
                     CMD.Parameters.Add(New SqlParameter("@LastWriteTime", LastWriteTime))
-                    CMD.Parameters.Add(New SqlParameter("@UserID", UserID))
-                    CMD.Parameters.Add(New SqlParameter("@DataSourceOwnerUserID", DataSourceOwnerUserID))
+                    CMD.Parameters.Add(New SqlParameter("@UserID", gCurrLoginID))
+                    CMD.Parameters.Add(New SqlParameter("@DataSourceOwnerUserID", gCurrLoginID))
                     CMD.Parameters.Add(New SqlParameter("@isPublic", isPublic))
                     CMD.Parameters.Add(New SqlParameter("@FileDirectory", FileDirectory))
                     CMD.Parameters.Add(New SqlParameter("@OriginalFileType", OriginalFileType))
                     CMD.Parameters.Add(New SqlParameter("@RetentionExpirationDate", RetentionExpirationDate))
                     CMD.Parameters.Add(New SqlParameter("@IsPublicPreviousState", IsPublicPreviousState))
                     CMD.Parameters.Add(New SqlParameter("@isAvailable", isAvailable))
-                    CMD.Parameters.Add(New SqlParameter("@isContainedWithinZipFile", isContainedWithinZipFile))
+                    CMD.Parameters.Add(New SqlParameter("@isContainedWithinZipFile", "Y"))
                     CMD.Parameters.Add(New SqlParameter("@IsZipFile", IsZipFile))
                     CMD.Parameters.Add(New SqlParameter("@DataVerified", DataVerified))
-                    CMD.Parameters.Add(New SqlParameter("@ZipFileGuid", ZipFileGuid))
-                    CMD.Parameters.Add(New SqlParameter("@ZipFileFQN", ZipFileFQN))
+                    CMD.Parameters.Add(New SqlParameter("@ZipFileGuid", ParentGuid))
+                    CMD.Parameters.Add(New SqlParameter("@ZipFileFQN", ParentFileFQN))
                     CMD.Parameters.Add(New SqlParameter("@Description", Description))
                     CMD.Parameters.Add(New SqlParameter("@KeyWords", KeyWords))
                     CMD.Parameters.Add(New SqlParameter("@Notes", Notes))
@@ -14809,8 +14810,8 @@ REDO:
                     CMD.Parameters.Add(New SqlParameter("@RecHash", RecHash))
                     CMD.Parameters.Add(New SqlParameter("@OriginalSize", OriginalSize))
                     CMD.Parameters.Add(New SqlParameter("@CompressedSize", CompressedSize))
-                    CMD.Parameters.Add(New SqlParameter("@txStartTime", txStartTime))
-                    CMD.Parameters.Add(New SqlParameter("@txEndTime", txEndTime))
+                    CMD.Parameters.Add(New SqlParameter("@txStartTime", Now))
+                    CMD.Parameters.Add(New SqlParameter("@txEndTime", Now))
                     CMD.Parameters.Add(New SqlParameter("@txTotalTime", txTotalTime))
                     CMD.Parameters.Add(New SqlParameter("@TransmitTime", TransmitTime))
                     CMD.Parameters.Add(New SqlParameter("@FileAttached", FileAttached))
@@ -14848,16 +14849,13 @@ REDO:
             End Using
             B = True
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR 721x UpdateDataSourceFileInfo 00: " + ex.Message)
-            LOG.WriteToArchiveLog("[SourceName] " + SourceName.Length.ToString)
-            LOG.WriteToArchiveLog("[Imagehash] " = Imagehash.Length.ToString)
-            LOG.WriteToArchiveLog("[CRC] " = Imagehash.Length.ToString)
-            LOG.WriteToArchiveLog("[SourceTypeCode] " = SourceTypeCode.Length.ToString)
-            LOG.WriteToArchiveLog("[OriginalFileType] " = OriginalFileType.Length.ToString)
-            LOG.WriteToArchiveLog("[MachineID] " = MachineID.Length.ToString)
-            LOG.WriteToArchiveLog("[RecHash] " = Imagehash.Length.ToString)
+            LOG.WriteToArchiveLog("ERROR 721x addZipChild 00: " + ex.Message)
+            LOG.WriteToArchiveLog("    [SourceName] " + SourceName)
             B = False
         End Try
+
+        FI = Nothing
+
         Return B
     End Function
 
