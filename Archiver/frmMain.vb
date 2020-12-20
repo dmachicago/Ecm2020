@@ -16492,118 +16492,150 @@ SkipIT:
 
         Dim ExplodeDir As String = System.Configuration.ConfigurationManager.AppSettings("ExplodeDir")
         Dim ProcessFQN As String = ""
-        Dim OriginalFileType As String = ""
-        Dim SourceGuid As String = ""
         Dim ListOfFiles As New Dictionary(Of String, Integer)
         Dim FilesToBeUploaded As New List(Of String)
         Dim B As Boolean = False
+        Dim DS As DataSet = Nothing
+        Dim ListOfExts As New List(Of String)
+        Dim ListOfZippedFiles() As String = Nothing
+        Dim ParentGuid As String = ""
+        Dim CreateDate As String = ""
+        Dim SourceName As String = ""
+        Dim SourceTypeCode As String = ""
+        Dim FQN As String = ""
+        Dim VersionNbr As String = ""
+        Dim LastAccessDate As String = ""
+        Dim FileLength As String = ""
+        Dim LastWriteTime As String = ""
+        Dim UserID As String = ""
+        Dim FileDirectory As String = ""
+        Dim OriginalFileType As String = ""
+        Dim IsZipFile As String = ""
+        Dim CreationDate As String = ""
+        Dim RepoSvrName As String = ""
+        Dim Imagehash As String = ""
+        Dim ImageLen As String = ""
+        Dim SourceImage As String = ""
+        Dim ZipExploded As String = ""
+        Dim StackLevel As Integer = 0
+        Dim RetentionCode As String = ""
+        Dim bThisIsAnEmail As Boolean = False
+        Dim isPublic As String = "Y"
+        Dim ZipProcessingDir As String = UTIL.getTempProcessingDir
+        Dim AllExts As String = ""
+        Dim FileToDelete As New List(Of String)
+        Dim TSQL As String = ""
 
         If Not Directory.Exists(ExplodeDir) Then
             Directory.CreateDirectory(ExplodeDir)
         End If
 
-        '        CreateDate
-        '        LastAccessDate
-        'LastWriteTime
-        'RetentionExpirationDate
+        Dim ZIP As New clsZipFiles
 
-        Dim FqnSql As String = "select sourceguid, FQN from DataSource 
-                    where OriginalFileType in (Select [SourceTypeCode] FROM [LoadProfileItem] where ProfileName = 'ZIP Files') 
-                    and (ZipExploded != 'Y' or ZipExploded is null)"
-        Dim FTSql As String = "select sourceguid, OriginalFileType from DataSource 
-                    where OriginalFileType in (Select [SourceTypeCode] FROM [LoadProfileItem] where ProfileName = 'ZIP Files') 
-                    and (ZipExploded != 'Y' or ZipExploded is null)"
-        Dim CreateDateSql As String = "select sourceguid, cast(CreateDate as nvarchar(50)) as CreateDate from DataSource 
-                    where OriginalFileType in (Select [SourceTypeCode] FROM [LoadProfileItem] where ProfileName = 'ZIP Files') 
-                    and (ZipExploded != 'Y' or ZipExploded is null)"
-        Dim LastWriteTimeSql As String = "select sourceguid, cast(LastWriteTime as nvarchar(50)) as LastWriteTime  from DataSource 
-                    where OriginalFileType in (Select [SourceTypeCode] FROM [LoadProfileItem] where ProfileName = 'ZIP Files') 
-                    and (ZipExploded != 'Y' or ZipExploded is null)"
+        Dim MySql As String = "SELECT [SourceGuid] as ParentGuid
+                                    ,[CreateDate]
+                                    ,[SourceName]
+                                    ,[SourceTypeCode]
+                                    ,[FQN]
+                                    ,[VersionNbr]
+                                    ,[LastAccessDate]
+                                    ,[FileLength]
+                                    ,[LastWriteTime]
+                                    ,[UserID]
+                                    ,[FileDirectory]
+                                    ,[OriginalFileType]
+                                    ,[IsZipFile]
+                                    ,[CreationDate]
+                                    ,[RepoSvrName]
+                                    ,[Imagehash]
+                                    ,[ImageLen]
+                                    ,[SourceImage]
+                                    ,[ZipExploded]
+                                    ,RetentionCode
+                              FROM [dbo].[DataSource]
+                              where OriginalFileType in (Select [SourceTypeCode] FROM [LoadProfileItem] where ProfileName = 'ZIP Files') 
+                                    and (ZipExploded != 'Y' or ZipExploded is null)"
 
-        Dim OriginalSourceName As String = ""
-        Dim OriginalFQN As String = ""
-        Dim OriginalDIR As String = ""
-        Dim WriteTime As String = ""
-        Dim CreateDate As String = ""
-        Dim file_FullName As String = ""
-        Dim RetentionCode As String = "NA"
-        Dim LastWriteTimeDate As Dictionary(Of String, String) = DBARCH.getDictionaryOfStrings(LastWriteTimeSql)
-        Dim DictCreateDate As Dictionary(Of String, String) = DBARCH.getDictionaryOfStrings(CreateDateSql)
-        Dim DictZipFQN As Dictionary(Of String, String) = DBARCH.getDictionaryOfStrings(FqnSql)
-        Dim DictZipEXTS As Dictionary(Of String, String) = DBARCH.getDictionaryOfStrings(FTSql)
-        Dim ImageBytes As Byte() = Nothing
-        Dim isPublic As String = "Y"
+        Try
+            DS = DBARCH.getDataSet(MySql)
 
-        For Each SourceGuid In DictZipEXTS.Keys
+            For Each dr As DataRow In DS.Tables(0).Rows
+                ParentGuid = dr.Item("ParentGuid").ToString
+                CreateDate = dr.Item("CreateDate").ToString
+                SourceName = dr.Item("SourceName").ToString
+                SourceTypeCode = dr.Item("SourceTypeCode").ToString
+                FQN = dr.Item("FQN").ToString
+                VersionNbr = dr.Item("VersionNbr").ToString
+                LastAccessDate = dr.Item("LastAccessDate").ToString
+                FileLength = dr.Item("FileLength").ToString
+                LastWriteTime = dr.Item("LastWriteTime").ToString
+                UserID = dr.Item("UserID").ToString
+                FileDirectory = dr.Item("FileDirectory").ToString
+                OriginalFileType = dr.Item("OriginalFileType").ToString
+                IsZipFile = dr.Item("IsZipFile").ToString
+                CreationDate = dr.Item("CreationDate").ToString
+                RepoSvrName = dr.Item("RepoSvrName").ToString
+                Imagehash = dr.Item("Imagehash").ToString
+                ImageLen = dr.Item("ImageLen").ToString
+                SourceImage = dr.Item("SourceImage").ToString
+                ZipExploded = dr.Item("ZipExploded").ToString
+                RetentionCode = dr.Item("RetentionCode").ToString
 
-            OriginalFileType = DictZipEXTS(SourceGuid)
-            ImageBytes = DBARCH.GetImageBinary(SourceGuid, "C")
-            file_FullName = DictZipFQN(SourceGuid)
-            file_FullName = ProcessFQN
-
-            WriteTime = LastWriteTimeDate(SourceGuid)
-            CreateDate = DictCreateDate(SourceGuid)
-            OriginalFQN = DictZipFQN(SourceGuid)
-            OriginalDIR = Path.GetDirectoryName(OriginalFQN)
-            OriginalSourceName = Path.GetFileName(OriginalFQN)
-
-            ProcessFQN = ExplodeDir + "/ZIP~" + SourceGuid + "~" + OriginalFileType
-
-            Try
-                Using writer As BinaryWriter = New BinaryWriter(File.Open(ProcessFQN, FileMode.Create))
-                    writer.Write(ImageBytes)
-                End Using
-                FilesToBeUploaded.Clear()
-                FilesToBeUploaded.Add(ProcessFQN)
-                '*************************************** PROCESS ZIPFILE *************************************** 
-                Dim DelSql As String = "Delete from DataSource where SourceGuid = '" + SourceGuid + "' "
-                B = DBARCH.ExecuteSqlNewConn(0, DelSql)
-                If B Then
-                    ArchiveContent(Environment.MachineName, gCurrLoginID, FilesToBeUploaded, True)
-                Else
-                    LOG.WriteToArchiveLog("ERROR ProcessUnexplodedZipFiles 06Z: Filed to remove Zipfile, skipping: ")
+                TSQL = "Select LOWER(ExtCode) From IncludedFiles Where UserID = '" + gCurrLoginID + "' AND fqn = '" + FileDirectory + "'"
+                ListOfExts = DBARCH.getListOf(TSQL)
+                If ListOfExts.Count > 0 Then
+                    For Each ext As String In ListOfExts
+                        AllExts = AllExts + "'" + ext + "',"
+                    Next
                 End If
-                '*************************************** PROCESS ZIP FILE *************************************** 
-            Catch ex As Exception
-                LOG.WriteToArchiveLog("ERROR ProcessUnexplodedZipFiles: " + SourceGuid + Environment.NewLine + ex.Message)
-            End Try
+                If ListOfExts.Count.Equals(0) Then
+                    ListOfExts = DBARCH.getListOf("select distinct LOWER(ExtCode) from IncludedFiles where UserID = '" + gCurrLoginID + "' ")
+                    For Each ext As String In ListOfExts
+                        AllExts = AllExts + "'" + ext + "',"
+                    Next
+                End If
+                If ListOfExts.Count.Equals(0) Then
+                    GoTo SHIPTHISONE
+                End If
 
-            DropTempFiles()
+                AllExts = AllExts.Substring(0, AllExts.Length - 1)
 
-            Dim BBX As Boolean = True
+                Dim TempZipDir As String = ZipProcessingDir + "\Explode\ZIP_" + SourceName + ".UPZIP"
+                If Not Directory.Exists(TempZipDir) Then
+                    Directory.CreateDirectory(TempZipDir)
+                End If
 
-            Dim SQL As String = "Update Datasource set FQN = '" + OriginalFQN + "' where SourceGuid = '" + gSourceGuid + "' "
-            BBX = DBARCH.ExecuteSqlNewConn(0, SQL)
-            If Not BBX Then
-                LOG.WriteToArchiveLog("ERROR ProcessUnexplodedZipFiles 01: " + SQL)
-            End If
-            SQL = "Update Datasource set FileDirectory = '" + OriginalDIR + "' where SourceGuid = '" + gSourceGuid + "' "
-            BBX = DBARCH.ExecuteSqlNewConn(0, SQL)
-            If Not BBX Then
-                LOG.WriteToArchiveLog("ERROR ProcessUnexplodedZipFiles 02: " + SQL)
-            End If
+                If Not FileToDelete.Contains(TempZipDir) Then
+                    FileToDelete.Add(TempZipDir)
+                End If
 
-            WriteTime = LastWriteTimeDate(SourceGuid)
-            SQL = "Update Datasource set LastWriteTime = cast('" + WriteTime + "' as datetime) where SourceGuid = '" + gSourceGuid + "' "
-            BBX = DBARCH.ExecuteSqlNewConn(0, SQL)
-            If Not BBX Then
-                LOG.WriteToArchiveLog("ERROR ProcessUnexplodedZipFiles 02: " + SQL)
-            End If
+                AllExts = AllExts.Replace("'", "")
+                ListOfZippedFiles = ZIP.ExplodeZip(FQN, gCurrLoginID, Environment.MachineName, TempZipDir, ParentGuid, bThisIsAnEmail, RetentionCode, isPublic, StackLevel)
 
-            CreateDate = DictCreateDate(SourceGuid)
-            SQL = "Update Datasource set CreateDate = cast('" + CreateDate + "' as datetime) where SourceGuid = '" + gSourceGuid + "' "
-            BBX = DBARCH.ExecuteSqlNewConn(0, SQL)
-            If Not BBX Then
-                LOG.WriteToArchiveLog("ERROR ProcessUnexplodedZipFiles 02: " + SQL)
-            End If
+                For i As Integer = 0 To ListOfZippedFiles.Length - 1
+                    Dim tfqn = ListOfZippedFiles(i)
+                    If Not FileToDelete.Contains(tfqn) Then
+                        FileToDelete.Add(tfqn)
+                    End If
+                    Dim xext As String = Path.GetExtension(tfqn) + ","
+                    If AllExts.Contains(xext) Then
+                        Console.WriteLine("process this file " + tfqn)
+                        Dim ListOfEmbeddedFiles As List(Of String) = DBARCH.ckFileExistInRepo(Environment.MachineName, tfqn)
+                        If ListOfEmbeddedFiles.Count.Equals(0) Then
+                            Console.WriteLine("Add this file to the repository and update parentguid " + tfqn)
+                        End If
+                        If ListOfEmbeddedFiles.Count.Equals(1) Then
+                            Console.WriteLine("File already exists, Update parentguid " + tfqn)
+                        End If
+                    End If
+                Next
+SHIPTHISONE:
+            Next
 
-            SQL = "Update Datasource set SourceName = '" + OriginalSourceName + "' where SourceGuid = '" + gSourceGuid + "' "
-            BBX = DBARCH.ExecuteSqlNewConn(0, SQL)
-            If Not BBX Then
-                LOG.WriteToArchiveLog("ERROR ProcessUnexplodedZipFiles 02: " + SQL)
-            End If
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR ProcessUnexplodedZipFiles 00: " + ex.Message)
+        End Try
 
-        Next
 
         Dim NewSQL As String = "update datasource set ZipExploded = 'Y' 
                                 where SourceGuid in (
@@ -16614,6 +16646,9 @@ SkipIT:
                                 ) 
                                 AND ZipExploded is null;"
         DBARCH.ExecuteSqlNewConn(0, NewSQL)
+
+        ZIP = Nothing
+
     End Sub
 
     ''' <summary>

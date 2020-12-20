@@ -227,7 +227,7 @@ Public Class clsZipFiles
             'DMA.setFileArchiveAttributeSet(FQN, TheFileIsArchived)
             DMA.ToggleArchiveBit(FQN)
         ElseIf UCase(fExt).Equals("RAR") Then
-            B = UnRar(FQN$)
+            B = UnRar(FQN$, ZipProcessingDir)
             If B Then
                 If Not bThisIsAnEmail Then
                     UnzipAndLoadContent(UID, MachineID, ZipProcessingDir, ParentZipGuid, bThisIsAnEmail, RetentionCode, isPublic, StackLevel, ListOfFiles)
@@ -245,7 +245,7 @@ Public Class clsZipFiles
             'DMA.setFileArchiveAttributeSet(FQN, TheFileIsArchived)
             DMA.ToggleArchiveBit(FQN)
         ElseIf UCase(fExt).Equals("GZ") Then
-            B = UntarGZarchive(FQN$)
+            B = UntarGZarchive(FQN$, ZipProcessingDir)
             If B Then
                 If Not bThisIsAnEmail Then
                     UnzipAndLoadContent(UID, MachineID, ZipProcessingDir, ParentZipGuid, bThisIsAnEmail, RetentionCode, isPublic, StackLevel, ListOfFiles)
@@ -263,7 +263,7 @@ Public Class clsZipFiles
             'DMA.setFileArchiveAttributeSet(FQN, TheFileIsArchived)
             DMA.ToggleArchiveBit(FQN)
         ElseIf UCase(fExt).Equals("Z") Then
-            B = Me.UntarZarchive(FQN$)
+            B = Me.UntarZarchive(FQN$, ZipProcessingDir)
             If B Then
                 If Not bThisIsAnEmail Then
                     UnzipAndLoadContent(UID, MachineID, ZipProcessingDir, ParentZipGuid, bThisIsAnEmail, RetentionCode, isPublic, StackLevel, ListOfFiles)
@@ -281,7 +281,7 @@ Public Class clsZipFiles
             'DMA.setFileArchiveAttributeSet(FQN, TheFileIsArchived)
             DMA.ToggleArchiveBit(FQN)
         ElseIf UCase(fExt).Equals("TAR") Then
-            B = UnTarArchive(FQN$)
+            B = UnTarArchive(FQN$, ZipProcessingDir)
             If B Then
                 If Not bThisIsAnEmail Then
                     UnzipAndLoadContent(UID, MachineID, ZipProcessingDir, ParentZipGuid, bThisIsAnEmail, RetentionCode, isPublic, StackLevel, ListOfFiles)
@@ -320,7 +320,7 @@ Public Class clsZipFiles
             Return Nothing
         End If
         Dim EmbeddedFileCnt As Int32 = 0
-        Dim fExt As String = UTIL.getFileSuffix(FQN)
+        Dim fExt As String = UTIL.getFileSuffix(ZipFQN)
         Dim B As Boolean = False
         Dim Use7z As Boolean = False
 
@@ -393,7 +393,7 @@ Public Class clsZipFiles
                 LOG.WriteToArchiveLog("WARNING 02 ExplodeZip : Unzip may have failed for ")
             End If
         ElseIf UCase(fExt).Equals("RAR") Then
-            B = UnRar(ZipFQN)
+            B = UnRar(ZipFQN, ZipProcessingDir)
             If B Then
                 EmbeddedFileCnt = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories).Count
             Else
@@ -401,7 +401,7 @@ Public Class clsZipFiles
                 LOG.WriteToArchiveLog("WARNING 03 ExplodeZip : Unzip may have failed for ")
             End If
         ElseIf UCase(fExt).Equals("GZ") Then
-            B = UntarGZarchive(ZipFQN)
+            B = UntarGZarchive(ZipFQN, ZipProcessingDir)
             If B Then
                 EmbeddedFileCnt = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories).Count
             Else
@@ -409,7 +409,7 @@ Public Class clsZipFiles
                 LOG.WriteToArchiveLog("WARNING 04 ExplodeZip : Unzip may have failed for ")
             End If
         ElseIf UCase(fExt).Equals("Z") Then
-            B = Me.UntarZarchive(ZipFQN)
+            B = Me.UntarZarchive(ZipFQN, ZipProcessingDir)
             If B Then
                 EmbeddedFileCnt = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories).Count
             Else
@@ -417,6 +417,7 @@ Public Class clsZipFiles
                 LOG.WriteToArchiveLog("WARNING 05 ExplodeZip : Unzip may have failed for ")
             End If
         ElseIf UCase(fExt).Equals("TAR") Then
+            Me.UnTarArchive(ZipFQN, ZipProcessingDir)
             If B Then
                 EmbeddedFileCnt = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories).Count
             Else
@@ -429,6 +430,7 @@ Public Class clsZipFiles
 
         If EmbeddedFileCnt > 0 Then
             ListOfFiles = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories)
+            Files = ListOfFiles.ToArray
         End If
 
         Return Files
@@ -922,7 +924,7 @@ SkipToNextFile:
             End If
             DMA.ToggleArchiveBit(FQN)
         ElseIf UCase(fExt).Equals("GZ") Then
-            B = UntarGZarchive(FQN$)
+            B = UntarGZarchive(FQN$, ZipProcessingDir)
             If B Then
                 UnzipAndLoadEmailAttachment(UID, MachineID, ZipProcessingDir, EmailGuid$, ZipFileFQN, StackLevel, ListOfFiles)
             Else
@@ -930,7 +932,7 @@ SkipToNextFile:
             End If
             DMA.ToggleArchiveBit(FQN)
         ElseIf UCase(fExt).Equals("Z") Then
-            B = Me.UntarZarchive(FQN$)
+            B = Me.UntarZarchive(FQN$, ZipProcessingDir)
             If B Then
                 UnzipAndLoadEmailAttachment(UID, MachineID, ZipProcessingDir, EmailGuid$, ZipFileFQN, StackLevel, ListOfFiles)
             Else
@@ -938,7 +940,7 @@ SkipToNextFile:
             End If
             DMA.ToggleArchiveBit(FQN)
         ElseIf UCase(fExt).Equals("TAR") Then
-            B = UnTarArchive(FQN$)
+            B = UnTarArchive(FQN$, ZipProcessingDir)
             If B Then
                 UnzipAndLoadEmailAttachment(UID, MachineID, ZipProcessingDir, EmailGuid$, ZipFileFQN, StackLevel, ListOfFiles)
             Else
@@ -1140,11 +1142,12 @@ SkipToNextFile:
     ''' </summary>
     ''' <param name="FQN">The FQN.</param>
     ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-    Function UnRar(ByVal FQN As String) As Boolean
+    Function UnRar(ByVal FQN As String, ZipProcessingDir As String) As Boolean
 
 
         Dim rar As New Chilkat.Rar()
-        Dim dirPath As String = GetUnZipDir()
+        'Dim dirPath As String = GetUnZipDir()
+        Dim dirPath As String = ZipProcessingDir
 
         Dim success As Boolean
 
@@ -1218,10 +1221,11 @@ SkipToNextFile:
     ''' </summary>
     ''' <param name="FQN">The FQN.</param>
     ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-    Function UntarGZarchive(ByVal FQN As String) As Boolean
+    Function UntarGZarchive(ByVal FQN As String, ZipProcessingDir As String) As Boolean
 
 
-        Dim dirPath As String = GetUnZipDir()
+        'Dim dirPath As String = GetUnZipDir()
+        Dim dirPath As String = ZipProcessingDir
         Dim fName$ = DMA.getFileName(FQN)
 
 
@@ -1263,12 +1267,10 @@ SkipToNextFile:
     ''' </summary>
     ''' <param name="FQN">The FQN.</param>
     ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-    Function UntarZarchive(ByVal FQN As String) As Boolean
+    Function UntarZarchive(ByVal FQN As String, ZipProcessingDir As String) As Boolean
 
-
-        Dim dirPath As String = GetUnZipDir()
+        Dim dirPath As String = ZipProcessingDir
         Dim fName$ = DMA.getFileName(FQN)
-
 
         ' The Chilkat.UnixCompress class is included with the "Chilkat Zip" license.
         Dim z As New Chilkat.UnixCompress()
@@ -1304,16 +1306,14 @@ SkipToNextFile:
     ''' </summary>
     ''' <param name="FQN">The FQN.</param>
     ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-    Function UnTarArchive(ByVal FQN As String) As Boolean
+    Function UnTarArchive(ByVal FQN As String, ZipProcessingDir As String) As Boolean
         Try
-            Dim dirPath As String = GetUnZipDir()
+            Dim dirPath As String = ZipProcessingDir
             Dim fName$ = DMA.getFileName(FQN)
-
 
             ' The Chilkat.UnixCompress class is included with the "Chilkat Zip" license.
             'Dim z As New Chilkat.UnixCompress()
             'z.UnlockComponent("DMACHITarArch_XqG3YzDa5MA0")
-
 
             ' The Chilkat.Tar class is a free Chilkat.NET class.
             Dim tar As New Chilkat.Tar
