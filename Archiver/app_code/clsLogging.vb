@@ -879,7 +879,6 @@ GetNextLine:
     End Sub
 
     Public Sub WriteToArchiveLog(ByVal Msg As String)
-
         Try
             Dim cPath As String = getTempEnvironDir()
 
@@ -907,6 +906,38 @@ GetNextLine:
             End Using
         Catch ex As Exception
             If ddebug Then Console.WriteLine("clsDma : WriteToArchiveLog : 688 : " + ex.Message)
+        End Try
+    End Sub
+
+    Public Sub WriteToZipLog(ByVal Msg As String)
+
+        Try
+            Dim cPath As String = getTempEnvironDir()
+
+            If Directory.Exists(LoggingPath) Then
+                cPath = LoggingPath
+            Else
+                Try
+                    cPath = LoggingPath
+                    Directory.CreateDirectory(cPath)
+                Catch ex As Exception
+                    cPath = getTempEnvironDir()
+                End Try
+            End If
+
+            Dim M As String = Now.Month.ToString.Trim
+            Dim D As String = Now.Day.ToString.Trim
+            Dim Y As String = Now.Year.ToString.Trim
+
+            Dim SerialNo As String = M + "." + D + "." + Y + "."
+
+            Dim tFQN As String = cPath + "\ECMLibrary.ZIP.Log." + SerialNo + "txt"
+            ' Create an instance of StreamWriter to write text to a file.
+            Using sw As StreamWriter = New StreamWriter(tFQN, True)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
+            End Using
+        Catch ex As Exception
+            If ddebug Then Console.WriteLine("clsDma : WriteToZipLog : 688 : " + ex.Message)
         End Try
     End Sub
 

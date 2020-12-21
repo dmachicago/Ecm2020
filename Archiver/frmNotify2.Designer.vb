@@ -64,7 +64,7 @@ Partial Class frmNotify2
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PB.Location = New System.Drawing.Point(19, 90)
         Me.PB.Name = "PB"
-        Me.PB.Size = New System.Drawing.Size(361, 14)
+        Me.PB.Size = New System.Drawing.Size(791, 14)
         Me.PB.TabIndex = 4
         '
         'frmNotify2
@@ -72,16 +72,17 @@ Partial Class frmNotify2
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(392, 116)
+        Me.ClientSize = New System.Drawing.Size(822, 116)
         Me.Controls.Add(Me.PB)
         Me.Controls.Add(Me.lblFolder)
         Me.Controls.Add(Me.lblMsg2)
         Me.Controls.Add(Me.lblEmailMsg)
         Me.DoubleBuffered = True
         Me.ForeColor = System.Drawing.Color.Black
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.Name = "frmNotify2"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Progress Tracking     (frmNotify2)"
         Me.ResumeLayout(False)
         Me.PerformLayout()

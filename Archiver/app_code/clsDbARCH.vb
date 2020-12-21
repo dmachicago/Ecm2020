@@ -256,7 +256,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Dim adapter As New SqlDataAdapter
         Dim CS As String = getRepoConnStr()
         Dim CONN As New SqlConnection(CS)
-
+        LOG.WriteToArchiveLog("Starting getDataSet @ " + Now.ToLongDateString)
         Try
             CONN.Open()
             Using CONN
@@ -275,7 +275,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Catch ex As Exception
             LOG.WriteToArchiveLog("ERROR getDataSet 01: " + ex.Message + Environment.NewLine + MySql)
         End Try
-
+        LOG.WriteToArchiveLog("Completed getDataSet @ " + Now.ToLongDateString)
         Return ds
 
     End Function

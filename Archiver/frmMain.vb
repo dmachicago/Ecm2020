@@ -16492,10 +16492,21 @@ SkipIT:
     Sub CleanZipTemp()
         Dim ExplodeDir As String = System.Configuration.ConfigurationManager.AppSettings("ExplodeDir")
 
+        Dim frm As New frmNotify2
+        frm.Show()
+        frm.Title = "ZIP CLEANUP"
+        Dim I As Integer = 0
+
         Try
             ' Finish removing also the files in the root folder
             For Each f In Directory.GetFiles(ExplodeDir, "*.*", SearchOption.AllDirectories)
                 Try
+                    I += 1
+                    frm.lblEmailMsg.Text = "Removing File:"
+                    frm.lblMsg2.Text = f
+                    frm.lblFolder.Text = I.ToString
+                    frm.Refresh()
+                    Application.DoEvents()
                     File.Delete(f)
                 Catch ex As Exception
                     LOG.WriteToArchiveLog("ERROR Failed to delete " + f + " in " + ExplodeDir + Environment.NewLine + ex.Message)
@@ -16505,19 +16516,33 @@ SkipIT:
             LOG.WriteToArchiveLog("NOTICE: Clearing temp processing files error: " + ex.Message)
         End Try
 
+        I = 0
         Dim directoryName As String = ExplodeDir
         For Each deleteFile In Directory.GetFiles(directoryName, "*.*", SearchOption.TopDirectoryOnly)
             Try
+                I += 1
+                frm.lblEmailMsg.Text = "Removing File:"
+                frm.lblMsg2.Text = deleteFile
+                frm.lblFolder.Text = I.ToString
+                frm.Refresh()
+                Application.DoEvents()
                 File.Delete(deleteFile)
             Catch ex As Exception
                 LOG.WriteToArchiveLog("ERROR Failed to purge file in " + deleteFile + Environment.NewLine + ex.Message)
             End Try
         Next
 
+        I = 0
         Try
             ' Loop over the subdirectories and remove them with their contents
             For Each d In Directory.GetDirectories(ExplodeDir, "*.*", SearchOption.AllDirectories)
                 Try
+                    I += 1
+                    frm.lblEmailMsg.Text = "Removing Directory:"
+                    frm.lblMsg2.Text = d
+                    frm.lblFolder.Text = I.ToString
+                    frm.Refresh()
+                    Application.DoEvents()
                     Directory.Delete(d, True)
                 Catch ex As Exception
                     LOG.WriteToArchiveLog("ERROR Failed to purge directory and sub-directories in " + ExplodeDir + Environment.NewLine + ex.Message)
@@ -16538,6 +16563,8 @@ SkipIT:
                                 AND ZipExploded is null;"
         DBARCH.ExecuteSqlNewConn(0, NewSQL)
 
+        frm.Dispose()
+        frm = Nothing
 
     End Sub
 
@@ -16546,8 +16573,9 @@ SkipIT:
     ''' </summary>
     Sub ProcessUnexplodedZipFiles()
 
-
+        Dim ddebug As Boolean = False
         frmNotify2.Show()
+        frmNotify2.Title = "ZIP Analyzer"
 
         Dim ExplodeDir As String = System.Configuration.ConfigurationManager.AppSettings("ExplodeDir")
         Dim ProcessFQN As String = ""
@@ -16621,128 +16649,189 @@ SkipIT:
                               where OriginalFileType in (Select [SourceTypeCode] FROM [LoadProfileItem] where ProfileName = 'ZIP Files') 
                                     and (ZipExploded != 'Y' or ZipExploded is null)"
 
+        If ddebug Then LOG.WriteToZipLog("LOC 01")
+
         Try
+            frmNotify2.lblEmailMsg.Text = "Building ZIP DATASet "
+            frmNotify2.lblMsg2.Text = "Step 1"
+            frmNotify2.lblFolder.Text = ""
+            frmNotify2.PB.Value = 0
+            Application.DoEvents()
+
+            If ddebug Then LOG.WriteToZipLog("LOC 02")
             DS = DBARCH.getDataSet(MySql)
+            If ddebug Then LOG.WriteToZipLog("LOC 03")
 
             For Each dr As DataRow In DS.Tables(0).Rows
-
+                If ddebug Then LOG.WriteToZipLog("LOC 04")
                 frmNotify2.lblEmailMsg.Text = ""
                 frmNotify2.lblMsg2.Text = ""
                 frmNotify2.lblFolder.Text = ""
                 frmNotify2.PB.Value = 0
+                Application.DoEvents()
 
                 ParentGuid = dr.Item("ParentGuid").ToString
                 CreateDate = dr.Item("CreateDate").ToString
                 SourceName = dr.Item("SourceName").ToString
                 SourceTypeCode = dr.Item("SourceTypeCode").ToString
                 FQN = dr.Item("FQN").ToString
+                If ddebug Then LOG.WriteToZipLog("LOC 05")
                 VersionNbr = dr.Item("VersionNbr").ToString
                 LastAccessDate = dr.Item("LastAccessDate").ToString
                 FileLength = dr.Item("FileLength").ToString
                 LastWriteTime = dr.Item("LastWriteTime").ToString
+                If ddebug Then LOG.WriteToZipLog("LOC 06")
                 UserID = dr.Item("UserID").ToString
                 FileDirectory = dr.Item("FileDirectory").ToString
                 OriginalFileType = dr.Item("OriginalFileType").ToString
                 IsZipFile = dr.Item("IsZipFile").ToString
                 CreationDate = dr.Item("CreationDate").ToString
+                If ddebug Then LOG.WriteToZipLog("LOC 07")
                 RepoSvrName = dr.Item("RepoSvrName").ToString
                 Imagehash = dr.Item("Imagehash").ToString
                 ImageLen = dr.Item("ImageLen").ToString
                 'SourceImage = dr.Item("SourceImage").ToString
                 ZipExploded = dr.Item("ZipExploded").ToString
+                If ddebug Then LOG.WriteToZipLog("LOC 08")
                 RetentionCode = dr.Item("RetentionCode")
                 RetentionDate = dr.Item("RetentionDate")
                 RetentionExpirationDate = dr.Item("RetentionExpirationDate")
+                If ddebug Then LOG.WriteToZipLog("LOC 09")
 
-                frmNotify2.lblEmailMsg.Text = "Processing: " + SourceName
-
+                frmNotify2.lblEmailMsg.Text = "Processing: " + SourceName + " : " + ImageLen + " Bytes"
+                Application.DoEvents()
+                If ddebug Then LOG.WriteToZipLog("LOC 10")
                 If RetentionCode.Trim.Length.Equals(0) Or RetentionCode.Equals("NA") Then
                     RetentionCode = "Retain 10 Years"
                     RetentionDate = Now
                     RetentionExpirationDate = DateAdd(DateInterval.Year, 10, Now)
                 End If
-
+                If ddebug Then LOG.WriteToZipLog("LOC 11")
 
                 TSQL = "Select LOWER(ExtCode) From IncludedFiles Where UserID = '" + gCurrLoginID + "' AND fqn = '" + FileDirectory + "'"
                 ListOfExts = DBARCH.getListOf(TSQL)
+                If ddebug Then LOG.WriteToZipLog("LOC 12")
                 If ListOfExts.Count > 0 Then
                     For Each ext As String In ListOfExts
                         AllExts = AllExts + "'" + ext + "',"
                     Next
                 End If
+                If ddebug Then LOG.WriteToZipLog("LOC 13")
                 If ListOfExts.Count.Equals(0) Then
                     ListOfExts = DBARCH.getListOf("select distinct LOWER(ExtCode) from IncludedFiles where UserID = '" + gCurrLoginID + "' ")
                     For Each ext As String In ListOfExts
                         AllExts = AllExts + "'" + ext + "',"
                     Next
                 End If
+                If ddebug Then LOG.WriteToZipLog("LOC 14")
                 If ListOfExts.Count.Equals(0) Then
                     GoTo SHIPTHISONE
                 End If
 
                 AllExts = AllExts.Substring(0, AllExts.Length - 1)
-
+                If ddebug Then LOG.WriteToZipLog("LOC 15")
                 Dim TempZipDir As String = ZipProcessingDir + "Explode\ZIP_" + SourceName + ".UPZIP"
                 If Not Directory.Exists(TempZipDir) Then
                     Directory.CreateDirectory(TempZipDir)
                 End If
+                If ddebug Then LOG.WriteToZipLog("LOC 16")
                 DirToDelete.Add(TempZipDir)
+
+                frmNotify2.lblFolder.Text = "Exploding: " + Path.GetFileName(FQN)
+                frmNotify2.Refresh()
+                Application.DoEvents()
+                If ddebug Then LOG.WriteToZipLog("LOC 17")
 
                 AllExts = AllExts.Replace("'", "")
                 ListOfZippedFiles = ZIP.ExplodeZip(FQN, gCurrLoginID, Environment.MachineName, TempZipDir, ParentGuid, bThisIsAnEmail, RetentionCode, isPublic, StackLevel)
 
+                If IsNothing(ListOfZippedFiles) Then
+                    LOG.WriteToArchiveLog("FATAL ERROR ON" + FQN + vbCrLf + "No files unzipped, could be corrupt file- suggest delete and reload as possible solution.")
+                    LOG.WriteToArchiveLog("FATAL ERROR ON" + FQN + vbCrLf + "No files unzipped, could be corrupt file- suggest delete and reload as possible solution.")
+                    GoTo SHIPTHISONE
+                End If
+
+                If ddebug Then LOG.WriteToZipLog("LOC 18")
+                frmNotify2.lblFolder.Text = "Expanded: " + Path.GetFileName(FQN)
+                If ddebug Then LOG.WriteToZipLog("LOC 18.1")
+                frmNotify2.Refresh()
+                If ddebug Then LOG.WriteToZipLog("LOC 18.2")
+                Application.DoEvents()
+                If ddebug Then LOG.WriteToZipLog("LOC 18.3")
+
                 frmNotify2.PB.Maximum = ListOfZippedFiles.Length + 1
+                If ddebug Then LOG.WriteToZipLog("LOC 18.4")
+
                 For i As Integer = 0 To ListOfZippedFiles.Length - 1
+                    Try
+                        If ddebug Then LOG.WriteToZipLog("LOC 19")
+                        frmNotify2.PB.Value = i
+                        frmNotify2.lblMsg2.Text = "File " + (i + 1).ToString + " of " + ListOfZippedFiles.Length.ToString
+                        Application.DoEvents()
 
-                    frmNotify2.PB.Value = i
-                    frmNotify2.lblMsg2.Text = "File " + (i + 1).ToString + " of " + ListOfZippedFiles.Length.ToString
-                    Application.DoEvents()
+                        Dim tfqn = ListOfZippedFiles(i)
+                        Dim ChildFQN As String = tfqn
+                        FileToDelete.Add(tfqn)
+                        Dim xext As String = Path.GetExtension(tfqn) + ","
+                        Dim xFileName As String = Path.GetFileName(tfqn)
+                        If ddebug Then LOG.WriteToZipLog("LOC 20")
+                        If AllExts.Contains(xext) Then
+                            LOG.WriteToZipLog("ZIP Processing: " + tfqn)
+                            If ddebug Then LOG.WriteToZipLog("LOC 20")
+                            Dim ListOfEmbeddedFiles As List(Of String) = DBARCH.ckFileExistInRepo(Environment.MachineName, tfqn)
+                            If ListOfEmbeddedFiles.Count.Equals(0) Then
+                                frmNotify2.lblFolder.Text = "Attaching: " + xFileName
+                                Application.DoEvents()
+                                Try
+                                    bSuccess = DBARCH.addZipChild(ChildFQN, FileDirectory, ParentGuid, FQN, RetentionCode, RetentionDate, RetentionExpirationDate)
+                                Catch ex As Exception
+                                    LOG.WriteToZipLog("ERROR PRocessZip 22X: " + ex.Message)
+                                End Try
 
-                    Dim tfqn = ListOfZippedFiles(i)
-                    Dim ChildFQN As String = tfqn
-                    FileToDelete.Add(tfqn)
-                    Dim xext As String = Path.GetExtension(tfqn) + ","
-                    Dim xFileName As String = Path.GetFileName(tfqn)
-                    If AllExts.Contains(xext) Then
-                        Console.WriteLine("process this file " + tfqn)
-                        Dim ListOfEmbeddedFiles As List(Of String) = DBARCH.ckFileExistInRepo(Environment.MachineName, tfqn)
-                        If ListOfEmbeddedFiles.Count.Equals(0) Then
-                            frmNotify2.lblFolder.Text = "Attaching: " + xFileName
-                            Application.DoEvents()
-                            bSuccess = DBARCH.addZipChild(ChildFQN, FileDirectory, ParentGuid, FQN, RetentionCode, RetentionDate, RetentionExpirationDate)
-                        End If
-                        If ListOfEmbeddedFiles.Count.Equals(1) Then
-                            frmNotify2.lblFolder.Text = "Attaching: " + xFileName
-                            Application.DoEvents()
-                            Dim psql As String = "Update DataSource set ParentGuid = '" + ParentGuid + "' where SourceGuid " = ListOfEmbeddedFiles(0)
-                            bSuccess = DBARCH.ExecuteSqlNewConn(0, psql)
-                            If Not bSuccess Then
-                                LOG.WriteToArchiveLog("ERROR Failed to attch " + ListOfEmbeddedFiles(0) + " : To " + SourceName)
                             End If
+                            If ddebug Then LOG.WriteToZipLog("LOC 21")
+                            If ListOfEmbeddedFiles.Count.Equals(1) Then
+                                frmNotify2.lblFolder.Text = "Attaching: " + xFileName
+                                Application.DoEvents()
+                                Dim psql As String = "Update DataSource set ParentGuid = '" + ParentGuid + "' where SourceGuid " = ListOfEmbeddedFiles(0)
+                                bSuccess = DBARCH.ExecuteSqlNewConn(0, psql)
+                                If Not bSuccess Then
+                                    LOG.WriteToZipLog("ERROR Failed to attch " + ListOfEmbeddedFiles(0) + " : To " + SourceName)
+                                End If
+                            End If
+                            If bSuccess Then
+                                LOG.WriteToZipLog("SUCCESS ADDED ZIP CHILD: " + Path.GetFileName(tfqn) + " to " + SourceName)
+                            Else
+                                LOG.WriteToZipLog("ERROR Failed to ADD ZIP CHILD: " + Path.GetFileName(tfqn) + " to " + SourceName)
+                            End If
+                            If ListOfEmbeddedFiles.Count.Equals(1) Then
+                                Console.WriteLine("File already exists, Update parentguid " + tfqn)
+                            End If
+                            If ddebug Then LOG.WriteToZipLog("LOC 22")
                         End If
-                        If bSuccess Then
-                            LOG.WriteToArchiveLog("SUCCESS ADDED ZIP CHILD: " + Path.GetFileName(tfqn) + " to " + SourceName)
-                        Else
-                            LOG.WriteToArchiveLog("ERROR Failed to ADD ZIP CHILD: " + Path.GetFileName(tfqn) + " to " + SourceName)
-                        End If
-                        If ListOfEmbeddedFiles.Count.Equals(1) Then
-                            Console.WriteLine("File already exists, Update parentguid " + tfqn)
-                        End If
-                    End If
+                        If ddebug Then LOG.WriteToZipLog("LOC 23")
+                    Catch ex As Exception
+                        LOG.WriteToZipLog("ERROR ProcessUnexplodedZipFIles 250: " + ex.Message)
+                    End Try
                 Next
+                If ddebug Then LOG.WriteToZipLog("LOC 24")
 SHIPTHISONE:
                 MySql = "Update DataSource set ZipExploded = 'Y' where SourceGuid = '" + ParentGuid + "' "
                 bSuccess = DBARCH.ExecuteSqlNewConn(0, MySql)
+                If ddebug Then LOG.WriteToZipLog("LOC 25")
                 If Not bSuccess Then
-                    LOG.WriteToArchiveLog("ERROR Failed to update ZipExploded flag for '" + ParentGuid + "'")
+                    LOG.WriteToZipLog("ERROR Failed to update ZipExploded flag for '" + ParentGuid + "'")
                 End If
+                If ddebug Then LOG.WriteToZipLog("LOC 26")
                 Application.DoEvents()
+                If ddebug Then LOG.WriteToZipLog("LOC 27")
             Next
 
+            If ddebug Then LOG.WriteToZipLog("LOC 28")
             frmNotify2.PB.Value = 0
 
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR ProcessUnexplodedZipFiles 00: " + ex.Message)
+            LOG.WriteToZipLog("ERROR ProcessUnexplodedZipFiles 00: " + ex.Message)
         End Try
 
         frmNotify2.lblEmailMsg.Text = ""
@@ -16766,7 +16855,7 @@ SHIPTHISONE:
                 Try
                     File.Delete(strfqn)
                 Catch ex As Exception
-                    LOG.WriteToArchiveLog("ERROR ProcessUnexplodeded Zip Files 22: Failed to delete temp file: " + strfqn + Environment.NewLine + ex.Message)
+                    LOG.WriteToZipLog("ERROR ProcessUnexplodeded Zip Files 22: Failed to delete temp file: " + strfqn + Environment.NewLine + ex.Message)
                 End Try
             End If
             Application.DoEvents()

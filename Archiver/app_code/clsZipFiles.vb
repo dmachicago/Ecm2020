@@ -382,7 +382,7 @@ Public Class clsZipFiles
                 EmbeddedFileCnt = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories).Count
             Else
                 EmbeddedFileCnt = 0
-                LOG.WriteToArchiveLog("WARNING 01 ExplodeZip : Unzip may have failed for ")
+                LOG.WriteToArchiveLog("WARNING 01 ExplodeZip : Unzip may have failed for " + ZipFQN)
             End If
         ElseIf Use7z Then
             B = Un7zip(ZipFQN, ZipProcessingDir)
@@ -390,7 +390,7 @@ Public Class clsZipFiles
                 EmbeddedFileCnt = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories).Count
             Else
                 EmbeddedFileCnt = 0
-                LOG.WriteToArchiveLog("WARNING 02 ExplodeZip : Unzip may have failed for ")
+                LOG.WriteToArchiveLog("WARNING 02 ExplodeZip : Unzip may have failed for " + ZipFQN)
             End If
         ElseIf UCase(fExt).Equals("RAR") Then
             B = UnRar(ZipFQN, ZipProcessingDir)
@@ -398,7 +398,7 @@ Public Class clsZipFiles
                 EmbeddedFileCnt = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories).Count
             Else
                 EmbeddedFileCnt = 0
-                LOG.WriteToArchiveLog("WARNING 03 ExplodeZip : Unzip may have failed for ")
+                LOG.WriteToArchiveLog("WARNING 03 ExplodeZip : Unzip may have failed for " + ZipFQN)
             End If
         ElseIf UCase(fExt).Equals("GZ") Then
             B = UntarGZarchive(ZipFQN, ZipProcessingDir)
@@ -406,7 +406,7 @@ Public Class clsZipFiles
                 EmbeddedFileCnt = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories).Count
             Else
                 EmbeddedFileCnt = 0
-                LOG.WriteToArchiveLog("WARNING 04 ExplodeZip : Unzip may have failed for ")
+                LOG.WriteToArchiveLog("WARNING 04 ExplodeZip : Unzip may have failed for " + ZipFQN)
             End If
         ElseIf UCase(fExt).Equals("Z") Then
             B = Me.UntarZarchive(ZipFQN, ZipProcessingDir)
@@ -414,7 +414,7 @@ Public Class clsZipFiles
                 EmbeddedFileCnt = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories).Count
             Else
                 EmbeddedFileCnt = 0
-                LOG.WriteToArchiveLog("WARNING 05 ExplodeZip : Unzip may have failed for ")
+                LOG.WriteToArchiveLog("WARNING 05 ExplodeZip : Unzip may have failed for " + ZipFQN)
             End If
         ElseIf UCase(fExt).Equals("TAR") Then
             Me.UnTarArchive(ZipFQN, ZipProcessingDir)
@@ -422,7 +422,7 @@ Public Class clsZipFiles
                 EmbeddedFileCnt = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories).Count
             Else
                 EmbeddedFileCnt = 0
-                LOG.WriteToArchiveLog("WARNING 06 ExplodeZip : Unzip may have failed for ")
+                LOG.WriteToArchiveLog("WARNING 06 ExplodeZip : Unzip may have failed for " + ZipFQN)
             End If
         End If
 
@@ -431,6 +431,8 @@ Public Class clsZipFiles
         If EmbeddedFileCnt > 0 Then
             ListOfFiles = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories)
             Files = ListOfFiles.ToArray
+        Else
+            LOG.WriteToArchiveLog("WARNING 09 ExplodeZip : Unzip may have failed for>" + ZipFQN)
         End If
 
         Return Files
