@@ -1731,6 +1731,8 @@ Public Class frmMain : Implements IDisposable
             'ignore for now
         End If
 
+        CleanZipTemp()
+
     End Sub
 
     ''' <summary>
@@ -12486,7 +12488,9 @@ GoodLogin:
         If gTraceFunctionCalls.Equals(1) Then
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
-        Process.Start("http://www.EcmLibrary.com/HelpSaaS/Archive.htm")
+
+        Dim OnLineHelp As String = System.Configuration.ConfigurationManager.AppSettings("OnLineHelp")
+        Process.Start(OnLineHelp)
 
     End Sub
 
@@ -16485,6 +16489,58 @@ SkipIT:
         ProcessUnexplodedZipFiles()
     End Sub
 
+    Sub CleanZipTemp()
+        Dim ExplodeDir As String = System.Configuration.ConfigurationManager.AppSettings("ExplodeDir")
+
+        Try
+            ' Finish removing also the files in the root folder
+            For Each f In Directory.GetFiles(ExplodeDir, "*.*", SearchOption.AllDirectories)
+                Try
+                    File.Delete(f)
+                Catch ex As Exception
+                    LOG.WriteToArchiveLog("ERROR Failed to delete " + f + " in " + ExplodeDir + Environment.NewLine + ex.Message)
+                End Try
+            Next
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("NOTICE: Clearing temp processing files error: " + ex.Message)
+        End Try
+
+        Dim directoryName As String = ExplodeDir
+        For Each deleteFile In Directory.GetFiles(directoryName, "*.*", SearchOption.TopDirectoryOnly)
+            Try
+                File.Delete(deleteFile)
+            Catch ex As Exception
+                LOG.WriteToArchiveLog("ERROR Failed to purge file in " + deleteFile + Environment.NewLine + ex.Message)
+            End Try
+        Next
+
+        Try
+            ' Loop over the subdirectories and remove them with their contents
+            For Each d In Directory.GetDirectories(ExplodeDir, "*.*", SearchOption.AllDirectories)
+                Try
+                    Directory.Delete(d, True)
+                Catch ex As Exception
+                    LOG.WriteToArchiveLog("ERROR Failed to purge directory and sub-directories in " + ExplodeDir + Environment.NewLine + ex.Message)
+                End Try
+
+            Next
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("NOTICE: Clearing temp processing directory error: " + ex.Message)
+        End Try
+
+        Dim NewSQL As String = "update datasource set ZipExploded = 'Y' 
+                                where SourceGuid in (
+                                select distinct dsp.SourceGuid 
+                                from DataSource DSP
+                                join DataSOurce DSC
+                                on DSP.SourceGuid = DSC.ParentGuid
+                                ) 
+                                AND ZipExploded is null;"
+        DBARCH.ExecuteSqlNewConn(0, NewSQL)
+
+
+    End Sub
+
     ''' <summary>
     ''' Processes the unexploded zip files.
     ''' </summary>
@@ -16518,7 +16574,7 @@ SkipIT:
         Dim RepoSvrName As String = ""
         Dim Imagehash As String = ""
         Dim ImageLen As String = ""
-        Dim SourceImage As String = ""
+        'Dim SourceImage As String = ""
         Dim ZipExploded As String = ""
         Dim StackLevel As Integer = 0
         Dim RetentionCode As String = ""
@@ -16556,7 +16612,7 @@ SkipIT:
                                     ,[RepoSvrName]
                                     ,[Imagehash]
                                     ,[ImageLen]
-                                    ,[SourceImage]
+                                    /*,[SourceImage] */
                                     ,[ZipExploded]
                                     ,RetentionCode
                                     ,RetentionDate
@@ -16592,7 +16648,7 @@ SkipIT:
                 RepoSvrName = dr.Item("RepoSvrName").ToString
                 Imagehash = dr.Item("Imagehash").ToString
                 ImageLen = dr.Item("ImageLen").ToString
-                SourceImage = dr.Item("SourceImage").ToString
+                'SourceImage = dr.Item("SourceImage").ToString
                 ZipExploded = dr.Item("ZipExploded").ToString
                 RetentionCode = dr.Item("RetentionCode")
                 RetentionDate = dr.Item("RetentionDate")
@@ -16716,62 +16772,7 @@ SHIPTHISONE:
             Application.DoEvents()
         Next
 
-        Try
-            ' Loop over the subdirectories and remove them with their contents
-            For Each d In Directory.GetDirectories(ZipProcessingDir)
-                Try
-                    Directory.Delete(d, True)
-                Catch ex As Exception
-                    LOG.WriteToArchiveLog("ERROR Failed to purge directory and sub-directories in " + ZipProcessingDir + Environment.NewLine + ex.Message)
-                End Try
-
-            Next
-        Catch ex As Exception
-            LOG.WriteToArchiveLog("NOTICE: Clearing temp processing directory error: " + ex.Message)
-        End Try
-
-        Try
-            ' Finish removing also the files in the root folder
-            For Each f In Directory.GetFiles(ZipProcessingDir)
-                Try
-                    File.Delete(f)
-                Catch ex As Exception
-                    LOG.WriteToArchiveLog("ERROR Failed to delete " + f + " in " + ZipProcessingDir + Environment.NewLine + ex.Message)
-                End Try
-            Next
-        Catch ex As Exception
-            LOG.WriteToArchiveLog("NOTICE: Clearing temp processing files error: " + ex.Message)
-        End Try
-
-
-        ix = 0
-        frmNotify2.PB.Maximum = DirToDelete.Count + 1
-
-        For Each strDir In DirToDelete
-            ix += 1
-            frmNotify2.lblMsg2.Text = "Removing: " + strDir
-            frmNotify2.lblFolder.Text = ix.ToString + " of " + DirToDelete.Count.ToString
-            frmNotify2.PB.Increment(1)
-            If Directory.Exists(strDir) Then
-                Try
-                    Directory.Delete(strDir)
-                Catch ex As Exception
-                    LOG.WriteToArchiveLog("ERROR ProcessUnexplodeded Zip Files 22: Failed to remove temp directory: " + strDir + Environment.NewLine + ex.Message)
-                End Try
-            End If
-            Application.DoEvents()
-        Next
-
-
-        Dim NewSQL As String = "update datasource set ZipExploded = 'Y' 
-                                where SourceGuid in (
-                                select distinct dsp.SourceGuid 
-                                from DataSource DSP
-                                join DataSOurce DSC
-                                on DSP.SourceGuid = DSC.ParentGuid
-                                ) 
-                                AND ZipExploded is null;"
-        DBARCH.ExecuteSqlNewConn(0, NewSQL)
+        CleanZipTemp()
 
         ZIP = Nothing
         frmNotify2.Close()

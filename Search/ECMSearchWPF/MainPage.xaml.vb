@@ -4772,9 +4772,11 @@ Class MainPage
     End Sub
 
     Private Sub hlHelp_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlHelp.Click
-        Dim HelpURL As String = "HTTP://www.EcmLibrary.com/HelpSaas/EcmSaasIndex.htm"
-        'HtmlPage.Window.Navigate(New Uri(HelpURL, UriKind.Absolute), "_blank")
-        Process.Start(HelpURL)
+
+        Dim OnLineHelp As String = System.Configuration.ConfigurationManager.AppSettings("OnLineHelp")
+        Process.Start(OnLineHelp)
+        'Dim HelpURL As String = "HTTP://www.EcmLibrary.com/HelpSaas/EcmSaasIndex.htm"
+        'Process.Start(HelpURL)
 
     End Sub
 
