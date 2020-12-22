@@ -4,13 +4,13 @@
 ' Created          : 12-15-2020
 '
 ' Last Modified By : wdale
-' Last Modified On : 12-17-2020
+' Last Modified On : 12-21-2020
 ' ***********************************************************************
 ' <copyright file="clsZipFiles.vb" company="ECM Library">
 '     Copyright © ECM Library 2011, all rights reserved
 ' </copyright>
 ' <summary></summary>
-' ***********************************************************************
+' *************************************************************************
 #Const RemoteOcr = 0
 
 Imports System.Data.SqlClient
@@ -302,7 +302,19 @@ Public Class clsZipFiles
 
     End Function
 
-
+    ''' <summary>
+    ''' Explodes the zip.
+    ''' </summary>
+    ''' <param name="ZipFQN">The zip FQN.</param>
+    ''' <param name="UID">The uid.</param>
+    ''' <param name="MachineID">The machine identifier.</param>
+    ''' <param name="ZipProcessingDir">The zip processing dir.</param>
+    ''' <param name="ParentSourceGuid">The parent source unique identifier.</param>
+    ''' <param name="bThisIsAnEmail">if set to <c>true</c> [b this is an email].</param>
+    ''' <param name="RetentionCode">The retention code.</param>
+    ''' <param name="isPublic">The is public.</param>
+    ''' <param name="StackLevel">The stack level.</param>
+    ''' <returns>System.String().</returns>
     Function ExplodeZip(ByVal ZipFQN As String,
                         ByVal UID As String,
                         ByVal MachineID As String,
@@ -376,64 +388,69 @@ Public Class clsZipFiles
                 Use7z = False
         End Select
 
-        If UCase(fExt).Equals("ZIP") Or UCase(fExt).Equals(".ZIP") Then
-            B = UnZip(ZipFQN, ZipProcessingDir)
-            If B Then
-                EmbeddedFileCnt = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories).Count
-            Else
-                EmbeddedFileCnt = 0
-                LOG.WriteToArchiveLog("WARNING 01 ExplodeZip : Unzip may have failed for " + ZipFQN)
+        Try
+            If UCase(fExt).Equals("ZIP") Or UCase(fExt).Equals(".ZIP") Then
+                B = UnZip(ZipFQN, ZipProcessingDir)
+                If B Then
+                    EmbeddedFileCnt = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories).Count
+                Else
+                    EmbeddedFileCnt = 0
+                    LOG.WriteToArchiveLog("WARNING 01 ExplodeZip : Unzip may have failed for " + ZipFQN)
+                End If
+            ElseIf Use7z Then
+                B = Un7zip(ZipFQN, ZipProcessingDir)
+                If B Then
+                    EmbeddedFileCnt = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories).Count
+                Else
+                    EmbeddedFileCnt = 0
+                    LOG.WriteToArchiveLog("WARNING 02 ExplodeZip : Unzip may have failed for " + ZipFQN)
+                End If
+            ElseIf UCase(fExt).Equals("RAR") Then
+                B = UnRar(ZipFQN, ZipProcessingDir)
+                If B Then
+                    EmbeddedFileCnt = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories).Count
+                Else
+                    EmbeddedFileCnt = 0
+                    LOG.WriteToArchiveLog("WARNING 03 ExplodeZip : Unzip may have failed for " + ZipFQN)
+                End If
+            ElseIf UCase(fExt).Equals("GZ") Then
+                B = UntarGZarchive(ZipFQN, ZipProcessingDir)
+                If B Then
+                    EmbeddedFileCnt = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories).Count
+                Else
+                    EmbeddedFileCnt = 0
+                    LOG.WriteToArchiveLog("WARNING 04 ExplodeZip : Unzip may have failed for " + ZipFQN)
+                End If
+            ElseIf UCase(fExt).Equals("Z") Then
+                B = Me.UntarZarchive(ZipFQN, ZipProcessingDir)
+                If B Then
+                    EmbeddedFileCnt = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories).Count
+                Else
+                    EmbeddedFileCnt = 0
+                    LOG.WriteToArchiveLog("WARNING 05 ExplodeZip : Unzip may have failed for " + ZipFQN)
+                End If
+            ElseIf UCase(fExt).Equals("TAR") Then
+                Me.UnTarArchive(ZipFQN, ZipProcessingDir)
+                If B Then
+                    EmbeddedFileCnt = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories).Count
+                Else
+                    EmbeddedFileCnt = 0
+                    LOG.WriteToArchiveLog("WARNING 06 ExplodeZip : Unzip may have failed for " + ZipFQN)
+                End If
             End If
-        ElseIf Use7z Then
-            B = Un7zip(ZipFQN, ZipProcessingDir)
-            If B Then
-                EmbeddedFileCnt = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories).Count
-            Else
-                EmbeddedFileCnt = 0
-                LOG.WriteToArchiveLog("WARNING 02 ExplodeZip : Unzip may have failed for " + ZipFQN)
-            End If
-        ElseIf UCase(fExt).Equals("RAR") Then
-            B = UnRar(ZipFQN, ZipProcessingDir)
-            If B Then
-                EmbeddedFileCnt = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories).Count
-            Else
-                EmbeddedFileCnt = 0
-                LOG.WriteToArchiveLog("WARNING 03 ExplodeZip : Unzip may have failed for " + ZipFQN)
-            End If
-        ElseIf UCase(fExt).Equals("GZ") Then
-            B = UntarGZarchive(ZipFQN, ZipProcessingDir)
-            If B Then
-                EmbeddedFileCnt = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories).Count
-            Else
-                EmbeddedFileCnt = 0
-                LOG.WriteToArchiveLog("WARNING 04 ExplodeZip : Unzip may have failed for " + ZipFQN)
-            End If
-        ElseIf UCase(fExt).Equals("Z") Then
-            B = Me.UntarZarchive(ZipFQN, ZipProcessingDir)
-            If B Then
-                EmbeddedFileCnt = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories).Count
-            Else
-                EmbeddedFileCnt = 0
-                LOG.WriteToArchiveLog("WARNING 05 ExplodeZip : Unzip may have failed for " + ZipFQN)
-            End If
-        ElseIf UCase(fExt).Equals("TAR") Then
-            Me.UnTarArchive(ZipFQN, ZipProcessingDir)
-            If B Then
-                EmbeddedFileCnt = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories).Count
-            Else
-                EmbeddedFileCnt = 0
-                LOG.WriteToArchiveLog("WARNING 06 ExplodeZip : Unzip may have failed for " + ZipFQN)
-            End If
-        End If
 
-        Dim ListOfFiles() As String = Nothing
+            Dim ListOfFiles() As String = Nothing
 
-        If EmbeddedFileCnt > 0 Then
-            ListOfFiles = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories)
-            Files = ListOfFiles.ToArray
-        Else
-            LOG.WriteToArchiveLog("WARNING 09 ExplodeZip : Unzip may have failed for>" + ZipFQN)
-        End If
+            If EmbeddedFileCnt > 0 Then
+                ListOfFiles = Directory.GetFiles(ZipProcessingDir, "*.*", SearchOption.AllDirectories)
+                Files = ListOfFiles.ToArray
+            Else
+                LOG.WriteToArchiveLog("WARNING 09 ExplodeZip : Unzip may have failed for>" + ZipFQN)
+            End If
+
+        Catch ex As Exception
+            LOG.WriteToZipLog("ERROR ExplodeZIP 00 : " + ex.Message)
+        End Try
 
         Return Files
     End Function
@@ -1134,6 +1151,7 @@ SkipToNextFile:
             zip.CloseZip()
         Catch ex As Exception
             LOG.WriteToArchiveLog("ERROR: UnZip 151.2 - ZIP file not found : " + ex.Message.ToString)
+            LOG.WriteToZipLog("ERROR: UnZip 151.2 - ZIP file not found : " + ex.Message.ToString)
         End Try
 
 
@@ -1143,9 +1161,9 @@ SkipToNextFile:
     ''' Explode the rar file.
     ''' </summary>
     ''' <param name="FQN">The FQN.</param>
+    ''' <param name="ZipProcessingDir">The zip processing dir.</param>
     ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function UnRar(ByVal FQN As String, ZipProcessingDir As String) As Boolean
-
 
         Dim rar As New Chilkat.Rar()
         'Dim dirPath As String = GetUnZipDir()
@@ -1222,6 +1240,7 @@ SkipToNextFile:
     ''' Untars the g zarchive.
     ''' </summary>
     ''' <param name="FQN">The FQN.</param>
+    ''' <param name="ZipProcessingDir">The zip processing dir.</param>
     ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function UntarGZarchive(ByVal FQN As String, ZipProcessingDir As String) As Boolean
 
@@ -1268,6 +1287,7 @@ SkipToNextFile:
     ''' Untars the zarchive.
     ''' </summary>
     ''' <param name="FQN">The FQN.</param>
+    ''' <param name="ZipProcessingDir">The zip processing dir.</param>
     ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function UntarZarchive(ByVal FQN As String, ZipProcessingDir As String) As Boolean
 
@@ -1307,6 +1327,7 @@ SkipToNextFile:
     ''' Uns the tar archive.
     ''' </summary>
     ''' <param name="FQN">The FQN.</param>
+    ''' <param name="ZipProcessingDir">The zip processing dir.</param>
     ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Function UnTarArchive(ByVal FQN As String, ZipProcessingDir As String) As Boolean
         Try
