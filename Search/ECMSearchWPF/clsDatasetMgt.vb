@@ -78,7 +78,7 @@ Public Class clsDatasetMgt
         Dim sTermVal As String = ""
         Dim sTermDatatype As String = ""
 
-        Dim i As Integer
+        'Dim i As Integer
 
         DT = New DataTable()
         SearchTypeCode = New DataColumn("SearchTypeCode", Type.GetType("System.String"))
@@ -143,7 +143,7 @@ Public Class clsDatasetMgt
         Dim sUserName As String = ""
         Dim sUserID As String = ""
 
-        Dim i As Integer
+        'Dim i As Integer
 
         DT = New DataTable()
         UserName = New DataColumn("UserName", Type.GetType("System.String"))
@@ -199,7 +199,7 @@ Public Class clsDatasetMgt
         Dim sGroupName As String = ""
         Dim sGroupOwnerUserID As String = ""
 
-        Dim i As Integer
+        'Dim i As Integer
 
         DT = New DataTable()
         GroupName = New DataColumn("GroupName", Type.GetType("System.String"))
@@ -262,7 +262,7 @@ Public Class clsDatasetMgt
         Dim sisPublic As String = ""
         Dim sItems As Int32 = -1
         Dim sMembers As Int32 = -1
-        Dim i As Integer
+        'Dim i As Integer
 
         DT = New DataTable()
         LibraryName = New DataColumn("LibraryName", Type.GetType("System.String"))

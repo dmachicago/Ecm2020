@@ -29,8 +29,8 @@
     <IncludeScopes>
       <Public>true</Public>
       <Internal>false</Internal>
-      <Protected>true</Protected>
-      <Private>true</Private>
+      <Protected>false</Protected>
+      <Private>false</Private>
       <Inherited>true</Inherited>
       <InheritedFromReferences>true</InheritedFromReferences>
       <EnableTags>false</EnableTags>
@@ -44,8 +44,8 @@
       <CPlusPlus>true</CPlusPlus>
     </SyntaxLanguages>
     <ResolveCrefLinks>true</ResolveCrefLinks>
-    <HeaderText>Condor Systems, DMA Limited, Inc.</HeaderText>
-    <FooterText>Confidential </FooterText>
+    <HeaderText>DMA Limited, Inc.</HeaderText>
+    <FooterText>Confidential</FooterText>
     <ConceptualContent>
       <ContentLayout />
       <MediaContent />

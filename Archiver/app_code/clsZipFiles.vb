@@ -1131,6 +1131,9 @@ SkipToNextFile:
             success = zip.OpenZip(FQN)
             If (Not success) Then
                 MessageBox.Show(zip.LastErrorText)
+                DBARCH.xTrace(221975, "clsZipFiles:UnZip", "Failed for: " + zip.LastErrorText + " : " + FQN)
+                LOG.WriteToArchiveLog("ERROR: UnZip 151.9 - Failed for: " + zip.LastErrorText + " : " + FQN)
+                LOG.WriteToArchiveLog("ERROR: UnZip 151.9 - Failed for: " + zip.LastErrorText + " : " + FQN)
                 Exit Function
             End If
 
@@ -1143,8 +1146,9 @@ SkipToNextFile:
             numFilesUnzipped = zip.Unzip(ZipProcessingDir)
             If (numFilesUnzipped < 0) Then
                 'MessageBox.Show(zip.LastErrorText)
-                DBARCH.xTrace(221975, "clsZipFiles:UnZip", "Failed for: " + zip.LastErrorText + " : " + gCurrUserGuidID)
-                LOG.WriteToArchiveLog("ERROR: UnZip 151.3 - Failed for: " + zip.LastErrorText + " : " + gCurrUserGuidID)
+                DBARCH.xTrace(221975, "clsZipFiles:UnZip", "Failed for: " + zip.LastErrorText + " : " + FQN)
+                LOG.WriteToArchiveLog("ERROR: UnZip 151.3 - Failed for: " + zip.LastErrorText + " : " + FQN)
+                LOG.WriteToArchiveLog("ERROR: UnZip 151.3 - Failed for: " + zip.LastErrorText + " : " + FQN)
                 Return False
             End If
 
@@ -1157,6 +1161,7 @@ SkipToNextFile:
 
         Return B
     End Function
+
     ''' <summary>
     ''' Explode the rar file.
     ''' </summary>
@@ -1168,25 +1173,33 @@ SkipToNextFile:
         Dim rar As New Chilkat.Rar()
         'Dim dirPath As String = GetUnZipDir()
         Dim dirPath As String = ZipProcessingDir
+        Dim errtxt As String = ""
 
         Dim success As Boolean
+        Try
+            success = rar.Open(FQN)
+            Dim iFiles As Integer = rar.NumEntries
+            If (success <> True) Then
+                MessageBox.Show(rar.LastErrorText)
+                Exit Function
+            End If
 
-        success = rar.Open(FQN)
-        Dim iFiles As Integer = rar.NumEntries
-        If (success <> True) Then
-            MessageBox.Show(rar.LastErrorText)
-            Exit Function
-        End If
+            success = rar.Unrar(dirPath)
+            If (success <> True) Then
+                LOG.WriteToArchiveLog("ERROR UnRar 10: " + "Failed for: " + rar.LastErrorText + " : " + dirPath)
+                LOG.WriteToZipLog("ERROR UnRar 10: " + "Failed for: " + rar.LastErrorText + " : " + dirPath)
+                DBARCH.xTrace(221975, "clsZipFiles:UnRar", "Failed for: " + rar.LastErrorText + " : " + dirPath)
+                Return False
+            Else
+                'messagebox.show("Success.")
+                Return True
+            End If
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR UnRar 00: " + ex.Message)
+            LOG.WriteToZipLog("ERROR UnRar 00: " + ex.Message)
+        End Try
 
-        success = rar.Unrar(dirPath)
-        If (success <> True) Then
-            'messagebox.show(rar.LastErrorText)
-            DBARCH.xTrace(221975, "clsZipFiles:UnRar", "Failed for: " + rar.LastErrorText + " : " + gCurrUserGuidID)
-            Return False
-        Else
-            'messagebox.show("Success.")
-            Return True
-        End If
+        Return success
 
     End Function
 

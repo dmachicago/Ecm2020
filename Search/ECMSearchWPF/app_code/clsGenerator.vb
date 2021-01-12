@@ -1,18 +1,43 @@
-﻿Imports System.IO
+﻿' ***********************************************************************
+' Assembly         : ECMSearchWPF
+' Author           : wdale
+' Created          : 12-15-2020
+'
+' Last Modified By : wdale
+' Last Modified On : 12-15-2020
+' ***********************************************************************
+' <copyright file="clsGenerator.vb" company="D. Miller and Associates, Limited">
+'     Copyright @ DMA Ltd 2020 all rights reserved.
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+Imports System.IO
 Imports ECMEncryption
 'Imports System.Data.SqlClient
 
+''' <summary>
+''' Class clsGenerator.
+''' </summary>
 Public Class clsGenerator
 
 
+    ''' <summary>
+    ''' The top rows
+    ''' </summary>
     Public TopRows As Integer = 0
+    ''' <summary>
+    ''' The use weights
+    ''' </summary>
     Public UseWeights As Boolean = False
+    ''' <summary>
+    ''' The sort order
+    ''' </summary>
     Private SortOrder As String = ""
 
     ''' <summary>
     ''' Gens the doc paging by row header.
     ''' </summary>
-    ''' <returns></returns>
+    ''' <returns>System.String.</returns>
     Function genDocPagingByRowHeader() As String
 
         Dim S As String = " WITH xContent AS (" + vbCrLf
@@ -25,7 +50,7 @@ Public Class clsGenerator
     ''' </summary>
     ''' <param name="StartNbr">The start NBR.</param>
     ''' <param name="EndNbr">The end NBR.</param>
-    ''' <returns></returns>
+    ''' <returns>System.String.</returns>
     Function genDocPagingByRowFooter(ByVal StartNbr As Integer, ByVal EndNbr As Integer) As String
 
         Dim S As String = ""
@@ -42,7 +67,7 @@ Public Class clsGenerator
     ''' <param name="MetaDataName">Name of the meta data.</param>
     ''' <param name="MetaDataValue">The meta data value.</param>
     ''' <param name="Mandatory">if set to <c>true</c> [mandatory].</param>
-    ''' <returns></returns>
+    ''' <returns>System.String.</returns>
     Function DocSearchMetaData(ByVal MetaDataName As String, ByVal MetaDataValue As String, ByVal Mandatory As Boolean) As String
 
         If MetaDataValue.Length = 0 Then
@@ -53,7 +78,7 @@ Public Class clsGenerator
 
         MetaDataValue$ = FixSingleQuote(MetaDataValue)
 
-        Dim S as string = ""
+        Dim S As String = ""
         Dim CH$ = ""
         Dim WhereClause$ = ""
         'Dim MetaDataType$ = DB.getAttributeDataType(MetaDataName  )
@@ -82,6 +107,13 @@ Public Class clsGenerator
     End Function
 
 
+    ''' <summary>
+    ''' Documents the search created within last x days.
+    ''' </summary>
+    ''' <param name="ckLimitTodays">if set to <c>true</c> [ck limit todays].</param>
+    ''' <param name="DaysOld">The days old.</param>
+    ''' <param name="Mandatory">if set to <c>true</c> [mandatory].</param>
+    ''' <returns>System.String.</returns>
     Function DocSearchCreatedWithinLastXDays(ByVal ckLimitTodays As Boolean, ByVal DaysOld As String, ByVal Mandatory As Boolean) As String
         Dim S As String = ""
         If ckLimitTodays Then
@@ -94,6 +126,13 @@ Public Class clsGenerator
         Return S
     End Function
 
+    ''' <summary>
+    ''' Documents the search limit to current guids.
+    ''' </summary>
+    ''' <param name="CurrUserID">The curr user identifier.</param>
+    ''' <param name="ckLimitToExisting">if set to <c>true</c> [ck limit to existing].</param>
+    ''' <param name="CurrentGuids">The current guids.</param>
+    ''' <returns>System.String.</returns>
     Function DocSearchLimitToCurrentGuids(ByVal CurrUserID As String, ByVal ckLimitToExisting As Boolean, ByVal CurrentGuids As List(Of String)) As String
         Dim S As String = ""
         If ckLimitToExisting Then
@@ -103,12 +142,23 @@ Public Class clsGenerator
         Return S
     End Function
 
-    Function DocSearchCreateDate(ByVal ckDate As Boolean, _
-                           ByVal DATECODE As String, _
-                           ByVal Mandatory As Boolean, _
-                           ByVal bReceived As Boolean, _
-                           ByVal bCreated As Boolean, _
-                           ByVal Startdate As Date, _
+    ''' <summary>
+    ''' Documents the search create date.
+    ''' </summary>
+    ''' <param name="ckDate">if set to <c>true</c> [ck date].</param>
+    ''' <param name="DATECODE">The datecode.</param>
+    ''' <param name="Mandatory">if set to <c>true</c> [mandatory].</param>
+    ''' <param name="bReceived">if set to <c>true</c> [b received].</param>
+    ''' <param name="bCreated">if set to <c>true</c> [b created].</param>
+    ''' <param name="Startdate">The startdate.</param>
+    ''' <param name="EndDate">The end date.</param>
+    ''' <returns>System.String.</returns>
+    Function DocSearchCreateDate(ByVal ckDate As Boolean,
+                           ByVal DATECODE As String,
+                           ByVal Mandatory As Boolean,
+                           ByVal bReceived As Boolean,
+                           ByVal bCreated As Boolean,
+                           ByVal Startdate As Date,
                            ByVal EndDate As Date) As String
 
         If Not ckDate Then
@@ -161,12 +211,23 @@ Public Class clsGenerator
 
     End Function
 
-    Function DocSearchDateLastWriteTime(ByVal ckDate As Boolean, _
-                           ByVal DATECODE As String, _
-                           ByVal Mandatory As Boolean, _
-                           ByVal bReceived As Boolean, _
-                           ByVal bCreated As Boolean, _
-                           ByVal Startdate As Date, _
+    ''' <summary>
+    ''' Documents the search date last write time.
+    ''' </summary>
+    ''' <param name="ckDate">if set to <c>true</c> [ck date].</param>
+    ''' <param name="DATECODE">The datecode.</param>
+    ''' <param name="Mandatory">if set to <c>true</c> [mandatory].</param>
+    ''' <param name="bReceived">if set to <c>true</c> [b received].</param>
+    ''' <param name="bCreated">if set to <c>true</c> [b created].</param>
+    ''' <param name="Startdate">The startdate.</param>
+    ''' <param name="EndDate">The end date.</param>
+    ''' <returns>System.String.</returns>
+    Function DocSearchDateLastWriteTime(ByVal ckDate As Boolean,
+                           ByVal DATECODE As String,
+                           ByVal Mandatory As Boolean,
+                           ByVal bReceived As Boolean,
+                           ByVal bCreated As Boolean,
+                           ByVal Startdate As Date,
                            ByVal EndDate As Date) As String
 
         If Not ckDate Then
@@ -220,6 +281,12 @@ Public Class clsGenerator
     End Function
 
 
+    ''' <summary>
+    ''' Documents the search file directory.
+    ''' </summary>
+    ''' <param name="FileDirectory">The file directory.</param>
+    ''' <param name="Mandatory">if set to <c>true</c> [mandatory].</param>
+    ''' <returns>System.String.</returns>
     Function DocSearchFileDirectory(ByVal FileDirectory As String, ByVal Mandatory As Boolean) As String
 
         If FileDirectory.Trim.Length = 0 Then
@@ -236,6 +303,12 @@ Public Class clsGenerator
 
     End Function
 
+    ''' <summary>
+    ''' Searches the by minimum weight.
+    ''' </summary>
+    ''' <param name="MinWeight">The minimum weight.</param>
+    ''' <param name="SetWeight">if set to <c>true</c> [set weight].</param>
+    ''' <returns>System.String.</returns>
     Function SearchByMinWeight(ByVal MinWeight As String, ByVal SetWeight As Boolean) As String
 
         If SetWeight = False Then
@@ -248,6 +321,12 @@ Public Class clsGenerator
         Return S
     End Function
 
+    ''' <summary>
+    ''' Documents the search by file ext.
+    ''' </summary>
+    ''' <param name="EXT">The ext.</param>
+    ''' <param name="Mandatory">if set to <c>true</c> [mandatory].</param>
+    ''' <returns>System.String.</returns>
     Function DocSearchByFileExt(ByVal EXT As String, ByVal Mandatory As Boolean) As String
         If EXT.Trim.Length = 0 Then
             Return String.Empty
@@ -263,6 +342,12 @@ Public Class clsGenerator
         Return S
     End Function
 
+    ''' <summary>
+    ''' Documents the name of the search by file.
+    ''' </summary>
+    ''' <param name="FQN">The FQN.</param>
+    ''' <param name="Mandatory">if set to <c>true</c> [mandatory].</param>
+    ''' <returns>System.String.</returns>
     Function DocSearchByFileName(ByVal FQN As String, ByVal Mandatory As Boolean) As String
         If FQN.Trim.Length = 0 Then
             Return String.Empty
@@ -277,12 +362,22 @@ Public Class clsGenerator
         Return S
     End Function
 
+    ''' <summary>
+    ''' Documents the search order by weights.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function DocSearchOrderByWeights() As String
         Dim S As String = String.Empty
         S = " and KEY_TBL.RANK >= 0 ORDER BY KEY_TBL.RANK DESC "
         Return S
     End Function
 
+    ''' <summary>
+    ''' Documents the search gen cols.
+    ''' </summary>
+    ''' <param name="ckWeighted">if set to <c>true</c> [ck weighted].</param>
+    ''' <param name="searchCriteria">The search criteria.</param>
+    ''' <returns>System.String.</returns>
     Function DocSearchGenCols(ByVal ckWeighted As Boolean, ByVal searchCriteria As String) As String
 
         Dim ckBusiness As Boolean = False
@@ -332,6 +427,12 @@ Public Class clsGenerator
 
     End Function
 
+    ''' <summary>
+    ''' Documents the search gen cols paging.
+    ''' </summary>
+    ''' <param name="ckWeighted">if set to <c>true</c> [ck weighted].</param>
+    ''' <param name="searchCriteria">The search criteria.</param>
+    ''' <returns>System.String.</returns>
     Function DocSearchGenColsPaging(ByVal ckWeighted As Boolean, ByVal searchCriteria As String) As String
 
         Dim ckBusiness As Boolean = False
@@ -392,7 +493,15 @@ Public Class clsGenerator
 
     End Function
 
-    Function genIsAbout(ByVal ckWeighted As Boolean, ByVal useFreetext As Boolean, ByVal SearchText as string, byval isEmailSearch As Boolean) As String
+    ''' <summary>
+    ''' Gens the is about.
+    ''' </summary>
+    ''' <param name="ckWeighted">if set to <c>true</c> [ck weighted].</param>
+    ''' <param name="useFreetext">if set to <c>true</c> [use freetext].</param>
+    ''' <param name="SearchText">The search text.</param>
+    ''' <param name="isEmailSearch">if set to <c>true</c> [is email search].</param>
+    ''' <returns>System.String.</returns>
+    Function genIsAbout(ByVal ckWeighted As Boolean, ByVal useFreetext As Boolean, ByVal SearchText As String, ByVal isEmailSearch As Boolean) As String
         If ckWeighted = False Then
             Return ""
         End If
@@ -457,7 +566,12 @@ Public Class clsGenerator
 
     End Function
 
-    Function CleanIsAboutSearchText(ByVal SearchText as string) As String
+    ''' <summary>
+    ''' Cleans the is about search text.
+    ''' </summary>
+    ''' <param name="SearchText">The search text.</param>
+    ''' <returns>System.String.</returns>
+    Function CleanIsAboutSearchText(ByVal SearchText As String) As String
         Dim I As Integer = 0
         Dim A As New List(Of String)
         Dim CH As String = ""
@@ -606,6 +720,12 @@ REEVAL:
         Return S
     End Function
 
+    ''' <summary>
+    ''' Gets the next character.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <param name="i">The i.</param>
+    ''' <returns>System.String.</returns>
     Function getNextChar(ByVal S As String, ByVal i As Integer) As String
         Dim CH$ = ""
         If S.Trim.Length > (i + 1) Then
@@ -623,6 +743,12 @@ REEVAL:
         Return CH
     End Function
 
+    ''' <summary>
+    ''' Emails the search within last x days.
+    ''' </summary>
+    ''' <param name="DaysOld">The days old.</param>
+    ''' <param name="SetWeight">if set to <c>true</c> [set weight].</param>
+    ''' <returns>System.String.</returns>
     Function EmailSearchWithinLastXDays(ByVal DaysOld As String, ByVal SetWeight As Boolean) As String
         If SetWeight = False Then
             Return String.Empty
@@ -635,6 +761,12 @@ REEVAL:
     End Function
 
 
+    ''' <summary>
+    ''' Emails the search all receipients.
+    ''' </summary>
+    ''' <param name="Name">The name.</param>
+    ''' <param name="Mandatory">if set to <c>true</c> [mandatory].</param>
+    ''' <returns>System.String.</returns>
     Function EmailSearchAllReceipients(ByVal Name As String, ByVal Mandatory As Boolean) As String
 
         Name = Name.Trim
@@ -657,6 +789,13 @@ REEVAL:
         Return S
     End Function
 
+    ''' <summary>
+    ''' Emails the search my emails only.
+    ''' </summary>
+    ''' <param name="CurrUserID">The curr user identifier.</param>
+    ''' <param name="bLimitReturn">if set to <c>true</c> [b limit return].</param>
+    ''' <param name="isGlobalSearcher">if set to <c>true</c> [is global searcher].</param>
+    ''' <returns>System.String.</returns>
     Function EmailSearchMyEmailsOnly(ByVal CurrUserID As String, ByVal bLimitReturn As Boolean, ByVal isGlobalSearcher As Boolean) As String
 
         Dim S As String = String.Empty
@@ -675,6 +814,12 @@ REEVAL:
         Return S
     End Function
 
+    ''' <summary>
+    ''' Emails the search cc BCC.
+    ''' </summary>
+    ''' <param name="Name">The name.</param>
+    ''' <param name="Mandatory">if set to <c>true</c> [mandatory].</param>
+    ''' <returns>System.String.</returns>
     Function EmailSearchCcBcc(ByVal Name As String, ByVal Mandatory As Boolean) As String
 
         Name = Name.Trim
@@ -696,6 +841,12 @@ REEVAL:
         Return S
     End Function
 
+    ''' <summary>
+    ''' Emails the search subject.
+    ''' </summary>
+    ''' <param name="Name">The name.</param>
+    ''' <param name="Mandatory">if set to <c>true</c> [mandatory].</param>
+    ''' <returns>System.String.</returns>
     Function EmailSearchSubject(ByVal Name As String, ByVal Mandatory As Boolean) As String
 
         Name = Name.Trim
@@ -716,6 +867,12 @@ REEVAL:
         Return S
     End Function
 
+    ''' <summary>
+    ''' Emails the search by folder.
+    ''' </summary>
+    ''' <param name="Name">The name.</param>
+    ''' <param name="Mandatory">if set to <c>true</c> [mandatory].</param>
+    ''' <returns>System.String.</returns>
     Function EmailSearchByFolder(ByVal Name As String, ByVal Mandatory As Boolean) As String
 
         Name = Name.Trim
@@ -736,6 +893,12 @@ REEVAL:
         Return S
     End Function
 
+    ''' <summary>
+    ''' Emails the name of the search received by.
+    ''' </summary>
+    ''' <param name="Name">The name.</param>
+    ''' <param name="Mandatory">if set to <c>true</c> [mandatory].</param>
+    ''' <returns>System.String.</returns>
     Function EmailSearchReceivedByName(ByVal Name As String, ByVal Mandatory As Boolean) As String
 
         Name = Name.Trim
@@ -756,12 +919,24 @@ REEVAL:
         Return S
     End Function
 
+    ''' <summary>
+    ''' Emails the account.
+    ''' </summary>
+    ''' <param name="Name">The name.</param>
+    ''' <param name="Mandatory">if set to <c>true</c> [mandatory].</param>
+    ''' <returns>System.String.</returns>
     Function EmailAccount(ByVal Name As String, ByVal Mandatory As Boolean) As String
 
         Return EmailSearchReceivedByName(Name, Mandatory)
 
     End Function
 
+    ''' <summary>
+    ''' Emails the name of the search from.
+    ''' </summary>
+    ''' <param name="Name">The name.</param>
+    ''' <param name="Mandatory">if set to <c>true</c> [mandatory].</param>
+    ''' <returns>System.String.</returns>
     Function EmailSearchFromName(ByVal Name As String, ByVal Mandatory As Boolean) As String
 
         Name = Name.Trim
@@ -782,6 +957,12 @@ REEVAL:
         Return S
     End Function
 
+    ''' <summary>
+    ''' Emails the search to email addr.
+    ''' </summary>
+    ''' <param name="EmailAddr">The email addr.</param>
+    ''' <param name="Mandatory">if set to <c>true</c> [mandatory].</param>
+    ''' <returns>System.String.</returns>
     Function EmailSearchToEmailAddr(ByVal EmailAddr As String, ByVal Mandatory As Boolean) As String
 
         EmailAddr = EmailAddr.Trim
@@ -803,6 +984,12 @@ REEVAL:
         Return S
     End Function
 
+    ''' <summary>
+    ''' Emails the search from email addr.
+    ''' </summary>
+    ''' <param name="EmailAddr">The email addr.</param>
+    ''' <param name="Mandatory">if set to <c>true</c> [mandatory].</param>
+    ''' <returns>System.String.</returns>
     Function EmailSearchFromEmailAddr(ByVal EmailAddr As String, ByVal Mandatory As Boolean) As String
 
         EmailAddr = EmailAddr.Trim
@@ -823,13 +1010,25 @@ REEVAL:
         Return S
     End Function
 
-    Function EmailSearchDateLimits(ByVal ckDate As Boolean, _
-                           ByVal DATECODE As String, _
-                           ByVal Mandatory As Boolean, _
-                           ByVal bSent As Boolean, _
-                           ByVal bReceived As Boolean, _
-                           ByVal bCreated As Boolean, _
-                           ByVal Startdate As Date, _
+    ''' <summary>
+    ''' Emails the search date limits.
+    ''' </summary>
+    ''' <param name="ckDate">if set to <c>true</c> [ck date].</param>
+    ''' <param name="DATECODE">The datecode.</param>
+    ''' <param name="Mandatory">if set to <c>true</c> [mandatory].</param>
+    ''' <param name="bSent">if set to <c>true</c> [b sent].</param>
+    ''' <param name="bReceived">if set to <c>true</c> [b received].</param>
+    ''' <param name="bCreated">if set to <c>true</c> [b created].</param>
+    ''' <param name="Startdate">The startdate.</param>
+    ''' <param name="EndDate">The end date.</param>
+    ''' <returns>System.String.</returns>
+    Function EmailSearchDateLimits(ByVal ckDate As Boolean,
+                           ByVal DATECODE As String,
+                           ByVal Mandatory As Boolean,
+                           ByVal bSent As Boolean,
+                           ByVal bReceived As Boolean,
+                           ByVal bCreated As Boolean,
+                           ByVal Startdate As Date,
                            ByVal EndDate As Date) As String
 
         If Not ckDate Then
@@ -971,6 +1170,11 @@ REEVAL:
         Return S
 
     End Function
+    ''' <summary>
+    ''' Emails the gen cols no weights.
+    ''' </summary>
+    ''' <param name="ContainsClause">The contains clause.</param>
+    ''' <returns>System.String.</returns>
     Public Function EmailGenColsNoWeights(ByVal ContainsClause As String) As String
         Dim S As String = ""
 
@@ -992,6 +1196,10 @@ REEVAL:
 
     End Function
 
+    ''' <summary>
+    ''' Emails the gen cols no weights.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Public Function EmailGenColsNoWeights() As String
 
         Dim S As String = ""
@@ -1008,6 +1216,10 @@ REEVAL:
 
     End Function
 
+    ''' <summary>
+    ''' Gens the new email query.
+    ''' </summary>
+    ''' <param name="GeneratedSql">The generated SQL.</param>
     Sub genNewEmailQuery(ByRef GeneratedSql As String)
         Dim a$() = GeneratedSql.Split(vbCrLf)
         Dim S As String = ""
@@ -1084,6 +1296,10 @@ REEVAL:
 
     End Sub
 
+    ''' <summary>
+    ''' Gens the new email attachment query.
+    ''' </summary>
+    ''' <param name="GeneratedSql">The generated SQL.</param>
     Sub genNewEmailAttachmentQuery(ByRef GeneratedSql As String)
         Dim a$() = GeneratedSql.Split(vbCrLf)
         Dim S As String = ""
@@ -1165,6 +1381,10 @@ REEVAL:
 
     End Sub
 
+    ''' <summary>
+    ''' Gens the new document query.
+    ''' </summary>
+    ''' <param name="GeneratedSql">The generated SQL.</param>
     Sub genNewDocQuery(ByRef GeneratedSql As String)
         Dim a$() = GeneratedSql.Split(vbCrLf)
         Dim S As String = ""
@@ -1237,6 +1457,10 @@ REEVAL:
     End Sub
 
 
+    ''' <summary>
+    ''' Gens the standard email qquery cols.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function genStdEmailQqueryCols() As String
         Dim S As String = ""
         Dim Prefix As String = ""
@@ -1284,6 +1508,10 @@ REEVAL:
         Return S
     End Function
 
+    ''' <summary>
+    ''' Gens the standard email attachment qquery cols.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function genStdEmailAttachmentQqueryCols() As String
 
         Dim Prefix$ = "DS."
@@ -1328,6 +1556,10 @@ REEVAL:
         Return S
     End Function
 
+    ''' <summary>
+    ''' Gens the standard document query cols.
+    ''' </summary>
+    ''' <returns>System.String.</returns>
     Function genStdDocQueryCols() As String
 
         Dim Prefix$ = "DS."
@@ -1373,6 +1605,11 @@ REEVAL:
 
         Return S
     End Function
+    ''' <summary>
+    ''' Removes the spaces.
+    ''' </summary>
+    ''' <param name="sText">The s text.</param>
+    ''' <returns>System.String.</returns>
     Function RemoveSpaces(ByVal sText As String) As String
         Dim A$() = Split(sText, " + vbcrlf ")
         Dim S As String = ""
@@ -1382,6 +1619,13 @@ REEVAL:
         Return S
     End Function
 
+    ''' <summary>
+    ''' Replaces the prefix.
+    ''' </summary>
+    ''' <param name="NewPrefix">Creates new prefix.</param>
+    ''' <param name="PrefixToReplace">The prefix to replace.</param>
+    ''' <param name="tgtStr">The TGT string.</param>
+    ''' <returns>System.String.</returns>
     Function ReplacePrefix(ByVal NewPrefix As String, ByVal PrefixToReplace As String, ByVal tgtStr As String) As String
         Dim NewStr$ = ""
         Dim I As Integer = 0
@@ -1403,6 +1647,10 @@ REEVAL:
 
     End Function
 
+    ''' <summary>
+    ''' Replaces the star.
+    ''' </summary>
+    ''' <param name="tVal">The t value.</param>
     Sub ReplaceStar(ByRef tVal As String)
         Dim CH$ = ""
         If InStr(tVal, "*") = 0 Then
@@ -1411,6 +1659,11 @@ REEVAL:
         tVal = tVal.Replace("*", "%")
     End Sub
 
+    ''' <summary>
+    ''' Fixes the single quote.
+    ''' </summary>
+    ''' <param name="tVal">The t value.</param>
+    ''' <returns>System.String.</returns>
     Public Function FixSingleQuote(ByVal tVal As String) As String
 
         If InStr(tVal$, "''") > 0 Then
@@ -1452,6 +1705,10 @@ REEVAL:
         Return SS
     End Function
 
+    ''' <summary>
+    ''' Writes to log.
+    ''' </summary>
+    ''' <param name="Msg">The MSG.</param>
     Public Sub WriteToLog(ByVal Msg As String)
         Try
             Dim cPath As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
@@ -1479,6 +1736,12 @@ REEVAL:
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Builds the contains syntax.
+    ''' </summary>
+    ''' <param name="SearchCriteria">The search criteria.</param>
+    ''' <param name="ThesaurusWords">The thesaurus words.</param>
+    ''' <returns>System.String.</returns>
     Function buildContainsSyntax(ByVal SearchCriteria As String, ByRef ThesaurusWords As List(Of String)) As String
         '** Get all the OR'SearchCriteria and build a search term then
         '** get all the AND'SearchCriteria and build a search term then
@@ -1720,6 +1983,13 @@ NextWord:
 
     End Function
 
+    ''' <summary>
+    ''' Gets the quoted string.
+    ''' </summary>
+    ''' <param name="tstr">The TSTR.</param>
+    ''' <param name="i">The i.</param>
+    ''' <param name="j">The j.</param>
+    ''' <param name="QuotedString">The quoted string.</param>
     Sub GetQuotedString(ByVal tstr As String, ByRef i As Integer, ByRef j As Integer, ByRef QuotedString As String)
         Dim X As Integer = tstr.Trim.Length
         Dim Q$ = ChrW(34)
@@ -1737,6 +2007,11 @@ NextWord:
         QuotedString$ = QuotedString$ + Q
     End Sub
 
+    ''' <summary>
+    ''' Determines whether [is not delimiter] [the specified ch].
+    ''' </summary>
+    ''' <param name="CH">The ch.</param>
+    ''' <returns><c>true</c> if [is not delimiter] [the specified ch]; otherwise, <c>false</c>.</returns>
     Function isNotDelimiter(ByVal CH As String) As Boolean
         Dim Alphabet$ = " |+-^"
         If InStr(1, Alphabet, CH) = 0 Then
@@ -1746,6 +2021,11 @@ NextWord:
         End If
     End Function
 
+    ''' <summary>
+    ''' Determines whether the specified ch is delimiter.
+    ''' </summary>
+    ''' <param name="CH">The ch.</param>
+    ''' <returns><c>true</c> if the specified ch is delimiter; otherwise, <c>false</c>.</returns>
     Function isDelimiter(ByVal CH As String) As Boolean
         Dim Alphabet$ = " |+-^"
         If InStr(1, Alphabet, CH) > 0 Then
@@ -1755,6 +2035,12 @@ NextWord:
         End If
     End Function
 
+    ''' <summary>
+    ''' Skips the tokens.
+    ''' </summary>
+    ''' <param name="tstr">The TSTR.</param>
+    ''' <param name="i">The i.</param>
+    ''' <param name="j">The j.</param>
     Sub SkipTokens(ByVal tstr As String, ByVal i As Integer, ByRef j As Integer)
         Dim X As Integer = tstr.Trim.Length
         Dim Q$ = ChrW(34)
@@ -1770,6 +2056,13 @@ NextWord:
         Next
     End Sub
 
+    ''' <summary>
+    ''' Gets the next token.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <param name="I">The i.</param>
+    ''' <param name="ReturnedDelimiter">The returned delimiter.</param>
+    ''' <returns>System.String.</returns>
     Function getNextToken(ByVal S As String, ByRef I As Integer, ByRef ReturnedDelimiter As String) As String
         Dim Delimiters As String = " ,:+-^|()"
         S = S.Trim
@@ -1823,6 +2116,12 @@ NextWord:
         Return Token
     End Function
 
+    ''' <summary>
+    ''' Subs the in.
+    ''' </summary>
+    ''' <param name="ParentString">The parent string.</param>
+    ''' <param name="WhatToChange">The what to change.</param>
+    ''' <param name="ChangeCharsToThis">The change chars to this.</param>
     Sub SubIn(ByRef ParentString As String, ByVal WhatToChange As String, ByVal ChangeCharsToThis As String)
         Dim I As Integer = 0
         Dim J As Integer = 0
@@ -1845,6 +2144,11 @@ NextWord:
         Loop
     End Sub
 
+    ''' <summary>
+    ''' Skips to next token.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <param name="I">The i.</param>
     Sub SkipToNextToken(ByVal S As String, ByRef I As Integer)
         Dim Delimiters As String = " ,:+-^|"
         S = S.Trim
@@ -1887,6 +2191,11 @@ NextWord:
         Loop
     End Sub
 
+    ''' <summary>
+    ''' Determines whether [is syntax character] [the specified ch].
+    ''' </summary>
+    ''' <param name="CH">The ch.</param>
+    ''' <returns><c>true</c> if [is syntax character] [the specified ch]; otherwise, <c>false</c>.</returns>
     Function isSyntaxChar(ByVal CH As String) As Boolean
         Dim Alphabet$ = "#|+-^~"
         If InStr(1, Alphabet, CH) > 0 Then
@@ -1896,6 +2205,12 @@ NextWord:
         End If
     End Function
 
+    ''' <summary>
+    ''' Gets the rest of the token.
+    ''' </summary>
+    ''' <param name="S">The s.</param>
+    ''' <param name="I">The i.</param>
+    ''' <returns>System.String.</returns>
     Function getTheRestOfTheToken(ByVal S As String, ByRef I As Integer) As String
         'We are sitting at the next character in the token, so go back to the beginning
         I = I - 1
@@ -1950,7 +2265,12 @@ NextWord:
         Return Token
     End Function
 
-    Function isKeyWord(ByVal KW as string) As Boolean
+    ''' <summary>
+    ''' Determines whether [is key word] [the specified kw].
+    ''' </summary>
+    ''' <param name="KW">The kw.</param>
+    ''' <returns><c>true</c> if [is key word] [the specified kw]; otherwise, <c>false</c>.</returns>
+    Function isKeyWord(ByVal KW As String) As Boolean
         Dim B As Boolean = False
         KW = UCase(KW)
         Select Case KW
@@ -1966,6 +2286,14 @@ NextWord:
         Return B
     End Function
 
+    ''' <summary>
+    ''' Gens the library search.
+    ''' </summary>
+    ''' <param name="CurrUserID">The curr user identifier.</param>
+    ''' <param name="bSourceSearch">if set to <c>true</c> [b source search].</param>
+    ''' <param name="bGlobalSearcher">if set to <c>true</c> [b global searcher].</param>
+    ''' <param name="LocationID">The location identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function genLibrarySearch(ByVal CurrUserID As String, ByVal bSourceSearch As Boolean, ByVal bGlobalSearcher As Boolean, ByVal LocationID As String) As String
 
         Dim SearchCode As String = ""
@@ -2033,6 +2361,14 @@ NextWord:
 
     End Function
 
+    ''' <summary>
+    ''' Gens the library search.
+    ''' </summary>
+    ''' <param name="CurrUserID">The curr user identifier.</param>
+    ''' <param name="GlobalSearcher">if set to <c>true</c> [global searcher].</param>
+    ''' <param name="LibraryName">Name of the library.</param>
+    ''' <param name="LocationID">The location identifier.</param>
+    ''' <returns>System.String.</returns>
     Public Function genLibrarySearch(ByVal CurrUserID As String, ByVal GlobalSearcher As Boolean, ByVal LibraryName As String, ByVal LocationID As String) As String
 
         Dim S As String = ""

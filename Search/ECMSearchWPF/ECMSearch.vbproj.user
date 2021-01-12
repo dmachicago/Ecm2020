@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <PublishUrlHistory>D:\PrepublishedWebSites\ECMSaaS\Search\|D:\PrepublishedWebSites\ECMSearchWPF\|D:\PrePublishedWebSites\ECMSearchWPF\|D:\dev\PrePublishedWebSites\ECMSearchWPF\|publish\</PublishUrlHistory>
-    <InstallUrlHistory>https://www.ecmlibrary.com/ecmsaas/search/|http://www.ecmlibrary.com/ecmsaas/search/|http://T310/ECMSaaS/Search/|\\t310\Software\ECMSearch\|http://www.ecmlibrary.com/ECMSaaS/Search/</InstallUrlHistory>
+    <InstallUrlHistory>https://www.ecmlibrary.com/EcmSaas/Search/|https://www.ecmlibrary.com/ecmsaas/search/|http://www.ecmlibrary.com/ecmsaas/search/|http://T310/ECMSaaS/Search/|\\t310\Software\ECMSearch\</InstallUrlHistory>
     <SupportUrlHistory>http://www.EcmLibrary.com/help</SupportUrlHistory>
     <UpdateUrlHistory>http://www.ecmlibrary.com/ecmsaas/search/</UpdateUrlHistory>
     <BootstrapperUrlHistory />
