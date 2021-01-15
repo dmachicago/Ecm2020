@@ -252,7 +252,7 @@ Public Class PageUsers
         Dim NewOwner As String = cbRefactoredOwner.SelectedItem
         Dim TransferDate As Date = Now
 
-        Dim msg$ = "This will CHANGE content ownership and CANNOT be reversed. " + vbCrLf + "It is a VERY long running process and will use ALL available server resources." + vbCrLf + "Are you sure? "
+        Dim msg$ = "This will CHANGE content ownership and CANNOT be reversed. " + Environment.NewLine + "It is a VERY long running process and will use ALL available server resources." + Environment.NewLine + "Are you sure? "
         Dim result As MessageBoxResult = MessageBox.Show(msg, "Are You Sure", MessageBoxButton.OKCancel)
         If result = MessageBoxResult.Cancel Then
             Return

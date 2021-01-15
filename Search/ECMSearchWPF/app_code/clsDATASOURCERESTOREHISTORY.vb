@@ -222,26 +222,26 @@ Public Class clsDATASOURCERESTOREHISTORY
     Public Function Insert() As Boolean
         Dim b As Boolean = False
         Dim s As String = ""
-        s = s + " INSERT INTO DataSourceRestoreHistory(" + vbCrLf
-        s = s + "SourceGuid," + vbCrLf
-        s = s + "RestoredToMachine," + vbCrLf
-        s = s + "RestoreUserName," + vbCrLf
-        s = s + "RestoreUserID," + vbCrLf
-        s = s + "RestoreUserDomain," + vbCrLf
-        s = s + "RestoreDate," + vbCrLf
-        s = s + "DataSourceOwnerUserID," + vbCrLf
-        s = s + "TypeContentCode," + vbCrLf
-        s = s + "CreateDate)" + vbCrLf
-        s = s + " values (" + vbCrLf
-        s = s + "'" + SourceGuid + "'" + "," + vbCrLf
-        s = s + "'" + RestoredToMachine + "'" + "," + vbCrLf
-        s = s + "'" + RestoreUserName + "'" + "," + vbCrLf
-        s = s + "'" + RestoreUserID + "'" + "," + vbCrLf
-        s = s + "'" + RestoreUserDomain + "'" + "," + vbCrLf
-        s = s + "'" + Now.ToString + "'" + "," + vbCrLf
-        s = s + "'" + DataSourceOwnerUserID + "'" + "," + vbCrLf
-        s = s + "'" + TypeContentCode + "'" + "," + vbCrLf
-        s = s + "'" + Now.ToString + "')" + vbCrLf
+        s = s + " INSERT INTO DataSourceRestoreHistory(" + Environment.NewLine
+        s = s + "SourceGuid," + Environment.NewLine
+        s = s + "RestoredToMachine," + Environment.NewLine
+        s = s + "RestoreUserName," + Environment.NewLine
+        s = s + "RestoreUserID," + Environment.NewLine
+        s = s + "RestoreUserDomain," + Environment.NewLine
+        s = s + "RestoreDate," + Environment.NewLine
+        s = s + "DataSourceOwnerUserID," + Environment.NewLine
+        s = s + "TypeContentCode," + Environment.NewLine
+        s = s + "CreateDate)" + Environment.NewLine
+        s = s + " values (" + Environment.NewLine
+        s = s + "'" + SourceGuid + "'" + "," + Environment.NewLine
+        s = s + "'" + RestoredToMachine + "'" + "," + Environment.NewLine
+        s = s + "'" + RestoreUserName + "'" + "," + Environment.NewLine
+        s = s + "'" + RestoreUserID + "'" + "," + Environment.NewLine
+        s = s + "'" + RestoreUserDomain + "'" + "," + Environment.NewLine
+        s = s + "'" + Now.ToString + "'" + "," + Environment.NewLine
+        s = s + "'" + DataSourceOwnerUserID + "'" + "," + Environment.NewLine
+        s = s + "'" + TypeContentCode + "'" + "," + Environment.NewLine
+        s = s + "'" + Now.ToString + "')" + Environment.NewLine
 
         If Not HandlerAdded Then
             ''AddHandler ProxySearch.ExecuteSqlNewConnSecureCompleted, AddressOf gLogSQL

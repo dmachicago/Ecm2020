@@ -359,10 +359,10 @@ Public Class clsDbDownload
 
         Try
             Dim S$ = ""
-            S = S + " SELECT " + vbCrLf
-            S = S + " FQN, SourceImage " + vbCrLf
-            S = S + " FROM  [DataSource]" + vbCrLf
-            S = S + " where [SourceGuid] = '" + SourceGuid$ + "'" + vbCrLf
+            S = S + " SELECT " + Environment.NewLine
+            S = S + " FQN, SourceImage " + Environment.NewLine
+            S = S + " FROM  [DataSource]" + Environment.NewLine
+            S = S + " where [SourceGuid] = '" + SourceGuid$ + "'" + Environment.NewLine
 
             Dim CN As New SqlConnection(CS)
 
@@ -452,10 +452,10 @@ Public Class clsDbDownload
 
         Try
             Dim S$ = ""
-            S = S + " SELECT " + vbCrLf
-            S = S + " AttachmentName, Attachment " + vbCrLf
-            S = S + " FROM  [EmailAttachment]" + vbCrLf
-            S = S + " where [RowID] = " + RowID + vbCrLf
+            S = S + " SELECT " + Environment.NewLine
+            S = S + " AttachmentName, Attachment " + Environment.NewLine
+            S = S + " FROM  [EmailAttachment]" + Environment.NewLine
+            S = S + " where [RowID] = " + RowID + Environment.NewLine
 
             Dim CN As New SqlConnection(CS)
 
@@ -514,10 +514,10 @@ Public Class clsDbDownload
             CkConn()
 
             Dim S$ = ""
-            S = S + " SELECT " + vbCrLf
-            S = S + " SourceTypeCode, EmailImage " + vbCrLf
-            S = S + " FROM  [Email]" + vbCrLf
-            S = S + " where [EmailGuid] = '" + EmailGuid + "'" + vbCrLf
+            S = S + " SELECT " + Environment.NewLine
+            S = S + " SourceTypeCode, EmailImage " + Environment.NewLine
+            S = S + " FROM  [Email]" + Environment.NewLine
+            S = S + " where [EmailGuid] = '" + EmailGuid + "'" + Environment.NewLine
 
 
             ExtendTimeoutBySize(CS, 0)
@@ -594,7 +594,7 @@ Public Class clsDbDownload
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -795,7 +795,7 @@ Public Class clsDbDownload
             End Using
         Catch ex As Exception
             BB = False
-            RetMsg = "ERROR" + MySql + " vbcrlf + ex.Message"
+            RetMsg = "ERROR" + MySql + " Environment.NewLine + ex.Message"
         Finally
             If CN IsNot Nothing Then
                 If CN.State = ConnectionState.Open Then

@@ -255,20 +255,20 @@ Public Class clsLIBRARYUSERS
         If Len(WhereClause) = 0 Then Return
 
 
-        s = s + " update LibraryUsers set " + vbCrLf
-        s = s + "ReadOnly = " + getReadonly() + ", " + vbCrLf
-        s = s + "CreateAccess = " + getCreateaccess() + ", " + vbCrLf
-        s = s + "UpdateAccess = " + getUpdateaccess() + ", " + vbCrLf
-        s = s + "DeleteAccess = " + getDeleteaccess() + ", " + vbCrLf
-        s = s + "LibraryOwnerUserID = '" + getLibraryowneruserid() + "'" + ", " + vbCrLf
-        s = s + "LibraryName = '" + getLibraryname() + "'" + ", " + vbCrLf
-        s = s + "UserID = '" + getUserid() + "'," + vbCrLf
-        s = s + "NotAddedAsGroupMember = " + NotAddedAsGroupMember.ToString + "," + vbCrLf
+        s = s + " update LibraryUsers set " + Environment.NewLine
+        s = s + "ReadOnly = " + getReadonly() + ", " + Environment.NewLine
+        s = s + "CreateAccess = " + getCreateaccess() + ", " + Environment.NewLine
+        s = s + "UpdateAccess = " + getUpdateaccess() + ", " + Environment.NewLine
+        s = s + "DeleteAccess = " + getDeleteaccess() + ", " + Environment.NewLine
+        s = s + "LibraryOwnerUserID = '" + getLibraryowneruserid() + "'" + ", " + Environment.NewLine
+        s = s + "LibraryName = '" + getLibraryname() + "'" + ", " + Environment.NewLine
+        s = s + "UserID = '" + getUserid() + "'," + Environment.NewLine
+        s = s + "NotAddedAsGroupMember = " + NotAddedAsGroupMember.ToString + "," + Environment.NewLine
         If sSingleUser IsNot Nothing Then
-            s = s + "SingleUser = " + SingleUser.ToString + "," + vbCrLf
+            s = s + "SingleUser = " + SingleUser.ToString + "," + Environment.NewLine
         End If
         If sGroupUser IsNot Nothing Then
-            s = s + "GroupUser = " + GroupUser.ToString + vbCrLf
+            s = s + "GroupUser = " + GroupUser.ToString + Environment.NewLine
         End If
 
         WhereClause = " " + WhereClause

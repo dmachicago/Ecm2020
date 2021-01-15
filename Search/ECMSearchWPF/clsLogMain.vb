@@ -66,7 +66,7 @@ Public Class clsLogMain
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -84,8 +84,8 @@ Public Class clsLogMain
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + "___________________________________________________________________________________" + vbCrLf)
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + "___________________________________________________________________________________" + Environment.NewLine)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -103,7 +103,7 @@ Public Class clsLogMain
             'Dim TempFolder$ = getEnvVarSpecialFolderApplicationData()
             'Dim tFQN$ = TempFolder$ + "\ECMLibrary.SQL.Application.Log.txt"
             Using sw As StreamWriter = New StreamWriter(tFqn, True)
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -116,7 +116,7 @@ Public Class clsLogMain
             Dim TempFolder$ = getEnvVarSpecialFolderApplicationData()
             Dim tFQN$ = TempFolder$ + "\ECMLibrary.SQL.Statements.txt"
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -129,7 +129,7 @@ Public Class clsLogMain
             Dim TempFolder$ = getEnvVarSpecialFolderApplicationData()
             Dim tFQN$ = FQN
             Using sw As StreamWriter = New StreamWriter(tFQN, False)
-                sw.WriteLine(FileText + vbCrLf)
+                sw.WriteLine(FileText + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -171,7 +171,7 @@ Public Class clsLogMain
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + TypeRec + ChrW(254) + RecGuid + ChrW(254) + RecIdentifier + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + TypeRec + ChrW(254) + RecGuid + ChrW(254) + RecIdentifier + Environment.NewLine)
                 sw.Close()
             End Using
             If gRunUnattended = True Then
@@ -190,7 +190,7 @@ Public Class clsLogMain
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + TypeRec + ChrW(254) + RecGuid + ChrW(254) + RecIdentifier + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + TypeRec + ChrW(254) + RecGuid + ChrW(254) + RecIdentifier + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -476,7 +476,7 @@ GetNextLine:
     '            Try
     '                Kill(FQN)
     '            Catch ex As Exception
-    '                MsgBox("Delete Notice: " + FQN + vbCrLf + ex.Message)
+    '                MsgBox("Delete Notice: " + FQN + Environment.NewLine + ex.Message)
     '            End Try
     '        Next
 
@@ -543,7 +543,7 @@ GetNextLine:
     '            Try
     '                Kill(FQN)
     '            Catch ex As Exception
-    '                MsgBox("Delete Notice: " + FQN + vbCrLf + ex.Message)
+    '                MsgBox("Delete Notice: " + FQN + Environment.NewLine + ex.Message)
     '            End Try
     '        Next
 
@@ -609,7 +609,7 @@ GetNextLine:
     Public Sub WriteToTempFile(ByVal FQN As String, ByVal Msg As String)
         Try
             Using sw As StreamWriter = New StreamWriter(FQN, True)
-                sw.WriteLine(Msg + vbCrLf)
+                sw.WriteLine(Msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -685,23 +685,23 @@ GetNextLine:
         Dim MsgCopy As String = Msg
         MsgCopy = MsgCopy.Replace("'", "`")
         MsgCopy = MsgCopy.Replace(ChrW(9), " ")
-        'MsgCopy = MsgCopy.Replace(vbCrLf + vbCrLf, vbCrLf)
+        'MsgCopy = MsgCopy.Replace(Environment.NewLine + Environment.NewLine, Environment.NewLine)
         Do While MsgCopy.Contains("  ")
             MsgCopy = MsgCopy.Replace(" ", "")
         Loop
         Dim S As String = ""
-        S += " INSERT INTO [ErrorLogs]" + vbCrLf
-        S += " ([LogName]" + vbCrLf
-        S += " ,[LoggedMessage]" + vbCrLf
-        S += " ,[EntryDate]" + vbCrLf
-        S += " ,[EntryUserID]" + vbCrLf
-        S += " ,[Severity])" + vbCrLf
-        S += " VALUES( " + vbCrLf
-        S += "'" + LogName + "'" + vbCrLf
-        S += " ,'" + MsgCopy + "'" + vbCrLf
-        S += " ,getdate()" + vbCrLf
-        S += " ,'" + gCurrLoginID + "'" + vbCrLf
-        S += " ,'" + Severity + "')" + vbCrLf
+        S += " INSERT INTO [ErrorLogs]" + Environment.NewLine
+        S += " ([LogName]" + Environment.NewLine
+        S += " ,[LoggedMessage]" + Environment.NewLine
+        S += " ,[EntryDate]" + Environment.NewLine
+        S += " ,[EntryUserID]" + Environment.NewLine
+        S += " ,[Severity])" + Environment.NewLine
+        S += " VALUES( " + Environment.NewLine
+        S += "'" + LogName + "'" + Environment.NewLine
+        S += " ,'" + MsgCopy + "'" + Environment.NewLine
+        S += " ,getdate()" + Environment.NewLine
+        S += " ,'" + gCurrLoginID + "'" + Environment.NewLine
+        S += " ,'" + Severity + "')" + Environment.NewLine
         ExecuteLogWriteSql(gSecureID, S)
     End Sub
 

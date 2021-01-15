@@ -121,8 +121,8 @@ Public Class clsDatasetMgt
             DT.Rows.Add(DR)
             b = True
         Catch ex As Exception
-            LOG.WriteTraceLog("ERROR AddSearchTermRow : 01 : " + SearchTypeCode + " : " + Term + " : " + TermVal + " : " + TermDatatype + " : " + vbCrLf + ex.Message)
-            Console.WriteLine("ERROR AddSearchTermRow : 01 : " + SearchTypeCode + " : " + Term + " : " + TermVal + " : " + TermDatatype + " : " + vbCrLf + ex.Message)
+            LOG.WriteTraceLog("ERROR AddSearchTermRow : 01 : " + SearchTypeCode + " : " + Term + " : " + TermVal + " : " + TermDatatype + " : " + Environment.NewLine + ex.Message)
+            Console.WriteLine("ERROR AddSearchTermRow : 01 : " + SearchTypeCode + " : " + Term + " : " + TermVal + " : " + TermDatatype + " : " + Environment.NewLine + ex.Message)
             b = False
         End Try
         Return b
@@ -178,7 +178,7 @@ Public Class clsDatasetMgt
             DT.Rows.Add(DR)
             b = True
         Catch ex As Exception
-            LOG.WriteTraceLog("ERROR AddLibraryDTRow : 01 GroupName: " + GroupName + vbCrLf + ex.Message)
+            LOG.WriteTraceLog("ERROR AddLibraryDTRow : 01 GroupName: " + GroupName + Environment.NewLine + ex.Message)
             Console.WriteLine("ERROR AddLibraryDTRow : 01" + ex.Message)
             b = False
         End Try
@@ -238,7 +238,7 @@ Public Class clsDatasetMgt
             DT.Rows.Add(DR)
             b = True
         Catch ex As Exception
-            LOG.WriteTraceLog("ERROR AddLibraryDTRow : 01 GroupName: " + GroupName + vbCrLf + ex.Message)
+            LOG.WriteTraceLog("ERROR AddLibraryDTRow : 01 GroupName: " + GroupName + Environment.NewLine + ex.Message)
             Console.WriteLine("ERROR AddLibraryDTRow : 01" + ex.Message)
             b = False
         End Try
@@ -310,7 +310,7 @@ Public Class clsDatasetMgt
             DT.Rows.Add(DR)
             b = True
         Catch ex As Exception
-            LOG.WriteTraceLog("ERROR AddLibraryDTRow : 01 LibraryName: " + LibraryName + vbCrLf + ex.Message)
+            LOG.WriteTraceLog("ERROR AddLibraryDTRow : 01 LibraryName: " + LibraryName + Environment.NewLine + ex.Message)
             Console.WriteLine("ERROR AddLibraryDTRow : 01" + ex.Message)
             b = False
         End Try
@@ -501,7 +501,7 @@ Public Class clsDatasetMgt
             DT.Rows.Add(DR)
             b = True
         Catch ex As Exception
-            LOG.WriteTraceLog("ERROR AddLibraryDTRow : 01 DataSourceOwnerUserID: " + DataSourceOwnerUserID + vbCrLf + ex.Message)
+            LOG.WriteTraceLog("ERROR AddLibraryDTRow : 01 DataSourceOwnerUserID: " + DataSourceOwnerUserID + Environment.NewLine + ex.Message)
             Console.WriteLine("ERROR AddLibraryDTRow : 01" + ex.Message)
             b = False
         End Try
@@ -648,8 +648,8 @@ Public Class clsDatasetMgt
                                     )
             Next
         Catch ex As Exception
-            LOG.WriteTraceLog("ERROR AddLibraryDTRow : 01 EmailGuid: " + sEmailGuid + " - L=" + L.ToString + vbCrLf + ex.Message)
-            Console.WriteLine("ERROR AddLibraryDTRow : 01 EmailGuid: " + sEmailGuid + " - L=" + L.ToString + vbCrLf + ex.Message)
+            LOG.WriteTraceLog("ERROR AddLibraryDTRow : 01 EmailGuid: " + sEmailGuid + " - L=" + L.ToString + Environment.NewLine + ex.Message)
+            Console.WriteLine("ERROR AddLibraryDTRow : 01 EmailGuid: " + sEmailGuid + " - L=" + L.ToString + Environment.NewLine + ex.Message)
         End Try
 
         DS.Tables.Add(DT)
@@ -715,7 +715,7 @@ Public Class clsDatasetMgt
             DT.Rows.Add(DR)
             b = True
         Catch ex As Exception
-            LOG.WriteTraceLog("ERROR AddLibraryDTRow : 01 EmailGuid: " + EmailGuid + vbCrLf + ex.Message)
+            LOG.WriteTraceLog("ERROR AddLibraryDTRow : 01 EmailGuid: " + EmailGuid + Environment.NewLine + ex.Message)
             Console.WriteLine("ERROR AddLibraryDTRow : 01" + ex.Message)
             b = False
         End Try
@@ -785,7 +785,7 @@ Public Class clsDatasetMgt
             DT.Rows.Add(DR)
             b = True
         Catch ex As Exception
-            LOG.WriteTraceLog("ERROR AddEAttachDTRow : 01 Attachment EmailGuid: " + EmailGuid + vbCrLf + ex.Message)
+            LOG.WriteTraceLog("ERROR AddEAttachDTRow : 01 Attachment EmailGuid: " + EmailGuid + Environment.NewLine + ex.Message)
             Console.WriteLine("ERROR AddEAttachDTRow : 01" + ex.Message)
             b = False
         End Try
@@ -849,7 +849,7 @@ Public Class clsDatasetMgt
             DT.Rows.Add(DR)
             b = True
         Catch ex As Exception
-            LOG.WriteTraceLog("ERROR AddImageRow 01 : " + SourceName + vbCrLf + ex.Message)
+            LOG.WriteTraceLog("ERROR AddImageRow 01 : " + SourceName + Environment.NewLine + ex.Message)
             b = False
         End Try
 

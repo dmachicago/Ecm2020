@@ -102,14 +102,14 @@ Partial Public Class popupAlerts
         CurrentObject = AlertWord
 
         Dim s As String = ""
-        s += " if not exists(select AlertWord from AlertWord where AlertWord = '" + AlertWord + "')" + vbCrLf
-        s += " begin" + vbCrLf
-        s += " 	insert into [AlertWord] (AlertWord, ExpirationDate) values ('" + AlertWord + "','" + xDate + "')" + vbCrLf
-        s += " end" + vbCrLf
-        s += " else" + vbCrLf
-        s += " begin" + vbCrLf
-        s += " 	update [AlertWord] set ExpirationDate = '" + xDate + "' where AlertWord = '" + AlertWord + "' " + vbCrLf
-        s += " end" + vbCrLf
+        s += " if not exists(select AlertWord from AlertWord where AlertWord = '" + AlertWord + "')" + Environment.NewLine
+        s += " begin" + Environment.NewLine
+        s += " 	insert into [AlertWord] (AlertWord, ExpirationDate) values ('" + AlertWord + "','" + xDate + "')" + Environment.NewLine
+        s += " end" + Environment.NewLine
+        s += " else" + Environment.NewLine
+        s += " begin" + Environment.NewLine
+        s += " 	update [AlertWord] set ExpirationDate = '" + xDate + "' where AlertWord = '" + AlertWord + "' " + Environment.NewLine
+        s += " end" + Environment.NewLine
 
         'AddHandler ProxySearch.ExecuteSqlNewConn1Completed, AddressOf ApplySearchResults
         'EP.setSearchSvcEndPoint(proxy)
@@ -127,7 +127,7 @@ Partial Public Class popupAlerts
         CurrentObject = AlertWord
 
         Dim s As String = ""
-        s += " delete from AlertWord where AlertWord = '" + AlertWord + "'" + vbCrLf
+        s += " delete from AlertWord where AlertWord = '" + AlertWord + "'" + Environment.NewLine
 
         'AddHandler ProxySearch.ExecuteSqlNewConn1Completed, AddressOf client_ExecuteDelete
         'EP.setSearchSvcEndPoint(proxy)
@@ -153,9 +153,9 @@ Partial Public Class popupAlerts
         Dim RC As Boolean = False
         Dim RetMsg As String = ""
 
-        S = S + " SELECT  AlertWord + ' / ' + cast(ExpirationDate as varchar) " + vbCrLf
-        S = S + " FROM  [AlertWord]" + vbCrLf
-        S = S + " Order by AlertWord " + vbCrLf
+        S = S + " SELECT  AlertWord + ' / ' + cast(ExpirationDate as varchar) " + Environment.NewLine
+        S = S + " FROM  [AlertWord]" + Environment.NewLine
+        S = S + " Order by AlertWord " + Environment.NewLine
 
         Dim strListOfItems As String = ""
         'AddHandler ProxySearch.getListOfStringsCompleted, AddressOf client_PopulateAlertCombo
@@ -187,9 +187,9 @@ Partial Public Class popupAlerts
         Dim RC As Boolean = False
         Dim RetMsg As String = ""
 
-        S = S + " SELECT  ContactName + ' / ' + ContactEmail + ' / ' + ContactIM " + vbCrLf
-        S = S + " FROM  [AlertContact]" + vbCrLf
-        S = S + " Order by ContactName " + vbCrLf
+        S = S + " SELECT  ContactName + ' / ' + ContactEmail + ' / ' + ContactIM " + Environment.NewLine
+        S = S + " FROM  [AlertContact]" + Environment.NewLine
+        S = S + " Order by ContactName " + Environment.NewLine
 
         'AddHandler ProxySearch.getListOfStrings01Completed, AddressOf client_PopulateNotificationCombo
         'EP.setSearchSvcEndPoint(proxy)

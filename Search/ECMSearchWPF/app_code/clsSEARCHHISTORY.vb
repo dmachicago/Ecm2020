@@ -163,22 +163,22 @@ Public Class clsSEARCHHISTORY
         If ReturnedRows.Length = 0 Then
             ReturnedRows = "-1"
         End If
-        s = s + " INSERT INTO SearchHistory(" + vbCrLf
-        s = s + "SearchSql," + vbCrLf
-        s = s + "SearchDate," + vbCrLf
-        s = s + "UserID," + vbCrLf
-        s = s + "ReturnedRows," + vbCrLf
-        s = s + "StartTime," + vbCrLf
-        s = s + "EndTime," + vbCrLf
-        s = s + "CalledFrom," + vbCrLf
-        s = s + "TypeSearch) values (" + vbCrLf
-        s = s + "'" + SearchSqlCopy + "'" + "," + vbCrLf
-        s = s + "getdate()" + "," + vbCrLf
-        s = s + "'" + UserID + "'" + "," + vbCrLf
-        s = s + ReturnedRows + "," + vbCrLf
-        s = s + "'" + CDate(StartTime).ToString + "'" + "," + vbCrLf
-        s = s + "'" + EndTime + "'" + "," + vbCrLf
-        s = s + "'" + CalledFrom + "'" + "," + vbCrLf
+        s = s + " INSERT INTO SearchHistory(" + Environment.NewLine
+        s = s + "SearchSql," + Environment.NewLine
+        s = s + "SearchDate," + Environment.NewLine
+        s = s + "UserID," + Environment.NewLine
+        s = s + "ReturnedRows," + Environment.NewLine
+        s = s + "StartTime," + Environment.NewLine
+        s = s + "EndTime," + Environment.NewLine
+        s = s + "CalledFrom," + Environment.NewLine
+        s = s + "TypeSearch) values (" + Environment.NewLine
+        s = s + "'" + SearchSqlCopy + "'" + "," + Environment.NewLine
+        s = s + "getdate()" + "," + Environment.NewLine
+        s = s + "'" + UserID + "'" + "," + Environment.NewLine
+        s = s + ReturnedRows + "," + Environment.NewLine
+        s = s + "'" + CDate(StartTime).ToString + "'" + "," + Environment.NewLine
+        s = s + "'" + EndTime + "'" + "," + Environment.NewLine
+        s = s + "'" + CalledFrom + "'" + "," + Environment.NewLine
         s = s + "'" + TypeSearch + "'" + ")"
 
 

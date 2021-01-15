@@ -125,7 +125,7 @@ Public Class PageGroup
             Dim BB As Boolean = ProxySearch.ExecuteSqlNewConnSecure(_SecureID, s, _UserID, ContractID)
             client_ExecInsertGroup(BB, s)
         Else
-            MessageBox.Show("The group name '" + txtUserGroup.Text.Trim + "' has already been used. " + vbCrLf + "Names must be unique across the organization. Please pick another.")
+            MessageBox.Show("The group name '" + txtUserGroup.Text.Trim + "' has already been used. " + Environment.NewLine + "Names must be unique across the organization. Please pick another.")
             Return
         End If
         PB.IsIndeterminate = False
@@ -204,7 +204,7 @@ Public Class PageGroup
 
             UserGroupDelete(tUserGroup, gCurrUserGuidID)
         Catch ex As Exception
-            MessageBox.Show("ERROR Group may be corrupt, please have an ADMIN clean out the group." + vbCrLf + ex.Message)
+            MessageBox.Show("ERROR Group may be corrupt, please have an ADMIN clean out the group." + Environment.NewLine + ex.Message)
             Return
         End Try
 
@@ -502,10 +502,10 @@ Public Class PageGroup
         GroupName = lbGroups.SelectedItem
 
         Dim S As String = ""
-        S = S + " SELECT   distinct  Users.UserName, Users.UserID AS UserID, GroupUsers.FullAccess, GroupUsers.ReadOnlyAccess, GroupUsers.DeleteAccess, GroupUsers.Searchable" + vbCrLf
-        S = S + " FROM         GroupUsers RIGHT OUTER JOIN" + vbCrLf
-        S = S + "           Users ON GroupUsers.UserID = Users.UserID" + vbCrLf
-        S = S + " WHERE     (GroupUsers.GroupOwnerUserID = '" + gCurrUserGuidID + "') AND (GroupUsers.GroupName = '" + GroupName + "')" + vbCrLf
+        S = S + " SELECT   distinct  Users.UserName, Users.UserID AS UserID, GroupUsers.FullAccess, GroupUsers.ReadOnlyAccess, GroupUsers.DeleteAccess, GroupUsers.Searchable" + Environment.NewLine
+        S = S + " FROM         GroupUsers RIGHT OUTER JOIN" + Environment.NewLine
+        S = S + "           Users ON GroupUsers.UserID = Users.UserID" + Environment.NewLine
+        S = S + " WHERE     (GroupUsers.GroupOwnerUserID = '" + gCurrUserGuidID + "') AND (GroupUsers.GroupName = '" + GroupName + "')" + Environment.NewLine
         S = S + " order by Users.UserName"
 
         PB.IsIndeterminate = True
@@ -671,7 +671,7 @@ SKIPIT:
                 SB.Text = "No groups found... for: " + gCurrUserGuidID : L = 9
             End If
         Catch ex As Exception
-            If ddebug Then XLOG.WriteTraceLog("PageGroup Trace ERROR 23: @ line# " + L.ToString + vbCrLf + ex.Message)
+            If ddebug Then XLOG.WriteTraceLog("PageGroup Trace ERROR 23: @ line# " + L.ToString + Environment.NewLine + ex.Message)
             SB.Text = "PageGroup Trace ERROR 23: No groups found... for: " + gCurrUserGuidID
         End Try
 

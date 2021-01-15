@@ -327,7 +327,7 @@ Public Class clsDma
 
         Catch ex As Exception
             fn = ""
-            LOG.WriteToSqlLog("ERROR clsDma:GetFilePath: Could not get file path - " + ex.Message + vbCrLf + ex.StackTrace)
+            LOG.WriteToSqlLog("ERROR clsDma:GetFilePath: Could not get file path - " + ex.Message + Environment.NewLine + ex.StackTrace)
             Return fn
         End Try
 
@@ -619,7 +619,7 @@ Public Class clsDma
     '                    I = I + 1
     '                Next
     '            Catch ex As Exception
-    '                LogThis("ERROR - clsDma : getFilesInDir : 22012c : " + ex.Message + vbCrLf + "DIR: " + DirName$ + vbCrLf + "FILE: " + fi.Name)
+    '                LogThis("ERROR - clsDma : getFilesInDir : 22012c : " + ex.Message + Environment.NewLine + "DIR: " + DirName$ + Environment.NewLine + "FILE: " + fi.Name)
     '            End Try
 
     '        Catch ex As Exception
@@ -786,43 +786,43 @@ Public Class clsDma
                 Return WhereClause$
             ElseIf Evaluator$.Equals("After") Then
                 If FirstTime Then
-                    WhereClause$ = " " + DbColName + " > '" + CDate(StartDate).ToString + "'" + vbCrLf
+                    WhereClause$ = " " + DbColName + " > '" + CDate(StartDate).ToString + "'" + Environment.NewLine
                     FirstTime = False
                 Else
-                    WhereClause$ = " AND (" + DbColName + " > '" + CDate(StartDate).ToString + "')" + vbCrLf
+                    WhereClause$ = " AND (" + DbColName + " > '" + CDate(StartDate).ToString + "')" + Environment.NewLine
                 End If
             ElseIf Evaluator$.Equals("Before") Then
                 If FirstTime Then
-                    WhereClause$ = " " + DbColName + " < '" + CDate(StartDate).ToString + "'" + vbCrLf
+                    WhereClause$ = " " + DbColName + " < '" + CDate(StartDate).ToString + "'" + Environment.NewLine
                     FirstTime = False
                 Else
-                    WhereClause$ = " AND (" + DbColName + " < '" + CDate(StartDate).ToString + "')" + vbCrLf
+                    WhereClause$ = " AND (" + DbColName + " < '" + CDate(StartDate).ToString + "')" + Environment.NewLine
                 End If
             ElseIf Evaluator$.Equals("Between") Then
                 GetStartAndStopDate(StartDate$, EndDate)
                 'select * from Production.Product where Sellcdate(StartDate).tostring between ‘2001-06-29′ and ‘2001-07-02′
                 If FirstTime Then
                     FirstTime = False
-                    WhereClause$ = " " + DbColName + " between '" + CDate(StartDate).ToString + "' and '" + CDate(EndDate).ToString + "' " + vbCrLf
+                    WhereClause$ = " " + DbColName + " between '" + CDate(StartDate).ToString + "' and '" + CDate(EndDate).ToString + "' " + Environment.NewLine
                 Else
-                    WhereClause$ = " AND (" + DbColName + " between '" + CDate(StartDate).ToString + "' and '" + CDate(EndDate).ToString + "')" + vbCrLf
+                    WhereClause$ = " AND (" + DbColName + " between '" + CDate(StartDate).ToString + "' and '" + CDate(EndDate).ToString + "')" + Environment.NewLine
                 End If
             ElseIf Evaluator$.Equals("Not Between") Then
                 GetStartAndStopDate(StartDate$, EndDate)
                 'select * from Production.Product where SellStartDate between ‘2001-06-29′ and ‘2001-07-02′
                 If FirstTime Then
                     FirstTime = False
-                    WhereClause$ = " " + DbColName + " NOT between '" + CDate(StartDate).ToString + "' and '" + CDate(EndDate).ToString + "'" + vbCrLf
+                    WhereClause$ = " " + DbColName + " NOT between '" + CDate(StartDate).ToString + "' and '" + CDate(EndDate).ToString + "'" + Environment.NewLine
                 Else
-                    WhereClause$ = " AND (" + DbColName + " NOT between '" + CDate(StartDate).ToString + "' and '" + CDate(EndDate).ToString + "')" + vbCrLf
+                    WhereClause$ = " AND (" + DbColName + " NOT between '" + CDate(StartDate).ToString + "' and '" + CDate(EndDate).ToString + "')" + Environment.NewLine
                 End If
             ElseIf Evaluator$.Equals("On") Then
                 GetStartAndStopDate(StartDate$, EndDate)
                 If FirstTime Then
                     FirstTime = False
-                    WhereClause$ = " " + DbColName + " between '" + CDate(StartDate).ToString + "' and '" + CDate(EndDate).ToString + "'" + vbCrLf
+                    WhereClause$ = " " + DbColName + " between '" + CDate(StartDate).ToString + "' and '" + CDate(EndDate).ToString + "'" + Environment.NewLine
                 Else
-                    WhereClause$ = " AND (" + DbColName + " between '" + CDate(StartDate).ToString + "' and '" + CDate(EndDate).ToString + "')" + vbCrLf
+                    WhereClause$ = " AND (" + DbColName + " between '" + CDate(StartDate).ToString + "' and '" + CDate(EndDate).ToString + "')" + Environment.NewLine
                 End If
             Else
                 Return WhereClause$
@@ -1935,7 +1935,7 @@ Public Class clsDma
         X = InStr(S, "order by", CompareMethod.Text)
         Dim S1$ = Mid(S, 1, X - 1)
         Dim S2$ = Mid(S, X)
-        Dim S3$ = S1 + vbCrLf + "  /* " + S2 + "  */"
+        Dim S3$ = S1 + Environment.NewLine + "  /* " + S2 + "  */"
         S = S3
         Return S
     End Function
@@ -1950,8 +1950,8 @@ Public Class clsDma
             System.IO.Directory.CreateDirectory(DirFQN)
             Return True
         Catch ex As Exception
-            LogThis("ERROR 76.54.32 - Could not create restore directory. " + vbCrLf + ex.Message)
-            MessageBox.Show("ERROR 76.54.32 - Could not create restore directory. " + vbCrLf + vbCrLf + "Please verify that you have authority to create this directory." + ex.Message)
+            LogThis("ERROR 76.54.32 - Could not create restore directory. " + Environment.NewLine + ex.Message)
+            MessageBox.Show("ERROR 76.54.32 - Could not create restore directory. " + Environment.NewLine + Environment.NewLine + "Please verify that you have authority to create this directory." + ex.Message)
             Return False
         Finally
             GC.Collect()
@@ -1968,7 +1968,7 @@ Public Class clsDma
             objReader.Close()
             'Return strContents
         Catch Ex As Exception
-            MessageBox.Show("Failed to load License file: " + vbCrLf + Ex.Message)
+            MessageBox.Show("Failed to load License file: " + Environment.NewLine + Ex.Message)
             LogThis("clsDatabase : LoadLicenseFile : 5914 : " + Ex.Message)
             Return False
         End Try
@@ -1985,7 +1985,7 @@ Public Class clsDma
         Dim FullText$ = ""
         Do While Not SR.EndOfStream
             Dim S as string = SR.ReadLine
-            FullText$ = FullText$ + S$ + vbCrLf
+            FullText$ = FullText$ + S$ + Environment.NewLine
         Loop
         SR.Close()
         Return FullText$

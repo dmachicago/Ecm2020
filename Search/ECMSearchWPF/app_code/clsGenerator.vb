@@ -40,7 +40,7 @@ Public Class clsGenerator
     ''' <returns>System.String.</returns>
     Function genDocPagingByRowHeader() As String
 
-        Dim S As String = " WITH xContent AS (" + vbCrLf
+        Dim S As String = " WITH xContent AS (" + Environment.NewLine
         Return S
 
     End Function
@@ -54,9 +54,9 @@ Public Class clsGenerator
     Function genDocPagingByRowFooter(ByVal StartNbr As Integer, ByVal EndNbr As Integer) As String
 
         Dim S As String = ""
-        S = S + " )" + vbCrLf
-        S = S + " SELECT * FROM xContent" + vbCrLf
-        S = S + " WHERE ROWID BETWEEN " + StartNbr.ToString + " AND " + EndNbr.ToString + vbCrLf
+        S = S + " )" + Environment.NewLine
+        S = S + " SELECT * FROM xContent" + Environment.NewLine
+        S = S + " WHERE ROWID BETWEEN " + StartNbr.ToString + " AND " + EndNbr.ToString + Environment.NewLine
         Return S
 
     End Function
@@ -118,9 +118,9 @@ Public Class clsGenerator
         Dim S As String = ""
         If ckLimitTodays Then
             If Mandatory Then
-                S = " AND (LastWriteTime >= GETDATE() - " + DaysOld + " OR CreateDate >= GETDATE() - " + DaysOld.ToString + ")" + vbCrLf
+                S = " AND (LastWriteTime >= GETDATE() - " + DaysOld + " OR CreateDate >= GETDATE() - " + DaysOld.ToString + ")" + Environment.NewLine
             Else
-                S = " OR (LastWriteTime >= GETDATE() - " + DaysOld + " OR CreateDate >= GETDATE() - " + DaysOld.ToString + ")" + vbCrLf
+                S = " OR (LastWriteTime >= GETDATE() - " + DaysOld + " OR CreateDate >= GETDATE() - " + DaysOld.ToString + ")" + Environment.NewLine
             End If
         End If
         Return S
@@ -174,35 +174,35 @@ Public Class clsGenerator
                 Else
                     S += " OR "
                 End If
-                S += " (CreateDate > '" + CDate(Startdate).ToString + "')" + vbCrLf
+                S += " (CreateDate > '" + CDate(Startdate).ToString + "')" + Environment.NewLine
             Case "BEFORE"
                 If Mandatory = True Then
                     S += " AND "
                 Else
                     S += " OR "
                 End If
-                S += " (CreateDate < '" + CDate(Startdate).ToString + "')" + vbCrLf
+                S += " (CreateDate < '" + CDate(Startdate).ToString + "')" + Environment.NewLine
             Case "BETWEEN"
                 If Mandatory = True Then
                     S += " AND "
                 Else
                     S += " OR "
                 End If
-                S += " (CreateDate >= '" + CDate(Startdate).ToString + "' AND CreateDate <= '" + CDate(EndDate).ToString + "')" + vbCrLf
+                S += " (CreateDate >= '" + CDate(Startdate).ToString + "' AND CreateDate <= '" + CDate(EndDate).ToString + "')" + Environment.NewLine
             Case "NOT BETWEEN"
                 If Mandatory = True Then
                     S += " AND "
                 Else
                     S += " OR "
                 End If
-                S += " (CreateDate <= '" + CDate(Startdate).ToString + "' AND CreateDate >= '" + CDate(EndDate).ToString + "')" + vbCrLf
+                S += " (CreateDate <= '" + CDate(Startdate).ToString + "' AND CreateDate >= '" + CDate(EndDate).ToString + "')" + Environment.NewLine
             Case "ON"
                 If Mandatory = True Then
                     S += " AND "
                 Else
                     S += " OR "
                 End If
-                S += " (CreateDate = '" + CDate(Startdate).ToString + "')" + vbCrLf
+                S += " (CreateDate = '" + CDate(Startdate).ToString + "')" + Environment.NewLine
             Case Else
                 S = String.Empty
         End Select
@@ -243,35 +243,35 @@ Public Class clsGenerator
                 Else
                     S += " OR "
                 End If
-                S += " (LastWriteTime > '" + CDate(Startdate).ToString + "')" + vbCrLf
+                S += " (LastWriteTime > '" + CDate(Startdate).ToString + "')" + Environment.NewLine
             Case "BEFORE"
                 If Mandatory = True Then
                     S += " AND "
                 Else
                     S += " OR "
                 End If
-                S += " (LastWriteTime < '" + CDate(Startdate).ToString + "')" + vbCrLf
+                S += " (LastWriteTime < '" + CDate(Startdate).ToString + "')" + Environment.NewLine
             Case "BETWEEN"
                 If Mandatory = True Then
                     S += " AND "
                 Else
                     S += " OR "
                 End If
-                S += " (LastWriteTime >= '" + CDate(Startdate).ToString + "' AND LastWriteTime <= '" + CDate(EndDate).ToString + "')" + vbCrLf
+                S += " (LastWriteTime >= '" + CDate(Startdate).ToString + "' AND LastWriteTime <= '" + CDate(EndDate).ToString + "')" + Environment.NewLine
             Case "NOT BETWEEN"
                 If Mandatory = True Then
                     S += " AND "
                 Else
                     S += " OR "
                 End If
-                S += " (LastWriteTime <= '" + CDate(Startdate).ToString + "' AND LastWriteTime >= '" + CDate(EndDate).ToString + "')" + vbCrLf
+                S += " (LastWriteTime <= '" + CDate(Startdate).ToString + "' AND LastWriteTime >= '" + CDate(EndDate).ToString + "')" + Environment.NewLine
             Case "ON"
                 If Mandatory = True Then
                     S += " AND "
                 Else
                     S += " OR "
                 End If
-                S += " (LastWriteTime = '" + CDate(Startdate).ToString + "')" + vbCrLf
+                S += " (LastWriteTime = '" + CDate(Startdate).ToString + "')" + Environment.NewLine
             Case Else
                 S = String.Empty
         End Select
@@ -316,7 +316,7 @@ Public Class clsGenerator
         End If
 
         Dim S As String = String.Empty
-        S += " and KEY_TBL.RANK >= " + MinWeight + vbCrLf
+        S += " and KEY_TBL.RANK >= " + MinWeight + Environment.NewLine
 
         Return S
     End Function
@@ -384,19 +384,19 @@ Public Class clsGenerator
         Dim S As String = ""
 
         If ckWeighted = True Then
-            S = S + "Select " + vbCrLf
-            S += vbTab + " KEY_TBL.RANK, DS.SourceName 	" + vbCrLf
-            S += vbTab + ",DS.CreateDate " + vbCrLf
-            S += vbTab + ",DS.VersionNbr 	" + vbCrLf
-            S += vbTab + ",DS.LastAccessDate " + vbCrLf
-            S += vbTab + ",DS.FileLength " + vbCrLf
-            S += vbTab + ",DS.LastWriteTime " + vbCrLf
-            S += vbTab + ",DS.OriginalFileType 		" + vbCrLf
-            S += vbTab + ",DS.isPublic " + vbCrLf
-            S += vbTab + ",DS.FQN " + vbCrLf
-            S += vbTab + ",DS.SourceGuid " + vbCrLf
-            S += vbTab + ",DS.DataSourceOwnerUserID, DS.FileDirectory, DS.RetentionExpirationDate, DS.isMaster, DS.StructuredData, DS.RepoSvrName " + vbCrLf
-            S += "FROM DataSource as DS " + vbCrLf
+            S = S + "Select " + Environment.NewLine
+            S += vbTab + " KEY_TBL.RANK, DS.SourceName 	" + Environment.NewLine
+            S += vbTab + ",DS.CreateDate " + Environment.NewLine
+            S += vbTab + ",DS.VersionNbr 	" + Environment.NewLine
+            S += vbTab + ",DS.LastAccessDate " + Environment.NewLine
+            S += vbTab + ",DS.FileLength " + Environment.NewLine
+            S += vbTab + ",DS.LastWriteTime " + Environment.NewLine
+            S += vbTab + ",DS.OriginalFileType 		" + Environment.NewLine
+            S += vbTab + ",DS.isPublic " + Environment.NewLine
+            S += vbTab + ",DS.FQN " + Environment.NewLine
+            S += vbTab + ",DS.SourceGuid " + Environment.NewLine
+            S += vbTab + ",DS.DataSourceOwnerUserID, DS.FileDirectory, DS.RetentionExpirationDate, DS.isMaster, DS.StructuredData, DS.RepoSvrName " + Environment.NewLine
+            S += "FROM DataSource as DS " + Environment.NewLine
 
             S += genIsAbout(ckWeighted, ckBusiness, searchCriteria.Trim, False)
 
@@ -405,19 +405,19 @@ Public Class clsGenerator
             'End If
 
         Else
-            S = S + "Select " + vbCrLf
-            S += vbTab + "[SourceName] 	" + vbCrLf
-            S += vbTab + ",[CreateDate] " + vbCrLf
-            S += vbTab + ",[VersionNbr] 	" + vbCrLf
-            S += vbTab + ",[LastAccessDate] " + vbCrLf
-            S += vbTab + ",[FileLength] " + vbCrLf
-            S += vbTab + ",[LastWriteTime] " + vbCrLf
-            S += vbTab + ",[OriginalFileType] 		" + vbCrLf
-            S += vbTab + ",[isPublic] " + vbCrLf
-            S += vbTab + ",[FQN] " + vbCrLf
-            S += vbTab + ",[SourceGuid] " + vbCrLf
-            S += vbTab + ",[DataSourceOwnerUserID], FileDirectory, RetentionExpirationDate, isMaster, StructuredData, RepoSvrName " + vbCrLf
-            S += "FROM DataSource " + vbCrLf
+            S = S + "Select " + Environment.NewLine
+            S += vbTab + "[SourceName] 	" + Environment.NewLine
+            S += vbTab + ",[CreateDate] " + Environment.NewLine
+            S += vbTab + ",[VersionNbr] 	" + Environment.NewLine
+            S += vbTab + ",[LastAccessDate] " + Environment.NewLine
+            S += vbTab + ",[FileLength] " + Environment.NewLine
+            S += vbTab + ",[LastWriteTime] " + Environment.NewLine
+            S += vbTab + ",[OriginalFileType] 		" + Environment.NewLine
+            S += vbTab + ",[isPublic] " + Environment.NewLine
+            S += vbTab + ",[FQN] " + Environment.NewLine
+            S += vbTab + ",[SourceGuid] " + Environment.NewLine
+            S += vbTab + ",[DataSourceOwnerUserID], FileDirectory, RetentionExpirationDate, isMaster, StructuredData, RepoSvrName " + Environment.NewLine
+            S += "FROM DataSource " + Environment.NewLine
             'If bSaveToClipBoard Then
             'Clipboard.SetText(s)
             'End If
@@ -439,25 +439,25 @@ Public Class clsGenerator
         Dim S As String = ""
 
         If ckWeighted = True Then
-            S = S + "Select " + vbCrLf
+            S = S + "Select " + Environment.NewLine
             S += vbTab + "KEY_TBL.RANK ("
-            S += vbTab + ",DS.SourceName" + vbCrLf
-            S += vbTab + ",DS.CreateDate " + vbCrLf
-            S += vbTab + ",DS.VersionNbr 	" + vbCrLf
-            S += vbTab + ",DS.LastAccessDate " + vbCrLf
-            S += vbTab + ",DS.FileLength " + vbCrLf
-            S += vbTab + ",DS.LastWriteTime " + vbCrLf
-            S += vbTab + ",DS.OriginalFileType 		" + vbCrLf
-            S += vbTab + ",DS.isPublic " + vbCrLf
-            S += vbTab + ",DS.FQN " + vbCrLf
-            S += vbTab + ",DS.SourceGuid " + vbCrLf
+            S += vbTab + ",DS.SourceName" + Environment.NewLine
+            S += vbTab + ",DS.CreateDate " + Environment.NewLine
+            S += vbTab + ",DS.VersionNbr 	" + Environment.NewLine
+            S += vbTab + ",DS.LastAccessDate " + Environment.NewLine
+            S += vbTab + ",DS.FileLength " + Environment.NewLine
+            S += vbTab + ",DS.LastWriteTime " + Environment.NewLine
+            S += vbTab + ",DS.OriginalFileType 		" + Environment.NewLine
+            S += vbTab + ",DS.isPublic " + Environment.NewLine
+            S += vbTab + ",DS.FQN " + Environment.NewLine
+            S += vbTab + ",DS.SourceGuid " + Environment.NewLine
             S += vbTab + ",DS.DataSourceOwnerUserID, "
             S += vbTab + ",DS.FileDirectory "
             S += vbTab + ",DS.RetentionExpirationDate "
             S += vbTab + ",DS.isMaster "
-            S += vbTab + ",DS.StructuredData" + vbCrLf
-            S += vbTab + ",ROW_NUMBER() OVER (ORDER BY SourceName ASC) AS ROWID, RepoSvrName  )" + vbCrLf
-            S += "FROM DataSource as DS " + vbCrLf
+            S += vbTab + ",DS.StructuredData" + Environment.NewLine
+            S += vbTab + ",ROW_NUMBER() OVER (ORDER BY SourceName ASC) AS ROWID, RepoSvrName  )" + Environment.NewLine
+            S += "FROM DataSource as DS " + Environment.NewLine
 
             S += genIsAbout(ckWeighted, ckBusiness, searchCriteria.Trim, False)
 
@@ -466,24 +466,24 @@ Public Class clsGenerator
             'End If
 
         Else
-            S = S + "Select " + vbCrLf
-            S += vbTab + "[SourceName] 	" + vbCrLf
-            S += vbTab + ",[CreateDate] " + vbCrLf
-            S += vbTab + ",[VersionNbr] 	" + vbCrLf
-            S += vbTab + ",[LastAccessDate] " + vbCrLf
-            S += vbTab + ",[FileLength] " + vbCrLf
-            S += vbTab + ",[LastWriteTime] " + vbCrLf
-            S += vbTab + ",[OriginalFileType] 		" + vbCrLf
-            S += vbTab + ",[isPublic] " + vbCrLf
-            S += vbTab + ",[FQN] " + vbCrLf
-            S += vbTab + ",[SourceGuid] " + vbCrLf
+            S = S + "Select " + Environment.NewLine
+            S += vbTab + "[SourceName] 	" + Environment.NewLine
+            S += vbTab + ",[CreateDate] " + Environment.NewLine
+            S += vbTab + ",[VersionNbr] 	" + Environment.NewLine
+            S += vbTab + ",[LastAccessDate] " + Environment.NewLine
+            S += vbTab + ",[FileLength] " + Environment.NewLine
+            S += vbTab + ",[LastWriteTime] " + Environment.NewLine
+            S += vbTab + ",[OriginalFileType] 		" + Environment.NewLine
+            S += vbTab + ",[isPublic] " + Environment.NewLine
+            S += vbTab + ",[FQN] " + Environment.NewLine
+            S += vbTab + ",[SourceGuid] " + Environment.NewLine
             S += vbTab + ",[DataSourceOwnerUserID]"
             S += vbTab + ", FileDirectory"
             S += vbTab + ", RetentionExpirationDate"
             S += vbTab + ", isMaster"
-            S += vbTab + ", StructuredData " + vbCrLf
-            S += vbTab + ",ROW_NUMBER() OVER (ORDER BY SourceName ASC) AS ROWID, RepoSvrName  " + vbCrLf
-            S += "FROM DataSource " + vbCrLf
+            S += vbTab + ", StructuredData " + Environment.NewLine
+            S += vbTab + ",ROW_NUMBER() OVER (ORDER BY SourceName ASC) AS ROWID, RepoSvrName  " + Environment.NewLine
+            S += "FROM DataSource " + Environment.NewLine
             'If bSaveToClipBoard Then
             'Clipboard.SetText(s)
             'End If
@@ -521,42 +521,42 @@ Public Class clsGenerator
                 'INNER JOIN FREETEXTTABLE(dataSource, *,
                 '    'ISABOUT ("dale miller", "susan miller", jessica )' ) AS KEY_TBL
                 '    ON DS.SourceGuid = KEY_TBL.[KEY]
-                isAboutClause$ += "INNER JOIN FREETEXTTABLE(EMAIL, *, " + vbCrLf
+                isAboutClause$ += "INNER JOIN FREETEXTTABLE(EMAIL, *, " + Environment.NewLine
                 isAboutClause$ += "     'ISABOUT ("
                 isAboutClause$ += CorrectedSearchClause
-                isAboutClause$ += ")' ) as KEY_TBL" + vbCrLf
-                isAboutClause$ += "          ON DS.EmailGuid = KEY_TBL.[KEY]" + vbCrLf
+                isAboutClause$ += ")' ) as KEY_TBL" + Environment.NewLine
+                isAboutClause$ += "          ON DS.EmailGuid = KEY_TBL.[KEY]" + Environment.NewLine
             Else
                 '    INNER JOIN CONTAINSTABLE(dataSource, *,
                 '    'ISABOUT ("dale miller", 
                 '"susan miller", jessica )' ) AS KEY_TBL
                 '    ON DS.SourceGuid = KEY_TBL.[KEY]
-                isAboutClause$ += "INNER JOIN CONTAINSTABLE(EMAIL, *, " + vbCrLf
+                isAboutClause$ += "INNER JOIN CONTAINSTABLE(EMAIL, *, " + Environment.NewLine
                 isAboutClause$ += "     'ISABOUT ("
                 isAboutClause$ += CorrectedSearchClause
-                isAboutClause$ += ")' ) as KEY_TBL" + vbCrLf
-                isAboutClause$ += "          ON DS.EmailGuid = KEY_TBL.[KEY]" + vbCrLf
+                isAboutClause$ += ")' ) as KEY_TBL" + Environment.NewLine
+                isAboutClause$ += "          ON DS.EmailGuid = KEY_TBL.[KEY]" + Environment.NewLine
             End If
         Else
             If useFreetext = True Then
                 'INNER JOIN FREETEXTTABLE(dataSource, *,
                 '    'ISABOUT ("dale miller", "susan miller", jessica )' ) AS KEY_TBL
                 '    ON DS.SourceGuid = KEY_TBL.[KEY]
-                isAboutClause$ += "INNER JOIN FREETEXTTABLE(dataSource, SourceImage, " + vbCrLf
+                isAboutClause$ += "INNER JOIN FREETEXTTABLE(dataSource, SourceImage, " + Environment.NewLine
                 isAboutClause$ += "     'ISABOUT ("
                 isAboutClause$ += CorrectedSearchClause
-                isAboutClause$ += ")' ) as KEY_TBL" + vbCrLf
-                isAboutClause$ += "          ON DS.SourceGuid = KEY_TBL.[KEY]" + vbCrLf
+                isAboutClause$ += ")' ) as KEY_TBL" + Environment.NewLine
+                isAboutClause$ += "          ON DS.SourceGuid = KEY_TBL.[KEY]" + Environment.NewLine
             Else
                 '    INNER JOIN CONTAINSTABLE(dataSource, *,
                 '    'ISABOUT ("dale miller", 
                 '"susan miller", jessica )' ) AS KEY_TBL
                 '    ON DS.SourceGuid = KEY_TBL.[KEY]
-                isAboutClause$ += "INNER JOIN CONTAINSTABLE(dataSource, *, " + vbCrLf
+                isAboutClause$ += "INNER JOIN CONTAINSTABLE(dataSource, *, " + Environment.NewLine
                 isAboutClause$ += "     'ISABOUT ("
                 isAboutClause$ += CorrectedSearchClause
-                isAboutClause$ += ")' ) as KEY_TBL" + vbCrLf
-                isAboutClause$ += "          ON DS.SourceGuid = KEY_TBL.[KEY]" + vbCrLf
+                isAboutClause$ += ")' ) as KEY_TBL" + Environment.NewLine
+                isAboutClause$ += "          ON DS.SourceGuid = KEY_TBL.[KEY]" + Environment.NewLine
             End If
         End If
 
@@ -782,9 +782,9 @@ REEVAL:
             S += " OR "
         End If
 
-        S = S + " (AllRecipients like '" + FixSingleQuote(Name) + "' or " + vbCrLf
-        S = S + "      CC like '" + FixSingleQuote(Name) + "' or " + vbCrLf
-        S = S + "      BCC like '" + FixSingleQuote(Name) + "') " + vbCrLf
+        S = S + " (AllRecipients like '" + FixSingleQuote(Name) + "' or " + Environment.NewLine
+        S = S + "      CC like '" + FixSingleQuote(Name) + "' or " + Environment.NewLine
+        S = S + "      BCC like '" + FixSingleQuote(Name) + "') " + Environment.NewLine
 
         Return S
     End Function
@@ -835,8 +835,8 @@ REEVAL:
             S += " OR "
         End If
 
-        S = S + " (CC like '" + FixSingleQuote(Name) + "' or " + vbCrLf
-        S = S + " BCC like '" + FixSingleQuote(Name) + "')  " + vbCrLf
+        S = S + " (CC like '" + FixSingleQuote(Name) + "' or " + Environment.NewLine
+        S = S + " BCC like '" + FixSingleQuote(Name) + "')  " + Environment.NewLine
 
         Return S
     End Function
@@ -862,7 +862,7 @@ REEVAL:
             S += " OR "
         End If
 
-        S = S + " (SUBJECT Like '" + Name + "') " + vbCrLf
+        S = S + " (SUBJECT Like '" + Name + "') " + Environment.NewLine
 
         Return S
     End Function
@@ -888,7 +888,7 @@ REEVAL:
             S += " OR "
         End If
 
-        S = S + " (OriginalFolder LIKE '" + FixSingleQuote(Name) + "') " + vbCrLf
+        S = S + " (OriginalFolder LIKE '" + FixSingleQuote(Name) + "') " + Environment.NewLine
 
         Return S
     End Function
@@ -914,7 +914,7 @@ REEVAL:
             S += " OR "
         End If
 
-        S = S + " (ReceivedByName like '" + FixSingleQuote(Name) + "') " + vbCrLf
+        S = S + " (ReceivedByName like '" + FixSingleQuote(Name) + "') " + Environment.NewLine
 
         Return S
     End Function
@@ -952,7 +952,7 @@ REEVAL:
             S += " OR "
         End If
 
-        S = S + " (SenderName like '" + FixSingleQuote(Name) + "') " + vbCrLf
+        S = S + " (SenderName like '" + FixSingleQuote(Name) + "') " + Environment.NewLine
 
         Return S
     End Function
@@ -978,8 +978,8 @@ REEVAL:
             S += " OR "
         End If
 
-        S = S + " ( SentTO like '" + FixSingleQuote(EmailAddr) + "' or" + vbCrLf
-        S = S + " AllRecipients like '" + FixSingleQuote(EmailAddr) + "') " + vbCrLf
+        S = S + " ( SentTO like '" + FixSingleQuote(EmailAddr) + "' or" + Environment.NewLine
+        S = S + " AllRecipients like '" + FixSingleQuote(EmailAddr) + "') " + Environment.NewLine
 
         Return S
     End Function
@@ -1005,7 +1005,7 @@ REEVAL:
             S += " OR "
         End If
 
-        S = S + " (SenderEmailAddress like '" + FixSingleQuote(EmailAddr) + "') " + vbCrLf
+        S = S + " (SenderEmailAddress like '" + FixSingleQuote(EmailAddr) + "') " + Environment.NewLine
 
         Return S
     End Function
@@ -1045,7 +1045,7 @@ REEVAL:
                     Else
                         S += " OR "
                     End If
-                    S += " (SentOn > '" + CDate(Startdate).ToString + "')" + vbCrLf
+                    S += " (SentOn > '" + CDate(Startdate).ToString + "')" + Environment.NewLine
                 End If
                 If bReceived Then   'ReceivedTime
                     If Mandatory = True Then
@@ -1053,7 +1053,7 @@ REEVAL:
                     Else
                         S += " OR "
                     End If
-                    S += " (ReceivedTime > '" + CDate(Startdate).ToString + "')" + vbCrLf
+                    S += " (ReceivedTime > '" + CDate(Startdate).ToString + "')" + Environment.NewLine
                 End If
                 If bCreated Then    'CreateDate
                     If Mandatory = True Then
@@ -1061,7 +1061,7 @@ REEVAL:
                     Else
                         S += " OR "
                     End If
-                    S += " (CreateDate > '" + CDate(Startdate).ToString + "')" + vbCrLf
+                    S += " (CreateDate > '" + CDate(Startdate).ToString + "')" + Environment.NewLine
                 End If
             Case "BEFORE"
                 If bSent Then       'SentOn
@@ -1070,7 +1070,7 @@ REEVAL:
                     Else
                         S += " OR "
                     End If
-                    S += " (SentOn < '" + CDate(Startdate).ToString + "')" + vbCrLf
+                    S += " (SentOn < '" + CDate(Startdate).ToString + "')" + Environment.NewLine
                 End If
                 If bReceived Then   'ReceivedTime
                     If Mandatory = True Then
@@ -1078,7 +1078,7 @@ REEVAL:
                     Else
                         S += " OR "
                     End If
-                    S += " (ReceivedTime < '" + CDate(Startdate).ToString + "')" + vbCrLf
+                    S += " (ReceivedTime < '" + CDate(Startdate).ToString + "')" + Environment.NewLine
                 End If
                 If bCreated Then    'CreateDate
                     If Mandatory = True Then
@@ -1086,7 +1086,7 @@ REEVAL:
                     Else
                         S += " OR "
                     End If
-                    S += " (CreateDate < '" + CDate(Startdate).ToString + "')" + vbCrLf
+                    S += " (CreateDate < '" + CDate(Startdate).ToString + "')" + Environment.NewLine
                 End If
             Case "BETWEEN"
                 If bSent Then       'SentOn
@@ -1095,7 +1095,7 @@ REEVAL:
                     Else
                         S += " OR "
                     End If
-                    S += " (SentOn >= '" + CDate(Startdate).ToString + "' AND SentOn <= '" + CDate(EndDate).ToString + "')" + vbCrLf
+                    S += " (SentOn >= '" + CDate(Startdate).ToString + "' AND SentOn <= '" + CDate(EndDate).ToString + "')" + Environment.NewLine
                 End If
                 If bReceived Then   'ReceivedTime
                     If Mandatory = True Then
@@ -1103,7 +1103,7 @@ REEVAL:
                     Else
                         S += " OR "
                     End If
-                    S += " (ReceivedTime >= '" + CDate(Startdate).ToString + "' AND ReceivedTime <= '" + CDate(EndDate).ToString + "')" + vbCrLf
+                    S += " (ReceivedTime >= '" + CDate(Startdate).ToString + "' AND ReceivedTime <= '" + CDate(EndDate).ToString + "')" + Environment.NewLine
                 End If
                 If bCreated Then    'CreateDate
                     If Mandatory = True Then
@@ -1111,7 +1111,7 @@ REEVAL:
                     Else
                         S += " OR "
                     End If
-                    S += " (CreateDate >= '" + CDate(Startdate).ToString + "' AND CreateDate <= '" + CDate(EndDate).ToString + "')" + vbCrLf
+                    S += " (CreateDate >= '" + CDate(Startdate).ToString + "' AND CreateDate <= '" + CDate(EndDate).ToString + "')" + Environment.NewLine
                 End If
             Case "NOT BETWEEN"
                 If bSent Then       'SentOn
@@ -1120,7 +1120,7 @@ REEVAL:
                     Else
                         S += " OR "
                     End If
-                    S += " (SentOn <= '" + CDate(Startdate).ToString + "' AND SentOn >= '" + CDate(EndDate).ToString + "')" + vbCrLf
+                    S += " (SentOn <= '" + CDate(Startdate).ToString + "' AND SentOn >= '" + CDate(EndDate).ToString + "')" + Environment.NewLine
                 End If
                 If bReceived Then   'ReceivedTime
                     If Mandatory = True Then
@@ -1128,7 +1128,7 @@ REEVAL:
                     Else
                         S += " OR "
                     End If
-                    S += " (ReceivedTime <= '" + CDate(Startdate).ToString + "' AND ReceivedTime >= '" + CDate(EndDate).ToString + "')" + vbCrLf
+                    S += " (ReceivedTime <= '" + CDate(Startdate).ToString + "' AND ReceivedTime >= '" + CDate(EndDate).ToString + "')" + Environment.NewLine
                 End If
                 If bCreated Then    'CreateDate
                     If Mandatory = True Then
@@ -1136,7 +1136,7 @@ REEVAL:
                     Else
                         S += " OR "
                     End If
-                    S += " (CreateDate <= '" + CDate(Startdate).ToString + "' AND CreateDate >= '" + CDate(EndDate).ToString + "')" + vbCrLf
+                    S += " (CreateDate <= '" + CDate(Startdate).ToString + "' AND CreateDate >= '" + CDate(EndDate).ToString + "')" + Environment.NewLine
                 End If
             Case "ON"
                 If bSent Then       'SentOn
@@ -1145,7 +1145,7 @@ REEVAL:
                     Else
                         S += " OR "
                     End If
-                    S += " (SentOn = '" + CDate(Startdate).ToString + "')" + vbCrLf
+                    S += " (SentOn = '" + CDate(Startdate).ToString + "')" + Environment.NewLine
                 End If
                 If bReceived Then   'ReceivedTime
                     If Mandatory = True Then
@@ -1153,7 +1153,7 @@ REEVAL:
                     Else
                         S += " OR "
                     End If
-                    S += " (ReceivedTime = '" + CDate(Startdate).ToString + "')" + vbCrLf
+                    S += " (ReceivedTime = '" + CDate(Startdate).ToString + "')" + Environment.NewLine
                 End If
                 If bCreated Then    'CreateDate
                     If Mandatory = True Then
@@ -1161,7 +1161,7 @@ REEVAL:
                     Else
                         S += " OR "
                     End If
-                    S += " (CreateDate = '" + CDate(Startdate).ToString + "')" + vbCrLf
+                    S += " (CreateDate = '" + CDate(Startdate).ToString + "')" + Environment.NewLine
                 End If
             Case Else
                 S = String.Empty
@@ -1180,17 +1180,17 @@ REEVAL:
 
         ContainsClause = FixSingleQuote(ContainsClause)
 
-        S = S + " SELECT     Email.SentOn, Email.ShortSubj, Email.SenderEmailAddress, Email.SenderName, Email.SentTO, SUBSTRING(Email.Body, 1, 100) AS Body, Email.CC, Email.Bcc, " + vbCrLf
-        S = S + "                       Email.CreationTime, Email.AllRecipients, Email.ReceivedByName, Email.ReceivedTime, Email.MsgSize, Email.SUBJECT, Email.OriginalFolder, Email.EmailGuid, " + vbCrLf
-        S = S + "                       Email.RetentionExpirationDate, Email.isPublic, Email.ConvertEmlToMSG, Email.UserID, Email.NbrAttachments, Email.SourceTypeCode, 'N' AS FoundInAttachment," + vbCrLf
-        S = S + "                       EmailAttachment.RowID" + vbCrLf
-        S = S + " FROM         Email FULL OUTER JOIN" + vbCrLf
-        S = S + "                       EmailAttachment ON Email.EmailGuid = EmailAttachment.EmailGuid" + vbCrLf
-        S = S + " WHERE" + vbCrLf
-        S = S + " (" + vbCrLf
-        S = S + " CONTAINS(Email.*, '" + ContainsClause + "') OR" + vbCrLf
-        S = S + " CONTAINS(EmailAttachment.*, '" + ContainsClause + "') " + vbCrLf
-        S = S + " ) " + vbCrLf
+        S = S + " SELECT     Email.SentOn, Email.ShortSubj, Email.SenderEmailAddress, Email.SenderName, Email.SentTO, SUBSTRING(Email.Body, 1, 100) AS Body, Email.CC, Email.Bcc, " + Environment.NewLine
+        S = S + "                       Email.CreationTime, Email.AllRecipients, Email.ReceivedByName, Email.ReceivedTime, Email.MsgSize, Email.SUBJECT, Email.OriginalFolder, Email.EmailGuid, " + Environment.NewLine
+        S = S + "                       Email.RetentionExpirationDate, Email.isPublic, Email.ConvertEmlToMSG, Email.UserID, Email.NbrAttachments, Email.SourceTypeCode, 'N' AS FoundInAttachment," + Environment.NewLine
+        S = S + "                       EmailAttachment.RowID" + Environment.NewLine
+        S = S + " FROM         Email FULL OUTER JOIN" + Environment.NewLine
+        S = S + "                       EmailAttachment ON Email.EmailGuid = EmailAttachment.EmailGuid" + Environment.NewLine
+        S = S + " WHERE" + Environment.NewLine
+        S = S + " (" + Environment.NewLine
+        S = S + " CONTAINS(Email.*, '" + ContainsClause + "') OR" + Environment.NewLine
+        S = S + " CONTAINS(EmailAttachment.*, '" + ContainsClause + "') " + Environment.NewLine
+        S = S + " ) " + Environment.NewLine
 
         Return S
 
@@ -1204,13 +1204,13 @@ REEVAL:
 
         Dim S As String = ""
 
-        S = S + " SELECT     Email.SentOn, Email.ShortSubj, Email.SenderEmailAddress, Email.SenderName, Email.SentTO, SUBSTRING(Email.Body, 1, 100) AS Body, Email.CC, Email.Bcc, " + vbCrLf
-        S = S + "                       Email.CreationTime, Email.AllRecipients, Email.ReceivedByName, Email.ReceivedTime, Email.MsgSize, Email.SUBJECT, Email.OriginalFolder, Email.EmailGuid, " + vbCrLf
-        S = S + "                       Email.RetentionExpirationDate, Email.isPublic, Email.ConvertEmlToMSG, Email.UserID, Email.NbrAttachments, Email.SourceTypeCode, 'N' AS FoundInAttachment," + vbCrLf
-        S = S + "                       EmailAttachment.RowID" + vbCrLf
-        S = S + " FROM         Email FULL OUTER JOIN" + vbCrLf
-        S = S + "                       EmailAttachment ON Email.EmailGuid = EmailAttachment.EmailGuid" + vbCrLf
-        S = S + " WHERE" + vbCrLf
+        S = S + " SELECT     Email.SentOn, Email.ShortSubj, Email.SenderEmailAddress, Email.SenderName, Email.SentTO, SUBSTRING(Email.Body, 1, 100) AS Body, Email.CC, Email.Bcc, " + Environment.NewLine
+        S = S + "                       Email.CreationTime, Email.AllRecipients, Email.ReceivedByName, Email.ReceivedTime, Email.MsgSize, Email.SUBJECT, Email.OriginalFolder, Email.EmailGuid, " + Environment.NewLine
+        S = S + "                       Email.RetentionExpirationDate, Email.isPublic, Email.ConvertEmlToMSG, Email.UserID, Email.NbrAttachments, Email.SourceTypeCode, 'N' AS FoundInAttachment," + Environment.NewLine
+        S = S + "                       EmailAttachment.RowID" + Environment.NewLine
+        S = S + " FROM         Email FULL OUTER JOIN" + Environment.NewLine
+        S = S + "                       EmailAttachment ON Email.EmailGuid = EmailAttachment.EmailGuid" + Environment.NewLine
+        S = S + " WHERE" + Environment.NewLine
 
         Return S
 
@@ -1221,7 +1221,7 @@ REEVAL:
     ''' </summary>
     ''' <param name="GeneratedSql">The generated SQL.</param>
     Sub genNewEmailQuery(ByRef GeneratedSql As String)
-        Dim a$() = GeneratedSql.Split(vbCrLf)
+        Dim a$() = GeneratedSql.Split(Environment.NewLine)
         Dim S As String = ""
         Dim bNextWhereStmt As Boolean = False
         Dim bGenNewSql As Boolean = False
@@ -1283,12 +1283,12 @@ REEVAL:
             End If
 
             If bGenNewSql = True And doNotAppend = False And a(i).Trim.Length > 0 Then
-                NewSql$ = NewSql$ + vbCrLf + a(i)
+                NewSql$ = NewSql$ + Environment.NewLine + a(i)
             End If
 
         Next
 
-        NewSql$ = StdQueryCols + vbCrLf + NewSql$
+        NewSql$ = StdQueryCols + Environment.NewLine + NewSql$
         GeneratedSql = NewSql
 
         'Clipboard.Clear()
@@ -1301,7 +1301,7 @@ REEVAL:
     ''' </summary>
     ''' <param name="GeneratedSql">The generated SQL.</param>
     Sub genNewEmailAttachmentQuery(ByRef GeneratedSql As String)
-        Dim a$() = GeneratedSql.Split(vbCrLf)
+        Dim a$() = GeneratedSql.Split(Environment.NewLine)
         Dim S As String = ""
         Dim bNextWhereStmt As Boolean = False
         Dim bGenNewSql As Boolean = False
@@ -1368,12 +1368,12 @@ REEVAL:
             End If
 
             If bGenNewSql = True And doNotAppend = False And a(i).Trim.Length > 0 Then
-                NewSql$ = NewSql$ + vbCrLf + a(i)
+                NewSql$ = NewSql$ + Environment.NewLine + a(i)
             End If
 
         Next
 
-        NewSql$ = StdQueryCols + vbCrLf + NewSql$
+        NewSql$ = StdQueryCols + Environment.NewLine + NewSql$
         GeneratedSql = NewSql
 
         'Clipboard.Clear()
@@ -1386,7 +1386,7 @@ REEVAL:
     ''' </summary>
     ''' <param name="GeneratedSql">The generated SQL.</param>
     Sub genNewDocQuery(ByRef GeneratedSql As String)
-        Dim a$() = GeneratedSql.Split(vbCrLf)
+        Dim a$() = GeneratedSql.Split(Environment.NewLine)
         Dim S As String = ""
         Dim bNextWhereStmt As Boolean = False
         Dim bGenNewSql As Boolean = False
@@ -1443,12 +1443,12 @@ REEVAL:
             End If
 
             If bGenNewSql = True And doNotAppend = False And a(i).Trim.Length > 0 Then
-                NewSql$ = NewSql$ + vbCrLf + a(i)
+                NewSql$ = NewSql$ + Environment.NewLine + a(i)
             End If
 
         Next
 
-        NewSql$ = StdQueryCols + vbCrLf + NewSql$
+        NewSql$ = StdQueryCols + Environment.NewLine + NewSql$
         GeneratedSql = NewSql$
 
         'Clipboard.Clear()
@@ -1465,37 +1465,37 @@ REEVAL:
         Dim S As String = ""
         Dim Prefix As String = ""
         If TopRows > 0 Then
-            S = S + "Select top " + TopRows.ToString + " " + vbCrLf
+            S = S + "Select top " + TopRows.ToString + " " + Environment.NewLine
         Else
-            S = S + "Select " + vbCrLf
+            S = S + "Select " + Environment.NewLine
         End If
 
         If UseWeights = True Then
-            S = S + vbTab + "KEY_TBL.RANK as Weight, " + vbCrLf
+            S = S + vbTab + "KEY_TBL.RANK as Weight, " + Environment.NewLine
             Prefix = "DS."
         Else
-            S = S + vbTab + "null as Weight, " + vbCrLf
+            S = S + vbTab + "null as Weight, " + Environment.NewLine
             Prefix = ""
         End If
 
-        S = S + vbTab + "Email.ShortSubj as ContentTitle, " + vbCrLf
-        S = S + vbTab + "(select COUNT(*) from EmailAttachment where EmailAttachment.EmailGuid = Email.EmailGuid) as NbrOfAttachments, " + vbCrLf
-        S = S + vbTab + "Email.SenderEmailAddress AS ContentAuthor, " + vbCrLf
-        S = S + vbTab + "Email.SourceTypeCode as  ContentExt, " + vbCrLf
-        S = S + vbTab + "Email.CreationTime AS CreateDate, " + vbCrLf
-        S = S + vbTab + "Email.ShortSubj as  FileName, " + vbCrLf
-        S = S + vbTab + "Email.AllRecipients, " + vbCrLf
-        S = S + vbTab + "Email.EmailGuid as ContentGuid, " + vbCrLf
-        S = S + vbTab + "Email.MsgSize  as FileSize, " + vbCrLf
-        S = S + vbTab + "Email.SenderEmailAddress AS FromEmailAddress, " + vbCrLf
-        'S = S + vbTab + "Users.UserLoginID, " + vbCrLf
-        S = S + "(Select UserLoginID from Users where email.UserID = Users.UserID) as UserLoginUD, " + vbCrLf
-        S = S + vbTab + "Email.USERID, " + vbCrLf
-        S = S + vbTab + "null as RowID, " + vbCrLf
-        S = S + vbTab + "'EMAIL' AS Classification, " + vbCrLf
-        S = S + vbTab + "null as isZipFileEntry, " + vbCrLf
-        S = S + vbTab + "null as OcrText, " + vbCrLf
-        S = S + vbTab + "email.ispublic " + vbCrLf
+        S = S + vbTab + "Email.ShortSubj as ContentTitle, " + Environment.NewLine
+        S = S + vbTab + "(select COUNT(*) from EmailAttachment where EmailAttachment.EmailGuid = Email.EmailGuid) as NbrOfAttachments, " + Environment.NewLine
+        S = S + vbTab + "Email.SenderEmailAddress AS ContentAuthor, " + Environment.NewLine
+        S = S + vbTab + "Email.SourceTypeCode as  ContentExt, " + Environment.NewLine
+        S = S + vbTab + "Email.CreationTime AS CreateDate, " + Environment.NewLine
+        S = S + vbTab + "Email.ShortSubj as  FileName, " + Environment.NewLine
+        S = S + vbTab + "Email.AllRecipients, " + Environment.NewLine
+        S = S + vbTab + "Email.EmailGuid as ContentGuid, " + Environment.NewLine
+        S = S + vbTab + "Email.MsgSize  as FileSize, " + Environment.NewLine
+        S = S + vbTab + "Email.SenderEmailAddress AS FromEmailAddress, " + Environment.NewLine
+        'S = S + vbTab + "Users.UserLoginID, " + Environment.NewLine
+        S = S + "(Select UserLoginID from Users where email.UserID = Users.UserID) as UserLoginUD, " + Environment.NewLine
+        S = S + vbTab + "Email.USERID, " + Environment.NewLine
+        S = S + vbTab + "null as RowID, " + Environment.NewLine
+        S = S + vbTab + "'EMAIL' AS Classification, " + Environment.NewLine
+        S = S + vbTab + "null as isZipFileEntry, " + Environment.NewLine
+        S = S + vbTab + "null as OcrText, " + Environment.NewLine
+        S = S + vbTab + "email.ispublic " + Environment.NewLine
 
         If UseWeights = True Then
             S = S + vbTab + "FROM Email as DS "
@@ -1517,40 +1517,40 @@ REEVAL:
         Dim Prefix$ = "DS."
         Dim S As String = ""
         If TopRows > 0 Then
-            S = S + "Select top " + TopRows.ToString + " " + vbCrLf
+            S = S + "Select top " + TopRows.ToString + " " + Environment.NewLine
         Else
-            S = S + "Select " + vbCrLf
+            S = S + "Select " + Environment.NewLine
         End If
 
         If UseWeights = True Then
-            S = S + vbTab + "KEY_TBL.RANK as Weight, " + vbCrLf
+            S = S + vbTab + "KEY_TBL.RANK as Weight, " + Environment.NewLine
         Else
-            S = S + vbTab + "null as Weight, " + vbCrLf
+            S = S + vbTab + "null as Weight, " + Environment.NewLine
         End If
 
-        S = S + vbTab + "EmailAttachment.AttachmentName as ContentTitle, " + vbCrLf
-        S = S + vbTab + "null as NbrOfAttachments, " + vbCrLf
-        S = S + vbTab + "(select SenderEmailAddress from EMAIL where EmailAttachment.EmailGuid = EMAIL.EmailGuid) as ContentAuthor, " + vbCrLf
-        S = S + vbTab + "EmailAttachment.AttachmentCode as ContentExt, " + vbCrLf
-        S = S + vbTab + "(select CreationTime from EMAIL where EmailAttachment.EmailGuid = EMAIL.EmailGuid) as CreateDate, " + vbCrLf
-        S = S + vbTab + "EmailAttachment.AttachmentName as FileName, " + vbCrLf
-        S = S + vbTab + "null as AllRecipients, " + vbCrLf
-        S = S + vbTab + "EmailAttachment.EmailGuid as ContentGuid, " + vbCrLf
-        S = S + vbTab + "DATALENGTH(EmailAttachment.Attachment) as FileSize, " + vbCrLf
-        S = S + vbTab + "(select SenderEmailAddress  from EMAIL where EmailAttachment.EmailGuid = EMAIL.EmailGuid) as FromEmailAddress, " + vbCrLf
-        S = S + vbTab + "(Select UserLoginID from Users where EmailAttachment.UserID = Users.UserID) as UserLoginUD, " + vbCrLf
-        S = S + vbTab + "EmailAttachment.UserID, " + vbCrLf
-        S = S + vbTab + "EmailAttachment.RowID, " + vbCrLf
-        S = S + vbTab + "'Attachment' as Classification, " + vbCrLf
-        S = S + vbTab + "EmailAttachment.isZipFileEntry, " + vbCrLf
-        S = S + vbTab + "EmailAttachment.OcrText, " + vbCrLf
+        S = S + vbTab + "EmailAttachment.AttachmentName as ContentTitle, " + Environment.NewLine
+        S = S + vbTab + "null as NbrOfAttachments, " + Environment.NewLine
+        S = S + vbTab + "(select SenderEmailAddress from EMAIL where EmailAttachment.EmailGuid = EMAIL.EmailGuid) as ContentAuthor, " + Environment.NewLine
+        S = S + vbTab + "EmailAttachment.AttachmentCode as ContentExt, " + Environment.NewLine
+        S = S + vbTab + "(select CreationTime from EMAIL where EmailAttachment.EmailGuid = EMAIL.EmailGuid) as CreateDate, " + Environment.NewLine
+        S = S + vbTab + "EmailAttachment.AttachmentName as FileName, " + Environment.NewLine
+        S = S + vbTab + "null as AllRecipients, " + Environment.NewLine
+        S = S + vbTab + "EmailAttachment.EmailGuid as ContentGuid, " + Environment.NewLine
+        S = S + vbTab + "DATALENGTH(EmailAttachment.Attachment) as FileSize, " + Environment.NewLine
+        S = S + vbTab + "(select SenderEmailAddress  from EMAIL where EmailAttachment.EmailGuid = EMAIL.EmailGuid) as FromEmailAddress, " + Environment.NewLine
+        S = S + vbTab + "(Select UserLoginID from Users where EmailAttachment.UserID = Users.UserID) as UserLoginUD, " + Environment.NewLine
+        S = S + vbTab + "EmailAttachment.UserID, " + Environment.NewLine
+        S = S + vbTab + "EmailAttachment.RowID, " + Environment.NewLine
+        S = S + vbTab + "'Attachment' as Classification, " + Environment.NewLine
+        S = S + vbTab + "EmailAttachment.isZipFileEntry, " + Environment.NewLine
+        S = S + vbTab + "EmailAttachment.OcrText, " + Environment.NewLine
         S = S + vbTab + "EmailAttachment.isPublic "
 
         If UseWeights = True Then
-            S = S + vbTab + "FROM EmailAttachment as DS " + vbCrLf
+            S = S + vbTab + "FROM EmailAttachment as DS " + Environment.NewLine
             S = ReplacePrefix(Prefix, "EmailAttachment.", S)
         Else
-            S = S + vbTab + "FROM EmailAttachment " + vbCrLf
+            S = S + vbTab + "FROM EmailAttachment " + Environment.NewLine
         End If
 
         Return S
@@ -1565,36 +1565,36 @@ REEVAL:
         Dim Prefix$ = "DS."
         Dim S As String = ""
         If TopRows > 0 Then
-            S = S + "Select top " + TopRows.ToString + " " + vbCrLf
+            S = S + "Select top " + TopRows.ToString + " " + Environment.NewLine
         Else
-            S = S + "Select " + vbCrLf
+            S = S + "Select " + Environment.NewLine
         End If
 
         If UseWeights = True Then
-            S = S + vbTab + "KEY_TBL.RANK as Weight, " + vbCrLf
+            S = S + vbTab + "KEY_TBL.RANK as Weight, " + Environment.NewLine
         Else
-            S = S + vbTab + "null as Weight, " + vbCrLf
+            S = S + vbTab + "null as Weight, " + Environment.NewLine
         End If
 
 
-        S = S + vbTab + "DataSource.SourceName as ContentTitle, " + vbCrLf
-        S = S + vbTab + "null as NbrOfAttachments, " + vbCrLf
-        S = S + vbTab + "null as ContentAuthor, " + vbCrLf
-        S = S + vbTab + "DataSource.OriginalFileType as ContentExt, " + vbCrLf
-        S = S + vbTab + "DataSource.CreateDate, " + vbCrLf
-        S = S + vbTab + "DataSource.FQN as FileName, " + vbCrLf
-        S = S + vbTab + "null as AllRecipients, " + vbCrLf
-        S = S + vbTab + "DataSource.SourceGuid as ContentGuid, " + vbCrLf
-        S = S + vbTab + "DataSource.FileLength  as FileSize, " + vbCrLf
-        S = S + vbTab + "null as FromEmailAddress, " + vbCrLf
-        'S = S + vbTab + "Users.UserLoginID, " + vbCrLf
-        S = S + "(Select UserLoginID from Users where DataSource.DataSourceOwnerUserID = Users.UserID) as UserLoginUD, " + vbCrLf
-        S = S + vbTab + "DataSource.DataSourceOwnerUserID as UserID, " + vbCrLf
-        S = S + vbTab + "null as RowID, " + vbCrLf
-        S = S + vbTab + "'Content' as Classification, " + vbCrLf
-        S = S + vbTab + "DataSource.isZipFileEntry, " + vbCrLf
-        S = S + vbTab + "null as OcrText, " + vbCrLf
-        S = S + vbTab + "DataSource.isPublic, DataSource.RepoSvrName  " + vbCrLf
+        S = S + vbTab + "DataSource.SourceName as ContentTitle, " + Environment.NewLine
+        S = S + vbTab + "null as NbrOfAttachments, " + Environment.NewLine
+        S = S + vbTab + "null as ContentAuthor, " + Environment.NewLine
+        S = S + vbTab + "DataSource.OriginalFileType as ContentExt, " + Environment.NewLine
+        S = S + vbTab + "DataSource.CreateDate, " + Environment.NewLine
+        S = S + vbTab + "DataSource.FQN as FileName, " + Environment.NewLine
+        S = S + vbTab + "null as AllRecipients, " + Environment.NewLine
+        S = S + vbTab + "DataSource.SourceGuid as ContentGuid, " + Environment.NewLine
+        S = S + vbTab + "DataSource.FileLength  as FileSize, " + Environment.NewLine
+        S = S + vbTab + "null as FromEmailAddress, " + Environment.NewLine
+        'S = S + vbTab + "Users.UserLoginID, " + Environment.NewLine
+        S = S + "(Select UserLoginID from Users where DataSource.DataSourceOwnerUserID = Users.UserID) as UserLoginUD, " + Environment.NewLine
+        S = S + vbTab + "DataSource.DataSourceOwnerUserID as UserID, " + Environment.NewLine
+        S = S + vbTab + "null as RowID, " + Environment.NewLine
+        S = S + vbTab + "'Content' as Classification, " + Environment.NewLine
+        S = S + vbTab + "DataSource.isZipFileEntry, " + Environment.NewLine
+        S = S + vbTab + "null as OcrText, " + Environment.NewLine
+        S = S + vbTab + "DataSource.isPublic, DataSource.RepoSvrName  " + Environment.NewLine
 
         If UseWeights = True Then
             S = S + vbTab + "FROM DataSource as DS "
@@ -1611,7 +1611,7 @@ REEVAL:
     ''' <param name="sText">The s text.</param>
     ''' <returns>System.String.</returns>
     Function RemoveSpaces(ByVal sText As String) As String
-        Dim A$() = Split(sText, " + vbcrlf ")
+        Dim A$() = Split(sText, " + Environment.NewLine ")
         Dim S As String = ""
         For i As Integer = 0 To UBound(A)
             S = S + A(i)
@@ -1699,7 +1699,7 @@ REEVAL:
         '        End If
         '    Next
         'Catch ex As Exception
-        '    WriteToLog("ERROR: FixSingleQuote - " + ex.Message + vbCrLf + ex.StackTrace)
+        '    WriteToLog("ERROR: FixSingleQuote - " + ex.Message + Environment.NewLine + ex.StackTrace)
         'End Try
 
         Return SS
@@ -1723,7 +1723,7 @@ REEVAL:
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + Msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + Msg + Environment.NewLine)
                 sw.Close()
             End Using
             'If gRunUnattended = True Then
@@ -2307,55 +2307,55 @@ NextWord:
 
         If SearchCode.Equals("E") Or SearchCode.Equals("EMAIL") Then
             If bGlobalSearcher = True Then
-                'S = S + " AND (UserID IS NOT NULL" + chrw(9) + chrw(9) + " /*KEEP*/" + vbCrLf
-                'S = S + chrw(9) + " or isPublic = 'Y'" + " /*KEEP*/" + vbCrLf
-                S = S + ChrW(9) + "/* This is where the library search would go - you have global rights, think about it.*/" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-                S = S + ChrW(9) + " AND (UserID IS NOT NULL)" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
+                'S = S + " AND (UserID IS NOT NULL" + chrw(9) + chrw(9) + " /*KEEP*/" + Environment.NewLine
+                'S = S + chrw(9) + " or isPublic = 'Y'" + " /*KEEP*/" + Environment.NewLine
+                S = S + ChrW(9) + "/* This is where the library search would go - you have global rights, think about it.*/" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+                S = S + ChrW(9) + " AND (UserID IS NOT NULL)" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
                 Return S
             Else
-                S = S + " AND (UserID = '" + CurrUserID + "'" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-                S = S + ChrW(9) + " or isPublic = 'Y'" + " /*KEEP*/" + vbCrLf
+                S = S + " AND (UserID = '" + CurrUserID + "'" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+                S = S + ChrW(9) + " or isPublic = 'Y'" + " /*KEEP*/" + Environment.NewLine
             End If
         End If
         If SearchCode.Equals("S") Or SearchCode.Equals("EMAIL") Then
             If bGlobalSearcher = True Then
-                'S = S + " AND (DataSourceOwnerUserID IS NOT NULL" + chrw(9) + chrw(9) + " /*KEEP*/" + vbCrLf
-                'S = S + chrw(9) + " or isPublic = 'Y'" + " /*KEEP*/" + vbCrLf
-                S = S + ChrW(9) + "/* This is where the library search would go - you have global rights, think about it.*/" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-                S = S + ChrW(9) + " AND (DataSourceOwnerUserID IS NOT NULL)" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
+                'S = S + " AND (DataSourceOwnerUserID IS NOT NULL" + chrw(9) + chrw(9) + " /*KEEP*/" + Environment.NewLine
+                'S = S + chrw(9) + " or isPublic = 'Y'" + " /*KEEP*/" + Environment.NewLine
+                S = S + ChrW(9) + "/* This is where the library search would go - you have global rights, think about it.*/" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+                S = S + ChrW(9) + " AND (DataSourceOwnerUserID IS NOT NULL)" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
                 Return S
             Else
-                S = S + " AND (DataSourceOwnerUserID = '" + CurrUserID + "'" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-                S = S + ChrW(9) + " or isPublic = 'Y'" + " /*KEEP*/" + vbCrLf
+                S = S + " AND (DataSourceOwnerUserID = '" + CurrUserID + "'" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+                S = S + ChrW(9) + " or isPublic = 'Y'" + " /*KEEP*/" + Environment.NewLine
             End If
         End If
 
-        's=s+ chrw(9) + " SELECT GroupUsers.GroupName, Library.LibraryName, LibraryUsers.UserID, LibraryItems.SourceGuid" + chrw(9) + chrw(9) + " /*KEEP*/" + vbCrLf
-        S = S + ChrW(9) + ChrW(9) + " /* GENID:" + LocationID + "*/" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
+        's=s+ chrw(9) + " SELECT GroupUsers.GroupName, Library.LibraryName, LibraryUsers.UserID, LibraryItems.SourceGuid" + chrw(9) + chrw(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + ChrW(9) + ChrW(9) + " /* GENID:" + LocationID + "*/" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
         If SearchCode.Equals("E") Or SearchCode.Equals("EMAIL") Then
-            S = S + ChrW(9) + ChrW(9) + " or EmailGuid in (" + " /*KEEP*/" + vbCrLf
+            S = S + ChrW(9) + ChrW(9) + " or EmailGuid in (" + " /*KEEP*/" + Environment.NewLine
         Else
-            S = S + ChrW(9) + ChrW(9) + " or SourceGuid in (" + " /*KEEP*/" + vbCrLf
+            S = S + ChrW(9) + ChrW(9) + " or SourceGuid in (" + " /*KEEP*/" + Environment.NewLine
         End If
 
-        S = S + ChrW(9) + " SELECT LibraryItems.SourceGuid" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-        S = S + ChrW(9) + " FROM   LibraryItems INNER JOIN" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-        S = S + ChrW(9) + "        Library ON LibraryItems.LibraryName = Library.LibraryName INNER JOIN" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-        S = S + ChrW(9) + "        LibraryUsers ON Library.LibraryName = LibraryUsers.LibraryName INNER JOIN" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-        S = S + ChrW(9) + "        GroupLibraryAccess ON Library.LibraryName = GroupLibraryAccess.LibraryName INNER JOIN" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-        S = S + ChrW(9) + "        GroupUsers ON GroupLibraryAccess.GroupName = GroupUsers.GroupName" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-        S = S + ChrW(9) + " where " + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-        S = S + ChrW(9) + "        libraryusers.userid ='" + CurrUserID + "' " + ChrW(9) + ChrW(9) + " /*KEEP*/   /*ID55*/" + vbCrLf
+        S = S + ChrW(9) + " SELECT LibraryItems.SourceGuid" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + ChrW(9) + " FROM   LibraryItems INNER JOIN" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + ChrW(9) + "        Library ON LibraryItems.LibraryName = Library.LibraryName INNER JOIN" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + ChrW(9) + "        LibraryUsers ON Library.LibraryName = LibraryUsers.LibraryName INNER JOIN" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + ChrW(9) + "        GroupLibraryAccess ON Library.LibraryName = GroupLibraryAccess.LibraryName INNER JOIN" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + ChrW(9) + "        GroupUsers ON GroupLibraryAccess.GroupName = GroupUsers.GroupName" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + ChrW(9) + " where " + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + ChrW(9) + "        libraryusers.userid ='" + CurrUserID + "' " + ChrW(9) + ChrW(9) + " /*KEEP*/   /*ID55*/" + Environment.NewLine
 
-        S = S + ChrW(9) + "UNION " + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-        S = S + ChrW(9) + "Select LI.SourceGuid" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-        S = S + ChrW(9) + "FROM         LibraryItems AS LI INNER JOIN" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-        S = S + ChrW(9) + "             LibraryUsers AS LU ON LI.LibraryName = LU.LibraryName" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-        S = S + ChrW(9) + "WHERE     (LU.UserID = '" + CurrUserID + "')" + ChrW(9) + ChrW(9) + " /*KEEP*/   /*ID56*/" + vbCrLf
+        S = S + ChrW(9) + "UNION " + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + ChrW(9) + "Select LI.SourceGuid" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + ChrW(9) + "FROM         LibraryItems AS LI INNER JOIN" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + ChrW(9) + "             LibraryUsers AS LU ON LI.LibraryName = LU.LibraryName" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + ChrW(9) + "WHERE     (LU.UserID = '" + CurrUserID + "')" + ChrW(9) + ChrW(9) + " /*KEEP*/   /*ID56*/" + Environment.NewLine
 
-        S = S + ChrW(9) + "))" + " /*KEEP*/" + vbCrLf
+        S = S + ChrW(9) + "))" + " /*KEEP*/" + Environment.NewLine
 
-        S = S + ChrW(9) + " /* GLOBAL Searcher = " + bGlobalSearcher.ToString + "  */" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
+        S = S + ChrW(9) + " /* GLOBAL Searcher = " + bGlobalSearcher.ToString + "  */" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
 
         Return S
 
@@ -2372,32 +2372,32 @@ NextWord:
     Public Function genLibrarySearch(ByVal CurrUserID As String, ByVal GlobalSearcher As Boolean, ByVal LibraryName As String, ByVal LocationID As String) As String
 
         Dim S As String = ""
-        'S = S + " SELECT GroupUsers.GroupName, Library.LibraryName, LibraryUsers.UserID, LibraryItems.SourceGuid" + chrw(9) + chrw(9) + " /*KEEP*/" + vbCrLf
-        S = S + " /* GENID:" + LocationID + " *KEEP*/" + vbCrLf
-        S = S + " SELECT LibraryItems.SourceGuid" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-        S = S + ChrW(9) + " FROM   LibraryItems INNER JOIN" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-        S = S + ChrW(9) + "        Library ON LibraryItems.LibraryName = Library.LibraryName INNER JOIN" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-        S = S + ChrW(9) + "        LibraryUsers ON Library.LibraryName = LibraryUsers.LibraryName INNER JOIN" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-        S = S + ChrW(9) + "        GroupLibraryAccess ON Library.LibraryName = GroupLibraryAccess.LibraryName INNER JOIN" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-        S = S + ChrW(9) + "        GroupUsers ON GroupLibraryAccess.GroupName = GroupUsers.GroupName" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-        S = S + ChrW(9) + " where " + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-        S = S + ChrW(9) + "        Library.LibraryName ='" + LibraryName + "' " + ChrW(9) + ChrW(9) + " /*KEEP*/   /*ID57*/" + vbCrLf
+        'S = S + " SELECT GroupUsers.GroupName, Library.LibraryName, LibraryUsers.UserID, LibraryItems.SourceGuid" + chrw(9) + chrw(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + " /* GENID:" + LocationID + " *KEEP*/" + Environment.NewLine
+        S = S + " SELECT LibraryItems.SourceGuid" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + ChrW(9) + " FROM   LibraryItems INNER JOIN" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + ChrW(9) + "        Library ON LibraryItems.LibraryName = Library.LibraryName INNER JOIN" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + ChrW(9) + "        LibraryUsers ON Library.LibraryName = LibraryUsers.LibraryName INNER JOIN" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + ChrW(9) + "        GroupLibraryAccess ON Library.LibraryName = GroupLibraryAccess.LibraryName INNER JOIN" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + ChrW(9) + "        GroupUsers ON GroupLibraryAccess.GroupName = GroupUsers.GroupName" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + ChrW(9) + " where " + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + ChrW(9) + "        Library.LibraryName ='" + LibraryName + "' " + ChrW(9) + ChrW(9) + " /*KEEP*/   /*ID57*/" + Environment.NewLine
 
         If GlobalSearcher = False Then
-            S = S + ChrW(9) + " AND    libraryusers.userid ='" + CurrUserID + "' " + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
+            S = S + ChrW(9) + " AND    libraryusers.userid ='" + CurrUserID + "' " + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
         End If
-        S = S + ChrW(9) + "        /* GLOBAL Searcher = " + GlobalSearcher.ToString + "  */" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
+        S = S + ChrW(9) + "        /* GLOBAL Searcher = " + GlobalSearcher.ToString + "  */" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
 
-        S = S + ChrW(9) + "UNION " + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
+        S = S + ChrW(9) + "UNION " + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
 
-        S = S + ChrW(9) + "Select LI.SourceGuid" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-        S = S + ChrW(9) + "FROM   LibraryItems AS LI INNER JOIN" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-        S = S + ChrW(9) + "       LibraryUsers AS LU ON LI.LibraryName = LU.LibraryName" + ChrW(9) + ChrW(9) + " /*KEEP*/   /*ID58*/" + vbCrLf
+        S = S + ChrW(9) + "Select LI.SourceGuid" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + ChrW(9) + "FROM   LibraryItems AS LI INNER JOIN" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+        S = S + ChrW(9) + "       LibraryUsers AS LU ON LI.LibraryName = LU.LibraryName" + ChrW(9) + ChrW(9) + " /*KEEP*/   /*ID58*/" + Environment.NewLine
         If GlobalSearcher = False Then
-            S = S + ChrW(9) + "WHERE     LI.LibraryName = '" + LibraryName + "'" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
-            S = S + ChrW(9) + "    AND LU.UserID = '" + CurrUserID + "'" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
+            S = S + ChrW(9) + "WHERE     LI.LibraryName = '" + LibraryName + "'" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
+            S = S + ChrW(9) + "    AND LU.UserID = '" + CurrUserID + "'" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
         Else
-            S = S + ChrW(9) + "WHERE     LI.LibraryName = '" + LibraryName + "'" + ChrW(9) + ChrW(9) + " /*KEEP*/" + vbCrLf
+            S = S + ChrW(9) + "WHERE     LI.LibraryName = '" + LibraryName + "'" + ChrW(9) + ChrW(9) + " /*KEEP*/" + Environment.NewLine
         End If
 
         Return S

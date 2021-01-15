@@ -33,11 +33,11 @@ Public Class clsGridMgt
                       ByVal DG As DataGrid,
                       ByRef Dict As Dictionary(Of Integer, String))
 
-        Dim ColDisplayOrder As String = DG.Name + " Column Display Order: " + vbCrLf
+        Dim ColDisplayOrder As String = DG.Name + " Column Display Order: " + Environment.NewLine
         Dict.Clear()
         For I As Integer = 0 To DG.Columns.Count - 1
             Dim sCol As String = DG.Columns(I).Header
-            ColDisplayOrder += sCol + vbCrLf
+            ColDisplayOrder += sCol + Environment.NewLine
             If Dict.ContainsKey(I) Then
                 Dict.Item(I) = sCol
             Else

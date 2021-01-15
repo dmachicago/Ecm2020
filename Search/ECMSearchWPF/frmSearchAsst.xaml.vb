@@ -622,12 +622,12 @@ Public Class frmSearchAsst
 
         For i As Integer = 0 To tArray.Count - 1
             Dim tWord$ = tArray(i).ToString
-            Qry = Qry + vbCrLf + "    " + "FORMSOF(INFLECTIONAL," + tWord + ") or "
+            Qry = Qry + Environment.NewLine + "    " + "FORMSOF(INFLECTIONAL," + tWord + ") or "
         Next
         Qry = Qry.Trim
         Qry = Mid(Qry, 1, Qry.Length - 3)
-        Qry = Qry + "', 1033, 0, 0)" + vbCrLf
-        Qry = Qry + " order by display_term, source_term " + vbCrLf
+        Qry = Qry + "', 1033, 0, 0)" + Environment.NewLine
+        Qry = Qry + " order by display_term, source_term " + Environment.NewLine
 
 
 
@@ -688,12 +688,12 @@ Public Class frmSearchAsst
 
         For i As Integer = 0 To tArray.Count - 1
             Dim tWord$ = tArray(i).ToString
-            Qry = Qry + vbCrLf + "    " + "FORMSOF(THESAURUS," + DQ + tWord + DQ + ") or "
+            Qry = Qry + Environment.NewLine + "    " + "FORMSOF(THESAURUS," + DQ + tWord + DQ + ") or "
         Next
         Qry = Qry.Trim
         Qry = Mid(Qry, 1, Qry.Length - 3)
-        Qry = Qry + "', 0, 0, 0)" + vbCrLf
-        Qry = Qry + " order by display_term, source_term " + vbCrLf
+        Qry = Qry + "', 0, 0, 0)" + Environment.NewLine
+        Qry = Qry + " order by display_term, source_term " + Environment.NewLine
 
 
         ProxySearch.RecordGrowth(gSecureID, Qry)
@@ -791,7 +791,7 @@ Public Class frmSearchAsst
                     lbWords.Items.Add(token)
                 End If
 
-                Msg += ExpandedWords(i).ToString + vbCrLf
+                Msg += ExpandedWords(i).ToString + Environment.NewLine
                 MessageBox.Show(Msg, "Expanded Words", MessageBoxButton.OK)
             Next
             MessageBox.Show("Expansion failed 100A", "Error in expansion", MessageBoxButton.OK)

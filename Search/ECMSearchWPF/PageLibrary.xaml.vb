@@ -128,9 +128,9 @@ Public Class PageLibrary
         'Dim proxy As New SVCSearch.Service1Client
 
         Dim S As String = ""
-        S = S + " delete from LibraryItems where " + vbCrLf
-        S = S + " SourceGuid not in (select emailguid as TgtGuid from Email" + vbCrLf
-        S = S + " union " + vbCrLf
+        S = S + " delete from LibraryItems where " + Environment.NewLine
+        S = S + " SourceGuid not in (select emailguid as TgtGuid from Email" + Environment.NewLine
+        S = S + " union " + Environment.NewLine
         S = S + " select sourceguid as TgtGuid from DataSource)"
 
         PB.IsIndeterminate = True

@@ -134,11 +134,11 @@ Public Class PageGrantContentToUsers
         'tLib = tLib.Replace("'", "''")
 
         Dim S As String = ""
-        S += "SELECT  UserName + ' / ' + UserID As UserID from Users order by UserName " + vbCrLf
-        'S += "FROM    LibraryUsers INNER JOIN" + vbCrLf
-        'S += "Users ON LibraryUsers.UserID = Users.UserID" + vbCrLf
-        'S += "where LibraryUsers.LibraryName = '" + tLib + "'" + vbCrLf
-        'S += "ORDER BY LibraryUsers.LibraryName" + vbCrLf
+        S += "SELECT  UserName + ' / ' + UserID As UserID from Users order by UserName " + Environment.NewLine
+        'S += "FROM    LibraryUsers INNER JOIN" + Environment.NewLine
+        'S += "Users ON LibraryUsers.UserID = Users.UserID" + Environment.NewLine
+        'S += "where LibraryUsers.LibraryName = '" + tLib + "'" + Environment.NewLine
+        'S += "ORDER BY LibraryUsers.LibraryName" + Environment.NewLine
 
         'AddHandler ProxySearch.getListOfStrings3Completed, AddressOf client_PopulateUserListbox
         'EP.setSearchSvcEndPoint(proxy)
@@ -208,11 +208,11 @@ Public Class PageGrantContentToUsers
         LibraryOwnerUserID = LibraryOwnerUserID.Replace("'", "''")
 
         Dim Mysql As String = ""
-        Mysql += "SELECT     Users.UserName + ' / ' + LibraryUsers.UserID as UserID" + vbCrLf
-        Mysql += "FROM         LibraryUsers INNER JOIN" + vbCrLf
-        Mysql += "Users ON LibraryUsers.UserID = Users.UserID" + vbCrLf
-        Mysql += "WHERE     (LibraryUsers.LibraryName = '" + LibName + "') AND (LibraryUsers.LibraryOwnerUserID = '" + LibraryOwnerUserID + "')" + vbCrLf
-        Mysql += "Order by Users.UserName" + vbCrLf
+        Mysql += "SELECT     Users.UserName + ' / ' + LibraryUsers.UserID as UserID" + Environment.NewLine
+        Mysql += "FROM         LibraryUsers INNER JOIN" + Environment.NewLine
+        Mysql += "Users ON LibraryUsers.UserID = Users.UserID" + Environment.NewLine
+        Mysql += "WHERE     (LibraryUsers.LibraryName = '" + LibName + "') AND (LibraryUsers.LibraryOwnerUserID = '" + LibraryOwnerUserID + "')" + Environment.NewLine
+        Mysql += "Order by Users.UserName" + Environment.NewLine
 
         'AddHandler ProxySearch.getListOfStrings1Completed, AddressOf client_PopulateLibraryUserListbox
         'EP.setSearchSvcEndPoint(proxy)
@@ -307,25 +307,25 @@ Public Class PageGrantContentToUsers
             COMMON.RemoveSingleQuotes(LibraryOwnerUserID)
 
             S = ""
-            S += "if not exists (Select Userid from LibraryUsers where UserID = '@UserID' and LibraryOwnerUserID = '@LibraryOwnerUserID' and LibraryName = '@LibraryName')" + vbCrLf
-            S += "BEGIN" + vbCrLf
-            S += " INSERT INTO [LibraryUsers]" + vbCrLf
-            S += " ([UserID]" + vbCrLf
-            S += " ,[LibraryOwnerUserID]" + vbCrLf
-            S += " ,[LibraryName]" + vbCrLf
-            S += " ,[RowCreationDate]" + vbCrLf
-            S += " ,[RowLastModDate]" + vbCrLf
-            S += " ,RepoSvrName" + vbCrLf
-            S += " ,[RepoName])" + vbCrLf
-            S += " VALUES " + vbCrLf
-            S += " ('@UserID'" + vbCrLf
-            S += " ,'@LibraryOwnerUserID'" + vbCrLf
-            S += " ,'@LibraryName'" + vbCrLf
-            S += " ,GETDATE()" + vbCrLf
-            S += " ,GETDATE()" + vbCrLf
-            S += " ,@@SERVERNAME" + vbCrLf
-            S += " ,DB_NAME())" + vbCrLf
-            S += "END" + vbCrLf
+            S += "if not exists (Select Userid from LibraryUsers where UserID = '@UserID' and LibraryOwnerUserID = '@LibraryOwnerUserID' and LibraryName = '@LibraryName')" + Environment.NewLine
+            S += "BEGIN" + Environment.NewLine
+            S += " INSERT INTO [LibraryUsers]" + Environment.NewLine
+            S += " ([UserID]" + Environment.NewLine
+            S += " ,[LibraryOwnerUserID]" + Environment.NewLine
+            S += " ,[LibraryName]" + Environment.NewLine
+            S += " ,[RowCreationDate]" + Environment.NewLine
+            S += " ,[RowLastModDate]" + Environment.NewLine
+            S += " ,RepoSvrName" + Environment.NewLine
+            S += " ,[RepoName])" + Environment.NewLine
+            S += " VALUES " + Environment.NewLine
+            S += " ('@UserID'" + Environment.NewLine
+            S += " ,'@LibraryOwnerUserID'" + Environment.NewLine
+            S += " ,'@LibraryName'" + Environment.NewLine
+            S += " ,GETDATE()" + Environment.NewLine
+            S += " ,GETDATE()" + Environment.NewLine
+            S += " ,@@SERVERNAME" + Environment.NewLine
+            S += " ,DB_NAME())" + Environment.NewLine
+            S += "END" + Environment.NewLine
 
             S = S.Replace("@UserID", UID)
             S = S.Replace("@LibraryOwnerUserID", LibraryOwnerUserID)

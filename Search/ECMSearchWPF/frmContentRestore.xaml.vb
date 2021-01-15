@@ -21,8 +21,8 @@
     Dim dgContent As DataGrid
 
     Public Sub New(ByVal RepoTableName As String, ByVal gEmails As DataGrid, ByVal gEmailAttachment As DataGrid, ByVal gContent As DataGrid)
-        'InitializeComponent()
-
+        InitializeComponent()
+        '** The above line was uncommented by WDM on 01/15/2021
         'EP.setSearchSvcEndPoint(proxy)
 
         UserID = _UserID

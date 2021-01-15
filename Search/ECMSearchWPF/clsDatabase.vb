@@ -92,15 +92,15 @@ Public Class clsDatabase
         Dim CS As String = getGatewayCs()
         Dim S As String = ""
 
-        S += " Select " + vbCrLf
-        S += " SVCGateway_Endpoint" + vbCrLf
-        S += " ,SVCSearch_Endpoint" + vbCrLf
-        S += " ,SVCDownload_Endpoint" + vbCrLf
+        S += " Select " + Environment.NewLine
+        S += " SVCGateway_Endpoint" + Environment.NewLine
+        S += " ,SVCSearch_Endpoint" + Environment.NewLine
+        S += " ,SVCDownload_Endpoint" + Environment.NewLine
         S += " FROM SecureAttach"
         S += " Where RowID = " + RowID
 
         If gDebug.Equals(True) Then
-            Debug.Print("01x SQL: " + vbCrLf + S)
+            Debug.Print("01x SQL: " + Environment.NewLine + S)
         End If
         Dim RSData As SqlDataReader = Nothing
         Dim CONN As New SqlConnection(CS)

@@ -283,7 +283,7 @@ Public Class clsIsolatedStorage
         Dim isoStore As IsolatedStorageFile
         isoStore = IsolatedStorageFile.GetUserStoreForDomain
         Dim Buffer() As Byte
-        Dim tgtLine As String = "@@" + ChrW(254) + Now.ToString + vbCrLf
+        Dim tgtLine As String = "@@" + ChrW(254) + Now.ToString + Environment.NewLine
         Try
             Using store = IsolatedStorageFile.GetUserStoreForDomain()
                 Dim TotalFields As Integer = 4
@@ -439,7 +439,7 @@ Public Class clsIsolatedStorage
         Dim isoStore As IsolatedStorageFile
         isoStore = IsolatedStorageFile.GetUserStoreForDomain
         Dim Buffer() As Byte
-        Dim tgtLine As String = "@@" + ChrW(254) + Now.ToString + vbCrLf
+        Dim tgtLine As String = "@@" + ChrW(254) + Now.ToString + Environment.NewLine
         Try
             Using store = IsolatedStorageFile.GetUserStoreForDomain()
                 Dim TotalFields As Integer = 4
@@ -479,7 +479,7 @@ Public Class clsIsolatedStorage
         Dim isoStore As IsolatedStorageFile
         isoStore = IsolatedStorageFile.GetUserStoreForDomain
         Dim Buffer() As Byte
-        Dim tgtLine As String = ColName + ChrW(254) + SortType + vbCrLf
+        Dim tgtLine As String = ColName + ChrW(254) + SortType + Environment.NewLine
         Try
             Using store = IsolatedStorageFile.GetUserStoreForDomain()
                 Dim TotalFields As Integer = 4
@@ -515,7 +515,7 @@ Public Class clsIsolatedStorage
         Dim tgtVal As String = ""
         Dim isoStore As IsolatedStorageFile
         isoStore = IsolatedStorageFile.GetUserStoreForDomain
-        Dim tgtLine As String = ColName + ChrW(254) + SortType + vbCrLf
+        Dim tgtLine As String = ColName + ChrW(254) + SortType + Environment.NewLine
 
         Try
             RC = True
@@ -578,7 +578,7 @@ Public Class clsIsolatedStorage
         Dim isoStore As IsolatedStorageFile
         isoStore = IsolatedStorageFile.GetUserStoreForDomain
         Dim Buffer() As Byte
-        Dim tgtLine As String = "@@" + ChrW(254) + Now.ToString + vbCrLf
+        Dim tgtLine As String = "@@" + ChrW(254) + Now.ToString + Environment.NewLine
         Try
             Using store = IsolatedStorageFile.GetUserStoreForDomain()
                 Dim TotalFields As Integer = 4
@@ -1371,7 +1371,7 @@ Public Class clsIsolatedStorage
     ''' <returns>System.String.</returns>
     Function SetCLC_State2(ByVal UID As String, ByVal currState As String, ByVal CompanyID As String, ByVal RepoID As String) As String
 
-        Dim EP As String = GatewayEndPoint + vbCrLf + DownloadEndPoint
+        Dim EP As String = GatewayEndPoint + Environment.NewLine + DownloadEndPoint
 
         Try
             currState = CompanyID + "|" + RepoID + "|" + currState.ToUpper + "|" + _SecureID.ToString + "|" + GatewayEndPoint + "|" + gENCGWCS + "|" + DownloadEndPoint + "|" + DateTime.Now.ToString
@@ -1526,7 +1526,7 @@ Public Class clsIsolatedStorage
         isoStore = IsolatedStorageFile.GetUserStoreForDomain
         Dim tDir As String = ""
         For Each S As String In isoStore.GetDirectoryNames
-            tDir += S + vbCrLf
+            tDir += S + Environment.NewLine
         Next
         MessageBox.Show(tDir)
         isoStore.Dispose()
@@ -1777,7 +1777,7 @@ Public Class clsIsolatedStorage
                         Dim A() As String = formData.Split(ChrW(254))
                         Dim tKey As String = A(0)
                         Dim tValue As String = A(1)
-                        Msg += tKey + ChrW(9) + tValue + vbCrLf
+                        Msg += tKey + ChrW(9) + tValue + Environment.NewLine
                         If DICT.ContainsKey(tKey) Then
                             DICT.Item(tKey) = tValue
                         Else
@@ -1959,7 +1959,7 @@ Public Class clsIsolatedStorage
     Public Sub PersistDataInit(ByVal tKey As String, ByVal tData As String)
 
         Try
-            Dim tgtLine As String = tKey + "|" + tData + vbCrLf
+            Dim tgtLine As String = tKey + "|" + tData + Environment.NewLine
             Dim isoStorage As IsolatedStorageFile
             isoStorage = IsolatedStorageFile.GetUserStoreForDomain
             Dim stmWriter As New StreamWriter(New IsolatedStorageFileStream("Persist.dat", FileMode.Create, isoStorage))
@@ -1980,7 +1980,7 @@ Public Class clsIsolatedStorage
     Public Sub PersistDataSave(ByVal tKey As String, ByVal tData As String)
 
         Try
-            Dim tgtLine As String = tKey + "|" + tData + vbCrLf
+            Dim tgtLine As String = tKey + "|" + tData + Environment.NewLine
             Dim isoStorage As IsolatedStorageFile
             isoStorage = IsolatedStorageFile.GetUserStoreForDomain
             Dim stmWriter As New StreamWriter(New IsolatedStorageFileStream("Persist.dat", FileMode.Append, isoStorage))
@@ -2010,7 +2010,7 @@ Public Class clsIsolatedStorage
         Dim isoStorage As IsolatedStorageFile
 
         Try
-            'Dim tgtLine As String = tKey + "|" + tData + vbCrLf
+            'Dim tgtLine As String = tKey + "|" + tData + Environment.NewLine
 
             isoStorage = IsolatedStorageFile.GetUserStoreForDomain
             Dim sr As StreamReader = New StreamReader(isoStorage.OpenFile("Persist.dat", FileMode.Open, FileAccess.Read))
@@ -2118,7 +2118,7 @@ Public Class clsIsolatedStorage
     ''' <returns>System.String.</returns>
     Function SetSAAS_State(ByVal UID As String, ByVal currState As String, ByVal CompanyID As String, ByVal RepoID As String) As String
 
-        Dim EP As String = GatewayEndPoint + vbCrLf + DownloadEndPoint
+        Dim EP As String = GatewayEndPoint + Environment.NewLine + DownloadEndPoint
         currState = currState.ToUpper
 
         If currState.Equals("ACTIVE") Or currState.Equals("INACTIVE") Then

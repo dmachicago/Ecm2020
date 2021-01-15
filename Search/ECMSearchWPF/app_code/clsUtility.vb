@@ -35,7 +35,7 @@ Public Class clsUtility
                 BlankCnt += 1
             ElseIf CH.Equals(ChrW(34)) Then
                 BlankCnt += 1
-            ElseIf CH.Equals(vbCrLf) Then
+            ElseIf CH.Equals(Environment.NewLine) Then
                 BlankCnt += 1
             ElseIf CH.Equals(vbCr) Then
                 BlankCnt += 1
@@ -366,7 +366,7 @@ Public Class clsUtility
                 End If
             Next
         Catch ex As Exception
-            LOG.WriteToSqlLog("ERROR: clsUtility:RemoveBadChars - " + ex.Message + vbCrLf + ex.StackTrace)
+            LOG.WriteToSqlLog("ERROR: clsUtility:RemoveBadChars - " + ex.Message + Environment.NewLine + ex.StackTrace)
         End Try
 
         Return tVal.Trim
@@ -450,7 +450,7 @@ Public Class clsUtility
             SS = SS.Replace("[", " ")
             SS = SS.Replace("]", " ")
         Catch ex As Exception
-            LOG.WriteToSqlLog("ERROR: clsUtility:RemoveUnwantedCharacters - " + ex.Message + vbCrLf + ex.StackTrace)
+            LOG.WriteToSqlLog("ERROR: clsUtility:RemoveUnwantedCharacters - " + ex.Message + Environment.NewLine + ex.StackTrace)
         End Try
 
         Return SS
@@ -459,9 +459,9 @@ Public Class clsUtility
     Public Function RemoveCrLF(ByVal tVal As String) As String
         Dim SS As String = tVal
         Try
-            SS = SS.Replace(vbCrLf, " ")
+            SS = SS.Replace(Environment.NewLine, " ")
         Catch ex As Exception
-            LOG.WriteToSqlLog("ERROR: clsUtility:RemoveCrLF - " + ex.Message + vbCrLf + ex.StackTrace)
+            LOG.WriteToSqlLog("ERROR: clsUtility:RemoveCrLF - " + ex.Message + Environment.NewLine + ex.StackTrace)
         End Try
         Return SS
     End Function
@@ -670,14 +670,14 @@ Public Class clsUtility
         Dim B As Boolean = True
         Dim bApplied As Boolean = False
         If CustomerID$.Length = 0 Then
-            MessageBox.Show("Customer ID required: " + vbCrLf + "If you do not know your Customer ID, " + vbCrLf + "please contact ECM Support or your ECM administrator.")
+            MessageBox.Show("Customer ID required: " + Environment.NewLine + "If you do not know your Customer ID, " + Environment.NewLine + "please contact ECM Support or your ECM administrator.")
             Return ""
         End If
 
         Try
             Dim SelectedServer$ = ServerName$
             If SelectedServer$.Length = 0 Then
-                MessageBox.Show("Please select the Server to which this license applies." + vbCrLf + "The server name and must match that contained within the license.")
+                MessageBox.Show("Please select the Server to which this license applies." + Environment.NewLine + "The server name and must match that contained within the license.")
                 Return False
             End If
             Dim FQN$ = LicenseDirectory$ + "\" + "EcmLicense." + ServerName + ".txt"
@@ -701,7 +701,7 @@ Public Class clsUtility
             objReader.Close()
             'Return strContents
         Catch Ex As Exception
-            MessageBox.Show("Failed to load License file: " + vbCrLf + Ex.Message)
+            MessageBox.Show("Failed to load License file: " + Environment.NewLine + Ex.Message)
             'LogThis("clsDatabase : LoadLicenseFile : 5914 : " + Ex.Message)
             Return ""
         End Try
@@ -1109,16 +1109,16 @@ Public Class clsUtility
             Token = A(i)
             If Token.Length > 0 Then
                 If Token.ToUpper.Equals("FROM") Then
-                    MyQry = vbCrLf + vbTab + MyQry
+                    MyQry = Environment.NewLine + vbTab + MyQry
                 End If
                 If Token.ToUpper.Equals("WHERE") Then
-                    MyQry = vbCrLf + vbTab + MyQry
+                    MyQry = Environment.NewLine + vbTab + MyQry
                 End If
                 If Token.ToUpper.Equals("AND") Then
-                    MyQry = vbCrLf + vbTab + MyQry
+                    MyQry = Environment.NewLine + vbTab + MyQry
                 End If
                 If Token.ToUpper.Equals("OR") Then
-                    MyQry = vbCrLf + vbTab + MyQry
+                    MyQry = Environment.NewLine + vbTab + MyQry
                 End If
                 PrevToken = Token
             End If
@@ -1138,7 +1138,7 @@ Public Class clsUtility
         Dim tempSql As String = ""
         Dim tStr As String = ""
         Dim OrderByClause As String = ""
-        Dim A() As String = tSql.Split(vbCrLf)
+        Dim A() As String = tSql.Split(Environment.NewLine)
         For I As Integer = 0 To UBound(A) - 1
             tStr = A(I).Trim
             If InStr(tStr, "order by", CompareMethod.Text) > 0 Then
@@ -1158,7 +1158,7 @@ Public Class clsUtility
             End If
         Next
 
-        ModifiedList.Add("UNION ALL" + vbCrLf)
+        ModifiedList.Add("UNION ALL" + Environment.NewLine)
 
         For I As Integer = 0 To ModifiedList.Count - 1
             Console.WriteLine(ModifiedList(I))
@@ -1196,12 +1196,12 @@ Public Class clsUtility
             End If
         Next
 
-        ModifiedList.Add(OrderByClause + vbCrLf)
+        ModifiedList.Add(OrderByClause + Environment.NewLine)
 
         tempSql = ""
 
         For I As Integer = 0 To ModifiedList.Count - 1
-            tempSql += ModifiedList(I) + vbCrLf
+            tempSql += ModifiedList(I) + Environment.NewLine
             Console.WriteLine(ModifiedList(I))
         Next
 
@@ -1314,7 +1314,7 @@ Public Class clsUtility
             xDate = sDay + "/" + sMonth + "/" + sYear + " " + sTimeOfDay : LL = 12
         Catch ex As Exception
             xDate = "01/01/1800 01:01:01"
-            log.WriteToSqlLog("ERRROR date: ConvertDate 100: LL= " + LL.ToString + ", error on converting date '" + tDate.ToString + "'." + vbCrLf + ex.Message)
+            log.WriteToSqlLog("ERRROR date: ConvertDate 100: LL= " + LL.ToString + ", error on converting date '" + tDate.ToString + "'." + Environment.NewLine + ex.Message)
         End Try
 
         Return xDate

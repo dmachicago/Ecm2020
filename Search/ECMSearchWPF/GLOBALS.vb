@@ -445,16 +445,16 @@
             Severity = "ERROR"
         End If
         Dim S As String = ""
-        S += " INSERT INTO [ErrorLogs]" + vbCrLf
-        S += " ([LogName]" + vbCrLf
-        S += " ,[LoggedMessage]" + vbCrLf
-        S += " ,[EntryUserID]" + vbCrLf
-        S += " ,Severity)" + vbCrLf
-        S += " VALUES( " + vbCrLf
-        S += " '" + LogName + "'" + vbCrLf
-        S += " ,'" + LoggedMessage + "'" + vbCrLf
-        S += " ,'" + EntryUserID + "'" + vbCrLf
-        S += " ,'" + Severity + "'" + vbCrLf
+        S += " INSERT INTO [ErrorLogs]" + Environment.NewLine
+        S += " ([LogName]" + Environment.NewLine
+        S += " ,[LoggedMessage]" + Environment.NewLine
+        S += " ,[EntryUserID]" + Environment.NewLine
+        S += " ,Severity)" + Environment.NewLine
+        S += " VALUES( " + Environment.NewLine
+        S += " '" + LogName + "'" + Environment.NewLine
+        S += " ,'" + LoggedMessage + "'" + Environment.NewLine
+        S += " ,'" + EntryUserID + "'" + Environment.NewLine
+        S += " ,'" + Severity + "'" + Environment.NewLine
         S += " )"
 
         ExecuteSql(gSecureID, S)

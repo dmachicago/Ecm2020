@@ -669,10 +669,10 @@ ContinueTheExe:
 
             'If gMaxClients > 0 Then
             '    If gNumberOfRegisterdMachines > gMaxClients Then
-            '        Dim MSG$ = "It appears all ECM Client licenses have been used." + vbCrLf
-            '        MSG += "Please logon from a licensed machine," + vbCrLf + vbCrLf
-            '        MSG += "or contact ECM Library for additional client licenses." + vbCrLf + vbCrLf
-            '        MSG += "Thank you, closing down." + vbCrLf
+            '        Dim MSG$ = "It appears all ECM Client licenses have been used." + Environment.NewLine
+            '        MSG += "Please logon from a licensed machine," + Environment.NewLine + Environment.NewLine
+            '        MSG += "or contact ECM Library for additional client licenses." + Environment.NewLine + Environment.NewLine
+            '        MSG += "Thank you, closing down." + Environment.NewLine
             '        MessageBox.Show(MSG)
             '        RC = False
             '        Return RC
@@ -687,12 +687,12 @@ ContinueTheExe:
 
             If gNbrOfRegisteredUsers > gNbrOfUsers Then
                 Dim Msg$ = ""
-                Msg = Msg + "FrmfrmInit : MachineName : 1103 : " + vbCrLf
-                Msg = Msg + "     Number of licenses warning : '" + MachineName + "'" + vbCrLf
-                Msg = Msg + "     We are very sorry, but the maximum number of USERS has been exceeded." + vbCrLf
-                Msg = Msg + "     ECM found " + CurrNbrOfUsers.ToString + " users currently registered in the system." + vbCrLf
-                Msg = Msg + "     Your license awards " + gNbrOfUsers.ToString + " users." + vbCrLf
-                Msg = Msg + "You will have to login with an existing User ID and Password." + vbCrLf + "Please contact admin for support."
+                Msg = Msg + "FrmfrmInit : MachineName : 1103 : " + Environment.NewLine
+                Msg = Msg + "     Number of licenses warning : '" + MachineName + "'" + Environment.NewLine
+                Msg = Msg + "     We are very sorry, but the maximum number of USERS has been exceeded." + Environment.NewLine
+                Msg = Msg + "     ECM found " + CurrNbrOfUsers.ToString + " users currently registered in the system." + Environment.NewLine
+                Msg = Msg + "     Your license awards " + gNbrOfUsers.ToString + " users." + Environment.NewLine
+                Msg = Msg + "You will have to login with an existing User ID and Password." + Environment.NewLine + "Please contact admin for support."
                 LOG.WriteToSqlLog(Msg)
                 MessageBox.Show(Msg)
                 LOG = Nothing
@@ -708,12 +708,12 @@ ContinueTheExe:
                 _MachineID = lblAttachedMachineName.Content
 
                 Dim Msg$ = ""
-                Msg = Msg + "FrmfrmInit : Current Users : 1103b : " + vbCrLf
-                Msg = Msg + "     Number of current SEATS warning : '" + MachineName + "'" + vbCrLf
-                Msg = Msg + "     We are very sorry, but the maximum number of seats (WorkStations) has been exceeded." + vbCrLf
-                Msg = Msg + "     ECM found " + CurrNbrOfMachine.ToString + " machines registered in the system." + vbCrLf
-                Msg = Msg + "     Your license awards " + gNbrOfSeats.ToString + " seats." + vbCrLf
-                Msg = Msg + "You will have to login from a WorkStation already defined to ECM." + vbCrLf + "Please contact admin for support."
+                Msg = Msg + "FrmfrmInit : Current Users : 1103b : " + Environment.NewLine
+                Msg = Msg + "     Number of current SEATS warning : '" + MachineName + "'" + Environment.NewLine
+                Msg = Msg + "     We are very sorry, but the maximum number of seats (WorkStations) has been exceeded." + Environment.NewLine
+                Msg = Msg + "     ECM found " + CurrNbrOfMachine.ToString + " machines registered in the system." + Environment.NewLine
+                Msg = Msg + "     Your license awards " + gNbrOfSeats.ToString + " seats." + Environment.NewLine
+                Msg = Msg + "You will have to login from a WorkStation already defined to ECM." + Environment.NewLine + "Please contact admin for support."
                 LOG.WriteToSqlLog(Msg)
                 MessageBox.Show(Msg)
                 RC = False
@@ -772,7 +772,7 @@ ContinueTheExe:
 
                 If Now > ExpirationDate Then
                     LOG.WriteToSqlLog("FrmfrmInit : 1001 We are very sorry, but your software LEASE has expired. Please contact ECM Library support.")
-                    MessageBox.Show("We are very sorry, but your software license has expired." + vbCrLf + vbCrLf + "Please contact ECM Library support.")
+                    MessageBox.Show("We are very sorry, but your software license has expired." + Environment.NewLine + Environment.NewLine + "Please contact ECM Library support.")
                     MessageBox.Show("The application will now end, please restart with the new license.")
                     RC = False
                     LOG = Nothing
@@ -783,7 +783,7 @@ ContinueTheExe:
             MaintExpire = gMaintExpire
             If Now > MaintExpire Then
                 Dim NoticeMessage As String = ""
-                NoticeMessage = "Crititcal NOTICE Maintenance Expiration : We are very sorry to inform you, but your maintenance agreement has expired. No further support can be supplied and product updates are ended until your maintenance license is renewed." + vbCrLf + vbCrLf + "Please contact ECM Library support."
+                NoticeMessage = "Crititcal NOTICE Maintenance Expiration : We are very sorry to inform you, but your maintenance agreement has expired. No further support can be supplied and product updates are ended until your maintenance license is renewed." + Environment.NewLine + Environment.NewLine + "Please contact ECM Library support."
                 Me.Title = "Crititcal NOTICE Maintenance Expired."
                 LOG.WriteToSqlLog(NoticeMessage)
             End If
@@ -1384,7 +1384,7 @@ GoodLogin:
             lblAttached.Content = InitProxy.TestConnection()
         Catch ex As Exception
             lblAttached.Content = "NOT ATTACHED : ERROR"
-            MessageBox.Show("ERROR in attaching to service:" + vbCrLf + ex.Message + vbCrLf + "*******************************************" + ex.InnerException.ToString)
+            MessageBox.Show("ERROR in attaching to service:" + Environment.NewLine + ex.Message + Environment.NewLine + "*******************************************" + ex.InnerException.ToString)
         End Try
 
         Return bAttach
@@ -1402,7 +1402,7 @@ GoodLogin:
             lblAttached.Content = "ATTACHED to Database and IIS"
         Catch ex As Exception
             lblAttached.Content = "NOT ATTACHED"
-            MessageBox.Show("ERROR in attaching to service:" + vbCrLf + ex.Message + vbCrLf + "*******************************************" + ex.InnerException.ToString)
+            MessageBox.Show("ERROR in attaching to service:" + Environment.NewLine + ex.Message + Environment.NewLine + "*******************************************" + ex.InnerException.ToString)
         End Try
     End Sub
 
@@ -1442,7 +1442,7 @@ GoodLogin:
             MessageBox.Show("Successfully connected DIRECTLY to the database...")
         Catch ex As Exception
             iCnt = -1
-            MessageBox.Show("Could not connect to the database:" + vbCrLf + ex.Message + vbCrLf + "*******************************************" + ex.InnerException.ToString)
+            MessageBox.Show("Could not connect to the database:" + Environment.NewLine + ex.Message + Environment.NewLine + "*******************************************" + ex.InnerException.ToString)
         End Try
     End Sub
 
@@ -1455,7 +1455,7 @@ GoodLogin:
         Try
             MessageBox.Show(InitProxy.TestIISConnection())
         Catch ex As Exception
-            MessageBox.Show("ERROR in attaching to IIS:" + vbCrLf + ex.Message + vbCrLf + "*******************************************" + ex.InnerException.ToString)
+            MessageBox.Show("ERROR in attaching to IIS:" + Environment.NewLine + ex.Message + Environment.NewLine + "*******************************************" + ex.InnerException.ToString)
         End Try
     End Sub
 End Class

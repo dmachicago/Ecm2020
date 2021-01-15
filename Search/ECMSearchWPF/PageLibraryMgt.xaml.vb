@@ -133,14 +133,14 @@ Public Class PageLibraryMgt
             S = S + "Select [LibraryName] FROM [Library] order by [LibraryName]"
         Else
             S = ""
-            S = S + "Select distinct LibraryName from GroupLibraryAccess " + vbCrLf
-            S = S + " where GroupName in " + vbCrLf
-            S = S + " (select distinct GroupName from GroupUsers where UserID = '" + gCurrLoginID + "')" + vbCrLf
-            S = S + "             union " + vbCrLf
-            S = S + " select distinct LibraryName from LibraryUsers where UserID = '" + gCurrLoginID + "'" + vbCrLf
-            S = S + " and LibraryName in (select LibraryName from Library)" + vbCrLf
-            S = S + "             union " + vbCrLf
-            S = S + " select LibraryName from Library where UserID = '" + gCurrLoginID + "'" + vbCrLf
+            S = S + "Select distinct LibraryName from GroupLibraryAccess " + Environment.NewLine
+            S = S + " where GroupName in " + Environment.NewLine
+            S = S + " (select distinct GroupName from GroupUsers where UserID = '" + gCurrLoginID + "')" + Environment.NewLine
+            S = S + "             union " + Environment.NewLine
+            S = S + " select distinct LibraryName from LibraryUsers where UserID = '" + gCurrLoginID + "'" + Environment.NewLine
+            S = S + " and LibraryName in (select LibraryName from Library)" + Environment.NewLine
+            S = S + "             union " + Environment.NewLine
+            S = S + " select LibraryName from Library where UserID = '" + gCurrLoginID + "'" + Environment.NewLine
         End If
 
         Dim strListOfItems As String = ""
@@ -180,7 +180,7 @@ Public Class PageLibraryMgt
         Dim S As String = ""
 
         If _isAdmin Then
-            S = "Select [GroupName] FROM  [UserGroup]" + vbCrLf
+            S = "Select [GroupName] FROM  [UserGroup]" + Environment.NewLine
             If ckMyGroupOnly.IsChecked Then
                 S += "Where GroupOwnerUserID = '" + gCurrLoginID + "' "
                 SB.Text = "Showing only your groups"
@@ -471,7 +471,7 @@ Public Class PageLibraryMgt
                 Dim LibraryItemGuid As String = item("LibraryItemGuid")
                 LibItemOwner = item("LibraryOwnerUserID")
                 If LibItemOwner.ToUpper.Equals(gCurrLoginID.ToUpper) Then
-                    S = "Delete from LibraryItems where LibraryItemGuid  = '" + LibraryItemGuid + "'" + vbCrLf
+                    S = "Delete from LibraryItems where LibraryItemGuid  = '" + LibraryItemGuid + "'" + Environment.NewLine
 
                     PB.IsIndeterminate = True
                     PB.Visibility = Windows.Visibility.Visible
@@ -695,8 +695,8 @@ Public Class PageLibraryMgt
                 MessageBox.Show("ERROR: client_PopulateDgAssigned 101 - Line# " + L.ToString)
             End If
         Catch ex As Exception
-            If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt - ERROR: client_PopulateDgAssigned 101B -  - Line# " + L.ToString + vbCrLf + ex.Message)
-            MessageBox.Show("PageLibraryMgt - ERROR: client_PopulateDgAssigned 101B -  - Line# " + L.ToString + vbCrLf + ex.Message)
+            If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt - ERROR: client_PopulateDgAssigned 101B -  - Line# " + L.ToString + Environment.NewLine + ex.Message)
+            MessageBox.Show("PageLibraryMgt - ERROR: client_PopulateDgAssigned 101B -  - Line# " + L.ToString + Environment.NewLine + ex.Message)
         End Try
 
         'RemoveHandler ProxySearch.PopulateDgAssignedCompleted, AddressOf client_PopulateDgAssigned
@@ -1038,9 +1038,9 @@ Public Class PageLibraryMgt
     Private Sub hlValidate_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles hlValidate.Click
         If ddebug Then XLOG.WriteTraceLog("PageLibraryMgt: hlValidate_Click 101")
         Dim S As String = ""
-        S = " delete from LibraryItems" + vbCrLf
-        S += " where SourceGuid not in (Select SourceGuid from datasource) " + vbCrLf
-        S += " and SourceGuid not in (Select EmailGuid from Email)" + vbCrLf
+        S = " delete from LibraryItems" + Environment.NewLine
+        S += " where SourceGuid not in (Select SourceGuid from datasource) " + Environment.NewLine
+        S += " and SourceGuid not in (Select EmailGuid from Email)" + Environment.NewLine
 
         PB.IsIndeterminate = True
         PB.Visibility = Windows.Visibility.Visible

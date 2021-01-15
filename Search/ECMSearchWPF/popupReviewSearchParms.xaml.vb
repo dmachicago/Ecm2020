@@ -34,7 +34,7 @@ Public Class popupReviewSearchParms
                 sText += dgParms.Items(I).Item("Term") + ", "
                 sText += dgParms.Items(I).Item("TermVal") + ", "
                 sText += dgParms.Items(I).Item("SearchTypeCode") + ", "
-                sText += dgParms.Items(I).Item("TermDataType") + vbCrLf
+                sText += dgParms.Items(I).Item("TermDataType") + Environment.NewLine
             Catch ex As Exception
                 Console.WriteLine("Missing Item #" + I.ToString)
             End Try

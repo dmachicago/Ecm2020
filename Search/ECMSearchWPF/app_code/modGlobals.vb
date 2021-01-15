@@ -728,7 +728,7 @@ Module modGlobals
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
@@ -757,11 +757,11 @@ Module modGlobals
             ' Create an instance of StreamWriter to write text to a file.
             Using sw As StreamWriter = New StreamWriter(tFQN, True)
                 ' Add some text to the file.                                    
-                sw.WriteLine(Now.ToString + ": " + msg + vbCrLf)
+                sw.WriteLine(Now.ToString + ": " + msg + Environment.NewLine)
                 sw.Close()
             End Using
         Catch ex As Exception
-            Console.WriteLine("Error 154.324.1d: WriteTraceLogBackup: " + vbCrLf + ex.Message)
+            Console.WriteLine("Error 154.324.1d: WriteTraceLogBackup: " + Environment.NewLine + ex.Message)
         End Try
         GC.Collect()
 

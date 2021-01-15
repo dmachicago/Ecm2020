@@ -22,7 +22,7 @@
                 S += SIC
             Next
         Catch ex As Exception
-            Dim msg As String = (I & ChrW(9) & CH & ChrW(9) & Phrase & ChrW(9) & SIC) + vbCrLf + ex.Message
+            Dim msg As String = (I & ChrW(9) & CH & ChrW(9) & Phrase & ChrW(9) & SIC) + Environment.NewLine + ex.Message
             MessageBox.Show(msg)
         End Try
 
@@ -68,7 +68,7 @@
                 K = K + 1 : LL = 55
             Next
         Catch ex As Exception
-            MessageBox.Show("K: " & K & vbCrLf & "LL: " & LL.ToString & vbCrLf & I & ChrW(9) & CH & ChrW(9) & Phrase & ChrW(9) & SIC)
+            MessageBox.Show("K: " & K & Environment.NewLine & "LL: " & LL.ToString & Environment.NewLine & I & ChrW(9) & CH & ChrW(9) & Phrase & ChrW(9) & SIC)
             MessageBox.Show("ERROR 100xx02: " + ex.Message)
         End Try
 
