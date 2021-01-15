@@ -1,0 +1,1442 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 12">
+<meta name=Originator content="Microsoft Word 12">
+<link rel=File-List href="Query%20Engine_files/filelist.xml">
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Dale Miller</o:Author>
+  <o:LastAuthor>Liz Garnand</o:LastAuthor>
+  <o:Revision>4</o:Revision>
+  <o:TotalTime>14</o:TotalTime>
+  <o:Created>2009-09-16T00:39:00Z</o:Created>
+  <o:LastSaved>2009-09-19T22:39:00Z</o:LastSaved>
+  <o:Pages>4</o:Pages>
+  <o:Words>2265</o:Words>
+  <o:Characters>12911</o:Characters>
+  <o:Company>Hewlett-Packard</o:Company>
+  <o:Lines>107</o:Lines>
+  <o:Paragraphs>30</o:Paragraphs>
+  <o:CharactersWithSpaces>15146</o:CharactersWithSpaces>
+  <o:Version>12.00</o:Version>
+ </o:DocumentProperties>
+ <o:OfficeDocumentSettings>
+  <o:TargetScreenSize>1024x768</o:TargetScreenSize>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+<link rel=themeData href="Query%20Engine_files/themedata.thmx">
+<link rel=colorSchemeMapping href="Query%20Engine_files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:PunctuationKerning/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:SplitPgBreakAndParaMark/>
+   <w:DontVertAlignCellWithSp/>
+   <w:DontBreakConstrainedForcedTables/>
+   <w:DontVertAlignInTxbx/>
+   <w:Word11KerningPairs/>
+   <w:CachedColBalance/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
+  DefSemiHidden="true" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="267">
+  <w:LsdException Locked="false" Priority="0" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 9"/>
+  <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" Priority="10" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" Priority="11" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="22" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="59" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Table Grid"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611985 1107304683 0 0 159 0;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611985 1073741899 0 0 159 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611985 1073750139 0 0 159 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+h1
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 1 Char";
+	mso-style-next:Normal;
+	margin-top:24.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	mso-bidi-font-size:14.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#365F91;
+	mso-themecolor:accent1;
+	mso-themeshade:191;
+	mso-font-kerning:0pt;
+	font-weight:bold;}
+h2
+	{mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 2 Char";
+	mso-style-next:Normal;
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:13.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	font-weight:bold;}
+h3
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 3 Char";
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:3;
+	font-size:13.5pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	mso-themecolor:hyperlink;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:purple;
+	mso-themecolor:followedhyperlink;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";}
+pre
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"HTML Preformatted Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 1";
+	mso-ansi-font-size:16.0pt;
+	mso-bidi-font-size:14.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#365F91;
+	mso-themecolor:accent1;
+	mso-themeshade:191;
+	font-weight:bold;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 2";
+	mso-ansi-font-size:13.0pt;
+	mso-bidi-font-size:13.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	font-weight:bold;}
+span.Heading3Char
+	{mso-style-name:"Heading 3 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 3";
+	mso-ansi-font-size:13.5pt;
+	mso-bidi-font-size:13.5pt;
+	font-family:"Times New Roman","serif";
+	mso-ascii-font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-hansi-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+span.HTMLPreformattedChar
+	{mso-style-name:"HTML Preformatted Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"HTML Preformatted";
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+span.codeintext
+	{mso-style-name:codeintext;
+	mso-style-unhide:no;}
+span.screentext
+	{mso-style-name:screentext;
+	mso-style-unhide:no;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-size:10.0pt;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:398480861;
+	mso-list-template-ids:466798302;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l0:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1
+	{mso-list-id:720977770;
+	mso-list-template-ids:-349558380;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l2
+	{mso-list-id:1423183142;
+	mso-list-template-ids:937488052;}
+@list l2:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l3
+	{mso-list-id:1679116696;
+	mso-list-template-ids:356710796;}
+@list l3:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l4
+	{mso-list-id:1991127894;
+	mso-list-template-ids:1864029646;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l4:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5
+	{mso-list-id:2040937134;
+	mso-list-template-ids:-1239923542;}
+@list l5:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l5:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;}
+table.MsoTableGrid
+	{mso-style-name:"Table Grid";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-priority:59;
+	mso-style-unhide:no;
+	border:solid black 1.0pt;
+	mso-border-themecolor:text1;
+	mso-border-alt:solid black .5pt;
+	mso-border-themecolor:text1;
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-border-insideh:.5pt solid black;
+	mso-border-insideh-themecolor:text1;
+	mso-border-insidev:.5pt solid black;
+	mso-border-insidev-themecolor:text1;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="4098"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='margin-left:22.1pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid black .5pt;mso-border-themecolor:text1;mso-yfti-tbllook:1184;mso-padding-alt:
+ 0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=677 valign=top style='width:508.1pt;border:solid black 1.0pt;
+  mso-border-themecolor:text1;mso-border-alt:solid black .5pt;mso-border-themecolor:
+  text1;padding:0in 5.4pt 0in 5.4pt'>
+  <h1><a name="_top"></a><a name="_Query_Engine"></a>Query Engine</h1>
+  <h2 style='mso-outline-level:2'>On this Page:</h2>
+  <p class=MsoNormal style='margin-left:35.1pt'><br>
+  <a href="#_Strict_querying_using">Strict querying using CONTAINS</a><br>
+  <a href="#_Fuzzy_querying_using">Fuzzy querying using FREETEXT (Business Meaning)</a><br>
+  <a href="#_The_LANGUAGE_argument">The LANGUAGE argument</a><br>
+  <a href="#_Stemming">Stemming</a><br>
+  <a href="#_Declensions">Declensions</a><br>
+  <a href="#_Conjugation">Conjugation</a><br>
+  <a href="#_Thesaurus-based_searches">Thesaurus-based searches</a><br>
+  <a href="#_Diacritics_and_accents">Diacritics and accents</a><br>
+  <a href="#_False_friends_or">False friends or false conjugates</a><br>
+  <a href="#_UK_vs._US">UK vs. US English at query time</a></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>This is a summary of some of the
+  functions within the ECM Library query engine and how it combines with the
+  Microsoft Query engine in SQL Server 2008. Of course, this also applies to SQL
+  Server 2005, but we strongly recommend 2008 as it is the supported, targeted
+  platform of Microsoft.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>We will review the manner in which
+  search phrases supplied in a query are expanded by the parser before hitting
+  the full-text index. This expansion process is performed by a
+  language-specific component called a <b>stemmer</b> and the exact expansions
+  that occur will depend on the language-specific rules that are in place.
+  However, for example, expansion can be used to accommodate the following
+  types of searches:<o:p></o:p></span></p>
+  <ul type=disc>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;line-height:normal;mso-list:l0 level1 lfo3;tab-stops:list .5in'><span
+       style='font-size:12.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+       "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:
+       "Times New Roman"'>Searches for plural forms of a word – a search on
+       apple would also return apples <o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;line-height:normal;mso-list:l0 level1 lfo3;tab-stops:list .5in'><span
+       style='font-size:12.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+       "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:
+       "Times New Roman"'>Thesaurus searches for synonymous forms of word – a
+       search on <i>IE</i> might return hits to <i>Internet Explorer</i> and <i>IE</i>
+       (thesaurus based expansion); a search on <i>Bombay</i> might also return
+       hits to <i>Mumbai</i> (thesaurus based replacement) <o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;line-height:normal;mso-list:l0 level1 lfo3;tab-stops:list .5in'><span
+       style='font-size:12.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+       "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:
+       "Times New Roman"'>Searches that will return all different linguistic
+       forms of a word (called <b>generations</b>) – a search on bank would
+       return hits to <i>banking</i>, <i>banked</i>, <i>banks</i>, <i>banks'</i>
+       and <span class=SpellE><i>bank's</i></span>, etc. (all declensions
+       and/or conjugations of the search term bank) <o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;line-height:normal;mso-list:l0 level1 lfo3;tab-stops:list .5in'><span
+       style='font-size:12.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+       "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:
+       "Times New Roman"'>Accent insensitive searches – a search on <i>café</i>
+       would return hits to <i>cafe</i> and <i>café</i><o:p></o:p></span></li>
+  </ul>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>Before we investigate stemming in
+  more detail, it’s worth discussing the&nbsp;sort of expansions that will be performed
+  depending on whether you issue a <i>strict</i> query (using the CONTAINS
+  predicate) or a <i>fuzzy</i> query (using the FREETEXT predicate).<o:p></o:p></span></p>
+  <h2><a name="_Strict_querying_using"></a>Strict querying using CONTAINS <span
+  style='mso-bidi-font-size:12.0pt;line-height:115%'><o:p></o:p></span></h2>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>By default, use of the CONTAINS
+  predicate will entail minimal language specific query time expansion. For
+  example, consider a search on the term <i>book</i>.<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+  style='font-size:10.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:"Courier New"'>select
+  * from <span class=SpellE>TableName</span> where CONTAINS(*,'Book')<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>The asterisk (*) is used to search
+  all full-text indexed columns. In SQL 2000 you can search all full-text
+  indexed columns or one named full-text index column:<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+  style='font-size:10.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:"Courier New"'>select
+  * from <span class=SpellE>TableName</span> where CONTAINS(col1,'Book'))<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>In SQL 2005 you can search all
+  columns, a named column, or a subset of all full-text indexed columns:<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+  style='font-size:10.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:"Courier New"'>select
+  * from <span class=SpellE>TableName</span> where CONTAINS((col1,col2),'Book')<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>There may be text in the table where
+  the term &quot;book&quot; is used both as a noun (<i>John threw the <b>book</b>
+  at Sam</i>) and a verb (<i>John was <b>booked</b> for assault and battery
+  when he threw the book at Sam</i>). However, a query using the basic CONTAINS
+  predicate will only match with <i>book</i> (and alternative word forms for <i>book
+  </i>– although in English there are none). <o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>Fortunately, you can choose to have
+  your CONTAINS search expanded to capture different generations of a word by
+  using the FORMSOF term. This term accepts two arguments – INFLECTIONAL or
+  THESAURUS. The INFLECTIONAL argument will expand the search phrase to search
+  on all conjugations and declensions or each word in the search <span
+  class=GramE>phrase,</span> and the THESAURUS argument will enable a thesaurus
+  expansion on the search phrase. Here are two examples of what this would look
+  like:<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+  style='font-size:10.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:"Courier New"'>Select
+  * from <span class=SpellE>TableName</span> where CONTAINS(*,'FORMSOF(<span
+  class=SpellE>INFLECTIONAL,run</span>)')<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>And<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+  style='font-size:10.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:"Courier New"'>Select
+  * from <span class=SpellE>TableName</span> where CONTAINS(*,'FORMSOF(<span
+  class=SpellE>THESAURUS,run</span>)')<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>Furthermore, with some languages,
+  additional breaking will occur by default at query time. For example,
+  consider a search on <span class=SpellE><i>häuser</i></span><i> </i>(German
+  for houses)<i> </i>on a full-text indexed table containing the term <span
+  class=SpellE><i>häuser</i></span><i> </i>in one row and <span class=SpellE><i>haeuser</i></span>,<i>
+  </i>the alternative word form, in another row. If the default full-text language
+  on the Server was US English then the query would not be expanded and you
+  would only get a hit on the row containing <span class=SpellE><i>häuser</i></span>:<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+  style='font-size:10.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:"Courier New"'>select
+  * from <span class=SpellE>TableName</span> where CONTAINS(*,'<span
+  class=SpellE>häuser</span>')<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>However, if your server had a default
+  full-text language of German, you would get hits on both rows because your
+  search phrase would be automatically expanded to the following:<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+  style='font-size:10.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:"Courier New"'>select
+  * from <span class=SpellE>TableName</span> where CONTAINS(*,'&quot;<span
+  class=SpellE>häuser</span>&quot; or &quot;<span class=SpellE>haeuser</span>&quot;')<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>Note that the search phrases are now
+  wrapped in double quotes. When using CONTAINS, you must use double quotes to
+  wrap a search phrase containing more than one word.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'><a href="#_top">Back to top</a><o:p></o:p></span></p>
+  <h2><a name="_Fuzzy_querying_using"></a>Fuzzy querying using FREETEXT
+  (Business Meaning)<span style='mso-bidi-font-size:12.0pt;line-height:115%'><o:p></o:p></span></h2>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>The term &quot;fuzzy&quot; is
+  something of a misnomer as it implies use of a technology such as <span
+  class=SpellE><i>Levenstein</i></span><i> Edit Distance</i> which is tolerant
+  of minor spelling variations or mistakes, which is not the case. In fact, use
+  of FREETEXT means that, by default, the search is expanded to encompass all
+  generations of the searched word, for the default full-text language setting
+  of your server. So, to continue the previous &quot;book&quot; example, a
+  FREETEXT search on book:<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+  style='font-size:10.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:"Courier New"'>Select
+  * from <span class=SpellE>TableName</span><br>
+  where FREETEXT<br>
+  (*,‘Book’)<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>would be expanded to the equivalent
+  of:<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+  style='font-size:10.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:"Courier New"'>Select
+  * from <span class=SpellE>TableName</span><br>
+  where CONTAINS<br>
+  (*,'&quot;Book&quot; or &quot;books&quot; or &quot;<span class=SpellE>book''s</span>&quot;
+  or books''&quot; or &quot;booked&quot; or &quot;booking&quot;)<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>The search would also return any
+  relevant thesaurus expansions.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>Note that when using FREETEXT in SQL
+  2000 you have to wrap your search phase in double quotes if a search phrase
+  contains more than one word or token (as when using CONTAINS). However, in
+  SQL 2005 you no longer need to do this when using the FREETEXT predicate. In
+  fact if you wrap your search phrase in double quotes stemming and thesaurus
+  expansion and replacements are disabled and your search phrase is treated as
+  a strict match – in other words the functional equivalent of a CONTAINS
+  predicate (although the ranking algorithm is different).<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>See <a
+  href="Business%20Meaning%20Searches.htm">Business Meaning</a> help page for
+  more information.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'><a href="#_top">Back to top</a><o:p></o:p></span></p>
+  <h2><a name="_The_LANGUAGE_argument"></a><span style='mso-fareast-font-family:
+  "Times New Roman"'>&nbsp;</span>The&nbsp;LANGUAGE argument <span
+  style='mso-bidi-font-size:12.0pt;line-height:115%'><o:p></o:p></span></h2>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>In SQL 2005, you can override the
+  default full-text language settings for your server by using
+  the&nbsp;LANGUAGE argument with the CONTAINS and FREETEXT predicates and have
+  your searches conducted in different languages. For example, on a SQL 2005
+  Server with a default full-text language setting of US_ENGLISH, you could
+  search on German phrases by using the LANGUAGE argument, and have your German
+  search terms stemmed in a FREETEXT predicate according to German language
+  rules.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>Script 3 provides a full example of
+  this (see the &quot;Scripts&quot; link at the top right of this page). In
+  this script we are loading HTML documents into the <span class=SpellE>varbinary</span>
+  data type column of a table called German. In each case we specify that word
+  boundaries are identified using the US English Word breaker, as denoted by
+  the LANGUAGE 1033 clause:<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+  style='font-size:10.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:"Courier New"'>CREATE
+  FULLTEXT INDEX ON German<br>
+  <span style='mso-spacerun:yes'>   </span>(<span class=SpellE>varbinarycol</span>
+  TYPE COLUMN <span class=SpellE>documentExtension</span><br>
+  <span style='mso-spacerun:yes'>      </span><b>LANGUAGE 1033</b> )<br>
+  KEY INDEX <span class=SpellE>GermanPK</span> <o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>However, when we load some of these
+  documents into the database, we include a German language <span class=SpellE>MetaTag</span>:<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+  style='font-size:10.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:"Courier New"'>INSERT
+  INTO German<br>
+  <span style='mso-spacerun:yes'> </span>(<span class=SpellE>varbinarycol</span>,
+  <span class=SpellE>documentExtension,word</span>, language )<br>
+  VALUES<br>
+  <span style='mso-spacerun:yes'> </span>(CONVERT(VARBINARY(256),<br>
+  <span style='mso-spacerun:yes'>  </span>'&lt;HTML&gt;&lt;HEAD&gt;&lt;<b>META
+  NAME=&quot;MS.LOCALE&quot; CONTENT=&quot;DE&quot;</b>&gt;<br>
+  <span style='mso-spacerun:yes'>    
+  </span>&lt;/HEAD&gt;&lt;BODY&gt;wanderlust&lt;/BODY&gt;&lt;/HTML&gt;'),<br>
+  <span style='mso-spacerun:yes'>  </span>'.<span class=SpellE>htm','wanderlust','GERMAN</span>')<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>And when we load others we use the US
+  English language <span class=SpellE>MetaTag</span>:<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+  style='font-size:10.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:"Courier New"'>INSERT
+  INTO German<br>
+  <span style='mso-spacerun:yes'> </span>(<span class=SpellE>varbinarycol</span>,
+  <span class=SpellE>documentExtension,word</span>, language )<br>
+  VALUES<br>
+  <span style='mso-spacerun:yes'> </span>(CONVERT(VARBINARY(256),<br>
+  <span style='mso-spacerun:yes'>  </span>'&lt;HTML&gt;&lt;HEAD&gt;&lt;<b>META
+  NAME=&quot;MS.LOCALE&quot; CONTENT=&quot;EN-US&quot;</b>&gt;<br>
+  <span style='mso-spacerun:yes'>    
+  </span>&lt;/HEAD&gt;&lt;BODY&gt;wanderlust&lt;/BODY&gt;&lt;/HTML&gt;'),<br>
+  <span style='mso-spacerun:yes'>  </span>'.<span class=SpellE>htm','wanderlust','ENGLISH</span>')<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>So, a query on <i>wanderlust</i>
+  returns two documents – the English and German language documents contain the
+  word<i> wanderlust</i>.<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+  style='font-size:10.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:"Courier New"'>select
+  word, language from <span class=SpellE>german</span> where <span
+  class=SpellE>freetext</span>(*,'wanderlust')<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>However, a search on <i>lust</i>
+  returns three documents – two exact matches for <i>lust</i> and one further
+  match with <i>wanderlust</i> in the German language document. The reason for
+  this is that the German word breaker was launched by the HTML language tag
+  and this overrides the word breaker setting in our full-text index creation
+  statement. As a result, <i>wanderlust</i> is broken by the German word
+  breaker into <i>wanderlust</i>, <span class=SpellE><i>wandern</i></span>, and
+  <i>lust</i>. Hence a search on <i>lust</i> returns the German HTML document
+  with <i>wanderlust</i> in it.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>If we override the default full-text
+  language settings for our server (US English) and set the language of our
+  search to German:<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+  style='font-size:10.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:"Courier New"'>select
+  word, language from <span class=SpellE>german</span><br>
+  where <span class=SpellE>freetext</span>(*,'wanderlust', language 1031)<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>Then we get six rows returned, since
+  now our search phrase is automatically expanded into <i>wanderlust</i>, <span
+  class=SpellE><i>wandern</i></span> and <i>lust</i>, and so we get matches for
+  all three of these in both German and English documents.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'><a href="#_top">Back to top</a><o:p></o:p></span></p>
+  <h2><a name="_Stemming"></a>Stemming <span style='mso-bidi-font-size:12.0pt;
+  line-height:115%'><o:p></o:p></span></h2>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>By <b>stemming</b>, Microsoft means: <o:p></o:p></span></p>
+  <ul type=disc>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;line-height:normal;mso-list:l4 level1 lfo6;tab-stops:list .5in'><span
+       style='font-size:12.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+       "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:
+       "Times New Roman"'>Generating declensions of a word – possessive and
+       gender (although gender is not supported in SQL FTS) <o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;line-height:normal;mso-list:l4 level1 lfo6;tab-stops:list .5in'><span
+       style='font-size:12.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+       "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:
+       "Times New Roman"'>Generating conjugations of a word <o:p></o:p></span></li>
+  </ul>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>Stemming reduces a search term to its
+  linguistic root (for example <i>careers</i> would be reduced to <i>career</i>),
+  and then expands from that root to encompass all linguistic forms of that
+  root (for example <i>career, career's, careers', careers', careered</i>, and <i>careering</i>).<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>Most stemmers implement a form of the
+  <i>Porter Stemming Algorithm</i> with dictionaries to handle irregularly
+  stemmed words such as goose/geese, mouse/mice, fit/fat, and so on. Some of
+  the more sophisticated stemmers implement an inference algorithm which when
+  encountering a freshly minted word (like blog for instance) can conjugate, or
+  generate declensions of, this new word based on its similarity to other older
+  words.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><i><span style='font-size:12.0pt;mso-ascii-font-family:
+  Calibri;mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>Note: It is interesting to search on
+  terms such as &quot;careers&quot; on various web sites to see what matches
+  are returned. It is frequently incorrectly stemmed as careful.</span></i><span
+  style='font-size:12.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:"Times New Roman"'><o:p></o:p></span></p>
+  <h2><a name="_Declensions"></a>Declensions <span style='mso-bidi-font-size:
+  12.0pt;line-height:115%'><o:p></o:p></span></h2>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>Generating declensions is best
+  illustrated through a few examples:<o:p></o:p></span></p>
+  <ul type=disc>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;line-height:normal;mso-list:l5 level1 lfo9;tab-stops:list .5in'><span
+       style='font-size:12.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+       "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:
+       "Times New Roman"'>A FREETEXT or CONTAINS search on the noun <i>apple</i>
+       would return hits to <i>apple</i> and <i>apples</i> <o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;line-height:normal;mso-list:l5 level1 lfo9;tab-stops:list .5in'><span
+       style='font-size:12.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+       "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:
+       "Times New Roman"'>A FREETEXT or CONTAINS inflectional search on the <span
+       class=SpellE>advjective</span> <i>pretty</i> would match to <i>pretty</i>,
+       <i>prettier</i> and <i>prettiest</i>.<o:p></o:p></span></li>
+  </ul>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>Please see script 4 for examples of
+  declination in action.<o:p></o:p></span></p>
+  <h2><a name="_Conjugation"></a>Conjugation <span style='mso-bidi-font-size:
+  12.0pt;line-height:115%'><o:p></o:p></span></h2>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>Again, this is best illustrated by
+  example. If you search on the verb <i>book</i> the stemmer will generate all
+  conjugations of this term and row matches will be returned for <i>book,
+  booked, booking,</i> and <i>books</i>. Script 4 has an example of this.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'><a href="#_top">Back to top</a><o:p></o:p></span></p>
+  <h2><a name="_Thesaurus-based_searches"></a>Thesaurus-based searches <span
+  style='mso-bidi-font-size:12.0pt;line-height:115%'><o:p></o:p></span></h2>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>The thesaurus option allows expansion
+  of your search term to include preconfigured terms, and replacement of your
+  search term with another search term. To configure your thesaurus options,
+  edit the files found in C:\Program Files\Microsoft SQL Server\MSSQL.1\MSSQL\<span
+  class=SpellE>FTData</span>. The thesaurus file for your language will follow
+  the naming convention <b>tsXXX.xml</b> where <b>XXX</b> represents your
+  language code, i.e. ENU for US-English, ENG for UK-English, and so on.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>If you edit tsXXX.xml in a text
+  editor you will find that there are two sections, or nodes, to the thesaurus
+  file: an expansion node, and a replacement node. The expansion node is used
+  to extend your search argument from one term to another – known as <b>thesaurus
+  expansion</b>. For example in the thesaurus file you will find the following
+  expansion:<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+  style='font-size:10.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:"Courier New"'>&lt;expansion&gt;<br>
+  &nbsp;&nbsp; &lt;sub&gt;Internet Explorer&lt;/sub&gt;<br>
+  &nbsp;&nbsp; &lt;sub&gt;IE&lt;/sub&gt;<br>
+  &nbsp;&nbsp; &lt;sub&gt;IE5&lt;/sub&gt;<br>
+  &lt;/expansion&gt;<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>This will convert any searches on <i>IE</i>
+  to search on <i>IE, IE5,</i> and <i>Internet Explorer.</i><o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><i><span style='font-size:12.0pt;mso-ascii-font-family:
+  Calibri;mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>Note that you will need to remove the
+  comment lines from your thesaurus file in order to activate this.</span></i><span
+  style='font-size:12.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:"Times New Roman"'><o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>The replacement node is used to replace
+  one search argument with another – known as <b>thesaurus replacement</b>. For
+  example, you may want a search on <i>sex</i> to be replaced by a search on <i>gender</i>.
+  By configuring your thesaurus file as follows, any search on <i>sex</i> will
+  only get hits to rows containing the term <i>gender</i> and will miss rows
+  that do not contain <i>gender</i>, but contain the word <i>sex</i>:<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+  style='font-size:10.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:"Courier New"'>&lt;replacement&gt;<br>
+  &nbsp;&nbsp; &lt;pat&gt;sex&lt;/pat&gt;<br>
+  &nbsp;&nbsp; &lt;sub&gt;gender&lt;/sub&gt;<br>
+  &lt;/replacement&gt;<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>The pat element (<i>sex</i>)
+  indicates the pattern you want substituted by the sub element (<i>gender</i>).<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>A FREETEXT query will automatically
+  use the thesaurus file for the language type, and a CONTAINS query will do so
+  when you use FORMSOF with the thesaurus option:<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+  style='font-size:10.0pt;mso-ascii-font-family:Calibri;mso-fareast-font-family:
+  "Times New Roman";mso-hansi-font-family:Calibri;mso-bidi-font-family:"Courier New"'>SELECT
+  * FROM <span class=SpellE>TableName</span><br>
+  WHERE CONTAINS(*,'FORMSOF(<span class=SpellE>Thesaurus,&quot;IE</span>&quot;)')<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>This would return matches to rows
+  containing <i>IE, IE5</i>, and <i>Internet Explorer</i>.<o:p></o:p></span></p>
+  <h2><a name="_Diacritics_and_accents"></a>Diacritics and accents <span
+  style='mso-bidi-font-size:12.0pt;line-height:115%'><o:p></o:p></span></h2>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>A diacritical mark, or diacritic
+  (sometimes called an accent mark), is a mark added to a letter to alter a
+  word's pronunciation or to distinguish it from other similar words. Previous versions
+  of SQL Server were unable to handle accents so a search on <i>café</i> would
+  not match with rows containing <i>cafe</i> – even when using the French word
+  breaker or stemmer.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>SQL Server 2005 has the option of
+  creating accent insensitive catalogs. This means that a search on <i>café</i>
+  will match with <i>café, cafe, <span class=SpellE>cafè</span>, <span
+  class=SpellE>cafê</span>,</i> and <span class=SpellE><i>cafë</i></span>. In
+  other words it does a very unintelligent match, but one that will solve many
+  of the problems that users have when handling diacritics. Script 5
+  illustrates this functionality.<o:p></o:p></span></p>
+  <h2><a name="_False_friends_or"></a>False friends or false conjugates <span
+  style='mso-bidi-font-size:12.0pt;line-height:115%'><o:p></o:p></span></h2>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>When you are searching content that
+  is written in a variety of languages, you must be careful to account for a
+  linguistic phenomenon called <i>false friends</i> or <i>false conjugates</i>.
+  <o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>A false friend is a word that has the
+  same spelling in different languages, but different meanings. An example is
+  the word <i>gift</i> which means a present in English, but in German means
+  poison. You need to be careful to avoid a search on the English word
+  returning rows with German <span class=SpellE>content.False</span> friends
+  are not to be confused with <span class=SpellE>wanderworts</span> – words
+  which occur with the same spelling in different languages and also have the
+  same meaning.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>The best approach to problems like
+  this is to segregate your content into language specific columns.<o:p></o:p></span></p>
+  <h2><a name="_UK_vs._US"></a>UK vs. US English at query time <span
+  style='mso-bidi-font-size:12.0pt;line-height:115%'><o:p></o:p></span></h2>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>There are very slight variations
+  between US and UK English stemmers, mostly arising from spelling variations
+  between American and International English. For example in America we spell <i>color</i>
+  and <i>center, analog, apologize, flavor</i>; whereas in Britain these words
+  are spelt <span class=SpellE><i>colour</i></span><i>, centre, analogue, <span
+  class=SpellE>apologise</span>,</i> and <span class=SpellE><i>flavour</i></span>.
+  There is no conformity in the rest of the English speaking world, however
+  most of the English speaking countries use the International version of
+  English; although it may vary from one region to another – for example in
+  Western Canada – the spelling <i>center</i> predominates, in Eastern Canada <i>centre</i>
+  predominates.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>If you are querying in International
+  English <i>color</i> would be stemmed as <span class=GramE><i>color</i> ,</span>
+  whereas <span class=SpellE><i>colour</i></span> would be stemmed as <span
+  class=SpellE><i>colour</i></span><i>, <span class=SpellE>colour's</span>, <span
+  class=SpellE>colours</span>, <span class=SpellE>colours'</span>, <span
+  class=SpellE>coloured</span></i> and <span class=SpellE><i>colouring</i></span>.
+  Likewise if you searched on <span class=SpellE><i>colour</i></span> using
+  American English you would not get hits to rows containing <span
+  class=SpellE><i>colour</i></span><i>, <span class=SpellE>colour's</span>, <span
+  class=SpellE>colours</span>, <span class=SpellE>colours'</span>, <span
+  class=SpellE>coloured</span></i> and <span class=SpellE><i>colouring</i></span><i>.</i><o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'>The key to avoiding idiomatic
+  spelling variations is to scrupulously clean your content or use the
+  thesaurus option to expand your search to alternate spellings.<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:12.0pt;mso-ascii-font-family:Calibri;
+  mso-fareast-font-family:"Times New Roman";mso-hansi-font-family:Calibri;
+  mso-bidi-font-family:"Times New Roman"'><a href="#_top">Back to top</a></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+</div>
+
+</body>
+
+</html>
