@@ -602,16 +602,9 @@ Public Interface IService1
     <OperationContract()>
     Function SetSAASState(ByVal SecureID As Integer, ByVal UserID As String, ByVal DirName As String, ByVal FullPath As String) As Boolean
 
-    ''' <summary>
-    ''' Gets the list of strings01.
-    ''' </summary>
-    ''' <param name="SecureID">The secure identifier.</param>
-    ''' <param name="MySql">My SQL.</param>
-    ''' <param name="RC">if set to <c>true</c> [rc].</param>
-    ''' <param name="RetMsg">The ret MSG.</param>
-    ''' <param name="UserId">The user identifier.</param>
-    ''' <param name="SessionID">The session identifier.</param>
-    ''' <returns>System.String.</returns>
+    <OperationContract()>
+    Function getNewListOfStrings(ByRef SecureID As Integer, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String, UserId As String, SessionID As String) As List(Of String)
+
     <OperationContract()>
     Function getListOfStrings01(ByRef SecureID As Integer, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String, UserId As String, SessionID As String) As String
 

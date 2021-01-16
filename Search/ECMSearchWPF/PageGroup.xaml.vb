@@ -186,12 +186,13 @@ Public Class PageGroup
             Return
         End If
 
-        For i As Integer = 0 To lbGrpUsers.Items.Count - 1
-            lbGrpUsers.Items(i).Selected = True
-        Next
-        DeleteSelectedUsers()
+        'For i As Integer = 0 To lbGrpUsers.Items.Count - 1
+        '    lbGrpUsers.Items(i).Selected = True
+        'Next
 
+        DeleteSelectedUsers()
         SlqDict.Clear()
+
         Try
             Dim s As String = "delete FROM [GroupUsers] where [GroupName] = '" + UserGroup + "'"
             SlqDict.Add(0, s)
@@ -263,6 +264,7 @@ Public Class PageGroup
         PB.Visibility = Windows.Visibility.Visible
 
         PopulateUserLB(lbGroups.SelectedValue)
+
     End Sub
 
     Private Sub btnAddToGroup_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnAddToGroup.Click

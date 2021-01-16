@@ -1,0 +1,557 @@
+<html>
+ 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 12.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Redemption FAQ</title>
+</head>
+ 
+<body bgcolor="#FFFFFF">
+<p align="center" style="margin-top: 0; margin-bottom: 0"><b><font size="4">Outlook Redemption Frequently Asked
+Questions</font></b></p>
+<p style="margin-top: 0; margin-bottom: 0">1. <a href="#1">When I send a message using Redemption, it simply stays in the
+Drafts folder</a></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">2. <a href="#2">When I create an instance of the SafeCurrentUser object, it
+looks like all of its fields are empty. I am using Outlook 2002 with a POP3/SMTP
+server and a PST file.</a>&nbsp; </p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">3. <a href="#3">When I set a property in Outlook using either Outlook Object
+Model or through the UI and then read that property using Redemption, it has a
+different value or is empty.</a> </p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">4. <a href="#4">I have noticed that accessing a large number of messages in a
+folder using Redemption can be slower than when using Outlook object model</a> </p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">5. <a href="#5">My code using Redemption is causing Outlook to stay in memory
+even after it is closed.</a> </p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">6. <a href="#6">When I set SafeMailItem.Item property to an Outlook item, my
+program crashes</a> </p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">7. <a href="#7">When my application is used on a system where Outlook is not
+the default e-mail client, Redemption complains that a function is missing from
+mapi32.dll or something to that extend</a> </p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">8. <a href="#8">When I call Safe*Item.Import() or Safe*Item.CopyTo(), the
+resulting message is always shown by Outlook as unsent, even through the
+original item had been sent.</a> </p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">9. <a href="#9">Outlook XP becomes unstable after I use Redemption</a> </p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">10. <a href="#10"> I am trying to use Redemption with CDO. Are there any tips/tricks?</a> </p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">11. <a href="#11">I noticed that if I send a message using Outlook UI, it is
+delivered in HTML; if I use Redemption, it is in plain text. Any workarounds?</a> </p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">12.<a href="#12"> I am using Outlook 98/2000 installed in the Internet Only
+Mode (IMO) (Help|About in Outlook) and I have noticed that several Redemption 
+features do not work in that mode (C/W mode work fine). Are there any
+workarounds?</a> </p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">13. <a href="#13">I noticed that Redemption supports import and export of the 
+RFC822 (EML) messages (SaveAs/Import). I am writing Extended MAPI code in 
+C++/Delphi, is there any way I can utilize Redemption import/export features if 
+I do not use the Outlook Object Model?</a></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">14. <a href="#14">Is there any way I can select an account to be used for 
+sending a message with Redemption?</a></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">15.<a href="#15"> I am using SafeMailItem.Import to import MSG or EML files, 
+but it looks like ReceivedTime and SentOn are always set to the current time. Is 
+this a Redemption problem? Any workarounds?</a></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">16. <a href="#16">I process a large number of Outlook items using Redemption. 
+After processing a large (400-500) number of items, Redemption starts returning 
+errors.</a></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">17. <a href="#17">My C# or VB.Net 
+code <font face="Times New Roman" size="3"><span style="FONT-SIZE: 12pt">
+<span class="e" id="q_110bef16a98893fc_1">start behaving erratically (e.g. 
+MAPI_E_CALL_FAILED error is returned) after I process a large number of items in 
+a folder.</span></span></font></a></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<hr>
+<p style="margin-top: 0; margin-bottom: 0"><a name="1"></a><b>1. When I send a message using Redemption, it simply stays
+in the Drafts folder</b></p>
+<p style="margin-top: 0; margin-bottom: 0">Message submission is a two step process in Extended MAPI:</p>
+ 
+<p style="margin-top: 0; margin-bottom: 0">1. Calling IMessage::Submit()</p>
+ 
+<p style="margin-top: 0; margin-bottom: 0">2. Flushing the outgoing
+message queue.</p>
+ 
+<p style="margin-top: 0; margin-bottom: 0">If you are using an Exchange Server, step #2 is not required since Exchange
+Message Store is tightly bound with the Exchange Transport provider. If you
+however are using a POP3/SMTP transport and a PST file as a message store, step
+#2 is required. To flush the message queues, create an instance of
+Redemption.MAPIUtils object and call its DeliverNow method (similar to
+Session.DeliverNow in CDO) after calling
+SafeMailItem.Send:</p>
+ 
+<p style="margin-top: 0; margin-bottom: 0">MailItem.Send</p>
+ 
+<p style="margin-top: 0; margin-bottom: 0">Set Utils =
+CreateObject(&quot;Redemption.MAPIUtils&quot;)</p>
+ 
+<p style="margin-top: 0; margin-bottom: 0">Utils.DeliverNow</p>
+ 
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+ 
+<p style="margin-top: 0; margin-bottom: 0">There is however one problem if you
+are using Outlook 2002 with a PST file and POP3/SMTP transport provider or
+Outlook 2000 installed in the Internet Only Mode: there
+is no way to flush the queues using Extended MAPI. That part of Outlook is
+simply broken. Note however that Outlook 2002/2003 (online) with an Exchange Server or Outlook
+2000 C/W in any configuration are fine. </p>
+<p style="margin-top: 0; margin-bottom: 0">If you are using Outlook 2003 with 
+Exchange in a cached mode, it will exhibit the same problem. Uncheck &quot;Use cached 
+mode&quot; in the Exchange Server properties to force online mode - that will ensure 
+that messages are delivered immediately.</p>
+<p style="margin-top: 0; margin-bottom: 0">Microsoft is aware of the problem, and they
+are working on providing a workaround. As a last resort, you can simulate
+clicking &quot;Send/Receive&quot; button in Outlook after sending a message:</p>
+ 
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+ 
+<p style="margin-top: 0; margin-bottom: 0">MailItem.Send</p>
+ 
+<p style="margin-top: 0; margin-bottom: 0">Set Btn =
+Application.ActiveExplorer.CommandBars.FindControl(1, 5488) </p>
+ 
+<p style="margin-top: 0; margin-bottom: 0">Btn.Execute</p>
+ 
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+ 
+<p style="margin-top: 0; margin-bottom: 0">Note that in Outlook 2003 that button 
+is now a dropdown, the real Send/Receive is a subitem of the button:</p>
+ 
+<p style="margin-top: 0; margin-bottom: 0">Set  Btn = Application.ActiveExplorer.CommandBars.FindControl(1, 7095)<br>
+Btn.Execute</p>
+ 
+<p style="margin-top: 0; margin-bottom: 0">Note that the code above assumes that there is an active Explorer; this will 
+not be the case if you start Outlook programmatically (and it was not previously 
+started by a user) and do not display any folders. In this case you can start a 
+sync using the the Namespace.SyncObjects collection. </p>
+ 
+<p style="margin-top: 0; margin-bottom: 0">set NS = Application.GetNamespace(&quot;MAPI&quot;)<br>
+NS.Logon<br>
+Set Sync = NS.SyncObjects.Item(1)<br>
+Sync.Start</p>
+ 
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+ 
+<hr>
+<p style="margin-top: 0; margin-bottom: 0"><b><a name="2"></a>2. When I create an instance of the SafeCurrentUser
+object, it looks like all of its fields are empty. I am using Outlook 2002 with
+a POP3/SMTP server and a PST file. </b></p>
+<p style="margin-top: 0; margin-bottom: 0">Outlook 2002 broke the part of the Extended MAPI related to retrieving the
+current user identity if you are using POP3/SMTP transport provider and a PST
+file as a message store. Microsoft knows about this problem, but no workaround
+has been provided so far.</p>
+<hr>
+<p style="margin-top: 0; margin-bottom: 0"><b><a name="3"></a>3. When I set a property in Outlook using either Outlook
+Object Model or through the UI and then read that property using Redemption, it
+has a different value or is empty.</b> </p>
+<p style="margin-top: 0; margin-bottom: 0">When you set a property (any property) in Outlook, it is not immediately
+saved until you explicitly save it by either calling Save or clicking File |
+Save menu. In the mean time, the property lives in a nowhere land - even though
+you can access it using Outlook Object Model, Extended MAPI (which Redemption
+uses) does not yet see the change. To make sure that the change is committed to
+the Extended MAPI storage, explicitly call Save on the Outlook item; then use
+Redemption to access it.&nbsp; </p>
+<hr>
+<p style="margin-top: 0; margin-bottom: 0"><b><a name="4"></a>4. I have noticed that accessing a large number of
+messages in a folder using Redemption can be slower than when using Outlook
+object model</b> </p>
+<p style="margin-top: 0; margin-bottom: 0">Outlook tries to optimize access to most message properties when you read
+them from an Outlook folder. Redemption does not have access to this cache and
+it needs to explicitly query Extended MAPI for most of the message properties.
+If you are going to read a large number of messages from an Outlook folder, try
+to limit the number of the messages first. For example if you are looking for
+the messages from John Smith, do not loop through all the messages, let Outlook
+do the dirty work:</p>
+<p style="margin-top: 0; margin-bottom: 0">Set Items = MAPIFolder.Items</p>
+<p style="margin-top: 0; margin-bottom: 0">Set Msg =
+Items.Find(&quot;[SenderName] = 'John Smith'&quot;)</p>
+<p style="margin-top: 0; margin-bottom: 0">Do While not (Msg is Nothing)</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp; ' now you can access the
+message</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp; Debug.Print Msg.Subject</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp; Set Msg = Items.FindNext</p>
+<p style="margin-top: 0; margin-bottom: 0">Loop</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">An even better solution would be to 
+use <a href="mapitable.htm">MAPI Tables</a>.</p>
+<hr>
+<p style="margin-top: 0; margin-bottom: 0"><b><a name="5"></a>5. My code using Redemption is causing Outlook to stay in
+memory even after it is closed.</b></p>
+<p style="margin-top: 0; margin-bottom: 0">Some Redemption objects (such as MAPIUtils or AddressEntry) need Extended
+MAPI session. For the performance reasons, the session is then saved for later
+use either by the same or other Redemption objects. Due to the redesigned
+Extended MAPI support in Outlook 2002, it might not close properly if there is
+an outstanding reference to the session. To fix the problem, call
+MAPIUtils.Cleanup or AddressEntry.Cleanup (or SafeCurrentUser.Cleanup); this
+will cause Redemption to release the Extended MAPI session.</p>
+<hr>
+<p style="margin-top: 0; margin-bottom: 0"><a name="6"></a><b>6. When I set SafeMailItem.Item property to an Outlook
+item, my program crashes</b></p>
+<p style="margin-top: 0; margin-bottom: 0">The chances are you have Visual Studio .Net beta 2 installed. VS. Net beta 2
+replaces some system libraries responsible for providing dynamic type-info
+support, these files are not used by Outlook (that's why it appears to function
+normally), Redemption however heavily relies on this functionality. To fix the
+problem either uninstall VS.Net or upgrade to a later version.</p>
+<hr>
+<p style="margin-top: 0; margin-bottom: 0"><b><a name="7"></a>7. When my application is used on a system where Outlook
+is not the default e-mail client, Redemption complains that a function is missing
+from mapi32.dll or something to that extend.</b></p>
+<p style="margin-top: 0; margin-bottom: 0">Here's what MSDN has to say, essentially you need to create a registry entry
+to mark your executable as one using Extended MAPI:</p>
+<p style="margin-top: 0; margin-bottom: 0">Explicitly Mapping MAPI Calls to MAPI DLLs</p>
+<p style="margin-top: 0; margin-bottom: 0">In some cases, MAPI calls made from a particular DLL or executable file need
+to be routed to the system MAPI DLL (called Mapi32x.dll) or another custom MAPI
+DLL even though the default mail client supports the call. Such DLLs or
+executables files can be listed as string registry values in the <b>HKLM\Software\Microsoft\Windows
+Messaging Subsystem\MSMapiApps</b> key. The registry value for these keys can be
+empty or identify a mail client key that resides under <b>HKLM\Software\Clients\Mail</b>.</p>
+<p style="margin-top: 0; margin-bottom: 0">When the stub library resolves a MAPI call, it first enumerates the DLL and
+executable files listed under the <b>HKLM\Software\Microsoft\Windows Messaging
+Subsystem\MSMapiApps</b> key checking to see if the DLL or executable file is
+currently in process. If there is a match, the stub library gets the string
+value. If the value is the empty string, the stub library routes the call to the
+system MAPI DLL, Mapi32x.dll. If the string is not empty, the stub uses the
+string value to find the key below <b>HKLM\Software\Clients\Mail</b> where it
+can find the appropriate registry value to dispatch the call, one of <b>DLLPath</b>,
+<b>DLLPathEx</b>, or <b>MSIComponentID</b> values. For example:</p>
+<pre style="margin-top: 0; margin-bottom: 0">HKLM\Software\Microsoft\Windows Messaging Subsystem\MSMapiApps::exchng32.exe = &quot;&quot;  
+  (route call directly to Mapi32x.dll)
+ 
+HKLM\Software\Microsoft\Windows Messaging Subsystem\MSMapiApps::msspc32.dll = &quot;Microsoft Outlook&quot;
+   (route call using Microsoft Outlook key under HKLM\Software\Clients\Mail)</pre>
+<hr>
+<p style="margin-top: 0; margin-bottom: 0"><a name="8"></a>8. <b>When I call Safe*Item.Import() or Safe*Item.CopyTo(),
+the resulting message is always shown by Outlook as unsent, even through the
+original item had been sent.</b></p>
+<p style="margin-top: 0; margin-bottom: 0">On the low level, MAPI mandates that some message flags are read/write only
+before the first save, and read-only after that. In case of sent/unsent message
+flag (MSGFLAG_UNSENT bit in PR_MESSAGE_FLAGS property), this means that
+Redemption (i.e. MAPI) cannot override that flag. To work around this you can&nbsp;
+create the message in the sent state, e.g. instead of creating a MailItem
+object, create PostItem object - Application.CreateItem(olPostItem), assign it
+to Safe*Item.Item property, then call Safe*Item.Import():</p>
+<p style="margin-top: 0; margin-bottom: 0">PR_ICON_INDEX =&amp;H10800003<br>
+set Item = Application.CreateItem(olPostItem)&nbsp;&nbsp; <i>'create a Post item
+instead of a regular (unsent) message</i><br>
+Item.Save&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<i>'otherwise EntryId is inaccessible</i><br>
+strEntryID = Item.EntryID<br>
+set Item = Nothing&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'<i>dereference and reopen the item, otherwise Outlook overwrites our change to
+the MessageClass property</i><br>
+set Item = Application.Session.GetItemFromID(strEntryID)<br>
+Item.MessageClass = "IPM.Note"<br>
+set rItem = CreateObject("Redemption.SafeMailItem")<br>
+rItem.Item = Item<br>
+rItem.Fields(PR_ICON_INDEX) = Empty&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i>'delete the property,
+otherwise the message is shown with a wrong icon<br>
+</i>Item.Save<br>
+rItem.Import(...)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<i>'or call CopyTo(). Or set the properties one by one.</i><br>
+rItem.Save<br>
+set Item = Nothing<br>
+set rItem = Nothing</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">Note that if you are using the <a href="rdo">RDO family of objects</a> (<a href="rdo/RDOMail.htm">RDOMail</a> 
+object) you can simply set the <a href="rdo/RDOMail.htm">RDOMail</a>.Sent 
+property to true before you call Save for the very first time. Unlike OOM,
+<a href="rdo/RDOMail.htm">RDOMail</a>.Sent property is read/write.</p>
+<p style="margin-top: 0; margin-bottom: 0">The following sample scripts create a 
+new message in the sent state in the Inbox.</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">set Session = 
+CreateObject(&quot;Redemption.RDOSession&quot;)<br>
+Session.MAPIOBJECT = Application.Session.MAPIOBJECT<br>
+set Inbox = Session.GetDefaultFolder(olFolderInbox)<br>
+set Msg = Inbox.Items.Add(&quot;IPM.Note&quot;)<br>
+Msg.Sent = true <i>'can only do this before the first Save()</i><br>
+Msg.Subject = &quot;Test received message&quot;<br>
+Msg.Body = &quot;test body&quot;<br>
+Msg.Unread = true<br>
+<i>'sent/received dates</i><br>
+Msg.SentOn = Now<br>
+Msg.ReceivedTime = Now<br>
+<i>'sender related props</i><br>
+msg.Sender = Session.CurrentUser<br>
+msg.SentOnBehalfOf = Session.CurrentUser<br>
+<i>'all done, save</i><br>
+Msg.Save<br>
+&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<hr>
+<p style="margin-top: 0; margin-bottom: 0"><b><a name="9"></a>9. Outlook XP becomes unstable after I use Redemption</b></p>
+<p style="margin-top: 0; margin-bottom: 0">Various Redemption objects need Extended MAPI session to function properly.
+After a session is retrieved, it is saved for later use by other Redemption
+objects. Outlook XP (unlike other versions of Outlook) may not like that. To make sure the
+session is not cached, create an instance of Redemption.MAPIUtils object and
+call MAPIUtils.Cleanup <i>after</i> you are done with Redemption. This will ensure that the shared session is released:</p>
+<p style="margin-top: 0; margin-bottom: 0"><i>'this code goes after you are done with other Redemption objects</i><br>
+set Utils = CreateObject(&quot;Redemption.MAPIUtils&quot;)<br>
+Utils.Cleanup</p>
+<hr>
+<p style="margin-top: 0; margin-bottom: 0"><a name="10"></a><b>10. I am trying to use Redemption with CDO. Are there any
+tips/tricks?</b></p>
+<p style="margin-top: 0; margin-bottom: 0">Redemption can be easily used with CDO, not just with the Outlook Object
+Model. SafeXXXItem objects only rely on the objects you assign to its Item
+property to have the MAPIOBJECT property, which most OOM and CDO objects have.</p>
+<p style="margin-top: 0; margin-bottom: 0"> When used with CDO, some Redemption methods can be sped up quite a bit if
+you give Redemption the MAPI session you are already using in CDO:</p>
+<p style="margin-top: 0; margin-bottom: 0">
+<br>set Session = CreateObject(&quot;MAPI.Session&quot;)
+<br>Session.Logon
+<br><i>'now you can tell Redemption that you want to use an existing session:
+<br>'all Redemption objects will be using that session from now on until
+<br>'Redemption.dll is unloaded.</i>
+<br>set Utils = CreateObject(&quot;Redemption.MAPIUtils&quot;)
+<br>Utils.MAPIOBJECT = Session.MAPIOBJECT </p>
+<hr>
+<p style="margin-top: 0; margin-bottom: 0"><a name="11"></a> <b>I noticed that if I send a message using Outlook UI, it
+is delivered in HTML; if I use Redemption, it is in plain text. Any workarounds?</b></p>
+<p style="margin-top: 0; margin-bottom: 0">Selecting an encoding programmatically has always been a mystery in Outlook.
+Recently, however, things became a bit clearer. You need to set a couple of
+extra properties:</p>
+<p style="margin-top: 0; margin-bottom: 0">set Appt = Application.CreateItem(olMailItem)<br>
+set sItem = CreateObject("Redemption.SafeMailItem")<br>
+sItem.Item = Appt<br>
+sItem.Recipients.Add &quot;user@domain.com&quot;<br>
+sItem.Recipients.ResolveAll<br>
+sItem.Subject = "test subject"<br>
+sItem.HTMLBody = "&lt;html&gt;&lt;body&gt;&lt;b&gt;bold&lt;/b&gt; text&lt;/body&gt;&lt;/html&gt;&quot;<br>
+<br>
+PR_InetMailOverrideFormat = &amp;H59020003<br>
+ENCODING_PREFERENCE = &amp;H00020000<br>
+BODY_ENCODING_TEXT_AND_HTML = &amp;H00100000<br>
+ENCODING_MIME = &amp;H00040000<br>
+<br>
+PR_MSG_EDITOR_FORMAT = &amp;H59090003<br>
+EDITOR_FORMAT_PLAINTEXT = 1<br>
+EDITOR_FORMAT_HTML = 2<br>
+<br>
+sItem.Fields(PR_InetMailOverrideFormat) = ENCODING_PREFERENCE or ENCODING_MIME or BODY_ENCODING_TEXT_AND_HTML<br>
+sItem.Fields(PR_MSG_EDITOR_FORMAT) = EDITOR_FORMAT_HTML<br>
+sItem.Send</p>
+<hr>
+<p style="margin-top: 0; margin-bottom: 0"><b><a name="12"></a>I am using Outlook 98/2000 installed in the Internet Only
+Mode (IMO) (Help|About in Outlook) and I have noticed that several Redemption
+features do not work in that mode (C/W mode work fine). Are there are
+workarounds?</b></p>
+<p style="margin-top: 0; margin-bottom: 0">Officially, there are not workarounds. Microsoft does not support Extended 
+MAPI in IMO at all, that was one of the reasons MS got rid of the IMO mode in 
+Outlook 2002. Some things however do work, but there are never any guarantees, 
+sometimes things work, sometimes they don't, even in the same
+configuration. Below is the list of Redemption objects, methods and properties
+potentially affected in the IMO mode:</p>
+<p style="margin-top: 0; margin-bottom: 0">AddressEntry object<br>
+MAPIUtils object<br>
+SafeMAPIFolder object<br>
+CurrentUser object<br>
+AddressLists object<br>
+<br>
+Recipient.Resolve method<br>
+Recipient.FreeBusy method</p>
+<p style="margin-top: 0; margin-bottom: 0">Note that most Safe*Item object properties and methods should always
+work.</p>
+<hr>
+<p style="margin-top: 0; margin-bottom: 0"><a name="13"></a><b>&nbsp;I noticed that Redemption supports import and 
+export of the RFC822 (EML) messages (SaveAs/Import). I am writing Extended MAPI 
+code in C++/Delphi, is there any way I can utilize Redemption RFC822 
+import/export features if I do not use Outlook Object Model or CDO?</b></p>
+<p style="margin-top: 0; margin-bottom: 0">Yes. Redemption.dll exports two functions - HrIMessageToRFC822Message() and 
+HrRFC822MessageToIMessage() exactly for that purpose. You will need to load the 
+Redemption.dll using LoadLibrary() Windows API function, then use GetPropAddress() 
+to dynamically load these functions. The functions are defined as follows:</p>
+<p style="margin-top: 0; margin-bottom: 0"><b>HrIMessageToRFC822Message:</b></p>
+<p style="margin-top: 0; margin-bottom: 0"><b>C/C++</b>: _stdcall HrIMessageToRFC822Message(LPMESSAGE pMsg, LPMAPISESSION 
+pSession, ULONG *pCount, LPVOID FAR *lppBuffer)</p>
+<p style="margin-top: 0; margin-bottom: 0"><b>Delphi</b>: function HrIMessageToRFC822Message(pMsg : IMessage; pSession : 
+IMAPISession; var lpCount : ULONG; var lppBuffer : pointer):HResult;stdcall;</p>
+<p style="margin-top: 0; margin-bottom: 0"><b>Parameters</b>:</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;input : pMsg - IMessage, 
+pSession - IMAPISEession<br>
+output: lpCount - number of bytes in the output buffer (including trailing 0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lppBuffer - 
+output buffer with the RFC822 message (0 terminated). Must be freed with 
+MAPIFreeBuffer</p>
+<p style="margin-top: 0; margin-bottom: 0"><b>HrRFC822MessageToIMessage</b>:</p>
+<p style="margin-top: 0; margin-bottom: 0"><b>C/C++</b>: _stdcall HrRFC822MessageToIMessage(LPMESSAGE pMsg, LPMAPISESSION 
+pSession, ULONG Count, LPVOID FAR lpBuffer)</p>
+<p style="margin-top: 0; margin-bottom: 0"><b>Delphi</b>: function HrRFC822MessageToIMessage(pMsg : IMessage; pSession : 
+IMAPISession; Count : ULONG; lpBuffer : pointer):HResult;stdcall;</p>
+<p style="margin-top: 0; margin-bottom: 0"><b>Parameters</b>:</p>
+<p style="margin-top: 0; margin-bottom: 0">input : pMsg - IMessage, </p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+pSession - IMAPISEssion<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Count - number of bytes 
+in the input buffer<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lpBuffer - input buffer 
+with the RFC822 message</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><b>Example:</b></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">typedef HRESULT (_stdcall 
+*HrRFC822MessageToIMessage)(LPMESSAGE pMsg, LPMAPISESSION pSession, ULONG Count, 
+LPVOID FAR lpBuffer);<br>
+HrRFC822MessageToIMessage pfnHrRFC822MessageToIMessage = NULL;</p>
+<p style="margin-top: 0; margin-bottom: 0">hInst = LoadLibrary(&quot;c:\\temp\\redemption.dll&quot;);<br>
+if (hInst) {<br>
+&nbsp; pfnHrRFC822MessageToIMessage = (HrRFC822MessageToIMessage) 
+GetProcAddress(hInst, &quot;HrRFC822MessageToIMessage&quot;);</p>
+<p style="margin-top: 0; margin-bottom: 0"><i>&nbsp; //load an RFC822 formatted 
+file into pszBuffer buffer of size ulFileSize</i></p>
+<p style="margin-top: 0; margin-bottom: 0"><i>&nbsp; ...</i></p>
+<p style="margin-top: 0; margin-bottom: 0"><i>&nbsp; //dump the contents of 
+pszBuffer into an existing IMessage (</i>pTargetMsg)</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp; if (S_OK == 
+pfnHrRFC822MessageToIMessage(pTargetMs.g, lpSession, ulFileSize, pszBuffer)) {</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp; pTargetMsg-&gt;SaveChanges(KEEP_OPEN_READWRITE)</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<hr>
+<p style="margin-top: 0; margin-bottom: 0"><b><a name="14"></a>Is there any way I can select an account to be used for 
+sending a message with Redemption?</b></p>
+<p style="margin-top: 0; margin-bottom: 0">Generally speaking, no. If you look at the message sent using non-default 
+account using <a target="_blank" href="http://www.dimastr.com/outspy">OutlookSpy</a>, 
+you will notice that Outlook sets a couple of named properties; one of them is 
+the name of the account, another one is a combination of the account integer 
+index and its name. RDOMail object exposes Account property that you can use to 
+read or set the account to be used when sending a message. You can also use 
+MailItem.SendUsingAccount property in Outlook 2007 or higher.</p>
+<p style="margin-top: 0; margin-bottom: 0">The good news however is that you can do much better than just selecting an 
+account: you can set the sender name and address to an arbitrary value, you do 
+not need to have an account configured with that name and address. The trick is 
+based on the fact that you can add a named property with a particular GUID to an outgoing message and 
+force Outlook to use the name of the property as an RFC822 header and its value 
+as the value of the header. By adding a property with the name &quot;From&quot; and the 
+value in the form &quot;Someone 
+&lt;whoever@domain.com&gt;&quot; you add an RFC822 header:</p>
+<p style="margin-top: 0; margin-bottom: 0">From: Someone &lt;whoever@domain.com&gt;</p>
+<p style="margin-top: 0; margin-bottom: 0">Both Exchange and IMAIL providers are smart enough to replace an existing 
+header if one exists, i.e. you will not get two &quot;From&quot; headers. The only 
+limitation is that the message must be converted to the RFC822 format along the 
+way, it will not work if the message is sent between two mailboxes on the same 
+Exchange server. The message in your Sent Items folder will still have the 
+default sender name, but the recipients will see the new value. Whether you use 
+IMAIL (POP3/SMTP) or Exchange provider in Outlook to send a message, doesn't 
+matter at all, it will work in both cases.</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Times New Roman"><span class="968090506-31072003">&nbsp;set sItem 
+= CreateObject(&quot;Redemption.SafeMailItem&quot;)<br>
+&nbsp;sItem.Item = MailItem<br>
+&nbsp;tag = sItem.GetIDsFromNames(&quot;{00020386-0000-0000-C000-000000000046}&quot;, &quot;From&quot;)<br>
+&nbsp;tag = tag or &amp;H1E&nbsp;&nbsp;&nbsp;&nbsp; '<i>the type is PT_STRING8</i><br>
+&nbsp;sItem.Fields(Tag) = &quot;</span></font>Someone &lt;whoever@domain.com<font face="Times New Roman"><span class="968090506-31072003">&gt;&quot;<br>
+&nbsp;sItem.Subject = sItem.Subject&nbsp; '<i>to trick Outlook into thinking that 
+something has changed</i><br>
+&nbsp;sItem.Save</span></font></p>
+<hr>
+<p style="margin-top: 0; margin-bottom: 0"><a name="15"></a><b>I am using SafeMailItem.Import to import MSG or EML 
+files, but it looks like ReceivedTime and SentOn are always set to the current 
+time. Is this a Redemption problem? Any workarounds?</b></p>
+<p style="margin-top: 0; margin-bottom: 0">This is really an Outlook problem - it always resets these two properties. As 
+a workaround, use Redemption.MessageItem instead: it does not try to be smart:</p>
+<p style="margin-top: 0; margin-bottom: 0">MailItem.Save <i>'Save the OOM object just to make sure EntryID is available</i><br>
+EntryID = MailItem.EntryID <i>'remember the entry id</i><br>
+set Utils = CreateObject(&quot;Redemption.MAPIUtils&quot;)<br>
+set rMessage = Utils.GetItemFromID(EntryID) <i>'reopen the same message as 
+Redemption.MessageItem</i><br>
+rMessage.Import &quot;c:\test.eml&quot;, 1024<br>
+rMessage.Save<br>
+<i>'important: do not modify and save the original object (MailItem) after this 
+- you will get an error saying that the message has changed</i><br>
+&nbsp;</p>
+<hr>
+<p style="margin-top: 0; margin-bottom: 0"><b><a name="16"></a>I process a large number of Outlook items using 
+Redemption. After processing a large (400-500) number of items, Redemption 
+starts returning errors.</b></p>
+<p style="margin-top: 0; margin-bottom: 0">Try to create a Redemption object (any object, such as Redemption.MAPIUtils) 
+when your app starts and keep it referenced in a global variable until your app 
+terminates - each Redemption object calls MAPIInitialize when created and 
+MAPIUninitialize when destroyed. Some versions of Outlook have a problem when 
+MAPIInitialize/MAPIUninitialize are called too many times (400-500 times). 
+Having a global object ensures that MAPI is initialized only once.</p>
+<p style="margin-top: 0; margin-bottom: 0">This problem was fixed in Outlook 2003 SP1.<br>
+&nbsp;</p>
+<hr>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><b><a name="17"></a>My C# or VB.Net 
+code <span class="e" id="q_110bef16a98893fc_2">
+<font face="Times New Roman" size="3"><span style="FONT-SIZE: 12pt">start 
+behaving erratically (e.g. MAPI_E_CALL_FAILED error is returned) after I process 
+a large number of items in a folder.</span></font></span></b></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"><span class="e">
+<font face="Times New Roman">Your code most likely runs out of the 255 RPC 
+channels/process limit enforced by Exchange since .Net does not immediately 
+release COM objects, so it is easy to go over the limit. Try to call GC.Collect() 
+periodically, release COM objects as soon as you are done with them using 
+Marshal.ReleaseCOMObject(), and avoid using multiple dot notation (e.g. 
+Folder.Items.Item(index)) to avoid implicit variables created by the compiler 
+that cannot be explicitly released.</font></span></p>
+<p style="margin-top: 0; margin-bottom: 0"><span class="e">
+<font face="Times New Roman">Also look into using the <a href="mapitable.htm">
+MAPITable</a> object (available either as a standalone object or returned by
+<a href="rdo/RDOFolder.htm">RDOFolder</a>.<a href="rdo/RDOItems.htm">Items</a>.<b>MAPITable</b>) 
+- it allows to retrieve properties form multiple messages without opening them 
+(and hence wasting RPC channels). </font></span></p>
+<p style="margin-top: 0; margin-bottom: 0"><span class="e">
+<font face="Times New Roman"><br>
+&nbsp;</font></span></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+ 
+</body>
+ 
+</html>

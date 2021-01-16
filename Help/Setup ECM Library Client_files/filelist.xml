@@ -1,0 +1,10 @@
+<xml xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:u1="http://schemas.openxmlformats.org/drawingml/2006/main">
+ <u1:clrMap bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink"/>
+ <o:MainFile HRef="../Setup%20ECM%20Library%20Client.htm"/>
+ <o:File HRef="themedata.thmx"/>
+ <o:File HRef="colorschememapping.xml"/>
+ <o:File HRef="image001.png"/>
+ <o:File HRef="image002.jpg"/>
+ <o:File HRef="filelist.xml"/>
+</xml>

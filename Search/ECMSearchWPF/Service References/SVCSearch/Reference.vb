@@ -18,500 +18,6 @@ Namespace SVCSearch
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
-     System.Runtime.Serialization.DataContractAttribute(Name:="DS_USERSCREENSTATE", [Namespace]:="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web"),  _
-     System.SerializableAttribute()>  _
-    Partial Public Class DS_USERSCREENSTATE
-        Inherits Object
-        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
-        
-        <System.NonSerializedAttribute()>  _
-        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private HiveActiveField As Boolean
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private HiveConnectionNameField As String
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private ParmDataTypeField As String
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private ParmNameField As String
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private ParmValField As String
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private RepoSvrNameField As String
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private RowCreationDateField As Date
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private RowLastModDateField As Date
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private RowNbrField As Integer
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private ScreenNameField As String
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private UserIDField As String
-        
-        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
-        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
-            Get
-                Return Me.extensionDataField
-            End Get
-            Set
-                Me.extensionDataField = value
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property HiveActive() As Boolean
-            Get
-                Return Me.HiveActiveField
-            End Get
-            Set
-                If (Me.HiveActiveField.Equals(value) <> true) Then
-                    Me.HiveActiveField = value
-                    Me.RaisePropertyChanged("HiveActive")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property HiveConnectionName() As String
-            Get
-                Return Me.HiveConnectionNameField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.HiveConnectionNameField, value) <> true) Then
-                    Me.HiveConnectionNameField = value
-                    Me.RaisePropertyChanged("HiveConnectionName")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property ParmDataType() As String
-            Get
-                Return Me.ParmDataTypeField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.ParmDataTypeField, value) <> true) Then
-                    Me.ParmDataTypeField = value
-                    Me.RaisePropertyChanged("ParmDataType")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property ParmName() As String
-            Get
-                Return Me.ParmNameField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.ParmNameField, value) <> true) Then
-                    Me.ParmNameField = value
-                    Me.RaisePropertyChanged("ParmName")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property ParmVal() As String
-            Get
-                Return Me.ParmValField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.ParmValField, value) <> true) Then
-                    Me.ParmValField = value
-                    Me.RaisePropertyChanged("ParmVal")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property RepoSvrName() As String
-            Get
-                Return Me.RepoSvrNameField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.RepoSvrNameField, value) <> true) Then
-                    Me.RepoSvrNameField = value
-                    Me.RaisePropertyChanged("RepoSvrName")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property RowCreationDate() As Date
-            Get
-                Return Me.RowCreationDateField
-            End Get
-            Set
-                If (Me.RowCreationDateField.Equals(value) <> true) Then
-                    Me.RowCreationDateField = value
-                    Me.RaisePropertyChanged("RowCreationDate")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property RowLastModDate() As Date
-            Get
-                Return Me.RowLastModDateField
-            End Get
-            Set
-                If (Me.RowLastModDateField.Equals(value) <> true) Then
-                    Me.RowLastModDateField = value
-                    Me.RaisePropertyChanged("RowLastModDate")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property RowNbr() As Integer
-            Get
-                Return Me.RowNbrField
-            End Get
-            Set
-                If (Me.RowNbrField.Equals(value) <> true) Then
-                    Me.RowNbrField = value
-                    Me.RaisePropertyChanged("RowNbr")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property ScreenName() As String
-            Get
-                Return Me.ScreenNameField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.ScreenNameField, value) <> true) Then
-                    Me.ScreenNameField = value
-                    Me.RaisePropertyChanged("ScreenName")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property UserID() As String
-            Get
-                Return Me.UserIDField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.UserIDField, value) <> true) Then
-                    Me.UserIDField = value
-                    Me.RaisePropertyChanged("UserID")
-                End If
-            End Set
-        End Property
-        
-        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
-        
-        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
-            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
-            If (Not (propertyChanged) Is Nothing) Then
-                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
-            End If
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
-     System.Runtime.Serialization.DataContractAttribute(Name:="DS_clsUSERGRIDSTATE", [Namespace]:="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web"),  _
-     System.SerializableAttribute()>  _
-    Partial Public Class DS_clsUSERGRIDSTATE
-        Inherits Object
-        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
-        
-        <System.NonSerializedAttribute()>  _
-        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private ColNameField As String
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private ColOrderField As Integer
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private ColReadOnlyField As Boolean
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private ColSortAscField As Boolean
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private ColSortOrderField As Integer
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private ColVisibleField As Boolean
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private ColWidthField As Integer
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private GridNameField As String
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private HiveActiveField As Boolean
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private HiveConnectionNameField As String
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private RepoSvrNameField As String
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private RowCreationDateField As Date
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private RowLastModDateField As Date
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private RowNbrField As Integer
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private ScreenNameField As String
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private UserIDField As String
-        
-        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
-        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
-            Get
-                Return Me.extensionDataField
-            End Get
-            Set
-                Me.extensionDataField = value
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property ColName() As String
-            Get
-                Return Me.ColNameField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.ColNameField, value) <> true) Then
-                    Me.ColNameField = value
-                    Me.RaisePropertyChanged("ColName")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property ColOrder() As Integer
-            Get
-                Return Me.ColOrderField
-            End Get
-            Set
-                If (Me.ColOrderField.Equals(value) <> true) Then
-                    Me.ColOrderField = value
-                    Me.RaisePropertyChanged("ColOrder")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property ColReadOnly() As Boolean
-            Get
-                Return Me.ColReadOnlyField
-            End Get
-            Set
-                If (Me.ColReadOnlyField.Equals(value) <> true) Then
-                    Me.ColReadOnlyField = value
-                    Me.RaisePropertyChanged("ColReadOnly")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property ColSortAsc() As Boolean
-            Get
-                Return Me.ColSortAscField
-            End Get
-            Set
-                If (Me.ColSortAscField.Equals(value) <> true) Then
-                    Me.ColSortAscField = value
-                    Me.RaisePropertyChanged("ColSortAsc")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property ColSortOrder() As Integer
-            Get
-                Return Me.ColSortOrderField
-            End Get
-            Set
-                If (Me.ColSortOrderField.Equals(value) <> true) Then
-                    Me.ColSortOrderField = value
-                    Me.RaisePropertyChanged("ColSortOrder")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property ColVisible() As Boolean
-            Get
-                Return Me.ColVisibleField
-            End Get
-            Set
-                If (Me.ColVisibleField.Equals(value) <> true) Then
-                    Me.ColVisibleField = value
-                    Me.RaisePropertyChanged("ColVisible")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property ColWidth() As Integer
-            Get
-                Return Me.ColWidthField
-            End Get
-            Set
-                If (Me.ColWidthField.Equals(value) <> true) Then
-                    Me.ColWidthField = value
-                    Me.RaisePropertyChanged("ColWidth")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property GridName() As String
-            Get
-                Return Me.GridNameField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.GridNameField, value) <> true) Then
-                    Me.GridNameField = value
-                    Me.RaisePropertyChanged("GridName")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property HiveActive() As Boolean
-            Get
-                Return Me.HiveActiveField
-            End Get
-            Set
-                If (Me.HiveActiveField.Equals(value) <> true) Then
-                    Me.HiveActiveField = value
-                    Me.RaisePropertyChanged("HiveActive")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property HiveConnectionName() As String
-            Get
-                Return Me.HiveConnectionNameField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.HiveConnectionNameField, value) <> true) Then
-                    Me.HiveConnectionNameField = value
-                    Me.RaisePropertyChanged("HiveConnectionName")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property RepoSvrName() As String
-            Get
-                Return Me.RepoSvrNameField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.RepoSvrNameField, value) <> true) Then
-                    Me.RepoSvrNameField = value
-                    Me.RaisePropertyChanged("RepoSvrName")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property RowCreationDate() As Date
-            Get
-                Return Me.RowCreationDateField
-            End Get
-            Set
-                If (Me.RowCreationDateField.Equals(value) <> true) Then
-                    Me.RowCreationDateField = value
-                    Me.RaisePropertyChanged("RowCreationDate")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property RowLastModDate() As Date
-            Get
-                Return Me.RowLastModDateField
-            End Get
-            Set
-                If (Me.RowLastModDateField.Equals(value) <> true) Then
-                    Me.RowLastModDateField = value
-                    Me.RaisePropertyChanged("RowLastModDate")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property RowNbr() As Integer
-            Get
-                Return Me.RowNbrField
-            End Get
-            Set
-                If (Me.RowNbrField.Equals(value) <> true) Then
-                    Me.RowNbrField = value
-                    Me.RaisePropertyChanged("RowNbr")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property ScreenName() As String
-            Get
-                Return Me.ScreenNameField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.ScreenNameField, value) <> true) Then
-                    Me.ScreenNameField = value
-                    Me.RaisePropertyChanged("ScreenName")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property UserID() As String
-            Get
-                Return Me.UserIDField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.UserIDField, value) <> true) Then
-                    Me.UserIDField = value
-                    Me.RaisePropertyChanged("UserID")
-                End If
-            End Set
-        End Property
-        
-        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
-        
-        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
-            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
-            If (Not (propertyChanged) Is Nothing) Then
-                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
-            End If
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
      System.Runtime.Serialization.DataContractAttribute(Name:="DS_CONTENT", [Namespace]:="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web"),  _
      System.SerializableAttribute()>  _
     Partial Public Class DS_CONTENT
@@ -1597,229 +1103,6 @@ Namespace SVCSearch
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
-     System.Runtime.Serialization.DataContractAttribute(Name:="DS_VUserGrid", [Namespace]:="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web"),  _
-     System.SerializableAttribute()>  _
-    Partial Public Class DS_VUserGrid
-        Inherits Object
-        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
-        
-        <System.NonSerializedAttribute()>  _
-        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private AdminField As String
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private ClientOnlyField As Boolean
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private EmailAddressField As String
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private HiveActiveField As Boolean
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private HiveConnectionNameField As String
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private RepoSvrNameField As String
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private RowCreationDateField As Date
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private RowLastModDateField As Date
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private UserIDField As String
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private UserLoginIDField As String
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private UserNameField As String
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private isActiveField As String
-        
-        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
-        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
-            Get
-                Return Me.extensionDataField
-            End Get
-            Set
-                Me.extensionDataField = value
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property Admin() As String
-            Get
-                Return Me.AdminField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.AdminField, value) <> true) Then
-                    Me.AdminField = value
-                    Me.RaisePropertyChanged("Admin")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property ClientOnly() As Boolean
-            Get
-                Return Me.ClientOnlyField
-            End Get
-            Set
-                If (Me.ClientOnlyField.Equals(value) <> true) Then
-                    Me.ClientOnlyField = value
-                    Me.RaisePropertyChanged("ClientOnly")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property EmailAddress() As String
-            Get
-                Return Me.EmailAddressField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.EmailAddressField, value) <> true) Then
-                    Me.EmailAddressField = value
-                    Me.RaisePropertyChanged("EmailAddress")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property HiveActive() As Boolean
-            Get
-                Return Me.HiveActiveField
-            End Get
-            Set
-                If (Me.HiveActiveField.Equals(value) <> true) Then
-                    Me.HiveActiveField = value
-                    Me.RaisePropertyChanged("HiveActive")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property HiveConnectionName() As String
-            Get
-                Return Me.HiveConnectionNameField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.HiveConnectionNameField, value) <> true) Then
-                    Me.HiveConnectionNameField = value
-                    Me.RaisePropertyChanged("HiveConnectionName")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property RepoSvrName() As String
-            Get
-                Return Me.RepoSvrNameField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.RepoSvrNameField, value) <> true) Then
-                    Me.RepoSvrNameField = value
-                    Me.RaisePropertyChanged("RepoSvrName")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property RowCreationDate() As Date
-            Get
-                Return Me.RowCreationDateField
-            End Get
-            Set
-                If (Me.RowCreationDateField.Equals(value) <> true) Then
-                    Me.RowCreationDateField = value
-                    Me.RaisePropertyChanged("RowCreationDate")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property RowLastModDate() As Date
-            Get
-                Return Me.RowLastModDateField
-            End Get
-            Set
-                If (Me.RowLastModDateField.Equals(value) <> true) Then
-                    Me.RowLastModDateField = value
-                    Me.RaisePropertyChanged("RowLastModDate")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property UserID() As String
-            Get
-                Return Me.UserIDField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.UserIDField, value) <> true) Then
-                    Me.UserIDField = value
-                    Me.RaisePropertyChanged("UserID")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property UserLoginID() As String
-            Get
-                Return Me.UserLoginIDField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.UserLoginIDField, value) <> true) Then
-                    Me.UserLoginIDField = value
-                    Me.RaisePropertyChanged("UserLoginID")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property UserName() As String
-            Get
-                Return Me.UserNameField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.UserNameField, value) <> true) Then
-                    Me.UserNameField = value
-                    Me.RaisePropertyChanged("UserName")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property isActive() As String
-            Get
-                Return Me.isActiveField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.isActiveField, value) <> true) Then
-                    Me.isActiveField = value
-                    Me.RaisePropertyChanged("isActive")
-                End If
-            End Set
-        End Property
-        
-        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
-        
-        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
-            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
-            If (Not (propertyChanged) Is Nothing) Then
-                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
-            End If
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
      System.Runtime.Serialization.DataContractAttribute(Name:="DS_USERSEARCHSTATE", [Namespace]:="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web"),  _
      System.SerializableAttribute()>  _
     Partial Public Class DS_USERSEARCHSTATE
@@ -2014,6 +1297,500 @@ Namespace SVCSearch
                 If (Me.SearchIDField.Equals(value) <> true) Then
                     Me.SearchIDField = value
                     Me.RaisePropertyChanged("SearchID")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property UserID() As String
+            Get
+                Return Me.UserIDField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.UserIDField, value) <> true) Then
+                    Me.UserIDField = value
+                    Me.RaisePropertyChanged("UserID")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="DS_USERSCREENSTATE", [Namespace]:="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class DS_USERSCREENSTATE
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private HiveActiveField As Boolean
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private HiveConnectionNameField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ParmDataTypeField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ParmNameField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ParmValField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RepoSvrNameField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RowCreationDateField As Date
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RowLastModDateField As Date
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RowNbrField As Integer
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ScreenNameField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private UserIDField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property HiveActive() As Boolean
+            Get
+                Return Me.HiveActiveField
+            End Get
+            Set
+                If (Me.HiveActiveField.Equals(value) <> true) Then
+                    Me.HiveActiveField = value
+                    Me.RaisePropertyChanged("HiveActive")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property HiveConnectionName() As String
+            Get
+                Return Me.HiveConnectionNameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.HiveConnectionNameField, value) <> true) Then
+                    Me.HiveConnectionNameField = value
+                    Me.RaisePropertyChanged("HiveConnectionName")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ParmDataType() As String
+            Get
+                Return Me.ParmDataTypeField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ParmDataTypeField, value) <> true) Then
+                    Me.ParmDataTypeField = value
+                    Me.RaisePropertyChanged("ParmDataType")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ParmName() As String
+            Get
+                Return Me.ParmNameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ParmNameField, value) <> true) Then
+                    Me.ParmNameField = value
+                    Me.RaisePropertyChanged("ParmName")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ParmVal() As String
+            Get
+                Return Me.ParmValField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ParmValField, value) <> true) Then
+                    Me.ParmValField = value
+                    Me.RaisePropertyChanged("ParmVal")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RepoSvrName() As String
+            Get
+                Return Me.RepoSvrNameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.RepoSvrNameField, value) <> true) Then
+                    Me.RepoSvrNameField = value
+                    Me.RaisePropertyChanged("RepoSvrName")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RowCreationDate() As Date
+            Get
+                Return Me.RowCreationDateField
+            End Get
+            Set
+                If (Me.RowCreationDateField.Equals(value) <> true) Then
+                    Me.RowCreationDateField = value
+                    Me.RaisePropertyChanged("RowCreationDate")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RowLastModDate() As Date
+            Get
+                Return Me.RowLastModDateField
+            End Get
+            Set
+                If (Me.RowLastModDateField.Equals(value) <> true) Then
+                    Me.RowLastModDateField = value
+                    Me.RaisePropertyChanged("RowLastModDate")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RowNbr() As Integer
+            Get
+                Return Me.RowNbrField
+            End Get
+            Set
+                If (Me.RowNbrField.Equals(value) <> true) Then
+                    Me.RowNbrField = value
+                    Me.RaisePropertyChanged("RowNbr")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ScreenName() As String
+            Get
+                Return Me.ScreenNameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ScreenNameField, value) <> true) Then
+                    Me.ScreenNameField = value
+                    Me.RaisePropertyChanged("ScreenName")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property UserID() As String
+            Get
+                Return Me.UserIDField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.UserIDField, value) <> true) Then
+                    Me.UserIDField = value
+                    Me.RaisePropertyChanged("UserID")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="DS_clsUSERGRIDSTATE", [Namespace]:="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class DS_clsUSERGRIDSTATE
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ColNameField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ColOrderField As Integer
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ColReadOnlyField As Boolean
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ColSortAscField As Boolean
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ColSortOrderField As Integer
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ColVisibleField As Boolean
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ColWidthField As Integer
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private GridNameField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private HiveActiveField As Boolean
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private HiveConnectionNameField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RepoSvrNameField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RowCreationDateField As Date
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RowLastModDateField As Date
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RowNbrField As Integer
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ScreenNameField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private UserIDField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ColName() As String
+            Get
+                Return Me.ColNameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ColNameField, value) <> true) Then
+                    Me.ColNameField = value
+                    Me.RaisePropertyChanged("ColName")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ColOrder() As Integer
+            Get
+                Return Me.ColOrderField
+            End Get
+            Set
+                If (Me.ColOrderField.Equals(value) <> true) Then
+                    Me.ColOrderField = value
+                    Me.RaisePropertyChanged("ColOrder")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ColReadOnly() As Boolean
+            Get
+                Return Me.ColReadOnlyField
+            End Get
+            Set
+                If (Me.ColReadOnlyField.Equals(value) <> true) Then
+                    Me.ColReadOnlyField = value
+                    Me.RaisePropertyChanged("ColReadOnly")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ColSortAsc() As Boolean
+            Get
+                Return Me.ColSortAscField
+            End Get
+            Set
+                If (Me.ColSortAscField.Equals(value) <> true) Then
+                    Me.ColSortAscField = value
+                    Me.RaisePropertyChanged("ColSortAsc")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ColSortOrder() As Integer
+            Get
+                Return Me.ColSortOrderField
+            End Get
+            Set
+                If (Me.ColSortOrderField.Equals(value) <> true) Then
+                    Me.ColSortOrderField = value
+                    Me.RaisePropertyChanged("ColSortOrder")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ColVisible() As Boolean
+            Get
+                Return Me.ColVisibleField
+            End Get
+            Set
+                If (Me.ColVisibleField.Equals(value) <> true) Then
+                    Me.ColVisibleField = value
+                    Me.RaisePropertyChanged("ColVisible")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ColWidth() As Integer
+            Get
+                Return Me.ColWidthField
+            End Get
+            Set
+                If (Me.ColWidthField.Equals(value) <> true) Then
+                    Me.ColWidthField = value
+                    Me.RaisePropertyChanged("ColWidth")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property GridName() As String
+            Get
+                Return Me.GridNameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.GridNameField, value) <> true) Then
+                    Me.GridNameField = value
+                    Me.RaisePropertyChanged("GridName")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property HiveActive() As Boolean
+            Get
+                Return Me.HiveActiveField
+            End Get
+            Set
+                If (Me.HiveActiveField.Equals(value) <> true) Then
+                    Me.HiveActiveField = value
+                    Me.RaisePropertyChanged("HiveActive")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property HiveConnectionName() As String
+            Get
+                Return Me.HiveConnectionNameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.HiveConnectionNameField, value) <> true) Then
+                    Me.HiveConnectionNameField = value
+                    Me.RaisePropertyChanged("HiveConnectionName")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RepoSvrName() As String
+            Get
+                Return Me.RepoSvrNameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.RepoSvrNameField, value) <> true) Then
+                    Me.RepoSvrNameField = value
+                    Me.RaisePropertyChanged("RepoSvrName")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RowCreationDate() As Date
+            Get
+                Return Me.RowCreationDateField
+            End Get
+            Set
+                If (Me.RowCreationDateField.Equals(value) <> true) Then
+                    Me.RowCreationDateField = value
+                    Me.RaisePropertyChanged("RowCreationDate")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RowLastModDate() As Date
+            Get
+                Return Me.RowLastModDateField
+            End Get
+            Set
+                If (Me.RowLastModDateField.Equals(value) <> true) Then
+                    Me.RowLastModDateField = value
+                    Me.RaisePropertyChanged("RowLastModDate")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RowNbr() As Integer
+            Get
+                Return Me.RowNbrField
+            End Get
+            Set
+                If (Me.RowNbrField.Equals(value) <> true) Then
+                    Me.RowNbrField = value
+                    Me.RaisePropertyChanged("RowNbr")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ScreenName() As String
+            Get
+                Return Me.ScreenNameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ScreenNameField, value) <> true) Then
+                    Me.ScreenNameField = value
+                    Me.RaisePropertyChanged("ScreenName")
                 End If
             End Set
         End Property
@@ -2277,9 +2054,861 @@ Namespace SVCSearch
         End Sub
     End Class
     
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="DS_VUserGrid", [Namespace]:="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class DS_VUserGrid
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private AdminField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ClientOnlyField As Boolean
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private EmailAddressField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private HiveActiveField As Boolean
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private HiveConnectionNameField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RepoSvrNameField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RowCreationDateField As Date
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RowLastModDateField As Date
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private UserIDField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private UserLoginIDField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private UserNameField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private isActiveField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Admin() As String
+            Get
+                Return Me.AdminField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.AdminField, value) <> true) Then
+                    Me.AdminField = value
+                    Me.RaisePropertyChanged("Admin")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ClientOnly() As Boolean
+            Get
+                Return Me.ClientOnlyField
+            End Get
+            Set
+                If (Me.ClientOnlyField.Equals(value) <> true) Then
+                    Me.ClientOnlyField = value
+                    Me.RaisePropertyChanged("ClientOnly")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property EmailAddress() As String
+            Get
+                Return Me.EmailAddressField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.EmailAddressField, value) <> true) Then
+                    Me.EmailAddressField = value
+                    Me.RaisePropertyChanged("EmailAddress")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property HiveActive() As Boolean
+            Get
+                Return Me.HiveActiveField
+            End Get
+            Set
+                If (Me.HiveActiveField.Equals(value) <> true) Then
+                    Me.HiveActiveField = value
+                    Me.RaisePropertyChanged("HiveActive")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property HiveConnectionName() As String
+            Get
+                Return Me.HiveConnectionNameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.HiveConnectionNameField, value) <> true) Then
+                    Me.HiveConnectionNameField = value
+                    Me.RaisePropertyChanged("HiveConnectionName")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RepoSvrName() As String
+            Get
+                Return Me.RepoSvrNameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.RepoSvrNameField, value) <> true) Then
+                    Me.RepoSvrNameField = value
+                    Me.RaisePropertyChanged("RepoSvrName")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RowCreationDate() As Date
+            Get
+                Return Me.RowCreationDateField
+            End Get
+            Set
+                If (Me.RowCreationDateField.Equals(value) <> true) Then
+                    Me.RowCreationDateField = value
+                    Me.RaisePropertyChanged("RowCreationDate")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RowLastModDate() As Date
+            Get
+                Return Me.RowLastModDateField
+            End Get
+            Set
+                If (Me.RowLastModDateField.Equals(value) <> true) Then
+                    Me.RowLastModDateField = value
+                    Me.RaisePropertyChanged("RowLastModDate")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property UserID() As String
+            Get
+                Return Me.UserIDField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.UserIDField, value) <> true) Then
+                    Me.UserIDField = value
+                    Me.RaisePropertyChanged("UserID")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property UserLoginID() As String
+            Get
+                Return Me.UserLoginIDField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.UserLoginIDField, value) <> true) Then
+                    Me.UserLoginIDField = value
+                    Me.RaisePropertyChanged("UserLoginID")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property UserName() As String
+            Get
+                Return Me.UserNameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.UserNameField, value) <> true) Then
+                    Me.UserNameField = value
+                    Me.RaisePropertyChanged("UserName")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property isActive() As String
+            Get
+                Return Me.isActiveField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.isActiveField, value) <> true) Then
+                    Me.isActiveField = value
+                    Me.RaisePropertyChanged("isActive")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
     <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
      System.ServiceModel.ServiceContractAttribute(ConfigurationName:="SVCSearch.IService1")>  _
     Public Interface IService1
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateSourceGridNoWeights", ReplyAction:="http://tempuri.org/IService1/PopulateSourceGridNoWeightsResponse")>  _
+        Function PopulateSourceGridNoWeights(ByVal request As SVCSearch.PopulateSourceGridNoWeightsRequest) As SVCSearch.PopulateSourceGridNoWeightsResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateSourceGridNoWeights", ReplyAction:="http://tempuri.org/IService1/PopulateSourceGridNoWeightsResponse")>  _
+        Function PopulateSourceGridNoWeightsAsync(ByVal request As SVCSearch.PopulateSourceGridNoWeightsRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateSourceGridNoWeightsResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateEmailGridWithNoWeights", ReplyAction:="http://tempuri.org/IService1/PopulateEmailGridWithNoWeightsResponse")>  _
+        Function PopulateEmailGridWithNoWeights(ByVal request As SVCSearch.PopulateEmailGridWithNoWeightsRequest) As SVCSearch.PopulateEmailGridWithNoWeightsResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateEmailGridWithNoWeights", ReplyAction:="http://tempuri.org/IService1/PopulateEmailGridWithNoWeightsResponse")>  _
+        Function PopulateEmailGridWithNoWeightsAsync(ByVal request As SVCSearch.PopulateEmailGridWithNoWeightsRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateEmailGridWithNoWeightsResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateEmailGridWithWeights", ReplyAction:="http://tempuri.org/IService1/PopulateEmailGridWithWeightsResponse")>  _
+        Function PopulateEmailGridWithWeights(ByVal request As SVCSearch.PopulateEmailGridWithWeightsRequest) As SVCSearch.PopulateEmailGridWithWeightsResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateEmailGridWithWeights", ReplyAction:="http://tempuri.org/IService1/PopulateEmailGridWithWeightsResponse")>  _
+        Function PopulateEmailGridWithWeightsAsync(ByVal request As SVCSearch.PopulateEmailGridWithWeightsRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateEmailGridWithWeightsResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/LoadUserSearchHistory", ReplyAction:="http://tempuri.org/IService1/LoadUserSearchHistoryResponse")>  _
+        Function LoadUserSearchHistory(ByVal request As SVCSearch.LoadUserSearchHistoryRequest) As SVCSearch.LoadUserSearchHistoryResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/LoadUserSearchHistory", ReplyAction:="http://tempuri.org/IService1/LoadUserSearchHistoryResponse")>  _
+        Function LoadUserSearchHistoryAsync(ByVal request As SVCSearch.LoadUserSearchHistoryRequest) As System.Threading.Tasks.Task(Of SVCSearch.LoadUserSearchHistoryResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getAttachmentWeights", ReplyAction:="http://tempuri.org/IService1/getAttachmentWeightsResponse")>  _
+        Function getAttachmentWeights(ByVal request As SVCSearch.getAttachmentWeightsRequest) As SVCSearch.getAttachmentWeightsResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getAttachmentWeights", ReplyAction:="http://tempuri.org/IService1/getAttachmentWeightsResponse")>  _
+        Function getAttachmentWeightsAsync(ByVal request As SVCSearch.getAttachmentWeightsRequest) As System.Threading.Tasks.Task(Of SVCSearch.getAttachmentWeightsResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConn1", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConn1Response")>  _
+        Function ExecuteSqlNewConn1(ByVal request As SVCSearch.ExecuteSqlNewConn1Request) As SVCSearch.ExecuteSqlNewConn1Response
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConn1", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConn1Response")>  _
+        Function ExecuteSqlNewConn1Async(ByVal request As SVCSearch.ExecuteSqlNewConn1Request) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConn1Response)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConn2", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConn2Response")>  _
+        Function ExecuteSqlNewConn2(ByVal request As SVCSearch.ExecuteSqlNewConn2Request) As SVCSearch.ExecuteSqlNewConn2Response
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConn2", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConn2Response")>  _
+        Function ExecuteSqlNewConn2Async(ByVal request As SVCSearch.ExecuteSqlNewConn2Request) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConn2Response)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConn3", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConn3Response")>  _
+        Function ExecuteSqlNewConn3(ByVal request As SVCSearch.ExecuteSqlNewConn3Request) As SVCSearch.ExecuteSqlNewConn3Response
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConn3", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConn3Response")>  _
+        Function ExecuteSqlNewConn3Async(ByVal request As SVCSearch.ExecuteSqlNewConn3Request) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConn3Response)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConn4", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConn4Response")>  _
+        Function ExecuteSqlNewConn4(ByVal request As SVCSearch.ExecuteSqlNewConn4Request) As SVCSearch.ExecuteSqlNewConn4Response
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConn4", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConn4Response")>  _
+        Function ExecuteSqlNewConn4Async(ByVal request As SVCSearch.ExecuteSqlNewConn4Request) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConn4Response)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConn5", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConn5Response")>  _
+        Function ExecuteSqlNewConn5(ByVal request As SVCSearch.ExecuteSqlNewConn5Request) As SVCSearch.ExecuteSqlNewConn5Response
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConn5", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConn5Response")>  _
+        Function ExecuteSqlNewConn5Async(ByVal request As SVCSearch.ExecuteSqlNewConn5Request) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConn5Response)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConnSecure", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConnSecureResponse")>  _
+        Function ExecuteSqlNewConnSecure(ByVal request As SVCSearch.ExecuteSqlNewConnSecureRequest) As SVCSearch.ExecuteSqlNewConnSecureResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConnSecure", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConnSecureResponse")>  _
+        Function ExecuteSqlNewConnSecureAsync(ByVal request As SVCSearch.ExecuteSqlNewConnSecureRequest) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConnSecureResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetParmValue", ReplyAction:="http://tempuri.org/IService1/GetParmValueResponse")>  _
+        Function GetParmValue(ByVal request As SVCSearch.GetParmValueRequest) As SVCSearch.GetParmValueResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetParmValue", ReplyAction:="http://tempuri.org/IService1/GetParmValueResponse")>  _
+        Function GetParmValueAsync(ByVal request As SVCSearch.GetParmValueRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetParmValueResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/DBisGlobalSearcher", ReplyAction:="http://tempuri.org/IService1/DBisGlobalSearcherResponse")>  _
+        Function DBisGlobalSearcher(ByVal request As SVCSearch.DBisGlobalSearcherRequest) As SVCSearch.DBisGlobalSearcherResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/DBisGlobalSearcher", ReplyAction:="http://tempuri.org/IService1/DBisGlobalSearcherResponse")>  _
+        Function DBisGlobalSearcherAsync(ByVal request As SVCSearch.DBisGlobalSearcherRequest) As System.Threading.Tasks.Task(Of SVCSearch.DBisGlobalSearcherResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/DBisAdmin", ReplyAction:="http://tempuri.org/IService1/DBisAdminResponse")>  _
+        Function DBisAdmin(ByVal request As SVCSearch.DBisAdminRequest) As SVCSearch.DBisAdminResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/DBisAdmin", ReplyAction:="http://tempuri.org/IService1/DBisAdminResponse")>  _
+        Function DBisAdminAsync(ByVal request As SVCSearch.DBisAdminRequest) As System.Threading.Tasks.Task(Of SVCSearch.DBisAdminResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getUserParm", ReplyAction:="http://tempuri.org/IService1/getUserParmResponse")>  _
+        Function getUserParm(ByVal request As SVCSearch.getUserParmRequest) As SVCSearch.getUserParmResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getUserParm", ReplyAction:="http://tempuri.org/IService1/getUserParmResponse")>  _
+        Function getUserParmAsync(ByVal request As SVCSearch.getUserParmRequest) As System.Threading.Tasks.Task(Of SVCSearch.getUserParmResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/RemoveUnwantedCharacters", ReplyAction:="http://tempuri.org/IService1/RemoveUnwantedCharactersResponse")>  _
+        Function RemoveUnwantedCharacters(ByVal request As SVCSearch.RemoveUnwantedCharactersRequest) As SVCSearch.RemoveUnwantedCharactersResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/RemoveUnwantedCharacters", ReplyAction:="http://tempuri.org/IService1/RemoveUnwantedCharactersResponse")>  _
+        Function RemoveUnwantedCharactersAsync(ByVal request As SVCSearch.RemoveUnwantedCharactersRequest) As System.Threading.Tasks.Task(Of SVCSearch.RemoveUnwantedCharactersResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetMachineIP", ReplyAction:="http://tempuri.org/IService1/GetMachineIPResponse")>  _
+        Function GetMachineIP(ByVal request As SVCSearch.GetMachineIPRequest) As SVCSearch.GetMachineIPResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetMachineIP", ReplyAction:="http://tempuri.org/IService1/GetMachineIPResponse")>  _
+        Function GetMachineIPAsync(ByVal request As SVCSearch.GetMachineIPRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetMachineIPResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getClientLicenses", ReplyAction:="http://tempuri.org/IService1/getClientLicensesResponse")>  _
+        Function getClientLicenses(ByVal request As SVCSearch.getClientLicensesRequest) As SVCSearch.getClientLicensesResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getClientLicenses", ReplyAction:="http://tempuri.org/IService1/getClientLicensesResponse")>  _
+        Function getClientLicensesAsync(ByVal request As SVCSearch.getClientLicensesRequest) As System.Threading.Tasks.Task(Of SVCSearch.getClientLicensesResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getListOfStrings", ReplyAction:="http://tempuri.org/IService1/getListOfStringsResponse")>  _
+        Function getListOfStrings(ByVal request As SVCSearch.getListOfStringsRequest) As SVCSearch.getListOfStringsResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getListOfStrings", ReplyAction:="http://tempuri.org/IService1/getListOfStringsResponse")>  _
+        Function getListOfStringsAsync(ByVal request As SVCSearch.getListOfStringsRequest) As System.Threading.Tasks.Task(Of SVCSearch.getListOfStringsResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getListOfStrings1", ReplyAction:="http://tempuri.org/IService1/getListOfStrings1Response")>  _
+        Function getListOfStrings1(ByVal request As SVCSearch.getListOfStrings1Request) As SVCSearch.getListOfStrings1Response
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getListOfStrings1", ReplyAction:="http://tempuri.org/IService1/getListOfStrings1Response")>  _
+        Function getListOfStrings1Async(ByVal request As SVCSearch.getListOfStrings1Request) As System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings1Response)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getListOfStrings2", ReplyAction:="http://tempuri.org/IService1/getListOfStrings2Response")>  _
+        Function getListOfStrings2(ByVal request As SVCSearch.getListOfStrings2Request) As SVCSearch.getListOfStrings2Response
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getListOfStrings2", ReplyAction:="http://tempuri.org/IService1/getListOfStrings2Response")>  _
+        Function getListOfStrings2Async(ByVal request As SVCSearch.getListOfStrings2Request) As System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings2Response)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getListOfStrings3", ReplyAction:="http://tempuri.org/IService1/getListOfStrings3Response")>  _
+        Function getListOfStrings3(ByVal request As SVCSearch.getListOfStrings3Request) As SVCSearch.getListOfStrings3Response
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getListOfStrings3", ReplyAction:="http://tempuri.org/IService1/getListOfStrings3Response")>  _
+        Function getListOfStrings3Async(ByVal request As SVCSearch.getListOfStrings3Request) As System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings3Response)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getListOfStrings4", ReplyAction:="http://tempuri.org/IService1/getListOfStrings4Response")>  _
+        Function getListOfStrings4(ByVal request As SVCSearch.getListOfStrings4Request) As SVCSearch.getListOfStrings4Response
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getListOfStrings4", ReplyAction:="http://tempuri.org/IService1/getListOfStrings4Response")>  _
+        Function getListOfStrings4Async(ByVal request As SVCSearch.getListOfStrings4Request) As System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings4Response)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/iCount", ReplyAction:="http://tempuri.org/IService1/iCountResponse")>  _
+        Function iCount(ByVal request As SVCSearch.iCountRequest) As SVCSearch.iCountResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/iCount", ReplyAction:="http://tempuri.org/IService1/iCountResponse")>  _
+        Function iCountAsync(ByVal request As SVCSearch.iCountRequest) As System.Threading.Tasks.Task(Of SVCSearch.iCountResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetLogPath", ReplyAction:="http://tempuri.org/IService1/GetLogPathResponse")>  _
+        Function GetLogPath(ByVal request As SVCSearch.GetLogPathRequest) As SVCSearch.GetLogPathResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetLogPath", ReplyAction:="http://tempuri.org/IService1/GetLogPathResponse")>  _
+        Function GetLogPathAsync(ByVal request As SVCSearch.GetLogPathRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetLogPathResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ActiveSessionGetVal", ReplyAction:="http://tempuri.org/IService1/ActiveSessionGetValResponse")>  _
+        Function ActiveSessionGetVal(ByVal request As SVCSearch.ActiveSessionGetValRequest) As SVCSearch.ActiveSessionGetValResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ActiveSessionGetVal", ReplyAction:="http://tempuri.org/IService1/ActiveSessionGetValResponse")>  _
+        Function ActiveSessionGetValAsync(ByVal request As SVCSearch.ActiveSessionGetValRequest) As System.Threading.Tasks.Task(Of SVCSearch.ActiveSessionGetValResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ActiveSession", ReplyAction:="http://tempuri.org/IService1/ActiveSessionResponse")>  _
+        Function ActiveSession(ByVal request As SVCSearch.ActiveSessionRequest) As SVCSearch.ActiveSessionResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ActiveSession", ReplyAction:="http://tempuri.org/IService1/ActiveSessionResponse")>  _
+        Function ActiveSessionAsync(ByVal request As SVCSearch.ActiveSessionRequest) As System.Threading.Tasks.Task(Of SVCSearch.ActiveSessionResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setSecureLoginParms", ReplyAction:="http://tempuri.org/IService1/setSecureLoginParmsResponse")>  _
+        Function setSecureLoginParms(ByVal request As SVCSearch.setSecureLoginParmsRequest) As SVCSearch.setSecureLoginParmsResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setSecureLoginParms", ReplyAction:="http://tempuri.org/IService1/setSecureLoginParmsResponse")>  _
+        Function setSecureLoginParmsAsync(ByVal request As SVCSearch.setSecureLoginParmsRequest) As System.Threading.Tasks.Task(Of SVCSearch.setSecureLoginParmsResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateSecureLoginCB_V2", ReplyAction:="http://tempuri.org/IService1/PopulateSecureLoginCB_V2Response")>  _
+        Function PopulateSecureLoginCB_V2(ByVal request As SVCSearch.PopulateSecureLoginCB_V2Request) As SVCSearch.PopulateSecureLoginCB_V2Response
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateSecureLoginCB_V2", ReplyAction:="http://tempuri.org/IService1/PopulateSecureLoginCB_V2Response")>  _
+        Function PopulateSecureLoginCB_V2Async(ByVal request As SVCSearch.PopulateSecureLoginCB_V2Request) As System.Threading.Tasks.Task(Of SVCSearch.PopulateSecureLoginCB_V2Response)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateSecureLoginCB", ReplyAction:="http://tempuri.org/IService1/PopulateSecureLoginCBResponse")>  _
+        Function PopulateSecureLoginCB(ByVal request As SVCSearch.PopulateSecureLoginCBRequest) As SVCSearch.PopulateSecureLoginCBResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateSecureLoginCB", ReplyAction:="http://tempuri.org/IService1/PopulateSecureLoginCBResponse")>  _
+        Function PopulateSecureLoginCBAsync(ByVal request As SVCSearch.PopulateSecureLoginCBRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateSecureLoginCBResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getLoginPW", ReplyAction:="http://tempuri.org/IService1/getLoginPWResponse"),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(String())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Integer))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, String))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Date))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of Integer, String))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(Object()))>  _
+        Function getLoginPW(ByVal request As SVCSearch.getLoginPWRequest) As SVCSearch.getLoginPWResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getLoginPW", ReplyAction:="http://tempuri.org/IService1/getLoginPWResponse")>  _
+        Function getLoginPWAsync(ByVal request As SVCSearch.getLoginPWRequest) As System.Threading.Tasks.Task(Of SVCSearch.getLoginPWResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setLoginPW", ReplyAction:="http://tempuri.org/IService1/setLoginPWResponse")>  _
+        Function setLoginPW(ByVal request As SVCSearch.setLoginPWRequest) As SVCSearch.setLoginPWResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setLoginPW", ReplyAction:="http://tempuri.org/IService1/setLoginPWResponse")>  _
+        Function setLoginPWAsync(ByVal request As SVCSearch.setLoginPWRequest) As System.Threading.Tasks.Task(Of SVCSearch.setLoginPWResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getSessionEncCs", ReplyAction:="http://tempuri.org/IService1/getSessionEncCsResponse"),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(String())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Integer))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, String))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Date))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of Integer, String))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(Object()))>  _
+        Function getSessionEncCs(ByVal request As SVCSearch.getSessionEncCsRequest) As SVCSearch.getSessionEncCsResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getSessionEncCs", ReplyAction:="http://tempuri.org/IService1/getSessionEncCsResponse")>  _
+        Function getSessionEncCsAsync(ByVal request As SVCSearch.getSessionEncCsRequest) As System.Threading.Tasks.Task(Of SVCSearch.getSessionEncCsResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setSessionEncCs", ReplyAction:="http://tempuri.org/IService1/setSessionEncCsResponse")>  _
+        Function setSessionEncCs(ByVal request As SVCSearch.setSessionEncCsRequest) As SVCSearch.setSessionEncCsResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setSessionEncCs", ReplyAction:="http://tempuri.org/IService1/setSessionEncCsResponse")>  _
+        Function setSessionEncCsAsync(ByVal request As SVCSearch.setSessionEncCsRequest) As System.Threading.Tasks.Task(Of SVCSearch.setSessionEncCsResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setSessionRepoID", ReplyAction:="http://tempuri.org/IService1/setSessionRepoIDResponse")>  _
+        Function setSessionRepoID(ByVal request As SVCSearch.setSessionRepoIDRequest) As SVCSearch.setSessionRepoIDResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setSessionRepoID", ReplyAction:="http://tempuri.org/IService1/setSessionRepoIDResponse")>  _
+        Function setSessionRepoIDAsync(ByVal request As SVCSearch.setSessionRepoIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.setSessionRepoIDResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getSessionRepoID", ReplyAction:="http://tempuri.org/IService1/getSessionRepoIDResponse"),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(String())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Integer))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, String))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Date))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of Integer, String))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(Object()))>  _
+        Function getSessionRepoID(ByVal request As SVCSearch.getSessionRepoIDRequest) As SVCSearch.getSessionRepoIDResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getSessionRepoID", ReplyAction:="http://tempuri.org/IService1/getSessionRepoIDResponse")>  _
+        Function getSessionRepoIDAsync(ByVal request As SVCSearch.getSessionRepoIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.getSessionRepoIDResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setSessionCompanyID", ReplyAction:="http://tempuri.org/IService1/setSessionCompanyIDResponse")>  _
+        Function setSessionCompanyID(ByVal request As SVCSearch.setSessionCompanyIDRequest) As SVCSearch.setSessionCompanyIDResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setSessionCompanyID", ReplyAction:="http://tempuri.org/IService1/setSessionCompanyIDResponse")>  _
+        Function setSessionCompanyIDAsync(ByVal request As SVCSearch.setSessionCompanyIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.setSessionCompanyIDResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getSessionCompanyID", ReplyAction:="http://tempuri.org/IService1/getSessionCompanyIDResponse"),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(String())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Integer))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, String))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Date))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of Integer, String))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(Object()))>  _
+        Function getSessionCompanyID(ByVal request As SVCSearch.getSessionCompanyIDRequest) As SVCSearch.getSessionCompanyIDResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getSessionCompanyID", ReplyAction:="http://tempuri.org/IService1/getSessionCompanyIDResponse")>  _
+        Function getSessionCompanyIDAsync(ByVal request As SVCSearch.getSessionCompanyIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.getSessionCompanyIDResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setLoginGuid", ReplyAction:="http://tempuri.org/IService1/setLoginGuidResponse")>  _
+        Function setLoginGuid(ByVal request As SVCSearch.setLoginGuidRequest) As SVCSearch.setLoginGuidResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setLoginGuid", ReplyAction:="http://tempuri.org/IService1/setLoginGuidResponse")>  _
+        Function setLoginGuidAsync(ByVal request As SVCSearch.setLoginGuidRequest) As System.Threading.Tasks.Task(Of SVCSearch.setLoginGuidResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getLoginGuid", ReplyAction:="http://tempuri.org/IService1/getLoginGuidResponse"),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(String())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Integer))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, String))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Date))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of Integer, String))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(Object()))>  _
+        Function getLoginGuid(ByVal request As SVCSearch.getLoginGuidRequest) As SVCSearch.getLoginGuidResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getLoginGuid", ReplyAction:="http://tempuri.org/IService1/getLoginGuidResponse")>  _
+        Function getLoginGuidAsync(ByVal request As SVCSearch.getLoginGuidRequest) As System.Threading.Tasks.Task(Of SVCSearch.getLoginGuidResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getHttpSessionID", ReplyAction:="http://tempuri.org/IService1/getHttpSessionIDResponse"),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(String())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Integer))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, String))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Date))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of Integer, String))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(Object()))>  _
+        Function getHttpSessionID(ByVal request As SVCSearch.getHttpSessionIDRequest) As SVCSearch.getHttpSessionIDResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getHttpSessionID", ReplyAction:="http://tempuri.org/IService1/getHttpSessionIDResponse")>  _
+        Function getHttpSessionIDAsync(ByVal request As SVCSearch.getHttpSessionIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.getHttpSessionIDResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setSessionID", ReplyAction:="http://tempuri.org/IService1/setSessionIDResponse")>  _
+        Function setSessionID(ByVal request As SVCSearch.setSessionIDRequest) As SVCSearch.setSessionIDResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setSessionID", ReplyAction:="http://tempuri.org/IService1/setSessionIDResponse")>  _
+        Function setSessionIDAsync(ByVal request As SVCSearch.setSessionIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.setSessionIDResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExpandInflectionTerms", ReplyAction:="http://tempuri.org/IService1/ExpandInflectionTermsResponse")>  _
+        Function ExpandInflectionTerms(ByVal request As SVCSearch.ExpandInflectionTermsRequest) As SVCSearch.ExpandInflectionTermsResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExpandInflectionTerms", ReplyAction:="http://tempuri.org/IService1/ExpandInflectionTermsResponse")>  _
+        Function ExpandInflectionTermsAsync(ByVal request As SVCSearch.ExpandInflectionTermsRequest) As System.Threading.Tasks.Task(Of SVCSearch.ExpandInflectionTermsResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getServerDatabaseName", ReplyAction:="http://tempuri.org/IService1/getServerDatabaseNameResponse")>  _
+        Function getServerDatabaseName(ByVal request As SVCSearch.getServerDatabaseNameRequest) As SVCSearch.getServerDatabaseNameResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getServerDatabaseName", ReplyAction:="http://tempuri.org/IService1/getServerDatabaseNameResponse")>  _
+        Function getServerDatabaseNameAsync(ByVal request As SVCSearch.getServerDatabaseNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.getServerDatabaseNameResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/CleanLog", ReplyAction:="http://tempuri.org/IService1/CleanLogResponse")>  _
+        Function CleanLog(ByVal request As SVCSearch.CleanLogRequest) As SVCSearch.CleanLogResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/CleanLog", ReplyAction:="http://tempuri.org/IService1/CleanLogResponse")>  _
+        Function CleanLogAsync(ByVal request As SVCSearch.CleanLogRequest) As System.Threading.Tasks.Task(Of SVCSearch.CleanLogResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateComboBox", ReplyAction:="http://tempuri.org/IService1/PopulateComboBoxResponse")>  _
+        Function PopulateComboBox(ByVal request As SVCSearch.PopulateComboBoxRequest) As SVCSearch.PopulateComboBoxResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateComboBox", ReplyAction:="http://tempuri.org/IService1/PopulateComboBoxResponse")>  _
+        Function PopulateComboBoxAsync(ByVal request As SVCSearch.PopulateComboBoxRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateComboBoxResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetEmailAttachments", ReplyAction:="http://tempuri.org/IService1/GetEmailAttachmentsResponse")>  _
+        Function GetEmailAttachments(ByVal request As SVCSearch.GetEmailAttachmentsRequest) As SVCSearch.GetEmailAttachmentsResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetEmailAttachments", ReplyAction:="http://tempuri.org/IService1/GetEmailAttachmentsResponse")>  _
+        Function GetEmailAttachmentsAsync(ByVal request As SVCSearch.GetEmailAttachmentsRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetEmailAttachmentsResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/DbWriteToFile", ReplyAction:="http://tempuri.org/IService1/DbWriteToFileResponse")>  _
+        Function DbWriteToFile(ByVal request As SVCSearch.DbWriteToFileRequest) As SVCSearch.DbWriteToFileResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/DbWriteToFile", ReplyAction:="http://tempuri.org/IService1/DbWriteToFileResponse")>  _
+        Function DbWriteToFileAsync(ByVal request As SVCSearch.DbWriteToFileRequest) As System.Threading.Tasks.Task(Of SVCSearch.DbWriteToFileResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/SetSessionVariable", ReplyAction:="http://tempuri.org/IService1/SetSessionVariableResponse")>  _
+        Function SetSessionVariable(ByVal request As SVCSearch.SetSessionVariableRequest) As SVCSearch.SetSessionVariableResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/SetSessionVariable", ReplyAction:="http://tempuri.org/IService1/SetSessionVariableResponse")>  _
+        Function SetSessionVariableAsync(ByVal request As SVCSearch.SetSessionVariableRequest) As System.Threading.Tasks.Task(Of SVCSearch.SetSessionVariableResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetSessionVariable", ReplyAction:="http://tempuri.org/IService1/GetSessionVariableResponse"),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(String())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Integer))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, String))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Date))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of Integer, String))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(Object()))>  _
+        Function GetSessionVariable(ByVal request As SVCSearch.GetSessionVariableRequest) As SVCSearch.GetSessionVariableResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetSessionVariable", ReplyAction:="http://tempuri.org/IService1/GetSessionVariableResponse")>  _
+        Function GetSessionVariableAsync(ByVal request As SVCSearch.GetSessionVariableRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetSessionVariableResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/UpdateSourceImageCompressed", ReplyAction:="http://tempuri.org/IService1/UpdateSourceImageCompressedResponse")>  _
+        Function UpdateSourceImageCompressed(ByVal request As SVCSearch.UpdateSourceImageCompressedRequest) As SVCSearch.UpdateSourceImageCompressedResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/UpdateSourceImageCompressed", ReplyAction:="http://tempuri.org/IService1/UpdateSourceImageCompressedResponse")>  _
+        Function UpdateSourceImageCompressedAsync(ByVal request As SVCSearch.UpdateSourceImageCompressedRequest) As System.Threading.Tasks.Task(Of SVCSearch.UpdateSourceImageCompressedResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/writeEmailFromDbToFile", ReplyAction:="http://tempuri.org/IService1/writeEmailFromDbToFileResponse")>  _
+        Function writeEmailFromDbToFile(ByVal request As SVCSearch.writeEmailFromDbToFileRequest) As SVCSearch.writeEmailFromDbToFileResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/writeEmailFromDbToFile", ReplyAction:="http://tempuri.org/IService1/writeEmailFromDbToFileResponse")>  _
+        Function writeEmailFromDbToFileAsync(ByVal request As SVCSearch.writeEmailFromDbToFileRequest) As System.Threading.Tasks.Task(Of SVCSearch.writeEmailFromDbToFileResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/writeAttachmentFromDbWriteToFile", ReplyAction:="http://tempuri.org/IService1/writeAttachmentFromDbWriteToFileResponse")>  _
+        Function writeAttachmentFromDbWriteToFile(ByVal request As SVCSearch.writeAttachmentFromDbWriteToFileRequest) As SVCSearch.writeAttachmentFromDbWriteToFileResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/writeAttachmentFromDbWriteToFile", ReplyAction:="http://tempuri.org/IService1/writeAttachmentFromDbWriteToFileResponse")>  _
+        Function writeAttachmentFromDbWriteToFileAsync(ByVal request As SVCSearch.writeAttachmentFromDbWriteToFileRequest) As System.Threading.Tasks.Task(Of SVCSearch.writeAttachmentFromDbWriteToFileResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/writeImageSourceDataFromDbWriteToFile", ReplyAction:="http://tempuri.org/IService1/writeImageSourceDataFromDbWriteToFileResponse")>  _
+        Function writeImageSourceDataFromDbWriteToFile(ByVal request As SVCSearch.writeImageSourceDataFromDbWriteToFileRequest) As SVCSearch.writeImageSourceDataFromDbWriteToFileResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/writeImageSourceDataFromDbWriteToFile", ReplyAction:="http://tempuri.org/IService1/writeImageSourceDataFromDbWriteToFileResponse")>  _
+        Function writeImageSourceDataFromDbWriteToFileAsync(ByVal request As SVCSearch.writeImageSourceDataFromDbWriteToFileRequest) As System.Threading.Tasks.Task(Of SVCSearch.writeImageSourceDataFromDbWriteToFileResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/AddLibraryItems", ReplyAction:="http://tempuri.org/IService1/AddLibraryItemsResponse")>  _
+        Function AddLibraryItems(ByVal request As SVCSearch.AddLibraryItemsRequest) As SVCSearch.AddLibraryItemsResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/AddLibraryItems", ReplyAction:="http://tempuri.org/IService1/AddLibraryItemsResponse")>  _
+        Function AddLibraryItemsAsync(ByVal request As SVCSearch.AddLibraryItemsRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddLibraryItemsResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateGroupUserLibCombo", ReplyAction:="http://tempuri.org/IService1/PopulateGroupUserLibComboResponse")>  _
+        Function PopulateGroupUserLibCombo(ByVal request As SVCSearch.PopulateGroupUserLibComboRequest) As SVCSearch.PopulateGroupUserLibComboResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateGroupUserLibCombo", ReplyAction:="http://tempuri.org/IService1/PopulateGroupUserLibComboResponse")>  _
+        Function PopulateGroupUserLibComboAsync(ByVal request As SVCSearch.PopulateGroupUserLibComboRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateGroupUserLibComboResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetLibOwnerByName", ReplyAction:="http://tempuri.org/IService1/GetLibOwnerByNameResponse")>  _
+        Function GetLibOwnerByName(ByVal request As SVCSearch.GetLibOwnerByNameRequest) As SVCSearch.GetLibOwnerByNameResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetLibOwnerByName", ReplyAction:="http://tempuri.org/IService1/GetLibOwnerByNameResponse")>  _
+        Function GetLibOwnerByNameAsync(ByVal request As SVCSearch.GetLibOwnerByNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetLibOwnerByNameResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GenerateSQL", ReplyAction:="http://tempuri.org/IService1/GenerateSQLResponse")>  _
+        Function GenerateSQL(ByVal request As SVCSearch.GenerateSQLRequest) As SVCSearch.GenerateSQLResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GenerateSQL", ReplyAction:="http://tempuri.org/IService1/GenerateSQLResponse")>  _
+        Function GenerateSQLAsync(ByVal request As SVCSearch.GenerateSQLRequest) As System.Threading.Tasks.Task(Of SVCSearch.GenerateSQLResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getJsonData", ReplyAction:="http://tempuri.org/IService1/getJsonDataResponse")>  _
+        Function getJsonData(ByVal I As String) As String
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getJsonData", ReplyAction:="http://tempuri.org/IService1/getJsonDataResponse")>  _
+        Function getJsonDataAsync(ByVal I As String) As System.Threading.Tasks.Task(Of String)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSearchEmail", ReplyAction:="http://tempuri.org/IService1/ExecuteSearchEmailResponse")>  _
+        Function ExecuteSearchEmail(ByVal request As SVCSearch.ExecuteSearchEmailRequest) As SVCSearch.ExecuteSearchEmailResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSearchEmail", ReplyAction:="http://tempuri.org/IService1/ExecuteSearchEmailResponse")>  _
+        Function ExecuteSearchEmailAsync(ByVal request As SVCSearch.ExecuteSearchEmailRequest) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSearchEmailResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSearchContent", ReplyAction:="http://tempuri.org/IService1/ExecuteSearchContentResponse")>  _
+        Function ExecuteSearchContent(ByVal request As SVCSearch.ExecuteSearchContentRequest) As SVCSearch.ExecuteSearchContentResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSearchContent", ReplyAction:="http://tempuri.org/IService1/ExecuteSearchContentResponse")>  _
+        Function ExecuteSearchContentAsync(ByVal request As SVCSearch.ExecuteSearchContentRequest) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSearchContentResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getSearchState", ReplyAction:="http://tempuri.org/IService1/getSearchStateResponse")>  _
+        Function getSearchState(ByVal request As SVCSearch.getSearchStateRequest) As SVCSearch.getSearchStateResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getSearchState", ReplyAction:="http://tempuri.org/IService1/getSearchStateResponse")>  _
+        Function getSearchStateAsync(ByVal request As SVCSearch.getSearchStateRequest) As System.Threading.Tasks.Task(Of SVCSearch.getSearchStateResponse)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/saveSearchState", ReplyAction:="http://tempuri.org/IService1/saveSearchStateResponse")>  _
         Function saveSearchState(ByVal request As SVCSearch.saveSearchStateRequest) As SVCSearch.saveSearchStateResponse
@@ -2567,803 +3196,6 @@ Namespace SVCSearch
         'CODEGEN: Generating message contract since the operation has multiple return values.
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateSourceGridWithWeights", ReplyAction:="http://tempuri.org/IService1/PopulateSourceGridWithWeightsResponse")>  _
         Function PopulateSourceGridWithWeightsAsync(ByVal request As SVCSearch.PopulateSourceGridWithWeightsRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateSourceGridWithWeightsResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateSourceGridNoWeights", ReplyAction:="http://tempuri.org/IService1/PopulateSourceGridNoWeightsResponse")>  _
-        Function PopulateSourceGridNoWeights(ByVal request As SVCSearch.PopulateSourceGridNoWeightsRequest) As SVCSearch.PopulateSourceGridNoWeightsResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateSourceGridNoWeights", ReplyAction:="http://tempuri.org/IService1/PopulateSourceGridNoWeightsResponse")>  _
-        Function PopulateSourceGridNoWeightsAsync(ByVal request As SVCSearch.PopulateSourceGridNoWeightsRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateSourceGridNoWeightsResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateEmailGridWithNoWeights", ReplyAction:="http://tempuri.org/IService1/PopulateEmailGridWithNoWeightsResponse")>  _
-        Function PopulateEmailGridWithNoWeights(ByVal request As SVCSearch.PopulateEmailGridWithNoWeightsRequest) As SVCSearch.PopulateEmailGridWithNoWeightsResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateEmailGridWithNoWeights", ReplyAction:="http://tempuri.org/IService1/PopulateEmailGridWithNoWeightsResponse")>  _
-        Function PopulateEmailGridWithNoWeightsAsync(ByVal request As SVCSearch.PopulateEmailGridWithNoWeightsRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateEmailGridWithNoWeightsResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateEmailGridWithWeights", ReplyAction:="http://tempuri.org/IService1/PopulateEmailGridWithWeightsResponse")>  _
-        Function PopulateEmailGridWithWeights(ByVal request As SVCSearch.PopulateEmailGridWithWeightsRequest) As SVCSearch.PopulateEmailGridWithWeightsResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateEmailGridWithWeights", ReplyAction:="http://tempuri.org/IService1/PopulateEmailGridWithWeightsResponse")>  _
-        Function PopulateEmailGridWithWeightsAsync(ByVal request As SVCSearch.PopulateEmailGridWithWeightsRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateEmailGridWithWeightsResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/LoadUserSearchHistory", ReplyAction:="http://tempuri.org/IService1/LoadUserSearchHistoryResponse")>  _
-        Function LoadUserSearchHistory(ByVal request As SVCSearch.LoadUserSearchHistoryRequest) As SVCSearch.LoadUserSearchHistoryResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/LoadUserSearchHistory", ReplyAction:="http://tempuri.org/IService1/LoadUserSearchHistoryResponse")>  _
-        Function LoadUserSearchHistoryAsync(ByVal request As SVCSearch.LoadUserSearchHistoryRequest) As System.Threading.Tasks.Task(Of SVCSearch.LoadUserSearchHistoryResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getAttachmentWeights", ReplyAction:="http://tempuri.org/IService1/getAttachmentWeightsResponse")>  _
-        Function getAttachmentWeights(ByVal request As SVCSearch.getAttachmentWeightsRequest) As SVCSearch.getAttachmentWeightsResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getAttachmentWeights", ReplyAction:="http://tempuri.org/IService1/getAttachmentWeightsResponse")>  _
-        Function getAttachmentWeightsAsync(ByVal request As SVCSearch.getAttachmentWeightsRequest) As System.Threading.Tasks.Task(Of SVCSearch.getAttachmentWeightsResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConn1", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConn1Response")>  _
-        Function ExecuteSqlNewConn1(ByVal request As SVCSearch.ExecuteSqlNewConn1Request) As SVCSearch.ExecuteSqlNewConn1Response
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConn1", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConn1Response")>  _
-        Function ExecuteSqlNewConn1Async(ByVal request As SVCSearch.ExecuteSqlNewConn1Request) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConn1Response)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConn2", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConn2Response")>  _
-        Function ExecuteSqlNewConn2(ByVal request As SVCSearch.ExecuteSqlNewConn2Request) As SVCSearch.ExecuteSqlNewConn2Response
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConn2", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConn2Response")>  _
-        Function ExecuteSqlNewConn2Async(ByVal request As SVCSearch.ExecuteSqlNewConn2Request) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConn2Response)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConn3", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConn3Response")>  _
-        Function ExecuteSqlNewConn3(ByVal request As SVCSearch.ExecuteSqlNewConn3Request) As SVCSearch.ExecuteSqlNewConn3Response
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConn3", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConn3Response")>  _
-        Function ExecuteSqlNewConn3Async(ByVal request As SVCSearch.ExecuteSqlNewConn3Request) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConn3Response)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConn4", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConn4Response")>  _
-        Function ExecuteSqlNewConn4(ByVal request As SVCSearch.ExecuteSqlNewConn4Request) As SVCSearch.ExecuteSqlNewConn4Response
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConn4", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConn4Response")>  _
-        Function ExecuteSqlNewConn4Async(ByVal request As SVCSearch.ExecuteSqlNewConn4Request) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConn4Response)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConn5", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConn5Response")>  _
-        Function ExecuteSqlNewConn5(ByVal request As SVCSearch.ExecuteSqlNewConn5Request) As SVCSearch.ExecuteSqlNewConn5Response
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConn5", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConn5Response")>  _
-        Function ExecuteSqlNewConn5Async(ByVal request As SVCSearch.ExecuteSqlNewConn5Request) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConn5Response)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConnSecure", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConnSecureResponse")>  _
-        Function ExecuteSqlNewConnSecure(ByVal request As SVCSearch.ExecuteSqlNewConnSecureRequest) As SVCSearch.ExecuteSqlNewConnSecureResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSqlNewConnSecure", ReplyAction:="http://tempuri.org/IService1/ExecuteSqlNewConnSecureResponse")>  _
-        Function ExecuteSqlNewConnSecureAsync(ByVal request As SVCSearch.ExecuteSqlNewConnSecureRequest) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSqlNewConnSecureResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetParmValue", ReplyAction:="http://tempuri.org/IService1/GetParmValueResponse")>  _
-        Function GetParmValue(ByVal request As SVCSearch.GetParmValueRequest) As SVCSearch.GetParmValueResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetParmValue", ReplyAction:="http://tempuri.org/IService1/GetParmValueResponse")>  _
-        Function GetParmValueAsync(ByVal request As SVCSearch.GetParmValueRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetParmValueResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/DBisGlobalSearcher", ReplyAction:="http://tempuri.org/IService1/DBisGlobalSearcherResponse")>  _
-        Function DBisGlobalSearcher(ByVal request As SVCSearch.DBisGlobalSearcherRequest) As SVCSearch.DBisGlobalSearcherResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/DBisGlobalSearcher", ReplyAction:="http://tempuri.org/IService1/DBisGlobalSearcherResponse")>  _
-        Function DBisGlobalSearcherAsync(ByVal request As SVCSearch.DBisGlobalSearcherRequest) As System.Threading.Tasks.Task(Of SVCSearch.DBisGlobalSearcherResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/DBisAdmin", ReplyAction:="http://tempuri.org/IService1/DBisAdminResponse")>  _
-        Function DBisAdmin(ByVal request As SVCSearch.DBisAdminRequest) As SVCSearch.DBisAdminResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/DBisAdmin", ReplyAction:="http://tempuri.org/IService1/DBisAdminResponse")>  _
-        Function DBisAdminAsync(ByVal request As SVCSearch.DBisAdminRequest) As System.Threading.Tasks.Task(Of SVCSearch.DBisAdminResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getUserParm", ReplyAction:="http://tempuri.org/IService1/getUserParmResponse")>  _
-        Function getUserParm(ByVal request As SVCSearch.getUserParmRequest) As SVCSearch.getUserParmResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getUserParm", ReplyAction:="http://tempuri.org/IService1/getUserParmResponse")>  _
-        Function getUserParmAsync(ByVal request As SVCSearch.getUserParmRequest) As System.Threading.Tasks.Task(Of SVCSearch.getUserParmResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/RemoveUnwantedCharacters", ReplyAction:="http://tempuri.org/IService1/RemoveUnwantedCharactersResponse")>  _
-        Function RemoveUnwantedCharacters(ByVal request As SVCSearch.RemoveUnwantedCharactersRequest) As SVCSearch.RemoveUnwantedCharactersResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/RemoveUnwantedCharacters", ReplyAction:="http://tempuri.org/IService1/RemoveUnwantedCharactersResponse")>  _
-        Function RemoveUnwantedCharactersAsync(ByVal request As SVCSearch.RemoveUnwantedCharactersRequest) As System.Threading.Tasks.Task(Of SVCSearch.RemoveUnwantedCharactersResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetMachineIP", ReplyAction:="http://tempuri.org/IService1/GetMachineIPResponse")>  _
-        Function GetMachineIP(ByVal request As SVCSearch.GetMachineIPRequest) As SVCSearch.GetMachineIPResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetMachineIP", ReplyAction:="http://tempuri.org/IService1/GetMachineIPResponse")>  _
-        Function GetMachineIPAsync(ByVal request As SVCSearch.GetMachineIPRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetMachineIPResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getClientLicenses", ReplyAction:="http://tempuri.org/IService1/getClientLicensesResponse")>  _
-        Function getClientLicenses(ByVal request As SVCSearch.getClientLicensesRequest) As SVCSearch.getClientLicensesResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getClientLicenses", ReplyAction:="http://tempuri.org/IService1/getClientLicensesResponse")>  _
-        Function getClientLicensesAsync(ByVal request As SVCSearch.getClientLicensesRequest) As System.Threading.Tasks.Task(Of SVCSearch.getClientLicensesResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateUserGrid", ReplyAction:="http://tempuri.org/IService1/PopulateUserGridResponse")>  _
-        Function PopulateUserGrid(ByVal request As SVCSearch.PopulateUserGridRequest) As SVCSearch.PopulateUserGridResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateUserGrid", ReplyAction:="http://tempuri.org/IService1/PopulateUserGridResponse")>  _
-        Function PopulateUserGridAsync(ByVal request As SVCSearch.PopulateUserGridRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateUserGridResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getGroupUsers", ReplyAction:="http://tempuri.org/IService1/getGroupUsersResponse"),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, String))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Date))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(String())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Integer))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(Object())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of Integer, String))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04))>  _
-        Function getGroupUsers(ByVal request As SVCSearch.getGroupUsersRequest) As SVCSearch.getGroupUsersResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getGroupUsers", ReplyAction:="http://tempuri.org/IService1/getGroupUsersResponse")>  _
-        Function getGroupUsersAsync(ByVal request As SVCSearch.getGroupUsersRequest) As System.Threading.Tasks.Task(Of SVCSearch.getGroupUsersResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateDgGroupUsers", ReplyAction:="http://tempuri.org/IService1/PopulateDgGroupUsersResponse")>  _
-        Function PopulateDgGroupUsers(ByVal request As SVCSearch.PopulateDgGroupUsersRequest) As SVCSearch.PopulateDgGroupUsersResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateDgGroupUsers", ReplyAction:="http://tempuri.org/IService1/PopulateDgGroupUsersResponse")>  _
-        Function PopulateDgGroupUsersAsync(ByVal request As SVCSearch.PopulateDgGroupUsersRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateDgGroupUsersResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/DeleteGroupUsers", ReplyAction:="http://tempuri.org/IService1/DeleteGroupUsersResponse")>  _
-        Function DeleteGroupUsers(ByVal request As SVCSearch.DeleteGroupUsersRequest) As SVCSearch.DeleteGroupUsersResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/DeleteGroupUsers", ReplyAction:="http://tempuri.org/IService1/DeleteGroupUsersResponse")>  _
-        Function DeleteGroupUsersAsync(ByVal request As SVCSearch.DeleteGroupUsersRequest) As System.Threading.Tasks.Task(Of SVCSearch.DeleteGroupUsersResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getGroupOwnerGuidByGroupName", ReplyAction:="http://tempuri.org/IService1/getGroupOwnerGuidByGroupNameResponse")>  _
-        Function getGroupOwnerGuidByGroupName(ByVal request As SVCSearch.getGroupOwnerGuidByGroupNameRequest) As SVCSearch.getGroupOwnerGuidByGroupNameResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getGroupOwnerGuidByGroupName", ReplyAction:="http://tempuri.org/IService1/getGroupOwnerGuidByGroupNameResponse")>  _
-        Function getGroupOwnerGuidByGroupNameAsync(ByVal request As SVCSearch.getGroupOwnerGuidByGroupNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.getGroupOwnerGuidByGroupNameResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/AddLibraryGroupUser", ReplyAction:="http://tempuri.org/IService1/AddLibraryGroupUserResponse")>  _
-        Function AddLibraryGroupUser(ByVal request As SVCSearch.AddLibraryGroupUserRequest) As SVCSearch.AddLibraryGroupUserResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/AddLibraryGroupUser", ReplyAction:="http://tempuri.org/IService1/AddLibraryGroupUserResponse")>  _
-        Function AddLibraryGroupUserAsync(ByVal request As SVCSearch.AddLibraryGroupUserRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddLibraryGroupUserResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateGroupUserGrid", ReplyAction:="http://tempuri.org/IService1/PopulateGroupUserGridResponse")>  _
-        Function PopulateGroupUserGrid(ByVal request As SVCSearch.PopulateGroupUserGridRequest) As SVCSearch.PopulateGroupUserGridResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateGroupUserGrid", ReplyAction:="http://tempuri.org/IService1/PopulateGroupUserGridResponse")>  _
-        Function PopulateGroupUserGridAsync(ByVal request As SVCSearch.PopulateGroupUserGridRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateGroupUserGridResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateLibItemsGrid", ReplyAction:="http://tempuri.org/IService1/PopulateLibItemsGridResponse")>  _
-        Function PopulateLibItemsGrid(ByVal request As SVCSearch.PopulateLibItemsGridRequest) As SVCSearch.PopulateLibItemsGridResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateLibItemsGrid", ReplyAction:="http://tempuri.org/IService1/PopulateLibItemsGridResponse")>  _
-        Function PopulateLibItemsGridAsync(ByVal request As SVCSearch.PopulateLibItemsGridRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateLibItemsGridResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateDgAssigned", ReplyAction:="http://tempuri.org/IService1/PopulateDgAssignedResponse")>  _
-        Function PopulateDgAssigned(ByVal request As SVCSearch.PopulateDgAssignedRequest) As SVCSearch.PopulateDgAssignedResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateDgAssigned", ReplyAction:="http://tempuri.org/IService1/PopulateDgAssignedResponse")>  _
-        Function PopulateDgAssignedAsync(ByVal request As SVCSearch.PopulateDgAssignedRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateDgAssignedResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ResetLibraryUsersCount", ReplyAction:="http://tempuri.org/IService1/ResetLibraryUsersCountResponse")>  _
-        Function ResetLibraryUsersCount(ByVal request As SVCSearch.ResetLibraryUsersCountRequest) As SVCSearch.ResetLibraryUsersCountResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ResetLibraryUsersCount", ReplyAction:="http://tempuri.org/IService1/ResetLibraryUsersCountResponse")>  _
-        Function ResetLibraryUsersCountAsync(ByVal request As SVCSearch.ResetLibraryUsersCountRequest) As System.Threading.Tasks.Task(Of SVCSearch.ResetLibraryUsersCountResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/DeleteLibraryGroupUser", ReplyAction:="http://tempuri.org/IService1/DeleteLibraryGroupUserResponse")>  _
-        Function DeleteLibraryGroupUser(ByVal request As SVCSearch.DeleteLibraryGroupUserRequest) As SVCSearch.DeleteLibraryGroupUserResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/DeleteLibraryGroupUser", ReplyAction:="http://tempuri.org/IService1/DeleteLibraryGroupUserResponse")>  _
-        Function DeleteLibraryGroupUserAsync(ByVal request As SVCSearch.DeleteLibraryGroupUserRequest) As System.Threading.Tasks.Task(Of SVCSearch.DeleteLibraryGroupUserResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ChangeUserPassword", ReplyAction:="http://tempuri.org/IService1/ChangeUserPasswordResponse")>  _
-        Function ChangeUserPassword(ByVal request As SVCSearch.ChangeUserPasswordRequest) As SVCSearch.ChangeUserPasswordResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ChangeUserPassword", ReplyAction:="http://tempuri.org/IService1/ChangeUserPasswordResponse")>  _
-        Function ChangeUserPasswordAsync(ByVal request As SVCSearch.ChangeUserPasswordRequest) As System.Threading.Tasks.Task(Of SVCSearch.ChangeUserPasswordResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/SaveClickStats", ReplyAction:="http://tempuri.org/IService1/SaveClickStatsResponse")>  _
-        Function SaveClickStats(ByVal request As SVCSearch.SaveClickStatsRequest) As SVCSearch.SaveClickStatsResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/SaveClickStats", ReplyAction:="http://tempuri.org/IService1/SaveClickStatsResponse")>  _
-        Function SaveClickStatsAsync(ByVal request As SVCSearch.SaveClickStatsRequest) As System.Threading.Tasks.Task(Of SVCSearch.SaveClickStatsResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/cleanUpLibraryItems", ReplyAction:="http://tempuri.org/IService1/cleanUpLibraryItemsResponse")>  _
-        Function cleanUpLibraryItems(ByVal request As SVCSearch.cleanUpLibraryItemsRequest) As SVCSearch.cleanUpLibraryItemsResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/cleanUpLibraryItems", ReplyAction:="http://tempuri.org/IService1/cleanUpLibraryItemsResponse")>  _
-        Function cleanUpLibraryItemsAsync(ByVal request As SVCSearch.cleanUpLibraryItemsRequest) As System.Threading.Tasks.Task(Of SVCSearch.cleanUpLibraryItemsResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/RemoveLibraryDirectories", ReplyAction:="http://tempuri.org/IService1/RemoveLibraryDirectoriesResponse")>  _
-        Function RemoveLibraryDirectories(ByVal request As SVCSearch.RemoveLibraryDirectoriesRequest) As SVCSearch.RemoveLibraryDirectoriesResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/RemoveLibraryDirectories", ReplyAction:="http://tempuri.org/IService1/RemoveLibraryDirectoriesResponse")>  _
-        Function RemoveLibraryDirectoriesAsync(ByVal request As SVCSearch.RemoveLibraryDirectoriesRequest) As System.Threading.Tasks.Task(Of SVCSearch.RemoveLibraryDirectoriesResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/RemoveLibraryEmails", ReplyAction:="http://tempuri.org/IService1/RemoveLibraryEmailsResponse")>  _
-        Function RemoveLibraryEmails(ByVal request As SVCSearch.RemoveLibraryEmailsRequest) As SVCSearch.RemoveLibraryEmailsResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/RemoveLibraryEmails", ReplyAction:="http://tempuri.org/IService1/RemoveLibraryEmailsResponse")>  _
-        Function RemoveLibraryEmailsAsync(ByVal request As SVCSearch.RemoveLibraryEmailsRequest) As System.Threading.Tasks.Task(Of SVCSearch.RemoveLibraryEmailsResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/AddSysMsg", ReplyAction:="http://tempuri.org/IService1/AddSysMsgResponse")>  _
-        Function AddSysMsg(ByVal request As SVCSearch.AddSysMsgRequest) As SVCSearch.AddSysMsgResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/AddSysMsg", ReplyAction:="http://tempuri.org/IService1/AddSysMsgResponse")>  _
-        Function AddSysMsgAsync(ByVal request As SVCSearch.AddSysMsgRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddSysMsgResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/AddLibraryDirectory", ReplyAction:="http://tempuri.org/IService1/AddLibraryDirectoryResponse")>  _
-        Function AddLibraryDirectory(ByVal request As SVCSearch.AddLibraryDirectoryRequest) As SVCSearch.AddLibraryDirectoryResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/AddLibraryDirectory", ReplyAction:="http://tempuri.org/IService1/AddLibraryDirectoryResponse")>  _
-        Function AddLibraryDirectoryAsync(ByVal request As SVCSearch.AddLibraryDirectoryRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddLibraryDirectoryResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/AddLibraryEmail", ReplyAction:="http://tempuri.org/IService1/AddLibraryEmailResponse")>  _
-        Function AddLibraryEmail(ByVal request As SVCSearch.AddLibraryEmailRequest) As SVCSearch.AddLibraryEmailResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/AddLibraryEmail", ReplyAction:="http://tempuri.org/IService1/AddLibraryEmailResponse")>  _
-        Function AddLibraryEmailAsync(ByVal request As SVCSearch.AddLibraryEmailRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddLibraryEmailResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateLibraryGrid", ReplyAction:="http://tempuri.org/IService1/PopulateLibraryGridResponse")>  _
-        Function PopulateLibraryGrid(ByVal request As SVCSearch.PopulateLibraryGridRequest) As SVCSearch.PopulateLibraryGridResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateLibraryGrid", ReplyAction:="http://tempuri.org/IService1/PopulateLibraryGridResponse")>  _
-        Function PopulateLibraryGridAsync(ByVal request As SVCSearch.PopulateLibraryGridRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateLibraryGridResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getListOfStrings", ReplyAction:="http://tempuri.org/IService1/getListOfStringsResponse")>  _
-        Function getListOfStrings(ByVal request As SVCSearch.getListOfStringsRequest) As SVCSearch.getListOfStringsResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getListOfStrings", ReplyAction:="http://tempuri.org/IService1/getListOfStringsResponse")>  _
-        Function getListOfStringsAsync(ByVal request As SVCSearch.getListOfStringsRequest) As System.Threading.Tasks.Task(Of SVCSearch.getListOfStringsResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getListOfStrings1", ReplyAction:="http://tempuri.org/IService1/getListOfStrings1Response")>  _
-        Function getListOfStrings1(ByVal request As SVCSearch.getListOfStrings1Request) As SVCSearch.getListOfStrings1Response
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getListOfStrings1", ReplyAction:="http://tempuri.org/IService1/getListOfStrings1Response")>  _
-        Function getListOfStrings1Async(ByVal request As SVCSearch.getListOfStrings1Request) As System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings1Response)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getListOfStrings2", ReplyAction:="http://tempuri.org/IService1/getListOfStrings2Response")>  _
-        Function getListOfStrings2(ByVal request As SVCSearch.getListOfStrings2Request) As SVCSearch.getListOfStrings2Response
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getListOfStrings2", ReplyAction:="http://tempuri.org/IService1/getListOfStrings2Response")>  _
-        Function getListOfStrings2Async(ByVal request As SVCSearch.getListOfStrings2Request) As System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings2Response)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getListOfStrings3", ReplyAction:="http://tempuri.org/IService1/getListOfStrings3Response")>  _
-        Function getListOfStrings3(ByVal request As SVCSearch.getListOfStrings3Request) As SVCSearch.getListOfStrings3Response
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getListOfStrings3", ReplyAction:="http://tempuri.org/IService1/getListOfStrings3Response")>  _
-        Function getListOfStrings3Async(ByVal request As SVCSearch.getListOfStrings3Request) As System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings3Response)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getListOfStrings4", ReplyAction:="http://tempuri.org/IService1/getListOfStrings4Response")>  _
-        Function getListOfStrings4(ByVal request As SVCSearch.getListOfStrings4Request) As SVCSearch.getListOfStrings4Response
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getListOfStrings4", ReplyAction:="http://tempuri.org/IService1/getListOfStrings4Response")>  _
-        Function getListOfStrings4Async(ByVal request As SVCSearch.getListOfStrings4Request) As System.Threading.Tasks.Task(Of SVCSearch.getListOfStrings4Response)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/iCount", ReplyAction:="http://tempuri.org/IService1/iCountResponse")>  _
-        Function iCount(ByVal request As SVCSearch.iCountRequest) As SVCSearch.iCountResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/iCount", ReplyAction:="http://tempuri.org/IService1/iCountResponse")>  _
-        Function iCountAsync(ByVal request As SVCSearch.iCountRequest) As System.Threading.Tasks.Task(Of SVCSearch.iCountResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetLogPath", ReplyAction:="http://tempuri.org/IService1/GetLogPathResponse")>  _
-        Function GetLogPath(ByVal request As SVCSearch.GetLogPathRequest) As SVCSearch.GetLogPathResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetLogPath", ReplyAction:="http://tempuri.org/IService1/GetLogPathResponse")>  _
-        Function GetLogPathAsync(ByVal request As SVCSearch.GetLogPathRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetLogPathResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ActiveSessionGetVal", ReplyAction:="http://tempuri.org/IService1/ActiveSessionGetValResponse")>  _
-        Function ActiveSessionGetVal(ByVal request As SVCSearch.ActiveSessionGetValRequest) As SVCSearch.ActiveSessionGetValResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ActiveSessionGetVal", ReplyAction:="http://tempuri.org/IService1/ActiveSessionGetValResponse")>  _
-        Function ActiveSessionGetValAsync(ByVal request As SVCSearch.ActiveSessionGetValRequest) As System.Threading.Tasks.Task(Of SVCSearch.ActiveSessionGetValResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ActiveSession", ReplyAction:="http://tempuri.org/IService1/ActiveSessionResponse")>  _
-        Function ActiveSession(ByVal request As SVCSearch.ActiveSessionRequest) As SVCSearch.ActiveSessionResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ActiveSession", ReplyAction:="http://tempuri.org/IService1/ActiveSessionResponse")>  _
-        Function ActiveSessionAsync(ByVal request As SVCSearch.ActiveSessionRequest) As System.Threading.Tasks.Task(Of SVCSearch.ActiveSessionResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setSecureLoginParms", ReplyAction:="http://tempuri.org/IService1/setSecureLoginParmsResponse")>  _
-        Function setSecureLoginParms(ByVal request As SVCSearch.setSecureLoginParmsRequest) As SVCSearch.setSecureLoginParmsResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setSecureLoginParms", ReplyAction:="http://tempuri.org/IService1/setSecureLoginParmsResponse")>  _
-        Function setSecureLoginParmsAsync(ByVal request As SVCSearch.setSecureLoginParmsRequest) As System.Threading.Tasks.Task(Of SVCSearch.setSecureLoginParmsResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateSecureLoginCB_V2", ReplyAction:="http://tempuri.org/IService1/PopulateSecureLoginCB_V2Response")>  _
-        Function PopulateSecureLoginCB_V2(ByVal request As SVCSearch.PopulateSecureLoginCB_V2Request) As SVCSearch.PopulateSecureLoginCB_V2Response
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateSecureLoginCB_V2", ReplyAction:="http://tempuri.org/IService1/PopulateSecureLoginCB_V2Response")>  _
-        Function PopulateSecureLoginCB_V2Async(ByVal request As SVCSearch.PopulateSecureLoginCB_V2Request) As System.Threading.Tasks.Task(Of SVCSearch.PopulateSecureLoginCB_V2Response)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateSecureLoginCB", ReplyAction:="http://tempuri.org/IService1/PopulateSecureLoginCBResponse")>  _
-        Function PopulateSecureLoginCB(ByVal request As SVCSearch.PopulateSecureLoginCBRequest) As SVCSearch.PopulateSecureLoginCBResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateSecureLoginCB", ReplyAction:="http://tempuri.org/IService1/PopulateSecureLoginCBResponse")>  _
-        Function PopulateSecureLoginCBAsync(ByVal request As SVCSearch.PopulateSecureLoginCBRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateSecureLoginCBResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getLoginPW", ReplyAction:="http://tempuri.org/IService1/getLoginPWResponse"),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, String))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Date))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(String())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Integer))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(Object())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of Integer, String))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04))>  _
-        Function getLoginPW(ByVal request As SVCSearch.getLoginPWRequest) As SVCSearch.getLoginPWResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getLoginPW", ReplyAction:="http://tempuri.org/IService1/getLoginPWResponse")>  _
-        Function getLoginPWAsync(ByVal request As SVCSearch.getLoginPWRequest) As System.Threading.Tasks.Task(Of SVCSearch.getLoginPWResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setLoginPW", ReplyAction:="http://tempuri.org/IService1/setLoginPWResponse")>  _
-        Function setLoginPW(ByVal request As SVCSearch.setLoginPWRequest) As SVCSearch.setLoginPWResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setLoginPW", ReplyAction:="http://tempuri.org/IService1/setLoginPWResponse")>  _
-        Function setLoginPWAsync(ByVal request As SVCSearch.setLoginPWRequest) As System.Threading.Tasks.Task(Of SVCSearch.setLoginPWResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getSessionEncCs", ReplyAction:="http://tempuri.org/IService1/getSessionEncCsResponse"),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, String))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Date))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(String())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Integer))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(Object())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of Integer, String))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04))>  _
-        Function getSessionEncCs(ByVal request As SVCSearch.getSessionEncCsRequest) As SVCSearch.getSessionEncCsResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getSessionEncCs", ReplyAction:="http://tempuri.org/IService1/getSessionEncCsResponse")>  _
-        Function getSessionEncCsAsync(ByVal request As SVCSearch.getSessionEncCsRequest) As System.Threading.Tasks.Task(Of SVCSearch.getSessionEncCsResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setSessionEncCs", ReplyAction:="http://tempuri.org/IService1/setSessionEncCsResponse")>  _
-        Function setSessionEncCs(ByVal request As SVCSearch.setSessionEncCsRequest) As SVCSearch.setSessionEncCsResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setSessionEncCs", ReplyAction:="http://tempuri.org/IService1/setSessionEncCsResponse")>  _
-        Function setSessionEncCsAsync(ByVal request As SVCSearch.setSessionEncCsRequest) As System.Threading.Tasks.Task(Of SVCSearch.setSessionEncCsResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setSessionRepoID", ReplyAction:="http://tempuri.org/IService1/setSessionRepoIDResponse")>  _
-        Function setSessionRepoID(ByVal request As SVCSearch.setSessionRepoIDRequest) As SVCSearch.setSessionRepoIDResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setSessionRepoID", ReplyAction:="http://tempuri.org/IService1/setSessionRepoIDResponse")>  _
-        Function setSessionRepoIDAsync(ByVal request As SVCSearch.setSessionRepoIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.setSessionRepoIDResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getSessionRepoID", ReplyAction:="http://tempuri.org/IService1/getSessionRepoIDResponse"),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, String))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Date))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(String())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Integer))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(Object())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of Integer, String))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04))>  _
-        Function getSessionRepoID(ByVal request As SVCSearch.getSessionRepoIDRequest) As SVCSearch.getSessionRepoIDResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getSessionRepoID", ReplyAction:="http://tempuri.org/IService1/getSessionRepoIDResponse")>  _
-        Function getSessionRepoIDAsync(ByVal request As SVCSearch.getSessionRepoIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.getSessionRepoIDResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setSessionCompanyID", ReplyAction:="http://tempuri.org/IService1/setSessionCompanyIDResponse")>  _
-        Function setSessionCompanyID(ByVal request As SVCSearch.setSessionCompanyIDRequest) As SVCSearch.setSessionCompanyIDResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setSessionCompanyID", ReplyAction:="http://tempuri.org/IService1/setSessionCompanyIDResponse")>  _
-        Function setSessionCompanyIDAsync(ByVal request As SVCSearch.setSessionCompanyIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.setSessionCompanyIDResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getSessionCompanyID", ReplyAction:="http://tempuri.org/IService1/getSessionCompanyIDResponse"),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, String))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Date))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(String())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Integer))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(Object())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of Integer, String))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04))>  _
-        Function getSessionCompanyID(ByVal request As SVCSearch.getSessionCompanyIDRequest) As SVCSearch.getSessionCompanyIDResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getSessionCompanyID", ReplyAction:="http://tempuri.org/IService1/getSessionCompanyIDResponse")>  _
-        Function getSessionCompanyIDAsync(ByVal request As SVCSearch.getSessionCompanyIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.getSessionCompanyIDResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setLoginGuid", ReplyAction:="http://tempuri.org/IService1/setLoginGuidResponse")>  _
-        Function setLoginGuid(ByVal request As SVCSearch.setLoginGuidRequest) As SVCSearch.setLoginGuidResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setLoginGuid", ReplyAction:="http://tempuri.org/IService1/setLoginGuidResponse")>  _
-        Function setLoginGuidAsync(ByVal request As SVCSearch.setLoginGuidRequest) As System.Threading.Tasks.Task(Of SVCSearch.setLoginGuidResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getLoginGuid", ReplyAction:="http://tempuri.org/IService1/getLoginGuidResponse"),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, String))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Date))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(String())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Integer))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(Object())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of Integer, String))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04))>  _
-        Function getLoginGuid(ByVal request As SVCSearch.getLoginGuidRequest) As SVCSearch.getLoginGuidResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getLoginGuid", ReplyAction:="http://tempuri.org/IService1/getLoginGuidResponse")>  _
-        Function getLoginGuidAsync(ByVal request As SVCSearch.getLoginGuidRequest) As System.Threading.Tasks.Task(Of SVCSearch.getLoginGuidResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getHttpSessionID", ReplyAction:="http://tempuri.org/IService1/getHttpSessionIDResponse"),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, String))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Date))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(String())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Integer))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(Object())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of Integer, String))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04))>  _
-        Function getHttpSessionID(ByVal request As SVCSearch.getHttpSessionIDRequest) As SVCSearch.getHttpSessionIDResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getHttpSessionID", ReplyAction:="http://tempuri.org/IService1/getHttpSessionIDResponse")>  _
-        Function getHttpSessionIDAsync(ByVal request As SVCSearch.getHttpSessionIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.getHttpSessionIDResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setSessionID", ReplyAction:="http://tempuri.org/IService1/setSessionIDResponse")>  _
-        Function setSessionID(ByVal request As SVCSearch.setSessionIDRequest) As SVCSearch.setSessionIDResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/setSessionID", ReplyAction:="http://tempuri.org/IService1/setSessionIDResponse")>  _
-        Function setSessionIDAsync(ByVal request As SVCSearch.setSessionIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.setSessionIDResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExpandInflectionTerms", ReplyAction:="http://tempuri.org/IService1/ExpandInflectionTermsResponse")>  _
-        Function ExpandInflectionTerms(ByVal request As SVCSearch.ExpandInflectionTermsRequest) As SVCSearch.ExpandInflectionTermsResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExpandInflectionTerms", ReplyAction:="http://tempuri.org/IService1/ExpandInflectionTermsResponse")>  _
-        Function ExpandInflectionTermsAsync(ByVal request As SVCSearch.ExpandInflectionTermsRequest) As System.Threading.Tasks.Task(Of SVCSearch.ExpandInflectionTermsResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getServerDatabaseName", ReplyAction:="http://tempuri.org/IService1/getServerDatabaseNameResponse")>  _
-        Function getServerDatabaseName(ByVal request As SVCSearch.getServerDatabaseNameRequest) As SVCSearch.getServerDatabaseNameResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getServerDatabaseName", ReplyAction:="http://tempuri.org/IService1/getServerDatabaseNameResponse")>  _
-        Function getServerDatabaseNameAsync(ByVal request As SVCSearch.getServerDatabaseNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.getServerDatabaseNameResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/CleanLog", ReplyAction:="http://tempuri.org/IService1/CleanLogResponse")>  _
-        Function CleanLog(ByVal request As SVCSearch.CleanLogRequest) As SVCSearch.CleanLogResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/CleanLog", ReplyAction:="http://tempuri.org/IService1/CleanLogResponse")>  _
-        Function CleanLogAsync(ByVal request As SVCSearch.CleanLogRequest) As System.Threading.Tasks.Task(Of SVCSearch.CleanLogResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateComboBox", ReplyAction:="http://tempuri.org/IService1/PopulateComboBoxResponse")>  _
-        Function PopulateComboBox(ByVal request As SVCSearch.PopulateComboBoxRequest) As SVCSearch.PopulateComboBoxResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateComboBox", ReplyAction:="http://tempuri.org/IService1/PopulateComboBoxResponse")>  _
-        Function PopulateComboBoxAsync(ByVal request As SVCSearch.PopulateComboBoxRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateComboBoxResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetEmailAttachments", ReplyAction:="http://tempuri.org/IService1/GetEmailAttachmentsResponse")>  _
-        Function GetEmailAttachments(ByVal request As SVCSearch.GetEmailAttachmentsRequest) As SVCSearch.GetEmailAttachmentsResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetEmailAttachments", ReplyAction:="http://tempuri.org/IService1/GetEmailAttachmentsResponse")>  _
-        Function GetEmailAttachmentsAsync(ByVal request As SVCSearch.GetEmailAttachmentsRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetEmailAttachmentsResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/DbWriteToFile", ReplyAction:="http://tempuri.org/IService1/DbWriteToFileResponse")>  _
-        Function DbWriteToFile(ByVal request As SVCSearch.DbWriteToFileRequest) As SVCSearch.DbWriteToFileResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/DbWriteToFile", ReplyAction:="http://tempuri.org/IService1/DbWriteToFileResponse")>  _
-        Function DbWriteToFileAsync(ByVal request As SVCSearch.DbWriteToFileRequest) As System.Threading.Tasks.Task(Of SVCSearch.DbWriteToFileResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/SetSessionVariable", ReplyAction:="http://tempuri.org/IService1/SetSessionVariableResponse")>  _
-        Function SetSessionVariable(ByVal request As SVCSearch.SetSessionVariableRequest) As SVCSearch.SetSessionVariableResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/SetSessionVariable", ReplyAction:="http://tempuri.org/IService1/SetSessionVariableResponse")>  _
-        Function SetSessionVariableAsync(ByVal request As SVCSearch.SetSessionVariableRequest) As System.Threading.Tasks.Task(Of SVCSearch.SetSessionVariableResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetSessionVariable", ReplyAction:="http://tempuri.org/IService1/GetSessionVariableResponse"),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, String))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Date))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(String())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Integer))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(Object())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of Integer, String))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04))>  _
-        Function GetSessionVariable(ByVal request As SVCSearch.GetSessionVariableRequest) As SVCSearch.GetSessionVariableResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetSessionVariable", ReplyAction:="http://tempuri.org/IService1/GetSessionVariableResponse")>  _
-        Function GetSessionVariableAsync(ByVal request As SVCSearch.GetSessionVariableRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetSessionVariableResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/UpdateSourceImageCompressed", ReplyAction:="http://tempuri.org/IService1/UpdateSourceImageCompressedResponse")>  _
-        Function UpdateSourceImageCompressed(ByVal request As SVCSearch.UpdateSourceImageCompressedRequest) As SVCSearch.UpdateSourceImageCompressedResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/UpdateSourceImageCompressed", ReplyAction:="http://tempuri.org/IService1/UpdateSourceImageCompressedResponse")>  _
-        Function UpdateSourceImageCompressedAsync(ByVal request As SVCSearch.UpdateSourceImageCompressedRequest) As System.Threading.Tasks.Task(Of SVCSearch.UpdateSourceImageCompressedResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/writeEmailFromDbToFile", ReplyAction:="http://tempuri.org/IService1/writeEmailFromDbToFileResponse")>  _
-        Function writeEmailFromDbToFile(ByVal request As SVCSearch.writeEmailFromDbToFileRequest) As SVCSearch.writeEmailFromDbToFileResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/writeEmailFromDbToFile", ReplyAction:="http://tempuri.org/IService1/writeEmailFromDbToFileResponse")>  _
-        Function writeEmailFromDbToFileAsync(ByVal request As SVCSearch.writeEmailFromDbToFileRequest) As System.Threading.Tasks.Task(Of SVCSearch.writeEmailFromDbToFileResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/writeAttachmentFromDbWriteToFile", ReplyAction:="http://tempuri.org/IService1/writeAttachmentFromDbWriteToFileResponse")>  _
-        Function writeAttachmentFromDbWriteToFile(ByVal request As SVCSearch.writeAttachmentFromDbWriteToFileRequest) As SVCSearch.writeAttachmentFromDbWriteToFileResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/writeAttachmentFromDbWriteToFile", ReplyAction:="http://tempuri.org/IService1/writeAttachmentFromDbWriteToFileResponse")>  _
-        Function writeAttachmentFromDbWriteToFileAsync(ByVal request As SVCSearch.writeAttachmentFromDbWriteToFileRequest) As System.Threading.Tasks.Task(Of SVCSearch.writeAttachmentFromDbWriteToFileResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/writeImageSourceDataFromDbWriteToFile", ReplyAction:="http://tempuri.org/IService1/writeImageSourceDataFromDbWriteToFileResponse")>  _
-        Function writeImageSourceDataFromDbWriteToFile(ByVal request As SVCSearch.writeImageSourceDataFromDbWriteToFileRequest) As SVCSearch.writeImageSourceDataFromDbWriteToFileResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/writeImageSourceDataFromDbWriteToFile", ReplyAction:="http://tempuri.org/IService1/writeImageSourceDataFromDbWriteToFileResponse")>  _
-        Function writeImageSourceDataFromDbWriteToFileAsync(ByVal request As SVCSearch.writeImageSourceDataFromDbWriteToFileRequest) As System.Threading.Tasks.Task(Of SVCSearch.writeImageSourceDataFromDbWriteToFileResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/AddLibraryItems", ReplyAction:="http://tempuri.org/IService1/AddLibraryItemsResponse")>  _
-        Function AddLibraryItems(ByVal request As SVCSearch.AddLibraryItemsRequest) As SVCSearch.AddLibraryItemsResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/AddLibraryItems", ReplyAction:="http://tempuri.org/IService1/AddLibraryItemsResponse")>  _
-        Function AddLibraryItemsAsync(ByVal request As SVCSearch.AddLibraryItemsRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddLibraryItemsResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateGroupUserLibCombo", ReplyAction:="http://tempuri.org/IService1/PopulateGroupUserLibComboResponse")>  _
-        Function PopulateGroupUserLibCombo(ByVal request As SVCSearch.PopulateGroupUserLibComboRequest) As SVCSearch.PopulateGroupUserLibComboResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateGroupUserLibCombo", ReplyAction:="http://tempuri.org/IService1/PopulateGroupUserLibComboResponse")>  _
-        Function PopulateGroupUserLibComboAsync(ByVal request As SVCSearch.PopulateGroupUserLibComboRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateGroupUserLibComboResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetLibOwnerByName", ReplyAction:="http://tempuri.org/IService1/GetLibOwnerByNameResponse")>  _
-        Function GetLibOwnerByName(ByVal request As SVCSearch.GetLibOwnerByNameRequest) As SVCSearch.GetLibOwnerByNameResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GetLibOwnerByName", ReplyAction:="http://tempuri.org/IService1/GetLibOwnerByNameResponse")>  _
-        Function GetLibOwnerByNameAsync(ByVal request As SVCSearch.GetLibOwnerByNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetLibOwnerByNameResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GenerateSQL", ReplyAction:="http://tempuri.org/IService1/GenerateSQLResponse")>  _
-        Function GenerateSQL(ByVal request As SVCSearch.GenerateSQLRequest) As SVCSearch.GenerateSQLResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GenerateSQL", ReplyAction:="http://tempuri.org/IService1/GenerateSQLResponse")>  _
-        Function GenerateSQLAsync(ByVal request As SVCSearch.GenerateSQLRequest) As System.Threading.Tasks.Task(Of SVCSearch.GenerateSQLResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getJsonData", ReplyAction:="http://tempuri.org/IService1/getJsonDataResponse")>  _
-        Function getJsonData(ByVal I As String) As String
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getJsonData", ReplyAction:="http://tempuri.org/IService1/getJsonDataResponse")>  _
-        Function getJsonDataAsync(ByVal I As String) As System.Threading.Tasks.Task(Of String)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSearchEmail", ReplyAction:="http://tempuri.org/IService1/ExecuteSearchEmailResponse")>  _
-        Function ExecuteSearchEmail(ByVal request As SVCSearch.ExecuteSearchEmailRequest) As SVCSearch.ExecuteSearchEmailResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSearchEmail", ReplyAction:="http://tempuri.org/IService1/ExecuteSearchEmailResponse")>  _
-        Function ExecuteSearchEmailAsync(ByVal request As SVCSearch.ExecuteSearchEmailRequest) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSearchEmailResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSearchContent", ReplyAction:="http://tempuri.org/IService1/ExecuteSearchContentResponse")>  _
-        Function ExecuteSearchContent(ByVal request As SVCSearch.ExecuteSearchContentRequest) As SVCSearch.ExecuteSearchContentResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ExecuteSearchContent", ReplyAction:="http://tempuri.org/IService1/ExecuteSearchContentResponse")>  _
-        Function ExecuteSearchContentAsync(ByVal request As SVCSearch.ExecuteSearchContentRequest) As System.Threading.Tasks.Task(Of SVCSearch.ExecuteSearchContentResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getSearchState", ReplyAction:="http://tempuri.org/IService1/getSearchStateResponse")>  _
-        Function getSearchState(ByVal request As SVCSearch.getSearchStateRequest) As SVCSearch.getSearchStateResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getSearchState", ReplyAction:="http://tempuri.org/IService1/getSearchStateResponse")>  _
-        Function getSearchStateAsync(ByVal request As SVCSearch.getSearchStateRequest) As System.Threading.Tasks.Task(Of SVCSearch.getSearchStateResponse)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getSourceLength", ReplyAction:="http://tempuri.org/IService1/getSourceLengthResponse")>  _
         Function getSourceLength(ByVal SourceGuid As String, ByVal SourceType As String) As Long
@@ -3653,26 +3485,18 @@ Namespace SVCSearch
         Function saveRestoreFileAsync(ByVal request As SVCSearch.saveRestoreFileRequest) As System.Threading.Tasks.Task(Of SVCSearch.saveRestoreFileResponse)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GenEmailAttachmentsSQL", ReplyAction:="http://tempuri.org/IService1/GenEmailAttachmentsSQLResponse"),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, String))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Date))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(String())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Integer))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(Object())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of Integer, String))),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE)),  _
          System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT())),  _
          System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT)),  _
          System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL())),  _
          System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL)),  _
          System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License())),  _
          System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License)),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid)),  _
          System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE())),  _
          System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE)),  _
          System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms())),  _
          System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms)),  _
          System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02())),  _
@@ -3680,7 +3504,15 @@ Namespace SVCSearch
          System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03())),  _
          System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03)),  _
          System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04())),  _
-         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04))>  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(String())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Integer))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, String))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Date))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of Integer, String))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(Object()))>  _
         Function GenEmailAttachmentsSQL(ByVal request As SVCSearch.GenEmailAttachmentsSQLRequest) As SVCSearch.GenEmailAttachmentsSQLResponse
         
         'CODEGEN: Generating message contract since the operation has multiple return values.
@@ -3727,6 +3559,13 @@ Namespace SVCSearch
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/SetSAASState", ReplyAction:="http://tempuri.org/IService1/SetSAASStateResponse")>  _
         Function SetSAASStateAsync(ByVal SecureID As Integer, ByVal UserID As String, ByVal DirName As String, ByVal FullPath As String) As System.Threading.Tasks.Task(Of Boolean)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getNewListOfStrings", ReplyAction:="http://tempuri.org/IService1/getNewListOfStringsResponse")>  _
+        Function getNewListOfStrings(ByVal request As SVCSearch.getNewListOfStringsRequest) As SVCSearch.getNewListOfStringsResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getNewListOfStrings", ReplyAction:="http://tempuri.org/IService1/getNewListOfStringsResponse")>  _
+        Function getNewListOfStringsAsync(ByVal request As SVCSearch.getNewListOfStringsRequest) As System.Threading.Tasks.Task(Of SVCSearch.getNewListOfStringsResponse)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getListOfStrings01", ReplyAction:="http://tempuri.org/IService1/getListOfStrings01Response")>  _
         Function getListOfStrings01(ByVal request As SVCSearch.getListOfStrings01Request) As SVCSearch.getListOfStrings01Response
@@ -3809,2253 +3648,175 @@ Namespace SVCSearch
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateCoOwnerGrid", ReplyAction:="http://tempuri.org/IService1/PopulateCoOwnerGridResponse")>  _
         Function PopulateCoOwnerGridAsync(ByVal SecureID As Integer, ByVal UID As String) As System.Threading.Tasks.Task(Of String)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateUserGrid", ReplyAction:="http://tempuri.org/IService1/PopulateUserGridResponse")>  _
+        Function PopulateUserGrid(ByVal request As SVCSearch.PopulateUserGridRequest) As SVCSearch.PopulateUserGridResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateUserGrid", ReplyAction:="http://tempuri.org/IService1/PopulateUserGridResponse")>  _
+        Function PopulateUserGridAsync(ByVal request As SVCSearch.PopulateUserGridRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateUserGridResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getGroupUsers", ReplyAction:="http://tempuri.org/IService1/getGroupUsersResponse"),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_CONTENT)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_EMAIL)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_License)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSEARCHSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_USERSCREENSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_clsUSERGRIDSTATE)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_SearchTerms)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings02)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings03)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_ListOfStrings04)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(SVCSearch.DS_VUserGrid)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(String())),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Integer))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, String))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of String, Date))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(System.Collections.Generic.Dictionary(Of Integer, String))),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(Object()))>  _
+        Function getGroupUsers(ByVal request As SVCSearch.getGroupUsersRequest) As SVCSearch.getGroupUsersResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getGroupUsers", ReplyAction:="http://tempuri.org/IService1/getGroupUsersResponse")>  _
+        Function getGroupUsersAsync(ByVal request As SVCSearch.getGroupUsersRequest) As System.Threading.Tasks.Task(Of SVCSearch.getGroupUsersResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateDgGroupUsers", ReplyAction:="http://tempuri.org/IService1/PopulateDgGroupUsersResponse")>  _
+        Function PopulateDgGroupUsers(ByVal request As SVCSearch.PopulateDgGroupUsersRequest) As SVCSearch.PopulateDgGroupUsersResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateDgGroupUsers", ReplyAction:="http://tempuri.org/IService1/PopulateDgGroupUsersResponse")>  _
+        Function PopulateDgGroupUsersAsync(ByVal request As SVCSearch.PopulateDgGroupUsersRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateDgGroupUsersResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/DeleteGroupUsers", ReplyAction:="http://tempuri.org/IService1/DeleteGroupUsersResponse")>  _
+        Function DeleteGroupUsers(ByVal request As SVCSearch.DeleteGroupUsersRequest) As SVCSearch.DeleteGroupUsersResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/DeleteGroupUsers", ReplyAction:="http://tempuri.org/IService1/DeleteGroupUsersResponse")>  _
+        Function DeleteGroupUsersAsync(ByVal request As SVCSearch.DeleteGroupUsersRequest) As System.Threading.Tasks.Task(Of SVCSearch.DeleteGroupUsersResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getGroupOwnerGuidByGroupName", ReplyAction:="http://tempuri.org/IService1/getGroupOwnerGuidByGroupNameResponse")>  _
+        Function getGroupOwnerGuidByGroupName(ByVal request As SVCSearch.getGroupOwnerGuidByGroupNameRequest) As SVCSearch.getGroupOwnerGuidByGroupNameResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getGroupOwnerGuidByGroupName", ReplyAction:="http://tempuri.org/IService1/getGroupOwnerGuidByGroupNameResponse")>  _
+        Function getGroupOwnerGuidByGroupNameAsync(ByVal request As SVCSearch.getGroupOwnerGuidByGroupNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.getGroupOwnerGuidByGroupNameResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/AddLibraryGroupUser", ReplyAction:="http://tempuri.org/IService1/AddLibraryGroupUserResponse")>  _
+        Function AddLibraryGroupUser(ByVal request As SVCSearch.AddLibraryGroupUserRequest) As SVCSearch.AddLibraryGroupUserResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/AddLibraryGroupUser", ReplyAction:="http://tempuri.org/IService1/AddLibraryGroupUserResponse")>  _
+        Function AddLibraryGroupUserAsync(ByVal request As SVCSearch.AddLibraryGroupUserRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddLibraryGroupUserResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateGroupUserGrid", ReplyAction:="http://tempuri.org/IService1/PopulateGroupUserGridResponse")>  _
+        Function PopulateGroupUserGrid(ByVal request As SVCSearch.PopulateGroupUserGridRequest) As SVCSearch.PopulateGroupUserGridResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateGroupUserGrid", ReplyAction:="http://tempuri.org/IService1/PopulateGroupUserGridResponse")>  _
+        Function PopulateGroupUserGridAsync(ByVal request As SVCSearch.PopulateGroupUserGridRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateGroupUserGridResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateLibItemsGrid", ReplyAction:="http://tempuri.org/IService1/PopulateLibItemsGridResponse")>  _
+        Function PopulateLibItemsGrid(ByVal request As SVCSearch.PopulateLibItemsGridRequest) As SVCSearch.PopulateLibItemsGridResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateLibItemsGrid", ReplyAction:="http://tempuri.org/IService1/PopulateLibItemsGridResponse")>  _
+        Function PopulateLibItemsGridAsync(ByVal request As SVCSearch.PopulateLibItemsGridRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateLibItemsGridResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateDgAssigned", ReplyAction:="http://tempuri.org/IService1/PopulateDgAssignedResponse")>  _
+        Function PopulateDgAssigned(ByVal request As SVCSearch.PopulateDgAssignedRequest) As SVCSearch.PopulateDgAssignedResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateDgAssigned", ReplyAction:="http://tempuri.org/IService1/PopulateDgAssignedResponse")>  _
+        Function PopulateDgAssignedAsync(ByVal request As SVCSearch.PopulateDgAssignedRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateDgAssignedResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ResetLibraryUsersCount", ReplyAction:="http://tempuri.org/IService1/ResetLibraryUsersCountResponse")>  _
+        Function ResetLibraryUsersCount(ByVal request As SVCSearch.ResetLibraryUsersCountRequest) As SVCSearch.ResetLibraryUsersCountResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ResetLibraryUsersCount", ReplyAction:="http://tempuri.org/IService1/ResetLibraryUsersCountResponse")>  _
+        Function ResetLibraryUsersCountAsync(ByVal request As SVCSearch.ResetLibraryUsersCountRequest) As System.Threading.Tasks.Task(Of SVCSearch.ResetLibraryUsersCountResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/DeleteLibraryGroupUser", ReplyAction:="http://tempuri.org/IService1/DeleteLibraryGroupUserResponse")>  _
+        Function DeleteLibraryGroupUser(ByVal request As SVCSearch.DeleteLibraryGroupUserRequest) As SVCSearch.DeleteLibraryGroupUserResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/DeleteLibraryGroupUser", ReplyAction:="http://tempuri.org/IService1/DeleteLibraryGroupUserResponse")>  _
+        Function DeleteLibraryGroupUserAsync(ByVal request As SVCSearch.DeleteLibraryGroupUserRequest) As System.Threading.Tasks.Task(Of SVCSearch.DeleteLibraryGroupUserResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ChangeUserPassword", ReplyAction:="http://tempuri.org/IService1/ChangeUserPasswordResponse")>  _
+        Function ChangeUserPassword(ByVal request As SVCSearch.ChangeUserPasswordRequest) As SVCSearch.ChangeUserPasswordResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/ChangeUserPassword", ReplyAction:="http://tempuri.org/IService1/ChangeUserPasswordResponse")>  _
+        Function ChangeUserPasswordAsync(ByVal request As SVCSearch.ChangeUserPasswordRequest) As System.Threading.Tasks.Task(Of SVCSearch.ChangeUserPasswordResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/SaveClickStats", ReplyAction:="http://tempuri.org/IService1/SaveClickStatsResponse")>  _
+        Function SaveClickStats(ByVal request As SVCSearch.SaveClickStatsRequest) As SVCSearch.SaveClickStatsResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/SaveClickStats", ReplyAction:="http://tempuri.org/IService1/SaveClickStatsResponse")>  _
+        Function SaveClickStatsAsync(ByVal request As SVCSearch.SaveClickStatsRequest) As System.Threading.Tasks.Task(Of SVCSearch.SaveClickStatsResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/cleanUpLibraryItems", ReplyAction:="http://tempuri.org/IService1/cleanUpLibraryItemsResponse")>  _
+        Function cleanUpLibraryItems(ByVal request As SVCSearch.cleanUpLibraryItemsRequest) As SVCSearch.cleanUpLibraryItemsResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/cleanUpLibraryItems", ReplyAction:="http://tempuri.org/IService1/cleanUpLibraryItemsResponse")>  _
+        Function cleanUpLibraryItemsAsync(ByVal request As SVCSearch.cleanUpLibraryItemsRequest) As System.Threading.Tasks.Task(Of SVCSearch.cleanUpLibraryItemsResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/RemoveLibraryDirectories", ReplyAction:="http://tempuri.org/IService1/RemoveLibraryDirectoriesResponse")>  _
+        Function RemoveLibraryDirectories(ByVal request As SVCSearch.RemoveLibraryDirectoriesRequest) As SVCSearch.RemoveLibraryDirectoriesResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/RemoveLibraryDirectories", ReplyAction:="http://tempuri.org/IService1/RemoveLibraryDirectoriesResponse")>  _
+        Function RemoveLibraryDirectoriesAsync(ByVal request As SVCSearch.RemoveLibraryDirectoriesRequest) As System.Threading.Tasks.Task(Of SVCSearch.RemoveLibraryDirectoriesResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/RemoveLibraryEmails", ReplyAction:="http://tempuri.org/IService1/RemoveLibraryEmailsResponse")>  _
+        Function RemoveLibraryEmails(ByVal request As SVCSearch.RemoveLibraryEmailsRequest) As SVCSearch.RemoveLibraryEmailsResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/RemoveLibraryEmails", ReplyAction:="http://tempuri.org/IService1/RemoveLibraryEmailsResponse")>  _
+        Function RemoveLibraryEmailsAsync(ByVal request As SVCSearch.RemoveLibraryEmailsRequest) As System.Threading.Tasks.Task(Of SVCSearch.RemoveLibraryEmailsResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/AddSysMsg", ReplyAction:="http://tempuri.org/IService1/AddSysMsgResponse")>  _
+        Function AddSysMsg(ByVal request As SVCSearch.AddSysMsgRequest) As SVCSearch.AddSysMsgResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/AddSysMsg", ReplyAction:="http://tempuri.org/IService1/AddSysMsgResponse")>  _
+        Function AddSysMsgAsync(ByVal request As SVCSearch.AddSysMsgRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddSysMsgResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/AddLibraryDirectory", ReplyAction:="http://tempuri.org/IService1/AddLibraryDirectoryResponse")>  _
+        Function AddLibraryDirectory(ByVal request As SVCSearch.AddLibraryDirectoryRequest) As SVCSearch.AddLibraryDirectoryResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/AddLibraryDirectory", ReplyAction:="http://tempuri.org/IService1/AddLibraryDirectoryResponse")>  _
+        Function AddLibraryDirectoryAsync(ByVal request As SVCSearch.AddLibraryDirectoryRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddLibraryDirectoryResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/AddLibraryEmail", ReplyAction:="http://tempuri.org/IService1/AddLibraryEmailResponse")>  _
+        Function AddLibraryEmail(ByVal request As SVCSearch.AddLibraryEmailRequest) As SVCSearch.AddLibraryEmailResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/AddLibraryEmail", ReplyAction:="http://tempuri.org/IService1/AddLibraryEmailResponse")>  _
+        Function AddLibraryEmailAsync(ByVal request As SVCSearch.AddLibraryEmailRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddLibraryEmailResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateLibraryGrid", ReplyAction:="http://tempuri.org/IService1/PopulateLibraryGridResponse")>  _
+        Function PopulateLibraryGrid(ByVal request As SVCSearch.PopulateLibraryGridRequest) As SVCSearch.PopulateLibraryGridResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateLibraryGrid", ReplyAction:="http://tempuri.org/IService1/PopulateLibraryGridResponse")>  _
+        Function PopulateLibraryGridAsync(ByVal request As SVCSearch.PopulateLibraryGridRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateLibraryGridResponse)
     End Interface
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="saveSearchState", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class saveSearchStateRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SearchID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public UID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public ScreenName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
-        Public DICT As System.Collections.Generic.Dictionary(Of String, String)
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
-        Public rMsg As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
-        Public HiveConnectionName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
-        Public HiveActive As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>  _
-        Public RepoSvrName As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal SearchID As Integer, ByVal UID As String, ByVal ScreenName As String, ByVal DICT As System.Collections.Generic.Dictionary(Of String, String), ByVal rMsg As String, ByVal RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.SearchID = SearchID
-            Me.UID = UID
-            Me.ScreenName = ScreenName
-            Me.DICT = DICT
-            Me.rMsg = rMsg
-            Me.RC = RC
-            Me.HiveConnectionName = HiveConnectionName
-            Me.HiveActive = HiveActive
-            Me.RepoSvrName = RepoSvrName
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="saveSearchStateResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class saveSearchStateResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public rMsg As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public RC As Boolean
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal rMsg As String, ByVal RC As Boolean)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.rMsg = rMsg
-            Me.RC = RC
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getScreenState", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getScreenStateRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public UID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public ScreenName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public DICT As System.Collections.Generic.Dictionary(Of String, String)
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
-        Public rMsg As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
-        Public HiveConnectionName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
-        Public HiveActive As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
-        Public RepoSvrName As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal UID As String, ByVal ScreenName As String, ByVal DICT As System.Collections.Generic.Dictionary(Of String, String), ByVal rMsg As String, ByVal RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.UID = UID
-            Me.ScreenName = ScreenName
-            Me.DICT = DICT
-            Me.rMsg = rMsg
-            Me.RC = RC
-            Me.HiveConnectionName = HiveConnectionName
-            Me.HiveActive = HiveActive
-            Me.RepoSvrName = RepoSvrName
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getScreenStateResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getScreenStateResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public getScreenStateResult() As SVCSearch.DS_USERSCREENSTATE
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public DICT As System.Collections.Generic.Dictionary(Of String, String)
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public rMsg As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
-        Public RC As Boolean
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal getScreenStateResult() As SVCSearch.DS_USERSCREENSTATE, ByVal SecureID As Integer, ByVal DICT As System.Collections.Generic.Dictionary(Of String, String), ByVal rMsg As String, ByVal RC As Boolean)
-            MyBase.New
-            Me.getScreenStateResult = getScreenStateResult
-            Me.SecureID = SecureID
-            Me.DICT = DICT
-            Me.rMsg = rMsg
-            Me.RC = RC
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getGridLayout", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getGridLayoutRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public UID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public ScreenName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public GridName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
-        Public DICT As System.Collections.Generic.Dictionary(Of String, String)
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
-        Public rMsg As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
-        Public HiveConnectionName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
-        Public HiveActive As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>  _
-        Public RepoSvrName As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal UID As String, ByVal ScreenName As String, ByVal GridName As String, ByVal DICT As System.Collections.Generic.Dictionary(Of String, String), ByVal rMsg As String, ByVal RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.UID = UID
-            Me.ScreenName = ScreenName
-            Me.GridName = GridName
-            Me.DICT = DICT
-            Me.rMsg = rMsg
-            Me.RC = RC
-            Me.HiveConnectionName = HiveConnectionName
-            Me.HiveActive = HiveActive
-            Me.RepoSvrName = RepoSvrName
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getGridLayoutResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getGridLayoutResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public getGridLayoutResult() As SVCSearch.DS_clsUSERGRIDSTATE
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public rMsg As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public RC As Boolean
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal getGridLayoutResult() As SVCSearch.DS_clsUSERGRIDSTATE, ByVal SecureID As Integer, ByVal rMsg As String, ByVal RC As Boolean)
-            MyBase.New
-            Me.getGridLayoutResult = getGridLayoutResult
-            Me.SecureID = SecureID
-            Me.rMsg = rMsg
-            Me.RC = RC
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="saveGridLayout", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class saveGridLayoutRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public ScreenName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public GridName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
-        Public ColName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
-        Public ColOrder As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
-        Public ColWidth As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
-        Public ColVisible As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
-        Public ColReadOnly As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>  _
-        Public ColSortOrder As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=10)>  _
-        Public ColSortAsc As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=11)>  _
-        Public HiveConnectionName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=12)>  _
-        Public HiveActive As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=13)>  _
-        Public RepoSvrName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=14)>  _
-        Public RowCreationDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=15)>  _
-        Public RowLastModDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=16)>  _
-        Public RowNbr As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=17)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=18)>  _
-        Public rMsg As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New( _
-                    ByVal SecureID As Integer,  _
-                    ByVal UserID As String,  _
-                    ByVal ScreenName As String,  _
-                    ByVal GridName As String,  _
-                    ByVal ColName As String,  _
-                    ByVal ColOrder As Integer,  _
-                    ByVal ColWidth As Integer,  _
-                    ByVal ColVisible As Boolean,  _
-                    ByVal ColReadOnly As Boolean,  _
-                    ByVal ColSortOrder As Integer,  _
-                    ByVal ColSortAsc As Boolean,  _
-                    ByVal HiveConnectionName As String,  _
-                    ByVal HiveActive As Boolean,  _
-                    ByVal RepoSvrName As String,  _
-                    ByVal RowCreationDate As Date,  _
-                    ByVal RowLastModDate As Date,  _
-                    ByVal RowNbr As Integer,  _
-                    ByVal RC As Boolean,  _
-                    ByVal rMsg As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.UserID = UserID
-            Me.ScreenName = ScreenName
-            Me.GridName = GridName
-            Me.ColName = ColName
-            Me.ColOrder = ColOrder
-            Me.ColWidth = ColWidth
-            Me.ColVisible = ColVisible
-            Me.ColReadOnly = ColReadOnly
-            Me.ColSortOrder = ColSortOrder
-            Me.ColSortAsc = ColSortAsc
-            Me.HiveConnectionName = HiveConnectionName
-            Me.HiveActive = HiveActive
-            Me.RepoSvrName = RepoSvrName
-            Me.RowCreationDate = RowCreationDate
-            Me.RowLastModDate = RowLastModDate
-            Me.RowNbr = RowNbr
-            Me.RC = RC
-            Me.rMsg = rMsg
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="saveGridLayoutResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class saveGridLayoutResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public ScreenName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public GridName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
-        Public ColName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
-        Public ColOrder As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
-        Public ColWidth As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
-        Public ColVisible As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
-        Public ColReadOnly As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>  _
-        Public ColSortOrder As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=10)>  _
-        Public ColSortAsc As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=11)>  _
-        Public HiveConnectionName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=12)>  _
-        Public HiveActive As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=13)>  _
-        Public RepoSvrName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=14)>  _
-        Public RowCreationDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=15)>  _
-        Public RowLastModDate As Date
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=16)>  _
-        Public RowNbr As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=17)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=18)>  _
-        Public rMsg As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New( _
-                    ByVal SecureID As Integer,  _
-                    ByVal UserID As String,  _
-                    ByVal ScreenName As String,  _
-                    ByVal GridName As String,  _
-                    ByVal ColName As String,  _
-                    ByVal ColOrder As Integer,  _
-                    ByVal ColWidth As Integer,  _
-                    ByVal ColVisible As Boolean,  _
-                    ByVal ColReadOnly As Boolean,  _
-                    ByVal ColSortOrder As Integer,  _
-                    ByVal ColSortAsc As Boolean,  _
-                    ByVal HiveConnectionName As String,  _
-                    ByVal HiveActive As Boolean,  _
-                    ByVal RepoSvrName As String,  _
-                    ByVal RowCreationDate As Date,  _
-                    ByVal RowLastModDate As Date,  _
-                    ByVal RowNbr As Integer,  _
-                    ByVal RC As Boolean,  _
-                    ByVal rMsg As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.UserID = UserID
-            Me.ScreenName = ScreenName
-            Me.GridName = GridName
-            Me.ColName = ColName
-            Me.ColOrder = ColOrder
-            Me.ColWidth = ColWidth
-            Me.ColVisible = ColVisible
-            Me.ColReadOnly = ColReadOnly
-            Me.ColSortOrder = ColSortOrder
-            Me.ColSortAsc = ColSortAsc
-            Me.HiveConnectionName = HiveConnectionName
-            Me.HiveActive = HiveActive
-            Me.RepoSvrName = RepoSvrName
-            Me.RowCreationDate = RowCreationDate
-            Me.RowLastModDate = RowLastModDate
-            Me.RowNbr = RowNbr
-            Me.RC = RC
-            Me.rMsg = rMsg
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="saveScreenState", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class saveScreenStateRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public UID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public ScreenName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public DICT As System.Collections.Generic.Dictionary(Of String, String)
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
-        Public rMsg As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
-        Public HiveConnectionName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
-        Public HiveActive As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
-        Public RepoSvrName As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal UID As String, ByVal ScreenName As String, ByVal DICT As System.Collections.Generic.Dictionary(Of String, String), ByVal rMsg As String, ByVal RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.UID = UID
-            Me.ScreenName = ScreenName
-            Me.DICT = DICT
-            Me.rMsg = rMsg
-            Me.RC = RC
-            Me.HiveConnectionName = HiveConnectionName
-            Me.HiveActive = HiveActive
-            Me.RepoSvrName = RepoSvrName
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="saveScreenStateResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class saveScreenStateResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public rMsg As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public RC As Boolean
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal rMsg As String, ByVal RC As Boolean)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.rMsg = rMsg
-            Me.RC = RC
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getUserParms", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getUserParmsRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public UserParms As System.Collections.Generic.Dictionary(Of String, String)
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal UserID As String, ByVal UserParms As System.Collections.Generic.Dictionary(Of String, String))
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.UserID = UserID
-            Me.UserParms = UserParms
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getUserParmsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getUserParmsResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public UserParms As System.Collections.Generic.Dictionary(Of String, String)
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal UserParms As System.Collections.Generic.Dictionary(Of String, String))
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.UserParms = UserParms
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ParseLicDictionary", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class ParseLicDictionaryRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public S As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public D As System.Collections.Generic.Dictionary(Of String, String)
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal S As String, ByVal D As System.Collections.Generic.Dictionary(Of String, String))
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.S = S
-            Me.D = D
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ParseLicDictionaryResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class ParseLicDictionaryResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public D As System.Collections.Generic.Dictionary(Of String, String)
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal D As System.Collections.Generic.Dictionary(Of String, String))
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.D = D
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="LicenseType", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class LicenseTypeRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public RetMsg As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.RC = RC
-            Me.RetMsg = RetMsg
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="LicenseTypeResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class LicenseTypeResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public LicenseTypeResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public RetMsg As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal LicenseTypeResult As String, ByVal RC As Boolean, ByVal RetMsg As String)
-            MyBase.New
-            Me.LicenseTypeResult = LicenseTypeResult
-            Me.RC = RC
-            Me.RetMsg = RetMsg
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="GetNbrUsers", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class GetNbrUsersRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer)
-            MyBase.New
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="GetNbrUsersResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class GetNbrUsersResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public GetNbrUsersResult As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal GetNbrUsersResult As Integer, ByVal SecureID As Integer)
-            MyBase.New
-            Me.GetNbrUsersResult = GetNbrUsersResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="isLease", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class isLeaseRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public RetMsg As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.RC = RC
-            Me.RetMsg = RetMsg
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="isLeaseResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class isLeaseResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public isLeaseResult As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public RetMsg As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal isLeaseResult As Boolean, ByVal RC As Boolean, ByVal RetMsg As String)
-            MyBase.New
-            Me.isLeaseResult = isLeaseResult
-            Me.RC = RC
-            Me.RetMsg = RetMsg
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getMaxClients", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getMaxClientsRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public RetMsg As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.RC = RC
-            Me.RetMsg = RetMsg
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getMaxClientsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getMaxClientsResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public getMaxClientsResult As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public RetMsg As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal getMaxClientsResult As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
-            MyBase.New
-            Me.getMaxClientsResult = getMaxClientsResult
-            Me.RC = RC
-            Me.RetMsg = RetMsg
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="GetUserHostName", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class GetUserHostNameRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer)
-            MyBase.New
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="GetUserHostNameResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class GetUserHostNameResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public GetUserHostNameResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal GetUserHostNameResult As String, ByVal SecureID As Integer)
-            MyBase.New
-            Me.GetUserHostNameResult = GetUserHostNameResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="GetUserHostAddress", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class GetUserHostAddressRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer)
-            MyBase.New
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="GetUserHostAddressResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class GetUserHostAddressResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public GetUserHostAddressResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal GetUserHostAddressResult As String, ByVal SecureID As Integer)
-            MyBase.New
-            Me.GetUserHostAddressResult = GetUserHostAddressResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getUserGuidID", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getUserGuidIDRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public UserLoginId As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal UserLoginId As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.UserLoginId = UserLoginId
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getUserGuidIDResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getUserGuidIDResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public getUserGuidIDResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal getUserGuidIDResult As String, ByVal SecureID As Integer)
-            MyBase.New
-            Me.getUserGuidIDResult = getUserGuidIDResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ProcessDates", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class ProcessDatesRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer)
-            MyBase.New
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ProcessDatesResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class ProcessDatesResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public ProcessDatesResult As System.Collections.Generic.Dictionary(Of String, Date)
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal ProcessDatesResult As System.Collections.Generic.Dictionary(Of String, Date), ByVal SecureID As Integer)
-            MyBase.New
-            Me.ProcessDatesResult = ProcessDatesResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="GetNbrMachineAll", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class GetNbrMachineAllRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer)
-            MyBase.New
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="GetNbrMachineAllResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class GetNbrMachineAllResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public GetNbrMachineAllResult As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal GetNbrMachineAllResult As Integer, ByVal SecureID As Integer)
-            MyBase.New
-            Me.GetNbrMachineAllResult = GetNbrMachineAllResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="GetNbrMachine", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class GetNbrMachineRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public MachineName As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal MachineName As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.MachineName = MachineName
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="GetNbrMachineResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class GetNbrMachineResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public GetNbrMachineResult As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal GetNbrMachineResult As Integer, ByVal SecureID As Integer)
-            MyBase.New
-            Me.GetNbrMachineResult = GetNbrMachineResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="isLicenseLocatedOnAssignedMachine", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class isLicenseLocatedOnAssignedMachineRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public ServerValText As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public InstanceValText As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
-        Public RetMsg As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal ServerValText As String, ByVal InstanceValText As String, ByVal RC As Boolean, ByVal RetMsg As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.ServerValText = ServerValText
-            Me.InstanceValText = InstanceValText
-            Me.RC = RC
-            Me.RetMsg = RetMsg
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="isLicenseLocatedOnAssignedMachineResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class isLicenseLocatedOnAssignedMachineResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public isLicenseLocatedOnAssignedMachineResult As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public ServerValText As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public InstanceValText As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
-        Public RetMsg As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal isLicenseLocatedOnAssignedMachineResult As Boolean, ByVal SecureID As Integer, ByVal ServerValText As String, ByVal InstanceValText As String, ByVal RC As Boolean, ByVal RetMsg As String)
-            MyBase.New
-            Me.isLicenseLocatedOnAssignedMachineResult = isLicenseLocatedOnAssignedMachineResult
-            Me.SecureID = SecureID
-            Me.ServerValText = ServerValText
-            Me.InstanceValText = InstanceValText
-            Me.RC = RC
-            Me.RetMsg = RetMsg
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="GetXrt", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class GetXrtRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public RetMsg As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.RC = RC
-            Me.RetMsg = RetMsg
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="GetXrtResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class GetXrtResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public GetXrtResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal GetXrtResult As String, ByVal SecureID As Integer)
-            MyBase.New
-            Me.GetXrtResult = GetXrtResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getSqlServerVersion", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getSqlServerVersionRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer)
-            MyBase.New
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getSqlServerVersionResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getSqlServerVersionResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public getSqlServerVersionResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal getSqlServerVersionResult As String, ByVal SecureID As Integer)
-            MyBase.New
-            Me.getSqlServerVersionResult = getSqlServerVersionResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="RecordGrowth", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class RecordGrowthRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public RC As Boolean
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.RC = RC
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="RecordGrowthResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class RecordGrowthResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public RC As Boolean
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.RC = RC
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ParseLic", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class ParseLicRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public LT As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public tgtKey As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal LT As String, ByVal tgtKey As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.LT = LT
-            Me.tgtKey = tgtKey
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ParseLicResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class ParseLicResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public ParseLicResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal ParseLicResult As String, ByVal SecureID As Integer)
-            MyBase.New
-            Me.ParseLicResult = ParseLicResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="GetLoggedinUserName", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class GetLoggedinUserNameRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer)
-            MyBase.New
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="GetLoggedinUserNameResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class GetLoggedinUserNameResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public GetLoggedinUserNameResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal GetLoggedinUserNameResult As String, ByVal SecureID As Integer)
-            MyBase.New
-            Me.GetLoggedinUserNameResult = GetLoggedinUserNameResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getDBSIZEMB", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getDBSIZEMBRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer)
-            MyBase.New
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getDBSIZEMBResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getDBSIZEMBResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public getDBSIZEMBResult As Double
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal getDBSIZEMBResult As Double, ByVal SecureID As Integer)
-            MyBase.New
-            Me.getDBSIZEMBResult = getDBSIZEMBResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="resetMissingEmailIds", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class resetMissingEmailIdsRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public CurrUserGuidID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public RC As Boolean
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal CurrUserGuidID As String, ByVal RC As Boolean)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.CurrUserGuidID = CurrUserGuidID
-            Me.RC = RC
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="resetMissingEmailIdsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class resetMissingEmailIdsResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public RC As Boolean
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.RC = RC
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="UserParmInsertUpdate", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class UserParmInsertUpdateRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public ParmName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public ParmVal As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
-        Public RC As Boolean
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal ParmName As String, ByVal UserID As String, ByVal ParmVal As String, ByVal RC As Boolean)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.ParmName = ParmName
-            Me.UserID = UserID
-            Me.ParmVal = ParmVal
-            Me.RC = RC
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="UserParmInsertUpdateResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class UserParmInsertUpdateResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public RC As Boolean
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.RC = RC
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="validateLogin", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class validateLoginRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public UserLogin As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public PW As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public UserGuidID As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal UserLogin As String, ByVal PW As String, ByVal UserGuidID As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.UserLogin = UserLogin
-            Me.PW = PW
-            Me.UserGuidID = UserGuidID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="validateLoginResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class validateLoginResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public validateLoginResult As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public UserGuidID As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal validateLoginResult As Boolean, ByVal SecureID As Integer, ByVal UserGuidID As String)
-            MyBase.New
-            Me.validateLoginResult = validateLoginResult
-            Me.SecureID = SecureID
-            Me.UserGuidID = UserGuidID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getLoggedInUser", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getLoggedInUserRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer)
-            MyBase.New
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getLoggedInUserResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getLoggedInUserResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public getLoggedInUserResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal getLoggedInUserResult As String, ByVal SecureID As Integer)
-            MyBase.New
-            Me.getLoggedInUserResult = getLoggedInUserResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getAttachedMachineName", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getAttachedMachineNameRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer)
-            MyBase.New
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getAttachedMachineNameResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getAttachedMachineNameResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public getAttachedMachineNameResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal getAttachedMachineNameResult As String, ByVal SecureID As Integer)
-            MyBase.New
-            Me.getAttachedMachineNameResult = getAttachedMachineNameResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getServerInstanceName", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getServerInstanceNameRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer)
-            MyBase.New
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getServerInstanceNameResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getServerInstanceNameResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public getServerInstanceNameResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal getServerInstanceNameResult As String, ByVal SecureID As Integer)
-            MyBase.New
-            Me.getServerInstanceNameResult = getServerInstanceNameResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getServerMachineName", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getServerMachineNameRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer)
-            MyBase.New
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getServerMachineNameResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getServerMachineNameResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public getServerMachineNameResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal getServerMachineNameResult As String, ByVal SecureID As Integer)
-            MyBase.New
-            Me.getServerMachineNameResult = getServerMachineNameResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getSystemParm", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getSystemParmRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SystemParms As System.Collections.Generic.Dictionary(Of String, String)
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal SystemParms As System.Collections.Generic.Dictionary(Of String, String))
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.SystemParms = SystemParms
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getSystemParmResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getSystemParmResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SystemParms As System.Collections.Generic.Dictionary(Of String, String)
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal SystemParms As System.Collections.Generic.Dictionary(Of String, String))
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.SystemParms = SystemParms
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getSynonyms", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getSynonymsRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public ThesaurusID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public Token As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public lbSynonyms As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal ThesaurusID As String, ByVal Token As String, ByVal lbSynonyms As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.ThesaurusID = ThesaurusID
-            Me.Token = Token
-            Me.lbSynonyms = lbSynonyms
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getSynonymsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getSynonymsResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public getSynonymsResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public lbSynonyms As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal getSynonymsResult As String, ByVal SecureID As Integer, ByVal lbSynonyms As String)
-            MyBase.New
-            Me.getSynonymsResult = getSynonymsResult
-            Me.SecureID = SecureID
-            Me.lbSynonyms = lbSynonyms
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getThesaurusID", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getThesaurusIDRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public ThesaurusName As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal ThesaurusName As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.ThesaurusName = ThesaurusName
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getThesaurusIDResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getThesaurusIDResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public getThesaurusIDResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal getThesaurusIDResult As String, ByVal SecureID As Integer)
-            MyBase.New
-            Me.getThesaurusIDResult = getThesaurusIDResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="iCountContent", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class iCountContentRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public S As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal S As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.S = S
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="iCountContentResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class iCountContentResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public iCountContentResult As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal iCountContentResult As Integer, ByVal SecureID As Integer)
-            MyBase.New
-            Me.iCountContentResult = iCountContentResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getDatasourceParm", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getDatasourceParmRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public AttributeName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public SourceGuid As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal AttributeName As String, ByVal SourceGuid As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.AttributeName = AttributeName
-            Me.SourceGuid = SourceGuid
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getDatasourceParmResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getDatasourceParmResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public getDatasourceParmResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal getDatasourceParmResult As String, ByVal SecureID As Integer)
-            MyBase.New
-            Me.getDatasourceParmResult = getDatasourceParmResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="SaveRunParm", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class SaveRunParmRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public ParmID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public ParmVal As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal UserID As String, ByVal ParmID As String, ByVal ParmVal As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.UserID = UserID
-            Me.ParmID = ParmID
-            Me.ParmVal = ParmVal
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="SaveRunParmResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class SaveRunParmResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SaveRunParmResult As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public ParmID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public ParmVal As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SaveRunParmResult As Boolean, ByVal SecureID As Integer, ByVal ParmID As String, ByVal ParmVal As String)
-            MyBase.New
-            Me.SaveRunParmResult = SaveRunParmResult
-            Me.SecureID = SecureID
-            Me.ParmID = ParmID
-            Me.ParmVal = ParmVal
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="iGetRowCount", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class iGetRowCountRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public TBL As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public WhereClause As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal TBL As String, ByVal WhereClause As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.TBL = TBL
-            Me.WhereClause = WhereClause
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="iGetRowCountResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class iGetRowCountResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public iGetRowCountResult As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal iGetRowCountResult As Integer, ByVal SecureID As Integer)
-            MyBase.New
-            Me.iGetRowCountResult = iGetRowCountResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ZeroizeGlobalSearch", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class ZeroizeGlobalSearchRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer)
-            MyBase.New
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ZeroizeGlobalSearchResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class ZeroizeGlobalSearchResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public ZeroizeGlobalSearchResult As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal ZeroizeGlobalSearchResult As Boolean, ByVal SecureID As Integer)
-            MyBase.New
-            Me.ZeroizeGlobalSearchResult = ZeroizeGlobalSearchResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="updateIp", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class updateIpRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public HostName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public IP As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public checkCode As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
-        Public RC As Boolean
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal HostName As String, ByVal IP As String, ByVal checkCode As Integer, ByVal RC As Boolean)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.HostName = HostName
-            Me.IP = IP
-            Me.checkCode = checkCode
-            Me.RC = RC
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="updateIpResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class updateIpResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public RC As Boolean
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.RC = RC
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateSourceGridWithWeights", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class PopulateSourceGridWithWeightsRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public StartingRow As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public EndingRow As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public CallerName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
-        Public MySql As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
-        Public bNewRows As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
-        Public SourceRowCnt As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal StartingRow As Integer, ByVal EndingRow As Integer, ByVal CallerName As String, ByVal MySql As String, ByVal bNewRows As Boolean, ByVal SourceRowCnt As Integer)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.StartingRow = StartingRow
-            Me.EndingRow = EndingRow
-            Me.CallerName = CallerName
-            Me.MySql = MySql
-            Me.bNewRows = bNewRows
-            Me.SourceRowCnt = SourceRowCnt
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateSourceGridWithWeightsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class PopulateSourceGridWithWeightsResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public PopulateSourceGridWithWeightsResult() As SVCSearch.DS_CONTENT
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public bNewRows As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public SourceRowCnt As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal PopulateSourceGridWithWeightsResult() As SVCSearch.DS_CONTENT, ByVal SecureID As Integer, ByVal bNewRows As Boolean, ByVal SourceRowCnt As Integer)
-            MyBase.New
-            Me.PopulateSourceGridWithWeightsResult = PopulateSourceGridWithWeightsResult
-            Me.SecureID = SecureID
-            Me.bNewRows = bNewRows
-            Me.SourceRowCnt = SourceRowCnt
-        End Sub
-    End Class
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
@@ -7062,1070 +4823,6 @@ Namespace SVCSearch
             Me.SecureID = SecureID
             Me.ErrorMessage = ErrorMessage
             Me.RC = RC
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateUserGrid", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class PopulateUserGridRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public DBisAdmin As Boolean
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal UserID As String, ByVal DBisAdmin As Boolean)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.UserID = UserID
-            Me.DBisAdmin = DBisAdmin
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateUserGridResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class PopulateUserGridResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public PopulateUserGridResult() As SVCSearch.DS_VUserGrid
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal PopulateUserGridResult() As SVCSearch.DS_VUserGrid, ByVal SecureID As Integer)
-            MyBase.New
-            Me.PopulateUserGridResult = PopulateUserGridResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getGroupUsers", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getGroupUsersRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public GroupName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public GroupList() As Object
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
-        Public RetMsg As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal GroupName As String, ByVal GroupList() As Object, ByVal RC As Boolean, ByVal RetMsg As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.GroupName = GroupName
-            Me.GroupList = GroupList
-            Me.RC = RC
-            Me.RetMsg = RetMsg
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getGroupUsersResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getGroupUsersResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public GroupList() As Object
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public RetMsg As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal GroupList() As Object, ByVal RC As Boolean, ByVal RetMsg As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.GroupList = GroupList
-            Me.RC = RC
-            Me.RetMsg = RetMsg
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateDgGroupUsers", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class PopulateDgGroupUsersRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public OwnerUserGuidID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public GroupName As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal OwnerUserGuidID As String, ByVal GroupName As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.OwnerUserGuidID = OwnerUserGuidID
-            Me.GroupName = GroupName
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateDgGroupUsersResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class PopulateDgGroupUsersResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public PopulateDgGroupUsersResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal PopulateDgGroupUsersResult As String, ByVal SecureID As Integer)
-            MyBase.New
-            Me.PopulateDgGroupUsersResult = PopulateDgGroupUsersResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="DeleteGroupUsers", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class DeleteGroupUsersRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public CurrSelectedGroupName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public GroupOwnerGuid As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
-        Public iDeleted As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
-        Public RetMsg As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal CurrSelectedGroupName As String, ByVal GroupOwnerGuid As String, ByVal UserID As String, ByVal iDeleted As Integer, ByVal RetMsg As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.CurrSelectedGroupName = CurrSelectedGroupName
-            Me.GroupOwnerGuid = GroupOwnerGuid
-            Me.UserID = UserID
-            Me.iDeleted = iDeleted
-            Me.RetMsg = RetMsg
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="DeleteGroupUsersResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class DeleteGroupUsersResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public DeleteGroupUsersResult As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public iDeleted As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public RetMsg As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal DeleteGroupUsersResult As Boolean, ByVal iDeleted As Integer, ByVal RetMsg As String)
-            MyBase.New
-            Me.DeleteGroupUsersResult = DeleteGroupUsersResult
-            Me.iDeleted = iDeleted
-            Me.RetMsg = RetMsg
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getGroupOwnerGuidByGroupName", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getGroupOwnerGuidByGroupNameRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public GroupName As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal GroupName As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.GroupName = GroupName
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="getGroupOwnerGuidByGroupNameResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class getGroupOwnerGuidByGroupNameResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public getGroupOwnerGuidByGroupNameResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal getGroupOwnerGuidByGroupNameResult As String, ByVal SecureID As Integer)
-            MyBase.New
-            Me.getGroupOwnerGuidByGroupNameResult = getGroupOwnerGuidByGroupNameResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="AddLibraryGroupUser", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class AddLibraryGroupUserRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public GroupName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public CurrUserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
-        Public SessionID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
-        Public ControlSection As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal GroupName As String, ByVal RC As Boolean, ByVal CurrUserID As String, ByVal SessionID As String, ByVal ControlSection As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.GroupName = GroupName
-            Me.RC = RC
-            Me.CurrUserID = CurrUserID
-            Me.SessionID = SessionID
-            Me.ControlSection = ControlSection
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="AddLibraryGroupUserResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class AddLibraryGroupUserResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public RC As Boolean
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.RC = RC
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateGroupUserGrid", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class PopulateGroupUserGridRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public GroupName As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal GroupName As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.GroupName = GroupName
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateGroupUserGridResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class PopulateGroupUserGridResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public PopulateGroupUserGridResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal PopulateGroupUserGridResult As String, ByVal SecureID As Integer)
-            MyBase.New
-            Me.PopulateGroupUserGridResult = PopulateGroupUserGridResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateLibItemsGrid", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class PopulateLibItemsGridRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public LibraryName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public UserID As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal LibraryName As String, ByVal UserID As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.LibraryName = LibraryName
-            Me.UserID = UserID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateLibItemsGridResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class PopulateLibItemsGridResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public PopulateLibItemsGridResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal PopulateLibItemsGridResult As String, ByVal SecureID As Integer)
-            MyBase.New
-            Me.PopulateLibItemsGridResult = PopulateLibItemsGridResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateDgAssigned", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class PopulateDgAssignedRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public LibraryName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public UserID As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal LibraryName As String, ByVal UserID As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.LibraryName = LibraryName
-            Me.UserID = UserID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateDgAssignedResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class PopulateDgAssignedResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public PopulateDgAssignedResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal PopulateDgAssignedResult As String, ByVal SecureID As Integer)
-            MyBase.New
-            Me.PopulateDgAssignedResult = PopulateDgAssignedResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ResetLibraryUsersCount", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class ResetLibraryUsersCountRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public RC As Boolean
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.RC = RC
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ResetLibraryUsersCountResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class ResetLibraryUsersCountResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public RC As Boolean
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.RC = RC
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="DeleteLibraryGroupUser", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class DeleteLibraryGroupUserRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public GroupName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public LibraryName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public RC As Boolean
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal GroupName As String, ByVal LibraryName As String, ByVal RC As Boolean)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.GroupName = GroupName
-            Me.LibraryName = LibraryName
-            Me.RC = RC
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="DeleteLibraryGroupUserResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class DeleteLibraryGroupUserResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public RC As Boolean
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.RC = RC
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ChangeUserPassword", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class ChangeUserPasswordRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public UserLogin As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public OldPW As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public NewPw1 As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
-        Public NewPw2 As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal UserLogin As String, ByVal OldPW As String, ByVal NewPw1 As String, ByVal NewPw2 As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.UserLogin = UserLogin
-            Me.OldPW = OldPW
-            Me.NewPw1 = NewPw1
-            Me.NewPw2 = NewPw2
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ChangeUserPasswordResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class ChangeUserPasswordResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public ChangeUserPasswordResult As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal ChangeUserPasswordResult As Boolean, ByVal SecureID As Integer)
-            MyBase.New
-            Me.ChangeUserPasswordResult = ChangeUserPasswordResult
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="SaveClickStats", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class SaveClickStatsRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public IID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public RC As Boolean
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal IID As Integer, ByVal UserID As String, ByVal RC As Boolean)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.IID = IID
-            Me.UserID = UserID
-            Me.RC = RC
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="SaveClickStatsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class SaveClickStatsResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public RC As Boolean
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal RC As Boolean)
-            MyBase.New
-            Me.RC = RC
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="cleanUpLibraryItems", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class cleanUpLibraryItemsRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public UserID As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal UserID As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.UserID = UserID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="cleanUpLibraryItemsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class cleanUpLibraryItemsResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer)
-            MyBase.New
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="RemoveLibraryDirectories", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class RemoveLibraryDirectoriesRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public DirectoryName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public LibraryName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
-        Public RetMsg As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal UserID As String, ByVal DirectoryName As String, ByVal LibraryName As String, ByVal RC As Boolean, ByVal RetMsg As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.UserID = UserID
-            Me.DirectoryName = DirectoryName
-            Me.LibraryName = LibraryName
-            Me.RC = RC
-            Me.RetMsg = RetMsg
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="RemoveLibraryDirectoriesResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class RemoveLibraryDirectoriesResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public RetMsg As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.RC = RC
-            Me.RetMsg = RetMsg
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="RemoveLibraryEmails", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class RemoveLibraryEmailsRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public FolderName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public LibraryName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
-        Public RetMsg As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal FolderName As String, ByVal LibraryName As String, ByVal UserID As String, ByVal RC As Boolean, ByVal RetMsg As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.FolderName = FolderName
-            Me.LibraryName = LibraryName
-            Me.UserID = UserID
-            Me.RC = RC
-            Me.RetMsg = RetMsg
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="RemoveLibraryEmailsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class RemoveLibraryEmailsResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public RetMsg As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.RC = RC
-            Me.RetMsg = RetMsg
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="AddSysMsg", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class AddSysMsgRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public tMsg As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public RC As Boolean
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal UserID As String, ByVal tMsg As String, ByVal RC As Boolean)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.UserID = UserID
-            Me.tMsg = tMsg
-            Me.RC = RC
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="AddSysMsgResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class AddSysMsgResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer)
-            MyBase.New
-            Me.SecureID = SecureID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="AddLibraryDirectory", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class AddLibraryDirectoryRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public FolderName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public LibraryName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
-        Public RecordsAdded As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
-        Public RetMsg As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal FolderName As String, ByVal LibraryName As String, ByVal UserID As String, ByVal RecordsAdded As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.FolderName = FolderName
-            Me.LibraryName = LibraryName
-            Me.UserID = UserID
-            Me.RecordsAdded = RecordsAdded
-            Me.RC = RC
-            Me.RetMsg = RetMsg
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="AddLibraryDirectoryResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class AddLibraryDirectoryResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public RecordsAdded As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public RetMsg As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal RecordsAdded As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.RecordsAdded = RecordsAdded
-            Me.RC = RC
-            Me.RetMsg = RetMsg
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="AddLibraryEmail", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class AddLibraryEmailRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public EmailFolder As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public LibraryName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public UserID As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
-        Public RecordsAdded As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
-        Public RC As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
-        Public RetMsg As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal EmailFolder As String, ByVal LibraryName As String, ByVal UserID As String, ByVal RecordsAdded As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.EmailFolder = EmailFolder
-            Me.LibraryName = LibraryName
-            Me.UserID = UserID
-            Me.RecordsAdded = RecordsAdded
-            Me.RC = RC
-            Me.RetMsg = RetMsg
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="AddLibraryEmailResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class AddLibraryEmailResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public RecordsAdded As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal RecordsAdded As Integer)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.RecordsAdded = RecordsAdded
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateLibraryGrid", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class PopulateLibraryGridRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public UserID As String
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal UserID As String)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.UserID = UserID
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateLibraryGridResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class PopulateLibraryGridResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public PopulateLibraryGridResult As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal PopulateLibraryGridResult As String, ByVal SecureID As Integer)
-            MyBase.New
-            Me.PopulateLibraryGridResult = PopulateLibraryGridResult
-            Me.SecureID = SecureID
         End Sub
     End Class
     
@@ -10479,6 +7176,2252 @@ Namespace SVCSearch
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="saveSearchState", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class saveSearchStateRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SearchID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public UID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public ScreenName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+        Public DICT As System.Collections.Generic.Dictionary(Of String, String)
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+        Public rMsg As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
+        Public HiveConnectionName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
+        Public HiveActive As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>  _
+        Public RepoSvrName As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal SearchID As Integer, ByVal UID As String, ByVal ScreenName As String, ByVal DICT As System.Collections.Generic.Dictionary(Of String, String), ByVal rMsg As String, ByVal RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.SearchID = SearchID
+            Me.UID = UID
+            Me.ScreenName = ScreenName
+            Me.DICT = DICT
+            Me.rMsg = rMsg
+            Me.RC = RC
+            Me.HiveConnectionName = HiveConnectionName
+            Me.HiveActive = HiveActive
+            Me.RepoSvrName = RepoSvrName
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="saveSearchStateResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class saveSearchStateResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public rMsg As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public RC As Boolean
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal rMsg As String, ByVal RC As Boolean)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.rMsg = rMsg
+            Me.RC = RC
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getScreenState", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getScreenStateRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public UID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public ScreenName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public DICT As System.Collections.Generic.Dictionary(Of String, String)
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+        Public rMsg As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+        Public HiveConnectionName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
+        Public HiveActive As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
+        Public RepoSvrName As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal UID As String, ByVal ScreenName As String, ByVal DICT As System.Collections.Generic.Dictionary(Of String, String), ByVal rMsg As String, ByVal RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.UID = UID
+            Me.ScreenName = ScreenName
+            Me.DICT = DICT
+            Me.rMsg = rMsg
+            Me.RC = RC
+            Me.HiveConnectionName = HiveConnectionName
+            Me.HiveActive = HiveActive
+            Me.RepoSvrName = RepoSvrName
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getScreenStateResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getScreenStateResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public getScreenStateResult() As SVCSearch.DS_USERSCREENSTATE
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public DICT As System.Collections.Generic.Dictionary(Of String, String)
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public rMsg As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+        Public RC As Boolean
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal getScreenStateResult() As SVCSearch.DS_USERSCREENSTATE, ByVal SecureID As Integer, ByVal DICT As System.Collections.Generic.Dictionary(Of String, String), ByVal rMsg As String, ByVal RC As Boolean)
+            MyBase.New
+            Me.getScreenStateResult = getScreenStateResult
+            Me.SecureID = SecureID
+            Me.DICT = DICT
+            Me.rMsg = rMsg
+            Me.RC = RC
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getGridLayout", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getGridLayoutRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public UID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public ScreenName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public GridName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+        Public DICT As System.Collections.Generic.Dictionary(Of String, String)
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+        Public rMsg As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
+        Public HiveConnectionName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
+        Public HiveActive As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>  _
+        Public RepoSvrName As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal UID As String, ByVal ScreenName As String, ByVal GridName As String, ByVal DICT As System.Collections.Generic.Dictionary(Of String, String), ByVal rMsg As String, ByVal RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.UID = UID
+            Me.ScreenName = ScreenName
+            Me.GridName = GridName
+            Me.DICT = DICT
+            Me.rMsg = rMsg
+            Me.RC = RC
+            Me.HiveConnectionName = HiveConnectionName
+            Me.HiveActive = HiveActive
+            Me.RepoSvrName = RepoSvrName
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getGridLayoutResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getGridLayoutResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public getGridLayoutResult() As SVCSearch.DS_clsUSERGRIDSTATE
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public rMsg As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public RC As Boolean
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal getGridLayoutResult() As SVCSearch.DS_clsUSERGRIDSTATE, ByVal SecureID As Integer, ByVal rMsg As String, ByVal RC As Boolean)
+            MyBase.New
+            Me.getGridLayoutResult = getGridLayoutResult
+            Me.SecureID = SecureID
+            Me.rMsg = rMsg
+            Me.RC = RC
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="saveGridLayout", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class saveGridLayoutRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public UserID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public ScreenName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public GridName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+        Public ColName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+        Public ColOrder As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+        Public ColWidth As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
+        Public ColVisible As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
+        Public ColReadOnly As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>  _
+        Public ColSortOrder As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=10)>  _
+        Public ColSortAsc As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=11)>  _
+        Public HiveConnectionName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=12)>  _
+        Public HiveActive As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=13)>  _
+        Public RepoSvrName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=14)>  _
+        Public RowCreationDate As Date
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=15)>  _
+        Public RowLastModDate As Date
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=16)>  _
+        Public RowNbr As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=17)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=18)>  _
+        Public rMsg As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New( _
+                    ByVal SecureID As Integer,  _
+                    ByVal UserID As String,  _
+                    ByVal ScreenName As String,  _
+                    ByVal GridName As String,  _
+                    ByVal ColName As String,  _
+                    ByVal ColOrder As Integer,  _
+                    ByVal ColWidth As Integer,  _
+                    ByVal ColVisible As Boolean,  _
+                    ByVal ColReadOnly As Boolean,  _
+                    ByVal ColSortOrder As Integer,  _
+                    ByVal ColSortAsc As Boolean,  _
+                    ByVal HiveConnectionName As String,  _
+                    ByVal HiveActive As Boolean,  _
+                    ByVal RepoSvrName As String,  _
+                    ByVal RowCreationDate As Date,  _
+                    ByVal RowLastModDate As Date,  _
+                    ByVal RowNbr As Integer,  _
+                    ByVal RC As Boolean,  _
+                    ByVal rMsg As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.UserID = UserID
+            Me.ScreenName = ScreenName
+            Me.GridName = GridName
+            Me.ColName = ColName
+            Me.ColOrder = ColOrder
+            Me.ColWidth = ColWidth
+            Me.ColVisible = ColVisible
+            Me.ColReadOnly = ColReadOnly
+            Me.ColSortOrder = ColSortOrder
+            Me.ColSortAsc = ColSortAsc
+            Me.HiveConnectionName = HiveConnectionName
+            Me.HiveActive = HiveActive
+            Me.RepoSvrName = RepoSvrName
+            Me.RowCreationDate = RowCreationDate
+            Me.RowLastModDate = RowLastModDate
+            Me.RowNbr = RowNbr
+            Me.RC = RC
+            Me.rMsg = rMsg
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="saveGridLayoutResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class saveGridLayoutResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public UserID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public ScreenName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public GridName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+        Public ColName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+        Public ColOrder As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+        Public ColWidth As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
+        Public ColVisible As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
+        Public ColReadOnly As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=9)>  _
+        Public ColSortOrder As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=10)>  _
+        Public ColSortAsc As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=11)>  _
+        Public HiveConnectionName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=12)>  _
+        Public HiveActive As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=13)>  _
+        Public RepoSvrName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=14)>  _
+        Public RowCreationDate As Date
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=15)>  _
+        Public RowLastModDate As Date
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=16)>  _
+        Public RowNbr As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=17)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=18)>  _
+        Public rMsg As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New( _
+                    ByVal SecureID As Integer,  _
+                    ByVal UserID As String,  _
+                    ByVal ScreenName As String,  _
+                    ByVal GridName As String,  _
+                    ByVal ColName As String,  _
+                    ByVal ColOrder As Integer,  _
+                    ByVal ColWidth As Integer,  _
+                    ByVal ColVisible As Boolean,  _
+                    ByVal ColReadOnly As Boolean,  _
+                    ByVal ColSortOrder As Integer,  _
+                    ByVal ColSortAsc As Boolean,  _
+                    ByVal HiveConnectionName As String,  _
+                    ByVal HiveActive As Boolean,  _
+                    ByVal RepoSvrName As String,  _
+                    ByVal RowCreationDate As Date,  _
+                    ByVal RowLastModDate As Date,  _
+                    ByVal RowNbr As Integer,  _
+                    ByVal RC As Boolean,  _
+                    ByVal rMsg As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.UserID = UserID
+            Me.ScreenName = ScreenName
+            Me.GridName = GridName
+            Me.ColName = ColName
+            Me.ColOrder = ColOrder
+            Me.ColWidth = ColWidth
+            Me.ColVisible = ColVisible
+            Me.ColReadOnly = ColReadOnly
+            Me.ColSortOrder = ColSortOrder
+            Me.ColSortAsc = ColSortAsc
+            Me.HiveConnectionName = HiveConnectionName
+            Me.HiveActive = HiveActive
+            Me.RepoSvrName = RepoSvrName
+            Me.RowCreationDate = RowCreationDate
+            Me.RowLastModDate = RowLastModDate
+            Me.RowNbr = RowNbr
+            Me.RC = RC
+            Me.rMsg = rMsg
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="saveScreenState", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class saveScreenStateRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public UID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public ScreenName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public DICT As System.Collections.Generic.Dictionary(Of String, String)
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+        Public rMsg As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+        Public HiveConnectionName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=7)>  _
+        Public HiveActive As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=8)>  _
+        Public RepoSvrName As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal UID As String, ByVal ScreenName As String, ByVal DICT As System.Collections.Generic.Dictionary(Of String, String), ByVal rMsg As String, ByVal RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.UID = UID
+            Me.ScreenName = ScreenName
+            Me.DICT = DICT
+            Me.rMsg = rMsg
+            Me.RC = RC
+            Me.HiveConnectionName = HiveConnectionName
+            Me.HiveActive = HiveActive
+            Me.RepoSvrName = RepoSvrName
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="saveScreenStateResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class saveScreenStateResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public rMsg As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public RC As Boolean
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal rMsg As String, ByVal RC As Boolean)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.rMsg = rMsg
+            Me.RC = RC
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getUserParms", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getUserParmsRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public UserID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public UserParms As System.Collections.Generic.Dictionary(Of String, String)
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal UserID As String, ByVal UserParms As System.Collections.Generic.Dictionary(Of String, String))
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.UserID = UserID
+            Me.UserParms = UserParms
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getUserParmsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getUserParmsResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public UserParms As System.Collections.Generic.Dictionary(Of String, String)
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal UserParms As System.Collections.Generic.Dictionary(Of String, String))
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.UserParms = UserParms
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ParseLicDictionary", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ParseLicDictionaryRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public S As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public D As System.Collections.Generic.Dictionary(Of String, String)
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal S As String, ByVal D As System.Collections.Generic.Dictionary(Of String, String))
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.S = S
+            Me.D = D
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ParseLicDictionaryResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ParseLicDictionaryResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public D As System.Collections.Generic.Dictionary(Of String, String)
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal D As System.Collections.Generic.Dictionary(Of String, String))
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.D = D
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="LicenseType", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class LicenseTypeRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public RetMsg As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.RC = RC
+            Me.RetMsg = RetMsg
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="LicenseTypeResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class LicenseTypeResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public LicenseTypeResult As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public RetMsg As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal LicenseTypeResult As String, ByVal RC As Boolean, ByVal RetMsg As String)
+            MyBase.New
+            Me.LicenseTypeResult = LicenseTypeResult
+            Me.RC = RC
+            Me.RetMsg = RetMsg
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="GetNbrUsers", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class GetNbrUsersRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer)
+            MyBase.New
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="GetNbrUsersResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class GetNbrUsersResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public GetNbrUsersResult As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal GetNbrUsersResult As Integer, ByVal SecureID As Integer)
+            MyBase.New
+            Me.GetNbrUsersResult = GetNbrUsersResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="isLease", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class isLeaseRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public RetMsg As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.RC = RC
+            Me.RetMsg = RetMsg
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="isLeaseResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class isLeaseResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public isLeaseResult As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public RetMsg As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal isLeaseResult As Boolean, ByVal RC As Boolean, ByVal RetMsg As String)
+            MyBase.New
+            Me.isLeaseResult = isLeaseResult
+            Me.RC = RC
+            Me.RetMsg = RetMsg
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getMaxClients", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getMaxClientsRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public RetMsg As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.RC = RC
+            Me.RetMsg = RetMsg
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getMaxClientsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getMaxClientsResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public getMaxClientsResult As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public RetMsg As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal getMaxClientsResult As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
+            MyBase.New
+            Me.getMaxClientsResult = getMaxClientsResult
+            Me.RC = RC
+            Me.RetMsg = RetMsg
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="GetUserHostName", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class GetUserHostNameRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer)
+            MyBase.New
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="GetUserHostNameResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class GetUserHostNameResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public GetUserHostNameResult As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal GetUserHostNameResult As String, ByVal SecureID As Integer)
+            MyBase.New
+            Me.GetUserHostNameResult = GetUserHostNameResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="GetUserHostAddress", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class GetUserHostAddressRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer)
+            MyBase.New
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="GetUserHostAddressResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class GetUserHostAddressResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public GetUserHostAddressResult As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal GetUserHostAddressResult As String, ByVal SecureID As Integer)
+            MyBase.New
+            Me.GetUserHostAddressResult = GetUserHostAddressResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getUserGuidID", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getUserGuidIDRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public UserLoginId As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal UserLoginId As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.UserLoginId = UserLoginId
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getUserGuidIDResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getUserGuidIDResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public getUserGuidIDResult As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal getUserGuidIDResult As String, ByVal SecureID As Integer)
+            MyBase.New
+            Me.getUserGuidIDResult = getUserGuidIDResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ProcessDates", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ProcessDatesRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer)
+            MyBase.New
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ProcessDatesResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ProcessDatesResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public ProcessDatesResult As System.Collections.Generic.Dictionary(Of String, Date)
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal ProcessDatesResult As System.Collections.Generic.Dictionary(Of String, Date), ByVal SecureID As Integer)
+            MyBase.New
+            Me.ProcessDatesResult = ProcessDatesResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="GetNbrMachineAll", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class GetNbrMachineAllRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer)
+            MyBase.New
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="GetNbrMachineAllResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class GetNbrMachineAllResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public GetNbrMachineAllResult As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal GetNbrMachineAllResult As Integer, ByVal SecureID As Integer)
+            MyBase.New
+            Me.GetNbrMachineAllResult = GetNbrMachineAllResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="GetNbrMachine", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class GetNbrMachineRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public MachineName As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal MachineName As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.MachineName = MachineName
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="GetNbrMachineResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class GetNbrMachineResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public GetNbrMachineResult As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal GetNbrMachineResult As Integer, ByVal SecureID As Integer)
+            MyBase.New
+            Me.GetNbrMachineResult = GetNbrMachineResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="isLicenseLocatedOnAssignedMachine", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class isLicenseLocatedOnAssignedMachineRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public ServerValText As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public InstanceValText As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+        Public RetMsg As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal ServerValText As String, ByVal InstanceValText As String, ByVal RC As Boolean, ByVal RetMsg As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.ServerValText = ServerValText
+            Me.InstanceValText = InstanceValText
+            Me.RC = RC
+            Me.RetMsg = RetMsg
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="isLicenseLocatedOnAssignedMachineResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class isLicenseLocatedOnAssignedMachineResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public isLicenseLocatedOnAssignedMachineResult As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public ServerValText As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public InstanceValText As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+        Public RetMsg As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal isLicenseLocatedOnAssignedMachineResult As Boolean, ByVal SecureID As Integer, ByVal ServerValText As String, ByVal InstanceValText As String, ByVal RC As Boolean, ByVal RetMsg As String)
+            MyBase.New
+            Me.isLicenseLocatedOnAssignedMachineResult = isLicenseLocatedOnAssignedMachineResult
+            Me.SecureID = SecureID
+            Me.ServerValText = ServerValText
+            Me.InstanceValText = InstanceValText
+            Me.RC = RC
+            Me.RetMsg = RetMsg
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="GetXrt", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class GetXrtRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public RetMsg As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.RC = RC
+            Me.RetMsg = RetMsg
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="GetXrtResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class GetXrtResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public GetXrtResult As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal GetXrtResult As String, ByVal SecureID As Integer)
+            MyBase.New
+            Me.GetXrtResult = GetXrtResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getSqlServerVersion", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getSqlServerVersionRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer)
+            MyBase.New
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getSqlServerVersionResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getSqlServerVersionResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public getSqlServerVersionResult As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal getSqlServerVersionResult As String, ByVal SecureID As Integer)
+            MyBase.New
+            Me.getSqlServerVersionResult = getSqlServerVersionResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="RecordGrowth", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class RecordGrowthRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public RC As Boolean
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.RC = RC
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="RecordGrowthResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class RecordGrowthResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public RC As Boolean
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.RC = RC
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ParseLic", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ParseLicRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public LT As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public tgtKey As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal LT As String, ByVal tgtKey As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.LT = LT
+            Me.tgtKey = tgtKey
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ParseLicResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ParseLicResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public ParseLicResult As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal ParseLicResult As String, ByVal SecureID As Integer)
+            MyBase.New
+            Me.ParseLicResult = ParseLicResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="GetLoggedinUserName", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class GetLoggedinUserNameRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer)
+            MyBase.New
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="GetLoggedinUserNameResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class GetLoggedinUserNameResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public GetLoggedinUserNameResult As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal GetLoggedinUserNameResult As String, ByVal SecureID As Integer)
+            MyBase.New
+            Me.GetLoggedinUserNameResult = GetLoggedinUserNameResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getDBSIZEMB", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getDBSIZEMBRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer)
+            MyBase.New
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getDBSIZEMBResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getDBSIZEMBResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public getDBSIZEMBResult As Double
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal getDBSIZEMBResult As Double, ByVal SecureID As Integer)
+            MyBase.New
+            Me.getDBSIZEMBResult = getDBSIZEMBResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="resetMissingEmailIds", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class resetMissingEmailIdsRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public CurrUserGuidID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public RC As Boolean
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal CurrUserGuidID As String, ByVal RC As Boolean)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.CurrUserGuidID = CurrUserGuidID
+            Me.RC = RC
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="resetMissingEmailIdsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class resetMissingEmailIdsResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public RC As Boolean
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.RC = RC
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="UserParmInsertUpdate", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class UserParmInsertUpdateRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public ParmName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public UserID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public ParmVal As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+        Public RC As Boolean
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal ParmName As String, ByVal UserID As String, ByVal ParmVal As String, ByVal RC As Boolean)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.ParmName = ParmName
+            Me.UserID = UserID
+            Me.ParmVal = ParmVal
+            Me.RC = RC
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="UserParmInsertUpdateResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class UserParmInsertUpdateResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public RC As Boolean
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.RC = RC
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="validateLogin", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class validateLoginRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public UserLogin As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public PW As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public UserGuidID As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal UserLogin As String, ByVal PW As String, ByVal UserGuidID As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.UserLogin = UserLogin
+            Me.PW = PW
+            Me.UserGuidID = UserGuidID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="validateLoginResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class validateLoginResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public validateLoginResult As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public UserGuidID As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal validateLoginResult As Boolean, ByVal SecureID As Integer, ByVal UserGuidID As String)
+            MyBase.New
+            Me.validateLoginResult = validateLoginResult
+            Me.SecureID = SecureID
+            Me.UserGuidID = UserGuidID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getLoggedInUser", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getLoggedInUserRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer)
+            MyBase.New
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getLoggedInUserResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getLoggedInUserResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public getLoggedInUserResult As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal getLoggedInUserResult As String, ByVal SecureID As Integer)
+            MyBase.New
+            Me.getLoggedInUserResult = getLoggedInUserResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getAttachedMachineName", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getAttachedMachineNameRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer)
+            MyBase.New
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getAttachedMachineNameResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getAttachedMachineNameResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public getAttachedMachineNameResult As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal getAttachedMachineNameResult As String, ByVal SecureID As Integer)
+            MyBase.New
+            Me.getAttachedMachineNameResult = getAttachedMachineNameResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getServerInstanceName", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getServerInstanceNameRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer)
+            MyBase.New
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getServerInstanceNameResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getServerInstanceNameResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public getServerInstanceNameResult As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal getServerInstanceNameResult As String, ByVal SecureID As Integer)
+            MyBase.New
+            Me.getServerInstanceNameResult = getServerInstanceNameResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getServerMachineName", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getServerMachineNameRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer)
+            MyBase.New
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getServerMachineNameResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getServerMachineNameResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public getServerMachineNameResult As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal getServerMachineNameResult As String, ByVal SecureID As Integer)
+            MyBase.New
+            Me.getServerMachineNameResult = getServerMachineNameResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getSystemParm", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getSystemParmRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SystemParms As System.Collections.Generic.Dictionary(Of String, String)
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal SystemParms As System.Collections.Generic.Dictionary(Of String, String))
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.SystemParms = SystemParms
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getSystemParmResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getSystemParmResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SystemParms As System.Collections.Generic.Dictionary(Of String, String)
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal SystemParms As System.Collections.Generic.Dictionary(Of String, String))
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.SystemParms = SystemParms
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getSynonyms", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getSynonymsRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public ThesaurusID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public Token As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public lbSynonyms As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal ThesaurusID As String, ByVal Token As String, ByVal lbSynonyms As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.ThesaurusID = ThesaurusID
+            Me.Token = Token
+            Me.lbSynonyms = lbSynonyms
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getSynonymsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getSynonymsResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public getSynonymsResult As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public lbSynonyms As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal getSynonymsResult As String, ByVal SecureID As Integer, ByVal lbSynonyms As String)
+            MyBase.New
+            Me.getSynonymsResult = getSynonymsResult
+            Me.SecureID = SecureID
+            Me.lbSynonyms = lbSynonyms
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getThesaurusID", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getThesaurusIDRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public ThesaurusName As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal ThesaurusName As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.ThesaurusName = ThesaurusName
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getThesaurusIDResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getThesaurusIDResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public getThesaurusIDResult As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal getThesaurusIDResult As String, ByVal SecureID As Integer)
+            MyBase.New
+            Me.getThesaurusIDResult = getThesaurusIDResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="iCountContent", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class iCountContentRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public S As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal S As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.S = S
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="iCountContentResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class iCountContentResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public iCountContentResult As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal iCountContentResult As Integer, ByVal SecureID As Integer)
+            MyBase.New
+            Me.iCountContentResult = iCountContentResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getDatasourceParm", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getDatasourceParmRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public AttributeName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public SourceGuid As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal AttributeName As String, ByVal SourceGuid As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.AttributeName = AttributeName
+            Me.SourceGuid = SourceGuid
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getDatasourceParmResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getDatasourceParmResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public getDatasourceParmResult As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal getDatasourceParmResult As String, ByVal SecureID As Integer)
+            MyBase.New
+            Me.getDatasourceParmResult = getDatasourceParmResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="SaveRunParm", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class SaveRunParmRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public UserID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public ParmID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public ParmVal As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal UserID As String, ByVal ParmID As String, ByVal ParmVal As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.UserID = UserID
+            Me.ParmID = ParmID
+            Me.ParmVal = ParmVal
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="SaveRunParmResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class SaveRunParmResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SaveRunParmResult As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public ParmID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public ParmVal As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SaveRunParmResult As Boolean, ByVal SecureID As Integer, ByVal ParmID As String, ByVal ParmVal As String)
+            MyBase.New
+            Me.SaveRunParmResult = SaveRunParmResult
+            Me.SecureID = SecureID
+            Me.ParmID = ParmID
+            Me.ParmVal = ParmVal
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="iGetRowCount", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class iGetRowCountRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public TBL As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public WhereClause As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal TBL As String, ByVal WhereClause As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.TBL = TBL
+            Me.WhereClause = WhereClause
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="iGetRowCountResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class iGetRowCountResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public iGetRowCountResult As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal iGetRowCountResult As Integer, ByVal SecureID As Integer)
+            MyBase.New
+            Me.iGetRowCountResult = iGetRowCountResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ZeroizeGlobalSearch", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ZeroizeGlobalSearchRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer)
+            MyBase.New
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ZeroizeGlobalSearchResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ZeroizeGlobalSearchResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public ZeroizeGlobalSearchResult As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal ZeroizeGlobalSearchResult As Boolean, ByVal SecureID As Integer)
+            MyBase.New
+            Me.ZeroizeGlobalSearchResult = ZeroizeGlobalSearchResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="updateIp", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class updateIpRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public HostName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public IP As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public checkCode As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+        Public RC As Boolean
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal HostName As String, ByVal IP As String, ByVal checkCode As Integer, ByVal RC As Boolean)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.HostName = HostName
+            Me.IP = IP
+            Me.checkCode = checkCode
+            Me.RC = RC
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="updateIpResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class updateIpResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public RC As Boolean
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.RC = RC
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateSourceGridWithWeights", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class PopulateSourceGridWithWeightsRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public StartingRow As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public EndingRow As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public CallerName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+        Public MySql As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+        Public bNewRows As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+        Public SourceRowCnt As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal StartingRow As Integer, ByVal EndingRow As Integer, ByVal CallerName As String, ByVal MySql As String, ByVal bNewRows As Boolean, ByVal SourceRowCnt As Integer)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.StartingRow = StartingRow
+            Me.EndingRow = EndingRow
+            Me.CallerName = CallerName
+            Me.MySql = MySql
+            Me.bNewRows = bNewRows
+            Me.SourceRowCnt = SourceRowCnt
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateSourceGridWithWeightsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class PopulateSourceGridWithWeightsResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public PopulateSourceGridWithWeightsResult() As SVCSearch.DS_CONTENT
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public bNewRows As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public SourceRowCnt As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal PopulateSourceGridWithWeightsResult() As SVCSearch.DS_CONTENT, ByVal SecureID As Integer, ByVal bNewRows As Boolean, ByVal SourceRowCnt As Integer)
+            MyBase.New
+            Me.PopulateSourceGridWithWeightsResult = PopulateSourceGridWithWeightsResult
+            Me.SecureID = SecureID
+            Me.bNewRows = bNewRows
+            Me.SourceRowCnt = SourceRowCnt
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
      System.ServiceModel.MessageContractAttribute(WrapperName:="DownLoadDocument", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class DownLoadDocumentRequest
         
@@ -11919,6 +10862,74 @@ Namespace SVCSearch
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getNewListOfStrings", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getNewListOfStringsRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public MySql As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public RetMsg As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+        Public UserId As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+        Public SessionID As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal MySql As String, ByVal RC As Boolean, ByVal RetMsg As String, ByVal UserId As String, ByVal SessionID As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.MySql = MySql
+            Me.RC = RC
+            Me.RetMsg = RetMsg
+            Me.UserId = UserId
+            Me.SessionID = SessionID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getNewListOfStringsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getNewListOfStringsResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public getNewListOfStringsResult() As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public RetMsg As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal getNewListOfStringsResult() As String, ByVal SecureID As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
+            MyBase.New
+            Me.getNewListOfStringsResult = getNewListOfStringsResult
+            Me.SecureID = SecureID
+            Me.RC = RC
+            Me.RetMsg = RetMsg
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
      System.ServiceModel.MessageContractAttribute(WrapperName:="getListOfStrings01", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class getListOfStrings01Request
         
@@ -13057,6 +12068,1070 @@ Namespace SVCSearch
         End Sub
     End Class
     
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateUserGrid", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class PopulateUserGridRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public UserID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public DBisAdmin As Boolean
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal UserID As String, ByVal DBisAdmin As Boolean)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.UserID = UserID
+            Me.DBisAdmin = DBisAdmin
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateUserGridResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class PopulateUserGridResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public PopulateUserGridResult() As SVCSearch.DS_VUserGrid
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal PopulateUserGridResult() As SVCSearch.DS_VUserGrid, ByVal SecureID As Integer)
+            MyBase.New
+            Me.PopulateUserGridResult = PopulateUserGridResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getGroupUsers", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getGroupUsersRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public GroupName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public GroupList() As Object
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+        Public RetMsg As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal GroupName As String, ByVal GroupList() As Object, ByVal RC As Boolean, ByVal RetMsg As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.GroupName = GroupName
+            Me.GroupList = GroupList
+            Me.RC = RC
+            Me.RetMsg = RetMsg
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getGroupUsersResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getGroupUsersResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public GroupList() As Object
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public RetMsg As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal GroupList() As Object, ByVal RC As Boolean, ByVal RetMsg As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.GroupList = GroupList
+            Me.RC = RC
+            Me.RetMsg = RetMsg
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateDgGroupUsers", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class PopulateDgGroupUsersRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public OwnerUserGuidID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public GroupName As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal OwnerUserGuidID As String, ByVal GroupName As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.OwnerUserGuidID = OwnerUserGuidID
+            Me.GroupName = GroupName
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateDgGroupUsersResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class PopulateDgGroupUsersResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public PopulateDgGroupUsersResult As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal PopulateDgGroupUsersResult As String, ByVal SecureID As Integer)
+            MyBase.New
+            Me.PopulateDgGroupUsersResult = PopulateDgGroupUsersResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="DeleteGroupUsers", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class DeleteGroupUsersRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public CurrSelectedGroupName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public GroupOwnerGuid As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public UserID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+        Public iDeleted As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+        Public RetMsg As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal CurrSelectedGroupName As String, ByVal GroupOwnerGuid As String, ByVal UserID As String, ByVal iDeleted As Integer, ByVal RetMsg As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.CurrSelectedGroupName = CurrSelectedGroupName
+            Me.GroupOwnerGuid = GroupOwnerGuid
+            Me.UserID = UserID
+            Me.iDeleted = iDeleted
+            Me.RetMsg = RetMsg
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="DeleteGroupUsersResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class DeleteGroupUsersResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public DeleteGroupUsersResult As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public iDeleted As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public RetMsg As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal DeleteGroupUsersResult As Boolean, ByVal iDeleted As Integer, ByVal RetMsg As String)
+            MyBase.New
+            Me.DeleteGroupUsersResult = DeleteGroupUsersResult
+            Me.iDeleted = iDeleted
+            Me.RetMsg = RetMsg
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getGroupOwnerGuidByGroupName", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getGroupOwnerGuidByGroupNameRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public GroupName As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal GroupName As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.GroupName = GroupName
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getGroupOwnerGuidByGroupNameResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getGroupOwnerGuidByGroupNameResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public getGroupOwnerGuidByGroupNameResult As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal getGroupOwnerGuidByGroupNameResult As String, ByVal SecureID As Integer)
+            MyBase.New
+            Me.getGroupOwnerGuidByGroupNameResult = getGroupOwnerGuidByGroupNameResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="AddLibraryGroupUser", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class AddLibraryGroupUserRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public GroupName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public CurrUserID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+        Public SessionID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+        Public ControlSection As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal GroupName As String, ByVal RC As Boolean, ByVal CurrUserID As String, ByVal SessionID As String, ByVal ControlSection As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.GroupName = GroupName
+            Me.RC = RC
+            Me.CurrUserID = CurrUserID
+            Me.SessionID = SessionID
+            Me.ControlSection = ControlSection
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="AddLibraryGroupUserResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class AddLibraryGroupUserResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public RC As Boolean
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.RC = RC
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateGroupUserGrid", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class PopulateGroupUserGridRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public GroupName As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal GroupName As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.GroupName = GroupName
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateGroupUserGridResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class PopulateGroupUserGridResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public PopulateGroupUserGridResult As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal PopulateGroupUserGridResult As String, ByVal SecureID As Integer)
+            MyBase.New
+            Me.PopulateGroupUserGridResult = PopulateGroupUserGridResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateLibItemsGrid", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class PopulateLibItemsGridRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public LibraryName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public UserID As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal LibraryName As String, ByVal UserID As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.LibraryName = LibraryName
+            Me.UserID = UserID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateLibItemsGridResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class PopulateLibItemsGridResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public PopulateLibItemsGridResult As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal PopulateLibItemsGridResult As String, ByVal SecureID As Integer)
+            MyBase.New
+            Me.PopulateLibItemsGridResult = PopulateLibItemsGridResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateDgAssigned", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class PopulateDgAssignedRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public LibraryName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public UserID As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal LibraryName As String, ByVal UserID As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.LibraryName = LibraryName
+            Me.UserID = UserID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateDgAssignedResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class PopulateDgAssignedResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public PopulateDgAssignedResult As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal PopulateDgAssignedResult As String, ByVal SecureID As Integer)
+            MyBase.New
+            Me.PopulateDgAssignedResult = PopulateDgAssignedResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ResetLibraryUsersCount", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ResetLibraryUsersCountRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public RC As Boolean
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.RC = RC
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ResetLibraryUsersCountResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ResetLibraryUsersCountResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public RC As Boolean
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.RC = RC
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="DeleteLibraryGroupUser", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class DeleteLibraryGroupUserRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public GroupName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public LibraryName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public RC As Boolean
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal GroupName As String, ByVal LibraryName As String, ByVal RC As Boolean)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.GroupName = GroupName
+            Me.LibraryName = LibraryName
+            Me.RC = RC
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="DeleteLibraryGroupUserResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class DeleteLibraryGroupUserResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public RC As Boolean
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.RC = RC
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ChangeUserPassword", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ChangeUserPasswordRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public UserLogin As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public OldPW As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public NewPw1 As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+        Public NewPw2 As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal UserLogin As String, ByVal OldPW As String, ByVal NewPw1 As String, ByVal NewPw2 As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.UserLogin = UserLogin
+            Me.OldPW = OldPW
+            Me.NewPw1 = NewPw1
+            Me.NewPw2 = NewPw2
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ChangeUserPasswordResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ChangeUserPasswordResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public ChangeUserPasswordResult As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal ChangeUserPasswordResult As Boolean, ByVal SecureID As Integer)
+            MyBase.New
+            Me.ChangeUserPasswordResult = ChangeUserPasswordResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="SaveClickStats", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class SaveClickStatsRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public IID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public UserID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public RC As Boolean
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal IID As Integer, ByVal UserID As String, ByVal RC As Boolean)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.IID = IID
+            Me.UserID = UserID
+            Me.RC = RC
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="SaveClickStatsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class SaveClickStatsResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public RC As Boolean
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal RC As Boolean)
+            MyBase.New
+            Me.RC = RC
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="cleanUpLibraryItems", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class cleanUpLibraryItemsRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public UserID As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal UserID As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.UserID = UserID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="cleanUpLibraryItemsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class cleanUpLibraryItemsResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer)
+            MyBase.New
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="RemoveLibraryDirectories", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class RemoveLibraryDirectoriesRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public UserID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public DirectoryName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public LibraryName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+        Public RetMsg As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal UserID As String, ByVal DirectoryName As String, ByVal LibraryName As String, ByVal RC As Boolean, ByVal RetMsg As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.UserID = UserID
+            Me.DirectoryName = DirectoryName
+            Me.LibraryName = LibraryName
+            Me.RC = RC
+            Me.RetMsg = RetMsg
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="RemoveLibraryDirectoriesResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class RemoveLibraryDirectoriesResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public RetMsg As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.RC = RC
+            Me.RetMsg = RetMsg
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="RemoveLibraryEmails", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class RemoveLibraryEmailsRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public FolderName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public LibraryName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public UserID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+        Public RetMsg As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal FolderName As String, ByVal LibraryName As String, ByVal UserID As String, ByVal RC As Boolean, ByVal RetMsg As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.FolderName = FolderName
+            Me.LibraryName = LibraryName
+            Me.UserID = UserID
+            Me.RC = RC
+            Me.RetMsg = RetMsg
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="RemoveLibraryEmailsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class RemoveLibraryEmailsResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public RetMsg As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.RC = RC
+            Me.RetMsg = RetMsg
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="AddSysMsg", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class AddSysMsgRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public UserID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public tMsg As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public RC As Boolean
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal UserID As String, ByVal tMsg As String, ByVal RC As Boolean)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.UserID = UserID
+            Me.tMsg = tMsg
+            Me.RC = RC
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="AddSysMsgResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class AddSysMsgResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer)
+            MyBase.New
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="AddLibraryDirectory", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class AddLibraryDirectoryRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public FolderName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public LibraryName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public UserID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+        Public RecordsAdded As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+        Public RetMsg As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal FolderName As String, ByVal LibraryName As String, ByVal UserID As String, ByVal RecordsAdded As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.FolderName = FolderName
+            Me.LibraryName = LibraryName
+            Me.UserID = UserID
+            Me.RecordsAdded = RecordsAdded
+            Me.RC = RC
+            Me.RetMsg = RetMsg
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="AddLibraryDirectoryResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class AddLibraryDirectoryResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public RecordsAdded As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public RetMsg As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal RecordsAdded As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.RecordsAdded = RecordsAdded
+            Me.RC = RC
+            Me.RetMsg = RetMsg
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="AddLibraryEmail", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class AddLibraryEmailRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public EmailFolder As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public LibraryName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public UserID As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+        Public RecordsAdded As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+        Public RC As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+        Public RetMsg As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal EmailFolder As String, ByVal LibraryName As String, ByVal UserID As String, ByVal RecordsAdded As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.EmailFolder = EmailFolder
+            Me.LibraryName = LibraryName
+            Me.UserID = UserID
+            Me.RecordsAdded = RecordsAdded
+            Me.RC = RC
+            Me.RetMsg = RetMsg
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="AddLibraryEmailResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class AddLibraryEmailResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public RecordsAdded As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal RecordsAdded As Integer)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.RecordsAdded = RecordsAdded
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateLibraryGrid", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class PopulateLibraryGridRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public UserID As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal UserID As String)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.UserID = UserID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateLibraryGridResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class PopulateLibraryGridResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public PopulateLibraryGridResult As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal PopulateLibraryGridResult As String, ByVal SecureID As Integer)
+            MyBase.New
+            Me.PopulateLibraryGridResult = PopulateLibraryGridResult
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
     <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>  _
     Public Interface IService1Channel
         Inherits SVCSearch.IService1, System.ServiceModel.IClientChannel
@@ -13087,864 +13162,6 @@ Namespace SVCSearch
         Public Sub New(ByVal binding As System.ServiceModel.Channels.Binding, ByVal remoteAddress As System.ServiceModel.EndpointAddress)
             MyBase.New(binding, remoteAddress)
         End Sub
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_saveSearchState(ByVal request As SVCSearch.saveSearchStateRequest) As SVCSearch.saveSearchStateResponse Implements SVCSearch.IService1.saveSearchState
-            Return MyBase.Channel.saveSearchState(request)
-        End Function
-        
-        Public Sub saveSearchState(ByRef SecureID As Integer, ByVal SearchID As Integer, ByVal UID As String, ByVal ScreenName As String, ByVal DICT As System.Collections.Generic.Dictionary(Of String, String), ByRef rMsg As String, ByRef RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String)
-            Dim inValue As SVCSearch.saveSearchStateRequest = New SVCSearch.saveSearchStateRequest()
-            inValue.SecureID = SecureID
-            inValue.SearchID = SearchID
-            inValue.UID = UID
-            inValue.ScreenName = ScreenName
-            inValue.DICT = DICT
-            inValue.rMsg = rMsg
-            inValue.RC = RC
-            inValue.HiveConnectionName = HiveConnectionName
-            inValue.HiveActive = HiveActive
-            inValue.RepoSvrName = RepoSvrName
-            Dim retVal As SVCSearch.saveSearchStateResponse = CType(Me,SVCSearch.IService1).saveSearchState(inValue)
-            SecureID = retVal.SecureID
-            rMsg = retVal.rMsg
-            RC = retVal.RC
-        End Sub
-        
-        Public Function saveSearchStateAsync(ByVal request As SVCSearch.saveSearchStateRequest) As System.Threading.Tasks.Task(Of SVCSearch.saveSearchStateResponse) Implements SVCSearch.IService1.saveSearchStateAsync
-            Return MyBase.Channel.saveSearchStateAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_getScreenState(ByVal request As SVCSearch.getScreenStateRequest) As SVCSearch.getScreenStateResponse Implements SVCSearch.IService1.getScreenState
-            Return MyBase.Channel.getScreenState(request)
-        End Function
-        
-        Public Function getScreenState(ByRef SecureID As Integer, ByVal UID As String, ByVal ScreenName As String, ByRef DICT As System.Collections.Generic.Dictionary(Of String, String), ByRef rMsg As String, ByRef RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String) As SVCSearch.DS_USERSCREENSTATE()
-            Dim inValue As SVCSearch.getScreenStateRequest = New SVCSearch.getScreenStateRequest()
-            inValue.SecureID = SecureID
-            inValue.UID = UID
-            inValue.ScreenName = ScreenName
-            inValue.DICT = DICT
-            inValue.rMsg = rMsg
-            inValue.RC = RC
-            inValue.HiveConnectionName = HiveConnectionName
-            inValue.HiveActive = HiveActive
-            inValue.RepoSvrName = RepoSvrName
-            Dim retVal As SVCSearch.getScreenStateResponse = CType(Me,SVCSearch.IService1).getScreenState(inValue)
-            SecureID = retVal.SecureID
-            DICT = retVal.DICT
-            rMsg = retVal.rMsg
-            RC = retVal.RC
-            Return retVal.getScreenStateResult
-        End Function
-        
-        Public Function getScreenStateAsync(ByVal request As SVCSearch.getScreenStateRequest) As System.Threading.Tasks.Task(Of SVCSearch.getScreenStateResponse) Implements SVCSearch.IService1.getScreenStateAsync
-            Return MyBase.Channel.getScreenStateAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_getGridLayout(ByVal request As SVCSearch.getGridLayoutRequest) As SVCSearch.getGridLayoutResponse Implements SVCSearch.IService1.getGridLayout
-            Return MyBase.Channel.getGridLayout(request)
-        End Function
-        
-        Public Function getGridLayout(ByRef SecureID As Integer, ByVal UID As String, ByVal ScreenName As String, ByVal GridName As String, ByVal DICT As System.Collections.Generic.Dictionary(Of String, String), ByRef rMsg As String, ByRef RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String) As SVCSearch.DS_clsUSERGRIDSTATE()
-            Dim inValue As SVCSearch.getGridLayoutRequest = New SVCSearch.getGridLayoutRequest()
-            inValue.SecureID = SecureID
-            inValue.UID = UID
-            inValue.ScreenName = ScreenName
-            inValue.GridName = GridName
-            inValue.DICT = DICT
-            inValue.rMsg = rMsg
-            inValue.RC = RC
-            inValue.HiveConnectionName = HiveConnectionName
-            inValue.HiveActive = HiveActive
-            inValue.RepoSvrName = RepoSvrName
-            Dim retVal As SVCSearch.getGridLayoutResponse = CType(Me,SVCSearch.IService1).getGridLayout(inValue)
-            SecureID = retVal.SecureID
-            rMsg = retVal.rMsg
-            RC = retVal.RC
-            Return retVal.getGridLayoutResult
-        End Function
-        
-        Public Function getGridLayoutAsync(ByVal request As SVCSearch.getGridLayoutRequest) As System.Threading.Tasks.Task(Of SVCSearch.getGridLayoutResponse) Implements SVCSearch.IService1.getGridLayoutAsync
-            Return MyBase.Channel.getGridLayoutAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_saveGridLayout(ByVal request As SVCSearch.saveGridLayoutRequest) As SVCSearch.saveGridLayoutResponse Implements SVCSearch.IService1.saveGridLayout
-            Return MyBase.Channel.saveGridLayout(request)
-        End Function
-        
-        Public Sub saveGridLayout( _
-                    ByRef SecureID As Integer,  _
-                    ByRef UserID As String,  _
-                    ByRef ScreenName As String,  _
-                    ByRef GridName As String,  _
-                    ByRef ColName As String,  _
-                    ByRef ColOrder As Integer,  _
-                    ByRef ColWidth As Integer,  _
-                    ByRef ColVisible As Boolean,  _
-                    ByRef ColReadOnly As Boolean,  _
-                    ByRef ColSortOrder As Integer,  _
-                    ByRef ColSortAsc As Boolean,  _
-                    ByRef HiveConnectionName As String,  _
-                    ByRef HiveActive As Boolean,  _
-                    ByRef RepoSvrName As String,  _
-                    ByRef RowCreationDate As Date,  _
-                    ByRef RowLastModDate As Date,  _
-                    ByRef RowNbr As Integer,  _
-                    ByRef RC As Boolean,  _
-                    ByRef rMsg As String)
-            Dim inValue As SVCSearch.saveGridLayoutRequest = New SVCSearch.saveGridLayoutRequest()
-            inValue.SecureID = SecureID
-            inValue.UserID = UserID
-            inValue.ScreenName = ScreenName
-            inValue.GridName = GridName
-            inValue.ColName = ColName
-            inValue.ColOrder = ColOrder
-            inValue.ColWidth = ColWidth
-            inValue.ColVisible = ColVisible
-            inValue.ColReadOnly = ColReadOnly
-            inValue.ColSortOrder = ColSortOrder
-            inValue.ColSortAsc = ColSortAsc
-            inValue.HiveConnectionName = HiveConnectionName
-            inValue.HiveActive = HiveActive
-            inValue.RepoSvrName = RepoSvrName
-            inValue.RowCreationDate = RowCreationDate
-            inValue.RowLastModDate = RowLastModDate
-            inValue.RowNbr = RowNbr
-            inValue.RC = RC
-            inValue.rMsg = rMsg
-            Dim retVal As SVCSearch.saveGridLayoutResponse = CType(Me,SVCSearch.IService1).saveGridLayout(inValue)
-            SecureID = retVal.SecureID
-            UserID = retVal.UserID
-            ScreenName = retVal.ScreenName
-            GridName = retVal.GridName
-            ColName = retVal.ColName
-            ColOrder = retVal.ColOrder
-            ColWidth = retVal.ColWidth
-            ColVisible = retVal.ColVisible
-            ColReadOnly = retVal.ColReadOnly
-            ColSortOrder = retVal.ColSortOrder
-            ColSortAsc = retVal.ColSortAsc
-            HiveConnectionName = retVal.HiveConnectionName
-            HiveActive = retVal.HiveActive
-            RepoSvrName = retVal.RepoSvrName
-            RowCreationDate = retVal.RowCreationDate
-            RowLastModDate = retVal.RowLastModDate
-            RowNbr = retVal.RowNbr
-            RC = retVal.RC
-            rMsg = retVal.rMsg
-        End Sub
-        
-        Public Function saveGridLayoutAsync(ByVal request As SVCSearch.saveGridLayoutRequest) As System.Threading.Tasks.Task(Of SVCSearch.saveGridLayoutResponse) Implements SVCSearch.IService1.saveGridLayoutAsync
-            Return MyBase.Channel.saveGridLayoutAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_saveScreenState(ByVal request As SVCSearch.saveScreenStateRequest) As SVCSearch.saveScreenStateResponse Implements SVCSearch.IService1.saveScreenState
-            Return MyBase.Channel.saveScreenState(request)
-        End Function
-        
-        Public Sub saveScreenState(ByRef SecureID As Integer, ByVal UID As String, ByVal ScreenName As String, ByVal DICT As System.Collections.Generic.Dictionary(Of String, String), ByRef rMsg As String, ByRef RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String)
-            Dim inValue As SVCSearch.saveScreenStateRequest = New SVCSearch.saveScreenStateRequest()
-            inValue.SecureID = SecureID
-            inValue.UID = UID
-            inValue.ScreenName = ScreenName
-            inValue.DICT = DICT
-            inValue.rMsg = rMsg
-            inValue.RC = RC
-            inValue.HiveConnectionName = HiveConnectionName
-            inValue.HiveActive = HiveActive
-            inValue.RepoSvrName = RepoSvrName
-            Dim retVal As SVCSearch.saveScreenStateResponse = CType(Me,SVCSearch.IService1).saveScreenState(inValue)
-            SecureID = retVal.SecureID
-            rMsg = retVal.rMsg
-            RC = retVal.RC
-        End Sub
-        
-        Public Function saveScreenStateAsync(ByVal request As SVCSearch.saveScreenStateRequest) As System.Threading.Tasks.Task(Of SVCSearch.saveScreenStateResponse) Implements SVCSearch.IService1.saveScreenStateAsync
-            Return MyBase.Channel.saveScreenStateAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_getUserParms(ByVal request As SVCSearch.getUserParmsRequest) As SVCSearch.getUserParmsResponse Implements SVCSearch.IService1.getUserParms
-            Return MyBase.Channel.getUserParms(request)
-        End Function
-        
-        Public Sub getUserParms(ByRef SecureID As Integer, ByVal UserID As String, ByRef UserParms As System.Collections.Generic.Dictionary(Of String, String))
-            Dim inValue As SVCSearch.getUserParmsRequest = New SVCSearch.getUserParmsRequest()
-            inValue.SecureID = SecureID
-            inValue.UserID = UserID
-            inValue.UserParms = UserParms
-            Dim retVal As SVCSearch.getUserParmsResponse = CType(Me,SVCSearch.IService1).getUserParms(inValue)
-            SecureID = retVal.SecureID
-            UserParms = retVal.UserParms
-        End Sub
-        
-        Public Function getUserParmsAsync(ByVal request As SVCSearch.getUserParmsRequest) As System.Threading.Tasks.Task(Of SVCSearch.getUserParmsResponse) Implements SVCSearch.IService1.getUserParmsAsync
-            Return MyBase.Channel.getUserParmsAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_ParseLicDictionary(ByVal request As SVCSearch.ParseLicDictionaryRequest) As SVCSearch.ParseLicDictionaryResponse Implements SVCSearch.IService1.ParseLicDictionary
-            Return MyBase.Channel.ParseLicDictionary(request)
-        End Function
-        
-        Public Sub ParseLicDictionary(ByRef SecureID As Integer, ByVal S As String, ByRef D As System.Collections.Generic.Dictionary(Of String, String))
-            Dim inValue As SVCSearch.ParseLicDictionaryRequest = New SVCSearch.ParseLicDictionaryRequest()
-            inValue.SecureID = SecureID
-            inValue.S = S
-            inValue.D = D
-            Dim retVal As SVCSearch.ParseLicDictionaryResponse = CType(Me,SVCSearch.IService1).ParseLicDictionary(inValue)
-            SecureID = retVal.SecureID
-            D = retVal.D
-        End Sub
-        
-        Public Function ParseLicDictionaryAsync(ByVal request As SVCSearch.ParseLicDictionaryRequest) As System.Threading.Tasks.Task(Of SVCSearch.ParseLicDictionaryResponse) Implements SVCSearch.IService1.ParseLicDictionaryAsync
-            Return MyBase.Channel.ParseLicDictionaryAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_LicenseType(ByVal request As SVCSearch.LicenseTypeRequest) As SVCSearch.LicenseTypeResponse Implements SVCSearch.IService1.LicenseType
-            Return MyBase.Channel.LicenseType(request)
-        End Function
-        
-        Public Function LicenseType(ByVal SecureID As Integer, ByRef RC As Boolean, ByRef RetMsg As String) As String
-            Dim inValue As SVCSearch.LicenseTypeRequest = New SVCSearch.LicenseTypeRequest()
-            inValue.SecureID = SecureID
-            inValue.RC = RC
-            inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.LicenseTypeResponse = CType(Me,SVCSearch.IService1).LicenseType(inValue)
-            RC = retVal.RC
-            RetMsg = retVal.RetMsg
-            Return retVal.LicenseTypeResult
-        End Function
-        
-        Public Function LicenseTypeAsync(ByVal request As SVCSearch.LicenseTypeRequest) As System.Threading.Tasks.Task(Of SVCSearch.LicenseTypeResponse) Implements SVCSearch.IService1.LicenseTypeAsync
-            Return MyBase.Channel.LicenseTypeAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_GetNbrUsers(ByVal request As SVCSearch.GetNbrUsersRequest) As SVCSearch.GetNbrUsersResponse Implements SVCSearch.IService1.GetNbrUsers
-            Return MyBase.Channel.GetNbrUsers(request)
-        End Function
-        
-        Public Function GetNbrUsers(ByRef SecureID As Integer) As Integer
-            Dim inValue As SVCSearch.GetNbrUsersRequest = New SVCSearch.GetNbrUsersRequest()
-            inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.GetNbrUsersResponse = CType(Me,SVCSearch.IService1).GetNbrUsers(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.GetNbrUsersResult
-        End Function
-        
-        Public Function GetNbrUsersAsync(ByVal request As SVCSearch.GetNbrUsersRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetNbrUsersResponse) Implements SVCSearch.IService1.GetNbrUsersAsync
-            Return MyBase.Channel.GetNbrUsersAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_isLease(ByVal request As SVCSearch.isLeaseRequest) As SVCSearch.isLeaseResponse Implements SVCSearch.IService1.isLease
-            Return MyBase.Channel.isLease(request)
-        End Function
-        
-        Public Function isLease(ByVal SecureID As Integer, ByRef RC As Boolean, ByRef RetMsg As String) As Boolean
-            Dim inValue As SVCSearch.isLeaseRequest = New SVCSearch.isLeaseRequest()
-            inValue.SecureID = SecureID
-            inValue.RC = RC
-            inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.isLeaseResponse = CType(Me,SVCSearch.IService1).isLease(inValue)
-            RC = retVal.RC
-            RetMsg = retVal.RetMsg
-            Return retVal.isLeaseResult
-        End Function
-        
-        Public Function isLeaseAsync(ByVal request As SVCSearch.isLeaseRequest) As System.Threading.Tasks.Task(Of SVCSearch.isLeaseResponse) Implements SVCSearch.IService1.isLeaseAsync
-            Return MyBase.Channel.isLeaseAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_getMaxClients(ByVal request As SVCSearch.getMaxClientsRequest) As SVCSearch.getMaxClientsResponse Implements SVCSearch.IService1.getMaxClients
-            Return MyBase.Channel.getMaxClients(request)
-        End Function
-        
-        Public Function getMaxClients(ByVal SecureID As Integer, ByRef RC As Boolean, ByRef RetMsg As String) As Integer
-            Dim inValue As SVCSearch.getMaxClientsRequest = New SVCSearch.getMaxClientsRequest()
-            inValue.SecureID = SecureID
-            inValue.RC = RC
-            inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.getMaxClientsResponse = CType(Me,SVCSearch.IService1).getMaxClients(inValue)
-            RC = retVal.RC
-            RetMsg = retVal.RetMsg
-            Return retVal.getMaxClientsResult
-        End Function
-        
-        Public Function getMaxClientsAsync(ByVal request As SVCSearch.getMaxClientsRequest) As System.Threading.Tasks.Task(Of SVCSearch.getMaxClientsResponse) Implements SVCSearch.IService1.getMaxClientsAsync
-            Return MyBase.Channel.getMaxClientsAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_GetUserHostName(ByVal request As SVCSearch.GetUserHostNameRequest) As SVCSearch.GetUserHostNameResponse Implements SVCSearch.IService1.GetUserHostName
-            Return MyBase.Channel.GetUserHostName(request)
-        End Function
-        
-        Public Function GetUserHostName(ByRef SecureID As Integer) As String
-            Dim inValue As SVCSearch.GetUserHostNameRequest = New SVCSearch.GetUserHostNameRequest()
-            inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.GetUserHostNameResponse = CType(Me,SVCSearch.IService1).GetUserHostName(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.GetUserHostNameResult
-        End Function
-        
-        Public Function GetUserHostNameAsync(ByVal request As SVCSearch.GetUserHostNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetUserHostNameResponse) Implements SVCSearch.IService1.GetUserHostNameAsync
-            Return MyBase.Channel.GetUserHostNameAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_GetUserHostAddress(ByVal request As SVCSearch.GetUserHostAddressRequest) As SVCSearch.GetUserHostAddressResponse Implements SVCSearch.IService1.GetUserHostAddress
-            Return MyBase.Channel.GetUserHostAddress(request)
-        End Function
-        
-        Public Function GetUserHostAddress(ByRef SecureID As Integer) As String
-            Dim inValue As SVCSearch.GetUserHostAddressRequest = New SVCSearch.GetUserHostAddressRequest()
-            inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.GetUserHostAddressResponse = CType(Me,SVCSearch.IService1).GetUserHostAddress(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.GetUserHostAddressResult
-        End Function
-        
-        Public Function GetUserHostAddressAsync(ByVal request As SVCSearch.GetUserHostAddressRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetUserHostAddressResponse) Implements SVCSearch.IService1.GetUserHostAddressAsync
-            Return MyBase.Channel.GetUserHostAddressAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_getUserGuidID(ByVal request As SVCSearch.getUserGuidIDRequest) As SVCSearch.getUserGuidIDResponse Implements SVCSearch.IService1.getUserGuidID
-            Return MyBase.Channel.getUserGuidID(request)
-        End Function
-        
-        Public Function getUserGuidID(ByRef SecureID As Integer, ByVal UserLoginId As String) As String
-            Dim inValue As SVCSearch.getUserGuidIDRequest = New SVCSearch.getUserGuidIDRequest()
-            inValue.SecureID = SecureID
-            inValue.UserLoginId = UserLoginId
-            Dim retVal As SVCSearch.getUserGuidIDResponse = CType(Me,SVCSearch.IService1).getUserGuidID(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.getUserGuidIDResult
-        End Function
-        
-        Public Function getUserGuidIDAsync(ByVal request As SVCSearch.getUserGuidIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.getUserGuidIDResponse) Implements SVCSearch.IService1.getUserGuidIDAsync
-            Return MyBase.Channel.getUserGuidIDAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_ProcessDates(ByVal request As SVCSearch.ProcessDatesRequest) As SVCSearch.ProcessDatesResponse Implements SVCSearch.IService1.ProcessDates
-            Return MyBase.Channel.ProcessDates(request)
-        End Function
-        
-        Public Function ProcessDates(ByRef SecureID As Integer) As System.Collections.Generic.Dictionary(Of String, Date)
-            Dim inValue As SVCSearch.ProcessDatesRequest = New SVCSearch.ProcessDatesRequest()
-            inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.ProcessDatesResponse = CType(Me,SVCSearch.IService1).ProcessDates(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.ProcessDatesResult
-        End Function
-        
-        Public Function ProcessDatesAsync(ByVal request As SVCSearch.ProcessDatesRequest) As System.Threading.Tasks.Task(Of SVCSearch.ProcessDatesResponse) Implements SVCSearch.IService1.ProcessDatesAsync
-            Return MyBase.Channel.ProcessDatesAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_GetNbrMachineAll(ByVal request As SVCSearch.GetNbrMachineAllRequest) As SVCSearch.GetNbrMachineAllResponse Implements SVCSearch.IService1.GetNbrMachineAll
-            Return MyBase.Channel.GetNbrMachineAll(request)
-        End Function
-        
-        Public Function GetNbrMachineAll(ByRef SecureID As Integer) As Integer
-            Dim inValue As SVCSearch.GetNbrMachineAllRequest = New SVCSearch.GetNbrMachineAllRequest()
-            inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.GetNbrMachineAllResponse = CType(Me,SVCSearch.IService1).GetNbrMachineAll(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.GetNbrMachineAllResult
-        End Function
-        
-        Public Function GetNbrMachineAllAsync(ByVal request As SVCSearch.GetNbrMachineAllRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetNbrMachineAllResponse) Implements SVCSearch.IService1.GetNbrMachineAllAsync
-            Return MyBase.Channel.GetNbrMachineAllAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_GetNbrMachine(ByVal request As SVCSearch.GetNbrMachineRequest) As SVCSearch.GetNbrMachineResponse Implements SVCSearch.IService1.GetNbrMachine
-            Return MyBase.Channel.GetNbrMachine(request)
-        End Function
-        
-        Public Function GetNbrMachine(ByRef SecureID As Integer, ByVal MachineName As String) As Integer
-            Dim inValue As SVCSearch.GetNbrMachineRequest = New SVCSearch.GetNbrMachineRequest()
-            inValue.SecureID = SecureID
-            inValue.MachineName = MachineName
-            Dim retVal As SVCSearch.GetNbrMachineResponse = CType(Me,SVCSearch.IService1).GetNbrMachine(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.GetNbrMachineResult
-        End Function
-        
-        Public Function GetNbrMachineAsync(ByVal request As SVCSearch.GetNbrMachineRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetNbrMachineResponse) Implements SVCSearch.IService1.GetNbrMachineAsync
-            Return MyBase.Channel.GetNbrMachineAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_isLicenseLocatedOnAssignedMachine(ByVal request As SVCSearch.isLicenseLocatedOnAssignedMachineRequest) As SVCSearch.isLicenseLocatedOnAssignedMachineResponse Implements SVCSearch.IService1.isLicenseLocatedOnAssignedMachine
-            Return MyBase.Channel.isLicenseLocatedOnAssignedMachine(request)
-        End Function
-        
-        Public Function isLicenseLocatedOnAssignedMachine(ByRef SecureID As Integer, ByRef ServerValText As String, ByRef InstanceValText As String, ByRef RC As Boolean, ByRef RetMsg As String) As Boolean
-            Dim inValue As SVCSearch.isLicenseLocatedOnAssignedMachineRequest = New SVCSearch.isLicenseLocatedOnAssignedMachineRequest()
-            inValue.SecureID = SecureID
-            inValue.ServerValText = ServerValText
-            inValue.InstanceValText = InstanceValText
-            inValue.RC = RC
-            inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.isLicenseLocatedOnAssignedMachineResponse = CType(Me,SVCSearch.IService1).isLicenseLocatedOnAssignedMachine(inValue)
-            SecureID = retVal.SecureID
-            ServerValText = retVal.ServerValText
-            InstanceValText = retVal.InstanceValText
-            RC = retVal.RC
-            RetMsg = retVal.RetMsg
-            Return retVal.isLicenseLocatedOnAssignedMachineResult
-        End Function
-        
-        Public Function isLicenseLocatedOnAssignedMachineAsync(ByVal request As SVCSearch.isLicenseLocatedOnAssignedMachineRequest) As System.Threading.Tasks.Task(Of SVCSearch.isLicenseLocatedOnAssignedMachineResponse) Implements SVCSearch.IService1.isLicenseLocatedOnAssignedMachineAsync
-            Return MyBase.Channel.isLicenseLocatedOnAssignedMachineAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_GetXrt(ByVal request As SVCSearch.GetXrtRequest) As SVCSearch.GetXrtResponse Implements SVCSearch.IService1.GetXrt
-            Return MyBase.Channel.GetXrt(request)
-        End Function
-        
-        Public Function GetXrt(ByRef SecureID As Integer, ByVal RC As Boolean, ByVal RetMsg As String) As String
-            Dim inValue As SVCSearch.GetXrtRequest = New SVCSearch.GetXrtRequest()
-            inValue.SecureID = SecureID
-            inValue.RC = RC
-            inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.GetXrtResponse = CType(Me,SVCSearch.IService1).GetXrt(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.GetXrtResult
-        End Function
-        
-        Public Function GetXrtAsync(ByVal request As SVCSearch.GetXrtRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetXrtResponse) Implements SVCSearch.IService1.GetXrtAsync
-            Return MyBase.Channel.GetXrtAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_getSqlServerVersion(ByVal request As SVCSearch.getSqlServerVersionRequest) As SVCSearch.getSqlServerVersionResponse Implements SVCSearch.IService1.getSqlServerVersion
-            Return MyBase.Channel.getSqlServerVersion(request)
-        End Function
-        
-        Public Function getSqlServerVersion(ByRef SecureID As Integer) As String
-            Dim inValue As SVCSearch.getSqlServerVersionRequest = New SVCSearch.getSqlServerVersionRequest()
-            inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.getSqlServerVersionResponse = CType(Me,SVCSearch.IService1).getSqlServerVersion(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.getSqlServerVersionResult
-        End Function
-        
-        Public Function getSqlServerVersionAsync(ByVal request As SVCSearch.getSqlServerVersionRequest) As System.Threading.Tasks.Task(Of SVCSearch.getSqlServerVersionResponse) Implements SVCSearch.IService1.getSqlServerVersionAsync
-            Return MyBase.Channel.getSqlServerVersionAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_RecordGrowth(ByVal request As SVCSearch.RecordGrowthRequest) As SVCSearch.RecordGrowthResponse Implements SVCSearch.IService1.RecordGrowth
-            Return MyBase.Channel.RecordGrowth(request)
-        End Function
-        
-        Public Sub RecordGrowth(ByRef SecureID As Integer, ByRef RC As Boolean)
-            Dim inValue As SVCSearch.RecordGrowthRequest = New SVCSearch.RecordGrowthRequest()
-            inValue.SecureID = SecureID
-            inValue.RC = RC
-            Dim retVal As SVCSearch.RecordGrowthResponse = CType(Me,SVCSearch.IService1).RecordGrowth(inValue)
-            SecureID = retVal.SecureID
-            RC = retVal.RC
-        End Sub
-        
-        Public Function RecordGrowthAsync(ByVal request As SVCSearch.RecordGrowthRequest) As System.Threading.Tasks.Task(Of SVCSearch.RecordGrowthResponse) Implements SVCSearch.IService1.RecordGrowthAsync
-            Return MyBase.Channel.RecordGrowthAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_ParseLic(ByVal request As SVCSearch.ParseLicRequest) As SVCSearch.ParseLicResponse Implements SVCSearch.IService1.ParseLic
-            Return MyBase.Channel.ParseLic(request)
-        End Function
-        
-        Public Function ParseLic(ByRef SecureID As Integer, ByVal LT As String, ByVal tgtKey As String) As String
-            Dim inValue As SVCSearch.ParseLicRequest = New SVCSearch.ParseLicRequest()
-            inValue.SecureID = SecureID
-            inValue.LT = LT
-            inValue.tgtKey = tgtKey
-            Dim retVal As SVCSearch.ParseLicResponse = CType(Me,SVCSearch.IService1).ParseLic(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.ParseLicResult
-        End Function
-        
-        Public Function ParseLicAsync(ByVal request As SVCSearch.ParseLicRequest) As System.Threading.Tasks.Task(Of SVCSearch.ParseLicResponse) Implements SVCSearch.IService1.ParseLicAsync
-            Return MyBase.Channel.ParseLicAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_GetLoggedinUserName(ByVal request As SVCSearch.GetLoggedinUserNameRequest) As SVCSearch.GetLoggedinUserNameResponse Implements SVCSearch.IService1.GetLoggedinUserName
-            Return MyBase.Channel.GetLoggedinUserName(request)
-        End Function
-        
-        Public Function GetLoggedinUserName(ByRef SecureID As Integer) As String
-            Dim inValue As SVCSearch.GetLoggedinUserNameRequest = New SVCSearch.GetLoggedinUserNameRequest()
-            inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.GetLoggedinUserNameResponse = CType(Me,SVCSearch.IService1).GetLoggedinUserName(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.GetLoggedinUserNameResult
-        End Function
-        
-        Public Function GetLoggedinUserNameAsync(ByVal request As SVCSearch.GetLoggedinUserNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetLoggedinUserNameResponse) Implements SVCSearch.IService1.GetLoggedinUserNameAsync
-            Return MyBase.Channel.GetLoggedinUserNameAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_getDBSIZEMB(ByVal request As SVCSearch.getDBSIZEMBRequest) As SVCSearch.getDBSIZEMBResponse Implements SVCSearch.IService1.getDBSIZEMB
-            Return MyBase.Channel.getDBSIZEMB(request)
-        End Function
-        
-        Public Function getDBSIZEMB(ByRef SecureID As Integer) As Double
-            Dim inValue As SVCSearch.getDBSIZEMBRequest = New SVCSearch.getDBSIZEMBRequest()
-            inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.getDBSIZEMBResponse = CType(Me,SVCSearch.IService1).getDBSIZEMB(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.getDBSIZEMBResult
-        End Function
-        
-        Public Function getDBSIZEMBAsync(ByVal request As SVCSearch.getDBSIZEMBRequest) As System.Threading.Tasks.Task(Of SVCSearch.getDBSIZEMBResponse) Implements SVCSearch.IService1.getDBSIZEMBAsync
-            Return MyBase.Channel.getDBSIZEMBAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_resetMissingEmailIds(ByVal request As SVCSearch.resetMissingEmailIdsRequest) As SVCSearch.resetMissingEmailIdsResponse Implements SVCSearch.IService1.resetMissingEmailIds
-            Return MyBase.Channel.resetMissingEmailIds(request)
-        End Function
-        
-        Public Sub resetMissingEmailIds(ByRef SecureID As Integer, ByVal CurrUserGuidID As String, ByRef RC As Boolean)
-            Dim inValue As SVCSearch.resetMissingEmailIdsRequest = New SVCSearch.resetMissingEmailIdsRequest()
-            inValue.SecureID = SecureID
-            inValue.CurrUserGuidID = CurrUserGuidID
-            inValue.RC = RC
-            Dim retVal As SVCSearch.resetMissingEmailIdsResponse = CType(Me,SVCSearch.IService1).resetMissingEmailIds(inValue)
-            SecureID = retVal.SecureID
-            RC = retVal.RC
-        End Sub
-        
-        Public Function resetMissingEmailIdsAsync(ByVal request As SVCSearch.resetMissingEmailIdsRequest) As System.Threading.Tasks.Task(Of SVCSearch.resetMissingEmailIdsResponse) Implements SVCSearch.IService1.resetMissingEmailIdsAsync
-            Return MyBase.Channel.resetMissingEmailIdsAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_UserParmInsertUpdate(ByVal request As SVCSearch.UserParmInsertUpdateRequest) As SVCSearch.UserParmInsertUpdateResponse Implements SVCSearch.IService1.UserParmInsertUpdate
-            Return MyBase.Channel.UserParmInsertUpdate(request)
-        End Function
-        
-        Public Sub UserParmInsertUpdate(ByRef SecureID As Integer, ByVal ParmName As String, ByVal UserID As String, ByVal ParmVal As String, ByRef RC As Boolean)
-            Dim inValue As SVCSearch.UserParmInsertUpdateRequest = New SVCSearch.UserParmInsertUpdateRequest()
-            inValue.SecureID = SecureID
-            inValue.ParmName = ParmName
-            inValue.UserID = UserID
-            inValue.ParmVal = ParmVal
-            inValue.RC = RC
-            Dim retVal As SVCSearch.UserParmInsertUpdateResponse = CType(Me,SVCSearch.IService1).UserParmInsertUpdate(inValue)
-            SecureID = retVal.SecureID
-            RC = retVal.RC
-        End Sub
-        
-        Public Function UserParmInsertUpdateAsync(ByVal request As SVCSearch.UserParmInsertUpdateRequest) As System.Threading.Tasks.Task(Of SVCSearch.UserParmInsertUpdateResponse) Implements SVCSearch.IService1.UserParmInsertUpdateAsync
-            Return MyBase.Channel.UserParmInsertUpdateAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_validateLogin(ByVal request As SVCSearch.validateLoginRequest) As SVCSearch.validateLoginResponse Implements SVCSearch.IService1.validateLogin
-            Return MyBase.Channel.validateLogin(request)
-        End Function
-        
-        Public Function validateLogin(ByRef SecureID As Integer, ByVal UserLogin As String, ByVal PW As String, ByRef UserGuidID As String) As Boolean
-            Dim inValue As SVCSearch.validateLoginRequest = New SVCSearch.validateLoginRequest()
-            inValue.SecureID = SecureID
-            inValue.UserLogin = UserLogin
-            inValue.PW = PW
-            inValue.UserGuidID = UserGuidID
-            Dim retVal As SVCSearch.validateLoginResponse = CType(Me,SVCSearch.IService1).validateLogin(inValue)
-            SecureID = retVal.SecureID
-            UserGuidID = retVal.UserGuidID
-            Return retVal.validateLoginResult
-        End Function
-        
-        Public Function validateLoginAsync(ByVal request As SVCSearch.validateLoginRequest) As System.Threading.Tasks.Task(Of SVCSearch.validateLoginResponse) Implements SVCSearch.IService1.validateLoginAsync
-            Return MyBase.Channel.validateLoginAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_getLoggedInUser(ByVal request As SVCSearch.getLoggedInUserRequest) As SVCSearch.getLoggedInUserResponse Implements SVCSearch.IService1.getLoggedInUser
-            Return MyBase.Channel.getLoggedInUser(request)
-        End Function
-        
-        Public Function getLoggedInUser(ByRef SecureID As Integer) As String
-            Dim inValue As SVCSearch.getLoggedInUserRequest = New SVCSearch.getLoggedInUserRequest()
-            inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.getLoggedInUserResponse = CType(Me,SVCSearch.IService1).getLoggedInUser(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.getLoggedInUserResult
-        End Function
-        
-        Public Function getLoggedInUserAsync(ByVal request As SVCSearch.getLoggedInUserRequest) As System.Threading.Tasks.Task(Of SVCSearch.getLoggedInUserResponse) Implements SVCSearch.IService1.getLoggedInUserAsync
-            Return MyBase.Channel.getLoggedInUserAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_getAttachedMachineName(ByVal request As SVCSearch.getAttachedMachineNameRequest) As SVCSearch.getAttachedMachineNameResponse Implements SVCSearch.IService1.getAttachedMachineName
-            Return MyBase.Channel.getAttachedMachineName(request)
-        End Function
-        
-        Public Function getAttachedMachineName(ByRef SecureID As Integer) As String
-            Dim inValue As SVCSearch.getAttachedMachineNameRequest = New SVCSearch.getAttachedMachineNameRequest()
-            inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.getAttachedMachineNameResponse = CType(Me,SVCSearch.IService1).getAttachedMachineName(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.getAttachedMachineNameResult
-        End Function
-        
-        Public Function getAttachedMachineNameAsync(ByVal request As SVCSearch.getAttachedMachineNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.getAttachedMachineNameResponse) Implements SVCSearch.IService1.getAttachedMachineNameAsync
-            Return MyBase.Channel.getAttachedMachineNameAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_getServerInstanceName(ByVal request As SVCSearch.getServerInstanceNameRequest) As SVCSearch.getServerInstanceNameResponse Implements SVCSearch.IService1.getServerInstanceName
-            Return MyBase.Channel.getServerInstanceName(request)
-        End Function
-        
-        Public Function getServerInstanceName(ByRef SecureID As Integer) As String
-            Dim inValue As SVCSearch.getServerInstanceNameRequest = New SVCSearch.getServerInstanceNameRequest()
-            inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.getServerInstanceNameResponse = CType(Me,SVCSearch.IService1).getServerInstanceName(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.getServerInstanceNameResult
-        End Function
-        
-        Public Function getServerInstanceNameAsync(ByVal request As SVCSearch.getServerInstanceNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.getServerInstanceNameResponse) Implements SVCSearch.IService1.getServerInstanceNameAsync
-            Return MyBase.Channel.getServerInstanceNameAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_getServerMachineName(ByVal request As SVCSearch.getServerMachineNameRequest) As SVCSearch.getServerMachineNameResponse Implements SVCSearch.IService1.getServerMachineName
-            Return MyBase.Channel.getServerMachineName(request)
-        End Function
-        
-        Public Function getServerMachineName(ByRef SecureID As Integer) As String
-            Dim inValue As SVCSearch.getServerMachineNameRequest = New SVCSearch.getServerMachineNameRequest()
-            inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.getServerMachineNameResponse = CType(Me,SVCSearch.IService1).getServerMachineName(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.getServerMachineNameResult
-        End Function
-        
-        Public Function getServerMachineNameAsync(ByVal request As SVCSearch.getServerMachineNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.getServerMachineNameResponse) Implements SVCSearch.IService1.getServerMachineNameAsync
-            Return MyBase.Channel.getServerMachineNameAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_getSystemParm(ByVal request As SVCSearch.getSystemParmRequest) As SVCSearch.getSystemParmResponse Implements SVCSearch.IService1.getSystemParm
-            Return MyBase.Channel.getSystemParm(request)
-        End Function
-        
-        Public Sub getSystemParm(ByRef SecureID As Integer, ByRef SystemParms As System.Collections.Generic.Dictionary(Of String, String))
-            Dim inValue As SVCSearch.getSystemParmRequest = New SVCSearch.getSystemParmRequest()
-            inValue.SecureID = SecureID
-            inValue.SystemParms = SystemParms
-            Dim retVal As SVCSearch.getSystemParmResponse = CType(Me,SVCSearch.IService1).getSystemParm(inValue)
-            SecureID = retVal.SecureID
-            SystemParms = retVal.SystemParms
-        End Sub
-        
-        Public Function getSystemParmAsync(ByVal request As SVCSearch.getSystemParmRequest) As System.Threading.Tasks.Task(Of SVCSearch.getSystemParmResponse) Implements SVCSearch.IService1.getSystemParmAsync
-            Return MyBase.Channel.getSystemParmAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_getSynonyms(ByVal request As SVCSearch.getSynonymsRequest) As SVCSearch.getSynonymsResponse Implements SVCSearch.IService1.getSynonyms
-            Return MyBase.Channel.getSynonyms(request)
-        End Function
-        
-        Public Function getSynonyms(ByRef SecureID As Integer, ByVal ThesaurusID As String, ByVal Token As String, ByRef lbSynonyms As String) As String
-            Dim inValue As SVCSearch.getSynonymsRequest = New SVCSearch.getSynonymsRequest()
-            inValue.SecureID = SecureID
-            inValue.ThesaurusID = ThesaurusID
-            inValue.Token = Token
-            inValue.lbSynonyms = lbSynonyms
-            Dim retVal As SVCSearch.getSynonymsResponse = CType(Me,SVCSearch.IService1).getSynonyms(inValue)
-            SecureID = retVal.SecureID
-            lbSynonyms = retVal.lbSynonyms
-            Return retVal.getSynonymsResult
-        End Function
-        
-        Public Function getSynonymsAsync(ByVal request As SVCSearch.getSynonymsRequest) As System.Threading.Tasks.Task(Of SVCSearch.getSynonymsResponse) Implements SVCSearch.IService1.getSynonymsAsync
-            Return MyBase.Channel.getSynonymsAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_getThesaurusID(ByVal request As SVCSearch.getThesaurusIDRequest) As SVCSearch.getThesaurusIDResponse Implements SVCSearch.IService1.getThesaurusID
-            Return MyBase.Channel.getThesaurusID(request)
-        End Function
-        
-        Public Function getThesaurusID(ByRef SecureID As Integer, ByVal ThesaurusName As String) As String
-            Dim inValue As SVCSearch.getThesaurusIDRequest = New SVCSearch.getThesaurusIDRequest()
-            inValue.SecureID = SecureID
-            inValue.ThesaurusName = ThesaurusName
-            Dim retVal As SVCSearch.getThesaurusIDResponse = CType(Me,SVCSearch.IService1).getThesaurusID(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.getThesaurusIDResult
-        End Function
-        
-        Public Function getThesaurusIDAsync(ByVal request As SVCSearch.getThesaurusIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.getThesaurusIDResponse) Implements SVCSearch.IService1.getThesaurusIDAsync
-            Return MyBase.Channel.getThesaurusIDAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_iCountContent(ByVal request As SVCSearch.iCountContentRequest) As SVCSearch.iCountContentResponse Implements SVCSearch.IService1.iCountContent
-            Return MyBase.Channel.iCountContent(request)
-        End Function
-        
-        Public Function iCountContent(ByRef SecureID As Integer, ByVal S As String) As Integer
-            Dim inValue As SVCSearch.iCountContentRequest = New SVCSearch.iCountContentRequest()
-            inValue.SecureID = SecureID
-            inValue.S = S
-            Dim retVal As SVCSearch.iCountContentResponse = CType(Me,SVCSearch.IService1).iCountContent(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.iCountContentResult
-        End Function
-        
-        Public Function iCountContentAsync(ByVal request As SVCSearch.iCountContentRequest) As System.Threading.Tasks.Task(Of SVCSearch.iCountContentResponse) Implements SVCSearch.IService1.iCountContentAsync
-            Return MyBase.Channel.iCountContentAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_getDatasourceParm(ByVal request As SVCSearch.getDatasourceParmRequest) As SVCSearch.getDatasourceParmResponse Implements SVCSearch.IService1.getDatasourceParm
-            Return MyBase.Channel.getDatasourceParm(request)
-        End Function
-        
-        Public Function getDatasourceParm(ByRef SecureID As Integer, ByVal AttributeName As String, ByVal SourceGuid As String) As String
-            Dim inValue As SVCSearch.getDatasourceParmRequest = New SVCSearch.getDatasourceParmRequest()
-            inValue.SecureID = SecureID
-            inValue.AttributeName = AttributeName
-            inValue.SourceGuid = SourceGuid
-            Dim retVal As SVCSearch.getDatasourceParmResponse = CType(Me,SVCSearch.IService1).getDatasourceParm(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.getDatasourceParmResult
-        End Function
-        
-        Public Function getDatasourceParmAsync(ByVal request As SVCSearch.getDatasourceParmRequest) As System.Threading.Tasks.Task(Of SVCSearch.getDatasourceParmResponse) Implements SVCSearch.IService1.getDatasourceParmAsync
-            Return MyBase.Channel.getDatasourceParmAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_SaveRunParm(ByVal request As SVCSearch.SaveRunParmRequest) As SVCSearch.SaveRunParmResponse Implements SVCSearch.IService1.SaveRunParm
-            Return MyBase.Channel.SaveRunParm(request)
-        End Function
-        
-        Public Function SaveRunParm(ByRef SecureID As Integer, ByVal UserID As String, ByRef ParmID As String, ByRef ParmVal As String) As Boolean
-            Dim inValue As SVCSearch.SaveRunParmRequest = New SVCSearch.SaveRunParmRequest()
-            inValue.SecureID = SecureID
-            inValue.UserID = UserID
-            inValue.ParmID = ParmID
-            inValue.ParmVal = ParmVal
-            Dim retVal As SVCSearch.SaveRunParmResponse = CType(Me,SVCSearch.IService1).SaveRunParm(inValue)
-            SecureID = retVal.SecureID
-            ParmID = retVal.ParmID
-            ParmVal = retVal.ParmVal
-            Return retVal.SaveRunParmResult
-        End Function
-        
-        Public Function SaveRunParmAsync(ByVal request As SVCSearch.SaveRunParmRequest) As System.Threading.Tasks.Task(Of SVCSearch.SaveRunParmResponse) Implements SVCSearch.IService1.SaveRunParmAsync
-            Return MyBase.Channel.SaveRunParmAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_iGetRowCount(ByVal request As SVCSearch.iGetRowCountRequest) As SVCSearch.iGetRowCountResponse Implements SVCSearch.IService1.iGetRowCount
-            Return MyBase.Channel.iGetRowCount(request)
-        End Function
-        
-        Public Function iGetRowCount(ByRef SecureID As Integer, ByVal TBL As String, ByVal WhereClause As String) As Integer
-            Dim inValue As SVCSearch.iGetRowCountRequest = New SVCSearch.iGetRowCountRequest()
-            inValue.SecureID = SecureID
-            inValue.TBL = TBL
-            inValue.WhereClause = WhereClause
-            Dim retVal As SVCSearch.iGetRowCountResponse = CType(Me,SVCSearch.IService1).iGetRowCount(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.iGetRowCountResult
-        End Function
-        
-        Public Function iGetRowCountAsync(ByVal request As SVCSearch.iGetRowCountRequest) As System.Threading.Tasks.Task(Of SVCSearch.iGetRowCountResponse) Implements SVCSearch.IService1.iGetRowCountAsync
-            Return MyBase.Channel.iGetRowCountAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_ZeroizeGlobalSearch(ByVal request As SVCSearch.ZeroizeGlobalSearchRequest) As SVCSearch.ZeroizeGlobalSearchResponse Implements SVCSearch.IService1.ZeroizeGlobalSearch
-            Return MyBase.Channel.ZeroizeGlobalSearch(request)
-        End Function
-        
-        Public Function ZeroizeGlobalSearch(ByRef SecureID As Integer) As Boolean
-            Dim inValue As SVCSearch.ZeroizeGlobalSearchRequest = New SVCSearch.ZeroizeGlobalSearchRequest()
-            inValue.SecureID = SecureID
-            Dim retVal As SVCSearch.ZeroizeGlobalSearchResponse = CType(Me,SVCSearch.IService1).ZeroizeGlobalSearch(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.ZeroizeGlobalSearchResult
-        End Function
-        
-        Public Function ZeroizeGlobalSearchAsync(ByVal request As SVCSearch.ZeroizeGlobalSearchRequest) As System.Threading.Tasks.Task(Of SVCSearch.ZeroizeGlobalSearchResponse) Implements SVCSearch.IService1.ZeroizeGlobalSearchAsync
-            Return MyBase.Channel.ZeroizeGlobalSearchAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_updateIp(ByVal request As SVCSearch.updateIpRequest) As SVCSearch.updateIpResponse Implements SVCSearch.IService1.updateIp
-            Return MyBase.Channel.updateIp(request)
-        End Function
-        
-        Public Sub updateIp(ByRef SecureID As Integer, ByVal HostName As String, ByVal IP As String, ByVal checkCode As Integer, ByRef RC As Boolean)
-            Dim inValue As SVCSearch.updateIpRequest = New SVCSearch.updateIpRequest()
-            inValue.SecureID = SecureID
-            inValue.HostName = HostName
-            inValue.IP = IP
-            inValue.checkCode = checkCode
-            inValue.RC = RC
-            Dim retVal As SVCSearch.updateIpResponse = CType(Me,SVCSearch.IService1).updateIp(inValue)
-            SecureID = retVal.SecureID
-            RC = retVal.RC
-        End Sub
-        
-        Public Function updateIpAsync(ByVal request As SVCSearch.updateIpRequest) As System.Threading.Tasks.Task(Of SVCSearch.updateIpResponse) Implements SVCSearch.IService1.updateIpAsync
-            Return MyBase.Channel.updateIpAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_PopulateSourceGridWithWeights(ByVal request As SVCSearch.PopulateSourceGridWithWeightsRequest) As SVCSearch.PopulateSourceGridWithWeightsResponse Implements SVCSearch.IService1.PopulateSourceGridWithWeights
-            Return MyBase.Channel.PopulateSourceGridWithWeights(request)
-        End Function
-        
-        Public Function PopulateSourceGridWithWeights(ByRef SecureID As Integer, ByVal StartingRow As Integer, ByVal EndingRow As Integer, ByVal CallerName As String, ByVal MySql As String, ByRef bNewRows As Boolean, ByRef SourceRowCnt As Integer) As SVCSearch.DS_CONTENT()
-            Dim inValue As SVCSearch.PopulateSourceGridWithWeightsRequest = New SVCSearch.PopulateSourceGridWithWeightsRequest()
-            inValue.SecureID = SecureID
-            inValue.StartingRow = StartingRow
-            inValue.EndingRow = EndingRow
-            inValue.CallerName = CallerName
-            inValue.MySql = MySql
-            inValue.bNewRows = bNewRows
-            inValue.SourceRowCnt = SourceRowCnt
-            Dim retVal As SVCSearch.PopulateSourceGridWithWeightsResponse = CType(Me,SVCSearch.IService1).PopulateSourceGridWithWeights(inValue)
-            SecureID = retVal.SecureID
-            bNewRows = retVal.bNewRows
-            SourceRowCnt = retVal.SourceRowCnt
-            Return retVal.PopulateSourceGridWithWeightsResult
-        End Function
-        
-        Public Function PopulateSourceGridWithWeightsAsync(ByVal request As SVCSearch.PopulateSourceGridWithWeightsRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateSourceGridWithWeightsResponse) Implements SVCSearch.IService1.PopulateSourceGridWithWeightsAsync
-            Return MyBase.Channel.PopulateSourceGridWithWeightsAsync(request)
-        End Function
         
         <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Function SVCSearch_IService1_PopulateSourceGridNoWeights(ByVal request As SVCSearch.PopulateSourceGridNoWeightsRequest) As SVCSearch.PopulateSourceGridNoWeightsResponse Implements SVCSearch.IService1.PopulateSourceGridNoWeights
@@ -14322,412 +13539,6 @@ Namespace SVCSearch
         
         Public Function getClientLicensesAsync(ByVal request As SVCSearch.getClientLicensesRequest) As System.Threading.Tasks.Task(Of SVCSearch.getClientLicensesResponse) Implements SVCSearch.IService1.getClientLicensesAsync
             Return MyBase.Channel.getClientLicensesAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_PopulateUserGrid(ByVal request As SVCSearch.PopulateUserGridRequest) As SVCSearch.PopulateUserGridResponse Implements SVCSearch.IService1.PopulateUserGrid
-            Return MyBase.Channel.PopulateUserGrid(request)
-        End Function
-        
-        Public Function PopulateUserGrid(ByRef SecureID As Integer, ByVal UserID As String, ByVal DBisAdmin As Boolean) As SVCSearch.DS_VUserGrid()
-            Dim inValue As SVCSearch.PopulateUserGridRequest = New SVCSearch.PopulateUserGridRequest()
-            inValue.SecureID = SecureID
-            inValue.UserID = UserID
-            inValue.DBisAdmin = DBisAdmin
-            Dim retVal As SVCSearch.PopulateUserGridResponse = CType(Me,SVCSearch.IService1).PopulateUserGrid(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.PopulateUserGridResult
-        End Function
-        
-        Public Function PopulateUserGridAsync(ByVal request As SVCSearch.PopulateUserGridRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateUserGridResponse) Implements SVCSearch.IService1.PopulateUserGridAsync
-            Return MyBase.Channel.PopulateUserGridAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_getGroupUsers(ByVal request As SVCSearch.getGroupUsersRequest) As SVCSearch.getGroupUsersResponse Implements SVCSearch.IService1.getGroupUsers
-            Return MyBase.Channel.getGroupUsers(request)
-        End Function
-        
-        Public Sub getGroupUsers(ByRef SecureID As Integer, ByVal GroupName As String, ByRef GroupList() As Object, ByRef RC As Boolean, ByRef RetMsg As String)
-            Dim inValue As SVCSearch.getGroupUsersRequest = New SVCSearch.getGroupUsersRequest()
-            inValue.SecureID = SecureID
-            inValue.GroupName = GroupName
-            inValue.GroupList = GroupList
-            inValue.RC = RC
-            inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.getGroupUsersResponse = CType(Me,SVCSearch.IService1).getGroupUsers(inValue)
-            SecureID = retVal.SecureID
-            GroupList = retVal.GroupList
-            RC = retVal.RC
-            RetMsg = retVal.RetMsg
-        End Sub
-        
-        Public Function getGroupUsersAsync(ByVal request As SVCSearch.getGroupUsersRequest) As System.Threading.Tasks.Task(Of SVCSearch.getGroupUsersResponse) Implements SVCSearch.IService1.getGroupUsersAsync
-            Return MyBase.Channel.getGroupUsersAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_PopulateDgGroupUsers(ByVal request As SVCSearch.PopulateDgGroupUsersRequest) As SVCSearch.PopulateDgGroupUsersResponse Implements SVCSearch.IService1.PopulateDgGroupUsers
-            Return MyBase.Channel.PopulateDgGroupUsers(request)
-        End Function
-        
-        Public Function PopulateDgGroupUsers(ByRef SecureID As Integer, ByVal OwnerUserGuidID As String, ByVal GroupName As String) As String
-            Dim inValue As SVCSearch.PopulateDgGroupUsersRequest = New SVCSearch.PopulateDgGroupUsersRequest()
-            inValue.SecureID = SecureID
-            inValue.OwnerUserGuidID = OwnerUserGuidID
-            inValue.GroupName = GroupName
-            Dim retVal As SVCSearch.PopulateDgGroupUsersResponse = CType(Me,SVCSearch.IService1).PopulateDgGroupUsers(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.PopulateDgGroupUsersResult
-        End Function
-        
-        Public Function PopulateDgGroupUsersAsync(ByVal request As SVCSearch.PopulateDgGroupUsersRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateDgGroupUsersResponse) Implements SVCSearch.IService1.PopulateDgGroupUsersAsync
-            Return MyBase.Channel.PopulateDgGroupUsersAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_DeleteGroupUsers(ByVal request As SVCSearch.DeleteGroupUsersRequest) As SVCSearch.DeleteGroupUsersResponse Implements SVCSearch.IService1.DeleteGroupUsers
-            Return MyBase.Channel.DeleteGroupUsers(request)
-        End Function
-        
-        Public Function DeleteGroupUsers(ByVal SecureID As Integer, ByVal CurrSelectedGroupName As String, ByVal GroupOwnerGuid As String, ByVal UserID As String, ByRef iDeleted As Integer, ByRef RetMsg As String) As Boolean
-            Dim inValue As SVCSearch.DeleteGroupUsersRequest = New SVCSearch.DeleteGroupUsersRequest()
-            inValue.SecureID = SecureID
-            inValue.CurrSelectedGroupName = CurrSelectedGroupName
-            inValue.GroupOwnerGuid = GroupOwnerGuid
-            inValue.UserID = UserID
-            inValue.iDeleted = iDeleted
-            inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.DeleteGroupUsersResponse = CType(Me,SVCSearch.IService1).DeleteGroupUsers(inValue)
-            iDeleted = retVal.iDeleted
-            RetMsg = retVal.RetMsg
-            Return retVal.DeleteGroupUsersResult
-        End Function
-        
-        Public Function DeleteGroupUsersAsync(ByVal request As SVCSearch.DeleteGroupUsersRequest) As System.Threading.Tasks.Task(Of SVCSearch.DeleteGroupUsersResponse) Implements SVCSearch.IService1.DeleteGroupUsersAsync
-            Return MyBase.Channel.DeleteGroupUsersAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_getGroupOwnerGuidByGroupName(ByVal request As SVCSearch.getGroupOwnerGuidByGroupNameRequest) As SVCSearch.getGroupOwnerGuidByGroupNameResponse Implements SVCSearch.IService1.getGroupOwnerGuidByGroupName
-            Return MyBase.Channel.getGroupOwnerGuidByGroupName(request)
-        End Function
-        
-        Public Function getGroupOwnerGuidByGroupName(ByRef SecureID As Integer, ByVal GroupName As String) As String
-            Dim inValue As SVCSearch.getGroupOwnerGuidByGroupNameRequest = New SVCSearch.getGroupOwnerGuidByGroupNameRequest()
-            inValue.SecureID = SecureID
-            inValue.GroupName = GroupName
-            Dim retVal As SVCSearch.getGroupOwnerGuidByGroupNameResponse = CType(Me,SVCSearch.IService1).getGroupOwnerGuidByGroupName(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.getGroupOwnerGuidByGroupNameResult
-        End Function
-        
-        Public Function getGroupOwnerGuidByGroupNameAsync(ByVal request As SVCSearch.getGroupOwnerGuidByGroupNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.getGroupOwnerGuidByGroupNameResponse) Implements SVCSearch.IService1.getGroupOwnerGuidByGroupNameAsync
-            Return MyBase.Channel.getGroupOwnerGuidByGroupNameAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_AddLibraryGroupUser(ByVal request As SVCSearch.AddLibraryGroupUserRequest) As SVCSearch.AddLibraryGroupUserResponse Implements SVCSearch.IService1.AddLibraryGroupUser
-            Return MyBase.Channel.AddLibraryGroupUser(request)
-        End Function
-        
-        Public Sub AddLibraryGroupUser(ByRef SecureID As Integer, ByVal GroupName As String, ByRef RC As Boolean, ByVal CurrUserID As String, ByVal SessionID As String, ByVal ControlSection As String)
-            Dim inValue As SVCSearch.AddLibraryGroupUserRequest = New SVCSearch.AddLibraryGroupUserRequest()
-            inValue.SecureID = SecureID
-            inValue.GroupName = GroupName
-            inValue.RC = RC
-            inValue.CurrUserID = CurrUserID
-            inValue.SessionID = SessionID
-            inValue.ControlSection = ControlSection
-            Dim retVal As SVCSearch.AddLibraryGroupUserResponse = CType(Me,SVCSearch.IService1).AddLibraryGroupUser(inValue)
-            SecureID = retVal.SecureID
-            RC = retVal.RC
-        End Sub
-        
-        Public Function AddLibraryGroupUserAsync(ByVal request As SVCSearch.AddLibraryGroupUserRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddLibraryGroupUserResponse) Implements SVCSearch.IService1.AddLibraryGroupUserAsync
-            Return MyBase.Channel.AddLibraryGroupUserAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_PopulateGroupUserGrid(ByVal request As SVCSearch.PopulateGroupUserGridRequest) As SVCSearch.PopulateGroupUserGridResponse Implements SVCSearch.IService1.PopulateGroupUserGrid
-            Return MyBase.Channel.PopulateGroupUserGrid(request)
-        End Function
-        
-        Public Function PopulateGroupUserGrid(ByRef SecureID As Integer, ByVal GroupName As String) As String
-            Dim inValue As SVCSearch.PopulateGroupUserGridRequest = New SVCSearch.PopulateGroupUserGridRequest()
-            inValue.SecureID = SecureID
-            inValue.GroupName = GroupName
-            Dim retVal As SVCSearch.PopulateGroupUserGridResponse = CType(Me,SVCSearch.IService1).PopulateGroupUserGrid(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.PopulateGroupUserGridResult
-        End Function
-        
-        Public Function PopulateGroupUserGridAsync(ByVal request As SVCSearch.PopulateGroupUserGridRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateGroupUserGridResponse) Implements SVCSearch.IService1.PopulateGroupUserGridAsync
-            Return MyBase.Channel.PopulateGroupUserGridAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_PopulateLibItemsGrid(ByVal request As SVCSearch.PopulateLibItemsGridRequest) As SVCSearch.PopulateLibItemsGridResponse Implements SVCSearch.IService1.PopulateLibItemsGrid
-            Return MyBase.Channel.PopulateLibItemsGrid(request)
-        End Function
-        
-        Public Function PopulateLibItemsGrid(ByRef SecureID As Integer, ByVal LibraryName As String, ByVal UserID As String) As String
-            Dim inValue As SVCSearch.PopulateLibItemsGridRequest = New SVCSearch.PopulateLibItemsGridRequest()
-            inValue.SecureID = SecureID
-            inValue.LibraryName = LibraryName
-            inValue.UserID = UserID
-            Dim retVal As SVCSearch.PopulateLibItemsGridResponse = CType(Me,SVCSearch.IService1).PopulateLibItemsGrid(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.PopulateLibItemsGridResult
-        End Function
-        
-        Public Function PopulateLibItemsGridAsync(ByVal request As SVCSearch.PopulateLibItemsGridRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateLibItemsGridResponse) Implements SVCSearch.IService1.PopulateLibItemsGridAsync
-            Return MyBase.Channel.PopulateLibItemsGridAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_PopulateDgAssigned(ByVal request As SVCSearch.PopulateDgAssignedRequest) As SVCSearch.PopulateDgAssignedResponse Implements SVCSearch.IService1.PopulateDgAssigned
-            Return MyBase.Channel.PopulateDgAssigned(request)
-        End Function
-        
-        Public Function PopulateDgAssigned(ByRef SecureID As Integer, ByVal LibraryName As String, ByVal UserID As String) As String
-            Dim inValue As SVCSearch.PopulateDgAssignedRequest = New SVCSearch.PopulateDgAssignedRequest()
-            inValue.SecureID = SecureID
-            inValue.LibraryName = LibraryName
-            inValue.UserID = UserID
-            Dim retVal As SVCSearch.PopulateDgAssignedResponse = CType(Me,SVCSearch.IService1).PopulateDgAssigned(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.PopulateDgAssignedResult
-        End Function
-        
-        Public Function PopulateDgAssignedAsync(ByVal request As SVCSearch.PopulateDgAssignedRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateDgAssignedResponse) Implements SVCSearch.IService1.PopulateDgAssignedAsync
-            Return MyBase.Channel.PopulateDgAssignedAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_ResetLibraryUsersCount(ByVal request As SVCSearch.ResetLibraryUsersCountRequest) As SVCSearch.ResetLibraryUsersCountResponse Implements SVCSearch.IService1.ResetLibraryUsersCount
-            Return MyBase.Channel.ResetLibraryUsersCount(request)
-        End Function
-        
-        Public Sub ResetLibraryUsersCount(ByRef SecureID As Integer, ByRef RC As Boolean)
-            Dim inValue As SVCSearch.ResetLibraryUsersCountRequest = New SVCSearch.ResetLibraryUsersCountRequest()
-            inValue.SecureID = SecureID
-            inValue.RC = RC
-            Dim retVal As SVCSearch.ResetLibraryUsersCountResponse = CType(Me,SVCSearch.IService1).ResetLibraryUsersCount(inValue)
-            SecureID = retVal.SecureID
-            RC = retVal.RC
-        End Sub
-        
-        Public Function ResetLibraryUsersCountAsync(ByVal request As SVCSearch.ResetLibraryUsersCountRequest) As System.Threading.Tasks.Task(Of SVCSearch.ResetLibraryUsersCountResponse) Implements SVCSearch.IService1.ResetLibraryUsersCountAsync
-            Return MyBase.Channel.ResetLibraryUsersCountAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_DeleteLibraryGroupUser(ByVal request As SVCSearch.DeleteLibraryGroupUserRequest) As SVCSearch.DeleteLibraryGroupUserResponse Implements SVCSearch.IService1.DeleteLibraryGroupUser
-            Return MyBase.Channel.DeleteLibraryGroupUser(request)
-        End Function
-        
-        Public Sub DeleteLibraryGroupUser(ByRef SecureID As Integer, ByVal GroupName As String, ByVal LibraryName As String, ByRef RC As Boolean)
-            Dim inValue As SVCSearch.DeleteLibraryGroupUserRequest = New SVCSearch.DeleteLibraryGroupUserRequest()
-            inValue.SecureID = SecureID
-            inValue.GroupName = GroupName
-            inValue.LibraryName = LibraryName
-            inValue.RC = RC
-            Dim retVal As SVCSearch.DeleteLibraryGroupUserResponse = CType(Me,SVCSearch.IService1).DeleteLibraryGroupUser(inValue)
-            SecureID = retVal.SecureID
-            RC = retVal.RC
-        End Sub
-        
-        Public Function DeleteLibraryGroupUserAsync(ByVal request As SVCSearch.DeleteLibraryGroupUserRequest) As System.Threading.Tasks.Task(Of SVCSearch.DeleteLibraryGroupUserResponse) Implements SVCSearch.IService1.DeleteLibraryGroupUserAsync
-            Return MyBase.Channel.DeleteLibraryGroupUserAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_ChangeUserPassword(ByVal request As SVCSearch.ChangeUserPasswordRequest) As SVCSearch.ChangeUserPasswordResponse Implements SVCSearch.IService1.ChangeUserPassword
-            Return MyBase.Channel.ChangeUserPassword(request)
-        End Function
-        
-        Public Function ChangeUserPassword(ByRef SecureID As Integer, ByVal UserLogin As String, ByVal OldPW As String, ByVal NewPw1 As String, ByVal NewPw2 As String) As Boolean
-            Dim inValue As SVCSearch.ChangeUserPasswordRequest = New SVCSearch.ChangeUserPasswordRequest()
-            inValue.SecureID = SecureID
-            inValue.UserLogin = UserLogin
-            inValue.OldPW = OldPW
-            inValue.NewPw1 = NewPw1
-            inValue.NewPw2 = NewPw2
-            Dim retVal As SVCSearch.ChangeUserPasswordResponse = CType(Me,SVCSearch.IService1).ChangeUserPassword(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.ChangeUserPasswordResult
-        End Function
-        
-        Public Function ChangeUserPasswordAsync(ByVal request As SVCSearch.ChangeUserPasswordRequest) As System.Threading.Tasks.Task(Of SVCSearch.ChangeUserPasswordResponse) Implements SVCSearch.IService1.ChangeUserPasswordAsync
-            Return MyBase.Channel.ChangeUserPasswordAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_SaveClickStats(ByVal request As SVCSearch.SaveClickStatsRequest) As SVCSearch.SaveClickStatsResponse Implements SVCSearch.IService1.SaveClickStats
-            Return MyBase.Channel.SaveClickStats(request)
-        End Function
-        
-        Public Sub SaveClickStats(ByVal SecureID As Integer, ByVal IID As Integer, ByVal UserID As String, ByRef RC As Boolean)
-            Dim inValue As SVCSearch.SaveClickStatsRequest = New SVCSearch.SaveClickStatsRequest()
-            inValue.SecureID = SecureID
-            inValue.IID = IID
-            inValue.UserID = UserID
-            inValue.RC = RC
-            Dim retVal As SVCSearch.SaveClickStatsResponse = CType(Me,SVCSearch.IService1).SaveClickStats(inValue)
-            RC = retVal.RC
-        End Sub
-        
-        Public Function SaveClickStatsAsync(ByVal request As SVCSearch.SaveClickStatsRequest) As System.Threading.Tasks.Task(Of SVCSearch.SaveClickStatsResponse) Implements SVCSearch.IService1.SaveClickStatsAsync
-            Return MyBase.Channel.SaveClickStatsAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_cleanUpLibraryItems(ByVal request As SVCSearch.cleanUpLibraryItemsRequest) As SVCSearch.cleanUpLibraryItemsResponse Implements SVCSearch.IService1.cleanUpLibraryItems
-            Return MyBase.Channel.cleanUpLibraryItems(request)
-        End Function
-        
-        Public Sub cleanUpLibraryItems(ByRef SecureID As Integer, ByVal UserID As String)
-            Dim inValue As SVCSearch.cleanUpLibraryItemsRequest = New SVCSearch.cleanUpLibraryItemsRequest()
-            inValue.SecureID = SecureID
-            inValue.UserID = UserID
-            Dim retVal As SVCSearch.cleanUpLibraryItemsResponse = CType(Me,SVCSearch.IService1).cleanUpLibraryItems(inValue)
-            SecureID = retVal.SecureID
-        End Sub
-        
-        Public Function cleanUpLibraryItemsAsync(ByVal request As SVCSearch.cleanUpLibraryItemsRequest) As System.Threading.Tasks.Task(Of SVCSearch.cleanUpLibraryItemsResponse) Implements SVCSearch.IService1.cleanUpLibraryItemsAsync
-            Return MyBase.Channel.cleanUpLibraryItemsAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_RemoveLibraryDirectories(ByVal request As SVCSearch.RemoveLibraryDirectoriesRequest) As SVCSearch.RemoveLibraryDirectoriesResponse Implements SVCSearch.IService1.RemoveLibraryDirectories
-            Return MyBase.Channel.RemoveLibraryDirectories(request)
-        End Function
-        
-        Public Sub RemoveLibraryDirectories(ByRef SecureID As Integer, ByVal UserID As String, ByVal DirectoryName As String, ByVal LibraryName As String, ByRef RC As Boolean, ByRef RetMsg As String)
-            Dim inValue As SVCSearch.RemoveLibraryDirectoriesRequest = New SVCSearch.RemoveLibraryDirectoriesRequest()
-            inValue.SecureID = SecureID
-            inValue.UserID = UserID
-            inValue.DirectoryName = DirectoryName
-            inValue.LibraryName = LibraryName
-            inValue.RC = RC
-            inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.RemoveLibraryDirectoriesResponse = CType(Me,SVCSearch.IService1).RemoveLibraryDirectories(inValue)
-            SecureID = retVal.SecureID
-            RC = retVal.RC
-            RetMsg = retVal.RetMsg
-        End Sub
-        
-        Public Function RemoveLibraryDirectoriesAsync(ByVal request As SVCSearch.RemoveLibraryDirectoriesRequest) As System.Threading.Tasks.Task(Of SVCSearch.RemoveLibraryDirectoriesResponse) Implements SVCSearch.IService1.RemoveLibraryDirectoriesAsync
-            Return MyBase.Channel.RemoveLibraryDirectoriesAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_RemoveLibraryEmails(ByVal request As SVCSearch.RemoveLibraryEmailsRequest) As SVCSearch.RemoveLibraryEmailsResponse Implements SVCSearch.IService1.RemoveLibraryEmails
-            Return MyBase.Channel.RemoveLibraryEmails(request)
-        End Function
-        
-        Public Sub RemoveLibraryEmails(ByRef SecureID As Integer, ByVal FolderName As String, ByVal LibraryName As String, ByVal UserID As String, ByRef RC As Boolean, ByRef RetMsg As String)
-            Dim inValue As SVCSearch.RemoveLibraryEmailsRequest = New SVCSearch.RemoveLibraryEmailsRequest()
-            inValue.SecureID = SecureID
-            inValue.FolderName = FolderName
-            inValue.LibraryName = LibraryName
-            inValue.UserID = UserID
-            inValue.RC = RC
-            inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.RemoveLibraryEmailsResponse = CType(Me,SVCSearch.IService1).RemoveLibraryEmails(inValue)
-            SecureID = retVal.SecureID
-            RC = retVal.RC
-            RetMsg = retVal.RetMsg
-        End Sub
-        
-        Public Function RemoveLibraryEmailsAsync(ByVal request As SVCSearch.RemoveLibraryEmailsRequest) As System.Threading.Tasks.Task(Of SVCSearch.RemoveLibraryEmailsResponse) Implements SVCSearch.IService1.RemoveLibraryEmailsAsync
-            Return MyBase.Channel.RemoveLibraryEmailsAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_AddSysMsg(ByVal request As SVCSearch.AddSysMsgRequest) As SVCSearch.AddSysMsgResponse Implements SVCSearch.IService1.AddSysMsg
-            Return MyBase.Channel.AddSysMsg(request)
-        End Function
-        
-        Public Sub AddSysMsg(ByRef SecureID As Integer, ByVal UserID As String, ByVal tMsg As String, ByVal RC As Boolean)
-            Dim inValue As SVCSearch.AddSysMsgRequest = New SVCSearch.AddSysMsgRequest()
-            inValue.SecureID = SecureID
-            inValue.UserID = UserID
-            inValue.tMsg = tMsg
-            inValue.RC = RC
-            Dim retVal As SVCSearch.AddSysMsgResponse = CType(Me,SVCSearch.IService1).AddSysMsg(inValue)
-            SecureID = retVal.SecureID
-        End Sub
-        
-        Public Function AddSysMsgAsync(ByVal request As SVCSearch.AddSysMsgRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddSysMsgResponse) Implements SVCSearch.IService1.AddSysMsgAsync
-            Return MyBase.Channel.AddSysMsgAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_AddLibraryDirectory(ByVal request As SVCSearch.AddLibraryDirectoryRequest) As SVCSearch.AddLibraryDirectoryResponse Implements SVCSearch.IService1.AddLibraryDirectory
-            Return MyBase.Channel.AddLibraryDirectory(request)
-        End Function
-        
-        Public Sub AddLibraryDirectory(ByRef SecureID As Integer, ByVal FolderName As String, ByVal LibraryName As String, ByVal UserID As String, ByRef RecordsAdded As Integer, ByRef RC As Boolean, ByRef RetMsg As String)
-            Dim inValue As SVCSearch.AddLibraryDirectoryRequest = New SVCSearch.AddLibraryDirectoryRequest()
-            inValue.SecureID = SecureID
-            inValue.FolderName = FolderName
-            inValue.LibraryName = LibraryName
-            inValue.UserID = UserID
-            inValue.RecordsAdded = RecordsAdded
-            inValue.RC = RC
-            inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.AddLibraryDirectoryResponse = CType(Me,SVCSearch.IService1).AddLibraryDirectory(inValue)
-            SecureID = retVal.SecureID
-            RecordsAdded = retVal.RecordsAdded
-            RC = retVal.RC
-            RetMsg = retVal.RetMsg
-        End Sub
-        
-        Public Function AddLibraryDirectoryAsync(ByVal request As SVCSearch.AddLibraryDirectoryRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddLibraryDirectoryResponse) Implements SVCSearch.IService1.AddLibraryDirectoryAsync
-            Return MyBase.Channel.AddLibraryDirectoryAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_AddLibraryEmail(ByVal request As SVCSearch.AddLibraryEmailRequest) As SVCSearch.AddLibraryEmailResponse Implements SVCSearch.IService1.AddLibraryEmail
-            Return MyBase.Channel.AddLibraryEmail(request)
-        End Function
-        
-        Public Sub AddLibraryEmail(ByRef SecureID As Integer, ByVal EmailFolder As String, ByVal LibraryName As String, ByVal UserID As String, ByRef RecordsAdded As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
-            Dim inValue As SVCSearch.AddLibraryEmailRequest = New SVCSearch.AddLibraryEmailRequest()
-            inValue.SecureID = SecureID
-            inValue.EmailFolder = EmailFolder
-            inValue.LibraryName = LibraryName
-            inValue.UserID = UserID
-            inValue.RecordsAdded = RecordsAdded
-            inValue.RC = RC
-            inValue.RetMsg = RetMsg
-            Dim retVal As SVCSearch.AddLibraryEmailResponse = CType(Me,SVCSearch.IService1).AddLibraryEmail(inValue)
-            SecureID = retVal.SecureID
-            RecordsAdded = retVal.RecordsAdded
-        End Sub
-        
-        Public Function AddLibraryEmailAsync(ByVal request As SVCSearch.AddLibraryEmailRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddLibraryEmailResponse) Implements SVCSearch.IService1.AddLibraryEmailAsync
-            Return MyBase.Channel.AddLibraryEmailAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_PopulateLibraryGrid(ByVal request As SVCSearch.PopulateLibraryGridRequest) As SVCSearch.PopulateLibraryGridResponse Implements SVCSearch.IService1.PopulateLibraryGrid
-            Return MyBase.Channel.PopulateLibraryGrid(request)
-        End Function
-        
-        Public Function PopulateLibraryGrid(ByRef SecureID As Integer, ByVal UserID As String) As String
-            Dim inValue As SVCSearch.PopulateLibraryGridRequest = New SVCSearch.PopulateLibraryGridRequest()
-            inValue.SecureID = SecureID
-            inValue.UserID = UserID
-            Dim retVal As SVCSearch.PopulateLibraryGridResponse = CType(Me,SVCSearch.IService1).PopulateLibraryGrid(inValue)
-            SecureID = retVal.SecureID
-            Return retVal.PopulateLibraryGridResult
-        End Function
-        
-        Public Function PopulateLibraryGridAsync(ByVal request As SVCSearch.PopulateLibraryGridRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateLibraryGridResponse) Implements SVCSearch.IService1.PopulateLibraryGridAsync
-            Return MyBase.Channel.PopulateLibraryGridAsync(request)
         End Function
         
         <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
@@ -15626,6 +14437,864 @@ Namespace SVCSearch
             Return MyBase.Channel.getSearchStateAsync(request)
         End Function
         
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_saveSearchState(ByVal request As SVCSearch.saveSearchStateRequest) As SVCSearch.saveSearchStateResponse Implements SVCSearch.IService1.saveSearchState
+            Return MyBase.Channel.saveSearchState(request)
+        End Function
+        
+        Public Sub saveSearchState(ByRef SecureID As Integer, ByVal SearchID As Integer, ByVal UID As String, ByVal ScreenName As String, ByVal DICT As System.Collections.Generic.Dictionary(Of String, String), ByRef rMsg As String, ByRef RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String)
+            Dim inValue As SVCSearch.saveSearchStateRequest = New SVCSearch.saveSearchStateRequest()
+            inValue.SecureID = SecureID
+            inValue.SearchID = SearchID
+            inValue.UID = UID
+            inValue.ScreenName = ScreenName
+            inValue.DICT = DICT
+            inValue.rMsg = rMsg
+            inValue.RC = RC
+            inValue.HiveConnectionName = HiveConnectionName
+            inValue.HiveActive = HiveActive
+            inValue.RepoSvrName = RepoSvrName
+            Dim retVal As SVCSearch.saveSearchStateResponse = CType(Me,SVCSearch.IService1).saveSearchState(inValue)
+            SecureID = retVal.SecureID
+            rMsg = retVal.rMsg
+            RC = retVal.RC
+        End Sub
+        
+        Public Function saveSearchStateAsync(ByVal request As SVCSearch.saveSearchStateRequest) As System.Threading.Tasks.Task(Of SVCSearch.saveSearchStateResponse) Implements SVCSearch.IService1.saveSearchStateAsync
+            Return MyBase.Channel.saveSearchStateAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_getScreenState(ByVal request As SVCSearch.getScreenStateRequest) As SVCSearch.getScreenStateResponse Implements SVCSearch.IService1.getScreenState
+            Return MyBase.Channel.getScreenState(request)
+        End Function
+        
+        Public Function getScreenState(ByRef SecureID As Integer, ByVal UID As String, ByVal ScreenName As String, ByRef DICT As System.Collections.Generic.Dictionary(Of String, String), ByRef rMsg As String, ByRef RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String) As SVCSearch.DS_USERSCREENSTATE()
+            Dim inValue As SVCSearch.getScreenStateRequest = New SVCSearch.getScreenStateRequest()
+            inValue.SecureID = SecureID
+            inValue.UID = UID
+            inValue.ScreenName = ScreenName
+            inValue.DICT = DICT
+            inValue.rMsg = rMsg
+            inValue.RC = RC
+            inValue.HiveConnectionName = HiveConnectionName
+            inValue.HiveActive = HiveActive
+            inValue.RepoSvrName = RepoSvrName
+            Dim retVal As SVCSearch.getScreenStateResponse = CType(Me,SVCSearch.IService1).getScreenState(inValue)
+            SecureID = retVal.SecureID
+            DICT = retVal.DICT
+            rMsg = retVal.rMsg
+            RC = retVal.RC
+            Return retVal.getScreenStateResult
+        End Function
+        
+        Public Function getScreenStateAsync(ByVal request As SVCSearch.getScreenStateRequest) As System.Threading.Tasks.Task(Of SVCSearch.getScreenStateResponse) Implements SVCSearch.IService1.getScreenStateAsync
+            Return MyBase.Channel.getScreenStateAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_getGridLayout(ByVal request As SVCSearch.getGridLayoutRequest) As SVCSearch.getGridLayoutResponse Implements SVCSearch.IService1.getGridLayout
+            Return MyBase.Channel.getGridLayout(request)
+        End Function
+        
+        Public Function getGridLayout(ByRef SecureID As Integer, ByVal UID As String, ByVal ScreenName As String, ByVal GridName As String, ByVal DICT As System.Collections.Generic.Dictionary(Of String, String), ByRef rMsg As String, ByRef RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String) As SVCSearch.DS_clsUSERGRIDSTATE()
+            Dim inValue As SVCSearch.getGridLayoutRequest = New SVCSearch.getGridLayoutRequest()
+            inValue.SecureID = SecureID
+            inValue.UID = UID
+            inValue.ScreenName = ScreenName
+            inValue.GridName = GridName
+            inValue.DICT = DICT
+            inValue.rMsg = rMsg
+            inValue.RC = RC
+            inValue.HiveConnectionName = HiveConnectionName
+            inValue.HiveActive = HiveActive
+            inValue.RepoSvrName = RepoSvrName
+            Dim retVal As SVCSearch.getGridLayoutResponse = CType(Me,SVCSearch.IService1).getGridLayout(inValue)
+            SecureID = retVal.SecureID
+            rMsg = retVal.rMsg
+            RC = retVal.RC
+            Return retVal.getGridLayoutResult
+        End Function
+        
+        Public Function getGridLayoutAsync(ByVal request As SVCSearch.getGridLayoutRequest) As System.Threading.Tasks.Task(Of SVCSearch.getGridLayoutResponse) Implements SVCSearch.IService1.getGridLayoutAsync
+            Return MyBase.Channel.getGridLayoutAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_saveGridLayout(ByVal request As SVCSearch.saveGridLayoutRequest) As SVCSearch.saveGridLayoutResponse Implements SVCSearch.IService1.saveGridLayout
+            Return MyBase.Channel.saveGridLayout(request)
+        End Function
+        
+        Public Sub saveGridLayout( _
+                    ByRef SecureID As Integer,  _
+                    ByRef UserID As String,  _
+                    ByRef ScreenName As String,  _
+                    ByRef GridName As String,  _
+                    ByRef ColName As String,  _
+                    ByRef ColOrder As Integer,  _
+                    ByRef ColWidth As Integer,  _
+                    ByRef ColVisible As Boolean,  _
+                    ByRef ColReadOnly As Boolean,  _
+                    ByRef ColSortOrder As Integer,  _
+                    ByRef ColSortAsc As Boolean,  _
+                    ByRef HiveConnectionName As String,  _
+                    ByRef HiveActive As Boolean,  _
+                    ByRef RepoSvrName As String,  _
+                    ByRef RowCreationDate As Date,  _
+                    ByRef RowLastModDate As Date,  _
+                    ByRef RowNbr As Integer,  _
+                    ByRef RC As Boolean,  _
+                    ByRef rMsg As String)
+            Dim inValue As SVCSearch.saveGridLayoutRequest = New SVCSearch.saveGridLayoutRequest()
+            inValue.SecureID = SecureID
+            inValue.UserID = UserID
+            inValue.ScreenName = ScreenName
+            inValue.GridName = GridName
+            inValue.ColName = ColName
+            inValue.ColOrder = ColOrder
+            inValue.ColWidth = ColWidth
+            inValue.ColVisible = ColVisible
+            inValue.ColReadOnly = ColReadOnly
+            inValue.ColSortOrder = ColSortOrder
+            inValue.ColSortAsc = ColSortAsc
+            inValue.HiveConnectionName = HiveConnectionName
+            inValue.HiveActive = HiveActive
+            inValue.RepoSvrName = RepoSvrName
+            inValue.RowCreationDate = RowCreationDate
+            inValue.RowLastModDate = RowLastModDate
+            inValue.RowNbr = RowNbr
+            inValue.RC = RC
+            inValue.rMsg = rMsg
+            Dim retVal As SVCSearch.saveGridLayoutResponse = CType(Me,SVCSearch.IService1).saveGridLayout(inValue)
+            SecureID = retVal.SecureID
+            UserID = retVal.UserID
+            ScreenName = retVal.ScreenName
+            GridName = retVal.GridName
+            ColName = retVal.ColName
+            ColOrder = retVal.ColOrder
+            ColWidth = retVal.ColWidth
+            ColVisible = retVal.ColVisible
+            ColReadOnly = retVal.ColReadOnly
+            ColSortOrder = retVal.ColSortOrder
+            ColSortAsc = retVal.ColSortAsc
+            HiveConnectionName = retVal.HiveConnectionName
+            HiveActive = retVal.HiveActive
+            RepoSvrName = retVal.RepoSvrName
+            RowCreationDate = retVal.RowCreationDate
+            RowLastModDate = retVal.RowLastModDate
+            RowNbr = retVal.RowNbr
+            RC = retVal.RC
+            rMsg = retVal.rMsg
+        End Sub
+        
+        Public Function saveGridLayoutAsync(ByVal request As SVCSearch.saveGridLayoutRequest) As System.Threading.Tasks.Task(Of SVCSearch.saveGridLayoutResponse) Implements SVCSearch.IService1.saveGridLayoutAsync
+            Return MyBase.Channel.saveGridLayoutAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_saveScreenState(ByVal request As SVCSearch.saveScreenStateRequest) As SVCSearch.saveScreenStateResponse Implements SVCSearch.IService1.saveScreenState
+            Return MyBase.Channel.saveScreenState(request)
+        End Function
+        
+        Public Sub saveScreenState(ByRef SecureID As Integer, ByVal UID As String, ByVal ScreenName As String, ByVal DICT As System.Collections.Generic.Dictionary(Of String, String), ByRef rMsg As String, ByRef RC As Boolean, ByVal HiveConnectionName As String, ByVal HiveActive As Boolean, ByVal RepoSvrName As String)
+            Dim inValue As SVCSearch.saveScreenStateRequest = New SVCSearch.saveScreenStateRequest()
+            inValue.SecureID = SecureID
+            inValue.UID = UID
+            inValue.ScreenName = ScreenName
+            inValue.DICT = DICT
+            inValue.rMsg = rMsg
+            inValue.RC = RC
+            inValue.HiveConnectionName = HiveConnectionName
+            inValue.HiveActive = HiveActive
+            inValue.RepoSvrName = RepoSvrName
+            Dim retVal As SVCSearch.saveScreenStateResponse = CType(Me,SVCSearch.IService1).saveScreenState(inValue)
+            SecureID = retVal.SecureID
+            rMsg = retVal.rMsg
+            RC = retVal.RC
+        End Sub
+        
+        Public Function saveScreenStateAsync(ByVal request As SVCSearch.saveScreenStateRequest) As System.Threading.Tasks.Task(Of SVCSearch.saveScreenStateResponse) Implements SVCSearch.IService1.saveScreenStateAsync
+            Return MyBase.Channel.saveScreenStateAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_getUserParms(ByVal request As SVCSearch.getUserParmsRequest) As SVCSearch.getUserParmsResponse Implements SVCSearch.IService1.getUserParms
+            Return MyBase.Channel.getUserParms(request)
+        End Function
+        
+        Public Sub getUserParms(ByRef SecureID As Integer, ByVal UserID As String, ByRef UserParms As System.Collections.Generic.Dictionary(Of String, String))
+            Dim inValue As SVCSearch.getUserParmsRequest = New SVCSearch.getUserParmsRequest()
+            inValue.SecureID = SecureID
+            inValue.UserID = UserID
+            inValue.UserParms = UserParms
+            Dim retVal As SVCSearch.getUserParmsResponse = CType(Me,SVCSearch.IService1).getUserParms(inValue)
+            SecureID = retVal.SecureID
+            UserParms = retVal.UserParms
+        End Sub
+        
+        Public Function getUserParmsAsync(ByVal request As SVCSearch.getUserParmsRequest) As System.Threading.Tasks.Task(Of SVCSearch.getUserParmsResponse) Implements SVCSearch.IService1.getUserParmsAsync
+            Return MyBase.Channel.getUserParmsAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_ParseLicDictionary(ByVal request As SVCSearch.ParseLicDictionaryRequest) As SVCSearch.ParseLicDictionaryResponse Implements SVCSearch.IService1.ParseLicDictionary
+            Return MyBase.Channel.ParseLicDictionary(request)
+        End Function
+        
+        Public Sub ParseLicDictionary(ByRef SecureID As Integer, ByVal S As String, ByRef D As System.Collections.Generic.Dictionary(Of String, String))
+            Dim inValue As SVCSearch.ParseLicDictionaryRequest = New SVCSearch.ParseLicDictionaryRequest()
+            inValue.SecureID = SecureID
+            inValue.S = S
+            inValue.D = D
+            Dim retVal As SVCSearch.ParseLicDictionaryResponse = CType(Me,SVCSearch.IService1).ParseLicDictionary(inValue)
+            SecureID = retVal.SecureID
+            D = retVal.D
+        End Sub
+        
+        Public Function ParseLicDictionaryAsync(ByVal request As SVCSearch.ParseLicDictionaryRequest) As System.Threading.Tasks.Task(Of SVCSearch.ParseLicDictionaryResponse) Implements SVCSearch.IService1.ParseLicDictionaryAsync
+            Return MyBase.Channel.ParseLicDictionaryAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_LicenseType(ByVal request As SVCSearch.LicenseTypeRequest) As SVCSearch.LicenseTypeResponse Implements SVCSearch.IService1.LicenseType
+            Return MyBase.Channel.LicenseType(request)
+        End Function
+        
+        Public Function LicenseType(ByVal SecureID As Integer, ByRef RC As Boolean, ByRef RetMsg As String) As String
+            Dim inValue As SVCSearch.LicenseTypeRequest = New SVCSearch.LicenseTypeRequest()
+            inValue.SecureID = SecureID
+            inValue.RC = RC
+            inValue.RetMsg = RetMsg
+            Dim retVal As SVCSearch.LicenseTypeResponse = CType(Me,SVCSearch.IService1).LicenseType(inValue)
+            RC = retVal.RC
+            RetMsg = retVal.RetMsg
+            Return retVal.LicenseTypeResult
+        End Function
+        
+        Public Function LicenseTypeAsync(ByVal request As SVCSearch.LicenseTypeRequest) As System.Threading.Tasks.Task(Of SVCSearch.LicenseTypeResponse) Implements SVCSearch.IService1.LicenseTypeAsync
+            Return MyBase.Channel.LicenseTypeAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_GetNbrUsers(ByVal request As SVCSearch.GetNbrUsersRequest) As SVCSearch.GetNbrUsersResponse Implements SVCSearch.IService1.GetNbrUsers
+            Return MyBase.Channel.GetNbrUsers(request)
+        End Function
+        
+        Public Function GetNbrUsers(ByRef SecureID As Integer) As Integer
+            Dim inValue As SVCSearch.GetNbrUsersRequest = New SVCSearch.GetNbrUsersRequest()
+            inValue.SecureID = SecureID
+            Dim retVal As SVCSearch.GetNbrUsersResponse = CType(Me,SVCSearch.IService1).GetNbrUsers(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.GetNbrUsersResult
+        End Function
+        
+        Public Function GetNbrUsersAsync(ByVal request As SVCSearch.GetNbrUsersRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetNbrUsersResponse) Implements SVCSearch.IService1.GetNbrUsersAsync
+            Return MyBase.Channel.GetNbrUsersAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_isLease(ByVal request As SVCSearch.isLeaseRequest) As SVCSearch.isLeaseResponse Implements SVCSearch.IService1.isLease
+            Return MyBase.Channel.isLease(request)
+        End Function
+        
+        Public Function isLease(ByVal SecureID As Integer, ByRef RC As Boolean, ByRef RetMsg As String) As Boolean
+            Dim inValue As SVCSearch.isLeaseRequest = New SVCSearch.isLeaseRequest()
+            inValue.SecureID = SecureID
+            inValue.RC = RC
+            inValue.RetMsg = RetMsg
+            Dim retVal As SVCSearch.isLeaseResponse = CType(Me,SVCSearch.IService1).isLease(inValue)
+            RC = retVal.RC
+            RetMsg = retVal.RetMsg
+            Return retVal.isLeaseResult
+        End Function
+        
+        Public Function isLeaseAsync(ByVal request As SVCSearch.isLeaseRequest) As System.Threading.Tasks.Task(Of SVCSearch.isLeaseResponse) Implements SVCSearch.IService1.isLeaseAsync
+            Return MyBase.Channel.isLeaseAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_getMaxClients(ByVal request As SVCSearch.getMaxClientsRequest) As SVCSearch.getMaxClientsResponse Implements SVCSearch.IService1.getMaxClients
+            Return MyBase.Channel.getMaxClients(request)
+        End Function
+        
+        Public Function getMaxClients(ByVal SecureID As Integer, ByRef RC As Boolean, ByRef RetMsg As String) As Integer
+            Dim inValue As SVCSearch.getMaxClientsRequest = New SVCSearch.getMaxClientsRequest()
+            inValue.SecureID = SecureID
+            inValue.RC = RC
+            inValue.RetMsg = RetMsg
+            Dim retVal As SVCSearch.getMaxClientsResponse = CType(Me,SVCSearch.IService1).getMaxClients(inValue)
+            RC = retVal.RC
+            RetMsg = retVal.RetMsg
+            Return retVal.getMaxClientsResult
+        End Function
+        
+        Public Function getMaxClientsAsync(ByVal request As SVCSearch.getMaxClientsRequest) As System.Threading.Tasks.Task(Of SVCSearch.getMaxClientsResponse) Implements SVCSearch.IService1.getMaxClientsAsync
+            Return MyBase.Channel.getMaxClientsAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_GetUserHostName(ByVal request As SVCSearch.GetUserHostNameRequest) As SVCSearch.GetUserHostNameResponse Implements SVCSearch.IService1.GetUserHostName
+            Return MyBase.Channel.GetUserHostName(request)
+        End Function
+        
+        Public Function GetUserHostName(ByRef SecureID As Integer) As String
+            Dim inValue As SVCSearch.GetUserHostNameRequest = New SVCSearch.GetUserHostNameRequest()
+            inValue.SecureID = SecureID
+            Dim retVal As SVCSearch.GetUserHostNameResponse = CType(Me,SVCSearch.IService1).GetUserHostName(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.GetUserHostNameResult
+        End Function
+        
+        Public Function GetUserHostNameAsync(ByVal request As SVCSearch.GetUserHostNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetUserHostNameResponse) Implements SVCSearch.IService1.GetUserHostNameAsync
+            Return MyBase.Channel.GetUserHostNameAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_GetUserHostAddress(ByVal request As SVCSearch.GetUserHostAddressRequest) As SVCSearch.GetUserHostAddressResponse Implements SVCSearch.IService1.GetUserHostAddress
+            Return MyBase.Channel.GetUserHostAddress(request)
+        End Function
+        
+        Public Function GetUserHostAddress(ByRef SecureID As Integer) As String
+            Dim inValue As SVCSearch.GetUserHostAddressRequest = New SVCSearch.GetUserHostAddressRequest()
+            inValue.SecureID = SecureID
+            Dim retVal As SVCSearch.GetUserHostAddressResponse = CType(Me,SVCSearch.IService1).GetUserHostAddress(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.GetUserHostAddressResult
+        End Function
+        
+        Public Function GetUserHostAddressAsync(ByVal request As SVCSearch.GetUserHostAddressRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetUserHostAddressResponse) Implements SVCSearch.IService1.GetUserHostAddressAsync
+            Return MyBase.Channel.GetUserHostAddressAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_getUserGuidID(ByVal request As SVCSearch.getUserGuidIDRequest) As SVCSearch.getUserGuidIDResponse Implements SVCSearch.IService1.getUserGuidID
+            Return MyBase.Channel.getUserGuidID(request)
+        End Function
+        
+        Public Function getUserGuidID(ByRef SecureID As Integer, ByVal UserLoginId As String) As String
+            Dim inValue As SVCSearch.getUserGuidIDRequest = New SVCSearch.getUserGuidIDRequest()
+            inValue.SecureID = SecureID
+            inValue.UserLoginId = UserLoginId
+            Dim retVal As SVCSearch.getUserGuidIDResponse = CType(Me,SVCSearch.IService1).getUserGuidID(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.getUserGuidIDResult
+        End Function
+        
+        Public Function getUserGuidIDAsync(ByVal request As SVCSearch.getUserGuidIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.getUserGuidIDResponse) Implements SVCSearch.IService1.getUserGuidIDAsync
+            Return MyBase.Channel.getUserGuidIDAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_ProcessDates(ByVal request As SVCSearch.ProcessDatesRequest) As SVCSearch.ProcessDatesResponse Implements SVCSearch.IService1.ProcessDates
+            Return MyBase.Channel.ProcessDates(request)
+        End Function
+        
+        Public Function ProcessDates(ByRef SecureID As Integer) As System.Collections.Generic.Dictionary(Of String, Date)
+            Dim inValue As SVCSearch.ProcessDatesRequest = New SVCSearch.ProcessDatesRequest()
+            inValue.SecureID = SecureID
+            Dim retVal As SVCSearch.ProcessDatesResponse = CType(Me,SVCSearch.IService1).ProcessDates(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.ProcessDatesResult
+        End Function
+        
+        Public Function ProcessDatesAsync(ByVal request As SVCSearch.ProcessDatesRequest) As System.Threading.Tasks.Task(Of SVCSearch.ProcessDatesResponse) Implements SVCSearch.IService1.ProcessDatesAsync
+            Return MyBase.Channel.ProcessDatesAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_GetNbrMachineAll(ByVal request As SVCSearch.GetNbrMachineAllRequest) As SVCSearch.GetNbrMachineAllResponse Implements SVCSearch.IService1.GetNbrMachineAll
+            Return MyBase.Channel.GetNbrMachineAll(request)
+        End Function
+        
+        Public Function GetNbrMachineAll(ByRef SecureID As Integer) As Integer
+            Dim inValue As SVCSearch.GetNbrMachineAllRequest = New SVCSearch.GetNbrMachineAllRequest()
+            inValue.SecureID = SecureID
+            Dim retVal As SVCSearch.GetNbrMachineAllResponse = CType(Me,SVCSearch.IService1).GetNbrMachineAll(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.GetNbrMachineAllResult
+        End Function
+        
+        Public Function GetNbrMachineAllAsync(ByVal request As SVCSearch.GetNbrMachineAllRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetNbrMachineAllResponse) Implements SVCSearch.IService1.GetNbrMachineAllAsync
+            Return MyBase.Channel.GetNbrMachineAllAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_GetNbrMachine(ByVal request As SVCSearch.GetNbrMachineRequest) As SVCSearch.GetNbrMachineResponse Implements SVCSearch.IService1.GetNbrMachine
+            Return MyBase.Channel.GetNbrMachine(request)
+        End Function
+        
+        Public Function GetNbrMachine(ByRef SecureID As Integer, ByVal MachineName As String) As Integer
+            Dim inValue As SVCSearch.GetNbrMachineRequest = New SVCSearch.GetNbrMachineRequest()
+            inValue.SecureID = SecureID
+            inValue.MachineName = MachineName
+            Dim retVal As SVCSearch.GetNbrMachineResponse = CType(Me,SVCSearch.IService1).GetNbrMachine(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.GetNbrMachineResult
+        End Function
+        
+        Public Function GetNbrMachineAsync(ByVal request As SVCSearch.GetNbrMachineRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetNbrMachineResponse) Implements SVCSearch.IService1.GetNbrMachineAsync
+            Return MyBase.Channel.GetNbrMachineAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_isLicenseLocatedOnAssignedMachine(ByVal request As SVCSearch.isLicenseLocatedOnAssignedMachineRequest) As SVCSearch.isLicenseLocatedOnAssignedMachineResponse Implements SVCSearch.IService1.isLicenseLocatedOnAssignedMachine
+            Return MyBase.Channel.isLicenseLocatedOnAssignedMachine(request)
+        End Function
+        
+        Public Function isLicenseLocatedOnAssignedMachine(ByRef SecureID As Integer, ByRef ServerValText As String, ByRef InstanceValText As String, ByRef RC As Boolean, ByRef RetMsg As String) As Boolean
+            Dim inValue As SVCSearch.isLicenseLocatedOnAssignedMachineRequest = New SVCSearch.isLicenseLocatedOnAssignedMachineRequest()
+            inValue.SecureID = SecureID
+            inValue.ServerValText = ServerValText
+            inValue.InstanceValText = InstanceValText
+            inValue.RC = RC
+            inValue.RetMsg = RetMsg
+            Dim retVal As SVCSearch.isLicenseLocatedOnAssignedMachineResponse = CType(Me,SVCSearch.IService1).isLicenseLocatedOnAssignedMachine(inValue)
+            SecureID = retVal.SecureID
+            ServerValText = retVal.ServerValText
+            InstanceValText = retVal.InstanceValText
+            RC = retVal.RC
+            RetMsg = retVal.RetMsg
+            Return retVal.isLicenseLocatedOnAssignedMachineResult
+        End Function
+        
+        Public Function isLicenseLocatedOnAssignedMachineAsync(ByVal request As SVCSearch.isLicenseLocatedOnAssignedMachineRequest) As System.Threading.Tasks.Task(Of SVCSearch.isLicenseLocatedOnAssignedMachineResponse) Implements SVCSearch.IService1.isLicenseLocatedOnAssignedMachineAsync
+            Return MyBase.Channel.isLicenseLocatedOnAssignedMachineAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_GetXrt(ByVal request As SVCSearch.GetXrtRequest) As SVCSearch.GetXrtResponse Implements SVCSearch.IService1.GetXrt
+            Return MyBase.Channel.GetXrt(request)
+        End Function
+        
+        Public Function GetXrt(ByRef SecureID As Integer, ByVal RC As Boolean, ByVal RetMsg As String) As String
+            Dim inValue As SVCSearch.GetXrtRequest = New SVCSearch.GetXrtRequest()
+            inValue.SecureID = SecureID
+            inValue.RC = RC
+            inValue.RetMsg = RetMsg
+            Dim retVal As SVCSearch.GetXrtResponse = CType(Me,SVCSearch.IService1).GetXrt(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.GetXrtResult
+        End Function
+        
+        Public Function GetXrtAsync(ByVal request As SVCSearch.GetXrtRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetXrtResponse) Implements SVCSearch.IService1.GetXrtAsync
+            Return MyBase.Channel.GetXrtAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_getSqlServerVersion(ByVal request As SVCSearch.getSqlServerVersionRequest) As SVCSearch.getSqlServerVersionResponse Implements SVCSearch.IService1.getSqlServerVersion
+            Return MyBase.Channel.getSqlServerVersion(request)
+        End Function
+        
+        Public Function getSqlServerVersion(ByRef SecureID As Integer) As String
+            Dim inValue As SVCSearch.getSqlServerVersionRequest = New SVCSearch.getSqlServerVersionRequest()
+            inValue.SecureID = SecureID
+            Dim retVal As SVCSearch.getSqlServerVersionResponse = CType(Me,SVCSearch.IService1).getSqlServerVersion(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.getSqlServerVersionResult
+        End Function
+        
+        Public Function getSqlServerVersionAsync(ByVal request As SVCSearch.getSqlServerVersionRequest) As System.Threading.Tasks.Task(Of SVCSearch.getSqlServerVersionResponse) Implements SVCSearch.IService1.getSqlServerVersionAsync
+            Return MyBase.Channel.getSqlServerVersionAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_RecordGrowth(ByVal request As SVCSearch.RecordGrowthRequest) As SVCSearch.RecordGrowthResponse Implements SVCSearch.IService1.RecordGrowth
+            Return MyBase.Channel.RecordGrowth(request)
+        End Function
+        
+        Public Sub RecordGrowth(ByRef SecureID As Integer, ByRef RC As Boolean)
+            Dim inValue As SVCSearch.RecordGrowthRequest = New SVCSearch.RecordGrowthRequest()
+            inValue.SecureID = SecureID
+            inValue.RC = RC
+            Dim retVal As SVCSearch.RecordGrowthResponse = CType(Me,SVCSearch.IService1).RecordGrowth(inValue)
+            SecureID = retVal.SecureID
+            RC = retVal.RC
+        End Sub
+        
+        Public Function RecordGrowthAsync(ByVal request As SVCSearch.RecordGrowthRequest) As System.Threading.Tasks.Task(Of SVCSearch.RecordGrowthResponse) Implements SVCSearch.IService1.RecordGrowthAsync
+            Return MyBase.Channel.RecordGrowthAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_ParseLic(ByVal request As SVCSearch.ParseLicRequest) As SVCSearch.ParseLicResponse Implements SVCSearch.IService1.ParseLic
+            Return MyBase.Channel.ParseLic(request)
+        End Function
+        
+        Public Function ParseLic(ByRef SecureID As Integer, ByVal LT As String, ByVal tgtKey As String) As String
+            Dim inValue As SVCSearch.ParseLicRequest = New SVCSearch.ParseLicRequest()
+            inValue.SecureID = SecureID
+            inValue.LT = LT
+            inValue.tgtKey = tgtKey
+            Dim retVal As SVCSearch.ParseLicResponse = CType(Me,SVCSearch.IService1).ParseLic(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.ParseLicResult
+        End Function
+        
+        Public Function ParseLicAsync(ByVal request As SVCSearch.ParseLicRequest) As System.Threading.Tasks.Task(Of SVCSearch.ParseLicResponse) Implements SVCSearch.IService1.ParseLicAsync
+            Return MyBase.Channel.ParseLicAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_GetLoggedinUserName(ByVal request As SVCSearch.GetLoggedinUserNameRequest) As SVCSearch.GetLoggedinUserNameResponse Implements SVCSearch.IService1.GetLoggedinUserName
+            Return MyBase.Channel.GetLoggedinUserName(request)
+        End Function
+        
+        Public Function GetLoggedinUserName(ByRef SecureID As Integer) As String
+            Dim inValue As SVCSearch.GetLoggedinUserNameRequest = New SVCSearch.GetLoggedinUserNameRequest()
+            inValue.SecureID = SecureID
+            Dim retVal As SVCSearch.GetLoggedinUserNameResponse = CType(Me,SVCSearch.IService1).GetLoggedinUserName(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.GetLoggedinUserNameResult
+        End Function
+        
+        Public Function GetLoggedinUserNameAsync(ByVal request As SVCSearch.GetLoggedinUserNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.GetLoggedinUserNameResponse) Implements SVCSearch.IService1.GetLoggedinUserNameAsync
+            Return MyBase.Channel.GetLoggedinUserNameAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_getDBSIZEMB(ByVal request As SVCSearch.getDBSIZEMBRequest) As SVCSearch.getDBSIZEMBResponse Implements SVCSearch.IService1.getDBSIZEMB
+            Return MyBase.Channel.getDBSIZEMB(request)
+        End Function
+        
+        Public Function getDBSIZEMB(ByRef SecureID As Integer) As Double
+            Dim inValue As SVCSearch.getDBSIZEMBRequest = New SVCSearch.getDBSIZEMBRequest()
+            inValue.SecureID = SecureID
+            Dim retVal As SVCSearch.getDBSIZEMBResponse = CType(Me,SVCSearch.IService1).getDBSIZEMB(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.getDBSIZEMBResult
+        End Function
+        
+        Public Function getDBSIZEMBAsync(ByVal request As SVCSearch.getDBSIZEMBRequest) As System.Threading.Tasks.Task(Of SVCSearch.getDBSIZEMBResponse) Implements SVCSearch.IService1.getDBSIZEMBAsync
+            Return MyBase.Channel.getDBSIZEMBAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_resetMissingEmailIds(ByVal request As SVCSearch.resetMissingEmailIdsRequest) As SVCSearch.resetMissingEmailIdsResponse Implements SVCSearch.IService1.resetMissingEmailIds
+            Return MyBase.Channel.resetMissingEmailIds(request)
+        End Function
+        
+        Public Sub resetMissingEmailIds(ByRef SecureID As Integer, ByVal CurrUserGuidID As String, ByRef RC As Boolean)
+            Dim inValue As SVCSearch.resetMissingEmailIdsRequest = New SVCSearch.resetMissingEmailIdsRequest()
+            inValue.SecureID = SecureID
+            inValue.CurrUserGuidID = CurrUserGuidID
+            inValue.RC = RC
+            Dim retVal As SVCSearch.resetMissingEmailIdsResponse = CType(Me,SVCSearch.IService1).resetMissingEmailIds(inValue)
+            SecureID = retVal.SecureID
+            RC = retVal.RC
+        End Sub
+        
+        Public Function resetMissingEmailIdsAsync(ByVal request As SVCSearch.resetMissingEmailIdsRequest) As System.Threading.Tasks.Task(Of SVCSearch.resetMissingEmailIdsResponse) Implements SVCSearch.IService1.resetMissingEmailIdsAsync
+            Return MyBase.Channel.resetMissingEmailIdsAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_UserParmInsertUpdate(ByVal request As SVCSearch.UserParmInsertUpdateRequest) As SVCSearch.UserParmInsertUpdateResponse Implements SVCSearch.IService1.UserParmInsertUpdate
+            Return MyBase.Channel.UserParmInsertUpdate(request)
+        End Function
+        
+        Public Sub UserParmInsertUpdate(ByRef SecureID As Integer, ByVal ParmName As String, ByVal UserID As String, ByVal ParmVal As String, ByRef RC As Boolean)
+            Dim inValue As SVCSearch.UserParmInsertUpdateRequest = New SVCSearch.UserParmInsertUpdateRequest()
+            inValue.SecureID = SecureID
+            inValue.ParmName = ParmName
+            inValue.UserID = UserID
+            inValue.ParmVal = ParmVal
+            inValue.RC = RC
+            Dim retVal As SVCSearch.UserParmInsertUpdateResponse = CType(Me,SVCSearch.IService1).UserParmInsertUpdate(inValue)
+            SecureID = retVal.SecureID
+            RC = retVal.RC
+        End Sub
+        
+        Public Function UserParmInsertUpdateAsync(ByVal request As SVCSearch.UserParmInsertUpdateRequest) As System.Threading.Tasks.Task(Of SVCSearch.UserParmInsertUpdateResponse) Implements SVCSearch.IService1.UserParmInsertUpdateAsync
+            Return MyBase.Channel.UserParmInsertUpdateAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_validateLogin(ByVal request As SVCSearch.validateLoginRequest) As SVCSearch.validateLoginResponse Implements SVCSearch.IService1.validateLogin
+            Return MyBase.Channel.validateLogin(request)
+        End Function
+        
+        Public Function validateLogin(ByRef SecureID As Integer, ByVal UserLogin As String, ByVal PW As String, ByRef UserGuidID As String) As Boolean
+            Dim inValue As SVCSearch.validateLoginRequest = New SVCSearch.validateLoginRequest()
+            inValue.SecureID = SecureID
+            inValue.UserLogin = UserLogin
+            inValue.PW = PW
+            inValue.UserGuidID = UserGuidID
+            Dim retVal As SVCSearch.validateLoginResponse = CType(Me,SVCSearch.IService1).validateLogin(inValue)
+            SecureID = retVal.SecureID
+            UserGuidID = retVal.UserGuidID
+            Return retVal.validateLoginResult
+        End Function
+        
+        Public Function validateLoginAsync(ByVal request As SVCSearch.validateLoginRequest) As System.Threading.Tasks.Task(Of SVCSearch.validateLoginResponse) Implements SVCSearch.IService1.validateLoginAsync
+            Return MyBase.Channel.validateLoginAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_getLoggedInUser(ByVal request As SVCSearch.getLoggedInUserRequest) As SVCSearch.getLoggedInUserResponse Implements SVCSearch.IService1.getLoggedInUser
+            Return MyBase.Channel.getLoggedInUser(request)
+        End Function
+        
+        Public Function getLoggedInUser(ByRef SecureID As Integer) As String
+            Dim inValue As SVCSearch.getLoggedInUserRequest = New SVCSearch.getLoggedInUserRequest()
+            inValue.SecureID = SecureID
+            Dim retVal As SVCSearch.getLoggedInUserResponse = CType(Me,SVCSearch.IService1).getLoggedInUser(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.getLoggedInUserResult
+        End Function
+        
+        Public Function getLoggedInUserAsync(ByVal request As SVCSearch.getLoggedInUserRequest) As System.Threading.Tasks.Task(Of SVCSearch.getLoggedInUserResponse) Implements SVCSearch.IService1.getLoggedInUserAsync
+            Return MyBase.Channel.getLoggedInUserAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_getAttachedMachineName(ByVal request As SVCSearch.getAttachedMachineNameRequest) As SVCSearch.getAttachedMachineNameResponse Implements SVCSearch.IService1.getAttachedMachineName
+            Return MyBase.Channel.getAttachedMachineName(request)
+        End Function
+        
+        Public Function getAttachedMachineName(ByRef SecureID As Integer) As String
+            Dim inValue As SVCSearch.getAttachedMachineNameRequest = New SVCSearch.getAttachedMachineNameRequest()
+            inValue.SecureID = SecureID
+            Dim retVal As SVCSearch.getAttachedMachineNameResponse = CType(Me,SVCSearch.IService1).getAttachedMachineName(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.getAttachedMachineNameResult
+        End Function
+        
+        Public Function getAttachedMachineNameAsync(ByVal request As SVCSearch.getAttachedMachineNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.getAttachedMachineNameResponse) Implements SVCSearch.IService1.getAttachedMachineNameAsync
+            Return MyBase.Channel.getAttachedMachineNameAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_getServerInstanceName(ByVal request As SVCSearch.getServerInstanceNameRequest) As SVCSearch.getServerInstanceNameResponse Implements SVCSearch.IService1.getServerInstanceName
+            Return MyBase.Channel.getServerInstanceName(request)
+        End Function
+        
+        Public Function getServerInstanceName(ByRef SecureID As Integer) As String
+            Dim inValue As SVCSearch.getServerInstanceNameRequest = New SVCSearch.getServerInstanceNameRequest()
+            inValue.SecureID = SecureID
+            Dim retVal As SVCSearch.getServerInstanceNameResponse = CType(Me,SVCSearch.IService1).getServerInstanceName(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.getServerInstanceNameResult
+        End Function
+        
+        Public Function getServerInstanceNameAsync(ByVal request As SVCSearch.getServerInstanceNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.getServerInstanceNameResponse) Implements SVCSearch.IService1.getServerInstanceNameAsync
+            Return MyBase.Channel.getServerInstanceNameAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_getServerMachineName(ByVal request As SVCSearch.getServerMachineNameRequest) As SVCSearch.getServerMachineNameResponse Implements SVCSearch.IService1.getServerMachineName
+            Return MyBase.Channel.getServerMachineName(request)
+        End Function
+        
+        Public Function getServerMachineName(ByRef SecureID As Integer) As String
+            Dim inValue As SVCSearch.getServerMachineNameRequest = New SVCSearch.getServerMachineNameRequest()
+            inValue.SecureID = SecureID
+            Dim retVal As SVCSearch.getServerMachineNameResponse = CType(Me,SVCSearch.IService1).getServerMachineName(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.getServerMachineNameResult
+        End Function
+        
+        Public Function getServerMachineNameAsync(ByVal request As SVCSearch.getServerMachineNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.getServerMachineNameResponse) Implements SVCSearch.IService1.getServerMachineNameAsync
+            Return MyBase.Channel.getServerMachineNameAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_getSystemParm(ByVal request As SVCSearch.getSystemParmRequest) As SVCSearch.getSystemParmResponse Implements SVCSearch.IService1.getSystemParm
+            Return MyBase.Channel.getSystemParm(request)
+        End Function
+        
+        Public Sub getSystemParm(ByRef SecureID As Integer, ByRef SystemParms As System.Collections.Generic.Dictionary(Of String, String))
+            Dim inValue As SVCSearch.getSystemParmRequest = New SVCSearch.getSystemParmRequest()
+            inValue.SecureID = SecureID
+            inValue.SystemParms = SystemParms
+            Dim retVal As SVCSearch.getSystemParmResponse = CType(Me,SVCSearch.IService1).getSystemParm(inValue)
+            SecureID = retVal.SecureID
+            SystemParms = retVal.SystemParms
+        End Sub
+        
+        Public Function getSystemParmAsync(ByVal request As SVCSearch.getSystemParmRequest) As System.Threading.Tasks.Task(Of SVCSearch.getSystemParmResponse) Implements SVCSearch.IService1.getSystemParmAsync
+            Return MyBase.Channel.getSystemParmAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_getSynonyms(ByVal request As SVCSearch.getSynonymsRequest) As SVCSearch.getSynonymsResponse Implements SVCSearch.IService1.getSynonyms
+            Return MyBase.Channel.getSynonyms(request)
+        End Function
+        
+        Public Function getSynonyms(ByRef SecureID As Integer, ByVal ThesaurusID As String, ByVal Token As String, ByRef lbSynonyms As String) As String
+            Dim inValue As SVCSearch.getSynonymsRequest = New SVCSearch.getSynonymsRequest()
+            inValue.SecureID = SecureID
+            inValue.ThesaurusID = ThesaurusID
+            inValue.Token = Token
+            inValue.lbSynonyms = lbSynonyms
+            Dim retVal As SVCSearch.getSynonymsResponse = CType(Me,SVCSearch.IService1).getSynonyms(inValue)
+            SecureID = retVal.SecureID
+            lbSynonyms = retVal.lbSynonyms
+            Return retVal.getSynonymsResult
+        End Function
+        
+        Public Function getSynonymsAsync(ByVal request As SVCSearch.getSynonymsRequest) As System.Threading.Tasks.Task(Of SVCSearch.getSynonymsResponse) Implements SVCSearch.IService1.getSynonymsAsync
+            Return MyBase.Channel.getSynonymsAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_getThesaurusID(ByVal request As SVCSearch.getThesaurusIDRequest) As SVCSearch.getThesaurusIDResponse Implements SVCSearch.IService1.getThesaurusID
+            Return MyBase.Channel.getThesaurusID(request)
+        End Function
+        
+        Public Function getThesaurusID(ByRef SecureID As Integer, ByVal ThesaurusName As String) As String
+            Dim inValue As SVCSearch.getThesaurusIDRequest = New SVCSearch.getThesaurusIDRequest()
+            inValue.SecureID = SecureID
+            inValue.ThesaurusName = ThesaurusName
+            Dim retVal As SVCSearch.getThesaurusIDResponse = CType(Me,SVCSearch.IService1).getThesaurusID(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.getThesaurusIDResult
+        End Function
+        
+        Public Function getThesaurusIDAsync(ByVal request As SVCSearch.getThesaurusIDRequest) As System.Threading.Tasks.Task(Of SVCSearch.getThesaurusIDResponse) Implements SVCSearch.IService1.getThesaurusIDAsync
+            Return MyBase.Channel.getThesaurusIDAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_iCountContent(ByVal request As SVCSearch.iCountContentRequest) As SVCSearch.iCountContentResponse Implements SVCSearch.IService1.iCountContent
+            Return MyBase.Channel.iCountContent(request)
+        End Function
+        
+        Public Function iCountContent(ByRef SecureID As Integer, ByVal S As String) As Integer
+            Dim inValue As SVCSearch.iCountContentRequest = New SVCSearch.iCountContentRequest()
+            inValue.SecureID = SecureID
+            inValue.S = S
+            Dim retVal As SVCSearch.iCountContentResponse = CType(Me,SVCSearch.IService1).iCountContent(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.iCountContentResult
+        End Function
+        
+        Public Function iCountContentAsync(ByVal request As SVCSearch.iCountContentRequest) As System.Threading.Tasks.Task(Of SVCSearch.iCountContentResponse) Implements SVCSearch.IService1.iCountContentAsync
+            Return MyBase.Channel.iCountContentAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_getDatasourceParm(ByVal request As SVCSearch.getDatasourceParmRequest) As SVCSearch.getDatasourceParmResponse Implements SVCSearch.IService1.getDatasourceParm
+            Return MyBase.Channel.getDatasourceParm(request)
+        End Function
+        
+        Public Function getDatasourceParm(ByRef SecureID As Integer, ByVal AttributeName As String, ByVal SourceGuid As String) As String
+            Dim inValue As SVCSearch.getDatasourceParmRequest = New SVCSearch.getDatasourceParmRequest()
+            inValue.SecureID = SecureID
+            inValue.AttributeName = AttributeName
+            inValue.SourceGuid = SourceGuid
+            Dim retVal As SVCSearch.getDatasourceParmResponse = CType(Me,SVCSearch.IService1).getDatasourceParm(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.getDatasourceParmResult
+        End Function
+        
+        Public Function getDatasourceParmAsync(ByVal request As SVCSearch.getDatasourceParmRequest) As System.Threading.Tasks.Task(Of SVCSearch.getDatasourceParmResponse) Implements SVCSearch.IService1.getDatasourceParmAsync
+            Return MyBase.Channel.getDatasourceParmAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_SaveRunParm(ByVal request As SVCSearch.SaveRunParmRequest) As SVCSearch.SaveRunParmResponse Implements SVCSearch.IService1.SaveRunParm
+            Return MyBase.Channel.SaveRunParm(request)
+        End Function
+        
+        Public Function SaveRunParm(ByRef SecureID As Integer, ByVal UserID As String, ByRef ParmID As String, ByRef ParmVal As String) As Boolean
+            Dim inValue As SVCSearch.SaveRunParmRequest = New SVCSearch.SaveRunParmRequest()
+            inValue.SecureID = SecureID
+            inValue.UserID = UserID
+            inValue.ParmID = ParmID
+            inValue.ParmVal = ParmVal
+            Dim retVal As SVCSearch.SaveRunParmResponse = CType(Me,SVCSearch.IService1).SaveRunParm(inValue)
+            SecureID = retVal.SecureID
+            ParmID = retVal.ParmID
+            ParmVal = retVal.ParmVal
+            Return retVal.SaveRunParmResult
+        End Function
+        
+        Public Function SaveRunParmAsync(ByVal request As SVCSearch.SaveRunParmRequest) As System.Threading.Tasks.Task(Of SVCSearch.SaveRunParmResponse) Implements SVCSearch.IService1.SaveRunParmAsync
+            Return MyBase.Channel.SaveRunParmAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_iGetRowCount(ByVal request As SVCSearch.iGetRowCountRequest) As SVCSearch.iGetRowCountResponse Implements SVCSearch.IService1.iGetRowCount
+            Return MyBase.Channel.iGetRowCount(request)
+        End Function
+        
+        Public Function iGetRowCount(ByRef SecureID As Integer, ByVal TBL As String, ByVal WhereClause As String) As Integer
+            Dim inValue As SVCSearch.iGetRowCountRequest = New SVCSearch.iGetRowCountRequest()
+            inValue.SecureID = SecureID
+            inValue.TBL = TBL
+            inValue.WhereClause = WhereClause
+            Dim retVal As SVCSearch.iGetRowCountResponse = CType(Me,SVCSearch.IService1).iGetRowCount(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.iGetRowCountResult
+        End Function
+        
+        Public Function iGetRowCountAsync(ByVal request As SVCSearch.iGetRowCountRequest) As System.Threading.Tasks.Task(Of SVCSearch.iGetRowCountResponse) Implements SVCSearch.IService1.iGetRowCountAsync
+            Return MyBase.Channel.iGetRowCountAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_ZeroizeGlobalSearch(ByVal request As SVCSearch.ZeroizeGlobalSearchRequest) As SVCSearch.ZeroizeGlobalSearchResponse Implements SVCSearch.IService1.ZeroizeGlobalSearch
+            Return MyBase.Channel.ZeroizeGlobalSearch(request)
+        End Function
+        
+        Public Function ZeroizeGlobalSearch(ByRef SecureID As Integer) As Boolean
+            Dim inValue As SVCSearch.ZeroizeGlobalSearchRequest = New SVCSearch.ZeroizeGlobalSearchRequest()
+            inValue.SecureID = SecureID
+            Dim retVal As SVCSearch.ZeroizeGlobalSearchResponse = CType(Me,SVCSearch.IService1).ZeroizeGlobalSearch(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.ZeroizeGlobalSearchResult
+        End Function
+        
+        Public Function ZeroizeGlobalSearchAsync(ByVal request As SVCSearch.ZeroizeGlobalSearchRequest) As System.Threading.Tasks.Task(Of SVCSearch.ZeroizeGlobalSearchResponse) Implements SVCSearch.IService1.ZeroizeGlobalSearchAsync
+            Return MyBase.Channel.ZeroizeGlobalSearchAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_updateIp(ByVal request As SVCSearch.updateIpRequest) As SVCSearch.updateIpResponse Implements SVCSearch.IService1.updateIp
+            Return MyBase.Channel.updateIp(request)
+        End Function
+        
+        Public Sub updateIp(ByRef SecureID As Integer, ByVal HostName As String, ByVal IP As String, ByVal checkCode As Integer, ByRef RC As Boolean)
+            Dim inValue As SVCSearch.updateIpRequest = New SVCSearch.updateIpRequest()
+            inValue.SecureID = SecureID
+            inValue.HostName = HostName
+            inValue.IP = IP
+            inValue.checkCode = checkCode
+            inValue.RC = RC
+            Dim retVal As SVCSearch.updateIpResponse = CType(Me,SVCSearch.IService1).updateIp(inValue)
+            SecureID = retVal.SecureID
+            RC = retVal.RC
+        End Sub
+        
+        Public Function updateIpAsync(ByVal request As SVCSearch.updateIpRequest) As System.Threading.Tasks.Task(Of SVCSearch.updateIpResponse) Implements SVCSearch.IService1.updateIpAsync
+            Return MyBase.Channel.updateIpAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_PopulateSourceGridWithWeights(ByVal request As SVCSearch.PopulateSourceGridWithWeightsRequest) As SVCSearch.PopulateSourceGridWithWeightsResponse Implements SVCSearch.IService1.PopulateSourceGridWithWeights
+            Return MyBase.Channel.PopulateSourceGridWithWeights(request)
+        End Function
+        
+        Public Function PopulateSourceGridWithWeights(ByRef SecureID As Integer, ByVal StartingRow As Integer, ByVal EndingRow As Integer, ByVal CallerName As String, ByVal MySql As String, ByRef bNewRows As Boolean, ByRef SourceRowCnt As Integer) As SVCSearch.DS_CONTENT()
+            Dim inValue As SVCSearch.PopulateSourceGridWithWeightsRequest = New SVCSearch.PopulateSourceGridWithWeightsRequest()
+            inValue.SecureID = SecureID
+            inValue.StartingRow = StartingRow
+            inValue.EndingRow = EndingRow
+            inValue.CallerName = CallerName
+            inValue.MySql = MySql
+            inValue.bNewRows = bNewRows
+            inValue.SourceRowCnt = SourceRowCnt
+            Dim retVal As SVCSearch.PopulateSourceGridWithWeightsResponse = CType(Me,SVCSearch.IService1).PopulateSourceGridWithWeights(inValue)
+            SecureID = retVal.SecureID
+            bNewRows = retVal.bNewRows
+            SourceRowCnt = retVal.SourceRowCnt
+            Return retVal.PopulateSourceGridWithWeightsResult
+        End Function
+        
+        Public Function PopulateSourceGridWithWeightsAsync(ByVal request As SVCSearch.PopulateSourceGridWithWeightsRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateSourceGridWithWeightsResponse) Implements SVCSearch.IService1.PopulateSourceGridWithWeightsAsync
+            Return MyBase.Channel.PopulateSourceGridWithWeightsAsync(request)
+        End Function
+        
         Public Function getSourceLength(ByVal SourceGuid As String, ByVal SourceType As String) As Long Implements SVCSearch.IService1.getSourceLength
             Return MyBase.Channel.getSourceLength(SourceGuid, SourceType)
         End Function
@@ -16380,6 +16049,30 @@ Namespace SVCSearch
         End Function
         
         <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_getNewListOfStrings(ByVal request As SVCSearch.getNewListOfStringsRequest) As SVCSearch.getNewListOfStringsResponse Implements SVCSearch.IService1.getNewListOfStrings
+            Return MyBase.Channel.getNewListOfStrings(request)
+        End Function
+        
+        Public Function getNewListOfStrings(ByRef SecureID As Integer, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String, ByVal UserId As String, ByVal SessionID As String) As String()
+            Dim inValue As SVCSearch.getNewListOfStringsRequest = New SVCSearch.getNewListOfStringsRequest()
+            inValue.SecureID = SecureID
+            inValue.MySql = MySql
+            inValue.RC = RC
+            inValue.RetMsg = RetMsg
+            inValue.UserId = UserId
+            inValue.SessionID = SessionID
+            Dim retVal As SVCSearch.getNewListOfStringsResponse = CType(Me,SVCSearch.IService1).getNewListOfStrings(inValue)
+            SecureID = retVal.SecureID
+            RC = retVal.RC
+            RetMsg = retVal.RetMsg
+            Return retVal.getNewListOfStringsResult
+        End Function
+        
+        Public Function getNewListOfStringsAsync(ByVal request As SVCSearch.getNewListOfStringsRequest) As System.Threading.Tasks.Task(Of SVCSearch.getNewListOfStringsResponse) Implements SVCSearch.IService1.getNewListOfStringsAsync
+            Return MyBase.Channel.getNewListOfStringsAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Function SVCSearch_IService1_getListOfStrings01(ByVal request As SVCSearch.getListOfStrings01Request) As SVCSearch.getListOfStrings01Response Implements SVCSearch.IService1.getListOfStrings01
             Return MyBase.Channel.getListOfStrings01(request)
         End Function
@@ -16780,6 +16473,412 @@ Namespace SVCSearch
         
         Public Function PopulateCoOwnerGridAsync(ByVal SecureID As Integer, ByVal UID As String) As System.Threading.Tasks.Task(Of String) Implements SVCSearch.IService1.PopulateCoOwnerGridAsync
             Return MyBase.Channel.PopulateCoOwnerGridAsync(SecureID, UID)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_PopulateUserGrid(ByVal request As SVCSearch.PopulateUserGridRequest) As SVCSearch.PopulateUserGridResponse Implements SVCSearch.IService1.PopulateUserGrid
+            Return MyBase.Channel.PopulateUserGrid(request)
+        End Function
+        
+        Public Function PopulateUserGrid(ByRef SecureID As Integer, ByVal UserID As String, ByVal DBisAdmin As Boolean) As SVCSearch.DS_VUserGrid()
+            Dim inValue As SVCSearch.PopulateUserGridRequest = New SVCSearch.PopulateUserGridRequest()
+            inValue.SecureID = SecureID
+            inValue.UserID = UserID
+            inValue.DBisAdmin = DBisAdmin
+            Dim retVal As SVCSearch.PopulateUserGridResponse = CType(Me,SVCSearch.IService1).PopulateUserGrid(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.PopulateUserGridResult
+        End Function
+        
+        Public Function PopulateUserGridAsync(ByVal request As SVCSearch.PopulateUserGridRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateUserGridResponse) Implements SVCSearch.IService1.PopulateUserGridAsync
+            Return MyBase.Channel.PopulateUserGridAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_getGroupUsers(ByVal request As SVCSearch.getGroupUsersRequest) As SVCSearch.getGroupUsersResponse Implements SVCSearch.IService1.getGroupUsers
+            Return MyBase.Channel.getGroupUsers(request)
+        End Function
+        
+        Public Sub getGroupUsers(ByRef SecureID As Integer, ByVal GroupName As String, ByRef GroupList() As Object, ByRef RC As Boolean, ByRef RetMsg As String)
+            Dim inValue As SVCSearch.getGroupUsersRequest = New SVCSearch.getGroupUsersRequest()
+            inValue.SecureID = SecureID
+            inValue.GroupName = GroupName
+            inValue.GroupList = GroupList
+            inValue.RC = RC
+            inValue.RetMsg = RetMsg
+            Dim retVal As SVCSearch.getGroupUsersResponse = CType(Me,SVCSearch.IService1).getGroupUsers(inValue)
+            SecureID = retVal.SecureID
+            GroupList = retVal.GroupList
+            RC = retVal.RC
+            RetMsg = retVal.RetMsg
+        End Sub
+        
+        Public Function getGroupUsersAsync(ByVal request As SVCSearch.getGroupUsersRequest) As System.Threading.Tasks.Task(Of SVCSearch.getGroupUsersResponse) Implements SVCSearch.IService1.getGroupUsersAsync
+            Return MyBase.Channel.getGroupUsersAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_PopulateDgGroupUsers(ByVal request As SVCSearch.PopulateDgGroupUsersRequest) As SVCSearch.PopulateDgGroupUsersResponse Implements SVCSearch.IService1.PopulateDgGroupUsers
+            Return MyBase.Channel.PopulateDgGroupUsers(request)
+        End Function
+        
+        Public Function PopulateDgGroupUsers(ByRef SecureID As Integer, ByVal OwnerUserGuidID As String, ByVal GroupName As String) As String
+            Dim inValue As SVCSearch.PopulateDgGroupUsersRequest = New SVCSearch.PopulateDgGroupUsersRequest()
+            inValue.SecureID = SecureID
+            inValue.OwnerUserGuidID = OwnerUserGuidID
+            inValue.GroupName = GroupName
+            Dim retVal As SVCSearch.PopulateDgGroupUsersResponse = CType(Me,SVCSearch.IService1).PopulateDgGroupUsers(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.PopulateDgGroupUsersResult
+        End Function
+        
+        Public Function PopulateDgGroupUsersAsync(ByVal request As SVCSearch.PopulateDgGroupUsersRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateDgGroupUsersResponse) Implements SVCSearch.IService1.PopulateDgGroupUsersAsync
+            Return MyBase.Channel.PopulateDgGroupUsersAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_DeleteGroupUsers(ByVal request As SVCSearch.DeleteGroupUsersRequest) As SVCSearch.DeleteGroupUsersResponse Implements SVCSearch.IService1.DeleteGroupUsers
+            Return MyBase.Channel.DeleteGroupUsers(request)
+        End Function
+        
+        Public Function DeleteGroupUsers(ByVal SecureID As Integer, ByVal CurrSelectedGroupName As String, ByVal GroupOwnerGuid As String, ByVal UserID As String, ByRef iDeleted As Integer, ByRef RetMsg As String) As Boolean
+            Dim inValue As SVCSearch.DeleteGroupUsersRequest = New SVCSearch.DeleteGroupUsersRequest()
+            inValue.SecureID = SecureID
+            inValue.CurrSelectedGroupName = CurrSelectedGroupName
+            inValue.GroupOwnerGuid = GroupOwnerGuid
+            inValue.UserID = UserID
+            inValue.iDeleted = iDeleted
+            inValue.RetMsg = RetMsg
+            Dim retVal As SVCSearch.DeleteGroupUsersResponse = CType(Me,SVCSearch.IService1).DeleteGroupUsers(inValue)
+            iDeleted = retVal.iDeleted
+            RetMsg = retVal.RetMsg
+            Return retVal.DeleteGroupUsersResult
+        End Function
+        
+        Public Function DeleteGroupUsersAsync(ByVal request As SVCSearch.DeleteGroupUsersRequest) As System.Threading.Tasks.Task(Of SVCSearch.DeleteGroupUsersResponse) Implements SVCSearch.IService1.DeleteGroupUsersAsync
+            Return MyBase.Channel.DeleteGroupUsersAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_getGroupOwnerGuidByGroupName(ByVal request As SVCSearch.getGroupOwnerGuidByGroupNameRequest) As SVCSearch.getGroupOwnerGuidByGroupNameResponse Implements SVCSearch.IService1.getGroupOwnerGuidByGroupName
+            Return MyBase.Channel.getGroupOwnerGuidByGroupName(request)
+        End Function
+        
+        Public Function getGroupOwnerGuidByGroupName(ByRef SecureID As Integer, ByVal GroupName As String) As String
+            Dim inValue As SVCSearch.getGroupOwnerGuidByGroupNameRequest = New SVCSearch.getGroupOwnerGuidByGroupNameRequest()
+            inValue.SecureID = SecureID
+            inValue.GroupName = GroupName
+            Dim retVal As SVCSearch.getGroupOwnerGuidByGroupNameResponse = CType(Me,SVCSearch.IService1).getGroupOwnerGuidByGroupName(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.getGroupOwnerGuidByGroupNameResult
+        End Function
+        
+        Public Function getGroupOwnerGuidByGroupNameAsync(ByVal request As SVCSearch.getGroupOwnerGuidByGroupNameRequest) As System.Threading.Tasks.Task(Of SVCSearch.getGroupOwnerGuidByGroupNameResponse) Implements SVCSearch.IService1.getGroupOwnerGuidByGroupNameAsync
+            Return MyBase.Channel.getGroupOwnerGuidByGroupNameAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_AddLibraryGroupUser(ByVal request As SVCSearch.AddLibraryGroupUserRequest) As SVCSearch.AddLibraryGroupUserResponse Implements SVCSearch.IService1.AddLibraryGroupUser
+            Return MyBase.Channel.AddLibraryGroupUser(request)
+        End Function
+        
+        Public Sub AddLibraryGroupUser(ByRef SecureID As Integer, ByVal GroupName As String, ByRef RC As Boolean, ByVal CurrUserID As String, ByVal SessionID As String, ByVal ControlSection As String)
+            Dim inValue As SVCSearch.AddLibraryGroupUserRequest = New SVCSearch.AddLibraryGroupUserRequest()
+            inValue.SecureID = SecureID
+            inValue.GroupName = GroupName
+            inValue.RC = RC
+            inValue.CurrUserID = CurrUserID
+            inValue.SessionID = SessionID
+            inValue.ControlSection = ControlSection
+            Dim retVal As SVCSearch.AddLibraryGroupUserResponse = CType(Me,SVCSearch.IService1).AddLibraryGroupUser(inValue)
+            SecureID = retVal.SecureID
+            RC = retVal.RC
+        End Sub
+        
+        Public Function AddLibraryGroupUserAsync(ByVal request As SVCSearch.AddLibraryGroupUserRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddLibraryGroupUserResponse) Implements SVCSearch.IService1.AddLibraryGroupUserAsync
+            Return MyBase.Channel.AddLibraryGroupUserAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_PopulateGroupUserGrid(ByVal request As SVCSearch.PopulateGroupUserGridRequest) As SVCSearch.PopulateGroupUserGridResponse Implements SVCSearch.IService1.PopulateGroupUserGrid
+            Return MyBase.Channel.PopulateGroupUserGrid(request)
+        End Function
+        
+        Public Function PopulateGroupUserGrid(ByRef SecureID As Integer, ByVal GroupName As String) As String
+            Dim inValue As SVCSearch.PopulateGroupUserGridRequest = New SVCSearch.PopulateGroupUserGridRequest()
+            inValue.SecureID = SecureID
+            inValue.GroupName = GroupName
+            Dim retVal As SVCSearch.PopulateGroupUserGridResponse = CType(Me,SVCSearch.IService1).PopulateGroupUserGrid(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.PopulateGroupUserGridResult
+        End Function
+        
+        Public Function PopulateGroupUserGridAsync(ByVal request As SVCSearch.PopulateGroupUserGridRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateGroupUserGridResponse) Implements SVCSearch.IService1.PopulateGroupUserGridAsync
+            Return MyBase.Channel.PopulateGroupUserGridAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_PopulateLibItemsGrid(ByVal request As SVCSearch.PopulateLibItemsGridRequest) As SVCSearch.PopulateLibItemsGridResponse Implements SVCSearch.IService1.PopulateLibItemsGrid
+            Return MyBase.Channel.PopulateLibItemsGrid(request)
+        End Function
+        
+        Public Function PopulateLibItemsGrid(ByRef SecureID As Integer, ByVal LibraryName As String, ByVal UserID As String) As String
+            Dim inValue As SVCSearch.PopulateLibItemsGridRequest = New SVCSearch.PopulateLibItemsGridRequest()
+            inValue.SecureID = SecureID
+            inValue.LibraryName = LibraryName
+            inValue.UserID = UserID
+            Dim retVal As SVCSearch.PopulateLibItemsGridResponse = CType(Me,SVCSearch.IService1).PopulateLibItemsGrid(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.PopulateLibItemsGridResult
+        End Function
+        
+        Public Function PopulateLibItemsGridAsync(ByVal request As SVCSearch.PopulateLibItemsGridRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateLibItemsGridResponse) Implements SVCSearch.IService1.PopulateLibItemsGridAsync
+            Return MyBase.Channel.PopulateLibItemsGridAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_PopulateDgAssigned(ByVal request As SVCSearch.PopulateDgAssignedRequest) As SVCSearch.PopulateDgAssignedResponse Implements SVCSearch.IService1.PopulateDgAssigned
+            Return MyBase.Channel.PopulateDgAssigned(request)
+        End Function
+        
+        Public Function PopulateDgAssigned(ByRef SecureID As Integer, ByVal LibraryName As String, ByVal UserID As String) As String
+            Dim inValue As SVCSearch.PopulateDgAssignedRequest = New SVCSearch.PopulateDgAssignedRequest()
+            inValue.SecureID = SecureID
+            inValue.LibraryName = LibraryName
+            inValue.UserID = UserID
+            Dim retVal As SVCSearch.PopulateDgAssignedResponse = CType(Me,SVCSearch.IService1).PopulateDgAssigned(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.PopulateDgAssignedResult
+        End Function
+        
+        Public Function PopulateDgAssignedAsync(ByVal request As SVCSearch.PopulateDgAssignedRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateDgAssignedResponse) Implements SVCSearch.IService1.PopulateDgAssignedAsync
+            Return MyBase.Channel.PopulateDgAssignedAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_ResetLibraryUsersCount(ByVal request As SVCSearch.ResetLibraryUsersCountRequest) As SVCSearch.ResetLibraryUsersCountResponse Implements SVCSearch.IService1.ResetLibraryUsersCount
+            Return MyBase.Channel.ResetLibraryUsersCount(request)
+        End Function
+        
+        Public Sub ResetLibraryUsersCount(ByRef SecureID As Integer, ByRef RC As Boolean)
+            Dim inValue As SVCSearch.ResetLibraryUsersCountRequest = New SVCSearch.ResetLibraryUsersCountRequest()
+            inValue.SecureID = SecureID
+            inValue.RC = RC
+            Dim retVal As SVCSearch.ResetLibraryUsersCountResponse = CType(Me,SVCSearch.IService1).ResetLibraryUsersCount(inValue)
+            SecureID = retVal.SecureID
+            RC = retVal.RC
+        End Sub
+        
+        Public Function ResetLibraryUsersCountAsync(ByVal request As SVCSearch.ResetLibraryUsersCountRequest) As System.Threading.Tasks.Task(Of SVCSearch.ResetLibraryUsersCountResponse) Implements SVCSearch.IService1.ResetLibraryUsersCountAsync
+            Return MyBase.Channel.ResetLibraryUsersCountAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_DeleteLibraryGroupUser(ByVal request As SVCSearch.DeleteLibraryGroupUserRequest) As SVCSearch.DeleteLibraryGroupUserResponse Implements SVCSearch.IService1.DeleteLibraryGroupUser
+            Return MyBase.Channel.DeleteLibraryGroupUser(request)
+        End Function
+        
+        Public Sub DeleteLibraryGroupUser(ByRef SecureID As Integer, ByVal GroupName As String, ByVal LibraryName As String, ByRef RC As Boolean)
+            Dim inValue As SVCSearch.DeleteLibraryGroupUserRequest = New SVCSearch.DeleteLibraryGroupUserRequest()
+            inValue.SecureID = SecureID
+            inValue.GroupName = GroupName
+            inValue.LibraryName = LibraryName
+            inValue.RC = RC
+            Dim retVal As SVCSearch.DeleteLibraryGroupUserResponse = CType(Me,SVCSearch.IService1).DeleteLibraryGroupUser(inValue)
+            SecureID = retVal.SecureID
+            RC = retVal.RC
+        End Sub
+        
+        Public Function DeleteLibraryGroupUserAsync(ByVal request As SVCSearch.DeleteLibraryGroupUserRequest) As System.Threading.Tasks.Task(Of SVCSearch.DeleteLibraryGroupUserResponse) Implements SVCSearch.IService1.DeleteLibraryGroupUserAsync
+            Return MyBase.Channel.DeleteLibraryGroupUserAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_ChangeUserPassword(ByVal request As SVCSearch.ChangeUserPasswordRequest) As SVCSearch.ChangeUserPasswordResponse Implements SVCSearch.IService1.ChangeUserPassword
+            Return MyBase.Channel.ChangeUserPassword(request)
+        End Function
+        
+        Public Function ChangeUserPassword(ByRef SecureID As Integer, ByVal UserLogin As String, ByVal OldPW As String, ByVal NewPw1 As String, ByVal NewPw2 As String) As Boolean
+            Dim inValue As SVCSearch.ChangeUserPasswordRequest = New SVCSearch.ChangeUserPasswordRequest()
+            inValue.SecureID = SecureID
+            inValue.UserLogin = UserLogin
+            inValue.OldPW = OldPW
+            inValue.NewPw1 = NewPw1
+            inValue.NewPw2 = NewPw2
+            Dim retVal As SVCSearch.ChangeUserPasswordResponse = CType(Me,SVCSearch.IService1).ChangeUserPassword(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.ChangeUserPasswordResult
+        End Function
+        
+        Public Function ChangeUserPasswordAsync(ByVal request As SVCSearch.ChangeUserPasswordRequest) As System.Threading.Tasks.Task(Of SVCSearch.ChangeUserPasswordResponse) Implements SVCSearch.IService1.ChangeUserPasswordAsync
+            Return MyBase.Channel.ChangeUserPasswordAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_SaveClickStats(ByVal request As SVCSearch.SaveClickStatsRequest) As SVCSearch.SaveClickStatsResponse Implements SVCSearch.IService1.SaveClickStats
+            Return MyBase.Channel.SaveClickStats(request)
+        End Function
+        
+        Public Sub SaveClickStats(ByVal SecureID As Integer, ByVal IID As Integer, ByVal UserID As String, ByRef RC As Boolean)
+            Dim inValue As SVCSearch.SaveClickStatsRequest = New SVCSearch.SaveClickStatsRequest()
+            inValue.SecureID = SecureID
+            inValue.IID = IID
+            inValue.UserID = UserID
+            inValue.RC = RC
+            Dim retVal As SVCSearch.SaveClickStatsResponse = CType(Me,SVCSearch.IService1).SaveClickStats(inValue)
+            RC = retVal.RC
+        End Sub
+        
+        Public Function SaveClickStatsAsync(ByVal request As SVCSearch.SaveClickStatsRequest) As System.Threading.Tasks.Task(Of SVCSearch.SaveClickStatsResponse) Implements SVCSearch.IService1.SaveClickStatsAsync
+            Return MyBase.Channel.SaveClickStatsAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_cleanUpLibraryItems(ByVal request As SVCSearch.cleanUpLibraryItemsRequest) As SVCSearch.cleanUpLibraryItemsResponse Implements SVCSearch.IService1.cleanUpLibraryItems
+            Return MyBase.Channel.cleanUpLibraryItems(request)
+        End Function
+        
+        Public Sub cleanUpLibraryItems(ByRef SecureID As Integer, ByVal UserID As String)
+            Dim inValue As SVCSearch.cleanUpLibraryItemsRequest = New SVCSearch.cleanUpLibraryItemsRequest()
+            inValue.SecureID = SecureID
+            inValue.UserID = UserID
+            Dim retVal As SVCSearch.cleanUpLibraryItemsResponse = CType(Me,SVCSearch.IService1).cleanUpLibraryItems(inValue)
+            SecureID = retVal.SecureID
+        End Sub
+        
+        Public Function cleanUpLibraryItemsAsync(ByVal request As SVCSearch.cleanUpLibraryItemsRequest) As System.Threading.Tasks.Task(Of SVCSearch.cleanUpLibraryItemsResponse) Implements SVCSearch.IService1.cleanUpLibraryItemsAsync
+            Return MyBase.Channel.cleanUpLibraryItemsAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_RemoveLibraryDirectories(ByVal request As SVCSearch.RemoveLibraryDirectoriesRequest) As SVCSearch.RemoveLibraryDirectoriesResponse Implements SVCSearch.IService1.RemoveLibraryDirectories
+            Return MyBase.Channel.RemoveLibraryDirectories(request)
+        End Function
+        
+        Public Sub RemoveLibraryDirectories(ByRef SecureID As Integer, ByVal UserID As String, ByVal DirectoryName As String, ByVal LibraryName As String, ByRef RC As Boolean, ByRef RetMsg As String)
+            Dim inValue As SVCSearch.RemoveLibraryDirectoriesRequest = New SVCSearch.RemoveLibraryDirectoriesRequest()
+            inValue.SecureID = SecureID
+            inValue.UserID = UserID
+            inValue.DirectoryName = DirectoryName
+            inValue.LibraryName = LibraryName
+            inValue.RC = RC
+            inValue.RetMsg = RetMsg
+            Dim retVal As SVCSearch.RemoveLibraryDirectoriesResponse = CType(Me,SVCSearch.IService1).RemoveLibraryDirectories(inValue)
+            SecureID = retVal.SecureID
+            RC = retVal.RC
+            RetMsg = retVal.RetMsg
+        End Sub
+        
+        Public Function RemoveLibraryDirectoriesAsync(ByVal request As SVCSearch.RemoveLibraryDirectoriesRequest) As System.Threading.Tasks.Task(Of SVCSearch.RemoveLibraryDirectoriesResponse) Implements SVCSearch.IService1.RemoveLibraryDirectoriesAsync
+            Return MyBase.Channel.RemoveLibraryDirectoriesAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_RemoveLibraryEmails(ByVal request As SVCSearch.RemoveLibraryEmailsRequest) As SVCSearch.RemoveLibraryEmailsResponse Implements SVCSearch.IService1.RemoveLibraryEmails
+            Return MyBase.Channel.RemoveLibraryEmails(request)
+        End Function
+        
+        Public Sub RemoveLibraryEmails(ByRef SecureID As Integer, ByVal FolderName As String, ByVal LibraryName As String, ByVal UserID As String, ByRef RC As Boolean, ByRef RetMsg As String)
+            Dim inValue As SVCSearch.RemoveLibraryEmailsRequest = New SVCSearch.RemoveLibraryEmailsRequest()
+            inValue.SecureID = SecureID
+            inValue.FolderName = FolderName
+            inValue.LibraryName = LibraryName
+            inValue.UserID = UserID
+            inValue.RC = RC
+            inValue.RetMsg = RetMsg
+            Dim retVal As SVCSearch.RemoveLibraryEmailsResponse = CType(Me,SVCSearch.IService1).RemoveLibraryEmails(inValue)
+            SecureID = retVal.SecureID
+            RC = retVal.RC
+            RetMsg = retVal.RetMsg
+        End Sub
+        
+        Public Function RemoveLibraryEmailsAsync(ByVal request As SVCSearch.RemoveLibraryEmailsRequest) As System.Threading.Tasks.Task(Of SVCSearch.RemoveLibraryEmailsResponse) Implements SVCSearch.IService1.RemoveLibraryEmailsAsync
+            Return MyBase.Channel.RemoveLibraryEmailsAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_AddSysMsg(ByVal request As SVCSearch.AddSysMsgRequest) As SVCSearch.AddSysMsgResponse Implements SVCSearch.IService1.AddSysMsg
+            Return MyBase.Channel.AddSysMsg(request)
+        End Function
+        
+        Public Sub AddSysMsg(ByRef SecureID As Integer, ByVal UserID As String, ByVal tMsg As String, ByVal RC As Boolean)
+            Dim inValue As SVCSearch.AddSysMsgRequest = New SVCSearch.AddSysMsgRequest()
+            inValue.SecureID = SecureID
+            inValue.UserID = UserID
+            inValue.tMsg = tMsg
+            inValue.RC = RC
+            Dim retVal As SVCSearch.AddSysMsgResponse = CType(Me,SVCSearch.IService1).AddSysMsg(inValue)
+            SecureID = retVal.SecureID
+        End Sub
+        
+        Public Function AddSysMsgAsync(ByVal request As SVCSearch.AddSysMsgRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddSysMsgResponse) Implements SVCSearch.IService1.AddSysMsgAsync
+            Return MyBase.Channel.AddSysMsgAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_AddLibraryDirectory(ByVal request As SVCSearch.AddLibraryDirectoryRequest) As SVCSearch.AddLibraryDirectoryResponse Implements SVCSearch.IService1.AddLibraryDirectory
+            Return MyBase.Channel.AddLibraryDirectory(request)
+        End Function
+        
+        Public Sub AddLibraryDirectory(ByRef SecureID As Integer, ByVal FolderName As String, ByVal LibraryName As String, ByVal UserID As String, ByRef RecordsAdded As Integer, ByRef RC As Boolean, ByRef RetMsg As String)
+            Dim inValue As SVCSearch.AddLibraryDirectoryRequest = New SVCSearch.AddLibraryDirectoryRequest()
+            inValue.SecureID = SecureID
+            inValue.FolderName = FolderName
+            inValue.LibraryName = LibraryName
+            inValue.UserID = UserID
+            inValue.RecordsAdded = RecordsAdded
+            inValue.RC = RC
+            inValue.RetMsg = RetMsg
+            Dim retVal As SVCSearch.AddLibraryDirectoryResponse = CType(Me,SVCSearch.IService1).AddLibraryDirectory(inValue)
+            SecureID = retVal.SecureID
+            RecordsAdded = retVal.RecordsAdded
+            RC = retVal.RC
+            RetMsg = retVal.RetMsg
+        End Sub
+        
+        Public Function AddLibraryDirectoryAsync(ByVal request As SVCSearch.AddLibraryDirectoryRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddLibraryDirectoryResponse) Implements SVCSearch.IService1.AddLibraryDirectoryAsync
+            Return MyBase.Channel.AddLibraryDirectoryAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_AddLibraryEmail(ByVal request As SVCSearch.AddLibraryEmailRequest) As SVCSearch.AddLibraryEmailResponse Implements SVCSearch.IService1.AddLibraryEmail
+            Return MyBase.Channel.AddLibraryEmail(request)
+        End Function
+        
+        Public Sub AddLibraryEmail(ByRef SecureID As Integer, ByVal EmailFolder As String, ByVal LibraryName As String, ByVal UserID As String, ByRef RecordsAdded As Integer, ByVal RC As Boolean, ByVal RetMsg As String)
+            Dim inValue As SVCSearch.AddLibraryEmailRequest = New SVCSearch.AddLibraryEmailRequest()
+            inValue.SecureID = SecureID
+            inValue.EmailFolder = EmailFolder
+            inValue.LibraryName = LibraryName
+            inValue.UserID = UserID
+            inValue.RecordsAdded = RecordsAdded
+            inValue.RC = RC
+            inValue.RetMsg = RetMsg
+            Dim retVal As SVCSearch.AddLibraryEmailResponse = CType(Me,SVCSearch.IService1).AddLibraryEmail(inValue)
+            SecureID = retVal.SecureID
+            RecordsAdded = retVal.RecordsAdded
+        End Sub
+        
+        Public Function AddLibraryEmailAsync(ByVal request As SVCSearch.AddLibraryEmailRequest) As System.Threading.Tasks.Task(Of SVCSearch.AddLibraryEmailResponse) Implements SVCSearch.IService1.AddLibraryEmailAsync
+            Return MyBase.Channel.AddLibraryEmailAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_PopulateLibraryGrid(ByVal request As SVCSearch.PopulateLibraryGridRequest) As SVCSearch.PopulateLibraryGridResponse Implements SVCSearch.IService1.PopulateLibraryGrid
+            Return MyBase.Channel.PopulateLibraryGrid(request)
+        End Function
+        
+        Public Function PopulateLibraryGrid(ByRef SecureID As Integer, ByVal UserID As String) As String
+            Dim inValue As SVCSearch.PopulateLibraryGridRequest = New SVCSearch.PopulateLibraryGridRequest()
+            inValue.SecureID = SecureID
+            inValue.UserID = UserID
+            Dim retVal As SVCSearch.PopulateLibraryGridResponse = CType(Me,SVCSearch.IService1).PopulateLibraryGrid(inValue)
+            SecureID = retVal.SecureID
+            Return retVal.PopulateLibraryGridResult
+        End Function
+        
+        Public Function PopulateLibraryGridAsync(ByVal request As SVCSearch.PopulateLibraryGridRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateLibraryGridResponse) Implements SVCSearch.IService1.PopulateLibraryGridAsync
+            Return MyBase.Channel.PopulateLibraryGridAsync(request)
         End Function
     End Class
 End Namespace

@@ -2549,6 +2549,12 @@ Public Class SVCSearch
 
     End Function
 
+
+
+    Public Function getNewListOfStrings(ByRef SecureID As Integer, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String, UserId As String, SessionID As String) As List(Of String) Implements IService1.getNewListOfStrings
+        Return DB.getNewListOfStrings(SecureID, MySql, RC, RetMsg)
+    End Function
+
     ''' <summary>
     ''' Gets the list of strings01.
     ''' </summary>
@@ -2560,7 +2566,7 @@ Public Class SVCSearch
     ''' <param name="SessionID">The session identifier.</param>
     ''' <returns>System.String.</returns>
     Public Function getListOfStrings01(ByRef SecureID As Integer, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String, UserId As String, SessionID As String) As String Implements IService1.getListOfStrings01
-        MySql = ENC.AES256DecryptString(MySql)
+        'MySql = ENC.AES256DecryptString(MySql)
         Return DB.getListOfStrings01(SecureID, MySql, RC, RetMsg)
     End Function
 

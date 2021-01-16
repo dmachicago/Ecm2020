@@ -288,22 +288,19 @@ Public Class popupGroupLibraries
 
     Sub client_PopulateLibraryListBox(ObjListOfRows As Object, RC As Boolean, retmsg As String)
 
-        Dim ListOfRows As New System.Collections.ObjectModel.ObservableCollection(Of SVCSearch.DS_ListOfStrings02)
-        ListOfRows = ObjListOfRows
-
+        'Dim ListOfRows As New System.Collections.ObjectModel.ObservableCollection(Of SVCSearch.DS_ListOfStrings02)
+        'ListOfRows = ObjListOfRows
 
         lbAssignedLibs.Items.Clear()
-        If ListOfRows.Count > 0 Then
-            For I As Integer = 0 To ListOfRows.Count - 1
-                Dim VDS As New SVCSearch.DS_ListOfStrings02
-                VDS = ListOfRows(I)
-                lbAssignedLibs.Items.Add(VDS.strItem)
+        Try
+            Dim strItems As String = retmsg
+            Dim strArray As String() = strItems.Split("|")
+            For Each item As String In strArray
+                lbAssignedLibs.Items.Add(item)
             Next
-        Else
-            gErrorCount += 1
-            SB.Text = "ERROR client_PopulateLibraryComboBox 100: " + retmsg
-            LOG.WriteTraceLog("PU GroupLibraries ERROR client_PopulateLibraryComboBox 100: " + retmsg)
-        End If
+        Catch ex As Exception
+            MessageBox.Show("ERROR client_PopulateAlertCombo 101: " + retmsg)
+        End Try
         'RemoveHandler ProxySearch.getListOfStringsCompleted, AddressOf client_PopulateLibraryComboBox
     End Sub
 

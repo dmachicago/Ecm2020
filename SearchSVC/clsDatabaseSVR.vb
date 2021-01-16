@@ -29838,6 +29838,48 @@ GetNextRecord:
         Return B
     End Function
 
+    Function getNewListOfStrings(ByRef SecureID As Integer, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String) As List(Of String)
+
+        'Dim ListOfItems As New System.Collections.Generic.List(Of DS_ListOfStrings01)
+        Dim ListOfItems As New List(Of String)
+
+        Try
+
+            Dim item As String = ""
+            Dim RSData As SqlDataReader = Nothing
+            Dim CS As String = DBgetConnStr()
+            Dim CONN As New SqlConnection(CS)
+            CONN.Open()
+            Dim command As New SqlCommand(MySql, CONN)
+            RSData = command.ExecuteReader()
+
+            If RSData.HasRows Then
+                Do While RSData.Read()
+                    item = RSData.GetValue(0).ToString
+                    'Dim CD As New DS_ListOfStrings01
+                    'CD.strItem = item
+                    ListOfItems.Add(item)
+                Loop
+            Else
+                ListOfItems = Nothing
+            End If
+            RSData.Close()
+            RSData = Nothing
+            RC = True
+        Catch ex As Exception
+            DBTrace(SecureID, 12350, "clsDataBase:getListOfStrings", ex.Message)
+            RC = False
+        Finally
+            GC.Collect()
+        End Try
+
+        'Dim Json As String = JsonConvert.SerializeObject(ListOfItems)
+        'Return Json
+
+        Return ListOfItems
+
+    End Function
+
     ''' <summary>
     ''' Gets the list of strings4.
     ''' </summary>
@@ -29889,24 +29931,33 @@ GetNextRecord:
     ''' <param name="MySql">My SQL.</param>
     ''' <param name="RC">if set to <c>true</c> [rc].</param>
     ''' <param name="RetMsg">The ret MSG.</param>
-    ''' <returns>System.String.</returns>
+    ''' <returns>System.String of values delimited by "|"</returns>
     Function getListOfStrings01(ByRef SecureID As Integer, ByVal MySql As String, ByRef RC As Boolean, ByRef RetMsg As String) As String
 
-        Dim ListOfItems As New System.Collections.Generic.List(Of DS_ListOfStrings01)
+        'Dim ListOfItems As New System.Collections.Generic.List(Of DS_ListOfStrings01)
+        Dim ListOfItems As New List(Of String)
+        Dim strdata = ""
 
         Try
+
+
             Dim item As String = ""
             Dim RSData As SqlDataReader = Nothing
-            Dim CS As String = DBgetConnStr() : Dim CONN As New SqlConnection(CS) : CONN.Open() : Dim command As New SqlCommand(MySql, CONN) : RSData = command.ExecuteReader()
+            Dim CS As String = DBgetConnStr()
+            Dim CONN As New SqlConnection(CS)
+            CONN.Open()
+            Dim command As New SqlCommand(MySql, CONN)
+            RSData = command.ExecuteReader()
+
             If RSData.HasRows Then
                 Do While RSData.Read()
                     item = RSData.GetValue(0).ToString
-                    Dim CD As New DS_ListOfStrings01
-                    CD.strItem = item
-                    ListOfItems.Add(CD)
+                    'Dim CD As New DS_ListOfStrings01
+                    'CD.strItem = item
+                    strdata += item + "|"
                 Loop
             Else
-                ListOfItems = Nothing
+                strdata = ""
             End If
             RSData.Close()
             RSData = Nothing
@@ -29918,9 +29969,10 @@ GetNextRecord:
             GC.Collect()
         End Try
 
-        Dim Json As String = JsonConvert.SerializeObject(ListOfItems)
+        'Dim Json As String = JsonConvert.SerializeObject(ListOfItems)
+        'Return Json
 
-        Return Json
+        Return strdata
 
     End Function
 

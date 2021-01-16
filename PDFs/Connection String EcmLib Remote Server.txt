@@ -1,0 +1,10 @@
+Data Source=ecmadmin.db.3591434.hostedresource.com; Initial Catalog=ecmadmin; User ID=ecmadmin; Password='Junebug1';
+
+URL: https://p3nmssqlpub.secureserver.net 
+
+Data Source=EcmLibrary.db.3591434.hostedresource.com; Initial Catalog=EcmLibrary; User ID=EcmLibrary; Password='Junebug1';
+
+
+p3nwdshsql-v06.shr.prod.phx3.secureserver.net
+DmaSupport
+Junebug1

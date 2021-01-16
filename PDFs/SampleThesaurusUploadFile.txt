@@ -1,0 +1,16 @@
+*comment
+related:
+beautiful
+liz
+elizabeth
+roxanne
+;
+
+replace:
+p:w2k
+p:win2k
+s:windows op sys
+s:windows 2000
+s:windows Vista
+;
+

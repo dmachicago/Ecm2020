@@ -63,7 +63,9 @@ Partial Public Class popupAlerts
         s = ENC2.AES256EncryptString(s)
         Dim BB As Boolean = ProxySearch.ExecuteSqlNewConn1(_SecureID, s, _UserID, ContractID)
         gLogSQL(BB, ENC2.AES256EncryptString(s))
-
+        If BB Then
+            populateNotificationCombo()
+        End If
     End Sub
 
     Sub deleteNotify()
@@ -85,7 +87,9 @@ Partial Public Class popupAlerts
         s = ENC2.AES256EncryptString(s)
         Dim BB As Boolean = ProxySearch.ExecuteSqlNewConn1(_SecureID, s, _UserID, ContractID)
         gLogSQL(BB, ENC2.AES256EncryptString(s))
-
+        If BB Then
+            populateNotificationCombo()
+        End If
     End Sub
 
     Sub SaveAlert()
@@ -117,6 +121,9 @@ Partial Public Class popupAlerts
         s = ENC2.AES256EncryptString(s)
         Dim BB As Boolean = ProxySearch.ExecuteSqlNewConn1(_SecureID, s, _UserID, ContractID)
         gLogSQL(BB, ENC2.AES256EncryptString(s))
+        If BB Then
+            populateAlertCombo()
+        End If
     End Sub
 
     Sub DeleteAlert()
@@ -160,8 +167,8 @@ Partial Public Class popupAlerts
         Dim strListOfItems As String = ""
         'AddHandler ProxySearch.getListOfStringsCompleted, AddressOf client_PopulateAlertCombo
         'EP.setSearchSvcEndPoint(proxy)
-        S = ENC2.AES256EncryptString(s)
-        Dim BB As Boolean = ProxySearch.getListOfStrings(_SecureID, strListOfItems, S, RC, RetMsg)
+        'S = ENC2.AES256EncryptString(s)
+        RC = ProxySearch.getListOfStrings(_SecureID, strListOfItems, S, RC, RetMsg)
         'Dim strListOfItems As String = ""
         ListOfAlerts = strListOfItems.Split("|")
 
@@ -193,28 +200,20 @@ Partial Public Class popupAlerts
 
         'AddHandler ProxySearch.getListOfStrings01Completed, AddressOf client_PopulateNotificationCombo
         'EP.setSearchSvcEndPoint(proxy)
-        S = ENC2.AES256EncryptString(s)
-        Dim ObjListOfRows As Object = ProxySearch.getListOfStrings01(_SecureID, S, RC, RetMsg, _UserID, ContractID)
+        'S = ENC2.AES256EncryptString(S)
+        Dim ObjListOfRows As String = ProxySearch.getListOfStrings01(_SecureID, S, RC, RetMsg, _UserID, ContractID)
         client_PopulateNotificationCombo(RC, RetMsg, ObjListOfRows)
 
     End Sub
-    Sub client_PopulateNotificationCombo(RC As Boolean, RetMsg As String, ObjListOfRows As Object)
-
-        Dim ListOfRows As New System.Collections.ObjectModel.ObservableCollection(Of SVCSearch.DS_ListOfStrings02)
-        ListOfRows = ObjListOfRows
+    Sub client_PopulateNotificationCombo(RC As Boolean, RetMsg As String, str As String)
 
         Try
-            If ListOfRows.Count > 0 Then
-                lbAlertContact.Items.Clear()
-                For Each ListItems In ListOfRows
-                    Dim sItem As String = ListItems.strItem
-                    lbAlertContact.Items.Add(sItem)
-                Next
-            Else
-                gErrorCount += 1
-                LOG.WriteToSqlLog("ERROR client_PopulateAlertCombo 100: " + RetMsg)
-                lblPopup.Content = "ERROR 100 - No alerts found:"
-            End If
+            lbAlertContact.Items.Clear()
+            Dim strItems As String = str
+            Dim strArray As String() = strItems.Split("|")
+            For Each item As String In strArray
+                lbAlertContact.Items.Add(item)
+            Next
         Catch ex As Exception
             LOG.WriteToSqlLog("ERROR client_PopulateAlertCombo 101: " + RetMsg)
             lblPopup.Content = "ERROR 101 - No alerts found:"

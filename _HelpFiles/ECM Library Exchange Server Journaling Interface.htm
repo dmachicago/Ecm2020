@@ -1,0 +1,1739 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 12">
+<meta name=Originator content="Microsoft Word 12">
+<link rel=File-List
+href="ECM%20Library%20Exchange%20Server%20Journaling%20Interface_files/filelist.xml">
+<link rel=Edit-Time-Data
+href="ECM%20Library%20Exchange%20Server%20Journaling%20Interface_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Dale Miller</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>Liz Garnand</o:LastAuthor>
+  <o:Revision>6</o:Revision>
+  <o:TotalTime>155</o:TotalTime>
+  <o:Created>2009-11-23T14:10:00Z</o:Created>
+  <o:LastSaved>2010-02-19T02:56:00Z</o:LastSaved>
+  <o:Pages>8</o:Pages>
+  <o:Words>1825</o:Words>
+  <o:Characters>10408</o:Characters>
+  <o:Lines>86</o:Lines>
+  <o:Paragraphs>24</o:Paragraphs>
+  <o:CharactersWithSpaces>12209</o:CharactersWithSpaces>
+  <o:Version>12.00</o:Version>
+ </o:DocumentProperties>
+ <o:OfficeDocumentSettings>
+  <o:RelyOnVML/>
+  <o:AllowPNG/>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+<link rel=dataStoreItem
+href="ECM%20Library%20Exchange%20Server%20Journaling%20Interface_files/item0020.xml"
+target="ECM%20Library%20Exchange%20Server%20Journaling%20Interface_files/props0021.xml">
+<link rel=themeData
+href="ECM%20Library%20Exchange%20Server%20Journaling%20Interface_files/themedata.thmx">
+<link rel=colorSchemeMapping
+href="ECM%20Library%20Exchange%20Server%20Journaling%20Interface_files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>130</w:Zoom>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:PunctuationKerning/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:SplitPgBreakAndParaMark/>
+   <w:DontVertAlignCellWithSp/>
+   <w:DontBreakConstrainedForcedTables/>
+   <w:DontVertAlignInTxbx/>
+   <w:Word11KerningPairs/>
+   <w:CachedColBalance/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
+  DefSemiHidden="true" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="267">
+  <w:LsdException Locked="false" Priority="0" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 9"/>
+  <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" Priority="10" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" Priority="11" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="22" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="59" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Table Grid"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611985 1107304683 0 0 415 0;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611985 1073741899 0 0 415 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520092929 1073786111 9 0 415 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520081665 -1073717157 41 0 66047 0;}
+@font-face
+	{font-family:Aharoni;
+	panose-1:2 1 8 3 2 1 4 3 2 3;
+	mso-font-charset:177;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:2049 0 0 0 32 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+h1
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 1 Char";
+	mso-style-next:Normal;
+	margin-top:24.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:14.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#365F91;
+	mso-themecolor:accent1;
+	mso-themeshade:191;
+	mso-font-kerning:0pt;
+	font-weight:bold;}
+h2
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 2 Char";
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+h3
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 3 Char";
+	mso-style-next:Normal;
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:purple;
+	mso-themecolor:followedhyperlink;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;}
+p.MsoIntenseQuote, li.MsoIntenseQuote, div.MsoIntenseQuote
+	{mso-style-noshow:yes;
+	mso-style-priority:30;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Intense Quote Char";
+	mso-style-next:Normal;
+	margin-top:10.0pt;
+	margin-right:.65in;
+	margin-bottom:14.0pt;
+	margin-left:.65in;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-bottom-alt:solid #4F81BD .5pt;
+	mso-border-bottom-themecolor:accent1;
+	padding:0in;
+	mso-padding-alt:0in 0in 4.0pt 0in;
+	font-size:11.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	font-weight:bold;
+	font-style:italic;}
+span.MsoIntenseReference
+	{mso-style-priority:32;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	font-variant:small-caps;
+	color:#C0504D;
+	mso-themecolor:accent2;
+	letter-spacing:.25pt;
+	font-weight:bold;
+	text-decoration:underline;
+	text-underline:single;}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 1";
+	mso-ansi-font-size:14.0pt;
+	mso-bidi-font-size:14.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#365F91;
+	mso-themecolor:accent1;
+	mso-themeshade:191;
+	font-weight:bold;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 2";
+	mso-ansi-font-size:18.0pt;
+	mso-bidi-font-size:18.0pt;
+	font-family:"Times New Roman","serif";
+	mso-ascii-font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-hansi-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+span.Heading3Char
+	{mso-style-name:"Heading 3 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 3";
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	font-weight:bold;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Balloon Text";
+	mso-ansi-font-size:8.0pt;
+	mso-bidi-font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-ascii-font-family:Tahoma;
+	mso-hansi-font-family:Tahoma;
+	mso-bidi-font-family:Tahoma;}
+span.IntenseQuoteChar
+	{mso-style-name:"Intense Quote Char";
+	mso-style-priority:30;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Intense Quote";
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	font-weight:bold;
+	font-style:italic;}
+p.style2, li.style2, div.style2
+	{mso-style-name:style2;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:Aharoni;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-size:12.0pt;
+	mso-ansi-font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 67.5pt 1.0in 1.0in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:327446236;
+	mso-list-template-ids:-963239908;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l0:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1
+	{mso-list-id:427044132;
+	mso-list-template-ids:-785713514;}
+@list l1:level1
+	{mso-level-start-at:4;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2
+	{mso-list-id:574437846;
+	mso-list-template-ids:-171792572;}
+@list l2:level1
+	{mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3
+	{mso-list-id:1211647383;
+	mso-list-template-ids:-239546850;}
+@list l3:level1
+	{mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4
+	{mso-list-id:1369188087;
+	mso-list-template-ids:286013322;}
+@list l4:level1
+	{mso-level-start-at:5;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5
+	{mso-list-id:1369532007;
+	mso-list-template-ids:-1843379590;}
+@list l5:level1
+	{mso-level-start-at:2;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l5:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6
+	{mso-list-id:1691450174;
+	mso-list-template-ids:-1350552928;}
+@list l6:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l6:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l7
+	{mso-list-id:1842692487;
+	mso-list-template-ids:369505058;}
+@list l7:level1
+	{mso-level-start-at:6;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l7:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l7:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l7:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l7:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l7:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l7:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l7:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l7:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l8
+	{mso-list-id:2073692504;
+	mso-list-template-ids:1874112178;}
+@list l8:level1
+	{mso-level-start-at:6;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l8:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l8:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l8:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l8:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l8:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l8:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l8:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l8:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+table.MsoTableGrid
+	{mso-style-name:"Table Grid";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-priority:59;
+	mso-style-unhide:no;
+	border:solid black 1.0pt;
+	mso-border-themecolor:text1;
+	mso-border-alt:solid black .5pt;
+	mso-border-themecolor:text1;
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-border-insideh:.5pt solid black;
+	mso-border-insideh-themecolor:text1;
+	mso-border-insidev:.5pt solid black;
+	mso-border-insidev-themecolor:text1;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="5122"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=MsoNormal><a name="_top"></a><o:p>&nbsp;</o:p></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid #7F7F7F .5pt;
+ mso-border-themecolor:text1;mso-border-themetint:128;mso-yfti-tbllook:1184;
+ mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:.5pt solid #7F7F7F;
+ mso-border-insideh-themecolor:text1;mso-border-insideh-themetint:128;
+ mso-border-insidev:.5pt solid #7F7F7F;mso-border-insidev-themecolor:text1;
+ mso-border-insidev-themetint:128'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=671 valign=top style='width:503.6pt;border:solid #D9D9D9 1.0pt;
+  mso-border-themecolor:background1;mso-border-themeshade:217;mso-border-alt:
+  solid #D9D9D9 .5pt;mso-border-themecolor:background1;mso-border-themeshade:
+  217;padding:0in 5.4pt 0in 5.4pt'>
+  <h1>ECM Library Exchange Server Archiver</h1>
+  <h3>Microsoft Exchange Server 2007 Journaling Interface</h3>
+  <p><span style='font-size:10.0pt;font-family:"Arial","sans-serif"'>Exchange
+  Server 2007, has many changes at the architectural level when compared to
+  Exchange 2003. ECM Library will only support 2007 so as to avoid always
+  playing catch-up. These changes maximize the features available, one of
+  them&nbsp;being journaling. <o:p></o:p></span></p>
+  <p><span style='font-size:10.0pt;font-family:"Arial","sans-serif"'>As a
+  reminder,&nbsp;journaling&nbsp;is the ability to record all&nbsp;messages
+  flowing in and out of&nbsp;an organization.<o:p></o:p></span></p>
+  <p><span style='font-size:10.0pt;font-family:"Arial","sans-serif"'>It is a
+  very useful feature because there are many legal and regulatory requirements,
+  such as the Sarbanes Oxley Act, SEC Rule 17A-4 and many more, that need a
+  journaling solution.<o:p></o:p></span></p>
+  <p><span style='font-size:10.0pt;font-family:"Arial","sans-serif"'>The
+  journaling method used in Exchange Server 2003 can be used in Exchange Server
+  2007, but now journaling can be used at the Hub Transport Server role. Due
+  to&nbsp;the characteristic of any message exchanged between users passing
+  through the Hub Transport Server role, new functionality such as journaling
+  mail-enabled contacts, mail-enabled groups, recording user messages with a
+  single journal rule without setting the changes in each mailbox database is
+  provided.<o:p></o:p></span></p>
+  <p><span style='font-size:10.0pt;font-family:"Arial","sans-serif"'>In
+  Exchange Server 2003, journaling took place directly in the mailbox store
+  because there was no hub transport role.<o:p></o:p></span></p>
+  <p><span style='font-size:10.0pt;font-family:"Arial","sans-serif"'>In
+  Exchange Server 2007 we can choose either to have the same option (allowing a
+  Journal mailbox to receive all message traffic from a mailbox database) or to
+  support a number of Mailbox databases. <b style='mso-bidi-font-weight:normal'><i
+  style='mso-bidi-font-style:normal'>We can also create a separate mailbox
+  database to store the mailbox which will receive the journaling. This is the
+  only option ECM Library will support. ECM Library can download a copy of the
+  emails in this exchange folder or it can download and remove the emails in
+  this folder. The latter reducing the chance of running out of storage space
+  on the Exchange Server. Then ,when uploaded in to the repository, the
+  downloaded emails will be removed from the ECM Library Exchange Interface
+  Directory.</i></b><o:p></o:p></span></p>
+  <div style='mso-element:para-border-div;border:none;border-bottom:solid #4F81BD 1.0pt;
+  mso-border-bottom-themecolor:accent1;mso-border-bottom-alt:solid #4F81BD .5pt;
+  mso-border-bottom-themecolor:accent1;padding:0in 0in 4.0pt 0in;margin-left:
+  .65in;margin-right:.65in'>
+  <p class=MsoIntenseQuote style='margin-top:10.0pt;margin-right:0in;
+  margin-bottom:14.0pt;margin-left:0in'><span style='font-size:9.0pt;
+  line-height:115%;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+  "Times New Roman";color:black;mso-themecolor:text1;font-weight:normal;
+  mso-bidi-font-weight:bold'>This is the best way as a company’s Exchange
+  Server administrator can set up the “Master Mail Folder”, or whatever they
+  call it and we can download directly from that folder into ECM Library. It is
+  fast, takes about 15 minutes to put it in place and then it just sits on a
+  workstation or server and runs. It is “set it up once” and it is done. All
+  emails throughout the enterprise can be captured and archived before any user
+  sees them. When we say this is the only option we will support, we sincerely
+  mean, “This is the only option we will support out of the box. Others on an
+  as needed, as negotiated, and a contracted basis.”</span><span
+  style='font-size:9.0pt;line-height:115%;font-family:"Calibri","sans-serif";
+  mso-ascii-theme-font:minor-latin;mso-fareast-font-family:"Times New Roman";
+  mso-hansi-theme-font:minor-latin;mso-bidi-font-family:"Times New Roman";
+  mso-bidi-theme-font:minor-bidi;color:black;mso-themecolor:text1;font-weight:
+  normal;mso-bidi-font-weight:bold'><o:p></o:p></span></p>
+  </div>
+  <p class=MsoNormal><span style='font-size:10.0pt;line-height:115%;font-family:
+  "Arial","sans-serif";mso-fareast-font-family:"Times New Roman"'>However, ECM
+  Library, unlike most, will support going straight after a POP Server or
+  Exchange Server email download. This will not allow a journaling scenario,
+  but will also allow for administrators and certain select users to set ECM
+  Library such that it does a direct read from the server for an individual
+  user. Thus, it bypasses the need for an outlook interface and is by no means
+  confined in its ability to capture emails. <o:p></o:p></span></p>
+  <b><u><span style='font-size:11.0pt;line-height:115%;font-family:"Times New Roman","serif";
+  mso-fareast-font-family:"Times New Roman";font-variant:small-caps;color:#C0504D;
+  mso-themecolor:accent2;text-transform:uppercase;letter-spacing:.25pt;
+  mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><br
+  clear=all style='mso-special-character:line-break;page-break-before:always'>
+  </span></u></b>
+  <p class=MsoNormal><span class=MsoIntenseReference><span style='font-family:
+  "Calibri","sans-serif";mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+  "Times New Roman";mso-hansi-theme-font:minor-latin;mso-bidi-font-family:"Times New Roman";
+  mso-bidi-theme-font:minor-bidi;text-transform:uppercase'><o:p><span
+   style='text-decoration:none'>&nbsp;</span></o:p></span></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span lang=EN style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN'>In Exchange
+  Server 2003, journaling took place directly in the mailbox store because
+  there was no hub transport role.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span lang=EN style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN'>In Exchange
+  Server 2007 we can choose either to have the same option (allowing a Journal
+  mailbox to receive all message traffic from a mailbox database) or to support
+  a number of Mailbox databases. We can also create a separate mailbox database
+  to store the mailbox which will receive the journaling.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span lang=EN style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN'>In the
+  following example, we are going to configure a mailbox database in Exchange
+  Server 2007 to record all user messages that have been sent and received
+  within the same database to be redirected to a specific mailbox.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span lang=EN style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN'>To configure
+  Journaling for a specific mailbox database, follow these steps:<o:p></o:p></span></p>
+  <ol start=1 type=1>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;line-height:normal;mso-list:l3 level1 lfo1;tab-stops:list .5in'><span
+       lang=EN style='font-size:12.0pt;font-family:"Arial","sans-serif";
+       mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN'>Open the
+       <b>Exchange Management Console.</b> <o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;line-height:normal;mso-list:l3 level1 lfo1;tab-stops:list .5in'><span
+       lang=EN style='font-size:12.0pt;font-family:"Arial","sans-serif";
+       mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN'>Expand <b>Server
+       Configuration</b>, and then click on <b>Mailbox Database</b>. <o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;line-height:normal;mso-list:l3 level1 lfo1;tab-stops:list .5in'><span
+       lang=EN style='font-size:12.0pt;font-family:"Arial","sans-serif";
+       mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN'>In the <b>Toolbox
+       Actions of selected Mailbox Database</b> click on <b>Properties</b>
+       (Figure 01).<o:p></o:p></span></li>
+  </ol>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-no-proof:yes'><v:shapetype
+   id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+   path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+   <v:stroke joinstyle="miter"/>
+   <v:formulas>
+    <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+    <v:f eqn="sum @0 1 0"/>
+    <v:f eqn="sum 0 0 @1"/>
+    <v:f eqn="prod @2 1 2"/>
+    <v:f eqn="prod @3 21600 pixelWidth"/>
+    <v:f eqn="prod @3 21600 pixelHeight"/>
+    <v:f eqn="sum @0 0 1"/>
+    <v:f eqn="prod @6 1 2"/>
+    <v:f eqn="prod @7 21600 pixelWidth"/>
+    <v:f eqn="sum @8 21600 0"/>
+    <v:f eqn="prod @7 21600 pixelHeight"/>
+    <v:f eqn="sum @10 21600 0"/>
+   </v:formulas>
+   <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+   <o:lock v:ext="edit" aspectratio="t"/>
+  </v:shapetype><v:shape id="_x0000_i1040" type="#_x0000_t75" alt="http://www.msexchange.org/img/upl/image002a1159366682671.JPG"
+   style='width:403.5pt;height:202.5pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="ECM%20Library%20Exchange%20Server%20Journaling%20Interface_files/image001.jpg"
+    o:title="image002a1159366682671"/>
+  </v:shape></span><span lang=EN style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN'><br>
+  <b>Figure&nbsp;01:</b> Exchange Management Console – Requesting Properties of
+  Mailbox Database<o:p></o:p></span></p>
+  <ol start=4 type=1>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;line-height:normal;mso-list:l1 level1 lfo2;tab-stops:list .5in'><span
+       lang=EN style='font-size:12.0pt;font-family:"Arial","sans-serif";
+       mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN'>In the <b>Mailbox
+       Database Properties </b>page, go to the <b>General</b> tab and then
+       select the <b>Journal Recipient</b> checkbox (Figure 02).<o:p></o:p></span></li>
+  </ol>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-no-proof:yes'><v:shape id="_x0000_i1039"
+   type="#_x0000_t75" alt="http://www.msexchange.org/img/upl/image0041159366682750.jpg"
+   style='width:249pt;height:275.25pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="ECM%20Library%20Exchange%20Server%20Journaling%20Interface_files/image002.jpg"
+    o:title="image0041159366682750"/>
+  </v:shape></span><span lang=EN style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN'><br>
+  <b>Figure&nbsp;02:</b> Mailbox Database Properties Page<o:p></o:p></span></p>
+  <ol start=5 type=1>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;line-height:normal;mso-list:l4 level1 lfo3;tab-stops:list .5in'><span
+       lang=EN style='font-size:12.0pt;font-family:"Arial","sans-serif";
+       mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN'>Before
+       checking <b>Journal Recipient</b>, click on <b>Browse</b> and choose
+       which mailbox will get all messages from the mailbox database. For the
+       purposes of this article, this user is called <b>Journal</b> (Figure
+       03), click <b>OK </b>to finish.<o:p></o:p></span></li>
+  </ol>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-no-proof:yes'><v:shape id="_x0000_i1038"
+   type="#_x0000_t75" alt="http://www.msexchange.org/img/upl/image0061159366682890.jpg"
+   style='width:283.5pt;height:258.75pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="ECM%20Library%20Exchange%20Server%20Journaling%20Interface_files/image003.jpg"
+    o:title="image0061159366682890"/>
+  </v:shape></span><span lang=EN style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN'><br>
+  <b>Figure 03:</b> Selecting the user who will receive all messages of
+  selected Mailbox Database<o:p></o:p></span></p>
+  <ol start=6 type=1>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;line-height:normal;mso-list:l7 level1 lfo4;tab-stops:list .5in'><span
+       lang=EN style='font-size:12.0pt;font-family:"Arial","sans-serif";
+       mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN'>This is
+       the final screen of journaling settings at mailbox database
+       level;&nbsp;now, all the messages&nbsp;by existing users in the mailbox database,
+       will be copied to the mailbox called <b>Journal</b> (Figure 04).<o:p></o:p></span></li>
+  </ol>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-no-proof:yes'><v:shape id="_x0000_i1037"
+   type="#_x0000_t75" alt="http://www.msexchange.org/img/upl/image0081159366889609.jpg"
+   style='width:248.25pt;height:274.5pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="ECM%20Library%20Exchange%20Server%20Journaling%20Interface_files/image004.jpg"
+    o:title="image0081159366889609"/>
+  </v:shape></span><span lang=EN style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN'><br>
+  <b>Figure 04:</b> Mailbox Database with Journal Recipient enabled and set to
+  Journal recipient<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span lang=EN style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN'>From now on,
+  all the messages from all users that have mailboxes in this mailbox database
+  will be recorded&nbsp;in the mailbox named <b>Journal</b>.<o:p></o:p></span></p>
+  <h1><span lang=EN style='mso-fareast-font-family:"Times New Roman";
+  mso-ansi-language:EN'>Testing the traditional way of Journaling<o:p></o:p></span></h1>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span lang=EN style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN'>To check
+  which users will be affected by our configuration, we should run a cmdlet. To
+  do this, go to the MSH console and type the following:<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><i><span lang=EN style='font-size:12.0pt;font-family:
+  "Arial","sans-serif";mso-fareast-font-family:"Times New Roman";mso-ansi-language:
+  EN'>Get-Mailbox | Group-Object database | fl</span></i><span lang=EN
+  style='font-size:12.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
+  "Times New Roman";mso-ansi-language:EN'> <o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span lang=EN style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN'>The output of
+  this command will be a list of all mailbox databases with the respective
+  users as shown in Figure 05.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-no-proof:yes'><v:shape id="_x0000_i1036"
+   type="#_x0000_t75" alt="http://www.msexchange.org/img/upl/image0101159366890015.jpg"
+   style='width:426pt;height:120.75pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="ECM%20Library%20Exchange%20Server%20Journaling%20Interface_files/image005.jpg"
+    o:title="image0101159366890015"/>
+  </v:shape></span><span lang=EN style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN'><br>
+  <b>Figure 05:</b> Viewing users by Mailbox Database<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span lang=EN style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN'>Now, we will
+  test this feature by&nbsp;sending a message from the user <i>Anderson
+  Patricio</i> to <i>Jose Rodas</i>. <o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span lang=EN style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN'>Once this
+  message is sent, we will have to check the Journal mailbox and analyze if the
+  message was recorded. We can see all the recipient&nbsp;information and the
+  real message will appear as an attachment.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-no-proof:yes'><v:shape id="_x0000_i1035"
+   type="#_x0000_t75" alt="http://www.msexchange.org/img/upl/Figure06-new1159437881593.JPG"
+   style='width:405pt;height:201pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="ECM%20Library%20Exchange%20Server%20Journaling%20Interface_files/image006.jpg"
+    o:title="Figure06-new1159437881593"/>
+  </v:shape></span><span lang=EN style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN'><br>
+  <b>Figure 06:</b> Viewing the message sent by User the user in the Journal
+  Mailbox<o:p></o:p></span></p>
+  <p class=MsoNormal><span class=MsoIntenseReference><span style='font-size:
+  14.0pt;line-height:115%;mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
+  major-fareast;mso-bidi-font-family:"Times New Roman";text-transform:uppercase'><o:p><span
+   style='text-decoration:none'>&nbsp;</span></o:p></span></span></p>
+  <h1>Overview – Exchange Server 2007 Journaling Rules</h1>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>Exchange Server 2007 uses Hub
+  Transport to journal messages, so it is valid for the entire organization
+  because all the information on Hub transport server is kept and replicated on
+  Active Directory. The process of&nbsp;message&nbsp;journaling&nbsp;has three
+  main components:<o:p></o:p></span></p>
+  <ul type=disc>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;mso-list:l0 level1 lfo5;tab-stops:list .5in'><b><span
+       style='font-size:12.0pt;line-height:115%;font-family:"Arial","sans-serif";
+       mso-fareast-font-family:"Times New Roman"'>Journal agent:</span></b><span
+       style='font-size:12.0pt;line-height:115%;font-family:"Arial","sans-serif";
+       mso-fareast-font-family:"Times New Roman"'>&nbsp;This is an agent that
+       can be configured to journal e-mail messages that are sent or received
+       by recipients in an Exchange 2007 organization. <o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;mso-list:l0 level1 lfo5;tab-stops:list .5in'><b><span
+       style='font-size:12.0pt;line-height:115%;font-family:"Arial","sans-serif";
+       mso-fareast-font-family:"Times New Roman"'>Journaling Mailboxes:</span></b><span
+       style='font-size:12.0pt;line-height:115%;font-family:"Arial","sans-serif";
+       mso-fareast-font-family:"Times New Roman"'>&nbsp;This is a mailbox that
+       is only used for collecting journal reports (messages). <o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;mso-list:l0 level1 lfo5;tab-stops:list .5in'><b><span
+       style='font-size:12.0pt;line-height:115%;font-family:"Arial","sans-serif";
+       mso-fareast-font-family:"Times New Roman"'>Journal Reports</span></b><span
+       style='font-size:12.0pt;line-height:115%;font-family:"Arial","sans-serif";
+       mso-fareast-font-family:"Times New Roman"'>:&nbsp;This is the message
+       that Microsoft Exchange generates when a message matches an existent
+       journal rule and then is submitted to the journaling mailbox. <o:p></o:p></span></li>
+  </ul>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>The journaling process is very
+  simple. All the messages that pass through the Hub transport are inspected,
+  and if they match&nbsp;the defined criteria that was configured in the
+  journal rule, a journal report will be created and delivered to the Journaling
+  Mailbox as shown in Figure 07.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-no-proof:yes'><v:shape id="Picture_x0020_1"
+   o:spid="_x0000_i1034" type="#_x0000_t75" alt="http://www.msexchange.org/img/upl/Figure07-new1159437881593.JPG"
+   style='width:421.5pt;height:338.25pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="ECM%20Library%20Exchange%20Server%20Journaling%20Interface_files/image007.jpg"
+    o:title="Figure07-new1159437881593"/>
+  </v:shape></span><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'><br>
+  <b>Figure 07:</b> Process of journaling in Exchange Server 2007<o:p></o:p></span></p>
+  <h1><span style='mso-fareast-font-family:"Times New Roman"'>Using the new
+  Exchange Server 2007 feature<o:p></o:p></span></h1>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>In this section, we will start
+  using the new&nbsp;Exchange Server 2007 feature: the Journaling Rules.
+  Consider the following scenario: we will record all messages sent and
+  received from user <b>Jose Rodas</b> in the mailbox <b>Journal</b>.<o:p></o:p></span></p>
+  <h3><span style='font-family:"Arial","sans-serif";mso-fareast-font-family:
+  "Times New Roman"'>To create a journal rule, follow these steps:<o:p></o:p></span></h3>
+  <ol start=1 type=1>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;line-height:normal;mso-list:l2 level1 lfo6;tab-stops:list .5in'><span
+       style='font-size:12.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
+       "Times New Roman"'>Open the <b>Exchange Management Console</b>, expand <b>Organization
+       Configuration</b>, click <b>Hub Transport</b>, and select <b>New
+       Journaling Rule</b> on the Toolbox <b>Actions</b> (Figure 08).<o:p></o:p></span></li>
+  </ol>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-no-proof:yes'><v:shape id="Picture_x0020_2"
+   o:spid="_x0000_i1033" type="#_x0000_t75" alt="http://www.msexchange.org/img/upl/image016a1159367162265.JPG"
+   style='width:403.5pt;height:186pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="ECM%20Library%20Exchange%20Server%20Journaling%20Interface_files/image008.jpg"
+    o:title="image016a1159367162265"/>
+  </v:shape></span><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'><br>
+  <b>Figure 08:</b> Creating the new journaling rule<o:p></o:p></span></p>
+  <ol start=2 type=1>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;line-height:normal;mso-list:l5 level1 lfo7;tab-stops:list .5in'><span
+       style='font-size:12.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
+       "Times New Roman"'>On the <b>New Journaling Rule</b> page, type a name
+       on the <b>Rule name</b> field. This name can have up to 245 characters. <o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;line-height:normal;mso-list:l5 level1 lfo7;tab-stops:list .5in'><span
+       style='font-size:12.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
+       "Times New Roman"'>In the <b>Journal e-mail address</b> field, select
+       the recipient that will get all the message traffic for this rule. <o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;line-height:normal;mso-list:l5 level1 lfo7;tab-stops:list .5in'><span
+       style='font-size:12.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
+       "Times New Roman"'>In <b>Scope</b> we can choose one of these options: <o:p></o:p></span></li>
+   <ul type=circle>
+    <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+        auto;line-height:normal;mso-list:l5 level2 lfo7;tab-stops:list 1.0in'><b><span
+        style='font-size:12.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
+        "Times New Roman"'>Global</span></b><span style='font-size:12.0pt;
+        font-family:"Arial","sans-serif";mso-fareast-font-family:"Times New Roman"'>:
+        All messages (Internal and External) <o:p></o:p></span></li>
+    <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+        auto;line-height:normal;mso-list:l5 level2 lfo7;tab-stops:list 1.0in'><b><span
+        style='font-size:12.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
+        "Times New Roman"'>External</span></b><span style='font-size:12.0pt;
+        font-family:"Arial","sans-serif";mso-fareast-font-family:"Times New Roman"'>:
+        Only external messages <o:p></o:p></span></li>
+    <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+        auto;line-height:normal;mso-list:l5 level2 lfo7;tab-stops:list 1.0in'><b><span
+        style='font-size:12.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
+        "Times New Roman"'>Internal</span></b><span style='font-size:12.0pt;
+        font-family:"Arial","sans-serif";mso-fareast-font-family:"Times New Roman"'>:
+        Only internal messages<o:p></o:p></span></li>
+   </ul>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;line-height:normal;mso-list:l5 level1 lfo7;tab-stops:list .5in'><span
+       style='font-size:12.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
+       "Times New Roman"'>In the <b>Journal e-mail for recipient</b> field
+       select the user who you want&nbsp;a record of&nbsp;his/her messages. For
+       the purpose of our example, we have made a journal rule for all messages
+       sent and received for the user jose@apex07.beta.<o:p></o:p></span></li>
+  </ol>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-no-proof:yes'><v:shape id="Picture_x0020_3"
+   o:spid="_x0000_i1032" type="#_x0000_t75" alt="http://www.msexchange.org/img/upl/image0181159367163125.jpg"
+   style='width:358.5pt;height:312.75pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="ECM%20Library%20Exchange%20Server%20Journaling%20Interface_files/image009.jpg"
+    o:title="image0181159367163125"/>
+  </v:shape></span><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'><br>
+  <b>Figure 09:</b> Creating the journal rule<o:p></o:p></span></p>
+  <ol start=6 type=1>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;line-height:normal;mso-list:l8 level1 lfo8;tab-stops:list .5in'><span
+       style='font-size:12.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
+       "Times New Roman"'>On the <b>Completion</b> page, the result of the rule
+       creation will appear on the screen with the cmdlet used to create the
+       rule. Click <b>Finish</b> to exit (Figure 09).<o:p></o:p></span></li>
+  </ol>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-no-proof:yes'><v:shape id="Picture_x0020_4"
+   o:spid="_x0000_i1031" type="#_x0000_t75" alt="http://www.msexchange.org/img/upl/image0201159367456218.jpg"
+   style='width:358.5pt;height:312.75pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="ECM%20Library%20Exchange%20Server%20Journaling%20Interface_files/image010.jpg"
+    o:title="image0201159367456218"/>
+  </v:shape></span><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'><br>
+  <b>Figure 10:</b> Finishing the rule creation<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal;mso-outline-level:2'><b><span style='font-size:18.0pt;
+  font-family:"Arial","sans-serif";mso-fareast-font-family:"Times New Roman"'>Testing
+  the Journaling Rule…<o:p></o:p></span></b></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>We will send a test message from
+  the user <i>Anderson Patricio </i>to the user<i> Jose Rodas. </i>The expected
+  result is to get the message in our recently configured Journal Mailbox
+  (Figure 11).<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-no-proof:yes'><v:shape id="Picture_x0020_5"
+   o:spid="_x0000_i1030" type="#_x0000_t75" alt="http://www.msexchange.org/img/upl/image0221159367456625.gif"
+   style='width:340.5pt;height:221.25pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="ECM%20Library%20Exchange%20Server%20Journaling%20Interface_files/image011.gif"
+    o:title="image0221159367456625"/>
+  </v:shape></span><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'><br>
+  <b>Figure 11:</b> User Anderson Patricio sends a test message to Jose Rodas
+  to test a recently created Journaling Rule<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>Now, we can access the Journal
+  mailbox and check if the journal rule is working correctly (Figure 12). <o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-no-proof:yes'><v:shape id="Picture_x0020_6"
+   o:spid="_x0000_i1029" type="#_x0000_t75" alt="http://www.msexchange.org/img/upl/Figure12-new1159437881609.JPG"
+   style='width:420pt;height:170.25pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="ECM%20Library%20Exchange%20Server%20Journaling%20Interface_files/image012.jpg"
+    o:title="Figure12-new1159437881609"/>
+  </v:shape></span><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'><br>
+  <b>Figure 12: </b>Viewing the message recorded in Microsoft Outlook Web
+  Access<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>At this point, we see that the
+  journaling rule is working as expected. It was completed with just a rule in
+  the&nbsp;Hub Transport role at Organizational level.<o:p></o:p></span></p>
+  <h1><span style='font-family:"Arial","sans-serif";mso-fareast-font-family:
+  "Times New Roman"'>How can I make a journalin</span><span style='font-family:
+  "Arial","sans-serif"'>g</span><span style='font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'> rule for the whole organization?<o:p></o:p></span></h1>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>In many cases, the journaling feature
+  is required for all the members of an organization because of legal
+  requirements, as we described in the beginning of this article. Using
+  Journaling Rules makes&nbsp;this process&nbsp;easier, storing all the users'
+  messages in the same, or another, mailbox database than the one that actually
+  stores the mailboxes&nbsp;by&nbsp;just creating&nbsp;a rule. <o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>The creation process is just the
+  same, the only difference is&nbsp;that we do not need to choose anything on <i>Journal
+  e-mail for recipient</i> so all the organization's&nbsp;mail traffic&nbsp;will
+  be stored in the Journal mailbox (Figure 13). <o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-no-proof:yes'><v:shape id="Picture_x0020_7"
+   o:spid="_x0000_i1028" type="#_x0000_t75" alt="http://www.msexchange.org/img/upl/image0261159367668171.jpg"
+   style='width:362.25pt;height:327.75pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="ECM%20Library%20Exchange%20Server%20Journaling%20Interface_files/image013.jpg"
+    o:title="image0261159367668171"/>
+  </v:shape></span><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'><br>
+  <b>Figure 13: </b>Creating a Journaling Rule for all users<o:p></o:p></span></p>
+  <h1><span style='font-family:"Arial","sans-serif";mso-fareast-font-family:
+  "Times New Roman"'>Problem Resolution: Journaling vs. Transport Rules<o:p></o:p></span></h1>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>In some cases, we could get a
+  conflict between Transport Rules and Journal Rules.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>In order to&nbsp;better understand
+  this difference, we will use the following example. There is a transport rule
+  that blocks all the messages between users Anderson Patricio and Jose Rodas
+  (Ethical Wall), but the administrator is required to record all the messages
+  before they are dropped.<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>By default, the Transport Agent
+  rules are executed first then Journaling Rules. So,&nbsp;in this situation,
+  it will not be possible to&nbsp;journal when you have a transport rule that
+  deletes some messages. The order of agent transport in Exchange 2007 is shown
+  in the figure below (Figure 14). <o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-no-proof:yes'><v:shape id="Picture_x0020_8"
+   o:spid="_x0000_i1027" type="#_x0000_t75" alt="http://www.msexchange.org/img/upl/image0281159367669734.gif"
+   style='width:333.75pt;height:402.75pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="ECM%20Library%20Exchange%20Server%20Journaling%20Interface_files/image014.gif"
+    o:title="image0281159367669734"/>
+  </v:shape></span><b><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></b></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><b><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>Figure 14:</span></b><span
+  style='font-size:12.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
+  "Times New Roman"'> Some of Hub Transport Architecture. The full version can
+  be found </span><span style='font-family:"Arial","sans-serif";mso-fareast-font-family:
+  "Times New Roman"'><a
+  href="http://download.microsoft.com/download/f/f/b/ffb96cba-fc3e-476a-a27a-50d63d36d720/Exchange2007_HubTransportRoleArchitecture.pdf"
+  target="_blank"><span style='font-size:12.0pt'>here</span></a></span><span
+  style='font-size:12.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
+  "Times New Roman"'>&nbsp;(image courtesy of Microsoft)<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>So, as stated earlier, the default
+  order does not let us record blocked messages on Transport Rules, so let’s
+  check the order through a cmdlet called <b>Get-TransportAgent</b> in
+  the&nbsp;Exchange Management Shell (Figure 15).<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>To check the orders that are
+  assigned, type the following&nbsp;in an MSH Console:<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><i><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>Get-TransportAgent</span></i><span
+  style='font-size:12.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
+  "Times New Roman"'><o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-no-proof:yes'><v:shape id="Picture_x0020_9"
+   o:spid="_x0000_i1026" type="#_x0000_t75" alt="http://www.msexchange.org/img/upl/image0301159367670406.jpg"
+   style='width:423.75pt;height:120pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="ECM%20Library%20Exchange%20Server%20Journaling%20Interface_files/image015.jpg"
+    o:title="image0301159367670406"/>
+  </v:shape></span><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'><br>
+  <b>Figure 15: </b>Checking the TransportAgent order priority<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>In this example, our scenario will
+  not work as expected, in other words, the blocked message will not be
+  recorded in the mailbox Journal. <o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>To solve this, we will have to
+  change the transport agents order with the Set-TransportAgent cmdlet. <o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>The full syntax to solve this is: <o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><i><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>Set-TransportAgent
+  &lt;Transport-Agent-Name&gt; -Priority:&lt;Number&gt; (Figure 16).</span></i><span
+  style='font-size:12.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
+  "Times New Roman"'><o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman";mso-no-proof:yes'><v:shape id="Picture_x0020_10"
+   o:spid="_x0000_i1025" type="#_x0000_t75" alt="http://www.msexchange.org/img/upl/image0321159367940296.jpg"
+   style='width:375pt;height:116.25pt;visibility:visible;mso-wrap-style:square'>
+   <v:imagedata src="ECM%20Library%20Exchange%20Server%20Journaling%20Interface_files/image016.jpg"
+    o:title="image0321159367940296"/>
+  </v:shape></span><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'><br>
+  <b>Figure 16: </b>Changing Agents priority and visualizing them after changes<o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>With this change, our scenario
+  works as expected. The Journaling Agent has a higher priority than the
+  Transport Rule Agent. This means that even blocked messages will be recorded
+  in the Journal mailbox. We have it all and there is little chance for
+  something to get by the archive process.<o:p></o:p></span></p>
+  <h3><span style='font-family:"Arial","sans-serif";mso-fareast-font-family:
+  "Times New Roman"'>Summary<o:p></o:p></span></h3>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>The two different methods: <o:p></o:p></span></p>
+  <ul type=disc>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;line-height:normal;mso-list:l6 level1 lfo9;tab-stops:list .5in'><span
+       style='font-size:12.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
+       "Times New Roman"'>The first&nbsp;being similar to Exchange Server 2003
+       (mailbox database). {not preferred and not supported at this time}<o:p></o:p></span></li>
+   <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+       auto;line-height:normal;mso-list:l6 level1 lfo9;tab-stops:list .5in'><span
+       style='font-size:12.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
+       "Times New Roman"'>The second, using journaling rules, which is a
+       feature that is available in Exchange Server 2007. <o:p></o:p></span></li>
+  </ul>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>It is clear that this new
+  method&nbsp;of journaling is easier and more advanced than the method used in
+  previous versions of Exchange Server. <o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+  line-height:normal'><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>We also determined that using the
+  TransportAgent is much better as orders in the Hub Transport Role of Exchange
+  Server 2007 using cmdlets&nbsp;in the Exchange Management Console. <b
+  style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:normal'>All
+  setup by the corporate administrators </i></b>and allowing ECM Library top
+  interface in a fast and smooth manner.<o:p></o:p></span></p>
+  <p class=style2><o:p>&nbsp;</o:p></p>
+  <p class=style2><o:p>&nbsp;</o:p></p>
+  <p class=style2><span style='font-family:"Arial","sans-serif";color:#365F91;
+  mso-themecolor:accent1;mso-themeshade:191'><a href="#_top"><span
+  style='color:#365F91;mso-themecolor:accent1;mso-themeshade:191;text-decoration:
+  none;text-underline:none'><span style='mso-field-code:" HYPERLINK  \\l \0022_top\0022 "'><u>Back
+  to top</u></span></span></a><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:12.0pt;line-height:115%;font-family:
+"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

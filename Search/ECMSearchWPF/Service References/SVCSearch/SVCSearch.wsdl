@@ -4,258 +4,12 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:59757/SVCSearch.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:59757/SVCSearch.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:59757/SVCSearch.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-      <xsd:import schemaLocation="http://localhost:59757/SVCSearch.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" />
+      <xsd:import schemaLocation="http://localhost:59757/SVCSearch.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" />
+      <xsd:import schemaLocation="http://localhost:59757/SVCSearch.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
       <xsd:import schemaLocation="http://localhost:59757/SVCSearch.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
       <xsd:import schemaLocation="http://localhost:59757/SVCSearch.svc?xsd=xsd5" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IService1_saveSearchState_InputMessage">
-    <wsdl:part name="parameters" element="tns:saveSearchState" />
-  </wsdl:message>
-  <wsdl:message name="IService1_saveSearchState_OutputMessage">
-    <wsdl:part name="parameters" element="tns:saveSearchStateResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getScreenState_InputMessage">
-    <wsdl:part name="parameters" element="tns:getScreenState" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getScreenState_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getScreenStateResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getGridLayout_InputMessage">
-    <wsdl:part name="parameters" element="tns:getGridLayout" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getGridLayout_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getGridLayoutResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_saveGridLayout_InputMessage">
-    <wsdl:part name="parameters" element="tns:saveGridLayout" />
-  </wsdl:message>
-  <wsdl:message name="IService1_saveGridLayout_OutputMessage">
-    <wsdl:part name="parameters" element="tns:saveGridLayoutResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_saveScreenState_InputMessage">
-    <wsdl:part name="parameters" element="tns:saveScreenState" />
-  </wsdl:message>
-  <wsdl:message name="IService1_saveScreenState_OutputMessage">
-    <wsdl:part name="parameters" element="tns:saveScreenStateResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getUserParms_InputMessage">
-    <wsdl:part name="parameters" element="tns:getUserParms" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getUserParms_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getUserParmsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_ParseLicDictionary_InputMessage">
-    <wsdl:part name="parameters" element="tns:ParseLicDictionary" />
-  </wsdl:message>
-  <wsdl:message name="IService1_ParseLicDictionary_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ParseLicDictionaryResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_LicenseType_InputMessage">
-    <wsdl:part name="parameters" element="tns:LicenseType" />
-  </wsdl:message>
-  <wsdl:message name="IService1_LicenseType_OutputMessage">
-    <wsdl:part name="parameters" element="tns:LicenseTypeResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetNbrUsers_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetNbrUsers" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetNbrUsers_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetNbrUsersResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_isLease_InputMessage">
-    <wsdl:part name="parameters" element="tns:isLease" />
-  </wsdl:message>
-  <wsdl:message name="IService1_isLease_OutputMessage">
-    <wsdl:part name="parameters" element="tns:isLeaseResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getMaxClients_InputMessage">
-    <wsdl:part name="parameters" element="tns:getMaxClients" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getMaxClients_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getMaxClientsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetUserHostName_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserHostName" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetUserHostName_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserHostNameResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetUserHostAddress_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserHostAddress" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetUserHostAddress_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserHostAddressResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getUserGuidID_InputMessage">
-    <wsdl:part name="parameters" element="tns:getUserGuidID" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getUserGuidID_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getUserGuidIDResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_ProcessDates_InputMessage">
-    <wsdl:part name="parameters" element="tns:ProcessDates" />
-  </wsdl:message>
-  <wsdl:message name="IService1_ProcessDates_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ProcessDatesResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetNbrMachineAll_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetNbrMachineAll" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetNbrMachineAll_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetNbrMachineAllResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetNbrMachine_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetNbrMachine" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetNbrMachine_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetNbrMachineResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_isLicenseLocatedOnAssignedMachine_InputMessage">
-    <wsdl:part name="parameters" element="tns:isLicenseLocatedOnAssignedMachine" />
-  </wsdl:message>
-  <wsdl:message name="IService1_isLicenseLocatedOnAssignedMachine_OutputMessage">
-    <wsdl:part name="parameters" element="tns:isLicenseLocatedOnAssignedMachineResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetXrt_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetXrt" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetXrt_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetXrtResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getSqlServerVersion_InputMessage">
-    <wsdl:part name="parameters" element="tns:getSqlServerVersion" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getSqlServerVersion_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getSqlServerVersionResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_RecordGrowth_InputMessage">
-    <wsdl:part name="parameters" element="tns:RecordGrowth" />
-  </wsdl:message>
-  <wsdl:message name="IService1_RecordGrowth_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RecordGrowthResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_ParseLic_InputMessage">
-    <wsdl:part name="parameters" element="tns:ParseLic" />
-  </wsdl:message>
-  <wsdl:message name="IService1_ParseLic_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ParseLicResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetLoggedinUserName_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetLoggedinUserName" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetLoggedinUserName_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetLoggedinUserNameResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getDBSIZEMB_InputMessage">
-    <wsdl:part name="parameters" element="tns:getDBSIZEMB" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getDBSIZEMB_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getDBSIZEMBResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_resetMissingEmailIds_InputMessage">
-    <wsdl:part name="parameters" element="tns:resetMissingEmailIds" />
-  </wsdl:message>
-  <wsdl:message name="IService1_resetMissingEmailIds_OutputMessage">
-    <wsdl:part name="parameters" element="tns:resetMissingEmailIdsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_UserParmInsertUpdate_InputMessage">
-    <wsdl:part name="parameters" element="tns:UserParmInsertUpdate" />
-  </wsdl:message>
-  <wsdl:message name="IService1_UserParmInsertUpdate_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UserParmInsertUpdateResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_validateLogin_InputMessage">
-    <wsdl:part name="parameters" element="tns:validateLogin" />
-  </wsdl:message>
-  <wsdl:message name="IService1_validateLogin_OutputMessage">
-    <wsdl:part name="parameters" element="tns:validateLoginResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getLoggedInUser_InputMessage">
-    <wsdl:part name="parameters" element="tns:getLoggedInUser" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getLoggedInUser_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getLoggedInUserResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getAttachedMachineName_InputMessage">
-    <wsdl:part name="parameters" element="tns:getAttachedMachineName" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getAttachedMachineName_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getAttachedMachineNameResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getServerInstanceName_InputMessage">
-    <wsdl:part name="parameters" element="tns:getServerInstanceName" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getServerInstanceName_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getServerInstanceNameResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getServerMachineName_InputMessage">
-    <wsdl:part name="parameters" element="tns:getServerMachineName" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getServerMachineName_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getServerMachineNameResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getSystemParm_InputMessage">
-    <wsdl:part name="parameters" element="tns:getSystemParm" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getSystemParm_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getSystemParmResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getSynonyms_InputMessage">
-    <wsdl:part name="parameters" element="tns:getSynonyms" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getSynonyms_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getSynonymsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getThesaurusID_InputMessage">
-    <wsdl:part name="parameters" element="tns:getThesaurusID" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getThesaurusID_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getThesaurusIDResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_iCountContent_InputMessage">
-    <wsdl:part name="parameters" element="tns:iCountContent" />
-  </wsdl:message>
-  <wsdl:message name="IService1_iCountContent_OutputMessage">
-    <wsdl:part name="parameters" element="tns:iCountContentResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getDatasourceParm_InputMessage">
-    <wsdl:part name="parameters" element="tns:getDatasourceParm" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getDatasourceParm_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getDatasourceParmResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_SaveRunParm_InputMessage">
-    <wsdl:part name="parameters" element="tns:SaveRunParm" />
-  </wsdl:message>
-  <wsdl:message name="IService1_SaveRunParm_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SaveRunParmResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_iGetRowCount_InputMessage">
-    <wsdl:part name="parameters" element="tns:iGetRowCount" />
-  </wsdl:message>
-  <wsdl:message name="IService1_iGetRowCount_OutputMessage">
-    <wsdl:part name="parameters" element="tns:iGetRowCountResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_ZeroizeGlobalSearch_InputMessage">
-    <wsdl:part name="parameters" element="tns:ZeroizeGlobalSearch" />
-  </wsdl:message>
-  <wsdl:message name="IService1_ZeroizeGlobalSearch_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ZeroizeGlobalSearchResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_updateIp_InputMessage">
-    <wsdl:part name="parameters" element="tns:updateIp" />
-  </wsdl:message>
-  <wsdl:message name="IService1_updateIp_OutputMessage">
-    <wsdl:part name="parameters" element="tns:updateIpResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_PopulateSourceGridWithWeights_InputMessage">
-    <wsdl:part name="parameters" element="tns:PopulateSourceGridWithWeights" />
-  </wsdl:message>
-  <wsdl:message name="IService1_PopulateSourceGridWithWeights_OutputMessage">
-    <wsdl:part name="parameters" element="tns:PopulateSourceGridWithWeightsResponse" />
-  </wsdl:message>
   <wsdl:message name="IService1_PopulateSourceGridNoWeights_InputMessage">
     <wsdl:part name="parameters" element="tns:PopulateSourceGridNoWeights" />
   </wsdl:message>
@@ -363,126 +117,6 @@
   </wsdl:message>
   <wsdl:message name="IService1_getClientLicenses_OutputMessage">
     <wsdl:part name="parameters" element="tns:getClientLicensesResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_PopulateUserGrid_InputMessage">
-    <wsdl:part name="parameters" element="tns:PopulateUserGrid" />
-  </wsdl:message>
-  <wsdl:message name="IService1_PopulateUserGrid_OutputMessage">
-    <wsdl:part name="parameters" element="tns:PopulateUserGridResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getGroupUsers_InputMessage">
-    <wsdl:part name="parameters" element="tns:getGroupUsers" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getGroupUsers_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getGroupUsersResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_PopulateDgGroupUsers_InputMessage">
-    <wsdl:part name="parameters" element="tns:PopulateDgGroupUsers" />
-  </wsdl:message>
-  <wsdl:message name="IService1_PopulateDgGroupUsers_OutputMessage">
-    <wsdl:part name="parameters" element="tns:PopulateDgGroupUsersResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_DeleteGroupUsers_InputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteGroupUsers" />
-  </wsdl:message>
-  <wsdl:message name="IService1_DeleteGroupUsers_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteGroupUsersResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getGroupOwnerGuidByGroupName_InputMessage">
-    <wsdl:part name="parameters" element="tns:getGroupOwnerGuidByGroupName" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getGroupOwnerGuidByGroupName_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getGroupOwnerGuidByGroupNameResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_AddLibraryGroupUser_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddLibraryGroupUser" />
-  </wsdl:message>
-  <wsdl:message name="IService1_AddLibraryGroupUser_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddLibraryGroupUserResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_PopulateGroupUserGrid_InputMessage">
-    <wsdl:part name="parameters" element="tns:PopulateGroupUserGrid" />
-  </wsdl:message>
-  <wsdl:message name="IService1_PopulateGroupUserGrid_OutputMessage">
-    <wsdl:part name="parameters" element="tns:PopulateGroupUserGridResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_PopulateLibItemsGrid_InputMessage">
-    <wsdl:part name="parameters" element="tns:PopulateLibItemsGrid" />
-  </wsdl:message>
-  <wsdl:message name="IService1_PopulateLibItemsGrid_OutputMessage">
-    <wsdl:part name="parameters" element="tns:PopulateLibItemsGridResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_PopulateDgAssigned_InputMessage">
-    <wsdl:part name="parameters" element="tns:PopulateDgAssigned" />
-  </wsdl:message>
-  <wsdl:message name="IService1_PopulateDgAssigned_OutputMessage">
-    <wsdl:part name="parameters" element="tns:PopulateDgAssignedResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_ResetLibraryUsersCount_InputMessage">
-    <wsdl:part name="parameters" element="tns:ResetLibraryUsersCount" />
-  </wsdl:message>
-  <wsdl:message name="IService1_ResetLibraryUsersCount_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ResetLibraryUsersCountResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_DeleteLibraryGroupUser_InputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteLibraryGroupUser" />
-  </wsdl:message>
-  <wsdl:message name="IService1_DeleteLibraryGroupUser_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteLibraryGroupUserResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_ChangeUserPassword_InputMessage">
-    <wsdl:part name="parameters" element="tns:ChangeUserPassword" />
-  </wsdl:message>
-  <wsdl:message name="IService1_ChangeUserPassword_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ChangeUserPasswordResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_SaveClickStats_InputMessage">
-    <wsdl:part name="parameters" element="tns:SaveClickStats" />
-  </wsdl:message>
-  <wsdl:message name="IService1_SaveClickStats_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SaveClickStatsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_cleanUpLibraryItems_InputMessage">
-    <wsdl:part name="parameters" element="tns:cleanUpLibraryItems" />
-  </wsdl:message>
-  <wsdl:message name="IService1_cleanUpLibraryItems_OutputMessage">
-    <wsdl:part name="parameters" element="tns:cleanUpLibraryItemsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_RemoveLibraryDirectories_InputMessage">
-    <wsdl:part name="parameters" element="tns:RemoveLibraryDirectories" />
-  </wsdl:message>
-  <wsdl:message name="IService1_RemoveLibraryDirectories_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RemoveLibraryDirectoriesResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_RemoveLibraryEmails_InputMessage">
-    <wsdl:part name="parameters" element="tns:RemoveLibraryEmails" />
-  </wsdl:message>
-  <wsdl:message name="IService1_RemoveLibraryEmails_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RemoveLibraryEmailsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_AddSysMsg_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddSysMsg" />
-  </wsdl:message>
-  <wsdl:message name="IService1_AddSysMsg_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddSysMsgResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_AddLibraryDirectory_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddLibraryDirectory" />
-  </wsdl:message>
-  <wsdl:message name="IService1_AddLibraryDirectory_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddLibraryDirectoryResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_AddLibraryEmail_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddLibraryEmail" />
-  </wsdl:message>
-  <wsdl:message name="IService1_AddLibraryEmail_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddLibraryEmailResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_PopulateLibraryGrid_InputMessage">
-    <wsdl:part name="parameters" element="tns:PopulateLibraryGrid" />
-  </wsdl:message>
-  <wsdl:message name="IService1_PopulateLibraryGrid_OutputMessage">
-    <wsdl:part name="parameters" element="tns:PopulateLibraryGridResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_getListOfStrings_InputMessage">
     <wsdl:part name="parameters" element="tns:getListOfStrings" />
@@ -747,6 +381,252 @@
   </wsdl:message>
   <wsdl:message name="IService1_getSearchState_OutputMessage">
     <wsdl:part name="parameters" element="tns:getSearchStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_saveSearchState_InputMessage">
+    <wsdl:part name="parameters" element="tns:saveSearchState" />
+  </wsdl:message>
+  <wsdl:message name="IService1_saveSearchState_OutputMessage">
+    <wsdl:part name="parameters" element="tns:saveSearchStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getScreenState_InputMessage">
+    <wsdl:part name="parameters" element="tns:getScreenState" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getScreenState_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getScreenStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getGridLayout_InputMessage">
+    <wsdl:part name="parameters" element="tns:getGridLayout" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getGridLayout_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getGridLayoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_saveGridLayout_InputMessage">
+    <wsdl:part name="parameters" element="tns:saveGridLayout" />
+  </wsdl:message>
+  <wsdl:message name="IService1_saveGridLayout_OutputMessage">
+    <wsdl:part name="parameters" element="tns:saveGridLayoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_saveScreenState_InputMessage">
+    <wsdl:part name="parameters" element="tns:saveScreenState" />
+  </wsdl:message>
+  <wsdl:message name="IService1_saveScreenState_OutputMessage">
+    <wsdl:part name="parameters" element="tns:saveScreenStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getUserParms_InputMessage">
+    <wsdl:part name="parameters" element="tns:getUserParms" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getUserParms_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getUserParmsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ParseLicDictionary_InputMessage">
+    <wsdl:part name="parameters" element="tns:ParseLicDictionary" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ParseLicDictionary_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ParseLicDictionaryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_LicenseType_InputMessage">
+    <wsdl:part name="parameters" element="tns:LicenseType" />
+  </wsdl:message>
+  <wsdl:message name="IService1_LicenseType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LicenseTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetNbrUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNbrUsers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetNbrUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNbrUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_isLease_InputMessage">
+    <wsdl:part name="parameters" element="tns:isLease" />
+  </wsdl:message>
+  <wsdl:message name="IService1_isLease_OutputMessage">
+    <wsdl:part name="parameters" element="tns:isLeaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getMaxClients_InputMessage">
+    <wsdl:part name="parameters" element="tns:getMaxClients" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getMaxClients_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getMaxClientsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserHostName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserHostName" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserHostName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserHostNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserHostAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserHostAddress" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserHostAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserHostAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getUserGuidID_InputMessage">
+    <wsdl:part name="parameters" element="tns:getUserGuidID" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getUserGuidID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getUserGuidIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ProcessDates_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessDates" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ProcessDates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessDatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetNbrMachineAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNbrMachineAll" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetNbrMachineAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNbrMachineAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetNbrMachine_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNbrMachine" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetNbrMachine_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNbrMachineResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_isLicenseLocatedOnAssignedMachine_InputMessage">
+    <wsdl:part name="parameters" element="tns:isLicenseLocatedOnAssignedMachine" />
+  </wsdl:message>
+  <wsdl:message name="IService1_isLicenseLocatedOnAssignedMachine_OutputMessage">
+    <wsdl:part name="parameters" element="tns:isLicenseLocatedOnAssignedMachineResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetXrt_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetXrt" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetXrt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetXrtResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getSqlServerVersion_InputMessage">
+    <wsdl:part name="parameters" element="tns:getSqlServerVersion" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getSqlServerVersion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getSqlServerVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RecordGrowth_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecordGrowth" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RecordGrowth_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecordGrowthResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ParseLic_InputMessage">
+    <wsdl:part name="parameters" element="tns:ParseLic" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ParseLic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ParseLicResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetLoggedinUserName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoggedinUserName" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetLoggedinUserName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoggedinUserNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getDBSIZEMB_InputMessage">
+    <wsdl:part name="parameters" element="tns:getDBSIZEMB" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getDBSIZEMB_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getDBSIZEMBResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_resetMissingEmailIds_InputMessage">
+    <wsdl:part name="parameters" element="tns:resetMissingEmailIds" />
+  </wsdl:message>
+  <wsdl:message name="IService1_resetMissingEmailIds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:resetMissingEmailIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UserParmInsertUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserParmInsertUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UserParmInsertUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserParmInsertUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_validateLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:validateLogin" />
+  </wsdl:message>
+  <wsdl:message name="IService1_validateLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:validateLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getLoggedInUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:getLoggedInUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getLoggedInUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getLoggedInUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getAttachedMachineName_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAttachedMachineName" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getAttachedMachineName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAttachedMachineNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getServerInstanceName_InputMessage">
+    <wsdl:part name="parameters" element="tns:getServerInstanceName" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getServerInstanceName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getServerInstanceNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getServerMachineName_InputMessage">
+    <wsdl:part name="parameters" element="tns:getServerMachineName" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getServerMachineName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getServerMachineNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getSystemParm_InputMessage">
+    <wsdl:part name="parameters" element="tns:getSystemParm" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getSystemParm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getSystemParmResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getSynonyms_InputMessage">
+    <wsdl:part name="parameters" element="tns:getSynonyms" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getSynonyms_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getSynonymsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getThesaurusID_InputMessage">
+    <wsdl:part name="parameters" element="tns:getThesaurusID" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getThesaurusID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getThesaurusIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_iCountContent_InputMessage">
+    <wsdl:part name="parameters" element="tns:iCountContent" />
+  </wsdl:message>
+  <wsdl:message name="IService1_iCountContent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:iCountContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getDatasourceParm_InputMessage">
+    <wsdl:part name="parameters" element="tns:getDatasourceParm" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getDatasourceParm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getDatasourceParmResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SaveRunParm_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveRunParm" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SaveRunParm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveRunParmResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_iGetRowCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:iGetRowCount" />
+  </wsdl:message>
+  <wsdl:message name="IService1_iGetRowCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:iGetRowCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ZeroizeGlobalSearch_InputMessage">
+    <wsdl:part name="parameters" element="tns:ZeroizeGlobalSearch" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ZeroizeGlobalSearch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ZeroizeGlobalSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_updateIp_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateIp" />
+  </wsdl:message>
+  <wsdl:message name="IService1_updateIp_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateIpResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PopulateSourceGridWithWeights_InputMessage">
+    <wsdl:part name="parameters" element="tns:PopulateSourceGridWithWeights" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PopulateSourceGridWithWeights_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PopulateSourceGridWithWeightsResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_getSourceLength_InputMessage">
     <wsdl:part name="parameters" element="tns:getSourceLength" />
@@ -1060,6 +940,12 @@
   <wsdl:message name="IService1_SetSAASState_OutputMessage">
     <wsdl:part name="parameters" element="tns:SetSAASStateResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_getNewListOfStrings_InputMessage">
+    <wsdl:part name="parameters" element="tns:getNewListOfStrings" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getNewListOfStrings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getNewListOfStringsResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_getListOfStrings01_InputMessage">
     <wsdl:part name="parameters" element="tns:getListOfStrings01" />
   </wsdl:message>
@@ -1132,171 +1018,127 @@
   <wsdl:message name="IService1_PopulateCoOwnerGrid_OutputMessage">
     <wsdl:part name="parameters" element="tns:PopulateCoOwnerGridResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_PopulateUserGrid_InputMessage">
+    <wsdl:part name="parameters" element="tns:PopulateUserGrid" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PopulateUserGrid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PopulateUserGridResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getGroupUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:getGroupUsers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getGroupUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getGroupUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PopulateDgGroupUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:PopulateDgGroupUsers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PopulateDgGroupUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PopulateDgGroupUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteGroupUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteGroupUsers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteGroupUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteGroupUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getGroupOwnerGuidByGroupName_InputMessage">
+    <wsdl:part name="parameters" element="tns:getGroupOwnerGuidByGroupName" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getGroupOwnerGuidByGroupName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getGroupOwnerGuidByGroupNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddLibraryGroupUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddLibraryGroupUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddLibraryGroupUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddLibraryGroupUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PopulateGroupUserGrid_InputMessage">
+    <wsdl:part name="parameters" element="tns:PopulateGroupUserGrid" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PopulateGroupUserGrid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PopulateGroupUserGridResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PopulateLibItemsGrid_InputMessage">
+    <wsdl:part name="parameters" element="tns:PopulateLibItemsGrid" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PopulateLibItemsGrid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PopulateLibItemsGridResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PopulateDgAssigned_InputMessage">
+    <wsdl:part name="parameters" element="tns:PopulateDgAssigned" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PopulateDgAssigned_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PopulateDgAssignedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ResetLibraryUsersCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResetLibraryUsersCount" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ResetLibraryUsersCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResetLibraryUsersCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteLibraryGroupUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteLibraryGroupUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteLibraryGroupUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteLibraryGroupUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ChangeUserPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeUserPassword" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ChangeUserPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeUserPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SaveClickStats_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveClickStats" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SaveClickStats_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveClickStatsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_cleanUpLibraryItems_InputMessage">
+    <wsdl:part name="parameters" element="tns:cleanUpLibraryItems" />
+  </wsdl:message>
+  <wsdl:message name="IService1_cleanUpLibraryItems_OutputMessage">
+    <wsdl:part name="parameters" element="tns:cleanUpLibraryItemsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RemoveLibraryDirectories_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveLibraryDirectories" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RemoveLibraryDirectories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveLibraryDirectoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RemoveLibraryEmails_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveLibraryEmails" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RemoveLibraryEmails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveLibraryEmailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddSysMsg_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddSysMsg" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddSysMsg_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddSysMsgResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddLibraryDirectory_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddLibraryDirectory" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddLibraryDirectory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddLibraryDirectoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddLibraryEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddLibraryEmail" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddLibraryEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddLibraryEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PopulateLibraryGrid_InputMessage">
+    <wsdl:part name="parameters" element="tns:PopulateLibraryGrid" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PopulateLibraryGrid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PopulateLibraryGridResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
-    <wsdl:operation name="saveSearchState">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/saveSearchState" message="tns:IService1_saveSearchState_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/saveSearchStateResponse" message="tns:IService1_saveSearchState_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getScreenState">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getScreenState" message="tns:IService1_getScreenState_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getScreenStateResponse" message="tns:IService1_getScreenState_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getGridLayout">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getGridLayout" message="tns:IService1_getGridLayout_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getGridLayoutResponse" message="tns:IService1_getGridLayout_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="saveGridLayout">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/saveGridLayout" message="tns:IService1_saveGridLayout_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/saveGridLayoutResponse" message="tns:IService1_saveGridLayout_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="saveScreenState">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/saveScreenState" message="tns:IService1_saveScreenState_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/saveScreenStateResponse" message="tns:IService1_saveScreenState_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getUserParms">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getUserParms" message="tns:IService1_getUserParms_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getUserParmsResponse" message="tns:IService1_getUserParms_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ParseLicDictionary">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ParseLicDictionary" message="tns:IService1_ParseLicDictionary_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ParseLicDictionaryResponse" message="tns:IService1_ParseLicDictionary_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="LicenseType">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/LicenseType" message="tns:IService1_LicenseType_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/LicenseTypeResponse" message="tns:IService1_LicenseType_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetNbrUsers">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetNbrUsers" message="tns:IService1_GetNbrUsers_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetNbrUsersResponse" message="tns:IService1_GetNbrUsers_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="isLease">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/isLease" message="tns:IService1_isLease_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/isLeaseResponse" message="tns:IService1_isLease_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getMaxClients">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getMaxClients" message="tns:IService1_getMaxClients_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getMaxClientsResponse" message="tns:IService1_getMaxClients_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetUserHostName">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserHostName" message="tns:IService1_GetUserHostName_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserHostNameResponse" message="tns:IService1_GetUserHostName_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetUserHostAddress">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserHostAddress" message="tns:IService1_GetUserHostAddress_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserHostAddressResponse" message="tns:IService1_GetUserHostAddress_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getUserGuidID">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getUserGuidID" message="tns:IService1_getUserGuidID_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getUserGuidIDResponse" message="tns:IService1_getUserGuidID_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ProcessDates">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ProcessDates" message="tns:IService1_ProcessDates_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ProcessDatesResponse" message="tns:IService1_ProcessDates_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetNbrMachineAll">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetNbrMachineAll" message="tns:IService1_GetNbrMachineAll_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetNbrMachineAllResponse" message="tns:IService1_GetNbrMachineAll_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetNbrMachine">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetNbrMachine" message="tns:IService1_GetNbrMachine_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetNbrMachineResponse" message="tns:IService1_GetNbrMachine_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="isLicenseLocatedOnAssignedMachine">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/isLicenseLocatedOnAssignedMachine" message="tns:IService1_isLicenseLocatedOnAssignedMachine_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/isLicenseLocatedOnAssignedMachineResponse" message="tns:IService1_isLicenseLocatedOnAssignedMachine_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetXrt">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetXrt" message="tns:IService1_GetXrt_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetXrtResponse" message="tns:IService1_GetXrt_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getSqlServerVersion">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getSqlServerVersion" message="tns:IService1_getSqlServerVersion_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getSqlServerVersionResponse" message="tns:IService1_getSqlServerVersion_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="RecordGrowth">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RecordGrowth" message="tns:IService1_RecordGrowth_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RecordGrowthResponse" message="tns:IService1_RecordGrowth_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ParseLic">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ParseLic" message="tns:IService1_ParseLic_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ParseLicResponse" message="tns:IService1_ParseLic_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetLoggedinUserName">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetLoggedinUserName" message="tns:IService1_GetLoggedinUserName_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetLoggedinUserNameResponse" message="tns:IService1_GetLoggedinUserName_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getDBSIZEMB">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getDBSIZEMB" message="tns:IService1_getDBSIZEMB_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getDBSIZEMBResponse" message="tns:IService1_getDBSIZEMB_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="resetMissingEmailIds">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/resetMissingEmailIds" message="tns:IService1_resetMissingEmailIds_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/resetMissingEmailIdsResponse" message="tns:IService1_resetMissingEmailIds_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="UserParmInsertUpdate">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UserParmInsertUpdate" message="tns:IService1_UserParmInsertUpdate_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UserParmInsertUpdateResponse" message="tns:IService1_UserParmInsertUpdate_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="validateLogin">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/validateLogin" message="tns:IService1_validateLogin_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/validateLoginResponse" message="tns:IService1_validateLogin_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getLoggedInUser">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getLoggedInUser" message="tns:IService1_getLoggedInUser_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getLoggedInUserResponse" message="tns:IService1_getLoggedInUser_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getAttachedMachineName">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getAttachedMachineName" message="tns:IService1_getAttachedMachineName_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getAttachedMachineNameResponse" message="tns:IService1_getAttachedMachineName_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getServerInstanceName">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getServerInstanceName" message="tns:IService1_getServerInstanceName_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getServerInstanceNameResponse" message="tns:IService1_getServerInstanceName_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getServerMachineName">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getServerMachineName" message="tns:IService1_getServerMachineName_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getServerMachineNameResponse" message="tns:IService1_getServerMachineName_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getSystemParm">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getSystemParm" message="tns:IService1_getSystemParm_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getSystemParmResponse" message="tns:IService1_getSystemParm_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getSynonyms">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getSynonyms" message="tns:IService1_getSynonyms_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getSynonymsResponse" message="tns:IService1_getSynonyms_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getThesaurusID">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getThesaurusID" message="tns:IService1_getThesaurusID_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getThesaurusIDResponse" message="tns:IService1_getThesaurusID_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="iCountContent">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/iCountContent" message="tns:IService1_iCountContent_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/iCountContentResponse" message="tns:IService1_iCountContent_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getDatasourceParm">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getDatasourceParm" message="tns:IService1_getDatasourceParm_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getDatasourceParmResponse" message="tns:IService1_getDatasourceParm_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SaveRunParm">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SaveRunParm" message="tns:IService1_SaveRunParm_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SaveRunParmResponse" message="tns:IService1_SaveRunParm_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="iGetRowCount">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/iGetRowCount" message="tns:IService1_iGetRowCount_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/iGetRowCountResponse" message="tns:IService1_iGetRowCount_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ZeroizeGlobalSearch">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ZeroizeGlobalSearch" message="tns:IService1_ZeroizeGlobalSearch_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ZeroizeGlobalSearchResponse" message="tns:IService1_ZeroizeGlobalSearch_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="updateIp">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/updateIp" message="tns:IService1_updateIp_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/updateIpResponse" message="tns:IService1_updateIp_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="PopulateSourceGridWithWeights">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PopulateSourceGridWithWeights" message="tns:IService1_PopulateSourceGridWithWeights_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PopulateSourceGridWithWeightsResponse" message="tns:IService1_PopulateSourceGridWithWeights_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="PopulateSourceGridNoWeights">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/PopulateSourceGridNoWeights" message="tns:IService1_PopulateSourceGridNoWeights_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/PopulateSourceGridNoWeightsResponse" message="tns:IService1_PopulateSourceGridNoWeights_OutputMessage" />
@@ -1368,86 +1210,6 @@
     <wsdl:operation name="getClientLicenses">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getClientLicenses" message="tns:IService1_getClientLicenses_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getClientLicensesResponse" message="tns:IService1_getClientLicenses_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="PopulateUserGrid">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PopulateUserGrid" message="tns:IService1_PopulateUserGrid_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PopulateUserGridResponse" message="tns:IService1_PopulateUserGrid_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getGroupUsers">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getGroupUsers" message="tns:IService1_getGroupUsers_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getGroupUsersResponse" message="tns:IService1_getGroupUsers_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="PopulateDgGroupUsers">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PopulateDgGroupUsers" message="tns:IService1_PopulateDgGroupUsers_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PopulateDgGroupUsersResponse" message="tns:IService1_PopulateDgGroupUsers_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="DeleteGroupUsers">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteGroupUsers" message="tns:IService1_DeleteGroupUsers_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteGroupUsersResponse" message="tns:IService1_DeleteGroupUsers_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getGroupOwnerGuidByGroupName">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getGroupOwnerGuidByGroupName" message="tns:IService1_getGroupOwnerGuidByGroupName_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getGroupOwnerGuidByGroupNameResponse" message="tns:IService1_getGroupOwnerGuidByGroupName_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="AddLibraryGroupUser">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddLibraryGroupUser" message="tns:IService1_AddLibraryGroupUser_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddLibraryGroupUserResponse" message="tns:IService1_AddLibraryGroupUser_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="PopulateGroupUserGrid">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PopulateGroupUserGrid" message="tns:IService1_PopulateGroupUserGrid_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PopulateGroupUserGridResponse" message="tns:IService1_PopulateGroupUserGrid_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="PopulateLibItemsGrid">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PopulateLibItemsGrid" message="tns:IService1_PopulateLibItemsGrid_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PopulateLibItemsGridResponse" message="tns:IService1_PopulateLibItemsGrid_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="PopulateDgAssigned">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PopulateDgAssigned" message="tns:IService1_PopulateDgAssigned_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PopulateDgAssignedResponse" message="tns:IService1_PopulateDgAssigned_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ResetLibraryUsersCount">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ResetLibraryUsersCount" message="tns:IService1_ResetLibraryUsersCount_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ResetLibraryUsersCountResponse" message="tns:IService1_ResetLibraryUsersCount_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="DeleteLibraryGroupUser">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteLibraryGroupUser" message="tns:IService1_DeleteLibraryGroupUser_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteLibraryGroupUserResponse" message="tns:IService1_DeleteLibraryGroupUser_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ChangeUserPassword">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ChangeUserPassword" message="tns:IService1_ChangeUserPassword_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ChangeUserPasswordResponse" message="tns:IService1_ChangeUserPassword_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SaveClickStats">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SaveClickStats" message="tns:IService1_SaveClickStats_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SaveClickStatsResponse" message="tns:IService1_SaveClickStats_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="cleanUpLibraryItems">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/cleanUpLibraryItems" message="tns:IService1_cleanUpLibraryItems_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/cleanUpLibraryItemsResponse" message="tns:IService1_cleanUpLibraryItems_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="RemoveLibraryDirectories">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RemoveLibraryDirectories" message="tns:IService1_RemoveLibraryDirectories_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RemoveLibraryDirectoriesResponse" message="tns:IService1_RemoveLibraryDirectories_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="RemoveLibraryEmails">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RemoveLibraryEmails" message="tns:IService1_RemoveLibraryEmails_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RemoveLibraryEmailsResponse" message="tns:IService1_RemoveLibraryEmails_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="AddSysMsg">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddSysMsg" message="tns:IService1_AddSysMsg_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddSysMsgResponse" message="tns:IService1_AddSysMsg_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="AddLibraryDirectory">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddLibraryDirectory" message="tns:IService1_AddLibraryDirectory_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddLibraryDirectoryResponse" message="tns:IService1_AddLibraryDirectory_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="AddLibraryEmail">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddLibraryEmail" message="tns:IService1_AddLibraryEmail_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddLibraryEmailResponse" message="tns:IService1_AddLibraryEmail_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="PopulateLibraryGrid">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PopulateLibraryGrid" message="tns:IService1_PopulateLibraryGrid_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PopulateLibraryGridResponse" message="tns:IService1_PopulateLibraryGrid_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="getListOfStrings">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getListOfStrings" message="tns:IService1_getListOfStrings_InputMessage" />
@@ -1624,6 +1386,170 @@
     <wsdl:operation name="getSearchState">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getSearchState" message="tns:IService1_getSearchState_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getSearchStateResponse" message="tns:IService1_getSearchState_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="saveSearchState">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/saveSearchState" message="tns:IService1_saveSearchState_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/saveSearchStateResponse" message="tns:IService1_saveSearchState_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getScreenState">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getScreenState" message="tns:IService1_getScreenState_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getScreenStateResponse" message="tns:IService1_getScreenState_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getGridLayout">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getGridLayout" message="tns:IService1_getGridLayout_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getGridLayoutResponse" message="tns:IService1_getGridLayout_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="saveGridLayout">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/saveGridLayout" message="tns:IService1_saveGridLayout_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/saveGridLayoutResponse" message="tns:IService1_saveGridLayout_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="saveScreenState">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/saveScreenState" message="tns:IService1_saveScreenState_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/saveScreenStateResponse" message="tns:IService1_saveScreenState_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserParms">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getUserParms" message="tns:IService1_getUserParms_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getUserParmsResponse" message="tns:IService1_getUserParms_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ParseLicDictionary">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ParseLicDictionary" message="tns:IService1_ParseLicDictionary_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ParseLicDictionaryResponse" message="tns:IService1_ParseLicDictionary_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LicenseType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/LicenseType" message="tns:IService1_LicenseType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/LicenseTypeResponse" message="tns:IService1_LicenseType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNbrUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetNbrUsers" message="tns:IService1_GetNbrUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetNbrUsersResponse" message="tns:IService1_GetNbrUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="isLease">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/isLease" message="tns:IService1_isLease_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/isLeaseResponse" message="tns:IService1_isLease_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getMaxClients">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getMaxClients" message="tns:IService1_getMaxClients_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getMaxClientsResponse" message="tns:IService1_getMaxClients_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserHostName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserHostName" message="tns:IService1_GetUserHostName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserHostNameResponse" message="tns:IService1_GetUserHostName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserHostAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserHostAddress" message="tns:IService1_GetUserHostAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserHostAddressResponse" message="tns:IService1_GetUserHostAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserGuidID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getUserGuidID" message="tns:IService1_getUserGuidID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getUserGuidIDResponse" message="tns:IService1_getUserGuidID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessDates">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ProcessDates" message="tns:IService1_ProcessDates_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ProcessDatesResponse" message="tns:IService1_ProcessDates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNbrMachineAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetNbrMachineAll" message="tns:IService1_GetNbrMachineAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetNbrMachineAllResponse" message="tns:IService1_GetNbrMachineAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNbrMachine">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetNbrMachine" message="tns:IService1_GetNbrMachine_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetNbrMachineResponse" message="tns:IService1_GetNbrMachine_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="isLicenseLocatedOnAssignedMachine">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/isLicenseLocatedOnAssignedMachine" message="tns:IService1_isLicenseLocatedOnAssignedMachine_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/isLicenseLocatedOnAssignedMachineResponse" message="tns:IService1_isLicenseLocatedOnAssignedMachine_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetXrt">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetXrt" message="tns:IService1_GetXrt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetXrtResponse" message="tns:IService1_GetXrt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getSqlServerVersion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getSqlServerVersion" message="tns:IService1_getSqlServerVersion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getSqlServerVersionResponse" message="tns:IService1_getSqlServerVersion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecordGrowth">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RecordGrowth" message="tns:IService1_RecordGrowth_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RecordGrowthResponse" message="tns:IService1_RecordGrowth_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ParseLic">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ParseLic" message="tns:IService1_ParseLic_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ParseLicResponse" message="tns:IService1_ParseLic_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLoggedinUserName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetLoggedinUserName" message="tns:IService1_GetLoggedinUserName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetLoggedinUserNameResponse" message="tns:IService1_GetLoggedinUserName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getDBSIZEMB">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getDBSIZEMB" message="tns:IService1_getDBSIZEMB_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getDBSIZEMBResponse" message="tns:IService1_getDBSIZEMB_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="resetMissingEmailIds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/resetMissingEmailIds" message="tns:IService1_resetMissingEmailIds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/resetMissingEmailIdsResponse" message="tns:IService1_resetMissingEmailIds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserParmInsertUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UserParmInsertUpdate" message="tns:IService1_UserParmInsertUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UserParmInsertUpdateResponse" message="tns:IService1_UserParmInsertUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="validateLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/validateLogin" message="tns:IService1_validateLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/validateLoginResponse" message="tns:IService1_validateLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getLoggedInUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getLoggedInUser" message="tns:IService1_getLoggedInUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getLoggedInUserResponse" message="tns:IService1_getLoggedInUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAttachedMachineName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getAttachedMachineName" message="tns:IService1_getAttachedMachineName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getAttachedMachineNameResponse" message="tns:IService1_getAttachedMachineName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getServerInstanceName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getServerInstanceName" message="tns:IService1_getServerInstanceName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getServerInstanceNameResponse" message="tns:IService1_getServerInstanceName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getServerMachineName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getServerMachineName" message="tns:IService1_getServerMachineName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getServerMachineNameResponse" message="tns:IService1_getServerMachineName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getSystemParm">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getSystemParm" message="tns:IService1_getSystemParm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getSystemParmResponse" message="tns:IService1_getSystemParm_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getSynonyms">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getSynonyms" message="tns:IService1_getSynonyms_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getSynonymsResponse" message="tns:IService1_getSynonyms_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getThesaurusID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getThesaurusID" message="tns:IService1_getThesaurusID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getThesaurusIDResponse" message="tns:IService1_getThesaurusID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="iCountContent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/iCountContent" message="tns:IService1_iCountContent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/iCountContentResponse" message="tns:IService1_iCountContent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatasourceParm">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getDatasourceParm" message="tns:IService1_getDatasourceParm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getDatasourceParmResponse" message="tns:IService1_getDatasourceParm_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveRunParm">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SaveRunParm" message="tns:IService1_SaveRunParm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SaveRunParmResponse" message="tns:IService1_SaveRunParm_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="iGetRowCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/iGetRowCount" message="tns:IService1_iGetRowCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/iGetRowCountResponse" message="tns:IService1_iGetRowCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ZeroizeGlobalSearch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ZeroizeGlobalSearch" message="tns:IService1_ZeroizeGlobalSearch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ZeroizeGlobalSearchResponse" message="tns:IService1_ZeroizeGlobalSearch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateIp">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/updateIp" message="tns:IService1_updateIp_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/updateIpResponse" message="tns:IService1_updateIp_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PopulateSourceGridWithWeights">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PopulateSourceGridWithWeights" message="tns:IService1_PopulateSourceGridWithWeights_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PopulateSourceGridWithWeightsResponse" message="tns:IService1_PopulateSourceGridWithWeights_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="getSourceLength">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getSourceLength" message="tns:IService1_getSourceLength_InputMessage" />
@@ -1833,6 +1759,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetSAASState" message="tns:IService1_SetSAASState_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetSAASStateResponse" message="tns:IService1_SetSAASState_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="getNewListOfStrings">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getNewListOfStrings" message="tns:IService1_getNewListOfStrings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getNewListOfStringsResponse" message="tns:IService1_getNewListOfStrings_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="getListOfStrings01">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getListOfStrings01" message="tns:IService1_getListOfStrings01_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getListOfStrings01Response" message="tns:IService1_getListOfStrings01_OutputMessage" />
@@ -1881,378 +1811,89 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/PopulateCoOwnerGrid" message="tns:IService1_PopulateCoOwnerGrid_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/PopulateCoOwnerGridResponse" message="tns:IService1_PopulateCoOwnerGrid_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="PopulateUserGrid">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PopulateUserGrid" message="tns:IService1_PopulateUserGrid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PopulateUserGridResponse" message="tns:IService1_PopulateUserGrid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getGroupUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getGroupUsers" message="tns:IService1_getGroupUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getGroupUsersResponse" message="tns:IService1_getGroupUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PopulateDgGroupUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PopulateDgGroupUsers" message="tns:IService1_PopulateDgGroupUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PopulateDgGroupUsersResponse" message="tns:IService1_PopulateDgGroupUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGroupUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteGroupUsers" message="tns:IService1_DeleteGroupUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteGroupUsersResponse" message="tns:IService1_DeleteGroupUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getGroupOwnerGuidByGroupName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getGroupOwnerGuidByGroupName" message="tns:IService1_getGroupOwnerGuidByGroupName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getGroupOwnerGuidByGroupNameResponse" message="tns:IService1_getGroupOwnerGuidByGroupName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddLibraryGroupUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddLibraryGroupUser" message="tns:IService1_AddLibraryGroupUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddLibraryGroupUserResponse" message="tns:IService1_AddLibraryGroupUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PopulateGroupUserGrid">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PopulateGroupUserGrid" message="tns:IService1_PopulateGroupUserGrid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PopulateGroupUserGridResponse" message="tns:IService1_PopulateGroupUserGrid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PopulateLibItemsGrid">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PopulateLibItemsGrid" message="tns:IService1_PopulateLibItemsGrid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PopulateLibItemsGridResponse" message="tns:IService1_PopulateLibItemsGrid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PopulateDgAssigned">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PopulateDgAssigned" message="tns:IService1_PopulateDgAssigned_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PopulateDgAssignedResponse" message="tns:IService1_PopulateDgAssigned_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetLibraryUsersCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ResetLibraryUsersCount" message="tns:IService1_ResetLibraryUsersCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ResetLibraryUsersCountResponse" message="tns:IService1_ResetLibraryUsersCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLibraryGroupUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteLibraryGroupUser" message="tns:IService1_DeleteLibraryGroupUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteLibraryGroupUserResponse" message="tns:IService1_DeleteLibraryGroupUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeUserPassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ChangeUserPassword" message="tns:IService1_ChangeUserPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ChangeUserPasswordResponse" message="tns:IService1_ChangeUserPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveClickStats">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SaveClickStats" message="tns:IService1_SaveClickStats_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SaveClickStatsResponse" message="tns:IService1_SaveClickStats_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="cleanUpLibraryItems">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/cleanUpLibraryItems" message="tns:IService1_cleanUpLibraryItems_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/cleanUpLibraryItemsResponse" message="tns:IService1_cleanUpLibraryItems_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveLibraryDirectories">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RemoveLibraryDirectories" message="tns:IService1_RemoveLibraryDirectories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RemoveLibraryDirectoriesResponse" message="tns:IService1_RemoveLibraryDirectories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveLibraryEmails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RemoveLibraryEmails" message="tns:IService1_RemoveLibraryEmails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RemoveLibraryEmailsResponse" message="tns:IService1_RemoveLibraryEmails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSysMsg">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddSysMsg" message="tns:IService1_AddSysMsg_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddSysMsgResponse" message="tns:IService1_AddSysMsg_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddLibraryDirectory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddLibraryDirectory" message="tns:IService1_AddLibraryDirectory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddLibraryDirectoryResponse" message="tns:IService1_AddLibraryDirectory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddLibraryEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddLibraryEmail" message="tns:IService1_AddLibraryEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddLibraryEmailResponse" message="tns:IService1_AddLibraryEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PopulateLibraryGrid">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PopulateLibraryGrid" message="tns:IService1_PopulateLibraryGrid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PopulateLibraryGridResponse" message="tns:IService1_PopulateLibraryGrid_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="saveSearchState">
-      <soap:operation soapAction="http://tempuri.org/IService1/saveSearchState" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getScreenState">
-      <soap:operation soapAction="http://tempuri.org/IService1/getScreenState" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getGridLayout">
-      <soap:operation soapAction="http://tempuri.org/IService1/getGridLayout" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="saveGridLayout">
-      <soap:operation soapAction="http://tempuri.org/IService1/saveGridLayout" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="saveScreenState">
-      <soap:operation soapAction="http://tempuri.org/IService1/saveScreenState" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getUserParms">
-      <soap:operation soapAction="http://tempuri.org/IService1/getUserParms" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ParseLicDictionary">
-      <soap:operation soapAction="http://tempuri.org/IService1/ParseLicDictionary" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LicenseType">
-      <soap:operation soapAction="http://tempuri.org/IService1/LicenseType" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetNbrUsers">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetNbrUsers" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="isLease">
-      <soap:operation soapAction="http://tempuri.org/IService1/isLease" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getMaxClients">
-      <soap:operation soapAction="http://tempuri.org/IService1/getMaxClients" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetUserHostName">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetUserHostName" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetUserHostAddress">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetUserHostAddress" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getUserGuidID">
-      <soap:operation soapAction="http://tempuri.org/IService1/getUserGuidID" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ProcessDates">
-      <soap:operation soapAction="http://tempuri.org/IService1/ProcessDates" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetNbrMachineAll">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetNbrMachineAll" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetNbrMachine">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetNbrMachine" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="isLicenseLocatedOnAssignedMachine">
-      <soap:operation soapAction="http://tempuri.org/IService1/isLicenseLocatedOnAssignedMachine" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetXrt">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetXrt" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getSqlServerVersion">
-      <soap:operation soapAction="http://tempuri.org/IService1/getSqlServerVersion" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RecordGrowth">
-      <soap:operation soapAction="http://tempuri.org/IService1/RecordGrowth" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ParseLic">
-      <soap:operation soapAction="http://tempuri.org/IService1/ParseLic" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetLoggedinUserName">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetLoggedinUserName" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getDBSIZEMB">
-      <soap:operation soapAction="http://tempuri.org/IService1/getDBSIZEMB" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="resetMissingEmailIds">
-      <soap:operation soapAction="http://tempuri.org/IService1/resetMissingEmailIds" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UserParmInsertUpdate">
-      <soap:operation soapAction="http://tempuri.org/IService1/UserParmInsertUpdate" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="validateLogin">
-      <soap:operation soapAction="http://tempuri.org/IService1/validateLogin" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getLoggedInUser">
-      <soap:operation soapAction="http://tempuri.org/IService1/getLoggedInUser" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getAttachedMachineName">
-      <soap:operation soapAction="http://tempuri.org/IService1/getAttachedMachineName" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getServerInstanceName">
-      <soap:operation soapAction="http://tempuri.org/IService1/getServerInstanceName" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getServerMachineName">
-      <soap:operation soapAction="http://tempuri.org/IService1/getServerMachineName" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getSystemParm">
-      <soap:operation soapAction="http://tempuri.org/IService1/getSystemParm" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getSynonyms">
-      <soap:operation soapAction="http://tempuri.org/IService1/getSynonyms" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getThesaurusID">
-      <soap:operation soapAction="http://tempuri.org/IService1/getThesaurusID" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="iCountContent">
-      <soap:operation soapAction="http://tempuri.org/IService1/iCountContent" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getDatasourceParm">
-      <soap:operation soapAction="http://tempuri.org/IService1/getDatasourceParm" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SaveRunParm">
-      <soap:operation soapAction="http://tempuri.org/IService1/SaveRunParm" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="iGetRowCount">
-      <soap:operation soapAction="http://tempuri.org/IService1/iGetRowCount" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ZeroizeGlobalSearch">
-      <soap:operation soapAction="http://tempuri.org/IService1/ZeroizeGlobalSearch" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="updateIp">
-      <soap:operation soapAction="http://tempuri.org/IService1/updateIp" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="PopulateSourceGridWithWeights">
-      <soap:operation soapAction="http://tempuri.org/IService1/PopulateSourceGridWithWeights" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="PopulateSourceGridNoWeights">
       <soap:operation soapAction="http://tempuri.org/IService1/PopulateSourceGridNoWeights" style="document" />
       <wsdl:input>
@@ -2408,186 +2049,6 @@
     </wsdl:operation>
     <wsdl:operation name="getClientLicenses">
       <soap:operation soapAction="http://tempuri.org/IService1/getClientLicenses" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="PopulateUserGrid">
-      <soap:operation soapAction="http://tempuri.org/IService1/PopulateUserGrid" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getGroupUsers">
-      <soap:operation soapAction="http://tempuri.org/IService1/getGroupUsers" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="PopulateDgGroupUsers">
-      <soap:operation soapAction="http://tempuri.org/IService1/PopulateDgGroupUsers" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DeleteGroupUsers">
-      <soap:operation soapAction="http://tempuri.org/IService1/DeleteGroupUsers" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getGroupOwnerGuidByGroupName">
-      <soap:operation soapAction="http://tempuri.org/IService1/getGroupOwnerGuidByGroupName" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddLibraryGroupUser">
-      <soap:operation soapAction="http://tempuri.org/IService1/AddLibraryGroupUser" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="PopulateGroupUserGrid">
-      <soap:operation soapAction="http://tempuri.org/IService1/PopulateGroupUserGrid" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="PopulateLibItemsGrid">
-      <soap:operation soapAction="http://tempuri.org/IService1/PopulateLibItemsGrid" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="PopulateDgAssigned">
-      <soap:operation soapAction="http://tempuri.org/IService1/PopulateDgAssigned" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ResetLibraryUsersCount">
-      <soap:operation soapAction="http://tempuri.org/IService1/ResetLibraryUsersCount" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DeleteLibraryGroupUser">
-      <soap:operation soapAction="http://tempuri.org/IService1/DeleteLibraryGroupUser" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ChangeUserPassword">
-      <soap:operation soapAction="http://tempuri.org/IService1/ChangeUserPassword" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SaveClickStats">
-      <soap:operation soapAction="http://tempuri.org/IService1/SaveClickStats" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="cleanUpLibraryItems">
-      <soap:operation soapAction="http://tempuri.org/IService1/cleanUpLibraryItems" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RemoveLibraryDirectories">
-      <soap:operation soapAction="http://tempuri.org/IService1/RemoveLibraryDirectories" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RemoveLibraryEmails">
-      <soap:operation soapAction="http://tempuri.org/IService1/RemoveLibraryEmails" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddSysMsg">
-      <soap:operation soapAction="http://tempuri.org/IService1/AddSysMsg" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddLibraryDirectory">
-      <soap:operation soapAction="http://tempuri.org/IService1/AddLibraryDirectory" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddLibraryEmail">
-      <soap:operation soapAction="http://tempuri.org/IService1/AddLibraryEmail" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="PopulateLibraryGrid">
-      <soap:operation soapAction="http://tempuri.org/IService1/PopulateLibraryGrid" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2984,6 +2445,375 @@
     </wsdl:operation>
     <wsdl:operation name="getSearchState">
       <soap:operation soapAction="http://tempuri.org/IService1/getSearchState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveSearchState">
+      <soap:operation soapAction="http://tempuri.org/IService1/saveSearchState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getScreenState">
+      <soap:operation soapAction="http://tempuri.org/IService1/getScreenState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGridLayout">
+      <soap:operation soapAction="http://tempuri.org/IService1/getGridLayout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveGridLayout">
+      <soap:operation soapAction="http://tempuri.org/IService1/saveGridLayout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveScreenState">
+      <soap:operation soapAction="http://tempuri.org/IService1/saveScreenState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserParms">
+      <soap:operation soapAction="http://tempuri.org/IService1/getUserParms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ParseLicDictionary">
+      <soap:operation soapAction="http://tempuri.org/IService1/ParseLicDictionary" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LicenseType">
+      <soap:operation soapAction="http://tempuri.org/IService1/LicenseType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNbrUsers">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetNbrUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isLease">
+      <soap:operation soapAction="http://tempuri.org/IService1/isLease" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMaxClients">
+      <soap:operation soapAction="http://tempuri.org/IService1/getMaxClients" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserHostName">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUserHostName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserHostAddress">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUserHostAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserGuidID">
+      <soap:operation soapAction="http://tempuri.org/IService1/getUserGuidID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessDates">
+      <soap:operation soapAction="http://tempuri.org/IService1/ProcessDates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNbrMachineAll">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetNbrMachineAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNbrMachine">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetNbrMachine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isLicenseLocatedOnAssignedMachine">
+      <soap:operation soapAction="http://tempuri.org/IService1/isLicenseLocatedOnAssignedMachine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetXrt">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetXrt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSqlServerVersion">
+      <soap:operation soapAction="http://tempuri.org/IService1/getSqlServerVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecordGrowth">
+      <soap:operation soapAction="http://tempuri.org/IService1/RecordGrowth" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ParseLic">
+      <soap:operation soapAction="http://tempuri.org/IService1/ParseLic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoggedinUserName">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetLoggedinUserName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDBSIZEMB">
+      <soap:operation soapAction="http://tempuri.org/IService1/getDBSIZEMB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="resetMissingEmailIds">
+      <soap:operation soapAction="http://tempuri.org/IService1/resetMissingEmailIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserParmInsertUpdate">
+      <soap:operation soapAction="http://tempuri.org/IService1/UserParmInsertUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateLogin">
+      <soap:operation soapAction="http://tempuri.org/IService1/validateLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLoggedInUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/getLoggedInUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAttachedMachineName">
+      <soap:operation soapAction="http://tempuri.org/IService1/getAttachedMachineName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getServerInstanceName">
+      <soap:operation soapAction="http://tempuri.org/IService1/getServerInstanceName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getServerMachineName">
+      <soap:operation soapAction="http://tempuri.org/IService1/getServerMachineName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSystemParm">
+      <soap:operation soapAction="http://tempuri.org/IService1/getSystemParm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSynonyms">
+      <soap:operation soapAction="http://tempuri.org/IService1/getSynonyms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getThesaurusID">
+      <soap:operation soapAction="http://tempuri.org/IService1/getThesaurusID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="iCountContent">
+      <soap:operation soapAction="http://tempuri.org/IService1/iCountContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatasourceParm">
+      <soap:operation soapAction="http://tempuri.org/IService1/getDatasourceParm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRunParm">
+      <soap:operation soapAction="http://tempuri.org/IService1/SaveRunParm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="iGetRowCount">
+      <soap:operation soapAction="http://tempuri.org/IService1/iGetRowCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZeroizeGlobalSearch">
+      <soap:operation soapAction="http://tempuri.org/IService1/ZeroizeGlobalSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateIp">
+      <soap:operation soapAction="http://tempuri.org/IService1/updateIp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PopulateSourceGridWithWeights">
+      <soap:operation soapAction="http://tempuri.org/IService1/PopulateSourceGridWithWeights" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3459,6 +3289,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getNewListOfStrings">
+      <soap:operation soapAction="http://tempuri.org/IService1/getNewListOfStrings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getListOfStrings01">
       <soap:operation soapAction="http://tempuri.org/IService1/getListOfStrings01" style="document" />
       <wsdl:input>
@@ -3560,6 +3399,186 @@
     </wsdl:operation>
     <wsdl:operation name="PopulateCoOwnerGrid">
       <soap:operation soapAction="http://tempuri.org/IService1/PopulateCoOwnerGrid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PopulateUserGrid">
+      <soap:operation soapAction="http://tempuri.org/IService1/PopulateUserGrid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGroupUsers">
+      <soap:operation soapAction="http://tempuri.org/IService1/getGroupUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PopulateDgGroupUsers">
+      <soap:operation soapAction="http://tempuri.org/IService1/PopulateDgGroupUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGroupUsers">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteGroupUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGroupOwnerGuidByGroupName">
+      <soap:operation soapAction="http://tempuri.org/IService1/getGroupOwnerGuidByGroupName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLibraryGroupUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddLibraryGroupUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PopulateGroupUserGrid">
+      <soap:operation soapAction="http://tempuri.org/IService1/PopulateGroupUserGrid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PopulateLibItemsGrid">
+      <soap:operation soapAction="http://tempuri.org/IService1/PopulateLibItemsGrid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PopulateDgAssigned">
+      <soap:operation soapAction="http://tempuri.org/IService1/PopulateDgAssigned" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetLibraryUsersCount">
+      <soap:operation soapAction="http://tempuri.org/IService1/ResetLibraryUsersCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLibraryGroupUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteLibraryGroupUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeUserPassword">
+      <soap:operation soapAction="http://tempuri.org/IService1/ChangeUserPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveClickStats">
+      <soap:operation soapAction="http://tempuri.org/IService1/SaveClickStats" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cleanUpLibraryItems">
+      <soap:operation soapAction="http://tempuri.org/IService1/cleanUpLibraryItems" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveLibraryDirectories">
+      <soap:operation soapAction="http://tempuri.org/IService1/RemoveLibraryDirectories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveLibraryEmails">
+      <soap:operation soapAction="http://tempuri.org/IService1/RemoveLibraryEmails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSysMsg">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddSysMsg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLibraryDirectory">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddLibraryDirectory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLibraryEmail">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddLibraryEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PopulateLibraryGrid">
+      <soap:operation soapAction="http://tempuri.org/IService1/PopulateLibraryGrid" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

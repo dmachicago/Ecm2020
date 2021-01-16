@@ -146,9 +146,11 @@
     <Content Include="EcmCloudWcfTestPage.html" />
     <Content Include="Identify.html" />
     <Content Include="javaFunctions.js" />
+    <Content Include="SpellCheck\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="SVCSearch.svc" />
     <Content Include="Silverlight.js" />
-    <Content Include="SpellCheck\index.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -227,27 +229,69 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Dictionary\C1Spell_da-DK.zip" />
-    <Content Include="Dictionary\C1Spell_de-CH.zip" />
-    <Content Include="Dictionary\C1Spell_de-DE.zip" />
-    <Content Include="Dictionary\C1Spell_el-GR.zip" />
-    <Content Include="Dictionary\C1Spell_en-AU.zip" />
-    <Content Include="Dictionary\C1Spell_en-CA.zip" />
-    <Content Include="Dictionary\C1Spell_en-GB.zip" />
-    <Content Include="Dictionary\C1Spell_en-US-medical.zip" />
-    <Content Include="Dictionary\C1Spell_en-US.zip" />
-    <Content Include="Dictionary\C1Spell_es-AR.zip" />
-    <Content Include="Dictionary\C1Spell_es-ES.zip" />
-    <Content Include="Dictionary\C1Spell_es-MX.zip" />
-    <Content Include="Dictionary\C1Spell_fr-CA.zip" />
-    <Content Include="Dictionary\C1Spell_fr-FR.zip" />
-    <Content Include="Dictionary\C1Spell_it-IT.zip" />
-    <Content Include="Dictionary\C1Spell_nb-NO.zip" />
-    <Content Include="Dictionary\C1Spell_nl-NL.zip" />
-    <Content Include="Dictionary\C1Spell_pt-BR.zip" />
-    <Content Include="Dictionary\C1Spell_pt-PT.zip" />
-    <Content Include="Dictionary\C1Spell_ru-RU.zip" />
-    <Content Include="Dictionary\C1Spell_sv-SE.zip" />
+    <Content Include="Dictionary\C1Spell_da-DK.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionary\C1Spell_de-CH.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionary\C1Spell_de-DE.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionary\C1Spell_el-GR.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionary\C1Spell_en-AU.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionary\C1Spell_en-CA.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionary\C1Spell_en-GB.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionary\C1Spell_en-US-medical.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionary\C1Spell_en-US.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionary\C1Spell_es-AR.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionary\C1Spell_es-ES.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionary\C1Spell_es-MX.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionary\C1Spell_fr-CA.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionary\C1Spell_fr-FR.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionary\C1Spell_it-IT.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionary\C1Spell_nb-NO.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionary\C1Spell_nl-NL.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionary\C1Spell_pt-BR.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionary\C1Spell_pt-PT.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionary\C1Spell_ru-RU.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionary\C1Spell_sv-SE.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="SpellCheck\C1Spell_da-DK.dct">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -1,0 +1,3 @@
+CRCs are not, by themselves, suitable for protecting against intentional alteration of data (for example, in authentication applications for data security), because their convenient mathematical properties make it easy to compute the CRC adjustment required to match any given change to the data.
+
+It is often falsely assumed that when a message and its CRC are received from an open channel and the CRC matches the message's calculated CRC then the message cannot have been altered in transit. This is of course false, because both could have been changed, such that the new CRC would match the new message. Therefore, CRCs can be relied upon to verify correctness but not integrity.

@@ -1,0 +1,20 @@
+www.ecmlibrary.com/Issues/publish.htm
+www.ecmlibrary.com/DBInstall/publish.htm
+www.ecmlibrary.com/Download/ECM2007/publish.htm
+www.ecmlibrary.com/Download/ECM2003/publish.htm
+
+www.ecmlibrary.com/prereqs
+
+www.ecmlibrary.com/prereqs
+
+
+
+select count(*) from email
+select count(*) from emailattachment
+select count(*) from datasource
+
+
+
+
+
+select fulltextserviceproperty('isfulltextinstalled')
