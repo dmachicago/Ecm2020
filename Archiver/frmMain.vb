@@ -6123,7 +6123,7 @@ NextFolder:
         If ExecuteThis Then
             For i As Integer = 0 To ZipFilesContent.Count - 1 : LL = 5711
                 StackLevel = 0
-                Console.WriteLine("Curr ZIP SourceGuid: " + SourceGuid)
+                'Console.WriteLine("Curr ZIP SourceGuid: " + SourceGuid)
                 Dim ParentGuid As String = "" : LL = 5746
                 Dim FQN As String = ZipFilesContent(i).ToString
                 Dim pGuid As String = DBARCH.getSourceGuidByFqn(FQN, gCurrUserGuidID)

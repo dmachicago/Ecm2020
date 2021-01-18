@@ -1,0 +1,1891 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"[]>
+<html>
+  <head><link rel="shortcut icon" href="../favicon.ico" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="save" content="history" />
+    <title>frmDBUpdates Events</title>
+    <link rel="stylesheet" type="text/css" href="../styles/lightweight.css" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <link rel="stylesheet" type="text/css" href="../styles/lw-code.css" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <script type="text/javascript" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" src="../scripts/languageSelector.js"> </script>
+    <meta name="container" content="EcmArchiver" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <meta name="file" content="Events.T-EcmArchiver.frmDBUpdates" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <meta name="guid" content="Events.T-EcmArchiver.frmDBUpdates" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <xml xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+      <MSHelp:Attr Name="AssetID" Value="Events.T:EcmArchiver.frmDBUpdates" />
+      <MSHelp:TOCTitle Title="frmDBUpdates Events" />
+      <MSHelp:RLTitle Title="frmDBUpdates Events (EcmArchiver)" />
+      <MSHelp:Keyword Index="A" Term="Events.T:EcmArchiver.frmDBUpdates" />
+      <MSHelp:Keyword Index="A" Term="frlrfEcmArchiverfrmDBUpdatesEventsTopic" />
+      <MSHelp:Keyword Index="K" Term="frmDBUpdates class, events" />
+      <MSHelp:Attr Name="DevLang" Value="CSharp" />
+      <MSHelp:Attr Name="DevLang" Value="VB" />
+      <MSHelp:Attr Name="Locale" Value="en-us" />
+      <MSHelp:Attr Name="TopicType" Value="kbSyntax" />
+      <MSHelp:Attr Name="TopicType" Value="apiref" />
+      <MSHelp:Attr Name="AssemblyVersion" Value="" />
+    </xml>
+  <link rel="stylesheet" href="../TOC.css"><script type="text/javascript" src="../TOC.js"></script></head>
+  <body onload="javascript: Initialize();" onresize="javascript: ResizeTree();">
+            <div id="TOCDiv" class="TOCDiv" style="width: 310px; float: left; position: relative; ">
+
+            <div id="divSearchOpts" class="SearchOpts" style="height: 95px; display: none;">
+                <div class="SearchOptsInner">
+                    <img class="TOCLink" onclick="javascript: ShowHideSearch(false);" src="../CloseSearch.png" height="24" width="24" alt="Hide Search" title="Hide Search" style="float: right;" />
+                    <span class="Title">Keyword(s) to search:</span>
+                </div>
+                <div class="SearchOptsInner">
+                    <input id="txtSearchText" type="text" style="width: 95.5%;" onkeypress="javascript: return OnSearchTextKeyPress(event);" />
+                </div>
+                <div class="SearchOptsInner">
+                    <input id="chkSortByTitle" type="checkbox" />&nbsp;Sort results by title
+                    <input type="button" value="Search" onclick="javascript: return PerformSearch();" style="float: right;" />
+                </div>
+            </div>
+
+            <div id="divIndexOpts" class="IndexOpts" style="height: 28px; display: none;">
+                <img class="TOCLink" onclick="javascript: ShowHideIndex(false);"
+                     src="../CloseSearch.png" height="24" width="24" alt="Hide Keyword Index" title="Hide Keyword Index" style="float: right;" />
+                <span class="Title">Keyword Index</span>
+            </div>
+
+            <div id="divNavOpts" class="NavOpts" style="height: 20px;">
+                <!--<img class="TOCLink" onclick="javascript: SyncTOC();" src="../SyncTOC.png"
+                     height="16" width="16" alt="Sync to TOC" title="Sync to TOC" />-->
+                <img class="TOCLink" onclick="javascript: ExpandOrCollapseAll(true);"
+                     src="../ExpandAll.bmp" height="16" width="16" alt="Expand all" title="Expand all" />
+                <img class="TOCLink" onclick="javascript: ExpandOrCollapseAll(false);"
+                     src="../CollapseAll.bmp" height="16" width="16" alt="Collapse all" title="Collapse all" />
+                <!--<img class="TOCLink" onclick="javascript: alert('Please make sure to use either Index.aspx or Index.php to enable the Keyword Index feature.');"
+                     src="../Index.png" height="16" width="16" alt="Keyword Index" title="Keyword Index" />-->
+                <img class="TOCLink" onclick="javascript: ShowHideSearch(true);"
+                     src="../Search.gif" height="16" width="16" alt="Search" title="Search" />
+                <a href="#" title="Click to obtain a direct link to the displayed topic" style="margin-left: 10px; vertical-align: top;" onclick="javascript: ShowDirectLink();">Direct Link</a>
+                <!--<a href="#" onclick="javascript: window.history.go(-1); return false;">
+                    <img class="TOCLink" style="float: right;"
+                         src="../Back.png" height="16" width="16" alt="Previous page" title="Previous page" />-->
+                </a>
+            </div>
+
+            <div class="Tree" id="divSearchResults" style="display: none;"
+                 onselectstart="javascript: return false;">
+            </div>
+
+            <div class="Tree" id="divIndexResults" style="display: none;"
+                 onselectstart="javascript: return false;">
+            </div>
+
+            <div class="Tree" id="divTree" onselectstart="javascript: return false;">
+              <div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="N-EcmArchiver.htm" target="_self">EcmArchiver Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver._ECM_HiveDataSet.htm" target="_self">_ECM_HiveDataSet Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.AboutBox1.htm" target="_self">AboutBox1 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsACTIVESEARCHGUIDS.htm" target="_self">clsACTIVESEARCHGUIDS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsAppParms.htm" target="_self">clsAppParms Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsARCHIVEHIST.htm" target="_self">clsARCHIVEHIST Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsARCHIVEHISTCONTENTTYPE.htm" target="_self">clsARCHIVEHISTCONTENTTYPE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsArchiver.htm" target="_self">clsArchiver Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsARCHIVESTATS.htm" target="_self">clsARCHIVESTATS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsATTACHMENTTYPE.htm" target="_self">clsATTACHMENTTYPE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsATTRIBUTES.htm" target="_self">clsATTRIBUTES Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsAutoLibRef.htm" target="_self">clsAutoLibRef Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsAVAILFILETYPES.htm" target="_self">clsAVAILFILETYPES Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsAVAILFILETYPESUNDEFINED.htm" target="_self">clsAVAILFILETYPESUNDEFINED Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsCompression.htm" target="_self">clsCompression Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsCONTACTSARCHIVE.htm" target="_self">clsCONTACTSARCHIVE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsDatabaseARCH.htm" target="_self">clsDatabaseARCH Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsDataGrid.htm" target="_self">clsDataGrid Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsDataSource_V2.htm" target="_self">clsDataSource_V2 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsDb.htm" target="_self">clsDb Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsDbARCHS.htm" target="_self">clsDbARCHS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsDbLocal.htm" target="_self">clsDbLocal Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsDBUpdate.htm" target="_self">clsDBUpdate Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsDIRECTORY.htm" target="_self">clsDIRECTORY Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsDirListener.htm" target="_self">clsDirListener Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsDma.htm" target="_self">clsDma Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsEMAIL.htm" target="_self">clsEMAIL Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsEMAILARCHPARMS.htm" target="_self">clsEMAILARCHPARMS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsEMAILFOLDER.htm" target="_self">clsEMAILFOLDER Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsEmailFunctions.htm" target="_self">clsEmailFunctions Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsEMAILTODELETE.htm" target="_self">clsEMAILTODELETE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsErrors.htm" target="_self">clsErrors Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsEXCHANGEHOSTPOP.htm" target="_self">clsEXCHANGEHOSTPOP Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsEXCHANGEHOSTSMTP.htm" target="_self">clsEXCHANGEHOSTSMTP Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsEXCLUDEDFILES.htm" target="_self">clsEXCLUDEDFILES Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsEXCLUDEFROM.htm" target="_self">clsEXCLUDEFROM Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsExecParms.htm" target="_self">clsExecParms Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsFile.htm" target="_self">clsFile Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsFileInfo.htm" target="_self">clsFileInfo Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsFILESTODELETE.htm" target="_self">clsFILESTODELETE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsGenerator.htm" target="_self">clsGenerator Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsGlobalEntity.htm" target="_self">clsGlobalEntity Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsHELPTEXT.htm" target="_self">clsHELPTEXT Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsID3V1Tag.htm" target="_self">clsID3V1Tag Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsINCLUDEDFILES.htm" target="_self">clsINCLUDEDFILES Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsIsolatedStorage.htm" target="_self">clsIsolatedStorage Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsKeyGen.htm" target="_self">clsKeyGen Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsKeyTable.htm" target="_self">clsKeyTable Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsLIBDIRECTORY.htm" target="_self">clsLIBDIRECTORY Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsLIBEMAIL.htm" target="_self">clsLIBEMAIL Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsLIBRARYITEMS.htm" target="_self">clsLIBRARYITEMS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsLICENSE.htm" target="_self">clsLICENSE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsLicenseMgt.htm" target="_self">clsLicenseMgt Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsListener.htm" target="_self">clsListener Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsLocalEncrypt.htm" target="_self">clsLocalEncrypt Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsLogging.htm" target="_self">clsLogging Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsMP3.htm" target="_self">clsMP3 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsMsWord.htm" target="_self">clsMsWord Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsNetworkFileListener.htm" target="_self">clsNetworkFileListener Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsProcess.htm" target="_self">clsProcess Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsPROCESSFILEAS.htm" target="_self">clsPROCESSFILEAS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsPst.htm" target="_self">clsPst Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsQUICKDIRECTORY.htm" target="_self">clsQUICKDIRECTORY Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsQuickInventory.htm" target="_self">clsQuickInventory Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsRECIPIENTS.htm" target="_self">clsRECIPIENTS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsRecon.htm" target="_self">clsRecon Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsReconUSERS.htm" target="_self">clsReconUSERS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsRegistry.htm" target="_self">clsRegistry Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsRemoteSupport.htm" target="_self">clsRemoteSupport Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsRSS.htm" target="_self">clsRSS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsRUNPARMS.htm" target="_self">clsRUNPARMS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsSAVEDITEMS.htm" target="_self">clsSAVEDITEMS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsScheduler.htm" target="_self">clsScheduler Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsSEARCHHISTORY.htm" target="_self">clsSEARCHHISTORY Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsSmo.htm" target="_self">clsSmo Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsSOURCEATTRIBUTE.htm" target="_self">clsSOURCEATTRIBUTE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsSOURCETYPE.htm" target="_self">clsSOURCETYPE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsSql.htm" target="_self">clsSql Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsSUBDIR.htm" target="_self">clsSUBDIR Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsTimeCalcs.htm" target="_self">clsTimeCalcs Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsUSERS.htm" target="_self">clsUSERS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsUtility.htm" target="_self">clsUtility Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="T-EcmArchiver.clsUtility.BWMode.htm" target="_self">clsUtility.BWMode Enumeration</a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="T-EcmArchiver.clsUtility.OnOff.htm" target="_self">clsUtility.OnOff Enumeration</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsValidateCodes.htm" target="_self">clsValidateCodes Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsWebPull.htm" target="_self">clsWebPull Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsWMAID3Tag.htm" target="_self">clsWMAID3Tag Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsZIPDATASOURCE.htm" target="_self">clsZIPDATASOURCE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsZipFiles.htm" target="_self">clsZipFiles Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.DS_Content.htm" target="_self">DS_Content Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.DS_Email.htm" target="_self">DS_Email Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.DS_RssPull.htm" target="_self">DS_RssPull Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.DS_WebScreen.htm" target="_self">DS_WebScreen Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.DS_WebSite.htm" target="_self">DS_WebSite Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.dsWebSite.htm" target="_self">dsWebSite Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmAgreement.htm" target="_self">frmAgreement Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmAppConfigEdit.htm" target="_self">frmAppConfigEdit Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmAttachmentCode.htm" target="_self">frmAttachmentCode Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmDBUpdates.htm" target="_self">frmDBUpdates Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="AllMembers.T-EcmArchiver.frmDBUpdates.htm" target="_self">frmDBUpdates Members</a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="Methods.T-EcmArchiver.frmDBUpdates.htm" target="_self">frmDBUpdates Methods</a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="Properties.T-EcmArchiver.frmDBUpdates.htm" target="_self">frmDBUpdates Properties</a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="Events.T-EcmArchiver.frmDBUpdates.htm" target="_self">frmDBUpdates Events</a>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmEncryptString.htm" target="_self">frmEncryptString Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmExchangeMonitor.htm" target="_self">frmExchangeMonitor Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmExhangeMail.htm" target="_self">frmExhangeMail Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmFti.htm" target="_self">frmFti Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmHelp.htm" target="_self">frmHelp Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmHistory.htm" target="_self">frmHistory Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmImpersonate.htm" target="_self">frmImpersonate Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmLibraryAssgnList.htm" target="_self">frmLibraryAssgnList Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmLibraryAssignment.htm" target="_self">frmLibraryAssignment Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmLicense.htm" target="_self">frmLicense Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.FrmListenerTest.htm" target="_self">FrmListenerTest Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmLoadTest.htm" target="_self">frmLoadTest Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmLocalParameters.htm" target="_self">frmLocalParameters Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmMain.htm" target="_self">frmMain Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmMessageBar.htm" target="_self">frmMessageBar Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmMsg.htm" target="_self">frmMsg Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmNotify.htm" target="_self">frmNotify Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmNotify2.htm" target="_self">frmNotify2 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmNotifyBatchOCR.htm" target="_self">frmNotifyBatchOCR Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmNotifyContact.htm" target="_self">frmNotifyContact Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmNotifyListener.htm" target="_self">frmNotifyListener Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmNotifyMessage.htm" target="_self">frmNotifyMessage Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmOutlookNotice.htm" target="_self">frmOutlookNotice Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmOutOfSpace.htm" target="_self">frmOutOfSpace Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmPasswordChange.htm" target="_self">frmPasswordChange Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmPercent.htm" target="_self">frmPercent Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmPstLoader.htm" target="_self">frmPstLoader Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmPstLoader.ProcessFolders.htm" target="_self">frmPstLoader.ProcessFolders Structure</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmRetentionCode.htm" target="_self">frmRetentionCode Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmRetentionMgt.htm" target="_self">frmRetentionMgt Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmSchedule.htm" target="_self">frmSchedule Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmSenderMgt.htm" target="_self">frmSenderMgt Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmSqlHelp.htm" target="_self">frmSqlHelp Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmSqlite.htm" target="_self">frmSqlite Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmTracker.htm" target="_self">frmTracker Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.LoginForm1.htm" target="_self">LoginForm1 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.RSS.htm" target="_self">RSS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.rssChannel.htm" target="_self">rssChannel Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.rssChannelItem.htm" target="_self">rssChannelItem Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.rssChannelItems.htm" target="_self">rssChannelItems Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SplashEcmSetup.htm" target="_self">SplashEcmSetup Class</a>
+<div class="Hidden">
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="N-EcmArchiver.My.Resources.htm" target="_self">EcmArchiver.My.Resources Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.My.Resources.Resources.htm" target="_self">Resources Class</a>
+<div class="Hidden">
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="N-EcmArchiver.SVCSearch.htm" target="_self">EcmArchiver.SVCSearch Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_clsUSERGRIDSTATE.htm" target="_self">DS_clsUSERGRIDSTATE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_CONTENT.htm" target="_self">DS_CONTENT Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_EMAIL.htm" target="_self">DS_EMAIL Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_License.htm" target="_self">DS_License Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_ListOfStrings01.htm" target="_self">DS_ListOfStrings01 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_ListOfStrings02.htm" target="_self">DS_ListOfStrings02 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_ListOfStrings03.htm" target="_self">DS_ListOfStrings03 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_ListOfStrings04.htm" target="_self">DS_ListOfStrings04 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_SearchTerms.htm" target="_self">DS_SearchTerms Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_USERSCREENSTATE.htm" target="_self">DS_USERSCREENSTATE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_USERSEARCHSTATE.htm" target="_self">DS_USERSEARCHSTATE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_VUserGrid.htm" target="_self">DS_VUserGrid Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.IService1.htm" target="_self">IService1 Interface</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.IService1Channel.htm" target="_self">IService1Channel Interface</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.Service1Client.htm" target="_self">Service1Client Class</a>
+<div class="Hidden">
+</div>
+</div>
+</div>
+</div>
+
+            </div>
+
+        </div>
+
+        <div id="TOCSizer" class="TOCSizer" onmousedown="OnMouseDown(event)" onselectstart="javascript: return false;"></div>
+        
+        <div id ="TopicContent" name="TopicContent" class="TopicContent" style="float: none; margin-left: 312px;height: -webkit-fill-available;display:block;overflow: auto;">
+          
+          <!-- Content Starts Here -->
+          <div class="contentPlaceHolder" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+      <div class="content">
+        <div class="topicContainer">
+          <div class="topic">
+            <p class="majorTitle" />
+            <h1 class="title">frmDBUpdates Events</h1>
+            <div id="mainSection">
+              <div id="mainBody">
+                <p>The <a href="T-EcmArchiver.frmDBUpdates.htm">frmDBUpdates</a> type exposes the following members.</p>
+                <div class="LW_CollapsibleArea_Container">
+                  <div class="LW_CollapsibleArea_TitleDiv">
+                    <h2 class="LW_CollapsibleArea_Title">Events</h2>
+                    <div class="LW_CollapsibleArea_HrDiv">
+                      <hr class="LW_CollapsibleArea_Hr" />
+                    </div>
+                  </div>
+                  <a id="eventTableSection">
+                    <!---->
+                  </a>
+                  <table class="members">
+                    <tr>
+                      <th class="iconColumn">
+               
+            </th>
+                      <th class="nameColumn">Name</th>
+                      <th class="descriptionColumn">Description</th>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.activated.aspx" target="_blank">Activated</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the form is activated in code or by the user.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.autosizechanged.aspx" target="_blank">AutoSizeChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.autosize.aspx" target="_blank">AutoSize</a> property changes. </div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.autovalidatechanged.aspx" target="_blank">AutoValidateChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the <a href="http://msdn.microsoft.com/en-us/library/51d5b3a8.aspx" target="_blank">AutoValidate</a> property changes.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.backcolorchanged.aspx" target="_blank">BackColorChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the value of the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.backcolor.aspx" target="_blank">BackColor</a> property changes.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.backgroundimagechanged.aspx" target="_blank">BackgroundImageChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the value of the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.backgroundimage.aspx" target="_blank">BackgroundImage</a> property changes.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.backgroundimagelayoutchanged.aspx" target="_blank">BackgroundImageLayoutChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.backgroundimagelayout.aspx" target="_blank">BackgroundImageLayout</a> property changes.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.bindingcontextchanged.aspx" target="_blank">BindingContextChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the value of the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.bindingcontext.aspx" target="_blank">BindingContext</a> property changes.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.causesvalidationchanged.aspx" target="_blank">CausesValidationChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the value of the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.causesvalidation.aspx" target="_blank">CausesValidation</a> property changes.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.changeuicues.aspx" target="_blank">ChangeUICues</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the focus or keyboard user interface (UI) cues change.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.click.aspx" target="_blank">Click</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the control is clicked.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.clientsizechanged.aspx" target="_blank">ClientSizeChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the value of the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.clientsize.aspx" target="_blank">ClientSize</a> property changes. </div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.closed.aspx" target="_blank">Closed</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the form is closed. </div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.closing.aspx" target="_blank">Closing</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the form is closing.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.contextmenuchanged.aspx" target="_blank">ContextMenuChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the value of the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.contextmenu.aspx" target="_blank">ContextMenu</a> property changes.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.contextmenustripchanged.aspx" target="_blank">ContextMenuStripChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the value of the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.contextmenustrip.aspx" target="_blank">ContextMenuStrip</a> property changes. </div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.controladded.aspx" target="_blank">ControlAdded</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when a new control is added to the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.controlcollection.aspx" target="_blank">ControlCollection</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.controlremoved.aspx" target="_blank">ControlRemoved</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when a control is removed from the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.controlcollection.aspx" target="_blank">ControlCollection</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.cursorchanged.aspx" target="_blank">CursorChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the value of the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.cursor.aspx" target="_blank">Cursor</a> property changes.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.deactivate.aspx" target="_blank">Deactivate</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the form loses focus and is no longer the active form.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.component.disposed.aspx" target="_blank">Disposed</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the component is disposed by a call to the <a href="http://msdn.microsoft.com/en-us/library/3cc9y48w.aspx" target="_blank">Dispose</a> method. </div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.component.aspx" target="_blank">Component</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.dockchanged.aspx" target="_blank">DockChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the value of the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.dock.aspx" target="_blank">Dock</a> property changes.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.doubleclick.aspx" target="_blank">DoubleClick</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the control is double-clicked.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.dpichanged.aspx" target="_blank">DpiChanged</a>
+                      </td>
+                      <td> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.dpichangedafterparent.aspx" target="_blank">DpiChangedAfterParent</a>
+                      </td>
+                      <td> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.dpichangedbeforeparent.aspx" target="_blank">DpiChangedBeforeParent</a>
+                      </td>
+                      <td> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.dragdrop.aspx" target="_blank">DragDrop</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when a drag-and-drop operation is completed.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.dragenter.aspx" target="_blank">DragEnter</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when an object is dragged into the control's bounds.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.dragleave.aspx" target="_blank">DragLeave</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when an object is dragged out of the control's bounds.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.dragover.aspx" target="_blank">DragOver</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when an object is dragged over the control's bounds.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.enabledchanged.aspx" target="_blank">EnabledChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.enabled.aspx" target="_blank">Enabled</a> property value has changed.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.enter.aspx" target="_blank">Enter</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the control is entered.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.fontchanged.aspx" target="_blank">FontChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.font.aspx" target="_blank">Font</a> property value changes.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.forecolorchanged.aspx" target="_blank">ForeColorChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.forecolor.aspx" target="_blank">ForeColor</a> property value changes.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.formclosed.aspx" target="_blank">FormClosed</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs after the form is closed.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.formclosing.aspx" target="_blank">FormClosing</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs before the form is closed.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.givefeedback.aspx" target="_blank">GiveFeedback</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs during a drag operation.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.gotfocus.aspx" target="_blank">GotFocus</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the control receives focus.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.handlecreated.aspx" target="_blank">HandleCreated</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when a handle is created for the control.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.handledestroyed.aspx" target="_blank">HandleDestroyed</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the control's handle is in the process of being destroyed.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.helpbuttonclicked.aspx" target="_blank">HelpButtonClicked</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the Help button is clicked.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.helprequested.aspx" target="_blank">HelpRequested</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the user requests help for a control.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.imemodechanged.aspx" target="_blank">ImeModeChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.imemode.aspx" target="_blank">ImeMode</a> property has changed.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.inputlanguagechanged.aspx" target="_blank">InputLanguageChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs after the input language of the form has changed.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.inputlanguagechanging.aspx" target="_blank">InputLanguageChanging</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the user attempts to change the input language for the form.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.invalidated.aspx" target="_blank">Invalidated</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when a control's display requires redrawing.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.keydown.aspx" target="_blank">KeyDown</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when a key is pressed while the control has focus.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.keypress.aspx" target="_blank">KeyPress</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when a key is pressed while the control has focus.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.keyup.aspx" target="_blank">KeyUp</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when a key is released while the control has focus.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.layout.aspx" target="_blank">Layout</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when a control should reposition its child controls.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.leave.aspx" target="_blank">Leave</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the input focus leaves the control.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.load.aspx" target="_blank">Load</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs before a form is displayed for the first time.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.locationchanged.aspx" target="_blank">LocationChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.location.aspx" target="_blank">Location</a> property value has changed.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.lostfocus.aspx" target="_blank">LostFocus</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the control loses focus.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.marginchanged.aspx" target="_blank">MarginChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.margin.aspx" target="_blank">Margin</a> property changes.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.maximizedboundschanged.aspx" target="_blank">MaximizedBoundsChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the value of the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.maximizedbounds.aspx" target="_blank">MaximizedBounds</a> property has changed.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.maximumsizechanged.aspx" target="_blank">MaximumSizeChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the value of the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.maximumsize.aspx" target="_blank">MaximumSize</a> property has changed.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.mdichildactivate.aspx" target="_blank">MdiChildActivate</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when a multiple-document interface (MDI) child form is activated or closed within an MDI application.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.menucomplete.aspx" target="_blank">MenuComplete</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the menu of a form loses focus.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.menustart.aspx" target="_blank">MenuStart</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the menu of a form receives focus.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.minimumsizechanged.aspx" target="_blank">MinimumSizeChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the value of the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.minimumsize.aspx" target="_blank">MinimumSize</a> property has changed.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.mousecapturechanged.aspx" target="_blank">MouseCaptureChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the control loses mouse capture.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.mouseclick.aspx" target="_blank">MouseClick</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the control is clicked by the mouse.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.mousedoubleclick.aspx" target="_blank">MouseDoubleClick</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the control is double clicked by the mouse.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.mousedown.aspx" target="_blank">MouseDown</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the mouse pointer is over the control and a mouse button is pressed.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.mouseenter.aspx" target="_blank">MouseEnter</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the mouse pointer enters the control.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.mousehover.aspx" target="_blank">MouseHover</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the mouse pointer rests on the control.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.mouseleave.aspx" target="_blank">MouseLeave</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the mouse pointer leaves the control.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.mousemove.aspx" target="_blank">MouseMove</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the mouse pointer is moved over the control.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.mouseup.aspx" target="_blank">MouseUp</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the mouse pointer is over the control and a mouse button is released.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.mousewheel.aspx" target="_blank">MouseWheel</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the mouse wheel moves while the control has focus.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.move.aspx" target="_blank">Move</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the control is moved.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.paddingchanged.aspx" target="_blank">PaddingChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the control's padding changes.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.paint.aspx" target="_blank">Paint</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the control is redrawn.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.parentchanged.aspx" target="_blank">ParentChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.parent.aspx" target="_blank">Parent</a> property value changes.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.previewkeydown.aspx" target="_blank">PreviewKeyDown</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs before the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.keydown.aspx" target="_blank">KeyDown</a> event when a key is pressed while focus is on this control.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.queryaccessibilityhelp.aspx" target="_blank">QueryAccessibilityHelp</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.accessibleobject.aspx" target="_blank">AccessibleObject</a> is providing help to accessibility applications.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.querycontinuedrag.aspx" target="_blank">QueryContinueDrag</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs during a drag-and-drop operation and enables the drag source to determine whether the drag-and-drop operation should be canceled.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.regionchanged.aspx" target="_blank">RegionChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the value of the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.region.aspx" target="_blank">Region</a> property changes.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.resize.aspx" target="_blank">Resize</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the control is resized.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.resizebegin.aspx" target="_blank">ResizeBegin</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when a form enters resizing mode.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.resizeend.aspx" target="_blank">ResizeEnd</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when a form exits resizing mode.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.righttoleftchanged.aspx" target="_blank">RightToLeftChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.righttoleft.aspx" target="_blank">RightToLeft</a> property value changes.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.righttoleftlayoutchanged.aspx" target="_blank">RightToLeftLayoutChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs after the value of the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.righttoleftlayout.aspx" target="_blank">RightToLeftLayout</a> property changes.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.scrollablecontrol.scroll.aspx" target="_blank">Scroll</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the user or code scrolls through the client area.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.scrollablecontrol.aspx" target="_blank">ScrollableControl</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.shown.aspx" target="_blank">Shown</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs whenever the form is first displayed.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.sizechanged.aspx" target="_blank">SizeChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.size.aspx" target="_blank">Size</a> property value changes.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.stylechanged.aspx" target="_blank">StyleChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the control style changes.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.systemcolorschanged.aspx" target="_blank">SystemColorsChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the system colors change.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.tabindexchanged.aspx" target="_blank">TabIndexChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the value of the <a href="http://msdn.microsoft.com/en-us/library/0as9a62t.aspx" target="_blank">TabIndex</a> property changes.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.tabstopchanged.aspx" target="_blank">TabStopChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the <a href="http://msdn.microsoft.com/en-us/library/576sywk2.aspx" target="_blank">TabStop</a> property changes.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx" target="_blank">Form</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.textchanged.aspx" target="_blank">TextChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.text.aspx" target="_blank">Text</a> property value changes.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.validated.aspx" target="_blank">Validated</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the control is finished validating.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.validating.aspx" target="_blank">Validating</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the control is validating.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubevent.gif" alt="Public event" title="Public event" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.visiblechanged.aspx" target="_blank">VisibleChanged</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when the <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.visible.aspx" target="_blank">Visible</a> property value changes.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx" target="_blank">Control</a>.)</td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="LW_CollapsibleArea_Container">
+                  <div class="LW_CollapsibleArea_TitleDiv">
+                    <h2 class="LW_CollapsibleArea_Title">See Also</h2>
+                    <div class="LW_CollapsibleArea_HrDiv">
+                      <hr class="LW_CollapsibleArea_Hr" />
+                    </div>
+                  </div>
+                  <a id="seeAlsoSection">
+                    <!---->
+                  </a>
+                  <div class="seeAlsoStyle">
+                    <a href="T-EcmArchiver.frmDBUpdates.htm">frmDBUpdates Class</a>
+                  </div>
+                  <div class="seeAlsoStyle">
+                    <a href="N-EcmArchiver.htm">EcmArchiver Namespace</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div id="footer" class="footerContainer">
+          <div class="footerLogoContainer">
+            <div style="margin-top:5px">
+              <span class="customCopyrightFooter" />
+            </div>
+            <div style="margin-top:5px" class="copyrightFooter">Help File generated with GhostDoc</div>
+            <div> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+          <!-- /Content Ends Here -->
+        </div>
+
+
+  </body>
+</html>

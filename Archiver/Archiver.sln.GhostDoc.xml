@@ -18,12 +18,12 @@
     <HelpFileName>Archiver</HelpFileName>
     <HelpFileNamingMethod>MemberName</HelpFileNamingMethod>
     <ImageFolderPath />
-    <Theme>Classic.Frame</Theme>
+    <Theme>Classic</Theme>
     <HtmlFormats>
       <HtmlHelp>true</HtmlHelp>
       <MSHelpViewer>false</MSHelpViewer>
       <MSHelp2>false</MSHelp2>
-      <Website>false</Website>
+      <Website>true</Website>
       <VSIntelliSenseFile>false</VSIntelliSenseFile>
     </HtmlFormats>
     <IncludeScopes>
@@ -52,8 +52,6 @@
     </ConceptualContent>
     <SelectedProjects>
       <SelectedProject>Archiver</SelectedProject>
-      <SelectedProject>DIrListen</SelectedProject>
-      <SelectedProject>ENC</SelectedProject>
     </SelectedProjects>
   </HelpConfiguration>
 </HelpConfigurations>

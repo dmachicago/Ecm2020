@@ -4775,7 +4775,7 @@ Class MainPage
 
         Dim OnLineHelp As String = System.Configuration.ConfigurationManager.AppSettings("OnLineHelp")
         Process.Start(OnLineHelp)
-        'Dim HelpURL As String = "HTTP://www.EcmLibrary.com/HelpSaas/EcmSaasIndex.htm"
+        'Dim HelpURL As String = "HTTP://www.EcmLibrary.com/_HelpFiles/Index.htm"
         'Process.Start(HelpURL)
 
     End Sub

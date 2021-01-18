@@ -1,0 +1,1711 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"[]>
+<html>
+  <head><link rel="shortcut icon" href="../favicon.ico" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="save" content="history" />
+    <title>_ECM_HiveDataSet Methods</title>
+    <link rel="stylesheet" type="text/css" href="../styles/lightweight.css" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <link rel="stylesheet" type="text/css" href="../styles/lw-code.css" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <script type="text/javascript" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" src="../scripts/languageSelector.js"> </script>
+    <meta name="container" content="EcmArchiver" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <meta name="file" content="Methods.T-EcmArchiver._ECM_HiveDataSet" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <meta name="guid" content="Methods.T-EcmArchiver._ECM_HiveDataSet" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt" />
+    <xml xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+      <MSHelp:Attr Name="AssetID" Value="Methods.T:EcmArchiver._ECM_HiveDataSet" />
+      <MSHelp:TOCTitle Title="_ECM_HiveDataSet Methods" />
+      <MSHelp:RLTitle Title="_ECM_HiveDataSet Methods (EcmArchiver)" />
+      <MSHelp:Keyword Index="A" Term="Methods.T:EcmArchiver._ECM_HiveDataSet" />
+      <MSHelp:Keyword Index="A" Term="frlrfEcmArchiver_ECM_HiveDataSetMethodsTopic" />
+      <MSHelp:Keyword Index="K" Term="_ECM_HiveDataSet class, methods" />
+      <MSHelp:Attr Name="DevLang" Value="CSharp" />
+      <MSHelp:Attr Name="DevLang" Value="VB" />
+      <MSHelp:Attr Name="Locale" Value="en-us" />
+      <MSHelp:Attr Name="TopicType" Value="kbSyntax" />
+      <MSHelp:Attr Name="TopicType" Value="apiref" />
+      <MSHelp:Attr Name="AssemblyVersion" Value="" />
+    </xml>
+  <link rel="stylesheet" href="../TOC.css"><script type="text/javascript" src="../TOC.js"></script></head>
+  <body onload="javascript: Initialize();" onresize="javascript: ResizeTree();">
+            <div id="TOCDiv" class="TOCDiv" style="width: 310px; float: left; position: relative; ">
+
+            <div id="divSearchOpts" class="SearchOpts" style="height: 95px; display: none;">
+                <div class="SearchOptsInner">
+                    <img class="TOCLink" onclick="javascript: ShowHideSearch(false);" src="../CloseSearch.png" height="24" width="24" alt="Hide Search" title="Hide Search" style="float: right;" />
+                    <span class="Title">Keyword(s) to search:</span>
+                </div>
+                <div class="SearchOptsInner">
+                    <input id="txtSearchText" type="text" style="width: 95.5%;" onkeypress="javascript: return OnSearchTextKeyPress(event);" />
+                </div>
+                <div class="SearchOptsInner">
+                    <input id="chkSortByTitle" type="checkbox" />&nbsp;Sort results by title
+                    <input type="button" value="Search" onclick="javascript: return PerformSearch();" style="float: right;" />
+                </div>
+            </div>
+
+            <div id="divIndexOpts" class="IndexOpts" style="height: 28px; display: none;">
+                <img class="TOCLink" onclick="javascript: ShowHideIndex(false);"
+                     src="../CloseSearch.png" height="24" width="24" alt="Hide Keyword Index" title="Hide Keyword Index" style="float: right;" />
+                <span class="Title">Keyword Index</span>
+            </div>
+
+            <div id="divNavOpts" class="NavOpts" style="height: 20px;">
+                <!--<img class="TOCLink" onclick="javascript: SyncTOC();" src="../SyncTOC.png"
+                     height="16" width="16" alt="Sync to TOC" title="Sync to TOC" />-->
+                <img class="TOCLink" onclick="javascript: ExpandOrCollapseAll(true);"
+                     src="../ExpandAll.bmp" height="16" width="16" alt="Expand all" title="Expand all" />
+                <img class="TOCLink" onclick="javascript: ExpandOrCollapseAll(false);"
+                     src="../CollapseAll.bmp" height="16" width="16" alt="Collapse all" title="Collapse all" />
+                <!--<img class="TOCLink" onclick="javascript: alert('Please make sure to use either Index.aspx or Index.php to enable the Keyword Index feature.');"
+                     src="../Index.png" height="16" width="16" alt="Keyword Index" title="Keyword Index" />-->
+                <img class="TOCLink" onclick="javascript: ShowHideSearch(true);"
+                     src="../Search.gif" height="16" width="16" alt="Search" title="Search" />
+                <a href="#" title="Click to obtain a direct link to the displayed topic" style="margin-left: 10px; vertical-align: top;" onclick="javascript: ShowDirectLink();">Direct Link</a>
+                <!--<a href="#" onclick="javascript: window.history.go(-1); return false;">
+                    <img class="TOCLink" style="float: right;"
+                         src="../Back.png" height="16" width="16" alt="Previous page" title="Previous page" />-->
+                </a>
+            </div>
+
+            <div class="Tree" id="divSearchResults" style="display: none;"
+                 onselectstart="javascript: return false;">
+            </div>
+
+            <div class="Tree" id="divIndexResults" style="display: none;"
+                 onselectstart="javascript: return false;">
+            </div>
+
+            <div class="Tree" id="divTree" onselectstart="javascript: return false;">
+              <div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="N-EcmArchiver.htm" target="_self">EcmArchiver Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver._ECM_HiveDataSet.htm" target="_self">_ECM_HiveDataSet Class</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="AllMembers.T-EcmArchiver._ECM_HiveDataSet.htm" target="_self">_ECM_HiveDataSet Members</a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmArchiver._ECM_HiveDataSet.-ctor.htm" target="_self">_ECM_HiveDataSet Constructor </a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Methods.T-EcmArchiver._ECM_HiveDataSet.htm" target="_self">_ECM_HiveDataSet Methods</a>
+<div class="Hidden">
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmArchiver._ECM_HiveDataSet.Clone.htm" target="_self">Clone Method </a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="M-EcmArchiver._ECM_HiveDataSet.GetTypedDataSetSchema.htm" target="_self">GetTypedDataSetSchema Method </a>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="Properties.T-EcmArchiver._ECM_HiveDataSet.htm" target="_self">_ECM_HiveDataSet Properties</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="Events.T-EcmArchiver._ECM_HiveDataSet.htm" target="_self">_ECM_HiveDataSet Events</a>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.AboutBox1.htm" target="_self">AboutBox1 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsACTIVESEARCHGUIDS.htm" target="_self">clsACTIVESEARCHGUIDS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsAppParms.htm" target="_self">clsAppParms Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsARCHIVEHIST.htm" target="_self">clsARCHIVEHIST Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsARCHIVEHISTCONTENTTYPE.htm" target="_self">clsARCHIVEHISTCONTENTTYPE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsArchiver.htm" target="_self">clsArchiver Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsARCHIVESTATS.htm" target="_self">clsARCHIVESTATS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsATTACHMENTTYPE.htm" target="_self">clsATTACHMENTTYPE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsATTRIBUTES.htm" target="_self">clsATTRIBUTES Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsAutoLibRef.htm" target="_self">clsAutoLibRef Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsAVAILFILETYPES.htm" target="_self">clsAVAILFILETYPES Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsAVAILFILETYPESUNDEFINED.htm" target="_self">clsAVAILFILETYPESUNDEFINED Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsCompression.htm" target="_self">clsCompression Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsCONTACTSARCHIVE.htm" target="_self">clsCONTACTSARCHIVE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsDatabaseARCH.htm" target="_self">clsDatabaseARCH Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsDataGrid.htm" target="_self">clsDataGrid Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsDataSource_V2.htm" target="_self">clsDataSource_V2 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsDb.htm" target="_self">clsDb Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsDbARCHS.htm" target="_self">clsDbARCHS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsDbLocal.htm" target="_self">clsDbLocal Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsDBUpdate.htm" target="_self">clsDBUpdate Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsDIRECTORY.htm" target="_self">clsDIRECTORY Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsDirListener.htm" target="_self">clsDirListener Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsDma.htm" target="_self">clsDma Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsEMAIL.htm" target="_self">clsEMAIL Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsEMAILARCHPARMS.htm" target="_self">clsEMAILARCHPARMS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsEMAILFOLDER.htm" target="_self">clsEMAILFOLDER Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsEmailFunctions.htm" target="_self">clsEmailFunctions Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsEMAILTODELETE.htm" target="_self">clsEMAILTODELETE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsErrors.htm" target="_self">clsErrors Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsEXCHANGEHOSTPOP.htm" target="_self">clsEXCHANGEHOSTPOP Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsEXCHANGEHOSTSMTP.htm" target="_self">clsEXCHANGEHOSTSMTP Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsEXCLUDEDFILES.htm" target="_self">clsEXCLUDEDFILES Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsEXCLUDEFROM.htm" target="_self">clsEXCLUDEFROM Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsExecParms.htm" target="_self">clsExecParms Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsFile.htm" target="_self">clsFile Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsFileInfo.htm" target="_self">clsFileInfo Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsFILESTODELETE.htm" target="_self">clsFILESTODELETE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsGenerator.htm" target="_self">clsGenerator Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsGlobalEntity.htm" target="_self">clsGlobalEntity Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsHELPTEXT.htm" target="_self">clsHELPTEXT Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsID3V1Tag.htm" target="_self">clsID3V1Tag Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsINCLUDEDFILES.htm" target="_self">clsINCLUDEDFILES Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsIsolatedStorage.htm" target="_self">clsIsolatedStorage Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsKeyGen.htm" target="_self">clsKeyGen Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsKeyTable.htm" target="_self">clsKeyTable Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsLIBDIRECTORY.htm" target="_self">clsLIBDIRECTORY Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsLIBEMAIL.htm" target="_self">clsLIBEMAIL Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsLIBRARYITEMS.htm" target="_self">clsLIBRARYITEMS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsLICENSE.htm" target="_self">clsLICENSE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsLicenseMgt.htm" target="_self">clsLicenseMgt Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsListener.htm" target="_self">clsListener Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsLocalEncrypt.htm" target="_self">clsLocalEncrypt Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsLogging.htm" target="_self">clsLogging Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsMP3.htm" target="_self">clsMP3 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsMsWord.htm" target="_self">clsMsWord Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsNetworkFileListener.htm" target="_self">clsNetworkFileListener Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsProcess.htm" target="_self">clsProcess Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsPROCESSFILEAS.htm" target="_self">clsPROCESSFILEAS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsPst.htm" target="_self">clsPst Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsQUICKDIRECTORY.htm" target="_self">clsQUICKDIRECTORY Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsQuickInventory.htm" target="_self">clsQuickInventory Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsRECIPIENTS.htm" target="_self">clsRECIPIENTS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsRecon.htm" target="_self">clsRecon Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsReconUSERS.htm" target="_self">clsReconUSERS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsRegistry.htm" target="_self">clsRegistry Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsRemoteSupport.htm" target="_self">clsRemoteSupport Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsRSS.htm" target="_self">clsRSS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsRUNPARMS.htm" target="_self">clsRUNPARMS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsSAVEDITEMS.htm" target="_self">clsSAVEDITEMS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsScheduler.htm" target="_self">clsScheduler Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsSEARCHHISTORY.htm" target="_self">clsSEARCHHISTORY Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsSmo.htm" target="_self">clsSmo Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsSOURCEATTRIBUTE.htm" target="_self">clsSOURCEATTRIBUTE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsSOURCETYPE.htm" target="_self">clsSOURCETYPE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsSql.htm" target="_self">clsSql Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsSUBDIR.htm" target="_self">clsSUBDIR Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsTimeCalcs.htm" target="_self">clsTimeCalcs Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsUSERS.htm" target="_self">clsUSERS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsUtility.htm" target="_self">clsUtility Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="T-EcmArchiver.clsUtility.BWMode.htm" target="_self">clsUtility.BWMode Enumeration</a>
+</div>
+<div class="TreeItem">
+<img src="../Item.gif"/><a class="UnselectedNode" onclick="javascript: return SelectNode(this);" href="T-EcmArchiver.clsUtility.OnOff.htm" target="_self">clsUtility.OnOff Enumeration</a>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsValidateCodes.htm" target="_self">clsValidateCodes Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsWebPull.htm" target="_self">clsWebPull Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsWMAID3Tag.htm" target="_self">clsWMAID3Tag Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsZIPDATASOURCE.htm" target="_self">clsZIPDATASOURCE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.clsZipFiles.htm" target="_self">clsZipFiles Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.DS_Content.htm" target="_self">DS_Content Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.DS_Email.htm" target="_self">DS_Email Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.DS_RssPull.htm" target="_self">DS_RssPull Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.DS_WebScreen.htm" target="_self">DS_WebScreen Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.DS_WebSite.htm" target="_self">DS_WebSite Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.dsWebSite.htm" target="_self">dsWebSite Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmAgreement.htm" target="_self">frmAgreement Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmAppConfigEdit.htm" target="_self">frmAppConfigEdit Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmAttachmentCode.htm" target="_self">frmAttachmentCode Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmDBUpdates.htm" target="_self">frmDBUpdates Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmEncryptString.htm" target="_self">frmEncryptString Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmExchangeMonitor.htm" target="_self">frmExchangeMonitor Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmExhangeMail.htm" target="_self">frmExhangeMail Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmFti.htm" target="_self">frmFti Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmHelp.htm" target="_self">frmHelp Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmHistory.htm" target="_self">frmHistory Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmImpersonate.htm" target="_self">frmImpersonate Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmLibraryAssgnList.htm" target="_self">frmLibraryAssgnList Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmLibraryAssignment.htm" target="_self">frmLibraryAssignment Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmLicense.htm" target="_self">frmLicense Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.FrmListenerTest.htm" target="_self">FrmListenerTest Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmLoadTest.htm" target="_self">frmLoadTest Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmLocalParameters.htm" target="_self">frmLocalParameters Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmMain.htm" target="_self">frmMain Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmMessageBar.htm" target="_self">frmMessageBar Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmMsg.htm" target="_self">frmMsg Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmNotify.htm" target="_self">frmNotify Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmNotify2.htm" target="_self">frmNotify2 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmNotifyBatchOCR.htm" target="_self">frmNotifyBatchOCR Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmNotifyContact.htm" target="_self">frmNotifyContact Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmNotifyListener.htm" target="_self">frmNotifyListener Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmNotifyMessage.htm" target="_self">frmNotifyMessage Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmOutlookNotice.htm" target="_self">frmOutlookNotice Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmOutOfSpace.htm" target="_self">frmOutOfSpace Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmPasswordChange.htm" target="_self">frmPasswordChange Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmPercent.htm" target="_self">frmPercent Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmPstLoader.htm" target="_self">frmPstLoader Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmPstLoader.ProcessFolders.htm" target="_self">frmPstLoader.ProcessFolders Structure</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmRetentionCode.htm" target="_self">frmRetentionCode Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmRetentionMgt.htm" target="_self">frmRetentionMgt Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmSchedule.htm" target="_self">frmSchedule Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmSenderMgt.htm" target="_self">frmSenderMgt Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmSqlHelp.htm" target="_self">frmSqlHelp Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmSqlite.htm" target="_self">frmSqlite Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.frmTracker.htm" target="_self">frmTracker Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.LoginForm1.htm" target="_self">LoginForm1 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.RSS.htm" target="_self">RSS Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.rssChannel.htm" target="_self">rssChannel Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.rssChannelItem.htm" target="_self">rssChannelItem Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.rssChannelItems.htm" target="_self">rssChannelItems Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SplashEcmSetup.htm" target="_self">SplashEcmSetup Class</a>
+<div class="Hidden">
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="N-EcmArchiver.My.Resources.htm" target="_self">EcmArchiver.My.Resources Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.My.Resources.Resources.htm" target="_self">Resources Class</a>
+<div class="Hidden">
+</div>
+</div>
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="N-EcmArchiver.SVCSearch.htm" target="_self">EcmArchiver.SVCSearch Namespace</a>
+<div class="Hidden">
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_clsUSERGRIDSTATE.htm" target="_self">DS_clsUSERGRIDSTATE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_CONTENT.htm" target="_self">DS_CONTENT Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_EMAIL.htm" target="_self">DS_EMAIL Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_License.htm" target="_self">DS_License Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_ListOfStrings01.htm" target="_self">DS_ListOfStrings01 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_ListOfStrings02.htm" target="_self">DS_ListOfStrings02 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_ListOfStrings03.htm" target="_self">DS_ListOfStrings03 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_ListOfStrings04.htm" target="_self">DS_ListOfStrings04 Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_SearchTerms.htm" target="_self">DS_SearchTerms Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_USERSCREENSTATE.htm" target="_self">DS_USERSCREENSTATE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_USERSEARCHSTATE.htm" target="_self">DS_USERSEARCHSTATE Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.DS_VUserGrid.htm" target="_self">DS_VUserGrid Class</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.IService1.htm" target="_self">IService1 Interface</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.IService1Channel.htm" target="_self">IService1Channel Interface</a>
+<div class="Hidden">
+</div>
+</div>
+<div class="TreeNode">
+<img class="TreeNodeImg" onclick="javascript: Toggle(this);" src="../Collapsed.png"/><a class="UnselectedNode" onclick="javascript: return Expand(this);" href="T-EcmArchiver.SVCSearch.Service1Client.htm" target="_self">Service1Client Class</a>
+<div class="Hidden">
+</div>
+</div>
+</div>
+</div>
+
+            </div>
+
+        </div>
+
+        <div id="TOCSizer" class="TOCSizer" onmousedown="OnMouseDown(event)" onselectstart="javascript: return false;"></div>
+        
+        <div id ="TopicContent" name="TopicContent" class="TopicContent" style="float: none; margin-left: 312px;height: -webkit-fill-available;display:block;overflow: auto;">
+          
+          <!-- Content Starts Here -->
+          <div class="contentPlaceHolder" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+      <div class="content">
+        <div class="topicContainer">
+          <div class="topic">
+            <p class="majorTitle" />
+            <h1 class="title">_ECM_HiveDataSet Methods</h1>
+            <div id="mainSection">
+              <div id="mainBody">
+                <p>The <a href="T-EcmArchiver._ECM_HiveDataSet.htm">_ECM_HiveDataSet</a> type exposes the following members.</p>
+                <div class="LW_CollapsibleArea_Container">
+                  <div class="LW_CollapsibleArea_TitleDiv">
+                    <h2 class="LW_CollapsibleArea_Title">Methods</h2>
+                    <div class="LW_CollapsibleArea_HrDiv">
+                      <hr class="LW_CollapsibleArea_Hr" />
+                    </div>
+                  </div>
+                  <a id="methodTableSection">
+                    <!---->
+                  </a>
+                  <table class="members">
+                    <tr>
+                      <th class="iconColumn">
+               
+            </th>
+                      <th class="nameColumn">Name</th>
+                      <th class="descriptionColumn">Description</th>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.acceptchanges.aspx" target="_blank">AcceptChanges</a>
+                      </td>
+                      <td>
+                        <div class="summary">Commits all the changes made to this <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> since it was loaded or since the last time <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.acceptchanges.aspx" target="_blank">AcceptChanges</a> was called.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.begininit.aspx" target="_blank">BeginInit</a>
+                      </td>
+                      <td>
+                        <div class="summary">Begins the initialization of a <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> that is used on a form or used by another component. The initialization occurs at run time.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.clear.aspx" target="_blank">Clear</a>
+                      </td>
+                      <td>
+                        <div class="summary">Clears the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> of any data by removing all rows in all tables.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="M-EcmArchiver._ECM_HiveDataSet.Clone.htm">Clone</a>
+                      </td>
+                      <td />
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.copy.aspx" target="_blank">Copy</a>
+                      </td>
+                      <td>
+                        <div class="summary">Copies both the structure and data for this <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ms135401.aspx" target="_blank">CreateDataReader</a>
+                      </td>
+                      <td>
+                        <div class="summary">Returns a <a href="http://msdn.microsoft.com/en-us/library/system.data.datatablereader.aspx" target="_blank">DataTableReader</a> with one result set per <a href="http://msdn.microsoft.com/en-us/library/system.data.datatable.aspx" target="_blank">DataTable</a>, in the same sequence as the tables appear in the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.tables.aspx" target="_blank">Tables</a> collection.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ms135402.aspx" target="_blank">CreateDataReader(System.Data.DataTable[])</a>
+                      </td>
+                      <td>
+                        <div class="summary">Returns a <a href="http://msdn.microsoft.com/en-us/library/system.data.datatablereader.aspx" target="_blank">DataTableReader</a> with one result set per <a href="http://msdn.microsoft.com/en-us/library/system.data.datatable.aspx" target="_blank">DataTable</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="protected;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/protmethod.gif" alt="Protected method" title="Protected method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ms135406.aspx" target="_blank">DetermineSchemaSerializationMode(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Determines the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.schemaserializationmode.aspx" target="_blank">SchemaSerializationMode</a> for a <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="protected;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/protmethod.gif" alt="Protected method" title="Protected method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ms135405.aspx" target="_blank">DetermineSchemaSerializationMode(System.Xml.XmlReader)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Determines the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.schemaserializationmode.aspx" target="_blank">SchemaSerializationMode</a> for a <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/76s2bh19.aspx" target="_blank">Dispose</a>
+                      </td>
+                      <td>
+                        <div class="summary">Releases all resources used by the <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.marshalbyvaluecomponent.aspx" target="_blank">MarshalByValueComponent</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.marshalbyvaluecomponent.aspx" target="_blank">MarshalByValueComponent</a>.)</td>
+                    </tr>
+                    <tr data="protected;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/protmethod.gif" alt="Protected method" title="Protected method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/dzw9hsfy.aspx" target="_blank">Dispose(System.Boolean)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Releases the unmanaged resources used by the <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.marshalbyvaluecomponent.aspx" target="_blank">MarshalByValueComponent</a> and optionally releases the managed resources.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.marshalbyvaluecomponent.aspx" target="_blank">MarshalByValueComponent</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.endinit.aspx" target="_blank">EndInit</a>
+                      </td>
+                      <td>
+                        <div class="summary">Ends the initialization of a <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> that is used on a form or used by another component. The initialization occurs at run time.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/bsc2ak47.aspx" target="_blank">Equals(System.Object)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Determines whether the specified <a href="http://msdn.microsoft.com/en-us/library/system.object.aspx" target="_blank">Object</a> is equal to the current <a href="http://msdn.microsoft.com/en-us/library/system.object.aspx" target="_blank">Object</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.object.aspx" target="_blank">Object</a>.)</td>
+                    </tr>
+                    <tr data="protected;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/protmethod.gif" alt="Protected method" title="Protected method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/8ycd0385.aspx" target="_blank">Finalize</a>
+                      </td>
+                      <td> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.marshalbyvaluecomponent.aspx" target="_blank">MarshalByValueComponent</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/a4ey25we.aspx" target="_blank">GetChanges</a>
+                      </td>
+                      <td>
+                        <div class="summary">Gets a copy of the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> that contains all changes made to it since it was loaded or since <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.acceptchanges.aspx" target="_blank">AcceptChanges</a> was last called.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/0f8054fy.aspx" target="_blank">GetChanges(System.Data.DataRowState)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Gets a copy of the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> containing all changes made to it since it was last loaded, or since <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.acceptchanges.aspx" target="_blank">AcceptChanges</a> was called, filtered by <a href="http://msdn.microsoft.com/en-us/library/system.data.datarowstate.aspx" target="_blank">DataRowState</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.object.gethashcode.aspx" target="_blank">GetHashCode</a>
+                      </td>
+                      <td>
+                        <div class="summary">Serves as a hash function for a particular type. </div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.object.aspx" target="_blank">Object</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.getobjectdata.aspx" target="_blank">GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Populates a serialization information object with the data needed to serialize the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="protected;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/protmethod.gif" alt="Protected method" title="Protected method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.getserializationdata.aspx" target="_blank">GetSerializationData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Deserializes the table data from the binary or XML stream.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.marshalbyvaluecomponent.getservice.aspx" target="_blank">GetService(System.Type)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Gets the implementer of the <a href="http://msdn.microsoft.com/en-us/library/system.iserviceprovider.aspx" target="_blank">IServiceProvider</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.marshalbyvaluecomponent.aspx" target="_blank">MarshalByValueComponent</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.object.gettype.aspx" target="_blank">GetType</a>
+                      </td>
+                      <td>
+                        <div class="summary">Gets the <a href="http://msdn.microsoft.com/en-us/library/system.type.aspx" target="_blank">Type</a> of the current instance.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.object.aspx" target="_blank">Object</a>.)</td>
+                    </tr>
+                    <tr data="public;static;declared;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                        <img src="../icons/static.gif" alt="Static member" title="Static member" />
+                      </td>
+                      <td>
+                        <a href="M-EcmArchiver._ECM_HiveDataSet.GetTypedDataSetSchema.htm">GetTypedDataSetSchema</a>
+                      </td>
+                      <td />
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.getxml.aspx" target="_blank">GetXml</a>
+                      </td>
+                      <td>
+                        <div class="summary">Returns the XML representation of the data stored in the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.getxmlschema.aspx" target="_blank">GetXmlSchema</a>
+                      </td>
+                      <td>
+                        <div class="summary">Returns the XML Schema for the XML representation of the data stored in the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/zky7370c.aspx" target="_blank">HasChanges</a>
+                      </td>
+                      <td>
+                        <div class="summary">Gets a value indicating whether the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> has changes, including new, deleted, or modified rows.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/yy29cch4.aspx" target="_blank">HasChanges(System.Data.DataRowState)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Gets a value indicating whether the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> has changes, including new, deleted, or modified rows, filtered by <a href="http://msdn.microsoft.com/en-us/library/system.data.datarowstate.aspx" target="_blank">DataRowState</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/xw6etew9.aspx" target="_blank">InferXmlSchema(System.Xml.XmlReader,System.String[])</a>
+                      </td>
+                      <td>
+                        <div class="summary">Applies the XML schema from the specified <a href="http://msdn.microsoft.com/en-us/library/system.xml.xmlreader.aspx" target="_blank">XmlReader</a> to the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>. </div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ms135411.aspx" target="_blank">InferXmlSchema(System.IO.Stream,System.String[])</a>
+                      </td>
+                      <td>
+                        <div class="summary">Applies the XML schema from the specified <a href="http://msdn.microsoft.com/en-us/library/system.io.stream.aspx" target="_blank">Stream</a> to the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ms135412.aspx" target="_blank">InferXmlSchema(System.IO.TextReader,System.String[])</a>
+                      </td>
+                      <td>
+                        <div class="summary">Applies the XML schema from the specified <a href="http://msdn.microsoft.com/en-us/library/system.io.textreader.aspx" target="_blank">TextReader</a> to the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/h11feeff.aspx" target="_blank">InferXmlSchema(System.String,System.String[])</a>
+                      </td>
+                      <td>
+                        <div class="summary">Applies the XML schema from the specified file to the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="protected;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/protmethod.gif" alt="Protected method" title="Protected method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.isbinaryserialized.aspx" target="_blank">IsBinarySerialized(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Inspects the format of the serialized representation of the DataSet.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/867whzw2.aspx" target="_blank">Load(System.Data.IDataReader,System.Data.LoadOption,System.Data.FillErrorEventHandler,System.Data.DataTable[])</a>
+                      </td>
+                      <td>
+                        <div class="summary">Fills a <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> with values from a data source using the supplied <a href="http://msdn.microsoft.com/en-us/library/system.data.idatareader.aspx" target="_blank">IDataReader</a>, using an array of <a href="http://msdn.microsoft.com/en-us/library/system.data.datatable.aspx" target="_blank">DataTable</a> instances to supply the schema and namespace information.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/5fd1ahe2.aspx" target="_blank">Load(System.Data.IDataReader,System.Data.LoadOption,System.Data.DataTable[])</a>
+                      </td>
+                      <td>
+                        <div class="summary">Fills a <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> with values from a data source using the supplied <a href="http://msdn.microsoft.com/en-us/library/system.data.idatareader.aspx" target="_blank">IDataReader</a>, using an array of <a href="http://msdn.microsoft.com/en-us/library/system.data.datatable.aspx" target="_blank">DataTable</a> instances to supply the schema and namespace information.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/skef0k7a.aspx" target="_blank">Load(System.Data.IDataReader,System.Data.LoadOption,System.String[])</a>
+                      </td>
+                      <td>
+                        <div class="summary">Fills a <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> with values from a data source using the supplied <a href="http://msdn.microsoft.com/en-us/library/system.data.idatareader.aspx" target="_blank">IDataReader</a>, using an array of strings to supply the names for the tables within the DataSet.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="protected;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/protmethod.gif" alt="Protected method" title="Protected method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.object.memberwiseclone.aspx" target="_blank">MemberwiseClone</a>
+                      </td>
+                      <td>
+                        <div class="summary">Creates a shallow copy of the current <a href="http://msdn.microsoft.com/en-us/library/system.object.aspx" target="_blank">Object</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.object.aspx" target="_blank">Object</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/4swwh51k.aspx" target="_blank">Merge(System.Data.DataSet)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Merges a specified <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> and its schema into the current DataSet.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/06t089d7.aspx" target="_blank">Merge(System.Data.DataSet,System.Boolean)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Merges a specified <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> and its schema into the current DataSet, preserving or discarding any changes in this DataSet according to the given argument.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ms135417.aspx" target="_blank">Merge(System.Data.DataSet,System.Boolean,System.Data.MissingSchemaAction)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Merges a specified <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> and its schema with the current DataSet, preserving or discarding changes in the current DataSet and handling an incompatible schema according to the given arguments.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/803bh6bc.aspx" target="_blank">Merge(System.Data.DataTable)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Merges a specified <a href="http://msdn.microsoft.com/en-us/library/system.data.datatable.aspx" target="_blank">DataTable</a> and its schema into the current <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/h954hh8s.aspx" target="_blank">Merge(System.Data.DataTable,System.Boolean,System.Data.MissingSchemaAction)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Merges a specified <a href="http://msdn.microsoft.com/en-us/library/system.data.datatable.aspx" target="_blank">DataTable</a> and its schema into the current DataSet, preserving or discarding changes in the DataSet and handling an incompatible schema according to the given arguments.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/3hde7tae.aspx" target="_blank">Merge(System.Data.DataRow[])</a>
+                      </td>
+                      <td>
+                        <div class="summary">Merges an array of <a href="http://msdn.microsoft.com/en-us/library/system.data.datarow.aspx" target="_blank">DataRow</a> objects into the current <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ms135416.aspx" target="_blank">Merge(System.Data.DataRow[],System.Boolean,System.Data.MissingSchemaAction)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Merges an array of <a href="http://msdn.microsoft.com/en-us/library/system.data.datarow.aspx" target="_blank">DataRow</a> objects into the current <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>, preserving or discarding changes in the DataSet and handling an incompatible schema according to the given arguments.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="protected;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/protmethod.gif" alt="Protected method" title="Protected method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.onpropertychanging.aspx" target="_blank">OnPropertyChanging(System.ComponentModel.PropertyChangedEventArgs)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Raises the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.onpropertychanging.aspx" target="_blank">OnPropertyChanging(System.ComponentModel.PropertyChangedEventArgs)</a> event.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="protected;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/protmethod.gif" alt="Protected method" title="Protected method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.onremoverelation.aspx" target="_blank">OnRemoveRelation(System.Data.DataRelation)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Occurs when a <a href="http://msdn.microsoft.com/en-us/library/system.data.datarelation.aspx" target="_blank">DataRelation</a> object is removed from a <a href="http://msdn.microsoft.com/en-us/library/system.data.datatable.aspx" target="_blank">DataTable</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/d6swf149.aspx" target="_blank">ReadXml(System.Xml.XmlReader)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Reads XML schema and data into the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> using the specified <a href="http://msdn.microsoft.com/en-us/library/system.xml.xmlreader.aspx" target="_blank">XmlReader</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/55hehd8c.aspx" target="_blank">ReadXml(System.IO.Stream)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Reads XML schema and data into the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> using the specified <a href="http://msdn.microsoft.com/en-us/library/system.io.stream.aspx" target="_blank">Stream</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/c7xcc35f.aspx" target="_blank">ReadXml(System.IO.TextReader)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Reads XML schema and data into the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> using the specified <a href="http://msdn.microsoft.com/en-us/library/system.io.textreader.aspx" target="_blank">TextReader</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/360dye2a.aspx" target="_blank">ReadXml(System.String)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Reads XML schema and data into the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> using the specified file.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/5ak5359z.aspx" target="_blank">ReadXml(System.Xml.XmlReader,System.Data.XmlReadMode)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Reads XML schema and data into the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> using the specified <a href="http://msdn.microsoft.com/en-us/library/system.xml.xmlreader.aspx" target="_blank">XmlReader</a> and <a href="http://msdn.microsoft.com/en-us/library/system.data.xmlreadmode.aspx" target="_blank">XmlReadMode</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ms135419.aspx" target="_blank">ReadXml(System.IO.Stream,System.Data.XmlReadMode)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Reads XML schema and data into the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> using the specified <a href="http://msdn.microsoft.com/en-us/library/system.io.stream.aspx" target="_blank">Stream</a> and <a href="http://msdn.microsoft.com/en-us/library/system.data.xmlreadmode.aspx" target="_blank">XmlReadMode</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ms135421.aspx" target="_blank">ReadXml(System.IO.TextReader,System.Data.XmlReadMode)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Reads XML schema and data into the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> using the specified <a href="http://msdn.microsoft.com/en-us/library/system.io.textreader.aspx" target="_blank">TextReader</a> and <a href="http://msdn.microsoft.com/en-us/library/system.data.xmlreadmode.aspx" target="_blank">XmlReadMode</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ms135420.aspx" target="_blank">ReadXml(System.String,System.Data.XmlReadMode)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Reads XML schema and data into the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> using the specified file and <a href="http://msdn.microsoft.com/en-us/library/system.data.xmlreadmode.aspx" target="_blank">XmlReadMode</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/sc0f8bss.aspx" target="_blank">ReadXmlSchema(System.Xml.XmlReader)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Reads the XML schema from the specified <a href="http://msdn.microsoft.com/en-us/library/system.xml.xmlreader.aspx" target="_blank">XmlReader</a> into the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/eckysybw.aspx" target="_blank">ReadXmlSchema(System.IO.Stream)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Reads the XML schema from the specified <a href="http://msdn.microsoft.com/en-us/library/system.io.stream.aspx" target="_blank">Stream</a> into the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/k0dawd41.aspx" target="_blank">ReadXmlSchema(System.IO.TextReader)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Reads the XML schema from the specified <a href="http://msdn.microsoft.com/en-us/library/system.io.textreader.aspx" target="_blank">TextReader</a> into the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/dywdff54.aspx" target="_blank">ReadXmlSchema(System.String)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Reads the XML schema from the specified file into the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.rejectchanges.aspx" target="_blank">RejectChanges</a>
+                      </td>
+                      <td>
+                        <div class="summary">Rolls back all the changes made to the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> since it was created, or since the last time <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.acceptchanges.aspx" target="_blank">AcceptChanges</a> was called.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.reset.aspx" target="_blank">Reset</a>
+                      </td>
+                      <td>
+                        <div class="summary">Resets the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> to its original state. Subclasses should override <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.reset.aspx" target="_blank">Reset</a> to restore a <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> to its original state.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/t7k4xfbd.aspx" target="_blank">ToString</a>
+                      </td>
+                      <td>
+                        <div class="summary">Returns a <a href="http://msdn.microsoft.com/en-us/library/system.string.aspx" target="_blank">String</a> containing the name of the <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.component.aspx" target="_blank">Component</a>, if any. This method should not be overridden.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.marshalbyvaluecomponent.aspx" target="_blank">MarshalByValueComponent</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/sa57x5f2.aspx" target="_blank">WriteXml(System.IO.Stream)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Writes the current data for the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> using the specified <a href="http://msdn.microsoft.com/en-us/library/system.io.stream.aspx" target="_blank">Stream</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/sfes785w.aspx" target="_blank">WriteXml(System.IO.TextWriter)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Writes the current data for the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> using the specified <a href="http://msdn.microsoft.com/en-us/library/system.io.textwriter.aspx" target="_blank">TextWriter</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ws09ehyc.aspx" target="_blank">WriteXml(System.Xml.XmlWriter)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Writes the current data for the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> to the specified <a href="http://msdn.microsoft.com/en-us/library/system.xml.xmlwriter.aspx" target="_blank">XmlWriter</a>.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/hb27k0tf.aspx" target="_blank">WriteXml(System.String)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Writes the current data for the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> to the specified file.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ms135424.aspx" target="_blank">WriteXml(System.IO.Stream,System.Data.XmlWriteMode)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Writes the current data, and optionally the schema, for the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> using the specified <a href="http://msdn.microsoft.com/en-us/library/system.io.stream.aspx" target="_blank">Stream</a> and <a href="http://msdn.microsoft.com/en-us/library/system.data.xmlwritemode.aspx" target="_blank">XmlWriteMode</a>. To write the schema, set the value for the <span class="parameterItalic">mode</span> parameter to WriteSchema.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ms135426.aspx" target="_blank">WriteXml(System.IO.TextWriter,System.Data.XmlWriteMode)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Writes the current data, and optionally the schema, for the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> using the specified <a href="http://msdn.microsoft.com/en-us/library/system.io.textwriter.aspx" target="_blank">TextWriter</a> and <a href="http://msdn.microsoft.com/en-us/library/system.data.xmlwritemode.aspx" target="_blank">XmlWriteMode</a>. To write the schema, set the value for the <span class="parameterItalic">mode</span> parameter to WriteSchema.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/cf2bk29a.aspx" target="_blank">WriteXml(System.Xml.XmlWriter,System.Data.XmlWriteMode)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Writes the current data, and optionally the schema, for the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> using the specified <a href="http://msdn.microsoft.com/en-us/library/system.xml.xmlwriter.aspx" target="_blank">XmlWriter</a> and <a href="http://msdn.microsoft.com/en-us/library/system.data.xmlwritemode.aspx" target="_blank">XmlWriteMode</a>. To write the schema, set the value for the <span class="parameterItalic">mode</span> parameter to WriteSchema.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ms135425.aspx" target="_blank">WriteXml(System.String,System.Data.XmlWriteMode)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Writes the current data, and optionally the schema, for the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> to the specified file using the specified <a href="http://msdn.microsoft.com/en-us/library/system.data.xmlwritemode.aspx" target="_blank">XmlWriteMode</a>. To write the schema, set the value for the <span class="parameterItalic">mode</span> parameter to WriteSchema.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/kx29a0ee.aspx" target="_blank">WriteXmlSchema(System.IO.Stream)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Writes the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> structure as an XML schema to the specified <a href="http://msdn.microsoft.com/en-us/library/system.io.stream.aspx" target="_blank">Stream</a> object.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.writexmlschema.aspx" target="_blank">WriteXmlSchema(System.IO.Stream,System.Converter{System.Type, System.String})</a>
+                      </td>
+                      <td> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/xt7k72x8.aspx" target="_blank">WriteXmlSchema(System.String)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Writes the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> structure as an XML schema to a file.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.writexmlschema.aspx" target="_blank">WriteXmlSchema(System.String,System.Converter{System.Type, System.String})</a>
+                      </td>
+                      <td> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/1a1f26zy.aspx" target="_blank">WriteXmlSchema(System.IO.TextWriter)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Writes the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> structure as an XML schema to the specified <a href="http://msdn.microsoft.com/en-us/library/system.io.textwriter.aspx" target="_blank">TextWriter</a> object.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.writexmlschema.aspx" target="_blank">WriteXmlSchema(System.IO.TextWriter,System.Converter{System.Type, System.String})</a>
+                      </td>
+                      <td> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/kas5y1ky.aspx" target="_blank">WriteXmlSchema(System.Xml.XmlWriter)</a>
+                      </td>
+                      <td>
+                        <div class="summary">Writes the <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a> structure as an XML schema to an <a href="http://msdn.microsoft.com/en-us/library/system.xml.xmlwriter.aspx" target="_blank">XmlWriter</a> object.</div> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                    <tr data="public;inherited;notNetfw;">
+                      <td>
+                        <img src="../icons/pubmethod.gif" alt="Public method" title="Public method" />
+                      </td>
+                      <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.writexmlschema.aspx" target="_blank">WriteXmlSchema(System.Xml.XmlWriter,System.Converter{System.Type, System.String})</a>
+                      </td>
+                      <td> (Inherited from <a href="http://msdn.microsoft.com/en-us/library/system.data.dataset.aspx" target="_blank">DataSet</a>.)</td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="LW_CollapsibleArea_Container">
+                  <div class="LW_CollapsibleArea_TitleDiv">
+                    <h2 class="LW_CollapsibleArea_Title">See Also</h2>
+                    <div class="LW_CollapsibleArea_HrDiv">
+                      <hr class="LW_CollapsibleArea_Hr" />
+                    </div>
+                  </div>
+                  <a id="seeAlsoSection">
+                    <!---->
+                  </a>
+                  <div class="seeAlsoStyle">
+                    <a href="T-EcmArchiver._ECM_HiveDataSet.htm">_ECM_HiveDataSet Class</a>
+                  </div>
+                  <div class="seeAlsoStyle">
+                    <a href="N-EcmArchiver.htm">EcmArchiver Namespace</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div id="footer" class="footerContainer">
+          <div class="footerLogoContainer">
+            <div style="margin-top:5px">
+              <span class="customCopyrightFooter" />
+            </div>
+            <div style="margin-top:5px" class="copyrightFooter">Help File generated with GhostDoc</div>
+            <div> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+          <!-- /Content Ends Here -->
+        </div>
+
+
+  </body>
+</html>
