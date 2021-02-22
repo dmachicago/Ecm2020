@@ -1421,6 +1421,9 @@ Public Interface IService1
     <OperationContract()>
     Function GenerateSQL(ByVal SearchParmList As SortedList(Of String, String), ByRef SecureID As Integer, TypeSQL As String) As String
 
+    <OperationContract>
+    Function getRowIDs(ByRef SearchSQL As String, SearchTypeCode As String, SecureID As Integer) As String
+
     ''' <summary>
     ''' Gets the json data.
     ''' </summary>
@@ -2802,6 +2805,9 @@ Public Class DS_EMAIL
     <System.Runtime.Serialization.DataMember()>
     Public FoundInAttach As Boolean
 
+    <System.Runtime.Serialization.DataMember()>
+    Public RowSeq As Int32
+
 End Class
 
 ''' <summary>
@@ -2935,6 +2941,9 @@ Public Class DS_CONTENT
     ''' </summary>
     <System.Runtime.Serialization.DataMember()>
     Public isWebPage As String
+
+    <System.Runtime.Serialization.DataMember()>
+    Public RowSeq As Int32
 
 End Class
 

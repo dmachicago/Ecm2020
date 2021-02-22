@@ -3,6 +3,11 @@
     Public ProxySearch As New SVCSearch.Service1Client
     'Public ProxyGateway = New SVCGateway.Service1Client
 
+    Public gContentCurrMaxSeq As Int32 = 0
+    Public gEmailCurrMaxSeq As Int32 = 0
+    Public gContentLastMaxSeq As Int32 = 0
+    Public gEmailLastMaxSeq As Int32 = 0
+
     Public gDebug As Boolean = False
     Public gListOfContentRows As String = ""
     Public gListOEmailRows As String = ""
@@ -37,6 +42,9 @@
     Public gListOfContent As New List(Of SVCSearch.DS_CONTENT)
     Public gListOfEmailsTemp As New System.Collections.Generic.List(Of SVCSearch.DS_EMAIL)
     Public gListOfContentTemp As New System.Collections.Generic.List(Of SVCSearch.DS_CONTENT)
+
+    Public RowsToFetch As String = System.Configuration.ConfigurationManager.AppSettings("RowsToFetch")
+    Public UseRowsToFetch As String = System.Configuration.ConfigurationManager.AppSettings("UseRowsToFetch")
 
     Public _SqlSvrVersion As String = String.Empty
     Public _NbrOfSeats As String = String.Empty

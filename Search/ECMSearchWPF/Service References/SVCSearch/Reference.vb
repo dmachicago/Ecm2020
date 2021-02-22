@@ -67,6 +67,9 @@ Namespace SVCSearch
         Private RetentionExpirationDateField As Date
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RowSeqField As Integer
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private RssLinkFlgField As Boolean
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
@@ -270,6 +273,19 @@ Namespace SVCSearch
         End Property
         
         <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RowSeq() As Integer
+            Get
+                Return Me.RowSeqField
+            End Get
+            Set
+                If (Me.RowSeqField.Equals(value) <> true) Then
+                    Me.RowSeqField = value
+                    Me.RaisePropertyChanged("RowSeq")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property RssLinkFlg() As Boolean
             Get
                 Return Me.RssLinkFlgField
@@ -444,6 +460,9 @@ Namespace SVCSearch
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private RetentionExpirationDateField As Date
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RowSeqField As Integer
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private SUBJECTField As String
@@ -699,6 +718,19 @@ Namespace SVCSearch
                 If (Me.RetentionExpirationDateField.Equals(value) <> true) Then
                     Me.RetentionExpirationDateField = value
                     Me.RaisePropertyChanged("RetentionExpirationDate")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property RowSeq() As Integer
+            Get
+                Return Me.RowSeqField
+            End Get
+            Set
+                If (Me.RowSeqField.Equals(value) <> true) Then
+                    Me.RowSeqField = value
+                    Me.RaisePropertyChanged("RowSeq")
                 End If
             End Set
         End Property
@@ -2281,6 +2313,13 @@ Namespace SVCSearch
      System.ServiceModel.ServiceContractAttribute(ConfigurationName:="SVCSearch.IService1")>  _
     Public Interface IService1
         
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateSourceGridWithWeights", ReplyAction:="http://tempuri.org/IService1/PopulateSourceGridWithWeightsResponse")>  _
+        Function PopulateSourceGridWithWeights(ByVal request As SVCSearch.PopulateSourceGridWithWeightsRequest) As SVCSearch.PopulateSourceGridWithWeightsResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateSourceGridWithWeights", ReplyAction:="http://tempuri.org/IService1/PopulateSourceGridWithWeightsResponse")>  _
+        Function PopulateSourceGridWithWeightsAsync(ByVal request As SVCSearch.PopulateSourceGridWithWeightsRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateSourceGridWithWeightsResponse)
+        
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateSourceGridNoWeights", ReplyAction:="http://tempuri.org/IService1/PopulateSourceGridNoWeightsResponse")>  _
         Function PopulateSourceGridNoWeights(ByVal request As SVCSearch.PopulateSourceGridNoWeightsRequest) As SVCSearch.PopulateSourceGridNoWeightsResponse
         
@@ -2883,6 +2922,13 @@ Namespace SVCSearch
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/GenerateSQL", ReplyAction:="http://tempuri.org/IService1/GenerateSQLResponse")>  _
         Function GenerateSQLAsync(ByVal request As SVCSearch.GenerateSQLRequest) As System.Threading.Tasks.Task(Of SVCSearch.GenerateSQLResponse)
         
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getRowIDs", ReplyAction:="http://tempuri.org/IService1/getRowIDsResponse")>  _
+        Function getRowIDs(ByVal request As SVCSearch.getRowIDsRequest) As SVCSearch.getRowIDsResponse
+        
+        'CODEGEN: Generating message contract since the operation has multiple return values.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getRowIDs", ReplyAction:="http://tempuri.org/IService1/getRowIDsResponse")>  _
+        Function getRowIDsAsync(ByVal request As SVCSearch.getRowIDsRequest) As System.Threading.Tasks.Task(Of SVCSearch.getRowIDsResponse)
+        
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getJsonData", ReplyAction:="http://tempuri.org/IService1/getJsonDataResponse")>  _
         Function getJsonData(ByVal I As String) As String
         
@@ -3189,13 +3235,6 @@ Namespace SVCSearch
         'CODEGEN: Generating message contract since the operation has multiple return values.
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/updateIp", ReplyAction:="http://tempuri.org/IService1/updateIpResponse")>  _
         Function updateIpAsync(ByVal request As SVCSearch.updateIpRequest) As System.Threading.Tasks.Task(Of SVCSearch.updateIpResponse)
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateSourceGridWithWeights", ReplyAction:="http://tempuri.org/IService1/PopulateSourceGridWithWeightsResponse")>  _
-        Function PopulateSourceGridWithWeights(ByVal request As SVCSearch.PopulateSourceGridWithWeightsRequest) As SVCSearch.PopulateSourceGridWithWeightsResponse
-        
-        'CODEGEN: Generating message contract since the operation has multiple return values.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateSourceGridWithWeights", ReplyAction:="http://tempuri.org/IService1/PopulateSourceGridWithWeightsResponse")>  _
-        Function PopulateSourceGridWithWeightsAsync(ByVal request As SVCSearch.PopulateSourceGridWithWeightsRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateSourceGridWithWeightsResponse)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/getSourceLength", ReplyAction:="http://tempuri.org/IService1/getSourceLengthResponse")>  _
         Function getSourceLength(ByVal SourceGuid As String, ByVal SourceType As String) As Long
@@ -3817,6 +3856,78 @@ Namespace SVCSearch
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IService1/PopulateLibraryGrid", ReplyAction:="http://tempuri.org/IService1/PopulateLibraryGridResponse")>  _
         Function PopulateLibraryGridAsync(ByVal request As SVCSearch.PopulateLibraryGridRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateLibraryGridResponse)
     End Interface
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateSourceGridWithWeights", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class PopulateSourceGridWithWeightsRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public StartingRow As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public EndingRow As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public CallerName As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+        Public MySql As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
+        Public bNewRows As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+        Public SourceRowCnt As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SecureID As Integer, ByVal StartingRow As Integer, ByVal EndingRow As Integer, ByVal CallerName As String, ByVal MySql As String, ByVal bNewRows As Boolean, ByVal SourceRowCnt As Integer)
+            MyBase.New
+            Me.SecureID = SecureID
+            Me.StartingRow = StartingRow
+            Me.EndingRow = EndingRow
+            Me.CallerName = CallerName
+            Me.MySql = MySql
+            Me.bNewRows = bNewRows
+            Me.SourceRowCnt = SourceRowCnt
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateSourceGridWithWeightsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class PopulateSourceGridWithWeightsResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public PopulateSourceGridWithWeightsResult() As SVCSearch.DS_CONTENT
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SecureID As Integer
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public bNewRows As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public SourceRowCnt As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal PopulateSourceGridWithWeightsResult() As SVCSearch.DS_CONTENT, ByVal SecureID As Integer, ByVal bNewRows As Boolean, ByVal SourceRowCnt As Integer)
+            MyBase.New
+            Me.PopulateSourceGridWithWeightsResult = PopulateSourceGridWithWeightsResult
+            Me.SecureID = SecureID
+            Me.bNewRows = bNewRows
+            Me.SourceRowCnt = SourceRowCnt
+        End Sub
+    End Class
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
@@ -6944,6 +7055,54 @@ Namespace SVCSearch
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getRowIDs", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getRowIDsRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public SearchSQL As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SearchTypeCode As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public SecureID As Integer
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SearchSQL As String, ByVal SearchTypeCode As String, ByVal SecureID As Integer)
+            MyBase.New
+            Me.SearchSQL = SearchSQL
+            Me.SearchTypeCode = SearchTypeCode
+            Me.SecureID = SecureID
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="getRowIDsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class getRowIDsResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public getRowIDsResult As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public SearchSQL As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal getRowIDsResult As String, ByVal SearchSQL As String)
+            MyBase.New
+            Me.getRowIDsResult = getRowIDsResult
+            Me.SearchSQL = SearchSQL
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
      System.ServiceModel.MessageContractAttribute(WrapperName:="ExecuteSearchEmail", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ExecuteSearchEmailRequest
         
@@ -9345,78 +9504,6 @@ Namespace SVCSearch
             MyBase.New
             Me.SecureID = SecureID
             Me.RC = RC
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateSourceGridWithWeights", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class PopulateSourceGridWithWeightsRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public StartingRow As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public EndingRow As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public CallerName As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
-        Public MySql As String
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
-        Public bNewRows As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
-        Public SourceRowCnt As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal SecureID As Integer, ByVal StartingRow As Integer, ByVal EndingRow As Integer, ByVal CallerName As String, ByVal MySql As String, ByVal bNewRows As Boolean, ByVal SourceRowCnt As Integer)
-            MyBase.New
-            Me.SecureID = SecureID
-            Me.StartingRow = StartingRow
-            Me.EndingRow = EndingRow
-            Me.CallerName = CallerName
-            Me.MySql = MySql
-            Me.bNewRows = bNewRows
-            Me.SourceRowCnt = SourceRowCnt
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="PopulateSourceGridWithWeightsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class PopulateSourceGridWithWeightsResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public PopulateSourceGridWithWeightsResult() As SVCSearch.DS_CONTENT
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public SecureID As Integer
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
-        Public bNewRows As Boolean
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
-        Public SourceRowCnt As Integer
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal PopulateSourceGridWithWeightsResult() As SVCSearch.DS_CONTENT, ByVal SecureID As Integer, ByVal bNewRows As Boolean, ByVal SourceRowCnt As Integer)
-            MyBase.New
-            Me.PopulateSourceGridWithWeightsResult = PopulateSourceGridWithWeightsResult
-            Me.SecureID = SecureID
-            Me.bNewRows = bNewRows
-            Me.SourceRowCnt = SourceRowCnt
         End Sub
     End Class
     
@@ -13164,6 +13251,31 @@ Namespace SVCSearch
         End Sub
         
         <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_PopulateSourceGridWithWeights(ByVal request As SVCSearch.PopulateSourceGridWithWeightsRequest) As SVCSearch.PopulateSourceGridWithWeightsResponse Implements SVCSearch.IService1.PopulateSourceGridWithWeights
+            Return MyBase.Channel.PopulateSourceGridWithWeights(request)
+        End Function
+        
+        Public Function PopulateSourceGridWithWeights(ByRef SecureID As Integer, ByVal StartingRow As Integer, ByVal EndingRow As Integer, ByVal CallerName As String, ByVal MySql As String, ByRef bNewRows As Boolean, ByRef SourceRowCnt As Integer) As SVCSearch.DS_CONTENT()
+            Dim inValue As SVCSearch.PopulateSourceGridWithWeightsRequest = New SVCSearch.PopulateSourceGridWithWeightsRequest()
+            inValue.SecureID = SecureID
+            inValue.StartingRow = StartingRow
+            inValue.EndingRow = EndingRow
+            inValue.CallerName = CallerName
+            inValue.MySql = MySql
+            inValue.bNewRows = bNewRows
+            inValue.SourceRowCnt = SourceRowCnt
+            Dim retVal As SVCSearch.PopulateSourceGridWithWeightsResponse = CType(Me,SVCSearch.IService1).PopulateSourceGridWithWeights(inValue)
+            SecureID = retVal.SecureID
+            bNewRows = retVal.bNewRows
+            SourceRowCnt = retVal.SourceRowCnt
+            Return retVal.PopulateSourceGridWithWeightsResult
+        End Function
+        
+        Public Function PopulateSourceGridWithWeightsAsync(ByVal request As SVCSearch.PopulateSourceGridWithWeightsRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateSourceGridWithWeightsResponse) Implements SVCSearch.IService1.PopulateSourceGridWithWeightsAsync
+            Return MyBase.Channel.PopulateSourceGridWithWeightsAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Function SVCSearch_IService1_PopulateSourceGridNoWeights(ByVal request As SVCSearch.PopulateSourceGridNoWeightsRequest) As SVCSearch.PopulateSourceGridNoWeightsResponse Implements SVCSearch.IService1.PopulateSourceGridNoWeights
             Return MyBase.Channel.PopulateSourceGridNoWeights(request)
         End Function
@@ -14350,6 +14462,25 @@ Namespace SVCSearch
             Return MyBase.Channel.GenerateSQLAsync(request)
         End Function
         
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function SVCSearch_IService1_getRowIDs(ByVal request As SVCSearch.getRowIDsRequest) As SVCSearch.getRowIDsResponse Implements SVCSearch.IService1.getRowIDs
+            Return MyBase.Channel.getRowIDs(request)
+        End Function
+        
+        Public Function getRowIDs(ByRef SearchSQL As String, ByVal SearchTypeCode As String, ByVal SecureID As Integer) As String
+            Dim inValue As SVCSearch.getRowIDsRequest = New SVCSearch.getRowIDsRequest()
+            inValue.SearchSQL = SearchSQL
+            inValue.SearchTypeCode = SearchTypeCode
+            inValue.SecureID = SecureID
+            Dim retVal As SVCSearch.getRowIDsResponse = CType(Me,SVCSearch.IService1).getRowIDs(inValue)
+            SearchSQL = retVal.SearchSQL
+            Return retVal.getRowIDsResult
+        End Function
+        
+        Public Function getRowIDsAsync(ByVal request As SVCSearch.getRowIDsRequest) As System.Threading.Tasks.Task(Of SVCSearch.getRowIDsResponse) Implements SVCSearch.IService1.getRowIDsAsync
+            Return MyBase.Channel.getRowIDsAsync(request)
+        End Function
+        
         Public Function getJsonData(ByVal I As String) As String Implements SVCSearch.IService1.getJsonData
             Return MyBase.Channel.getJsonData(I)
         End Function
@@ -15268,31 +15399,6 @@ Namespace SVCSearch
         
         Public Function updateIpAsync(ByVal request As SVCSearch.updateIpRequest) As System.Threading.Tasks.Task(Of SVCSearch.updateIpResponse) Implements SVCSearch.IService1.updateIpAsync
             Return MyBase.Channel.updateIpAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function SVCSearch_IService1_PopulateSourceGridWithWeights(ByVal request As SVCSearch.PopulateSourceGridWithWeightsRequest) As SVCSearch.PopulateSourceGridWithWeightsResponse Implements SVCSearch.IService1.PopulateSourceGridWithWeights
-            Return MyBase.Channel.PopulateSourceGridWithWeights(request)
-        End Function
-        
-        Public Function PopulateSourceGridWithWeights(ByRef SecureID As Integer, ByVal StartingRow As Integer, ByVal EndingRow As Integer, ByVal CallerName As String, ByVal MySql As String, ByRef bNewRows As Boolean, ByRef SourceRowCnt As Integer) As SVCSearch.DS_CONTENT()
-            Dim inValue As SVCSearch.PopulateSourceGridWithWeightsRequest = New SVCSearch.PopulateSourceGridWithWeightsRequest()
-            inValue.SecureID = SecureID
-            inValue.StartingRow = StartingRow
-            inValue.EndingRow = EndingRow
-            inValue.CallerName = CallerName
-            inValue.MySql = MySql
-            inValue.bNewRows = bNewRows
-            inValue.SourceRowCnt = SourceRowCnt
-            Dim retVal As SVCSearch.PopulateSourceGridWithWeightsResponse = CType(Me,SVCSearch.IService1).PopulateSourceGridWithWeights(inValue)
-            SecureID = retVal.SecureID
-            bNewRows = retVal.bNewRows
-            SourceRowCnt = retVal.SourceRowCnt
-            Return retVal.PopulateSourceGridWithWeightsResult
-        End Function
-        
-        Public Function PopulateSourceGridWithWeightsAsync(ByVal request As SVCSearch.PopulateSourceGridWithWeightsRequest) As System.Threading.Tasks.Task(Of SVCSearch.PopulateSourceGridWithWeightsResponse) Implements SVCSearch.IService1.PopulateSourceGridWithWeightsAsync
-            Return MyBase.Channel.PopulateSourceGridWithWeightsAsync(request)
         End Function
         
         Public Function getSourceLength(ByVal SourceGuid As String, ByVal SourceType As String) As Long Implements SVCSearch.IService1.getSourceLength

@@ -1,12 +1,12 @@
 ﻿Module globalSearchTerms
 
-    Public PageRowLimit As Integer = 75
-    Public PageRowIncrement As Integer = 25
+    Public PageRowLimit As Integer = Convert.ToInt32(RowsToFetch)
+    Public PageRowIncrement As Integer = Convert.ToInt32(RowsToFetch)
 
     Public DocLowerPageNbr As Integer = 1
-    Public DocUpperPageNbr As Integer = PageRowLimit
+    Public DocUpperPageNbr As Integer = Convert.ToInt32(RowsToFetch)
     Public EmailLowerPageNbr As Integer = 1
-    Public EmailUpperPageNbr As Integer = PageRowLimit
+    Public EmailUpperPageNbr As Integer = Convert.ToInt32(RowsToFetch)
 
     Public ListOfSearchTerms As New System.Collections.Generic.List(Of SVCSearch.DS_SearchTerms)
     Public dictEmailSearch As New Dictionary(Of String, String)

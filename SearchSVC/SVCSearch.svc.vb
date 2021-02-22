@@ -1603,6 +1603,13 @@ Public Class SVCSearch
         Return jdata
     End Function
 
+
+    Public Function getRowIDs(ByRef SearchSQL As String, SearchTypeCode As String, SecureID As Integer) As String Implements IService1.getRowIDs
+        Console.WriteLine("Start getRowIDs Search: " + Now.ToString)
+        Dim RowIds As String = DB.getRowIDs(SearchSQL, SearchTypeCode, SecureID)
+        Return RowIds
+    End Function
+
     ''' <summary>
     ''' Executes the content of the search.
     ''' </summary>

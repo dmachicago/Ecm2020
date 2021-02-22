@@ -56,7 +56,7 @@ Class MainPage
     Dim PrevListOfContentCnt As Integer = 0
     Dim PrevListOfEmailCnt As Integer = 0
 
-    Dim bGhostFetchActive As Boolean = False
+    Dim bActivelyFetchingNow As Boolean = False
     Dim ButtonBounce As Integer = 0
     Dim ExecutingSearch As Boolean = False
 
@@ -365,13 +365,13 @@ Class MainPage
 
         dgContent.RowHeight = 10
         dgContent.ItemsSource = Nothing
-        dgContent.ItemsSource = gListOfContent
-        dgContent.Items.Refresh()
+        'dgContent.ItemsSource = gListOfContent
+        'dgContent.Items.Refresh()
 
         dgEmails.RowHeight = 10
         dgEmails.ItemsSource = Nothing
-        dgEmails.ItemsSource = gListOfEmails
-        dgEmails.Items.Refresh()
+        'dgEmails.ItemsSource = gListOfEmails
+        'dgEmails.Items.Refresh()
 
         Console.WriteLine("EP2: " + EP2)
 
@@ -568,8 +568,13 @@ Class MainPage
         End If
         Dim bProb As Boolean = CkForNearClause(txtSearch.Text.Trim)
         If bProb Then
-            MessageBox.Show("The word 'NEAR' maybe preceeded by a keyword, this may cause this search to fail.")
+            MessageBox.Show("The word 'NEAR' may be preceeded by a keyword, this may cause this search to fail.")
         End If
+
+        gListOfContent.Clear()
+        gListOfEmails.Clear()
+        gContentLastMaxSeq = 0
+        gEmailLastMaxSeq = 0
 
         nbrExecutedSearches += 1
 
@@ -873,7 +878,7 @@ Class MainPage
         Return iCnt
     End Function
 
-    Sub ExecuteSearch(ByVal bGenSqlOnly As Boolean, CallLocation As String)
+    Sub ExecuteSearch(ByVal bGenSqlOnly As Boolean, CallLocation As String, Optional StartingRow As Int32 = 0, Optional EndingRow As Int32 = 1000000)
 
         PB.IsIndeterminate = True
         PB.Visibility = Visibility.Visible
@@ -923,6 +928,11 @@ Class MainPage
 
         Dim LowerPageNumber As Integer = 0
         Dim UpperPageNumber As Integer = PageRowLimit
+
+        If (UseRowsToFetch.Equals("0")) Then
+            UpperPageNumber = 10000000
+        End If
+
         Dim AutoSql As String = ""
 
         Dim SearchText As String = txtSearch.Text.Trim
@@ -955,13 +965,19 @@ Class MainPage
             UdpateSearchTerm("ALL", "GeneratedSql", AutoSql, "S")
             UdpateSearchTerm("ALL", "CurrentDocPage", CurrentDocPage.ToString, "I")
             UdpateSearchTerm("ALL", "CurrentEmailPage", CurrentEmailPage.ToString, "I")
-            UdpateSearchTerm("ALL", "StartingEmailRow", "0", "I")
-            UdpateSearchTerm("ALL", "EndingEmailRow", UpperPageNumber.ToString, "I")
-            UdpateSearchTerm("ALL", "StartingContentRow", "0", "I")
-            UdpateSearchTerm("ALL", "EndingContentRow", UpperPageNumber.ToString, "I")
 
-            UpdateState(True, 0, PageRowLimit, 0, PageRowLimit)
+            UdpateSearchTerm("ALL", "StartingEmailRow", StartingRow.ToString, "I")
+            UdpateSearchTerm("ALL", "EndingEmailRow", EndingRow.ToString, "I")
+            UdpateSearchTerm("ALL", "StartingContentRow", StartingRow.ToString, "I")
+            UdpateSearchTerm("ALL", "EndingContentRow", EndingRow.ToString, "I")
+
+            UpdateState(True, 0, StartingRow, 0, EndingRow)
         Else
+
+            UdpateSearchTerm("ALL", "StartingEmailRow", StartingRow.ToString, "I")
+            UdpateSearchTerm("ALL", "EndingEmailRow", EndingRow.ToString, "I")
+            UdpateSearchTerm("ALL", "StartingContentRow", StartingRow.ToString, "I")
+            UdpateSearchTerm("ALL", "EndingContentRow", EndingRow.ToString, "I")
 
             UdpateSearchTerm("ALL", "CurrUserGuidID", CurrUserGuidID.Trim, "S")
             UdpateSearchTerm("ALL", "CurrLoginID", CurrLoginID.Trim, "S")
@@ -974,8 +990,14 @@ Class MainPage
             UdpateSearchTerm("ALL", "txtSearch", SearchText.Trim, "S")
             UdpateSearchTerm("ALL", "ckWeights", ckWeights.IsChecked.ToString, "B")
 
-            LowerPageNumber += PageRowLimit
-            UpperPageNumber += PageRowLimit
+            If (UseRowsToFetch.Equals("0")) Then
+                LowerPageNumber = 0
+                UpperPageNumber = 10000000
+            Else
+                LowerPageNumber += Convert.ToInt32(RowsToFetch)
+                UpperPageNumber += Convert.ToInt32(RowsToFetch)
+            End If
+
             UdpateSearchTerm("ALL", "LowerPageNbr", LowerPageNumber.ToString, "I")
             UdpateSearchTerm("ALL", "UpperPageNbr", UpperPageNumber.ToString, "I")
 
@@ -1001,10 +1023,10 @@ Class MainPage
             Dim iEmailEnd As Integer = iEmailStart + 50
             Dim iContentEnd As Integer = iContentStart + 50
 
-            UdpateSearchTerm("ALL", "StartingEmailRow", iEmailStart.ToString, "I")
-            UdpateSearchTerm("ALL", "EndingEmailRow", UpperPageNumber.ToString, "I")
-            UdpateSearchTerm("ALL", "StartingContentRow", iContentStart.ToString, "I")
-            UdpateSearchTerm("ALL", "EndingContentRow", UpperPageNumber.ToString, "I")
+            UdpateSearchTerm("ALL", "StartingEmailRow", StartingRow.ToString, "I")
+            UdpateSearchTerm("ALL", "EndingEmailRow", EndingRow.ToString, "I")
+            UdpateSearchTerm("ALL", "StartingContentRow", StartingRow.ToString, "I")
+            UdpateSearchTerm("ALL", "EndingContentRow", EndingRow.ToString, "I")
 
         End If
 
@@ -1027,9 +1049,13 @@ Class MainPage
         End If
 
         Console.WriteLine("Called From: " + CallLocation)
+        'BCY Use the below for an ASYNC call
+        '   Requires more than just uncommenting, the function MUST be redefined an async
         'AddHandler ProxySearch.ExecuteSearchCompleted, AddressOf client_ApplyReturnedSearchData
         Try
             If ProxySearch Is Nothing Then
+                'BCY Uncomment and use the below for an ASYNC call
+                '   We are not Silverlight any longer, so functions that are to be Async must be defined as so
                 'Dim proxy As New SVCSearch.Service1Client
             End If
             'If ListOfSearchTerms Is Nothing Then
@@ -1088,9 +1114,11 @@ Class MainPage
             Console.WriteLine("Start client Search: " + Now.ToString)
 
             client_ApplyReturnedSearchData(gSecureID,
-                                 bFirstEmailSearchSubmit,
-                                 bFirstContentSearchSubmit,
-                                 RetDict)
+                                            bFirstEmailSearchSubmit,
+                                            bFirstContentSearchSubmit,
+                                            RetDict,
+                                            ContentGuidID,
+                                            EmailGuidID)
 
             Console.WriteLine("END client Search: " + Now.ToString)
             Console.WriteLine(" ")
@@ -1125,116 +1153,131 @@ Class MainPage
 
     End Sub
 
+    Function AddRowToDGContent(OBJ As Object, ByRef DG As DataGrid) As Int32
+        Dim I As Integer = 0
+        Dim RANK As Integer = 0
+        Dim SourceName As String = Nothing
+        Dim CreateDate As Date = Nothing
+        Dim VersionNbr As Integer = Nothing
+        Dim LastAccessDate As Date = Nothing
+        Dim FileLength As Integer = Nothing
+        Dim LastWriteTime As Date = Nothing
+        Dim OriginalFileType As String = Nothing
+        Dim isPublic As String = Nothing
+        Dim FQN As String = Nothing
+        Dim SourceGuid As String = Nothing
+        Dim DataSourceOwnerUserID As String = Nothing
+        Dim FileDirectory As String = Nothing
+        Dim RetentionExpirationDate As Date = Nothing
+        Dim isMaster As String = Nothing
+        Dim StructuredData As Boolean = Nothing
+        Dim RepoSvrName As String = Nothing
+        Dim ROWID As String = Nothing
+        Dim Description As String = Nothing
+        Dim RssLinkFlg As Boolean = Nothing
+        Dim isWebPage As String = Nothing
+        Dim RowSeq As Int32 = Nothing
+
+
+        For Each O In OBJ
+            Dim newobj As New SVCSearch.DS_CONTENT()
+            Dim R As New DataGridRow
+            DG.Items.Add(R)
+            Dim RowIdx As Integer = DG.Items.Count
+            newobj.CreateDate = O.CreateDate
+            newobj.RANK = O.RANK
+            newobj.SourceName = O.SourceName
+            newobj.CreateDate = O.CreateDate
+            newobj.VersionNbr = O.VersionNbr
+            newobj.LastAccessDate = O.LastAccessDate
+            newobj.FileLength = O.FileLength
+            newobj.LastWriteTime = O.LastWriteTime
+            newobj.OriginalFileType = O.OriginalFileType
+            newobj.isPublic = O.isPublic
+            newobj.FQN = O.FQN
+            newobj.SourceGuid = O.SourceGuid
+            newobj.DataSourceOwnerUserID = O.DataSourceOwnerUserID
+            newobj.FileDirectory = O.FileDirectory
+            newobj.RetentionExpirationDate = O.RetentionExpirationDate
+            newobj.isMaster = O.isMaster
+            newobj.StructuredData = O.StructuredData
+            newobj.RepoSvrName = O.RepoSvrName
+            'newobj.ROWID As String = Nothing
+            newobj.Description = O.Description
+            newobj.RssLinkFlg = O.RssLinkFlg
+            newobj.isWebPage = O.isWebPage
+            newobj.RowSeq = O.RowSeq
+            'DG.Items.Add(O)
+            Dim dgView As DataView = TryCast(DG.ItemsSource, DataView)
+            DG.SelectedIndex = RowIdx
+            If dgView IsNot Nothing Then
+                Dim ViewRow As DataRowView = dgView.Item(DG.SelectedIndex)
+                ViewRow.Item("CreateDate") = CreateDate
+                ViewRow.Item("RANK") = RANK
+                ViewRow.Item("SourceName") = SourceName
+                ViewRow.Item("CreateDate") = CreateDate
+                ViewRow.Item("VersionNbr") = VersionNbr
+                ViewRow.Item("LastAccessDate") = LastAccessDate
+                ViewRow.Item("FileLength") = FileLength
+                ViewRow.Item("LastWriteTime") = LastWriteTime
+                ViewRow.Item("OriginalFileType") = OriginalFileType
+                ViewRow.Item("isPublic") = isPublic
+                ViewRow.Item("FQN") = FQN
+                ViewRow.Item("SourceGuid") = SourceGuid
+                ViewRow.Item("DataSourceOwnerUserID") = DataSourceOwnerUserID
+                ViewRow.Item("FileDirectory") = FileDirectory
+                ViewRow.Item("RetentionExpirationDate") = RetentionExpirationDate
+                ViewRow.Item("isMaster") = isMaster
+                ViewRow.Item("StructuredData") = StructuredData
+                ViewRow.Item("RepoSvrName") = RepoSvrName
+                'ViewRow.Item("ROWID As String = Nothing
+                ViewRow.Item("Description") = Description
+                ViewRow.Item("RssLinkFlg") = RssLinkFlg
+                ViewRow.Item("isWebPage") = isWebPage
+                ViewRow.Item("RowSeq") = RowSeq
+            End If
+            I = I + 1
+        Next
+
+        Return I
+    End Function
+
     Sub client_ApplyReturnedSearchData(
             gSecureID As Integer,
             bFirstEmailSearchSubmit As Boolean,
             bFirstContentSearchSubmit As Boolean,
-            RetDict As Dictionary(Of String, String))
+            RetDict As Dictionary(Of String, String),
+            ContentGuidID As String,
+            EmailGuidID As String)
 
         Dim EmailRowCnt As Integer = 0
         Dim ContentRowCnt As Integer = 0
         Dim ListOEmailRows As List(Of SVCSearch.DS_EMAIL) = New List(Of SVCSearch.DS_EMAIL)()
         Dim ListOfContentRows As List(Of SVCSearch.DS_CONTENT) = New List(Of SVCSearch.DS_CONTENT)()
-
         Dim jss = New JavaScriptSerializer()
-
-        Dim ContentGuidID As String = RetDict("ContentGuidID")
-        Dim EmailGuidID As String = RetDict("EmailGuidID")
-
         Dim ContentJson As String = proxy2.getJsonData(ContentGuidID)
         Dim EmailJson As String = proxy2.getJsonData(EmailGuidID)
-
-        If gDebug Then Console.WriteLine("ContentJson Length: " + ContentJson.Length.ToString)
-        If gDebug Then Console.WriteLine("EmailJson Length: " + EmailJson.Length.ToString)
-
         Dim ObjContent As Object = jss.Deserialize(Of SVCSearch.DS_CONTENT())(ContentJson)
         Dim ObjEmail As Object = jss.Deserialize(Of SVCSearch.DS_EMAIL())(EmailJson)
 
-        If ContentJson.Trim.Length > 0 Then
-            DSCONTENT = DSMGT.ConvertObjContentToDataset(ObjContent)
-        End If
-        If EmailJson.Trim.Length > 0 Then
-            DSEMAIL = DSMGT.ConvertObjEmailToDataset(ObjEmail)
-        End If
-        If ContentJson.Trim.Length = 0 Then
-            dgContent.ItemsSource = Nothing
-        End If
-        If EmailJson.Trim.Length = 0 Then
-            dgEmails.ItemsSource = Nothing
-        End If
-
-        If ContentJson.Trim.Length >= 1 And (rbAll.IsChecked Or rbContent.IsChecked) Then
-            'Dim ListOfContent As New List(Of SVCSearch.DS_CONTENT)
-            'dgContent.ItemsSource = Nothing
-            'For Each O In ObjContent
-            '    ListOfContent.Add(O)
-            '    dgContent.Items.Add(O)
-            'Next
-
-            Dim rCnt As Integer = DSCONTENT.Tables(0).Rows.Count
-            Try
-                dgContent.ItemsSource = Nothing
-                dgContent.ItemsSource = New DataView(DSCONTENT.Tables(0))
-                dgContent.Items.Refresh()
-            Catch ex As Exception
-                Dim smsg As String = "ERROR (Content) client_ApplyReturnedSearchData: " + ex.Message + Environment.NewLine + Environment.NewLine + ex.InnerException.ToString
-                Console.WriteLine(smsg)
-            End Try
-
-        End If
-        If EmailJson.Trim.Length >= 1 And (rbAll.IsChecked Or rbEmails.IsChecked) Then
-            Try
-                dgEmails.ItemsSource = Nothing
-                dgEmails.ItemsSource = New DataView(DSEMAIL.Tables(0))
-                dgEmails.Items.Refresh()
-            Catch ex As Exception
-                Dim smsg As String = "ERROR (Email) client_ApplyReturnedSearchData: " + ex.Message + Environment.NewLine + Environment.NewLine + ex.InnerException.ToString
-                Console.WriteLine(smsg)
-            End Try
-
-        End If
-
-        dgContent.Items.Refresh()
-        dgEmails.Items.Refresh()
-
-
-
-        PB.IsIndeterminate = False
-        PB.Visibility = Visibility.Hidden
-
-        Return
-
-        If EmailRowCnt > 0 Then
-            For Each Obj As SVCSearch.DS_EMAIL In ObjEmail
-                ListOEmailRows.Add(Obj)
-            Next
-        End If
-        If ContentRowCnt > 0 Then
-            Dim DS As DataSet = DSMGT.ConvertObjContentToDataset(ObjContent)
-            dgContent.ItemsSource = Nothing
-            dgContent.ItemsSource = New DataView(DS.Tables(0))
-            dgContent.Items.Refresh()
-
-            'For Each Obj As SVCSearch.DS_CONTENT In ObjContent
-            '    ListOfContentRows.Add(Obj)
-            'Next
-        End If
-
+        For Each OBJ As Object In ObjContent
+            Dim MaxSeq As String = OBJ.RowSeq.ToString
+            gContentCurrMaxSeq = Convert.ToInt32(MaxSeq)
+            gListOfContent.Add(OBJ)
+        Next
         dgContent.ItemsSource = Nothing
-        If ContentRowCnt > 0 Then
-            dgContent.RowHeight = 10
-            dgContent.ItemsSource = ListOfContentRows
-            dgContent.Visibility = Windows.Visibility.Visible
-        End If
+        dgContent.ItemsSource = gListOfContent
         dgContent.Items.Refresh()
 
+        For Each OBJ As Object In ObjEmail
+            Dim MaxSeq As String = OBJ.RowSeq.ToString
+            gEmailCurrMaxSeq = Convert.ToInt32(MaxSeq)
+            gListOfEmails.Add(OBJ)
+        Next
         dgEmails.ItemsSource = Nothing
-        If EmailRowCnt > 0 Then
-            dgEmails.RowHeight = 10
-            dgEmails.ItemsSource = ListOEmailRows
-            dgEmails.Visibility = Windows.Visibility.Visible
-        End If
+        dgEmails.ItemsSource = gListOfEmails
         dgEmails.Items.Refresh()
+
 
     End Sub
 
@@ -3658,10 +3701,6 @@ Class MainPage
 
     Private Sub dgContent_ScrollPositionChanging(ByVal sender As System.Object, ByVal e As ScrollChangedEventArgs)
 
-        If bGhostFetchActive Then
-            Return
-        End If
-
         'Dim scrollview As ScrollViewer = FindVisualChild < ScrollViewer > (dgContent)
         Dim nTotalCount As Integer = dgContent.Items.Count
         Dim nFirstVisibleRow As Integer = e.HorizontalChange
@@ -3690,23 +3729,46 @@ Class MainPage
             Dim VPH As Double = e.ViewportHeight
             Dim OS As Double = e.VerticalOffset
             TopRow = CurrPos
-            Dim BottomRow As Integer = dgContent.Items.Count
+            Dim TotalRows As Integer = dgContent.Items.Count
             Dim CurrRow As Double = OS + VPH
 
-            'Dim PctLocation As Double = (1 - (CurrRow / BottomRow)) * 100
+            Dim StartingRow As Integer = TotalRows
+            Dim EndingRow As Integer = StartingRow + RowsToFetch - 1
 
             Dim PctLocation As Double = grid.getScrollBarCurrentPct(dgContent, "dgContent")
 
-            SBDocPage.Text = "Rows " & TopRow & " - " & BottomRow
+            SBDocPage.Text = "Rows- " & TopRow & " - " & TotalRows
 
-            Dim TotalRows As Integer = dgContent.Items.Count
-            'If TopRow > TotalRows - (TotalRows - 30) Then
-            If PctLocation > 80 Then
-                SB.Text = "Fetching more documents..."
-                ExecuteSearch(False, "ScrollChange")
-                bGhostFetchActive = True
+            If EndingRow > gEmailLastMaxSeq Then
+                SB.Text = "Content: Rows retrieved: " + TotalRows.ToString
+                SBDoc.Text = "Content: Rows retrieved: " + TotalRows.ToString
+            End If
+
+            'BCY Scroll has gone beyond 80% of the datagrid rows, fetch more
+            If PctLocation > 80 And EndingRow > gContentLastMaxSeq Then
+
+                ''WDMXX GET DATAGRID COLUMN VALUE
+                'dgContent.SelectedItem = dgContent.Items(TotalRows - 1)
+
+                'Dim xVal As String = getCellValue(dgContent, "RowSeq")
+                ''xVal = grid.GetCelValue(dgContent, "RowSeq")
+
+                '80% of the scroll has been completed, fetch more rows
+                SB.Text = "CONTENT: STANDBY FETCHING ROWS"
+                bStartNewSearch = False
+
+                bActivelyFetchingNow = True
+                ExecuteSearch(False, "ScrollChange", StartingRow, EndingRow)
+
+                gContentLastMaxSeq = EndingRow
+                'gEmailLastMaxSeq = EndingRow
+
+                bActivelyFetchingNow = False
+                TotalRows = dgContent.Items.Count
+                SB.Text = "Content: " + StartingRow.ToString + " : " + TotalRows.ToString
+                SBDoc.Text = "Content: Rows retrieved: " + TotalRows.ToString
             Else
-                SB.Text = "Content: " + CurrRow.ToString + " : " + PctLocation.ToString
+                SB.Text = "PCT SCroll: " + PctLocation.ToString
             End If
         End If
 
@@ -3758,8 +3820,10 @@ Class MainPage
         gListOfContent.Clear()
         gListOfEmails.Clear()
 
-        'dgContent.ItemsSource = Nothing
-        'dgEmails.ItemsSource = Nothing
+        dgContent.ItemsSource = Nothing
+        dgEmails.ItemsSource = Nothing
+        dgContent.Items.Refresh()
+        dgEmails.Items.Refresh()
 
         dgEmails.Opacity = 0.5
 
@@ -3799,9 +3863,9 @@ Class MainPage
             SaveSearchParmParms(CurrentSearchIdHigh)
         End If
 
-        '*************************************************************
-        ExecuteSearch(GenSqlOnly, "PerformSearch")
-        '**********************************
+        '*************************************************************'**************
+        ExecuteSearch(GenSqlOnly, "PerformSearch", 0, Convert.ToInt32(RowsToFetch))
+        '*************************************************************'**************
 
         bGridColsRetrieved = False
 
@@ -5279,6 +5343,9 @@ Class MainPage
         bStartNewSearch = False
 
         If bStartNewSearch Then
+            UdpateSearchTerm("ALL", "RowsToFetch", RowsToFetch, "I")
+            UdpateSearchTerm("ALL", "UseRowsToFetch", UseRowsToFetch, "I")
+
             UdpateSearchTerm("ALL", "isSuperAdmin", _isSuperAdmin.ToString, "B")
             UdpateSearchTerm("ALL", "isAdmin", _isAdmin.ToString, "B")
             UdpateSearchTerm("ALL", "isGlobalSearcher", _isGlobalSearcher.ToString, "B")
@@ -5302,8 +5369,10 @@ Class MainPage
             UdpateSearchTerm("ALL", "LowerPageNbr", LowerPageNumber.ToString, "I")
             UdpateSearchTerm("ALL", "UpperPageNbr", UpperPageNumber.ToString, "I")
             UdpateSearchTerm("ALL", "GeneratedSql", AutoSql, "S")
+
             UdpateSearchTerm("ALL", "CurrentDocPage", CurrentDocPage.ToString, "I")
             UdpateSearchTerm("ALL", "CurrentEmailPage", CurrentEmailPage.ToString, "I")
+
             UdpateSearchTerm("ALL", "StartingEmailRow", "0", "I")
             UdpateSearchTerm("ALL", "EndingEmailRow", UpperPageNumber.ToString, "I")
             UdpateSearchTerm("ALL", "StartingContentRow", "0", "I")
@@ -5312,6 +5381,8 @@ Class MainPage
             UpdateState(True, 0, PageRowLimit, 0, PageRowLimit)
         Else
 
+            UdpateSearchTerm("ALL", "UseRowsToFetch", UseRowsToFetch, "I")
+            UdpateSearchTerm("ALL", "RowsToFetch", RowsToFetch, "I")
             UdpateSearchTerm("ALL", "CurrUserGuidID", CurrUserGuidID.Trim, "S")
             UdpateSearchTerm("ALL", "CurrLoginID", CurrLoginID.Trim, "S")
             UdpateSearchTerm("ALL", "UID", CurrUserGuidID.Trim, "S")
@@ -5323,8 +5394,14 @@ Class MainPage
             UdpateSearchTerm("ALL", "txtSearch", SearchText.Trim, "S")
             UdpateSearchTerm("ALL", "ckWeights", ckWeights.IsChecked.ToString, "B")
 
-            LowerPageNumber += PageRowLimit
-            UpperPageNumber += PageRowLimit
+            If (UseRowsToFetch.Equals("0")) Then
+                LowerPageNumber = 0
+                UpperPageNumber = 10000000
+            Else
+                LowerPageNumber += Convert.ToInt32(RowsToFetch)
+                UpperPageNumber += Convert.ToInt32(RowsToFetch)
+            End If
+
             UdpateSearchTerm("ALL", "LowerPageNbr", LowerPageNumber.ToString, "I")
             UdpateSearchTerm("ALL", "UpperPageNbr", UpperPageNumber.ToString, "I")
 
@@ -5347,8 +5424,8 @@ Class MainPage
 
             Dim iEmailStart As Integer = dgEmails.Items.Count
             Dim iContentStart As Integer = dgContent.Items.Count
-            Dim iEmailEnd As Integer = iEmailStart + 50
-            Dim iContentEnd As Integer = iContentStart + 50
+            Dim iEmailEnd As Integer = iEmailStart + Convert.ToInt32(RowsToFetch)
+            Dim iContentEnd As Integer = iContentStart + Convert.ToInt32(RowsToFetch)
 
             UdpateSearchTerm("ALL", "StartingEmailRow", iEmailStart.ToString, "I")
             UdpateSearchTerm("ALL", "EndingEmailRow", UpperPageNumber.ToString, "I")
@@ -5666,9 +5743,6 @@ Class MainPage
 
     Private Sub dgEmails_ScrollPositionChanging(ByVal sender As System.Object, ByVal e As System.Windows.Controls.ScrollChangedEventArgs)
 
-        If bGhostFetchActive Then
-            Return
-        End If
 
         If bSettingEmailRowHeight Then
             Return
@@ -5699,6 +5773,14 @@ Class MainPage
         currRow = grid.getScrollBarMaxPosition(dgEmails, "verticalScrollBar")
         Dim PctLocation As Double = grid.getScrollBarCurrentPct(dgEmails, "emailScrollbar")
         Dim TotalRows As Integer = dgEmails.Items.Count
+        Dim NumberOfCols As Integer = dgEmails.Columns.Count
+
+        'WDMXX GET DATAGRID COLUMN VALUE
+        dgEmails.SelectedItem = dgEmails.Items(BottomRow)
+        Dim DataRow As DataRowView = dgEmails.SelectedItem
+
+        Dim StartingRow As Integer = TotalRows
+        Dim EndingRow As Integer = StartingRow + RowsToFetch - 1
 
         If PrevTopRow.Equals(TopRow) Then
             Return
@@ -5707,16 +5789,20 @@ Class MainPage
         SBEmailPage.Text = "Rows " & TopRow & " - " & BottomRow
 
         'If BottomRow > TotalRows - (TopRow - 30) Then
-        If PctLocation > 80 Then
+        If PctLocation > 80 And EndingRow > gEmailLastMaxSeq Then
+            SB.Text = "EMail: STANDBY FETCHING ROWS"
             EmailLowerPageNbr += PageRowLimit
             EmailUpperPageNbr += PageRowLimit
             SB.Text = "Fetching more emails"
-            ExecuteSearch(False, "dgEmailScroll")
-            bGhostFetchActive = True
+            ExecuteSearch(False, "dgEmailScroll", StartingRow, EndingRow)
+            bActivelyFetchingNow = True
+            'gContentLastMaxSeq = EndingRow
+            gEmailLastMaxSeq = EndingRow
+            SB.Text = "EMail: " + StartingRow.ToString + " : " + EndingRow.ToString
         Else
-            SB.Text = "EMail: " + currRow.ToString + " : " + PctLocation.ToString
+            SB.Text = "EMail Scroll%: " + PctLocation.ToString
         End If
-        SB.Text = "EMail: % " + PctLocation.ToString
+
     End Sub
 
     Private Sub nbrEmailRows_TextChanged(sender As Object, e As TextChangedEventArgs) Handles nbrEmailRows.TextChanged

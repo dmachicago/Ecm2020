@@ -21,6 +21,7 @@
       <xs:element minOccurs="0" name="ROWID" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RepoSvrName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RetentionExpirationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RowSeq" type="xs:int" />
       <xs:element minOccurs="0" name="RssLinkFlg" type="xs:boolean" />
       <xs:element minOccurs="0" name="SourceGuid" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SourceName" nillable="true" type="xs:string" />
@@ -57,6 +58,7 @@
       <xs:element minOccurs="0" name="ReceivedTime" type="xs:dateTime" />
       <xs:element minOccurs="0" name="RepoSvrName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RetentionExpirationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RowSeq" type="xs:int" />
       <xs:element minOccurs="0" name="SUBJECT" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SenderEmailAddress" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SenderName" nillable="true" type="xs:string" />

@@ -10,6 +10,12 @@
       <xsd:import schemaLocation="http://localhost:59757/SVCSearch.svc?xsd=xsd5" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IService1_PopulateSourceGridWithWeights_InputMessage">
+    <wsdl:part name="parameters" element="tns:PopulateSourceGridWithWeights" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PopulateSourceGridWithWeights_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PopulateSourceGridWithWeightsResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_PopulateSourceGridNoWeights_InputMessage">
     <wsdl:part name="parameters" element="tns:PopulateSourceGridNoWeights" />
   </wsdl:message>
@@ -358,6 +364,12 @@
   <wsdl:message name="IService1_GenerateSQL_OutputMessage">
     <wsdl:part name="parameters" element="tns:GenerateSQLResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_getRowIDs_InputMessage">
+    <wsdl:part name="parameters" element="tns:getRowIDs" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getRowIDs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getRowIDsResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_getJsonData_InputMessage">
     <wsdl:part name="parameters" element="tns:getJsonData" />
   </wsdl:message>
@@ -621,12 +633,6 @@
   </wsdl:message>
   <wsdl:message name="IService1_updateIp_OutputMessage">
     <wsdl:part name="parameters" element="tns:updateIpResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_PopulateSourceGridWithWeights_InputMessage">
-    <wsdl:part name="parameters" element="tns:PopulateSourceGridWithWeights" />
-  </wsdl:message>
-  <wsdl:message name="IService1_PopulateSourceGridWithWeights_OutputMessage">
-    <wsdl:part name="parameters" element="tns:PopulateSourceGridWithWeightsResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_getSourceLength_InputMessage">
     <wsdl:part name="parameters" element="tns:getSourceLength" />
@@ -1139,6 +1145,10 @@
     <wsdl:part name="parameters" element="tns:PopulateLibraryGridResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
+    <wsdl:operation name="PopulateSourceGridWithWeights">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PopulateSourceGridWithWeights" message="tns:IService1_PopulateSourceGridWithWeights_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PopulateSourceGridWithWeightsResponse" message="tns:IService1_PopulateSourceGridWithWeights_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="PopulateSourceGridNoWeights">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/PopulateSourceGridNoWeights" message="tns:IService1_PopulateSourceGridNoWeights_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/PopulateSourceGridNoWeightsResponse" message="tns:IService1_PopulateSourceGridNoWeights_OutputMessage" />
@@ -1371,6 +1381,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GenerateSQL" message="tns:IService1_GenerateSQL_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GenerateSQLResponse" message="tns:IService1_GenerateSQL_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="getRowIDs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getRowIDs" message="tns:IService1_getRowIDs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getRowIDsResponse" message="tns:IService1_getRowIDs_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="getJsonData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getJsonData" message="tns:IService1_getJsonData_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getJsonDataResponse" message="tns:IService1_getJsonData_OutputMessage" />
@@ -1546,10 +1560,6 @@
     <wsdl:operation name="updateIp">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/updateIp" message="tns:IService1_updateIp_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/updateIpResponse" message="tns:IService1_updateIp_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="PopulateSourceGridWithWeights">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PopulateSourceGridWithWeights" message="tns:IService1_PopulateSourceGridWithWeights_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PopulateSourceGridWithWeightsResponse" message="tns:IService1_PopulateSourceGridWithWeights_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="getSourceLength">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getSourceLength" message="tns:IService1_getSourceLength_InputMessage" />
@@ -1894,6 +1904,15 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="PopulateSourceGridWithWeights">
+      <soap:operation soapAction="http://tempuri.org/IService1/PopulateSourceGridWithWeights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="PopulateSourceGridNoWeights">
       <soap:operation soapAction="http://tempuri.org/IService1/PopulateSourceGridNoWeights" style="document" />
       <wsdl:input>
@@ -2416,6 +2435,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getRowIDs">
+      <soap:operation soapAction="http://tempuri.org/IService1/getRowIDs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getJsonData">
       <soap:operation soapAction="http://tempuri.org/IService1/getJsonData" style="document" />
       <wsdl:input>
@@ -2805,15 +2833,6 @@
     </wsdl:operation>
     <wsdl:operation name="updateIp">
       <soap:operation soapAction="http://tempuri.org/IService1/updateIp" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="PopulateSourceGridWithWeights">
-      <soap:operation soapAction="http://tempuri.org/IService1/PopulateSourceGridWithWeights" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

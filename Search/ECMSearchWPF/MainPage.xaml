@@ -168,10 +168,11 @@
                             </ContextMenu>
                         </Grid.ContextMenu>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="82*"/>
-                            <ColumnDefinition Width="631*"/>
+                            <ColumnDefinition Width="41*"/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="310*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox AcceptsReturn="False" Background="#FF04042E" Foreground="#FFF8F2F2" Height="23" Margin="241.4,0,5.8,6.4" x:Name="SBEmail" Text="Messages" VerticalAlignment="Bottom" Grid.Column="1">
+                        <TextBox AcceptsReturn="False" Background="#FF04042E" Foreground="#FFF8F2F2" Height="23" Margin="231.6,0,5.2,6.4" x:Name="SBEmail" Text="Messages" VerticalAlignment="Bottom" Grid.Column="2">
                             <TextBox.BorderBrush>
                                 <LinearGradientBrush>
                                     <GradientStop Color="#FFA3AEB9" Offset="0" />
@@ -181,7 +182,7 @@
                                 </LinearGradientBrush>
                             </TextBox.BorderBrush>
                         </TextBox>
-                        <DataGrid Margin="4,4,7.8,35.4" x:Name="dgEmails" AutoGenerateColumns="True" MinRowHeight="25" IsReadOnly="False" Background="{x:Null}" ScrollViewer.ScrollChanged="dgEmails_ScrollPositionChanging" VerticalScrollBarVisibility="Visible" ColumnHeaderHeight="25" BorderBrush="#FFB7FFF8" EnableColumnVirtualization="true" ScrollViewer.IsDeferredScrollingEnabled="True" RowHeight="25" RowHeaderWidth="25" RowBackground="#FFF0EEEE" AlternatingRowBackground="#00ADEAF0" Grid.ColumnSpan="2"  >
+                        <DataGrid Margin="4,4,8.2,35.4" x:Name="dgEmails" AutoGenerateColumns="True" MinRowHeight="25" IsReadOnly="False" Background="{x:Null}" ScrollViewer.ScrollChanged="dgEmails_ScrollPositionChanging" VerticalScrollBarVisibility="Visible" ColumnHeaderHeight="25" BorderBrush="#FFB7FFF8" EnableColumnVirtualization="true" ScrollViewer.IsDeferredScrollingEnabled="True" RowHeight="25" RowHeaderWidth="25" RowBackground="#FFF0EEEE" AlternatingRowBackground="#00ADEAF0" Grid.ColumnSpan="3"  >
                             <DataGrid.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Click="click_EmailPreview" x:Name="PreviewEmail" Header="Preview Email" ></MenuItem>
@@ -196,12 +197,12 @@
 
                         <Button Content="&lt;" Height="23" HorizontalAlignment="Left" Margin="9,0,0,4.4" x:Name="btnEmailPagePack" VerticalAlignment="Bottom" Width="32" FontWeight="ExtraBlack" Visibility="Collapsed" />
                         <Button Content="&gt;" Height="23" HorizontalAlignment="Left" Margin="42,0,0,4.4" x:Name="btnEmailPageForward" VerticalAlignment="Bottom" Width="32" FontWeight="ExtraBlack" Visibility="Collapsed" />
-                        <TextBox Height="23" HorizontalAlignment="Left" Margin="10,0,0,6.4" x:Name="SBEmailPage" VerticalAlignment="Bottom" Width="190" Grid.ColumnSpan="2" />
-                        <TextBox Height="23" HorizontalAlignment="Left" Margin="124.4,0,0,6.4" x:Name="nbrEmailRows" VerticalAlignment="Bottom" Width="58" Grid.Column="1" />
-                        <CheckBox Content="Set as Public Email" FontWeight="Normal" Foreground="WhiteSmoke" Height="20" HorizontalAlignment="Left" Margin="63,-23,0,0" x:Name="ckSetEmailPublic" VerticalAlignment="Top" Width="146" Grid.Column="1" />
+                        <TextBox Height="23" HorizontalAlignment="Left" Margin="10,0,0,6.4" x:Name="SBEmailPage" VerticalAlignment="Bottom" Width="190" Grid.ColumnSpan="3" />
+                        <TextBox Height="23" HorizontalAlignment="Left" Margin="114.6,0,0,6.4" x:Name="nbrEmailRows" VerticalAlignment="Bottom" Width="58" Grid.Column="2" />
+                        <CheckBox Content="Set as Public Email" FontWeight="Normal" Foreground="WhiteSmoke" Height="20" HorizontalAlignment="Left" Margin="53.6,-23,0,0" x:Name="ckSetEmailPublic" VerticalAlignment="Top" Width="146" Grid.Column="2" />
                         <!--<c1:C1ContextMenu Height="39" HorizontalAlignment="Left" Margin="404,30,0,0" x:Name="cmEmail" VerticalAlignment="Top" Width="46" />-->
-                        <Label Height="15" HorizontalAlignment="Left" Margin="391.4,-30,0,0" x:Name="lblEmailSearchParms" VerticalAlignment="Top" Width="125" Content="Extended Parms Set" Foreground="#FFD8E818" Visibility="Collapsed" Grid.Column="1" />
-                        <CheckBox Content="Set as Default Screen" FontWeight="Normal" Foreground="WhiteSmoke" Height="20" HorizontalAlignment="Left" Margin="238.4,-23,0,0" x:Name="ckSetEmailAsDefault" VerticalAlignment="Top" Width="146" IsChecked="True" Grid.Column="1" />
+                        <Label Height="15" HorizontalAlignment="Left" Margin="381.6,-30,0,0" x:Name="lblEmailSearchParms" VerticalAlignment="Top" Width="125" Content="Extended Parms Set" Foreground="#FFD8E818" Visibility="Collapsed" Grid.Column="2" />
+                        <CheckBox Content="Set as Default Screen" FontWeight="Normal" Foreground="WhiteSmoke" Height="20" HorizontalAlignment="Left" Margin="228.6,-23,0,0" x:Name="ckSetEmailAsDefault" VerticalAlignment="Top" Width="146" IsChecked="True" Grid.Column="2" />
                     </Grid>
                 </TabItem>
                 <TabItem Header="Documents" x:Name="TabContent" Cursor="Arrow" Margin="-2,-1,-2,1" Height="20" VerticalAlignment="Bottom">

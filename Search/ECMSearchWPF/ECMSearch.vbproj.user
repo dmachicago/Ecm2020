@@ -13,7 +13,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <StartAction>Project</StartAction>
     <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
-    <EnableSQLServerDebugging>true</EnableSQLServerDebugging>
+    <EnableSQLServerDebugging>false</EnableSQLServerDebugging>
     <StartWorkingDirectory>
     </StartWorkingDirectory>
     <StartProgram>d:\dev\ECM2020\Search\ECMSearchWPF\bin\Debug\ECMSearchWPF.xbap</StartProgram>

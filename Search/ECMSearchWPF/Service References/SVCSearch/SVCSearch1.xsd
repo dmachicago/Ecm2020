@@ -3,6 +3,29 @@
   <xs:import schemaLocation="http://localhost:59757/SVCSearch.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" />
   <xs:import schemaLocation="http://localhost:59757/SVCSearch.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:import schemaLocation="http://localhost:59757/SVCSearch.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:element name="PopulateSourceGridWithWeights">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="StartingRow" type="xs:int" />
+        <xs:element minOccurs="0" name="EndingRow" type="xs:int" />
+        <xs:element minOccurs="0" name="CallerName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MySql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="bNewRows" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SourceRowCnt" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopulateSourceGridWithWeightsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="PopulateSourceGridWithWeightsResult" nillable="true" type="q1:ArrayOfDS_CONTENT" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+        <xs:element minOccurs="0" name="bNewRows" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SourceRowCnt" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="PopulateSourceGridNoWeights">
     <xs:complexType>
       <xs:sequence>
@@ -19,7 +42,7 @@
   <xs:element name="PopulateSourceGridNoWeightsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="PopulateSourceGridNoWeightsResult" nillable="true" type="q1:ArrayOfDS_CONTENT" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="PopulateSourceGridNoWeightsResult" nillable="true" type="q2:ArrayOfDS_CONTENT" />
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
         <xs:element minOccurs="0" name="bNewRows" type="xs:boolean" />
         <xs:element minOccurs="0" name="SourceRowCnt" type="xs:int" />
@@ -44,7 +67,7 @@
   <xs:element name="PopulateEmailGridWithNoWeightsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="PopulateEmailGridWithNoWeightsResult" nillable="true" type="q2:ArrayOfDS_EMAIL" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="PopulateEmailGridWithNoWeightsResult" nillable="true" type="q3:ArrayOfDS_EMAIL" />
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
         <xs:element minOccurs="0" name="bNewRows" type="xs:boolean" />
         <xs:element minOccurs="0" name="EmailRowCnt" type="xs:int" />
@@ -69,7 +92,7 @@
   <xs:element name="PopulateEmailGridWithWeightsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="PopulateEmailGridWithWeightsResult" nillable="true" type="q3:ArrayOfDS_EMAIL" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="PopulateEmailGridWithWeightsResult" nillable="true" type="q4:ArrayOfDS_EMAIL" />
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
         <xs:element minOccurs="0" name="bNewRows" type="xs:boolean" />
         <xs:element minOccurs="0" name="EmailRowCnt" type="xs:int" />
@@ -83,7 +106,7 @@
         <xs:element minOccurs="0" name="MaxNbrSearches" type="xs:int" />
         <xs:element minOccurs="0" name="Uid" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="Screen" nillable="true" type="xs:string" />
-        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SearchHistoryArrayList" nillable="true" type="q4:ArrayOfstring" />
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SearchHistoryArrayList" nillable="true" type="q5:ArrayOfstring" />
         <xs:element minOccurs="0" name="NbrReturned" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -92,7 +115,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
-        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SearchHistoryArrayList" nillable="true" type="q5:ArrayOfstring" />
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SearchHistoryArrayList" nillable="true" type="q6:ArrayOfstring" />
         <xs:element minOccurs="0" name="NbrReturned" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -101,7 +124,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
-        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SL" nillable="true" type="q6:ArrayOfKeyValueOfstringint" />
+        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SL" nillable="true" type="q7:ArrayOfKeyValueOfstringint" />
         <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -110,7 +133,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
-        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SL" nillable="true" type="q7:ArrayOfKeyValueOfstringint" />
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SL" nillable="true" type="q8:ArrayOfKeyValueOfstringint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -233,7 +256,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
         <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
-        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Parms" nillable="true" type="q8:ArrayOfstring" />
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Parms" nillable="true" type="q9:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -241,7 +264,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
-        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Parms" nillable="true" type="q9:ArrayOfstring" />
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Parms" nillable="true" type="q10:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -338,7 +361,7 @@
   <xs:element name="getClientLicensesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="getClientLicensesResult" nillable="true" type="q10:ArrayOfDS_License" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="getClientLicensesResult" nillable="true" type="q11:ArrayOfDS_License" />
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
         <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="RC" type="xs:boolean" />
@@ -496,7 +519,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
-        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="SessionGuid" type="q11:guid" />
+        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="SessionGuid" type="q12:guid" />
         <xs:element minOccurs="0" name="ParmName" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -506,7 +529,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="ActiveSessionGetValResult" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
-        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="SessionGuid" type="q12:guid" />
+        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="SessionGuid" type="q13:guid" />
         <xs:element minOccurs="0" name="ParmName" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -515,7 +538,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
-        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="SessionGuid" type="q13:guid" />
+        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="SessionGuid" type="q14:guid" />
         <xs:element minOccurs="0" name="ParmName" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="ParmValue" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -820,7 +843,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
-        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="CB" nillable="true" type="q14:ArrayOfstring" />
+        <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="CB" nillable="true" type="q15:ArrayOfstring" />
         <xs:element minOccurs="0" name="TblColName" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="S" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -830,7 +853,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
-        <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="CB" nillable="true" type="q15:ArrayOfstring" />
+        <xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="CB" nillable="true" type="q16:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1060,7 +1083,7 @@
   <xs:element name="GenerateSQL">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SearchParmList" nillable="true" type="q16:ArrayOfKeyValueOfstringstring" />
+        <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SearchParmList" nillable="true" type="q17:ArrayOfKeyValueOfstringstring" />
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
         <xs:element minOccurs="0" name="TypeSQL" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -1071,6 +1094,23 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="GenerateSQLResult" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getRowIDs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SearchSQL" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SearchTypeCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getRowIDsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getRowIDsResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SearchSQL" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1141,7 +1181,7 @@
         <xs:element minOccurs="0" name="SearchID" type="xs:int" />
         <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="ScreenName" nillable="true" type="xs:string" />
-        <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DICT" nillable="true" type="q17:ArrayOfKeyValueOfstringstring" />
+        <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DICT" nillable="true" type="q18:ArrayOfKeyValueOfstringstring" />
         <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="RC" type="xs:boolean" />
         <xs:element minOccurs="0" name="HiveConnectionName" nillable="true" type="xs:string" />
@@ -1153,9 +1193,9 @@
   <xs:element name="getSearchStateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="getSearchStateResult" nillable="true" type="q18:ArrayOfDS_USERSEARCHSTATE" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="getSearchStateResult" nillable="true" type="q19:ArrayOfDS_USERSEARCHSTATE" />
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
-        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DICT" nillable="true" type="q19:ArrayOfKeyValueOfstringstring" />
+        <xs:element xmlns:q20="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DICT" nillable="true" type="q20:ArrayOfKeyValueOfstringstring" />
         <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="RC" type="xs:boolean" />
       </xs:sequence>
@@ -1168,7 +1208,7 @@
         <xs:element minOccurs="0" name="SearchID" type="xs:int" />
         <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="ScreenName" nillable="true" type="xs:string" />
-        <xs:element xmlns:q20="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DICT" nillable="true" type="q20:ArrayOfKeyValueOfstringstring" />
+        <xs:element xmlns:q21="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DICT" nillable="true" type="q21:ArrayOfKeyValueOfstringstring" />
         <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="RC" type="xs:boolean" />
         <xs:element minOccurs="0" name="HiveConnectionName" nillable="true" type="xs:string" />
@@ -1192,7 +1232,7 @@
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
         <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="ScreenName" nillable="true" type="xs:string" />
-        <xs:element xmlns:q21="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DICT" nillable="true" type="q21:ArrayOfKeyValueOfstringstring" />
+        <xs:element xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DICT" nillable="true" type="q22:ArrayOfKeyValueOfstringstring" />
         <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="RC" type="xs:boolean" />
         <xs:element minOccurs="0" name="HiveConnectionName" nillable="true" type="xs:string" />
@@ -1204,9 +1244,9 @@
   <xs:element name="getScreenStateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="getScreenStateResult" nillable="true" type="q22:ArrayOfDS_USERSCREENSTATE" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="getScreenStateResult" nillable="true" type="q23:ArrayOfDS_USERSCREENSTATE" />
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
-        <xs:element xmlns:q23="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DICT" nillable="true" type="q23:ArrayOfKeyValueOfstringstring" />
+        <xs:element xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DICT" nillable="true" type="q24:ArrayOfKeyValueOfstringstring" />
         <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="RC" type="xs:boolean" />
       </xs:sequence>
@@ -1219,7 +1259,7 @@
         <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="ScreenName" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="GridName" nillable="true" type="xs:string" />
-        <xs:element xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DICT" nillable="true" type="q24:ArrayOfKeyValueOfstringstring" />
+        <xs:element xmlns:q25="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DICT" nillable="true" type="q25:ArrayOfKeyValueOfstringstring" />
         <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="RC" type="xs:boolean" />
         <xs:element minOccurs="0" name="HiveConnectionName" nillable="true" type="xs:string" />
@@ -1231,7 +1271,7 @@
   <xs:element name="getGridLayoutResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="getGridLayoutResult" nillable="true" type="q25:ArrayOfDS_clsUSERGRIDSTATE" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="getGridLayoutResult" nillable="true" type="q26:ArrayOfDS_clsUSERGRIDSTATE" />
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
         <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="RC" type="xs:boolean" />
@@ -1294,7 +1334,7 @@
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
         <xs:element minOccurs="0" name="UID" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="ScreenName" nillable="true" type="xs:string" />
-        <xs:element xmlns:q26="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DICT" nillable="true" type="q26:ArrayOfKeyValueOfstringstring" />
+        <xs:element xmlns:q27="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DICT" nillable="true" type="q27:ArrayOfKeyValueOfstringstring" />
         <xs:element minOccurs="0" name="rMsg" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="RC" type="xs:boolean" />
         <xs:element minOccurs="0" name="HiveConnectionName" nillable="true" type="xs:string" />
@@ -1317,7 +1357,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
         <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
-        <xs:element xmlns:q27="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UserParms" nillable="true" type="q27:ArrayOfKeyValueOfstringstring" />
+        <xs:element xmlns:q28="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UserParms" nillable="true" type="q28:ArrayOfKeyValueOfstringstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1325,7 +1365,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
-        <xs:element xmlns:q28="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UserParms" nillable="true" type="q28:ArrayOfKeyValueOfstringstring" />
+        <xs:element xmlns:q29="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UserParms" nillable="true" type="q29:ArrayOfKeyValueOfstringstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1334,7 +1374,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
         <xs:element minOccurs="0" name="S" nillable="true" type="xs:string" />
-        <xs:element xmlns:q29="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="D" nillable="true" type="q29:ArrayOfKeyValueOfstringstring" />
+        <xs:element xmlns:q30="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="D" nillable="true" type="q30:ArrayOfKeyValueOfstringstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1342,7 +1382,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
-        <xs:element xmlns:q30="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="D" nillable="true" type="q30:ArrayOfKeyValueOfstringstring" />
+        <xs:element xmlns:q31="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="D" nillable="true" type="q31:ArrayOfKeyValueOfstringstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1471,7 +1511,7 @@
   <xs:element name="ProcessDatesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q31="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ProcessDatesResult" nillable="true" type="q31:ArrayOfKeyValueOfstringdateTime" />
+        <xs:element xmlns:q32="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ProcessDatesResult" nillable="true" type="q32:ArrayOfKeyValueOfstringdateTime" />
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -1744,7 +1784,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
-        <xs:element xmlns:q32="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SystemParms" nillable="true" type="q32:ArrayOfKeyValueOfstringstring" />
+        <xs:element xmlns:q33="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SystemParms" nillable="true" type="q33:ArrayOfKeyValueOfstringstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1752,7 +1792,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
-        <xs:element xmlns:q33="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SystemParms" nillable="true" type="q33:ArrayOfKeyValueOfstringstring" />
+        <xs:element xmlns:q34="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SystemParms" nillable="true" type="q34:ArrayOfKeyValueOfstringstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1892,29 +1932,6 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="SecureID" type="xs:int" />
         <xs:element minOccurs="0" name="RC" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="PopulateSourceGridWithWeights">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
-        <xs:element minOccurs="0" name="StartingRow" type="xs:int" />
-        <xs:element minOccurs="0" name="EndingRow" type="xs:int" />
-        <xs:element minOccurs="0" name="CallerName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="MySql" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="bNewRows" type="xs:boolean" />
-        <xs:element minOccurs="0" name="SourceRowCnt" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="PopulateSourceGridWithWeightsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/EcmCloudWcf.Web" minOccurs="0" name="PopulateSourceGridWithWeightsResult" nillable="true" type="q34:ArrayOfDS_CONTENT" />
-        <xs:element minOccurs="0" name="SecureID" type="xs:int" />
-        <xs:element minOccurs="0" name="bNewRows" type="xs:boolean" />
-        <xs:element minOccurs="0" name="SourceRowCnt" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

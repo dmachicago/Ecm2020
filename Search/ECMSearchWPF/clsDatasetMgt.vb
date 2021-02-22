@@ -346,6 +346,7 @@ Public Class clsDatasetMgt
         Dim sSourceTypeCode As String = Nothing
         Dim sStructuredData As Boolean = Nothing
         Dim sVersionNbr As Int64 = Nothing
+        Dim sRowSeq As Int64 = Nothing
 
         Dim CreateDate As DataColumn = New DataColumn("CreateDate", Type.GetType("System.DateTime"))
         Dim DataSourceOwnerUserID As DataColumn = New DataColumn("DataSourceOwnerUserID", Type.GetType("System.String"))
@@ -365,6 +366,7 @@ Public Class clsDatasetMgt
         Dim SourceTypeCode As DataColumn = New DataColumn("SourceTypeCode", Type.GetType("System.String"))
         Dim StructuredData As DataColumn = New DataColumn("StructuredData", Type.GetType("System.Boolean"))
         Dim VersionNbr As DataColumn = New DataColumn("VersionNbr", Type.GetType("System.DateTime"))
+        Dim RowSeq As DataColumn = New DataColumn("RowSeq", Type.GetType("System.Int32"))
 
         DT.Columns.Add(CreateDate)
         DT.Columns.Add(DataSourceOwnerUserID)
@@ -384,6 +386,7 @@ Public Class clsDatasetMgt
         DT.Columns.Add(SourceTypeCode)
         DT.Columns.Add(StructuredData)
         DT.Columns.Add(VersionNbr)
+        DT.Columns.Add(RowSeq)
 
         If gDebug Then Console.WriteLine("DMGT Trace 11")
         'Dim jss = New JavaScriptSerializer()
@@ -417,6 +420,7 @@ Public Class clsDatasetMgt
             sSourceTypeCode = Obj.OriginalFileType
             sStructuredData = Obj.StructuredData
             sVersionNbr = Obj.VersionNbr
+            sRowSeq = Obj.RowSeq
 
             If Not ProcessedGuids.Contains(sSourceGuid) Then
                 ProcessedGuids.Add(sSourceGuid)
@@ -438,7 +442,8 @@ Public Class clsDatasetMgt
                                 , sSourceName _
                                 , sSourceTypeCode _
                                 , sStructuredData _
-                                , sVersionNbr
+                                , sVersionNbr _
+                                , sRowSeq
                                 )
             Else
                 Console.WriteLine("Duplicate Found: " + sSourceGuid)
@@ -473,7 +478,8 @@ Public Class clsDatasetMgt
                                     , SourceName As String _
                                     , SourceTypeCode As String _
                                     , StructuredData As Boolean _
-                                    , VersionNbr As Int64) As Boolean
+                                    , VersionNbr As Int64 _
+                                    , RowSeq As Int32) As Boolean
 
         Dim b As Boolean = True
         Dim DR As DataRow = Nothing
@@ -498,6 +504,7 @@ Public Class clsDatasetMgt
             DR("SourceTypeCode") = SourceTypeCode
             DR("StructuredData") = StructuredData
             'DR("VersionNbr") = VersionNbr
+            DR("RowSeq") = RowSeq
             DT.Rows.Add(DR)
             b = True
         Catch ex As Exception

@@ -135,30 +135,9 @@ Module globalGridMgt
 
     Public Function getCellValue(DG As DataGrid, ColName As String) As String
 
-        Dim idx As Integer = getColIdx(DG, ColName)
-        Dim SelRow As DataGridRow = GetSelectedRow(DG)
-        Dim item As Object = DG.SelectedItem
-        Dim val As String = ""
-        Dim RowIdx As Integer = SelRow.GetIndex
-
-        idx = -1
-        For Each col As DataGridColumn In DG.Columns
-            Dim tgt As String = col.Header.ToString
-            If tgt.ToUpper.Equals(ColName.ToUpper) Then
-                idx = getColIdx(DG, tgt)
-                Try
-                    'Dim DR As DataGridRow = DG.SelectedItems(RowIdx)
-                    'Dim O As Object = DR.Item
-
-                    val = (TryCast(DG.SelectedCells(idx).Column.GetCellContent(item), TextBlock)).Text
-                Catch ex As Exception
-                    Console.WriteLine(ex.Message)
-
-                    val = ""
-                End Try
-                Return val
-            End If
-        Next
+        Dim row As Object = DG.SelectedItem
+        Dim columnIndex As Integer = DG.Columns.Single(Function(c) c.Header.Equals(ColName)).DisplayIndex
+        Dim val As String = (TryCast(DG.SelectedCells(columnIndex).Column.GetCellContent(row), TextBlock)).Text
 
         Return val
     End Function

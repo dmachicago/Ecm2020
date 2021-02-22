@@ -2589,6 +2589,7 @@ NextWord:
             DocsSql += vbTab + ",DS.FQN " + vbCrLf
             DocsSql += vbTab + ",DS.SourceGuid " + vbCrLf
             DocsSql += vbTab + ",DS.DataSourceOwnerUserID, DS.FileDirectory, DS.RetentionExpirationDate, DS.isMaster, DS.StructuredData, DS.RepoSvrName, DS.Description, DS.RssLinkFlg, DS.isWebPage  " + vbCrLf
+            DocsSql += vbTab + ", ROW_NUMBER() OVER(ORDER BY [SourceName] ASC) AS RowSeq " + vbCrLf
             DocsSql += "FROM DataSource as DS " + vbCrLf
 
             If (Not isPowerSearcher And Not isAdmin) Then
@@ -2600,7 +2601,7 @@ NextWord:
         Else
             If iMaxRows > 0 Then
                 If iMaxRows > 0 Then
-                    DocsSql = " SELECT TOP " + iMaxRows.tostring
+                    DocsSql = " SELECT TOP " + iMaxRows.ToString
                 Else
                     DocsSql = " SELECT "
                 End If
@@ -2618,6 +2619,7 @@ NextWord:
             DocsSql += vbTab + ",[FQN] " + vbCrLf
             DocsSql += vbTab + ",[SourceGuid] " + vbCrLf
             DocsSql += vbTab + ",[DataSourceOwnerUserID], FileDirectory, StructuredData, RepoSvrName, Description, RssLinkFlg, isWebPage, RetentionExpirationDate  " + vbCrLf
+            DocsSql += vbTab + ",ROW_NUMBER() OVER(ORDER BY [SourceName] ASC) AS RowSeq " + vbCrLf
             DocsSql += "FROM DataSource " + vbCrLf
 
             If (Not isPowerSearcher And Not isAdmin) Then
@@ -3682,7 +3684,8 @@ NextWord:
             SearchSql = SearchSql + " ,DS.MsgSize" + vbCrLf
             SearchSql = SearchSql + " ,DS.SUBJECT" + vbCrLf
             SearchSql = SearchSql + " ,DS.OriginalFolder " + vbCrLf
-            SearchSql = SearchSql + " ,DS.EmailGuid, DS.RetentionExpirationDate, DS.isPublic, DS.UserID, DS.OriginalFileType, DS.NbrAttachments , ' ' as RID, RepoSvrName  " + vbCrLf
+            SearchSql = SearchSql + " ,DS.EmailGuid, DS.RetentionExpirationDate, DS.isPublic, DS.UserID, DS.NbrAttachments , ' ' as RID, RepoSvrName  " + vbCrLf
+            SearchSql = SearchSql + " , ROW_NUMBER() OVER(ORDER BY [SentOn] ASC) AS RowSeq " + vbCrLf
             SearchSql = SearchSql + " FROM EMAIL AS DS " + vbCrLf
 
             If (Not isAdmin And Not isGlobalSearcher) Then
@@ -3718,8 +3721,8 @@ NextWord:
             SearchSql = SearchSql + " ,[MsgSize]" + vbCrLf
             SearchSql = SearchSql + " ,[SUBJECT]" + vbCrLf
             SearchSql = SearchSql + " ,[OriginalFolder] " + vbCrLf
-            SearchSql = SearchSql + " ,[EmailGuid], RetentionExpirationDate, isPublic, EMAIL.UserID, OriginalFileType, NbrAttachments, ' ' as RID, RepoSvrName, 0 as RANK " + vbCrLf
-
+            SearchSql = SearchSql + " ,[EmailGuid], RetentionExpirationDate, isPublic, EMAIL.UserID, NbrAttachments, ' ' as RID, RepoSvrName, 0 as RANK " + vbCrLf
+            SearchSql = SearchSql + " , ROW_NUMBER() OVER(ORDER BY [SentOn] ASC) AS RowSeq " + vbCrLf
             If (Not isAdmin And Not isGlobalSearcher) Then
                 Dim JoinStr As String = genInnerJoin("E", UserID)
                 JoinStr += " /* 0015 */"

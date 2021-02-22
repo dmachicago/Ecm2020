@@ -834,6 +834,9 @@
     <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getRestoreFileCountResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getRowIDsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\SVCSearch\ECMSearchWPF.SVCSearch.getSAASStateResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
