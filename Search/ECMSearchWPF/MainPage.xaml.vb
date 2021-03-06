@@ -878,6 +878,42 @@ Class MainPage
         Return iCnt
     End Function
 
+    '********************************************************************
+    'Search Parameter Settings:
+    'NOTE: These tems are added to the Search Parameters as defioned by
+    'Public ListOfSearchTerms As New System.Collections.Generic.ListOf(SVCSearch.DS_SearchTerms)
+    '
+    'isSuperAdmin: boolean - _isSuperAdmin.ToString, "B")
+    'isAdmin: boolean - _isAdmin.ToString, "B")
+    'isGlobalSearcher: boolean - _isGlobalSearcher.ToString, "B")
+
+    'CalledFromScreen: string - Me.Title, "S")
+    'UID", CurrUserGuidID: string - "S")
+
+    'CurrUserGuidID: string - CurrUserGuidID.Trim, "S")
+    'CurrLoginID: string - CurrLoginID.Trim, "S")
+    'UID: string - CurrUserGuidID.Trim, "S")
+
+    'txtSearch: string - SearchText.Trim, "S")
+    'bNeedRowCount: boolean - bNeedRowCount.ToString, "B")
+    'rbAll: boolean - rbAll.IsChecked.ToString, "B")
+    'rbEmails: boolean - rbEmails.IsChecked.ToString, "B")
+    'rbContent: boolean - rbContent.IsChecked.ToString, "B")
+    'ckWeights: boolean - ckWeights.IsChecked.ToString, "B")
+    'ckLimitToLib: boolean - ckLimitToLib.IsChecked.ToString, "B")
+    'cbLibrary: string - cbLibrary.SelectedItem, "S")
+    'MinWeight: integer - nbrWeightMin.Text, "I")
+    'LowerPageNbr: integer - LowerPageNumber.ToString, "I")
+    'UpperPageNbr: integer - UpperPageNumber.ToString, "I")
+    'GeneratedSql: string - AutoSql, "S")
+    'CurrentDocPage: integer - CurrentDocPage.ToString, "I")
+    'CurrentEmailPage: integer - CurrentEmailPage.ToString, "I")
+
+    'StartingEmailRow: integer - StartingRow.ToString, "I")
+    'EndingEmailRow: integer - EndingRow.ToString, "I")
+    'StartingContentRow: integer - StartingRow.ToString, "I")
+    'EndingContentRow: integer - EndingRow.ToString, "I")
+    '********************************************************************
     Sub ExecuteSearch(ByVal bGenSqlOnly As Boolean, CallLocation As String, Optional StartingRow As Int32 = 0, Optional EndingRow As Int32 = 1000000)
 
         PB.IsIndeterminate = True
@@ -3758,8 +3794,9 @@ Class MainPage
                 bStartNewSearch = False
 
                 bActivelyFetchingNow = True
+                '****************************************************************
                 ExecuteSearch(False, "ScrollChange", StartingRow, EndingRow)
-
+                '****************************************************************
                 gContentLastMaxSeq = EndingRow
                 'gEmailLastMaxSeq = EndingRow
 
