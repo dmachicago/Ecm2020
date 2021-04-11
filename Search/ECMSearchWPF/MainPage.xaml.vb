@@ -853,6 +853,8 @@ Class MainPage
                     End If
                 Catch ex As Exception
                     LOG.WriteToSqlLog("INFO ApplyAttachmentWeights 001-1: " + ex.Message + Environment.NewLine + " I = " + i.ToString + " of " + dgEmails.Items.Count.ToString)
+                    Dim trace = New System.Diagnostics.StackTrace(ex, True)
+                    MessageBox.Show("ERROR @44: " + Environment.NewLine + ex.Message & vbCrLf & "Error in ClaimFlag10 - Line number:" & trace.GetFrame(0).GetFileLineNumber().ToString)
                 End Try
 
             End If
@@ -880,8 +882,8 @@ Class MainPage
 
     '********************************************************************
     'Search Parameter Settings:
-    'NOTE: These tems are added to the Search Parameters as defioned by
-    'Public ListOfSearchTerms As New System.Collections.Generic.ListOf(SVCSearch.DS_SearchTerms)
+    'NOTE: These items are added to the Search Parameters as defioned by
+    '       Public ListOfSearchTerms As New System.Collections.Generic.ListOf(SVCSearch.DS_SearchTerms)
     '
     'isSuperAdmin: boolean - _isSuperAdmin.ToString, "B")
     'isAdmin: boolean - _isAdmin.ToString, "B")
@@ -909,10 +911,11 @@ Class MainPage
     'CurrentDocPage: integer - CurrentDocPage.ToString, "I")
     'CurrentEmailPage: integer - CurrentEmailPage.ToString, "I")
 
-    'StartingEmailRow: integer - StartingRow.ToString, "I")
-    'EndingEmailRow: integer - EndingRow.ToString, "I")
-    'StartingContentRow: integer - StartingRow.ToString, "I")
-    'EndingContentRow: integer - EndingRow.ToString, "I")
+    'bGenSqlOnly: set to true and the ExecuteSearch will only return the generated search SQL.
+    '               set to false and the search will be executed.
+    'CallLocation: identifies which row and which function called ExecuteSearch.
+    'StartingRow: integer - StartingRow.ToString, "I" - the default starting row is zero when none is supplied
+    'EndingRow: integer - EndingRow.ToString, "I" - the default ending row is one million when none is supplied
     '********************************************************************
     Sub ExecuteSearch(ByVal bGenSqlOnly As Boolean, CallLocation As String, Optional StartingRow As Int32 = 0, Optional EndingRow As Int32 = 1000000)
 
@@ -1159,10 +1162,11 @@ Class MainPage
             Console.WriteLine("END client Search: " + Now.ToString)
             Console.WriteLine(" ")
         Catch ex As Exception
-            Dim errmsg As String = ex.Message
+            Dim trace = New System.Diagnostics.StackTrace(ex, True)
+            MessageBox.Show("ERROR @44: " + Environment.NewLine + ex.Message & vbCrLf & "Error in ClaimFlag10 - Line number:" & trace.GetFrame(0).GetFileLineNumber().ToString)
             Dim stack As String = ex.StackTrace.ToString
             Clipboard.Clear()
-            Clipboard.SetText(errmsg + Environment.NewLine + Environment.NewLine + stack)
+            Clipboard.SetText(ex.Message + Environment.NewLine + Environment.NewLine + stack)
         End Try
 
         btnSubmit.IsEnabled = True
@@ -2231,7 +2235,8 @@ Class MainPage
 
                 bFileExists = True
             Catch ex As Exception
-
+                Dim trace = New System.Diagnostics.StackTrace(ex, True)
+                MessageBox.Show("ERROR @46: " + Environment.NewLine + ex.Message & vbCrLf & "Error in ClaimFlag10 - Line number:" & trace.GetFrame(0).GetFileLineNumber().ToString)
             End Try
         Next
 
@@ -2698,63 +2703,97 @@ Class MainPage
 
     Sub GetContentGridLayout(ByRef DICT As Dictionary(Of String, String), ByRef DG As DataGrid)
         Console.WriteLine("Trace:101")
-        Dim HiveConnectionName As String = ""
-        Dim HiveActive As Boolean = False
-        Dim RepoSvrName As String = ""
-        Dim rMsg As String = ""
-        Dim RC As Boolean = False
-        Dim GridName As String = "dgContent"
+        Try
+            Dim HiveConnectionName As String = ""
+            Dim HiveActive As Boolean = False
+            Dim RepoSvrName As String = ""
+            Dim rMsg As String = ""
+            Dim RC As Boolean = False
+            Dim GridName As String = "dgContent"
 
-        Console.WriteLine("Trace:102")
-        Dim ObjListOfRows As Object = ProxySearch.getGridLayout(gSecureID, CurrUserGuidID, Me.Title, GridName, DICT, rMsg, RC, HiveConnectionName, HiveActive, RepoSvrName)
-        Console.WriteLine("Trace:103")
-        client_getContentGridLayout(ObjListOfRows)
+            Console.WriteLine("Trace:102")
+            Dim ObjListOfRows As Object = ProxySearch.getGridLayout(gSecureID, CurrUserGuidID, Me.Title, GridName, DICT, rMsg, RC, HiveConnectionName, HiveActive, RepoSvrName)
+            Console.WriteLine("Trace:103")
+            client_getContentGridLayout(ObjListOfRows)
+        Catch ex As Exception
+            Dim trace = New System.Diagnostics.StackTrace(ex, True)
+            MessageBox.Show("ERROR @47: " + Environment.NewLine + ex.Message & vbCrLf & "Error in ClaimFlag10 - Line number:" & trace.GetFrame(0).GetFileLineNumber().ToString)
+        End Try
     End Sub
 
     Sub client_getContentGridLayout(ObjListOfRows As Object)
         Console.WriteLine("Trace:104")
         Dim RowOfData As SVCSearch.DS_clsUSERGRIDSTATE = New SVCSearch.DS_clsUSERGRIDSTATE()
+        Dim ll As Integer = 0
+        Dim I As Integer = 0
 
         dictEmailGridColDisplayOrder.Clear()
-        Dim I As Integer = 0
-        For Each RowOfData In ObjListOfRows
 
-            Dim gCols As New GridCols
+        Try
+            For Each RowOfData In ObjListOfRows
+                ll = 1
+                Dim gCols As New GridCols
+                ll = 2
+                Dim ScreenName As String = RowOfData.ScreenName
+                ll = 3
+                Dim GridName As String = RowOfData.GridName
+                ll = 4
+                Dim ColName As String = RowOfData.ColName
+                ll = 5
+                Dim ColOrder As Integer = RowOfData.ColOrder
+                ll = 6
+                If dictEmailGridColDisplayOrder.ContainsKey(ColOrder) Then
+                    ll = 7
+                    dictEmailGridColDisplayOrder.Item(ColOrder) = ColName
+                Else
+                    ll = 8
+                    dictEmailGridColDisplayOrder.Add(ColOrder, ColName)
+                End If
+                ll = 9
+                Dim ColReadOnly As Boolean = RowOfData.ColReadOnly
+                ll = 10
+                Dim ColVisible As Boolean = RowOfData.ColVisible
+                ll = 11
+                Dim W As Integer = RowOfData.ColWidth
+                ll = 12
+                gCols.GridName = GridName
+                ll = 13
+                gCols.Colname = ColName
+                ll = 14
+                gCols.ColOrd = ColOrder
+                ll = 15
+                gCols.Visible = ColVisible
+                ll = 16
+                gCols.bReadOnly = ColReadOnly
+                ll = 17
+                gCols.Width = W
+                ll = 18
+                Dim col As DataGridColumn = dgContent.Columns(ColName)
+                ll = 19
+                dgContent.Columns.Remove(col)
+                ll = 20
+                dgContent.Columns.Insert(I, col)
+                ll = 21
+                If W < 0 Then
+                    ll = 22
+                    col.Width = DataGridLength.Auto
+                Else
+                    ll = 23
+                    Dim O As Object = W
+                    ll = 24
+                    col.Width = CType(O, DataGridLength)
+                End If
+                ll = 25
+                col.Visibility = ColVisible
+                ll = 26
+                col.IsReadOnly = ColReadOnly
+                ll = 27
+                I += 1
 
-            Dim ScreenName As String = RowOfData.ScreenName
-            Dim GridName As String = RowOfData.GridName
-            Dim ColName As String = RowOfData.ColName
-            Dim ColOrder As Integer = RowOfData.ColOrder
-            If dictEmailGridColDisplayOrder.ContainsKey(ColOrder) Then
-                dictEmailGridColDisplayOrder.Item(ColOrder) = ColName
-            Else
-                dictEmailGridColDisplayOrder.Add(ColOrder, ColName)
-            End If
-            Dim ColReadOnly As Boolean = RowOfData.ColReadOnly
-            Dim ColVisible As Boolean = RowOfData.ColVisible
-            Dim W As Integer = RowOfData.ColWidth
-
-            gCols.GridName = GridName
-            gCols.Colname = ColName
-            gCols.ColOrd = ColOrder
-            gCols.Visible = ColVisible
-            gCols.bReadOnly = ColReadOnly
-            gCols.Width = W
-
-            Dim col As DataGridColumn = dgContent.Columns(ColName)
-            dgContent.Columns.Remove(col)
-            dgContent.Columns.Insert(I, col)
-            If W < 0 Then
-                col.Width = DataGridLength.Auto
-            Else
-                Dim O As Object = W
-                col.Width = CType(O, DataGridLength)
-            End If
-            col.Visibility = ColVisible
-            col.IsReadOnly = ColReadOnly
-            I += 1
-
-        Next
+            Next
+        Catch ex As Exception
+            MessageBox.Show("ERROR #422: " + ex.Message + " - Line# " + ll.ToString())
+        End Try
         SB.Text = "System Grid Parms Loaded: " & gSystemParms.Count & " and DB Connection good."
     End Sub
 
@@ -2884,7 +2923,8 @@ Class MainPage
                         ContentExt = item("SourceTypeCode")
                     End If
                 Catch ex As Exception
-
+                    Dim trace = New System.Diagnostics.StackTrace(ex, True)
+                    MessageBox.Show("ERROR @49: " + Environment.NewLine + ex.Message & vbCrLf & "Error in ClaimFlag10 - Line number:" & trace.GetFrame(0).GetFileLineNumber().ToString)
                 End Try
 
                 Dim NewGuid As String = System.Guid.NewGuid.ToString()
@@ -2895,6 +2935,8 @@ Class MainPage
             Next
         Catch ex As Exception
             MessageBox.Show("ERROR: MainPage/AddLibraryItem: " + ex.Message)
+            Dim trace = New System.Diagnostics.StackTrace(ex, True)
+            MessageBox.Show("ERROR @50: " + Environment.NewLine + ex.Message & vbCrLf & "Error in ClaimFlag10 - Line number:" & trace.GetFrame(0).GetFileLineNumber().ToString)
         End Try
         SB.Text = iAdded.ToString + " items added, " + iSkipped.ToString + " items skipped."
         MessageBox.Show("Total Items added to library: " + iTotalToProcess.ToString)
@@ -3158,6 +3200,8 @@ Class MainPage
             UdpateSearchTerm("ALL", "rbContent", rbContent.IsChecked, "B")
         Catch ex As Exception
             Console.WriteLine("ERROR: setTabsOpenClosed 221q : " + ex.Message)
+            Dim trace = New System.Diagnostics.StackTrace(ex, True)
+            MessageBox.Show("ERROR @51: " + Environment.NewLine + ex.Message & vbCrLf & "Error in ClaimFlag10 - Line number:" & trace.GetFrame(0).GetFileLineNumber().ToString)
         End Try
 
     End Sub
@@ -5047,6 +5091,8 @@ Class MainPage
             Next
         Catch ex As Exception
             Console.WriteLine("ERROR XXX1 - " + ex.Message)
+            Dim trace = New System.Diagnostics.StackTrace(ex, True)
+            MessageBox.Show("ERROR @52: " + Environment.NewLine + ex.Message & vbCrLf & "Error in ClaimFlag10 - Line number:" & trace.GetFrame(0).GetFileLineNumber().ToString)
         End Try
         bQuickSearchRecall = False
     End Sub
@@ -6278,7 +6324,7 @@ Class MainPage
         For Each col As DataGridColumn In dgContent.Columns
             Dim tgt As String = col.Header.ToString
             Dim II As Integer = dgContent.Columns.IndexOf(dgContent.Columns.FirstOrDefault(Function(c) c.Header = tgt))
-            CONTENT_COLS.Add(tgt, II)
+            CONTENT_COLS.Add(tgt, II.ToString)
             Console.WriteLine(", " + tgt + "     idx=" + II.ToString)
             If gDebug Then LOG.WriteToTraceLog(", " + tgt + "     idx=" + II.ToString)
         Next
