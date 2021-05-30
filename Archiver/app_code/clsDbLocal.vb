@@ -1287,6 +1287,14 @@ Public Class clsDbLocal : Implements IDisposable
         Return FileID
     End Function
 
+    Sub addFileToDict(ByVal FileName As String, FileHash As String, ByRef TDict As Dictionary(Of String, String))
+        Try
+            TDict.Add(FileHash, FileName)
+        Catch ex As Exception
+            Console.WriteLine("NOTICE 12A0: File exists, skipping")
+        End Try
+    End Sub
+
     ''' <summary>
     ''' Adds the file.
     ''' </summary>
@@ -1381,8 +1389,7 @@ Public Class clsDbLocal : Implements IDisposable
         Dim ID As Integer = 0
         Using CMD As New SQLiteCommand(S, SQLiteCONN)
             Try
-                'CMD.Parameters.AddWithValue("FileName", FileName)
-                'CMD.Parameters.AddWithValue("FileHash", FileHash)
+                Dim Hash As String = ""
                 For Each DIRName As String In DictOfDirs.Keys
                     Try
                         Application.DoEvents()
@@ -1393,11 +1400,11 @@ Public Class clsDbLocal : Implements IDisposable
                         End If
 
                         If ID.Equals(0) Then
-                            Dim Hash As String = ENC.SHA512SqlServerHash(DIRName.ToLower)
+                            Hash = ENC.SHA512SqlServerHash(DIRName.ToLower)
                             CMD.Parameters.AddWithValue("DirName", DIRName)
                             CMD.Parameters.AddWithValue("DirHash", Hash)
                             'insert into Directory (DirName, DirHash, UseArchiveBit) values ('TEST','A0', 0) 
-                            S = "insert or ignore into Directory (DirName, DirHash, UseArchiveBit) values (@DirName,@DirHash,0) "
+                            S = "insert or ignore into Directory (DirName, DirHash, UseArchiveBit) values (@DirName,@DirHash,0) ;"
                             CMD.CommandText = S
                             CMD.ExecuteNonQuery()
                         End If
@@ -1458,26 +1465,35 @@ Public Class clsDbLocal : Implements IDisposable
             Try
                 'CMD.Parameters.AddWithValue("FileName", FileName)
                 'CMD.Parameters.AddWithValue("FileHash", FileHash)
-                For Each FName As String In DictOfFiles.Keys
-                    Try
-                        Application.DoEvents()
-                        If DictOfFiles.Keys.Contains(FName) Then
-                            ID = DictOfFiles(FName)
-                        Else
-                            ID = 0
-                        End If
-                        If ID.Equals(0) Then
-                            Dim Hash As String = ENC.SHA512SqlServerHash(FName.ToLower)
-                            CMD.Parameters.AddWithValue("FileName", FName)
-                            CMD.Parameters.AddWithValue("FileHash", Hash)
-                            S = "insert or ignore into Files (FileName, FileHash) values (@FileName,@FileHash) "
-                            CMD.CommandText = S
-                            CMD.ExecuteNonQuery()
-                        End If
-                    Catch ex As Exception
-                        LOG.WriteToArchiveLog("ERROR addFile 12X: " + ex.Message)
-                    End Try
-                Next
+                Dim ix As Int32 = 0
+                Dim transaction = SQLiteCONN.BeginTransaction()
+                Using transaction
+                    For Each FName As String In DictOfFiles.Keys
+                        Try
+                            ix += 1
+                            If ix Mod 25 - 0 Then
+                                Application.DoEvents()
+                            End If
+                            If DictOfFiles.Keys.Contains(FName) Then
+                                ID = DictOfFiles(FName)
+                            Else
+                                ID = 0
+                            End If
+                            If ID.Equals(0) Then
+                                Dim Hash As String = ENC.SHA512SqlServerHash(FName.ToLower)
+                                CMD.Parameters.AddWithValue("FileName", FName)
+                                CMD.Parameters.AddWithValue("FileHash", Hash)
+                                S = "insert or ignore into Files (FileName, FileHash) values (@FileName,@FileHash) "
+                                CMD.CommandText = S
+                                CMD.ExecuteNonQuery()
+                            End If
+                        Catch ex As Exception
+                            LOG.WriteToArchiveLog("ERROR addFile 12X: " + ex.Message)
+                        End Try
+                    Next
+                    transaction.Commit()
+                End Using
+                Application.DoEvents()
             Catch ex As Exception
                 LOG.WriteToArchiveLog("ERROR 20x: clsDbLocal/addFile - " + ex.Message + Environment.NewLine + S)
                 B = False
@@ -1531,59 +1547,65 @@ Public Class clsDbLocal : Implements IDisposable
 
         Dim DirID As Integer = 0
         Dim FileID As Integer = 0
-
-        '  [InvID] Integer primary key autoincrement  
-        ', [DirID] int Not NULL
-        ', [FileID] int Not NULL
-        ', [FileExist] bit DEFAULT (1) NULL
         Dim FileSize As Int64 = 0
-        ', [CreateDate] datetime NULL
-        ', [LastUpdate] datetime NULL
-        ', [LastArchiveUpdate] datetime NULL
-        ', [ArchiveBit] bit NULL
-        ', [NeedsArchive] bit NULL
-        ', [FileHash] nvarchar(512) NULL COLLATE NOCASE
         Dim Hash As String = ""
+
+        Dim FRM As New frmNotifyBatchOCR
+        FRM.Show()
+        FRM.TopMost = True
+        'FRM.Location = New Point(300, 25)
+
         Using CMD As New SQLiteCommand(S, SQLiteCONN)
             Try
-                'CMD.Parameters.AddWithValue("FileName", FileName)
-                'CMD.Parameters.AddWithValue("FileHash", FileHash)
-                For Each FQN In DictLWD.Keys
-                    Application.DoEvents()
-                    Try
-                        Dim FI As New FileInfo(FQN)
-                        DName = FI.DirectoryName
-                        FName = FI.Name
-                        FileSize = FI.Length
-                        LastWriteDate = FI.LastWriteTime.ToString
-                        FI = Nothing
+                Dim iCnt As Int32 = 0
+                Dim transaction = SQLiteCONN.BeginTransaction()
+
+                Using transaction
+                    For Each FQN In DictLWD.Keys
+                        iCnt += 1
+                        If iCnt Mod 100 = 0 Then
+                            FRM.lblMsg.Text = "Prcocessed: " + iCnt.ToString
+                            FRM.Refresh()
+                            Application.DoEvents()
+                        End If
 
                         Try
-                            DirID = DictDirID(DName)
-                            FileID = DictFileID(FName)
-                        Catch ex As Exception
-                            LOG.WriteToArchiveLog("ERROR addInventory 12X: DID not find either the Dir '" + DName + "' or the File '" + FName + "' in the SQLite DB, skipping and not adding to inventory." + Environment.NewLine + ex.Message)
-                            DirID = 0
-                            FileID = 0
-                        End Try
+                            Dim FI As New FileInfo(FQN)
+                            DName = FI.DirectoryName
+                            FName = FI.Name
+                            FileSize = FI.Length
+                            LastWriteDate = FI.LastWriteTime.ToString
+                            FI = Nothing
 
-                        If DirID > 0 And FileID > 0 Then
-                            Hash = ENC.SHA512SqlServerHash(FQN.ToLower)
-                            CMD.Parameters.AddWithValue("DirID", DirID)
-                            CMD.Parameters.AddWithValue("FileID", FileID)
-                            CMD.Parameters.AddWithValue("FileSize", FileSize)
-                            CMD.Parameters.AddWithValue("LastUpdate", LastWriteDate)
-                            CMD.Parameters.AddWithValue("FileHash", Hash)
-                            S = "insert or ignore into Inventory (DirID, FileID, FileSize, LastUpdate, FileHash) 
+                            Try
+                                DirID = DictDirID(DName)
+                                FileID = DictFileID(FName)
+                            Catch ex As Exception
+                                LOG.WriteToArchiveLog("ERROR addInventory 12X: DID not find either the Dir '" + DName + "' or the File '" + FName + "' in the SQLite DB, skipping and not adding to inventory." + Environment.NewLine + ex.Message)
+                                DirID = 0
+                                FileID = 0
+                            End Try
+
+                            If DirID > 0 And FileID > 0 Then
+                                Hash = ENC.SHA512SqlServerHash(FQN.ToLower)
+                                CMD.Parameters.AddWithValue("DirID", DirID)
+                                CMD.Parameters.AddWithValue("FileID", FileID)
+                                CMD.Parameters.AddWithValue("FileSize", FileSize)
+                                CMD.Parameters.AddWithValue("LastUpdate", LastWriteDate)
+                                CMD.Parameters.AddWithValue("FileHash", Hash)
+                                S = "insert or ignore into Inventory (DirID, FileID, FileSize, LastUpdate, FileHash) 
                                             values (@DirID, @FileID, @FileSize, '" + LastWriteDate + "', @FileHash) "
-                            CMD.CommandText = S
-                            CMD.ExecuteNonQuery()
-                        End If
-                    Catch ex As Exception
-                        LOG.WriteToArchiveLog("ERROR addInventory 01: " + ex.Message)
-                    End Try
+                                CMD.CommandText = S
+                                CMD.ExecuteNonQuery()
+                            End If
+                        Catch ex As Exception
+                            LOG.WriteToArchiveLog("FATAL ERROR addInventory 01: " + ex.Message)
+                        End Try
+                    Next
+                    transaction.Commit()
+                End Using
 
-                Next
+                Application.DoEvents()
 
             Catch ex As Exception
                 LOG.WriteToArchiveLog("ERROR 20x: clsDbLocal/addFile - " + ex.Message + Environment.NewLine + S)
@@ -1594,7 +1616,8 @@ Public Class clsDbLocal : Implements IDisposable
                 GC.WaitForPendingFinalizers()
             End Try
         End Using
-
+        FRM.Close()
+        FRM.Dispose()
         Return B
 
     End Function

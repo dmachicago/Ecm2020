@@ -9672,6 +9672,7 @@ GoodLogin:
             LOG.WriteToArchiveLog("--> CALL: " + System.Reflection.MethodInfo.GetCurrentMethod().ToString)
         End If
 
+        Dim TotFiles As Int32 = 0
         Dim WC As String = ""
         Dim Recurse As String = "Y"
         Dim DirName As String = ""
@@ -9709,8 +9710,18 @@ GoodLogin:
         PB1.Style = ProgressBarStyle.Marquee
         PB1.MarqueeAnimationSpeed = 50
 
+        SB2.Text = ""
+        SB2.Refresh()
+        Application.DoEvents()
+        Dim iDirCnt As Int32 = 0
         For Each DirName In DirsToProcess.Keys
-            SB.Text = "STARTING INVENTORY: " + DirName
+            iDirCnt += 1
+
+            SB.Text = iDirCnt.ToString + " of " + DirsToProcess.Count.ToString + " Dirs"
+            SB.Refresh()
+                Application.DoEvents()
+
+            'SB.Text = "STARTING INVENTORY: " + DirName
             Dim FFIles As New List(Of FileInfo)
             If Directory.Exists(DirName) Then
                 WC = ""
@@ -9720,10 +9731,13 @@ GoodLogin:
                 FFIles = UTIL.GetFiles(DirName, Recurse)
                 Dim NewFile As Boolean = False
                 iFiles = 0
+                TotFiles += FFIles.Count
                 For Each FI As FileInfo In FFIles
                     iFiles += 1
-                    If (iFiles Mod 100).Equals(0) Then
+                    If (iFiles Mod 25).Equals(0) Then
                         SB2.Text = iFiles.ToString + " of " + FFIles.Count.ToString + " files"
+                        SB2.Refresh()
+                        Application.DoEvents()
                     End If
                     DirName = FI.DirectoryName
                     FileName = FI.Name
@@ -9735,7 +9749,7 @@ GoodLogin:
 
                         If TgtDir.Length >= 3 Then
                             iFileFound += 1
-                            SB2.Text = iFileFound.ToString
+                            'SB2.Text = iFileFound.ToString
                             If Not ExistingDictDirID.Keys.Contains(DirName) Then
                                 'Hash = ENC.SHA512SqlServerHash(DirName)
                                 'DictDir.Add(DirName, Hash)
@@ -9788,20 +9802,27 @@ GoodLogin:
             ExistingDictFileID = Nothing
         End If
         If DictInvDate.Count > 0 Then
-            SB.Text = "UPDATING INVENTORY:"
+            SB.Text = "VALIDATING INVENTORY:"
             DBLocal.addInventory(DictInvDate)
         End If
 
         PB1.ForeColor = COLOR
 
         totsecs = watch.Elapsed.TotalSeconds
-        MSG = "*** Scan Time: " + totsecs.ToString("N2") + " Seconds & inventoried, " + iFileFound.ToString + ", files."
+        MSG = "*** Inventory Time: " + totsecs.ToString("N2") + " Seconds / Files Processed: " + TotFiles.ToString
         SB.Text = MSG
         LOG.WriteToArchiveLog(MSG)
 
         Console.WriteLine(MSG)
         GC.Collect()
         GC.WaitForFullGCApproach()
+
+        SB2.Text = ""
+        SB2.Refresh()
+        SB2.Text = "Inventory Complete"
+        SB2.Refresh()
+        Application.DoEvents()
+
 
         PB1.Value = 0
         PB1.Visible = False
@@ -16948,6 +16969,25 @@ SHIPTHISONE:
 
     Private Sub FunctionalHelpToolStripMenuItem1_Click(sender As Object, e As EventArgs)
         Help.ShowHelp(ParentForm, "Help/Archiver.chm", HelpNavigator.TableOfContents, Nothing)
+    End Sub
+
+    Private Sub TouchDirectoryFilesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TouchDirectoryFilesToolStripMenuItem.Click
+
+        Dim fn As String = ""
+        If (FolderBrowserDialog1.ShowDialog().Equals(DialogResult.OK)) Then
+            SB.Text = ""
+            Dim iCnt As Int32 = 0
+            fn = FolderBrowserDialog1.SelectedPath
+            Dim FilesArray As String() = Directory.GetFiles(fn, "*.*", SearchOption.AllDirectories)
+            For Each fqn As String In FilesArray
+                iCnt += 1
+                System.IO.File.SetLastWriteTimeUtc(fqn, DateTime.Now)
+                SB.Text = "Touched: " + iCnt.ToString
+                SB.Refresh()
+            Next
+            SB.Text = "Files Touched: " + iCnt.ToString
+        End If
+
     End Sub
 End Class
 

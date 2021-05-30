@@ -385,6 +385,7 @@ Partial Class frmMain
         Me.lblNotice = New System.Windows.Forms.Label()
         Me.ThreadValidateSourceName = New System.ComponentModel.BackgroundWorker()
         Me.ThreadSetNameHash = New System.ComponentModel.BackgroundWorker()
+        Me.TouchDirectoryFilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.gbEmail.SuspendLayout()
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbFiletypes.SuspendLayout()
@@ -2399,7 +2400,7 @@ Partial Class frmMain
         '
         'ListenerUtilitiesToolStripMenuItem
         '
-        Me.ListenerUtilitiesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TurnListenerONToolStripMenuItem, Me.TurnListenerOFFToolStripMenuItem, Me.ListenerONALLDirsToolStripMenuItem, Me.ListenerOFFALLDirsToolStripMenuItem, Me.LIstWindowsLogsToolStripMenuItem, Me.CheckLogsForListenerInfoToolStripMenuItem})
+        Me.ListenerUtilitiesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TurnListenerONToolStripMenuItem, Me.TurnListenerOFFToolStripMenuItem, Me.ListenerONALLDirsToolStripMenuItem, Me.ListenerOFFALLDirsToolStripMenuItem, Me.LIstWindowsLogsToolStripMenuItem, Me.CheckLogsForListenerInfoToolStripMenuItem, Me.TouchDirectoryFilesToolStripMenuItem})
         Me.ListenerUtilitiesToolStripMenuItem.Name = "ListenerUtilitiesToolStripMenuItem"
         Me.ListenerUtilitiesToolStripMenuItem.Size = New System.Drawing.Size(254, 26)
         Me.ListenerUtilitiesToolStripMenuItem.Text = "Listener Utilities"
@@ -3914,6 +3915,12 @@ Partial Class frmMain
         'ThreadSetNameHash
         '
         '
+        'TouchDirectoryFilesToolStripMenuItem
+        '
+        Me.TouchDirectoryFilesToolStripMenuItem.Name = "TouchDirectoryFilesToolStripMenuItem"
+        Me.TouchDirectoryFilesToolStripMenuItem.Size = New System.Drawing.Size(292, 26)
+        Me.TouchDirectoryFilesToolStripMenuItem.Text = "Touch Directory Files"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -4352,4 +4359,5 @@ Partial Class frmMain
     Friend WithEvents FilesAreRetrievedFromDirectoryToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ZipfileExplodeAndProcessToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FunctionalHelpToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TouchDirectoryFilesToolStripMenuItem As ToolStripMenuItem
 End Class

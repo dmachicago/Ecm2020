@@ -1010,10 +1010,10 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
 
         Dim S As String = ""
-        S = S + " select table_name, column_name, data_type, character_maximum_length  " + environment.NewLine
-        S = S + " from INFORMATION_SCHEMA.COLUMNS " + environment.NewLine
-        S = S + " where table_name = '" + TableName + "' " + environment.NewLine
-        S = S + " order by table_name, column_name" + environment.NewLine
+        S = S + " select table_name, column_name, data_type, character_maximum_length  " + Environment.NewLine
+        S = S + " from INFORMATION_SCHEMA.COLUMNS " + Environment.NewLine
+        S = S + " where table_name = '" + TableName + "' " + Environment.NewLine
+        S = S + " order by table_name, column_name" + Environment.NewLine
 
         Dim b As Boolean = True
         Dim i As Integer = 0
@@ -1299,7 +1299,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
                     LOG.WriteToArchiveLog("ERROR From '" + From + " ' clsDatabaseARCH : ckDbConnection : 23b: ", ex)
                     b = False
                     Dim ShowBox As Boolean = False
-                    If ShowBox And gRunUnattended = False Then MessageBox.Show("The database connection failed at error marker 2301.2334.1 : " + environment.NewLine + ex.Message)
+                    If ShowBox And gRunUnattended = False Then MessageBox.Show("The database connection failed at error marker 2301.2334.1 : " + Environment.NewLine + ex.Message)
                 End Try
             Else
                 b = True
@@ -4013,7 +4013,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
                     rsDataQry = command.ExecuteReader()
                 Catch ex As Exception
                     LOG.WriteToArchiveLog("clsDatabaseARCH : SqlQry : 1319 : ", ex)
-                    LOG.WriteToArchiveLog("clsDatabaseARCH : SqlQry : 1319 Server too Busy : " + environment.NewLine + sql)
+                    LOG.WriteToArchiveLog("clsDatabaseARCH : SqlQry : 1319 Server too Busy : " + Environment.NewLine + sql)
                 End Try
 
                 command.Dispose()
@@ -4503,7 +4503,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
             Catch ex As Exception
                 rc = False
                 If InStr(ex.Message, "The DELETE statement conflicted with the REFERENCE", CompareMethod.Text) > 0 Then
-                    MessageBox.Show("It appears this user has DATA within the repository associated to them and cannot be deleted." + environment.NewLine + environment.NewLine + ex.Message)
+                    MessageBox.Show("It appears this user has DATA within the repository associated to them and cannot be deleted." + Environment.NewLine + Environment.NewLine + ex.Message)
                 ElseIf InStr(ex.Message, "duplicate key row", CompareMethod.Text) > 0 Then
                     LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSql : 1442.a : ", ex)
                     LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSql : 1442.a : " + sql)
@@ -4517,7 +4517,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
                 '' xTrace(39901, "ExecuteSqlNoTx: ", ex.StackTrace.ToString)
                 '' xTrace(39901, "ExecuteSqlNoTx: ", Mid(sql, 1, 2000))
                 LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSql : 1442.x : ", ex)
-                LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSql : 1442.x : " + environment.NewLine + sql + environment.NewLine)
+                LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSql : 1442.x : " + Environment.NewLine + sql + Environment.NewLine)
 
             End Try
         End Using
@@ -4573,18 +4573,18 @@ Public Class clsDatabaseARCH : Implements IDisposable
             MySql = ""
 
             MachineGuid = getGuid()
-            MySql += "INSERT INTO [MachineRegistered]" + environment.NewLine
-            MySql += "(" + environment.NewLine
-            MySql += "[MachineGuid]" + environment.NewLine
-            MySql += ",[MachineName]" + environment.NewLine
-            MySql += ",[NetWorkName]" + environment.NewLine
-            MySql += ")" + environment.NewLine
-            MySql += "VALUES " + environment.NewLine
-            MySql += "(" + environment.NewLine
-            MySql += "'" + MachineGuid + "'," + environment.NewLine
-            MySql += "'" + MachineName + "'," + environment.NewLine
-            MySql += "'" + NetWorkName + "'" + environment.NewLine
-            MySql += ")" + environment.NewLine
+            MySql += "INSERT INTO [MachineRegistered]" + Environment.NewLine
+            MySql += "(" + Environment.NewLine
+            MySql += "[MachineGuid]" + Environment.NewLine
+            MySql += ",[MachineName]" + Environment.NewLine
+            MySql += ",[NetWorkName]" + Environment.NewLine
+            MySql += ")" + Environment.NewLine
+            MySql += "VALUES " + Environment.NewLine
+            MySql += "(" + Environment.NewLine
+            MySql += "'" + MachineGuid + "'," + Environment.NewLine
+            MySql += "'" + MachineName + "'," + Environment.NewLine
+            MySql += "'" + NetWorkName + "'" + Environment.NewLine
+            MySql += ")" + Environment.NewLine
 
             Dim B As Boolean = ExecuteSqlNewConn(90104, MySql)
 
@@ -4652,7 +4652,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
                             End If
                             If InStr(ex.Message, "The DELETE statement conflicted with the REFERENCE", CompareMethod.Text) > 0 Then
                                 ' If gRunUnattended = False Then MessageBox.Show("It appears this user has DATA within the repository associated to them and cannot be deleted." + environment.NewLine + environment.NewLine + ex.Message)
-                                LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 1464c0 It appears this user has DATA within the repository associated to them and cannot be deleted." + environment.NewLine + environment.NewLine + ex.Message)
+                                LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 1464c0 It appears this user has DATA within the repository associated to them and cannot be deleted." + Environment.NewLine + Environment.NewLine + ex.Message)
                                 BB = False
                             ElseIf InStr(ex.Message, "HelpText", CompareMethod.Text) > 0 Then
                                 BB = True
@@ -4673,7 +4673,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
                             Else
                                 BB = False
                                 LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 9448a2x.1: ", ex)
-                                LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 9448a2x.2: " + environment.NewLine + sql + environment.NewLine)
+                                LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 9448a2x.2: " + Environment.NewLine + sql + Environment.NewLine)
                             End If
                         End Try
                     End Using
@@ -4715,7 +4715,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
                 If InStr(ex.Message, "The DELETE statement conflicted with the REFERENCE", CompareMethod.Text) > 0 Then
                     ' If gRunUnattended = False Then MessageBox.Show("It appears this user has DATA within the repository associated to them and cannot be deleted." + environment.NewLine + environment.NewLine + ex.Message)
-                    LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 1464c0 It appears this user has DATA within the repository associated to them and cannot be deleted." + environment.NewLine + environment.NewLine + ex.Message)
+                    LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 1464c0 It appears this user has DATA within the repository associated to them and cannot be deleted." + Environment.NewLine + Environment.NewLine + ex.Message)
                     BB = False
                 ElseIf InStr(ex.Message, "HelpText", CompareMethod.Text) > 0 Then
                     BB = True
@@ -4742,7 +4742,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
                     ' xTrace(2998134, "ExecuteSqlNoTx: ", ex.StackTrace.ToString)
                     ' xTrace(3998134, "ExecuteSqlNoTx: ", Mid(sql, 1, 2000))
                     LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 9442a2x.1: ", ex)
-                    LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 9442a2x.2: " + environment.NewLine + sql + environment.NewLine)
+                    LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 9442a2x.2: " + Environment.NewLine + sql + Environment.NewLine)
                 End If
             End Try
         End Using
@@ -4804,7 +4804,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
                         If InStr(ex.Message, "The DELETE statement conflicted with the REFERENCE", CompareMethod.Text) > 0 Then
                             ' If gRunUnattended = False Then MessageBox.Show("It appears this user has DATA within the repository associated to them and cannot be deleted." + environment.NewLine + environment.NewLine + ex.Message)
-                            LOG.WriteToArchiveLog("It appears this user has DATA within the repository associated to them and cannot be deleted." + environment.NewLine + environment.NewLine + ex.Message)
+                            LOG.WriteToArchiveLog("It appears this user has DATA within the repository associated to them and cannot be deleted." + Environment.NewLine + Environment.NewLine + ex.Message)
                         ElseIf InStr(ex.Message, "HelpText", CompareMethod.Text) > 0 Then
                             BB = True
                         ElseIf InStr(ex.Message, "duplicate key row", CompareMethod.Text) > 0 Then
@@ -4827,14 +4827,14 @@ Public Class clsDatabaseARCH : Implements IDisposable
                             ' xTrace(29981647, "ExecuteSqlNoTx: ", ex.StackTrace.ToString)
                             ' xTrace(39981647, "ExecuteSqlNoTx: ", Mid(sql, 1, 2000))
                             LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 9442a1p1: " + loc.ToString + " : ", ex)
-                            LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 9442a1p2: " + environment.NewLine + sql + environment.NewLine)
+                            LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 9442a1p2: " + Environment.NewLine + sql + Environment.NewLine)
                         End If
 
                     End Try
                 End Using
             End If
         Catch ex As Exception
-            LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 2166a3x.2: " + environment.NewLine + sql + environment.NewLine)
+            LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 2166a3x.2: " + Environment.NewLine + sql + Environment.NewLine)
         Finally
             If conn.State = ConnectionState.Open Then
                 conn.Close()
@@ -4972,7 +4972,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
                     rc = False
                     If InStr(ex.Message, "The DELETE statement conflicted with the REFERENCE", CompareMethod.Text) > 0 Then
                         ' If gRunUnattended = False Then MessageBox.Show("It appears this user has DATA within the repository associated to them and cannot be deleted." + environment.NewLine + environment.NewLine + ex.Message)
-                        LOG.WriteToArchiveLog("It appears this user has DATA within the repository associated to them and cannot be deleted." + environment.NewLine + environment.NewLine + ex.Message)
+                        LOG.WriteToArchiveLog("It appears this user has DATA within the repository associated to them and cannot be deleted." + Environment.NewLine + Environment.NewLine + ex.Message)
                     ElseIf InStr(ex.Message, "duplicate key row", CompareMethod.Text) > 0 Then
                         LOG.WriteToArchiveLog("clsDatabaseARCH : ExecuteSqlNewConn : 1464 : ", ex)
                         Return True
@@ -6310,7 +6310,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
             End If
             rsData.Close()
         Catch ex As Exception
-            LOG.WriteToArchiveLog("ERROR: " + ex.Message + environment.NewLine + s)
+            LOG.WriteToArchiveLog("ERROR: " + ex.Message + Environment.NewLine + s)
         End Try
 
         Return b
@@ -6426,12 +6426,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
         Dim S2 As String = ""
         S = S.Trim
         Dim NewSql As String = ""
-        Dim A As String() = S.Split(CChar(environment.NewLine))
+        Dim A As String() = S.Split(CChar(Environment.NewLine))
         For I = 0 To UBound(A)
             If InStr(A(I), "and KEY_TBL.RANK", CompareMethod.Text) > 0 Then
                 'Console.WriteLine(A(I))
             Else
-                NewSql = NewSql + A(I) + environment.NewLine
+                NewSql = NewSql + A(I) + Environment.NewLine
             End If
             S = NewSql
         Next
@@ -6790,7 +6790,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
             LOG.WriteToDBUpdatesLog("NOTICE Successfully updated SourceImage for <" + FQN + ">")
             b = True
         Catch ex As Exception
-            LOG.WriteToArchiveLog("FATAL ERROR :UpdateSouceImage 22.345.22 - Failed to add source image." + environment.NewLine + MySql + Environment.NewLine + ex.Message)
+            LOG.WriteToArchiveLog("FATAL ERROR :UpdateSouceImage 22.345.22 - Failed to add source image." + Environment.NewLine + MySql + Environment.NewLine + ex.Message)
             b = False
         End Try
         Return b
@@ -6856,8 +6856,8 @@ Public Class clsDatabaseARCH : Implements IDisposable
                 End Using
                 B = True
             Catch ex As Exception
-                LOG.WriteToDBUpdatesLog("ERROR 44x: UpdateSouceImage 01: " + ex.Message + environment.NewLine + MySql)
-                LOG.WriteToArchiveLog("ERROR 44x: UpdateSouceImage 01: " + ex.Message + environment.NewLine + MySql)
+                LOG.WriteToDBUpdatesLog("ERROR 44x: UpdateSouceImage 01: " + ex.Message + Environment.NewLine + MySql)
+                LOG.WriteToArchiveLog("ERROR 44x: UpdateSouceImage 01: " + ex.Message + Environment.NewLine + MySql)
                 B = False
             End Try
 
@@ -7635,7 +7635,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
             ' xTrace(12315, "UpdateEmailMsg: LL=" + LL.ToString, ex.Message)
             If ddebug Then Debug.Print(ex.Message)
             B = False
-            LOG.WriteToArchiveLog("clsDatabaseARCH : UpdateEmailMsg : 2404 : LL = " + LL.ToString + " : " + ex.Message + environment.NewLine + " : " + FQN + environment.NewLine + " : " + EmailGUID)
+            LOG.WriteToArchiveLog("clsDatabaseARCH : UpdateEmailMsg : 2404 : LL = " + LL.ToString + " : " + ex.Message + Environment.NewLine + " : " + FQN + Environment.NewLine + " : " + EmailGUID)
             LOG.WriteToUploadLog("clsDatabaseARCH ERROR: UpdateEmailMsg : OriginalSize = " + OriginalSize.ToString + " : CompressedSize =" + CompressedSize.ToString)
         End Try
         Return B
@@ -7653,7 +7653,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
 
         Dim bExtendTime As Boolean = False
         If AttachmentBinary.Length > 4000000000 Then
-            LOG.WriteToArchiveLog("Notification : AddSourceToRepo : 661b : Loading extremely large file: " + AttachmentName + environment.NewLine + "File Length: " + AttachmentBinary.Length.ToString)
+            LOG.WriteToArchiveLog("Notification : AddSourceToRepo : 661b : Loading extremely large file: " + AttachmentName + Environment.NewLine + "File Length: " + AttachmentBinary.Length.ToString)
         End If
 
         Dim InsertConnStr As String = getRepoConnStr()
@@ -7906,46 +7906,25 @@ Public Class clsDatabaseARCH : Implements IDisposable
     ''' <param name="AttachmentType">Type of the attachment.</param>
     ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ckOcrNeeded(AttachmentType As String) As Boolean
-        '** Convert to use [ImageTypeCode] table in database
-        If AttachmentType.ToLower.Equals(".pdf") Then
+        '** May 24, 2021 Converted to use [ImageTypeCode] table in database
+        AttachmentType = AttachmentType.ToLower
+
+        If AttachmentType = ".pdf" Or AttachmentType = "pdf" Then
             Return True
-        ElseIf AttachmentType.ToLower.Equals("pdf") Then
-            Return True
-        ElseIf AttachmentType.ToLower.Equals("jpg") Then
-            Return True
-        ElseIf AttachmentType.ToLower.Equals(".jpg") Then
-            Return True
-        ElseIf AttachmentType.ToLower.Equals("png") Then
-            Return True
-        ElseIf AttachmentType.ToLower.Equals(".png") Then
-            Return True
-        ElseIf AttachmentType.ToLower.Equals("trf") Then
-            Return True
-        ElseIf AttachmentType.ToLower.Equals(".trf") Then
-            Return True
-        ElseIf AttachmentType.ToLower.Equals("gif") Then
-            Return True
-        ElseIf AttachmentType.ToLower.Equals(".gif") Then
-            Return True
-        ElseIf AttachmentType.ToLower.Equals("bmp") Then
-            Return True
-        ElseIf AttachmentType.ToLower.Equals(".bmp") Then
-            Return True
-        ElseIf AttachmentType.ToLower.Equals("tif") Then
-            Return True
-        ElseIf AttachmentType.ToLower.Equals(".tif") Then
-            Return True
-        ElseIf AttachmentType.ToLower.Equals("tiff") Then
-            Return True
-        ElseIf AttachmentType.ToLower.Equals(".tiff") Then
-            Return True
-        ElseIf AttachmentType.ToLower.Equals("jif") Then
-            Return True
-        ElseIf AttachmentType.ToLower.Equals(".jif") Then
-            Return True
-        Else
-            Return False
         End If
+
+        Dim B As Boolean = False
+        Dim MySql As String = "select count(*) from GraphicFileType where GraphicFileTypeExt = '" + AttachmentType + "' or GraphicFileTypeExt = '." + AttachmentType + "' "
+        Dim I As Integer = getCount(MySql)
+
+        If I > 0 Then
+            B = True
+        Else
+            B = False
+        End If
+
+        Return B
+
     End Function
 
     ''' <summary>
@@ -8481,12 +8460,12 @@ Public Class clsDatabaseARCH : Implements IDisposable
             End If
             LL = 7
             If AttachmentBinary.Length > 4000000000 Then
-                LOG.WriteToArchiveLog("Notification : AddSourceToRepo : 661b : Loading extremely large file: " + UploadFQN + environment.NewLine + "File Length: " + AttachmentBinary.Length.ToString)
+                LOG.WriteToArchiveLog("Notification : AddSourceToRepo : 661b : Loading extremely large file: " + UploadFQN + Environment.NewLine + "File Length: " + AttachmentBinary.Length.ToString)
             End If
             If AttachmentBinary.Length > 1000000000 Then
-                LOG.WriteToArchiveLog("Notification : AddSourceToRepo : 661b : Loading HUGE large file: " + UploadFQN + environment.NewLine + "File Length: " + AttachmentBinary.Length.ToString)
+                LOG.WriteToArchiveLog("Notification : AddSourceToRepo : 661b : Loading HUGE large file: " + UploadFQN + Environment.NewLine + "File Length: " + AttachmentBinary.Length.ToString)
                 frmNotifyMessage.Show()
-                gNotifyMsg = "Notification : 661 : Loading HUGE large file: " + UploadFQN + environment.NewLine + "File Length: " + AttachmentBinary.Length.ToString + environment.NewLine + "Over a network, this can take hours."
+                gNotifyMsg = "Notification : 661 : Loading HUGE large file: " + UploadFQN + Environment.NewLine + "File Length: " + AttachmentBinary.Length.ToString + Environment.NewLine + "Over a network, this can take hours."
             End If
             LL = 8
 
@@ -8555,7 +8534,7 @@ Public Class clsDatabaseARCH : Implements IDisposable
             FI = Nothing
 
             B = False
-            LOG.WriteToArchiveLog("Unrecoverable Error - clsDatabaseARCH : UpdateSourcefile : 2517a LL= '" + LL.ToString + "' : SourceGuid = '" + SourceGuid + "' : Size = " + fSIze.ToString + environment.NewLine + ex.Message)
+            LOG.WriteToArchiveLog("Unrecoverable Error - clsDatabaseARCH : UpdateSourcefile : 2517a LL= '" + LL.ToString + "' : SourceGuid = '" + SourceGuid + "' : Size = " + fSIze.ToString + Environment.NewLine + ex.Message)
             LOG.WriteToArchiveLog("ERROR         UpdateSourcefile : 2517a : " + UploadFQN)
             If ex.InnerException IsNot Nothing Then
                 LOG.WriteToArchiveLog("ERROR         UpdateSourcefile : 2517a.1 : " + ex.InnerException.ToString)
@@ -10928,20 +10907,29 @@ Public Class clsDatabaseARCH : Implements IDisposable
             End If
 
             Dim command As New SqlCommand(SQL, Conn)
+            Dim transaction = Conn.BeginTransaction()
+
             Dim RSData As SqlDataReader = Nothing
             RSData = command.ExecuteReader()
             I = 0
-            If RSData.HasRows Then
-                Do While RSData.Read()
-                    FQN = RSData.GetValue(0).ToString
-                    IncludeSubDirs = RSData.GetValue(1).ToString
 
-                    If Not LOF.Keys.Contains(FQN) Then
-                        LOF.Add(FQN, IncludeSubDirs)
-                    End If
-                    I = I + 1
-                Loop
+            If RSData.HasRows Then
+                Using (transaction)
+                    Do While RSData.Read()
+                        FQN = RSData.GetValue(0).ToString
+                        IncludeSubDirs = RSData.GetValue(1).ToString
+
+                        Try
+                            LOF.Add(FQN, IncludeSubDirs)
+                        Catch ex As Exception
+                            Console.WriteLine("NOTICE: 12XX: Duplicate Key: ", FQN)
+                        End Try
+                        I = I + 1
+                    Loop
+                    transaction.Commit()
+                End Using
             End If
+
             RSData.Close()
             RSData = Nothing
             command.Connection.Close()
@@ -14561,6 +14549,11 @@ REDO:
             OcrPerformed = "N"
             RequireOcr = False
         End If
+        If FI.Extension.ToLower.Equals(".pdf") Then
+            OcrPending = "Y"
+            OcrPerformed = "N"
+            RequireOcr = True
+        End If
 
         Dim MySql As String = "Insert into DataSource (
             RowGuid, 
@@ -16339,24 +16332,7 @@ REDO:
         Dim B As Boolean = False
 
         B = ckOcrNeeded(tFileType)
-        If B Then
-            Return True
-        End If
 
-        Dim I As Integer = 0
-        Dim S As String = "Select count(*) FROM [ImageTypeCodes] where [ImageTypeCode] = '" + tFileType + "'"
-
-        Dim RSData As SqlDataReader = Nothing
-        Dim CS As String = getRepoConnStr() : Dim CONN As New SqlConnection(CS) : CONN.Open() : Dim command As New SqlCommand(S, CONN) : RSData = command.ExecuteReader()
-        If RSData.HasRows Then
-            RSData.Read()
-            I = RSData.GetInt32(0)
-            If I > 0 Then
-                B = True
-            Else
-                B = False
-            End If
-        End If
         Return B
     End Function
 
@@ -31922,7 +31898,11 @@ NextOne:
                 OcrPerformed = "N"
                 RequireOcr = False
             End If
-
+            If FI.Extension.ToLower.Equals(".pdf") Then
+                OcrPending = "Y"
+                OcrPerformed = "N"
+                RequireOcr = True
+            End If
             If SourceImage.Length.Equals(0) Then
                 LOG.WriteToArchiveLog("clsDatabaseARCH : InsertNewContent : 90 : " + FQN + " appears to have ZERO content.")
                 LOG.WriteToFailedLoadLog("clsDatabaseARCH : InsertNewContent : 90 " + FQN + " appears to have ZERO content.")
@@ -32388,8 +32368,11 @@ NextOne:
             OcrPerformed = "N"
             RequireOcr = "N"
         End If
-
-
+        If FI.Extension.ToLower.Equals(".pdf") Then
+            OcrPending = "Y"
+            OcrPerformed = "N"
+            RequireOcr = True
+        End If
         Dim TSQL As String = "UPDATE DataSource set 
                         CRC = @CRC,
                         FileLength = @FileLength,
