@@ -39,7 +39,8 @@ CREATE FULLTEXT INDEX ON dbo.DataSource(
 		Description LANGUAGE 1033, 
 		KeyWords LANGUAGE 1033, 
 		Notes LANGUAGE 1033, 
-		OcrText LANGUAGE 1033) 
+		OcrText LANGUAGE 1033,
+        PdfText Language 1033) ) 
 		KEY INDEX PK_DataSource_1 ON ftDataSource WITH CHANGE_TRACKING AUTO;
 GO
 

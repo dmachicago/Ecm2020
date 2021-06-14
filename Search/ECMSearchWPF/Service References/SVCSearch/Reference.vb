@@ -7124,11 +7124,14 @@ Namespace SVCSearch
         <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
         Public EmailRowCnt As Integer
         
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+        Public UserRowsToFetch As Integer
+        
         Public Sub New()
             MyBase.New
         End Sub
         
-        Public Sub New(ByVal SecureID As Integer, ByVal currSearchCnt As Integer, ByVal bGenSql As Boolean, ByVal SearchParmsJson As String, ByVal bFirstEmailSearchSubmit As Boolean, ByVal EmailRowCnt As Integer)
+        Public Sub New(ByVal SecureID As Integer, ByVal currSearchCnt As Integer, ByVal bGenSql As Boolean, ByVal SearchParmsJson As String, ByVal bFirstEmailSearchSubmit As Boolean, ByVal EmailRowCnt As Integer, ByVal UserRowsToFetch As Integer)
             MyBase.New
             Me.SecureID = SecureID
             Me.currSearchCnt = currSearchCnt
@@ -7136,6 +7139,7 @@ Namespace SVCSearch
             Me.SearchParmsJson = SearchParmsJson
             Me.bFirstEmailSearchSubmit = bFirstEmailSearchSubmit
             Me.EmailRowCnt = EmailRowCnt
+            Me.UserRowsToFetch = UserRowsToFetch
         End Sub
     End Class
     
@@ -7196,11 +7200,14 @@ Namespace SVCSearch
         <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
         Public ContentRowCnt As Integer
         
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=6)>  _
+        Public UserRowsToFetch As Integer
+        
         Public Sub New()
             MyBase.New
         End Sub
         
-        Public Sub New(ByVal SecureID As Integer, ByVal currSearchCnt As Integer, ByVal bGenSql As Boolean, ByVal SearchParmsJson As String, ByVal bFirstContentSearchSubmit As Boolean, ByVal ContentRowCnt As Integer)
+        Public Sub New(ByVal SecureID As Integer, ByVal currSearchCnt As Integer, ByVal bGenSql As Boolean, ByVal SearchParmsJson As String, ByVal bFirstContentSearchSubmit As Boolean, ByVal ContentRowCnt As Integer, ByVal UserRowsToFetch As Integer)
             MyBase.New
             Me.SecureID = SecureID
             Me.currSearchCnt = currSearchCnt
@@ -7208,6 +7215,7 @@ Namespace SVCSearch
             Me.SearchParmsJson = SearchParmsJson
             Me.bFirstContentSearchSubmit = bFirstContentSearchSubmit
             Me.ContentRowCnt = ContentRowCnt
+            Me.UserRowsToFetch = UserRowsToFetch
         End Sub
     End Class
     
@@ -9741,15 +9749,19 @@ Namespace SVCSearch
         <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
         Public RetMsg As String
         
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public UserRowsToFetch As Integer
+        
         Public Sub New()
             MyBase.New
         End Sub
         
-        Public Sub New(ByVal TypeSearch As String, ByVal JsonSearchParms As String, ByVal RetMsg As String)
+        Public Sub New(ByVal TypeSearch As String, ByVal JsonSearchParms As String, ByVal RetMsg As String, ByVal UserRowsToFetch As Integer)
             MyBase.New
             Me.TypeSearch = TypeSearch
             Me.JsonSearchParms = JsonSearchParms
             Me.RetMsg = RetMsg
+            Me.UserRowsToFetch = UserRowsToFetch
         End Sub
     End Class
     
@@ -9816,11 +9828,14 @@ Namespace SVCSearch
         <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=11)>  _
         Public ContentRowCnt As Integer
         
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=12)>  _
+        Public UserRowsToFetch As Integer
+        
         Public Sub New()
             MyBase.New
         End Sub
         
-        Public Sub New(ByVal SearchType As String, ByVal currSearchCnt As Integer, ByVal bGenSql As Boolean, ByVal EmailGenSql As String, ByVal SearchParmsJson As String, ByVal ContentGenSql As String, ByVal strListOEmailRows As String, ByVal strListOfContentRows As String, ByVal bFirstEmailSearchSubmit As Boolean, ByVal bFirstContentSearchSubmit As Boolean, ByVal EmailRowCnt As Integer, ByVal ContentRowCnt As Integer)
+        Public Sub New(ByVal SearchType As String, ByVal currSearchCnt As Integer, ByVal bGenSql As Boolean, ByVal EmailGenSql As String, ByVal SearchParmsJson As String, ByVal ContentGenSql As String, ByVal strListOEmailRows As String, ByVal strListOfContentRows As String, ByVal bFirstEmailSearchSubmit As Boolean, ByVal bFirstContentSearchSubmit As Boolean, ByVal EmailRowCnt As Integer, ByVal ContentRowCnt As Integer, ByVal UserRowsToFetch As Integer)
             MyBase.New
             Me.SearchType = SearchType
             Me.currSearchCnt = currSearchCnt
@@ -9834,6 +9849,7 @@ Namespace SVCSearch
             Me.bFirstContentSearchSubmit = bFirstContentSearchSubmit
             Me.EmailRowCnt = EmailRowCnt
             Me.ContentRowCnt = ContentRowCnt
+            Me.UserRowsToFetch = UserRowsToFetch
         End Sub
     End Class
     
@@ -14494,7 +14510,7 @@ Namespace SVCSearch
             Return MyBase.Channel.ExecuteSearchEmail(request)
         End Function
         
-        Public Function ExecuteSearchEmail(ByRef SecureID As Integer, ByRef currSearchCnt As Integer, ByVal bGenSql As Boolean, ByVal SearchParmsJson As String, ByRef bFirstEmailSearchSubmit As Boolean, ByRef EmailRowCnt As Integer) As String
+        Public Function ExecuteSearchEmail(ByRef SecureID As Integer, ByRef currSearchCnt As Integer, ByVal bGenSql As Boolean, ByVal SearchParmsJson As String, ByRef bFirstEmailSearchSubmit As Boolean, ByRef EmailRowCnt As Integer, ByVal UserRowsToFetch As Integer) As String
             Dim inValue As SVCSearch.ExecuteSearchEmailRequest = New SVCSearch.ExecuteSearchEmailRequest()
             inValue.SecureID = SecureID
             inValue.currSearchCnt = currSearchCnt
@@ -14502,6 +14518,7 @@ Namespace SVCSearch
             inValue.SearchParmsJson = SearchParmsJson
             inValue.bFirstEmailSearchSubmit = bFirstEmailSearchSubmit
             inValue.EmailRowCnt = EmailRowCnt
+            inValue.UserRowsToFetch = UserRowsToFetch
             Dim retVal As SVCSearch.ExecuteSearchEmailResponse = CType(Me,SVCSearch.IService1).ExecuteSearchEmail(inValue)
             SecureID = retVal.SecureID
             currSearchCnt = retVal.currSearchCnt
@@ -14519,7 +14536,7 @@ Namespace SVCSearch
             Return MyBase.Channel.ExecuteSearchContent(request)
         End Function
         
-        Public Function ExecuteSearchContent(ByRef SecureID As Integer, ByRef currSearchCnt As Integer, ByVal bGenSql As Boolean, ByVal SearchParmsJson As String, ByRef bFirstContentSearchSubmit As Boolean, ByRef ContentRowCnt As Integer) As String
+        Public Function ExecuteSearchContent(ByRef SecureID As Integer, ByRef currSearchCnt As Integer, ByVal bGenSql As Boolean, ByVal SearchParmsJson As String, ByRef bFirstContentSearchSubmit As Boolean, ByRef ContentRowCnt As Integer, ByVal UserRowsToFetch As Integer) As String
             Dim inValue As SVCSearch.ExecuteSearchContentRequest = New SVCSearch.ExecuteSearchContentRequest()
             inValue.SecureID = SecureID
             inValue.currSearchCnt = currSearchCnt
@@ -14527,6 +14544,7 @@ Namespace SVCSearch
             inValue.SearchParmsJson = SearchParmsJson
             inValue.bFirstContentSearchSubmit = bFirstContentSearchSubmit
             inValue.ContentRowCnt = ContentRowCnt
+            inValue.UserRowsToFetch = UserRowsToFetch
             Dim retVal As SVCSearch.ExecuteSearchContentResponse = CType(Me,SVCSearch.IService1).ExecuteSearchContent(inValue)
             SecureID = retVal.SecureID
             currSearchCnt = retVal.currSearchCnt
@@ -15576,11 +15594,12 @@ Namespace SVCSearch
             Return MyBase.Channel.ExecuteSearchJson(request)
         End Function
         
-        Public Function ExecuteSearchJson(ByVal TypeSearch As String, ByVal JsonSearchParms As String, ByRef RetMsg As String) As String
+        Public Function ExecuteSearchJson(ByVal TypeSearch As String, ByVal JsonSearchParms As String, ByRef RetMsg As String, ByVal UserRowsToFetch As Integer) As String
             Dim inValue As SVCSearch.ExecuteSearchJsonRequest = New SVCSearch.ExecuteSearchJsonRequest()
             inValue.TypeSearch = TypeSearch
             inValue.JsonSearchParms = JsonSearchParms
             inValue.RetMsg = RetMsg
+            inValue.UserRowsToFetch = UserRowsToFetch
             Dim retVal As SVCSearch.ExecuteSearchJsonResponse = CType(Me,SVCSearch.IService1).ExecuteSearchJson(inValue)
             RetMsg = retVal.RetMsg
             Return retVal.ExecuteSearchJsonResult
@@ -15611,7 +15630,7 @@ Namespace SVCSearch
             Return MyBase.Channel.ExecuteSearchDT(request)
         End Function
         
-        Public Function ExecuteSearchDT(ByVal SearchType As String, ByRef currSearchCnt As Integer, ByVal bGenSql As Boolean, ByRef EmailGenSql As String, ByVal SearchParmsJson As String, ByRef ContentGenSql As String, ByRef strListOEmailRows As String, ByRef strListOfContentRows As String, ByRef bFirstEmailSearchSubmit As Boolean, ByRef bFirstContentSearchSubmit As Boolean, ByRef EmailRowCnt As Integer, ByRef ContentRowCnt As Integer) As System.Data.DataSet
+        Public Function ExecuteSearchDT(ByVal SearchType As String, ByRef currSearchCnt As Integer, ByVal bGenSql As Boolean, ByRef EmailGenSql As String, ByVal SearchParmsJson As String, ByRef ContentGenSql As String, ByRef strListOEmailRows As String, ByRef strListOfContentRows As String, ByRef bFirstEmailSearchSubmit As Boolean, ByRef bFirstContentSearchSubmit As Boolean, ByRef EmailRowCnt As Integer, ByRef ContentRowCnt As Integer, ByVal UserRowsToFetch As Integer) As System.Data.DataSet
             Dim inValue As SVCSearch.ExecuteSearchDTRequest = New SVCSearch.ExecuteSearchDTRequest()
             inValue.SearchType = SearchType
             inValue.currSearchCnt = currSearchCnt
@@ -15625,6 +15644,7 @@ Namespace SVCSearch
             inValue.bFirstContentSearchSubmit = bFirstContentSearchSubmit
             inValue.EmailRowCnt = EmailRowCnt
             inValue.ContentRowCnt = ContentRowCnt
+            inValue.UserRowsToFetch = UserRowsToFetch
             Dim retVal As SVCSearch.ExecuteSearchDTResponse = CType(Me,SVCSearch.IService1).ExecuteSearchDT(inValue)
             currSearchCnt = retVal.currSearchCnt
             EmailGenSql = retVal.EmailGenSql

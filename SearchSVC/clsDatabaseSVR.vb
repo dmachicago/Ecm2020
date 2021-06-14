@@ -717,7 +717,7 @@ Public Class clsDatabaseSVR
     ''' <param name="JsonSearchParms">The json search parms.</param>
     ''' <param name="RetMsg">The ret MSG.</param>
     ''' <returns>System.String.</returns>
-    Function ExecuteSearchJson(TypeSearch As String, ByVal JsonSearchParms As String, ByRef RetMsg As String) As String
+    Function ExecuteSearchJson(TypeSearch As String, ByVal JsonSearchParms As String, ByRef RetMsg As String, UseRowsToFetch As Integer) As String
         RetMsg = Date.Today.ToLongDateString
 
         Dim DictOfTerms As Dictionary(Of String, String) = Newtonsoft.Json.JsonConvert.DeserializeObject(Of Dictionary(Of String, String))(JsonSearchParms)
@@ -909,11 +909,11 @@ Public Class clsDatabaseSVR
 
         RetMsg = "NO Rows Found"
         If TypeSearch.Equals("EMAIL") Then
-            SearchEmails(SearchParmList, SecureID, UID, MinWeight, CalledFromScreen, txtSearch.Trim, False, bIncludeAllLibs, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, StartingEmailRow, EndingEmailRow, EmailGenSql, ListOfEmailRows, bFirstEmailSearchSubmit, EmailRowCnt)
+            SearchEmails(SearchParmList, SecureID, UID, MinWeight, CalledFromScreen, txtSearch.Trim, False, bIncludeAllLibs, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, StartingEmailRow, EndingEmailRow, EmailGenSql, ListOfEmailRows, bFirstEmailSearchSubmit, EmailRowCnt, UseRowsToFetch)
             strOfRows = Newtonsoft.Json.JsonConvert.SerializeObject(ListOfEmailRows)
             RetMsg = "EMAIL Rows Found: " + EmailRowCnt.ToString
         ElseIf TypeSearch.Equals("CONTENT") Then
-            SearchContent(SearchParmList, SecureID, UID, CalledFromScreen, False, txtSearch.Trim, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, ckWeights, StartingContentRow, EndingContentRow, ContentGenSql, ListOfContentRows, bFirstContentSearchSubmit, ContentRowCnt)
+            SearchContent(SearchParmList, SecureID, UID, CalledFromScreen, False, txtSearch.Trim, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, ckWeights, StartingContentRow, EndingContentRow, ContentGenSql, ListOfContentRows, bFirstContentSearchSubmit, ContentRowCnt, UseRowsToFetch)
             strOfRows = Newtonsoft.Json.JsonConvert.SerializeObject(ListOfContentRows)
             RetMsg = "EMAIL Rows Found: " + ContentRowCnt.ToString
         End If
@@ -1030,7 +1030,8 @@ Public Class clsDatabaseSVR
                 ByVal bGenSql As Boolean,
                 ByVal SearchParmsJson As String,
                 ByRef bFirstContentSearchSubmit As Boolean,
-                ByRef ContentRowCnt As Integer) As String
+                ByRef ContentRowCnt As Integer,
+                                  UseRowsToFetch As Integer) As String
 
         Dim SearchParms As Dictionary(Of String, String)
         Dim DSRowsOfContent As List(Of DS_CONTENT) = New List(Of DS_CONTENT)
@@ -1214,11 +1215,11 @@ Public Class clsDatabaseSVR
         Dim TempGeneratedSql As String = ""
 
         If bNeedRowCount = False Then
-            SearchContent(SearchParmList, SecureID, UID, CalledFromScreen, False, txtSearch.Trim, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, ckWeights, StartingContentRow, EndingContentRow, ContentGenSql, DSRowsOfContent, bFirstContentSearchSubmit, ContentRowCnt)
+            SearchContent(SearchParmList, SecureID, UID, CalledFromScreen, False, txtSearch.Trim, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, ckWeights, StartingContentRow, EndingContentRow, ContentGenSql, DSRowsOfContent, bFirstContentSearchSubmit, ContentRowCnt, UseRowsToFetch)
             bFirstContentSearchSubmit = False
         Else
             If EndingContentRow < ContentRowCnt Then
-                SearchContent(SearchParmList, SecureID, UID, CalledFromScreen, False, txtSearch.Trim, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, ckWeights, StartingContentRow, EndingContentRow, ContentGenSql, DSRowsOfContent, bFirstContentSearchSubmit, ContentRowCnt)
+                SearchContent(SearchParmList, SecureID, UID, CalledFromScreen, False, txtSearch.Trim, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, ckWeights, StartingContentRow, EndingContentRow, ContentGenSql, DSRowsOfContent, bFirstContentSearchSubmit, ContentRowCnt, UseRowsToFetch)
             Else
                 bFirstContentSearchSubmit = False
             End If
@@ -1257,7 +1258,8 @@ Public Class clsDatabaseSVR
                 ByVal bGenSql As Boolean,
                 ByVal SearchParmsJson As String,
                 ByRef bFirstEmailSearchSubmit As Boolean,
-                ByRef EmailRowCnt As Integer) As String
+                ByRef EmailRowCnt As Integer,
+                                UseRowsToFetch As Integer) As String
 
         Dim RowsOfEmails As String = ""
         Dim SearchParms As Dictionary(Of String, String)
@@ -1441,11 +1443,11 @@ Public Class clsDatabaseSVR
         Dim TempGeneratedSql As String = ""
 
         If bNeedRowCount = False Then
-            SearchEmails(SearchParmList, SecureID, UID, MinWeight, CalledFromScreen, txtSearch.Trim, False, bIncludeAllLibs, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, StartingEmailRow, EndingEmailRow, EmailGenSql, DSRowsOfEmails, bFirstEmailSearchSubmit, EmailRowCnt)
+            SearchEmails(SearchParmList, SecureID, UID, MinWeight, CalledFromScreen, txtSearch.Trim, False, bIncludeAllLibs, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, StartingEmailRow, EndingEmailRow, EmailGenSql, DSRowsOfEmails, bFirstEmailSearchSubmit, EmailRowCnt, UseRowsToFetch)
             bFirstEmailSearchSubmit = False
         Else
             If EndingContentRow < EmailRowCnt Then
-                SearchEmails(SearchParmList, SecureID, UID, MinWeight, CalledFromScreen, txtSearch.Trim, False, bIncludeAllLibs, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, StartingEmailRow, EndingEmailRow, EmailGenSql, DSRowsOfEmails, bFirstEmailSearchSubmit, EmailRowCnt)
+                SearchEmails(SearchParmList, SecureID, UID, MinWeight, CalledFromScreen, txtSearch.Trim, False, bIncludeAllLibs, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, StartingEmailRow, EndingEmailRow, EmailGenSql, DSRowsOfEmails, bFirstEmailSearchSubmit, EmailRowCnt, UseRowsToFetch)
                 bFirstEmailSearchSubmit = False
             End If
         End If
@@ -1502,7 +1504,8 @@ Public Class clsDatabaseSVR
                 ByRef bFirstEmailSearchSubmit As Boolean,
                 ByRef bFirstContentSearchSubmit As Boolean,
                 ByRef EmailRowCnt As Integer,
-                ByRef ContentRowCnt As Integer) As DataSet
+                ByRef ContentRowCnt As Integer,
+                             UseRowsToFetch As Integer) As DataSet
 
         Dim DT As New DataTable
         Dim ListOEmailRows As List(Of DS_EMAIL) = New List(Of DS_EMAIL)()
@@ -1680,34 +1683,34 @@ Public Class clsDatabaseSVR
         Dim TempGeneratedSql As String = ""
         If bNeedRowCount = False Then
             If rbAll Or rbEmails Then
-                SearchEmails(SearchParms, SecureID, UID, MinWeight, CalledFromScreen, txtSearch.Trim, False, bIncludeAllLibs, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, StartingEmailRow, EndingEmailRow, EmailGenSql, ListOEmailRows, bFirstEmailSearchSubmit, EmailRowCnt)
+                SearchEmails(SearchParms, SecureID, UID, MinWeight, CalledFromScreen, txtSearch.Trim, False, bIncludeAllLibs, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, StartingEmailRow, EndingEmailRow, EmailGenSql, ListOEmailRows, bFirstEmailSearchSubmit, EmailRowCnt, UseRowsToFetch)
                 bFirstEmailSearchSubmit = False
             End If
             If rbAll Or rbContent Then
-                SearchContent(SearchParms, SecureID, UID, CalledFromScreen, False, txtSearch.Trim, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, ckWeights, StartingContentRow, EndingContentRow, ContentGenSql, ListOfContentRows, bFirstContentSearchSubmit, ContentRowCnt)
+                SearchContent(SearchParms, SecureID, UID, CalledFromScreen, False, txtSearch.Trim, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, ckWeights, StartingContentRow, EndingContentRow, ContentGenSql, ListOfContentRows, bFirstContentSearchSubmit, ContentRowCnt, UseRowsToFetch)
                 bFirstContentSearchSubmit = False
             End If
         Else
             If rbAll Then
                 If EndingContentRow < EmailRowCnt Then
-                    SearchEmails(SearchParms, SecureID, UID, MinWeight, CalledFromScreen, txtSearch.Trim, False, bIncludeAllLibs, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, StartingEmailRow, EndingEmailRow, EmailGenSql, ListOEmailRows, bFirstEmailSearchSubmit, EmailRowCnt)
+                    SearchEmails(SearchParms, SecureID, UID, MinWeight, CalledFromScreen, txtSearch.Trim, False, bIncludeAllLibs, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, StartingEmailRow, EndingEmailRow, EmailGenSql, ListOEmailRows, bFirstEmailSearchSubmit, EmailRowCnt, UseRowsToFetch)
                 Else
                     bFirstEmailSearchSubmit = False
                 End If
                 If EndingContentRow < ContentRowCnt Then
-                    SearchContent(SearchParms, SecureID, UID, CalledFromScreen, False, txtSearch.Trim, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, ckWeights, StartingContentRow, EndingContentRow, ContentGenSql, ListOfContentRows, bFirstContentSearchSubmit, ContentRowCnt)
+                    SearchContent(SearchParms, SecureID, UID, CalledFromScreen, False, txtSearch.Trim, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, ckWeights, StartingContentRow, EndingContentRow, ContentGenSql, ListOfContentRows, bFirstContentSearchSubmit, ContentRowCnt, UseRowsToFetch)
                 Else
                     bFirstContentSearchSubmit = False
                 End If
             ElseIf rbEmails Then
                 If EndingContentRow < EmailRowCnt Then
-                    SearchEmails(SearchParms, SecureID, UID, MinWeight, CalledFromScreen, txtSearch.Trim, False, bIncludeAllLibs, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, StartingEmailRow, EndingEmailRow, EmailGenSql, ListOEmailRows, bFirstEmailSearchSubmit, EmailRowCnt)
+                    SearchEmails(SearchParms, SecureID, UID, MinWeight, CalledFromScreen, txtSearch.Trim, False, bIncludeAllLibs, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, StartingEmailRow, EndingEmailRow, EmailGenSql, ListOEmailRows, bFirstEmailSearchSubmit, EmailRowCnt, UseRowsToFetch)
                 Else
                     bFirstEmailSearchSubmit = False
                 End If
             ElseIf rbContent Then
                 If EndingContentRow < ContentRowCnt Then
-                    SearchContent(SearchParms, SecureID, UID, CalledFromScreen, False, txtSearch.Trim, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, ckWeights, StartingContentRow, EndingContentRow, ContentGenSql, ListOfContentRows, bFirstContentSearchSubmit, ContentRowCnt)
+                    SearchContent(SearchParms, SecureID, UID, CalledFromScreen, False, txtSearch.Trim, ckWeights, gIsAdmin, ckLimitToLib, cbLibrary, ckWeights, StartingContentRow, EndingContentRow, ContentGenSql, ListOfContentRows, bFirstContentSearchSubmit, ContentRowCnt, UseRowsToFetch)
                 Else
                     bFirstContentSearchSubmit = False
                 End If
@@ -1738,7 +1741,7 @@ Public Class clsDatabaseSVR
     End Function
 
 
-    Function ConvertToCTE(Mysql As String, TypeSQL As String, StartLine As Int32, EndLine As Int32) As String
+    Function ConvertToCTE(Mysql As String, TypeSQL As String, StartLine As Int32, EndLine As Int32, UseRowsToFetch As Integer) As String
 
         Dim SQL As String = ""
         If (TypeSQL.Equals("E")) Then
@@ -1751,8 +1754,9 @@ Public Class clsDatabaseSVR
         SQL += Mysql
         SQL += ")" + Environment.NewLine
         SQL += "Select * from cte_Search" + Environment.NewLine
-        SQL += "where RowSeq between " + StartLine.ToString() + " and " + EndLine.ToString() + Environment.NewLine
-
+        If UseRowsToFetch.Equals(1) Then
+            SQL += "where RowSeq between " + StartLine.ToString() + " and " + EndLine.ToString() + Environment.NewLine
+        End If
         Return SQL
     End Function
 
@@ -1763,7 +1767,7 @@ Public Class clsDatabaseSVR
     ''' <param name="SecureID">The secure identifier.</param>
     ''' <param name="TypeSQL">The type SQL.</param>
     ''' <returns>System.String.</returns>
-    Function GenerateSQL(ByVal SearchParmList As SortedList(Of String, String), ByRef SecureID As Integer, TypeSQL As String) As String
+    Function GenerateSQL(ByVal SearchParmList As SortedList(Of String, String), ByRef SecureID As Integer, TypeSQL As String, UseRowsToFetch As Integer) As String
         Dim AutoGeneratedSQL As String = ""
         If (TypeSQL.Equals("C")) Then
             AutoGeneratedSQL = GEN.GenContentSearchSQL(SearchParmList, SecureID)
@@ -1781,9 +1785,9 @@ Public Class clsDatabaseSVR
 
         If (EndingContentRow > 0 Or EndingEmailRow > 0) Then
             If (TypeSQL.Equals("C")) Then
-                AutoGeneratedSQL = ConvertToCTE(AutoGeneratedSQL, TypeSQL, StartingContentRow, EndingContentRow)
+                AutoGeneratedSQL = ConvertToCTE(AutoGeneratedSQL, TypeSQL, StartingContentRow, EndingContentRow, UseRowsToFetch)
             Else
-                AutoGeneratedSQL = ConvertToCTE(AutoGeneratedSQL, TypeSQL, StartingEmailRow, EndingEmailRow)
+                AutoGeneratedSQL = ConvertToCTE(AutoGeneratedSQL, TypeSQL, StartingEmailRow, EndingEmailRow, UseRowsToFetch)
             End If
         End If
 
@@ -1826,7 +1830,8 @@ Public Class clsDatabaseSVR
                 ByRef QryToExecute As String,
                 ByRef DSRowsOfContent As List(Of DS_CONTENT),
                 ByRef bNewRow As Boolean,
-                ByRef ContentRowCnt As Integer)
+                ByRef ContentRowCnt As Integer,
+                UseRowsToFetch As Integer)
 
         '**********************************
         gPaginateData = False
@@ -1856,7 +1861,7 @@ Public Class clsDatabaseSVR
             AutoGeneratedSQL = "Select * from DataSource where 1 = 2 "
         Else
             'AutoGeneratedSQL = GEN.genSearchSQL GEN.GenContentSearchSQL(SearchParmList, SecureID)
-            AutoGeneratedSQL = GenerateSQL(SearchParmList, SecureID, "C")
+            AutoGeneratedSQL = GenerateSQL(SearchParmList, SecureID, "C", UseRowsToFetch)
         End If
 
         If gPaginateData = True Then
@@ -1934,7 +1939,8 @@ Public Class clsDatabaseSVR
                         ByRef GeneratedSql As String,
                         ByRef DSRowsOfEmails As List(Of DS_EMAIL),
                         ByRef bFirstEmailSearchSubmit As Boolean,
-                        ByRef EmailRowCount As Integer)
+                        ByRef EmailRowCount As Integer,
+                     UseRowsToFetch As Integer)
 
         gPaginateData = False
         Dim BB As Boolean = False
@@ -1958,7 +1964,7 @@ Public Class clsDatabaseSVR
         SaveClickStats(SecureID, 2, UID, RC)
         SaveSearchWords(SecureID, SearchString, UID, "E")
         'AutoGeneratedSQL = GEN.GenEmailGeneratedSQL(SearchParmList, SecureID, 0)
-        AutoGeneratedSQL = GenerateSQL(SearchParmList, SecureID, "E")
+        AutoGeneratedSQL = GenerateSQL(SearchParmList, SecureID, "E", UseRowsToFetch)
         '*******************************************************************************************************************************************************************************************************
 
         If bIncludeLibraryFilesInSearch = True Then

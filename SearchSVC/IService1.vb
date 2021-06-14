@@ -159,7 +159,7 @@ Public Interface IService1
     ''' <param name="RetMsg">The ret MSG.</param>
     ''' <returns>System.String.</returns>
     <OperationContract>
-    Function ExecuteSearchJson(TypeSearch As String, ByVal JsonSearchParms As String, ByRef RetMsg As String) As String
+    Function ExecuteSearchJson(TypeSearch As String, ByVal JsonSearchParms As String, ByRef RetMsg As String, UserRowsToFetch As Integer) As String
 
     ''' <summary>
     ''' Tests the service avail.
@@ -205,7 +205,8 @@ Public Interface IService1
                 ByRef bFirstEmailSearchSubmit As Boolean,
                 ByRef bFirstContentSearchSubmit As Boolean,
                 ByRef EmailRowCnt As Integer,
-                ByRef ContentRowCnt As Integer) As DataSet
+                ByRef ContentRowCnt As Integer,
+                UserRowsToFetch As Integer) As DataSet
 
     ''' <summary>
     ''' Gets the files in zip detail.
@@ -1448,7 +1449,8 @@ Public Interface IService1
                 ByVal bGenSql As Boolean,
                 ByVal SearchParmsJson As String,
                 ByRef bFirstEmailSearchSubmit As Boolean,
-                ByRef EmailRowCnt As Integer) As String
+                ByRef EmailRowCnt As Integer,
+                                UserRowsToFetch As Integer) As String
 
     ''' <summary>
     ''' Executes the content of the search.
@@ -1466,7 +1468,8 @@ Public Interface IService1
                 ByVal bGenSql As Boolean,
                 ByVal SearchParmsJson As String,
                 ByRef bFirstContentSearchSubmit As Boolean,
-                ByRef ContentRowCnt As Integer) As String
+                ByRef ContentRowCnt As Integer,
+                                  UserRowsToFetch As Integer) As String
 
     ''' <summary>
     ''' Gets the state of the search.

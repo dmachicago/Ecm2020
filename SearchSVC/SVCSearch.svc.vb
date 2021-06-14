@@ -194,8 +194,9 @@ Public Class SVCSearch
     ''' <param name="JsonSearchParms">The json search parms.</param>
     ''' <param name="RetMsg">         The ret MSG.</param>
     ''' <returns>System.String.</returns>
-    Function ExecuteSearchJson(TypeSearch As String, ByVal JsonSearchParms As String, ByRef RetMsg As String) As String Implements IService1.ExecuteSearchJson
-        Return DB.ExecuteSearchJson(TypeSearch, JsonSearchParms, RetMsg)
+    Function ExecuteSearchJson(TypeSearch As String, ByVal JsonSearchParms As String, ByRef RetMsg As String, UserRowsToFetch As Integer) As String Implements IService1.ExecuteSearchJson
+        'Dim UserRowsToFetch As Integer = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings("UserRowsToFetch"))
+        Return DB.ExecuteSearchJson(TypeSearch, JsonSearchParms, RetMsg, UserRowsToFetch)
     End Function
 
     ''' <summary>
@@ -245,7 +246,8 @@ Public Class SVCSearch
                 ByRef bFirstEmailSearchSubmit As Boolean,
                 ByRef bFirstContentSearchSubmit As Boolean,
                 ByRef EmailRowCnt As Integer,
-                ByRef ContentRowCnt As Integer) As DataSet Implements IService1.ExecuteSearchDT
+                ByRef ContentRowCnt As Integer,
+                                    UserRowsToFetch As Integer) As DataSet Implements IService1.ExecuteSearchDT
 
         Dim DT As New DataSet
 
@@ -260,7 +262,7 @@ Public Class SVCSearch
                  bFirstEmailSearchSubmit,
                  bFirstContentSearchSubmit,
                  EmailRowCnt,
-                 ContentRowCnt)
+                 ContentRowCnt, UserRowsToFetch)
 
         Return DT
 
@@ -1589,7 +1591,8 @@ Public Class SVCSearch
     ''' <returns>System.String.</returns>
     Function GenerateSQL(ByVal SearchParmList As SortedList(Of String, String), ByRef SecureID As Integer, TypeSQL As String) As String Implements IService1.GenerateSQL
         Dim S As String = ""
-        S = DB.GenerateSQL(SearchParmList, SecureID, TypeSQL)
+        Dim UseRowsToFetch
+        S = DB.GenerateSQL(SearchParmList, SecureID, TypeSQL, UseRowsToFetch)
         Return S
     End Function
 
@@ -1625,14 +1628,16 @@ Public Class SVCSearch
                 ByVal bGenSql As Boolean,
                 ByVal SearchParmsJson As String,
                 ByRef bFirstContentSearchSubmit As Boolean,
-                ByRef ContentRowCnt As Integer) As String Implements IService1.ExecuteSearchContent
+                ByRef ContentRowCnt As Integer,
+                UserRowsToFetch As Integer) As String Implements IService1.ExecuteSearchContent
         Console.WriteLine("Start CONTENT Search: " + Now.ToString)
         Dim I As String = DB.ExecuteSearchContent(SecureID,
                                 currSearchCnt,
                                 bGenSql,
                                 SearchParmsJson,
                                 bFirstContentSearchSubmit,
-                                ContentRowCnt)
+                                ContentRowCnt,
+                                UserRowsToFetch)
         Console.WriteLine("Stop CONTENT Search: " + Now.ToString)
         Return I
     End Function
@@ -1652,14 +1657,17 @@ Public Class SVCSearch
                 ByVal bGenSql As Boolean,
                 ByVal SearchParmsJson As String,
                 ByRef bFirstEmailSearchSubmit As Boolean,
-                ByRef EmailRowCnt As Integer) As String Implements IService1.ExecuteSearchEmail
+                ByRef EmailRowCnt As Integer,
+                UserRowsToFetch As Integer
+                ) As String Implements IService1.ExecuteSearchEmail
         Console.WriteLine("Start EMAIL Search: " + Now.ToString)
         Dim I As String = DB.ExecuteSearchEmail(SecureID,
                currSearchCnt,
                bGenSql,
                SearchParmsJson,
                bFirstEmailSearchSubmit,
-               EmailRowCnt)
+               EmailRowCnt,
+               UserRowsToFetch)
         Console.WriteLine("Stop EMAIL Search: " + Now.ToString)
         Return I
     End Function

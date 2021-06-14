@@ -1137,6 +1137,7 @@
         <xs:element minOccurs="0" name="SearchParmsJson" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="bFirstEmailSearchSubmit" type="xs:boolean" />
         <xs:element minOccurs="0" name="EmailRowCnt" type="xs:int" />
+        <xs:element minOccurs="0" name="UserRowsToFetch" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1160,6 +1161,7 @@
         <xs:element minOccurs="0" name="SearchParmsJson" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="bFirstContentSearchSubmit" type="xs:boolean" />
         <xs:element minOccurs="0" name="ContentRowCnt" type="xs:int" />
+        <xs:element minOccurs="0" name="UserRowsToFetch" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -2174,6 +2176,7 @@
         <xs:element minOccurs="0" name="TypeSearch" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="JsonSearchParms" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="RetMsg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserRowsToFetch" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -2227,6 +2230,7 @@
         <xs:element minOccurs="0" name="bFirstContentSearchSubmit" type="xs:boolean" />
         <xs:element minOccurs="0" name="EmailRowCnt" type="xs:int" />
         <xs:element minOccurs="0" name="ContentRowCnt" type="xs:int" />
+        <xs:element minOccurs="0" name="UserRowsToFetch" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

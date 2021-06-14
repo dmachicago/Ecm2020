@@ -280,7 +280,7 @@ Class MainPage
         InitializeComponent()
 
         Dim sddebug As String = System.Configuration.ConfigurationManager.AppSettings("DebugON")
-        If sddebug.Equals(1) Then
+        If sddebug.Equals("1") Then
             gDebug = True
         Else
             gDebug = False
@@ -919,6 +919,8 @@ Class MainPage
     '********************************************************************
     Sub ExecuteSearch(ByVal bGenSqlOnly As Boolean, CallLocation As String, Optional StartingRow As Int32 = 0, Optional EndingRow As Int32 = 1000000)
 
+        Dim UserRowsToFetch As Integer = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings("UserRowsToFetch"))
+
         PB.IsIndeterminate = True
         PB.Visibility = Visibility.Visible
 
@@ -1133,7 +1135,8 @@ Class MainPage
                                  bGenSqlOnly,
                                  SearchParmsJson,
                                  bFirstContentSearchSubmit,
-                                 ContentSearchCnt)
+                                 ContentSearchCnt,
+                                 UserRowsToFetch)
 
             End If
 
@@ -1143,7 +1146,8 @@ Class MainPage
                                  bGenSqlOnly,
                                  SearchParmsJson,
                                  bFirstEmailSearchSubmit,
-                                 EmailSearchCnt)
+                                 EmailSearchCnt,
+                                 UserRowsToFetch)
             End If
 
             RetDict.Add("ContentGuidID", ContentGuidID)
@@ -1163,7 +1167,7 @@ Class MainPage
             Console.WriteLine(" ")
         Catch ex As Exception
             Dim trace = New System.Diagnostics.StackTrace(ex, True)
-            MessageBox.Show("ERROR @44: " + Environment.NewLine + ex.Message & vbCrLf & "Error in ClaimFlag10 - Line number:" & trace.GetFrame(0).GetFileLineNumber().ToString)
+            MessageBox.Show("ERROR @44Q: " + Environment.NewLine + ex.Message & vbCrLf & "Error in ExecuteSearch - Line number:" & trace.GetFrame(0).GetFileLineNumber().ToString)
             Dim stack As String = ex.StackTrace.ToString
             Clipboard.Clear()
             Clipboard.SetText(ex.Message + Environment.NewLine + Environment.NewLine + stack)
@@ -1300,24 +1304,41 @@ Class MainPage
         Dim ObjContent As Object = jss.Deserialize(Of SVCSearch.DS_CONTENT())(ContentJson)
         Dim ObjEmail As Object = jss.Deserialize(Of SVCSearch.DS_EMAIL())(EmailJson)
 
-        For Each OBJ As Object In ObjContent
-            Dim MaxSeq As String = OBJ.RowSeq.ToString
-            gContentCurrMaxSeq = Convert.ToInt32(MaxSeq)
-            gListOfContent.Add(OBJ)
-        Next
-        dgContent.ItemsSource = Nothing
-        dgContent.ItemsSource = gListOfContent
-        dgContent.Items.Refresh()
+        If ObjContent IsNot Nothing Then
+            Try
+                For Each OBJ As Object In ObjContent
+                    Dim MaxSeq As String = OBJ.RowSeq.ToString
+                    gContentCurrMaxSeq = Convert.ToInt32(MaxSeq)
+                    If Not gListOfContent.Contains(OBJ) Then
+                        gListOfContent.Add(OBJ)
+                    Else
+                        Console.WriteLine("ApplyReturnData 10: OBJ already exists ")
+                    End If
+                Next
+                dgContent.ItemsSource = Nothing
+                dgContent.ItemsSource = gListOfContent
+                dgContent.Items.Refresh()
+            Catch ex As Exception
+                LOG.WriteToErrorLog("ERROR ApplySearchData 00:  " + ex.Message)
+            End Try
 
-        For Each OBJ As Object In ObjEmail
-            Dim MaxSeq As String = OBJ.RowSeq.ToString
-            gEmailCurrMaxSeq = Convert.ToInt32(MaxSeq)
-            gListOfEmails.Add(OBJ)
-        Next
-        dgEmails.ItemsSource = Nothing
-        dgEmails.ItemsSource = gListOfEmails
-        dgEmails.Items.Refresh()
+        End If
 
+        If ObjEmail IsNot Nothing Then
+            Try
+                For Each OBJ As Object In ObjEmail
+                    Dim MaxSeq As String = OBJ.RowSeq.ToString
+                    gEmailCurrMaxSeq = Convert.ToInt32(MaxSeq)
+                    gListOfEmails.Add(OBJ)
+                Next
+                dgEmails.ItemsSource = Nothing
+                dgEmails.ItemsSource = gListOfEmails
+                dgEmails.Items.Refresh()
+            Catch ex As Exception
+                LOG.WriteToErrorLog("ERROR ApplySearchData 01: " + ex.Message)
+            End Try
+
+        End If
 
     End Sub
 
@@ -2793,6 +2814,8 @@ Class MainPage
             Next
         Catch ex As Exception
             MessageBox.Show("ERROR #422: " + ex.Message + " - Line# " + ll.ToString())
+            LOG.WriteToArchiveLog("ERROR #422: " + ex.Message + " - Line# " + ll.ToString())
+            SB.Text = "ERROR #422: " + ex.Message + " - Line# " + ll.ToString()
         End Try
         SB.Text = "System Grid Parms Loaded: " & gSystemParms.Count & " and DB Connection good."
     End Sub
@@ -3201,7 +3224,9 @@ Class MainPage
         Catch ex As Exception
             Console.WriteLine("ERROR: setTabsOpenClosed 221q : " + ex.Message)
             Dim trace = New System.Diagnostics.StackTrace(ex, True)
-            MessageBox.Show("ERROR @51: " + Environment.NewLine + ex.Message & vbCrLf & "Error in ClaimFlag10 - Line number:" & trace.GetFrame(0).GetFileLineNumber().ToString)
+            'MessageBox.Show("ERROR @51: " + Environment.NewLine + ex.Message & vbCrLf & "Error in ClaimFlag10 - Line number:" & trace.GetFrame(0).GetFileLineNumber().ToString)
+            mainPage.SB.Text = "ERROR @51: " + Environment.NewLine + ex.Message & vbCrLf & "Error in ClaimFlag10 - Line number:" & trace.GetFrame(0).GetFileLineNumber().ToString
+            LOG.WriteToErrorLog("ERROR @51: " + Environment.NewLine + ex.Message & vbCrLf & "Error in ClaimFlag10 - Line number:" & trace.GetFrame(0).GetFileLineNumber().ToString)
         End Try
 
     End Sub
@@ -3389,9 +3414,19 @@ Class MainPage
     End Sub
 
     Private Sub TabContent_GotFocus(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles TabContent.GotFocus
-        gSelectedGrid = "dgContent"
-        COMMON.SaveClick(600, gCurrUserGuidID)
-        dgAttachments.Visibility = Windows.Visibility.Collapsed
+        Dim LL As Integer = 0
+        Try
+            LL = 1
+            gSelectedGrid = "dgContent"
+            LL = 2
+            COMMON.SaveClick(600, gCurrUserGuidID)
+            LL = 3
+            dgAttachments.Visibility = Windows.Visibility.Collapsed
+            LL = 4
+        Catch ex As Exception
+            LOG.WriteToErrorLog("ERROR TabContent_GotFocus: LIne# " + LL.ToString + vbCrLf + ex.Message)
+        End Try
+
     End Sub
 
     Private Sub TabEmail_GotFocus(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles TabEmail.GotFocus
@@ -3849,6 +3884,7 @@ Class MainPage
                 SB.Text = "Content: " + StartingRow.ToString + " : " + TotalRows.ToString
                 SBDoc.Text = "Content: Rows retrieved: " + TotalRows.ToString
             Else
+                PctLocation = Math.Round(PctLocation, 2)
                 SB.Text = "PCT SCroll: " + PctLocation.ToString
             End If
         End If

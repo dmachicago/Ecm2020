@@ -19,337 +19,337 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/12/2019 18:53:32</publishTime>
     </File>
     <File Include="bin/Dictionary/C1Spell_da-DK.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/Dictionary/C1Spell_de-CH.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/Dictionary/C1Spell_de-DE.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/Dictionary/C1Spell_el-GR.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/Dictionary/C1Spell_en-AU.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/Dictionary/C1Spell_en-CA.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/Dictionary/C1Spell_en-GB.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/Dictionary/C1Spell_en-US-medical.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/Dictionary/C1Spell_en-US.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/Dictionary/C1Spell_es-AR.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/Dictionary/C1Spell_es-ES.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/Dictionary/C1Spell_es-MX.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/Dictionary/C1Spell_fr-CA.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/Dictionary/C1Spell_fr-FR.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/Dictionary/C1Spell_it-IT.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/Dictionary/C1Spell_nb-NO.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/Dictionary/C1Spell_nl-NL.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/Dictionary/C1Spell_pt-BR.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/Dictionary/C1Spell_pt-PT.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/Dictionary/C1Spell_ru-RU.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/Dictionary/C1Spell_sv-SE.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/Documentation/_MasterStartupSearch.vsdx">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>05/29/2021 16:05:41</publishTime>
     </File>
     <File Include="bin/EcmCloudWcf.Web.dll">
-      <publishTime>03/02/2021 07:34:57</publishTime>
+      <publishTime>06/13/2021 11:36:31</publishTime>
     </File>
     <File Include="bin/EcmCloudWcf.Web.pdb">
       <publishTime>10/23/2012 14:31:30</publishTime>
     </File>
     <File Include="bin/ENC.dll">
-      <publishTime>01/16/2021 13:55:17</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/Help/SearchSVC.chm">
-      <publishTime>12/19/2020 10:24:54</publishTime>
+      <publishTime>05/29/2021 16:05:41</publishTime>
     </File>
     <File Include="bin/ICSharpCode.SharpZipLib.dll">
-      <publishTime>07/16/2020 14:31:56</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/itextsharp.dll">
-      <publishTime>06/28/2020 12:12:30</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>07/16/2020 14:31:53</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/SpellCheck/C1Spell_da-DK.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/SpellCheck/C1Spell_de-CH.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/SpellCheck/C1Spell_de-DE.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/SpellCheck/C1Spell_el-GR.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/SpellCheck/C1Spell_en-AU.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/SpellCheck/C1Spell_en-CA.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/SpellCheck/C1Spell_en-GB.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/SpellCheck/C1Spell_en-US-medical.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/SpellCheck/C1Spell_en-US.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/SpellCheck/C1Spell_es-AR.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/SpellCheck/C1Spell_es-ES.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/SpellCheck/C1Spell_es-MX.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/SpellCheck/C1Spell_fr-CA.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/SpellCheck/C1Spell_fr-FR.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/SpellCheck/C1Spell_it-IT.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/SpellCheck/C1Spell_nb-NO.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/SpellCheck/C1Spell_nl-NL.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/SpellCheck/C1Spell_pt-BR.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/SpellCheck/C1Spell_pt-PT.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/SpellCheck/C1Spell_ru-RU.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/SpellCheck/C1Spell_sv-SE.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="bin/SpellCheck/index.html">
-      <publishTime>01/16/2021 09:42:50</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="clientaccesspolicy.xml">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="ClientBin/EcmCloudWcf.xap">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>05/29/2021 16:05:41</publishTime>
     </File>
     <File Include="clsRestoreServer.vb">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="CodeSigningCertificate.pfx">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="crossdomain.xml">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="Dictionary/C1Spell_da-DK.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="Dictionary/C1Spell_de-CH.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="Dictionary/C1Spell_de-DE.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="Dictionary/C1Spell_el-GR.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="Dictionary/C1Spell_en-AU.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="Dictionary/C1Spell_en-CA.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="Dictionary/C1Spell_en-GB.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="Dictionary/C1Spell_en-US-medical.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="Dictionary/C1Spell_en-US.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="Dictionary/C1Spell_es-AR.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="Dictionary/C1Spell_es-ES.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="Dictionary/C1Spell_es-MX.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="Dictionary/C1Spell_fr-CA.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="Dictionary/C1Spell_fr-FR.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="Dictionary/C1Spell_it-IT.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="Dictionary/C1Spell_nb-NO.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="Dictionary/C1Spell_nl-NL.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="Dictionary/C1Spell_pt-BR.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="Dictionary/C1Spell_pt-PT.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="Dictionary/C1Spell_ru-RU.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="Dictionary/C1Spell_sv-SE.zip">
-      <publishTime>01/16/2021 09:35:44</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="Documentation/_MasterStartupSearch.vsdx">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>05/29/2021 16:05:41</publishTime>
     </File>
     <File Include="EcmCloudWcfStartup.aspx">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="EcmCloudWcfTestPage.aspx">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="EcmCloudWcfTestPage.html">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="Help/SearchSVC.chm">
-      <publishTime>12/19/2020 10:24:54</publishTime>
+      <publishTime>05/29/2021 16:05:41</publishTime>
     </File>
     <File Include="Identify.html">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="index.html">
       <publishTime>04/12/2019 18:53:32</publishTime>
     </File>
     <File Include="javaFunctions.js">
-      <publishTime>12/15/2020 17:11:57</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>12/14/2020 17:48:47</publishTime>
+      <publishTime>05/29/2021 16:05:41</publishTime>
     </File>
     <File Include="Silverlight.js">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="SpellCheck/C1Spell_da-DK.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="SpellCheck/C1Spell_de-CH.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="SpellCheck/C1Spell_de-DE.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="SpellCheck/C1Spell_el-GR.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="SpellCheck/C1Spell_en-AU.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="SpellCheck/C1Spell_en-CA.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="SpellCheck/C1Spell_en-GB.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="SpellCheck/C1Spell_en-US-medical.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="SpellCheck/C1Spell_en-US.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="SpellCheck/C1Spell_es-AR.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="SpellCheck/C1Spell_es-ES.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="SpellCheck/C1Spell_es-MX.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="SpellCheck/C1Spell_fr-CA.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="SpellCheck/C1Spell_fr-FR.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="SpellCheck/C1Spell_it-IT.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="SpellCheck/C1Spell_nb-NO.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="SpellCheck/C1Spell_nl-NL.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="SpellCheck/C1Spell_pt-BR.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="SpellCheck/C1Spell_pt-PT.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="SpellCheck/C1Spell_ru-RU.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="SpellCheck/C1Spell_sv-SE.dct">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="SpellCheck/index.html">
-      <publishTime>01/16/2021 09:42:50</publishTime>
+      <publishTime>06/02/2021 01:50:08</publishTime>
     </File>
     <File Include="SVCSearch.svc">
-      <publishTime>06/28/2020 12:12:52</publishTime>
+      <publishTime>05/29/2021 16:05:41</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/02/2021 07:34:59</publishTime>
+      <publishTime>06/13/2021 11:36:32</publishTime>
     </File>
   </ItemGroup>
 </Project>
