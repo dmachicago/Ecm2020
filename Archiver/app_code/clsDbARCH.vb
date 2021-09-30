@@ -10907,27 +10907,23 @@ Public Class clsDatabaseARCH : Implements IDisposable
             End If
 
             Dim command As New SqlCommand(SQL, Conn)
-            Dim transaction = Conn.BeginTransaction()
 
             Dim RSData As SqlDataReader = Nothing
             RSData = command.ExecuteReader()
             I = 0
 
             If RSData.HasRows Then
-                Using (transaction)
-                    Do While RSData.Read()
-                        FQN = RSData.GetValue(0).ToString
-                        IncludeSubDirs = RSData.GetValue(1).ToString
+                Do While RSData.Read()
+                    FQN = RSData.GetValue(0).ToString
+                    IncludeSubDirs = RSData.GetValue(1).ToString
 
-                        Try
-                            LOF.Add(FQN, IncludeSubDirs)
-                        Catch ex As Exception
-                            Console.WriteLine("NOTICE: 12XX: Duplicate Key: ", FQN)
-                        End Try
-                        I = I + 1
-                    Loop
-                    transaction.Commit()
-                End Using
+                    Try
+                        LOF.Add(FQN, IncludeSubDirs)
+                    Catch ex As Exception
+                        Console.WriteLine("NOTICE: 12XX: Duplicate Key: ", FQN)
+                    End Try
+                    I = I + 1
+                Loop
             End If
 
             RSData.Close()

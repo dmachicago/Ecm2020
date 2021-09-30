@@ -16,8 +16,13 @@ Public Class clsQuickInventory
 
     Function PerformFastInventory(MachineName As String, UserID As String) As List(Of String)
 
-        FRM.Title = "QUICK Archive with Inventory"
-        FRM.Show()
+        Try
+            FRM.Title = "QUICK Archive with Inventory"
+            FRM.Show()
+        Catch ex As Exception
+            LOG.WriteToArchiveLog("ERROR PerformFastInventory: " + ex.Message)
+        End Try
+
         Dim Recurse As String = ""
 
         Try

@@ -4464,7 +4464,7 @@ Public Class clsDatabaseSVR
     ''' <param name="SecureID">The secure identifier.</param>
     ''' <param name="SourceGuid">The source unique identifier.</param>
     ''' <returns>System.String.</returns>
-    Public Function getFqnFromGuid(ByRef SecureID As Integer, ByVal SourceGuid As String) As String
+    Public Function getFqnFromGuid(ByVal SourceGuid As String) As String
         Dim s As String = ""
         s = "Select FQN FROM DataSource Where SourceGuid = '" + SourceGuid + "'"
         Dim rsData As SqlDataReader = Nothing

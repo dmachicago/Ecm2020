@@ -1191,10 +1191,10 @@ Public Class frmMain : Implements IDisposable
                 gCurrLoginID = ImpersonateID
                 CurrentLoginID = ImpersonateID
                 CurrUserGuidID = DBARCH.getUserGuidByLoginID(ImpersonateID)
-                LogIntoSystem(CurrentLoginID) : LL = 238
+                LogIntoSystem(CurrentLoginID) : LL = 230
                 gCurrLoginID = CurrentLoginID
             Else
-                LogIntoSystem(gCurrLoginID) : LL = 238
+                LogIntoSystem(gCurrLoginID) : LL = 235
             End If
             ckLicense() : LL = 240
 
@@ -1606,11 +1606,11 @@ Public Class frmMain : Implements IDisposable
             Dim st As New StackTrace(True)
             st = New StackTrace(ex, True)
             LOG.WriteToArchiveLog("Line: " & st.GetFrame(0).GetFileLineNumber().ToString)
-            Dim sMsg As String = "ERROR frmReconMain_Load 01: " & LL & Environment.NewLine & ex.Message
+            Dim sMsg As String = "ERROR frmReconMain_Load 01: LL=" & LL & Environment.NewLine & ex.Message
             LOG.WriteToArchiveLog(sMsg)
             Clipboard.Clear()
             Clipboard.SetText(ex.Message)
-            MessageBox.Show("ERROR frmReconMain_Load 01 check the logs: " + LL.ToString + Environment.NewLine + ex.Message)
+            MessageBox.Show("ERROR frmReconMain_Load 01 check the logs: LL=" + LL.ToString + Environment.NewLine + ex.Message)
         End Try
 
         If DBARCH.isAdmin(CurrUserGuidID) Then
@@ -8829,7 +8829,7 @@ SKIPTHISREC:
 
             DBARCH.RegisterMachineToDB(MachineName)
 
-            If ddebug Then LOG.WriteToTraceLog("FrmMDIMain 12")
+            If ddebug Then LOG.WriteToTraceLog("frmMain - ckLicense 12")
 
             LT = DBARCH.GetXrt(gCustomerName, gCustomerID)
             Dim isLease As Boolean = LM.isLease
@@ -8863,11 +8863,11 @@ SKIPTHISREC:
             Dim CurrNbrOfMachine As Integer = DBARCH.GetNbrMachine
             '**********************************************************
 
-            If ddebug Then LOG.WriteToTraceLog("FrmMDIMain 13")
+            If ddebug Then LOG.WriteToTraceLog("frmMain - ckLicense 13")
 
             If CurrNbrOfUsers >= gNbrOfUsers Then
                 Dim Msg As String = ""
-                Msg = Msg + "FrmMDIMain : MachineName : 1103 : " + Environment.NewLine
+                Msg = Msg + "frmMain - ckLicense : MachineName : 1103 : " + Environment.NewLine
                 Msg = Msg + "     Number of licenses warning : '" + MachineName + "'" + Environment.NewLine
                 Msg = Msg + "     We are very sorry, but the maximum number of USERS has been exceeded." + Environment.NewLine
                 Msg = Msg + "     ECM found " + CurrNbrOfUsers.ToString + " users currently registered in the system." + Environment.NewLine
@@ -8879,15 +8879,15 @@ SKIPTHISREC:
             End If
 
             If CurrNbrOfMachine >= gNbrOfSeats Then
-                If ddebug Then LOG.WriteToTraceLog("FrmMDIMain 14")
+                If ddebug Then LOG.WriteToTraceLog("frmMain - ckLicense 14")
                 Dim IP As String = DMA.getIpAddr
                 gIpAddr = IP
                 MachineIDcurr = MachineName
                 DBARCH.updateIp(MachineIDcurr, gIpAddr, 0)
                 DBARCH.updateIp(MachineIDcurr, gIpAddr, 1)
-                If ddebug Then LOG.WriteToTraceLog("FrmMDIMain 15")
+                If ddebug Then LOG.WriteToTraceLog("frmMain - ckLicense 15")
                 Dim Msg As String = ""
-                Msg = Msg + "FrmMDIMain : Current Users : 1103b : " + Environment.NewLine
+                Msg = Msg + "frmMain - ckLicense : Current Users : 1103b : " + Environment.NewLine
                 Msg = Msg + "     Number of current SEATS warning : '" + MachineName + "'" + Environment.NewLine
                 Msg = Msg + "     We are very sorry, but the maximum number of seats (WorkStations) has been exceeded." + Environment.NewLine
                 Msg = Msg + "     ECM found " + CurrNbrOfMachine.ToString + " machines registered in the system." + Environment.NewLine
@@ -8909,13 +8909,13 @@ SKIPTHISREC:
                     End If
                 End If
             Else
-                If ddebug Then LOG.WriteToTraceLog("FrmMDIMain 16")
+                If ddebug Then LOG.WriteToTraceLog("frmMain - ckLicense 16")
                 Dim iExists As Integer = DBARCH.GetNbrMachine(MachineName)
                 If iExists = 0 Then
                     Dim MySql As String = "insert into Machine (MachineName) values ('" + MachineName + "')"
                     Dim B As Boolean = DBARCH.ExecuteSqlNewConn(MySql, False)
                     If Not B Then
-                        LOG.WriteToArchiveLog("FrmMDIMain : MachineName : 921 : Failed to register machine : '" + MachineName + "'")
+                        LOG.WriteToArchiveLog("frmMain - ckLicense : MachineName : 921 : Failed to register machine : '" + MachineName + "'")
                     End If
                 End If
                 Dim IP As String = DMA.getIpAddr
@@ -8923,16 +8923,16 @@ SKIPTHISREC:
                 gIpAddr = IP
                 MachineIDcurr = MachineName
 
-                If ddebug Then LOG.WriteToTraceLog("FrmMDIMain 17")
+                If ddebug Then LOG.WriteToTraceLog("frmMain - ckLicense 17")
 
                 DBARCH.updateIp(MachineIDcurr, gIpAddr, 0)
                 DBARCH.updateIp(MachineIDcurr, gIpAddr, 2)
 
-                If ddebug Then LOG.WriteToTraceLog("FrmMDIMain 18")
+                If ddebug Then LOG.WriteToTraceLog("frmMain - ckLicense 18")
 
             End If
 
-            If ddebug Then LOG.WriteToTraceLog("FrmMDIMain 19")
+            If ddebug Then LOG.WriteToTraceLog("frmMain - ckLicense 19")
 
             If isLease = True Then
 
@@ -8970,23 +8970,26 @@ SKIPTHISREC:
                 End If
 
                 If Now > ExpirationDate Then
-                    LOG.WriteToArchiveLog("FrmMDIMain : 1001 We are very sorry, but your software LEASE has expired. Please contact ECM Library support.")
-                    MessageBox.Show("We are very sorry, but your software license has expired." + Environment.NewLine + Environment.NewLine + "Please contact ECM Library support.", "CRITICAL Notice", System.Windows.Forms.MessageBoxButtons.OK)
+                    LOG.WriteToArchiveLog("frmMain - ckLicense : 1001 We are very sorry, but your software LEASE has expired as of " + ExpirationDate.ToShortDateString + ". Please contact ECM Library support.")
+                    MessageBox.Show("We are very sorry, but your software license has expired  as of " + ExpirationDate.ToShortDateString + ". " + Environment.NewLine + "Please contact ECM Library support.", "CRITICAL Notice", System.Windows.Forms.MessageBoxButtons.OK)
                     frmLicense.ShowDialog()
                     MessageBox.Show("The application will now end, please restart with the new license.")
+                    End
                 End If
             End If
 
-            If ddebug Then LOG.WriteToTraceLog("FrmMDIMain 21")
+            If ddebug Then LOG.WriteToTraceLog("frmMain - ckLicense 21")
             Dim MaintExpire As Date = CDate(LM.ParseLic(LT, "dtMaintExpire"))
             If Now > MaintExpire Then
-                frmNotifyMessage.Show()
-                gNotifyMsg = "We are very sorry to inform you, but your maintenance agreement has expired." + Environment.NewLine + Environment.NewLine + "Please contact ECM Library support."
-                LOG.WriteToArchiveLog("FrmMDIMain : 1002 We are very sorry to inform you, but your maintenance agreement has expired.")
+                'frmNotifyMessage.Show()
+                gNotifyMsg = "We are very sorry to inform you, but your maintenance agreement has expired  as of: " + MaintExpire.ToShortDateString + Environment.NewLine + "Please contact ECM Library support."
+                LOG.WriteToArchiveLog(gNotifyMsg)
+                MessageBox.Show(gNotifyMsg)
+                End
             End If
-            'If ddebug Then LOG.WriteToTraceLog("FrmMDIMain 22")
+            'If ddebug Then LOG.WriteToTraceLog("frmMain - ckLicense 22")
             'CustomerID = LM.ParseLic(LT , "txtCustID")
-            'If ddebug Then LOG.WriteToTraceLog("FrmMDIMain 23")
+            'If ddebug Then LOG.WriteToTraceLog("frmMain - ckLicense 23")
         End If
     End Function
 
